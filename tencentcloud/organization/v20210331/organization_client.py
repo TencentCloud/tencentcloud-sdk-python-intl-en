@@ -27,7 +27,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AcceptJoinShareUnitInvitation(self, request):
-        """This API is used to accept an invitation to join a shared unit.
+        r"""This API is used to accept an invitation to join a shared unit.
 
         :param request: Request instance for AcceptJoinShareUnitInvitation.
         :type request: :class:`tencentcloud.organization.v20210331.models.AcceptJoinShareUnitInvitationRequest`
@@ -50,7 +50,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddExternalSAMLIdPCertificate(self, request):
-        """This API is used to add SAML signing certificates.
+        r"""This API is used to add SAML signing certificates.
 
         :param request: Request instance for AddExternalSAMLIdPCertificate.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddExternalSAMLIdPCertificateRequest`
@@ -73,7 +73,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddOrganizationMemberEmail(self, request):
-        """This API is used to add an organization member's mailbox.
+        r"""This API is used to add an organization member's mailbox.
 
         :param request: Request instance for AddOrganizationMemberEmail.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddOrganizationMemberEmailRequest`
@@ -96,7 +96,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddOrganizationNode(self, request):
-        """This API is used to add an organization node.
+        r"""This API is used to add an organization node.
 
         :param request: Request instance for AddOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddOrganizationNodeRequest`
@@ -119,7 +119,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddPermissionPolicyToRoleConfiguration(self, request):
-        """This API is used to add policies to permission configurations.
+        r"""This API is used to add policies to permission configurations.
 
         :param request: Request instance for AddPermissionPolicyToRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddPermissionPolicyToRoleConfigurationRequest`
@@ -142,7 +142,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddShareUnit(self, request):
-        """This API is used to create a shared unit.
+        r"""This API is used to create a shared unit.
 
         :param request: Request instance for AddShareUnit.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitRequest`
@@ -165,7 +165,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddShareUnitMembers(self, request):
-        """This API is used to add a shared unit member.
+        r"""This API is used to add a shared unit member.
 
         :param request: Request instance for AddShareUnitMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitMembersRequest`
@@ -188,7 +188,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddShareUnitResources(self, request):
-        """This API is used to add resources to a shared unit.
+        r"""This API is used to add resources to a shared unit.
 
         :param request: Request instance for AddShareUnitResources.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitResourcesRequest`
@@ -211,7 +211,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddUserToGroup(self, request):
-        """This API is used to add users to a user group.
+        r"""This API is used to add users to a user group.
 
         :param request: Request instance for AddUserToGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.AddUserToGroupRequest`
@@ -234,7 +234,7 @@ class OrganizationClient(AbstractClient):
 
 
     def BindOrganizationMemberAuthAccount(self, request):
-        """This API is used to bind an organization member to a sub-account of the organization admin.
+        r"""This API is used to bind an organization member to a sub-account of the organization admin.
 
         :param request: Request instance for BindOrganizationMemberAuthAccount.
         :type request: :class:`tencentcloud.organization.v20210331.models.BindOrganizationMemberAuthAccountRequest`
@@ -257,7 +257,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CancelOrganizationMemberAuthAccount(self, request):
-        """This API is used to unbind an organization member from a sub-account of the organization admin.
+        r"""This API is used to unbind an organization member from a sub-account of the organization admin.
 
         :param request: Request instance for CancelOrganizationMemberAuthAccount.
         :type request: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationMemberAuthAccountRequest`
@@ -280,7 +280,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ClearExternalSAMLIdentityProvider(self, request):
-        """This API is used to clear the SAML identity provider configuration information.
+        r"""This API is used to clear the SAML identity provider configuration information.
 
         :param request: Request instance for ClearExternalSAMLIdentityProvider.
         :type request: :class:`tencentcloud.organization.v20210331.models.ClearExternalSAMLIdentityProviderRequest`
@@ -303,7 +303,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """This API is used to create user groups.
+        r"""This API is used to create user groups.
 
         :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateGroupRequest`
@@ -326,7 +326,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrgServiceAssign(self, request):
-        """This API is used to add a delegated admin of the organization service.
+        r"""This API is used to add a delegated admin of the organization service.
 
         :param request: Request instance for CreateOrgServiceAssign.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrgServiceAssignRequest`
@@ -349,7 +349,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganization(self, request):
-        """This API is used to create an organization.
+        r"""This API is used to create an organization.
 
         :param request: Request instance for CreateOrganization.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationRequest`
@@ -372,7 +372,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganizationIdentity(self, request):
-        """This API is used to add an organization identity.
+        r"""This API is used to add an organization identity.
 
         :param request: Request instance for CreateOrganizationIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationIdentityRequest`
@@ -395,7 +395,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganizationMember(self, request):
-        """This API is used to create an organization member.
+        r"""This API is used to create an organization member.
 
         :param request: Request instance for CreateOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMemberRequest`
@@ -418,7 +418,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganizationMemberAuthIdentity(self, request):
-        """This API is used to add organization member access authorization.
+        r"""This API is used to add organization member access authorization.
 
         :param request: Request instance for CreateOrganizationMemberAuthIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMemberAuthIdentityRequest`
@@ -441,7 +441,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganizationMemberPolicy(self, request):
-        """This API is used to create an organization member access authorization policy.
+        r"""This API is used to create an organization member access authorization policy.
 
         :param request: Request instance for CreateOrganizationMemberPolicy.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMemberPolicyRequest`
@@ -464,7 +464,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganizationMembersPolicy(self, request):
-        """This API is used to create an organization member access policy.
+        r"""This API is used to create an organization member access policy.
 
         :param request: Request instance for CreateOrganizationMembersPolicy.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMembersPolicyRequest`
@@ -487,7 +487,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateRoleAssignment(self, request):
-        """This API is used to grant authorizations on member accounts.
+        r"""This API is used to grant authorizations on member accounts.
 
         :param request: Request instance for CreateRoleAssignment.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateRoleAssignmentRequest`
@@ -510,7 +510,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateRoleConfiguration(self, request):
-        """This API is used to create permission configurations.
+        r"""This API is used to create permission configurations.
 
         :param request: Request instance for CreateRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateRoleConfigurationRequest`
@@ -533,7 +533,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateSCIMCredential(self, request):
-        """This API is used to create a SCIM key.
+        r"""This API is used to create a SCIM key.
 
         :param request: Request instance for CreateSCIMCredential.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateSCIMCredentialRequest`
@@ -556,7 +556,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to create a user.
+        r"""This API is used to create a user.
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateUserRequest`
@@ -579,7 +579,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateUserSyncProvisioning(self, request):
-        """This API is used to create sub-user synchronization tasks.
+        r"""This API is used to create sub-user synchronization tasks.
 
         :param request: Request instance for CreateUserSyncProvisioning.
         :type request: :class:`tencentcloud.organization.v20210331.models.CreateUserSyncProvisioningRequest`
@@ -602,7 +602,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """This API is used to delete user groups.
+        r"""This API is used to delete user groups.
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteGroupRequest`
@@ -625,7 +625,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrgServiceAssign(self, request):
-        """This API is used to delete a delegated admin of the organization service.
+        r"""This API is used to delete a delegated admin of the organization service.
 
         :param request: Request instance for DeleteOrgServiceAssign.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrgServiceAssignRequest`
@@ -648,7 +648,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganization(self, request):
-        """This API is used to delete an organization.
+        r"""This API is used to delete an organization.
 
         :param request: Request instance for DeleteOrganization.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationRequest`
@@ -671,7 +671,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationIdentity(self, request):
-        """This API is used to delete an organization identity.
+        r"""This API is used to delete an organization identity.
 
         :param request: Request instance for DeleteOrganizationIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationIdentityRequest`
@@ -694,7 +694,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMemberAuthIdentity(self, request):
-        """This API is used to delete organization member access authorization.
+        r"""This API is used to delete organization member access authorization.
 
         :param request: Request instance for DeleteOrganizationMemberAuthIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMemberAuthIdentityRequest`
@@ -717,7 +717,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMembers(self, request):
-        """This API is used to remove a member account from the organization, rather than delete the account.
+        r"""This API is used to remove a member account from the organization, rather than delete the account.
 
         :param request: Request instance for DeleteOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMembersRequest`
@@ -740,7 +740,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMembersPolicy(self, request):
-        """This API is used to delete an organization member access policy.
+        r"""This API is used to delete an organization member access policy.
 
         :param request: Request instance for DeleteOrganizationMembersPolicy.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMembersPolicyRequest`
@@ -763,7 +763,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationNodes(self, request):
-        """This API is used to batch delete organization nodes.
+        r"""This API is used to batch delete organization nodes.
 
         :param request: Request instance for DeleteOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationNodesRequest`
@@ -786,7 +786,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteRoleAssignment(self, request):
-        """This API is used to remove authorizations on member accounts.
+        r"""This API is used to remove authorizations on member accounts.
 
         :param request: Request instance for DeleteRoleAssignment.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteRoleAssignmentRequest`
@@ -809,7 +809,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteRoleConfiguration(self, request):
-        """This API is used to delete the permission configuration information.
+        r"""This API is used to delete the permission configuration information.
 
         :param request: Request instance for DeleteRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteRoleConfigurationRequest`
@@ -832,7 +832,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteSCIMCredential(self, request):
-        """This API is used to delete a SCIM key.
+        r"""This API is used to delete a SCIM key.
 
         :param request: Request instance for DeleteSCIMCredential.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteSCIMCredentialRequest`
@@ -855,7 +855,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteShareUnit(self, request):
-        """This API is used to delete a shared unit.
+        r"""This API is used to delete a shared unit.
 
         :param request: Request instance for DeleteShareUnit.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitRequest`
@@ -878,7 +878,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteShareUnitMembers(self, request):
-        """This API is used to delete a shared unit member.
+        r"""This API is used to delete a shared unit member.
 
         :param request: Request instance for DeleteShareUnitMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitMembersRequest`
@@ -901,7 +901,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteShareUnitResources(self, request):
-        """This API is used to delete shared unit resources.
+        r"""This API is used to delete shared unit resources.
 
         :param request: Request instance for DeleteShareUnitResources.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitResourcesRequest`
@@ -924,7 +924,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete a user.
+        r"""This API is used to delete a user.
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteUserRequest`
@@ -947,7 +947,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteUserSyncProvisioning(self, request):
-        """This API is used to delete sub-user synchronization tasks.
+        r"""This API is used to delete sub-user synchronization tasks.
 
         :param request: Request instance for DeleteUserSyncProvisioning.
         :type request: :class:`tencentcloud.organization.v20210331.models.DeleteUserSyncProvisioningRequest`
@@ -970,7 +970,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeIdentityCenter(self, request):
-        """This API is used to obtain TCO Identity Center service information.
+        r"""This API is used to obtain TCO Identity Center service information.
 
         :param request: Request instance for DescribeIdentityCenter.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeIdentityCenterRequest`
@@ -993,7 +993,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganization(self, request):
-        """This API is used to get the organization information.
+        r"""This API is used to get the organization information.
 
         :param request: Request instance for DescribeOrganization.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationRequest`
@@ -1016,7 +1016,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMemberAuthAccounts(self, request):
-        """This API is used to get the list of sub-accounts bound to an organization member.
+        r"""This API is used to get the list of sub-accounts bound to an organization member.
 
         :param request: Request instance for DescribeOrganizationMemberAuthAccounts.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberAuthAccountsRequest`
@@ -1039,7 +1039,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMemberAuthIdentities(self, request):
-        """This API is used to obtain the list of organization member access authorization.
+        r"""This API is used to obtain the list of organization member access authorization.
 
         :param request: Request instance for DescribeOrganizationMemberAuthIdentities.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberAuthIdentitiesRequest`
@@ -1062,7 +1062,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMemberEmailBind(self, request):
-        """This API is used to query detailed information about member mailbox binding.
+        r"""This API is used to query detailed information about member mailbox binding.
 
         :param request: Request instance for DescribeOrganizationMemberEmailBind.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberEmailBindRequest`
@@ -1085,7 +1085,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMemberPolicies(self, request):
-        """This API is used to get the list of authorization policies of an organization member.
+        r"""This API is used to get the list of authorization policies of an organization member.
 
         :param request: Request instance for DescribeOrganizationMemberPolicies.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberPoliciesRequest`
@@ -1108,7 +1108,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMembers(self, request):
-        """This API is used to get the list of organization members.
+        r"""This API is used to get the list of organization members.
 
         :param request: Request instance for DescribeOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMembersRequest`
@@ -1131,7 +1131,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationNodes(self, request):
-        """This API is used to get the list of organization nodes.
+        r"""This API is used to get the list of organization nodes.
 
         :param request: Request instance for DescribeOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationNodesRequest`
@@ -1154,7 +1154,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeShareAreas(self, request):
-        """This API is used to obtain a list of shareable regions.
+        r"""This API is used to obtain a list of shareable regions.
 
         :param request: Request instance for DescribeShareAreas.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareAreasRequest`
@@ -1177,7 +1177,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeShareUnitMembers(self, request):
-        """This API is used to obtain the member list of a shared unit.
+        r"""This API is used to obtain the member list of a shared unit.
 
         :param request: Request instance for DescribeShareUnitMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitMembersRequest`
@@ -1200,7 +1200,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeShareUnitResources(self, request):
-        """This API is used to obtain the resource list of a shared unit.
+        r"""This API is used to obtain the resource list of a shared unit.
 
         :param request: Request instance for DescribeShareUnitResources.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitResourcesRequest`
@@ -1223,7 +1223,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeShareUnits(self, request):
-        """This API is used to obtain a list of shared units.
+        r"""This API is used to obtain a list of shared units.
 
         :param request: Request instance for DescribeShareUnits.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitsRequest`
@@ -1246,7 +1246,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DismantleRoleConfiguration(self, request):
-        """This API is used to undeploy permission configurations on member accounts.
+        r"""This API is used to undeploy permission configurations on member accounts.
 
         :param request: Request instance for DismantleRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.DismantleRoleConfigurationRequest`
@@ -1269,7 +1269,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetExternalSAMLIdentityProvider(self, request):
-        """This API is used to query the SAML identity provider configuration information.
+        r"""This API is used to query the SAML identity provider configuration information.
 
         :param request: Request instance for GetExternalSAMLIdentityProvider.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetExternalSAMLIdentityProviderRequest`
@@ -1292,7 +1292,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetGroup(self, request):
-        """This API is used to query the user group information.
+        r"""This API is used to query the user group information.
 
         :param request: Request instance for GetGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetGroupRequest`
@@ -1315,7 +1315,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetProvisioningTaskStatus(self, request):
-        """This API is used to query the status of async tasks of user synchronization.
+        r"""This API is used to query the status of async tasks of user synchronization.
 
         :param request: Request instance for GetProvisioningTaskStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetProvisioningTaskStatusRequest`
@@ -1338,7 +1338,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetRoleConfiguration(self, request):
-        """This API is used to query the permission configuration information.
+        r"""This API is used to query the permission configuration information.
 
         :param request: Request instance for GetRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetRoleConfigurationRequest`
@@ -1361,7 +1361,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetSCIMSynchronizationStatus(self, request):
-        """This API is used to query SCIM synchronization status.
+        r"""This API is used to query SCIM synchronization status.
 
         :param request: Request instance for GetSCIMSynchronizationStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetSCIMSynchronizationStatusRequest`
@@ -1384,7 +1384,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetTaskStatus(self, request):
-        """This API is used to query the status of async tasks.
+        r"""This API is used to query the status of async tasks.
 
         :param request: Request instance for GetTaskStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetTaskStatusRequest`
@@ -1407,7 +1407,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetUser(self, request):
-        """This API is used to query the user information.
+        r"""This API is used to query the user information.
 
         :param request: Request instance for GetUser.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetUserRequest`
@@ -1430,7 +1430,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetUserSyncProvisioning(self, request):
-        """This API is used to query the CAM user synchronization.
+        r"""This API is used to query the CAM user synchronization.
 
         :param request: Request instance for GetUserSyncProvisioning.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetUserSyncProvisioningRequest`
@@ -1453,7 +1453,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetZoneSAMLServiceProviderInfo(self, request):
-        """This API is used to query the SAML service provider configuration information.
+        r"""This API is used to query the SAML service provider configuration information.
 
         :param request: Request instance for GetZoneSAMLServiceProviderInfo.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetZoneSAMLServiceProviderInfoRequest`
@@ -1476,7 +1476,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetZoneStatistics(self, request):
-        """This API is used to query space statistics.
+        r"""This API is used to query space statistics.
 
         :param request: Request instance for GetZoneStatistics.
         :type request: :class:`tencentcloud.organization.v20210331.models.GetZoneStatisticsRequest`
@@ -1499,7 +1499,7 @@ class OrganizationClient(AbstractClient):
 
 
     def InviteOrganizationMember(self, request):
-        """This API is used to invite a member.
+        r"""This API is used to invite a member.
 
         :param request: Request instance for InviteOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20210331.models.InviteOrganizationMemberRequest`
@@ -1522,7 +1522,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListExternalSAMLIdPCertificates(self, request):
-        """This API is used to query the SAML signing certificate list.
+        r"""This API is used to query the SAML signing certificate list.
 
         :param request: Request instance for ListExternalSAMLIdPCertificates.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListExternalSAMLIdPCertificatesRequest`
@@ -1545,7 +1545,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListGroupMembers(self, request):
-        """This API is used to query the user list of the user group.
+        r"""This API is used to query the user list of the user group.
 
         :param request: Request instance for ListGroupMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListGroupMembersRequest`
@@ -1568,7 +1568,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListGroups(self, request):
-        """This API is used to query the user group list.
+        r"""This API is used to query the user group list.
 
         :param request: Request instance for ListGroups.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListGroupsRequest`
@@ -1591,7 +1591,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListJoinedGroupsForUser(self, request):
-        """This API is used to query the user group joined by users.
+        r"""This API is used to query the user group joined by users.
 
         :param request: Request instance for ListJoinedGroupsForUser.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListJoinedGroupsForUserRequest`
@@ -1614,7 +1614,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrgServiceAssignMember(self, request):
-        """This API is used to obtain the list of delegated admins of the organization service.
+        r"""This API is used to obtain the list of delegated admins of the organization service.
 
         :param request: Request instance for ListOrgServiceAssignMember.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListOrgServiceAssignMemberRequest`
@@ -1637,7 +1637,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationIdentity(self, request):
-        """This API is used to get the list of access identities of an organization member.
+        r"""This API is used to get the list of access identities of an organization member.
 
         :param request: Request instance for ListOrganizationIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListOrganizationIdentityRequest`
@@ -1660,7 +1660,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationService(self, request):
-        """This API is used to obtain the list of organization service settings.
+        r"""This API is used to obtain the list of organization service settings.
 
         :param request: Request instance for ListOrganizationService.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListOrganizationServiceRequest`
@@ -1683,7 +1683,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListPermissionPoliciesInRoleConfiguration(self, request):
-        """This API is used to obtain the policy list in permission configurations.
+        r"""This API is used to obtain the policy list in permission configurations.
 
         :param request: Request instance for ListPermissionPoliciesInRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListPermissionPoliciesInRoleConfigurationRequest`
@@ -1706,7 +1706,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListRoleAssignments(self, request):
-        """This API is used to query the authorization list.
+        r"""This API is used to query the authorization list.
 
         :param request: Request instance for ListRoleAssignments.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListRoleAssignmentsRequest`
@@ -1729,7 +1729,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListRoleConfigurationProvisionings(self, request):
-        """This API is used to query the permission configuration deployment list.
+        r"""This API is used to query the permission configuration deployment list.
 
         :param request: Request instance for ListRoleConfigurationProvisionings.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListRoleConfigurationProvisioningsRequest`
@@ -1752,7 +1752,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListRoleConfigurations(self, request):
-        """This API is used to query the permission configuration list.
+        r"""This API is used to query the permission configuration list.
 
         :param request: Request instance for ListRoleConfigurations.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListRoleConfigurationsRequest`
@@ -1775,7 +1775,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListSCIMCredentials(self, request):
-        """This API is used to query the user SCIM key list.
+        r"""This API is used to query the user SCIM key list.
 
         :param request: Request instance for ListSCIMCredentials.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListSCIMCredentialsRequest`
@@ -1798,7 +1798,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListTasks(self, request):
-        """This API is used to query the async task list.
+        r"""This API is used to query the async task list.
 
         :param request: Request instance for ListTasks.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListTasksRequest`
@@ -1821,7 +1821,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListUserSyncProvisionings(self, request):
-        """This API is used to query the CAM user synchronization list.
+        r"""This API is used to query the CAM user synchronization list.
 
         :param request: Request instance for ListUserSyncProvisionings.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListUserSyncProvisioningsRequest`
@@ -1844,7 +1844,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListUsers(self, request):
-        """This API is used to query the user list.
+        r"""This API is used to query the user list.
 
         :param request: Request instance for ListUsers.
         :type request: :class:`tencentcloud.organization.v20210331.models.ListUsersRequest`
@@ -1867,7 +1867,7 @@ class OrganizationClient(AbstractClient):
 
 
     def MoveOrganizationNodeMembers(self, request):
-        """This API is used to move a member to the specified organization node.
+        r"""This API is used to move a member to the specified organization node.
 
         :param request: Request instance for MoveOrganizationNodeMembers.
         :type request: :class:`tencentcloud.organization.v20210331.models.MoveOrganizationNodeMembersRequest`
@@ -1890,7 +1890,7 @@ class OrganizationClient(AbstractClient):
 
 
     def OpenIdentityCenter(self, request):
-        """This API is used to activate Identity Center service (CIC).
+        r"""This API is used to activate Identity Center service (CIC).
 
         :param request: Request instance for OpenIdentityCenter.
         :type request: :class:`tencentcloud.organization.v20210331.models.OpenIdentityCenterRequest`
@@ -1913,7 +1913,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ProvisionRoleConfiguration(self, request):
-        """This API is used to deploy permission configurations on member accounts.
+        r"""This API is used to deploy permission configurations on member accounts.
 
         :param request: Request instance for ProvisionRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.ProvisionRoleConfigurationRequest`
@@ -1936,7 +1936,7 @@ class OrganizationClient(AbstractClient):
 
 
     def QuitOrganization(self, request):
-        """This API is used to exit an organization.
+        r"""This API is used to exit an organization.
 
         :param request: Request instance for QuitOrganization.
         :type request: :class:`tencentcloud.organization.v20210331.models.QuitOrganizationRequest`
@@ -1959,7 +1959,7 @@ class OrganizationClient(AbstractClient):
 
 
     def RejectJoinShareUnitInvitation(self, request):
-        """This API is used to reject an invitation to join a shared unit.
+        r"""This API is used to reject an invitation to join a shared unit.
 
         :param request: Request instance for RejectJoinShareUnitInvitation.
         :type request: :class:`tencentcloud.organization.v20210331.models.RejectJoinShareUnitInvitationRequest`
@@ -1982,7 +1982,7 @@ class OrganizationClient(AbstractClient):
 
 
     def RemoveExternalSAMLIdPCertificate(self, request):
-        """This API is used to remove SAML signing certificates.
+        r"""This API is used to remove SAML signing certificates.
 
         :param request: Request instance for RemoveExternalSAMLIdPCertificate.
         :type request: :class:`tencentcloud.organization.v20210331.models.RemoveExternalSAMLIdPCertificateRequest`
@@ -2005,7 +2005,7 @@ class OrganizationClient(AbstractClient):
 
 
     def RemovePermissionPolicyFromRoleConfiguration(self, request):
-        """This API is used to remove policies from permission configurations.
+        r"""This API is used to remove policies from permission configurations.
 
         :param request: Request instance for RemovePermissionPolicyFromRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.RemovePermissionPolicyFromRoleConfigurationRequest`
@@ -2028,7 +2028,7 @@ class OrganizationClient(AbstractClient):
 
 
     def RemoveUserFromGroup(self, request):
-        """This API is used to removes users from a user group.
+        r"""This API is used to removes users from a user group.
 
         :param request: Request instance for RemoveUserFromGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.RemoveUserFromGroupRequest`
@@ -2051,7 +2051,7 @@ class OrganizationClient(AbstractClient):
 
 
     def SendOrgMemberAccountBindEmail(self, request):
-        """This API is used to resend an email for activating the member's bound mailbox.
+        r"""This API is used to resend an email for activating the member's bound mailbox.
 
         :param request: Request instance for SendOrgMemberAccountBindEmail.
         :type request: :class:`tencentcloud.organization.v20210331.models.SendOrgMemberAccountBindEmailRequest`
@@ -2074,7 +2074,7 @@ class OrganizationClient(AbstractClient):
 
 
     def SetExternalSAMLIdentityProvider(self, request):
-        """This API is used to configure the SAML identity provider information.
+        r"""This API is used to configure the SAML identity provider information.
 
         :param request: Request instance for SetExternalSAMLIdentityProvider.
         :type request: :class:`tencentcloud.organization.v20210331.models.SetExternalSAMLIdentityProviderRequest`
@@ -2097,7 +2097,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateCustomPolicyForRoleConfiguration(self, request):
-        """This API is used to modify a custom policy for permission configurations.
+        r"""This API is used to modify a custom policy for permission configurations.
 
         :param request: Request instance for UpdateCustomPolicyForRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateCustomPolicyForRoleConfigurationRequest`
@@ -2120,7 +2120,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateGroup(self, request):
-        """This API is used to modify user group information.
+        r"""This API is used to modify user group information.
 
         :param request: Request instance for UpdateGroup.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateGroupRequest`
@@ -2143,7 +2143,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationIdentity(self, request):
-        """This API is used to update an organization identity.
+        r"""This API is used to update an organization identity.
 
         :param request: Request instance for UpdateOrganizationIdentity.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationIdentityRequest`
@@ -2166,7 +2166,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationMember(self, request):
-        """This API is used to update organization member information.
+        r"""This API is used to update organization member information.
 
         :param request: Request instance for UpdateOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberRequest`
@@ -2189,7 +2189,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationMemberEmailBind(self, request):
-        """This API is used to modify the mailbox of a bound member.
+        r"""This API is used to modify the mailbox of a bound member.
 
         :param request: Request instance for UpdateOrganizationMemberEmailBind.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberEmailBindRequest`
@@ -2212,7 +2212,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationNode(self, request):
-        """This API is used to update an organization node.
+        r"""This API is used to update an organization node.
 
         :param request: Request instance for UpdateOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationNodeRequest`
@@ -2235,7 +2235,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateRoleConfiguration(self, request):
-        """This API is used to modify the permission configuration information.
+        r"""This API is used to modify the permission configuration information.
 
         :param request: Request instance for UpdateRoleConfiguration.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateRoleConfigurationRequest`
@@ -2258,7 +2258,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateSCIMCredentialStatus(self, request):
-        """This API is used to enable or disable a SCIM key.
+        r"""This API is used to enable or disable a SCIM key.
 
         :param request: Request instance for UpdateSCIMCredentialStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMCredentialStatusRequest`
@@ -2281,7 +2281,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateSCIMSynchronizationStatus(self, request):
-        """This API is used to enable or disable user SCIM synchronization.
+        r"""This API is used to enable or disable user SCIM synchronization.
 
         :param request: Request instance for UpdateSCIMSynchronizationStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateSCIMSynchronizationStatusRequest`
@@ -2304,7 +2304,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateShareUnit(self, request):
-        """This API is used to update a shared unit.
+        r"""This API is used to update a shared unit.
 
         :param request: Request instance for UpdateShareUnit.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateShareUnitRequest`
@@ -2327,7 +2327,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateUser(self, request):
-        """This API is used to modify user information.
+        r"""This API is used to modify user information.
 
         :param request: Request instance for UpdateUser.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateUserRequest`
@@ -2350,7 +2350,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateUserStatus(self, request):
-        """This API is used to modify the user status.
+        r"""This API is used to modify the user status.
 
         :param request: Request instance for UpdateUserStatus.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateUserStatusRequest`
@@ -2373,7 +2373,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateUserSyncProvisioning(self, request):
-        """This API is used to create sub-user synchronization tasks.
+        r"""This API is used to create sub-user synchronization tasks.
 
         :param request: Request instance for UpdateUserSyncProvisioning.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateUserSyncProvisioningRequest`
@@ -2396,7 +2396,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateZone(self, request):
-        """This API is used to update the user's space name.
+        r"""This API is used to update the user's space name.
 
         :param request: Request instance for UpdateZone.
         :type request: :class:`tencentcloud.organization.v20210331.models.UpdateZoneRequest`

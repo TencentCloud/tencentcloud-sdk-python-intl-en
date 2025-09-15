@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICallExtractConfigElement(AbstractModel):
-    """AI call extraction configuration item.
+    r"""AI call extraction configuration item.
 
     """
 
@@ -48,7 +48,7 @@ Number.
 
     @property
     def InfoType(self):
-        """Configuration item type, including.
+        r"""Configuration item type, including.
 Text.
 Selector option.
 Boolean value.
@@ -63,7 +63,7 @@ Number.
 
     @property
     def InfoName(self):
-        """Configuration item name, duplicat.
+        r"""Configuration item name, duplicat.
         :rtype: str
         """
         return self._InfoName
@@ -74,7 +74,7 @@ Number.
 
     @property
     def InfoContent(self):
-        """Specific content of the configuration item.
+        r"""Specific content of the configuration item.
         :rtype: str
         """
         return self._InfoContent
@@ -85,7 +85,7 @@ Number.
 
     @property
     def Examples(self):
-        """Example of extracted content from the configuration item.
+        r"""Example of extracted content from the configuration item.
         :rtype: list of str
         """
         return self._Examples
@@ -96,7 +96,7 @@ Number.
 
     @property
     def Choices(self):
-        """When infotype is selector, this field needs to be configured.
+        r"""When infotype is selector, this field needs to be configured.
         :rtype: list of str
         """
         return self._Choices
@@ -123,7 +123,7 @@ Number.
 
 
 class AICallExtractResultElement(AbstractModel):
-    """AI call extraction result.
+    r"""AI call extraction result.
 
     """
 
@@ -149,7 +149,7 @@ Number.
 
     @property
     def InfoType(self):
-        """Type of extracted information.
+        r"""Type of extracted information.
 Text.
 Selector options.
 Boolean value.
@@ -164,7 +164,7 @@ Number.
 
     @property
     def InfoName(self):
-        """Name of the extracted information.
+        r"""Name of the extracted information.
         :rtype: str
         """
         return self._InfoName
@@ -175,7 +175,7 @@ Number.
 
     @property
     def InfoContent(self):
-        """Specific description of the extracted information.
+        r"""Specific description of the extracted information.
         :rtype: str
         """
         return self._InfoContent
@@ -186,7 +186,7 @@ Number.
 
     @property
     def Result(self):
-        """Specific result of the extracted information.
+        r"""Specific result of the extracted information.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AICallExtractResultInfo`
         """
         return self._Result
@@ -214,7 +214,7 @@ Number.
 
 
 class AICallExtractResultInfo(AbstractModel):
-    """Specific information of AI call result.
+    r"""Specific information of AI call result.
 
     """
 
@@ -236,7 +236,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Text(self):
-        """The extracted type is text.
+        r"""The extracted type is text.
         :rtype: str
         """
         return self._Text
@@ -247,7 +247,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Chosen(self):
-        """The extracted type is option.
+        r"""The extracted type is option.
         :rtype: list of str
         """
         return self._Chosen
@@ -258,7 +258,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Boolean(self):
-        """The extracted type is a boolean value.
+        r"""The extracted type is a boolean value.
         :rtype: bool
         """
         return self._Boolean
@@ -269,7 +269,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Number(self):
-        """The extracted type is a number.
+        r"""The extracted type is a number.
         :rtype: float
         """
         return self._Number
@@ -295,7 +295,7 @@ class AICallExtractResultInfo(AbstractModel):
 
 
 class AILatencyDetail(AbstractModel):
-    """AI latency details.
+    r"""AI latency details.
 
     """
 
@@ -323,7 +323,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def RoundId(self):
-        """Dialog ID.
+        r"""Dialog ID.
         :rtype: str
         """
         return self._RoundId
@@ -334,7 +334,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def ASRLatency(self):
-        """Specifies the asr latency in milliseconds.
+        r"""Specifies the asr latency in milliseconds.
         :rtype: int
         """
         return self._ASRLatency
@@ -345,7 +345,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def TTSLatency(self):
-        """Specifies the tts delay in milliseconds.
+        r"""Specifies the tts delay in milliseconds.
         :rtype: int
         """
         return self._TTSLatency
@@ -356,7 +356,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def LLMLatency(self):
-        """llm latency (ms).
+        r"""llm latency (ms).
         :rtype: int
         """
         return self._LLMLatency
@@ -367,7 +367,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def LLMFirstTokenLatency(self):
-        """llm first token latency (ms).
+        r"""llm first token latency (ms).
         :rtype: int
         """
         return self._LLMFirstTokenLatency
@@ -378,7 +378,7 @@ class AILatencyDetail(AbstractModel):
 
     @property
     def ETELatency(self):
-        """End-To-End delay (ms).
+        r"""End-To-End delay (ms).
         :rtype: int
         """
         return self._ETELatency
@@ -406,7 +406,7 @@ class AILatencyDetail(AbstractModel):
 
 
 class AILatencyStatistics(AbstractModel):
-    """AI latency statistics.
+    r"""AI latency statistics.
 
     """
 
@@ -428,7 +428,7 @@ class AILatencyStatistics(AbstractModel):
 
     @property
     def ASRLatency(self):
-        """Specifies the asr latency statistics.
+        r"""Specifies the asr latency statistics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
         """
         return self._ASRLatency
@@ -439,7 +439,7 @@ class AILatencyStatistics(AbstractModel):
 
     @property
     def TTSLatency(self):
-        """Specifies the statistics of tts delay.
+        r"""Specifies the statistics of tts delay.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
         """
         return self._TTSLatency
@@ -450,7 +450,7 @@ class AILatencyStatistics(AbstractModel):
 
     @property
     def LLMLatency(self):
-        """llm latency statistics.
+        r"""llm latency statistics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
         """
         return self._LLMLatency
@@ -461,7 +461,7 @@ class AILatencyStatistics(AbstractModel):
 
     @property
     def ETELatency(self):
-        """Specifies the end-to-end latency statistics.
+        r"""Specifies the end-to-end latency statistics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
         """
         return self._ETELatency
@@ -495,7 +495,7 @@ class AILatencyStatistics(AbstractModel):
 
 
 class AILatencyStatisticsInfo(AbstractModel):
-    """AI latency statistics.
+    r"""AI latency statistics.
 
     """
 
@@ -514,7 +514,7 @@ class AILatencyStatisticsInfo(AbstractModel):
 
     @property
     def MinLatency(self):
-        """Specifies the minimum value.
+        r"""Specifies the minimum value.
         :rtype: int
         """
         return self._MinLatency
@@ -525,7 +525,7 @@ class AILatencyStatisticsInfo(AbstractModel):
 
     @property
     def MiddleLatency(self):
-        """Specifies the median.
+        r"""Specifies the median.
         :rtype: int
         """
         return self._MiddleLatency
@@ -536,7 +536,7 @@ class AILatencyStatisticsInfo(AbstractModel):
 
     @property
     def P90Latency(self):
-        """p90
+        r"""p90
         :rtype: int
         """
         return self._P90Latency
@@ -561,7 +561,7 @@ class AILatencyStatisticsInfo(AbstractModel):
 
 
 class AITransferItem(AbstractModel):
-    """AI to human configuration item.
+    r"""AI to human configuration item.
 
     """
 
@@ -580,7 +580,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferFunctionName(self):
-        """Name of the function calling for transfer to human.
+        r"""Name of the function calling for transfer to human.
         :rtype: str
         """
         return self._TransferFunctionName
@@ -591,7 +591,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferFunctionDesc(self):
-        """Takes effect when transferfunctionenable is true; the description of transfer_to_human function calling defaults to "transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so.".
+        r"""Takes effect when transferfunctionenable is true; the description of transfer_to_human function calling defaults to "transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so.".
         :rtype: str
         """
         return self._TransferFunctionDesc
@@ -602,7 +602,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferSkillGroupId(self):
-        """Skill group id for transferring to human agent.
+        r"""Skill group id for transferring to human agent.
         :rtype: int
         """
         return self._TransferSkillGroupId
@@ -627,7 +627,7 @@ class AITransferItem(AbstractModel):
 
 
 class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
-    """AbortAgentCruiseDialingCampaign request structure.
+    r"""AbortAgentCruiseDialingCampaign request structure.
 
     """
 
@@ -643,7 +643,7 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -654,7 +654,7 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -678,7 +678,7 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
 
 class AbortAgentCruiseDialingCampaignResponse(AbstractModel):
-    """AbortAgentCruiseDialingCampaign response structure.
+    r"""AbortAgentCruiseDialingCampaign response structure.
 
     """
 
@@ -691,7 +691,7 @@ class AbortAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -706,7 +706,7 @@ class AbortAgentCruiseDialingCampaignResponse(AbstractModel):
 
 
 class AbortPredictiveDialingCampaignRequest(AbstractModel):
-    """AbortPredictiveDialingCampaign request structure.
+    r"""AbortPredictiveDialingCampaign request structure.
 
     """
 
@@ -722,7 +722,7 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -733,7 +733,7 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -757,7 +757,7 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
 
 class AbortPredictiveDialingCampaignResponse(AbstractModel):
-    """AbortPredictiveDialingCampaign response structure.
+    r"""AbortPredictiveDialingCampaign response structure.
 
     """
 
@@ -770,7 +770,7 @@ class AbortPredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -785,7 +785,7 @@ class AbortPredictiveDialingCampaignResponse(AbstractModel):
 
 
 class AsrData(AbstractModel):
-    """Speech-to-text information
+    r"""Speech-to-text information
 
     """
 
@@ -810,7 +810,7 @@ class AsrData(AbstractModel):
 
     @property
     def User(self):
-        """User side.
+        r"""User side.
         :rtype: str
         """
         return self._User
@@ -821,7 +821,7 @@ class AsrData(AbstractModel):
 
     @property
     def Message(self):
-        """Message content.
+        r"""Message content.
         :rtype: str
         """
         return self._Message
@@ -834,7 +834,7 @@ class AsrData(AbstractModel):
     def Timestamp(self):
         warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
 
-        """Timestamp.
+        r"""Timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -847,7 +847,7 @@ class AsrData(AbstractModel):
 
     @property
     def Start(self):
-        """Sentence start time, unix millisecond timestamp.
+        r"""Sentence start time, unix millisecond timestamp.
         :rtype: int
         """
         return self._Start
@@ -858,7 +858,7 @@ class AsrData(AbstractModel):
 
     @property
     def End(self):
-        """Sentence end time, unix millisecond timestamp.
+        r"""Sentence end time, unix millisecond timestamp.
         :rtype: int
         """
         return self._End
@@ -885,7 +885,7 @@ class AsrData(AbstractModel):
 
 
 class AudioFileInfo(AbstractModel):
-    """Audio file review information
+    r"""Audio file review information
 
     """
 
@@ -907,7 +907,7 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        """File id.
+        r"""File id.
         :rtype: int
         """
         return self._FileId
@@ -918,7 +918,7 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def CustomFileName(self):
-        """File alias.
+        r"""File alias.
         :rtype: str
         """
         return self._CustomFileName
@@ -929,7 +929,7 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def AudioFileName(self):
-        """Filename.
+        r"""Filename.
         :rtype: str
         """
         return self._AudioFileName
@@ -940,7 +940,7 @@ class AudioFileInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Review status: 0 - unreviewed, 1 - approved, 2 - rejected.
+        r"""Review status: 0 - unreviewed, 1 - approved, 2 - rejected.
         :rtype: int
         """
         return self._Status
@@ -966,7 +966,7 @@ class AudioFileInfo(AbstractModel):
 
 
 class AutoCalloutTaskCalleeInfo(AbstractModel):
-    """Outbound call task called information.
+    r"""Outbound call task called information.
 
     """
 
@@ -985,7 +985,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def Callee(self):
-        """Called number.
+        r"""Called number.
         :rtype: str
         """
         return self._Callee
@@ -996,7 +996,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def State(self):
-        """Call status 0 - initial, 1 - answered, 2 - unanswered, 3 - calling, 4 - pending retry.
+        r"""Call status 0 - initial, 1 - answered, 2 - unanswered, 3 - calling, 4 - pending retry.
         :rtype: int
         """
         return self._State
@@ -1007,7 +1007,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def Sessions(self):
-        """List of session ids.
+        r"""List of session ids.
         :rtype: list of str
         """
         return self._Sessions
@@ -1032,7 +1032,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
 
 class AutoCalloutTaskInfo(AbstractModel):
-    """Automatic outbound call task list item.
+    r"""Automatic outbound call task list item.
 
     """
 
@@ -1073,7 +1073,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -1084,7 +1084,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CalleeCount(self):
-        """Number of called parties.
+        r"""Number of called parties.
         :rtype: int
         """
         return self._CalleeCount
@@ -1095,7 +1095,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Callers(self):
-        """List of calling numbers.
+        r"""List of calling numbers.
         :rtype: list of str
         """
         return self._Callers
@@ -1106,7 +1106,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotBefore(self):
-        """Start timestamp.
+        r"""Start timestamp.
         :rtype: int
         """
         return self._NotBefore
@@ -1117,7 +1117,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotAfter(self):
-        """End timestamp
+        r"""End timestamp
 .
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -1130,7 +1130,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IvrId(self):
-        """IvrId used by the task.
+        r"""IvrId used by the task.
         :rtype: int
         """
         return self._IvrId
@@ -1141,7 +1141,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
-        """Task status:.
+        r"""Task status:.
 0 initial: task creation, call not started.
 1 running.
 2 completed: all calls in the task are completed.
@@ -1157,7 +1157,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._TaskId
@@ -1187,7 +1187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindNumberCallInInterfaceRequest(AbstractModel):
-    """BindNumberCallInInterface request structure.
+    r"""BindNumberCallInInterface request structure.
 
     """
 
@@ -1206,7 +1206,7 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -1217,7 +1217,7 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
 
     @property
     def Number(self):
-        """Number to be bound.
+        r"""Number to be bound.
         :rtype: str
         """
         return self._Number
@@ -1228,7 +1228,7 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
 
     @property
     def CallInInterface(self):
-        """Specifies the callback url to be bound.
+        r"""Specifies the callback url to be bound.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.Interface`
         """
         return self._CallInInterface
@@ -1255,7 +1255,7 @@ class BindNumberCallInInterfaceRequest(AbstractModel):
 
 
 class BindNumberCallInInterfaceResponse(AbstractModel):
-    """BindNumberCallInInterface response structure.
+    r"""BindNumberCallInInterface response structure.
 
     """
 
@@ -1268,7 +1268,7 @@ class BindNumberCallInInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1283,7 +1283,7 @@ class BindNumberCallInInterfaceResponse(AbstractModel):
 
 
 class BindNumberCallOutSkillGroupRequest(AbstractModel):
-    """BindNumberCallOutSkillGroup request structure.
+    r"""BindNumberCallOutSkillGroup request structure.
 
     """
 
@@ -1302,7 +1302,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -1313,7 +1313,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def Number(self):
-        """Number to be bound.
+        r"""Number to be bound.
         :rtype: str
         """
         return self._Number
@@ -1324,7 +1324,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Skill group id list to be bound.
+        r"""Skill group id list to be bound.
         :rtype: list of int non-negative
         """
         return self._SkillGroupIds
@@ -1349,7 +1349,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
 
 class BindNumberCallOutSkillGroupResponse(AbstractModel):
-    """BindNumberCallOutSkillGroup response structure.
+    r"""BindNumberCallOutSkillGroup response structure.
 
     """
 
@@ -1362,7 +1362,7 @@ class BindNumberCallOutSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1377,7 +1377,7 @@ class BindNumberCallOutSkillGroupResponse(AbstractModel):
 
 
 class BindStaffSkillGroupListRequest(AbstractModel):
-    """BindStaffSkillGroupList request structure.
+    r"""BindStaffSkillGroupList request structure.
 
     """
 
@@ -1399,7 +1399,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -1410,7 +1410,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffEmail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._StaffEmail
@@ -1423,7 +1423,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
     def SkillGroupList(self):
         warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
 
-        """Bound skill group list.
+        r"""Bound skill group list.
         :rtype: list of int
         """
         return self._SkillGroupList
@@ -1436,7 +1436,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffSkillGroupList(self):
-        """Bound skill group list (required).
+        r"""Bound skill group list (required).
         :rtype: list of StaffSkillGroupList
         """
         return self._StaffSkillGroupList
@@ -1467,7 +1467,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
 
 class BindStaffSkillGroupListResponse(AbstractModel):
-    """BindStaffSkillGroupList response structure.
+    r"""BindStaffSkillGroupList response structure.
 
     """
 
@@ -1480,7 +1480,7 @@ class BindStaffSkillGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1495,7 +1495,7 @@ class BindStaffSkillGroupListResponse(AbstractModel):
 
 
 class CallInMetrics(AbstractModel):
-    """Real-Time inbound metric.
+    r"""Real-Time inbound metric.
 
     """
 
@@ -1538,7 +1538,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def IvrCount(self):
-        """Number of ivr residency.
+        r"""Number of ivr residency.
         :rtype: int
         """
         return self._IvrCount
@@ -1549,7 +1549,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def QueueCount(self):
-        """Number in queue.
+        r"""Number in queue.
         :rtype: int
         """
         return self._QueueCount
@@ -1560,7 +1560,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def RingCount(self):
-        """Number in ringing.
+        r"""Number in ringing.
         :rtype: int
         """
         return self._RingCount
@@ -1571,7 +1571,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AcceptCount(self):
-        """Number of connections.
+        r"""Number of connections.
         :rtype: int
         """
         return self._AcceptCount
@@ -1582,7 +1582,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def TransferOuterCount(self):
-        """Number of customer service transferring to the external line.
+        r"""Number of customer service transferring to the external line.
         :rtype: int
         """
         return self._TransferOuterCount
@@ -1593,7 +1593,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxQueueDuration(self):
-        """Maximum queue duration.
+        r"""Maximum queue duration.
         :rtype: int
         """
         return self._MaxQueueDuration
@@ -1604,7 +1604,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgQueueDuration(self):
-        """Average queue duration.
+        r"""Average queue duration.
         :rtype: int
         """
         return self._AvgQueueDuration
@@ -1615,7 +1615,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxRingDuration(self):
-        """Maximum ringing duration.
+        r"""Maximum ringing duration.
         :rtype: int
         """
         return self._MaxRingDuration
@@ -1626,7 +1626,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgRingDuration(self):
-        """Average ringing duration.
+        r"""Average ringing duration.
         :rtype: int
         """
         return self._AvgRingDuration
@@ -1637,7 +1637,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def MaxAcceptDuration(self):
-        """Maximum connection duration.
+        r"""Maximum connection duration.
         :rtype: int
         """
         return self._MaxAcceptDuration
@@ -1648,7 +1648,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AvgAcceptDuration(self):
-        """Average connection duration.
+        r"""Average connection duration.
         :rtype: int
         """
         return self._AvgAcceptDuration
@@ -1681,7 +1681,7 @@ class CallInMetrics(AbstractModel):
 
 
 class CallInNumberMetrics(AbstractModel):
-    """Inbound line dimension metrics.
+    r"""Inbound line dimension metrics.
 
     """
 
@@ -1700,7 +1700,7 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def Number(self):
-        """Line number.
+        r"""Line number.
         :rtype: str
         """
         return self._Number
@@ -1711,7 +1711,7 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def Metrics(self):
-        """Line-Related metrics.
+        r"""Line-Related metrics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         """
         return self._Metrics
@@ -1722,7 +1722,7 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def SkillGroupMetrics(self):
-        """Bound skill group metrics.
+        r"""Bound skill group metrics.
         :rtype: list of CallInSkillGroupMetrics
         """
         return self._SkillGroupMetrics
@@ -1754,7 +1754,7 @@ class CallInNumberMetrics(AbstractModel):
 
 
 class CallInSkillGroupMetrics(AbstractModel):
-    """Inbound capability group metrics.
+    r"""Inbound capability group metrics.
 
     """
 
@@ -1773,7 +1773,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -1784,7 +1784,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def Metrics(self):
-        """Data metrics.
+        r"""Data metrics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         """
         return self._Metrics
@@ -1795,7 +1795,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def Name(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._Name
@@ -1822,7 +1822,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
 
 class CalleeAttribute(AbstractModel):
-    """Property of the called.
+    r"""Property of the called.
 
     """
 
@@ -1841,7 +1841,7 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def Callee(self):
-        """Called number.
+        r"""Called number.
         :rtype: str
         """
         return self._Callee
@@ -1852,7 +1852,7 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def UUI(self):
-        """Accompanying data.
+        r"""Accompanying data.
         :rtype: str
         """
         return self._UUI
@@ -1863,7 +1863,7 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def Variables(self):
-        """Parameter.
+        r"""Parameter.
         :rtype: list of Variable
         """
         return self._Variables
@@ -1893,7 +1893,7 @@ class CalleeAttribute(AbstractModel):
 
 
 class ClientInfo(AbstractModel):
-    """Terminal information of the logged-in agent.
+    r"""Terminal information of the logged-in agent.
 
     """
 
@@ -1909,7 +1909,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def ClientType(self):
-        """Endpoint type for login. "Web" means Web workbench. "WeChatMiniProgram" refers to wechat mini program.
+        r"""Endpoint type for login. "Web" means Web workbench. "WeChatMiniProgram" refers to wechat mini program.
         :rtype: str
         """
         return self._ClientType
@@ -1920,7 +1920,7 @@ class ClientInfo(AbstractModel):
 
     @property
     def IsConnected(self):
-        """Whether the currently logged-in endpoint is in the foreground. if the endpoint is Web, the value is true. if the endpoint is WeChatMiniProgram, true indicates the wechat mini program is open, and false indicates it is in the background.
+        r"""Whether the currently logged-in endpoint is in the foreground. if the endpoint is Web, the value is true. if the endpoint is WeChatMiniProgram, true indicates the wechat mini program is open, and false indicates it is in the background.
         :rtype: bool
         """
         return self._IsConnected
@@ -1944,7 +1944,7 @@ class ClientInfo(AbstractModel):
 
 
 class ControlAIConversationRequest(AbstractModel):
-    """ControlAIConversation request structure.
+    r"""ControlAIConversation request structure.
 
     """
 
@@ -1968,7 +1968,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Specifies the session ID.
+        r"""Specifies the session ID.
         :rtype: str
         """
         return self._SessionId
@@ -1979,7 +1979,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -1990,7 +1990,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def Command(self):
-        """Control command. currently supports the following commands:.
+        r"""Control command. currently supports the following commands:.
 
 -ServerPushText. specifies the text sent by the server to the AI robot. the AI robot will broadcast the text.
         :rtype: str
@@ -2003,7 +2003,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def ServerPushText(self):
-        """Specifies the server-sent broadcast text Command. required when Command is ServerPushText.
+        r"""Specifies the server-sent broadcast text Command. required when Command is ServerPushText.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ServerPushText`
         """
         return self._ServerPushText
@@ -2031,7 +2031,7 @@ class ControlAIConversationRequest(AbstractModel):
 
 
 class ControlAIConversationResponse(AbstractModel):
-    """ControlAIConversation response structure.
+    r"""ControlAIConversation response structure.
 
     """
 
@@ -2044,7 +2044,7 @@ class ControlAIConversationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2059,7 +2059,7 @@ class ControlAIConversationResponse(AbstractModel):
 
 
 class CreateAIAgentCallRequest(AbstractModel):
-    """CreateAIAgentCall request structure.
+    r"""CreateAIAgentCall request structure.
 
     """
 
@@ -2091,7 +2091,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2102,7 +2102,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def AIAgentId(self):
-        """AI agent id.
+        r"""AI agent id.
         :rtype: int
         """
         return self._AIAgentId
@@ -2113,7 +2113,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def Callee(self):
-        """Callee number.
+        r"""Callee number.
         :rtype: str
         """
         return self._Callee
@@ -2124,7 +2124,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def Callers(self):
-        """Caller number list
+        r"""Caller number list
         :rtype: list of str
         """
         return self._Callers
@@ -2137,7 +2137,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
     def PromptVariables(self):
         warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
 
-        """Prompt variable.
+        r"""Prompt variable.
         :rtype: list of Variable
         """
         return self._PromptVariables
@@ -2150,7 +2150,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def Variables(self):
-        """<P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+        r"""<P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
 
 dify-inputs-xxx specifies the inputs variable for dify.
 2. the dify-inputs-user specifies the user value for dify.
@@ -2192,7 +2192,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
 
 class CreateAIAgentCallResponse(AbstractModel):
-    """CreateAIAgentCall response structure.
+    r"""CreateAIAgentCall response structure.
 
     """
 
@@ -2208,7 +2208,7 @@ class CreateAIAgentCallResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session id.
+        r"""Newly created session id.
         :rtype: str
         """
         return self._SessionId
@@ -2219,7 +2219,7 @@ class CreateAIAgentCallResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2235,7 +2235,7 @@ class CreateAIAgentCallResponse(AbstractModel):
 
 
 class CreateAICallRequest(AbstractModel):
-    """CreateAICall request structure.
+    r"""CreateAICall request structure.
 
     """
 
@@ -2518,7 +2518,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2529,7 +2529,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
     @property
     def Callee(self):
-        """Called number.
+        r"""Called number.
         :rtype: str
         """
         return self._Callee
@@ -2540,7 +2540,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
     @property
     def LLMType(self):
-        """Model API protocol type. currently compatible with four protocol types:.
+        r"""Model API protocol type. currently compatible with four protocol types:.
 
 -OpenAI protocol (including GPT, hunyuan, DeepSeek, etc.): "OpenAI".
 -Azure protocol: "azure".
@@ -2556,7 +2556,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
     @property
     def APIKey(self):
-        """Model API key, for authentication information, please refer to the respective model's official website
+        r"""Model API key, for authentication information, please refer to the respective model's official website
 
 - OpenAI protocol: [GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key), [DeepSeek](https://api-docs.deepseek.com/zh-cn/);
 
@@ -2573,7 +2573,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
     @property
     def APIUrl(self):
-        """Model interface address
+        r"""Model interface address
 
 - OpenAI protocol
 GPT:"https://api.openai.com/v1/"
@@ -2594,7 +2594,7 @@ Deepseek:"https://api.deepseek.com/v1"
 
     @property
     def SystemPrompt(self):
-        """## Identity
+        r"""## Identity
 You are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.
 
 ## Style Guardrails
@@ -2635,7 +2635,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 
     @property
     def Model(self):
-        """Model name, such as
+        r"""Model name, such as
 
 - OpenAI protocol
 "gpt-4o-mini","gpt-4o","deepseek-chat";
@@ -2655,7 +2655,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 
     @property
     def VoiceType(self):
-        """The following voice parameter values are available by default. If you wish to customize the voice type, please leave VoiceType blank and configure it in the CustomTTSConfig parameter.
+        r"""The following voice parameter values are available by default. If you wish to customize the voice type, please leave VoiceType blank and configure it in the CustomTTSConfig parameter.
 
 Chinese:
 ZhiMei: Zhimei, customer service female voice
@@ -2700,7 +2700,7 @@ HoaiMy
 
     @property
     def Callers(self):
-        """Caller number list
+        r"""Caller number list
         :rtype: list of str
         """
         return self._Callers
@@ -2711,7 +2711,7 @@ HoaiMy
 
     @property
     def WelcomeMessage(self):
-        """Used to set the AI Agent Welcome Message.
+        r"""Used to set the AI Agent Welcome Message.
         :rtype: str
         """
         return self._WelcomeMessage
@@ -2722,7 +2722,7 @@ HoaiMy
 
     @property
     def WelcomeType(self):
-        """0: Use welcomeMessage (if empty, the callee speaks first; if not empty, the bot speaks first)
+        r"""0: Use welcomeMessage (if empty, the callee speaks first; if not empty, the bot speaks first)
 1:   Use AI to automatically generate welcomeMessage and speak first based on the prompt
         :rtype: int
         """
@@ -2734,7 +2734,7 @@ HoaiMy
 
     @property
     def WelcomeMessagePriority(self):
-        """0: interruptible by default, 2: high priority non-interruptible.
+        r"""0: interruptible by default, 2: high priority non-interruptible.
         :rtype: int
         """
         return self._WelcomeMessagePriority
@@ -2745,7 +2745,7 @@ HoaiMy
 
     @property
     def MaxDuration(self):
-        """Maximum Waiting Duration (milliseconds), default is 60 seconds, if the user does not speak within this time, the call is automatically terminated
+        r"""Maximum Waiting Duration (milliseconds), default is 60 seconds, if the user does not speak within this time, the call is automatically terminated
         :rtype: int
         """
         return self._MaxDuration
@@ -2756,7 +2756,7 @@ HoaiMy
 
     @property
     def Languages(self):
-        """ASR Supported Languages, default is "zh" Chinese,
+        r"""ASR Supported Languages, default is "zh" Chinese,
 Fill in the array with up to 4 languages, the first is the primary language for recognition, followed by optional languages,
 Note: When the primary language is a Chinese dialect, optional languages are invalid
 Currently, the supported languages are as follows. The English name of the language is on the left side of the equals sign, and the value to be filled in the Language field is on the right side, following ISO639:
@@ -2790,7 +2790,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def InterruptMode(self):
-        """Interrupt ai speaking mode. default is 0. 0 indicates automatic interruption and 1 indicates no interruption.
+        r"""Interrupt ai speaking mode. default is 0. 0 indicates automatic interruption and 1 indicates no interruption.
         :rtype: int
         """
         return self._InterruptMode
@@ -2801,7 +2801,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def InterruptSpeechDuration(self):
-        """Used when InterruptMode is 0, unit in milliseconds, default is 500ms. It means that the server-side detects ongoing vocal input for the InterruptSpeechDuration milliseconds and then interrupts.
+        r"""Used when InterruptMode is 0, unit in milliseconds, default is 500ms. It means that the server-side detects ongoing vocal input for the InterruptSpeechDuration milliseconds and then interrupts.
         :rtype: int
         """
         return self._InterruptSpeechDuration
@@ -2812,7 +2812,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def EndFunctionEnable(self):
-        """Whether the model supports (or enables) call_end function calling
+        r"""Whether the model supports (or enables) call_end function calling
         :rtype: bool
         """
         return self._EndFunctionEnable
@@ -2823,7 +2823,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def EndFunctionDesc(self):
-        """Effective when EndFunctionEnable is true; the description of call_end function calling, default is "End the call when user has to leave (like says bye) or you are instructed to do so."
+        r"""Effective when EndFunctionEnable is true; the description of call_end function calling, default is "End the call when user has to leave (like says bye) or you are instructed to do so."
         :rtype: str
         """
         return self._EndFunctionDesc
@@ -2834,7 +2834,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def TransferFunctionEnable(self):
-        """Whether the model supports (or enables) transfer_to_human function calling.
+        r"""Whether the model supports (or enables) transfer_to_human function calling.
         :rtype: bool
         """
         return self._TransferFunctionEnable
@@ -2845,7 +2845,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def TransferItems(self):
-        """Takes effect when transferfunctionenable is true: transfer to human configuration.
+        r"""Takes effect when transferfunctionenable is true: transfer to human configuration.
         :rtype: list of AITransferItem
         """
         return self._TransferItems
@@ -2856,7 +2856,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def NotifyDuration(self):
-        """The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds
+        r"""The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds
         :rtype: int
         """
         return self._NotifyDuration
@@ -2867,7 +2867,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def NotifyMessage(self):
-        """The AI prompt when NotifyDuration has passed without the user speaking, default is "Sorry, I didn't hear you clearly. Can you repeat that?"
+        r"""The AI prompt when NotifyDuration has passed without the user speaking, default is "Sorry, I didn't hear you clearly. Can you repeat that?"
         :rtype: str
         """
         return self._NotifyMessage
@@ -2878,7 +2878,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def NotifyMaxCount(self):
-        """Maximum number of times to trigger ai prompt sound, unlimited by default.
+        r"""Maximum number of times to trigger ai prompt sound, unlimited by default.
         :rtype: int
         """
         return self._NotifyMaxCount
@@ -2889,7 +2889,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def CustomTTSConfig(self):
-        """<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
+        r"""<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
 <ul>
 <li>Tencent TTS<br>
 For configuration, please refer to <a href="https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823" target="_blank">Tencent Cloud TTS documentation link</a></li>
@@ -2951,7 +2951,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
     def PromptVariables(self):
         warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
 
-        """Prompt word variable.
+        r"""Prompt word variable.
         :rtype: list of Variable
         """
         return self._PromptVariables
@@ -2964,7 +2964,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def VadSilenceTime(self):
-        """Automatic speech recognition vad time ranges from 240 to 2000, with a default of 1000, measured in milliseconds. smaller values will make automatic speech recognition segment faster.
+        r"""Automatic speech recognition vad time ranges from 240 to 2000, with a default of 1000, measured in milliseconds. smaller values will make automatic speech recognition segment faster.
         :rtype: int
         """
         return self._VadSilenceTime
@@ -2975,7 +2975,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def ExtractConfig(self):
-        """Call content extraction configuration.
+        r"""Call content extraction configuration.
         :rtype: list of AICallExtractConfigElement
         """
         return self._ExtractConfig
@@ -2986,7 +2986,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def Temperature(self):
-        """Model temperature control.
+        r"""Model temperature control.
         :rtype: float
         """
         return self._Temperature
@@ -2997,7 +2997,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def Variables(self):
-        """Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+        r"""Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
 
 dify-inputs-xxx specifies the inputs variable for dify.
 2. the dify-inputs-user specifies the user value for dify.
@@ -3012,7 +3012,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def TopP(self):
-        """Specifies the model topP.
+        r"""Specifies the model topP.
         :rtype: float
         """
         return self._TopP
@@ -3023,7 +3023,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def VadLevel(self):
-        """The vad far-field voice suppression capacity (does not impact asr recognition performance). value range: [0, 3]. default is 0. recommended setting: 2 for better far-field voice suppression.
+        r"""The vad far-field voice suppression capacity (does not impact asr recognition performance). value range: [0, 3]. default is 0. recommended setting: 2 for better far-field voice suppression.
         :rtype: int
         """
         return self._VadLevel
@@ -3034,7 +3034,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def ToneWord(self):
-        """Transition.
+        r"""Transition.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ToneWordInfo`
         """
         return self._ToneWord
@@ -3045,7 +3045,7 @@ dify-inputs-xxx specifies the inputs variable for dify.
 
     @property
     def EnableComplianceAudio(self):
-        """Compliance prompt sound. 
+        r"""Compliance prompt sound. 
 This parameter specifies whether to play morse code during call initiation (default: true), indicating the conversation content is AI-generated.
 This parameter signifies disabled when set to false. the parameter indicates you understand and agree to the following protocol:.
 Our side fully acknowledges and understands that according to the laws and regulations including the "cybersecurity law" (https://www.gov.cn/xinwen/2016-11/07/content_5129723.htm), "provision on administration of deep synthesis of internet-based information service" (https://www.gov.cn/zhengce/zhengceku/2022-12/12/content_5731431.htm), "interim measures for the management of generative artificial intelligence services" (https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm), and "measures for the identification of artificial intelligence-generated synthetic content" (https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm), explicit and implicit identification shall be added to ai-generated synthetic content. based on business needs, we request tencent cloud not to add explicit identification to generated synthetic content. we commit to lawful and compliant use of such content to avoid confusion or misunderstanding. if the ai-generated synthetic content is used to provide services to the public or spread over networks, we will proactively add explicit identification compliant with legal provisions and national standard requirements and bear the legal obligations for ai-generated synthetic content identification. if we fail to properly fulfill the identification obligations for ai-generated content, resulting in adverse consequences or penalties from the competent department, we will fully assume all related responsibilities.
@@ -3125,7 +3125,7 @@ Our side fully acknowledges and understands that according to the laws and regul
 
 
 class CreateAICallResponse(AbstractModel):
-    """CreateAICall response structure.
+    r"""CreateAICall response structure.
 
     """
 
@@ -3141,7 +3141,7 @@ class CreateAICallResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session ID.
+        r"""Newly created session ID.
         :rtype: str
         """
         return self._SessionId
@@ -3152,7 +3152,7 @@ class CreateAICallResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3168,7 +3168,7 @@ class CreateAICallResponse(AbstractModel):
 
 
 class CreateAdminURLRequest(AbstractModel):
-    """CreateAdminURL request structure.
+    r"""CreateAdminURL request structure.
 
     """
 
@@ -3184,7 +3184,7 @@ class CreateAdminURLRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3195,7 +3195,7 @@ class CreateAdminURLRequest(AbstractModel):
 
     @property
     def SeatUserId(self):
-        """Admin account.
+        r"""Admin account.
         :rtype: str
         """
         return self._SeatUserId
@@ -3219,7 +3219,7 @@ class CreateAdminURLRequest(AbstractModel):
 
 
 class CreateAdminURLResponse(AbstractModel):
-    """CreateAdminURL response structure.
+    r"""CreateAdminURL response structure.
 
     """
 
@@ -3235,7 +3235,7 @@ class CreateAdminURLResponse(AbstractModel):
 
     @property
     def URL(self):
-        """Log-In link.
+        r"""Log-In link.
         :rtype: str
         """
         return self._URL
@@ -3246,7 +3246,7 @@ class CreateAdminURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3262,7 +3262,7 @@ class CreateAdminURLResponse(AbstractModel):
 
 
 class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
-    """CreateAgentCruiseDialingCampaign request structure.
+    r"""CreateAgentCruiseDialingCampaign request structure.
 
     """
 
@@ -3302,7 +3302,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3313,7 +3313,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -3324,7 +3324,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._Agent
@@ -3335,7 +3335,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def ConcurrencyNumber(self):
-        """Single-Round concurrent call volume 1-20.
+        r"""Single-Round concurrent call volume 1-20.
         :rtype: int
         """
         return self._ConcurrencyNumber
@@ -3346,7 +3346,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. unix timestamp. the task will automatically start after this time.
+        r"""Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -3357,7 +3357,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. unix timestamp. the task will automatically terminate after this time.
+        r"""Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -3368,7 +3368,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting e.164 or number formats without country code.
+        r"""Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -3379,7 +3379,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """Calling list using the number formats displayed on the management side.
+        r"""Calling list using the number formats displayed on the management side.
         :rtype: list of str
         """
         return self._Callers
@@ -3390,7 +3390,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def CallOrder(self):
-        """Being called sequence: 0 for random 1 for in order.
+        r"""Being called sequence: 0 for random 1 for in order.
         :rtype: int
         """
         return self._CallOrder
@@ -3401,7 +3401,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """Caller custom data, maximum length 1024.
+        r"""Caller custom data, maximum length 1024.
         :rtype: str
         """
         return self._UUI
@@ -3433,7 +3433,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
 
 class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
-    """CreateAgentCruiseDialingCampaign response structure.
+    r"""CreateAgentCruiseDialingCampaign response structure.
 
     """
 
@@ -3449,7 +3449,7 @@ class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task id.
+        r"""Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -3460,7 +3460,7 @@ class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3476,7 +3476,7 @@ class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
 
 
 class CreateAutoCalloutTaskRequest(AbstractModel):
-    """CreateAutoCalloutTask request structure.
+    r"""CreateAutoCalloutTask request structure.
 
     """
 
@@ -3531,7 +3531,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3542,7 +3542,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotBefore(self):
-        """Task starting timestamp. unix second-level timestamp.
+        r"""Task starting timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._NotBefore
@@ -3553,7 +3553,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """List of called numbers.
+        r"""List of called numbers.
         :rtype: list of str
         """
         return self._Callees
@@ -3564,7 +3564,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """List of calling numbers.
+        r"""List of calling numbers.
         :rtype: list of str
         """
         return self._Callers
@@ -3575,7 +3575,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def IvrId(self):
-        """IVR Id used for calling. if not filled, AIAgentId needs to be filled.
+        r"""IVR Id used for calling. if not filled, AIAgentId needs to be filled.
         :rtype: int
         """
         return self._IvrId
@@ -3586,7 +3586,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -3597,7 +3597,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        """<Task description>.
+        r"""<Task description>.
         :rtype: str
         """
         return self._Description
@@ -3608,7 +3608,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotAfter(self):
-        """Task stop timestamp. unix second-level timestamp.
+        r"""Task stop timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._NotAfter
@@ -3619,7 +3619,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Tries(self):
-        """Maximum attempts, 1-3 times.
+        r"""Maximum attempts, 1-3 times.
         :rtype: int
         """
         return self._Tries
@@ -3630,7 +3630,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Variables(self):
-        """Custom variables (supported only in advanced versions).
+        r"""Custom variables (supported only in advanced versions).
         :rtype: list of Variable
         """
         return self._Variables
@@ -3641,7 +3641,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """UUI
+        r"""UUI
         :rtype: str
         """
         return self._UUI
@@ -3652,7 +3652,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def CalleeAttributes(self):
-        """Property of the called.
+        r"""Property of the called.
         :rtype: list of CalleeAttribute
         """
         return self._CalleeAttributes
@@ -3663,7 +3663,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        r"""IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
         :rtype: str
         """
         return self._TimeZone
@@ -3674,7 +3674,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def AvailableTime(self):
-        """Available time period.
+        r"""Available time period.
         :rtype: list of TimeRange
         """
         return self._AvailableTime
@@ -3685,7 +3685,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def AIAgentId(self):
-        """Intelligent agent ID. if not filled, IvrId needs to be filled.
+        r"""Intelligent agent ID. if not filled, IvrId needs to be filled.
         :rtype: int
         """
         return self._AIAgentId
@@ -3737,7 +3737,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
 
 class CreateAutoCalloutTaskResponse(AbstractModel):
-    """CreateAutoCalloutTask response structure.
+    r"""CreateAutoCalloutTask response structure.
 
     """
 
@@ -3753,7 +3753,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._TaskId
@@ -3764,7 +3764,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3780,7 +3780,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
 
 class CreateCCCSkillGroupRequest(AbstractModel):
-    """CreateCCCSkillGroup request structure.
+    r"""CreateCCCSkillGroup request structure.
 
     """
 
@@ -3803,7 +3803,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3814,7 +3814,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -3825,7 +3825,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupType(self):
-        """Skill group type 0-cell phone, 1-online, 3-audio, 4-video.
+        r"""Skill group type 0-cell phone, 1-online, 3-audio, 4-video.
         :rtype: int
         """
         return self._SkillGroupType
@@ -3836,7 +3836,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """The maximum number of people received by the skill group (the maximum number of people that one agent in this skill group can receive) is set to 1 by default. if the skill group type is online, the maximum can be set to one or more.
+        r"""The maximum number of people received by the skill group (the maximum number of people that one agent in this skill group can receive) is set to 1 by default. if the skill group type is online, the maximum can be set to one or more.
 2. if the skill group type is phone, audio, or video, then the reception limit must be 1.
         :rtype: int
         """
@@ -3863,7 +3863,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
 
 class CreateCCCSkillGroupResponse(AbstractModel):
-    """CreateCCCSkillGroup response structure.
+    r"""CreateCCCSkillGroup response structure.
 
     """
 
@@ -3879,7 +3879,7 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -3890,7 +3890,7 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3906,7 +3906,7 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
 
 class CreateCallOutSessionRequest(AbstractModel):
-    """CreateCallOutSession request structure.
+    r"""CreateCallOutSession request structure.
 
     """
 
@@ -3940,7 +3940,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id.
+        r"""Application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -3951,7 +3951,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
+        r"""Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         :rtype: str
         """
         return self._UserId
@@ -3962,7 +3962,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Callee(self):
-        """Called number must be preceded by 0086.
+        r"""Called number must be preceded by 0086.
         :rtype: str
         """
         return self._Callee
@@ -3973,7 +3973,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Caller(self):
-        """Caller number (obsolete one and use callers) must be preceded by 0086.
+        r"""Caller number (obsolete one and use callers) must be preceded by 0086.
         :rtype: str
         """
         return self._Caller
@@ -3984,7 +3984,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
+        r"""Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
         :rtype: list of str
         """
         return self._Callers
@@ -3995,7 +3995,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def IsForceUseMobile(self):
-        """Whether to force the use of mobile outbound call. currently only supports true. if set to true, ensure the allowlist is configured. https://intl.cloud.tencent.com/document/product/679/76744?from_cn_redirect=1#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4.
+        r"""Whether to force the use of mobile outbound call. currently only supports true. if set to true, ensure the allowlist is configured. https://intl.cloud.tencent.com/document/product/679/76744?from_cn_redirect=1#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4.
         :rtype: bool
         """
         return self._IsForceUseMobile
@@ -4008,7 +4008,7 @@ class CreateCallOutSessionRequest(AbstractModel):
     def Uui(self):
         warnings.warn("parameter `Uui` is deprecated", DeprecationWarning) 
 
-        """Custom data, length limited to 1024 bytes.
+        r"""Custom data, length limited to 1024 bytes.
         :rtype: str
         """
         return self._Uui
@@ -4021,7 +4021,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """Custom data, length limited to 1024 bytes.
+        r"""Custom data, length limited to 1024 bytes.
         :rtype: str
         """
         return self._UUI
@@ -4051,7 +4051,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
 
 class CreateCallOutSessionResponse(AbstractModel):
-    """CreateCallOutSession response structure.
+    r"""CreateCallOutSession response structure.
 
     """
 
@@ -4067,7 +4067,7 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session id.
+        r"""Newly created session id.
         :rtype: str
         """
         return self._SessionId
@@ -4078,7 +4078,7 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4094,7 +4094,7 @@ class CreateCallOutSessionResponse(AbstractModel):
 
 
 class CreateExtensionRequest(AbstractModel):
-    """CreateExtension request structure.
+    r"""CreateExtension request structure.
 
     """
 
@@ -4119,7 +4119,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4130,7 +4130,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -4141,7 +4141,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def ExtensionName(self):
-        """Extension name.
+        r"""Extension name.
         :rtype: str
         """
         return self._ExtensionName
@@ -4152,7 +4152,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Bound skill group list.
+        r"""Bound skill group list.
         :rtype: list of int non-negative
         """
         return self._SkillGroupIds
@@ -4163,7 +4163,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def Relation(self):
-        """Bound agent email.
+        r"""Bound agent email.
         :rtype: str
         """
         return self._Relation
@@ -4190,7 +4190,7 @@ class CreateExtensionRequest(AbstractModel):
 
 
 class CreateExtensionResponse(AbstractModel):
-    """CreateExtension response structure.
+    r"""CreateExtension response structure.
 
     """
 
@@ -4203,7 +4203,7 @@ class CreateExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4218,7 +4218,7 @@ class CreateExtensionResponse(AbstractModel):
 
 
 class CreateIVRSessionRequest(AbstractModel):
-    """CreateIVRSession request structure.
+    r"""CreateIVRSession request structure.
 
     """
 
@@ -4246,7 +4246,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4257,7 +4257,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Callee(self):
-        """Called.
+        r"""Called.
         :rtype: str
         """
         return self._Callee
@@ -4268,7 +4268,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified ivr id. currently, it supports inbound and automatic outbound types.
+        r"""Specified ivr id. currently, it supports inbound and automatic outbound types.
         :rtype: int
         """
         return self._IVRId
@@ -4279,7 +4279,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """List of calling numbers.
+        r"""List of calling numbers.
         :rtype: list of str
         """
         return self._Callers
@@ -4290,7 +4290,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Variables(self):
-        """Custom variable.
+        r"""Custom variable.
         :rtype: list of Variable
         """
         return self._Variables
@@ -4301,7 +4301,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """User data.
+        r"""User data.
         :rtype: str
         """
         return self._UUI
@@ -4334,7 +4334,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
 
 class CreateIVRSessionResponse(AbstractModel):
-    """CreateIVRSession response structure.
+    r"""CreateIVRSession response structure.
 
     """
 
@@ -4350,7 +4350,7 @@ class CreateIVRSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session id.
+        r"""Newly created session id.
         :rtype: str
         """
         return self._SessionId
@@ -4361,7 +4361,7 @@ class CreateIVRSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4377,7 +4377,7 @@ class CreateIVRSessionResponse(AbstractModel):
 
 
 class CreateOwnNumberApplyRequest(AbstractModel):
-    """CreateOwnNumberApply request structure.
+    r"""CreateOwnNumberApply request structure.
 
     """
 
@@ -4399,7 +4399,7 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4410,7 +4410,7 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SipTrunkId(self):
-        """SIP connection id.
+        r"""SIP connection id.
         :rtype: int
         """
         return self._SipTrunkId
@@ -4421,7 +4421,7 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def DetailList(self):
-        """Circuit-Related parameters.
+        r"""Circuit-Related parameters.
         :rtype: list of OwnNumberApplyDetailItem
         """
         return self._DetailList
@@ -4432,7 +4432,7 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
     @property
     def Prefix(self):
-        """Prefix for sending numbers.
+        r"""Prefix for sending numbers.
         :rtype: str
         """
         return self._Prefix
@@ -4463,7 +4463,7 @@ class CreateOwnNumberApplyRequest(AbstractModel):
 
 
 class CreateOwnNumberApplyResponse(AbstractModel):
-    """CreateOwnNumberApply response structure.
+    r"""CreateOwnNumberApply response structure.
 
     """
 
@@ -4479,7 +4479,7 @@ class CreateOwnNumberApplyResponse(AbstractModel):
 
     @property
     def ApplyId(self):
-        """Approval id.
+        r"""Approval id.
         :rtype: int
         """
         return self._ApplyId
@@ -4490,7 +4490,7 @@ class CreateOwnNumberApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4506,7 +4506,7 @@ class CreateOwnNumberApplyResponse(AbstractModel):
 
 
 class CreatePredictiveDialingCampaignRequest(AbstractModel):
-    """CreatePredictiveDialingCampaign request structure.
+    r"""CreatePredictiveDialingCampaign request structure.
 
     """
 
@@ -4570,7 +4570,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4581,7 +4581,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """<Task name>.
+        r"""<Task name>.
         :rtype: str
         """
         return self._Name
@@ -4592,7 +4592,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting e.164 or number formats without country code.
+        r"""Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -4603,7 +4603,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """Calling list using the number formats displayed on the management side.
+        r"""Calling list using the number formats displayed on the management side.
         :rtype: list of str
         """
         return self._Callers
@@ -4614,7 +4614,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CallOrder(self):
-        """Being called sequence: 0 for random 1 for in order.
+        r"""Being called sequence: 0 for random 1 for in order.
         :rtype: int
         """
         return self._CallOrder
@@ -4625,7 +4625,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """ID of the used skill group of agents.
+        r"""ID of the used skill group of agents.
         :rtype: int
         """
         return self._SkillGroupId
@@ -4636,7 +4636,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """Running priority of multiple tasks in the same application, from high to low 1 - 5.
+        r"""Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :rtype: int
         """
         return self._Priority
@@ -4647,7 +4647,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        """Expected call drop rate, percentage, 5 - 50.
+        r"""Expected call drop rate, percentage, 5 - 50.
         :rtype: int
         """
         return self._ExpectedAbandonRate
@@ -4658,7 +4658,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """Call retry interval, in seconds, [60 - 86,400].
+        r"""Call retry interval, in seconds, [60 - 86,400].
         :rtype: int
         """
         return self._RetryInterval
@@ -4669,7 +4669,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. unix timestamp. the task will automatically start after this time.
+        r"""Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -4680,7 +4680,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. unix timestamp. the task will automatically terminate after this time.
+        r"""Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -4691,7 +4691,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified ivr id.
+        r"""Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -4702,7 +4702,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryTimes(self):
-        """Number of call retries, 0 - 2.
+        r"""Number of call retries, 0 - 2.
         :rtype: int
         """
         return self._RetryTimes
@@ -4713,7 +4713,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Variables(self):
-        """Custom variable.
+        r"""Custom variable.
         :rtype: list of Variable
         """
         return self._Variables
@@ -4724,7 +4724,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """UUI
+        r"""UUI
         :rtype: str
         """
         return self._UUI
@@ -4735,7 +4735,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CalleeAttributes(self):
-        """Property of the called.
+        r"""Property of the called.
         :rtype: list of CalleeAttribute
         """
         return self._CalleeAttributes
@@ -4746,7 +4746,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        r"""IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
         :rtype: str
         """
         return self._TimeZone
@@ -4757,7 +4757,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def AvailableTime(self):
-        """Value range of available time.
+        r"""Value range of available time.
         :rtype: list of TimeRange
         """
         return self._AvailableTime
@@ -4812,7 +4812,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class CreatePredictiveDialingCampaignResponse(AbstractModel):
-    """CreatePredictiveDialingCampaign response structure.
+    r"""CreatePredictiveDialingCampaign response structure.
 
     """
 
@@ -4828,7 +4828,7 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task id.
+        r"""Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -4839,7 +4839,7 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4855,7 +4855,7 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class CreateSDKLoginTokenRequest(AbstractModel):
-    """CreateSDKLoginToken request structure.
+    r"""CreateSDKLoginToken request structure.
 
     """
 
@@ -4874,7 +4874,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4885,7 +4885,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def SeatUserId(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._SeatUserId
@@ -4896,7 +4896,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def OnlyOnce(self):
-        """Whether the generated token is for one-time verification?.
+        r"""Whether the generated token is for one-time verification?.
         :rtype: bool
         """
         return self._OnlyOnce
@@ -4921,7 +4921,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
 
 class CreateSDKLoginTokenResponse(AbstractModel):
-    """CreateSDKLoginToken response structure.
+    r"""CreateSDKLoginToken response structure.
 
     """
 
@@ -4943,7 +4943,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """SDK log-in token.
+        r"""SDK log-in token.
         :rtype: str
         """
         return self._Token
@@ -4954,7 +4954,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Expiry timestamp. unix timestamp.
+        r"""Expiry timestamp. unix timestamp.
         :rtype: int
         """
         return self._ExpiredTime
@@ -4965,7 +4965,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def SdkURL(self):
-        """The path in which the sdk is loaded will change with its release.
+        r"""The path in which the sdk is loaded will change with its release.
         :rtype: str
         """
         return self._SdkURL
@@ -4976,7 +4976,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4994,7 +4994,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
 
 class CreateStaffRequest(AbstractModel):
-    """CreateStaff request structure.
+    r"""CreateStaff request structure.
 
     """
 
@@ -5013,7 +5013,7 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5024,7 +5024,7 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def Staffs(self):
-        """Customer information, no more than 10.
+        r"""Customer information, no more than 10.
         :rtype: list of SeatUserInfo
         """
         return self._Staffs
@@ -5035,7 +5035,7 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SendPassword(self):
-        """Whether to send a password mail or not (the default is true).
+        r"""Whether to send a password mail or not (the default is true).
         :rtype: bool
         """
         return self._SendPassword
@@ -5065,7 +5065,7 @@ class CreateStaffRequest(AbstractModel):
 
 
 class CreateStaffResponse(AbstractModel):
-    """CreateStaff response structure.
+    r"""CreateStaff response structure.
 
     """
 
@@ -5081,7 +5081,7 @@ class CreateStaffResponse(AbstractModel):
 
     @property
     def ErrorStaffList(self):
-        """Error agent list and error information.
+        r"""Error agent list and error information.
         :rtype: list of ErrStaffItem
         """
         return self._ErrorStaffList
@@ -5092,7 +5092,7 @@ class CreateStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5113,7 +5113,7 @@ class CreateStaffResponse(AbstractModel):
 
 
 class CreateUserSigRequest(AbstractModel):
-    """CreateUserSig request structure.
+    r"""CreateUserSig request structure.
 
     """
 
@@ -5135,7 +5135,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5146,7 +5146,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def Uid(self):
-        """User ID, must be consistent with the Uid value in the ClientData field.
+        r"""User ID, must be consistent with the Uid value in the ClientData field.
         :rtype: str
         """
         return self._Uid
@@ -5157,7 +5157,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Valid period, in seconds, no more than 1 hr.
+        r"""Valid period, in seconds, no more than 1 hr.
         :rtype: int
         """
         return self._ExpiredTime
@@ -5168,7 +5168,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ClientData(self):
-        """Signature data of the user. required field. standard JSON format.
+        r"""Signature data of the user. required field. standard JSON format.
         :rtype: str
         """
         return self._ClientData
@@ -5194,7 +5194,7 @@ class CreateUserSigRequest(AbstractModel):
 
 
 class CreateUserSigResponse(AbstractModel):
-    """CreateUserSig response structure.
+    r"""CreateUserSig response structure.
 
     """
 
@@ -5210,7 +5210,7 @@ class CreateUserSigResponse(AbstractModel):
 
     @property
     def UserSig(self):
-        """Signature result.
+        r"""Signature result.
         :rtype: str
         """
         return self._UserSig
@@ -5221,7 +5221,7 @@ class CreateUserSigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5237,7 +5237,7 @@ class CreateUserSigResponse(AbstractModel):
 
 
 class DeleteCCCSkillGroupRequest(AbstractModel):
-    """DeleteCCCSkillGroup request structure.
+    r"""DeleteCCCSkillGroup request structure.
 
     """
 
@@ -5253,7 +5253,7 @@ class DeleteCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        r"""App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5264,7 +5264,7 @@ class DeleteCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        r"""Skill group ID.
         :rtype: int
         """
         return self._SkillGroupId
@@ -5288,7 +5288,7 @@ class DeleteCCCSkillGroupRequest(AbstractModel):
 
 
 class DeleteCCCSkillGroupResponse(AbstractModel):
-    """DeleteCCCSkillGroup response structure.
+    r"""DeleteCCCSkillGroup response structure.
 
     """
 
@@ -5301,7 +5301,7 @@ class DeleteCCCSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5316,7 +5316,7 @@ class DeleteCCCSkillGroupResponse(AbstractModel):
 
 
 class DeleteExtensionRequest(AbstractModel):
-    """DeleteExtension request structure.
+    r"""DeleteExtension request structure.
 
     """
 
@@ -5332,7 +5332,7 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5343,7 +5343,7 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -5367,7 +5367,7 @@ class DeleteExtensionRequest(AbstractModel):
 
 
 class DeleteExtensionResponse(AbstractModel):
-    """DeleteExtension response structure.
+    r"""DeleteExtension response structure.
 
     """
 
@@ -5380,7 +5380,7 @@ class DeleteExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5395,7 +5395,7 @@ class DeleteExtensionResponse(AbstractModel):
 
 
 class DeletePredictiveDialingCampaignRequest(AbstractModel):
-    """DeletePredictiveDialingCampaign request structure.
+    r"""DeletePredictiveDialingCampaign request structure.
 
     """
 
@@ -5411,7 +5411,7 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5422,7 +5422,7 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -5446,7 +5446,7 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class DeletePredictiveDialingCampaignResponse(AbstractModel):
-    """DeletePredictiveDialingCampaign response structure.
+    r"""DeletePredictiveDialingCampaign response structure.
 
     """
 
@@ -5459,7 +5459,7 @@ class DeletePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5474,7 +5474,7 @@ class DeletePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class DeleteStaffRequest(AbstractModel):
-    """DeleteStaff request structure.
+    r"""DeleteStaff request structure.
 
     """
 
@@ -5490,7 +5490,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5501,7 +5501,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def StaffList(self):
-        """List of customer service emails to be deleted, supports up to 200 at a time.
+        r"""List of customer service emails to be deleted, supports up to 200 at a time.
         :rtype: list of str
         """
         return self._StaffList
@@ -5525,7 +5525,7 @@ class DeleteStaffRequest(AbstractModel):
 
 
 class DeleteStaffResponse(AbstractModel):
-    """DeleteStaff response structure.
+    r"""DeleteStaff response structure.
 
     """
 
@@ -5541,7 +5541,7 @@ class DeleteStaffResponse(AbstractModel):
 
     @property
     def OnlineStaffList(self):
-        """List of customer service staff that cannot be deleted when they are online.
+        r"""List of customer service staff that cannot be deleted when they are online.
         :rtype: list of str
         """
         return self._OnlineStaffList
@@ -5552,7 +5552,7 @@ class DeleteStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5568,7 +5568,7 @@ class DeleteStaffResponse(AbstractModel):
 
 
 class DescribeAICallExtractResultRequest(AbstractModel):
-    """DescribeAICallExtractResult request structure.
+    r"""DescribeAICallExtractResult request structure.
 
     """
 
@@ -5590,7 +5590,7 @@ class DescribeAICallExtractResultRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5601,7 +5601,7 @@ class DescribeAICallExtractResultRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionId
@@ -5612,7 +5612,7 @@ class DescribeAICallExtractResultRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Search for the start time.
+        r"""Search for the start time.
         :rtype: int
         """
         return self._StartTime
@@ -5623,7 +5623,7 @@ class DescribeAICallExtractResultRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Search for the end time.
+        r"""Search for the end time.
         :rtype: int
         """
         return self._EndTime
@@ -5649,7 +5649,7 @@ class DescribeAICallExtractResultRequest(AbstractModel):
 
 
 class DescribeAICallExtractResultResponse(AbstractModel):
-    """DescribeAICallExtractResult response structure.
+    r"""DescribeAICallExtractResult response structure.
 
     """
 
@@ -5665,7 +5665,7 @@ class DescribeAICallExtractResultResponse(AbstractModel):
 
     @property
     def ResultList(self):
-        """Result list.
+        r"""Result list.
         :rtype: list of AICallExtractResultElement
         """
         return self._ResultList
@@ -5676,7 +5676,7 @@ class DescribeAICallExtractResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5697,7 +5697,7 @@ class DescribeAICallExtractResultResponse(AbstractModel):
 
 
 class DescribeAILatencyRequest(AbstractModel):
-    """DescribeAILatency request structure.
+    r"""DescribeAILatency request structure.
 
     """
 
@@ -5719,7 +5719,7 @@ class DescribeAILatencyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        r"""App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5730,7 +5730,7 @@ class DescribeAILatencyRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -5741,7 +5741,7 @@ class DescribeAILatencyRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Search start time.	
+        r"""Search start time.	
         :rtype: int
         """
         return self._StartTime
@@ -5752,7 +5752,7 @@ class DescribeAILatencyRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """1737350008
+        r"""1737350008
         :rtype: int
         """
         return self._EndTime
@@ -5778,7 +5778,7 @@ class DescribeAILatencyRequest(AbstractModel):
 
 
 class DescribeAILatencyResponse(AbstractModel):
-    """DescribeAILatency response structure.
+    r"""DescribeAILatency response structure.
 
     """
 
@@ -5799,7 +5799,7 @@ class DescribeAILatencyResponse(AbstractModel):
 
     @property
     def AILatencyDetail(self):
-        """Detailed data of latency.
+        r"""Detailed data of latency.
 -1 indicates no corresponding data.
         :rtype: list of AILatencyDetail
         """
@@ -5811,7 +5811,7 @@ class DescribeAILatencyResponse(AbstractModel):
 
     @property
     def AILatencyStatistics(self):
-        """Latency statistical data.
+        r"""Latency statistical data.
 -1 indicates no corresponding data.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatistics`
         """
@@ -5823,7 +5823,7 @@ class DescribeAILatencyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5847,7 +5847,7 @@ class DescribeAILatencyResponse(AbstractModel):
 
 
 class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
-    """DescribeAgentCruiseDialingCampaign request structure.
+    r"""DescribeAgentCruiseDialingCampaign request structure.
 
     """
 
@@ -5863,7 +5863,7 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5874,7 +5874,7 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -5898,7 +5898,7 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
 
 class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
-    """DescribeAgentCruiseDialingCampaign response structure.
+    r"""DescribeAgentCruiseDialingCampaign response structure.
 
     """
 
@@ -5941,7 +5941,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -5952,7 +5952,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def Agent(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._Agent
@@ -5963,7 +5963,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def ConcurrencyNumber(self):
-        """Single-Round concurrent call volume 1-20.
+        r"""Single-Round concurrent call volume 1-20.
         :rtype: int
         """
         return self._ConcurrencyNumber
@@ -5974,7 +5974,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. unix timestamp. the task will automatically start after this time.
+        r"""Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -5985,7 +5985,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. unix timestamp. the task will automatically terminate after this time.
+        r"""Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -5996,7 +5996,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def CallOrder(self):
-        """Being called sequence: 0 for random 1 for in order.
+        r"""Being called sequence: 0 for random 1 for in order.
         :rtype: int
         """
         return self._CallOrder
@@ -6007,7 +6007,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def UUI(self):
-        """Caller custom data, maximum length 1024.
+        r"""Caller custom data, maximum length 1024.
         :rtype: str
         """
         return self._UUI
@@ -6018,7 +6018,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def State(self):
-        """Task status 0 not started 1 running 2 completed 3 terminated.
+        r"""Task status 0 not started 1 running 2 completed 3 terminated.
         :rtype: int
         """
         return self._State
@@ -6029,7 +6029,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def TotalCalleeCount(self):
-        """Total number of called parties.
+        r"""Total number of called parties.
         :rtype: int
         """
         return self._TotalCalleeCount
@@ -6040,7 +6040,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def CalledCalleeCount(self):
-        """Number of calls made and received.
+        r"""Number of calls made and received.
         :rtype: int
         """
         return self._CalledCalleeCount
@@ -6051,7 +6051,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6076,7 +6076,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
 
 class DescribeAutoCalloutTaskRequest(AbstractModel):
-    """DescribeAutoCalloutTask request structure.
+    r"""DescribeAutoCalloutTask request structure.
 
     """
 
@@ -6092,7 +6092,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6103,7 +6103,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._TaskId
@@ -6127,7 +6127,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
 
 class DescribeAutoCalloutTaskResponse(AbstractModel):
-    """DescribeAutoCalloutTask response structure.
+    r"""DescribeAutoCalloutTask response structure.
 
     """
 
@@ -6165,7 +6165,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -6176,7 +6176,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """<Task description>.
+        r"""<Task description>.
         :rtype: str
         """
         return self._Description
@@ -6187,7 +6187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotBefore(self):
-        """Task start timestamp.
+        r"""Task start timestamp.
         :rtype: int
         """
         return self._NotBefore
@@ -6198,7 +6198,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotAfter(self):
-        """Task end timestamp.
+        r"""Task end timestamp.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6210,7 +6210,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Callers(self):
-        """Calling list.
+        r"""Calling list.
         :rtype: list of str
         """
         return self._Callers
@@ -6221,7 +6221,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Callees(self):
-        """Called information list.
+        r"""Called information list.
         :rtype: list of AutoCalloutTaskCalleeInfo
         """
         return self._Callees
@@ -6232,7 +6232,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IvrId(self):
-        """IvrId used by the task.
+        r"""IvrId used by the task.
         :rtype: int
         """
         return self._IvrId
@@ -6243,7 +6243,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
-        """Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - terminated.
+        r"""Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - terminated.
         :rtype: int
         """
         return self._State
@@ -6254,7 +6254,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6282,7 +6282,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAutoCalloutTasksRequest(AbstractModel):
-    """DescribeAutoCalloutTasks request structure.
+    r"""DescribeAutoCalloutTasks request structure.
 
     """
 
@@ -6301,7 +6301,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6312,7 +6312,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """<Page size>.
+        r"""<Page size>.
         :rtype: int
         """
         return self._PageSize
@@ -6323,7 +6323,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -6348,7 +6348,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
 
 class DescribeAutoCalloutTasksResponse(AbstractModel):
-    """DescribeAutoCalloutTasks response structure.
+    r"""DescribeAutoCalloutTasks response structure.
 
     """
 
@@ -6367,7 +6367,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity.
+        r"""Total quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -6378,7 +6378,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """<Task list>.
+        r"""<Task list>.
         :rtype: list of AutoCalloutTaskInfo
         """
         return self._Tasks
@@ -6389,7 +6389,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6411,7 +6411,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
 
 class DescribeCCCBuyInfoListRequest(AbstractModel):
-    """DescribeCCCBuyInfoList request structure.
+    r"""DescribeCCCBuyInfoList request structure.
 
     """
 
@@ -6424,7 +6424,7 @@ class DescribeCCCBuyInfoListRequest(AbstractModel):
 
     @property
     def SdkAppIds(self):
-        """Application id list, query all applications when not transmitted.
+        r"""Application id list, query all applications when not transmitted.
         :rtype: list of int
         """
         return self._SdkAppIds
@@ -6447,7 +6447,7 @@ class DescribeCCCBuyInfoListRequest(AbstractModel):
 
 
 class DescribeCCCBuyInfoListResponse(AbstractModel):
-    """DescribeCCCBuyInfoList response structure.
+    r"""DescribeCCCBuyInfoList response structure.
 
     """
 
@@ -6469,7 +6469,7 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of applications.
+        r"""Total number of applications.
         :rtype: int
         """
         return self._TotalCount
@@ -6480,7 +6480,7 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def SdkAppIdBuyList(self):
-        """Application purchase information list.
+        r"""Application purchase information list.
         :rtype: list of SdkAppIdBuyInfo
         """
         return self._SdkAppIdBuyList
@@ -6491,7 +6491,7 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def PackageBuyList(self):
-        """Package purchase information list.
+        r"""Package purchase information list.
         :rtype: list of PackageBuyInfo
         """
         return self._PackageBuyList
@@ -6502,7 +6502,7 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6530,7 +6530,7 @@ class DescribeCCCBuyInfoListResponse(AbstractModel):
 
 
 class DescribeCallInMetricsRequest(AbstractModel):
-    """DescribeCallInMetrics request structure.
+    r"""DescribeCallInMetrics request structure.
 
     """
 
@@ -6552,7 +6552,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6563,7 +6563,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledSkillGroup(self):
-        """Whether to return skill group dimension information or not (the default is "yes").
+        r"""Whether to return skill group dimension information or not (the default is "yes").
         :rtype: bool
         """
         return self._EnabledSkillGroup
@@ -6574,7 +6574,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledNumber(self):
-        """Whether to return line dimension information or not (the default is "no").
+        r"""Whether to return line dimension information or not (the default is "no").
         :rtype: bool
         """
         return self._EnabledNumber
@@ -6585,7 +6585,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        """Filter skill group list.
+        r"""Filter skill group list.
         :rtype: list of int
         """
         return self._GroupIdList
@@ -6611,7 +6611,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
 
 class DescribeCallInMetricsResponse(AbstractModel):
-    """DescribeCallInMetrics response structure.
+    r"""DescribeCallInMetrics response structure.
 
     """
 
@@ -6636,7 +6636,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Timestamp.
+        r"""Timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -6647,7 +6647,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def TotalMetrics(self):
-        """Overall metrics.
+        r"""Overall metrics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         """
         return self._TotalMetrics
@@ -6658,7 +6658,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def NumberMetrics(self):
-        """Circuit dimension metrics.
+        r"""Circuit dimension metrics.
         :rtype: list of CallInNumberMetrics
         """
         return self._NumberMetrics
@@ -6669,7 +6669,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def SkillGroupMetrics(self):
-        """Skill group dimension metrics.
+        r"""Skill group dimension metrics.
         :rtype: list of CallInSkillGroupMetrics
         """
         return self._SkillGroupMetrics
@@ -6680,7 +6680,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6711,7 +6711,7 @@ class DescribeCallInMetricsResponse(AbstractModel):
 
 
 class DescribeExtensionRequest(AbstractModel):
-    """DescribeExtension request structure.
+    r"""DescribeExtension request structure.
 
     """
 
@@ -6727,7 +6727,7 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6738,7 +6738,7 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -6762,7 +6762,7 @@ class DescribeExtensionRequest(AbstractModel):
 
 
 class DescribeExtensionResponse(AbstractModel):
-    """DescribeExtension response structure.
+    r"""DescribeExtension response structure.
 
     """
 
@@ -6790,7 +6790,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -6801,7 +6801,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionDomain(self):
-        """Domain name.
+        r"""Domain name.
         :rtype: str
         """
         return self._ExtensionDomain
@@ -6812,7 +6812,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def Password(self):
-        """Registered password.
+        r"""Registered password.
         :rtype: str
         """
         return self._Password
@@ -6823,7 +6823,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def OutboundProxy(self):
-        """Proxy server address.
+        r"""Proxy server address.
         :rtype: str
         """
         return self._OutboundProxy
@@ -6834,7 +6834,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def Transport(self):
-        """Transfer protocol.
+        r"""Transfer protocol.
         :rtype: str
         """
         return self._Transport
@@ -6845,7 +6845,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6865,7 +6865,7 @@ class DescribeExtensionResponse(AbstractModel):
 
 
 class DescribeExtensionsRequest(AbstractModel):
-    """DescribeExtensions request structure.
+    r"""DescribeExtensions request structure.
 
     """
 
@@ -6893,7 +6893,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6904,7 +6904,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number (starting from 0).
+        r"""Page number (starting from 0).
         :rtype: int
         """
         return self._PageNumber
@@ -6915,7 +6915,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def ExtensionIds(self):
-        """Filtering extension number list.
+        r"""Filtering extension number list.
         :rtype: list of str
         """
         return self._ExtensionIds
@@ -6926,7 +6926,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size.
+        r"""Page size.
         :rtype: int
         """
         return self._PageSize
@@ -6937,7 +6937,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def FuzzingKeyWord(self):
-        """Fuzzy query field (fuzzy query for extension number, extension name, agent email, and agent name).
+        r"""Fuzzy query field (fuzzy query for extension number, extension name, agent email, and agent name).
         :rtype: str
         """
         return self._FuzzingKeyWord
@@ -6948,7 +6948,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def IsNeedStatus(self):
-        """Whether to return the current status of the telephone or not.
+        r"""Whether to return the current status of the telephone or not.
         :rtype: bool
         """
         return self._IsNeedStatus
@@ -6976,7 +6976,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
 
 class DescribeExtensionsResponse(AbstractModel):
-    """DescribeExtensions response structure.
+    r"""DescribeExtensions response structure.
 
     """
 
@@ -6995,7 +6995,7 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total query count.
+        r"""Total query count.
         :rtype: int
         """
         return self._Total
@@ -7006,7 +7006,7 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def ExtensionList(self):
-        """Telephone information list.
+        r"""Telephone information list.
         :rtype: list of ExtensionInfo
         """
         return self._ExtensionList
@@ -7017,7 +7017,7 @@ class DescribeExtensionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7039,7 +7039,7 @@ class DescribeExtensionsResponse(AbstractModel):
 
 
 class DescribeIvrAudioListRequest(AbstractModel):
-    """DescribeIvrAudioList request structure.
+    r"""DescribeIvrAudioList request structure.
 
     """
 
@@ -7067,7 +7067,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7078,7 +7078,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 50.
+        r"""Page size, upper limit 50.
         :rtype: int
         """
         return self._PageSize
@@ -7089,7 +7089,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        r"""Page number starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -7100,7 +7100,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def CustomFileName(self):
-        """File alias.
+        r"""File alias.
         :rtype: list of str
         """
         return self._CustomFileName
@@ -7111,7 +7111,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def AudioFileName(self):
-        """Filename.
+        r"""Filename.
         :rtype: list of str
         """
         return self._AudioFileName
@@ -7122,7 +7122,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def FileId(self):
-        """File id.
+        r"""File id.
         :rtype: list of int non-negative
         """
         return self._FileId
@@ -7150,7 +7150,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
 
 class DescribeIvrAudioListResponse(AbstractModel):
-    """DescribeIvrAudioList response structure.
+    r"""DescribeIvrAudioList response structure.
 
     """
 
@@ -7169,7 +7169,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity.
+        r"""Total quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -7180,7 +7180,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def FileInfo(self):
-        """File information.
+        r"""File information.
         :rtype: list of AudioFileInfo
         """
         return self._FileInfo
@@ -7191,7 +7191,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7213,7 +7213,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
 
 class DescribeNumbersRequest(AbstractModel):
-    """DescribeNumbers request structure.
+    r"""DescribeNumbers request structure.
 
     """
 
@@ -7232,7 +7232,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7243,7 +7243,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number, starting from 0.
+        r"""Page number, starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -7254,7 +7254,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, default 20.
+        r"""Page size, default 20.
         :rtype: int
         """
         return self._PageSize
@@ -7279,7 +7279,7 @@ class DescribeNumbersRequest(AbstractModel):
 
 
 class DescribeNumbersResponse(AbstractModel):
-    """DescribeNumbers response structure.
+    r"""DescribeNumbers response structure.
 
     """
 
@@ -7298,7 +7298,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity.
+        r"""Total quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -7309,7 +7309,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def Numbers(self):
-        """Number list.
+        r"""Number list.
         :rtype: list of NumberInfo
         """
         return self._Numbers
@@ -7320,7 +7320,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7342,7 +7342,7 @@ class DescribeNumbersResponse(AbstractModel):
 
 
 class DescribePSTNActiveSessionListRequest(AbstractModel):
-    """DescribePSTNActiveSessionList request structure.
+    r"""DescribePSTNActiveSessionList request structure.
 
     """
 
@@ -7361,7 +7361,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7372,7 +7372,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset.
+        r"""Data offset.
         :rtype: int
         """
         return self._Offset
@@ -7383,7 +7383,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned data entries, up to 25.
+        r"""Number of returned data entries, up to 25.
         :rtype: int
         """
         return self._Limit
@@ -7408,7 +7408,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
 
 class DescribePSTNActiveSessionListResponse(AbstractModel):
-    """DescribePSTNActiveSessionList response structure.
+    r"""DescribePSTNActiveSessionList response structure.
 
     """
 
@@ -7427,7 +7427,7 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of items in the list.
+        r"""Total number of items in the list.
         :rtype: int
         """
         return self._Total
@@ -7438,7 +7438,7 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def Sessions(self):
-        """List content.
+        r"""List content.
         :rtype: list of PSTNSessionInfo
         """
         return self._Sessions
@@ -7449,7 +7449,7 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7471,7 +7471,7 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
 
 
 class DescribePredictiveDialingCampaignRequest(AbstractModel):
-    """DescribePredictiveDialingCampaign request structure.
+    r"""DescribePredictiveDialingCampaign request structure.
 
     """
 
@@ -7487,7 +7487,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7498,7 +7498,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -7522,7 +7522,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class DescribePredictiveDialingCampaignResponse(AbstractModel):
-    """DescribePredictiveDialingCampaign response structure.
+    r"""DescribePredictiveDialingCampaign response structure.
 
     """
 
@@ -7568,7 +7568,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -7579,7 +7579,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -7590,7 +7590,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CallOrder(self):
-        """Being called sequence: 0 for random 1 for in order.
+        r"""Being called sequence: 0 for random 1 for in order.
         :rtype: int
         """
         return self._CallOrder
@@ -7601,7 +7601,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """ID of the used skill group of agents.
+        r"""ID of the used skill group of agents.
         :rtype: int
         """
         return self._SkillGroupId
@@ -7612,7 +7612,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified ivr id.
+        r"""Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -7623,7 +7623,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Priority(self):
-        """Running priority of multiple tasks in the same application, from high to low 1 - 5.
+        r"""Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :rtype: int
         """
         return self._Priority
@@ -7634,7 +7634,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        """Expected call drop rate, percentage, 5 - 50.
+        r"""Expected call drop rate, percentage, 5 - 50.
         :rtype: int
         """
         return self._ExpectedAbandonRate
@@ -7645,7 +7645,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryTimes(self):
-        """Number of call retries, 0 - 2.
+        r"""Number of call retries, 0 - 2.
         :rtype: int
         """
         return self._RetryTimes
@@ -7656,7 +7656,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """Call retry interval, in seconds, [60 - 86,400].
+        r"""Call retry interval, in seconds, [60 - 86,400].
         :rtype: int
         """
         return self._RetryInterval
@@ -7667,7 +7667,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. unix timestamp. the task will automatically start after this time.
+        r"""Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -7678,7 +7678,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. unix timestamp. the task will automatically terminate after this time.
+        r"""Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -7689,7 +7689,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7715,7 +7715,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class DescribePredictiveDialingCampaignsElement(AbstractModel):
-    """Query the predictive outbound call task list elements.
+    r"""Query the predictive outbound call task list elements.
 
     """
 
@@ -7749,7 +7749,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def CampaignId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -7760,7 +7760,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -7771,7 +7771,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Status(self):
-        """Task status 0 - ready to start, 1 - in progress, 2 - paused, 3 - terminated, 4 - completed.
+        r"""Task status 0 - ready to start, 1 - in progress, 2 - paused, 3 - terminated, 4 - completed.
         :rtype: int
         """
         return self._Status
@@ -7782,7 +7782,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def StatusReason(self):
-        """Task status reasons 0 - normal, 1 - manually ended, 2 - ended due to overtime.
+        r"""Task status reasons 0 - normal, 1 - manually ended, 2 - ended due to overtime.
         :rtype: int
         """
         return self._StatusReason
@@ -7793,7 +7793,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def CalleeCount(self):
-        """Number of called numbers.
+        r"""Number of called numbers.
         :rtype: int
         """
         return self._CalleeCount
@@ -7804,7 +7804,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def FinishedCalleeCount(self):
-        """Number of completed calls.
+        r"""Number of completed calls.
         :rtype: int
         """
         return self._FinishedCalleeCount
@@ -7815,7 +7815,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def Priority(self):
-        """Running priority of multiple tasks in the same application, from high to low 1 - 5.
+        r"""Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :rtype: int
         """
         return self._Priority
@@ -7826,7 +7826,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """ID of the used skill group of agents.
+        r"""ID of the used skill group of agents.
         :rtype: int
         """
         return self._SkillGroupId
@@ -7856,7 +7856,7 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
 
 class DescribePredictiveDialingCampaignsRequest(AbstractModel):
-    """DescribePredictiveDialingCampaigns request structure.
+    r"""DescribePredictiveDialingCampaigns request structure.
 
     """
 
@@ -7881,7 +7881,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7892,7 +7892,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, 100 maximum.
+        r"""Page size, 100 maximum.
         :rtype: int
         """
         return self._PageSize
@@ -7903,7 +7903,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        r"""Page number starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -7914,7 +7914,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Query the task list name keyword.
+        r"""Query the task list name keyword.
         :rtype: str
         """
         return self._Name
@@ -7925,7 +7925,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Query task list skill group id.
+        r"""Query task list skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -7952,7 +7952,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
 
 class DescribePredictiveDialingCampaignsResponse(AbstractModel):
-    """DescribePredictiveDialingCampaigns response structure.
+    r"""DescribePredictiveDialingCampaigns response structure.
 
     """
 
@@ -7971,7 +7971,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total data volume.
+        r"""Total data volume.
         :rtype: int
         """
         return self._TotalCount
@@ -7982,7 +7982,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def CampaignList(self):
-        """Data.
+        r"""Data.
         :rtype: list of DescribePredictiveDialingCampaignsElement
         """
         return self._CampaignList
@@ -7993,7 +7993,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8015,7 +8015,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
 
 class DescribePredictiveDialingSessionsRequest(AbstractModel):
-    """DescribePredictiveDialingSessions request structure.
+    r"""DescribePredictiveDialingSessions request structure.
 
     """
 
@@ -8037,7 +8037,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8048,7 +8048,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task id.
+        r"""Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -8059,7 +8059,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, maximum of 1000.
+        r"""Page size, maximum of 1000.
         :rtype: int
         """
         return self._PageSize
@@ -8070,7 +8070,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        r"""Page number starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -8096,7 +8096,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
 
 class DescribePredictiveDialingSessionsResponse(AbstractModel):
-    """DescribePredictiveDialingSessions response structure.
+    r"""DescribePredictiveDialingSessions response structure.
 
     """
 
@@ -8115,7 +8115,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total data volume.
+        r"""Total data volume.
         :rtype: int
         """
         return self._TotalCount
@@ -8126,7 +8126,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def SessionList(self):
-        """List of session ids for a call. you can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1.
+        r"""List of session ids for a call. you can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1.
         :rtype: list of str
         """
         return self._SessionList
@@ -8137,7 +8137,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8154,7 +8154,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
 
 class DescribeProtectedTelCdrRequest(AbstractModel):
-    """DescribeProtectedTelCdr request structure.
+    r"""DescribeProtectedTelCdr request structure.
 
     """
 
@@ -8179,7 +8179,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp. unix second-level timestamp.
+        r"""Start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -8190,7 +8190,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp. unix second-level timestamp.
+        r"""End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndTimeStamp
@@ -8201,7 +8201,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """For the application id, you can check https://console.cloud.tencent.com/ccc.
+        r"""For the application id, you can check https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8212,7 +8212,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 100.
+        r"""Page size, upper limit 100.
         :rtype: int
         """
         return self._PageSize
@@ -8223,7 +8223,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        r"""Page number starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -8250,7 +8250,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
 
 class DescribeProtectedTelCdrResponse(AbstractModel):
-    """DescribeProtectedTelCdr response structure.
+    r"""DescribeProtectedTelCdr response structure.
 
     """
 
@@ -8272,7 +8272,7 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of call records.
+        r"""Total number of call records.
         :rtype: int
         """
         return self._TotalCount
@@ -8285,7 +8285,7 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
     def TelCdrs(self):
         warnings.warn("parameter `TelCdrs` is deprecated", DeprecationWarning) 
 
-        """Call record.
+        r"""Call record.
         :rtype: list of TelCdrInfo
         """
         return self._TelCdrs
@@ -8298,7 +8298,7 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def TelCdrList(self):
-        """Call record.
+        r"""Call record.
         :rtype: list of TelCdrInfo
         """
         return self._TelCdrList
@@ -8309,7 +8309,7 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8337,7 +8337,7 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
 
 
 class DescribeSessionDetailRequest(AbstractModel):
-    """DescribeSessionDetail request structure.
+    r"""DescribeSessionDetail request structure.
 
     """
 
@@ -8359,7 +8359,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8370,7 +8370,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Specifies the session id of the call.
+        r"""Specifies the session id of the call.
         :rtype: str
         """
         return self._SessionId
@@ -8381,7 +8381,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        """Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
+        r"""Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
         :rtype: int
         """
         return self._StartTimestamp
@@ -8392,7 +8392,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        """End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.
+        r"""End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.
         :rtype: int
         """
         return self._EndTimestamp
@@ -8418,7 +8418,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
 
 class DescribeSessionDetailResponse(AbstractModel):
-    """DescribeSessionDetail response structure.
+    r"""DescribeSessionDetail response structure.
 
     """
 
@@ -8500,7 +8500,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Caller(self):
-        """Calling number.
+        r"""Calling number.
         :rtype: str
         """
         return self._Caller
@@ -8511,7 +8511,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Callee(self):
-        """Called number.
+        r"""Called number.
         :rtype: str
         """
         return self._Callee
@@ -8522,7 +8522,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CallType(self):
-        """Call type. valid values: 1 (outgoing call), 2 (incoming call), 3 (audio dial-in), 5 (predictive outbound call), 6 (internal call).
+        r"""Call type. valid values: 1 (outgoing call), 2 (incoming call), 3 (audio dial-in), 5 (predictive outbound call), 6 (internal call).
         :rtype: int
         """
         return self._CallType
@@ -8533,7 +8533,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp. Unix second-level timestamp.
+        r"""Start timestamp. Unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -8544,7 +8544,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        """Ring timestamp. UNIX second-level timestamp.
+        r"""Ring timestamp. UNIX second-level timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -8555,7 +8555,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        """Answer timestamp. UNIX second-level timestamp.
+        r"""Answer timestamp. UNIX second-level timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -8566,7 +8566,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndedTimestamp(self):
-        """End timestamp, UNIX second-level timestamp.
+        r"""End timestamp, UNIX second-level timestamp.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -8577,7 +8577,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedTimestamp(self):
-        """Queue entry time. Unix second-level timestamp.
+        r"""Queue entry time. Unix second-level timestamp.
         :rtype: int
         """
         return self._QueuedTimestamp
@@ -8588,7 +8588,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StaffUserId(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._StaffUserId
@@ -8599,7 +8599,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndStatus(self):
-        """Refers to the EndStatus field in the DescribeTelCdr api.
+        r"""Refers to the EndStatus field in the DescribeTelCdr api.
         :rtype: int
         """
         return self._EndStatus
@@ -8610,7 +8610,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupId(self):
-        """Queue skill group ID.
+        r"""Queue skill group ID.
         :rtype: int
         """
         return self._QueuedSkillGroupId
@@ -8621,7 +8621,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupName(self):
-        """Queue skill group name.
+        r"""Queue skill group name.
         :rtype: str
         """
         return self._QueuedSkillGroupName
@@ -8632,7 +8632,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RecordURL(self):
-        """Recording url with authentication and valid period. obtain and pull within a short time frame. do not persist this link.
+        r"""Recording url with authentication and valid period. obtain and pull within a short time frame. do not persist this link.
         :rtype: str
         """
         return self._RecordURL
@@ -8643,7 +8643,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CustomRecordURL(self):
-        """Specifies the COS link for recording transfer to a third party.
+        r"""Specifies the COS link for recording transfer to a third party.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -8654,7 +8654,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AsrURL(self):
-        """Recording text information link with authentication and valid period. retrieve it within a short time frame. do not persist this link.
+        r"""Recording text information link with authentication and valid period. retrieve it within a short time frame. do not persist this link.
         :rtype: str
         """
         return self._AsrURL
@@ -8665,7 +8665,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailRecordURL(self):
-        """Voicemail recording url.
+        r"""Voicemail recording url.
         :rtype: list of str
         """
         return self._VoicemailRecordURL
@@ -8676,7 +8676,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailAsrURL(self):
-        """Voicemail recording text information url. purchase the offline speech recognition package through the console and enable the offline speech recognition switch.
+        r"""Voicemail recording text information url. purchase the offline speech recognition package through the console and enable the offline speech recognition switch.
         :rtype: list of str
         """
         return self._VoicemailAsrURL
@@ -8687,7 +8687,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def IVRKeyPressed(self):
-        """IVR key information.
+        r"""IVR key information.
         :rtype: list of IVRKeyPressedElement
         """
         return self._IVRKeyPressed
@@ -8698,7 +8698,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def PostIVRKeyPressed(self):
-        """Satisfaction rate keystroke information.
+        r"""Satisfaction rate keystroke information.
         :rtype: list of IVRKeyPressedElement
         """
         return self._PostIVRKeyPressed
@@ -8709,7 +8709,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def HungUpSide(self):
-        """Hang-Up side. valid values: seat, user, system.
+        r"""Hang-Up side. valid values: seat, user, system.
         :rtype: str
         """
         return self._HungUpSide
@@ -8720,7 +8720,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def UUI(self):
-        """Customer custom data (User-to-User Interface).
+        r"""Customer custom data (User-to-User Interface).
         :rtype: str
         """
         return self._UUI
@@ -8731,7 +8731,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Events(self):
-        """List of events during a call.
+        r"""List of events during a call.
         :rtype: list of SessionEvent
         """
         return self._Events
@@ -8742,7 +8742,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def ServeParticipants(self):
-        """List of service participants.
+        r"""List of service participants.
         :rtype: list of ServeParticipant
         """
         return self._ServeParticipants
@@ -8753,7 +8753,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8811,7 +8811,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
 
 class DescribeSkillGroupInfoListRequest(AbstractModel):
-    """DescribeSkillGroupInfoList request structure.
+    r"""DescribeSkillGroupInfoList request structure.
 
     """
 
@@ -8839,7 +8839,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8850,7 +8850,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 100.
+        r"""Page size, upper limit 100.
         :rtype: int
         """
         return self._PageSize
@@ -8861,7 +8861,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """<Page number starting from 0.>.
+        r"""<Page number starting from 0.>.
         :rtype: int
         """
         return self._PageNumber
@@ -8872,7 +8872,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Using skill group id when querying a single skill group.
+        r"""Using skill group id when querying a single skill group.
         :rtype: int
         """
         return self._SkillGroupId
@@ -8883,7 +8883,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """Used when querying skill groups with a modified time greater or equal to modifiedtime.
+        r"""Used when querying skill groups with a modified time greater or equal to modifiedtime.
         :rtype: int
         """
         return self._ModifiedTime
@@ -8894,7 +8894,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -8922,7 +8922,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
 
 class DescribeSkillGroupInfoListResponse(AbstractModel):
-    """DescribeSkillGroupInfoList response structure.
+    r"""DescribeSkillGroupInfoList response structure.
 
     """
 
@@ -8941,7 +8941,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of skill groups.
+        r"""Total number of skill groups.
         :rtype: int
         """
         return self._TotalCount
@@ -8952,7 +8952,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def SkillGroupList(self):
-        """Skill group information list.
+        r"""Skill group information list.
         :rtype: list of SkillGroupInfoItem
         """
         return self._SkillGroupList
@@ -8963,7 +8963,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8985,7 +8985,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
 
 class DescribeStaffInfoListRequest(AbstractModel):
-    """DescribeStaffInfoList request structure.
+    r"""DescribeStaffInfoList request structure.
 
     """
 
@@ -9013,7 +9013,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9024,7 +9024,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 9,999.
+        r"""Page size, upper limit 9,999.
         :rtype: int
         """
         return self._PageSize
@@ -9035,7 +9035,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        r"""Page number starting from 0.
         :rtype: int
         """
         return self._PageNumber
@@ -9046,7 +9046,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def StaffMail(self):
-        """Agent account used when querying a single agent.
+        r"""Agent account used when querying a single agent.
         :rtype: str
         """
         return self._StaffMail
@@ -9057,7 +9057,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """Use when querying for agents with a modification time greater or equal to modifiedtime.
+        r"""Use when querying for agents with a modification time greater or equal to modifiedtime.
         :rtype: int
         """
         return self._ModifiedTime
@@ -9068,7 +9068,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -9096,7 +9096,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
 
 class DescribeStaffInfoListResponse(AbstractModel):
-    """DescribeStaffInfoList response structure.
+    r"""DescribeStaffInfoList response structure.
 
     """
 
@@ -9115,7 +9115,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of agent users.
+        r"""Total number of agent users.
         :rtype: int
         """
         return self._TotalCount
@@ -9126,7 +9126,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def StaffList(self):
-        """Agent user information list.
+        r"""Agent user information list.
         :rtype: list of StaffInfo
         """
         return self._StaffList
@@ -9137,7 +9137,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9159,7 +9159,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
 
 class DescribeStaffStatusHistoryRequest(AbstractModel):
-    """DescribeStaffStatusHistory request structure.
+    r"""DescribeStaffStatusHistory request structure.
 
     """
 
@@ -9187,7 +9187,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
+        r"""App ID (required). can be used to view https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9198,7 +9198,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def StaffUserId(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._StaffUserId
@@ -9209,7 +9209,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        """Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
+        r"""Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.
         :rtype: int
         """
         return self._StartTimestamp
@@ -9220,7 +9220,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        """End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 7 days.
+        r"""End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 7 days.
         :rtype: int
         """
         return self._EndTimestamp
@@ -9231,7 +9231,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def Cursor(self):
-        """Specifies the cursor used during paginated retrieval.
+        r"""Specifies the cursor used during paginated retrieval.
         :rtype: str
         """
         return self._Cursor
@@ -9242,7 +9242,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Specifies the pagination size.
+        r"""Specifies the pagination size.
         :rtype: int
         """
         return self._PageSize
@@ -9270,7 +9270,7 @@ class DescribeStaffStatusHistoryRequest(AbstractModel):
 
 
 class DescribeStaffStatusHistoryResponse(AbstractModel):
-    """DescribeStaffStatusHistory response structure.
+    r"""DescribeStaffStatusHistory response structure.
 
     """
 
@@ -9286,7 +9286,7 @@ class DescribeStaffStatusHistoryResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Specifies the agent status data.
+        r"""Specifies the agent status data.
         :rtype: list of StaffStatus
         """
         return self._Data
@@ -9297,7 +9297,7 @@ class DescribeStaffStatusHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9318,7 +9318,7 @@ class DescribeStaffStatusHistoryResponse(AbstractModel):
 
 
 class DescribeStaffStatusMetricsRequest(AbstractModel):
-    """DescribeStaffStatusMetrics request structure.
+    r"""DescribeStaffStatusMetrics request structure.
 
     """
 
@@ -9340,7 +9340,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9351,7 +9351,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StaffList(self):
-        """Filter agent list. by default, do not pass all returned agent information.
+        r"""Filter agent list. by default, do not pass all returned agent information.
         :rtype: list of str
         """
         return self._StaffList
@@ -9362,7 +9362,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        """Filter skill group id list.
+        r"""Filter skill group id list.
         :rtype: list of int
         """
         return self._GroupIdList
@@ -9373,7 +9373,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StatusList(self):
-        """Filter agent status list agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline . 
+        r"""Filter agent status list agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline . 
         :rtype: list of str
         """
         return self._StatusList
@@ -9399,7 +9399,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
 
 class DescribeStaffStatusMetricsResponse(AbstractModel):
-    """DescribeStaffStatusMetrics response structure.
+    r"""DescribeStaffStatusMetrics response structure.
 
     """
 
@@ -9415,7 +9415,7 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
-        """Real-Time information on agent status.
+        r"""Real-Time information on agent status.
         :rtype: list of StaffStatusMetrics
         """
         return self._Metrics
@@ -9426,7 +9426,7 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9447,7 +9447,7 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
 
 class DescribeTelCallInfoRequest(AbstractModel):
-    """DescribeTelCallInfo request structure.
+    r"""DescribeTelCallInfo request structure.
 
     """
 
@@ -9466,7 +9466,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        r"""Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :rtype: int
         """
         return self._StartTimeStamp
@@ -9477,7 +9477,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
+        r"""End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :rtype: int
         """
         return self._EndTimeStamp
@@ -9488,7 +9488,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def SdkAppIdList(self):
-        """Application id list, when having multiple ids, the returned value is the sum of all the ids.
+        r"""Application id list, when having multiple ids, the returned value is the sum of all the ids.
         :rtype: list of int
         """
         return self._SdkAppIdList
@@ -9513,7 +9513,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
 
 class DescribeTelCallInfoResponse(AbstractModel):
-    """DescribeTelCallInfo response structure.
+    r"""DescribeTelCallInfo response structure.
 
     """
 
@@ -9547,7 +9547,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallOutCount(self):
-        """Number of minutes consumed by outbound package.
+        r"""Number of minutes consumed by outbound package.
         :rtype: int
         """
         return self._TelCallOutCount
@@ -9558,7 +9558,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallInCount(self):
-        """Number of minutes consumed by inbound package.
+        r"""Number of minutes consumed by inbound package.
         :rtype: int
         """
         return self._TelCallInCount
@@ -9569,7 +9569,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def SeatUsedCount(self):
-        """Number of agent usage statistics.
+        r"""Number of agent usage statistics.
         :rtype: int
         """
         return self._SeatUsedCount
@@ -9582,7 +9582,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
     def VoipCallInCount(self):
         warnings.warn("parameter `VoipCallInCount` is deprecated", DeprecationWarning) 
 
-        """Number of minutes consumed by audio package.
+        r"""Number of minutes consumed by audio package.
         :rtype: int
         """
         return self._VoipCallInCount
@@ -9595,7 +9595,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def VOIPCallInCount(self):
-        """Number of minutes consumed by audio package.
+        r"""Number of minutes consumed by audio package.
         :rtype: int
         """
         return self._VOIPCallInCount
@@ -9606,7 +9606,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrOfflineCount(self):
-        """Number of minutes consumed by offline speech-to-text package.
+        r"""Number of minutes consumed by offline speech-to-text package.
         :rtype: int
         """
         return self._AsrOfflineCount
@@ -9617,7 +9617,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrRealtimeCount(self):
-        """Number of minutes consumed by real-time speech-to-text package.
+        r"""Number of minutes consumed by real-time speech-to-text package.
         :rtype: int
         """
         return self._AsrRealtimeCount
@@ -9628,7 +9628,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9650,7 +9650,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
 
 class DescribeTelCdrRequest(AbstractModel):
-    """DescribeTelCdr request structure.
+    r"""DescribeTelCdr request structure.
 
     """
 
@@ -9690,7 +9690,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp, unix timestamp in seconds. supports up to the past 180 days.
+        r"""Start timestamp, unix timestamp in seconds. supports up to the past 180 days.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -9701,7 +9701,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.
+        r"""End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.
         :rtype: int
         """
         return self._EndTimeStamp
@@ -9714,7 +9714,7 @@ class DescribeTelCdrRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
-        """Instance id (deprecated).
+        r"""Instance id (deprecated).
         :rtype: int
         """
         return self._InstanceId
@@ -9727,7 +9727,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of returned entries (deprecated).
+        r"""Maximum number of returned entries (deprecated).
         :rtype: int
         """
         return self._Limit
@@ -9738,7 +9738,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset (deprecated).
+        r"""Offset (deprecated).
         :rtype: int
         """
         return self._Offset
@@ -9749,7 +9749,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9760,7 +9760,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size (required), up to 100.
+        r"""Page size (required), up to 100.
         :rtype: int
         """
         return self._PageSize
@@ -9771,7 +9771,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """<Page number (required), starting from 0.>.
+        r"""<Page number (required), starting from 0.>.
         :rtype: int
         """
         return self._PageNumber
@@ -9782,7 +9782,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Phones(self):
-        """Filter by phone number.
+        r"""Filter by phone number.
         :rtype: list of str
         """
         return self._Phones
@@ -9793,7 +9793,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SessionIds(self):
-        """Filter by sessionid.
+        r"""Filter by sessionid.
         :rtype: list of str
         """
         return self._SessionIds
@@ -9825,7 +9825,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
 
 class DescribeTelCdrResponse(AbstractModel):
-    """DescribeTelCdr response structure.
+    r"""DescribeTelCdr response structure.
 
     """
 
@@ -9847,7 +9847,7 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of call records.
+        r"""Total number of call records.
         :rtype: int
         """
         return self._TotalCount
@@ -9860,7 +9860,7 @@ class DescribeTelCdrResponse(AbstractModel):
     def TelCdrs(self):
         warnings.warn("parameter `TelCdrs` is deprecated", DeprecationWarning) 
 
-        """Call record.
+        r"""Call record.
         :rtype: list of TelCdrInfo
         """
         return self._TelCdrs
@@ -9873,7 +9873,7 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def TelCdrList(self):
-        """Call record.
+        r"""Call record.
         :rtype: list of TelCdrInfo
         """
         return self._TelCdrList
@@ -9884,7 +9884,7 @@ class DescribeTelCdrResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9912,7 +9912,7 @@ class DescribeTelCdrResponse(AbstractModel):
 
 
 class DescribeTelRecordAsrRequest(AbstractModel):
-    """DescribeTelRecordAsr request structure.
+    r"""DescribeTelRecordAsr request structure.
 
     """
 
@@ -9928,7 +9928,7 @@ class DescribeTelRecordAsrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9939,7 +9939,7 @@ class DescribeTelRecordAsrRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionId
@@ -9963,7 +9963,7 @@ class DescribeTelRecordAsrRequest(AbstractModel):
 
 
 class DescribeTelRecordAsrResponse(AbstractModel):
-    """DescribeTelRecordAsr response structure.
+    r"""DescribeTelRecordAsr response structure.
 
     """
 
@@ -9979,7 +9979,7 @@ class DescribeTelRecordAsrResponse(AbstractModel):
 
     @property
     def AsrDataList(self):
-        """Recording to text information.
+        r"""Recording to text information.
         :rtype: list of AsrData
         """
         return self._AsrDataList
@@ -9990,7 +9990,7 @@ class DescribeTelRecordAsrResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10011,7 +10011,7 @@ class DescribeTelRecordAsrResponse(AbstractModel):
 
 
 class DescribeTelSessionRequest(AbstractModel):
-    """DescribeTelSession request structure.
+    r"""DescribeTelSession request structure.
 
     """
 
@@ -10027,7 +10027,7 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -10038,7 +10038,7 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionId
@@ -10062,7 +10062,7 @@ class DescribeTelSessionRequest(AbstractModel):
 
 
 class DescribeTelSessionResponse(AbstractModel):
-    """DescribeTelSession response structure.
+    r"""DescribeTelSession response structure.
 
     """
 
@@ -10078,7 +10078,7 @@ class DescribeTelSessionResponse(AbstractModel):
 
     @property
     def Session(self):
-        """Session information.
+        r"""Session information.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.PSTNSession`
         """
         return self._Session
@@ -10089,7 +10089,7 @@ class DescribeTelSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10107,7 +10107,7 @@ class DescribeTelSessionResponse(AbstractModel):
 
 
 class DisableCCCPhoneNumberRequest(AbstractModel):
-    """DisableCCCPhoneNumber request structure.
+    r"""DisableCCCPhoneNumber request structure.
 
     """
 
@@ -10126,7 +10126,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def PhoneNumbers(self):
-        """Number list starting with 0086.
+        r"""Number list starting with 0086.
         :rtype: list of str
         """
         return self._PhoneNumbers
@@ -10137,7 +10137,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def Disabled(self):
-        """Disable switch: 0 for enable, 1 for disable.
+        r"""Disable switch: 0 for enable, 1 for disable.
         :rtype: int
         """
         return self._Disabled
@@ -10148,7 +10148,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application id.
+        r"""TCCC instance application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -10173,7 +10173,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
 
 class DisableCCCPhoneNumberResponse(AbstractModel):
-    """DisableCCCPhoneNumber response structure.
+    r"""DisableCCCPhoneNumber response structure.
 
     """
 
@@ -10186,7 +10186,7 @@ class DisableCCCPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10201,7 +10201,7 @@ class DisableCCCPhoneNumberResponse(AbstractModel):
 
 
 class ErrStaffItem(AbstractModel):
-    """When adding customer service personnel in batches, information of the customer service personnel with an error is returned.
+    r"""When adding customer service personnel in batches, information of the customer service personnel with an error is returned.
 
     """
 
@@ -10220,7 +10220,7 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def StaffEmail(self):
-        """Agent email address.
+        r"""Agent email address.
         :rtype: str
         """
         return self._StaffEmail
@@ -10231,7 +10231,7 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def Code(self):
-        """Error code.
+        r"""Error code.
         :rtype: str
         """
         return self._Code
@@ -10242,7 +10242,7 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def Message(self):
-        """Error description.
+        r"""Error description.
         :rtype: str
         """
         return self._Message
@@ -10267,7 +10267,7 @@ class ErrStaffItem(AbstractModel):
 
 
 class EventStaffDetail(AbstractModel):
-    """Event details.
+    r"""Event details.
 
     """
 
@@ -10280,7 +10280,7 @@ class EventStaffDetail(AbstractModel):
 
     @property
     def Staffs(self):
-        """Specifies the agent data.
+        r"""Specifies the agent data.
         :rtype: list of EventStaffElement
         """
         return self._Staffs
@@ -10308,7 +10308,7 @@ class EventStaffDetail(AbstractModel):
 
 
 class EventStaffElement(AbstractModel):
-    """Agent information.
+    r"""Agent information.
 
     """
 
@@ -10324,7 +10324,7 @@ class EventStaffElement(AbstractModel):
 
     @property
     def Mail(self):
-        """Agent email address.
+        r"""Agent email address.
         :rtype: str
         """
         return self._Mail
@@ -10335,7 +10335,7 @@ class EventStaffElement(AbstractModel):
 
     @property
     def StaffNumber(self):
-        """Agent id.
+        r"""Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -10359,7 +10359,7 @@ class EventStaffElement(AbstractModel):
 
 
 class ExtensionInfo(AbstractModel):
-    """Telephone information.
+    r"""Telephone information.
 
     """
 
@@ -10402,7 +10402,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Instance id.
+        r"""Instance id.
         :rtype: int
         """
         return self._SdkAppId
@@ -10413,7 +10413,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def FullExtensionId(self):
-        """Extension full name.
+        r"""Extension full name.
         :rtype: str
         """
         return self._FullExtensionId
@@ -10424,7 +10424,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -10435,7 +10435,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Affiliated skill group list.
+        r"""Affiliated skill group list.
         :rtype: str
         """
         return self._SkillGroupId
@@ -10446,7 +10446,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ExtensionName(self):
-        """Extension name.
+        r"""Extension name.
         :rtype: str
         """
         return self._ExtensionName
@@ -10457,7 +10457,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._CreateTime
@@ -10468,7 +10468,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """Last modification time.
+        r"""Last modification time.
         :rtype: int
         """
         return self._ModifyTime
@@ -10479,7 +10479,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Telephone status (0 offline, 100 free, 200 busy).
+        r"""Telephone status (0 offline, 100 free, 200 busy).
         :rtype: int
         """
         return self._Status
@@ -10490,7 +10490,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Register(self):
-        """Whether to register.
+        r"""Whether to register.
         :rtype: bool
         """
         return self._Register
@@ -10501,7 +10501,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Relation(self):
-        """Bind agent email.
+        r"""Bind agent email.
         :rtype: str
         """
         return self._Relation
@@ -10512,7 +10512,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def RelationName(self):
-        """Bind agent name.
+        r"""Bind agent name.
         :rtype: str
         """
         return self._RelationName
@@ -10545,7 +10545,7 @@ class ExtensionInfo(AbstractModel):
 
 
 class ForceMemberOfflineRequest(AbstractModel):
-    """ForceMemberOffline request structure.
+    r"""ForceMemberOffline request structure.
 
     """
 
@@ -10561,7 +10561,7 @@ class ForceMemberOfflineRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        r"""App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -10572,7 +10572,7 @@ class ForceMemberOfflineRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Customer service ID.
+        r"""Customer service ID.
         :rtype: str
         """
         return self._UserId
@@ -10596,7 +10596,7 @@ class ForceMemberOfflineRequest(AbstractModel):
 
 
 class ForceMemberOfflineResponse(AbstractModel):
-    """ForceMemberOffline response structure.
+    r"""ForceMemberOffline response structure.
 
     """
 
@@ -10609,7 +10609,7 @@ class ForceMemberOfflineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10624,7 +10624,7 @@ class ForceMemberOfflineResponse(AbstractModel):
 
 
 class ForwardingConfig(AbstractModel):
-    """Call forwarding configuration.
+    r"""Call forwarding configuration.
 
     """
 
@@ -10643,7 +10643,7 @@ class ForwardingConfig(AbstractModel):
 
     @property
     def Enabled(self):
-        """Whether to enable.
+        r"""Whether to enable.
         :rtype: bool
         """
         return self._Enabled
@@ -10654,7 +10654,7 @@ class ForwardingConfig(AbstractModel):
 
     @property
     def Condition(self):
-        """1 unconditional call forwarding 2 conditional call forwarding.
+        r"""1 unconditional call forwarding 2 conditional call forwarding.
         :rtype: int
         """
         return self._Condition
@@ -10665,7 +10665,7 @@ class ForwardingConfig(AbstractModel):
 
     @property
     def Target(self):
-        """Call forwarding destination.
+        r"""Call forwarding destination.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingTarget`
         """
         return self._Target
@@ -10692,7 +10692,7 @@ class ForwardingConfig(AbstractModel):
 
 
 class ForwardingTarget(AbstractModel):
-    """Call forwarding destination.
+    r"""Call forwarding destination.
 
     """
 
@@ -10714,7 +10714,7 @@ class ForwardingTarget(AbstractModel):
 
     @property
     def Type(self):
-        """Call forwarding target type. valid values: 1 (agent), 2 (skill group), 3 (extension).
+        r"""Call forwarding target type. valid values: 1 (agent), 2 (skill group), 3 (extension).
         :rtype: int
         """
         return self._Type
@@ -10725,7 +10725,7 @@ class ForwardingTarget(AbstractModel):
 
     @property
     def StaffUserId(self):
-        """Specifies the agent account when the call forwarding target is set to agent and Type is 1.
+        r"""Specifies the agent account when the call forwarding target is set to agent and Type is 1.
         :rtype: str
         """
         return self._StaffUserId
@@ -10736,7 +10736,7 @@ class ForwardingTarget(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Specifies the ID of the skill group as the call forwarding target. fill when Type is 2.
+        r"""Specifies the ID of the skill group as the call forwarding target. fill when Type is 2.
         :rtype: int
         """
         return self._SkillGroupId
@@ -10747,7 +10747,7 @@ class ForwardingTarget(AbstractModel):
 
     @property
     def Extension(self):
-        """The account to which the call is forwarded is an extension. fill when Type is 3.
+        r"""The account to which the call is forwarded is an extension. fill when Type is 3.
         :rtype: str
         """
         return self._Extension
@@ -10773,7 +10773,7 @@ class ForwardingTarget(AbstractModel):
 
 
 class HangUpCallRequest(AbstractModel):
-    """HangUpCall request structure.
+    r"""HangUpCall request structure.
 
     """
 
@@ -10789,7 +10789,7 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -10800,7 +10800,7 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionId
@@ -10824,7 +10824,7 @@ class HangUpCallRequest(AbstractModel):
 
 
 class HangUpCallResponse(AbstractModel):
-    """HangUpCall response structure.
+    r"""HangUpCall response structure.
 
     """
 
@@ -10837,7 +10837,7 @@ class HangUpCallResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10852,7 +10852,7 @@ class HangUpCallResponse(AbstractModel):
 
 
 class IVRKeyPressedElement(AbstractModel):
-    """IVR Key Information.
+    r"""IVR Key Information.
 
     """
 
@@ -10880,7 +10880,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Key(self):
-        """Hit keyword or press.
+        r"""Hit keyword or press.
         :rtype: str
         """
         return self._Key
@@ -10891,7 +10891,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Label(self):
-        """Tag associated with the key.
+        r"""Tag associated with the key.
         :rtype: str
         """
         return self._Label
@@ -10902,7 +10902,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def Timestamp(self):
-        """UNIX millisecond timestamp.
+        r"""UNIX millisecond timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -10913,7 +10913,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def NodeLabel(self):
-        """Node tags.
+        r"""Node tags.
         :rtype: str
         """
         return self._NodeLabel
@@ -10924,7 +10924,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def OriginalContent(self):
-        """User'S original input.
+        r"""User'S original input.
         :rtype: str
         """
         return self._OriginalContent
@@ -10935,7 +10935,7 @@ class IVRKeyPressedElement(AbstractModel):
 
     @property
     def TTSPrompt(self):
-        """TTS prompt content.
+        r"""TTS prompt content.
         :rtype: str
         """
         return self._TTSPrompt
@@ -10963,7 +10963,7 @@ class IVRKeyPressedElement(AbstractModel):
 
 
 class Interface(AbstractModel):
-    """Callback api.
+    r"""Callback api.
 
     """
 
@@ -10976,7 +10976,7 @@ class Interface(AbstractModel):
 
     @property
     def URL(self):
-        """API address
+        r"""API address
         :rtype: str
         """
         return self._URL
@@ -10999,7 +10999,7 @@ class Interface(AbstractModel):
 
 
 class ModifyExtensionRequest(AbstractModel):
-    """ModifyExtension request structure.
+    r"""ModifyExtension request structure.
 
     """
 
@@ -11024,7 +11024,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11035,7 +11035,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -11046,7 +11046,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def ExtensionName(self):
-        """Extension name.
+        r"""Extension name.
         :rtype: str
         """
         return self._ExtensionName
@@ -11057,7 +11057,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Affiliated skill group list.
+        r"""Affiliated skill group list.
         :rtype: list of int
         """
         return self._SkillGroupIds
@@ -11068,7 +11068,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def Relation(self):
-        """Bind agent email account.
+        r"""Bind agent email account.
         :rtype: str
         """
         return self._Relation
@@ -11095,7 +11095,7 @@ class ModifyExtensionRequest(AbstractModel):
 
 
 class ModifyExtensionResponse(AbstractModel):
-    """ModifyExtension response structure.
+    r"""ModifyExtension response structure.
 
     """
 
@@ -11108,7 +11108,7 @@ class ModifyExtensionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11123,7 +11123,7 @@ class ModifyExtensionResponse(AbstractModel):
 
 
 class ModifyOwnNumberApplyRequest(AbstractModel):
-    """ModifyOwnNumberApply request structure.
+    r"""ModifyOwnNumberApply request structure.
 
     """
 
@@ -11145,7 +11145,7 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11156,7 +11156,7 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def DetailList(self):
-        """Circuit-Related parameters.
+        r"""Circuit-Related parameters.
         :rtype: list of OwnNumberApplyDetailItem
         """
         return self._DetailList
@@ -11167,7 +11167,7 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def ApplyId(self):
-        """Approval id.
+        r"""Approval id.
         :rtype: int
         """
         return self._ApplyId
@@ -11178,7 +11178,7 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
     @property
     def Prefix(self):
-        """Prefix for sending numbers.
+        r"""Prefix for sending numbers.
         :rtype: str
         """
         return self._Prefix
@@ -11209,7 +11209,7 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
 
 
 class ModifyOwnNumberApplyResponse(AbstractModel):
-    """ModifyOwnNumberApply response structure.
+    r"""ModifyOwnNumberApply response structure.
 
     """
 
@@ -11222,7 +11222,7 @@ class ModifyOwnNumberApplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11237,7 +11237,7 @@ class ModifyOwnNumberApplyResponse(AbstractModel):
 
 
 class ModifyStaffPasswordRequest(AbstractModel):
-    """ModifyStaffPassword request structure.
+    r"""ModifyStaffPassword request structure.
 
     """
 
@@ -11256,7 +11256,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11267,7 +11267,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def Email(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._Email
@@ -11278,7 +11278,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """The set password.
+        r"""The set password.
         :rtype: str
         """
         return self._Password
@@ -11303,7 +11303,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
 
 class ModifyStaffPasswordResponse(AbstractModel):
-    """ModifyStaffPassword response structure.
+    r"""ModifyStaffPassword response structure.
 
     """
 
@@ -11316,7 +11316,7 @@ class ModifyStaffPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11331,7 +11331,7 @@ class ModifyStaffPasswordResponse(AbstractModel):
 
 
 class ModifyStaffRequest(AbstractModel):
-    """ModifyStaff request structure.
+    r"""ModifyStaff request structure.
 
     """
 
@@ -11374,7 +11374,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11385,7 +11385,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Email(self):
-        """Agent account.
+        r"""Agent account.
         :rtype: str
         """
         return self._Email
@@ -11396,7 +11396,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Agent name.
+        r"""Agent name.
         :rtype: str
         """
         return self._Name
@@ -11407,7 +11407,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """Agent phone number (preceded by 0086, example: 008618011111111).
+        r"""Agent phone number (preceded by 0086, example: 008618011111111).
         :rtype: str
         """
         return self._Phone
@@ -11418,7 +11418,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def Nick(self):
-        """Agent nickname.
+        r"""Agent nickname.
         :rtype: str
         """
         return self._Nick
@@ -11429,7 +11429,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def StaffNo(self):
-        """Agent id.
+        r"""Agent id.
         :rtype: str
         """
         return self._StaffNo
@@ -11440,7 +11440,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Bind skill group id list.
+        r"""Bind skill group id list.
         :rtype: list of int
         """
         return self._SkillGroupIds
@@ -11451,7 +11451,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def UseMobileCallOut(self):
-        """Whether the cell phone outbound call switch is enabled or not.
+        r"""Whether the cell phone outbound call switch is enabled or not.
         :rtype: bool
         """
         return self._UseMobileCallOut
@@ -11462,7 +11462,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def UseMobileAccept(self):
-        """Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
+        r"""Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :rtype: int
         """
         return self._UseMobileAccept
@@ -11473,7 +11473,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def ExtensionNumber(self):
-        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        r"""Agent extension number (starting with 1 to 8, 4 - 6 digits).
         :rtype: str
         """
         return self._ExtensionNumber
@@ -11484,7 +11484,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def ForwardingConfig(self):
-        """Call forwarding configuration.
+        r"""Call forwarding configuration.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
         """
         return self._ForwardingConfig
@@ -11519,7 +11519,7 @@ class ModifyStaffRequest(AbstractModel):
 
 
 class ModifyStaffResponse(AbstractModel):
-    """ModifyStaff response structure.
+    r"""ModifyStaff response structure.
 
     """
 
@@ -11532,7 +11532,7 @@ class ModifyStaffResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11547,7 +11547,7 @@ class ModifyStaffResponse(AbstractModel):
 
 
 class NumberInfo(AbstractModel):
-    """Number information.
+    r"""Number information.
 
     """
 
@@ -11566,7 +11566,7 @@ class NumberInfo(AbstractModel):
 
     @property
     def Number(self):
-        """Number.
+        r"""Number.
         :rtype: str
         """
         return self._Number
@@ -11577,7 +11577,7 @@ class NumberInfo(AbstractModel):
 
     @property
     def CallOutSkillGroupIds(self):
-        """Bound outbound call skill group.
+        r"""Bound outbound call skill group.
         :rtype: list of int non-negative
         """
         return self._CallOutSkillGroupIds
@@ -11588,7 +11588,7 @@ class NumberInfo(AbstractModel):
 
     @property
     def State(self):
-        """Number status, 1-normal, 2-disabled due to overdue payment, 4-disabled by the administrator, 5-disabled due to violation.
+        r"""Number status, 1-normal, 2-disabled due to overdue payment, 4-disabled by the administrator, 5-disabled due to violation.
         :rtype: int
         """
         return self._State
@@ -11613,7 +11613,7 @@ class NumberInfo(AbstractModel):
 
 
 class OwnNumberApplyDetailItem(AbstractModel):
-    """User-owned number approval detail data type
+    r"""User-owned number approval detail data type
 
     """
 
@@ -11638,7 +11638,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def CallType(self):
-        """Number type: 0 - inbound | 1 - outbound | 2 - inbound and outbound.
+        r"""Number type: 0 - inbound | 1 - outbound | 2 - inbound and outbound.
         :rtype: int
         """
         return self._CallType
@@ -11649,7 +11649,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """Line number.
+        r"""Line number.
         :rtype: str
         """
         return self._PhoneNumber
@@ -11660,7 +11660,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def MaxCallCount(self):
-        """Maximum concurrent call number.
+        r"""Maximum concurrent call number.
         :rtype: int
         """
         return self._MaxCallCount
@@ -11671,7 +11671,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def MaxCallPSec(self):
-        """Maximum number of concurrencies per second.
+        r"""Maximum number of concurrencies per second.
         :rtype: int
         """
         return self._MaxCallPSec
@@ -11682,7 +11682,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
     @property
     def OutboundCalleeFormat(self):
-        """Outbound called number format, use {+e.164} or {e.164}. 
+        r"""Outbound called number format, use {+e.164} or {e.164}. 
         :rtype: str
         """
         return self._OutboundCalleeFormat
@@ -11709,7 +11709,7 @@ class OwnNumberApplyDetailItem(AbstractModel):
 
 
 class PSTNSession(AbstractModel):
-    """PSTN session type.
+    r"""PSTN session type.
 
     """
 
@@ -11768,7 +11768,7 @@ Finished - completed.
 
     @property
     def SessionID(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionID
@@ -11779,7 +11779,7 @@ Finished - completed.
 
     @property
     def RoomID(self):
-        """Temporary room id for session.
+        r"""Temporary room id for session.
         :rtype: str
         """
         return self._RoomID
@@ -11790,7 +11790,7 @@ Finished - completed.
 
     @property
     def Caller(self):
-        """Caller.
+        r"""Caller.
         :rtype: str
         """
         return self._Caller
@@ -11801,7 +11801,7 @@ Finished - completed.
 
     @property
     def Callee(self):
-        """Called.
+        r"""Called.
         :rtype: str
         """
         return self._Callee
@@ -11812,7 +11812,7 @@ Finished - completed.
 
     @property
     def StartTimestamp(self):
-        """Start time. unix timestamp.
+        r"""Start time. unix timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -11823,7 +11823,7 @@ Finished - completed.
 
     @property
     def RingTimestamp(self):
-        """Ring time. unix timestamp.
+        r"""Ring time. unix timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -11834,7 +11834,7 @@ Finished - completed.
 
     @property
     def AcceptTimestamp(self):
-        """Answer time. unix timestamp.
+        r"""Answer time. unix timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -11845,7 +11845,7 @@ Finished - completed.
 
     @property
     def StaffEmail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._StaffEmail
@@ -11856,7 +11856,7 @@ Finished - completed.
 
     @property
     def StaffNumber(self):
-        """Agent id.
+        r"""Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -11867,7 +11867,7 @@ Finished - completed.
 
     @property
     def SessionStatus(self):
-        """Session status.
+        r"""Session status.
 Ringing - in progress.
 SeatJoining - waiting for the agent to answer.
 InProgress: in progress.
@@ -11882,7 +11882,7 @@ Finished - completed.
 
     @property
     def Direction(self):
-        """Session call direction, 0 - inbound | 1 - outbound.
+        r"""Session call direction, 0 - inbound | 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -11893,7 +11893,7 @@ Finished - completed.
 
     @property
     def OutBoundCaller(self):
-        """The number used for transferring to the external line (outbound caller).
+        r"""The number used for transferring to the external line (outbound caller).
         :rtype: str
         """
         return self._OutBoundCaller
@@ -11904,7 +11904,7 @@ Finished - completed.
 
     @property
     def OutBoundCallee(self):
-        """Outbound callee.
+        r"""Outbound callee.
         :rtype: str
         """
         return self._OutBoundCallee
@@ -11915,7 +11915,7 @@ Finished - completed.
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
+        r"""Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -11926,7 +11926,7 @@ Finished - completed.
 
     @property
     def ProtectedCallee(self):
-        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
+        r"""Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -11963,7 +11963,7 @@ Finished - completed.
 
 
 class PSTNSessionInfo(AbstractModel):
-    """PSTN Session Information.
+    r"""PSTN Session Information.
 
     """
 
@@ -12012,7 +12012,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionID(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionID
@@ -12023,7 +12023,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RoomID(self):
-        """Temporary room id for session.
+        r"""Temporary room id for session.
         :rtype: str
         """
         return self._RoomID
@@ -12034,7 +12034,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Caller(self):
-        """Caller.
+        r"""Caller.
         :rtype: str
         """
         return self._Caller
@@ -12045,7 +12045,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Callee(self):
-        """Called.
+        r"""Called.
         :rtype: str
         """
         return self._Callee
@@ -12056,7 +12056,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        """Start time. unix timestamp.
+        r"""Start time. unix timestamp.
         :rtype: str
         """
         return self._StartTimestamp
@@ -12067,7 +12067,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        """Answer time. unix timestamp.
+        r"""Answer time. unix timestamp.
         :rtype: str
         """
         return self._AcceptTimestamp
@@ -12078,7 +12078,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StaffEmail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._StaffEmail
@@ -12089,7 +12089,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StaffNumber(self):
-        """Agent id.
+        r"""Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -12100,7 +12100,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionStatus(self):
-        """Agent status inprogress ongoing.
+        r"""Agent status inprogress ongoing.
         :rtype: str
         """
         return self._SessionStatus
@@ -12111,7 +12111,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Direction(self):
-        """Session call direction, 0 - inbound | 1 - outbound.
+        r"""Session call direction, 0 - inbound | 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -12122,7 +12122,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        """Ring time. unix timestamp.
+        r"""Ring time. unix timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -12133,7 +12133,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
+        r"""Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -12144,7 +12144,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCallee(self):
-        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
+        r"""Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -12179,7 +12179,7 @@ class PSTNSessionInfo(AbstractModel):
 
 
 class PackageBuyInfo(AbstractModel):
-    """Package purchase information.
+    r"""Package purchase information.
 
     """
 
@@ -12207,7 +12207,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def PackageId(self):
-        """Package id.
+        r"""Package id.
         :rtype: str
         """
         return self._PackageId
@@ -12218,7 +12218,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Package type, 0 - outbound call package | 1 - 400 inbound call package.
+        r"""Package type, 0 - outbound call package | 1 - 400 inbound call package.
         :rtype: int
         """
         return self._Type
@@ -12229,7 +12229,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacitySize(self):
-        """<TOTAL_PACKAGE>.
+        r"""<TOTAL_PACKAGE>.
         :rtype: int
         """
         return self._CapacitySize
@@ -12240,7 +12240,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacityRemain(self):
-        """Remaining package balance.
+        r"""Remaining package balance.
         :rtype: int
         """
         return self._CapacityRemain
@@ -12251,7 +12251,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
-        """Purchased timestamp.
+        r"""Purchased timestamp.
         :rtype: int
         """
         return self._BuyTime
@@ -12262,7 +12262,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """Deadline timestamp.
+        r"""Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -12290,7 +12290,7 @@ class PackageBuyInfo(AbstractModel):
 
 
 class PausePredictiveDialingCampaignRequest(AbstractModel):
-    """PausePredictiveDialingCampaign request structure.
+    r"""PausePredictiveDialingCampaign request structure.
 
     """
 
@@ -12306,7 +12306,7 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12317,7 +12317,7 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -12341,7 +12341,7 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class PausePredictiveDialingCampaignResponse(AbstractModel):
-    """PausePredictiveDialingCampaign response structure.
+    r"""PausePredictiveDialingCampaign response structure.
 
     """
 
@@ -12354,7 +12354,7 @@ class PausePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12369,7 +12369,7 @@ class PausePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class PhoneNumBuyInfo(AbstractModel):
-    """Number purchase information.
+    r"""Number purchase information.
 
     """
 
@@ -12397,7 +12397,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def PhoneNum(self):
-        """Telephone number.
+        r"""Telephone number.
         :rtype: str
         """
         return self._PhoneNum
@@ -12408,7 +12408,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Number type, 0 - landline | 1 - virtual business number | 2 - ISP number | 3 - 400 number.
+        r"""Number type, 0 - landline | 1 - virtual business number | 2 - ISP number | 3 - 400 number.
         :rtype: int
         """
         return self._Type
@@ -12419,7 +12419,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def CallType(self):
-        """Call type of the number, 1 - inbound | 2 - outbound | 3 - inbound and outbound.
+        r"""Call type of the number, 1 - inbound | 2 - outbound | 3 - inbound and outbound.
         :rtype: int
         """
         return self._CallType
@@ -12430,7 +12430,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
-        """Purchased timestamp.
+        r"""Purchased timestamp.
         :rtype: int
         """
         return self._BuyTime
@@ -12441,7 +12441,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """Deadline timestamp.
+        r"""Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -12452,7 +12452,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def State(self):
-        """Number status, 1-normal | 2-suspended due to non-payment | 4-admin suspended | 5-suspended due to violation.
+        r"""Number status, 1-normal | 2-suspended due to non-payment | 4-admin suspended | 5-suspended due to violation.
         :rtype: int
         """
         return self._State
@@ -12480,7 +12480,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
 
 class ResetExtensionPasswordRequest(AbstractModel):
-    """ResetExtensionPassword request structure.
+    r"""ResetExtensionPassword request structure.
 
     """
 
@@ -12496,7 +12496,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12507,7 +12507,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension.
+        r"""Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -12531,7 +12531,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
 
 class ResetExtensionPasswordResponse(AbstractModel):
-    """ResetExtensionPassword response structure.
+    r"""ResetExtensionPassword response structure.
 
     """
 
@@ -12547,7 +12547,7 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     @property
     def Password(self):
-        """Reset password.
+        r"""Reset password.
         :rtype: str
         """
         return self._Password
@@ -12558,7 +12558,7 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12574,7 +12574,7 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
 
 class RestoreMemberOnlineRequest(AbstractModel):
-    """RestoreMemberOnline request structure.
+    r"""RestoreMemberOnline request structure.
 
     """
 
@@ -12590,7 +12590,7 @@ class RestoreMemberOnlineRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        r"""App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12601,7 +12601,7 @@ class RestoreMemberOnlineRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Customer service ID.
+        r"""Customer service ID.
         :rtype: str
         """
         return self._UserId
@@ -12625,7 +12625,7 @@ class RestoreMemberOnlineRequest(AbstractModel):
 
 
 class RestoreMemberOnlineResponse(AbstractModel):
-    """RestoreMemberOnline response structure.
+    r"""RestoreMemberOnline response structure.
 
     """
 
@@ -12638,7 +12638,7 @@ class RestoreMemberOnlineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12653,7 +12653,7 @@ class RestoreMemberOnlineResponse(AbstractModel):
 
 
 class ResumePredictiveDialingCampaignRequest(AbstractModel):
-    """ResumePredictiveDialingCampaign request structure.
+    r"""ResumePredictiveDialingCampaign request structure.
 
     """
 
@@ -12669,7 +12669,7 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12680,7 +12680,7 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """<Task id>.
+        r"""<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -12704,7 +12704,7 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class ResumePredictiveDialingCampaignResponse(AbstractModel):
-    """ResumePredictiveDialingCampaign response structure.
+    r"""ResumePredictiveDialingCampaign response structure.
 
     """
 
@@ -12717,7 +12717,7 @@ class ResumePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12732,7 +12732,7 @@ class ResumePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class SdkAppIdBuyInfo(AbstractModel):
-    """Application purchase information.
+    r"""Application purchase information.
 
     """
 
@@ -12760,7 +12760,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id.
+        r"""Application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -12771,7 +12771,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._Name
@@ -12782,7 +12782,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def StaffBuyNum(self):
-        """Agent purchase count (still within the validity period).
+        r"""Agent purchase count (still within the validity period).
         :rtype: int
         """
         return self._StaffBuyNum
@@ -12793,7 +12793,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def StaffBuyList(self):
-        """Agent purchase list (still within the validity period).
+        r"""Agent purchase list (still within the validity period).
         :rtype: list of StaffBuyInfo
         """
         return self._StaffBuyList
@@ -12804,7 +12804,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def PhoneNumBuyList(self):
-        """List of numbers purchased.
+        r"""List of numbers purchased.
         :rtype: list of PhoneNumBuyInfo
         """
         return self._PhoneNumBuyList
@@ -12815,7 +12815,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     @property
     def SipBuyNum(self):
-        """Number of office telephones purchased (still within the validity period).
+        r"""Number of office telephones purchased (still within the validity period).
         :rtype: int
         """
         return self._SipBuyNum
@@ -12853,7 +12853,7 @@ class SdkAppIdBuyInfo(AbstractModel):
 
 
 class SeatUserInfo(AbstractModel):
-    """Agent User Information
+    r"""Agent User Information
 
     """
 
@@ -12893,7 +12893,7 @@ Else: custom role id.
 
     @property
     def Name(self):
-        """Agent name.
+        r"""Agent name.
         :rtype: str
         """
         return self._Name
@@ -12904,7 +12904,7 @@ Else: custom role id.
 
     @property
     def Mail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._Mail
@@ -12915,7 +12915,7 @@ Else: custom role id.
 
     @property
     def StaffNumber(self):
-        """Worker number.
+        r"""Worker number.
         :rtype: str
         """
         return self._StaffNumber
@@ -12926,7 +12926,7 @@ Else: custom role id.
 
     @property
     def Phone(self):
-        """Agent'S telephone number (with 0086 prefix).
+        r"""Agent'S telephone number (with 0086 prefix).
         :rtype: str
         """
         return self._Phone
@@ -12937,7 +12937,7 @@ Else: custom role id.
 
     @property
     def Nick(self):
-        """Agent nickname.
+        r"""Agent nickname.
         :rtype: str
         """
         return self._Nick
@@ -12948,7 +12948,7 @@ Else: custom role id.
 
     @property
     def UserId(self):
-        """User id.
+        r"""User id.
         :rtype: str
         """
         return self._UserId
@@ -12959,7 +12959,7 @@ Else: custom role id.
 
     @property
     def SkillGroupNameList(self):
-        """List of skill groups associated with the agent.
+        r"""List of skill groups associated with the agent.
         :rtype: list of str
         """
         return self._SkillGroupNameList
@@ -12970,7 +12970,7 @@ Else: custom role id.
 
     @property
     def Role(self):
-        """1: admin.
+        r"""1: admin.
 2: quality inspector.
 3: ordinary agent.
 Else: custom role id.
@@ -12984,7 +12984,7 @@ Else: custom role id.
 
     @property
     def ExtensionNumber(self):
-        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        r"""Agent extension number (starting with 1 to 8, 4 - 6 digits).
         :rtype: str
         """
         return self._ExtensionNumber
@@ -13015,7 +13015,7 @@ Else: custom role id.
 
 
 class ServeParticipant(AbstractModel):
-    """Participant information.
+    r"""Participant information.
 
     """
 
@@ -13079,7 +13079,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Mail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._Mail
@@ -13090,7 +13090,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Phone(self):
-        """Agent phone number.
+        r"""Agent phone number.
         :rtype: str
         """
         return self._Phone
@@ -13101,7 +13101,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        """Ringing timestamp, unix second-level timestamp.
+        r"""Ringing timestamp, unix second-level timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -13112,7 +13112,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        """Answer timestamp. unix second-level timestamp.
+        r"""Answer timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -13123,7 +13123,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def EndedTimestamp(self):
-        """End timestamp. unix second-level timestamp.
+        r"""End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -13134,7 +13134,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RecordId(self):
-        """Recording id can be indexed to the agent side recording.
+        r"""Recording id can be indexed to the agent side recording.
         :rtype: str
         """
         return self._RecordId
@@ -13145,7 +13145,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Type(self):
-        """Participant type: "staffseat", "outboundseat", "staffphoneseat".
+        r"""Participant type: "staffseat", "outboundseat", "staffphoneseat".
         :rtype: str
         """
         return self._Type
@@ -13156,7 +13156,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferFrom(self):
-        """Transfer source agent information.
+        r"""Transfer source agent information.
         :rtype: str
         """
         return self._TransferFrom
@@ -13167,7 +13167,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferFromType(self):
-        """Transfer source participant type is consistent with the type value.
+        r"""Transfer source participant type is consistent with the type value.
         :rtype: str
         """
         return self._TransferFromType
@@ -13178,7 +13178,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferTo(self):
-        """Transfer destination agent information.
+        r"""Transfer destination agent information.
         :rtype: str
         """
         return self._TransferTo
@@ -13189,7 +13189,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def TransferToType(self):
-        """Transfer destination participant type, which is consistent with type values.
+        r"""Transfer destination participant type, which is consistent with type values.
         :rtype: str
         """
         return self._TransferToType
@@ -13200,7 +13200,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -13211,7 +13211,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def EndStatusString(self):
-        """Ending status.
+        r"""Ending status.
         :rtype: str
         """
         return self._EndStatusString
@@ -13222,7 +13222,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def RecordURL(self):
-        """Recording url.
+        r"""Recording url.
         :rtype: str
         """
         return self._RecordURL
@@ -13233,7 +13233,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def Sequence(self):
-        """Participant sequence number, starting from 0.
+        r"""Participant sequence number, starting from 0.
         :rtype: int
         """
         return self._Sequence
@@ -13244,7 +13244,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        """Start timestamp. unix second-level timestamp.
+        r"""Start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -13255,7 +13255,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -13266,7 +13266,7 @@ class ServeParticipant(AbstractModel):
 
     @property
     def CustomRecordURL(self):
-        """Address of the third-party cos for transferring recording.
+        r"""Address of the third-party cos for transferring recording.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -13306,7 +13306,7 @@ class ServeParticipant(AbstractModel):
 
 
 class ServerPushText(AbstractModel):
-    """Server controls the chatbot to broadcast specified text.
+    r"""Server controls the chatbot to broadcast specified text.
 
     """
 
@@ -13348,7 +13348,7 @@ Example.
 
     @property
     def Text(self):
-        """Specifies the server push broadcast text.
+        r"""Specifies the server push broadcast text.
         :rtype: str
         """
         return self._Text
@@ -13359,7 +13359,7 @@ Example.
 
     @property
     def Interrupt(self):
-        """Whether to allow the text to interrupt the robot's speaking.
+        r"""Whether to allow the text to interrupt the robot's speaking.
         :rtype: bool
         """
         return self._Interrupt
@@ -13370,7 +13370,7 @@ Example.
 
     @property
     def StopAfterPlay(self):
-        """Specifies whether to automatically close the dialogue task after broadcasting the text.
+        r"""Specifies whether to automatically close the dialogue task after broadcasting the text.
         :rtype: bool
         """
         return self._StopAfterPlay
@@ -13381,7 +13381,7 @@ Example.
 
     @property
     def Audio(self):
-        """Specifies the server push broadcast audio.
+        r"""Specifies the server push broadcast audio.
 Format description: audio must be mono, sampling rate should be consistent with the corresponding TTS, and coded as a Base64 string.
 Input rules: when the Audio field is provided, the system will not accept input in the Text field. the system will play the Audio content in the Audio field directly.
         :rtype: str
@@ -13394,7 +13394,7 @@ Input rules: when the Audio field is provided, the system will not accept input 
 
     @property
     def DropMode(self):
-        """Defaults to 0. valid only when Interrupt is false.
+        r"""Defaults to 0. valid only when Interrupt is false.
 -0 indicates that messages with Interrupt set to false will be dropped when there is an interaction.
 -Indicates that when there is an interaction in progress, messages with Interrupt set to false will not be dropped but cached and processed after the current interaction is completed.
 
@@ -13409,7 +13409,7 @@ Note: when DropMode is 1, the cache allows multiple messages. if an interruption
 
     @property
     def Priority(self):
-        """Message priority of ServerPushText. 0 means interruptible. 1 means not interruptible.
+        r"""Message priority of ServerPushText. 0 means interruptible. 1 means not interruptible.
 Note: after receiving a message with Priority=1, any other messages will be ignored (including messages with Priority=1) until the message processing of Priority=1 is complete. this field can be used together with the Interrupt and DropMode fields.
 Example.
 -Priority=1, Interrupt=true. specifies to Interrupt existing interaction and broadcast immediately. the broadcast will not be interrupted during the process.
@@ -13425,7 +13425,7 @@ Example.
 
     @property
     def AddHistory(self):
-        """Specifies whether the text is added to the llm history context.
+        r"""Specifies whether the text is added to the llm history context.
         :rtype: bool
         """
         return self._AddHistory
@@ -13454,7 +13454,7 @@ Example.
 
 
 class SessionEvent(AbstractModel):
-    """Call event.
+    r"""Call event.
 
     """
 
@@ -13473,7 +13473,7 @@ class SessionEvent(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Event timestamp. Unix second-level timestamp.
+        r"""Event timestamp. Unix second-level timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -13484,7 +13484,7 @@ class SessionEvent(AbstractModel):
 
     @property
     def EventType(self):
-        """Event type. currently supports StaffHold, StaffUnhold, StaffMute, StaffUnmute.
+        r"""Event type. currently supports StaffHold, StaffUnhold, StaffMute, StaffUnmute.
         :rtype: str
         """
         return self._EventType
@@ -13495,7 +13495,7 @@ class SessionEvent(AbstractModel):
 
     @property
     def StaffEventDetail(self):
-        """Describes event details related to the agent.
+        r"""Describes event details related to the agent.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.EventStaffDetail`
         """
         return self._StaffEventDetail
@@ -13522,7 +13522,7 @@ class SessionEvent(AbstractModel):
 
 
 class SkillGroupInfoItem(AbstractModel):
-    """Skill group information.
+    r"""Skill group information.
 
     """
 
@@ -13562,7 +13562,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -13573,7 +13573,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -13584,7 +13584,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def Type(self):
-        """(Deprecated) type: im, tel, all (full media).
+        r"""(Deprecated) type: im, tel, all (full media).
         :rtype: str
         """
         return self._Type
@@ -13595,7 +13595,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def RoutePolicy(self):
-        """Session allocation policy.
+        r"""Session allocation policy.
         :rtype: str
         """
         return self._RoutePolicy
@@ -13606,7 +13606,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def UsingLastSeat(self):
-        """Whether the session is allocated to the last serviced agent first.
+        r"""Whether the session is allocated to the last serviced agent first.
         :rtype: int
         """
         return self._UsingLastSeat
@@ -13617,7 +13617,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """Maximum concurrency number of single client service (default 1 for telephone type).
+        r"""Maximum concurrency number of single client service (default 1 for telephone type).
         :rtype: int
         """
         return self._MaxConcurrency
@@ -13628,7 +13628,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
-        """Last modification time.
+        r"""Last modification time.
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -13639,7 +13639,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def SkillGroupType(self):
-        """Skill group type 0-cell phone, 1-online, 3-audio, 4-video.	.	
+        r"""Skill group type 0-cell phone, 1-online, 3-audio, 4-video.	.	
         :rtype: int
         """
         return self._SkillGroupType
@@ -13650,7 +13650,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def Alias(self):
-        """Intra-Skill group line number.
+        r"""Intra-Skill group line number.
         :rtype: str
         """
         return self._Alias
@@ -13661,7 +13661,7 @@ class SkillGroupInfoItem(AbstractModel):
 
     @property
     def RingAll(self):
-        """Specifies whether to enable simultaneous ring.
+        r"""Specifies whether to enable simultaneous ring.
         :rtype: bool
         """
         return self._RingAll
@@ -13693,7 +13693,7 @@ class SkillGroupInfoItem(AbstractModel):
 
 
 class SkillGroupItem(AbstractModel):
-    """Skill group information.
+    r"""Skill group information.
 
     """
 
@@ -13715,7 +13715,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -13726,7 +13726,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -13737,7 +13737,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Priority(self):
-        """Priority.
+        r"""Priority.
         :rtype: int
         """
         return self._Priority
@@ -13748,7 +13748,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Type(self):
-        """Type: im, tel, all (full media).
+        r"""Type: im, tel, all (full media).
         :rtype: str
         """
         return self._Type
@@ -13774,7 +13774,7 @@ class SkillGroupItem(AbstractModel):
 
 
 class StaffBuyInfo(AbstractModel):
-    """Agent purchase information
+    r"""Agent purchase information
 
     """
 
@@ -13796,7 +13796,7 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def Num(self):
-        """Number of agents purchased.
+        r"""Number of agents purchased.
         :rtype: int
         """
         return self._Num
@@ -13807,7 +13807,7 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def BuyTime(self):
-        """Purchased timestamp.
+        r"""Purchased timestamp.
         :rtype: int
         """
         return self._BuyTime
@@ -13818,7 +13818,7 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """Deadline timestamp.
+        r"""Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -13829,7 +13829,7 @@ class StaffBuyInfo(AbstractModel):
 
     @property
     def SipNum(self):
-        """Quantity of office telephones purchased.
+        r"""Quantity of office telephones purchased.
         :rtype: int
         """
         return self._SipNum
@@ -13855,7 +13855,7 @@ class StaffBuyInfo(AbstractModel):
 
 
 class StaffInfo(AbstractModel):
-    """Agent Information with Skill Group Priority
+    r"""Agent Information with Skill Group Priority
 
     """
 
@@ -13901,7 +13901,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Agent name.
+        r"""Agent name.
         :rtype: str
         """
         return self._Name
@@ -13912,7 +13912,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def Mail(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._Mail
@@ -13923,7 +13923,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def Phone(self):
-        """Agent phone number.
+        r"""Agent phone number.
         :rtype: str
         """
         return self._Phone
@@ -13934,7 +13934,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def Nick(self):
-        """Agent nickname.
+        r"""Agent nickname.
         :rtype: str
         """
         return self._Nick
@@ -13945,7 +13945,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def StaffNumber(self):
-        """Agent id.
+        r"""Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -13958,7 +13958,7 @@ class StaffInfo(AbstractModel):
     def RoleId(self):
         warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
 
-        """User role ID. if a user is bound to multiple roles, RoleIdList takes precedence.
+        r"""User role ID. if a user is bound to multiple roles, RoleIdList takes precedence.
         :rtype: int
         """
         return self._RoleId
@@ -13973,7 +13973,7 @@ class StaffInfo(AbstractModel):
     def RoleIdList(self):
         warnings.warn("parameter `RoleIdList` is deprecated", DeprecationWarning) 
 
-        """User role id list.
+        r"""User role id list.
         :rtype: int
         """
         return self._RoleIdList
@@ -13986,7 +13986,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def RoleList(self):
-        """Specifies the user role id list.
+        r"""Specifies the user role id list.
         :rtype: list of int non-negative
         """
         return self._RoleList
@@ -13997,7 +13997,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def SkillGroupList(self):
-        """Affiliated skill group list.
+        r"""Affiliated skill group list.
         :rtype: list of SkillGroupItem
         """
         return self._SkillGroupList
@@ -14008,7 +14008,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def LastModifyTimestamp(self):
-        """Last modification time.
+        r"""Last modification time.
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -14019,7 +14019,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def ExtensionNumber(self):
-        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        r"""Agent extension number (starting with 1 to 8, 4 - 6 digits).
         :rtype: str
         """
         return self._ExtensionNumber
@@ -14030,7 +14030,7 @@ class StaffInfo(AbstractModel):
 
     @property
     def ForwardingConfig(self):
-        """Call forwarding configuration.
+        r"""Call forwarding configuration.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ForwardingConfig`
         """
         return self._ForwardingConfig
@@ -14071,7 +14071,7 @@ class StaffInfo(AbstractModel):
 
 
 class StaffSkillGroupList(AbstractModel):
-    """Bound skill group list for agents.
+    r"""Bound skill group list for agents.
 
     """
 
@@ -14087,7 +14087,7 @@ class StaffSkillGroupList(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -14098,7 +14098,7 @@ class StaffSkillGroupList(AbstractModel):
 
     @property
     def Priority(self):
-        """Priority of the agent in the skill group (1 is the highest, 5 is the lowest, 3 by default).
+        r"""Priority of the agent in the skill group (1 is the highest, 5 is the lowest, 3 by default).
         :rtype: int
         """
         return self._Priority
@@ -14122,7 +14122,7 @@ class StaffSkillGroupList(AbstractModel):
 
 
 class StaffStatus(AbstractModel):
-    """Agent status.
+    r"""Agent status.
 
     """
 
@@ -14144,7 +14144,7 @@ class StaffStatus(AbstractModel):
 
     @property
     def Cursor(self):
-        """Specifies the cursor used for querying in pagination scenarios.
+        r"""Specifies the cursor used for querying in pagination scenarios.
         :rtype: str
         """
         return self._Cursor
@@ -14155,7 +14155,7 @@ class StaffStatus(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Status timestamp. Unix second-level timestamp.
+        r"""Status timestamp. Unix second-level timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -14166,7 +14166,7 @@ class StaffStatus(AbstractModel):
 
     @property
     def Status(self):
-        """Agent status free | busy | rest | notReady | afterCallWork | offline.
+        r"""Agent status free | busy | rest | notReady | afterCallWork | offline.
         :rtype: str
         """
         return self._Status
@@ -14177,7 +14177,7 @@ class StaffStatus(AbstractModel):
 
     @property
     def SessionId(self):
-        """Specifies the session Id for status association.
+        r"""Specifies the session Id for status association.
         :rtype: str
         """
         return self._SessionId
@@ -14203,7 +14203,7 @@ class StaffStatus(AbstractModel):
 
 
 class StaffStatusExtra(AbstractModel):
-    """Supplementary Information on Agent Status
+    r"""Supplementary Information on Agent Status
 
     """
 
@@ -14219,7 +14219,7 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Type(self):
-        """IM - text | tel - cell phone | all - full media.
+        r"""IM - text | tel - cell phone | all - full media.
         :rtype: str
         """
         return self._Type
@@ -14230,7 +14230,7 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Direct(self):
-        """IN - inbound | out - outbound.
+        r"""IN - inbound | out - outbound.
         :rtype: str
         """
         return self._Direct
@@ -14254,7 +14254,7 @@ class StaffStatusExtra(AbstractModel):
 
 
 class StaffStatusMetrics(AbstractModel):
-    """Agent status-related information
+    r"""Agent status-related information
 
     """
 
@@ -14317,7 +14317,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """Agent email.
+        r"""Agent email.
         :rtype: str
         """
         return self._Email
@@ -14328,7 +14328,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline.
+        r"""Agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline.
         :rtype: str
         """
         return self._Status
@@ -14339,7 +14339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusExtra(self):
-        """Supplementary information on agent status.
+        r"""Supplementary information on agent status.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
         """
         return self._StatusExtra
@@ -14350,7 +14350,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineDuration(self):
-        """Total online duration of the day.
+        r"""Total online duration of the day.
         :rtype: int
         """
         return self._OnlineDuration
@@ -14361,7 +14361,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FreeDuration(self):
-        """Total available duration of the day.
+        r"""Total available duration of the day.
         :rtype: int
         """
         return self._FreeDuration
@@ -14372,7 +14372,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusyDuration(self):
-        """Total busy duration of the day.
+        r"""Total busy duration of the day.
         :rtype: int
         """
         return self._BusyDuration
@@ -14383,7 +14383,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotReadyDuration(self):
-        """Total not ready status duration of the day.
+        r"""Total not ready status duration of the day.
         :rtype: int
         """
         return self._NotReadyDuration
@@ -14394,7 +14394,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RestDuration(self):
-        """Total break duration of the day.
+        r"""Total break duration of the day.
         :rtype: int
         """
         return self._RestDuration
@@ -14405,7 +14405,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AfterCallWorkDuration(self):
-        """Adjust the total duration of after-call work for the day.
+        r"""Adjust the total duration of after-call work for the day.
         :rtype: int
         """
         return self._AfterCallWorkDuration
@@ -14416,7 +14416,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """Reason for break.
+        r"""Reason for break.
         :rtype: str
         """
         return self._Reason
@@ -14427,7 +14427,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveRest(self):
-        """Whether to reserve break status.
+        r"""Whether to reserve break status.
         :rtype: bool
         """
         return self._ReserveRest
@@ -14438,7 +14438,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveNotReady(self):
-        """Whether to reserve not ready status.
+        r"""Whether to reserve not ready status.
         :rtype: bool
         """
         return self._ReserveNotReady
@@ -14449,7 +14449,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseMobileAccept(self):
-        """Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
+        r"""Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :rtype: int
         """
         return self._UseMobileAccept
@@ -14460,7 +14460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseMobileCallOut(self):
-        """Cell phone outbound call switch.
+        r"""Cell phone outbound call switch.
         :rtype: bool
         """
         return self._UseMobileCallOut
@@ -14471,7 +14471,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastOnlineTimestamp(self):
-        """Last online timestamp.
+        r"""Last online timestamp.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14483,7 +14483,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastStatusTimestamp(self):
-        """Last status timestamp.
+        r"""Last status timestamp.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14495,7 +14495,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientInfo(self):
-        """Specifies the endpoint information for customer service logon.
+        r"""Specifies the endpoint information for customer service logon.
         :rtype: list of ClientInfo
         """
         return self._ClientInfo
@@ -14541,7 +14541,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class StopAutoCalloutTaskRequest(AbstractModel):
-    """StopAutoCalloutTask request structure.
+    r"""StopAutoCalloutTask request structure.
 
     """
 
@@ -14557,7 +14557,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -14568,7 +14568,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task id.
+        r"""Task id.
         :rtype: int
         """
         return self._TaskId
@@ -14592,7 +14592,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
 
 class StopAutoCalloutTaskResponse(AbstractModel):
-    """StopAutoCalloutTask response structure.
+    r"""StopAutoCalloutTask response structure.
 
     """
 
@@ -14605,7 +14605,7 @@ class StopAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14620,7 +14620,7 @@ class StopAutoCalloutTaskResponse(AbstractModel):
 
 
 class TelCdrInfo(AbstractModel):
-    """Phone call information
+    r"""Phone call information
 
     """
 
@@ -14856,7 +14856,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Caller(self):
-        """Caller number.
+        r"""Caller number.
         :rtype: str
         """
         return self._Caller
@@ -14867,7 +14867,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Callee(self):
-        """Called number.
+        r"""Called number.
         :rtype: str
         """
         return self._Callee
@@ -14878,7 +14878,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Time(self):
-        """Call initiation timestamp, unix timestamp.
+        r"""Call initiation timestamp, unix timestamp.
         :rtype: int
         """
         return self._Time
@@ -14889,7 +14889,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Direction(self):
-        """Call direction: 0 - inbound, 1 - outbound.
+        r"""Call direction: 0 - inbound, 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -14900,7 +14900,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def CallType(self):
-        """Call Type: 1. Voice outbound call 2. Voice Inbound call 3. Audio Inbound 5 Predictive Dialing Call 6. Internal Call between Staff
+        r"""Call Type: 1. Voice outbound call 2. Voice Inbound call 3. Audio Inbound 5 Predictive Dialing Call 6. Internal Call between Staff
         :rtype: int
         """
         return self._CallType
@@ -14911,7 +14911,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Duration(self):
-        """Call duration.
+        r"""Call duration.
         :rtype: int
         """
         return self._Duration
@@ -14922,7 +14922,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def RecordURL(self):
-        """Recording information.
+        r"""Recording information.
         :rtype: str
         """
         return self._RecordURL
@@ -14933,7 +14933,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def RecordId(self):
-        """Recording id.
+        r"""Recording id.
         :rtype: str
         """
         return self._RecordId
@@ -14944,7 +14944,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def SeatUser(self):
-        """Agent information.
+        r"""Agent information.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
         """
         return self._SeatUser
@@ -14955,7 +14955,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def EndStatus(self):
-        """EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
+        r"""EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
 **Scenario         EndStatus         EndStatusString         status description**.
 
@@ -15019,7 +15019,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def SkillGroup(self):
-        """Skill group name.
+        r"""Skill group name.
         :rtype: str
         """
         return self._SkillGroup
@@ -15030,7 +15030,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def CallerLocation(self):
-        """Caller'S location.
+        r"""Caller'S location.
         :rtype: str
         """
         return self._CallerLocation
@@ -15041,7 +15041,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def IVRDuration(self):
-        """Time spent in ivr stage.
+        r"""Time spent in ivr stage.
         :rtype: int
         """
         return self._IVRDuration
@@ -15052,7 +15052,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def RingTimestamp(self):
-        """Ring timestamp. unix second-level timestamp.
+        r"""Ring timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -15063,7 +15063,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def AcceptTimestamp(self):
-        """Answer timestamp. unix second-level timestamp.
+        r"""Answer timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -15074,7 +15074,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def EndedTimestamp(self):
-        """End timestamp. unix second-level timestamp.
+        r"""End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -15085,7 +15085,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def IVRKeyPressed(self):
-        """IVR key information, e.g. ["1","2","3"].
+        r"""IVR key information, e.g. ["1","2","3"].
         :rtype: list of str
         """
         return self._IVRKeyPressed
@@ -15096,7 +15096,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def HungUpSide(self):
-        """Hang-Up side, seat, user, system.
+        r"""Hang-Up side, seat, user, system.
         :rtype: str
         """
         return self._HungUpSide
@@ -15107,7 +15107,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def ServeParticipants(self):
-        """Service participant list.
+        r"""Service participant list.
         :rtype: list of ServeParticipant
         """
         return self._ServeParticipants
@@ -15118,7 +15118,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def SkillGroupId(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -15129,7 +15129,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def EndStatusString(self):
-        """EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
+        r"""EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
 **Scenario         EndStatus         EndStatusString         status description**.
 
@@ -15193,7 +15193,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def StartTimestamp(self):
-        """Session start timestamp. unix second-level timestamp.
+        r"""Session start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -15204,7 +15204,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def QueuedTimestamp(self):
-        """Queue entry time. unix second-level timestamp.
+        r"""Queue entry time. unix second-level timestamp.
         :rtype: int
         """
         return self._QueuedTimestamp
@@ -15215,7 +15215,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def PostIVRKeyPressed(self):
-        """Post-IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
+        r"""Post-IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :rtype: list of IVRKeyPressedElement
         """
         return self._PostIVRKeyPressed
@@ -15226,7 +15226,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def QueuedSkillGroupId(self):
-        """Queue skill group id.
+        r"""Queue skill group id.
         :rtype: int
         """
         return self._QueuedSkillGroupId
@@ -15237,7 +15237,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def SessionId(self):
-        """Session id.
+        r"""Session id.
         :rtype: str
         """
         return self._SessionId
@@ -15248,7 +15248,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
+        r"""Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -15259,7 +15259,7 @@ Outbound call 212 carrier blocked.
 
     @property
     def ProtectedCallee(self):
-        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
+        r"""Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -15272,7 +15272,7 @@ Outbound call 212 carrier blocked.
     def Uui(self):
         warnings.warn("parameter `Uui` is deprecated", DeprecationWarning) 
 
-        """Customer custom data. (user - to - user interface).
+        r"""Customer custom data. (user - to - user interface).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15286,7 +15286,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UUI(self):
-        """Customer custom data. (user - to - user interface).
+        r"""Customer custom data. (user - to - user interface).
         :rtype: str
         """
         return self._UUI
@@ -15297,7 +15297,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IVRKeyPressedEx(self):
-        """IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
+        r"""IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :rtype: list of IVRKeyPressedElement
         """
         return self._IVRKeyPressedEx
@@ -15308,7 +15308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrUrl(self):
-        """Access to the asr text information address of the recording.
+        r"""Access to the asr text information address of the recording.
         :rtype: str
         """
         return self._AsrUrl
@@ -15319,7 +15319,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrStatus(self):
-        """ASRUrl status: complete.
+        r"""ASRUrl status: complete.
 Completed;.
 Processing.
 Generating.
@@ -15335,7 +15335,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def CustomRecordURL(self):
-        """Address of the third-party cos for transferring recording.
+        r"""Address of the third-party cos for transferring recording.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -15346,7 +15346,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -15357,7 +15357,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def QueuedSkillGroupName(self):
-        """Queue skill group name.
+        r"""Queue skill group name.
         :rtype: str
         """
         return self._QueuedSkillGroupName
@@ -15368,7 +15368,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def VoicemailRecordURL(self):
-        """Audio message recording url during call.
+        r"""Audio message recording url during call.
         :rtype: list of str
         """
         return self._VoicemailRecordURL
@@ -15379,7 +15379,7 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def VoicemailAsrURL(self):
-        """Text information address of asr audio message during a call.
+        r"""Text information address of asr audio message during a call.
         :rtype: list of str
         """
         return self._VoicemailAsrURL
@@ -15456,7 +15456,7 @@ No record (offline asr generation is not enabled or no package is available).
 
 
 class TimeRange(AbstractModel):
-    """Time range, 24-hour system, format: 09:00:00.
+    r"""Time range, 24-hour system, format: 09:00:00.
 
     """
 
@@ -15472,7 +15472,7 @@ class TimeRange(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -15483,7 +15483,7 @@ class TimeRange(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -15507,7 +15507,7 @@ class TimeRange(AbstractModel):
 
 
 class ToneWordInfo(AbstractModel):
-    """Undertake filler word info.
+    r"""Undertake filler word info.
 
     """
 
@@ -15523,7 +15523,7 @@ class ToneWordInfo(AbstractModel):
 
     @property
     def FirstSentenceTimeout(self):
-        """Specifies the timeout period for the first request in seconds.
+        r"""Specifies the timeout period for the first request in seconds.
         :rtype: float
         """
         return self._FirstSentenceTimeout
@@ -15534,7 +15534,7 @@ class ToneWordInfo(AbstractModel):
 
     @property
     def ZHToneWords(self):
-        """Undertakes a modal particle.
+        r"""Undertakes a modal particle.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.ZHToneWordsInfo`
         """
         return self._ZHToneWords
@@ -15560,7 +15560,7 @@ class ToneWordInfo(AbstractModel):
 
 
 class TransferToManualRequest(AbstractModel):
-    """TransferToManual request structure.
+    r"""TransferToManual request structure.
 
     """
 
@@ -15579,7 +15579,7 @@ class TransferToManualRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        r"""App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -15590,7 +15590,7 @@ class TransferToManualRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -15601,7 +15601,7 @@ class TransferToManualRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group Id.
+        r"""Skill group Id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -15626,7 +15626,7 @@ class TransferToManualRequest(AbstractModel):
 
 
 class TransferToManualResponse(AbstractModel):
-    """TransferToManual response structure.
+    r"""TransferToManual response structure.
 
     """
 
@@ -15639,7 +15639,7 @@ class TransferToManualResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15654,7 +15654,7 @@ class TransferToManualResponse(AbstractModel):
 
 
 class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
-    """UnbindNumberCallOutSkillGroup request structure.
+    r"""UnbindNumberCallOutSkillGroup request structure.
 
     """
 
@@ -15673,7 +15673,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -15684,7 +15684,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def Number(self):
-        """Number to be unbound.
+        r"""Number to be unbound.
         :rtype: str
         """
         return self._Number
@@ -15695,7 +15695,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """List of skill group ids to be unbound.
+        r"""List of skill group ids to be unbound.
         :rtype: list of int non-negative
         """
         return self._SkillGroupIds
@@ -15720,7 +15720,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
 
 class UnbindNumberCallOutSkillGroupResponse(AbstractModel):
-    """UnbindNumberCallOutSkillGroup response structure.
+    r"""UnbindNumberCallOutSkillGroup response structure.
 
     """
 
@@ -15733,7 +15733,7 @@ class UnbindNumberCallOutSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15748,7 +15748,7 @@ class UnbindNumberCallOutSkillGroupResponse(AbstractModel):
 
 
 class UnbindStaffSkillGroupListRequest(AbstractModel):
-    """UnbindStaffSkillGroupList request structure.
+    r"""UnbindStaffSkillGroupList request structure.
 
     """
 
@@ -15767,7 +15767,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -15778,7 +15778,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def StaffEmail(self):
-        """Customer service email.
+        r"""Customer service email.
         :rtype: str
         """
         return self._StaffEmail
@@ -15789,7 +15789,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SkillGroupList(self):
-        """Unbound skill group list.
+        r"""Unbound skill group list.
         :rtype: list of int
         """
         return self._SkillGroupList
@@ -15814,7 +15814,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
 
 class UnbindStaffSkillGroupListResponse(AbstractModel):
-    """UnbindStaffSkillGroupList response structure.
+    r"""UnbindStaffSkillGroupList response structure.
 
     """
 
@@ -15827,7 +15827,7 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15842,7 +15842,7 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
 
 
 class UpdateCCCSkillGroupRequest(AbstractModel):
-    """UpdateCCCSkillGroup request structure.
+    r"""UpdateCCCSkillGroup request structure.
 
     """
 
@@ -15867,7 +15867,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -15878,7 +15878,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupID(self):
-        """Skill group id.
+        r"""Skill group id.
         :rtype: int
         """
         return self._SkillGroupID
@@ -15889,7 +15889,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupName(self):
-        """Modified skill group name.
+        r"""Modified skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -15900,7 +15900,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """Modified maximum concurrency, with the maximum synchronization being 2.
+        r"""Modified maximum concurrency, with the maximum synchronization being 2.
         :rtype: int
         """
         return self._MaxConcurrency
@@ -15911,7 +15911,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def RingAll(self):
-        """True for simultaneous ringing, false for sequential ringing.
+        r"""True for simultaneous ringing, false for sequential ringing.
         :rtype: bool
         """
         return self._RingAll
@@ -15938,7 +15938,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
 
 class UpdateCCCSkillGroupResponse(AbstractModel):
-    """UpdateCCCSkillGroup response structure.
+    r"""UpdateCCCSkillGroup response structure.
 
     """
 
@@ -15951,7 +15951,7 @@ class UpdateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15966,7 +15966,7 @@ class UpdateCCCSkillGroupResponse(AbstractModel):
 
 
 class UpdatePredictiveDialingCampaignRequest(AbstractModel):
-    """UpdatePredictiveDialingCampaign request structure.
+    r"""UpdatePredictiveDialingCampaign request structure.
 
     """
 
@@ -16027,7 +16027,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -16038,7 +16038,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task id.
+        r"""Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -16049,7 +16049,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task name.
+        r"""Task name.
         :rtype: str
         """
         return self._Name
@@ -16060,7 +16060,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting e.164 or number formats without country code.
+        r"""Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -16071,7 +16071,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """Calling list using the number formats displayed on the management side.
+        r"""Calling list using the number formats displayed on the management side.
         :rtype: list of str
         """
         return self._Callers
@@ -16082,7 +16082,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CallOrder(self):
-        """Being called sequence: 0 for random 1 for in order.
+        r"""Being called sequence: 0 for random 1 for in order.
         :rtype: int
         """
         return self._CallOrder
@@ -16093,7 +16093,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """ID of the used skill group of agents.
+        r"""ID of the used skill group of agents.
         :rtype: int
         """
         return self._SkillGroupId
@@ -16104,7 +16104,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """Running priority of multiple tasks in the same application, from high to low 1 - 5.
+        r"""Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :rtype: int
         """
         return self._Priority
@@ -16115,7 +16115,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        """Expected call drop rate, percentage, 5 - 50.	.	
+        r"""Expected call drop rate, percentage, 5 - 50.	.	
         :rtype: int
         """
         return self._ExpectedAbandonRate
@@ -16126,7 +16126,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
-        """Call retry interval, in seconds, [60 - 86,400].
+        r"""Call retry interval, in seconds, [60 - 86,400].
         :rtype: int
         """
         return self._RetryInterval
@@ -16137,7 +16137,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. unix timestamp. the task will automatically start after this time.
+        r"""Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -16148,7 +16148,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. unix timestamp. the task will automatically terminate after this time.
+        r"""Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -16159,7 +16159,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified ivr id.
+        r"""Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -16170,7 +16170,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def RetryTimes(self):
-        """Number of call retries, 0 - 2.
+        r"""Number of call retries, 0 - 2.
         :rtype: int
         """
         return self._RetryTimes
@@ -16181,7 +16181,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Variables(self):
-        """Custom variable.
+        r"""Custom variable.
         :rtype: list of Variable
         """
         return self._Variables
@@ -16192,7 +16192,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """	UUI
+        r"""	UUI
         :rtype: str
         """
         return self._UUI
@@ -16203,7 +16203,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CalleeAttributes(self):
-        """Property of the called.
+        r"""Property of the called.
         :rtype: list of CalleeAttribute
         """
         return self._CalleeAttributes
@@ -16252,7 +16252,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
 
 class UpdatePredictiveDialingCampaignResponse(AbstractModel):
-    """UpdatePredictiveDialingCampaign response structure.
+    r"""UpdatePredictiveDialingCampaign response structure.
 
     """
 
@@ -16265,7 +16265,7 @@ class UpdatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16280,7 +16280,7 @@ class UpdatePredictiveDialingCampaignResponse(AbstractModel):
 
 
 class UploadAudioInfo(AbstractModel):
-    """Upload Audio File Information
+    r"""Upload Audio File Information
 
     """
 
@@ -16296,7 +16296,7 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def CustomFileName(self):
-        """File alias (can be duplicated).
+        r"""File alias (can be duplicated).
         :rtype: str
         """
         return self._CustomFileName
@@ -16307,7 +16307,7 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def AudioUrl(self):
-        """Audio file link (supports mp3 and wav formats, file size not exceeding 5mb).
+        r"""Audio file link (supports mp3 and wav formats, file size not exceeding 5mb).
         :rtype: str
         """
         return self._AudioUrl
@@ -16331,7 +16331,7 @@ class UploadAudioInfo(AbstractModel):
 
 
 class UploadIvrAudioFailedInfo(AbstractModel):
-    """Failed to upload audio file information
+    r"""Failed to upload audio file information
 
     """
 
@@ -16347,7 +16347,7 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """Filename.
+        r"""Filename.
         :rtype: str
         """
         return self._FileName
@@ -16358,7 +16358,7 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
     @property
     def FailedMsg(self):
-        """Reason for failure.
+        r"""Reason for failure.
         :rtype: str
         """
         return self._FailedMsg
@@ -16382,7 +16382,7 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
 
 class UploadIvrAudioRequest(AbstractModel):
-    """UploadIvrAudio request structure.
+    r"""UploadIvrAudio request structure.
 
     """
 
@@ -16398,7 +16398,7 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        r"""Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -16409,7 +16409,7 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def AudioList(self):
-        """Audio file list.
+        r"""Audio file list.
         :rtype: list of UploadAudioInfo
         """
         return self._AudioList
@@ -16438,7 +16438,7 @@ class UploadIvrAudioRequest(AbstractModel):
 
 
 class UploadIvrAudioResponse(AbstractModel):
-    """UploadIvrAudio response structure.
+    r"""UploadIvrAudio response structure.
 
     """
 
@@ -16457,7 +16457,7 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def FailedFileList(self):
-        """List of files that failed to be uploaded.
+        r"""List of files that failed to be uploaded.
         :rtype: list of UploadIvrAudioFailedInfo
         """
         return self._FailedFileList
@@ -16468,7 +16468,7 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def SuccessFileList(self):
-        """List of successfully uploaded files.
+        r"""List of successfully uploaded files.
         :rtype: list of AudioFileInfo
         """
         return self._SuccessFileList
@@ -16479,7 +16479,7 @@ class UploadIvrAudioResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16506,7 +16506,7 @@ class UploadIvrAudioResponse(AbstractModel):
 
 
 class Variable(AbstractModel):
-    """Variable.
+    r"""Variable.
 
     """
 
@@ -16522,7 +16522,7 @@ class Variable(AbstractModel):
 
     @property
     def Key(self):
-        """Variable name.
+        r"""Variable name.
         :rtype: str
         """
         return self._Key
@@ -16533,7 +16533,7 @@ class Variable(AbstractModel):
 
     @property
     def Value(self):
-        """Variable value.
+        r"""Variable value.
         :rtype: str
         """
         return self._Value
@@ -16557,7 +16557,7 @@ class Variable(AbstractModel):
 
 
 class ZHToneWordsInfo(AbstractModel):
-    """Undertake filler word.
+    r"""Undertake filler word.
 
     """
 
@@ -16576,7 +16576,7 @@ class ZHToneWordsInfo(AbstractModel):
 
     @property
     def Neutral(self):
-        """Specifies the word list.
+        r"""Specifies the word list.
         :rtype: list of str
         """
         return self._Neutral
@@ -16587,7 +16587,7 @@ class ZHToneWordsInfo(AbstractModel):
 
     @property
     def Positive(self):
-        """Positive word list.
+        r"""Positive word list.
         :rtype: list of str
         """
         return self._Positive
@@ -16598,7 +16598,7 @@ class ZHToneWordsInfo(AbstractModel):
 
     @property
     def Negative(self):
-        """Negative word list.
+        r"""Negative word list.
         :rtype: list of str
         """
         return self._Negative

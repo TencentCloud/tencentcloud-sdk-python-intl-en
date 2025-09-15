@@ -27,7 +27,7 @@ class CfsClient(AbstractClient):
 
 
     def BindAutoSnapshotPolicy(self, request):
-        """This API is used to bind one or multiple file systems to a snapshot policy. A file system can be bound to only one policy.
+        r"""This API is used to bind one or multiple file systems to a snapshot policy. A file system can be bound to only one policy.
 
         :param request: Request instance for BindAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.BindAutoSnapshotPolicyRequest`
@@ -50,7 +50,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateAutoSnapshotPolicy(self, request):
-        """This API is used to create a scheduled snapshot policy.
+        r"""This API is used to create a scheduled snapshot policy.
 
         :param request: Request instance for CreateAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateAutoSnapshotPolicyRequest`
@@ -73,7 +73,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsFileSystem(self, request):
-        """This API is used to create a file system.
+        r"""This API is used to create a file system.
 
         :param request: Request instance for CreateCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsFileSystemRequest`
@@ -96,7 +96,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsPGroup(self, request):
-        """This API is used to create a permission group.
+        r"""This API is used to create a permission group.
 
         :param request: Request instance for CreateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsPGroupRequest`
@@ -119,7 +119,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsRule(self, request):
-        """This API is used to create a permission group rule.
+        r"""This API is used to create a permission group rule.
 
         :param request: Request instance for CreateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsRuleRequest`
@@ -142,7 +142,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateCfsSnapshot(self, request):
-        """This API is used to create a file system snapshot.
+        r"""This API is used to create a file system snapshot.
 
         :param request: Request instance for CreateCfsSnapshot.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsSnapshotRequest`
@@ -165,7 +165,7 @@ class CfsClient(AbstractClient):
 
 
     def CreateMigrationTask(self, request):
-        """This API is used to create a migration task.
+        r"""This API is used to create a migration task.
         To use this API, submit a ticket for us to add you to the allowlist.
 
         :param request: Request instance for CreateMigrationTask.
@@ -189,7 +189,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteAutoSnapshotPolicy(self, request):
-        """This API is used to delete a scheduled snapshot policy.
+        r"""This API is used to delete a scheduled snapshot policy.
 
         :param request: Request instance for DeleteAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteAutoSnapshotPolicyRequest`
@@ -212,7 +212,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsFileSystem(self, request):
-        """This API is used to delete a file system.
+        r"""This API is used to delete a file system.
 
         :param request: Request instance for DeleteCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsFileSystemRequest`
@@ -235,7 +235,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsPGroup(self, request):
-        """This API is used to delete a permission group.
+        r"""This API is used to delete a permission group.
 
         :param request: Request instance for DeleteCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsPGroupRequest`
@@ -258,7 +258,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsRule(self, request):
-        """This API is used to delete a permission group rule.
+        r"""This API is used to delete a permission group rule.
 
         :param request: Request instance for DeleteCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsRuleRequest`
@@ -281,7 +281,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteCfsSnapshot(self, request):
-        """This API is used to delete a file system snapshot.
+        r"""This API is used to delete a file system snapshot.
 
         :param request: Request instance for DeleteCfsSnapshot.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsSnapshotRequest`
@@ -304,7 +304,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteMigrationTask(self, request):
-        """This API is used to delete a migration task.
+        r"""This API is used to delete a migration task.
         To use this API, submit a ticket for us to add you to the allowlist.
 
         :param request: Request instance for DeleteMigrationTask.
@@ -328,7 +328,7 @@ class CfsClient(AbstractClient):
 
 
     def DeleteMountTarget(self, request):
-        """This API is used to delete a mount target.
+        r"""This API is used to delete a mount target.
 
         :param request: Request instance for DeleteMountTarget.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteMountTargetRequest`
@@ -351,7 +351,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeAutoSnapshotPolicies(self, request):
-        """This API is used to query the list of scheduled snapshot policies of a file system.
+        r"""This API is used to query the list of scheduled snapshot policies of a file system.
 
         :param request: Request instance for DescribeAutoSnapshotPolicies.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAutoSnapshotPoliciesRequest`
@@ -374,7 +374,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeAvailableZoneInfo(self, request):
-        """This API is used to query the availability of a region.
+        r"""This API is used to query the availability of a region.
 
         :param request: Request instance for DescribeAvailableZoneInfo.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAvailableZoneInfoRequest`
@@ -397,7 +397,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeBucketList(self, request):
-        """This API is used to get the list of data source buckets.
+        r"""This API is used to get the list of data source buckets.
         To use this API, submit a ticket for us to add you to the allowlist.
 
         :param request: Request instance for DescribeBucketList.
@@ -421,7 +421,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsFileSystemClients(self, request):
-        """This API is used to query clients on which this file system is mounted. To do so, the client needs to have the CFS monitoring plugin installed.
+        r"""This API is used to query clients on which this file system is mounted. To do so, the client needs to have the CFS monitoring plugin installed.
 
         :param request: Request instance for DescribeCfsFileSystemClients.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsRequest`
@@ -444,7 +444,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsFileSystems(self, request):
-        """This API is used to query file systems.
+        r"""This API is used to query file systems.
 
         :param request: Request instance for DescribeCfsFileSystems.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemsRequest`
@@ -467,7 +467,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsPGroups(self, request):
-        """This API is used to query the list of permission groups.
+        r"""This API is used to query the list of permission groups.
 
         :param request: Request instance for DescribeCfsPGroups.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsPGroupsRequest`
@@ -490,7 +490,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsRules(self, request):
-        """This API is used to query the list of permission group rules.
+        r"""This API is used to query the list of permission group rules.
 
         :param request: Request instance for DescribeCfsRules.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsRulesRequest`
@@ -513,7 +513,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsServiceStatus(self, request):
-        """This API is used to query the status of the CFS service.
+        r"""This API is used to query the status of the CFS service.
 
         :param request: Request instance for DescribeCfsServiceStatus.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsServiceStatusRequest`
@@ -536,7 +536,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsSnapshotOverview(self, request):
-        """This API is used to get the snapshot overview of a file system.
+        r"""This API is used to get the snapshot overview of a file system.
 
         :param request: Request instance for DescribeCfsSnapshotOverview.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsSnapshotOverviewRequest`
@@ -559,7 +559,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeCfsSnapshots(self, request):
-        """This API is used to query the list of snapshots of a file system.
+        r"""This API is used to query the list of snapshots of a file system.
 
         :param request: Request instance for DescribeCfsSnapshots.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsSnapshotsRequest`
@@ -582,7 +582,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeMigrationTasks(self, request):
-        """This API is used to get the list of migration tasks.
+        r"""This API is used to get the list of migration tasks.
         To use this API, submit a ticket for us to add you to the allowlist.
 
         :param request: Request instance for DescribeMigrationTasks.
@@ -606,7 +606,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeMountTargets(self, request):
-        """This API is used to query the mount targets of a file system.
+        r"""This API is used to query the mount targets of a file system.
 
         :param request: Request instance for DescribeMountTargets.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeMountTargetsRequest`
@@ -629,7 +629,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeSnapshotOperationLogs(self, request):
-        """This API is used to query the operation logs of a snapshot.
+        r"""This API is used to query the operation logs of a snapshot.
 
         :param request: Request instance for DescribeSnapshotOperationLogs.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeSnapshotOperationLogsRequest`
@@ -652,7 +652,7 @@ class CfsClient(AbstractClient):
 
 
     def ModifyFileSystemAutoScaleUpRule(self, request):
-        """This API is used to modify the scaling policy of a file system.
+        r"""This API is used to modify the scaling policy of a file system.
 
         :param request: Request instance for ModifyFileSystemAutoScaleUpRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleRequest`
@@ -675,7 +675,7 @@ class CfsClient(AbstractClient):
 
 
     def ScaleUpFileSystem(self, request):
-        """This API is used to scale up a Turbo file system.
+        r"""This API is used to scale up a Turbo file system.
 
         :param request: Request instance for ScaleUpFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemRequest`
@@ -698,7 +698,7 @@ class CfsClient(AbstractClient):
 
 
     def SignUpCfsService(self, request):
-        """This API is used to activate the CFS service.
+        r"""This API is used to activate the CFS service.
 
         :param request: Request instance for SignUpCfsService.
         :type request: :class:`tencentcloud.cfs.v20190719.models.SignUpCfsServiceRequest`
@@ -721,7 +721,7 @@ class CfsClient(AbstractClient):
 
 
     def StopMigrationTask(self, request):
-        """This API is used to stop a migration task.
+        r"""This API is used to stop a migration task.
         To use this API, submit a ticket for us to add you to the allowlist.
 
         :param request: Request instance for StopMigrationTask.
@@ -745,7 +745,7 @@ class CfsClient(AbstractClient):
 
 
     def UnbindAutoSnapshotPolicy(self, request):
-        """This API is used to unbind a snapshot policy from a file system.
+        r"""This API is used to unbind a snapshot policy from a file system.
 
         :param request: Request instance for UnbindAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UnbindAutoSnapshotPolicyRequest`
@@ -768,7 +768,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateAutoSnapshotPolicy(self, request):
-        """This API is used to update a scheduled snapshot policy.
+        r"""This API is used to update a scheduled snapshot policy.
 
         :param request: Request instance for UpdateAutoSnapshotPolicy.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateAutoSnapshotPolicyRequest`
@@ -791,7 +791,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemName(self, request):
-        """This API is used to update a file system name.
+        r"""This API is used to update a file system name.
 
         :param request: Request instance for UpdateCfsFileSystemName.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameRequest`
@@ -814,7 +814,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemPGroup(self, request):
-        """This API is used to update the permission group used by a file system.
+        r"""This API is used to update the permission group used by a file system.
 
         :param request: Request instance for UpdateCfsFileSystemPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemPGroupRequest`
@@ -837,7 +837,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsFileSystemSizeLimit(self, request):
-        """This API is used to update the capacity limit of a file system.
+        r"""This API is used to update the capacity limit of a file system.
 
         :param request: Request instance for UpdateCfsFileSystemSizeLimit.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemSizeLimitRequest`
@@ -860,7 +860,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsPGroup(self, request):
-        """This API is used to update the information of a permission group.
+        r"""This API is used to update the information of a permission group.
 
         :param request: Request instance for UpdateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsPGroupRequest`
@@ -883,7 +883,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsRule(self, request):
-        """This API is used to update a permission rule.
+        r"""This API is used to update a permission rule.
 
         :param request: Request instance for UpdateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsRuleRequest`
@@ -906,7 +906,7 @@ class CfsClient(AbstractClient):
 
 
     def UpdateCfsSnapshotAttribute(self, request):
-        """This API is used to update the name and retention period of a file system snapshot.
+        r"""This API is used to update the name and retention period of a file system snapshot.
 
         :param request: Request instance for UpdateCfsSnapshotAttribute.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsSnapshotAttributeRequest`

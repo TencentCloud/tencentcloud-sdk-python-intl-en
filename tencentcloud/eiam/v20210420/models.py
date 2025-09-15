@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountGroupInfo(AbstractModel):
-    """List of queried account group information.
+    r"""List of queried account group information.
 
     """
 
@@ -41,7 +41,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID.
+        r"""Account group ID.
         :rtype: str
         """
         return self._AccountGroupId
@@ -52,7 +52,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """Account group name.
+        r"""Account group name.
         :rtype: str
         """
         return self._GroupName
@@ -63,7 +63,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Description
@@ -74,7 +74,7 @@ class AccountGroupInfo(AbstractModel):
 
     @property
     def CreatedDate(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreatedDate
@@ -100,7 +100,7 @@ class AccountGroupInfo(AbstractModel):
 
 
 class AccountGroupSearchCriteria(AbstractModel):
-    """Account group query parameters
+    r"""Account group query parameters
 
     """
 
@@ -113,7 +113,7 @@ class AccountGroupSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword
+        r"""Keyword
         :rtype: str
         """
         return self._Keyword
@@ -136,7 +136,7 @@ class AccountGroupSearchCriteria(AbstractModel):
 
 
 class AddAccountToAccountGroupRequest(AbstractModel):
-    """AddAccountToAccountGroup request structure.
+    r"""AddAccountToAccountGroup request structure.
 
     """
 
@@ -152,7 +152,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID
+        r"""Account group ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -163,7 +163,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """List of IDs of the accounts to be added to the account group.
+        r"""List of IDs of the accounts to be added to the account group.
         :rtype: list of str
         """
         return self._AccountIds
@@ -187,7 +187,7 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
 
 class AddAccountToAccountGroupResponse(AbstractModel):
-    """AddAccountToAccountGroup response structure.
+    r"""AddAccountToAccountGroup response structure.
 
     """
 
@@ -200,7 +200,7 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -215,7 +215,7 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
 
 class AddUserToUserGroupRequest(AbstractModel):
-    """AddUserToUserGroup request structure.
+    r"""AddUserToUserGroup request structure.
 
     """
 
@@ -231,7 +231,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """List of IDs of the users to be added to the user group.
+        r"""List of IDs of the users to be added to the user group.
         :rtype: list of str
         """
         return self._UserIds
@@ -242,7 +242,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
         :rtype: str
         """
         return self._UserGroupId
@@ -266,7 +266,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
 
 class AddUserToUserGroupResponse(AbstractModel):
-    """AddUserToUserGroup response structure.
+    r"""AddUserToUserGroup response structure.
 
     """
 
@@ -283,7 +283,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedItems(self):
-        """List of IDs of the users failed to be added to the user group.
+        r"""List of IDs of the users failed to be added to the user group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -295,7 +295,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -311,7 +311,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AppAccountInfo(AbstractModel):
-    """List of queried account information.
+    r"""List of queried account information.
 
     """
 
@@ -340,7 +340,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountId(self):
-        """Account ID.
+        r"""Account ID.
         :rtype: str
         """
         return self._AccountId
@@ -351,7 +351,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountName(self):
-        """Account name.
+        r"""Account name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -363,7 +363,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserList(self):
-        """User information list.
+        r"""User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LinkUserInfo
         """
@@ -375,7 +375,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -387,7 +387,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Creation time.
+        r"""Creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -420,7 +420,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AppAccountSearchCriteria(AbstractModel):
-    """Account query parameters
+    r"""Account query parameters
 
     """
 
@@ -433,7 +433,7 @@ class AppAccountSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword
+        r"""Keyword
         :rtype: str
         """
         return self._Keyword
@@ -456,7 +456,7 @@ class AppAccountSearchCriteria(AbstractModel):
 
 
 class ApplicationAuthorizationInfo(AbstractModel):
-    """Application information list.
+    r"""Application information list.
 
     """
 
@@ -486,7 +486,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationAccounts(self):
-        """List of the user's accounts under authorized applications
+        r"""List of the user's accounts under authorized applications
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -498,7 +498,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -510,7 +510,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InheritedForm(self):
-        """List of IDs of the user's user groups and organization nodes that have access to the application.
+        r"""List of IDs of the user's user groups and organization nodes that have access to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
         """
@@ -522,7 +522,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        """Application name.
+        r"""Application name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -534,7 +534,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Application creation time.
+        r"""Application creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -564,7 +564,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApplicationInfoSearchCriteria(AbstractModel):
-    """Application attribute search criteria.
+    r"""Application attribute search criteria.
 
     """
 
@@ -580,7 +580,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Application search keyword, which can be application name or ID.
+        r"""Application search keyword, which can be application name or ID.
         :rtype: str
         """
         return self._Keyword
@@ -591,7 +591,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW
+        r"""Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW
         :rtype: str
         """
         return self._ApplicationType
@@ -615,7 +615,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
 
 class ApplicationInformation(AbstractModel):
-    """Application information list.
+    r"""Application information list.
 
     """
 
@@ -656,7 +656,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
         :rtype: str
         """
         return self._ApplicationId
@@ -667,7 +667,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
+        r"""Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -679,7 +679,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Application creation time in ISO 8601 format.
+        r"""Application creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -691,7 +691,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifiedDate(self):
-        """Last update time in ISO 8601 format.
+        r"""Last update time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -703,7 +703,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppStatus(self):
-        """Application status.
+        r"""Application status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -715,7 +715,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Icon(self):
-        """Application icon.
+        r"""Application icon.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -727,7 +727,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationType(self):
-        """Application type.
+        r"""Application type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -739,7 +739,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientId(self):
-        """Client ID.
+        r"""Client ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -770,7 +770,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AuthorizationInfo(AbstractModel):
-    """Returned authorization information.
+    r"""Returned authorization information.
 
     """
 
@@ -798,7 +798,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AppId(self):
-        """Unique application ID.
+        r"""Unique application ID.
         :rtype: str
         """
         return self._AppId
@@ -809,7 +809,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._AppName
@@ -820,7 +820,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def EntityName(self):
-        """Type name.
+        r"""Type name.
         :rtype: str
         """
         return self._EntityName
@@ -831,7 +831,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def EntityId(self):
-        """Unique type ID.
+        r"""Unique type ID.
         :rtype: str
         """
         return self._EntityId
@@ -842,7 +842,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def LastModifiedDate(self):
-        """Last update time in ISO 8601 format.
+        r"""Last update time in ISO 8601 format.
         :rtype: str
         """
         return self._LastModifiedDate
@@ -853,7 +853,7 @@ class AuthorizationInfo(AbstractModel):
 
     @property
     def AuthorizationId(self):
-        """Unique authorization type ID.
+        r"""Unique authorization type ID.
         :rtype: str
         """
         return self._AuthorizationId
@@ -881,7 +881,7 @@ class AuthorizationInfo(AbstractModel):
 
 
 class AuthorizationInfoSearchCriteria(AbstractModel):
-    """User attribute search criteria.
+    r"""User attribute search criteria.
 
     """
 
@@ -894,7 +894,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.
+        r"""Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.
         :rtype: str
         """
         return self._Keyword
@@ -917,7 +917,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
 
 class AuthorizationUserResouceInfo(AbstractModel):
-    """Returned list of eligible user data
+    r"""Returned list of eligible user data
 
     """
 
@@ -951,7 +951,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -963,7 +963,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
-        """Resource type
+        r"""Resource type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -975,7 +975,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resource(self):
-        """Authorized resource
+        r"""Authorized resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -987,7 +987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InheritedForm(self):
-        """Inheritance relationship
+        r"""Inheritance relationship
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
         """
@@ -999,7 +999,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationAccounts(self):
-        """Application account
+        r"""Application account
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1011,7 +1011,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
-        """Resource name
+        r"""Resource name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1042,7 +1042,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateAccountGroupRequest(AbstractModel):
-    """CreateAccountGroup request structure.
+    r"""CreateAccountGroup request structure.
 
     """
 
@@ -1061,7 +1061,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -1072,7 +1072,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Account group name.
+        r"""Account group name.
         :rtype: str
         """
         return self._GroupName
@@ -1083,7 +1083,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -1108,7 +1108,7 @@ class CreateAccountGroupRequest(AbstractModel):
 
 
 class CreateAccountGroupResponse(AbstractModel):
-    """CreateAccountGroup response structure.
+    r"""CreateAccountGroup response structure.
 
     """
 
@@ -1125,7 +1125,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountGroupId(self):
-        """Account group ID.
+        r"""Account group ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1137,7 +1137,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1153,7 +1153,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateAppAccountRequest(AbstractModel):
-    """CreateAppAccount request structure.
+    r"""CreateAppAccount request structure.
 
     """
 
@@ -1175,7 +1175,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -1186,7 +1186,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name
+        r"""Account name
         :rtype: str
         """
         return self._AccountName
@@ -1197,7 +1197,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Account password
+        r"""Account password
         :rtype: str
         """
         return self._Password
@@ -1208,7 +1208,7 @@ class CreateAppAccountRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -1234,7 +1234,7 @@ class CreateAppAccountRequest(AbstractModel):
 
 
 class CreateAppAccountResponse(AbstractModel):
-    """CreateAppAccount response structure.
+    r"""CreateAppAccount response structure.
 
     """
 
@@ -1251,7 +1251,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountId(self):
-        """Account ID
+        r"""Account ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1263,7 +1263,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1279,7 +1279,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateOrgNodeRequest(AbstractModel):
-    """CreateOrgNode request structure.
+    r"""CreateOrgNode request structure.
 
     """
 
@@ -1301,7 +1301,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Organization node name, which can contain up to 64 characters.
+        r"""Organization node name, which can contain up to 64 characters.
         :rtype: str
         """
         return self._DisplayName
@@ -1312,7 +1312,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def ParentOrgNodeId(self):
-        """Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.
+        r"""Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.
         :rtype: str
         """
         return self._ParentOrgNodeId
@@ -1323,7 +1323,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Organization node description.
+        r"""Organization node description.
         :rtype: str
         """
         return self._Description
@@ -1334,7 +1334,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
+        r"""External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
         :rtype: str
         """
         return self._CustomizedOrgNodeId
@@ -1360,7 +1360,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
 
 class CreateOrgNodeResponse(AbstractModel):
-    """CreateOrgNode response structure.
+    r"""CreateOrgNode response structure.
 
     """
 
@@ -1377,7 +1377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique.
+        r"""Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1389,7 +1389,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1405,7 +1405,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateUserGroupRequest(AbstractModel):
-    """CreateUserGroup request structure.
+    r"""CreateUserGroup request structure.
 
     """
 
@@ -1421,7 +1421,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """User group nickname, which is unique and can contain up to 64 characters.
+        r"""User group nickname, which is unique and can contain up to 64 characters.
         :rtype: str
         """
         return self._DisplayName
@@ -1432,7 +1432,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """User group remarks, which can contain up to 512 characters.
+        r"""User group remarks, which can contain up to 512 characters.
         :rtype: str
         """
         return self._Description
@@ -1456,7 +1456,7 @@ class CreateUserGroupRequest(AbstractModel):
 
 
 class CreateUserGroupResponse(AbstractModel):
-    """CreateUserGroup response structure.
+    r"""CreateUserGroup response structure.
 
     """
 
@@ -1473,7 +1473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1485,7 +1485,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1501,7 +1501,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateUserRequest(AbstractModel):
-    """CreateUser request structure.
+    r"""CreateUser request structure.
 
     """
 
@@ -1544,7 +1544,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 64 characters.
+        r"""Username, which can contain up to 64 characters.
         :rtype: str
         """
         return self._UserName
@@ -1555,7 +1555,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """User password, which needs to be configured according to the password policy.
+        r"""User password, which needs to be configured according to the password policy.
         :rtype: str
         """
         return self._Password
@@ -1566,7 +1566,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Nickname, which can contain up to 64 characters and is the same as the username by default.
+        r"""Nickname, which can contain up to 64 characters and is the same as the username by default.
         :rtype: str
         """
         return self._DisplayName
@@ -1577,7 +1577,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Description(self):
-        """User remarks, which can contain up to 512 characters.
+        r"""User remarks, which can contain up to 512 characters.
         :rtype: str
         """
         return self._Description
@@ -1588,7 +1588,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
         :rtype: list of str
         """
         return self._UserGroupIds
@@ -1599,7 +1599,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """User's mobile number, such as `+86-1xxxxxxxxxx`.
+        r"""User's mobile number, such as `+86-1xxxxxxxxxx`.
         :rtype: str
         """
         return self._Phone
@@ -1610,7 +1610,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
+        r"""Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
         :rtype: str
         """
         return self._OrgNodeId
@@ -1621,7 +1621,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """User expiration time in ISO 8601 format.
+        r"""User expiration time in ISO 8601 format.
         :rtype: str
         """
         return self._ExpirationTime
@@ -1632,7 +1632,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
         :rtype: str
         """
         return self._Email
@@ -1643,7 +1643,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PwdNeedReset(self):
-        """Whether the password needs to be reset. Default value: false (no).
+        r"""Whether the password needs to be reset. Default value: false (no).
         :rtype: bool
         """
         return self._PwdNeedReset
@@ -1654,7 +1654,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """List of IDs of the user's secondary organizations.
+        r"""List of IDs of the user's secondary organizations.
         :rtype: list of str
         """
         return self._SecondaryOrgNodeIdList
@@ -1687,7 +1687,7 @@ class CreateUserRequest(AbstractModel):
 
 
 class CreateUserResponse(AbstractModel):
-    """CreateUser response structure.
+    r"""CreateUser response structure.
 
     """
 
@@ -1704,7 +1704,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """Returned ID of the newly created user, which is globally unique.
+        r"""Returned ID of the newly created user, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1716,7 +1716,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1732,7 +1732,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteAccountGroupRequest(AbstractModel):
-    """DeleteAccountGroup request structure.
+    r"""DeleteAccountGroup request structure.
 
     """
 
@@ -1745,7 +1745,7 @@ class DeleteAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupIdList(self):
-        """Array of account group IDs.
+        r"""Array of account group IDs.
         :rtype: list of str
         """
         return self._AccountGroupIdList
@@ -1768,7 +1768,7 @@ class DeleteAccountGroupRequest(AbstractModel):
 
 
 class DeleteAccountGroupResponse(AbstractModel):
-    """DeleteAccountGroup response structure.
+    r"""DeleteAccountGroup response structure.
 
     """
 
@@ -1781,7 +1781,7 @@ class DeleteAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1796,7 +1796,7 @@ class DeleteAccountGroupResponse(AbstractModel):
 
 
 class DeleteAppAccountRequest(AbstractModel):
-    """DeleteAppAccount request structure.
+    r"""DeleteAppAccount request structure.
 
     """
 
@@ -1809,7 +1809,7 @@ class DeleteAppAccountRequest(AbstractModel):
 
     @property
     def AccountIdList(self):
-        """Array of account IDs .
+        r"""Array of account IDs .
         :rtype: list of str
         """
         return self._AccountIdList
@@ -1832,7 +1832,7 @@ class DeleteAppAccountRequest(AbstractModel):
 
 
 class DeleteAppAccountResponse(AbstractModel):
-    """DeleteAppAccount response structure.
+    r"""DeleteAppAccount response structure.
 
     """
 
@@ -1845,7 +1845,7 @@ class DeleteAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1860,7 +1860,7 @@ class DeleteAppAccountResponse(AbstractModel):
 
 
 class DeleteOrgNodeRequest(AbstractModel):
-    """DeleteOrgNode request structure.
+    r"""DeleteOrgNode request structure.
 
     """
 
@@ -1873,7 +1873,7 @@ class DeleteOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique.
+        r"""Organization node ID, which is globally unique.
         :rtype: str
         """
         return self._OrgNodeId
@@ -1896,7 +1896,7 @@ class DeleteOrgNodeRequest(AbstractModel):
 
 
 class DeleteOrgNodeResponse(AbstractModel):
-    """DeleteOrgNode response structure.
+    r"""DeleteOrgNode response structure.
 
     """
 
@@ -1909,7 +1909,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1924,7 +1924,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
 
 class DeleteUserGroupRequest(AbstractModel):
-    """DeleteUserGroup request structure.
+    r"""DeleteUserGroup request structure.
 
     """
 
@@ -1937,7 +1937,7 @@ class DeleteUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
         :rtype: str
         """
         return self._UserGroupId
@@ -1960,7 +1960,7 @@ class DeleteUserGroupRequest(AbstractModel):
 
 
 class DeleteUserGroupResponse(AbstractModel):
-    """DeleteUserGroup response structure.
+    r"""DeleteUserGroup response structure.
 
     """
 
@@ -1973,7 +1973,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1988,7 +1988,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser request structure.
+    r"""DeleteUser request structure.
 
     """
 
@@ -2004,7 +2004,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.
+        r"""Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.
         :rtype: str
         """
         return self._UserName
@@ -2015,7 +2015,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
+        r"""User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
         :rtype: str
         """
         return self._UserId
@@ -2039,7 +2039,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser response structure.
+    r"""DeleteUser response structure.
 
     """
 
@@ -2052,7 +2052,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2067,7 +2067,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DeleteUsersRequest(AbstractModel):
-    """DeleteUsers request structure.
+    r"""DeleteUsers request structure.
 
     """
 
@@ -2083,7 +2083,7 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def DeleteIdList(self):
-        """List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
+        r"""List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
         :rtype: list of str
         """
         return self._DeleteIdList
@@ -2094,7 +2094,7 @@ class DeleteUsersRequest(AbstractModel):
 
     @property
     def DeleteNameList(self):
-        """List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
+        r"""List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
         :rtype: list of str
         """
         return self._DeleteNameList
@@ -2118,7 +2118,7 @@ class DeleteUsersRequest(AbstractModel):
 
 
 class DeleteUsersResponse(AbstractModel):
-    """DeleteUsers response structure.
+    r"""DeleteUsers response structure.
 
     """
 
@@ -2135,7 +2135,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedItems(self):
-        """Information of the users failed to be deleted. When the business parameter is `DeleteIdList`, this field will return the list of IDs of the users failed to be deleted. When the business parameter is `DeleteNameList`, this field will return the list of usernames of the users failed to be deleted.
+        r"""Information of the users failed to be deleted. When the business parameter is `DeleteIdList`, this field will return the list of IDs of the users failed to be deleted. When the business parameter is `DeleteNameList`, this field will return the list of usernames of the users failed to be deleted.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2147,7 +2147,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2163,7 +2163,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAccountGroupRequest(AbstractModel):
-    """DescribeAccountGroup request structure.
+    r"""DescribeAccountGroup request structure.
 
     """
 
@@ -2185,7 +2185,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -2196,7 +2196,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        r"""Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
         """
         return self._SearchCondition
@@ -2207,7 +2207,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -2218,7 +2218,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -2246,7 +2246,7 @@ class DescribeAccountGroupRequest(AbstractModel):
 
 
 class DescribeAccountGroupResponse(AbstractModel):
-    """DescribeAccountGroup response structure.
+    r"""DescribeAccountGroup response structure.
 
     """
 
@@ -2271,7 +2271,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of records returned for the query.
+        r"""Total number of records returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2283,7 +2283,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2295,7 +2295,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountGroupList(self):
-        """Returned list of eligible data.
+        r"""Returned list of eligible data.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AccountGroupInfo
         """
@@ -2307,7 +2307,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2330,7 +2330,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAppAccountRequest(AbstractModel):
-    """DescribeAppAccount request structure.
+    r"""DescribeAppAccount request structure.
 
     """
 
@@ -2352,7 +2352,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -2363,7 +2363,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        r"""Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AppAccountSearchCriteria`
         """
         return self._SearchCondition
@@ -2374,7 +2374,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -2385,7 +2385,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -2413,7 +2413,7 @@ class DescribeAppAccountRequest(AbstractModel):
 
 
 class DescribeAppAccountResponse(AbstractModel):
-    """DescribeAppAccount response structure.
+    r"""DescribeAppAccount response structure.
 
     """
 
@@ -2438,7 +2438,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of records returned for the query.
+        r"""Total number of records returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2450,7 +2450,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2462,7 +2462,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppAccountList(self):
-        """Returned list of eligible data.
+        r"""Returned list of eligible data.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AppAccountInfo
         """
@@ -2474,7 +2474,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2497,7 +2497,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApplicationRequest(AbstractModel):
-    """DescribeApplication request structure.
+    r"""DescribeApplication request structure.
 
     """
 
@@ -2513,7 +2513,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.
+        r"""Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.
         :rtype: str
         """
         return self._ApplicationId
@@ -2524,7 +2524,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """Client ID. You must specify at least this parameter or `ApplicationId`.
+        r"""Client ID. You must specify at least this parameter or `ApplicationId`.
         :rtype: str
         """
         return self._ClientId
@@ -2548,7 +2548,7 @@ class DescribeApplicationRequest(AbstractModel):
 
 
 class DescribeApplicationResponse(AbstractModel):
-    """DescribeApplication response structure.
+    r"""DescribeApplication response structure.
 
     """
 
@@ -2621,7 +2621,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
-        """Key ID.
+        r"""Key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2633,7 +2633,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
+        r"""Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2645,7 +2645,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifiedDate(self):
-        """Last modification time of the application in ISO 8601 format.
+        r"""Last modification time of the application in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2657,7 +2657,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientId(self):
-        """Client ID.
+        r"""Client ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2669,7 +2669,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationType(self):
-        """Application type, i.e., the application template type selected during application creation.
+        r"""Application type, i.e., the application template type selected during application creation.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2681,7 +2681,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Application creation time in ISO 8601 format.
+        r"""Application creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2693,7 +2693,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2705,7 +2705,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TokenExpired(self):
-        """Token validity period in seconds.
+        r"""Token validity period in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2717,7 +2717,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientSecret(self):
-        """Client secret.
+        r"""Client secret.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2729,7 +2729,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicKey(self):
-        """Public key information.
+        r"""Public key information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2741,7 +2741,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthorizeUrl(self):
-        """Authorization address.
+        r"""Authorization address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2753,7 +2753,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IconUrl(self):
-        """Access address of the application icon image.
+        r"""Access address of the application icon image.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2765,7 +2765,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecureLevel(self):
-        """Security level.
+        r"""Security level.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2777,7 +2777,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppStatus(self):
-        """Application status.
+        r"""Application status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2789,7 +2789,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2801,7 +2801,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2831,7 +2831,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOrgNodeRequest(AbstractModel):
-    """DescribeOrgNode request structure.
+    r"""DescribeOrgNode request structure.
 
     """
 
@@ -2847,7 +2847,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.
+        r"""Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.
         :rtype: str
         """
         return self._OrgNodeId
@@ -2858,7 +2858,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     @property
     def IncludeOrgNodeChildInfo(self):
-        """Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
+        r"""Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
         :rtype: bool
         """
         return self._IncludeOrgNodeChildInfo
@@ -2882,7 +2882,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
 
 class DescribeOrgNodeResponse(AbstractModel):
-    """DescribeOrgNode response structure.
+    r"""DescribeOrgNode response structure.
 
     """
 
@@ -2931,7 +2931,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
+        r"""Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2943,7 +2943,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifiedDate(self):
-        """Last modification time of the organization node in ISO 8601 format.
+        r"""Last modification time of the organization node in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2955,7 +2955,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomizedOrgNodeId(self):
-        """External ID of the organization node.
+        r"""External ID of the organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2967,7 +2967,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ParentOrgNodeId(self):
-        """Parent node ID of the current organization node.
+        r"""Parent node ID of the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2979,7 +2979,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique.
+        r"""Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2991,7 +2991,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataSource(self):
-        """Data source.
+        r"""Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3003,7 +3003,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Organization node creation time in ISO 8601 format.
+        r"""Organization node creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3015,7 +3015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeChildInfo(self):
-        """List of sub-nodes under the current organization node.
+        r"""List of sub-nodes under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of OrgNodeChildInfo
         """
@@ -3027,7 +3027,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Organization node description.
+        r"""Organization node description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3039,7 +3039,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3068,7 +3068,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePublicKeyRequest(AbstractModel):
-    """DescribePublicKey request structure.
+    r"""DescribePublicKey request structure.
 
     """
 
@@ -3081,7 +3081,7 @@ class DescribePublicKeyRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
         :rtype: str
         """
         return self._ApplicationId
@@ -3104,7 +3104,7 @@ class DescribePublicKeyRequest(AbstractModel):
 
 
 class DescribePublicKeyResponse(AbstractModel):
-    """DescribePublicKey response structure.
+    r"""DescribePublicKey response structure.
 
     """
 
@@ -3129,7 +3129,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicKey(self):
-        """Public key information used for JWT signature verification.
+        r"""Public key information used for JWT signature verification.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3141,7 +3141,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
-        """JWT key ID.
+        r"""JWT key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3153,7 +3153,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3165,7 +3165,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3183,7 +3183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUserGroupRequest(AbstractModel):
-    """DescribeUserGroup request structure.
+    r"""DescribeUserGroup request structure.
 
     """
 
@@ -3196,7 +3196,7 @@ class DescribeUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
         :rtype: str
         """
         return self._UserGroupId
@@ -3219,7 +3219,7 @@ class DescribeUserGroupRequest(AbstractModel):
 
 
 class DescribeUserGroupResponse(AbstractModel):
-    """DescribeUserGroup response structure.
+    r"""DescribeUserGroup response structure.
 
     """
 
@@ -3244,7 +3244,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """User group nickname, which is not unique and can contain up to 64 characters.
+        r"""User group nickname, which is not unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3256,7 +3256,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """User group remarks, which can contain up to 512 characters.
+        r"""User group remarks, which can contain up to 512 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3268,7 +3268,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3280,7 +3280,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3298,7 +3298,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUserInfoRequest(AbstractModel):
-    """DescribeUserInfo request structure.
+    r"""DescribeUserInfo request structure.
 
     """
 
@@ -3314,7 +3314,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        r"""Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :rtype: str
         """
         return self._UserName
@@ -3325,7 +3325,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        r"""User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :rtype: str
         """
         return self._UserId
@@ -3349,7 +3349,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
 
 class DescribeUserInfoResponse(AbstractModel):
-    """DescribeUserInfo response structure.
+    r"""DescribeUserInfo response structure.
 
     """
 
@@ -3422,7 +3422,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username.
+        r"""Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3434,7 +3434,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        r"""User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3446,7 +3446,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Nickname
+        r"""Nickname
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3458,7 +3458,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """User remarks.
+        r"""User remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3470,7 +3470,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupIds(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3482,7 +3482,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID, which can contain up to 64 characters.
+        r"""User ID, which can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3494,7 +3494,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3506,7 +3506,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """User's mobile number.
+        r"""User's mobile number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3518,7 +3518,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Unique ID of the user's primary organization.
+        r"""Unique ID of the user's primary organization.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3530,7 +3530,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataSource(self):
-        """Data source
+        r"""Data source
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3542,7 +3542,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationTime(self):
-        """User expiration time in ISO 8601 format.
+        r"""User expiration time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3554,7 +3554,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivationTime(self):
-        """User activation time in ISO 8601 format.
+        r"""User activation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3566,7 +3566,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PwdNeedReset(self):
-        """Whether the password of the current user needs to be reset. `false` indicates no.
+        r"""Whether the password of the current user needs to be reset. `false` indicates no.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3578,7 +3578,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """List of IDs of the user's secondary organizations.
+        r"""List of IDs of the user's secondary organizations.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3590,7 +3590,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminFlag(self):
-        """Whether the user is an admin. Valid values: 0: no; 1: yes.
+        r"""Whether the user is an admin. Valid values: 0: no; 1: yes.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3602,7 +3602,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3632,7 +3632,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUserResourcesAuthorizationRequest(AbstractModel):
-    """DescribeUserResourcesAuthorization request structure.
+    r"""DescribeUserResourcesAuthorization request structure.
 
     """
 
@@ -3654,7 +3654,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -3665,7 +3665,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        r"""User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :rtype: str
         """
         return self._UserId
@@ -3676,7 +3676,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        r"""Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :rtype: str
         """
         return self._UserName
@@ -3687,7 +3687,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     @property
     def IncludeInheritedAuthorizations(self):
-        """Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
+        r"""Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
         :rtype: bool
         """
         return self._IncludeInheritedAuthorizations
@@ -3713,7 +3713,7 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
 
 class DescribeUserResourcesAuthorizationResponse(AbstractModel):
-    """DescribeUserResourcesAuthorization response structure.
+    r"""DescribeUserResourcesAuthorization response structure.
 
     """
 
@@ -3745,7 +3745,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Unique application ID.
+        r"""Unique application ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -3756,7 +3756,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationAccounts(self):
-        """Application account.
+        r"""Application account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3768,7 +3768,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """Unique ID of the authorized user.
+        r"""Unique ID of the authorized user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3780,7 +3780,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username of the authorized user.
+        r"""Username of the authorized user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3792,7 +3792,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthorizationUserResourceList(self):
-        """Returned resource list.
+        r"""Returned resource list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AuthorizationUserResouceInfo
         """
@@ -3804,7 +3804,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3829,7 +3829,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
-    """DescribeUserThirdPartyAccountInfo request structure.
+    r"""DescribeUserThirdPartyAccountInfo request structure.
 
     """
 
@@ -3845,7 +3845,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
+        r"""Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
         :rtype: str
         """
         return self._UserName
@@ -3856,7 +3856,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
+        r"""User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
         :rtype: str
         """
         return self._UserId
@@ -3880,7 +3880,7 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
 
 class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
-    """DescribeUserThirdPartyAccountInfo response structure.
+    r"""DescribeUserThirdPartyAccountInfo response structure.
 
     """
 
@@ -3903,7 +3903,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID.
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -3914,7 +3914,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username.
+        r"""Username.
         :rtype: str
         """
         return self._UserName
@@ -3925,7 +3925,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThirdPartyAccounts(self):
-        """Third-Party account binding information.
+        r"""Third-Party account binding information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ThirdPartyAccountInfo
         """
@@ -3937,7 +3937,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3960,7 +3960,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class InheritedForm(AbstractModel):
-    """Application information list.
+    r"""Application information list.
 
     """
 
@@ -3978,7 +3978,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupIds(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3990,7 +3990,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeIds(self):
-        """List of IDs of the user's organization nodes.
+        r"""List of IDs of the user's organization nodes.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4015,7 +4015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LinkUserInfo(AbstractModel):
-    """User information associated with the account
+    r"""User information associated with the account
 
     """
 
@@ -4033,7 +4033,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID, which is globally unique and can contain up to 64 characters.
+        r"""User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4045,7 +4045,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username.
+        r"""Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4070,7 +4070,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAccountInAccountGroupRequest(AbstractModel):
-    """ListAccountInAccountGroup request structure.
+    r"""ListAccountInAccountGroup request structure.
 
     """
 
@@ -4092,7 +4092,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID.
+        r"""Account group ID.
         :rtype: str
         """
         return self._AccountGroupId
@@ -4103,7 +4103,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Search criterion. You can combine multiple search criteria and search in multiple data ranges.
+        r"""Search criterion. You can combine multiple search criteria and search in multiple data ranges.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
         """
         return self._SearchCondition
@@ -4114,7 +4114,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -4125,7 +4125,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -4153,7 +4153,7 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
 
 class ListAccountInAccountGroupResponse(AbstractModel):
-    """ListAccountInAccountGroup response structure.
+    r"""ListAccountInAccountGroup response structure.
 
     """
 
@@ -4178,7 +4178,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountList(self):
-        """List of accounts returned for the query.
+        r"""List of accounts returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AppAccountInfo
         """
@@ -4190,7 +4190,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of accounts returned for the query.
+        r"""Total number of accounts returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4202,7 +4202,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountGroupId(self):
-        """Account group ID.
+        r"""Account group ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4214,7 +4214,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4237,7 +4237,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListApplicationAuthorizationsRequest(AbstractModel):
-    """ListApplicationAuthorizations request structure.
+    r"""ListApplicationAuthorizations request structure.
 
     """
 
@@ -4262,7 +4262,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def EntityType(self):
-        """Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.
+        r"""Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.
         :rtype: str
         """
         return self._EntityType
@@ -4273,7 +4273,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        r"""Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -4284,7 +4284,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.
+        r"""Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -4295,7 +4295,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        r"""Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :rtype: int
         """
         return self._Offset
@@ -4306,7 +4306,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        r"""Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :rtype: int
         """
         return self._Limit
@@ -4337,7 +4337,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
 
 class ListApplicationAuthorizationsResponse(AbstractModel):
-    """ListApplicationAuthorizations response structure.
+    r"""ListApplicationAuthorizations response structure.
 
     """
 
@@ -4358,7 +4358,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthorizationInfoList(self):
-        """Returned list of application authorization information.
+        r"""Returned list of application authorization information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AuthorizationInfo
         """
@@ -4370,7 +4370,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of returned application information items.
+        r"""Total number of returned application information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4382,7 +4382,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4404,7 +4404,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListApplicationsRequest(AbstractModel):
-    """ListApplications request structure.
+    r"""ListApplications request structure.
 
     """
 
@@ -4429,7 +4429,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
+        r"""Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -4440,7 +4440,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
+        r"""Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -4451,7 +4451,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
+        r"""Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
         :rtype: int
         """
         return self._Offset
@@ -4462,7 +4462,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        r"""Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :rtype: int
         """
         return self._Limit
@@ -4473,7 +4473,7 @@ class ListApplicationsRequest(AbstractModel):
 
     @property
     def ApplicationIdList(self):
-        """Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
+        r"""Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
         :rtype: list of str
         """
         return self._ApplicationIdList
@@ -4504,7 +4504,7 @@ class ListApplicationsRequest(AbstractModel):
 
 
 class ListApplicationsResponse(AbstractModel):
-    """ListApplications response structure.
+    r"""ListApplications response structure.
 
     """
 
@@ -4525,7 +4525,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of returned application information items.
+        r"""Total number of returned application information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4537,7 +4537,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationInfoList(self):
-        """Returned application information list.
+        r"""Returned application information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApplicationInformation
         """
@@ -4549,7 +4549,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4571,7 +4571,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
-    """ListAuthorizedApplicationsToOrgNode request structure.
+    r"""ListAuthorizedApplicationsToOrgNode request structure.
 
     """
 
@@ -4584,7 +4584,7 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Organization node ID.
+        r"""Organization node ID.
         :rtype: str
         """
         return self._OrgNodeId
@@ -4607,7 +4607,7 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
-    """ListAuthorizedApplicationsToOrgNode response structure.
+    r"""ListAuthorizedApplicationsToOrgNode response structure.
 
     """
 
@@ -4624,7 +4624,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationIds(self):
-        """List of IDs of the applications accessible to the organization node.
+        r"""List of IDs of the applications accessible to the organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4636,7 +4636,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4652,7 +4652,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
-    """ListAuthorizedApplicationsToUserGroup request structure.
+    r"""ListAuthorizedApplicationsToUserGroup request structure.
 
     """
 
@@ -4665,7 +4665,7 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID.
+        r"""User group ID.
         :rtype: str
         """
         return self._UserGroupId
@@ -4688,7 +4688,7 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
-    """ListAuthorizedApplicationsToUserGroup response structure.
+    r"""ListAuthorizedApplicationsToUserGroup response structure.
 
     """
 
@@ -4705,7 +4705,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationIds(self):
-        """List of IDs of the applications accessible to the user group.
+        r"""List of IDs of the applications accessible to the user group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4717,7 +4717,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4733,7 +4733,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAuthorizedApplicationsToUserRequest(AbstractModel):
-    """ListAuthorizedApplicationsToUser request structure.
+    r"""ListAuthorizedApplicationsToUser request structure.
 
     """
 
@@ -4749,7 +4749,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID.
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -4760,7 +4760,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     @property
     def IncludeInheritedAuthorizations(self):
-        """Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
+        r"""Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
         :rtype: bool
         """
         return self._IncludeInheritedAuthorizations
@@ -4784,7 +4784,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
 
 class ListAuthorizedApplicationsToUserResponse(AbstractModel):
-    """ListAuthorizedApplicationsToUser response structure.
+    r"""ListAuthorizedApplicationsToUser response structure.
 
     """
 
@@ -4801,7 +4801,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationAuthorizationInfo(self):
-        """List of information of the applications accessible to the user.
+        r"""List of information of the applications accessible to the user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApplicationAuthorizationInfo
         """
@@ -4813,7 +4813,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4834,7 +4834,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListUserGroupsOfUserRequest(AbstractModel):
-    """ListUserGroupsOfUser request structure.
+    r"""ListUserGroupsOfUser request structure.
 
     """
 
@@ -4859,7 +4859,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID, which is globally unique.
+        r"""User ID, which is globally unique.
         :rtype: str
         """
         return self._UserId
@@ -4870,7 +4870,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.
+        r"""Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserGroupInformationSearchCriteria`
         """
         return self._SearchCondition
@@ -4881,7 +4881,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.
+        r"""Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -4892,7 +4892,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
+        r"""Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
         :rtype: int
         """
         return self._Offset
@@ -4903,7 +4903,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
+        r"""Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
         :rtype: int
         """
         return self._Limit
@@ -4934,7 +4934,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
 
 class ListUserGroupsOfUserResponse(AbstractModel):
-    """ListUserGroupsOfUser response structure.
+    r"""ListUserGroupsOfUser response structure.
 
     """
 
@@ -4963,7 +4963,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupIds(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4975,7 +4975,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID, which is globally unique.
+        r"""User ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4987,7 +4987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupInfoList(self):
-        """List of information of the user's user groups.
+        r"""List of information of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserGroupInfo
         """
@@ -4999,7 +4999,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of returned user group information items.
+        r"""Total number of returned user group information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5011,7 +5011,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5035,7 +5035,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListUserGroupsRequest(AbstractModel):
-    """ListUserGroups request structure.
+    r"""ListUserGroups request structure.
 
     """
 
@@ -5057,7 +5057,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        r"""Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`
         """
         return self._SearchCondition
@@ -5068,7 +5068,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.
+        r"""Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5079,7 +5079,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        r"""Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :rtype: int
         """
         return self._Offset
@@ -5090,7 +5090,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        r"""Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :rtype: int
         """
         return self._Limit
@@ -5120,7 +5120,7 @@ class ListUserGroupsRequest(AbstractModel):
 
 
 class ListUserGroupsResponse(AbstractModel):
-    """ListUserGroups response structure.
+    r"""ListUserGroups response structure.
 
     """
 
@@ -5141,7 +5141,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupList(self):
-        """Returned user group list.
+        r"""Returned user group list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserGroupInformation
         """
@@ -5153,7 +5153,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of returned user group information items.
+        r"""Total number of returned user group information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5165,7 +5165,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5187,7 +5187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListUsersInOrgNodeRequest(AbstractModel):
-    """ListUsersInOrgNode request structure.
+    r"""ListUsersInOrgNode request structure.
 
     """
 
@@ -5215,7 +5215,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.
+        r"""Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.
         :rtype: str
         """
         return self._OrgNodeId
@@ -5226,7 +5226,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def IncludeOrgNodeChildInfo(self):
-        """Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
+        r"""Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
         :rtype: bool
         """
         return self._IncludeOrgNodeChildInfo
@@ -5237,7 +5237,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        r"""User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.ListUsersInOrgNodeSearchCriteria`
         """
         return self._SearchCondition
@@ -5248,7 +5248,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        r"""Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5259,7 +5259,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        r"""Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :rtype: int
         """
         return self._Offset
@@ -5270,7 +5270,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        r"""Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :rtype: int
         """
         return self._Limit
@@ -5302,7 +5302,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
 
 class ListUsersInOrgNodeResponse(AbstractModel):
-    """ListUsersInOrgNode response structure.
+    r"""ListUsersInOrgNode response structure.
 
     """
 
@@ -5339,7 +5339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeChildUserInfo(self):
-        """User information list under the organization sub-node.
+        r"""User information list under the organization sub-node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of OrgNodeChildUserInfo
         """
@@ -5351,7 +5351,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique and can contain up to 64 characters.
+        r"""Organization node ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5363,7 +5363,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserInfo(self):
-        """User information list.
+        r"""User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserInfo
         """
@@ -5375,7 +5375,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalUserNum(self):
-        """Total number of users under the current organization node.
+        r"""Total number of users under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5387,7 +5387,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeIdPath(self):
-        """Organization ID path.
+        r"""Organization ID path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5399,7 +5399,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeNamePath(self):
-        """Organization name path.
+        r"""Organization name path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5411,7 +5411,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5442,7 +5442,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListUsersInOrgNodeSearchCriteria(AbstractModel):
-    """Displays user attribute search criteria under the organization.
+    r"""Displays user attribute search criteria under the organization.
 
     """
 
@@ -5473,7 +5473,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 64 characters.
+        r"""Username, which can contain up to 64 characters.
         :rtype: str
         """
         return self._UserName
@@ -5484,7 +5484,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Phone(self):
-        """User's mobile number.
+        r"""User's mobile number.
         :rtype: str
         """
         return self._Phone
@@ -5495,7 +5495,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
         :rtype: str
         """
         return self._Email
@@ -5506,7 +5506,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Status(self):
-        """User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        r"""User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
         :rtype: str
         """
         return self._Status
@@ -5517,7 +5517,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def CreationTime(self):
-        """User creation time in ISO 8601 format.
+        r"""User creation time in ISO 8601 format.
         :rtype: str
         """
         return self._CreationTime
@@ -5528,7 +5528,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """Last update time of the user.
+        r"""Last update time of the user.
         :rtype: str
         """
         return self._LastUpdateTime
@@ -5539,7 +5539,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by name. The match criteria include username and user's mobile number.
+        r"""Search by name. The match criteria include username and user's mobile number.
         :rtype: str
         """
         return self._Keyword
@@ -5568,7 +5568,7 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
 
 class ListUsersInUserGroupRequest(AbstractModel):
-    """ListUsersInUserGroup request structure.
+    r"""ListUsersInUserGroup request structure.
 
     """
 
@@ -5593,7 +5593,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
         :rtype: str
         """
         return self._UserGroupId
@@ -5604,7 +5604,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        r"""User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
         """
         return self._SearchCondition
@@ -5615,7 +5615,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        r"""Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5626,7 +5626,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        r"""Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :rtype: int
         """
         return self._Offset
@@ -5637,7 +5637,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        r"""Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :rtype: int
         """
         return self._Limit
@@ -5668,7 +5668,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
 
 class ListUsersInUserGroupResponse(AbstractModel):
-    """ListUsersInUserGroup response structure.
+    r"""ListUsersInUserGroup response structure.
 
     """
 
@@ -5693,7 +5693,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5705,7 +5705,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserInfo(self):
-        """Returned user information list.
+        r"""Returned user information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserInfo
         """
@@ -5717,7 +5717,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalNum(self):
-        """Total number of returned user information items.
+        r"""Total number of returned user information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5729,7 +5729,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5752,7 +5752,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListUsersRequest(AbstractModel):
-    """ListUsers request structure.
+    r"""ListUsers request structure.
 
     """
 
@@ -5780,7 +5780,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def SearchCondition(self):
-        """User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        r"""User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :rtype: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
         """
         return self._SearchCondition
@@ -5791,7 +5791,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def ExpectedFields(self):
-        """User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).
+        r"""User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).
         :rtype: list of str
         """
         return self._ExpectedFields
@@ -5802,7 +5802,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        r"""Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :rtype: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
         """
         return self._Sort
@@ -5813,7 +5813,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
+        r"""Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
         :rtype: int
         """
         return self._Offset
@@ -5824,7 +5824,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
+        r"""Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
         :rtype: int
         """
         return self._Limit
@@ -5835,7 +5835,7 @@ class ListUsersRequest(AbstractModel):
 
     @property
     def IncludeTotal(self):
-        """Whether to view the total number of search results. Default value: false (no).
+        r"""Whether to view the total number of search results. Default value: false (no).
         :rtype: bool
         """
         return self._IncludeTotal
@@ -5867,7 +5867,7 @@ class ListUsersRequest(AbstractModel):
 
 
 class ListUsersResponse(AbstractModel):
-    """ListUsers response structure.
+    r"""ListUsers response structure.
 
     """
 
@@ -5888,7 +5888,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserList(self):
-        """List of users returned for the query.
+        r"""List of users returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserInformation
         """
@@ -5900,7 +5900,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of users returned for the query, which will be returned only when the `IncludeTotal` input parameter is set to `true`.
+        r"""Total number of users returned for the query, which will be returned only when the `IncludeTotal` input parameter is set to `true`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5912,7 +5912,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5934,7 +5934,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyAccountGroupRequest(AbstractModel):
-    """ModifyAccountGroup request structure.
+    r"""ModifyAccountGroup request structure.
 
     """
 
@@ -5953,7 +5953,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID.
+        r"""Account group ID.
         :rtype: str
         """
         return self._AccountGroupId
@@ -5964,7 +5964,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Account group name. When this parameter is not specified, the name will not be modified.
+        r"""Account group name. When this parameter is not specified, the name will not be modified.
         :rtype: str
         """
         return self._GroupName
@@ -5975,7 +5975,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description. When this parameter is not specified, the description will not be modified.
+        r"""Description. When this parameter is not specified, the description will not be modified.
         :rtype: str
         """
         return self._Description
@@ -6000,7 +6000,7 @@ class ModifyAccountGroupRequest(AbstractModel):
 
 
 class ModifyAccountGroupResponse(AbstractModel):
-    """ModifyAccountGroup response structure.
+    r"""ModifyAccountGroup response structure.
 
     """
 
@@ -6013,7 +6013,7 @@ class ModifyAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6028,7 +6028,7 @@ class ModifyAccountGroupResponse(AbstractModel):
 
 
 class ModifyAppAccountRequest(AbstractModel):
-    """ModifyAppAccount request structure.
+    r"""ModifyAppAccount request structure.
 
     """
 
@@ -6050,7 +6050,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def AccountId(self):
-        """Account ID.
+        r"""Account ID.
         :rtype: str
         """
         return self._AccountId
@@ -6061,7 +6061,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name. When this parameter is not specified, the name will not be modified.
+        r"""Account name. When this parameter is not specified, the name will not be modified.
         :rtype: str
         """
         return self._AccountName
@@ -6072,7 +6072,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Account password. When this parameter is not specified, the password will not be changed.
+        r"""Account password. When this parameter is not specified, the password will not be changed.
         :rtype: str
         """
         return self._Password
@@ -6083,7 +6083,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description. When this parameter is not specified, the description will not be modified.
+        r"""Description. When this parameter is not specified, the description will not be modified.
         :rtype: str
         """
         return self._Description
@@ -6109,7 +6109,7 @@ class ModifyAppAccountRequest(AbstractModel):
 
 
 class ModifyAppAccountResponse(AbstractModel):
-    """ModifyAppAccount response structure.
+    r"""ModifyAppAccount response structure.
 
     """
 
@@ -6122,7 +6122,7 @@ class ModifyAppAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6137,7 +6137,7 @@ class ModifyAppAccountResponse(AbstractModel):
 
 
 class ModifyApplicationRequest(AbstractModel):
-    """ModifyApplication request structure.
+    r"""ModifyApplication request structure.
 
     """
 
@@ -6165,7 +6165,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID, which is globally unique.
+        r"""Application ID, which is globally unique.
         :rtype: str
         """
         return self._ApplicationId
@@ -6176,7 +6176,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def SecureLevel(self):
-        """Security level.
+        r"""Security level.
         :rtype: str
         """
         return self._SecureLevel
@@ -6187,7 +6187,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Displayed application name, which can contain up to 32 characters and is the same as the application name by default.
+        r"""Displayed application name, which can contain up to 32 characters and is the same as the application name by default.
         :rtype: str
         """
         return self._DisplayName
@@ -6198,7 +6198,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def AppStatus(self):
-        """Application status. Valid values: true: enabled; false: disabled.
+        r"""Application status. Valid values: true: enabled; false: disabled.
         :rtype: bool
         """
         return self._AppStatus
@@ -6209,7 +6209,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def IconUrl(self):
-        """Access address of the application icon image.
+        r"""Access address of the application icon image.
         :rtype: str
         """
         return self._IconUrl
@@ -6220,7 +6220,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description, which can contain up to 128 characters.
+        r"""Description, which can contain up to 128 characters.
         :rtype: str
         """
         return self._Description
@@ -6248,7 +6248,7 @@ class ModifyApplicationRequest(AbstractModel):
 
 
 class ModifyApplicationResponse(AbstractModel):
-    """ModifyApplication response structure.
+    r"""ModifyApplication response structure.
 
     """
 
@@ -6261,7 +6261,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6276,7 +6276,7 @@ class ModifyApplicationResponse(AbstractModel):
 
 
 class ModifyUserInfoRequest(AbstractModel):
-    """ModifyUserInfo request structure.
+    r"""ModifyUserInfo request structure.
 
     """
 
@@ -6322,7 +6322,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.
+        r"""Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.
         :rtype: str
         """
         return self._UserName
@@ -6333,7 +6333,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Nickname, which can contain up to 64 characters and is the same as the username by default.
+        r"""Nickname, which can contain up to 64 characters and is the same as the username by default.
         :rtype: str
         """
         return self._DisplayName
@@ -6344,7 +6344,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        """User remarks, which can contain up to 512 characters.
+        r"""User remarks, which can contain up to 512 characters.
         :rtype: str
         """
         return self._Description
@@ -6355,7 +6355,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserGroupIds(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
         :rtype: list of str
         """
         return self._UserGroupIds
@@ -6366,7 +6366,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
+        r"""User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
         :rtype: str
         """
         return self._UserId
@@ -6377,7 +6377,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Phone(self):
-        """User's mobile number.
+        r"""User's mobile number.
         :rtype: str
         """
         return self._Phone
@@ -6388,7 +6388,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def ExpirationTime(self):
-        """User expiration time in ISO 8601 format.
+        r"""User expiration time in ISO 8601 format.
         :rtype: str
         """
         return self._ExpirationTime
@@ -6399,7 +6399,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Password(self):
-        """User password, which needs to be configured according to the password policy.
+        r"""User password, which needs to be configured according to the password policy.
         :rtype: str
         """
         return self._Password
@@ -6410,7 +6410,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
         :rtype: str
         """
         return self._Email
@@ -6421,7 +6421,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def PwdNeedReset(self):
-        """Whether the password needs to be reset. Default value: false (no).
+        r"""Whether the password needs to be reset. Default value: false (no).
         :rtype: bool
         """
         return self._PwdNeedReset
@@ -6432,7 +6432,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
+        r"""Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
         :rtype: str
         """
         return self._OrgNodeId
@@ -6443,7 +6443,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     @property
     def SecondaryOrgNodeIdList(self):
-        """List of IDs of the user's secondary organizations.
+        r"""List of IDs of the user's secondary organizations.
         :rtype: list of str
         """
         return self._SecondaryOrgNodeIdList
@@ -6477,7 +6477,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
 
 class ModifyUserInfoResponse(AbstractModel):
-    """ModifyUserInfo response structure.
+    r"""ModifyUserInfo response structure.
 
     """
 
@@ -6490,7 +6490,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6505,7 +6505,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
 
 class OrgNodeChildInfo(AbstractModel):
-    """List of sub-nodes under the current organization node
+    r"""List of sub-nodes under the current organization node
 
     """
 
@@ -6547,7 +6547,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
+        r"""Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6559,7 +6559,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifiedDate(self):
-        """Last modification time of the organization node in ISO 8601 format.
+        r"""Last modification time of the organization node in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6571,7 +6571,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomizedOrgNodeId(self):
-        """External ID of the organization node, which is optional and customizable.
+        r"""External ID of the organization node, which is optional and customizable.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6583,7 +6583,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ParentOrgNodeId(self):
-        """Parent node ID of the current organization node.
+        r"""Parent node ID of the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6595,7 +6595,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique.
+        r"""Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6607,7 +6607,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataSource(self):
-        """Data source.
+        r"""Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6619,7 +6619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Organization node creation time in ISO 8601 format.
+        r"""Organization node creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6631,7 +6631,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Organization node description.
+        r"""Organization node description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6662,7 +6662,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class OrgNodeChildUserInfo(AbstractModel):
-    """User information list under the organization sub-node
+    r"""User information list under the organization sub-node
 
     """
 
@@ -6692,7 +6692,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique and can contain up to 64 characters.
+        r"""Organization node ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6704,7 +6704,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserInfo(self):
-        """User information list.
+        r"""User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserInfo
         """
@@ -6716,7 +6716,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalUserNum(self):
-        """Total number of users under the current organization node.
+        r"""Total number of users under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6728,7 +6728,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeIdPath(self):
-        """Organization ID path.
+        r"""Organization ID path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6740,7 +6740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgNodeNamePath(self):
-        """Organization name path.
+        r"""Organization name path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6773,7 +6773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class RemoveAccountFromAccountGroupRequest(AbstractModel):
-    """RemoveAccountFromAccountGroup request structure.
+    r"""RemoveAccountFromAccountGroup request structure.
 
     """
 
@@ -6789,7 +6789,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID
+        r"""Account group ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -6800,7 +6800,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """List of IDs of the accounts to be removed.
+        r"""List of IDs of the accounts to be removed.
         :rtype: list of str
         """
         return self._AccountIds
@@ -6824,7 +6824,7 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
 
 class RemoveAccountFromAccountGroupResponse(AbstractModel):
-    """RemoveAccountFromAccountGroup response structure.
+    r"""RemoveAccountFromAccountGroup response structure.
 
     """
 
@@ -6837,7 +6837,7 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6852,7 +6852,7 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
 
 class RemoveUserFromUserGroupRequest(AbstractModel):
-    """RemoveUserFromUserGroup request structure.
+    r"""RemoveUserFromUserGroup request structure.
 
     """
 
@@ -6868,7 +6868,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """List of IDs of the users to be added to the user group.
+        r"""List of IDs of the users to be added to the user group.
         :rtype: list of str
         """
         return self._UserIds
@@ -6879,7 +6879,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique.
+        r"""User group ID, which is globally unique.
         :rtype: str
         """
         return self._UserGroupId
@@ -6903,7 +6903,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
 
 class RemoveUserFromUserGroupResponse(AbstractModel):
-    """RemoveUserFromUserGroup response structure.
+    r"""RemoveUserFromUserGroup response structure.
 
     """
 
@@ -6916,7 +6916,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6931,7 +6931,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
 
 class SortCondition(AbstractModel):
-    """Sort criterion.
+    r"""Sort criterion.
 
     """
 
@@ -6947,7 +6947,7 @@ class SortCondition(AbstractModel):
 
     @property
     def SortKey(self):
-        """Sorting attribute.
+        r"""Sorting attribute.
         :rtype: str
         """
         return self._SortKey
@@ -6958,7 +6958,7 @@ class SortCondition(AbstractModel):
 
     @property
     def SortOrder(self):
-        """Sorting order. Valid values: ASC: ascending order; DESC: descending order.
+        r"""Sorting order. Valid values: ASC: ascending order; DESC: descending order.
         :rtype: str
         """
         return self._SortOrder
@@ -6982,7 +6982,7 @@ class SortCondition(AbstractModel):
 
 
 class ThirdPartyAccountInfo(AbstractModel):
-    """Third-Party account information.
+    r"""Third-Party account information.
 
     """
 
@@ -7000,7 +7000,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountCode(self):
-        """Third-Party account code. `2` indicates WeCom account.
+        r"""Third-Party account code. `2` indicates WeCom account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7012,7 +7012,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountName(self):
-        """Username of the account.
+        r"""Username of the account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7037,7 +7037,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateOrgNodeRequest(AbstractModel):
-    """UpdateOrgNode request structure.
+    r"""UpdateOrgNode request structure.
 
     """
 
@@ -7059,7 +7059,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def OrgNodeId(self):
-        """Organization node ID, which is globally unique.
+        r"""Organization node ID, which is globally unique.
         :rtype: str
         """
         return self._OrgNodeId
@@ -7070,7 +7070,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        """Organization node name, which can contain up to 64 characters.
+        r"""Organization node name, which can contain up to 64 characters.
         :rtype: str
         """
         return self._DisplayName
@@ -7081,7 +7081,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Organization node description.
+        r"""Organization node description.
         :rtype: str
         """
         return self._Description
@@ -7092,7 +7092,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     @property
     def CustomizedOrgNodeId(self):
-        """External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
+        r"""External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
         :rtype: str
         """
         return self._CustomizedOrgNodeId
@@ -7118,7 +7118,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
 
 class UpdateOrgNodeResponse(AbstractModel):
-    """UpdateOrgNode response structure.
+    r"""UpdateOrgNode response structure.
 
     """
 
@@ -7131,7 +7131,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7146,7 +7146,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
 
 class UserGroupInfo(AbstractModel):
-    """Returned user group list.
+    r"""Returned user group list.
 
     """
 
@@ -7172,7 +7172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Nickname, which can contain up to 64 characters and is the same as the username by default.
+        r"""Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7184,7 +7184,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        """User group ID, which is globally unique and can contain up to 64 characters.
+        r"""User group ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7196,7 +7196,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """User group remarks.
+        r"""User group remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7208,7 +7208,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedDate(self):
-        """Creation time.
+        r"""Creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7235,7 +7235,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserGroupInfoSearchCriteria(AbstractModel):
-    """User group attribute search criteria.
+    r"""User group attribute search criteria.
 
     """
 
@@ -7248,7 +7248,7 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by name. The match criteria include user group name and user group ID.
+        r"""Search by name. The match criteria include user group name and user group ID.
         :rtype: str
         """
         return self._Keyword
@@ -7271,7 +7271,7 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
 
 class UserGroupInformation(AbstractModel):
-    """Returned user group list.
+    r"""Returned user group list.
 
     """
 
@@ -7291,7 +7291,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
-        """User group ID.
+        r"""User group ID.
         :rtype: str
         """
         return self._UserGroupId
@@ -7302,7 +7302,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupName(self):
-        """User group name.
+        r"""User group name.
         :rtype: str
         """
         return self._UserGroupName
@@ -7313,7 +7313,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifiedDate(self):
-        """Last update time in ISO 8601 format.
+        r"""Last update time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7339,7 +7339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserGroupInformationSearchCriteria(AbstractModel):
-    """User group attribute search criteria in the list of the user's user groups.
+    r"""User group attribute search criteria in the list of the user's user groups.
 
     """
 
@@ -7352,7 +7352,7 @@ class UserGroupInformationSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by name. The match criteria include user group name.
+        r"""Search by name. The match criteria include user group name.
         :rtype: str
         """
         return self._Keyword
@@ -7375,7 +7375,7 @@ class UserGroupInformationSearchCriteria(AbstractModel):
 
 
 class UserInfo(AbstractModel):
-    """User information list.
+    r"""User information list.
 
     """
 
@@ -7413,7 +7413,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID, which is globally unique and can contain up to 64 characters.
+        r"""User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7425,7 +7425,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Nickname, which can contain up to 64 characters and is the same as the username by default.
+        r"""Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7437,7 +7437,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username.
+        r"""Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7449,7 +7449,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """User's mobile number.
+        r"""User's mobile number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7461,7 +7461,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """Email address.
+        r"""Email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7473,7 +7473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """User status.
+        r"""User status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7485,7 +7485,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataSource(self):
-        """Data source.
+        r"""Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7515,7 +7515,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserInformation(AbstractModel):
-    """User information list.
+    r"""User information list.
 
     """
 
@@ -7573,7 +7573,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
-        """Username, which can contain up to 32 characters.
+        r"""Username, which can contain up to 32 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7585,7 +7585,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """User status.
+        r"""User status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7597,7 +7597,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
-        """Nickname, which can contain up to 64 characters and is the same as the username by default.
+        r"""Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7609,7 +7609,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """User remarks, which can contain up to 512 characters.
+        r"""User remarks, which can contain up to 512 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7621,7 +7621,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastUpdateTime(self):
-        """Last update time of the user in ISO 8601 format.
+        r"""Last update time of the user in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7633,7 +7633,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
-        """User creation time in ISO 8601 format.
+        r"""User creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7645,7 +7645,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgPath(self):
-        """Path ID of the user's primary organization.
+        r"""Path ID of the user's primary organization.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7657,7 +7657,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """User's mobile number with country code, such as `+86-00000000000`.
+        r"""User's mobile number with country code, such as `+86-00000000000`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7669,7 +7669,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectGroups(self):
-        """List of IDs of the user's user groups.
+        r"""List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -7681,7 +7681,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7693,7 +7693,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastLoginTime(self):
-        """Last login time of the user in ISO 8601 format.
+        r"""Last login time of the user in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7705,7 +7705,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User ID, which is globally unique and can contain up to 64 characters.
+        r"""User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7740,7 +7740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UserSearchCriteria(AbstractModel):
-    """User attribute search criteria.
+    r"""User attribute search criteria.
 
     """
 
@@ -7771,7 +7771,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which can contain up to 64 characters.
+        r"""Username, which can contain up to 64 characters.
         :rtype: str
         """
         return self._UserName
@@ -7782,7 +7782,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Phone(self):
-        """User's mobile number.
+        r"""User's mobile number.
         :rtype: str
         """
         return self._Phone
@@ -7793,7 +7793,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Email(self):
-        """User's email address.
+        r"""User's email address.
         :rtype: str
         """
         return self._Email
@@ -7804,7 +7804,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Status(self):
-        """User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        r"""User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
         :rtype: str
         """
         return self._Status
@@ -7815,7 +7815,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def CreationTime(self):
-        """User creation time in ISO 8601 format.
+        r"""User creation time in ISO 8601 format.
         :rtype: str
         """
         return self._CreationTime
@@ -7826,7 +7826,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        """The user's last update time.
+        r"""The user's last update time.
         :rtype: str
         """
         return self._LastUpdateTime
@@ -7837,7 +7837,7 @@ class UserSearchCriteria(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by name. The match criteria include username and user ID.
+        r"""Search by name. The match criteria include username and user ID.
         :rtype: str
         """
         return self._Keyword

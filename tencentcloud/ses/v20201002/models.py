@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddressUnsubscribeConfigData(AbstractModel):
-    """Address-Level unsubscribe configuration.
+    r"""Address-Level unsubscribe configuration.
 
     """
 
@@ -38,7 +38,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def Address(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._Address
@@ -49,7 +49,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """Unsubscription link option 0: do not include unsubscription link 1: simplified chinese 2: english 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
+        r"""Unsubscription link option 0: do not include unsubscription link 1: simplified chinese 2: english 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -60,7 +60,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
     @property
     def Status(self):
-        """0: disabled; 1: enabled.
+        r"""0: disabled; 1: enabled.
         :rtype: int
         """
         return self._Status
@@ -85,7 +85,7 @@ class AddressUnsubscribeConfigData(AbstractModel):
 
 
 class Attachment(AbstractModel):
-    """Attachment structure, including attachment name and Base64-encoded attachment content
+    r"""Attachment structure, including attachment name and Base64-encoded attachment content
 
     """
 
@@ -101,7 +101,7 @@ class Attachment(AbstractModel):
 
     @property
     def FileName(self):
-        """Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
+        r"""Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
         :rtype: str
         """
         return self._FileName
@@ -112,7 +112,7 @@ class Attachment(AbstractModel):
 
     @property
     def Content(self):
-        """Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        r"""Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
         :rtype: str
         """
         return self._Content
@@ -136,7 +136,7 @@ class Attachment(AbstractModel):
 
 
 class BatchSendEmailRequest(AbstractModel):
-    """BatchSendEmail request structure.
+    r"""BatchSendEmail request structure.
 
     """
 
@@ -184,7 +184,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def FromEmailAddress(self):
-        """Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
+        r"""Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
 sender &lt;email address&gt;. For example:
 Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
         :rtype: str
@@ -197,7 +197,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReceiverId(self):
-        """Recipient group ID
+        r"""Recipient group ID
         :rtype: int
         """
         return self._ReceiverId
@@ -208,7 +208,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Subject(self):
-        """Email subject
+        r"""Email subject
         :rtype: str
         """
         return self._Subject
@@ -219,7 +219,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TaskType(self):
-        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        r"""Task type. `1`: immediate; `2`: scheduled; `3`: recurring
         :rtype: int
         """
         return self._TaskType
@@ -230,7 +230,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReplyToAddresses(self):
-        """Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        r"""Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -241,7 +241,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Template(self):
-        """Template when emails are sent using a template
+        r"""Template when emails are sent using a template
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -252,7 +252,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Simple(self):
-        """Disused
+        r"""Disused
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -263,7 +263,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Attachments(self):
-        """Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
+        r"""Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -274,7 +274,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def CycleParam(self):
-        """Parameter required for a recurring sending task
+        r"""Parameter required for a recurring sending task
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
         return self._CycleParam
@@ -285,7 +285,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TimedParam(self):
-        """Parameter required for a scheduled sending task
+        r"""Parameter required for a scheduled sending task
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
         return self._TimedParam
@@ -296,7 +296,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Unsubscribe(self):
-        """Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        r"""Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
         :rtype: str
         """
         return self._Unsubscribe
@@ -307,7 +307,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ADLocation(self):
-        """Whether to add an ad tag. `0`: Add no tag; `1`: Add before the subject; `2`: Add after the subject.
+        r"""Whether to add an ad tag. `0`: Add no tag; `1`: Add before the subject; `2`: Add after the subject.
         :rtype: int
         """
         return self._ADLocation
@@ -354,7 +354,7 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
 
 class BatchSendEmailResponse(AbstractModel):
-    """BatchSendEmail response structure.
+    r"""BatchSendEmail response structure.
 
     """
 
@@ -370,7 +370,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Sending task ID
+        r"""Sending task ID
         :rtype: int
         """
         return self._TaskId
@@ -381,7 +381,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -397,7 +397,7 @@ class BatchSendEmailResponse(AbstractModel):
 
 
 class BlackEmailAddress(AbstractModel):
-    """Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.
+    r"""Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.
 
     """
 
@@ -413,7 +413,7 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def BounceTime(self):
-        """Time when the email address is blocklisted.
+        r"""Time when the email address is blocklisted.
         :rtype: str
         """
         return self._BounceTime
@@ -424,7 +424,7 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """Blocklisted email address.
+        r"""Blocklisted email address.
         :rtype: str
         """
         return self._EmailAddress
@@ -448,7 +448,7 @@ class BlackEmailAddress(AbstractModel):
 
 
 class CreateAddressUnsubscribeConfigRequest(AbstractModel):
-    """CreateAddressUnsubscribeConfig request structure.
+    r"""CreateAddressUnsubscribeConfig request structure.
 
     """
 
@@ -467,7 +467,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._Address
@@ -478,7 +478,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai
+        r"""Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -489,7 +489,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        """0: disabled; 1: enabled.
+        r"""0: disabled; 1: enabled.
         :rtype: int
         """
         return self._Status
@@ -514,7 +514,7 @@ class CreateAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class CreateAddressUnsubscribeConfigResponse(AbstractModel):
-    """CreateAddressUnsubscribeConfig response structure.
+    r"""CreateAddressUnsubscribeConfig response structure.
 
     """
 
@@ -527,7 +527,7 @@ class CreateAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -542,7 +542,7 @@ class CreateAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class CreateEmailAddressRequest(AbstractModel):
-    """CreateEmailAddress request structure.
+    r"""CreateEmailAddress request structure.
 
     """
 
@@ -558,7 +558,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """Your sender address. (You can create up to 10 sender addresses for each domain.)
+        r"""Your sender address. (You can create up to 10 sender addresses for each domain.)
         :rtype: str
         """
         return self._EmailAddress
@@ -569,7 +569,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailSenderName(self):
-        """Sender name.
+        r"""Sender name.
         :rtype: str
         """
         return self._EmailSenderName
@@ -593,7 +593,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
 
 class CreateEmailAddressResponse(AbstractModel):
-    """CreateEmailAddress response structure.
+    r"""CreateEmailAddress response structure.
 
     """
 
@@ -606,7 +606,7 @@ class CreateEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -621,7 +621,7 @@ class CreateEmailAddressResponse(AbstractModel):
 
 
 class CreateEmailIdentityRequest(AbstractModel):
-    """CreateEmailIdentity request structure.
+    r"""CreateEmailIdentity request structure.
 
     """
 
@@ -634,7 +634,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
+        r"""Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
         :rtype: str
         """
         return self._EmailIdentity
@@ -657,7 +657,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
 
 class CreateEmailIdentityResponse(AbstractModel):
-    """CreateEmailIdentity response structure.
+    r"""CreateEmailIdentity response structure.
 
     """
 
@@ -679,7 +679,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """Verification type. The value is fixed to `DOMAIN`.
+        r"""Verification type. The value is fixed to `DOMAIN`.
         :rtype: str
         """
         return self._IdentityType
@@ -690,7 +690,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """Verification passed or not.
+        r"""Verification passed or not.
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -701,7 +701,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """DNS information that needs to be configured.
+        r"""DNS information that needs to be configured.
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -712,7 +712,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -735,7 +735,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
 
 class CreateEmailTemplateRequest(AbstractModel):
-    """CreateEmailTemplate request structure.
+    r"""CreateEmailTemplate request structure.
 
     """
 
@@ -751,7 +751,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """Template name.
+        r"""Template name.
         :rtype: str
         """
         return self._TemplateName
@@ -762,7 +762,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """Template content.
+        r"""Template content.
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -788,7 +788,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
 
 class CreateEmailTemplateResponse(AbstractModel):
-    """CreateEmailTemplate response structure.
+    r"""CreateEmailTemplate response structure.
 
     """
 
@@ -804,7 +804,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateID(self):
-        """Template ID
+        r"""Template ID
         :rtype: int
         """
         return self._TemplateID
@@ -815,7 +815,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -831,7 +831,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
 
 class CreateReceiverDetailRequest(AbstractModel):
-    """CreateReceiverDetail request structure.
+    r"""CreateReceiverDetail request structure.
 
     """
 
@@ -847,7 +847,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """Recipient group ID
+        r"""Recipient group ID
         :rtype: int
         """
         return self._ReceiverId
@@ -858,7 +858,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def Emails(self):
-        """Email address
+        r"""Email address
         :rtype: list of str
         """
         return self._Emails
@@ -882,7 +882,7 @@ class CreateReceiverDetailRequest(AbstractModel):
 
 
 class CreateReceiverDetailResponse(AbstractModel):
-    """CreateReceiverDetail response structure.
+    r"""CreateReceiverDetail response structure.
 
     """
 
@@ -895,7 +895,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -910,7 +910,7 @@ class CreateReceiverDetailResponse(AbstractModel):
 
 
 class CreateReceiverRequest(AbstractModel):
-    """CreateReceiver request structure.
+    r"""CreateReceiver request structure.
 
     """
 
@@ -926,7 +926,7 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def ReceiversName(self):
-        """Recipient group name
+        r"""Recipient group name
         :rtype: str
         """
         return self._ReceiversName
@@ -937,7 +937,7 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """Recipient group description
+        r"""Recipient group description
         :rtype: str
         """
         return self._Desc
@@ -961,7 +961,7 @@ class CreateReceiverRequest(AbstractModel):
 
 
 class CreateReceiverResponse(AbstractModel):
-    """CreateReceiver response structure.
+    r"""CreateReceiver response structure.
 
     """
 
@@ -977,7 +977,7 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """Recipient group ID, by which recipient email addresses are uploaded
+        r"""Recipient group ID, by which recipient email addresses are uploaded
         :rtype: int
         """
         return self._ReceiverId
@@ -988,7 +988,7 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1004,7 +1004,7 @@ class CreateReceiverResponse(AbstractModel):
 
 
 class CycleEmailParam(AbstractModel):
-    """Parameter required to create a recurring sending task
+    r"""Parameter required to create a recurring sending task
 
     """
 
@@ -1023,7 +1023,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time of the task
+        r"""Start time of the task
         :rtype: str
         """
         return self._BeginTime
@@ -1034,7 +1034,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def IntervalTime(self):
-        """Task recurrence in hours
+        r"""Task recurrence in hours
         :rtype: int
         """
         return self._IntervalTime
@@ -1045,7 +1045,7 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def TermCycle(self):
-        """Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.
+        r"""Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.
         :rtype: int
         """
         return self._TermCycle
@@ -1070,7 +1070,7 @@ class CycleEmailParam(AbstractModel):
 
 
 class DNSAttributes(AbstractModel):
-    """Describes the domain name, record type, expected value, and currently configured value of DNS records.
+    r"""Describes the domain name, record type, expected value, and currently configured value of DNS records.
 
     """
 
@@ -1095,7 +1095,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Type(self):
-        """Record types: CNAME, A, TXT, and MX.
+        r"""Record types: CNAME, A, TXT, and MX.
         :rtype: str
         """
         return self._Type
@@ -1106,7 +1106,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def SendDomain(self):
-        """Domain name.
+        r"""Domain name.
         :rtype: str
         """
         return self._SendDomain
@@ -1117,7 +1117,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def ExpectedValue(self):
-        """Expected value.
+        r"""Expected value.
         :rtype: str
         """
         return self._ExpectedValue
@@ -1128,7 +1128,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """Currently configured value.
+        r"""Currently configured value.
         :rtype: str
         """
         return self._CurrentValue
@@ -1139,7 +1139,7 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Status(self):
-        """Approved or not. The default value is `false`.
+        r"""Approved or not. The default value is `false`.
         :rtype: bool
         """
         return self._Status
@@ -1166,7 +1166,7 @@ class DNSAttributes(AbstractModel):
 
 
 class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
-    """DeleteAddressUnsubscribeConfig request structure.
+    r"""DeleteAddressUnsubscribeConfig request structure.
 
     """
 
@@ -1179,7 +1179,7 @@ class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._Address
@@ -1202,7 +1202,7 @@ class DeleteAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
-    """DeleteAddressUnsubscribeConfig response structure.
+    r"""DeleteAddressUnsubscribeConfig response structure.
 
     """
 
@@ -1215,7 +1215,7 @@ class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1230,7 +1230,7 @@ class DeleteAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class DeleteBlackListRequest(AbstractModel):
-    """DeleteBlackList request structure.
+    r"""DeleteBlackList request structure.
 
     """
 
@@ -1243,7 +1243,7 @@ class DeleteBlackListRequest(AbstractModel):
 
     @property
     def EmailAddressList(self):
-        """List of email addresses to be unblocklisted. Enter at least one address.
+        r"""List of email addresses to be unblocklisted. Enter at least one address.
         :rtype: list of str
         """
         return self._EmailAddressList
@@ -1266,7 +1266,7 @@ class DeleteBlackListRequest(AbstractModel):
 
 
 class DeleteBlackListResponse(AbstractModel):
-    """DeleteBlackList response structure.
+    r"""DeleteBlackList response structure.
 
     """
 
@@ -1279,7 +1279,7 @@ class DeleteBlackListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1294,7 +1294,7 @@ class DeleteBlackListResponse(AbstractModel):
 
 
 class DeleteEmailAddressRequest(AbstractModel):
-    """DeleteEmailAddress request structure.
+    r"""DeleteEmailAddress request structure.
 
     """
 
@@ -1307,7 +1307,7 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._EmailAddress
@@ -1330,7 +1330,7 @@ class DeleteEmailAddressRequest(AbstractModel):
 
 
 class DeleteEmailAddressResponse(AbstractModel):
-    """DeleteEmailAddress response structure.
+    r"""DeleteEmailAddress response structure.
 
     """
 
@@ -1343,7 +1343,7 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1358,7 +1358,7 @@ class DeleteEmailAddressResponse(AbstractModel):
 
 
 class DeleteEmailIdentityRequest(AbstractModel):
-    """DeleteEmailIdentity request structure.
+    r"""DeleteEmailIdentity request structure.
 
     """
 
@@ -1371,7 +1371,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """Sender domain.
+        r"""Sender domain.
         :rtype: str
         """
         return self._EmailIdentity
@@ -1394,7 +1394,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
 
 class DeleteEmailIdentityResponse(AbstractModel):
-    """DeleteEmailIdentity response structure.
+    r"""DeleteEmailIdentity response structure.
 
     """
 
@@ -1407,7 +1407,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1422,7 +1422,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
 
 class DeleteEmailTemplateRequest(AbstractModel):
-    """DeleteEmailTemplate request structure.
+    r"""DeleteEmailTemplate request structure.
 
     """
 
@@ -1435,7 +1435,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """Template ID
+        r"""Template ID
         :rtype: int
         """
         return self._TemplateID
@@ -1458,7 +1458,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
 
 class DeleteEmailTemplateResponse(AbstractModel):
-    """DeleteEmailTemplate response structure.
+    r"""DeleteEmailTemplate response structure.
 
     """
 
@@ -1471,7 +1471,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1486,7 +1486,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
 
 class DeleteReceiverRequest(AbstractModel):
-    """DeleteReceiver request structure.
+    r"""DeleteReceiver request structure.
 
     """
 
@@ -1499,7 +1499,7 @@ class DeleteReceiverRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """Recipient group ID, which is returned when a recipient group is created.
+        r"""Recipient group ID, which is returned when a recipient group is created.
         :rtype: int
         """
         return self._ReceiverId
@@ -1522,7 +1522,7 @@ class DeleteReceiverRequest(AbstractModel):
 
 
 class DeleteReceiverResponse(AbstractModel):
-    """DeleteReceiver response structure.
+    r"""DeleteReceiver response structure.
 
     """
 
@@ -1535,7 +1535,7 @@ class DeleteReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1550,7 +1550,7 @@ class DeleteReceiverResponse(AbstractModel):
 
 
 class EmailIdentity(AbstractModel):
-    """Sender domain verification list structure
+    r"""Sender domain verification list structure
 
     """
 
@@ -1575,7 +1575,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityName(self):
-        """Sender domain.
+        r"""Sender domain.
         :rtype: str
         """
         return self._IdentityName
@@ -1586,7 +1586,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
-        """Verification type. The value is fixed to `DOMAIN`.
+        r"""Verification type. The value is fixed to `DOMAIN`.
         :rtype: str
         """
         return self._IdentityType
@@ -1597,7 +1597,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendingEnabled(self):
-        """Verification passed or not.
+        r"""Verification passed or not.
         :rtype: bool
         """
         return self._SendingEnabled
@@ -1608,7 +1608,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def CurrentReputationLevel(self):
-        """Current reputation level
+        r"""Current reputation level
         :rtype: int
         """
         return self._CurrentReputationLevel
@@ -1619,7 +1619,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def DailyQuota(self):
-        """Maximum number of messages sent per day
+        r"""Maximum number of messages sent per day
         :rtype: int
         """
         return self._DailyQuota
@@ -1646,7 +1646,7 @@ class EmailIdentity(AbstractModel):
 
 
 class EmailSender(AbstractModel):
-    """Describes sender information.
+    r"""Describes sender information.
 
     """
 
@@ -1667,7 +1667,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailAddress(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._EmailAddress
@@ -1678,7 +1678,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenderName(self):
-        """Sender name.
+        r"""Sender name.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1690,7 +1690,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTimestamp(self):
-        """Creation time.
+        r"""Creation time.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1716,7 +1716,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class GetEmailIdentityRequest(AbstractModel):
-    """GetEmailIdentity request structure.
+    r"""GetEmailIdentity request structure.
 
     """
 
@@ -1729,7 +1729,7 @@ class GetEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """Sender domain.
+        r"""Sender domain.
         :rtype: str
         """
         return self._EmailIdentity
@@ -1752,7 +1752,7 @@ class GetEmailIdentityRequest(AbstractModel):
 
 
 class GetEmailIdentityResponse(AbstractModel):
-    """GetEmailIdentity response structure.
+    r"""GetEmailIdentity response structure.
 
     """
 
@@ -1774,7 +1774,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """Verification type. The value is fixed to `DOMAIN`.
+        r"""Verification type. The value is fixed to `DOMAIN`.
         :rtype: str
         """
         return self._IdentityType
@@ -1785,7 +1785,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """Verification passed or not.
+        r"""Verification passed or not.
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -1796,7 +1796,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """DNS configuration details.
+        r"""DNS configuration details.
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -1807,7 +1807,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1830,7 +1830,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
 
 class GetEmailTemplateRequest(AbstractModel):
-    """GetEmailTemplate request structure.
+    r"""GetEmailTemplate request structure.
 
     """
 
@@ -1843,7 +1843,7 @@ class GetEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """Template ID.
+        r"""Template ID.
         :rtype: int
         """
         return self._TemplateID
@@ -1866,7 +1866,7 @@ class GetEmailTemplateRequest(AbstractModel):
 
 
 class GetEmailTemplateResponse(AbstractModel):
-    """GetEmailTemplate response structure.
+    r"""GetEmailTemplate response structure.
 
     """
 
@@ -1888,7 +1888,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """Template content.
+        r"""Template content.
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -1899,7 +1899,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateStatus(self):
-        """Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).
+        r"""Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).
         :rtype: int
         """
         return self._TemplateStatus
@@ -1910,7 +1910,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateName(self):
-        """Template name
+        r"""Template name
         :rtype: str
         """
         return self._TemplateName
@@ -1921,7 +1921,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1941,7 +1941,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
 
 class GetSendEmailStatusRequest(AbstractModel):
-    """GetSendEmailStatus request structure.
+    r"""GetSendEmailStatus request structure.
 
     """
 
@@ -1966,7 +1966,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def RequestDate(self):
-        """Date sent. This parameter is required. You can only query the sending status for a single date at a time.
+        r"""Date sent. This parameter is required. You can only query the sending status for a single date at a time.
         :rtype: str
         """
         return self._RequestDate
@@ -1977,7 +1977,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: `0`.
+        r"""Offset. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -1988,7 +1988,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of pulled entries. Maximum value: `100`.
+        r"""Maximum number of pulled entries. Maximum value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -1999,7 +1999,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def MessageId(self):
-        """The `MessageId` field returned by the `SendMail` API.
+        r"""The `MessageId` field returned by the `SendMail` API.
         :rtype: str
         """
         return self._MessageId
@@ -2010,7 +2010,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def ToEmailAddress(self):
-        """Recipient email address.
+        r"""Recipient email address.
         :rtype: str
         """
         return self._ToEmailAddress
@@ -2037,7 +2037,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
 
 class GetSendEmailStatusResponse(AbstractModel):
-    """GetSendEmailStatus response structure.
+    r"""GetSendEmailStatus response structure.
 
     """
 
@@ -2053,7 +2053,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def EmailStatusList(self):
-        """Status of sent emails
+        r"""Status of sent emails
         :rtype: list of SendEmailStatus
         """
         return self._EmailStatusList
@@ -2064,7 +2064,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2085,7 +2085,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
 
 class GetStatisticsReportRequest(AbstractModel):
-    """GetStatisticsReport request structure.
+    r"""GetStatisticsReport request structure.
 
     """
 
@@ -2107,7 +2107,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """Start date.
+        r"""Start date.
         :rtype: str
         """
         return self._StartDate
@@ -2118,7 +2118,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """End date.
+        r"""End date.
         :rtype: str
         """
         return self._EndDate
@@ -2129,7 +2129,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Sender domain.
+        r"""Sender domain.
         :rtype: str
         """
         return self._Domain
@@ -2140,7 +2140,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def ReceivingMailboxType(self):
-        """Recipient address type, for example, gmail.com.
+        r"""Recipient address type, for example, gmail.com.
         :rtype: str
         """
         return self._ReceivingMailboxType
@@ -2166,7 +2166,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
 
 class GetStatisticsReportResponse(AbstractModel):
-    """GetStatisticsReport response structure.
+    r"""GetStatisticsReport response structure.
 
     """
 
@@ -2185,7 +2185,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def DailyVolumes(self):
-        """Daily email sending statistics.
+        r"""Daily email sending statistics.
         :rtype: list of Volume
         """
         return self._DailyVolumes
@@ -2196,7 +2196,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def OverallVolume(self):
-        """Overall email sending statistics.
+        r"""Overall email sending statistics.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Volume`
         """
         return self._OverallVolume
@@ -2207,7 +2207,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2231,7 +2231,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
 
 class ListAddressUnsubscribeConfigRequest(AbstractModel):
-    """ListAddressUnsubscribeConfig request structure.
+    r"""ListAddressUnsubscribeConfig request structure.
 
     """
 
@@ -2247,7 +2247,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset.
+        r"""Offset.
         :rtype: int
         """
         return self._Offset
@@ -2258,7 +2258,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """specifies the maximum number of entries to retrieve, with a cap of 100.
+        r"""specifies the maximum number of entries to retrieve, with a cap of 100.
         :rtype: str
         """
         return self._Limit
@@ -2282,7 +2282,7 @@ class ListAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class ListAddressUnsubscribeConfigResponse(AbstractModel):
-    """ListAddressUnsubscribeConfig response structure.
+    r"""ListAddressUnsubscribeConfig response structure.
 
     """
 
@@ -2301,7 +2301,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def AddressUnsubscribeConfigList(self):
-        """Address-Level unsubscribe configuration.
+        r"""Address-Level unsubscribe configuration.
         :rtype: list of AddressUnsubscribeConfigData
         """
         return self._AddressUnsubscribeConfigList
@@ -2312,7 +2312,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
         :rtype: int
         """
         return self._Total
@@ -2323,7 +2323,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2345,7 +2345,7 @@ class ListAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class ListBlackEmailAddressRequest(AbstractModel):
-    """ListBlackEmailAddress request structure.
+    r"""ListBlackEmailAddress request structure.
 
     """
 
@@ -2373,7 +2373,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """Start date in the format of `YYYY-MM-DD`
+        r"""Start date in the format of `YYYY-MM-DD`
         :rtype: str
         """
         return self._StartDate
@@ -2384,7 +2384,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """End date in the format of `YYYY-MM-DD`
+        r"""End date in the format of `YYYY-MM-DD`
         :rtype: str
         """
         return self._EndDate
@@ -2395,7 +2395,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Common parameter. It must be used with `Offset`.
+        r"""Common parameter. It must be used with `Offset`.
         :rtype: int
         """
         return self._Limit
@@ -2406,7 +2406,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.
+        r"""Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.
         :rtype: int
         """
         return self._Offset
@@ -2417,7 +2417,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """You can specify an email address to query.
+        r"""You can specify an email address to query.
         :rtype: str
         """
         return self._EmailAddress
@@ -2428,7 +2428,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def TaskID(self):
-        """You can specify a task ID to query.
+        r"""You can specify a task ID to query.
         :rtype: str
         """
         return self._TaskID
@@ -2456,7 +2456,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
 
 class ListBlackEmailAddressResponse(AbstractModel):
-    """ListBlackEmailAddress response structure.
+    r"""ListBlackEmailAddress response structure.
 
     """
 
@@ -2475,7 +2475,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def BlackList(self):
-        """List of blocklisted addresses.
+        r"""List of blocklisted addresses.
         :rtype: list of BlackEmailAddress
         """
         return self._BlackList
@@ -2486,7 +2486,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of blocklisted addresses.
+        r"""Total number of blocklisted addresses.
         :rtype: int
         """
         return self._TotalCount
@@ -2497,7 +2497,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2519,13 +2519,13 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
 
 class ListEmailAddressRequest(AbstractModel):
-    """ListEmailAddress request structure.
+    r"""ListEmailAddress request structure.
 
     """
 
 
 class ListEmailAddressResponse(AbstractModel):
-    """ListEmailAddress response structure.
+    r"""ListEmailAddress response structure.
 
     """
 
@@ -2542,7 +2542,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenders(self):
-        """Details of sender addresses.
+        r"""Details of sender addresses.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of EmailSender
         """
@@ -2554,7 +2554,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2575,13 +2575,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class ListEmailIdentitiesRequest(AbstractModel):
-    """ListEmailIdentities request structure.
+    r"""ListEmailIdentities request structure.
 
     """
 
 
 class ListEmailIdentitiesResponse(AbstractModel):
-    """ListEmailIdentities response structure.
+    r"""ListEmailIdentities response structure.
 
     """
 
@@ -2603,7 +2603,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def EmailIdentities(self):
-        """List of sender domains.
+        r"""List of sender domains.
         :rtype: list of EmailIdentity
         """
         return self._EmailIdentities
@@ -2614,7 +2614,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxReputationLevel(self):
-        """Maximum reputation level
+        r"""Maximum reputation level
         :rtype: int
         """
         return self._MaxReputationLevel
@@ -2625,7 +2625,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxDailyQuota(self):
-        """Maximum number of emails sent per domain name
+        r"""Maximum number of emails sent per domain name
         :rtype: int
         """
         return self._MaxDailyQuota
@@ -2636,7 +2636,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2659,7 +2659,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
 
 class ListEmailTemplatesRequest(AbstractModel):
-    """ListEmailTemplates request structure.
+    r"""ListEmailTemplates request structure.
 
     """
 
@@ -2675,7 +2675,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of templates to get. This parameter is used for pagination.
+        r"""Number of templates to get. This parameter is used for pagination.
         :rtype: int
         """
         return self._Limit
@@ -2686,7 +2686,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Template offset to get. This parameter is used for pagination.
+        r"""Template offset to get. This parameter is used for pagination.
         :rtype: int
         """
         return self._Offset
@@ -2710,7 +2710,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
 
 class ListEmailTemplatesResponse(AbstractModel):
-    """ListEmailTemplates response structure.
+    r"""ListEmailTemplates response structure.
 
     """
 
@@ -2729,7 +2729,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TemplatesMetadata(self):
-        """List of email templates.
+        r"""List of email templates.
         :rtype: list of TemplatesMetadata
         """
         return self._TemplatesMetadata
@@ -2740,7 +2740,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of templates
+        r"""Total number of templates
         :rtype: int
         """
         return self._TotalCount
@@ -2751,7 +2751,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2773,7 +2773,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
 
 class ListReceiversRequest(AbstractModel):
-    """ListReceivers request structure.
+    r"""ListReceivers request structure.
 
     """
 
@@ -2795,7 +2795,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, starting from 0. The value is an integer.
+        r"""Offset, starting from 0. The value is an integer.
         :rtype: int
         """
         return self._Offset
@@ -2806,7 +2806,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of records to query. The value is an integer not exceeding 100.
+        r"""Number of records to query. The value is an integer not exceeding 100.
         :rtype: int
         """
         return self._Limit
@@ -2817,7 +2817,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.
+        r"""Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.
         :rtype: int
         """
         return self._Status
@@ -2828,7 +2828,7 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """Group name keyword for fuzzy query
+        r"""Group name keyword for fuzzy query
         :rtype: str
         """
         return self._KeyWord
@@ -2854,7 +2854,7 @@ class ListReceiversRequest(AbstractModel):
 
 
 class ListReceiversResponse(AbstractModel):
-    """ListReceivers response structure.
+    r"""ListReceivers response structure.
 
     """
 
@@ -2873,7 +2873,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -2884,7 +2884,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Data record
+        r"""Data record
         :rtype: list of ReceiverData
         """
         return self._Data
@@ -2895,7 +2895,7 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2917,7 +2917,7 @@ class ListReceiversResponse(AbstractModel):
 
 
 class ListSendTasksRequest(AbstractModel):
-    """ListSendTasks request structure.
+    r"""ListSendTasks request structure.
 
     """
 
@@ -2942,7 +2942,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.
+        r"""Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.
         :rtype: int
         """
         return self._Offset
@@ -2953,7 +2953,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of records to query. The value is an integer not exceeding 100.
+        r"""Number of records to query. The value is an integer not exceeding 100.
         :rtype: int
         """
         return self._Limit
@@ -2964,7 +2964,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.
+        r"""Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.
         :rtype: int
         """
         return self._Status
@@ -2975,7 +2975,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        """Recipient group ID
+        r"""Recipient group ID
         :rtype: int
         """
         return self._ReceiverId
@@ -2986,7 +2986,7 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.
+        r"""Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.
         :rtype: int
         """
         return self._TaskType
@@ -3013,7 +3013,7 @@ class ListSendTasksRequest(AbstractModel):
 
 
 class ListSendTasksResponse(AbstractModel):
-    """ListSendTasks response structure.
+    r"""ListSendTasks response structure.
 
     """
 
@@ -3032,7 +3032,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -3043,7 +3043,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Data record
+        r"""Data record
         :rtype: list of SendTaskData
         """
         return self._Data
@@ -3054,7 +3054,7 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3076,7 +3076,7 @@ class ListSendTasksResponse(AbstractModel):
 
 
 class ReceiverData(AbstractModel):
-    """Recipient group data type
+    r"""Recipient group data type
 
     """
 
@@ -3106,7 +3106,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiverId(self):
-        """Recipient group ID
+        r"""Recipient group ID
         :rtype: int
         """
         return self._ReceiverId
@@ -3117,7 +3117,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversName(self):
-        """Recipient group name
+        r"""Recipient group name
         :rtype: str
         """
         return self._ReceiversName
@@ -3128,7 +3128,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Count(self):
-        """Total number of recipient email addresses
+        r"""Total number of recipient email addresses
         :rtype: int
         """
         return self._Count
@@ -3139,7 +3139,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Desc(self):
-        """Recipient group description
+        r"""Recipient group description
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -3151,7 +3151,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversStatus(self):
-        """Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
+        r"""Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: int
         """
@@ -3163,7 +3163,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CreateTime(self):
-        """Creation time, such as 2021-09-28 16:40:35
+        r"""Creation time, such as 2021-09-28 16:40:35
         :rtype: str
         """
         return self._CreateTime
@@ -3191,7 +3191,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
 
 class SendEmailRequest(AbstractModel):
-    """SendEmail request structure.
+    r"""SendEmail request structure.
 
     """
 
@@ -3236,7 +3236,7 @@ Sender <email address>
 
     @property
     def FromEmailAddress(self):
-        """Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
+        r"""Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
 To display the sender name, enter the address in the following format: 
 Sender <email address>
         :rtype: str
@@ -3249,7 +3249,7 @@ Sender <email address>
 
     @property
     def Destination(self):
-        """Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        r"""Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
         :rtype: list of str
         """
         return self._Destination
@@ -3260,7 +3260,7 @@ Sender <email address>
 
     @property
     def Subject(self):
-        """Email subject.
+        r"""Email subject.
         :rtype: str
         """
         return self._Subject
@@ -3271,7 +3271,7 @@ Sender <email address>
 
     @property
     def ReplyToAddresses(self):
-        """Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        r"""Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -3282,7 +3282,7 @@ Sender <email address>
 
     @property
     def Cc(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._Cc
@@ -3293,7 +3293,7 @@ Sender <email address>
 
     @property
     def Bcc(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._Bcc
@@ -3304,7 +3304,7 @@ Sender <email address>
 
     @property
     def Template(self):
-        """Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
+        r"""Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -3315,7 +3315,7 @@ Sender <email address>
 
     @property
     def Simple(self):
-        """Disused
+        r"""Disused
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -3326,7 +3326,7 @@ Sender <email address>
 
     @property
     def Attachments(self):
-        """Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        r"""Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -3337,7 +3337,7 @@ Sender <email address>
 
     @property
     def Unsubscribe(self):
-        """Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        r"""Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
         :rtype: str
         """
         return self._Unsubscribe
@@ -3348,7 +3348,7 @@ Sender <email address>
 
     @property
     def TriggerType(self):
-        """Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
+        r"""Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
         :rtype: int
         """
         return self._TriggerType
@@ -3390,7 +3390,7 @@ Sender <email address>
 
 
 class SendEmailResponse(AbstractModel):
-    """SendEmail response structure.
+    r"""SendEmail response structure.
 
     """
 
@@ -3406,7 +3406,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """Unique ID generated when receiving the message
+        r"""Unique ID generated when receiving the message
         :rtype: str
         """
         return self._MessageId
@@ -3417,7 +3417,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3433,7 +3433,7 @@ class SendEmailResponse(AbstractModel):
 
 
 class SendEmailStatus(AbstractModel):
-    """Describes the email sending status
+    r"""Describes the email sending status
 
     """
 
@@ -3508,7 +3508,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def MessageId(self):
-        """The `MessageId` field returned by the `SendEmail` API
+        r"""The `MessageId` field returned by the `SendEmail` API
         :rtype: str
         """
         return self._MessageId
@@ -3519,7 +3519,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def ToEmailAddress(self):
-        """Recipient email address
+        r"""Recipient email address
         :rtype: str
         """
         return self._ToEmailAddress
@@ -3530,7 +3530,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        """Sender email address
+        r"""Sender email address
         :rtype: str
         """
         return self._FromEmailAddress
@@ -3541,7 +3541,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def SendStatus(self):
-        """Tencent Cloud processing status
+        r"""Tencent Cloud processing status
 0: Successful.
 1001: Internal system exception.
 1002: Internal system exception.
@@ -3576,7 +3576,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverStatus(self):
-        """Recipient processing status
+        r"""Recipient processing status
 0: Tencent Cloud has accepted the request and added it to the send queue.
 1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.
 2: The email is discarded. `DeliverMessage` indicates the reason for discarding.
@@ -3592,7 +3592,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverMessage(self):
-        """Description of the recipient processing status
+        r"""Description of the recipient processing status
         :rtype: str
         """
         return self._DeliverMessage
@@ -3603,7 +3603,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def RequestTime(self):
-        """Timestamp when the request arrives at Tencent Cloud
+        r"""Timestamp when the request arrives at Tencent Cloud
         :rtype: int
         """
         return self._RequestTime
@@ -3614,7 +3614,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverTime(self):
-        """Timestamp when Tencent Cloud delivers the email
+        r"""Timestamp when Tencent Cloud delivers the email
         :rtype: int
         """
         return self._DeliverTime
@@ -3625,7 +3625,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserOpened(self):
-        """Whether the recipient has opened the email
+        r"""Whether the recipient has opened the email
         :rtype: bool
         """
         return self._UserOpened
@@ -3636,7 +3636,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserClicked(self):
-        """Whether the recipient has clicked the links in the email
+        r"""Whether the recipient has clicked the links in the email
         :rtype: bool
         """
         return self._UserClicked
@@ -3647,7 +3647,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserUnsubscribed(self):
-        """Whether the recipient has unsubscribed from the email sent by the sender
+        r"""Whether the recipient has unsubscribed from the email sent by the sender
         :rtype: bool
         """
         return self._UserUnsubscribed
@@ -3658,7 +3658,7 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserComplainted(self):
-        """Whether the recipient has reported the sender
+        r"""Whether the recipient has reported the sender
         :rtype: bool
         """
         return self._UserComplainted
@@ -3692,7 +3692,7 @@ class SendEmailStatus(AbstractModel):
 
 
 class SendTaskData(AbstractModel):
-    """Email sending task data
+    r"""Email sending task data
 
     """
 
@@ -3754,7 +3754,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -3765,7 +3765,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def FromEmailAddress(self):
-        """Sender address
+        r"""Sender address
         :rtype: str
         """
         return self._FromEmailAddress
@@ -3776,7 +3776,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiverId(self):
-        """Recipient group ID
+        r"""Recipient group ID
         :rtype: int
         """
         return self._ReceiverId
@@ -3787,7 +3787,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskStatus(self):
-        """Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent
+        r"""Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent
         :rtype: int
         """
         return self._TaskStatus
@@ -3798,7 +3798,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskType(self):
-        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        r"""Task type. `1`: immediate; `2`: scheduled; `3`: recurring
         :rtype: int
         """
         return self._TaskType
@@ -3809,7 +3809,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def RequestCount(self):
-        """Number of emails requested to be sent
+        r"""Number of emails requested to be sent
         :rtype: int
         """
         return self._RequestCount
@@ -3820,7 +3820,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def SendCount(self):
-        """Number of emails sent
+        r"""Number of emails sent
         :rtype: int
         """
         return self._SendCount
@@ -3831,7 +3831,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CacheCount(self):
-        """Number of emails cached
+        r"""Number of emails cached
         :rtype: int
         """
         return self._CacheCount
@@ -3842,7 +3842,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CreateTime(self):
-        """Task creation time
+        r"""Task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -3853,7 +3853,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def UpdateTime(self):
-        """Task update time
+        r"""Task update time
         :rtype: str
         """
         return self._UpdateTime
@@ -3864,7 +3864,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Subject(self):
-        """Email subject
+        r"""Email subject
         :rtype: str
         """
         return self._Subject
@@ -3875,7 +3875,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Template(self):
-        """Template and template data
+        r"""Template and template data
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
@@ -3887,7 +3887,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CycleParam(self):
-        """Parameters of a recurring task
+        r"""Parameters of a recurring task
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
@@ -3899,7 +3899,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TimedParam(self):
-        """Parameters of a scheduled task
+        r"""Parameters of a scheduled task
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
@@ -3911,7 +3911,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ErrMsg(self):
-        """Task exception information
+        r"""Task exception information
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -3923,7 +3923,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversName(self):
-        """Recipient group name
+        r"""Recipient group name
         :rtype: str
         """
         return self._ReceiversName
@@ -3967,7 +3967,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
 
 class Simple(AbstractModel):
-    """Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).
+    r"""Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).
 
     """
 
@@ -3983,7 +3983,7 @@ class Simple(AbstractModel):
 
     @property
     def Html(self):
-        """HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.
+        r"""HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.
         :rtype: str
         """
         return self._Html
@@ -3994,7 +3994,7 @@ class Simple(AbstractModel):
 
     @property
     def Text(self):
-        """Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.
+        r"""Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.
         :rtype: str
         """
         return self._Text
@@ -4018,7 +4018,7 @@ class Simple(AbstractModel):
 
 
 class Template(AbstractModel):
-    """Template information, including template ID, template variable parameters, etc.
+    r"""Template information, including template ID, template variable parameters, etc.
 
     """
 
@@ -4036,7 +4036,7 @@ Example: {"name":"xxx","age":"xx"}
 
     @property
     def TemplateID(self):
-        """Template ID. If you don’t have any template, please create one.
+        r"""Template ID. If you don’t have any template, please create one.
         :rtype: int
         """
         return self._TemplateID
@@ -4047,7 +4047,7 @@ Example: {"name":"xxx","age":"xx"}
 
     @property
     def TemplateData(self):
-        """Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.
+        r"""Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.
 Note: The parameter value cannot be data of a complex type such as HTML.
 Example: {"name":"xxx","age":"xx"}
         :rtype: str
@@ -4073,7 +4073,7 @@ Example: {"name":"xxx","age":"xx"}
 
 
 class TemplateContent(AbstractModel):
-    """Template content, which must include at least one of TEXT and HTML. A combination of TEXT and HTML is recommended.
+    r"""Template content, which must include at least one of TEXT and HTML. A combination of TEXT and HTML is recommended.
 
     """
 
@@ -4089,7 +4089,7 @@ class TemplateContent(AbstractModel):
 
     @property
     def Html(self):
-        """HTML code after base64 encoding.
+        r"""HTML code after base64 encoding.
         :rtype: str
         """
         return self._Html
@@ -4100,7 +4100,7 @@ class TemplateContent(AbstractModel):
 
     @property
     def Text(self):
-        """Text content after base64 encoding.
+        r"""Text content after base64 encoding.
         :rtype: str
         """
         return self._Text
@@ -4124,7 +4124,7 @@ class TemplateContent(AbstractModel):
 
 
 class TemplatesMetadata(AbstractModel):
-    """Template list structure.
+    r"""Template list structure.
 
     """
 
@@ -4149,7 +4149,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def CreatedTimestamp(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._CreatedTimestamp
@@ -4160,7 +4160,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateName(self):
-        """Template name.
+        r"""Template name.
         :rtype: str
         """
         return self._TemplateName
@@ -4171,7 +4171,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateStatus(self):
-        """Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.
+        r"""Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.
         :rtype: int
         """
         return self._TemplateStatus
@@ -4182,7 +4182,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateID(self):
-        """Template ID.
+        r"""Template ID.
         :rtype: int
         """
         return self._TemplateID
@@ -4193,7 +4193,7 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def ReviewReason(self):
-        """Review reply
+        r"""Review reply
         :rtype: str
         """
         return self._ReviewReason
@@ -4220,7 +4220,7 @@ class TemplatesMetadata(AbstractModel):
 
 
 class TimedEmailParam(AbstractModel):
-    """Time parameter required to create a scheduled sending task, such as the start time
+    r"""Time parameter required to create a scheduled sending task, such as the start time
 
     """
 
@@ -4233,7 +4233,7 @@ class TimedEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time of a scheduled sending task
+        r"""Start time of a scheduled sending task
         :rtype: str
         """
         return self._BeginTime
@@ -4256,7 +4256,7 @@ class TimedEmailParam(AbstractModel):
 
 
 class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
-    """UpdateAddressUnsubscribeConfig request structure.
+    r"""UpdateAddressUnsubscribeConfig request structure.
 
     """
 
@@ -4275,7 +4275,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Address(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._Address
@@ -4286,7 +4286,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def UnsubscribeConfig(self):
-        """Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai
+        r"""Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai
         :rtype: str
         """
         return self._UnsubscribeConfig
@@ -4297,7 +4297,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        """0: disable; 1: enable.
+        r"""0: disable; 1: enable.
         :rtype: int
         """
         return self._Status
@@ -4322,7 +4322,7 @@ class UpdateAddressUnsubscribeConfigRequest(AbstractModel):
 
 
 class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
-    """UpdateAddressUnsubscribeConfig response structure.
+    r"""UpdateAddressUnsubscribeConfig response structure.
 
     """
 
@@ -4335,7 +4335,7 @@ class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4350,7 +4350,7 @@ class UpdateAddressUnsubscribeConfigResponse(AbstractModel):
 
 
 class UpdateEmailIdentityRequest(AbstractModel):
-    """UpdateEmailIdentity request structure.
+    r"""UpdateEmailIdentity request structure.
 
     """
 
@@ -4363,7 +4363,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        """Domain to be verified.
+        r"""Domain to be verified.
         :rtype: str
         """
         return self._EmailIdentity
@@ -4386,7 +4386,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
 
 class UpdateEmailIdentityResponse(AbstractModel):
-    """UpdateEmailIdentity response structure.
+    r"""UpdateEmailIdentity response structure.
 
     """
 
@@ -4408,7 +4408,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        """Verification type. The value is fixed to `DOMAIN`.
+        r"""Verification type. The value is fixed to `DOMAIN`.
         :rtype: str
         """
         return self._IdentityType
@@ -4419,7 +4419,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        """Verification passed or not.
+        r"""Verification passed or not.
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -4430,7 +4430,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        """DNS information that needs to be configured.
+        r"""DNS information that needs to be configured.
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -4441,7 +4441,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4464,7 +4464,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
 
 class UpdateEmailSmtpPassWordRequest(AbstractModel):
-    """UpdateEmailSmtpPassWord request structure.
+    r"""UpdateEmailSmtpPassWord request structure.
 
     """
 
@@ -4480,7 +4480,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """SMTP password. Length limit: 64.
+        r"""SMTP password. Length limit: 64.
         :rtype: str
         """
         return self._Password
@@ -4491,7 +4491,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
-        """Email address. Length limit: 128.
+        r"""Email address. Length limit: 128.
         :rtype: str
         """
         return self._EmailAddress
@@ -4515,7 +4515,7 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
 
 class UpdateEmailSmtpPassWordResponse(AbstractModel):
-    """UpdateEmailSmtpPassWord response structure.
+    r"""UpdateEmailSmtpPassWord response structure.
 
     """
 
@@ -4528,7 +4528,7 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4543,7 +4543,7 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
 
 class UpdateEmailTemplateRequest(AbstractModel):
-    """UpdateEmailTemplate request structure.
+    r"""UpdateEmailTemplate request structure.
 
     """
 
@@ -4562,7 +4562,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
-        """Template content.
+        r"""Template content.
         :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         """
         return self._TemplateContent
@@ -4573,7 +4573,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
-        """Template ID.
+        r"""Template ID.
         :rtype: int
         """
         return self._TemplateID
@@ -4584,7 +4584,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """Template name
+        r"""Template name
         :rtype: str
         """
         return self._TemplateName
@@ -4611,7 +4611,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
 
 class UpdateEmailTemplateResponse(AbstractModel):
-    """UpdateEmailTemplate response structure.
+    r"""UpdateEmailTemplate response structure.
 
     """
 
@@ -4624,7 +4624,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4639,7 +4639,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
 
 class Volume(AbstractModel):
-    """Statistics structure.
+    r"""Statistics structure.
 
     """
 
@@ -4675,7 +4675,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SendDate(self):
-        """Date
+        r"""Date
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4687,7 +4687,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestCount(self):
-        """Number of email requests.
+        r"""Number of email requests.
         :rtype: int
         """
         return self._RequestCount
@@ -4698,7 +4698,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AcceptedCount(self):
-        """Number of email requests accepted by Tencent Cloud.
+        r"""Number of email requests accepted by Tencent Cloud.
         :rtype: int
         """
         return self._AcceptedCount
@@ -4709,7 +4709,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeliveredCount(self):
-        """Number of delivered emails.
+        r"""Number of delivered emails.
         :rtype: int
         """
         return self._DeliveredCount
@@ -4720,7 +4720,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OpenedCount(self):
-        """Number of users (deduplicated) who opened emails.
+        r"""Number of users (deduplicated) who opened emails.
         :rtype: int
         """
         return self._OpenedCount
@@ -4731,7 +4731,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClickedCount(self):
-        """Number of recipients who clicked on links in emails.
+        r"""Number of recipients who clicked on links in emails.
         :rtype: int
         """
         return self._ClickedCount
@@ -4742,7 +4742,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BounceCount(self):
-        """Number of bounced emails.
+        r"""Number of bounced emails.
         :rtype: int
         """
         return self._BounceCount
@@ -4753,7 +4753,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnsubscribeCount(self):
-        """Number of users who canceled subscriptions.
+        r"""Number of users who canceled subscriptions.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """

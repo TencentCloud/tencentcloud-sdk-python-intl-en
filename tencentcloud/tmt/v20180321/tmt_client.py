@@ -27,7 +27,7 @@ class TmtClient(AbstractClient):
 
 
     def TextTranslate(self, request):
-        """This API is used to translate text in multiple language pairs, such as Chinese-English.<br />
+        r"""This API is used to translate text in multiple language pairs, such as Chinese-English.<br />
         Note: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 "Developer Resources".
 
         :param request: Request instance for TextTranslate.

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Alias(AbstractModel):
-    """Version alias of function
+    r"""Version alias of function
 
     """
 
@@ -51,7 +51,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionVersion(self):
-        """Master version pointed to by the alias
+        r"""Master version pointed to by the alias
         :rtype: str
         """
         return self._FunctionVersion
@@ -62,7 +62,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Alias name
+        r"""Alias name
         :rtype: str
         """
         return self._Name
@@ -73,7 +73,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoutingConfig(self):
-        """Routing information of alias
+        r"""Routing information of alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         """
@@ -85,7 +85,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description
+        r"""Description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -97,7 +97,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -109,7 +109,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
-        """Update time
+        r"""Update time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -140,7 +140,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AsyncEvent(AbstractModel):
-    """Async event
+    r"""Async event
 
     """
 
@@ -168,7 +168,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeRequestId(self):
-        """Invocation request ID
+        r"""Invocation request ID
         :rtype: str
         """
         return self._InvokeRequestId
@@ -179,7 +179,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeType(self):
-        """Invocation type
+        r"""Invocation type
         :rtype: str
         """
         return self._InvokeType
@@ -190,7 +190,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version
+        r"""Function version
         :rtype: str
         """
         return self._Qualifier
@@ -201,7 +201,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Status(self):
-        """Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
+        r"""Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
         :rtype: str
         """
         return self._Status
@@ -212,7 +212,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def StartTime(self):
-        """Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        r"""Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
         :rtype: str
         """
         return self._StartTime
@@ -223,7 +223,7 @@ class AsyncEvent(AbstractModel):
 
     @property
     def EndTime(self):
-        """Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        r"""Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
         :rtype: str
         """
         return self._EndTime
@@ -251,7 +251,7 @@ class AsyncEvent(AbstractModel):
 
 
 class AsyncEventStatus(AbstractModel):
-    """Async event status
+    r"""Async event status
 
     """
 
@@ -270,7 +270,7 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def Status(self):
-        """Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
+        r"""Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
         :rtype: str
         """
         return self._Status
@@ -281,7 +281,7 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def StatusCode(self):
-        """Request status code
+        r"""Request status code
         :rtype: int
         """
         return self._StatusCode
@@ -292,7 +292,7 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def InvokeRequestId(self):
-        """Async execution request ID
+        r"""Async execution request ID
         :rtype: str
         """
         return self._InvokeRequestId
@@ -317,7 +317,7 @@ class AsyncEventStatus(AbstractModel):
 
 
 class AsyncTriggerConfig(AbstractModel):
-    """Async retry configuration details of function
+    r"""Async retry configuration details of function
 
     """
 
@@ -333,7 +333,7 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def RetryConfig(self):
-        """Async retry configuration of function upon user error
+        r"""Async retry configuration of function upon user error
         :rtype: list of RetryConfig
         """
         return self._RetryConfig
@@ -344,7 +344,7 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def MsgTTL(self):
-        """Message retention period
+        r"""Message retention period
         :rtype: int
         """
         return self._MsgTTL
@@ -373,7 +373,7 @@ class AsyncTriggerConfig(AbstractModel):
 
 
 class Code(AbstractModel):
-    """Function code
+    r"""Function code
 
     """
 
@@ -428,7 +428,7 @@ class Code(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """Object bucket name (enter the custom part of the bucket name without `-appid`)
+        r"""Object bucket name (enter the custom part of the bucket name without `-appid`)
         :rtype: str
         """
         return self._CosBucketName
@@ -439,7 +439,7 @@ class Code(AbstractModel):
 
     @property
     def CosObjectName(self):
-        """File path of code package stored in COS, which should start with “/”
+        r"""File path of code package stored in COS, which should start with “/”
         :rtype: str
         """
         return self._CosObjectName
@@ -450,7 +450,7 @@ class Code(AbstractModel):
 
     @property
     def ZipFile(self):
-        """This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
+        r"""This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
         :rtype: str
         """
         return self._ZipFile
@@ -461,7 +461,7 @@ class Code(AbstractModel):
 
     @property
     def CosBucketRegion(self):
-        """COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
+        r"""COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
         :rtype: str
         """
         return self._CosBucketRegion
@@ -472,7 +472,7 @@ class Code(AbstractModel):
 
     @property
     def DemoId(self):
-        """`DemoId` is required if Demo is used for the creation.
+        r"""`DemoId` is required if Demo is used for the creation.
         :rtype: str
         """
         return self._DemoId
@@ -483,7 +483,7 @@ class Code(AbstractModel):
 
     @property
     def TempCosObjectName(self):
-        """`TempCosObjectName` is required if TempCos is used for the creation.
+        r"""`TempCosObjectName` is required if TempCos is used for the creation.
         :rtype: str
         """
         return self._TempCosObjectName
@@ -494,7 +494,7 @@ class Code(AbstractModel):
 
     @property
     def GitUrl(self):
-        """(Disused) Git address
+        r"""(Disused) Git address
         :rtype: str
         """
         return self._GitUrl
@@ -505,7 +505,7 @@ class Code(AbstractModel):
 
     @property
     def GitUserName(self):
-        """(Disused) Git username
+        r"""(Disused) Git username
         :rtype: str
         """
         return self._GitUserName
@@ -516,7 +516,7 @@ class Code(AbstractModel):
 
     @property
     def GitPassword(self):
-        """(Disused) Git password
+        r"""(Disused) Git password
         :rtype: str
         """
         return self._GitPassword
@@ -527,7 +527,7 @@ class Code(AbstractModel):
 
     @property
     def GitPasswordSecret(self):
-        """(Disused) Git password after encryption. It’s usually not required.
+        r"""(Disused) Git password after encryption. It’s usually not required.
         :rtype: str
         """
         return self._GitPasswordSecret
@@ -538,7 +538,7 @@ class Code(AbstractModel):
 
     @property
     def GitBranch(self):
-        """(Disused) Git branch
+        r"""(Disused) Git branch
         :rtype: str
         """
         return self._GitBranch
@@ -549,7 +549,7 @@ class Code(AbstractModel):
 
     @property
     def GitDirectory(self):
-        """(Disused) Directory to the codes in the Git repository. 
+        r"""(Disused) Directory to the codes in the Git repository. 
         :rtype: str
         """
         return self._GitDirectory
@@ -560,7 +560,7 @@ class Code(AbstractModel):
 
     @property
     def GitCommitId(self):
-        """(Disused) 
+        r"""(Disused) 
         :rtype: str
         """
         return self._GitCommitId
@@ -571,7 +571,7 @@ class Code(AbstractModel):
 
     @property
     def GitUserNameSecret(self):
-        """(Disused) Git username after encryption. It’s usually not required.
+        r"""(Disused) Git username after encryption. It’s usually not required.
         :rtype: str
         """
         return self._GitUserNameSecret
@@ -582,7 +582,7 @@ class Code(AbstractModel):
 
     @property
     def ImageConfig(self):
-        """TCR image configurations
+        r"""TCR image configurations
         :rtype: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
         """
         return self._ImageConfig
@@ -621,7 +621,7 @@ class Code(AbstractModel):
 
 
 class CopyFunctionRequest(AbstractModel):
-    """CopyFunction request structure.
+    r"""CopyFunction request structure.
 
     """
 
@@ -660,7 +660,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def FunctionName(self):
-        """Name of the function to be replicated
+        r"""Name of the function to be replicated
         :rtype: str
         """
         return self._FunctionName
@@ -671,7 +671,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def NewFunctionName(self):
-        """Name of the new function
+        r"""Name of the new function
         :rtype: str
         """
         return self._NewFunctionName
@@ -682,7 +682,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Namespace(self):
-        """Namespace of the function to be replicated. The default value is `default`.
+        r"""Namespace of the function to be replicated. The default value is `default`.
         :rtype: str
         """
         return self._Namespace
@@ -693,7 +693,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def TargetNamespace(self):
-        """Namespace of the replicated function. The default value is default.
+        r"""Namespace of the replicated function. The default value is default.
         :rtype: str
         """
         return self._TargetNamespace
@@ -704,7 +704,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Description(self):
-        """Description of the new function
+        r"""Description of the new function
         :rtype: str
         """
         return self._Description
@@ -715,7 +715,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def TargetRegion(self):
-        """Region of the target of the function replication. If the value is not set, the current region is used by default.
+        r"""Region of the target of the function replication. If the value is not set, the current region is used by default.
         :rtype: str
         """
         return self._TargetRegion
@@ -726,7 +726,7 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Override(self):
-        """It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
+        r"""It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
 (Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)
 TRUE: Replaces the function.
 FALSE: Does not replace the function.
@@ -740,7 +740,7 @@ FALSE: Does not replace the function.
 
     @property
     def CopyConfiguration(self):
-        """It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
+        r"""It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
 TRUE: Replicates the function configuration.
 FALSE: Does not replicate the function configuration.
         :rtype: bool
@@ -772,7 +772,7 @@ FALSE: Does not replicate the function configuration.
 
 
 class CopyFunctionResponse(AbstractModel):
-    """CopyFunction response structure.
+    r"""CopyFunction response structure.
 
     """
 
@@ -785,7 +785,7 @@ class CopyFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -800,7 +800,7 @@ class CopyFunctionResponse(AbstractModel):
 
 
 class CreateAliasRequest(AbstractModel):
-    """CreateAlias request structure.
+    r"""CreateAlias request structure.
 
     """
 
@@ -828,7 +828,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
+        r"""Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
         :rtype: str
         """
         return self._Name
@@ -839,7 +839,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -850,7 +850,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
-        """Master version pointed to by the alias
+        r"""Master version pointed to by the alias
         :rtype: str
         """
         return self._FunctionVersion
@@ -861,7 +861,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -872,7 +872,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
-        """Request routing configuration of alias
+        r"""Request routing configuration of alias
         :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         """
         return self._RoutingConfig
@@ -883,7 +883,7 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Alias description
+        r"""Alias description
         :rtype: str
         """
         return self._Description
@@ -913,7 +913,7 @@ class CreateAliasRequest(AbstractModel):
 
 
 class CreateAliasResponse(AbstractModel):
-    """CreateAlias response structure.
+    r"""CreateAlias response structure.
 
     """
 
@@ -926,7 +926,7 @@ class CreateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -941,7 +941,7 @@ class CreateAliasResponse(AbstractModel):
 
 
 class CreateNamespaceRequest(AbstractModel):
-    """CreateNamespace request structure.
+    r"""CreateNamespace request structure.
 
     """
 
@@ -957,7 +957,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Namespace
@@ -968,7 +968,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
         :rtype: str
         """
         return self._Description
@@ -992,7 +992,7 @@ class CreateNamespaceRequest(AbstractModel):
 
 
 class CreateNamespaceResponse(AbstractModel):
-    """CreateNamespace response structure.
+    r"""CreateNamespace response structure.
 
     """
 
@@ -1005,7 +1005,7 @@ class CreateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1020,7 +1020,7 @@ class CreateNamespaceResponse(AbstractModel):
 
 
 class CreateTriggerRequest(AbstractModel):
-    """CreateTrigger request structure.
+    r"""CreateTrigger request structure.
 
     """
 
@@ -1057,7 +1057,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the function bound to the new trigger
+        r"""Name of the function bound to the new trigger
         :rtype: str
         """
         return self._FunctionName
@@ -1068,7 +1068,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
-        """Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
+        r"""Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
         :rtype: str
         """
         return self._TriggerName
@@ -1079,7 +1079,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
+        r"""Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
         :rtype: str
         """
         return self._Type
@@ -1090,7 +1090,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        """For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
+        r"""For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
         :rtype: str
         """
         return self._TriggerDesc
@@ -1101,7 +1101,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -1112,7 +1112,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        r"""Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :rtype: str
         """
         return self._Qualifier
@@ -1123,7 +1123,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
+        r"""Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
         :rtype: str
         """
         return self._Enable
@@ -1134,7 +1134,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def CustomArgument(self):
-        """Custom argument, supporting only the timer trigger.
+        r"""Custom argument, supporting only the timer trigger.
         :rtype: str
         """
         return self._CustomArgument
@@ -1145,7 +1145,7 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Trigger description
+        r"""Trigger description
         :rtype: str
         """
         return self._Description
@@ -1176,7 +1176,7 @@ class CreateTriggerRequest(AbstractModel):
 
 
 class CreateTriggerResponse(AbstractModel):
-    """CreateTrigger response structure.
+    r"""CreateTrigger response structure.
 
     """
 
@@ -1192,7 +1192,7 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def TriggerInfo(self):
-        """Trigger information
+        r"""Trigger information
         :rtype: :class:`tencentcloud.scf.v20180416.models.Trigger`
         """
         return self._TriggerInfo
@@ -1203,7 +1203,7 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1221,7 +1221,7 @@ class CreateTriggerResponse(AbstractModel):
 
 
 class DeleteAliasRequest(AbstractModel):
-    """DeleteAlias request structure.
+    r"""DeleteAlias request structure.
 
     """
 
@@ -1240,7 +1240,7 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -1251,7 +1251,7 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alias name
+        r"""Alias name
         :rtype: str
         """
         return self._Name
@@ -1262,7 +1262,7 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -1287,7 +1287,7 @@ class DeleteAliasRequest(AbstractModel):
 
 
 class DeleteAliasResponse(AbstractModel):
-    """DeleteAlias response structure.
+    r"""DeleteAlias response structure.
 
     """
 
@@ -1300,7 +1300,7 @@ class DeleteAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1315,7 +1315,7 @@ class DeleteAliasResponse(AbstractModel):
 
 
 class DeleteFunctionRequest(AbstractModel):
-    """DeleteFunction request structure.
+    r"""DeleteFunction request structure.
 
     """
 
@@ -1334,7 +1334,7 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the function to be deleted
+        r"""Name of the function to be deleted
         :rtype: str
         """
         return self._FunctionName
@@ -1345,7 +1345,7 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -1356,7 +1356,7 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """ID of the version to delete. All versions are deleted if it’s left empty.
+        r"""ID of the version to delete. All versions are deleted if it’s left empty.
         :rtype: str
         """
         return self._Qualifier
@@ -1381,7 +1381,7 @@ class DeleteFunctionRequest(AbstractModel):
 
 
 class DeleteFunctionResponse(AbstractModel):
-    """DeleteFunction response structure.
+    r"""DeleteFunction response structure.
 
     """
 
@@ -1394,7 +1394,7 @@ class DeleteFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1409,7 +1409,7 @@ class DeleteFunctionResponse(AbstractModel):
 
 
 class DeleteLayerVersionRequest(AbstractModel):
-    """DeleteLayerVersion request structure.
+    r"""DeleteLayerVersion request structure.
 
     """
 
@@ -1425,7 +1425,7 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
-        """Layer name
+        r"""Layer name
         :rtype: str
         """
         return self._LayerName
@@ -1436,7 +1436,7 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
-        """Version number
+        r"""Version number
         :rtype: int
         """
         return self._LayerVersion
@@ -1460,7 +1460,7 @@ class DeleteLayerVersionRequest(AbstractModel):
 
 
 class DeleteLayerVersionResponse(AbstractModel):
-    """DeleteLayerVersion response structure.
+    r"""DeleteLayerVersion response structure.
 
     """
 
@@ -1473,7 +1473,7 @@ class DeleteLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1488,7 +1488,7 @@ class DeleteLayerVersionResponse(AbstractModel):
 
 
 class DeleteNamespaceRequest(AbstractModel):
-    """DeleteNamespace request structure.
+    r"""DeleteNamespace request structure.
 
     """
 
@@ -1501,7 +1501,7 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Namespace
@@ -1524,7 +1524,7 @@ class DeleteNamespaceRequest(AbstractModel):
 
 
 class DeleteNamespaceResponse(AbstractModel):
-    """DeleteNamespace response structure.
+    r"""DeleteNamespace response structure.
 
     """
 
@@ -1537,7 +1537,7 @@ class DeleteNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1552,7 +1552,7 @@ class DeleteNamespaceResponse(AbstractModel):
 
 
 class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
-    """DeleteProvisionedConcurrencyConfig request structure.
+    r"""DeleteProvisionedConcurrencyConfig request structure.
 
     """
 
@@ -1571,7 +1571,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the function for which to delete the provisioned concurrency
+        r"""Name of the function for which to delete the provisioned concurrency
         :rtype: str
         """
         return self._FunctionName
@@ -1582,7 +1582,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version number
+        r"""Function version number
         :rtype: str
         """
         return self._Qualifier
@@ -1593,7 +1593,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: `default`
+        r"""Function namespace. Default value: `default`
         :rtype: str
         """
         return self._Namespace
@@ -1618,7 +1618,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
 
 class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
-    """DeleteProvisionedConcurrencyConfig response structure.
+    r"""DeleteProvisionedConcurrencyConfig response structure.
 
     """
 
@@ -1631,7 +1631,7 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1646,7 +1646,7 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
 
 class DeleteReservedConcurrencyConfigRequest(AbstractModel):
-    """DeleteReservedConcurrencyConfig request structure.
+    r"""DeleteReservedConcurrencyConfig request structure.
 
     """
 
@@ -1662,7 +1662,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Specifies the function of which you want to delete the reserved quota
+        r"""Specifies the function of which you want to delete the reserved quota
         :rtype: str
         """
         return self._FunctionName
@@ -1673,7 +1673,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: `default`
+        r"""Function namespace. Default value: `default`
         :rtype: str
         """
         return self._Namespace
@@ -1697,7 +1697,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
 
 class DeleteReservedConcurrencyConfigResponse(AbstractModel):
-    """DeleteReservedConcurrencyConfig response structure.
+    r"""DeleteReservedConcurrencyConfig response structure.
 
     """
 
@@ -1710,7 +1710,7 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1725,7 +1725,7 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
 
 class DeleteTriggerRequest(AbstractModel):
-    """DeleteTrigger request structure.
+    r"""DeleteTrigger request structure.
 
     """
 
@@ -1753,7 +1753,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -1764,7 +1764,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
-        """Name of the trigger to be deleted
+        r"""Name of the trigger to be deleted
         :rtype: str
         """
         return self._TriggerName
@@ -1775,7 +1775,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        r"""Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
         :rtype: str
         """
         return self._Type
@@ -1786,7 +1786,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -1797,7 +1797,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        """This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        r"""This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
         :rtype: str
         """
         return self._TriggerDesc
@@ -1808,7 +1808,7 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        r"""Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :rtype: str
         """
         return self._Qualifier
@@ -1836,7 +1836,7 @@ class DeleteTriggerRequest(AbstractModel):
 
 
 class DeleteTriggerResponse(AbstractModel):
-    """DeleteTrigger response structure.
+    r"""DeleteTrigger response structure.
 
     """
 
@@ -1849,7 +1849,7 @@ class DeleteTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1864,7 +1864,7 @@ class DeleteTriggerResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.
+    r"""Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.
     If more than one filter exists, the logical relationship between these filters is `AND`.
     If multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.
 
@@ -1885,7 +1885,7 @@ When `Name` is `Runtime`, `CustomImage` refers to the image type function
 
     @property
     def Name(self):
-        """Fields to be filtered. Up to 10 conditions allowed.
+        r"""Fields to be filtered. Up to 10 conditions allowed.
 Values of `Name`: `VpcId`, `SubnetId`, `ClsTopicId`, `ClsLogsetId`, `Role`, `CfsId`, `CfsMountInsId`, `Eip`. Values limit: 1.
 Name options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.
 When `Name` is `Runtime`, `CustomImage` refers to the image type function 
@@ -1899,7 +1899,7 @@ When `Name` is `Runtime`, `CustomImage` refers to the image type function
 
     @property
     def Values(self):
-        """Filter values of the field
+        r"""Filter values of the field
         :rtype: list of str
         """
         return self._Values
@@ -1923,7 +1923,7 @@ When `Name` is `Runtime`, `CustomImage` refers to the image type function
 
 
 class Function(AbstractModel):
-    """Function list
+    r"""Function list
 
     """
 
@@ -1984,7 +1984,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModTime
@@ -1995,7 +1995,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._AddTime
@@ -2006,7 +2006,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Runtime(self):
-        """Runtime 
+        r"""Runtime 
 Note: This parameter may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2018,7 +2018,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -2029,7 +2029,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FunctionId(self):
-        """Function ID
+        r"""Function ID
         :rtype: str
         """
         return self._FunctionId
@@ -2040,7 +2040,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Namespace(self):
-        """Namespace
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -2051,7 +2051,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Status(self):
-        """Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
+        r"""Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
         :rtype: str
         """
         return self._Status
@@ -2062,7 +2062,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def StatusDesc(self):
-        """Function status details
+        r"""Function status details
         :rtype: str
         """
         return self._StatusDesc
@@ -2073,7 +2073,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Description(self):
-        """Function description
+        r"""Function description
         :rtype: str
         """
         return self._Description
@@ -2084,7 +2084,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Tags(self):
-        """Function tag
+        r"""Function tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -2095,7 +2095,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Type(self):
-        """Function type. The value is `HTTP` or `Event`.
+        r"""Function type. The value is `HTTP` or `Event`.
         :rtype: str
         """
         return self._Type
@@ -2106,7 +2106,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def StatusReasons(self):
-        """Cause of function failure
+        r"""Cause of function failure
         :rtype: list of StatusReason
         """
         return self._StatusReasons
@@ -2117,7 +2117,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TotalProvisionedConcurrencyMem(self):
-        """Sum of provisioned concurrence memory for all function versions
+        r"""Sum of provisioned concurrence memory for all function versions
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2129,7 +2129,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedConcurrencyMem(self):
-        """Reserved memory for function concurrence
+        r"""Reserved memory for function concurrence
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2141,7 +2141,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsyncRunEnable(self):
-        """Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
+        r"""Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
         :rtype: str
         """
         return self._AsyncRunEnable
@@ -2152,7 +2152,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TraceEnable(self):
-        """Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
+        r"""Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
         :rtype: str
         """
         return self._TraceEnable
@@ -2200,7 +2200,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FunctionLog(AbstractModel):
-    """Log information
+    r"""Log information
 
     """
 
@@ -2249,7 +2249,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -2260,7 +2260,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetMsg(self):
-        """Return value after the function is executed
+        r"""Return value after the function is executed
         :rtype: str
         """
         return self._RetMsg
@@ -2271,7 +2271,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RequestId(self):
-        """RequestId corresponding to the executed function
+        r"""RequestId corresponding to the executed function
         :rtype: str
         """
         return self._RequestId
@@ -2282,7 +2282,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the function execution
+        r"""Start time of the function execution
         :rtype: str
         """
         return self._StartTime
@@ -2293,7 +2293,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetCode(self):
-        """Function execution result. `0` indicates successful execution and other values indicate failure.
+        r"""Function execution result. `0` indicates successful execution and other values indicate failure.
         :rtype: int
         """
         return self._RetCode
@@ -2304,7 +2304,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def InvokeFinished(self):
-        """It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
+        r"""It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
         :rtype: int
         """
         return self._InvokeFinished
@@ -2315,7 +2315,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Duration(self):
-        """Duration of the function execution. The unit is millisecond (ms).
+        r"""Duration of the function execution. The unit is millisecond (ms).
         :rtype: float
         """
         return self._Duration
@@ -2326,7 +2326,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def BillDuration(self):
-        """Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
+        r"""Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
         :rtype: int
         """
         return self._BillDuration
@@ -2337,7 +2337,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def MemUsage(self):
-        """Actual memory size used during the function execution. The unit is byte.
+        r"""Actual memory size used during the function execution. The unit is byte.
         :rtype: int
         """
         return self._MemUsage
@@ -2348,7 +2348,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Log(self):
-        """Function execution logs
+        r"""Function execution logs
         :rtype: str
         """
         return self._Log
@@ -2359,7 +2359,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -2370,7 +2370,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def Source(self):
-        """Log source
+        r"""Log source
         :rtype: str
         """
         return self._Source
@@ -2381,7 +2381,7 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetryNum(self):
-        """Number of retries
+        r"""Number of retries
         :rtype: int
         """
         return self._RetryNum
@@ -2416,7 +2416,7 @@ class FunctionLog(AbstractModel):
 
 
 class FunctionVersion(AbstractModel):
-    """Function version information
+    r"""Function version information
 
     """
 
@@ -2445,7 +2445,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
-        """Function version name
+        r"""Function version name
         :rtype: str
         """
         return self._Version
@@ -2456,7 +2456,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
-        """Version description
+        r"""Version description
 Note: This field may return null, indicating that no valid values is found.
         :rtype: str
         """
@@ -2468,7 +2468,7 @@ Note: This field may return null, indicating that no valid values is found.
 
     @property
     def AddTime(self):
-        """The creation time
+        r"""The creation time
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -2480,7 +2480,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ModTime(self):
-        """Update time
+        r"""Update time
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -2492,7 +2492,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Version status
+        r"""Version status
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2520,13 +2520,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class GetAccountRequest(AbstractModel):
-    """GetAccount request structure.
+    r"""GetAccount request structure.
 
     """
 
 
 class GetAccountResponse(AbstractModel):
-    """GetAccount response structure.
+    r"""GetAccount response structure.
 
     """
 
@@ -2545,7 +2545,7 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountUsage(self):
-        """Namespace usage information
+        r"""Namespace usage information
         :rtype: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
         """
         return self._AccountUsage
@@ -2556,7 +2556,7 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountLimit(self):
-        """Namespace limit information
+        r"""Namespace limit information
         :rtype: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
         """
         return self._AccountLimit
@@ -2567,7 +2567,7 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2588,7 +2588,7 @@ class GetAccountResponse(AbstractModel):
 
 
 class GetAliasRequest(AbstractModel):
-    """GetAlias request structure.
+    r"""GetAlias request structure.
 
     """
 
@@ -2607,7 +2607,7 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -2618,7 +2618,7 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alias name
+        r"""Alias name
         :rtype: str
         """
         return self._Name
@@ -2629,7 +2629,7 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -2654,7 +2654,7 @@ class GetAliasRequest(AbstractModel):
 
 
 class GetAliasResponse(AbstractModel):
-    """GetAlias response structure.
+    r"""GetAlias response structure.
 
     """
 
@@ -2688,7 +2688,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionVersion(self):
-        """Master version pointed to by the alias
+        r"""Master version pointed to by the alias
         :rtype: str
         """
         return self._FunctionVersion
@@ -2699,7 +2699,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Alias name
+        r"""Alias name
         :rtype: str
         """
         return self._Name
@@ -2710,7 +2710,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoutingConfig(self):
-        """Routing information of alias
+        r"""Routing information of alias
         :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         """
         return self._RoutingConfig
@@ -2721,7 +2721,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Alias description
+        r"""Alias description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2733,7 +2733,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2745,7 +2745,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
-        """Update time
+        r"""Update time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2757,7 +2757,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2780,7 +2780,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetAsyncEventStatusRequest(AbstractModel):
-    """GetAsyncEventStatus request structure.
+    r"""GetAsyncEventStatus request structure.
 
     """
 
@@ -2793,7 +2793,7 @@ class GetAsyncEventStatusRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
-        """ID of the async execution request
+        r"""ID of the async execution request
         :rtype: str
         """
         return self._InvokeRequestId
@@ -2816,7 +2816,7 @@ class GetAsyncEventStatusRequest(AbstractModel):
 
 
 class GetAsyncEventStatusResponse(AbstractModel):
-    """GetAsyncEventStatus response structure.
+    r"""GetAsyncEventStatus response structure.
 
     """
 
@@ -2832,7 +2832,7 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Async event status
+        r"""Async event status
         :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
         """
         return self._Result
@@ -2843,7 +2843,7 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2861,7 +2861,7 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
 
 class GetFunctionAddressRequest(AbstractModel):
-    """GetFunctionAddress request structure.
+    r"""GetFunctionAddress request structure.
 
     """
 
@@ -2880,7 +2880,7 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -2891,7 +2891,7 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version
+        r"""Function version
         :rtype: str
         """
         return self._Qualifier
@@ -2902,7 +2902,7 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -2927,7 +2927,7 @@ class GetFunctionAddressRequest(AbstractModel):
 
 
 class GetFunctionAddressResponse(AbstractModel):
-    """GetFunctionAddress response structure.
+    r"""GetFunctionAddress response structure.
 
     """
 
@@ -2946,7 +2946,7 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def Url(self):
-        """Cos address of the function
+        r"""Cos address of the function
         :rtype: str
         """
         return self._Url
@@ -2957,7 +2957,7 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
-        """SHA256 code of the function
+        r"""SHA256 code of the function
         :rtype: str
         """
         return self._CodeSha256
@@ -2968,7 +2968,7 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2985,7 +2985,7 @@ class GetFunctionAddressResponse(AbstractModel):
 
 
 class GetFunctionEventInvokeConfigRequest(AbstractModel):
-    """GetFunctionEventInvokeConfig request structure.
+    r"""GetFunctionEventInvokeConfig request structure.
 
     """
 
@@ -3004,7 +3004,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -3015,7 +3015,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: default
+        r"""Function namespace. Default value: default
         :rtype: str
         """
         return self._Namespace
@@ -3026,7 +3026,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version. Default value: $LATEST
+        r"""Function version. Default value: $LATEST
         :rtype: str
         """
         return self._Qualifier
@@ -3051,7 +3051,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
 
 class GetFunctionEventInvokeConfigResponse(AbstractModel):
-    """GetFunctionEventInvokeConfig response structure.
+    r"""GetFunctionEventInvokeConfig response structure.
 
     """
 
@@ -3067,7 +3067,7 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
-        """Async retry configuration information
+        r"""Async retry configuration information
         :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
         """
         return self._AsyncTriggerConfig
@@ -3078,7 +3078,7 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3096,7 +3096,7 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
 
 class GetFunctionLogsRequest(AbstractModel):
-    """GetFunctionLogs request structure.
+    r"""GetFunctionLogs request structure.
 
     """
 
@@ -3144,7 +3144,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name.
+        r"""Function name.
 - To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
 - After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
         :rtype: str
@@ -3157,7 +3157,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        r"""Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :rtype: int
         """
         return self._Offset
@@ -3168,7 +3168,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        r"""Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :rtype: int
         """
         return self._Limit
@@ -3179,7 +3179,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
+        r"""It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
         :rtype: str
         """
         return self._Order
@@ -3190,7 +3190,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
+        r"""It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
         :rtype: str
         """
         return self._OrderBy
@@ -3201,7 +3201,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
+        r"""Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogFilter`
         """
         return self._Filter
@@ -3212,7 +3212,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -3223,7 +3223,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version
+        r"""Function version
         :rtype: str
         """
         return self._Qualifier
@@ -3234,7 +3234,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
-        """RequestId corresponding to the executed function
+        r"""RequestId corresponding to the executed function
         :rtype: str
         """
         return self._FunctionRequestId
@@ -3245,7 +3245,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
+        r"""Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
         :rtype: str
         """
         return self._StartTime
@@ -3256,7 +3256,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
+        r"""Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
         :rtype: str
         """
         return self._EndTime
@@ -3267,7 +3267,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def SearchContext(self):
-        """This field is disused.
+        r"""This field is disused.
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         return self._SearchContext
@@ -3305,7 +3305,7 @@ class GetFunctionLogsRequest(AbstractModel):
 
 
 class GetFunctionLogsResponse(AbstractModel):
-    """GetFunctionLogs response structure.
+    r"""GetFunctionLogs response structure.
 
     """
 
@@ -3327,7 +3327,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of function logs
+        r"""Total number of function logs
         :rtype: int
         """
         return self._TotalCount
@@ -3338,7 +3338,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Function log information
+        r"""Function log information
         :rtype: list of FunctionLog
         """
         return self._Data
@@ -3349,7 +3349,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def SearchContext(self):
-        """This field is disused.
+        r"""This field is disused.
         :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         return self._SearchContext
@@ -3360,7 +3360,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3385,7 +3385,7 @@ class GetFunctionLogsResponse(AbstractModel):
 
 
 class GetLayerVersionRequest(AbstractModel):
-    """GetLayerVersion request structure.
+    r"""GetLayerVersion request structure.
 
     """
 
@@ -3401,7 +3401,7 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
-        """Layer name
+        r"""Layer name
         :rtype: str
         """
         return self._LayerName
@@ -3412,7 +3412,7 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
-        """Version number
+        r"""Version number
         :rtype: int
         """
         return self._LayerVersion
@@ -3436,7 +3436,7 @@ class GetLayerVersionRequest(AbstractModel):
 
 
 class GetLayerVersionResponse(AbstractModel):
-    """GetLayerVersion response structure.
+    r"""GetLayerVersion response structure.
 
     """
 
@@ -3476,7 +3476,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
-        """Compatible runtimes
+        r"""Compatible runtimes
         :rtype: list of str
         """
         return self._CompatibleRuntimes
@@ -3487,7 +3487,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
-        """SHA256 encoding of version file on the layer
+        r"""SHA256 encoding of version file on the layer
         :rtype: str
         """
         return self._CodeSha256
@@ -3498,7 +3498,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Location(self):
-        """Download address of version file on the layer
+        r"""Download address of version file on the layer
         :rtype: str
         """
         return self._Location
@@ -3509,7 +3509,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def AddTime(self):
-        """Version creation time
+        r"""Version creation time
         :rtype: str
         """
         return self._AddTime
@@ -3520,7 +3520,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Description(self):
-        """Version description
+        r"""Version description
         :rtype: str
         """
         return self._Description
@@ -3531,7 +3531,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LicenseInfo(self):
-        """License information
+        r"""License information
         :rtype: str
         """
         return self._LicenseInfo
@@ -3542,7 +3542,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
-        """Version number
+        r"""Version number
         :rtype: int
         """
         return self._LayerVersion
@@ -3553,7 +3553,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerName(self):
-        """Layer name
+        r"""Layer name
         :rtype: str
         """
         return self._LayerName
@@ -3564,7 +3564,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        r"""Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :rtype: str
         """
         return self._Status
@@ -3575,7 +3575,7 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3599,7 +3599,7 @@ class GetLayerVersionResponse(AbstractModel):
 
 
 class GetProvisionedConcurrencyConfigRequest(AbstractModel):
-    """GetProvisionedConcurrencyConfig request structure.
+    r"""GetProvisionedConcurrencyConfig request structure.
 
     """
 
@@ -3618,7 +3618,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the function for which to get the provisioned concurrency details.
+        r"""Name of the function for which to get the provisioned concurrency details.
         :rtype: str
         """
         return self._FunctionName
@@ -3629,7 +3629,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: default.
+        r"""Function namespace. Default value: default.
         :rtype: str
         """
         return self._Namespace
@@ -3640,7 +3640,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
+        r"""Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
         :rtype: str
         """
         return self._Qualifier
@@ -3665,7 +3665,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
 
 class GetProvisionedConcurrencyConfigResponse(AbstractModel):
-    """GetProvisionedConcurrencyConfig response structure.
+    r"""GetProvisionedConcurrencyConfig response structure.
 
     """
 
@@ -3684,7 +3684,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def UnallocatedConcurrencyNum(self):
-        """Unallocated provisioned concurrency amount of function.
+        r"""Unallocated provisioned concurrency amount of function.
         :rtype: int
         """
         return self._UnallocatedConcurrencyNum
@@ -3695,7 +3695,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def Allocated(self):
-        """Allocated provisioned concurrency amount of function.
+        r"""Allocated provisioned concurrency amount of function.
         :rtype: list of VersionProvisionedConcurrencyInfo
         """
         return self._Allocated
@@ -3706,7 +3706,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3728,7 +3728,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
 
 class GetRequestStatusRequest(AbstractModel):
-    """GetRequestStatus request structure.
+    r"""GetRequestStatus request structure.
 
     """
 
@@ -3753,7 +3753,7 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -3764,7 +3764,7 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
-        """ID of the request to be queried
+        r"""ID of the request to be queried
         :rtype: str
         """
         return self._FunctionRequestId
@@ -3775,7 +3775,7 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -3786,7 +3786,7 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.
+        r"""Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.
         :rtype: str
         """
         return self._StartTime
@@ -3797,7 +3797,7 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.
+        r"""End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.
         :rtype: str
         """
         return self._EndTime
@@ -3824,7 +3824,7 @@ class GetRequestStatusRequest(AbstractModel):
 
 
 class GetRequestStatusResponse(AbstractModel):
-    """GetRequestStatus response structure.
+    r"""GetRequestStatus response structure.
 
     """
 
@@ -3845,7 +3845,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
-        """Total running functions
+        r"""Total running functions
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3857,7 +3857,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        """Details of the function running status
+        r"""Details of the function running status
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of RequestStatus
         """
@@ -3869,7 +3869,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3891,7 +3891,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class GetReservedConcurrencyConfigRequest(AbstractModel):
-    """GetReservedConcurrencyConfig request structure.
+    r"""GetReservedConcurrencyConfig request structure.
 
     """
 
@@ -3907,7 +3907,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Specifies the function of which you want to obtain the reserved quota
+        r"""Specifies the function of which you want to obtain the reserved quota
         :rtype: str
         """
         return self._FunctionName
@@ -3918,7 +3918,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: default.
+        r"""Function namespace. Default value: default.
         :rtype: str
         """
         return self._Namespace
@@ -3942,7 +3942,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
 
 class GetReservedConcurrencyConfigResponse(AbstractModel):
-    """GetReservedConcurrencyConfig response structure.
+    r"""GetReservedConcurrencyConfig response structure.
 
     """
 
@@ -3959,7 +3959,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReservedMem(self):
-        """The reserved quota of the function
+        r"""The reserved quota of the function
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3971,7 +3971,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3987,7 +3987,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class ImageConfig(AbstractModel):
-    """TCR image information
+    r"""TCR image information
 
     """
 
@@ -4030,7 +4030,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageType(self):
-        """Image repository type, which can be `personal` or `enterprise`
+        r"""Image repository type, which can be `personal` or `enterprise`
         :rtype: str
         """
         return self._ImageType
@@ -4041,7 +4041,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageUri(self):
-        """{domain}/{namespace}/{imageName}:{tag}@{digest}
+        r"""{domain}/{namespace}/{imageName}:{tag}@{digest}
         :rtype: str
         """
         return self._ImageUri
@@ -4052,7 +4052,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegistryId(self):
-        """The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
+        r"""The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4064,7 +4064,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EntryPoint(self):
-        """Disused
+        r"""Disused
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4076,7 +4076,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Command(self):
-        """The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.
+        r"""The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4088,7 +4088,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Args(self):
-        """The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
+        r"""The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -4100,7 +4100,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ContainerImageAccelerate(self):
-        """Whether to enable image acceleration. It defaults to `False`.
+        r"""Whether to enable image acceleration. It defaults to `False`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4112,7 +4112,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ImagePort(self):
-        """Image function port settings
+        r"""Image function port settings
 `-1`: No port-specific image functions
 `0`: Default port (Port 9000)
 Others: Special ports
@@ -4146,7 +4146,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class InvokeFunctionRequest(AbstractModel):
-    """InvokeFunction request structure.
+    r"""InvokeFunction request structure.
 
     """
 
@@ -4174,7 +4174,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -4185,7 +4185,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Version or alias of the function. It defaults to `$DEFAULT`.
+        r"""Version or alias of the function. It defaults to `$DEFAULT`.
         :rtype: str
         """
         return self._Qualifier
@@ -4196,7 +4196,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Event(self):
-        """Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        r"""Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :rtype: str
         """
         return self._Event
@@ -4207,7 +4207,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
+        r"""Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
         :rtype: str
         """
         return self._LogType
@@ -4218,7 +4218,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace. `default` is used if it’s left empty.
+        r"""Namespace. `default` is used if it’s left empty.
         :rtype: str
         """
         return self._Namespace
@@ -4229,7 +4229,7 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
-        """Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        r"""Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
         :rtype: str
         """
         return self._RoutingKey
@@ -4257,7 +4257,7 @@ class InvokeFunctionRequest(AbstractModel):
 
 
 class InvokeFunctionResponse(AbstractModel):
-    """InvokeFunction response structure.
+    r"""InvokeFunction response structure.
 
     """
 
@@ -4273,7 +4273,7 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Function execution result
+        r"""Function execution result
         :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
         """
         return self._Result
@@ -4284,7 +4284,7 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4302,7 +4302,7 @@ class InvokeFunctionResponse(AbstractModel):
 
 
 class InvokeRequest(AbstractModel):
-    """Invoke request structure.
+    r"""Invoke request structure.
 
     """
 
@@ -4333,7 +4333,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -4344,7 +4344,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def InvocationType(self):
-        """Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
+        r"""Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
         :rtype: str
         """
         return self._InvocationType
@@ -4355,7 +4355,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """The version or alias of the triggered function. It defaults to $LATEST
+        r"""The version or alias of the triggered function. It defaults to $LATEST
         :rtype: str
         """
         return self._Qualifier
@@ -4366,7 +4366,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ClientContext(self):
-        """Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        r"""Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :rtype: str
         """
         return self._ClientContext
@@ -4377,7 +4377,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """Null for async invocations
+        r"""Null for async invocations
         :rtype: str
         """
         return self._LogType
@@ -4388,7 +4388,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -4399,7 +4399,7 @@ class InvokeRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
-        """Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        r"""Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
         :rtype: str
         """
         return self._RoutingKey
@@ -4428,7 +4428,7 @@ class InvokeRequest(AbstractModel):
 
 
 class InvokeResponse(AbstractModel):
-    """Invoke response structure.
+    r"""Invoke response structure.
 
     """
 
@@ -4444,7 +4444,7 @@ class InvokeResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Function execution result
+        r"""Function execution result
         :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
         """
         return self._Result
@@ -4455,7 +4455,7 @@ class InvokeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4473,7 +4473,7 @@ class InvokeResponse(AbstractModel):
 
 
 class LayerVersionInfo(AbstractModel):
-    """Layer version information
+    r"""Layer version information
 
     """
 
@@ -4511,7 +4511,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompatibleRuntimes(self):
-        """Runtime applicable to a version
+        r"""Runtime applicable to a version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4523,7 +4523,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._AddTime
@@ -4534,7 +4534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Version description
+        r"""Version description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4546,7 +4546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseInfo(self):
-        """License information
+        r"""License information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4558,7 +4558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LayerVersion(self):
-        """Version number
+        r"""Version number
         :rtype: int
         """
         return self._LayerVersion
@@ -4569,7 +4569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LayerName(self):
-        """Layer name
+        r"""Layer name
         :rtype: str
         """
         return self._LayerName
@@ -4580,7 +4580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        r"""Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :rtype: str
         """
         return self._Status
@@ -4591,7 +4591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stamp(self):
-        """Stamp
+        r"""Stamp
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4622,7 +4622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LimitsInfo(AbstractModel):
-    """Limit information
+    r"""Limit information
 
     """
 
@@ -4638,7 +4638,7 @@ class LimitsInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
-        """Limit of namespace quantity
+        r"""Limit of namespace quantity
         :rtype: int
         """
         return self._NamespacesCount
@@ -4649,7 +4649,7 @@ class LimitsInfo(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace limit information
+        r"""Namespace limit information
         :rtype: list of NamespaceLimit
         """
         return self._Namespace
@@ -4678,7 +4678,7 @@ class LimitsInfo(AbstractModel):
 
 
 class ListAliasesRequest(AbstractModel):
-    """ListAliases request structure.
+    r"""ListAliases request structure.
 
     """
 
@@ -4703,7 +4703,7 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -4714,7 +4714,7 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -4725,7 +4725,7 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
-        """If this parameter is provided, only aliases associated with this function version will be returned.
+        r"""If this parameter is provided, only aliases associated with this function version will be returned.
         :rtype: str
         """
         return self._FunctionVersion
@@ -4736,7 +4736,7 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. Default value: 0
+        r"""Data offset. Default value: 0
         :rtype: str
         """
         return self._Offset
@@ -4747,7 +4747,7 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20
+        r"""Number of results to be returned. Default value: 20
         :rtype: str
         """
         return self._Limit
@@ -4774,7 +4774,7 @@ class ListAliasesRequest(AbstractModel):
 
 
 class ListAliasesResponse(AbstractModel):
-    """ListAliases response structure.
+    r"""ListAliases response structure.
 
     """
 
@@ -4794,7 +4794,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Aliases(self):
-        """Alias list
+        r"""Alias list
         :rtype: list of Alias
         """
         return self._Aliases
@@ -4805,7 +4805,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of aliases
+        r"""Total number of aliases
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4817,7 +4817,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4839,7 +4839,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAsyncEventsRequest(AbstractModel):
-    """ListAsyncEvents request structure.
+    r"""ListAsyncEvents request structure.
 
     """
 
@@ -4885,7 +4885,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -4896,7 +4896,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -4907,7 +4907,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Filter (function version)
+        r"""Filter (function version)
         :rtype: str
         """
         return self._Qualifier
@@ -4918,7 +4918,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeType(self):
-        """Filter (invocation type list)
+        r"""Filter (invocation type list)
         :rtype: list of str
         """
         return self._InvokeType
@@ -4929,7 +4929,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Filter (event status list)
+        r"""Filter (event status list)
         :rtype: list of str
         """
         return self._Status
@@ -4940,7 +4940,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def StartTimeInterval(self):
-        """Filter (left-closed-right-open range of execution start time)
+        r"""Filter (left-closed-right-open range of execution start time)
         :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
         """
         return self._StartTimeInterval
@@ -4951,7 +4951,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def EndTimeInterval(self):
-        """Filter (left-closed-right-open range of execution end time)
+        r"""Filter (left-closed-right-open range of execution end time)
         :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
         """
         return self._EndTimeInterval
@@ -4962,7 +4962,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Valid values: ASC, DESC. Default value: DESC
+        r"""Valid values: ASC, DESC. Default value: DESC
         :rtype: str
         """
         return self._Order
@@ -4973,7 +4973,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Orderby(self):
-        """Valid values: StartTime, EndTime. Default value: StartTime
+        r"""Valid values: StartTime, EndTime. Default value: StartTime
         :rtype: str
         """
         return self._Orderby
@@ -4984,7 +4984,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. Default value: 0
+        r"""Data offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -4995,7 +4995,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -5006,7 +5006,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
-        """Filter (event invocation request ID)
+        r"""Filter (event invocation request ID)
         :rtype: str
         """
         return self._InvokeRequestId
@@ -5044,7 +5044,7 @@ class ListAsyncEventsRequest(AbstractModel):
 
 
 class ListAsyncEventsResponse(AbstractModel):
-    """ListAsyncEvents response structure.
+    r"""ListAsyncEvents response structure.
 
     """
 
@@ -5063,7 +5063,7 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of events that meet the filter
+        r"""Total number of events that meet the filter
         :rtype: int
         """
         return self._TotalCount
@@ -5074,7 +5074,7 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def EventList(self):
-        """Async event list
+        r"""Async event list
         :rtype: list of AsyncEvent
         """
         return self._EventList
@@ -5085,7 +5085,7 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5107,7 +5107,7 @@ class ListAsyncEventsResponse(AbstractModel):
 
 
 class ListFunctionsRequest(AbstractModel):
-    """ListFunctions request structure.
+    r"""ListFunctions request structure.
 
     """
 
@@ -5144,7 +5144,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Order(self):
-        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        r"""It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :rtype: str
         """
         return self._Order
@@ -5155,7 +5155,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Orderby(self):
-        """It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
+        r"""It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
         :rtype: str
         """
         return self._Orderby
@@ -5166,7 +5166,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Offset(self):
-        """Data offset. The default value is `0`.
+        r"""Data offset. The default value is `0`.
         :rtype: int
         """
         return self._Offset
@@ -5177,7 +5177,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Limit(self):
-        """Return data length. The default value is `20`.
+        r"""Return data length. The default value is `20`.
         :rtype: int
         """
         return self._Limit
@@ -5188,7 +5188,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def SearchKey(self):
-        """It specifies whether to support fuzzy matching for the function name.
+        r"""It specifies whether to support fuzzy matching for the function name.
         :rtype: str
         """
         return self._SearchKey
@@ -5199,7 +5199,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Namespace(self):
-        """Namespace
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -5210,7 +5210,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Description(self):
-        """Function description. Fuzzy search is supported.
+        r"""Function description. Fuzzy search is supported.
         :rtype: str
         """
         return self._Description
@@ -5221,7 +5221,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Filters(self):
-        """Filters
+        r"""Filters
 - tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.
 
 The maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.
@@ -5259,7 +5259,7 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
 
 class ListFunctionsResponse(AbstractModel):
-    """ListFunctions response structure.
+    r"""ListFunctions response structure.
 
     """
 
@@ -5278,7 +5278,7 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def Functions(self):
-        """Function list
+        r"""Function list
         :rtype: list of Function
         """
         return self._Functions
@@ -5289,7 +5289,7 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -5300,7 +5300,7 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5322,7 +5322,7 @@ class ListFunctionsResponse(AbstractModel):
 
 
 class ListLayerVersionsRequest(AbstractModel):
-    """ListLayerVersions request structure.
+    r"""ListLayerVersions request structure.
 
     """
 
@@ -5338,7 +5338,7 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def LayerName(self):
-        """Layer name
+        r"""Layer name
         :rtype: str
         """
         return self._LayerName
@@ -5349,7 +5349,7 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
-        """Compatible runtimes
+        r"""Compatible runtimes
         :rtype: list of str
         """
         return self._CompatibleRuntime
@@ -5373,7 +5373,7 @@ class ListLayerVersionsRequest(AbstractModel):
 
 
 class ListLayerVersionsResponse(AbstractModel):
-    """ListLayerVersions response structure.
+    r"""ListLayerVersions response structure.
 
     """
 
@@ -5389,7 +5389,7 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def LayerVersions(self):
-        """Layer version list
+        r"""Layer version list
         :rtype: list of LayerVersionInfo
         """
         return self._LayerVersions
@@ -5400,7 +5400,7 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5421,7 +5421,7 @@ class ListLayerVersionsResponse(AbstractModel):
 
 
 class ListLayersRequest(AbstractModel):
-    """ListLayers request structure.
+    r"""ListLayers request structure.
 
     """
 
@@ -5443,7 +5443,7 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
-        """Compatible runtimes
+        r"""Compatible runtimes
         :rtype: str
         """
         return self._CompatibleRuntime
@@ -5454,7 +5454,7 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -5465,7 +5465,7 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit
+        r"""Limit
         :rtype: int
         """
         return self._Limit
@@ -5476,7 +5476,7 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """Query key, which fuzzily matches the name
+        r"""Query key, which fuzzily matches the name
         :rtype: str
         """
         return self._SearchKey
@@ -5502,7 +5502,7 @@ class ListLayersRequest(AbstractModel):
 
 
 class ListLayersResponse(AbstractModel):
-    """ListLayers response structure.
+    r"""ListLayers response structure.
 
     """
 
@@ -5521,7 +5521,7 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def Layers(self):
-        """Layer list
+        r"""Layer list
         :rtype: list of LayerVersionInfo
         """
         return self._Layers
@@ -5532,7 +5532,7 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of layers
+        r"""Total number of layers
         :rtype: int
         """
         return self._TotalCount
@@ -5543,7 +5543,7 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5565,7 +5565,7 @@ class ListLayersResponse(AbstractModel):
 
 
 class ListNamespacesRequest(AbstractModel):
-    """ListNamespaces request structure.
+    r"""ListNamespaces request structure.
 
     """
 
@@ -5590,7 +5590,7 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Return data length. The default value is `20`.
+        r"""Return data length. The default value is `20`.
         :rtype: int
         """
         return self._Limit
@@ -5601,7 +5601,7 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. The default value is `0`.
+        r"""Data offset. The default value is `0`.
         :rtype: int
         """
         return self._Offset
@@ -5612,7 +5612,7 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Orderby(self):
-        """It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
+        r"""It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
         :rtype: str
         """
         return self._Orderby
@@ -5623,7 +5623,7 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        r"""It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :rtype: str
         """
         return self._Order
@@ -5634,7 +5634,7 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
+        r"""Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
         :rtype: list of SearchKey
         """
         return self._SearchKey
@@ -5666,7 +5666,7 @@ class ListNamespacesRequest(AbstractModel):
 
 
 class ListNamespacesResponse(AbstractModel):
-    """ListNamespaces response structure.
+    r"""ListNamespaces response structure.
 
     """
 
@@ -5685,7 +5685,7 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def Namespaces(self):
-        """Namespace details
+        r"""Namespace details
         :rtype: list of Namespace
         """
         return self._Namespaces
@@ -5696,7 +5696,7 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of return namespaces
+        r"""Number of return namespaces
         :rtype: int
         """
         return self._TotalCount
@@ -5707,7 +5707,7 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5729,7 +5729,7 @@ class ListNamespacesResponse(AbstractModel):
 
 
 class ListTriggersRequest(AbstractModel):
-    """ListTriggers request structure.
+    r"""ListTriggers request structure.
 
     """
 
@@ -5762,7 +5762,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -5773,7 +5773,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace. Default value: default
+        r"""Namespace. Default value: default
         :rtype: str
         """
         return self._Namespace
@@ -5784,7 +5784,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. Default value: 0
+        r"""Data offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -5795,7 +5795,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20
+        r"""Number of results to be returned. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -5806,7 +5806,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
+        r"""Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
         :rtype: str
         """
         return self._OrderBy
@@ -5817,7 +5817,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
+        r"""Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
         :rtype: str
         """
         return self._Order
@@ -5828,7 +5828,7 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """* Qualifier: Version/Alias of trigger function 
+        r"""* Qualifier: Version/Alias of trigger function 
 *TriggerName: Name of the trigger 
 *Description: Function trigger description
         :rtype: list of Filter
@@ -5864,7 +5864,7 @@ class ListTriggersRequest(AbstractModel):
 
 
 class ListTriggersResponse(AbstractModel):
-    """ListTriggers response structure.
+    r"""ListTriggers response structure.
 
     """
 
@@ -5883,7 +5883,7 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of triggers
+        r"""Total number of triggers
         :rtype: int
         """
         return self._TotalCount
@@ -5894,7 +5894,7 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def Triggers(self):
-        """Trigger list
+        r"""Trigger list
         :rtype: list of TriggerInfo
         """
         return self._Triggers
@@ -5905,7 +5905,7 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5927,7 +5927,7 @@ class ListTriggersResponse(AbstractModel):
 
 
 class ListVersionByFunctionRequest(AbstractModel):
-    """ListVersionByFunction request structure.
+    r"""ListVersionByFunction request structure.
 
     """
 
@@ -5955,7 +5955,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function Name
+        r"""Function Name
         :rtype: str
         """
         return self._FunctionName
@@ -5966,7 +5966,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """The namespace where the function locates
+        r"""The namespace where the function locates
         :rtype: str
         """
         return self._Namespace
@@ -5977,7 +5977,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Data offset. The default value is `0`.
+        r"""Data offset. The default value is `0`.
         :rtype: int
         """
         return self._Offset
@@ -5988,7 +5988,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Return data length. The default value is `20`.
+        r"""Return data length. The default value is `20`.
         :rtype: int
         """
         return self._Limit
@@ -5999,7 +5999,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Order(self):
-        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        r"""It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :rtype: str
         """
         return self._Order
@@ -6010,7 +6010,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
+        r"""It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
         :rtype: str
         """
         return self._OrderBy
@@ -6038,7 +6038,7 @@ class ListVersionByFunctionRequest(AbstractModel):
 
 
 class ListVersionByFunctionResponse(AbstractModel):
-    """ListVersionByFunction response structure.
+    r"""ListVersionByFunction response structure.
 
     """
 
@@ -6062,7 +6062,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def FunctionVersion(self):
-        """Function version
+        r"""Function version
         :rtype: list of str
         """
         return self._FunctionVersion
@@ -6073,7 +6073,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Versions(self):
-        """Function version list
+        r"""Function version list
 Note: This field may return null, indicating that no valid values is found.
         :rtype: list of FunctionVersion
         """
@@ -6085,7 +6085,7 @@ Note: This field may return null, indicating that no valid values is found.
 
     @property
     def TotalCount(self):
-        """Total number of function versions
+        r"""Total number of function versions
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -6097,7 +6097,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6120,7 +6120,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class LogFilter(AbstractModel):
-    """Log filtering criteria, which is for distinguishing between logs of successful and failed execution
+    r"""Log filtering criteria, which is for distinguishing between logs of successful and failed execution
 
     """
 
@@ -6139,7 +6139,7 @@ Blank, indicating that all logs will be returned.
 
     @property
     def RetCode(self):
-        """Values of `filter.RetCode` include:
+        r"""Values of `filter.RetCode` include:
 not0, indicating that only logs of failed execution will be returned.
 is0, indicating that only logs of successful execution will be returned.
 TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
@@ -6168,7 +6168,7 @@ Blank, indicating that all logs will be returned.
 
 
 class LogSearchContext(AbstractModel):
-    """Log search context
+    r"""Log search context
 
     """
 
@@ -6190,7 +6190,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset.
+        r"""Offset.
         :rtype: str
         """
         return self._Offset
@@ -6201,7 +6201,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Limit(self):
-        """Log record number
+        r"""Log record number
         :rtype: int
         """
         return self._Limit
@@ -6212,7 +6212,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Keyword(self):
-        """Log keyword
+        r"""Log keyword
         :rtype: str
         """
         return self._Keyword
@@ -6223,7 +6223,7 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Type(self):
-        """Log type. The value is `Application` (default) or `Platform`.
+        r"""Log type. The value is `Application` (default) or `Platform`.
         :rtype: str
         """
         return self._Type
@@ -6249,7 +6249,7 @@ class LogSearchContext(AbstractModel):
 
 
 class Namespace(AbstractModel):
-    """Namespace
+    r"""Namespace
 
     """
 
@@ -6274,7 +6274,7 @@ class Namespace(AbstractModel):
 
     @property
     def ModTime(self):
-        """Creation time of the namespace
+        r"""Creation time of the namespace
         :rtype: str
         """
         return self._ModTime
@@ -6285,7 +6285,7 @@ class Namespace(AbstractModel):
 
     @property
     def AddTime(self):
-        """Modification time of the namespace
+        r"""Modification time of the namespace
         :rtype: str
         """
         return self._AddTime
@@ -6296,7 +6296,7 @@ class Namespace(AbstractModel):
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
         :rtype: str
         """
         return self._Description
@@ -6307,7 +6307,7 @@ class Namespace(AbstractModel):
 
     @property
     def Name(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Name
@@ -6318,7 +6318,7 @@ class Namespace(AbstractModel):
 
     @property
     def Type(self):
-        """The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
+        r"""The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
         :rtype: str
         """
         return self._Type
@@ -6345,7 +6345,7 @@ class Namespace(AbstractModel):
 
 
 class NamespaceLimit(AbstractModel):
-    """Namespace limit
+    r"""Namespace limit
 
     """
 
@@ -6386,7 +6386,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionsCount(self):
-        """Total number of functions
+        r"""Total number of functions
         :rtype: int
         """
         return self._FunctionsCount
@@ -6397,7 +6397,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trigger(self):
-        """Trigger information
+        r"""Trigger information
         :rtype: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
         """
         return self._Trigger
@@ -6408,7 +6408,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Namespace
@@ -6419,7 +6419,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcurrentExecutions(self):
-        """Concurrency
+        r"""Concurrency
         :rtype: int
         """
         return self._ConcurrentExecutions
@@ -6430,7 +6430,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeoutLimit(self):
-        """Timeout limit
+        r"""Timeout limit
         :rtype: int
         """
         return self._TimeoutLimit
@@ -6441,7 +6441,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TestModelLimit(self):
-        """Test event limit
+        r"""Test event limit
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6453,7 +6453,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitTimeoutLimit(self):
-        """Initialization timeout limit
+        r"""Initialization timeout limit
         :rtype: int
         """
         return self._InitTimeoutLimit
@@ -6464,7 +6464,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetryNumLimit(self):
-        """Limit of async retry attempt quantity
+        r"""Limit of async retry attempt quantity
         :rtype: int
         """
         return self._RetryNumLimit
@@ -6475,7 +6475,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinMsgTTL(self):
-        """Lower limit of message retention time for async retry
+        r"""Lower limit of message retention time for async retry
         :rtype: int
         """
         return self._MinMsgTTL
@@ -6486,7 +6486,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgTTL(self):
-        """Upper limit of message retention time for async retry
+        r"""Upper limit of message retention time for async retry
         :rtype: int
         """
         return self._MaxMsgTTL
@@ -6520,7 +6520,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class NamespaceUsage(AbstractModel):
-    """Namespace usage information
+    r"""Namespace usage information
 
     """
 
@@ -6551,7 +6551,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Functions(self):
-        """Function array
+        r"""Function array
         :rtype: list of str
         """
         return self._Functions
@@ -6562,7 +6562,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Namespace(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Namespace
@@ -6573,7 +6573,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FunctionsCount(self):
-        """Number of functions in namespace
+        r"""Number of functions in namespace
         :rtype: int
         """
         return self._FunctionsCount
@@ -6584,7 +6584,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalConcurrencyMem(self):
-        """Total memory quota of the namespace
+        r"""Total memory quota of the namespace
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6596,7 +6596,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalAllocatedConcurrencyMem(self):
-        """Concurrency usage of the namespace
+        r"""Concurrency usage of the namespace
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -6608,7 +6608,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalAllocatedProvisionedMem(self):
-        """Provisioned concurrency usage of the namespace
+        r"""Provisioned concurrency usage of the namespace
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -6637,7 +6637,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class PublishLayerVersionRequest(AbstractModel):
-    """PublishLayerVersion request structure.
+    r"""PublishLayerVersion request structure.
 
     """
 
@@ -6662,7 +6662,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
-        """Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
+        r"""Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
         :rtype: str
         """
         return self._LayerName
@@ -6673,7 +6673,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
-        """Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
+        r"""Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
         :rtype: list of str
         """
         return self._CompatibleRuntimes
@@ -6684,7 +6684,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Layer file source or content
+        r"""Layer file source or content
         :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
         """
         return self._Content
@@ -6695,7 +6695,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Layer version description
+        r"""Layer version description
         :rtype: str
         """
         return self._Description
@@ -6706,7 +6706,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LicenseInfo(self):
-        """Software license of layer
+        r"""Software license of layer
         :rtype: str
         """
         return self._LicenseInfo
@@ -6735,7 +6735,7 @@ class PublishLayerVersionRequest(AbstractModel):
 
 
 class PublishLayerVersionResponse(AbstractModel):
-    """PublishLayerVersion response structure.
+    r"""PublishLayerVersion response structure.
 
     """
 
@@ -6751,7 +6751,7 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
-        """Version number of the layer created in this request
+        r"""Version number of the layer created in this request
         :rtype: int
         """
         return self._LayerVersion
@@ -6762,7 +6762,7 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6778,7 +6778,7 @@ class PublishLayerVersionResponse(AbstractModel):
 
 
 class PublishVersionRequest(AbstractModel):
-    """PublishVersion request structure.
+    r"""PublishVersion request structure.
 
     """
 
@@ -6797,7 +6797,7 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the released function
+        r"""Name of the released function
         :rtype: str
         """
         return self._FunctionName
@@ -6808,7 +6808,7 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Function description
+        r"""Function description
         :rtype: str
         """
         return self._Description
@@ -6819,7 +6819,7 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -6844,7 +6844,7 @@ class PublishVersionRequest(AbstractModel):
 
 
 class PublishVersionResponse(AbstractModel):
-    """PublishVersion response structure.
+    r"""PublishVersion response structure.
 
     """
 
@@ -6882,7 +6882,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FunctionVersion(self):
-        """Function version
+        r"""Function version
         :rtype: str
         """
         return self._FunctionVersion
@@ -6893,7 +6893,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CodeSize(self):
-        """Code size
+        r"""Code size
         :rtype: int
         """
         return self._CodeSize
@@ -6904,7 +6904,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def MemorySize(self):
-        """Maximum available memory
+        r"""Maximum available memory
         :rtype: int
         """
         return self._MemorySize
@@ -6915,7 +6915,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Description(self):
-        """Function description
+        r"""Function description
         :rtype: str
         """
         return self._Description
@@ -6926,7 +6926,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Handler(self):
-        """Function entry
+        r"""Function entry
         :rtype: str
         """
         return self._Handler
@@ -6937,7 +6937,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Timeout(self):
-        """Function timeout
+        r"""Function timeout
         :rtype: int
         """
         return self._Timeout
@@ -6948,7 +6948,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Runtime(self):
-        """Function running environment 
+        r"""Function running environment 
 Note: This parameter may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6960,7 +6960,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -6971,7 +6971,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6994,7 +6994,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
 
 class PutProvisionedConcurrencyConfigRequest(AbstractModel):
-    """PutProvisionedConcurrencyConfig request structure.
+    r"""PutProvisionedConcurrencyConfig request structure.
 
     """
 
@@ -7036,7 +7036,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def FunctionName(self):
-        """Name of the function for which to set the provisioned concurrency
+        r"""Name of the function for which to set the provisioned concurrency
         :rtype: str
         """
         return self._FunctionName
@@ -7047,7 +7047,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def Qualifier(self):
-        """Function version number. Note: the `$LATEST` version does not support provisioned concurrency
+        r"""Function version number. Note: the `$LATEST` version does not support provisioned concurrency
         :rtype: str
         """
         return self._Qualifier
@@ -7058,7 +7058,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def VersionProvisionedConcurrencyNum(self):
-        """Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
+        r"""Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
         :rtype: int
         """
         return self._VersionProvisionedConcurrencyNum
@@ -7069,7 +7069,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: `default`
+        r"""Function namespace. Default value: `default`
         :rtype: str
         """
         return self._Namespace
@@ -7080,7 +7080,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def TriggerActions(self):
-        """Scheduled provisioned concurrency scaling action
+        r"""Scheduled provisioned concurrency scaling action
         :rtype: list of TriggerAction
         """
         return self._TriggerActions
@@ -7091,7 +7091,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def ProvisionedType(self):
-        """Specifies the provisioned concurrency type.
+        r"""Specifies the provisioned concurrency type.
 `Default`: Static provisioned concurrency. 
 `ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.
 If `ConcurrencyUtilizationTracking` is passed in, 
@@ -7107,7 +7107,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def TrackingTarget(self):
-        """The target concurrency utilization. Range: (0,1) (two decimal places)
+        r"""The target concurrency utilization. Range: (0,1) (two decimal places)
         :rtype: float
         """
         return self._TrackingTarget
@@ -7118,7 +7118,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def MinCapacity(self):
-        """The minimum number of instances. It can not be smaller than `1`.
+        r"""The minimum number of instances. It can not be smaller than `1`.
         :rtype: int
         """
         return self._MinCapacity
@@ -7129,7 +7129,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def MaxCapacity(self):
-        """The maximum number of instances
+        r"""The maximum number of instances
         :rtype: int
         """
         return self._MaxCapacity
@@ -7165,7 +7165,7 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
 
 class PutProvisionedConcurrencyConfigResponse(AbstractModel):
-    """PutProvisionedConcurrencyConfig response structure.
+    r"""PutProvisionedConcurrencyConfig response structure.
 
     """
 
@@ -7178,7 +7178,7 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7193,7 +7193,7 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
 
 class PutReservedConcurrencyConfigRequest(AbstractModel):
-    """PutReservedConcurrencyConfig request structure.
+    r"""PutReservedConcurrencyConfig request structure.
 
     """
 
@@ -7212,7 +7212,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Specifies the function of which you want to configure the reserved quota
+        r"""Specifies the function of which you want to configure the reserved quota
         :rtype: str
         """
         return self._FunctionName
@@ -7223,7 +7223,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def ReservedConcurrencyMem(self):
-        """Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
+        r"""Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
         :rtype: int
         """
         return self._ReservedConcurrencyMem
@@ -7234,7 +7234,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: `default`
+        r"""Function namespace. Default value: `default`
         :rtype: str
         """
         return self._Namespace
@@ -7259,7 +7259,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
 
 class PutReservedConcurrencyConfigResponse(AbstractModel):
-    """PutReservedConcurrencyConfig response structure.
+    r"""PutReservedConcurrencyConfig response structure.
 
     """
 
@@ -7272,7 +7272,7 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7287,7 +7287,7 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
 
 class PutTotalConcurrencyConfigRequest(AbstractModel):
-    """PutTotalConcurrencyConfig request structure.
+    r"""PutTotalConcurrencyConfig request structure.
 
     """
 
@@ -7303,7 +7303,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
-        """Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
+        r"""Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
         :rtype: int
         """
         return self._TotalConcurrencyMem
@@ -7314,7 +7314,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace. Default value: `default`
+        r"""Namespace. Default value: `default`
         :rtype: str
         """
         return self._Namespace
@@ -7338,7 +7338,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
 
 class PutTotalConcurrencyConfigResponse(AbstractModel):
-    """PutTotalConcurrencyConfig response structure.
+    r"""PutTotalConcurrencyConfig response structure.
 
     """
 
@@ -7351,7 +7351,7 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7366,7 +7366,7 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
 
 class RequestStatus(AbstractModel):
-    """Running status of the function
+    r"""Running status of the function
 
     """
 
@@ -7400,7 +7400,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -7411,7 +7411,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetMsg(self):
-        """Return value after the function is executed
+        r"""Return value after the function is executed
         :rtype: str
         """
         return self._RetMsg
@@ -7422,7 +7422,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def RequestId(self):
-        """Request ID
+        r"""Request ID
         :rtype: str
         """
         return self._RequestId
@@ -7433,7 +7433,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def StartTime(self):
-        """Request start time
+        r"""Request start time
         :rtype: str
         """
         return self._StartTime
@@ -7444,7 +7444,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetCode(self):
-        """Result of the request. `0`: succeeded, `1`: running, `-1`: exception
+        r"""Result of the request. `0`: succeeded, `1`: running, `-1`: exception
         :rtype: int
         """
         return self._RetCode
@@ -7455,7 +7455,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def Duration(self):
-        """Time consumed for the request in ms
+        r"""Time consumed for the request in ms
         :rtype: float
         """
         return self._Duration
@@ -7466,7 +7466,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def MemUsage(self):
-        """Time consumed by the request in MB
+        r"""Time consumed by the request in MB
         :rtype: float
         """
         return self._MemUsage
@@ -7477,7 +7477,7 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetryNum(self):
-        """Retry Attempts
+        r"""Retry Attempts
         :rtype: int
         """
         return self._RetryNum
@@ -7507,7 +7507,7 @@ class RequestStatus(AbstractModel):
 
 
 class Result(AbstractModel):
-    """Response of the executed function
+    r"""Response of the executed function
 
     """
 
@@ -7541,7 +7541,7 @@ class Result(AbstractModel):
 
     @property
     def Log(self):
-        """It indicates the log output during the function execution. Null is returned for asynchronous invocations.
+        r"""It indicates the log output during the function execution. Null is returned for asynchronous invocations.
         :rtype: str
         """
         return self._Log
@@ -7552,7 +7552,7 @@ class Result(AbstractModel):
 
     @property
     def RetMsg(self):
-        """It indicates the response from the executed function. Null is returned for asynchronous invocations.
+        r"""It indicates the response from the executed function. Null is returned for asynchronous invocations.
         :rtype: str
         """
         return self._RetMsg
@@ -7563,7 +7563,7 @@ class Result(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """It indicates the error message of the executed function. Null is returned for asynchronous invocations.
+        r"""It indicates the error message of the executed function. Null is returned for asynchronous invocations.
         :rtype: str
         """
         return self._ErrMsg
@@ -7574,7 +7574,7 @@ class Result(AbstractModel):
 
     @property
     def MemUsage(self):
-        """It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
+        r"""It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
         :rtype: int
         """
         return self._MemUsage
@@ -7585,7 +7585,7 @@ class Result(AbstractModel):
 
     @property
     def Duration(self):
-        """It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
+        r"""It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
         :rtype: float
         """
         return self._Duration
@@ -7596,7 +7596,7 @@ class Result(AbstractModel):
 
     @property
     def BillDuration(self):
-        """It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
+        r"""It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
         :rtype: int
         """
         return self._BillDuration
@@ -7607,7 +7607,7 @@ class Result(AbstractModel):
 
     @property
     def FunctionRequestId(self):
-        """ID of the executed function
+        r"""ID of the executed function
         :rtype: str
         """
         return self._FunctionRequestId
@@ -7618,7 +7618,7 @@ class Result(AbstractModel):
 
     @property
     def InvokeResult(self):
-        """The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
+        r"""The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
         :rtype: int
         """
         return self._InvokeResult
@@ -7648,7 +7648,7 @@ class Result(AbstractModel):
 
 
 class RetryConfig(AbstractModel):
-    """Async retry configuration
+    r"""Async retry configuration
 
     """
 
@@ -7661,7 +7661,7 @@ class RetryConfig(AbstractModel):
 
     @property
     def RetryNum(self):
-        """Number of retry attempts
+        r"""Number of retry attempts
         :rtype: int
         """
         return self._RetryNum
@@ -7684,7 +7684,7 @@ class RetryConfig(AbstractModel):
 
 
 class RoutingConfig(AbstractModel):
-    """Version routing configuration of alias
+    r"""Version routing configuration of alias
 
     """
 
@@ -7700,7 +7700,7 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AdditionalVersionWeights(self):
-        """Additional version with random weight-based routing
+        r"""Additional version with random weight-based routing
         :rtype: list of VersionWeight
         """
         return self._AdditionalVersionWeights
@@ -7711,7 +7711,7 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AddtionVersionMatchs(self):
-        """Additional version with rule-based routing
+        r"""Additional version with rule-based routing
         :rtype: list of VersionMatch
         """
         return self._AddtionVersionMatchs
@@ -7745,7 +7745,7 @@ class RoutingConfig(AbstractModel):
 
 
 class SearchKey(AbstractModel):
-    """Key-value condition for keyword search
+    r"""Key-value condition for keyword search
 
     """
 
@@ -7761,7 +7761,7 @@ class SearchKey(AbstractModel):
 
     @property
     def Key(self):
-        """Search range
+        r"""Search range
         :rtype: str
         """
         return self._Key
@@ -7772,7 +7772,7 @@ class SearchKey(AbstractModel):
 
     @property
     def Value(self):
-        """Keyword for search
+        r"""Keyword for search
         :rtype: str
         """
         return self._Value
@@ -7796,7 +7796,7 @@ class SearchKey(AbstractModel):
 
 
 class StatusReason(AbstractModel):
-    """State reason description
+    r"""State reason description
 
     """
 
@@ -7812,7 +7812,7 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """Error code
+        r"""Error code
         :rtype: str
         """
         return self._ErrorCode
@@ -7823,7 +7823,7 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        """Error message
+        r"""Error message
         :rtype: str
         """
         return self._ErrorMessage
@@ -7847,7 +7847,7 @@ class StatusReason(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Function tag
+    r"""Function tag
 
     """
 
@@ -7863,7 +7863,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -7874,7 +7874,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._Value
@@ -7898,7 +7898,7 @@ class Tag(AbstractModel):
 
 
 class TerminateAsyncEventRequest(AbstractModel):
-    """TerminateAsyncEvent request structure.
+    r"""TerminateAsyncEvent request structure.
 
     """
 
@@ -7920,7 +7920,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -7931,7 +7931,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
-        """Terminated invocation request ID
+        r"""Terminated invocation request ID
         :rtype: str
         """
         return self._InvokeRequestId
@@ -7942,7 +7942,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace
+        r"""Namespace
         :rtype: str
         """
         return self._Namespace
@@ -7953,7 +7953,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def GraceShutdown(self):
-        """Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.
+        r"""Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.
         :rtype: bool
         """
         return self._GraceShutdown
@@ -7979,7 +7979,7 @@ class TerminateAsyncEventRequest(AbstractModel):
 
 
 class TerminateAsyncEventResponse(AbstractModel):
-    """TerminateAsyncEvent response structure.
+    r"""TerminateAsyncEvent response structure.
 
     """
 
@@ -7992,7 +7992,7 @@ class TerminateAsyncEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8007,7 +8007,7 @@ class TerminateAsyncEventResponse(AbstractModel):
 
 
 class TimeInterval(AbstractModel):
-    """Left-closed-right-open time range between the start time and end time in the format of "%Y-%m-%d %H:%M:%S"
+    r"""Left-closed-right-open time range between the start time and end time in the format of "%Y-%m-%d %H:%M:%S"
 
     """
 
@@ -8023,7 +8023,7 @@ class TimeInterval(AbstractModel):
 
     @property
     def Start(self):
-        """Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        r"""Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
         :rtype: str
         """
         return self._Start
@@ -8034,7 +8034,7 @@ class TimeInterval(AbstractModel):
 
     @property
     def End(self):
-        """End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        r"""End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
         :rtype: str
         """
         return self._End
@@ -8058,7 +8058,7 @@ class TimeInterval(AbstractModel):
 
 
 class Trigger(AbstractModel):
-    """Trigger type
+    r"""Trigger type
 
     """
 
@@ -8107,7 +8107,7 @@ class Trigger(AbstractModel):
 
     @property
     def ModTime(self):
-        """Latest modification time of the trigger
+        r"""Latest modification time of the trigger
         :rtype: str
         """
         return self._ModTime
@@ -8118,7 +8118,7 @@ class Trigger(AbstractModel):
 
     @property
     def Type(self):
-        """Trigger type
+        r"""Trigger type
         :rtype: str
         """
         return self._Type
@@ -8129,7 +8129,7 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        """Detailed trigger configuration
+        r"""Detailed trigger configuration
         :rtype: str
         """
         return self._TriggerDesc
@@ -8140,7 +8140,7 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerName(self):
-        """Trigger name
+        r"""Trigger name
         :rtype: str
         """
         return self._TriggerName
@@ -8151,7 +8151,7 @@ class Trigger(AbstractModel):
 
     @property
     def AddTime(self):
-        """Creation time of the trigger
+        r"""Creation time of the trigger
         :rtype: str
         """
         return self._AddTime
@@ -8162,7 +8162,7 @@ class Trigger(AbstractModel):
 
     @property
     def Enable(self):
-        """Enabling switch
+        r"""Enabling switch
         :rtype: int
         """
         return self._Enable
@@ -8173,7 +8173,7 @@ class Trigger(AbstractModel):
 
     @property
     def CustomArgument(self):
-        """Custom parameter
+        r"""Custom parameter
         :rtype: str
         """
         return self._CustomArgument
@@ -8184,7 +8184,7 @@ class Trigger(AbstractModel):
 
     @property
     def AvailableStatus(self):
-        """Trigger status
+        r"""Trigger status
         :rtype: str
         """
         return self._AvailableStatus
@@ -8197,7 +8197,7 @@ class Trigger(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
-        """Minimum resource ID of trigger
+        r"""Minimum resource ID of trigger
         :rtype: str
         """
         return self._ResourceId
@@ -8212,7 +8212,7 @@ class Trigger(AbstractModel):
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
-        """Trigger-Function binding status
+        r"""Trigger-Function binding status
         :rtype: str
         """
         return self._BindStatus
@@ -8227,7 +8227,7 @@ class Trigger(AbstractModel):
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
-        """Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        r"""Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :rtype: str
         """
         return self._TriggerAttribute
@@ -8240,7 +8240,7 @@ class Trigger(AbstractModel):
 
     @property
     def Qualifier(self):
-        """The alias or version bound with the trigger
+        r"""The alias or version bound with the trigger
         :rtype: str
         """
         return self._Qualifier
@@ -8251,7 +8251,7 @@ class Trigger(AbstractModel):
 
     @property
     def Description(self):
-        """Trigger description
+        r"""Trigger description
         :rtype: str
         """
         return self._Description
@@ -8286,7 +8286,7 @@ class Trigger(AbstractModel):
 
 
 class TriggerAction(AbstractModel):
-    """Details of a scheduled provisioned concurrency scaling action
+    r"""Details of a scheduled provisioned concurrency scaling action
 
     """
 
@@ -8312,7 +8312,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TriggerName(self):
-        """Scheduled action name
+        r"""Scheduled action name
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8324,7 +8324,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TriggerProvisionedConcurrencyNum(self):
-        """Target provisioned concurrency of the scheduled scaling action 
+        r"""Target provisioned concurrency of the scheduled scaling action 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8336,7 +8336,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TriggerCronConfig(self):
-        """Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
+        r"""Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8348,7 +8348,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProvisionedType(self):
-        """The provision type. Value: `Default`
+        r"""The provision type. Value: `Default`
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -8375,7 +8375,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
 
 class TriggerCount(AbstractModel):
-    """`TriggerCount` describes the numbers of triggers in different types
+    r"""`TriggerCount` describes the numbers of triggers in different types
 
     """
 
@@ -8422,7 +8422,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cos(self):
-        """Number of COS triggers
+        r"""Number of COS triggers
         :rtype: int
         """
         return self._Cos
@@ -8433,7 +8433,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Timer(self):
-        """Number of timer triggers
+        r"""Number of timer triggers
         :rtype: int
         """
         return self._Timer
@@ -8444,7 +8444,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cmq(self):
-        """Number of CMQ triggers
+        r"""Number of CMQ triggers
         :rtype: int
         """
         return self._Cmq
@@ -8455,7 +8455,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Total(self):
-        """Total number of triggers
+        r"""Total number of triggers
         :rtype: int
         """
         return self._Total
@@ -8466,7 +8466,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ckafka(self):
-        """Number of CKafka triggers
+        r"""Number of CKafka triggers
         :rtype: int
         """
         return self._Ckafka
@@ -8477,7 +8477,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Apigw(self):
-        """Number of API Gateway triggers
+        r"""Number of API Gateway triggers
         :rtype: int
         """
         return self._Apigw
@@ -8488,7 +8488,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cls(self):
-        """Number of CLS triggers
+        r"""Number of CLS triggers
         :rtype: int
         """
         return self._Cls
@@ -8499,7 +8499,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Clb(self):
-        """Number of CLB triggers
+        r"""Number of CLB triggers
         :rtype: int
         """
         return self._Clb
@@ -8510,7 +8510,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Mps(self):
-        """Number of MPS triggers
+        r"""Number of MPS triggers
         :rtype: int
         """
         return self._Mps
@@ -8521,7 +8521,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cm(self):
-        """Number of CM triggers
+        r"""Number of CM triggers
         :rtype: int
         """
         return self._Cm
@@ -8532,7 +8532,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vod(self):
-        """Number of VOD triggers
+        r"""Number of VOD triggers
         :rtype: int
         """
         return self._Vod
@@ -8543,7 +8543,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Eb(self):
-        """Number of EventBridge triggers
+        r"""Number of EventBridge triggers
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8578,7 +8578,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class TriggerInfo(AbstractModel):
-    """Trigger information
+    r"""Trigger information
 
     """
 
@@ -8629,7 +8629,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Enable(self):
-        """Whether to enable
+        r"""Whether to enable
         :rtype: int
         """
         return self._Enable
@@ -8640,7 +8640,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Qualifier(self):
-        """Function version or alias
+        r"""Function version or alias
         :rtype: str
         """
         return self._Qualifier
@@ -8651,7 +8651,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TriggerName(self):
-        """Trigger name
+        r"""Trigger name
         :rtype: str
         """
         return self._TriggerName
@@ -8662,7 +8662,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Type(self):
-        """Trigger type
+        r"""Trigger type
         :rtype: str
         """
         return self._Type
@@ -8673,7 +8673,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TriggerDesc(self):
-        """Detailed configuration of trigger
+        r"""Detailed configuration of trigger
         :rtype: str
         """
         return self._TriggerDesc
@@ -8684,7 +8684,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def AvailableStatus(self):
-        """Whether the trigger is available
+        r"""Whether the trigger is available
         :rtype: str
         """
         return self._AvailableStatus
@@ -8695,7 +8695,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CustomArgument(self):
-        """Custom parameter
+        r"""Custom parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8707,7 +8707,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Trigger creation time
+        r"""Trigger creation time
         :rtype: str
         """
         return self._AddTime
@@ -8718,7 +8718,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
-        """Trigger last modified time
+        r"""Trigger last modified time
         :rtype: str
         """
         return self._ModTime
@@ -8731,7 +8731,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
-        """Minimum resource ID of trigger
+        r"""Minimum resource ID of trigger
         :rtype: str
         """
         return self._ResourceId
@@ -8746,7 +8746,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
-        """Trigger-Function binding status
+        r"""Trigger-Function binding status
         :rtype: str
         """
         return self._BindStatus
@@ -8761,7 +8761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
-        """Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        r"""Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :rtype: str
         """
         return self._TriggerAttribute
@@ -8774,7 +8774,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description of a custom trigger 
+        r"""Description of a custom trigger 
 Note: This parameter may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8810,7 +8810,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
 
 class UpdateAliasRequest(AbstractModel):
-    """UpdateAlias request structure.
+    r"""UpdateAlias request structure.
 
     """
 
@@ -8838,7 +8838,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -8849,7 +8849,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alias name
+        r"""Alias name
         :rtype: str
         """
         return self._Name
@@ -8860,7 +8860,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
-        """Master version pointed to by the alias
+        r"""Master version pointed to by the alias
         :rtype: str
         """
         return self._FunctionVersion
@@ -8871,7 +8871,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -8882,7 +8882,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
-        """Routing information of alias, which is required if you need to specify an additional version for the alias.
+        r"""Routing information of alias, which is required if you need to specify an additional version for the alias.
         :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         """
         return self._RoutingConfig
@@ -8893,7 +8893,7 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Alias description
+        r"""Alias description
         :rtype: str
         """
         return self._Description
@@ -8923,7 +8923,7 @@ class UpdateAliasRequest(AbstractModel):
 
 
 class UpdateAliasResponse(AbstractModel):
-    """UpdateAlias response structure.
+    r"""UpdateAlias response structure.
 
     """
 
@@ -8936,7 +8936,7 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8951,7 +8951,7 @@ class UpdateAliasResponse(AbstractModel):
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
-    """UpdateFunctionCode request structure.
+    r"""UpdateFunctionCode request structure.
 
     """
 
@@ -8997,7 +8997,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Name of the function to be modified
+        r"""Name of the function to be modified
         :rtype: str
         """
         return self._FunctionName
@@ -9008,7 +9008,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Handler(self):
-        """Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
+        r"""Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._Handler
@@ -9019,7 +9019,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
-        """COS bucket name
+        r"""COS bucket name
         :rtype: str
         """
         return self._CosBucketName
@@ -9030,7 +9030,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosObjectName(self):
-        """COS object path
+        r"""COS object path
         :rtype: str
         """
         return self._CosObjectName
@@ -9041,7 +9041,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def ZipFile(self):
-        """It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
+        r"""It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
         :rtype: str
         """
         return self._ZipFile
@@ -9052,7 +9052,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -9063,7 +9063,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketRegion(self):
-        """COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
+        r"""COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
         :rtype: str
         """
         return self._CosBucketRegion
@@ -9074,7 +9074,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
-        """Whether to install dependencies automatically
+        r"""Whether to install dependencies automatically
         :rtype: str
         """
         return self._InstallDependency
@@ -9085,7 +9085,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        """Function environment
+        r"""Function environment
         :rtype: str
         """
         return self._EnvId
@@ -9096,7 +9096,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Publish(self):
-        """It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
+        r"""It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
         :rtype: str
         """
         return self._Publish
@@ -9107,7 +9107,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Code(self):
-        """Function code
+        r"""Function code
         :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
         """
         return self._Code
@@ -9118,7 +9118,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CodeSource(self):
-        """Code source. Valid values: ZipFile, Cos, Inline
+        r"""Code source. Valid values: ZipFile, Cos, Inline
         :rtype: str
         """
         return self._CodeSource
@@ -9154,7 +9154,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
 
 class UpdateFunctionCodeResponse(AbstractModel):
-    """UpdateFunctionCode response structure.
+    r"""UpdateFunctionCode response structure.
 
     """
 
@@ -9167,7 +9167,7 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9182,7 +9182,7 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
 
 class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
-    """UpdateFunctionEventInvokeConfig request structure.
+    r"""UpdateFunctionEventInvokeConfig request structure.
 
     """
 
@@ -9201,7 +9201,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
-        """Async retry configuration information
+        r"""Async retry configuration information
         :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
         """
         return self._AsyncTriggerConfig
@@ -9212,7 +9212,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name
+        r"""Function name
         :rtype: str
         """
         return self._FunctionName
@@ -9223,7 +9223,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace. Default value: default
+        r"""Function namespace. Default value: default
         :rtype: str
         """
         return self._Namespace
@@ -9250,7 +9250,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
 
 class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
-    """UpdateFunctionEventInvokeConfig response structure.
+    r"""UpdateFunctionEventInvokeConfig response structure.
 
     """
 
@@ -9263,7 +9263,7 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9278,7 +9278,7 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
 
 class UpdateNamespaceRequest(AbstractModel):
-    """UpdateNamespace request structure.
+    r"""UpdateNamespace request structure.
 
     """
 
@@ -9294,7 +9294,7 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Namespace
@@ -9305,7 +9305,7 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
         :rtype: str
         """
         return self._Description
@@ -9329,7 +9329,7 @@ class UpdateNamespaceRequest(AbstractModel):
 
 
 class UpdateNamespaceResponse(AbstractModel):
-    """UpdateNamespace response structure.
+    r"""UpdateNamespace response structure.
 
     """
 
@@ -9342,7 +9342,7 @@ class UpdateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9357,7 +9357,7 @@ class UpdateNamespaceResponse(AbstractModel):
 
 
 class UpdateTriggerStatusRequest(AbstractModel):
-    """UpdateTriggerStatus request structure.
+    r"""UpdateTriggerStatus request structure.
 
     """
 
@@ -9388,7 +9388,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
+        r"""Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
         :rtype: str
         """
         return self._Enable
@@ -9399,7 +9399,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        """Function name.
+        r"""Function name.
         :rtype: str
         """
         return self._FunctionName
@@ -9410,7 +9410,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerName(self):
-        """Trigger name
+        r"""Trigger name
         :rtype: str
         """
         return self._TriggerName
@@ -9421,7 +9421,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Trigger Type
+        r"""Trigger Type
         :rtype: str
         """
         return self._Type
@@ -9432,7 +9432,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        r"""Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :rtype: str
         """
         return self._Qualifier
@@ -9443,7 +9443,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Function namespace
+        r"""Function namespace
         :rtype: str
         """
         return self._Namespace
@@ -9454,7 +9454,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
-        """To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        r"""To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
         :rtype: str
         """
         return self._TriggerDesc
@@ -9483,7 +9483,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
 
 class UpdateTriggerStatusResponse(AbstractModel):
-    """UpdateTriggerStatus response structure.
+    r"""UpdateTriggerStatus response structure.
 
     """
 
@@ -9496,7 +9496,7 @@ class UpdateTriggerStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9511,7 +9511,7 @@ class UpdateTriggerStatusResponse(AbstractModel):
 
 
 class UsageInfo(AbstractModel):
-    """Usage information
+    r"""Usage information
 
     """
 
@@ -9536,7 +9536,7 @@ class UsageInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
-        """Number of namespaces
+        r"""Number of namespaces
         :rtype: int
         """
         return self._NamespacesCount
@@ -9547,7 +9547,7 @@ class UsageInfo(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace details
+        r"""Namespace details
         :rtype: list of NamespaceUsage
         """
         return self._Namespace
@@ -9558,7 +9558,7 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
-        """Upper limit of user concurrency memory in the current region
+        r"""Upper limit of user concurrency memory in the current region
         :rtype: int
         """
         return self._TotalConcurrencyMem
@@ -9569,7 +9569,7 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalAllocatedConcurrencyMem(self):
-        """Quota of configured user concurrency memory in the current region
+        r"""Quota of configured user concurrency memory in the current region
         :rtype: int
         """
         return self._TotalAllocatedConcurrencyMem
@@ -9580,7 +9580,7 @@ class UsageInfo(AbstractModel):
 
     @property
     def UserConcurrencyMemLimit(self):
-        """Quota of account concurrency actually configured by user
+        r"""Quota of account concurrency actually configured by user
         :rtype: int
         """
         return self._UserConcurrencyMemLimit
@@ -9612,7 +9612,7 @@ class UsageInfo(AbstractModel):
 
 
 class VersionMatch(AbstractModel):
-    """Function version with match rule
+    r"""Function version with match rule
 
     """
 
@@ -9641,7 +9641,7 @@ Exact string match
 
     @property
     def Version(self):
-        """Function version name
+        r"""Function version name
         :rtype: str
         """
         return self._Version
@@ -9652,7 +9652,7 @@ Exact string match
 
     @property
     def Key(self):
-        """Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
+        r"""Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
 Header method:
 Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching
         :rtype: str
@@ -9665,7 +9665,7 @@ Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` 
 
     @property
     def Method(self):
-        """Match method. Valid values:
+        r"""Match method. Valid values:
 range: range match
 exact: exact string match
         :rtype: str
@@ -9678,7 +9678,7 @@ exact: exact string match
 
     @property
     def Expression(self):
-        """Rule requirements for range match:
+        r"""Rule requirements for range match:
 It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers
 Rule requirements for exact match:
 Exact string match
@@ -9707,7 +9707,7 @@ Exact string match
 
 
 class VersionProvisionedConcurrencyInfo(AbstractModel):
-    """Provisioned concurrency information of function version, including the set provisioned concurrency amount, available provisioned concurrency amount, and provisioned concurrency setting task status.
+    r"""Provisioned concurrency information of function version, including the set provisioned concurrency amount, available provisioned concurrency amount, and provisioned concurrency setting task status.
 
     """
 
@@ -9736,7 +9736,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AllocatedProvisionedConcurrencyNum(self):
-        """Set provisioned concurrency amount.
+        r"""Set provisioned concurrency amount.
         :rtype: int
         """
         return self._AllocatedProvisionedConcurrencyNum
@@ -9747,7 +9747,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AvailableProvisionedConcurrencyNum(self):
-        """Currently available provisioned concurrency amount.
+        r"""Currently available provisioned concurrency amount.
         :rtype: int
         """
         return self._AvailableProvisionedConcurrencyNum
@@ -9758,7 +9758,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        """Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
+        r"""Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
         :rtype: str
         """
         return self._Status
@@ -9769,7 +9769,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StatusReason(self):
-        """Status description of provisioned concurrency setting task.
+        r"""Status description of provisioned concurrency setting task.
         :rtype: str
         """
         return self._StatusReason
@@ -9780,7 +9780,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Qualifier(self):
-        """Function version number
+        r"""Function version number
         :rtype: str
         """
         return self._Qualifier
@@ -9791,7 +9791,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TriggerActions(self):
-        """List of scheduled provisioned concurrency scaling actions
+        r"""List of scheduled provisioned concurrency scaling actions
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of TriggerAction
         """
@@ -9825,7 +9825,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class VersionWeight(AbstractModel):
-    """Function version with weight
+    r"""Function version with weight
 
     """
 
@@ -9841,7 +9841,7 @@ class VersionWeight(AbstractModel):
 
     @property
     def Version(self):
-        """Function version name
+        r"""Function version name
         :rtype: str
         """
         return self._Version
@@ -9852,7 +9852,7 @@ class VersionWeight(AbstractModel):
 
     @property
     def Weight(self):
-        """Version weight
+        r"""Version weight
         :rtype: float
         """
         return self._Weight

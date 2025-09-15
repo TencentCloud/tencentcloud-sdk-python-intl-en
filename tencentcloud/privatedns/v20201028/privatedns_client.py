@@ -27,7 +27,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreateEndPoint(self, request):
-        """This API is used to create an endpoint.
+        r"""This API is used to create an endpoint.
 
         :param request: Request instance for CreateEndPoint.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointRequest`
@@ -50,7 +50,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreateEndPointAndEndPointService(self, request):
-        """This API is used to create an endpoint and an endpoint service simultaneously.
+        r"""This API is used to create an endpoint and an endpoint service simultaneously.
 
         :param request: Request instance for CreateEndPointAndEndPointService.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateEndPointAndEndPointServiceRequest`
@@ -73,7 +73,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreateExtendEndpoint(self, request):
-        """This API is used to create an endpoint.
+        r"""This API is used to create an endpoint.
 
         :param request: Request instance for CreateExtendEndpoint.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateExtendEndpointRequest`
@@ -96,7 +96,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreateForwardRule(self, request):
-        """This API is used to create a custom forwarding rule.
+        r"""This API is used to create a custom forwarding rule.
 
         :param request: Request instance for CreateForwardRule.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateForwardRuleRequest`
@@ -119,7 +119,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateDNSAccount(self, request):
-        """This API is used to create a Private DNS account.
+        r"""This API is used to create a Private DNS account.
 
         :param request: Request instance for CreatePrivateDNSAccount.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateDNSAccountRequest`
@@ -142,7 +142,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateZone(self, request):
-        """This API is used to create a private domain.
+        r"""This API is used to create a private domain.
 
         :param request: Request instance for CreatePrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRequest`
@@ -165,7 +165,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def CreatePrivateZoneRecord(self, request):
-        """This API is used to add a DNS record for a private domain.
+        r"""This API is used to add a DNS record for a private domain.
 
         :param request: Request instance for CreatePrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.CreatePrivateZoneRecordRequest`
@@ -188,7 +188,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeleteEndPoint(self, request):
-        """Deletes an endpoint
+        r"""Deletes an endpoint
 
         :param request: Request instance for DeleteEndPoint.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteEndPointRequest`
@@ -211,7 +211,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeleteForwardRule(self, request):
-        """This API is used to delete a forwarding rule and stop forwarding.
+        r"""This API is used to delete a forwarding rule and stop forwarding.
 
         :param request: Request instance for DeleteForwardRule.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteForwardRuleRequest`
@@ -234,7 +234,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateZoneRecord(self, request):
-        """This API is used to delete a DNS record for a private domain.
+        r"""This API is used to delete a DNS record for a private domain.
 
         :param request: Request instance for DeletePrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordRequest`
@@ -257,7 +257,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeAccountVpcList(self, request):
-        """This API is used to get the VPC list of a Private DNS account.
+        r"""This API is used to get the VPC list of a Private DNS account.
 
         :param request: Request instance for DescribeAccountVpcList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAccountVpcListRequest`
@@ -280,7 +280,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeAuditLog(self, request):
-        """This API is used to get the list of operation logs.
+        r"""This API is used to get the list of operation logs.
 
         :param request: Request instance for DescribeAuditLog.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeAuditLogRequest`
@@ -303,7 +303,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeDashboard(self, request):
-        """This API is used to get the overview of private DNS records.
+        r"""This API is used to get the overview of private DNS records.
 
         :param request: Request instance for DescribeDashboard.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeDashboardRequest`
@@ -326,7 +326,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeEndPointList(self, request):
-        """This API is used to obtain the endpoint list.
+        r"""This API is used to obtain the endpoint list.
 
         :param request: Request instance for DescribeEndPointList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointListRequest`
@@ -349,7 +349,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeEndPointRegion(self, request):
-        """This API is used to query the regions where the endpoint is enabled.
+        r"""This API is used to query the regions where the endpoint is enabled.
 
         :param request: Request instance for DescribeEndPointRegion.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointRegionRequest`
@@ -372,7 +372,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeExtendEndpointList(self, request):
-        """This API is used to obtain the endpoint list.
+        r"""This API is used to obtain the endpoint list.
 
         :param request: Request instance for DescribeExtendEndpointList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeExtendEndpointListRequest`
@@ -395,7 +395,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeForwardRule(self, request):
-        """This API is used to query forwarding rules.
+        r"""This API is used to query forwarding rules.
 
         :param request: Request instance for DescribeForwardRule.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleRequest`
@@ -418,7 +418,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeForwardRuleList(self, request):
-        """This API is used to query the forwarding rule list.
+        r"""This API is used to query the forwarding rule list.
 
         :param request: Request instance for DescribeForwardRuleList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleListRequest`
@@ -441,7 +441,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateDNSAccountList(self, request):
-        """This API is used to get the list of Private DNS accounts.
+        r"""This API is used to get the list of Private DNS accounts.
 
         :param request: Request instance for DescribePrivateDNSAccountList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateDNSAccountListRequest`
@@ -464,7 +464,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneList(self, request):
-        """This API is used to obtain the private domain list.
+        r"""This API is used to obtain the private domain list.
 
         :param request: Request instance for DescribePrivateZoneList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListRequest`
@@ -487,7 +487,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneRecordList(self, request):
-        """This API is used to get the list of records for a private domain.
+        r"""This API is used to get the list of records for a private domain.
 
         :param request: Request instance for DescribePrivateZoneRecordList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListRequest`
@@ -510,7 +510,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneService(self, request):
-        """This API is used to query the Private DNS activation status.
+        r"""This API is used to query the Private DNS activation status.
 
         :param request: Request instance for DescribePrivateZoneService.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneServiceRequest`
@@ -533,7 +533,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeQuotaUsage(self, request):
-        """This API is used to query quota usage.
+        r"""This API is used to query quota usage.
 
         :param request: Request instance for DescribeQuotaUsage.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageRequest`
@@ -556,7 +556,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeRecord(self, request):
-        """This API is used to obtain the private domain records.
+        r"""This API is used to obtain the private domain records.
 
         :param request: Request instance for DescribeRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeRecordRequest`
@@ -579,7 +579,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribeRequestData(self, request):
-        """This API is used to get the DNS request volume of a private domain.
+        r"""This API is used to get the DNS request volume of a private domain.
 
         :param request: Request instance for DescribeRequestData.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeRequestDataRequest`
@@ -602,7 +602,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyForwardRule(self, request):
-        """This API is used to modify a forwarding rule.
+        r"""This API is used to modify a forwarding rule.
 
         :param request: Request instance for ModifyForwardRule.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyForwardRuleRequest`
@@ -625,7 +625,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZone(self, request):
-        """This API is used to modify a private domain.
+        r"""This API is used to modify a private domain.
 
         :param request: Request instance for ModifyPrivateZone.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneRequest`
@@ -648,7 +648,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZoneRecord(self, request):
-        """This API is used to modify a DNS record for a private domain.
+        r"""This API is used to modify a DNS record for a private domain.
 
         :param request: Request instance for ModifyPrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneRecordRequest`
@@ -671,7 +671,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyPrivateZoneVpc(self, request):
-        """This API is used to modify the VPC associated with a private domain.
+        r"""This API is used to modify the VPC associated with a private domain.
 
         :param request: Request instance for ModifyPrivateZoneVpc.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyPrivateZoneVpcRequest`
@@ -694,7 +694,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def ModifyRecordsStatus(self, request):
-        """This API is used to modify the DNS record status.
+        r"""This API is used to modify the DNS record status.
 
         :param request: Request instance for ModifyRecordsStatus.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyRecordsStatusRequest`
@@ -717,7 +717,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def SubscribePrivateZoneService(self, request):
-        """This API is used to activate the Private DNS service.
+        r"""This API is used to activate the Private DNS service.
 
         :param request: Request instance for SubscribePrivateZoneService.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.SubscribePrivateZoneServiceRequest`

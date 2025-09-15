@@ -27,7 +27,7 @@ class DcClient(AbstractClient):
 
 
     def AcceptDirectConnectTunnel(self, request):
-        """This API is used to accept an application for a dedicated tunnel.
+        r"""This API is used to accept an application for a dedicated tunnel.
 
         :param request: Request instance for AcceptDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.AcceptDirectConnectTunnelRequest`
@@ -50,7 +50,7 @@ class DcClient(AbstractClient):
 
 
     def ApplyInternetAddress(self, request):
-        """This API is used to apply for an internet tunnel’s CIDR block.
+        r"""This API is used to apply for an internet tunnel’s CIDR block.
 
         :param request: Request instance for ApplyInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.ApplyInternetAddressRequest`
@@ -73,7 +73,7 @@ class DcClient(AbstractClient):
 
 
     def CreateDirectConnect(self, request):
-        """This API is used to apply for a connection.
+        r"""This API is used to apply for a connection.
         When calling this API, please note that:
         You need to complete identity verification for your account; otherwise, you cannot apply for a connection;
         If there is any connection in arrears under your account, you cannot apply for more connections.
@@ -99,7 +99,7 @@ class DcClient(AbstractClient):
 
 
     def CreateDirectConnectTunnel(self, request):
-        """This API is used to create a dedicated tunnel.
+        r"""This API is used to create a dedicated tunnel.
 
         :param request: Request instance for CreateDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectTunnelRequest`
@@ -122,7 +122,7 @@ class DcClient(AbstractClient):
 
 
     def DeleteDirectConnect(self, request):
-        """This API is used to delete a connection.
+        r"""This API is used to delete a connection.
         Only connected connections can be deleted.
 
         :param request: Request instance for DeleteDirectConnect.
@@ -146,7 +146,7 @@ class DcClient(AbstractClient):
 
 
     def DeleteDirectConnectTunnel(self, request):
-        """This API is used to delete a dedicated tunnel.
+        r"""This API is used to delete a dedicated tunnel.
 
         :param request: Request instance for DeleteDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectTunnelRequest`
@@ -169,7 +169,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeAccessPoints(self, request):
-        """This API is used to query connection access points.
+        r"""This API is used to query connection access points.
 
         :param request: Request instance for DescribeAccessPoints.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsRequest`
@@ -192,7 +192,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeDirectConnectTunnels(self, request):
-        """This API is used to query the list of dedicated tunnels.
+        r"""This API is used to query the list of dedicated tunnels.
 
         :param request: Request instance for DescribeDirectConnectTunnels.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelsRequest`
@@ -215,7 +215,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeDirectConnects(self, request):
-        """This API is used to query the list of connections.
+        r"""This API is used to query the list of connections.
 
         :param request: Request instance for DescribeDirectConnects.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectsRequest`
@@ -238,7 +238,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeInternetAddress(self, request):
-        """This API is used to obtain the public IP address of an internet tunnel.
+        r"""This API is used to obtain the public IP address of an internet tunnel.
 
         :param request: Request instance for DescribeInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressRequest`
@@ -261,7 +261,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeInternetAddressQuota(self, request):
-        """This API is used to obtain the public IP quota of internet tunnels.
+        r"""This API is used to obtain the public IP quota of internet tunnels.
 
         :param request: Request instance for DescribeInternetAddressQuota.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressQuotaRequest`
@@ -284,7 +284,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeInternetAddressStatistics(self, request):
-        """This API is used to obtain the public IP address assignment statistics of internet tunnels.
+        r"""This API is used to obtain the public IP address assignment statistics of internet tunnels.
 
         :param request: Request instance for DescribeInternetAddressStatistics.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressStatisticsRequest`
@@ -307,7 +307,7 @@ class DcClient(AbstractClient):
 
 
     def DisableInternetAddress(self, request):
-        """This API is used to disable a public IP address of internet tunnels.
+        r"""This API is used to disable a public IP address of internet tunnels.
 
         :param request: Request instance for DisableInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.DisableInternetAddressRequest`
@@ -330,7 +330,7 @@ class DcClient(AbstractClient):
 
 
     def EnableInternetAddress(self, request):
-        """This API is used to enable a public IP address for internet tunnels.
+        r"""This API is used to enable a public IP address for internet tunnels.
 
         :param request: Request instance for EnableInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.EnableInternetAddressRequest`
@@ -353,7 +353,7 @@ class DcClient(AbstractClient):
 
 
     def ModifyDirectConnectAttribute(self, request):
-        """This API is used to modify connection attributes.
+        r"""This API is used to modify connection attributes.
 
         :param request: Request instance for ModifyDirectConnectAttribute.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeRequest`
@@ -376,7 +376,7 @@ class DcClient(AbstractClient):
 
 
     def ModifyDirectConnectTunnelAttribute(self, request):
-        """This API is used to modify the dedicated tunnel attributes.
+        r"""This API is used to modify the dedicated tunnel attributes.
 
         :param request: Request instance for ModifyDirectConnectTunnelAttribute.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelAttributeRequest`
@@ -399,7 +399,7 @@ class DcClient(AbstractClient):
 
 
     def RejectDirectConnectTunnel(self, request):
-        """This API is used to reject an application for a dedicated tunnel.
+        r"""This API is used to reject an application for a dedicated tunnel.
 
         :param request: Request instance for RejectDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.RejectDirectConnectTunnelRequest`
@@ -422,7 +422,7 @@ class DcClient(AbstractClient):
 
 
     def ReleaseInternetAddress(self, request):
-        """This API is used to release an IP address of internet tunnels.
+        r"""This API is used to release an IP address of internet tunnels.
 
         :param request: Request instance for ReleaseInternetAddress.
         :type request: :class:`tencentcloud.dc.v20180410.models.ReleaseInternetAddressRequest`

@@ -27,7 +27,7 @@ class CdbClient(AbstractClient):
 
 
     def AddTimeWindow(self, request):
-        """This API (AddTimeWindow) is used to add a maintenance time window for a TencentDB instance, so as to specify when the instance can automatically perform access switch operations.
+        r"""This API (AddTimeWindow) is used to add a maintenance time window for a TencentDB instance, so as to specify when the instance can automatically perform access switch operations.
 
         :param request: Request instance for AddTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowRequest`
@@ -50,7 +50,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxy(self, request):
-        """This API is used to adjust the configuration of database proxy.
+        r"""This API is used to adjust the configuration of database proxy.
 
         :param request: Request instance for AdjustCdbProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyRequest`
@@ -73,7 +73,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxyAddress(self, request):
-        """This API is used to adjust the database proxy address.
+        r"""This API is used to adjust the database proxy address.
 
         :param request: Request instance for AdjustCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressRequest`
@@ -96,7 +96,7 @@ class CdbClient(AbstractClient):
 
 
     def AnalyzeAuditLogs(self, request):
-        """This API is used to aggregate the audit logs filtered by different conditions and aggregate the statistics of the specified data rows.
+        r"""This API is used to aggregate the audit logs filtered by different conditions and aggregate the statistics of the specified data rows.
 
         :param request: Request instance for AnalyzeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AnalyzeAuditLogsRequest`
@@ -119,7 +119,7 @@ class CdbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.
+        r"""This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AssociateSecurityGroupsRequest`
@@ -142,7 +142,7 @@ class CdbClient(AbstractClient):
 
 
     def BalanceRoGroupLoad(self, request):
-        """This API is used to rebalance the loads of instances in an RO group. Please note that the database connections to those instances will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
+        r"""This API is used to rebalance the loads of instances in an RO group. Please note that the database connections to those instances will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
 
         :param request: Request instance for BalanceRoGroupLoad.
         :type request: :class:`tencentcloud.cdb.v20170320.models.BalanceRoGroupLoadRequest`
@@ -165,7 +165,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseCDBProxy(self, request):
-        """This API is used to disable database proxy.
+        r"""This API is used to disable database proxy.
 
         :param request: Request instance for CloseCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyRequest`
@@ -188,7 +188,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseCdbProxyAddress(self, request):
-        """This API is used to disable the database proxy address.
+        r"""This API is used to disable the database proxy address.
 
         :param request: Request instance for CloseCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCdbProxyAddressRequest`
@@ -211,7 +211,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseWanService(self, request):
-        """This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible.
+        r"""This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible.
 
         :param request: Request instance for CloseWanService.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseWanServiceRequest`
@@ -234,7 +234,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAccounts(self, request):
-        """This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.
+        r"""This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.
 
         :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsRequest`
@@ -257,7 +257,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAuditPolicy(self, request):
-        """This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.
+        r"""This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.
 
         :param request: Request instance for CreateAuditPolicy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditPolicyRequest`
@@ -280,7 +280,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        """This API (CreateBackup) is used to create a TencentDB instance backup.
+        r"""This API (CreateBackup) is used to create a TencentDB instance backup.
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateBackupRequest`
@@ -303,7 +303,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCdbProxy(self, request):
-        """This API is used create a database proxy for a source instance.
+        r"""This API is used create a database proxy for a source instance.
 
         :param request: Request instance for CreateCdbProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyRequest`
@@ -326,7 +326,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCdbProxyAddress(self, request):
-        """This API is used to create a database proxy address.
+        r"""This API is used to create a database proxy address.
 
         :param request: Request instance for CreateCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyAddressRequest`
@@ -349,7 +349,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCloneInstance(self, request):
-        """This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.
+        r"""This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.
 
         :param request: Request instance for CreateCloneInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceRequest`
@@ -372,7 +372,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBImportJob(self, request):
-        """This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.
+        r"""This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.
 
         Note that the files for a data import task must be uploaded to Tencent Cloud in advance. You need to do so in the console.
 
@@ -397,7 +397,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstance(self, request):
-        """This API is used to create a monthly subscribed TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, purchased duration, and quantity.
+        r"""This API is used to create a monthly subscribed TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, purchased duration, and quantity.
 
         This is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instance has been successfully delivered.
 
@@ -429,7 +429,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """This API is used to create a pay-as-you-go TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        r"""This API is used to create a pay-as-you-go TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
 
         This is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is `1` and `TaskStatus` is `0`, the instance has been successfully delivered.
 
@@ -460,7 +460,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDatabase(self, request):
-        """This API is used to create a database in a TencentDB instance.
+        r"""This API is used to create a database in a TencentDB instance.
 
         :param request: Request instance for CreateDatabase.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDatabaseRequest`
@@ -483,7 +483,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
@@ -506,7 +506,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateRoInstanceIp(self, request):
-        """This API is used to create a VIP exclusive to a TencentDB read-only instance.
+        r"""This API is used to create a VIP exclusive to a TencentDB read-only instance.
 
         :param request: Request instance for CreateRoInstanceIp.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateRoInstanceIpRequest`
@@ -529,7 +529,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteAccounts(self, request):
-        """This API (DeleteAccounts) is used to delete TencentDB accounts.
+        r"""This API (DeleteAccounts) is used to delete TencentDB accounts.
 
         :param request: Request instance for DeleteAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAccountsRequest`
@@ -552,7 +552,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """This API is used to delete a database backup. It can only delete manually initiated backups.
+        r"""This API is used to delete a database backup. It can only delete manually initiated backups.
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`
@@ -575,7 +575,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
@@ -598,7 +598,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteTimeWindow(self, request):
-        """This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default.
+        r"""This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default.
 
         :param request: Request instance for DeleteTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowRequest`
@@ -621,7 +621,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        """This API (DescribeAccountPrivileges) is used to query the information of TencentDB account permissions.
+        r"""This API (DescribeAccountPrivileges) is used to query the information of TencentDB account permissions.
 
         :param request: Request instance for DescribeAccountPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountPrivilegesRequest`
@@ -644,7 +644,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to query information of all TencentDB accounts.
+        r"""This API is used to query information of all TencentDB accounts.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsRequest`
@@ -667,7 +667,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAsyncRequestInfo(self, request):
-        """This API (DescribeAsyncRequestInfo) is used to query the async task execution result of a TencentDB instance.
+        r"""This API (DescribeAsyncRequestInfo) is used to query the async task execution result of a TencentDB instance.
 
         :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAsyncRequestInfoRequest`
@@ -690,7 +690,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditLogs(self, request):
-        """This API is used to query a database audit log.
+        r"""This API is used to query a database audit log.
 
         :param request: Request instance for DescribeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogsRequest`
@@ -713,7 +713,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditPolicies(self, request):
-        """This API is used to query the audit policies of a TencentDB instance.
+        r"""This API is used to query the audit policies of a TencentDB instance.
 
         :param request: Request instance for DescribeAuditPolicies.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditPoliciesRequest`
@@ -736,7 +736,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditRules(self, request):
-        """This API is used to query the audit rules in the current region.
+        r"""This API is used to query the audit rules in the current region.
 
         :param request: Request instance for DescribeAuditRules.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRulesRequest`
@@ -759,7 +759,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupConfig(self, request):
-        """This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.
+        r"""This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.
 
         :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupConfigRequest`
@@ -782,7 +782,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupDecryptionKey(self, request):
-        """This API is used to query the decryption key of a backup file.
+        r"""This API is used to query the decryption key of a backup file.
 
         :param request: Request instance for DescribeBackupDecryptionKey.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDecryptionKeyRequest`
@@ -805,7 +805,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupDownloadRestriction(self, request):
-        """This API is used to query the restrictions of downloading backups in a region.
+        r"""This API is used to query the restrictions of downloading backups in a region.
 
         :param request: Request instance for DescribeBackupDownloadRestriction.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDownloadRestrictionRequest`
@@ -828,7 +828,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupEncryptionStatus(self, request):
-        """This API is used to query the default encryption status of an instance backup.
+        r"""This API is used to query the default encryption status of an instance backup.
 
         :param request: Request instance for DescribeBackupEncryptionStatus.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupEncryptionStatusRequest`
@@ -851,7 +851,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupOverview(self, request):
-        """This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).
+        r"""This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).
 
         :param request: Request instance for DescribeBackupOverview.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupOverviewRequest`
@@ -874,7 +874,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupSummaries(self, request):
-        """This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).
+        r"""This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).
 
         :param request: Request instance for DescribeBackupSummaries.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesRequest`
@@ -897,7 +897,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackups(self, request):
-        """This API (DescribeBackups) is used to query the backups of a TencentDB instance.
+        r"""This API (DescribeBackups) is used to query the backups of a TencentDB instance.
 
         :param request: Request instance for DescribeBackups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupsRequest`
@@ -920,7 +920,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBinlogBackupOverview(self, request):
-        """This API is used to query the log backup overview of a user in the current region.
+        r"""This API is used to query the log backup overview of a user in the current region.
 
         :param request: Request instance for DescribeBinlogBackupOverview.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogBackupOverviewRequest`
@@ -943,7 +943,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBinlogs(self, request):
-        """This API is used to query the list of binlog files of a TencentDB instance.
+        r"""This API is used to query the list of binlog files of a TencentDB instance.
 
         :param request: Request instance for DescribeBinlogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogsRequest`
@@ -966,7 +966,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCdbProxyInfo(self, request):
-        """This API is used to query the details of a database proxy.
+        r"""This API is used to query the details of a database proxy.
 
         :param request: Request instance for DescribeCdbProxyInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbProxyInfoRequest`
@@ -989,7 +989,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCdbZoneConfig(self, request):
-        """This API is used to query the purchasable specifications of TencentDB instances in a region.
+        r"""This API is used to query the purchasable specifications of TencentDB instances in a region.
 
         :param request: Request instance for DescribeCdbZoneConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbZoneConfigRequest`
@@ -1012,7 +1012,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCloneList(self, request):
-        """This API is used to query the clone task list of an instance.
+        r"""This API is used to query the clone task list of an instance.
 
         :param request: Request instance for DescribeCloneList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListRequest`
@@ -1035,7 +1035,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCpuExpandStrategy(self, request):
-        """This API is used to query the elastic expansion policy of an instance.
+        r"""This API is used to query the elastic expansion policy of an instance.
 
         :param request: Request instance for DescribeCpuExpandStrategy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`
@@ -1058,7 +1058,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBFeatures(self, request):
-        """This API is used to query database version attributes, including supported features such as database encryption and audit.
+        r"""This API is used to query database version attributes, including supported features such as database encryption and audit.
 
         :param request: Request instance for DescribeDBFeatures.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBFeaturesRequest`
@@ -1081,7 +1081,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBImportRecords(self, request):
-        """This API (DescribeDBImportRecords) is used to query the records of import tasks in a TencentDB instance.
+        r"""This API (DescribeDBImportRecords) is used to query the records of import tasks in a TencentDB instance.
 
         :param request: Request instance for DescribeDBImportRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBImportRecordsRequest`
@@ -1104,7 +1104,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceCharset(self, request):
-        """This API (DescribeDBInstanceCharset) is used to query the character set and its name of a TencentDB instance.
+        r"""This API (DescribeDBInstanceCharset) is used to query the character set and its name of a TencentDB instance.
 
         :param request: Request instance for DescribeDBInstanceCharset.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceCharsetRequest`
@@ -1127,7 +1127,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceConfig(self, request):
-        """This API (DescribeDBInstanceConfig) is used to query the configuration information of a TencentDB instance, such as its synchronization mode and deployment mode.
+        r"""This API (DescribeDBInstanceConfig) is used to query the configuration information of a TencentDB instance, such as its synchronization mode and deployment mode.
 
         :param request: Request instance for DescribeDBInstanceConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceConfigRequest`
@@ -1150,7 +1150,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceGTID(self, request):
-        """This API (DescribeDBInstanceGTID) is used to query whether GTID is activated for a TencentDB instance. Instances on or below version 5.5 are not supported.
+        r"""This API (DescribeDBInstanceGTID) is used to query whether GTID is activated for a TencentDB instance. Instances on or below version 5.5 are not supported.
 
         :param request: Request instance for DescribeDBInstanceGTID.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceGTIDRequest`
@@ -1173,7 +1173,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceInfo(self, request):
-        """This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).
+        r"""This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).
 
         :param request: Request instance for DescribeDBInstanceInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoRequest`
@@ -1196,7 +1196,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceLogToCLS(self, request):
-        """The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).
+        r"""The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).
 
         :param request: Request instance for DescribeDBInstanceLogToCLS.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSRequest`
@@ -1219,7 +1219,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceRebootTime(self, request):
-        """This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
+        r"""This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
 
         :param request: Request instance for DescribeDBInstanceRebootTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceRebootTimeRequest`
@@ -1242,7 +1242,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.
+        r"""This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesRequest`
@@ -1265,7 +1265,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBPrice(self, request):
-        """This API is used to query the purchase or renewal price of a pay-as-you-go or monthly subscribed TencentDB instance by passing in information such as instance type, purchase duration, number of instances to purchase, memory size, disk size, and AZ. For the price of instance renewal, you can pass in instance name to query.
+        r"""This API is used to query the purchase or renewal price of a pay-as-you-go or monthly subscribed TencentDB instance by passing in information such as instance type, purchase duration, number of instances to purchase, memory size, disk size, and AZ. For the price of instance renewal, you can pass in instance name to query.
 
         Note: To query prices in a specific region, you need to use the access point of the region. For more information on access points, see <a href="https://www.tencentcloud.com/document/product/236/15832">Service Address</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.
 
@@ -1290,7 +1290,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """This API (DescribeDBSecurityGroups) is used to query the security group details of an instance.
+        r"""This API (DescribeDBSecurityGroups) is used to query the security group details of an instance.
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSecurityGroupsRequest`
@@ -1313,7 +1313,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBSwitchRecords(self, request):
-        """This API (DescribeDBSwitchRecords) is used to query the instance switch records.
+        r"""This API (DescribeDBSwitchRecords) is used to query the instance switch records.
 
         :param request: Request instance for DescribeDBSwitchRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSwitchRecordsRequest`
@@ -1336,7 +1336,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDataBackupOverview(self, request):
-        """This API is used to query the data backup overview of a user in the current region.
+        r"""This API is used to query the data backup overview of a user in the current region.
 
         :param request: Request instance for DescribeDataBackupOverview.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDataBackupOverviewRequest`
@@ -1359,7 +1359,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API is used to query the information of databases in a TencentDB instance which must be a source or disaster recovery instance.
+        r"""This API is used to query the information of databases in a TencentDB instance which must be a source or disaster recovery instance.
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDatabasesRequest`
@@ -1382,7 +1382,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDefaultParams(self, request):
-        """This API (DescribeDefaultParams) is used to query the list of default configurable parameters.
+        r"""This API (DescribeDefaultParams) is used to query the list of default configurable parameters.
 
         :param request: Request instance for DescribeDefaultParams.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDefaultParamsRequest`
@@ -1405,7 +1405,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDeviceMonitorInfo(self, request):
-        """This API (DescribeDeviceMonitorInfo) is used to query the monitoring information of a TencentDB physical machine on the day. Currently, it only supports instances with 488 GB memory and 6 TB disk.
+        r"""This API (DescribeDeviceMonitorInfo) is used to query the monitoring information of a TencentDB physical machine on the day. Currently, it only supports instances with 488 GB memory and 6 TB disk.
 
         :param request: Request instance for DescribeDeviceMonitorInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDeviceMonitorInfoRequest`
@@ -1428,7 +1428,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeErrorLogData(self, request):
-        """This API is used to query the error logs of an instance over the past month by search criteria.
+        r"""This API is used to query the error logs of an instance over the past month by search criteria.
         Note: the HTTP response packet will be very large if it contain a single large error log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
 
         :param request: Request instance for DescribeErrorLogData.
@@ -1452,7 +1452,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """This API (DescribeInstanceParamRecords) is used to query the parameter modification records of an instance.
+        r"""This API (DescribeInstanceParamRecords) is used to query the parameter modification records of an instance.
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamRecordsRequest`
@@ -1475,7 +1475,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API (DescribeInstanceParams) is used to query the list of parameters for an instance.
+        r"""This API (DescribeInstanceParams) is used to query the list of parameters for an instance.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamsRequest`
@@ -1498,7 +1498,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeLocalBinlogConfig(self, request):
-        """This API is used to query the retention policy of local binlog of an instance.
+        r"""This API is used to query the retention policy of local binlog of an instance.
 
         :param request: Request instance for DescribeLocalBinlogConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeLocalBinlogConfigRequest`
@@ -1521,7 +1521,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoRequest`
@@ -1544,7 +1544,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`
@@ -1567,7 +1567,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """This API (DescribeProjectSecurityGroups) is used to query the security group details of a project.
+        r"""This API (DescribeProjectSecurityGroups) is used to query the security group details of a project.
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProjectSecurityGroupsRequest`
@@ -1590,7 +1590,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProxyCustomConf(self, request):
-        """This API is used to query the proxy configuration.
+        r"""This API is used to query the proxy configuration.
 
         :param request: Request instance for DescribeProxyCustomConf.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyCustomConfRequest`
@@ -1613,7 +1613,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProxySupportParam(self, request):
-        """This API is used to query the supported proxy versions and parameters for an instance.
+        r"""This API is used to query the supported proxy versions and parameters for an instance.
 
         :param request: Request instance for DescribeProxySupportParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxySupportParamRequest`
@@ -1636,7 +1636,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRemoteBackupConfig(self, request):
-        """This API is used to query the configuration information of a remote TencentDB instance backup.
+        r"""This API is used to query the configuration information of a remote TencentDB instance backup.
 
         :param request: Request instance for DescribeRemoteBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRemoteBackupConfigRequest`
@@ -1659,7 +1659,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRoGroups(self, request):
-        """This API is used to query the information of all RO groups of a TencentDB instance.
+        r"""This API is used to query the information of all RO groups of a TencentDB instance.
 
         :param request: Request instance for DescribeRoGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsRequest`
@@ -1682,7 +1682,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRoMinScale(self, request):
-        """This API is used to query the minimum specification of a read-only instance that can be purchased or upgraded to.
+        r"""This API is used to query the minimum specification of a read-only instance that can be purchased or upgraded to.
 
         :param request: Request instance for DescribeRoMinScale.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoMinScaleRequest`
@@ -1705,7 +1705,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRollbackRangeTime(self, request):
-        """This API (DescribeRollbackRangeTime) is used to query the time range available for instance rollback.
+        r"""This API (DescribeRollbackRangeTime) is used to query the time range available for instance rollback.
 
         :param request: Request instance for DescribeRollbackRangeTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackRangeTimeRequest`
@@ -1728,7 +1728,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRollbackTaskDetail(self, request):
-        """This API is used to query the details of a TencentDB instance rollback task.
+        r"""This API is used to query the details of a TencentDB instance rollback task.
 
         :param request: Request instance for DescribeRollbackTaskDetail.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailRequest`
@@ -1751,7 +1751,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogData(self, request):
-        """This API is used to query the slow logs of an instance over the past month by search criteria.
+        r"""This API is used to query the slow logs of an instance over the past month by search criteria.
         Note: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
 
         :param request: Request instance for DescribeSlowLogData.
@@ -1775,7 +1775,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.
+        r"""The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsRequest`
@@ -1798,7 +1798,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSupportedPrivileges(self, request):
-        """This API (DescribeSupportedPrivileges) is used to query the information of TencentDB account permissions, including global permissions, database permissions, table permissions, and column permissions.
+        r"""This API (DescribeSupportedPrivileges) is used to query the information of TencentDB account permissions, including global permissions, database permissions, table permissions, and column permissions.
 
         :param request: Request instance for DescribeSupportedPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSupportedPrivilegesRequest`
@@ -1821,7 +1821,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.
+        r"""This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesRequest`
@@ -1844,7 +1844,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTagsOfInstanceIds(self, request):
-        """This API (DescribeTagsOfInstanceIds) is used to query the tag information of a TencentDB instance.
+        r"""This API (DescribeTagsOfInstanceIds) is used to query the tag information of a TencentDB instance.
 
         :param request: Request instance for DescribeTagsOfInstanceIds.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTagsOfInstanceIdsRequest`
@@ -1867,7 +1867,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API (DescribeTasks) is used to query the list of tasks for a TencentDB instance.
+        r"""This API (DescribeTasks) is used to query the list of tasks for a TencentDB instance.
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTasksRequest`
@@ -1890,7 +1890,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTimeWindow(self, request):
-        """This API (DescribeTimeWindow) is used to query the maintenance time window of a TencentDB instance.
+        r"""This API (DescribeTimeWindow) is used to query the maintenance time window of a TencentDB instance.
 
         :param request: Request instance for DescribeTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTimeWindowRequest`
@@ -1913,7 +1913,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeUploadedFiles(self, request):
-        """This API is used to query the list of SQL files imported by users. The common request parameter `Region` must be `ap-shanghai`.
+        r"""This API is used to query the list of SQL files imported by users. The common request parameter `Region` must be `ap-shanghai`.
 
         :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`
@@ -1936,7 +1936,7 @@ class CdbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """This API (DisassociateSecurityGroups) is used to unbind security groups from instances in batches.
+        r"""This API (DisassociateSecurityGroups) is used to unbind security groups from instances in batches.
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DisassociateSecurityGroupsRequest`
@@ -1959,7 +1959,7 @@ class CdbClient(AbstractClient):
 
 
     def IsolateDBInstance(self, request):
-        """This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.
+        r"""This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.
 
         :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.IsolateDBInstanceRequest`
@@ -1982,7 +1982,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAccountDescription(self, request):
-        """This API (ModifyAccountDescription) is used to modify the remarks of a TencentDB instance account.
+        r"""This API (ModifyAccountDescription) is used to modify the remarks of a TencentDB instance account.
 
         :param request: Request instance for ModifyAccountDescription.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountDescriptionRequest`
@@ -2005,7 +2005,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAccountMaxUserConnections(self, request):
-        """This API is used to modify the maximum connections of one or more TencentDB instance accounts.
+        r"""This API is used to modify the maximum connections of one or more TencentDB instance accounts.
 
         :param request: Request instance for ModifyAccountMaxUserConnections.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountMaxUserConnectionsRequest`
@@ -2028,7 +2028,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAccountPassword(self, request):
-        """This API (ModifyAccountPassword) is used to modify the password of a TencentDB instance account.
+        r"""This API (ModifyAccountPassword) is used to modify the password of a TencentDB instance account.
 
         :param request: Request instance for ModifyAccountPassword.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountPasswordRequest`
@@ -2051,7 +2051,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """This API is used to modify the permissions of a TencentDB instance account.
+        r"""This API is used to modify the permissions of a TencentDB instance account.
 
         Note that when modifying account permissions, you need to pass in the full permission information of the account. You can [query the account permission information
         ](https://intl.cloud.tencent.com/document/api/236/17500?from_cn_redirect=1) first before modifying permissions.
@@ -2077,7 +2077,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAutoRenewFlag(self, request):
-        """This API is used to modify the auto-renewal flag of a TencentDB instance.
+        r"""This API is used to modify the auto-renewal flag of a TencentDB instance.
 
         :param request: Request instance for ModifyAutoRenewFlag.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagRequest`
@@ -2100,7 +2100,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupConfig(self, request):
-        """This API (ModifyBackupConfig) is used to modify the database backup configuration.
+        r"""This API (ModifyBackupConfig) is used to modify the database backup configuration.
 
         :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupConfigRequest`
@@ -2123,7 +2123,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupDownloadRestriction(self, request):
-        """This API is used to modify the restrictions of downloading backups in a region. You can specify which types of networks (private, or both private and public), VPCs, and IPs to download backups.
+        r"""This API is used to modify the restrictions of downloading backups in a region. You can specify which types of networks (private, or both private and public), VPCs, and IPs to download backups.
 
         :param request: Request instance for ModifyBackupDownloadRestriction.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupDownloadRestrictionRequest`
@@ -2146,7 +2146,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupEncryptionStatus(self, request):
-        """This API is used to set the encryption status of an instance backup.
+        r"""This API is used to set the encryption status of an instance backup.
 
         :param request: Request instance for ModifyBackupEncryptionStatus.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusRequest`
@@ -2169,7 +2169,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyAddressDesc(self, request):
-        """This API is used to modify the description of a proxy address.
+        r"""This API is used to modify the description of a proxy address.
 
         :param request: Request instance for ModifyCdbProxyAddressDesc.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressDescRequest`
@@ -2192,7 +2192,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyAddressVipAndVPort(self, request):
-        """This API is used to modify the VPC of the database proxy address.
+        r"""This API is used to modify the VPC of the database proxy address.
 
         :param request: Request instance for ModifyCdbProxyAddressVipAndVPort.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressVipAndVPortRequest`
@@ -2215,7 +2215,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyParam(self, request):
-        """This API is used to configure the database proxy parameters.
+        r"""This API is used to configure the database proxy parameters.
 
         :param request: Request instance for ModifyCdbProxyParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyParamRequest`
@@ -2238,7 +2238,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceLogToCLS(self, request):
-        """This API is used to enable or disable the feature of sending CDB slow and error logs to CLS.
+        r"""This API is used to enable or disable the feature of sending CDB slow and error logs to CLS.
 
         :param request: Request instance for ModifyDBInstanceLogToCLS.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceLogToCLSRequest`
@@ -2261,7 +2261,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """This API (ModifyDBInstanceName) is used to rename a TencentDB instance.
+        r"""This API (ModifyDBInstanceName) is used to rename a TencentDB instance.
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceNameRequest`
@@ -2284,7 +2284,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceProject(self, request):
-        """This API (ModifyDBInstanceProject) is used to modify the project to which a TencentDB instance belongs.
+        r"""This API (ModifyDBInstanceProject) is used to modify the project to which a TencentDB instance belongs.
 
         :param request: Request instance for ModifyDBInstanceProject.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceProjectRequest`
@@ -2307,7 +2307,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API (ModifyDBInstanceSecurityGroups) is used to modify the security groups bound to a TencentDB instance.
+        r"""This API (ModifyDBInstanceSecurityGroups) is used to modify the security groups bound to a TencentDB instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -2330,7 +2330,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceVipVport(self, request):
-        """This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.
+        r"""This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.
 
         :param request: Request instance for ModifyDBInstanceVipVport.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceVipVportRequest`
@@ -2353,7 +2353,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyInstanceParam(self, request):
-        """This API (ModifyInstanceParam) is used to modify instance parameters.
+        r"""This API (ModifyInstanceParam) is used to modify instance parameters.
 
         :param request: Request instance for ModifyInstanceParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceParamRequest`
@@ -2376,7 +2376,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyInstancePasswordComplexity(self, request):
-        """This API is used to modify the password complexity of a TencentDB instance.
+        r"""This API is used to modify the password complexity of a TencentDB instance.
 
         :param request: Request instance for ModifyInstancePasswordComplexity.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstancePasswordComplexityRequest`
@@ -2399,7 +2399,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyInstanceTag(self, request):
-        """This API (ModifyInstanceTag) is used to add, modify, or delete an instance tag.
+        r"""This API (ModifyInstanceTag) is used to add, modify, or delete an instance tag.
 
         :param request: Request instance for ModifyInstanceTag.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceTagRequest`
@@ -2422,7 +2422,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyLocalBinlogConfig(self, request):
-        """This API is used to modify the retention policy of local binlog of an instance.
+        r"""This API is used to modify the retention policy of local binlog of an instance.
 
         :param request: Request instance for ModifyLocalBinlogConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigRequest`
@@ -2445,7 +2445,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyNameOrDescByDpId(self, request):
-        """This API is used to modify the name or description of a placement group.
+        r"""This API is used to modify the name or description of a placement group.
 
         :param request: Request instance for ModifyNameOrDescByDpId.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyNameOrDescByDpIdRequest`
@@ -2468,7 +2468,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyParamTemplate(self, request):
-        """This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
         :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateRequest`
@@ -2491,7 +2491,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyRemoteBackupConfig(self, request):
-        """This API is used to modify the configuration information of a remote TencentDB instance backup.
+        r"""This API is used to modify the configuration information of a remote TencentDB instance backup.
 
         :param request: Request instance for ModifyRemoteBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRemoteBackupConfigRequest`
@@ -2514,7 +2514,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyRoGroupInfo(self, request):
-        """This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.
+        r"""This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.
 
         :param request: Request instance for ModifyRoGroupInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoRequest`
@@ -2537,7 +2537,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyTimeWindow(self, request):
-        """This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.
+        r"""This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.
 
         :param request: Request instance for ModifyTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyTimeWindowRequest`
@@ -2560,7 +2560,7 @@ class CdbClient(AbstractClient):
 
 
     def OfflineIsolatedInstances(self, request):
-        """This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).
+        r"""This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).
 
         This is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.
 
@@ -2587,7 +2587,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenAuditService(self, request):
-        """This API is used to enable the audit service.
+        r"""This API is used to enable the audit service.
 
         :param request: Request instance for OpenAuditService.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenAuditServiceRequest`
@@ -2610,7 +2610,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenDBInstanceEncryption(self, request):
-        """This API is used to enable the encryption feature for instance data storage, and custom keys are supported.
+        r"""This API is used to enable the encryption feature for instance data storage, and custom keys are supported.
 
         Note: Before enabling data storage encryption for an instance, you need to perform the following operations:
 
@@ -2643,7 +2643,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenDBInstanceGTID(self, request):
-        """This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.
+        r"""This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.
 
         :param request: Request instance for OpenDBInstanceGTID.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceGTIDRequest`
@@ -2666,7 +2666,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenWanService(self, request):
-        """This API (OpenWanService) is used to enable public network access for an instance.
+        r"""This API (OpenWanService) is used to enable public network access for an instance.
 
         Note that before enabling public network access, you need to first [initialize the instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).
 
@@ -2691,7 +2691,7 @@ class CdbClient(AbstractClient):
 
 
     def ReleaseIsolatedDBInstances(self, request):
-        """This API is used to deisolate an isolated TencentDB instance.
+        r"""This API is used to deisolate an isolated TencentDB instance.
 
         :param request: Request instance for ReleaseIsolatedDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesRequest`
@@ -2714,7 +2714,7 @@ class CdbClient(AbstractClient):
 
 
     def ReloadBalanceProxyNode(self, request):
-        """This API is used to rebalance the load on database proxy.
+        r"""This API is used to rebalance the load on database proxy.
 
         :param request: Request instance for ReloadBalanceProxyNode.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ReloadBalanceProxyNodeRequest`
@@ -2737,7 +2737,7 @@ class CdbClient(AbstractClient):
 
 
     def RenewDBInstance(self, request):
-        """This API is used to renew a monthly subscribed TencentDB instance, and a pay-as-you-go instance can be renewed as a monthly subscribed one by this API.
+        r"""This API is used to renew a monthly subscribed TencentDB instance, and a pay-as-you-go instance can be renewed as a monthly subscribed one by this API.
 
         :param request: Request instance for RenewDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceRequest`
@@ -2760,7 +2760,7 @@ class CdbClient(AbstractClient):
 
 
     def ResetRootAccount(self, request):
-        """This API is used to reset the root account and initialize the account permissions.
+        r"""This API is used to reset the root account and initialize the account permissions.
 
         :param request: Request instance for ResetRootAccount.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ResetRootAccountRequest`
@@ -2783,7 +2783,7 @@ class CdbClient(AbstractClient):
 
 
     def RestartDBInstances(self, request):
-        """This API (RestartDBInstances) is used to restart TencentDB instances.
+        r"""This API (RestartDBInstances) is used to restart TencentDB instances.
 
         Note:
         1. This API only supports restarting primary instances.
@@ -2810,7 +2810,7 @@ class CdbClient(AbstractClient):
 
 
     def StartBatchRollback(self, request):
-        """This API (StartBatchRollback) is used to roll back the tables of a TencentDB instance in batches.
+        r"""This API (StartBatchRollback) is used to roll back the tables of a TencentDB instance in batches.
 
         :param request: Request instance for StartBatchRollback.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartBatchRollbackRequest`
@@ -2833,7 +2833,7 @@ class CdbClient(AbstractClient):
 
 
     def StartCpuExpand(self, request):
-        """u200cThis API is used to enable elastic CPU expansion manually or automatically.
+        r"""u200cThis API is used to enable elastic CPU expansion manually or automatically.
 
         :param request: Request instance for StartCpuExpand.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandRequest`
@@ -2856,7 +2856,7 @@ class CdbClient(AbstractClient):
 
 
     def StartReplication(self, request):
-        """This API is used to start the data replication from the source instance to the read-only instance.
+        r"""This API is used to start the data replication from the source instance to the read-only instance.
 
         :param request: Request instance for StartReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartReplicationRequest`
@@ -2879,7 +2879,7 @@ class CdbClient(AbstractClient):
 
 
     def StopCpuExpand(self, request):
-        """This API is used to disable elastic CPU expansion.
+        r"""This API is used to disable elastic CPU expansion.
 
         :param request: Request instance for StopCpuExpand.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopCpuExpandRequest`
@@ -2902,7 +2902,7 @@ class CdbClient(AbstractClient):
 
 
     def StopDBImportJob(self, request):
-        """This API (StopDBImportJob) is used to stop a data import task.
+        r"""This API (StopDBImportJob) is used to stop a data import task.
 
         :param request: Request instance for StopDBImportJob.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopDBImportJobRequest`
@@ -2925,7 +2925,7 @@ class CdbClient(AbstractClient):
 
 
     def StopReplication(self, request):
-        """This API is used to stop the data replication from the source instance to the read-only instance.
+        r"""This API is used to stop the data replication from the source instance to the read-only instance.
 
         :param request: Request instance for StopReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopReplicationRequest`
@@ -2948,7 +2948,7 @@ class CdbClient(AbstractClient):
 
 
     def StopRollback(self, request):
-        """This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.
+        r"""This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.
 
         :param request: Request instance for StopRollback.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopRollbackRequest`
@@ -2971,7 +2971,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchCDBProxy(self, request):
-        """This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.
+        r"""This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.
 
         :param request: Request instance for SwitchCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyRequest`
@@ -2994,7 +2994,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchDBInstanceMasterSlave(self, request):
-        """This API is used for source-to-replica switch.
+        r"""This API is used for source-to-replica switch.
 
         :param request: Request instance for SwitchDBInstanceMasterSlave.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDBInstanceMasterSlaveRequest`
@@ -3017,7 +3017,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchDrInstanceToMaster(self, request):
-        """This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.
+        r"""This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.
 
         :param request: Request instance for SwitchDrInstanceToMaster.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDrInstanceToMasterRequest`
@@ -3040,7 +3040,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchForUpgrade(self, request):
-        """This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.
+        r"""This API (SwitchForUpgrade) is used to switch to a new instance. You can initiate this process when the primary instance being upgraded is pending switch.
 
         :param request: Request instance for SwitchForUpgrade.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchForUpgradeRequest`
@@ -3063,7 +3063,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeCDBProxyVersion(self, request):
-        """This API is used to upgrade the version of database proxy.
+        r"""This API is used to upgrade the version of database proxy.
 
         :param request: Request instance for UpgradeCDBProxyVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionRequest`
@@ -3086,7 +3086,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        r"""This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`
@@ -3109,7 +3109,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstanceEngineVersion(self, request):
-        """This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        r"""This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
 
         :param request: Request instance for UpgradeDBInstanceEngineVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceEngineVersionRequest`

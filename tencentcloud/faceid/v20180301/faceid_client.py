@@ -27,7 +27,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyCardVerification(self, request):
-        """The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:
+        r"""The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:
         <table> <thead> <tr> <td>Nationality</td> <td style="width:200px">CardType</td> <td style="width:200px">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Taiwan</td> <td>ID Card</td> <td>Yes</td> </tr>  <tr> <td>Bangladesh</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>Driving License</td> <td>Yes</td> </tr> </tbody> </table>
 
         :param request: Request instance for ApplyCardVerification.
@@ -51,7 +51,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyLivenessToken(self, request):
-        """This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
+        r"""This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
         :param request: Request instance for ApplyLivenessToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyLivenessTokenRequest`
@@ -74,7 +74,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplySdkVerificationToken(self, request):
-        """This API is used to apply for a token before calling the eKYC SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
+        r"""This API is used to apply for a token before calling the eKYC SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
         :param request: Request instance for ApplySdkVerificationToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplySdkVerificationTokenRequest`
@@ -97,7 +97,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyWebVerificationBizTokenIntl(self, request):
-        """This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.
+        r"""This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.
 
         :param request: Request instance for ApplyWebVerificationBizTokenIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationBizTokenIntlRequest`
@@ -120,7 +120,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplyWebVerificationToken(self, request):
-        """This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
+        r"""This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
         :param request: Request instance for ApplyWebVerificationToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationTokenRequest`
@@ -143,7 +143,7 @@ class FaceidClient(AbstractClient):
 
 
     def CompareFaceLiveness(self, request):
-        """This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.
+        r"""This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.
 
         :param request: Request instance for CompareFaceLiveness.
         :type request: :class:`tencentcloud.faceid.v20180301.models.CompareFaceLivenessRequest`
@@ -166,7 +166,7 @@ class FaceidClient(AbstractClient):
 
 
     def CreateUploadUrl(self, request):
-        """This API is used to generate a temporary `UploadUrl` for uploading resource files (with the `HTTP PUT` method). After resource upload, `ResourceUrl` will be passed to the `TargetAction` API to complete the resource passing (specific fields vary by case).
+        r"""This API is used to generate a temporary `UploadUrl` for uploading resource files (with the `HTTP PUT` method). After resource upload, `ResourceUrl` will be passed to the `TargetAction` API to complete the resource passing (specific fields vary by case).
         The data will be stored in a COS bucket in the region specified by the parameter `Region` for two hours.
 
         :param request: Request instance for CreateUploadUrl.
@@ -190,7 +190,7 @@ class FaceidClient(AbstractClient):
 
 
     def DetectAIFakeFaces(self, request):
-        """Based on the multimodal AI large model algorithm, it provides anti-attack detection capabilities for facial images and videos. It can effectively identify highly simulated AIGC face-changing, high-definition remakes, batch black market attacks, watermarks and other attack traces, and enhance the anti-counterfeiting security capabilities of images and videos.
+        r"""Based on the multimodal AI large model algorithm, it provides anti-attack detection capabilities for facial images and videos. It can effectively identify highly simulated AIGC face-changing, high-definition remakes, batch black market attacks, watermarks and other attack traces, and enhance the anti-counterfeiting security capabilities of images and videos.
 
         :param request: Request instance for DetectAIFakeFaces.
         :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAIFakeFacesRequest`
@@ -213,7 +213,7 @@ class FaceidClient(AbstractClient):
 
 
     def DetectReflectLivenessAndCompare(self, request):
-        """This API is used to detect liveness with the package generated by the liveness comparison (reflection-based) SDK, and to compare the person detected with that in the image passed in.
+        r"""This API is used to detect liveness with the package generated by the liveness comparison (reflection-based) SDK, and to compare the person detected with that in the image passed in.
         The image and the data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.
 
         :param request: Request instance for DetectReflectLivenessAndCompare.
@@ -237,7 +237,7 @@ class FaceidClient(AbstractClient):
 
 
     def GenerateReflectSequence(self, request):
-        """This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the eKYC process.
+        r"""This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the eKYC process.
         The data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.
 
         :param request: Request instance for GenerateReflectSequence.
@@ -261,7 +261,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetCardVerificationResult(self, request):
-        """The interface supports obtaining the certificate authentication result based on the token.
+        r"""The interface supports obtaining the certificate authentication result based on the token.
 
         :param request: Request instance for GetCardVerificationResult.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetCardVerificationResultRequest`
@@ -284,7 +284,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetFaceIdResultIntl(self, request):
-        """This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.
 
         :param request: Request instance for GetFaceIdResultIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdResultIntlRequest`
@@ -307,7 +307,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetFaceIdTokenIntl(self, request):
-        """This API is used to apply for an SDK token before calling the selfie verification SDK each time. The SDK token is used throughout the eKYC process and to get the verification result after the verification is completed. A token is valid for one eKYC process only.
+        r"""This API is used to apply for an SDK token before calling the selfie verification SDK each time. The SDK token is used throughout the eKYC process and to get the verification result after the verification is completed. A token is valid for one eKYC process only.
 
         :param request: Request instance for GetFaceIdTokenIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdTokenIntlRequest`
@@ -330,7 +330,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetLivenessResult(self, request):
-        """This API is used to get the verification result with the corresponding token (SdkToken) after the liveness detection is completed. The token is valid for two hours after issuance and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding token (SdkToken) after the liveness detection is completed. The token is valid for two hours after issuance and can be called multiple times.
 
         :param request: Request instance for GetLivenessResult.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetLivenessResultRequest`
@@ -353,7 +353,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetSdkVerificationResult(self, request):
-        """This API is used to get the verification result with the corresponding token after the SDK-based verification is completed. The token is valid for three days after issuance and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding token after the SDK-based verification is completed. The token is valid for three days after issuance and can be called multiple times.
 
         :param request: Request instance for GetSdkVerificationResult.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetSdkVerificationResultRequest`
@@ -376,7 +376,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetWebVerificationResult(self, request):
-        """This API is used to get the verification result with the corresponding token (BizToken) after the web-based verification is completed. The BizToken is valid for three days (3*24*3,600s) after issuance and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding token (BizToken) after the web-based verification is completed. The BizToken is valid for three days (3*24*3,600s) after issuance and can be called multiple times.
 
         :param request: Request instance for GetWebVerificationResult.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultRequest`
@@ -399,7 +399,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetWebVerificationResultIntl(self, request):
-        """This API is used to get the verification result with the corresponding BizToken after the web-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
+        r"""This API is used to get the verification result with the corresponding BizToken after the web-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
 
         :param request: Request instance for GetWebVerificationResultIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultIntlRequest`
@@ -422,7 +422,7 @@ class FaceidClient(AbstractClient):
 
 
     def LivenessCompare(self, request):
-        """This API is used to pass in a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
+        r"""This API is used to pass in a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
         This API on the legacy version will continue to serve existing users but will be unavailable to new users. We recommend you use `VideoLivenessCompare` for better service quality.
 
         :param request: Request instance for LivenessCompare.
@@ -446,7 +446,7 @@ class FaceidClient(AbstractClient):
 
 
     def VideoLivenessCompare(self, request):
-        """This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
+        r"""This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.
 
         :param request: Request instance for VideoLivenessCompare.
         :type request: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareRequest`

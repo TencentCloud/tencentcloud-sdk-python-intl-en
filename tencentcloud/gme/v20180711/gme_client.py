@@ -27,7 +27,7 @@ class GmeClient(AbstractClient):
 
 
     def CreateApp(self, request):
-        """This API is used to create a GME application.
+        r"""This API is used to create a GME application.
 
         :param request: Request instance for CreateApp.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateAppRequest`
@@ -50,7 +50,7 @@ class GmeClient(AbstractClient):
 
 
     def DeleteRoomMember(self, request):
-        """This API is used to delete a room or remove members from the room.
+        r"""This API is used to delete a room or remove members from the room.
 
         :param request: Request instance for DeleteRoomMember.
         :type request: :class:`tencentcloud.gme.v20180711.models.DeleteRoomMemberRequest`
@@ -73,7 +73,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeAppStatistics(self, request):
-        """This API is used to query the usage statistics of a GME application, including those of Voice Chat, Voice Message Service, Voice Analysis, etc. The maximum query period is the past 30 days.
+        r"""This API is used to query the usage statistics of a GME application, including those of Voice Chat, Voice Message Service, Voice Analysis, etc. The maximum query period is the past 30 days.
 
         :param request: Request instance for DescribeAppStatistics.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsRequest`
@@ -96,7 +96,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeApplicationData(self, request):
-        """This API is used to query data details for up to the past 90 days.
+        r"""This API is used to query data details for up to the past 90 days.
 
         :param request: Request instance for DescribeApplicationData.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataRequest`
@@ -119,7 +119,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeRecordInfo(self, request):
-        """This API is used to query a recording task.
+        r"""This API is used to query a recording task.
 
         :param request: Request instance for DescribeRecordInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRecordInfoRequest`
@@ -142,7 +142,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeTaskInfo(self, request):
-        """This API is used to query the recording task in a room.
+        r"""This API is used to query the recording task in a room.
 
         :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeTaskInfoRequest`
@@ -165,7 +165,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyAppStatus(self, request):
-        """This API is used to change the status of an application.
+        r"""This API is used to change the status of an application.
 
         :param request: Request instance for ModifyAppStatus.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`
@@ -188,7 +188,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyRecordInfo(self, request):
-        """This API is used to modify recording configurations.
+        r"""This API is used to modify recording configurations.
 
         :param request: Request instance for ModifyRecordInfo.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyRecordInfoRequest`
@@ -211,7 +211,7 @@ class GmeClient(AbstractClient):
 
 
     def StartRecord(self, request):
-        """This API is used to start recording.
+        r"""This API is used to start recording.
 
         :param request: Request instance for StartRecord.
         :type request: :class:`tencentcloud.gme.v20180711.models.StartRecordRequest`
@@ -234,7 +234,7 @@ class GmeClient(AbstractClient):
 
 
     def StopRecord(self, request):
-        """This API is used to stop recording.
+        r"""This API is used to stop recording.
 
         :param request: Request instance for StopRecord.
         :type request: :class:`tencentcloud.gme.v20180711.models.StopRecordRequest`

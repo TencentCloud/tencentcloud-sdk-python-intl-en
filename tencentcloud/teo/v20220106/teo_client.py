@@ -27,7 +27,7 @@ class TeoClient(AbstractClient):
 
 
     def CheckCertificate(self, request):
-        """This API is used to verify a certificate.
+        r"""This API is used to verify a certificate.
 
         :param request: Request instance for CheckCertificate.
         :type request: :class:`tencentcloud.teo.v20220106.models.CheckCertificateRequest`
@@ -50,7 +50,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxy(self, request):
-        """This API is used to create an application proxy.
+        r"""This API is used to create an application proxy.
 
         :param request: Request instance for CreateApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateApplicationProxyRequest`
@@ -73,7 +73,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRule(self, request):
-        """This API is used to create an application proxy rule.
+        r"""This API is used to create an application proxy rule.
 
         :param request: Request instance for CreateApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateApplicationProxyRuleRequest`
@@ -96,7 +96,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRules(self, request):
-        """This API is used to batch create application proxy rules.
+        r"""This API is used to batch create application proxy rules.
 
         :param request: Request instance for CreateApplicationProxyRules.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateApplicationProxyRulesRequest`
@@ -119,7 +119,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateCustomErrorPage(self, request):
-        """This API is used to create a custom error page.
+        r"""This API is used to create a custom error page.
 
         :param request: Request instance for CreateCustomErrorPage.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateCustomErrorPageRequest`
@@ -142,7 +142,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateDnsRecord(self, request):
-        """This API is used to create a DNS record.
+        r"""This API is used to create a DNS record.
 
         :param request: Request instance for CreateDnsRecord.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateDnsRecordRequest`
@@ -165,7 +165,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateLoadBalancing(self, request):
-        """This API is used to create a CLB instance.
+        r"""This API is used to create a CLB instance.
 
         :param request: Request instance for CreateLoadBalancing.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateLoadBalancingRequest`
@@ -188,7 +188,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateOriginGroup(self, request):
-        """This API is used to create an origin group.
+        r"""This API is used to create an origin group.
 
         :param request: Request instance for CreateOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateOriginGroupRequest`
@@ -211,7 +211,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePrefetchTask(self, request):
-        """This API is used to create a pre-warming task.
+        r"""This API is used to create a pre-warming task.
 
         :param request: Request instance for CreatePrefetchTask.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskRequest`
@@ -234,7 +234,7 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """This API is used to create a cache purging task.
+        r"""This API is used to create a cache purging task.
 
         :param request: Request instance for CreatePurgeTask.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreatePurgeTaskRequest`
@@ -257,7 +257,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateZone(self, request):
-        """This API is used to access a new site.
+        r"""This API is used to access a new site.
 
         :param request: Request instance for CreateZone.
         :type request: :class:`tencentcloud.teo.v20220106.models.CreateZoneRequest`
@@ -280,7 +280,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxy(self, request):
-        """This API is used to delete an application proxy.
+        r"""This API is used to delete an application proxy.
 
         :param request: Request instance for DeleteApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteApplicationProxyRequest`
@@ -303,7 +303,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxyRule(self, request):
-        """This API is used to delete an application proxy rule.
+        r"""This API is used to delete an application proxy rule.
 
         :param request: Request instance for DeleteApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteApplicationProxyRuleRequest`
@@ -326,7 +326,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteDnsRecords(self, request):
-        """This API is used to batch delete DNS records.
+        r"""This API is used to batch delete DNS records.
 
         :param request: Request instance for DeleteDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteDnsRecordsRequest`
@@ -349,7 +349,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteLoadBalancing(self, request):
-        """This API is used to delete a CLB instance.
+        r"""This API is used to delete a CLB instance.
 
         :param request: Request instance for DeleteLoadBalancing.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteLoadBalancingRequest`
@@ -372,7 +372,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteOriginGroup(self, request):
-        """This API is used to delete an origin group.
+        r"""This API is used to delete an origin group.
 
         :param request: Request instance for DeleteOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteOriginGroupRequest`
@@ -395,7 +395,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteZone(self, request):
-        """This API is used to delete a site.
+        r"""This API is used to delete a site.
 
         :param request: Request instance for DeleteZone.
         :type request: :class:`tencentcloud.teo.v20220106.models.DeleteZoneRequest`
@@ -418,7 +418,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxy(self, request):
-        """This API is used to obtain a list of application proxies.
+        r"""This API is used to obtain a list of application proxies.
 
         :param request: Request instance for DescribeApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeApplicationProxyRequest`
@@ -441,7 +441,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxyDetail(self, request):
-        """This API is used to obtain the details of an application proxy.
+        r"""This API is used to obtain the details of an application proxy.
 
         :param request: Request instance for DescribeApplicationProxyDetail.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeApplicationProxyDetailRequest`
@@ -464,7 +464,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeBotLog(self, request):
-        """This API is used to query bot attack logs.
+        r"""This API is used to query bot attack logs.
 
         :param request: Request instance for DescribeBotLog.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeBotLogRequest`
@@ -487,7 +487,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeBotManagedRules(self, request):
-        """This API is used to query bot managed rules.
+        r"""This API is used to query bot managed rules.
 
         :param request: Request instance for DescribeBotManagedRules.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeBotManagedRulesRequest`
@@ -510,7 +510,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeCnameStatus(self, request):
-        """This API is used to query the CNAME status of a domain name.
+        r"""This API is used to query the CNAME status of a domain name.
 
         :param request: Request instance for DescribeCnameStatus.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeCnameStatusRequest`
@@ -533,7 +533,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDoSPolicy(self, request):
-        """This API is used to query the DDoS protection configuration.
+        r"""This API is used to query the DDoS protection configuration.
 
         :param request: Request instance for DescribeDDoSPolicy.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDoSPolicyRequest`
@@ -556,7 +556,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackData(self, request):
-        """This API is used to query the DDoS attack data.
+        r"""This API is used to query the DDoS attack data.
 
         :param request: Request instance for DescribeDDosAttackData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackDataRequest`
@@ -579,7 +579,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackEvent(self, request):
-        """This API is used to query DDoS attack events.
+        r"""This API is used to query DDoS attack events.
 
         :param request: Request instance for DescribeDDosAttackEvent.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackEventRequest`
@@ -602,7 +602,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackEventDetail(self, request):
-        """This API is used to query DDoS attack event details.
+        r"""This API is used to query DDoS attack event details.
 
         :param request: Request instance for DescribeDDosAttackEventDetail.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackEventDetailRequest`
@@ -625,7 +625,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackSourceEvent(self, request):
-        """This API is used to query DDoS attack sources.
+        r"""This API is used to query DDoS attack sources.
 
         :param request: Request instance for DescribeDDosAttackSourceEvent.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackSourceEventRequest`
@@ -648,7 +648,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackTopData(self, request):
-        """This API is used to query the top data of DDoS attacks.
+        r"""This API is used to query the top data of DDoS attacks.
 
         :param request: Request instance for DescribeDDosAttackTopData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackTopDataRequest`
@@ -671,7 +671,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosMajorAttackEvent(self, request):
-        """This API is used to query the major DDoS attack event.
+        r"""This API is used to query the major DDoS attack event.
 
         :param request: Request instance for DescribeDDosMajorAttackEvent.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosMajorAttackEventRequest`
@@ -694,7 +694,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDefaultCertificates(self, request):
-        """This API is used to query a list of default certificates.
+        r"""This API is used to query a list of default certificates.
 
         :param request: Request instance for DescribeDefaultCertificates.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDefaultCertificatesRequest`
@@ -717,7 +717,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnsData(self, request):
-        """This API is used to obtain collected DNS requests.
+        r"""This API is used to obtain collected DNS requests.
 
         :param request: Request instance for DescribeDnsData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDnsDataRequest`
@@ -740,7 +740,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnsRecords(self, request):
-        """This API is used to query DNS records. Paging, sorting and filtering are supported.
+        r"""This API is used to query DNS records. Paging, sorting and filtering are supported.
 
         :param request: Request instance for DescribeDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDnsRecordsRequest`
@@ -763,7 +763,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnssec(self, request):
-        """This API is used to query DNSSEC information.
+        r"""This API is used to query DNSSEC information.
 
         :param request: Request instance for DescribeDnssec.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDnssecRequest`
@@ -786,7 +786,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeHostsCertificate(self, request):
-        """This API is used to query certificates of domain names. Paging, sorting and filtering are supported.
+        r"""This API is used to query certificates of domain names. Paging, sorting and filtering are supported.
 
         :param request: Request instance for DescribeHostsCertificate.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeHostsCertificateRequest`
@@ -809,7 +809,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeHostsSetting(self, request):
-        """This API is used to query detailed domain name configuration.
+        r"""This API is used to query detailed domain name configuration.
 
         :param request: Request instance for DescribeHostsSetting.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeHostsSettingRequest`
@@ -832,7 +832,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeIdentification(self, request):
-        """This API is used to query verification results.
+        r"""This API is used to query verification results.
 
         :param request: Request instance for DescribeIdentification.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeIdentificationRequest`
@@ -855,7 +855,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLoadBalancing(self, request):
-        """This API is used to obtain a list of CLB instances.
+        r"""This API is used to obtain a list of CLB instances.
 
         :param request: Request instance for DescribeLoadBalancing.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeLoadBalancingRequest`
@@ -878,7 +878,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeLoadBalancingDetail(self, request):
-        """This API is used to query the details of a CLB instance.
+        r"""This API is used to query the details of a CLB instance.
 
         :param request: Request instance for DescribeLoadBalancingDetail.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeLoadBalancingDetailRequest`
@@ -901,7 +901,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroup(self, request):
-        """This API is used to get the list of origin groups.
+        r"""This API is used to get the list of origin groups.
 
         :param request: Request instance for DescribeOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupRequest`
@@ -924,7 +924,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginGroupDetail(self, request):
-        """This API is used to get the details of the origin group.
+        r"""This API is used to get the details of the origin group.
 
         :param request: Request instance for DescribeOriginGroupDetail.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupDetailRequest`
@@ -947,7 +947,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOverviewL7Data(self, request):
-        """This API is used to query the layer-7 time series traffic data for monitoring.
+        r"""This API is used to query the layer-7 time series traffic data for monitoring.
 
         :param request: Request instance for DescribeOverviewL7Data.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOverviewL7DataRequest`
@@ -970,7 +970,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePrefetchTasks(self, request):
-        """This API is used to query the pre-warming task status.
+        r"""This API is used to query the pre-warming task status.
 
         :param request: Request instance for DescribePrefetchTasks.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksRequest`
@@ -993,7 +993,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """This API is used to query the cache purging history.
+        r"""This API is used to query the cache purging history.
 
         :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribePurgeTasksRequest`
@@ -1016,7 +1016,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicy(self, request):
-        """This API is used to query the security protection configuration.
+        r"""This API is used to query the security protection configuration.
 
         :param request: Request instance for DescribeSecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyRequest`
@@ -1039,7 +1039,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicyList(self, request):
-        """This API is used to query all protected subdomain names.
+        r"""This API is used to query all protected subdomain names.
 
         :param request: Request instance for DescribeSecurityPolicyList.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyListRequest`
@@ -1062,7 +1062,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicyManagedRules(self, request):
-        """This API is used to query managed rules.
+        r"""This API is used to query managed rules.
 
         :param request: Request instance for DescribeSecurityPolicyManagedRules.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesRequest`
@@ -1085,7 +1085,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicyManagedRulesId(self, request):
-        """This API is used to query the details of a managed rule by rule ID.
+        r"""This API is used to query the details of a managed rule by rule ID.
 
         :param request: Request instance for DescribeSecurityPolicyManagedRulesId.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesIdRequest`
@@ -1108,7 +1108,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicyRegions(self, request):
-        """This API is used to query information of all regions.
+        r"""This API is used to query information of all regions.
 
         :param request: Request instance for DescribeSecurityPolicyRegions.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyRegionsRequest`
@@ -1131,7 +1131,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPortraitRules(self, request):
-        """This API is used to query user profiling rules.
+        r"""This API is used to query user profiling rules.
 
         :param request: Request instance for DescribeSecurityPortraitRules.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPortraitRulesRequest`
@@ -1154,7 +1154,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        """This API is used to query the layer-4 time series traffic data.
+        r"""This API is used to query the layer-4 time series traffic data.
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL4DataRequest`
@@ -1177,7 +1177,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        """This API is used to query the layer-7 time series traffic data for data analysis.
+        r"""This API is used to query the layer-7 time series traffic data for data analysis.
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL7AnalysisDataRequest`
@@ -1200,7 +1200,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7CacheData(self, request):
-        """This API is used to query time-series L7 cached data.
+        r"""This API is used to query time-series L7 cached data.
 
         :param request: Request instance for DescribeTimingL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL7CacheDataRequest`
@@ -1223,7 +1223,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        """This API is used to query the top traffic data.
+        r"""This API is used to query the top traffic data.
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTopL7AnalysisDataRequest`
@@ -1246,7 +1246,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7CacheData(self, request):
-        """This API is used to query the top-ranked L7 cached data.
+        r"""This API is used to query the top-ranked L7 cached data.
 
         :param request: Request instance for DescribeTopL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTopL7CacheDataRequest`
@@ -1269,7 +1269,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesAttackEvents(self, request):
-        """This API is used to query web hosting attack events.
+        r"""This API is used to query web hosting attack events.
 
         :param request: Request instance for DescribeWebManagedRulesAttackEvents.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesAttackEventsRequest`
@@ -1292,7 +1292,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesData(self, request):
-        """This API is used to query the web hosting rule data.
+        r"""This API is used to query the web hosting rule data.
 
         :param request: Request instance for DescribeWebManagedRulesData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesDataRequest`
@@ -1315,7 +1315,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesLog(self, request):
-        """This API is used to query web hosting logs.
+        r"""This API is used to query web hosting logs.
 
         :param request: Request instance for DescribeWebManagedRulesLog.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesLogRequest`
@@ -1338,7 +1338,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesTopData(self, request):
-        """This API is used to query the top data of web hosting rules.
+        r"""This API is used to query the top data of web hosting rules.
 
         :param request: Request instance for DescribeWebManagedRulesTopData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesTopDataRequest`
@@ -1361,7 +1361,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebProtectionAttackEvents(self, request):
-        """This API is used to query web attack events.
+        r"""This API is used to query web attack events.
 
         :param request: Request instance for DescribeWebProtectionAttackEvents.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebProtectionAttackEventsRequest`
@@ -1384,7 +1384,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebProtectionData(self, request):
-        """This API is used to query the web protection data.
+        r"""This API is used to query the web protection data.
 
         :param request: Request instance for DescribeWebProtectionData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebProtectionDataRequest`
@@ -1407,7 +1407,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebProtectionLog(self, request):
-        """This API is used to query web protection logs.
+        r"""This API is used to query web protection logs.
 
         :param request: Request instance for DescribeWebProtectionLog.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebProtectionLogRequest`
@@ -1430,7 +1430,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneDDoSPolicy(self, request):
-        """This API is used to query all DDoS mitigation configuration.
+        r"""This API is used to query all DDoS mitigation configuration.
 
         :param request: Request instance for DescribeZoneDDoSPolicy.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZoneDDoSPolicyRequest`
@@ -1453,7 +1453,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneDetails(self, request):
-        """This API is used to query the details of a site by site ID.
+        r"""This API is used to query the details of a site by site ID.
 
         :param request: Request instance for DescribeZoneDetails.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZoneDetailsRequest`
@@ -1476,7 +1476,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneSetting(self, request):
-        """This API is used to query the site configuration.
+        r"""This API is used to query the site configuration.
 
         :param request: Request instance for DescribeZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZoneSettingRequest`
@@ -1499,7 +1499,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query the list of user sites.
+        r"""This API is used to query the list of user sites.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZonesRequest`
@@ -1522,7 +1522,7 @@ class TeoClient(AbstractClient):
 
 
     def DownloadL7Logs(self, request):
-        """This API is used to query layer-7 logs.
+        r"""This API is used to query layer-7 logs.
 
         :param request: Request instance for DownloadL7Logs.
         :type request: :class:`tencentcloud.teo.v20220106.models.DownloadL7LogsRequest`
@@ -1545,7 +1545,7 @@ class TeoClient(AbstractClient):
 
 
     def IdentifyZone(self, request):
-        """This API is used to verify ownership of the site.
+        r"""This API is used to verify ownership of the site.
 
         :param request: Request instance for IdentifyZone.
         :type request: :class:`tencentcloud.teo.v20220106.models.IdentifyZoneRequest`
@@ -1568,7 +1568,7 @@ class TeoClient(AbstractClient):
 
 
     def ImportDnsRecords(self, request):
-        """This API is used to import DNS records.
+        r"""This API is used to import DNS records.
 
         :param request: Request instance for ImportDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220106.models.ImportDnsRecordsRequest`
@@ -1591,7 +1591,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxy(self, request):
-        """This API is used to modify an application proxy.
+        r"""This API is used to modify an application proxy.
 
         :param request: Request instance for ModifyApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyApplicationProxyRequest`
@@ -1614,7 +1614,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRule(self, request):
-        """This API is used to modify an application proxy rule.
+        r"""This API is used to modify an application proxy rule.
 
         :param request: Request instance for ModifyApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyApplicationProxyRuleRequest`
@@ -1637,7 +1637,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRuleStatus(self, request):
-        """This API is used to modify the status of an application proxy rule.
+        r"""This API is used to modify the status of an application proxy rule.
 
         :param request: Request instance for ModifyApplicationProxyRuleStatus.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyApplicationProxyRuleStatusRequest`
@@ -1660,7 +1660,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyStatus(self, request):
-        """This API is used to modify the status of an application proxy.
+        r"""This API is used to modify the status of an application proxy.
 
         :param request: Request instance for ModifyApplicationProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyApplicationProxyStatusRequest`
@@ -1683,7 +1683,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDDoSPolicy(self, request):
-        """This API is used to modify DDoS mitigation configuration.
+        r"""This API is used to modify DDoS mitigation configuration.
 
         :param request: Request instance for ModifyDDoSPolicy.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyRequest`
@@ -1706,7 +1706,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDDoSPolicyHost(self, request):
-        """This API is used to enable high availability for domain names.
+        r"""This API is used to enable high availability for domain names.
 
         :param request: Request instance for ModifyDDoSPolicyHost.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyHostRequest`
@@ -1729,7 +1729,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDefaultCertificate(self, request):
-        """This API is used to modify the status of a default certificate.
+        r"""This API is used to modify the status of a default certificate.
 
         :param request: Request instance for ModifyDefaultCertificate.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDefaultCertificateRequest`
@@ -1752,7 +1752,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecord(self, request):
-        """This API is used to modify DNS records.
+        r"""This API is used to modify DNS records.
 
         :param request: Request instance for ModifyDnsRecord.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDnsRecordRequest`
@@ -1775,7 +1775,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnssec(self, request):
-        """This API is used to modify the DNSSEC status.
+        r"""This API is used to modify the DNSSEC status.
 
         :param request: Request instance for ModifyDnssec.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDnssecRequest`
@@ -1798,7 +1798,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyHostsCertificate(self, request):
-        """This API is used to modify the certificate of a domain name.
+        r"""This API is used to modify the certificate of a domain name.
 
         :param request: Request instance for ModifyHostsCertificate.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyHostsCertificateRequest`
@@ -1821,7 +1821,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyLoadBalancing(self, request):
-        """This API is used to modify a CLB instance.
+        r"""This API is used to modify a CLB instance.
 
         :param request: Request instance for ModifyLoadBalancing.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyLoadBalancingRequest`
@@ -1844,7 +1844,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyLoadBalancingStatus(self, request):
-        """This API is used to modify the status of a CLB instance.
+        r"""This API is used to modify the status of a CLB instance.
 
         :param request: Request instance for ModifyLoadBalancingStatus.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyLoadBalancingStatusRequest`
@@ -1867,7 +1867,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginGroup(self, request):
-        """This API is used to modify an origin group.
+        r"""This API is used to modify an origin group.
 
         :param request: Request instance for ModifyOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyOriginGroupRequest`
@@ -1890,7 +1890,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        """This API is used to modify the web and bot security configurations.
+        r"""This API is used to modify the web and bot security configurations.
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifySecurityPolicyRequest`
@@ -1913,7 +1913,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZone(self, request):
-        """This API is used to modify the site information.
+        r"""This API is used to modify the site information.
 
         :param request: Request instance for ModifyZone.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyZoneRequest`
@@ -1936,7 +1936,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneCnameSpeedUp(self, request):
-        """This API is used to modify the CNAME acceleration status.
+        r"""This API is used to modify the CNAME acceleration status.
 
         :param request: Request instance for ModifyZoneCnameSpeedUp.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyZoneCnameSpeedUpRequest`
@@ -1959,7 +1959,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneSetting(self, request):
-        """This API is used to modify the site configuration.
+        r"""This API is used to modify the site configuration.
 
         :param request: Request instance for ModifyZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyZoneSettingRequest`
@@ -1982,7 +1982,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneStatus(self, request):
-        """This API is used to change the site status.
+        r"""This API is used to change the site status.
 
         :param request: Request instance for ModifyZoneStatus.
         :type request: :class:`tencentcloud.teo.v20220106.models.ModifyZoneStatusRequest`
@@ -2005,7 +2005,7 @@ class TeoClient(AbstractClient):
 
 
     def ReclaimZone(self, request):
-        """This API is used to reclaim a site from other users after its ownership is verified.
+        r"""This API is used to reclaim a site from other users after its ownership is verified.
 
         :param request: Request instance for ReclaimZone.
         :type request: :class:`tencentcloud.teo.v20220106.models.ReclaimZoneRequest`
@@ -2028,7 +2028,7 @@ class TeoClient(AbstractClient):
 
 
     def ScanDnsRecords(self, request):
-        """This API is used to scan resolution records.
+        r"""This API is used to scan resolution records.
 
         :param request: Request instance for ScanDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220106.models.ScanDnsRecordsRequest`

@@ -27,7 +27,7 @@ class ControlcenterClient(AbstractClient):
 
 
     def BatchApplyAccountBaselines(self, request):
-        """This API is used to apply baselines to existing accounts in batches.
+        r"""This API is used to apply baselines to existing accounts in batches.
 
         :param request: Request instance for BatchApplyAccountBaselines.
         :type request: :class:`tencentcloud.controlcenter.v20230110.models.BatchApplyAccountBaselinesRequest`

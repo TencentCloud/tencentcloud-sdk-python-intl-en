@@ -27,7 +27,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateBasicDDoSAlarmThreshold(self, request):
-        """This API is used to set the DDoS alarm threshold for Anti-DDoS Basic, which is only supported for Anti-DDoS Basic.
+        r"""This API is used to set the DDoS alarm threshold for Anti-DDoS Basic, which is only supported for Anti-DDoS Basic.
 
         :param request: Request instance for CreateBasicDDoSAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateBasicDDoSAlarmThresholdRequest`
@@ -50,7 +50,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateBoundIP(self, request):
-        """This API is used to bind an IP to an Anti-DDoS Pro instance, which supports both single IP instances and multi-IP instances. It should be noted that this API is async; therefore, if a binding/unbinding operation is in progress, new binding/unbinding operations cannot be initiated.
+        r"""This API is used to bind an IP to an Anti-DDoS Pro instance, which supports both single IP instances and multi-IP instances. It should be noted that this API is async; therefore, if a binding/unbinding operation is in progress, new binding/unbinding operations cannot be initiated.
 
         :param request: Request instance for CreateBoundIP.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateBoundIPRequest`
@@ -73,7 +73,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateCCFrequencyRules(self, request):
-        """This API is used to add an access frequency control rule for CC protection.
+        r"""This API is used to add an access frequency control rule for CC protection.
 
         :param request: Request instance for CreateCCFrequencyRules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateCCFrequencyRulesRequest`
@@ -96,7 +96,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateCCSelfDefinePolicy(self, request):
-        """This API is used to create a custom CC policy.
+        r"""This API is used to create a custom CC policy.
 
         :param request: Request instance for CreateCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateCCSelfDefinePolicyRequest`
@@ -119,7 +119,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateDDoSPolicy(self, request):
-        """This API is used to add an advanced DDoS policy.
+        r"""This API is used to add an advanced DDoS policy.
 
         :param request: Request instance for CreateDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyRequest`
@@ -142,7 +142,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateDDoSPolicyCase(self, request):
-        """This API is used to add a policy scenario.
+        r"""This API is used to add a policy scenario.
 
         :param request: Request instance for CreateDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyCaseRequest`
@@ -165,7 +165,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateInstanceName(self, request):
-        """This API is used to rename a resource instance, which supports single IP instances, multi-IP instances, Anti-DDoS Advanced, and Anti-DDoS Ultimate.
+        r"""This API is used to rename a resource instance, which supports single IP instances, multi-IP instances, Anti-DDoS Advanced, and Anti-DDoS Ultimate.
 
         :param request: Request instance for CreateInstanceName.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateInstanceNameRequest`
@@ -188,7 +188,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL4HealthConfig(self, request):
-        """This API is used to upload layer-4 health check configuration.
+        r"""This API is used to upload layer-4 health check configuration.
 
         :param request: Request instance for CreateL4HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL4HealthConfigRequest`
@@ -211,7 +211,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL4Rules(self, request):
-        """This API is used to add a layer-4 forwarding rule.
+        r"""This API is used to add a layer-4 forwarding rule.
 
         :param request: Request instance for CreateL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL4RulesRequest`
@@ -234,7 +234,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL7CCRule(self, request):
-        """This API is used to add a custom frequency control rule for layer-7 CC access (it works in the IP + Host dimension and does not support specific URIs). As it has been disused, please call the new `CreateCCFrequencyRules` API, which supports both IP + Host and URI.
+        r"""This API is used to add a custom frequency control rule for layer-7 CC access (it works in the IP + Host dimension and does not support specific URIs). As it has been disused, please call the new `CreateCCFrequencyRules` API, which supports both IP + Host and URI.
 
         :param request: Request instance for CreateL7CCRule.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleRequest`
@@ -257,7 +257,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL7HealthConfig(self, request):
-        """This API is used to upload layer-7 health check configuration.
+        r"""This API is used to upload layer-7 health check configuration.
 
         :param request: Request instance for CreateL7HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7HealthConfigRequest`
@@ -280,7 +280,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL7RuleCert(self, request):
-        """This API is used to configure a certificate for a layer-7 forwarding rule.
+        r"""This API is used to configure a certificate for a layer-7 forwarding rule.
 
         :param request: Request instance for CreateL7RuleCert.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RuleCertRequest`
@@ -303,7 +303,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL7Rules(self, request):
-        """This API is used to add a layer-7 (website) forwarding rule.
+        r"""This API is used to add a layer-7 (website) forwarding rule.
 
         :param request: Request instance for CreateL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesRequest`
@@ -326,7 +326,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateL7RulesUpload(self, request):
-        """This API is used to upload layer-7 forwarding rules in batches.
+        r"""This API is used to upload layer-7 forwarding rules in batches.
 
         :param request: Request instance for CreateL7RulesUpload.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesUploadRequest`
@@ -349,7 +349,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateNetReturn(self, request):
-        """This API is used to switch to the real server in Anti-DDoS Ultimate.
+        r"""This API is used to switch to the real server in Anti-DDoS Ultimate.
 
         :param request: Request instance for CreateNetReturn.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNetReturnRequest`
@@ -372,7 +372,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateNewL7RulesUpload(self, request):
-        """This API is used to batch upload Layer-7 forwarding rules.
+        r"""This API is used to batch upload Layer-7 forwarding rules.
 
         :param request: Request instance for CreateNewL7RulesUpload.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesUploadRequest`
@@ -395,7 +395,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateUnblockIp(self, request):
-        """This API is used to unblock an IP.
+        r"""This API is used to unblock an IP.
 
         :param request: Request instance for CreateUnblockIp.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateUnblockIpRequest`
@@ -418,7 +418,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteCCFrequencyRules(self, request):
-        """This API is used to delete an access frequency control rule for CC protection.
+        r"""This API is used to delete an access frequency control rule for CC protection.
 
         :param request: Request instance for DeleteCCFrequencyRules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteCCFrequencyRulesRequest`
@@ -441,7 +441,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteCCSelfDefinePolicy(self, request):
-        """This API is used to delete a custom CC policy.
+        r"""This API is used to delete a custom CC policy.
 
         :param request: Request instance for DeleteCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteCCSelfDefinePolicyRequest`
@@ -464,7 +464,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteDDoSPolicy(self, request):
-        """This API is used to delete an advanced DDoS protection policy.
+        r"""This API is used to delete an advanced DDoS protection policy.
 
         :param request: Request instance for DeleteDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyRequest`
@@ -487,7 +487,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteDDoSPolicyCase(self, request):
-        """This API is used to delete a policy scenario.
+        r"""This API is used to delete a policy scenario.
 
         :param request: Request instance for DeleteDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyCaseRequest`
@@ -510,7 +510,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteL4Rules(self, request):
-        """This API is used to delete one or more layer-4 forwarding rules.
+        r"""This API is used to delete one or more layer-4 forwarding rules.
 
         :param request: Request instance for DeleteL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteL4RulesRequest`
@@ -533,7 +533,7 @@ class DayuClient(AbstractClient):
 
 
     def DeleteL7Rules(self, request):
-        """This API is used to delete one or more layer-7 forwarding rules.
+        r"""This API is used to delete one or more layer-7 forwarding rules.
 
         :param request: Request instance for DeleteL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteL7RulesRequest`
@@ -556,7 +556,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeActionLog(self, request):
-        """This API is used to get operation logs.
+        r"""This API is used to get operation logs.
 
         :param request: Request instance for DescribeActionLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeActionLogRequest`
@@ -579,7 +579,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBGPIPL7RuleMaxCnt(self, request):
-        """This API is used to get the maximum number of layer-7 rules that can be added for Anti-DDoS Advanced.
+        r"""This API is used to get the maximum number of layer-7 rules that can be added for Anti-DDoS Advanced.
 
         :param request: Request instance for DescribeBGPIPL7RuleMaxCnt.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBGPIPL7RuleMaxCntRequest`
@@ -602,7 +602,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBaradData(self, request):
-        """This API is used to provide business forwarding metric data of Anti-DDoS services.
+        r"""This API is used to provide business forwarding metric data of Anti-DDoS services.
 
         :param request: Request instance for DescribeBaradData.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBaradDataRequest`
@@ -625,7 +625,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBasicCCThreshold(self, request):
-        """This API is used to get the CC protection threshold of Anti-DDoS Basic.
+        r"""This API is used to get the CC protection threshold of Anti-DDoS Basic.
 
         :param request: Request instance for DescribeBasicCCThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicCCThresholdRequest`
@@ -648,7 +648,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBasicDeviceThreshold(self, request):
-        """This API is used to get the blackhole threshold of Anti-DDoS Basic.
+        r"""This API is used to get the blackhole threshold of Anti-DDoS Basic.
 
         :param request: Request instance for DescribeBasicDeviceThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicDeviceThresholdRequest`
@@ -671,7 +671,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBizHttpStatus(self, request):
-        """This API is used to get the statistics on the status codes of business traffic.
+        r"""This API is used to get the statistics on the status codes of business traffic.
 
         :param request: Request instance for DescribeBizHttpStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBizHttpStatusRequest`
@@ -694,7 +694,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCAlarmThreshold(self, request):
-        """This API is used to get the alarm notification threshold set for CC attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
+        r"""This API is used to get the alarm notification threshold set for CC attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
 
         :param request: Request instance for DescribeCCAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCAlarmThresholdRequest`
@@ -717,7 +717,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCEvList(self, request):
-        """This API is used to get the CC attack event list.
+        r"""This API is used to get the CC attack event list.
 
         :param request: Request instance for DescribeCCEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCEvListRequest`
@@ -740,7 +740,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCFrequencyRules(self, request):
-        """This API is used to get an access frequency control rule for CC protection.
+        r"""This API is used to get an access frequency control rule for CC protection.
 
         :param request: Request instance for DescribeCCFrequencyRules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCFrequencyRulesRequest`
@@ -763,7 +763,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCIpAllowDeny(self, request):
-        """This API is used to get the CC IP blocklist/allowlist.
+        r"""This API is used to get the CC IP blocklist/allowlist.
 
         :param request: Request instance for DescribeCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCIpAllowDenyRequest`
@@ -786,7 +786,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCSelfDefinePolicy(self, request):
-        """This API is used to get a custom CC policy.
+        r"""This API is used to get a custom CC policy.
 
         :param request: Request instance for DescribeCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCSelfDefinePolicyRequest`
@@ -809,7 +809,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCTrend(self, request):
-        """This API is used to get CC attack metric data, including total requests peak (QPS) and attack requests (QPS).
+        r"""This API is used to get CC attack metric data, including total requests peak (QPS) and attack requests (QPS).
 
         :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCTrendRequest`
@@ -832,7 +832,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeCCUrlAllow(self, request):
-        """This API is used to get the CC URL allowlist.
+        r"""This API is used to get the CC URL allowlist.
 
         :param request: Request instance for DescribeCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCUrlAllowRequest`
@@ -855,7 +855,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSAlarmThreshold(self, request):
-        """This API is used to get the alarm notification threshold set for DDoS attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
+        r"""This API is used to get the alarm notification threshold set for DDoS attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
 
         :param request: Request instance for DescribeDDoSAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAlarmThresholdRequest`
@@ -878,7 +878,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSAttackIPRegionMap(self, request):
-        """This API is used to get the geographical distribution map of DDoS attack source IPs. It supports display by global regions and Chinese provinces.
+        r"""This API is used to get the geographical distribution map of DDoS attack source IPs. It supports display by global regions and Chinese provinces.
 
         :param request: Request instance for DescribeDDoSAttackIPRegionMap.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackIPRegionMapRequest`
@@ -901,7 +901,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSAttackSource(self, request):
-        """This API is used to get the DDoS attack source list.
+        r"""This API is used to get the DDoS attack source list.
 
         :param request: Request instance for DescribeDDoSAttackSource.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackSourceRequest`
@@ -924,7 +924,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSCount(self, request):
-        """This API is used to get the DDoS attack proportion analysis.
+        r"""This API is used to get the DDoS attack proportion analysis.
 
         :param request: Request instance for DescribeDDoSCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSCountRequest`
@@ -947,7 +947,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSDefendStatus(self, request):
-        """This API is used to get the DDoS protection status (temporarily disabled status). It is supported for Anti-DDoS Basic, single IP instance, multi-IP instance, Anti-DDoS Advanced, and Anti-DDoS Ultimate. It is used to query whether DDoS protection is temporarily disabled, and if yes, return parameters such as temporary disablement duration.
+        r"""This API is used to get the DDoS protection status (temporarily disabled status). It is supported for Anti-DDoS Basic, single IP instance, multi-IP instance, Anti-DDoS Advanced, and Anti-DDoS Ultimate. It is used to query whether DDoS protection is temporarily disabled, and if yes, return parameters such as temporary disablement duration.
 
         :param request: Request instance for DescribeDDoSDefendStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSDefendStatusRequest`
@@ -970,7 +970,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSEvInfo(self, request):
-        """This API is used to get details of a specific DDoS attack.
+        r"""This API is used to get details of a specific DDoS attack.
 
         :param request: Request instance for DescribeDDoSEvInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvInfoRequest`
@@ -993,7 +993,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSEvList(self, request):
-        """This API is used to get the DDoS attack event list.
+        r"""This API is used to get the DDoS attack event list.
 
         :param request: Request instance for DescribeDDoSEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvListRequest`
@@ -1016,7 +1016,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSIpLog(self, request):
-        """This API is used to get a DDoS IP attack log.
+        r"""This API is used to get a DDoS IP attack log.
 
         :param request: Request instance for DescribeDDoSIpLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSIpLogRequest`
@@ -1039,7 +1039,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSNetCount(self, request):
-        """This API is used to get the DDoS attack proportion analysis for an Anti-DDoS Ultimate resource.
+        r"""This API is used to get the DDoS attack proportion analysis for an Anti-DDoS Ultimate resource.
 
         :param request: Request instance for DescribeDDoSNetCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetCountRequest`
@@ -1062,7 +1062,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSNetEvInfo(self, request):
-        """This API is used to get the DDoS attack event details of an Anti-DDoS Ultimate resource.
+        r"""This API is used to get the DDoS attack event details of an Anti-DDoS Ultimate resource.
 
         :param request: Request instance for DescribeDDoSNetEvInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvInfoRequest`
@@ -1085,7 +1085,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSNetEvList(self, request):
-        """This API is used to get the DDoS attack event list of an Anti-DDoS Ultimate resource.
+        r"""This API is used to get the DDoS attack event list of an Anti-DDoS Ultimate resource.
 
         :param request: Request instance for DescribeDDoSNetEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvListRequest`
@@ -1108,7 +1108,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSNetIpLog(self, request):
-        """This API is used to get the DDoS IP attack logs of an Anti-DDoS Ultimate resource.
+        r"""This API is used to get the DDoS IP attack logs of an Anti-DDoS Ultimate resource.
 
         :param request: Request instance for DescribeDDoSNetIpLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetIpLogRequest`
@@ -1131,7 +1131,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSNetTrend(self, request):
-        """This API is used to get the DDoS attack metric data of an Anti-DDoS Ultimate resource.
+        r"""This API is used to get the DDoS attack metric data of an Anti-DDoS Ultimate resource.
 
         :param request: Request instance for DescribeDDoSNetTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetTrendRequest`
@@ -1154,7 +1154,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSPolicy(self, request):
-        """This API is used to get an advanced DDoS policy.
+        r"""This API is used to get an advanced DDoS policy.
 
         :param request: Request instance for DescribeDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSPolicyRequest`
@@ -1177,7 +1177,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSTrend(self, request):
-        """This API is used to get the data of DDoS attack traffic bandwidth and attack packet rate.
+        r"""This API is used to get the data of DDoS attack traffic bandwidth and attack packet rate.
 
         :param request: Request instance for DescribeDDoSTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSTrendRequest`
@@ -1200,7 +1200,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSUsedStatis(self, request):
-        """This API is used to count the number of days of Anti-DDoS resource use and number of DDoS attacks defended against.
+        r"""This API is used to count the number of days of Anti-DDoS resource use and number of DDoS attacks defended against.
 
         :param request: Request instance for DescribeDDoSUsedStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSUsedStatisRequest`
@@ -1223,7 +1223,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeIPProductInfo(self, request):
-        """This API is used to get the Tencent Cloud asset information corresponding to an IP of a single IP instance or multi-IP instance, which is supported only for IPs of single IP instances and multi-IP instances.
+        r"""This API is used to get the Tencent Cloud asset information corresponding to an IP of a single IP instance or multi-IP instance, which is supported only for IPs of single IP instances and multi-IP instances.
 
         :param request: Request instance for DescribeIPProductInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIPProductInfoRequest`
@@ -1246,7 +1246,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeInsurePacks(self, request):
-        """This API is used to get the guarantee package list.
+        r"""This API is used to get the guarantee package list.
 
         :param request: Request instance for DescribeInsurePacks.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeInsurePacksRequest`
@@ -1269,7 +1269,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeIpBlockList(self, request):
-        """This API is used to get the blocked IP list.
+        r"""This API is used to get the blocked IP list.
 
         :param request: Request instance for DescribeIpBlockList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIpBlockListRequest`
@@ -1292,7 +1292,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeIpUnBlockList(self, request):
-        """This API is used to get the IP unblocking records.
+        r"""This API is used to get the IP unblocking records.
 
         :param request: Request instance for DescribeIpUnBlockList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIpUnBlockListRequest`
@@ -1315,7 +1315,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeL4HealthConfig(self, request):
-        """This API is used to export the layer-4 health check configuration.
+        r"""This API is used to export the layer-4 health check configuration.
 
         :param request: Request instance for DescribeL4HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL4HealthConfigRequest`
@@ -1338,7 +1338,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeL4RulesErrHealth(self, request):
-        """This API is used to get the exception result of a layer-4 forwarding rule health check.
+        r"""This API is used to get the exception result of a layer-4 forwarding rule health check.
 
         :param request: Request instance for DescribeL4RulesErrHealth.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL4RulesErrHealthRequest`
@@ -1361,7 +1361,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeL7HealthConfig(self, request):
-        """This API is used to export the layer-7 health check configuration.
+        r"""This API is used to export the layer-7 health check configuration.
 
         :param request: Request instance for DescribeL7HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL7HealthConfigRequest`
@@ -1384,7 +1384,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribePackIndex(self, request):
-        """This API is used to get the product overview statistics. It is supported for Anti-DDoS Pro, Anti-DDoS Advanced, and Anti-DDoS Ultimate.
+        r"""This API is used to get the product overview statistics. It is supported for Anti-DDoS Pro, Anti-DDoS Advanced, and Anti-DDoS Ultimate.
 
         :param request: Request instance for DescribePackIndex.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePackIndexRequest`
@@ -1407,7 +1407,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribePcap(self, request):
-        """This API is used to download the PCAP packet of an attack event.
+        r"""This API is used to download the PCAP packet of an attack event.
 
         :param request: Request instance for DescribePcap.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePcapRequest`
@@ -1430,7 +1430,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribePolicyCase(self, request):
-        """This API is used to get the policy scenario.
+        r"""This API is used to get the policy scenario.
 
         :param request: Request instance for DescribePolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePolicyCaseRequest`
@@ -1453,7 +1453,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeResIpList(self, request):
-        """This API is used to get the IP list of a resource.
+        r"""This API is used to get the IP list of a resource.
 
         :param request: Request instance for DescribeResIpList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeResIpListRequest`
@@ -1476,7 +1476,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeResourceList(self, request):
-        """This API is used to get the resource list.
+        r"""This API is used to get the resource list.
 
         :param request: Request instance for DescribeResourceList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeResourceListRequest`
@@ -1499,7 +1499,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeRuleSets(self, request):
-        """This API is used to get the number of rules of a resource.
+        r"""This API is used to get the number of rules of a resource.
 
         :param request: Request instance for DescribeRuleSets.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeRuleSetsRequest`
@@ -1522,7 +1522,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeSchedulingDomainList(self, request):
-        """Get scheduling domain name list
+        r"""Get scheduling domain name list
 
         :param request: Request instance for DescribeSchedulingDomainList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSchedulingDomainListRequest`
@@ -1545,7 +1545,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeSecIndex(self, request):
-        """This API is used to get the security statistics of the current month.
+        r"""This API is used to get the security statistics of the current month.
 
         :param request: Request instance for DescribeSecIndex.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSecIndexRequest`
@@ -1568,7 +1568,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeSourceIpSegment(self, request):
-        """This API is used to get the intermediate IP range. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
+        r"""This API is used to get the intermediate IP range. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
 
         :param request: Request instance for DescribeSourceIpSegment.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSourceIpSegmentRequest`
@@ -1591,7 +1591,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeTransmitStatis(self, request):
-        """This API is used to get the business forwarding statistics, including forwarded traffic and packet forwarding rate.
+        r"""This API is used to get the business forwarding statistics, including forwarded traffic and packet forwarding rate.
 
         :param request: Request instance for DescribeTransmitStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeTransmitStatisRequest`
@@ -1614,7 +1614,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeUnBlockStatis(self, request):
-        """This API is used to get the number of blackhole unblockings.
+        r"""This API is used to get the number of blackhole unblockings.
 
         :param request: Request instance for DescribeUnBlockStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeUnBlockStatisRequest`
@@ -1637,7 +1637,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribleL4Rules(self, request):
-        """This API is used to get a layer-4 forwarding rule.
+        r"""This API is used to get a layer-4 forwarding rule.
 
         :param request: Request instance for DescribleL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleL4RulesRequest`
@@ -1660,7 +1660,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribleL7Rules(self, request):
-        """This API is used to get a layer-7 forwarding rule.
+        r"""This API is used to get a layer-7 forwarding rule.
 
         :param request: Request instance for DescribleL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleL7RulesRequest`
@@ -1683,7 +1683,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribleRegionCount(self, request):
-        """This API is used to get the number of resource instances in a region.
+        r"""This API is used to get the number of resource instances in a region.
 
         :param request: Request instance for DescribleRegionCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleRegionCountRequest`
@@ -1706,7 +1706,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCAlarmThreshold(self, request):
-        """This API is used to set the alarm notification threshold for CC attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
+        r"""This API is used to set the alarm notification threshold for CC attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
 
         :param request: Request instance for ModifyCCAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCAlarmThresholdRequest`
@@ -1729,7 +1729,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCFrequencyRules(self, request):
-        """This API is used to modify an access frequency control rule for CC protection.
+        r"""This API is used to modify an access frequency control rule for CC protection.
 
         :param request: Request instance for ModifyCCFrequencyRules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesRequest`
@@ -1752,7 +1752,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCFrequencyRulesStatus(self, request):
-        """This API is used to enable or disable an access frequency control rule for CC protection.
+        r"""This API is used to enable or disable an access frequency control rule for CC protection.
 
         :param request: Request instance for ModifyCCFrequencyRulesStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesStatusRequest`
@@ -1775,7 +1775,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCHostProtection(self, request):
-        """This API is used to enable or disable CC domain name protection.
+        r"""This API is used to enable or disable CC domain name protection.
 
         :param request: Request instance for ModifyCCHostProtection.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCHostProtectionRequest`
@@ -1798,7 +1798,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCIpAllowDeny(self, request):
-        """This API is used to add/remove a CC IP to/from the blocklist/allowlist.
+        r"""This API is used to add/remove a CC IP to/from the blocklist/allowlist.
 
         :param request: Request instance for ModifyCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCIpAllowDenyRequest`
@@ -1821,7 +1821,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCLevel(self, request):
-        """This API is used to modify CC protection level.
+        r"""This API is used to modify CC protection level.
 
         :param request: Request instance for ModifyCCLevel.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCLevelRequest`
@@ -1844,7 +1844,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCPolicySwitch(self, request):
-        """This API is used to enable or disable a custom CC policy.
+        r"""This API is used to enable or disable a custom CC policy.
 
         :param request: Request instance for ModifyCCPolicySwitch.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCPolicySwitchRequest`
@@ -1867,7 +1867,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCSelfDefinePolicy(self, request):
-        """This API is used to modify a custom CC policy.
+        r"""This API is used to modify a custom CC policy.
 
         :param request: Request instance for ModifyCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCSelfDefinePolicyRequest`
@@ -1890,7 +1890,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCThreshold(self, request):
-        """This API is used to modify the CC protection threshold.
+        r"""This API is used to modify the CC protection threshold.
 
         :param request: Request instance for ModifyCCThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCThresholdRequest`
@@ -1913,7 +1913,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyCCUrlAllow(self, request):
-        """This API is used to add/remove a CC URL to/from the allowlist.
+        r"""This API is used to add/remove a CC URL to/from the allowlist.
 
         :param request: Request instance for ModifyCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCUrlAllowRequest`
@@ -1936,7 +1936,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSAIStatus(self, request):
-        """This API is used to read or modify DDoS AI protection status.
+        r"""This API is used to read or modify DDoS AI protection status.
 
         :param request: Request instance for ModifyDDoSAIStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAIStatusRequest`
@@ -1959,7 +1959,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSAlarmThreshold(self, request):
-        """This API is used to set the alarm notification threshold for DDoS attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
+        r"""This API is used to set the alarm notification threshold for DDoS attacks in Anti-DDoS Pro, Anti-DDoS Advanced, Anti-DDoS Ultimate, and Chess Shield.
 
         :param request: Request instance for ModifyDDoSAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAlarmThresholdRequest`
@@ -1982,7 +1982,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSDefendStatus(self, request):
-        """This API is used to enable or disable DDoS. It can disable DDoS protection for a period of time, which will be automatically enabled after the period of time elapses.
+        r"""This API is used to enable or disable DDoS. It can disable DDoS protection for a period of time, which will be automatically enabled after the period of time elapses.
 
         :param request: Request instance for ModifyDDoSDefendStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSDefendStatusRequest`
@@ -2005,7 +2005,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSLevel(self, request):
-        """This API is used to read or modify DDoS protection level.
+        r"""This API is used to read or modify DDoS protection level.
 
         :param request: Request instance for ModifyDDoSLevel.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSLevelRequest`
@@ -2028,7 +2028,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSPolicy(self, request):
-        """This API is used to modify an advanced DDoS policy.
+        r"""This API is used to modify an advanced DDoS policy.
 
         :param request: Request instance for ModifyDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyRequest`
@@ -2051,7 +2051,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSPolicyCase(self, request):
-        """This API is used to modify a policy scenario.
+        r"""This API is used to modify a policy scenario.
 
         :param request: Request instance for ModifyDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyCaseRequest`
@@ -2074,7 +2074,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSPolicyName(self, request):
-        """This API is used to rename an advanced DDoS policy.
+        r"""This API is used to rename an advanced DDoS policy.
 
         :param request: Request instance for ModifyDDoSPolicyName.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyNameRequest`
@@ -2097,7 +2097,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSSwitch(self, request):
-        """This API is used to enable or disable DDoS protection, which is only supported for Anti-DDoS Basic.
+        r"""This API is used to enable or disable DDoS protection, which is only supported for Anti-DDoS Basic.
 
         :param request: Request instance for ModifyDDoSSwitch.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSSwitchRequest`
@@ -2120,7 +2120,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSThreshold(self, request):
-        """This API is used to modify the DDoS cleansing threshold.
+        r"""This API is used to modify the DDoS cleansing threshold.
 
         :param request: Request instance for ModifyDDoSThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSThresholdRequest`
@@ -2143,7 +2143,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSWaterKey(self, request):
-        """This API is used to add, delete, enable, or disable a watermark key.
+        r"""This API is used to add, delete, enable, or disable a watermark key.
 
         :param request: Request instance for ModifyDDoSWaterKey.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSWaterKeyRequest`
@@ -2166,7 +2166,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyElasticLimit(self, request):
-        """This API is used to modify the elastic protection threshold.
+        r"""This API is used to modify the elastic protection threshold.
 
         :param request: Request instance for ModifyElasticLimit.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyElasticLimitRequest`
@@ -2189,7 +2189,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyL4Health(self, request):
-        """This API is used to modify the health check parameters of a layer-4 forwarding rule. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
+        r"""This API is used to modify the health check parameters of a layer-4 forwarding rule. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
 
         :param request: Request instance for ModifyL4Health.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4HealthRequest`
@@ -2212,7 +2212,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyL4KeepTime(self, request):
-        """This API is used to modify the session persistence of a layer-4 forwarding rule. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
+        r"""This API is used to modify the session persistence of a layer-4 forwarding rule. It is supported for Anti-DDoS Advanced and Anti-DDoS Ultimate.
 
         :param request: Request instance for ModifyL4KeepTime.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4KeepTimeRequest`
@@ -2235,7 +2235,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyL4Rules(self, request):
-        """This API is used to modify a layer-4 forwarding rule.
+        r"""This API is used to modify a layer-4 forwarding rule.
 
         :param request: Request instance for ModifyL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4RulesRequest`
@@ -2258,7 +2258,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyL7Rules(self, request):
-        """This API is used to modify the layer-7 forwarding rules.
+        r"""This API is used to modify the layer-7 forwarding rules.
 
         :param request: Request instance for ModifyL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL7RulesRequest`
@@ -2281,7 +2281,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyNetReturnSwitch(self, request):
-        """This API is used to switch a client to the real server and set the switch duration when the client is under attack or blocked.
+        r"""This API is used to switch a client to the real server and set the switch duration when the client is under attack or blocked.
 
         :param request: Request instance for ModifyNetReturnSwitch.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNetReturnSwitchRequest`
@@ -2304,7 +2304,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyNewDomainRules(self, request):
-        """This API is used to modify layer-7 forwarding rules.
+        r"""This API is used to modify layer-7 forwarding rules.
 
         :param request: Request instance for ModifyNewDomainRules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNewDomainRulesRequest`
@@ -2327,7 +2327,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyNewL4Rule(self, request):
-        """This API is used to modify layer-4 forwarding rules.
+        r"""This API is used to modify layer-4 forwarding rules.
 
         :param request: Request instance for ModifyNewL4Rule.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNewL4RuleRequest`
@@ -2350,7 +2350,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyResBindDDoSPolicy(self, request):
-        """This API is used to bind an advanced DDoS policy to an instance.
+        r"""This API is used to bind an advanced DDoS policy to an instance.
 
         :param request: Request instance for ModifyResBindDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyResBindDDoSPolicyRequest`
@@ -2373,7 +2373,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyResourceRenewFlag(self, request):
-        """This API is used to enable or disable auto-renewal for a resource.
+        r"""This API is used to enable or disable auto-renewal for a resource.
 
         :param request: Request instance for ModifyResourceRenewFlag.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyResourceRenewFlagRequest`

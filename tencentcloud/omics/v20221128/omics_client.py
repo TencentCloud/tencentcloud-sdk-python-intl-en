@@ -27,7 +27,7 @@ class OmicsClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """This API is used to create an environment for Tencent Healthcare Omics Platform.
+        r"""This API is used to create an environment for Tencent Healthcare Omics Platform.
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.omics.v20221128.models.CreateEnvironmentRequest`
@@ -50,7 +50,7 @@ class OmicsClient(AbstractClient):
 
 
     def CreateVolume(self, request):
-        """This API is used to create a volume.
+        r"""This API is used to create a volume.
 
         :param request: Request instance for CreateVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.CreateVolumeRequest`
@@ -73,7 +73,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteEnvironment(self, request):
-        """This API is used to delete the environment.
+        r"""This API is used to delete the environment.
 
         :param request: Request instance for DeleteEnvironment.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentRequest`
@@ -96,7 +96,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteVolume(self, request):
-        """This API is used to delete the volume.
+        r"""This API is used to delete the volume.
 
         :param request: Request instance for DeleteVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeRequest`
@@ -119,7 +119,7 @@ class OmicsClient(AbstractClient):
 
 
     def DeleteVolumeData(self, request):
-        """This API is used to delete the volume data.
+        r"""This API is used to delete the volume data.
 
         :param request: Request instance for DeleteVolumeData.
         :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeDataRequest`
@@ -142,7 +142,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """This API is used to query the environment list.
+        r"""This API is used to query the environment list.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeEnvironmentsRequest`
@@ -165,7 +165,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeRunGroups(self, request):
-        """This API is used to query the run group list.
+        r"""This API is used to query the run group list.
 
         :param request: Request instance for DescribeRunGroups.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeRunGroupsRequest`
@@ -188,7 +188,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeRuns(self, request):
-        """This API is used to query the run list.
+        r"""This API is used to query the run list.
 
         :param request: Request instance for DescribeRuns.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeRunsRequest`
@@ -211,7 +211,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """This API is used to query the table.
+        r"""This API is used to query the table.
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRequest`
@@ -234,7 +234,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeTablesRows(self, request):
-        """This API is used to query the table row data.
+        r"""This API is used to query the table row data.
 
         :param request: Request instance for DescribeTablesRows.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRowsRequest`
@@ -257,7 +257,7 @@ class OmicsClient(AbstractClient):
 
 
     def DescribeVolumes(self, request):
-        """This API is used to query the volume list.
+        r"""This API is used to query the volume list.
 
         :param request: Request instance for DescribeVolumes.
         :type request: :class:`tencentcloud.omics.v20221128.models.DescribeVolumesRequest`
@@ -280,7 +280,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunCalls(self, request):
-        """This API is used to query job details.
+        r"""This API is used to query job details.
 
         :param request: Request instance for GetRunCalls.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunCallsRequest`
@@ -303,7 +303,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunMetadataFile(self, request):
-        """This API is used to get the run details file.
+        r"""This API is used to get the run details file.
 
         :param request: Request instance for GetRunMetadataFile.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunMetadataFileRequest`
@@ -326,7 +326,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunStatus(self, request):
-        """This API is used to query run details.
+        r"""This API is used to query run details.
 
         :param request: Request instance for GetRunStatus.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunStatusRequest`
@@ -349,7 +349,7 @@ class OmicsClient(AbstractClient):
 
 
     def ImportTableFile(self, request):
-        """This API is used to import the table file.
+        r"""This API is used to import the table file.
 
         :param request: Request instance for ImportTableFile.
         :type request: :class:`tencentcloud.omics.v20221128.models.ImportTableFileRequest`
@@ -372,7 +372,7 @@ class OmicsClient(AbstractClient):
 
 
     def ModifyVolume(self, request):
-        """This API is used to modify the volume.
+        r"""This API is used to modify the volume.
 
         :param request: Request instance for ModifyVolume.
         :type request: :class:`tencentcloud.omics.v20221128.models.ModifyVolumeRequest`
@@ -395,7 +395,7 @@ class OmicsClient(AbstractClient):
 
 
     def RetryRuns(self, request):
-        """This API is used to retry the run.
+        r"""This API is used to retry the run.
 
         :param request: Request instance for RetryRuns.
         :type request: :class:`tencentcloud.omics.v20221128.models.RetryRunsRequest`
@@ -418,7 +418,7 @@ class OmicsClient(AbstractClient):
 
 
     def RunApplication(self, request):
-        """This API is used to run the application.
+        r"""This API is used to run the application.
 
         :param request: Request instance for RunApplication.
         :type request: :class:`tencentcloud.omics.v20221128.models.RunApplicationRequest`
@@ -441,7 +441,7 @@ class OmicsClient(AbstractClient):
 
 
     def RunWorkflow(self, request):
-        """This API is used to run the workflow.
+        r"""This API is used to run the workflow.
 
         :param request: Request instance for RunWorkflow.
         :type request: :class:`tencentcloud.omics.v20221128.models.RunWorkflowRequest`
@@ -464,7 +464,7 @@ class OmicsClient(AbstractClient):
 
 
     def TerminateRunGroup(self, request):
-        """This API is used to terminate the run group.
+        r"""This API is used to terminate the run group.
 
         :param request: Request instance for TerminateRunGroup.
         :type request: :class:`tencentcloud.omics.v20221128.models.TerminateRunGroupRequest`

@@ -27,7 +27,7 @@ class MongodbClient(AbstractClient):
 
 
     def AssignProject(self, request):
-        """This API is used to specify the project of a TencentDB for MongoDB instance.
+        r"""This API is used to specify the project of a TencentDB for MongoDB instance.
 
         :param request: Request instance for AssignProject.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.AssignProjectRequest`
@@ -50,7 +50,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateBackupDBInstance(self, request):
-        """This API is used to back up an instance.
+        r"""This API is used to back up an instance.
 
         :param request: Request instance for CreateBackupDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateBackupDBInstanceRequest`
@@ -73,7 +73,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateBackupDownloadTask(self, request):
-        """This API is used to create a backup download task.
+        r"""This API is used to create a backup download task.
 
         :param request: Request instance for CreateBackupDownloadTask.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateBackupDownloadTaskRequest`
@@ -96,7 +96,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateDBInstance(self, request):
-        """This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.
+        r"""This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.
 
         :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceRequest`
@@ -119,7 +119,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        """This API is used to create a pay-as-you-go TencentDB for MongoDB instance.
+        r"""This API is used to create a pay-as-you-go TencentDB for MongoDB instance.
 
         :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceHourRequest`
@@ -142,7 +142,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeAsyncRequestInfo(self, request):
-        """This API is used to query the asynchronous task status.
+        r"""This API is used to query the asynchronous task status.
 
         :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAsyncRequestInfoRequest`
@@ -165,7 +165,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeBackupDownloadTask(self, request):
-        """This API is used to query backup download task information.
+        r"""This API is used to query backup download task information.
 
         :param request: Request instance for DescribeBackupDownloadTask.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupDownloadTaskRequest`
@@ -188,7 +188,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeClientConnections(self, request):
-        """This API is used to query the client connection information on an instance, including the IP address for connection and the number of connections.
+        r"""This API is used to query the client connection information on an instance, including the IP address for connection and the number of connections.
 
         :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsRequest`
@@ -211,7 +211,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBBackups(self, request):
-        """This API is used to query the list of instance backups. Currently, only backups created in the last seven days can be queried.
+        r"""This API is used to query the list of instance backups. Currently, only backups created in the last seven days can be queried.
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBBackupsRequest`
@@ -234,7 +234,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBInstanceDeal(self, request):
-        """This API is used to get order details of purchase, renewal, and specification adjustment of a MongoDB instance.
+        r"""This API is used to get order details of purchase, renewal, and specification adjustment of a MongoDB instance.
 
         :param request: Request instance for DescribeDBInstanceDeal.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceDealRequest`
@@ -257,7 +257,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBInstanceNamespace(self, request):
-        """This API is used to query the table information on a database.
+        r"""This API is used to query the table information on a database.
 
         :param request: Request instance for DescribeDBInstanceNamespace.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceNamespaceRequest`
@@ -280,7 +280,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """This API is used to query the list of TencentDB for MongoDB instances. It supports filtering primary instances, disaster recovery instances, and read-only instances by project ID, instance ID, instance status, and other conditions.
+        r"""This API is used to query the list of TencentDB for MongoDB instances. It supports filtering primary instances, disaster recovery instances, and read-only instances by project ID, instance ID, instance status, and other conditions.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstancesRequest`
@@ -303,7 +303,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API is used to query the list of parameters that can be modified for the current instance.
+        r"""This API is used to query the list of parameters that can be modified for the current instance.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceParamsRequest`
@@ -326,7 +326,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeSecurityGroup(self, request):
-        """This API is used to query security groups bound to an instance.
+        r"""This API is used to query security groups bound to an instance.
 
         :param request: Request instance for DescribeSecurityGroup.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupRequest`
@@ -349,7 +349,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeSlowLogPatterns(self, request):
-        """This API is used to get the slow log statistics of a database instance.
+        r"""This API is used to get the slow log statistics of a database instance.
 
         :param request: Request instance for DescribeSlowLogPatterns.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogPatternsRequest`
@@ -372,7 +372,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried.
+        r"""This API is used to get the slow log information of a TencentDB instance. Only slow logs for the last 7 days can be queried.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogsRequest`
@@ -395,7 +395,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeSpecInfo(self, request):
-        """This API is used to query the purchasable instance specifications.
+        r"""This API is used to query the purchasable instance specifications.
 
         :param request: Request instance for DescribeSpecInfo.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSpecInfoRequest`
@@ -418,7 +418,7 @@ class MongodbClient(AbstractClient):
 
 
     def FlushInstanceRouterConfig(self, request):
-        """This API is used to run the `FlushRouterConfig` command on all mongos instances.
+        r"""This API is used to run the `FlushRouterConfig` command on all mongos instances.
 
         :param request: Request instance for FlushInstanceRouterConfig.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.FlushInstanceRouterConfigRequest`
@@ -441,7 +441,7 @@ class MongodbClient(AbstractClient):
 
 
     def InquirePriceCreateDBInstances(self, request):
-        """This API is used to query price of instance creation. The `region` parameter must be passed in this API, otherwise verification will fail. This API allows queries only for purchasable instance specifications.
+        r"""This API is used to query price of instance creation. The `region` parameter must be passed in this API, otherwise verification will fail. This API allows queries only for purchasable instance specifications.
 
         :param request: Request instance for InquirePriceCreateDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceCreateDBInstancesRequest`
@@ -464,7 +464,7 @@ class MongodbClient(AbstractClient):
 
 
     def InquirePriceModifyDBInstanceSpec(self, request):
-        """This API is used to query the price of instance specification adjustment.
+        r"""This API is used to query the price of instance specification adjustment.
 
         :param request: Request instance for InquirePriceModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceModifyDBInstanceSpecRequest`
@@ -487,7 +487,7 @@ class MongodbClient(AbstractClient):
 
 
     def InquirePriceRenewDBInstances(self, request):
-        """This API is used to query the renewal price of a monthly subscription instance.
+        r"""This API is used to query the renewal price of a monthly subscription instance.
 
         :param request: Request instance for InquirePriceRenewDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceRenewDBInstancesRequest`
@@ -510,7 +510,7 @@ class MongodbClient(AbstractClient):
 
 
     def IsolateDBInstance(self, request):
-        """This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. An isolated instance is retained in the recycle bin and data can no longer be written to it. After it is isolated for a certain period of time, it will be completely deleted. For the retention period in the recycle bin, please see the terms of service for pay-as-you-go billing. Isolated pay-as-you-go instances cannot be recovered, so please proceed with caution.
+        r"""This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. An isolated instance is retained in the recycle bin and data can no longer be written to it. After it is isolated for a certain period of time, it will be completely deleted. For the retention period in the recycle bin, please see the terms of service for pay-as-you-go billing. Isolated pay-as-you-go instances cannot be recovered, so please proceed with caution.
 
         :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.IsolateDBInstanceRequest`
@@ -533,7 +533,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceNetworkAddress(self, request):
-        """This API is used to modify the network information on a TencentDB for MongoDB instance. It supports switching from a basic network to a VPC network or from one VPC network to another VPC network.
+        r"""This API is used to modify the network information on a TencentDB for MongoDB instance. It supports switching from a basic network to a VPC network or from one VPC network to another VPC network.
 
         :param request: Request instance for ModifyDBInstanceNetworkAddress.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceNetworkAddressRequest`
@@ -556,7 +556,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroup(self, request):
-        """This API is used to modify security groups bound to an instance.
+        r"""This API is used to modify security groups bound to an instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroup.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSecurityGroupRequest`
@@ -579,7 +579,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """This API is used to adjust the configuration of a TencentDB for MongoDB instance. Saleable specifications supported for this API can be obtained from the DescribeSpecInfo API for querying saleable TencentDB for MongoDB specifications.
+        r"""This API is used to adjust the configuration of a TencentDB for MongoDB instance. Saleable specifications supported for this API can be obtained from the DescribeSpecInfo API for querying saleable TencentDB for MongoDB specifications.
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSpecRequest`
@@ -602,7 +602,7 @@ class MongodbClient(AbstractClient):
 
 
     def OfflineIsolatedDBInstance(self, request):
-        """This API is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status.
+        r"""This API is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status.
 
         :param request: Request instance for OfflineIsolatedDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.OfflineIsolatedDBInstanceRequest`
@@ -625,7 +625,7 @@ class MongodbClient(AbstractClient):
 
 
     def RenameInstance(self, request):
-        """This API is used to rename a TencentDB instance.
+        r"""This API is used to rename a TencentDB instance.
 
         :param request: Request instance for RenameInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.RenameInstanceRequest`
@@ -648,7 +648,7 @@ class MongodbClient(AbstractClient):
 
 
     def RenewDBInstances(self, request):
-        """This API is used to renew a monthly subscription TencentDB instance. Only monthly subscription instances are supported, while pay-as-you-go instances do not need to be renewed.
+        r"""This API is used to renew a monthly subscription TencentDB instance. Only monthly subscription instances are supported, while pay-as-you-go instances do not need to be renewed.
 
         :param request: Request instance for RenewDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.RenewDBInstancesRequest`
@@ -671,7 +671,7 @@ class MongodbClient(AbstractClient):
 
 
     def ResetDBInstancePassword(self, request):
-        """This API is used to modify instance password.
+        r"""This API is used to modify instance password.
 
         :param request: Request instance for ResetDBInstancePassword.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ResetDBInstancePasswordRequest`

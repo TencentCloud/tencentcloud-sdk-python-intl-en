@@ -27,7 +27,7 @@ class VodClient(AbstractClient):
 
 
     def CreateIncrementalMigrationStrategy(self, request):
-        """Create an incremental migration strategy for the storage of the professional application.
+        r"""Create an incremental migration strategy for the storage of the professional application.
 
         :param request: Request instance for CreateIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.CreateIncrementalMigrationStrategyRequest`
@@ -50,7 +50,7 @@ class VodClient(AbstractClient):
 
 
     def CreateStorage(self, request):
-        """This API is used to create storage for professional applications.
+        r"""This API is used to create storage for professional applications.
 
         Note:
         - This API is exclusively for professional applications.
@@ -78,7 +78,7 @@ class VodClient(AbstractClient):
 
 
     def CreateStorageCredentials(self, request):
-        """The API is used to generate access credentials for VOD professional applications, such as generating credentials for client uploads.
+        r"""The API is used to generate access credentials for VOD professional applications, such as generating credentials for client uploads.
 
         :param request: Request instance for CreateStorageCredentials.
         :type request: :class:`tencentcloud.vod.v20240718.models.CreateStorageCredentialsRequest`
@@ -101,7 +101,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteIncrementalMigrationStrategy(self, request):
-        """Delete the incremental migration strategy.
+        r"""Delete the incremental migration strategy.
 
         :param request: Request instance for DeleteIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.DeleteIncrementalMigrationStrategyRequest`
@@ -124,7 +124,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeIncrementalMigrationStrategyInfos(self, request):
-        """Describe the information of the incremental migration strategy.
+        r"""Describe the information of the incremental migration strategy.
 
         :param request: Request instance for DescribeIncrementalMigrationStrategyInfos.
         :type request: :class:`tencentcloud.vod.v20240718.models.DescribeIncrementalMigrationStrategyInfosRequest`
@@ -147,7 +147,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeStorage(self, request):
-        """This API is used to query bucket information in the professional application, and it also supports paginated queries.
+        r"""This API is used to query bucket information in the professional application, and it also supports paginated queries.
         Note:
         - This API is exclusively for use in the professional application.
 
@@ -172,7 +172,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyIncrementalMigrationStrategy(self, request):
-        """Modify the information of incremental migration strategy.
+        r"""Modify the information of incremental migration strategy.
 
         :param request: Request instance for ModifyIncrementalMigrationStrategy.
         :type request: :class:`tencentcloud.vod.v20240718.models.ModifyIncrementalMigrationStrategyRequest`

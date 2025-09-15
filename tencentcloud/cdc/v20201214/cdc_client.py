@@ -27,7 +27,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateDedicatedCluster(self, request):
-        """This API is used to create a CDC.
+        r"""This API is used to create a CDC.
 
         :param request: Request instance for CreateDedicatedCluster.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterRequest`
@@ -50,7 +50,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateDedicatedClusterOrder(self, request):
-        """This API is used to create a CDC order.
+        r"""This API is used to create a CDC order.
 
         :param request: Request instance for CreateDedicatedClusterOrder.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterOrderRequest`
@@ -73,7 +73,7 @@ class CdcClient(AbstractClient):
 
 
     def CreateSite(self, request):
-        """This API is used to create a site.
+        r"""This API is used to create a site.
 
         :param request: Request instance for CreateSite.
         :type request: :class:`tencentcloud.cdc.v20201214.models.CreateSiteRequest`
@@ -96,7 +96,7 @@ class CdcClient(AbstractClient):
 
 
     def DeleteDedicatedClusters(self, request):
-        """This API is used to delete a CDC.
+        r"""This API is used to delete a CDC.
 
         :param request: Request instance for DeleteDedicatedClusters.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClustersRequest`
@@ -119,7 +119,7 @@ class CdcClient(AbstractClient):
 
 
     def DeleteSites(self, request):
-        """This API is used to delete a site.
+        r"""This API is used to delete a site.
 
         :param request: Request instance for DeleteSites.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteSitesRequest`
@@ -142,7 +142,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterCosCapacity(self, request):
-        """This API is used to query the Cloud Object Storage (COS) capacity of the CDC.
+        r"""This API is used to query the Cloud Object Storage (COS) capacity of the CDC.
 
         :param request: Request instance for DescribeDedicatedClusterCosCapacity.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCosCapacityRequest`
@@ -165,7 +165,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterHostStatistics(self, request):
-        """This API is used to query the statistic information of the host in the CDC.
+        r"""This API is used to query the statistic information of the host in the CDC.
 
         :param request: Request instance for DescribeDedicatedClusterHostStatistics.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostStatisticsRequest`
@@ -188,7 +188,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterHosts(self, request):
-        """This API is used to query host information of the CDC
+        r"""This API is used to query host information of the CDC
 
         :param request: Request instance for DescribeDedicatedClusterHosts.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostsRequest`
@@ -211,7 +211,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterInstanceTypes(self, request):
-        """This API is used to query instance types supported by the CDC.
+        r"""This API is used to query instance types supported by the CDC.
 
         :param request: Request instance for DescribeDedicatedClusterInstanceTypes.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterInstanceTypesRequest`
@@ -234,7 +234,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterOrders(self, request):
-        """This API is used to query the list of CDC orders.
+        r"""This API is used to query the list of CDC orders.
 
         :param request: Request instance for DescribeDedicatedClusterOrders.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOrdersRequest`
@@ -257,7 +257,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterOverview(self, request):
-        """This API is used to query the overview of the CDC
+        r"""This API is used to query the overview of the CDC
 
         :param request: Request instance for DescribeDedicatedClusterOverview.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOverviewRequest`
@@ -280,7 +280,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterTypes(self, request):
-        """This API is used to query the configuration list of the CDC.
+        r"""This API is used to query the configuration list of the CDC.
 
         :param request: Request instance for DescribeDedicatedClusterTypes.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterTypesRequest`
@@ -303,7 +303,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusters(self, request):
-        """This API is used to query the CDC list.
+        r"""This API is used to query the CDC list.
 
         :param request: Request instance for DescribeDedicatedClusters.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClustersRequest`
@@ -326,7 +326,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedSupportedZones(self, request):
-        """This API is used to query the list of AZs supported by the CDC.
+        r"""This API is used to query the list of AZs supported by the CDC.
 
         :param request: Request instance for DescribeDedicatedSupportedZones.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedSupportedZonesRequest`
@@ -349,7 +349,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeSites(self, request):
-        """This API is used to query the site list.
+        r"""This API is used to query the site list.
 
         :param request: Request instance for DescribeSites.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesRequest`
@@ -372,7 +372,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeSitesDetail(self, request):
-        """This API is used to query site details.
+        r"""This API is used to query site details.
 
         :param request: Request instance for DescribeSitesDetail.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesDetailRequest`
@@ -395,7 +395,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifyDedicatedClusterInfo(self, request):
-        """This API is used to modify the CDC information.
+        r"""This API is used to modify the CDC information.
 
         :param request: Request instance for ModifyDedicatedClusterInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyDedicatedClusterInfoRequest`
@@ -418,7 +418,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifyOrderStatus(self, request):
-        """This API is used to modify the status of large and small orders.
+        r"""This API is used to modify the status of large and small orders.
 
         :param request: Request instance for ModifyOrderStatus.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyOrderStatusRequest`
@@ -441,7 +441,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifySiteDeviceInfo(self, request):
-        """This API is used to modify the information about devices in the equipment room.
+        r"""This API is used to modify the information about devices in the equipment room.
 
         :param request: Request instance for ModifySiteDeviceInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteDeviceInfoRequest`
@@ -464,7 +464,7 @@ class CdcClient(AbstractClient):
 
 
     def ModifySiteInfo(self, request):
-        """This API is used to modify the equipment room information.
+        r"""This API is used to modify the equipment room information.
 
         :param request: Request instance for ModifySiteInfo.
         :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteInfoRequest`

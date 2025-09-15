@@ -27,7 +27,7 @@ class DbbrainClient(AbstractClient):
 
 
     def AddUserContact(self, request):
-        """This API is used to add the contact name and email.. The return value is the successfully added contact ID. Select Guangzhou for Region.
+        r"""This API is used to add the contact name and email.. The return value is the successfully added contact ID. Select Guangzhou for Region.
 
         :param request: Request instance for AddUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactRequest`
@@ -50,7 +50,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportTask(self, request):
-        """This API is used to create a health report and send it via email as configured.
+        r"""This API is used to create a health report and send it via email as configured.
 
         :param request: Request instance for CreateDBDiagReportTask.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskRequest`
@@ -73,7 +73,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportUrl(self, request):
-        """This API is used to create a URL for a health report.
+        r"""This API is used to create a URL for a health report.
 
         :param request: Request instance for CreateDBDiagReportUrl.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportUrlRequest`
@@ -96,7 +96,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateMailProfile(self, request):
-        """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of regularly generated health report). Select Guangzhou for Region, regardless of the region where the instance belongs.
+        r"""This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of regularly generated health report). Select Guangzhou for Region, regardless of the region where the instance belongs.
 
         :param request: Request instance for CreateMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
@@ -119,7 +119,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateSchedulerMailProfile(self, request):
-        """This API is used to create the regular generation time of the health reports and the regular email sending configuration. Pass in the regular generation time of the health reports as a parameter (Monday to Sunday) to set the regular generation time of the health reports, and save the corresponding regular email sending configuration.
+        r"""This API is used to create the regular generation time of the health reports and the regular email sending configuration. Pass in the regular generation time of the health reports as a parameter (Monday to Sunday) to set the regular generation time of the health reports, and save the corresponding regular email sending configuration.
 
         :param request: Request instance for CreateSchedulerMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileRequest`
@@ -142,7 +142,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserContact(self, request):
-        """This API is used to obtain the information of the contact in the email.
+        r"""This API is used to obtain the information of the contact in the email.
 
         :param request: Request instance for DescribeAllUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactRequest`
@@ -165,7 +165,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserGroup(self, request):
-        """This API is used to obtain the information of the contact group in the email.
+        r"""This API is used to obtain the information of the contact group in the email.
 
         :param request: Request instance for DescribeAllUserGroup.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupRequest`
@@ -188,7 +188,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagEvent(self, request):
-        """This API is used to get the details of an instance exception diagnosis event.
+        r"""This API is used to get the details of an instance exception diagnosis event.
 
         :param request: Request instance for DescribeDBDiagEvent.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventRequest`
@@ -211,7 +211,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagHistory(self, request):
-        """This API is used to get the list of instance diagnosis events.
+        r"""This API is used to get the list of instance diagnosis events.
 
         :param request: Request instance for DescribeDBDiagHistory.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryRequest`
@@ -234,7 +234,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagReportTasks(self, request):
-        """This API is used to query the list of health report generation tasks.
+        r"""This API is used to query the list of health report generation tasks.
 
         :param request: Request instance for DescribeDBDiagReportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagReportTasksRequest`
@@ -257,7 +257,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBSpaceStatus(self, request):
-        """This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.
+        r"""This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.
 
         :param request: Request instance for DescribeDBSpaceStatus.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBSpaceStatusRequest`
@@ -280,7 +280,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDiagDBInstances(self, request):
-        """This API is used to obtain the instance information list. Select Guangzhou for Region.
+        r"""This API is used to obtain the instance information list. Select Guangzhou for Region.
 
         :param request: Request instance for DescribeDiagDBInstances.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesRequest`
@@ -303,7 +303,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeHealthScore(self, request):
-        """This API is used to obtain the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.
+        r"""This API is used to obtain the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.
 
         :param request: Request instance for DescribeHealthScore.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreRequest`
@@ -326,7 +326,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMailProfile(self, request):
-        """This API is used to obtain the email sending configurations, including the email configuration for database inspection and the email sending configuration for regularly generated health reports. Select Guangzhou for Region.
+        r"""This API is used to obtain the email sending configurations, including the email configuration for database inspection and the email sending configuration for regularly generated health reports. Select Guangzhou for Region.
 
         :param request: Request instance for DescribeMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileRequest`
@@ -349,7 +349,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTimeSeriesStats(self, request):
-        """This API is used to get the slow log statistics histogram.
+        r"""This API is used to get the slow log statistics histogram.
 
         :param request: Request instance for DescribeSlowLogTimeSeriesStats.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsRequest`
@@ -372,7 +372,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTopSqls(self, request):
-        """This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.
+        r"""This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.
 
         :param request: Request instance for DescribeSlowLogTopSqls.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsRequest`
@@ -395,7 +395,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogUserHostStats(self, request):
-        """This API is used to obtain the statistical distribution chart of slow log source addresses.
+        r"""This API is used to obtain the statistical distribution chart of slow log source addresses.
 
         :param request: Request instance for DescribeSlowLogUserHostStats.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogUserHostStatsRequest`
@@ -418,7 +418,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemaTimeSeries(self, request):
-        """This API is used to query the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
+        r"""This API is used to query the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceSchemaTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemaTimeSeriesRequest`
@@ -441,7 +441,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemas(self, request):
-        """This API is used to query real-time space statistics of top databases. The return results are sorted by size by default.
+        r"""This API is used to query real-time space statistics of top databases. The return results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceSchemas.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceSchemasRequest`
@@ -464,7 +464,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTableTimeSeries(self, request):
-        """This API is used to query the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
+        r"""This API is used to query the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The return results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceTableTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTableTimeSeriesRequest`
@@ -487,7 +487,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTables(self, request):
-        """This API is used to query real-time space statistics of top tables of an instance. The return results are sorted by size by default.
+        r"""This API is used to query real-time space statistics of top tables of an instance. The return results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceTables.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTablesRequest`
@@ -510,7 +510,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeUserSqlAdvice(self, request):
-        """This API is used to obtain SQL statement optimization suggestions.
+        r"""This API is used to obtain SQL statement optimization suggestions.
 
         :param request: Request instance for DescribeUserSqlAdvice.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceRequest`
@@ -533,7 +533,7 @@ class DbbrainClient(AbstractClient):
 
 
     def ModifyDiagDBInstanceConf(self, request):
-        """This API is used to enable/disable instance inspection.
+        r"""This API is used to enable/disable instance inspection.
 
         :param request: Request instance for ModifyDiagDBInstanceConf.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfRequest`

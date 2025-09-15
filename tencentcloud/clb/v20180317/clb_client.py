@@ -27,7 +27,7 @@ class ClbClient(AbstractClient):
 
 
     def AssociateTargetGroups(self, request):
-        """This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).
+        r"""This API is used to bind target groups to CLB listeners (layer-4 protocol) or forwarding rules (layer-7 protocol).
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for AssociateTargetGroups.
@@ -51,7 +51,7 @@ class ClbClient(AbstractClient):
 
 
     def AutoRewrite(self, request):
-        """An HTTPS:443 listener needs to be created first, along with a forwarding rule. When this API is called, an HTTP:80 listener will be created automatically if it did not exist and a forwarding rule corresponding to `Domains` (specified in the input parameter) under the HTTPS:443 listener will also be created. After successful creation, access requests to an HTTP:80 address will be redirected to an HTTPS:443 address automatically.
+        r"""An HTTPS:443 listener needs to be created first, along with a forwarding rule. When this API is called, an HTTP:80 listener will be created automatically if it did not exist and a forwarding rule corresponding to `Domains` (specified in the input parameter) under the HTTPS:443 listener will also be created. After successful creation, access requests to an HTTP:80 address will be redirected to an HTTPS:443 address automatically.
 
         :param request: Request instance for AutoRewrite.
         :type request: :class:`tencentcloud.clb.v20180317.models.AutoRewriteRequest`
@@ -74,7 +74,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchDeregisterTargets(self, request):
-        """This API is used to batch unbind real servers of the layer-4 and layer-7 VPC-based CLBs. Up to 500 real servers can be unbound in a batch.
+        r"""This API is used to batch unbind real servers of the layer-4 and layer-7 VPC-based CLBs. Up to 500 real servers can be unbound in a batch.
 
         :param request: Request instance for BatchDeregisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchDeregisterTargetsRequest`
@@ -97,7 +97,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchModifyTargetTag(self, request):
-        """This API is used to modify the tags of real servers bound to CLB listeners in batches. The maximum number of resources that can be modified in a batch is 500. This is a synchronous API. <br/> It is supported for Layer-4 and Layer-7 listeners of CLB instances, but not for classic CLB instances.
+        r"""This API is used to modify the tags of real servers bound to CLB listeners in batches. The maximum number of resources that can be modified in a batch is 500. This is a synchronous API. <br/> It is supported for Layer-4 and Layer-7 listeners of CLB instances, but not for classic CLB instances.
 
         :param request: Request instance for BatchModifyTargetTag.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetTagRequest`
@@ -120,7 +120,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchModifyTargetWeight(self, request):
-        """This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.
+        r"""This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.
 
         :param request: Request instance for BatchModifyTargetWeight.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightRequest`
@@ -143,7 +143,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchRegisterTargets(self, request):
-        """This API is used to batch bind CVM instances or ENIs. Up to 500 servers can be bound in a batch. It supports cross-region binding, layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols, and VPC-based CLBs only.
+        r"""This API is used to batch bind CVM instances or ENIs. Up to 500 servers can be bound in a batch. It supports cross-region binding, layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols, and VPC-based CLBs only.
 
         :param request: Request instance for BatchRegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsRequest`
@@ -166,7 +166,7 @@ class ClbClient(AbstractClient):
 
 
     def CloneLoadBalancer(self, request):
-        """This API is used to clone a CLB instance. CLB instance cloning indicates copying a specified CLB instance to create one with the same rules and binding relationships. The operation of this cloning API is asynchronous. The cloned data is based on the state when CloneLoadBalancer is called. If the cloned CLB instance changes after CloneLoadBalancer is called, the changed rules will not be cloned.Note: You can query the instance creation status by calling the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned requestId.RestrictionsInstance attribute restrictions:- Instances billed in pay-as-you-go and monthly subscription modes can be cloned. For a new instance cloned from a monthly subscription instance, its network billing mode will switch to billing by hourly bandwidth, but its bandwidth and specifications will remain the same as the settings of the original instance.- CLB instances not associated with any billable items cannot be cloned.- Classic CLB instances and CLB instances with Anti-DDoS Pro cannot be cloned.- Classic network-based instances cannot be cloned.- Anycast instances cannot be cloned.- IPv6 NAT64 instances cannot be cloned.- Blocked or frozen instances cannot be cloned.- Before cloning an instance, make sure that all certificates used on the instance have not expired; otherwise, the cloning will fail.Quota restrictions:- Instances with more than 50 listeners cannot be cloned.- Shared instances with the public network bandwidth cap exceeding 2 Gbps cannot be cloned.API calling restrictions:The bandwidth package ID must be input for BGP bandwidth packages.Corresponding parameters should be input for cloning of an exclusive cluster; otherwise, a shared instance will be created.The feature is in beta test. You can submit a [beta test application](https://intl.cloud.tencent.com/apply/p/1akuvsmyn0g?from_cn_redirect=1).
+        r"""This API is used to clone a CLB instance. CLB instance cloning indicates copying a specified CLB instance to create one with the same rules and binding relationships. The operation of this cloning API is asynchronous. The cloned data is based on the state when CloneLoadBalancer is called. If the cloned CLB instance changes after CloneLoadBalancer is called, the changed rules will not be cloned.Note: You can query the instance creation status by calling the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned requestId.RestrictionsInstance attribute restrictions:- Instances billed in pay-as-you-go and monthly subscription modes can be cloned. For a new instance cloned from a monthly subscription instance, its network billing mode will switch to billing by hourly bandwidth, but its bandwidth and specifications will remain the same as the settings of the original instance.- CLB instances not associated with any billable items cannot be cloned.- Classic CLB instances and CLB instances with Anti-DDoS Pro cannot be cloned.- Classic network-based instances cannot be cloned.- Anycast instances cannot be cloned.- IPv6 NAT64 instances cannot be cloned.- Blocked or frozen instances cannot be cloned.- Before cloning an instance, make sure that all certificates used on the instance have not expired; otherwise, the cloning will fail.Quota restrictions:- Instances with more than 50 listeners cannot be cloned.- Shared instances with the public network bandwidth cap exceeding 2 Gbps cannot be cloned.API calling restrictions:The bandwidth package ID must be input for BGP bandwidth packages.Corresponding parameters should be input for cloning of an exclusive cluster; otherwise, a shared instance will be created.The feature is in beta test. You can submit a [beta test application](https://intl.cloud.tencent.com/apply/p/1akuvsmyn0g?from_cn_redirect=1).
 
         :param request: Request instance for CloneLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerRequest`
@@ -189,7 +189,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateClsLogSet(self, request):
-        """This API is used to create a CLB exclusive logset for storing CLB logs.
+        r"""This API is used to create a CLB exclusive logset for storing CLB logs.
 
         :param request: Request instance for CreateClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetRequest`
@@ -212,7 +212,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateListener(self, request):
-        """This API is used to create a listener for a CLB instance.
+        r"""This API is used to create a listener for a CLB instance.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for CreateListener.
@@ -236,7 +236,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        """This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.
+        r"""This API (CreateLoadBalancer) is used to create a CLB instance. To use the CLB service, you first need to purchase one or more instances. After this API is called successfully, a unique instance ID will be returned. There are two types of instances: public network and private network. For more information, see the product types in the product documentation.
         Note: (1) To apply for a CLB instance in the specified AZ and cross-AZ disaster recovery, please [submit a ticket](https://console.cloud.tencent.com/workorder/category); (2) Currently, IPv6 is supported only in Beijing, Shanghai, and Guangzhou regions.
         This is an async API. After it is returned successfully, you can call the DescribeLoadBalancers API to query the status of the instance (such as creating and normal) to check whether it is successfully created.
 
@@ -261,7 +261,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateLoadBalancerSnatIps(self, request):
-        """This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
+        r"""This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.
         This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
@@ -285,7 +285,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API (CreateRule) is used to create a forwarding rule under an existing layer-7 CLB listener, where real servers must be bound to the rule instead of the listener.
+        r"""This API (CreateRule) is used to create a forwarding rule under an existing layer-7 CLB listener, where real servers must be bound to the rule instead of the listener.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for CreateRule.
@@ -309,7 +309,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateTargetGroup(self, request):
-        """This API is used to create a target group. This feature is in beta test, if you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).
+        r"""This API is used to create a target group. This feature is in beta test, if you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).
 
         :param request: Request instance for CreateTargetGroup.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupRequest`
@@ -332,7 +332,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """This API is used to create a topic with the full-text index and key-value index enabled by default. The creation will fail if there is no CLB exclusive logset.
+        r"""This API is used to create a topic with the full-text index and key-value index enabled by default. The creation will fail if there is no CLB exclusive logset.
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateTopicRequest`
@@ -355,7 +355,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteListener(self, request):
-        """This API is used to delete a listener from a CLB instance (layer-4 or layer-7).
+        r"""This API is used to delete a listener from a CLB instance (layer-4 or layer-7).
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteListener.
@@ -379,7 +379,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteLoadBalancer(self, request):
-        """This API (DeleteLoadBalancer) is used to delete one or more specified CLB instances.
+        r"""This API (DeleteLoadBalancer) is used to delete one or more specified CLB instances.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteLoadBalancer.
@@ -403,7 +403,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteLoadBalancerListeners(self, request):
-        """This API is used to delete multiple listeners of a CLB instance.
+        r"""This API is used to delete multiple listeners of a CLB instance.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteLoadBalancerListeners.
@@ -427,7 +427,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteLoadBalancerSnatIps(self, request):
-        """This API is used to delete the SNAT IP for an SnatPro CLB instance.
+        r"""This API is used to delete the SNAT IP for an SnatPro CLB instance.
         This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
@@ -451,7 +451,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteRewrite(self, request):
-        """This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules.
+        r"""This API (DeleteRewrite) is used to delete the redirection relationship between the specified forwarding rules.
 
         :param request: Request instance for DeleteRewrite.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRewriteRequest`
@@ -474,7 +474,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener
+        r"""This API (DeleteRule) is used to delete a forwarding rule under a layer-7 CLB instance listener
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteRule.
@@ -498,7 +498,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteTargetGroups(self, request):
-        """This API is used to delete a target group.
+        r"""This API is used to delete a target group.
 
         :param request: Request instance for DeleteTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsRequest`
@@ -521,7 +521,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterFunctionTargets(self, request):
-        """This API is used to unbind a SCF function with a CLB forwarding rule. For L7 listeners, you need to specify the forwarding rule by using `LocationId` or `Domain+Url`.
+        r"""This API is used to unbind a SCF function with a CLB forwarding rule. For L7 listeners, you need to specify the forwarding rule by using `LocationId` or `Domain+Url`.
         This is an async API. After it is returned successfully, you can call the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID to check whether this task is successful.
         <br/>Limits:
 
@@ -555,7 +555,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetGroupInstances(self, request):
-        """This API is used to unbind a server from a target group.
+        r"""This API is used to unbind a server from a target group.
         This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetGroupInstances.
@@ -579,7 +579,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargets(self, request):
-        """This API (DeregisterTargets) is used to unbind one or more real servers from a CLB listener or forwarding rule. For layer-4 listeners, only the listener ID needs to be specified. For layer-7 listeners, the forwarding rule also needs to be specified through LocationId or Domain+Url.
+        r"""This API (DeregisterTargets) is used to unbind one or more real servers from a CLB listener or forwarding rule. For layer-4 listeners, only the listener ID needs to be specified. For layer-7 listeners, the forwarding rule also needs to be specified through LocationId or Domain+Url.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargets.
@@ -603,7 +603,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetsFromClassicalLB(self, request):
-        """This API is used to unbind a CLB real server. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
+        r"""This API is used to unbind a CLB real server. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetsFromClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBRequest`
@@ -626,7 +626,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeBlockIPList(self, request):
-        """This API is used to query the list of blocked IPs (blocklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)
+        r"""This API is used to query the list of blocked IPs (blocklist) of a CLB instance. (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for DescribeBlockIPList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListRequest`
@@ -649,7 +649,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeBlockIPTask(self, request):
-        """This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)
+        r"""This API is used to query the execution status of an async IP blocking (blocklisting) task by the async task ID returned by the `ModifyBlockIPList` API. (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for DescribeBlockIPTask.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskRequest`
@@ -672,7 +672,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBByInstanceId(self, request):
-        """This API is used to get the list of classic CLB instance IDs through a real server ID.
+        r"""This API is used to get the list of classic CLB instance IDs through a real server ID.
 
         :param request: Request instance for DescribeClassicalLBByInstanceId.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdRequest`
@@ -695,7 +695,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBHealthStatus(self, request):
-        """This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB
+        r"""This API (DescribeClassicalLBHealthStatus) is used to get the real server health status of a classic CLB
 
         :param request: Request instance for DescribeClassicalLBHealthStatus.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBHealthStatusRequest`
@@ -718,7 +718,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBListeners(self, request):
-        """This API (DescribeClassicalLBListeners) is used to get the listener information of a classic CLB.
+        r"""This API (DescribeClassicalLBListeners) is used to get the listener information of a classic CLB.
 
         :param request: Request instance for DescribeClassicalLBListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBListenersRequest`
@@ -741,7 +741,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBTargets(self, request):
-        """This API is used to get the real servers bound to a classic CLB instance.
+        r"""This API is used to get the real servers bound to a classic CLB instance.
 
         :param request: Request instance for DescribeClassicalLBTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsRequest`
@@ -764,7 +764,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClsLogSet(self, request):
-        """This API is used to get the CLB exclusive logset.
+        r"""This API is used to get the CLB exclusive logset.
 
         :param request: Request instance for DescribeClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
@@ -787,7 +787,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeCrossTargets(self, request):
-        """Queries information of CVMs and ENIs that use cross-region binding 2.0
+        r"""Queries information of CVMs and ENIs that use cross-region binding 2.0
 
         :param request: Request instance for DescribeCrossTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCrossTargetsRequest`
@@ -810,7 +810,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeCustomizedConfigAssociateList(self, request):
-        """This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.
+        r"""This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.
 
         :param request: Request instance for DescribeCustomizedConfigAssociateList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigAssociateListRequest`
@@ -833,7 +833,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeCustomizedConfigList(self, request):
-        """This API is used to pull custom configuration lists to return the user configuration of `AppId`.
+        r"""This API is used to pull custom configuration lists to return the user configuration of `AppId`.
 
         :param request: Request instance for DescribeCustomizedConfigList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigListRequest`
@@ -856,7 +856,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeIdleLoadBalancers(self, request):
-        """Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers.
+        r"""Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers.
 
         :param request: Request instance for DescribeIdleLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeIdleLoadBalancersRequest`
@@ -879,7 +879,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLBListeners(self, request):
-        """This API is used to query CLB instances bound to the CVM or ENI.
+        r"""This API is used to query CLB instances bound to the CVM or ENI.
 
         :param request: Request instance for DescribeLBListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLBListenersRequest`
@@ -902,7 +902,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeListeners(self, request):
-        """This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.
+        r"""This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.
 
         :param request: Request instance for DescribeListeners.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeListenersRequest`
@@ -925,7 +925,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancerListByCertId(self, request):
-        """This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID.
+        r"""This API is used to query the list of CLB instances associated with a certificate in a region by certificate ID.
 
         :param request: Request instance for DescribeLoadBalancerListByCertId.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerListByCertIdRequest`
@@ -948,7 +948,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancerOverview(self, request):
-        """Queries the total number of CLB instances and the number of CLB instances in different status (running, isolated and about to expire).
+        r"""Queries the total number of CLB instances and the number of CLB instances in different status (running, isolated and about to expire).
 
         :param request: Request instance for DescribeLoadBalancerOverview.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerOverviewRequest`
@@ -971,7 +971,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancerTraffic(self, request):
-        """This API is used to query CLB instances with high traffic under the current account, and return the top 10 results. For queries using a sub-account, only the CLB instances authorized to the sub-account will be returned.
+        r"""This API is used to query CLB instances with high traffic under the current account, and return the top 10 results. For queries using a sub-account, only the CLB instances authorized to the sub-account will be returned.
 
         :param request: Request instance for DescribeLoadBalancerTraffic.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficRequest`
@@ -994,7 +994,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancers(self, request):
-        """This API is used to query the list of CLB instances in a region.
+        r"""This API is used to query the list of CLB instances in a region.
 
         :param request: Request instance for DescribeLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersRequest`
@@ -1017,7 +1017,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancersDetail(self, request):
-        """This API is used to query CLB instance details, including listener, rules, and target real servers.
+        r"""This API is used to query CLB instance details, including listener, rules, and target real servers.
 
         :param request: Request instance for DescribeLoadBalancersDetail.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersDetailRequest`
@@ -1040,7 +1040,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeQuota(self, request):
-        """This API is used to query various quotas in the current region.
+        r"""This API is used to query various quotas in the current region.
 
         :param request: Request instance for DescribeQuota.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeQuotaRequest`
@@ -1063,7 +1063,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeResources(self, request):
-        """This API is used to query the list of AZs and resources supported for the user in the current region.
+        r"""This API is used to query the list of AZs and resources supported for the user in the current region.
 
         :param request: Request instance for DescribeResources.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeResourcesRequest`
@@ -1086,7 +1086,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeRewrite(self, request):
-        """This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.
+        r"""This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.
 
         :param request: Request instance for DescribeRewrite.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeRewriteRequest`
@@ -1109,7 +1109,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstances(self, request):
-        """This API is used to get the information of servers bound to a target group.
+        r"""This API is used to get the information of servers bound to a target group.
 
         :param request: Request instance for DescribeTargetGroupInstances.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesRequest`
@@ -1132,7 +1132,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroupList(self, request):
-        """This API is used to get the target group list.
+        r"""This API is used to get the target group list.
 
         :param request: Request instance for DescribeTargetGroupList.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListRequest`
@@ -1155,7 +1155,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetGroups(self, request):
-        """This API is used to query the target group information.
+        r"""This API is used to query the target group information.
 
         :param request: Request instance for DescribeTargetGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsRequest`
@@ -1178,7 +1178,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargetHealth(self, request):
-        """This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance.
+        r"""This API (DescribeTargetHealth) is used to query the health check result of a real server of a CLB instance.
 
         :param request: Request instance for DescribeTargetHealth.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetHealthRequest`
@@ -1201,7 +1201,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargets(self, request):
-        """This API (DescribeTargets) is used to query the list of real servers bound to some listeners of a CLB instance.
+        r"""This API (DescribeTargets) is used to query the list of real servers bound to some listeners of a CLB instance.
 
         :param request: Request instance for DescribeTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetsRequest`
@@ -1224,7 +1224,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """This API is used to query the execution status of an async task. After non-query APIs (used to create/delete CLB instances, listeners, or rules or to bind/unbind real servers) are called successfully, this API needs to be used to query whether the task is successful.
+        r"""This API is used to query the execution status of an async task. After non-query APIs (used to create/delete CLB instances, listeners, or rules or to bind/unbind real servers) are called successfully, this API needs to be used to query whether the task is successful.
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTaskStatusRequest`
@@ -1247,7 +1247,7 @@ class ClbClient(AbstractClient):
 
 
     def DisassociateTargetGroups(self, request):
-        """This API is used to unbind target groups from a rule.
+        r"""This API is used to unbind target groups from a rule.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DisassociateTargetGroups.
@@ -1271,7 +1271,7 @@ class ClbClient(AbstractClient):
 
 
     def InquiryPriceCreateLoadBalancer(self, request):
-        """This API is used to query the price of creating a CLB instance.
+        r"""This API is used to query the price of creating a CLB instance.
 
         :param request: Request instance for InquiryPriceCreateLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceCreateLoadBalancerRequest`
@@ -1294,7 +1294,7 @@ class ClbClient(AbstractClient):
 
 
     def InquiryPriceModifyLoadBalancer(self, request):
-        """This API is used to query the price of adjusting the specification of a CLB instance.
+        r"""This API is used to query the price of adjusting the specification of a CLB instance.
 
         :param request: Request instance for InquiryPriceModifyLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceModifyLoadBalancerRequest`
@@ -1317,7 +1317,7 @@ class ClbClient(AbstractClient):
 
 
     def InquiryPriceRefundLoadBalancer(self, request):
-        """This API is used to query the refund amount of returning a CLB instance.
+        r"""This API is used to query the refund amount of returning a CLB instance.
 
         :param request: Request instance for InquiryPriceRefundLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerRequest`
@@ -1340,7 +1340,7 @@ class ClbClient(AbstractClient):
 
 
     def InquiryPriceRenewLoadBalancer(self, request):
-        """This API is used to query the price of renewing a CLB instance. It's only available to prepaid CLB instances.
+        r"""This API is used to query the price of renewing a CLB instance. It's only available to prepaid CLB instances.
 
         :param request: Request instance for InquiryPriceRenewLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRenewLoadBalancerRequest`
@@ -1363,7 +1363,7 @@ class ClbClient(AbstractClient):
 
 
     def ManualRewrite(self, request):
-        """After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.
+        r"""After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.
 
         :param request: Request instance for ManualRewrite.
         :type request: :class:`tencentcloud.clb.v20180317.models.ManualRewriteRequest`
@@ -1386,7 +1386,7 @@ class ClbClient(AbstractClient):
 
 
     def MigrateClassicalLoadBalancers(self, request):
-        """This API is used to upgrade classic CLB instances to application CLB instances.
+        r"""This API is used to upgrade classic CLB instances to application CLB instances.
         This is an async API. After it is returned successfully, you can check the action result by calling `DescribeLoadBalancers`.
 
         :param request: Request instance for MigrateClassicalLoadBalancers.
@@ -1410,7 +1410,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyBlockIPList(self, request):
-        """This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.
+        r"""This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.
         (This API is in beta test. To use it, please submit a ticket.)
 
         :param request: Request instance for ModifyBlockIPList.
@@ -1434,7 +1434,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyDomain(self, request):
-        """This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.
+        r"""This API (ModifyDomain) is used to modify a domain name under a layer-7 CLB listener.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyDomain.
@@ -1458,7 +1458,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyDomainAttributes(self, request):
-        """This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.
+        r"""This API is used to modify the domain name-level attributes of a layer-7 listener's forwarding rule, such as modifying the domain name, changing the DefaultServer, enabling/disabling HTTP/2, and modifying certificates.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyDomainAttributes.
@@ -1482,7 +1482,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyFunctionTargets(self, request):
-        """This API is used to modify the cloud functions associated with a load balancing forwarding rule.
+        r"""This API is used to modify the cloud functions associated with a load balancing forwarding rule.
 
         :param request: Request instance for ModifyFunctionTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsRequest`
@@ -1505,7 +1505,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyListener(self, request):
-        """This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.
+        r"""This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyListener.
@@ -1529,7 +1529,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerAttributes(self, request):
-        """This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.
+        r"""This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.
 
         Note: For CLB instances of bill-by-CVM users, cross-region attributes can be set only after a bandwidth package is purchased.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.
 
@@ -1554,7 +1554,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerSla(self, request):
-        """This API is used to upgrade a pay-as-you-go shared CLB instance to an LCU-supported CLB instance. <br/>
+        r"""This API is used to upgrade a pay-as-you-go shared CLB instance to an LCU-supported CLB instance. <br/>
         Limits
         - This API can only be used to upgrade pay-as-you-go shared instances. To upgrade monthly-subscribed shared instances, please go to the CLB console.
         - An LCU-supported instance cannot be changed back to a shared instance.
@@ -1581,7 +1581,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancersProject(self, request):
-        """This API is used to modify the projects of CLB instances.
+        r"""This API is used to modify the projects of CLB instances.
 
         :param request: Request instance for ModifyLoadBalancersProject.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancersProjectRequest`
@@ -1604,7 +1604,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.
+        r"""This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyRule.
@@ -1628,7 +1628,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupAttribute(self, request):
-        """This API is used to rename a target group or modify its default port attribute.
+        r"""This API is used to rename a target group or modify its default port attribute.
 
         :param request: Request instance for ModifyTargetGroupAttribute.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeRequest`
@@ -1651,7 +1651,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesPort(self, request):
-        """This API is used to modify server ports of a target group in batches.
+        r"""This API is used to modify server ports of a target group in batches.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetGroupInstancesPort.
@@ -1675,7 +1675,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesWeight(self, request):
-        """This API is used to modify server weights of a target group in batches.
+        r"""This API is used to modify server weights of a target group in batches.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetGroupInstancesWeight.
@@ -1699,7 +1699,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetPort(self, request):
-        """This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.
+        r"""This API (ModifyTargetPort) is used to modify the port of a real server bound to a listener.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetPort.
@@ -1723,7 +1723,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetWeight(self, request):
-        """This API (ModifyTargetWeight) is used to modify the forwarding weight of a real server bound to a CLB instance.
+        r"""This API (ModifyTargetWeight) is used to modify the forwarding weight of a real server bound to a CLB instance.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetWeight.
@@ -1747,7 +1747,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterFunctionTargets(self, request):
-        """This API is used to bind an SCF function with the L7 forwarding rule of a CLB instance. Note that you need to create an L7 listener (HTTP, HTTPS) and forwarding rule first.
+        r"""This API is used to bind an SCF function with the L7 forwarding rule of a CLB instance. Note that you need to create an L7 listener (HTTP, HTTPS) and forwarding rule first.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.<br/>
         **Limits:**
         - Binding with SCF is only available in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Mumbai, Tokyo, and Silicon Valley.
@@ -1780,7 +1780,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargetGroupInstances(self, request):
-        """This API is used to register servers to a target group.
+        r"""This API is used to register servers to a target group.
         This is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargetGroupInstances.
@@ -1804,7 +1804,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargets(self, request):
-        """This API (RegisterTargets) is used to bind one or more real servers to a CLB listener or layer-7 forwarding rule. Before using this API, you need to create relevant layer-4 listeners or layer-7 forwarding rules. For the former (TCP/UDP), only the listener ID needs to be specified, while for the latter (HTTP/HTTPS), the forwarding rule also needs to be specified through LocationId or Domain+Url.
+        r"""This API (RegisterTargets) is used to bind one or more real servers to a CLB listener or layer-7 forwarding rule. Before using this API, you need to create relevant layer-4 listeners or layer-7 forwarding rules. For the former (TCP/UDP), only the listener ID needs to be specified, while for the latter (HTTP/HTTPS), the forwarding rule also needs to be specified through LocationId or Domain+Url.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargets.
@@ -1828,7 +1828,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargetsWithClassicalLB(self, request):
-        """This API is used to bind a real server with a classic CLB instance. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
+        r"""This API is used to bind a real server with a classic CLB instance. This is an async API. After it is returned successfully, you can call the API `DescribeTaskStatus` with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargetsWithClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBRequest`
@@ -1851,7 +1851,7 @@ class ClbClient(AbstractClient):
 
 
     def ReplaceCertForLoadBalancers(self, request):
-        """This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.
+        r"""This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.
         This API supports replacing server certificates and client certificates.
         The new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.
         Note: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems.
@@ -1877,7 +1877,7 @@ class ClbClient(AbstractClient):
 
 
     def SetCustomizedConfigForLoadBalancer(self, request):
-        """This API is used to create or manage a user-defined CLB configuration template.
+        r"""This API is used to create or manage a user-defined CLB configuration template.
 
         :param request: Request instance for SetCustomizedConfigForLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetCustomizedConfigForLoadBalancerRequest`
@@ -1900,7 +1900,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerClsLog(self, request):
-        """This API is used to add, delete, and update the CLS topic of a CLB instance.
+        r"""This API is used to add, delete, and update the CLS topic of a CLB instance.
 
         :param request: Request instance for SetLoadBalancerClsLog.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogRequest`
@@ -1923,7 +1923,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerSecurityGroups(self, request):
-        """This API is used to configure (bind and unbind) security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups currently bound to a CLB instance. This API follows the set semantics.For binding operations, the input parameters should specify all security groups that should be bound (have been bound and will be bound) to the CLB instance.For unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.
+        r"""This API is used to configure (bind and unbind) security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups currently bound to a CLB instance. This API follows the set semantics.For binding operations, the input parameters should specify all security groups that should be bound (have been bound and will be bound) to the CLB instance.For unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.
 
         :param request: Request instance for SetLoadBalancerSecurityGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsRequest`
@@ -1946,7 +1946,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerStartStatus(self, request):
-        """This API is used to enable or disable a CLB instance or listener.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.This feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.
+        r"""This API is used to enable or disable a CLB instance or listener.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.This feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.
 
         :param request: Request instance for SetLoadBalancerStartStatus.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerStartStatusRequest`
@@ -1969,7 +1969,7 @@ class ClbClient(AbstractClient):
 
 
     def SetSecurityGroupForLoadbalancers(self, request):
-        """This API is used to bind or unbind a security group for multiple public network CLB instances. Note: Private network CLB do not support binding security groups.
+        r"""This API is used to bind or unbind a security group for multiple public network CLB instances. Note: Private network CLB do not support binding security groups.
 
         :param request: Request instance for SetSecurityGroupForLoadbalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetSecurityGroupForLoadbalancersRequest`

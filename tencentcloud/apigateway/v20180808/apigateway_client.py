@@ -27,7 +27,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def AttachPlugin(self, request):
-        """This API is used to bind a plugin to an API.
+        r"""This API is used to bind a plugin to an API.
 
         :param request: Request instance for AttachPlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.AttachPluginRequest`
@@ -50,7 +50,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindApiApp(self, request):
-        """This API is used to bind an application to an API.
+        r"""This API is used to bind an application to an API.
 
         :param request: Request instance for BindApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.BindApiAppRequest`
@@ -73,7 +73,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindEnvironment(self, request):
-        """This API is used to bind a usage plan to a service or API.
+        r"""This API is used to bind a usage plan to a service or API.
         After you publish a service to an environment, if the API requires authentication and can be called only when it is bound to a usage plan, you can use this API to bind a usage plan to the specified environment.
         Currently, a usage plan can be bound to an API; however, under the same service, usage plans bound to a service and usage plans bound to an API cannot coexist. Therefore, in an environment to which a service-level usage plan has already been bound, please use the `DemoteServiceUsagePlan` API to degrade it.
 
@@ -98,7 +98,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindIPStrategy(self, request):
-        """This API is used to bind an IP policy to an API.
+        r"""This API is used to bind an IP policy to an API.
 
         :param request: Request instance for BindIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.BindIPStrategyRequest`
@@ -121,7 +121,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindSecretIds(self, request):
-        """This API is used to bind a key to a usage plan.
+        r"""This API is used to bind a key to a usage plan.
         You can bind a key to a usage plan and bind the usage plan to an environment where a service is published, so that callers can use the key to call APIs in the service. You can use this API to bind a key to a usage plan.
 
         :param request: Request instance for BindSecretIds.
@@ -145,7 +145,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BindSubDomain(self, request):
-        """This API is used to bind a custom domain name to a service.
+        r"""This API is used to bind a custom domain name to a service.
         Each service in API Gateway provides a default domain name for users to call. If you want to use your own domain name, you can bind a custom domain name to the target service. After getting the ICP filing and configuring the CNAME record between the custom and default domain names, you can directly call the custom domain name.
 
         :param request: Request instance for BindSubDomain.
@@ -169,7 +169,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def BuildAPIDoc(self, request):
-        """This API is used to build an API document.
+        r"""This API is used to build an API document.
 
         :param request: Request instance for BuildAPIDoc.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.BuildAPIDocRequest`
@@ -192,7 +192,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateAPIDoc(self, request):
-        """This API is used to create an API document.
+        r"""This API is used to create an API document.
 
         :param request: Request instance for CreateAPIDoc.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateAPIDocRequest`
@@ -215,7 +215,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateApi(self, request):
-        """This API is used to create an API. Before creating an API, you need to create a service, as each API belongs to a certain service.
+        r"""This API is used to create an API. Before creating an API, you need to create a service, as each API belongs to a certain service.
 
         :param request: Request instance for CreateApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRequest`
@@ -238,7 +238,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateApiApp(self, request):
-        """This API is used to create an application.
+        r"""This API is used to create an application.
 
         :param request: Request instance for CreateApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateApiAppRequest`
@@ -261,7 +261,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateApiKey(self, request):
-        """This API is used to create an API key pair.
+        r"""This API is used to create an API key pair.
 
         :param request: Request instance for CreateApiKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateApiKeyRequest`
@@ -284,7 +284,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateIPStrategy(self, request):
-        """This API is used to create a service IP policy.
+        r"""This API is used to create a service IP policy.
 
         :param request: Request instance for CreateIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateIPStrategyRequest`
@@ -307,7 +307,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreatePlugin(self, request):
-        """This API is used to create an API Gateway plugin.
+        r"""This API is used to create an API Gateway plugin.
 
         :param request: Request instance for CreatePlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreatePluginRequest`
@@ -330,7 +330,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateService(self, request):
-        """This API is used to create a service.
+        r"""This API is used to create a service.
         A service is the biggest usage unit in API Gateway. Each service can contain multiple APIs and one default domain name for invocation. You can also bind your own custom domain name to a service.
 
         :param request: Request instance for CreateService.
@@ -354,7 +354,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateUpstream(self, request):
-        """This API is used to create an upstream.
+        r"""This API is used to create an upstream.
 
         :param request: Request instance for CreateUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamRequest`
@@ -377,7 +377,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateUsagePlan(self, request):
-        """This API is used to create a usage plan.
+        r"""This API is used to create a usage plan.
         To use API Gateway, you need to create a usage plan and bind it to a service environment.
 
         :param request: Request instance for CreateUsagePlan.
@@ -401,7 +401,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteAPIDoc(self, request):
-        """This API is used to delete an API document.
+        r"""This API is used to delete an API document.
 
         :param request: Request instance for DeleteAPIDoc.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteAPIDocRequest`
@@ -424,7 +424,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteApi(self, request):
-        """This API is used to delete a created API.
+        r"""This API is used to delete a created API.
 
         :param request: Request instance for DeleteApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteApiRequest`
@@ -447,7 +447,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteApiApp(self, request):
-        """This API is used to delete a created application.
+        r"""This API is used to delete a created application.
 
         :param request: Request instance for DeleteApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteApiAppRequest`
@@ -470,7 +470,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteApiKey(self, request):
-        """This API is used to delete an API key pair.
+        r"""This API is used to delete an API key pair.
 
         :param request: Request instance for DeleteApiKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteApiKeyRequest`
@@ -493,7 +493,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteIPStrategy(self, request):
-        """This API is used to delete a service IP policy.
+        r"""This API is used to delete a service IP policy.
 
         :param request: Request instance for DeleteIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteIPStrategyRequest`
@@ -516,7 +516,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeletePlugin(self, request):
-        """This API is used to delete an API Gateway plugin.
+        r"""This API is used to delete an API Gateway plugin.
 
         :param request: Request instance for DeletePlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeletePluginRequest`
@@ -539,7 +539,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteService(self, request):
-        """This API is used to delete a service in API Gateway.
+        r"""This API is used to delete a service in API Gateway.
 
         :param request: Request instance for DeleteService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteServiceRequest`
@@ -562,7 +562,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteServiceSubDomainMapping(self, request):
-        """This API is used to delete a custom domain name mapping in a service environment.
+        r"""This API is used to delete a custom domain name mapping in a service environment.
         You can use this API if you use a custom domain name and custom mapping. Please note that if you delete all mappings in all environments, a failure will be returned when this API is called.
 
         :param request: Request instance for DeleteServiceSubDomainMapping.
@@ -586,7 +586,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteUpstream(self, request):
-        """This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with any APIs.
+        r"""This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with any APIs.
 
         :param request: Request instance for DeleteUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamRequest`
@@ -609,7 +609,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteUsagePlan(self, request):
-        """This API is used to delete a usage plan.
+        r"""This API is used to delete a usage plan.
 
         :param request: Request instance for DeleteUsagePlan.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUsagePlanRequest`
@@ -632,7 +632,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DemoteServiceUsagePlan(self, request):
-        """This API is used to degrade a usage plan of a service in an environment to the API level.
+        r"""This API is used to degrade a usage plan of a service in an environment to the API level.
         This operation will be denied if there are no APIs under the service.
         This operation will also be denied if the current environment has not been published.
 
@@ -657,7 +657,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeAPIDocDetail(self, request):
-        """This API is used to query the details of an API document.
+        r"""This API is used to query the details of an API document.
 
         :param request: Request instance for DescribeAPIDocDetail.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocDetailRequest`
@@ -680,7 +680,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeAPIDocs(self, request):
-        """This API is used to query the list of API documents.
+        r"""This API is used to query the list of API documents.
 
         :param request: Request instance for DescribeAPIDocs.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAPIDocsRequest`
@@ -703,7 +703,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeAllPluginApis(self, request):
-        """This API is used to list all APIs that can use this plugin, no matter whether the API is bound with the plugin.
+        r"""This API is used to list all APIs that can use this plugin, no matter whether the API is bound with the plugin.
 
         :param request: Request instance for DescribeAllPluginApis.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAllPluginApisRequest`
@@ -726,7 +726,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApi(self, request):
-        """This API (`DescribeApi`) is used to query the details of the APIs users manage via Tencent Cloud API Gateway.
+        r"""This API (`DescribeApi`) is used to query the details of the APIs users manage via Tencent Cloud API Gateway.
 
         :param request: Request instance for DescribeApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiRequest`
@@ -749,7 +749,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiApp(self, request):
-        """This API is used to search for an application by application ID.
+        r"""This API is used to search for an application by application ID.
 
         :param request: Request instance for DescribeApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppRequest`
@@ -772,7 +772,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiAppBindApisStatus(self, request):
-        """This API is used to query the list of APIs bound to an application.
+        r"""This API is used to query the list of APIs bound to an application.
 
         :param request: Request instance for DescribeApiAppBindApisStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppBindApisStatusRequest`
@@ -795,7 +795,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiAppsStatus(self, request):
-        """This API is used to query the application list.
+        r"""This API is used to query the application list.
 
         :param request: Request instance for DescribeApiAppsStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppsStatusRequest`
@@ -818,7 +818,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiBindApiAppsStatus(self, request):
-        """This API is used to query the list of applications bound to an API.
+        r"""This API is used to query the list of applications bound to an API.
 
         :param request: Request instance for DescribeApiBindApiAppsStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiBindApiAppsStatusRequest`
@@ -841,7 +841,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiEnvironmentStrategy(self, request):
-        """This API is used to display the throttling policies bound to an API.
+        r"""This API is used to display the throttling policies bound to an API.
 
         :param request: Request instance for DescribeApiEnvironmentStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiEnvironmentStrategyRequest`
@@ -864,7 +864,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiForApiApp(self, request):
-        """This API is used to query the details of an API deployed at API Gateway.
+        r"""This API is used to query the details of an API deployed at API Gateway.
 
         :param request: Request instance for DescribeApiForApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiForApiAppRequest`
@@ -887,7 +887,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiKey(self, request):
-        """This API is used to query the details of a key.
+        r"""This API is used to query the details of a key.
         After creating an API key, you can query its details by using this API.
 
         :param request: Request instance for DescribeApiKey.
@@ -911,7 +911,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiKeysStatus(self, request):
-        """This API is used to query the information of one or more API keys.
+        r"""This API is used to query the information of one or more API keys.
 
         :param request: Request instance for DescribeApiKeysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`
@@ -934,7 +934,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApiUsagePlan(self, request):
-        """This API is used to query the details of API usage plans in a service.
+        r"""This API is used to query the details of API usage plans in a service.
         To make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to a service and APIs under it.
 
         :param request: Request instance for DescribeApiUsagePlan.
@@ -958,7 +958,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApisStatus(self, request):
-        """This API is used to view a certain API or the list of all APIs under a service and relevant information.
+        r"""This API is used to view a certain API or the list of all APIs under a service and relevant information.
 
         :param request: Request instance for DescribeApisStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApisStatusRequest`
@@ -981,7 +981,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeExclusiveInstanceRegions(self, request):
-        """Get the list of supported regions for dedicated instances
+        r"""Get the list of supported regions for dedicated instances
 
         :param request: Request instance for DescribeExclusiveInstanceRegions.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceRegionsRequest`
@@ -1004,7 +1004,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeIPStrategy(self, request):
-        """This API is used to query IP policy details.
+        r"""This API is used to query IP policy details.
 
         :param request: Request instance for DescribeIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyRequest`
@@ -1027,7 +1027,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeIPStrategyApisStatus(self, request):
-        """This API is used to query the list of APIs to which an IP policy can be bound, i.e., the difference set between all APIs under the service and the APIs already bound to the policy.
+        r"""This API is used to query the list of APIs to which an IP policy can be bound, i.e., the difference set between all APIs under the service and the APIs already bound to the policy.
 
         :param request: Request instance for DescribeIPStrategyApisStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyApisStatusRequest`
@@ -1050,7 +1050,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeIPStrategysStatus(self, request):
-        """This API is used to query the list of service IP policies.
+        r"""This API is used to query the list of service IP policies.
 
         :param request: Request instance for DescribeIPStrategysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategysStatusRequest`
@@ -1073,7 +1073,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeInstancesNetworkConfig(self, request):
-        """This API is used to obtain the network configuration list of a dedicated instance.
+        r"""This API is used to obtain the network configuration list of a dedicated instance.
 
         :param request: Request instance for DescribeInstancesNetworkConfig.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeInstancesNetworkConfigRequest`
@@ -1096,7 +1096,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeLogSearch(self, request):
-        """This API is used to search for logs.
+        r"""This API is used to search for logs.
 
         :param request: Request instance for DescribeLogSearch.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeLogSearchRequest`
@@ -1119,7 +1119,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribePlugin(self, request):
-        """This API is used to query the plugin details by plugin ID.
+        r"""This API is used to query the plugin details by plugin ID.
 
         :param request: Request instance for DescribePlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginRequest`
@@ -1142,7 +1142,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribePluginApis(self, request):
-        """This API is used to query APIs bound with a specified plugin.
+        r"""This API is used to query APIs bound with a specified plugin.
 
         :param request: Request instance for DescribePluginApis.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginApisRequest`
@@ -1165,7 +1165,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribePluginsByApi(self, request):
-        """This API is used to query all plug-ins bound with the API.
+        r"""This API is used to query all plug-ins bound with the API.
 
         :param request: Request instance for DescribePluginsByApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginsByApiRequest`
@@ -1188,7 +1188,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeService(self, request):
-        """This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.
+        r"""This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.
 
         :param request: Request instance for DescribeService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceRequest`
@@ -1211,7 +1211,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceEnvironmentList(self, request):
-        """This API is used to query the list of environments under a service. All environments and their statuses under the queried service will be returned.
+        r"""This API is used to query the list of environments under a service. All environments and their statuses under the queried service will be returned.
 
         :param request: Request instance for DescribeServiceEnvironmentList.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceEnvironmentListRequest`
@@ -1234,7 +1234,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceEnvironmentReleaseHistory(self, request):
-        """This API is used to query the release history in a service environment.
+        r"""This API is used to query the release history in a service environment.
         A service can only be used when it is published to an environment after creation. This API is used to query the release history in an environment under a service.
 
         :param request: Request instance for DescribeServiceEnvironmentReleaseHistory.
@@ -1258,7 +1258,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceEnvironmentStrategy(self, request):
-        """This API is used to display a service throttling policy.
+        r"""This API is used to display a service throttling policy.
 
         :param request: Request instance for DescribeServiceEnvironmentStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceEnvironmentStrategyRequest`
@@ -1281,7 +1281,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceForApiApp(self, request):
-        """This API is used to query the details of a service, such as its description, domain name, and protocol.
+        r"""This API is used to query the details of a service, such as its description, domain name, and protocol.
 
         :param request: Request instance for DescribeServiceForApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServiceForApiAppRequest`
@@ -1304,7 +1304,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceReleaseVersion(self, request):
-        """This API is used to query the list of all published versions under a service.
+        r"""This API is used to query the list of all published versions under a service.
         A service is generally published on several versions. This API can be used to query the published versions.
 
         :param request: Request instance for DescribeServiceReleaseVersion.
@@ -1328,7 +1328,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceSubDomainMappings(self, request):
-        """This API is used to query the path mappings of a custom domain name.
+        r"""This API is used to query the path mappings of a custom domain name.
         In API Gateway, you can bind a custom domain name to a service and map its paths. You can customize different path mappings to up to 3 environments under the service. This API is used to query the list of path mappings of a custom domain name bound to a service.
 
         :param request: Request instance for DescribeServiceSubDomainMappings.
@@ -1352,7 +1352,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceSubDomains(self, request):
-        """This API is used to query the list of custom domain names.
+        r"""This API is used to query the list of custom domain names.
         In API Gateway, you can bind custom domain names to a service for service call. This API is used to query the list of custom domain names bound to a service.
 
         :param request: Request instance for DescribeServiceSubDomains.
@@ -1376,7 +1376,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServiceUsagePlan(self, request):
-        """This API is used to query the details of usage plans in a service.
+        r"""This API is used to query the details of usage plans in a service.
         To make authentication and throttling for a service take effect, you need to bind a usage plan to it. This API is used to query all usage plans bound to a service.
 
         :param request: Request instance for DescribeServiceUsagePlan.
@@ -1400,7 +1400,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeServicesStatus(self, request):
-        """This API is used to query the list of one or more services and return relevant domain name, time, and other information.
+        r"""This API is used to query the list of one or more services and return relevant domain name, time, and other information.
 
         :param request: Request instance for DescribeServicesStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeServicesStatusRequest`
@@ -1423,7 +1423,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreamBindApis(self, request):
-        """This API is used to query APIs bound with an upstream.
+        r"""This API is used to query APIs bound with an upstream.
 
         :param request: Request instance for DescribeUpstreamBindApis.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisRequest`
@@ -1446,7 +1446,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreams(self, request):
-        """This API is used to query details of upstreams under the current account.
+        r"""This API is used to query details of upstreams under the current account.
 
         :param request: Request instance for DescribeUpstreams.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsRequest`
@@ -1469,7 +1469,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUsagePlan(self, request):
-        """This API is used to query the details of a usage plan, such as its name, QPS, creation time, and bound environment.
+        r"""This API is used to query the details of a usage plan, such as its name, QPS, creation time, and bound environment.
 
         :param request: Request instance for DescribeUsagePlan.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUsagePlanRequest`
@@ -1492,7 +1492,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUsagePlanEnvironments(self, request):
-        """This API is used to query the list of environments bound to a usage plan.
+        r"""This API is used to query the list of environments bound to a usage plan.
         After binding a usage plan to environments, you can use this API to query all service environments bound to the usage plan.
 
         :param request: Request instance for DescribeUsagePlanEnvironments.
@@ -1516,7 +1516,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUsagePlanSecretIds(self, request):
-        """This API is used to query the list of keys bound to a usage plan.
+        r"""This API is used to query the list of keys bound to a usage plan.
         In API Gateway, a usage plan can be bound to multiple key pairs. You can use this API to query the list of keys bound to it.
 
         :param request: Request instance for DescribeUsagePlanSecretIds.
@@ -1540,7 +1540,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUsagePlansStatus(self, request):
-        """This API is used to query the list of usage plans.
+        r"""This API is used to query the list of usage plans.
 
         :param request: Request instance for DescribeUsagePlansStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUsagePlansStatusRequest`
@@ -1563,7 +1563,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DetachPlugin(self, request):
-        """This API is used to unbind an API from the plugin.
+        r"""This API is used to unbind an API from the plugin.
 
         :param request: Request instance for DetachPlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DetachPluginRequest`
@@ -1586,7 +1586,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DisableApiKey(self, request):
-        """This API is used to disable an API key.
+        r"""This API is used to disable an API key.
 
         :param request: Request instance for DisableApiKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DisableApiKeyRequest`
@@ -1609,7 +1609,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def EnableApiKey(self, request):
-        """This API is used to enable a disabled API key.
+        r"""This API is used to enable a disabled API key.
 
         :param request: Request instance for EnableApiKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.EnableApiKeyRequest`
@@ -1632,7 +1632,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ImportOpenApi(self, request):
-        """This API is used to import an OpenAPI to API gateway.
+        r"""This API is used to import an OpenAPI to API gateway.
 
         :param request: Request instance for ImportOpenApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ImportOpenApiRequest`
@@ -1655,7 +1655,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyAPIDoc(self, request):
-        """This API is used to modify an API document.
+        r"""This API is used to modify an API document.
 
         :param request: Request instance for ModifyAPIDoc.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyAPIDocRequest`
@@ -1678,7 +1678,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyApi(self, request):
-        """This API is used to modify an API. You can call this API to edit/modify a configured API. The modified API takes effect only after its service is published to the corresponding environment again.
+        r"""This API is used to modify an API. You can call this API to edit/modify a configured API. The modified API takes effect only after its service is published to the corresponding environment again.
 
         :param request: Request instance for ModifyApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiRequest`
@@ -1701,7 +1701,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyApiApp(self, request):
-        """This API is used to modify a created API.
+        r"""This API is used to modify a created API.
 
         :param request: Request instance for ModifyApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiAppRequest`
@@ -1724,7 +1724,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyApiEnvironmentStrategy(self, request):
-        """This API is used to modify an API throttling policy.
+        r"""This API is used to modify an API throttling policy.
 
         :param request: Request instance for ModifyApiEnvironmentStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiEnvironmentStrategyRequest`
@@ -1747,7 +1747,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyApiIncrement(self, request):
-        """This API is used to incrementally update an API and mainly called by programs (different from `ModifyApi`, which requires that full API parameters be passed in and is suitable for use in the console).
+        r"""This API is used to incrementally update an API and mainly called by programs (different from `ModifyApi`, which requires that full API parameters be passed in and is suitable for use in the console).
 
         :param request: Request instance for ModifyApiIncrement.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyApiIncrementRequest`
@@ -1770,7 +1770,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyIPStrategy(self, request):
-        """This API is used to modify a service IP policy.
+        r"""This API is used to modify a service IP policy.
 
         :param request: Request instance for ModifyIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyIPStrategyRequest`
@@ -1793,7 +1793,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyPlugin(self, request):
-        """This API is used to modify a plugin.
+        r"""This API is used to modify a plugin.
 
         :param request: Request instance for ModifyPlugin.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyPluginRequest`
@@ -1816,7 +1816,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyService(self, request):
-        """This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified.
+        r"""This API is used to modify the relevant information of a service. After a service is created, its name, description, and service type can be modified.
 
         :param request: Request instance for ModifyService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyServiceRequest`
@@ -1839,7 +1839,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyServiceEnvironmentStrategy(self, request):
-        """This API is used to modify a service throttling policy.
+        r"""This API is used to modify a service throttling policy.
 
         :param request: Request instance for ModifyServiceEnvironmentStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyServiceEnvironmentStrategyRequest`
@@ -1862,7 +1862,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifySubDomain(self, request):
-        """This API is used to modify the path mapping in the custom domain name settings of a service. The path mapping rule can be modified before it is bound to the custom domain name.
+        r"""This API is used to modify the path mapping in the custom domain name settings of a service. The path mapping rule can be modified before it is bound to the custom domain name.
 
         :param request: Request instance for ModifySubDomain.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifySubDomainRequest`
@@ -1885,7 +1885,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyUpstream(self, request):
-        """This API is used to modify an upstream.
+        r"""This API is used to modify an upstream.
 
         :param request: Request instance for ModifyUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamRequest`
@@ -1908,7 +1908,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyUsagePlan(self, request):
-        """This API is used to modify the name, description, and QPS of a usage plan.
+        r"""This API is used to modify the name, description, and QPS of a usage plan.
 
         :param request: Request instance for ModifyUsagePlan.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyUsagePlanRequest`
@@ -1931,7 +1931,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ReleaseService(self, request):
-        """This API is used to publish a service.
+        r"""This API is used to publish a service.
         An API Gateway service can only be called when it is published to an environment and takes effect after creation. This API is used to publish a service to an environment such as the `release` environment.
 
         :param request: Request instance for ReleaseService.
@@ -1955,7 +1955,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ResetAPIDocPassword(self, request):
-        """This API is used to reset the password of an API document.
+        r"""This API is used to reset the password of an API document.
 
         :param request: Request instance for ResetAPIDocPassword.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ResetAPIDocPasswordRequest`
@@ -1978,7 +1978,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnBindEnvironment(self, request):
-        """This API is used to unbind a usage plan from a specified environment.
+        r"""This API is used to unbind a usage plan from a specified environment.
 
         :param request: Request instance for UnBindEnvironment.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UnBindEnvironmentRequest`
@@ -2001,7 +2001,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnBindIPStrategy(self, request):
-        """This API is used to unbind an IP policy from a service.
+        r"""This API is used to unbind an IP policy from a service.
 
         :param request: Request instance for UnBindIPStrategy.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UnBindIPStrategyRequest`
@@ -2024,7 +2024,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnBindSecretIds(self, request):
-        """This API is used to unbind a key from a usage plan.
+        r"""This API is used to unbind a key from a usage plan.
 
         :param request: Request instance for UnBindSecretIds.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UnBindSecretIdsRequest`
@@ -2047,7 +2047,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnBindSubDomain(self, request):
-        """This API is used to unbind a custom domain name.
+        r"""This API is used to unbind a custom domain name.
         After binding a custom domain name to a service by using API Gateway, you can use this API to unbind it.
 
         :param request: Request instance for UnBindSubDomain.
@@ -2071,7 +2071,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnReleaseService(self, request):
-        """This API is used to deactivate a service.
+        r"""This API is used to deactivate a service.
         Only after a service is published to an environment can its APIs be called. You can call this API to deactivate a service in the release environment. Once deactivated, the service cannot be called.
 
         :param request: Request instance for UnReleaseService.
@@ -2095,7 +2095,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UnbindApiApp(self, request):
-        """This API is used to unbind an application from an API.
+        r"""This API is used to unbind an application from an API.
 
         :param request: Request instance for UnbindApiApp.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UnbindApiAppRequest`
@@ -2118,7 +2118,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UpdateApiAppKey(self, request):
-        """This API is used to update an application key.
+        r"""This API is used to update an application key.
 
         :param request: Request instance for UpdateApiAppKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateApiAppKeyRequest`
@@ -2141,7 +2141,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UpdateApiKey(self, request):
-        """This API is used to update a created API key pair.
+        r"""This API is used to update a created API key pair.
 
         :param request: Request instance for UpdateApiKey.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateApiKeyRequest`
@@ -2164,7 +2164,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UpdateService(self, request):
-        """This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
+        r"""This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
 
         :param request: Request instance for UpdateService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateServiceRequest`

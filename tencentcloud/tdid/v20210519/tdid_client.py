@@ -27,7 +27,7 @@ class TdidClient(AbstractClient):
 
 
     def AddLabel(self, request):
-        """This API is used to add a label to a DID.
+        r"""This API is used to add a label to a DID.
 
         :param request: Request instance for AddLabel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.AddLabelRequest`
@@ -50,7 +50,7 @@ class TdidClient(AbstractClient):
 
 
     def CancelAuthorityIssuer(self, request):
-        """This API is used to revoke the certification of an issuing authority.
+        r"""This API is used to revoke the certification of an issuing authority.
 
         :param request: Request instance for CancelAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CancelAuthorityIssuerRequest`
@@ -73,7 +73,7 @@ class TdidClient(AbstractClient):
 
 
     def CheckChain(self, request):
-        """This API is used to get blockchain information.
+        r"""This API is used to get blockchain information.
 
         :param request: Request instance for CheckChain.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CheckChainRequest`
@@ -96,7 +96,7 @@ class TdidClient(AbstractClient):
 
 
     def CheckDidDeploy(self, request):
-        """This API is used to query a deployment task.
+        r"""This API is used to query a deployment task.
 
         :param request: Request instance for CheckDidDeploy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CheckDidDeployRequest`
@@ -119,7 +119,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateCredential(self, request):
-        """This API is used to create a credential.
+        r"""This API is used to create a credential.
 
         :param request: Request instance for CreateCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateCredentialRequest`
@@ -142,7 +142,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateDidService(self, request):
-        """This API is used to create a DID service.
+        r"""This API is used to create a DID service.
 
         :param request: Request instance for CreateDidService.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateDidServiceRequest`
@@ -165,7 +165,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateLabel(self, request):
-        """This API is used to create a label.
+        r"""This API is used to create a label.
 
         :param request: Request instance for CreateLabel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateLabelRequest`
@@ -188,7 +188,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateSelectiveCredential(self, request):
-        """This API is used to create a selective disclosure credential.
+        r"""This API is used to create a selective disclosure credential.
 
         :param request: Request instance for CreateSelectiveCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateSelectiveCredentialRequest`
@@ -211,7 +211,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDid(self, request):
-        """This API is used to create an organization DID.
+        r"""This API is used to create an organization DID.
 
         :param request: Request instance for CreateTDid.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidRequest`
@@ -234,7 +234,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByPrivateKey(self, request):
-        """This API is used to generate a TDID by private key.
+        r"""This API is used to generate a TDID by private key.
 
         :param request: Request instance for CreateTDidByPrivateKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPrivateKeyRequest`
@@ -257,7 +257,7 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByPublicKey(self, request):
-        """This API is used to generate a TDID by public key.
+        r"""This API is used to generate a TDID by public key.
 
         :param request: Request instance for CreateTDidByPublicKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyRequest`
@@ -280,7 +280,7 @@ class TdidClient(AbstractClient):
 
 
     def DeployByName(self, request):
-        """This API is used to deploy a TDID contract by name.
+        r"""This API is used to deploy a TDID contract by name.
 
         :param request: Request instance for DeployByName.
         :type request: :class:`tencentcloud.tdid.v20210519.models.DeployByNameRequest`
@@ -303,7 +303,7 @@ class TdidClient(AbstractClient):
 
 
     def DownCpt(self, request):
-        """This API is used to download a claim protocol type (CPT).
+        r"""This API is used to download a claim protocol type (CPT).
 
         :param request: Request instance for DownCpt.
         :type request: :class:`tencentcloud.tdid.v20210519.models.DownCptRequest`
@@ -326,7 +326,7 @@ class TdidClient(AbstractClient):
 
 
     def EnableHash(self, request):
-        """This API is used to enable a contract.
+        r"""This API is used to enable a contract.
 
         :param request: Request instance for EnableHash.
         :type request: :class:`tencentcloud.tdid.v20210519.models.EnableHashRequest`
@@ -349,7 +349,7 @@ class TdidClient(AbstractClient):
 
 
     def GetAgencyTDid(self, request):
-        """该接口已废弃
+        r"""该接口已废弃
 
         This API is used to get the DID details of the current organization.
 
@@ -374,7 +374,7 @@ class TdidClient(AbstractClient):
 
 
     def GetAuthoritiesList(self, request):
-        """This API is used to query authorities.
+        r"""This API is used to query authorities.
 
         :param request: Request instance for GetAuthoritiesList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthoritiesListRequest`
@@ -397,7 +397,7 @@ class TdidClient(AbstractClient):
 
 
     def GetAuthorityIssuer(self, request):
-        """This API is used to get the information of an issuing authority.
+        r"""This API is used to get the information of an issuing authority.
 
         :param request: Request instance for GetAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerRequest`
@@ -420,7 +420,7 @@ class TdidClient(AbstractClient):
 
 
     def GetConsortiumClusterList(self, request):
-        """This API is used to query the BCOS networks of a consortium.
+        r"""This API is used to query the BCOS networks of a consortium.
 
         :param request: Request instance for GetConsortiumClusterList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetConsortiumClusterListRequest`
@@ -443,7 +443,7 @@ class TdidClient(AbstractClient):
 
 
     def GetConsortiumList(self, request):
-        """This API is used to query consortiums.
+        r"""This API is used to query consortiums.
 
         :param request: Request instance for GetConsortiumList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetConsortiumListRequest`
@@ -466,7 +466,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCptInfo(self, request):
-        """This API is used to get the information of a claim protocol type (CPT).
+        r"""This API is used to get the information of a claim protocol type (CPT).
 
         :param request: Request instance for GetCptInfo.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCptInfoRequest`
@@ -489,7 +489,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCptList(self, request):
-        """This API is used to query claim protocol types (CPT).
+        r"""This API is used to query claim protocol types (CPT).
 
         :param request: Request instance for GetCptList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCptListRequest`
@@ -512,7 +512,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialCptRank(self, request):
-        """This API is used to get the rankings of claim protocol types (CPT).
+        r"""This API is used to get the rankings of claim protocol types (CPT).
 
         :param request: Request instance for GetCredentialCptRank.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialCptRankRequest`
@@ -535,7 +535,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialIssueRank(self, request):
-        """This API is used to get the rankings of issuers.
+        r"""This API is used to get the rankings of issuers.
 
         :param request: Request instance for GetCredentialIssueRank.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialIssueRankRequest`
@@ -558,7 +558,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialIssueTrend(self, request):
-        """This API is used to query credential issuing trends.
+        r"""This API is used to query credential issuing trends.
 
         :param request: Request instance for GetCredentialIssueTrend.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialIssueTrendRequest`
@@ -581,7 +581,7 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialStatus(self, request):
-        """This API is used to query the on-chain status of a credential.
+        r"""This API is used to query the on-chain status of a credential.
 
         :param request: Request instance for GetCredentialStatus.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStatusRequest`
@@ -604,7 +604,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDataPanel(self, request):
-        """This API is used to query the overall statistics of a network.
+        r"""This API is used to query the overall statistics of a network.
 
         :param request: Request instance for GetDataPanel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDataPanelRequest`
@@ -627,7 +627,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDeployInfo(self, request):
-        """This API is used to query the deployment information of a contract.
+        r"""This API is used to query the deployment information of a contract.
 
         :param request: Request instance for GetDeployInfo.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDeployInfoRequest`
@@ -650,7 +650,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDeployList(self, request):
-        """This API is used to query deployed contracts.
+        r"""This API is used to query deployed contracts.
 
         :param request: Request instance for GetDeployList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDeployListRequest`
@@ -673,7 +673,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidClusterDetail(self, request):
-        """This API is used to get the information of a DID blockchain network.
+        r"""This API is used to get the information of a DID blockchain network.
 
         :param request: Request instance for GetDidClusterDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterDetailRequest`
@@ -696,7 +696,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidClusterList(self, request):
-        """This API is used to query your DID networks.
+        r"""This API is used to query your DID networks.
 
         :param request: Request instance for GetDidClusterList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterListRequest`
@@ -719,7 +719,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidDetail(self, request):
-        """This API is used to get the information of a DID.
+        r"""This API is used to get the information of a DID.
 
         :param request: Request instance for GetDidDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDetailRequest`
@@ -742,7 +742,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidDocument(self, request):
-        """This API is used to get the document of a DID.
+        r"""This API is used to get the document of a DID.
 
         :param request: Request instance for GetDidDocument.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentRequest`
@@ -765,7 +765,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidList(self, request):
-        """This API is used to query DIDs.
+        r"""This API is used to query DIDs.
 
         :param request: Request instance for GetDidList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidListRequest`
@@ -788,7 +788,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidRegisterTrend(self, request):
-        """This API is used to query DID registration trends.
+        r"""This API is used to query DID registration trends.
 
         :param request: Request instance for GetDidRegisterTrend.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidRegisterTrendRequest`
@@ -811,7 +811,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidServiceDetail(self, request):
-        """This API is used to get the information of a DID service.
+        r"""This API is used to get the information of a DID service.
 
         :param request: Request instance for GetDidServiceDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidServiceDetailRequest`
@@ -834,7 +834,7 @@ class TdidClient(AbstractClient):
 
 
     def GetDidServiceList(self, request):
-        """This API is used to query DID services.
+        r"""This API is used to query DID services.
 
         :param request: Request instance for GetDidServiceList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidServiceListRequest`
@@ -857,7 +857,7 @@ class TdidClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """This API is used to query main groups.
+        r"""This API is used to query main groups.
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetGroupListRequest`
@@ -880,7 +880,7 @@ class TdidClient(AbstractClient):
 
 
     def GetLabelList(self, request):
-        """This API is used to query labels.
+        r"""This API is used to query labels.
 
         :param request: Request instance for GetLabelList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetLabelListRequest`
@@ -903,7 +903,7 @@ class TdidClient(AbstractClient):
 
 
     def GetPolicyList(self, request):
-        """This API is used to query disclosure policies.
+        r"""This API is used to query disclosure policies.
 
         :param request: Request instance for GetPolicyList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetPolicyListRequest`
@@ -926,7 +926,7 @@ class TdidClient(AbstractClient):
 
 
     def GetPublicKey(self, request):
-        """This API is used to get the public key of a DID.
+        r"""This API is used to get the public key of a DID.
 
         :param request: Request instance for GetPublicKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetPublicKeyRequest`
@@ -949,7 +949,7 @@ class TdidClient(AbstractClient):
 
 
     def QueryPolicy(self, request):
-        """This API is used to get the information of a disclosure policy.
+        r"""This API is used to get the information of a disclosure policy.
 
         :param request: Request instance for QueryPolicy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.QueryPolicyRequest`
@@ -972,7 +972,7 @@ class TdidClient(AbstractClient):
 
 
     def RecognizeAuthorityIssuer(self, request):
-        """This API is used to certify an issuing authority.
+        r"""This API is used to certify an issuing authority.
 
         :param request: Request instance for RecognizeAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RecognizeAuthorityIssuerRequest`
@@ -995,7 +995,7 @@ class TdidClient(AbstractClient):
 
 
     def RegisterClaimPolicy(self, request):
-        """This API is used to register a disclosure policy.
+        r"""This API is used to register a disclosure policy.
 
         :param request: Request instance for RegisterClaimPolicy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterClaimPolicyRequest`
@@ -1018,7 +1018,7 @@ class TdidClient(AbstractClient):
 
 
     def RegisterCpt(self, request):
-        """This API is used to create a claim protocol type (CPT).
+        r"""This API is used to create a claim protocol type (CPT).
 
         :param request: Request instance for RegisterCpt.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterCptRequest`
@@ -1041,7 +1041,7 @@ class TdidClient(AbstractClient):
 
 
     def RegisterIssuer(self, request):
-        """This API is used to register an issuing authority.
+        r"""This API is used to register an issuing authority.
 
         :param request: Request instance for RegisterIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterIssuerRequest`
@@ -1064,7 +1064,7 @@ class TdidClient(AbstractClient):
 
 
     def RemoveHash(self, request):
-        """This API is used to delete a contract.
+        r"""This API is used to delete a contract.
 
         :param request: Request instance for RemoveHash.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RemoveHashRequest`
@@ -1087,7 +1087,7 @@ class TdidClient(AbstractClient):
 
 
     def SetCredentialStatus(self, request):
-        """This API is used to change the on-chain status of a credential.
+        r"""This API is used to change the on-chain status of a credential.
 
         :param request: Request instance for SetCredentialStatus.
         :type request: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusRequest`
@@ -1110,7 +1110,7 @@ class TdidClient(AbstractClient):
 
 
     def VerifyCredential(self, request):
-        """This API is used to verify a credential.
+        r"""This API is used to verify a credential.
 
         :param request: Request instance for VerifyCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialRequest`

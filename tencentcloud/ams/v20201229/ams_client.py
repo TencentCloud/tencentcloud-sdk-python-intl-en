@@ -27,7 +27,7 @@ class AmsClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """This API is used to cancel a moderation task. If it returns `RequestId`, the task has been canceled successfully.<br>Default API request rate limit: **20 requests/sec**.
+        r"""This API is used to cancel a moderation task. If it returns `RequestId`, the task has been canceled successfully.<br>Default API request rate limit: **20 requests/sec**.
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.ams.v20201229.models.CancelTaskRequest`
@@ -50,7 +50,7 @@ class AmsClient(AbstractClient):
 
 
     def CreateAudioModerationTask(self, request):
-        """This API is used to submit audio content (such as an audio file or stream URL) for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account to [activate AMS](https://console.cloud.tencent.com/cms) and adjust the business configuration. <br>
+        r"""This API is used to submit audio content (such as an audio file or stream URL) for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account to [activate AMS](https://console.cloud.tencent.com/cms) and adjust the business configuration. <br>
 
         ### API use instructions
         - Go to [CMS console - AMS](https://console.cloud.tencent.com/cms) to activate AMS. For initial activation, you can enjoy **10 hours** of free call of the API within one month.
@@ -104,7 +104,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This interface is used to view the detailed information of the audio moderation tasks, including task status, detection results, corresponding text content recognized from the audio file, recommended follow-up operations of the maliciousness tags corresponding to the detection results, and so on. For specific output content, see the output parameter examples.
+        r"""This interface is used to view the detailed information of the audio moderation tasks, including task status, detection results, corresponding text content recognized from the audio file, recommended follow-up operations of the maliciousness tags corresponding to the detection results, and so on. For specific output content, see the output parameter examples.
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.ams.v20201229.models.DescribeTaskDetailRequest`
@@ -127,7 +127,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API is used to view the list of moderation tasks. You can also filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status. The output content of the task list includes the total number of queried tasks, task name, task status, audio moderation type, maliciousness tag of the detection result, and suggested operation. For the specific output content, see the sample output parameters.<br>Default API request rate limit: **20 requests/sec**.
+        r"""This API is used to view the list of moderation tasks. You can also filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status. The output content of the task list includes the total number of queried tasks, task name, task status, audio moderation type, maliciousness tag of the detection result, and suggested operation. For the specific output content, see the sample output parameters.<br>Default API request rate limit: **20 requests/sec**.
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.ams.v20201229.models.DescribeTasksRequest`

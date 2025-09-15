@@ -27,7 +27,7 @@ class AiartClient(AbstractClient):
 
 
     def ImageToImage(self, request):
-        """This API is used to transfer the image style based on the image to image technology. Images with small figures, complex gestures or too many figures are not recommended.
+        r"""This API is used to transfer the image style based on the image to image technology. Images with small figures, complex gestures or too many figures are not recommended.
         It supports 3 concurrency by default, which means that up to 3 submitted tasks can be processed simultaneously. Subsequent tasks can be processed only after ongoing ones are completed.
 
         :param request: Request instance for ImageToImage.

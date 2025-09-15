@@ -27,7 +27,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationRule(self, request):
-        """Create a sharing rule.
+        r"""Create a sharing rule.
 
         :param request: Request instance for CreateAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleRequest`
@@ -50,7 +50,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationTag(self, request):
-        """This API is used to batch set cost allocation tags.
+        r"""This API is used to batch set cost allocation tags.
 
         :param request: Request instance for CreateAllocationTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagRequest`
@@ -73,7 +73,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateAllocationUnit(self, request):
-        """This API is used to create allocation units.
+        r"""This API is used to create allocation units.
 
         :param request: Request instance for CreateAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitRequest`
@@ -96,7 +96,7 @@ class BillingClient(AbstractClient):
 
 
     def CreateGatherRule(self, request):
-        """Create a collection rule.
+        r"""Create a collection rule.
 
         :param request: Request instance for CreateGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleRequest`
@@ -119,7 +119,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationRule(self, request):
-        """Delete sharing rule interface.
+        r"""Delete sharing rule interface.
 
         :param request: Request instance for DeleteAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleRequest`
@@ -142,7 +142,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationTag(self, request):
-        """u200cThis API is used to batch cancel cost allocation tags.
+        r"""u200cThis API is used to batch cancel cost allocation tags.
 
         :param request: Request instance for DeleteAllocationTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagRequest`
@@ -165,7 +165,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteAllocationUnit(self, request):
-        """Delete a cost allocation unit.
+        r"""Delete a cost allocation unit.
 
         :param request: Request instance for DeleteAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitRequest`
@@ -188,7 +188,7 @@ class BillingClient(AbstractClient):
 
 
     def DeleteGatherRule(self, request):
-        """Delete a collection rule.
+        r"""Delete a collection rule.
 
         :param request: Request instance for DeleteGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleRequest`
@@ -211,7 +211,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAccountBalance(self, request):
-        """This API is used to check the Tencent Cloud account balance.
+        r"""This API is used to check the Tencent Cloud account balance.
 
         :param request: Request instance for DescribeAccountBalance.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceRequest`
@@ -234,7 +234,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationRuleDetail(self, request):
-        """This API is used to query sharing rule details.
+        r"""This API is used to query sharing rule details.
 
         :param request: Request instance for DescribeAllocationRuleDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailRequest`
@@ -257,7 +257,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationRuleSummary(self, request):
-        """This API is used to query all sharing rule overviews.
+        r"""This API is used to query all sharing rule overviews.
 
         :param request: Request instance for DescribeAllocationRuleSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryRequest`
@@ -280,7 +280,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationTree(self, request):
-        """This API is used to query the cost tree.
+        r"""This API is used to query the cost tree.
 
         :param request: Request instance for DescribeAllocationTree.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeRequest`
@@ -303,7 +303,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeAllocationUnitDetail(self, request):
-        """Query the details of a cost allocation unit.
+        r"""Query the details of a cost allocation unit.
 
         :param request: Request instance for DescribeAllocationUnitDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailRequest`
@@ -326,7 +326,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillAdjustInfo(self, request):
-        """This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
+        r"""This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
 
         :param request: Request instance for DescribeBillAdjustInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoRequest`
@@ -349,7 +349,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """u200cThis API is used to get bill details.
+        r"""u200cThis API is used to get bill details.
         Note:
         1. The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.
         2.If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), bill data query via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).
@@ -375,7 +375,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetailForOrganization(self, request):
-        """This API is used to get pay-on-behalf bills of the admin account (bill details).
+        r"""This API is used to get pay-on-behalf bills of the admin account (bill details).
         Note: The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.
 
         :param request: Request instance for DescribeBillDetailForOrganization.
@@ -399,7 +399,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDownloadUrl(self, request):
-        """This API is used to get bill download URLs for L0, L1, L2, and L3 bills and bill packs.
+        r"""This API is used to get bill download URLs for L0, L1, L2, and L3 bills and bill packs.
 
         :param request: Request instance for DescribeBillDownloadUrl.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDownloadUrlRequest`
@@ -422,7 +422,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillResourceSummary(self, request):
-        """This API is used to get the bill summarized by instance.
+        r"""This API is used to get the bill summarized by instance.
 
         :param request: Request instance for DescribeBillResourceSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryRequest`
@@ -445,7 +445,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillResourceSummaryForOrganization(self, request):
-        """This API is used to get pay-on-behalf bills of the admin account (bills by instance).
+        r"""This API is used to get pay-on-behalf bills of the admin account (bills by instance).
 
         :param request: Request instance for DescribeBillResourceSummaryForOrganization.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryForOrganizationRequest`
@@ -468,7 +468,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummary(self, request):
-        """This API is used to get bill details by product, project, region, billing mode, and tag by passing in parameters.
+        r"""This API is used to get bill details by product, project, region, billing mode, and tag by passing in parameters.
 
         :param request: Request instance for DescribeBillSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryRequest`
@@ -491,7 +491,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByPayMode(self, request):
-        """This API is used to get the bill summarized by billing mode.
+        r"""This API is used to get the bill summarized by billing mode.
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`
@@ -514,7 +514,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByProduct(self, request):
-        """Gets the bill summarized according to product
+        r"""Gets the bill summarized according to product
 
         :param request: Request instance for DescribeBillSummaryByProduct.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductRequest`
@@ -537,7 +537,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByProject(self, request):
-        """Gets the bill summarized according to project
+        r"""Gets the bill summarized according to project
 
         :param request: Request instance for DescribeBillSummaryByProject.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectRequest`
@@ -560,7 +560,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByRegion(self, request):
-        """Gets the bill summarized according to region
+        r"""Gets the bill summarized according to region
 
         :param request: Request instance for DescribeBillSummaryByRegion.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionRequest`
@@ -583,7 +583,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByTag(self, request):
-        """This API is used to get the cost distribution over different tags.
+        r"""This API is used to get the cost distribution over different tags.
 
         :param request: Request instance for DescribeBillSummaryByTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagRequest`
@@ -606,7 +606,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryForOrganization(self, request):
-        """This API is used to get bills summarized by product, project, region, billing mode, and tag by passing in parameters.
+        r"""This API is used to get bills summarized by product, project, region, billing mode, and tag by passing in parameters.
 
         :param request: Request instance for DescribeBillSummaryForOrganization.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryForOrganizationRequest`
@@ -629,7 +629,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostDetail(self, request):
-        """This API is used to query consumption details.
+        r"""This API is used to query consumption details.
 
         :param request: Request instance for DescribeCostDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailRequest`
@@ -652,7 +652,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostExplorerSummary(self, request):
-        """This API is used to view cost analysis details.
+        r"""This API is used to view cost analysis details.
 
         :param request: Request instance for DescribeCostExplorerSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostExplorerSummaryRequest`
@@ -675,7 +675,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByProduct(self, request):
-        """This API is used to obtain consumption details summarized by product.
+        r"""This API is used to obtain consumption details summarized by product.
 
         :param request: Request instance for DescribeCostSummaryByProduct.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductRequest`
@@ -698,7 +698,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByProject(self, request):
-        """This API is used to obtain consumption details summarized by project.
+        r"""This API is used to obtain consumption details summarized by project.
 
         :param request: Request instance for DescribeCostSummaryByProject.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectRequest`
@@ -721,7 +721,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByRegion(self, request):
-        """This API is used to obtain consumption details summarized by region.
+        r"""This API is used to obtain consumption details summarized by region.
 
         :param request: Request instance for DescribeCostSummaryByRegion.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionRequest`
@@ -744,7 +744,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeCostSummaryByResource(self, request):
-        """This API is used to obtain consumption details summarized by resource.
+        r"""This API is used to obtain consumption details summarized by resource.
 
         :param request: Request instance for DescribeCostSummaryByResource.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceRequest`
@@ -767,7 +767,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDealsByCond(self, request):
-        """Querying orders
+        r"""Querying orders
 
         :param request: Request instance for DescribeDealsByCond.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondRequest`
@@ -790,7 +790,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeDosageCosDetailByDate(self, request):
-        """This API is used to query COS usage details.
+        r"""This API is used to query COS usage details.
 
         :param request: Request instance for DescribeDosageCosDetailByDate.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageCosDetailByDateRequest`
@@ -813,7 +813,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeGatherRuleDetail(self, request):
-        """This API is used to query the collection rule details.
+        r"""This API is used to query the collection rule details.
 
         :param request: Request instance for DescribeGatherRuleDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailRequest`
@@ -836,7 +836,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeTagList(self, request):
-        """This API is used to get cost allocation tags.
+        r"""This API is used to get cost allocation tags.
 
         :param request: Request instance for DescribeTagList.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeTagListRequest`
@@ -859,7 +859,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherInfo(self, request):
-        """This API is used to query vouchers.
+        r"""This API is used to query vouchers.
 
         :param request: Request instance for DescribeVoucherInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherInfoRequest`
@@ -882,7 +882,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherUsageDetails(self, request):
-        """This API is used to query voucher usage details.
+        r"""This API is used to query voucher usage details.
 
         :param request: Request instance for DescribeVoucherUsageDetails.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherUsageDetailsRequest`
@@ -905,7 +905,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyAllocationRule(self, request):
-        """Edit sharing rules.
+        r"""Edit sharing rules.
 
         :param request: Request instance for ModifyAllocationRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleRequest`
@@ -928,7 +928,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyAllocationUnit(self, request):
-        """This API is used to modify cost allocation unit information.
+        r"""This API is used to modify cost allocation unit information.
 
         :param request: Request instance for ModifyAllocationUnit.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitRequest`
@@ -951,7 +951,7 @@ class BillingClient(AbstractClient):
 
 
     def ModifyGatherRule(self, request):
-        """Edit a collection rule.
+        r"""Edit a collection rule.
 
         :param request: Request instance for ModifyGatherRule.
         :type request: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleRequest`
@@ -974,7 +974,7 @@ class BillingClient(AbstractClient):
 
 
     def PayDeals(self, request):
-        """This API is used to pay for an order.
+        r"""This API is used to pay for an order.
 
         :param request: Request instance for PayDeals.
         :type request: :class:`tencentcloud.billing.v20180709.models.PayDealsRequest`

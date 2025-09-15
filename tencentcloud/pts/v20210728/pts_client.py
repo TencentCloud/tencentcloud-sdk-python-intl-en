@@ -27,7 +27,7 @@ class PtsClient(AbstractClient):
 
 
     def AbortCronJobs(self, request):
-        """This API is used to stop cron jobs.
+        r"""This API is used to stop cron jobs.
 
         :param request: Request instance for AbortCronJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.AbortCronJobsRequest`
@@ -50,7 +50,7 @@ class PtsClient(AbstractClient):
 
 
     def AbortJob(self, request):
-        """This API is used to stop test job.
+        r"""This API is used to stop test job.
 
         :param request: Request instance for AbortJob.
         :type request: :class:`tencentcloud.pts.v20210728.models.AbortJobRequest`
@@ -73,7 +73,7 @@ class PtsClient(AbstractClient):
 
 
     def AdjustJobSpeed(self, request):
-        """This API is used to adjust the target RPS of a job.
+        r"""This API is used to adjust the target RPS of a job.
 
         :param request: Request instance for AdjustJobSpeed.
         :type request: :class:`tencentcloud.pts.v20210728.models.AdjustJobSpeedRequest`
@@ -96,7 +96,7 @@ class PtsClient(AbstractClient):
 
 
     def CopyScenario(self, request):
-        """This API is used to copy a scenario.
+        r"""This API is used to copy a scenario.
 
         :param request: Request instance for CopyScenario.
         :type request: :class:`tencentcloud.pts.v20210728.models.CopyScenarioRequest`
@@ -119,7 +119,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateAlertChannel(self, request):
-        """This API is used to create an alert recipient group.
+        r"""This API is used to create an alert recipient group.
 
         :param request: Request instance for CreateAlertChannel.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateAlertChannelRequest`
@@ -142,7 +142,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateCronJob(self, request):
-        """This API is used to create a cron job.
+        r"""This API is used to create a cron job.
 
         :param request: Request instance for CreateCronJob.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateCronJobRequest`
@@ -165,7 +165,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """This API is used to create an environment.
+        r"""This API is used to create an environment.
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateEnvironmentRequest`
@@ -188,7 +188,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateFile(self, request):
-        """This API is used to create a file.
+        r"""This API is used to create a file.
 
         :param request: Request instance for CreateFile.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateFileRequest`
@@ -211,7 +211,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """This API is used to create a project.
+        r"""This API is used to create a project.
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateProjectRequest`
@@ -234,7 +234,7 @@ class PtsClient(AbstractClient):
 
 
     def CreateScenario(self, request):
-        """This API is used to create a scenario.
+        r"""This API is used to create a scenario.
 
         :param request: Request instance for CreateScenario.
         :type request: :class:`tencentcloud.pts.v20210728.models.CreateScenarioRequest`
@@ -257,7 +257,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteAlertChannel(self, request):
-        """This API is used to delete an alert recipient group.
+        r"""This API is used to delete an alert recipient group.
 
         :param request: Request instance for DeleteAlertChannel.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteAlertChannelRequest`
@@ -280,7 +280,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteCronJobs(self, request):
-        """This API is used to delete cron jobs.
+        r"""This API is used to delete cron jobs.
 
         :param request: Request instance for DeleteCronJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteCronJobsRequest`
@@ -303,7 +303,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteEnvironments(self, request):
-        """This API is used to delete environments.
+        r"""This API is used to delete environments.
 
         :param request: Request instance for DeleteEnvironments.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteEnvironmentsRequest`
@@ -326,7 +326,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteFiles(self, request):
-        """This API is used to delete files.
+        r"""This API is used to delete files.
 
         :param request: Request instance for DeleteFiles.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteFilesRequest`
@@ -349,7 +349,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteJobs(self, request):
-        """This API is used to delete jobs.
+        r"""This API is used to delete jobs.
 
         :param request: Request instance for DeleteJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteJobsRequest`
@@ -372,7 +372,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteProjects(self, request):
-        """This API is used to delete projects.
+        r"""This API is used to delete projects.
 
         :param request: Request instance for DeleteProjects.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteProjectsRequest`
@@ -395,7 +395,7 @@ class PtsClient(AbstractClient):
 
 
     def DeleteScenarios(self, request):
-        """This API is used to delete scenarios.
+        r"""This API is used to delete scenarios.
 
         :param request: Request instance for DeleteScenarios.
         :type request: :class:`tencentcloud.pts.v20210728.models.DeleteScenariosRequest`
@@ -418,7 +418,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeAlertChannels(self, request):
-        """This API is used to query alert recipient groups.
+        r"""This API is used to query alert recipient groups.
 
         :param request: Request instance for DescribeAlertChannels.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAlertChannelsRequest`
@@ -441,7 +441,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeAlertRecords(self, request):
-        """This API is used to query alert records.
+        r"""This API is used to query alert records.
 
         :param request: Request instance for DescribeAlertRecords.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAlertRecordsRequest`
@@ -464,7 +464,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeAvailableMetrics(self, request):
-        """This API is used to query all supported metrics.
+        r"""This API is used to query all supported metrics.
 
         :param request: Request instance for DescribeAvailableMetrics.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAvailableMetricsRequest`
@@ -487,7 +487,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeCheckSummary(self, request):
-        """This API is used to query checkpoint summary information.
+        r"""This API is used to query checkpoint summary information.
 
         :param request: Request instance for DescribeCheckSummary.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeCheckSummaryRequest`
@@ -510,7 +510,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeCronJobs(self, request):
-        """This API is used to list cron jobs, selecting all by default if a non-mandatory array parameter is empty.
+        r"""This API is used to list cron jobs, selecting all by default if a non-mandatory array parameter is empty.
 
         :param request: Request instance for DescribeCronJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeCronJobsRequest`
@@ -533,7 +533,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """This API is used to query the environment list.
+        r"""This API is used to query the environment list.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeEnvironmentsRequest`
@@ -556,7 +556,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeErrorSummary(self, request):
-        """This API is used to query error summary information.
+        r"""This API is used to query error summary information.
 
         :param request: Request instance for DescribeErrorSummary.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeErrorSummaryRequest`
@@ -579,7 +579,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeFiles(self, request):
-        """This API is used to query file list.
+        r"""This API is used to query file list.
 
         :param request: Request instance for DescribeFiles.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeFilesRequest`
@@ -602,7 +602,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """This API is used to query job list.
+        r"""This API is used to query job list.
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeJobsRequest`
@@ -625,7 +625,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeLabelValues(self, request):
-        """This API is used to query label values.
+        r"""This API is used to query label values.
 
         :param request: Request instance for DescribeLabelValues.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeLabelValuesRequest`
@@ -648,7 +648,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeMetricLabelWithValues(self, request):
-        """This API is used to query all labels and values of metrics
+        r"""This API is used to query all labels and values of metrics
 
         :param request: Request instance for DescribeMetricLabelWithValues.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeMetricLabelWithValuesRequest`
@@ -671,7 +671,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeNormalLogs(self, request):
-        """This API is used to query logs in performance testing, including engine logs and console logs.
+        r"""This API is used to query logs in performance testing, including engine logs and console logs.
 
         :param request: Request instance for DescribeNormalLogs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeNormalLogsRequest`
@@ -694,7 +694,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """The API is used to query project list.
+        r"""The API is used to query project list.
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeProjectsRequest`
@@ -717,7 +717,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query region list.
+        r"""This API is used to query region list.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeRegionsRequest`
@@ -740,7 +740,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeRequestSummary(self, request):
-        """This API is used to query request summary information.
+        r"""This API is used to query request summary information.
 
         :param request: Request instance for DescribeRequestSummary.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeRequestSummaryRequest`
@@ -763,7 +763,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeSampleBatchQuery(self, request):
-        """This API is used to query metrics in batch and return metric content at a specific time point.
+        r"""This API is used to query metrics in batch and return metric content at a specific time point.
 
         :param request: Request instance for DescribeSampleBatchQuery.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleBatchQueryRequest`
@@ -786,7 +786,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeSampleLogs(self, request):
-        """This API is used to query sampled request logs.
+        r"""This API is used to query sampled request logs.
 
         :param request: Request instance for DescribeSampleLogs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleLogsRequest`
@@ -809,7 +809,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeSampleMatrixBatchQuery(self, request):
-        """This API is used to batch query metric matrices.
+        r"""This API is used to batch query metric matrices.
 
         :param request: Request instance for DescribeSampleMatrixBatchQuery.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixBatchQueryRequest`
@@ -832,7 +832,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeSampleMatrixQuery(self, request):
-        """This API is used to query metric matrix.
+        r"""This API is used to query metric matrix.
 
         :param request: Request instance for DescribeSampleMatrixQuery.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixQueryRequest`
@@ -855,7 +855,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeSampleQuery(self, request):
-        """This API is used to query metrics and return metric content at a specific time point.
+        r"""This API is used to query metrics and return metric content at a specific time point.
 
         :param request: Request instance for DescribeSampleQuery.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleQueryRequest`
@@ -878,7 +878,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeScenarioWithJobs(self, request):
-        """This API is used to query scenarios with executed jobs.
+        r"""This API is used to query scenarios with executed jobs.
 
         :param request: Request instance for DescribeScenarioWithJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeScenarioWithJobsRequest`
@@ -901,7 +901,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeScenarios(self, request):
-        """This API is used to query scenario list.
+        r"""This API is used to query scenario list.
 
         :param request: Request instance for DescribeScenarios.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeScenariosRequest`
@@ -924,7 +924,7 @@ class PtsClient(AbstractClient):
 
 
     def GenerateTmpKey(self, request):
-        """This API is used to generate temporary COS credentials.
+        r"""This API is used to generate temporary COS credentials.
 
         :param request: Request instance for GenerateTmpKey.
         :type request: :class:`tencentcloud.pts.v20210728.models.GenerateTmpKeyRequest`
@@ -947,7 +947,7 @@ class PtsClient(AbstractClient):
 
 
     def RestartCronJobs(self, request):
-        """This API is used to restart cron jobs that have been aborted.
+        r"""This API is used to restart cron jobs that have been aborted.
 
         :param request: Request instance for RestartCronJobs.
         :type request: :class:`tencentcloud.pts.v20210728.models.RestartCronJobsRequest`
@@ -970,7 +970,7 @@ class PtsClient(AbstractClient):
 
 
     def StartJob(self, request):
-        """This API is used to create and start test job.
+        r"""This API is used to create and start test job.
 
         :param request: Request instance for StartJob.
         :type request: :class:`tencentcloud.pts.v20210728.models.StartJobRequest`
@@ -993,7 +993,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateCronJob(self, request):
-        """This API is used to update a cron job.
+        r"""This API is used to update a cron job.
 
         :param request: Request instance for UpdateCronJob.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateCronJobRequest`
@@ -1016,7 +1016,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateEnvironment(self, request):
-        """This API is used to update environments.
+        r"""This API is used to update environments.
 
         :param request: Request instance for UpdateEnvironment.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateEnvironmentRequest`
@@ -1039,7 +1039,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateFileScenarioRelation(self, request):
-        """This API is used to update relation between files and scenarios.
+        r"""This API is used to update relation between files and scenarios.
 
         :param request: Request instance for UpdateFileScenarioRelation.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateFileScenarioRelationRequest`
@@ -1062,7 +1062,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateJob(self, request):
-        """This API is used to update a job.
+        r"""This API is used to update a job.
 
         :param request: Request instance for UpdateJob.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateJobRequest`
@@ -1085,7 +1085,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateProject(self, request):
-        """This API is used to update a project.
+        r"""This API is used to update a project.
 
         :param request: Request instance for UpdateProject.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateProjectRequest`
@@ -1108,7 +1108,7 @@ class PtsClient(AbstractClient):
 
 
     def UpdateScenario(self, request):
-        """This API is used to update a scenario.
+        r"""This API is used to update a scenario.
 
         :param request: Request instance for UpdateScenario.
         :type request: :class:`tencentcloud.pts.v20210728.models.UpdateScenarioRequest`

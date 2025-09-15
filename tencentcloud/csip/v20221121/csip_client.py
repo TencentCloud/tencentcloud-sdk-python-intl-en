@@ -27,7 +27,7 @@ class CsipClient(AbstractClient):
 
 
     def AddNewBindRoleUser(self, request):
-        """This API is used to add the CAM role of Cloud Security Center (CSC) to the current account. The name of the CAM role is "csip".
+        r"""This API is used to add the CAM role of Cloud Security Center (CSC) to the current account. The name of the CAM role is "csip".
 
         :param request: Request instance for AddNewBindRoleUser.
         :type request: :class:`tencentcloud.csip.v20221121.models.AddNewBindRoleUserRequest`
@@ -50,7 +50,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateDomainAndIp(self, request):
-        """This API is used to create an asset with the specific domain/IP.
+        r"""This API is used to create an asset with the specific domain/IP.
 
         :param request: Request instance for CreateDomainAndIp.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateDomainAndIpRequest`
@@ -73,7 +73,7 @@ class CsipClient(AbstractClient):
 
 
     def CreateRiskCenterScanTask(self, request):
-        """This API is used to create a risk scan task.
+        r"""This API is used to create a risk scan task.
 
         :param request: Request instance for CreateRiskCenterScanTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.CreateRiskCenterScanTaskRequest`
@@ -96,7 +96,7 @@ class CsipClient(AbstractClient):
 
 
     def DeleteDomainAndIp(self, request):
-        """This API is used to delete assets.
+        r"""This API is used to delete assets.
 
         :param request: Request instance for DeleteDomainAndIp.
         :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDomainAndIpRequest`
@@ -119,7 +119,7 @@ class CsipClient(AbstractClient):
 
 
     def DeleteRiskScanTask(self, request):
-        """This API is used to delete a risk scan task.
+        r"""This API is used to delete a risk scan task.
 
         :param request: Request instance for DeleteRiskScanTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.DeleteRiskScanTaskRequest`
@@ -142,7 +142,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCVMAssetInfo(self, request):
-        """This API is used to query details of CVM assets.
+        r"""This API is used to query details of CVM assets.
 
         :param request: Request instance for DescribeCVMAssetInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCVMAssetInfoRequest`
@@ -165,7 +165,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeCVMAssets(self, request):
-        """This API is used to query the list of CVM assets.
+        r"""This API is used to query the list of CVM assets.
 
         :param request: Request instance for DescribeCVMAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCVMAssetsRequest`
@@ -188,7 +188,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeClusterPodAssets(self, request):
-        """This API is used to list cluster pods.
+        r"""This API is used to list cluster pods.
 
         :param request: Request instance for DescribeClusterPodAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterPodAssetsRequest`
@@ -211,7 +211,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDbAssetInfo(self, request):
-        """This API is used to query details of a database asset.
+        r"""This API is used to query details of a database asset.
 
         :param request: Request instance for DescribeDbAssetInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDbAssetInfoRequest`
@@ -234,7 +234,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDbAssets(self, request):
-        """This API is used to list database assets.
+        r"""This API is used to list database assets.
 
         :param request: Request instance for DescribeDbAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDbAssetsRequest`
@@ -257,7 +257,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDomainAssets(self, request):
-        """This API is used to list domain assets.
+        r"""This API is used to list domain assets.
 
         :param request: Request instance for DescribeDomainAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDomainAssetsRequest`
@@ -280,7 +280,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeListenerList(self, request):
-        """This API is used to query the list of TCP listeners.
+        r"""This API is used to query the list of TCP listeners.
 
         :param request: Request instance for DescribeListenerList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeListenerListRequest`
@@ -303,7 +303,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOrganizationInfo(self, request):
-        """Check group account details
+        r"""Check group account details
 
         :param request: Request instance for DescribeOrganizationInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationInfoRequest`
@@ -326,7 +326,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeOrganizationUserInfo(self, request):
-        """Query group account user list
+        r"""Query group account user list
 
         :param request: Request instance for DescribeOrganizationUserInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeOrganizationUserInfoRequest`
@@ -349,7 +349,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribePublicIpAssets(self, request):
-        """This API is used to query the list of public IP assets.
+        r"""This API is used to query the list of public IP assets.
 
         :param request: Request instance for DescribePublicIpAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribePublicIpAssetsRequest`
@@ -372,7 +372,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewCFGRiskList(self, request):
-        """This API is used to query the list of configuration risks by assets.
+        r"""This API is used to query the list of configuration risks by assets.
 
         :param request: Request instance for DescribeRiskCenterAssetViewCFGRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewCFGRiskListRequest`
@@ -395,7 +395,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewPortRiskList(self, request):
-        """This API is used to query the list of port risks by assets.
+        r"""This API is used to query the list of port risks by assets.
 
         :param request: Request instance for DescribeRiskCenterAssetViewPortRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewPortRiskListRequest`
@@ -418,7 +418,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewVULRiskList(self, request):
-        """This API is used to query the list of vulnerabilities by assets.
+        r"""This API is used to query the list of vulnerabilities by assets.
 
         :param request: Request instance for DescribeRiskCenterAssetViewVULRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewVULRiskListRequest`
@@ -441,7 +441,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterAssetViewWeakPasswordRiskList(self, request):
-        """This API is used to query the list of weak passwords by assets.
+        r"""This API is used to query the list of weak passwords by assets.
 
         :param request: Request instance for DescribeRiskCenterAssetViewWeakPasswordRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterAssetViewWeakPasswordRiskListRequest`
@@ -464,7 +464,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterPortViewPortRiskList(self, request):
-        """This API is used to query the list of port risks by ports.
+        r"""This API is used to query the list of port risks by ports.
 
         :param request: Request instance for DescribeRiskCenterPortViewPortRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterPortViewPortRiskListRequest`
@@ -487,7 +487,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterServerRiskList(self, request):
-        """This API is used to query the list of services in risk.
+        r"""This API is used to query the list of services in risk.
 
         :param request: Request instance for DescribeRiskCenterServerRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterServerRiskListRequest`
@@ -510,7 +510,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterVULViewVULRiskList(self, request):
-        """This API is used to query the list of vulnerabilities by vulnerabilities.
+        r"""This API is used to query the list of vulnerabilities by vulnerabilities.
 
         :param request: Request instance for DescribeRiskCenterVULViewVULRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterVULViewVULRiskListRequest`
@@ -533,7 +533,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterWebsiteRiskList(self, request):
-        """This API is used to get the list of content risks.
+        r"""This API is used to get the list of content risks.
 
         :param request: Request instance for DescribeRiskCenterWebsiteRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterWebsiteRiskListRequest`
@@ -556,7 +556,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeScanReportList(self, request):
-        """This API is used to get the list of scan reports.
+        r"""This API is used to get the list of scan reports.
 
         :param request: Request instance for DescribeScanReportList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanReportListRequest`
@@ -579,7 +579,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeScanTaskList(self, request):
-        """This API is used to get the list of scan tasks.
+        r"""This API is used to get the list of scan tasks.
 
         :param request: Request instance for DescribeScanTaskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanTaskListRequest`
@@ -602,7 +602,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSearchBugInfo(self, request):
-        """This API is used to query information of a vulnerability.
+        r"""This API is used to query information of a vulnerability.
 
         :param request: Request instance for DescribeSearchBugInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSearchBugInfoRequest`
@@ -625,7 +625,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSubUserInfo(self, request):
-        """Query the group's sub-account list
+        r"""Query the group's sub-account list
 
         :param request: Request instance for DescribeSubUserInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSubUserInfoRequest`
@@ -648,7 +648,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSubnetAssets(self, request):
-        """This API is used to get the list of subnets.
+        r"""This API is used to get the list of subnets.
 
         :param request: Request instance for DescribeSubnetAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSubnetAssetsRequest`
@@ -671,7 +671,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeTaskLogList(self, request):
-        """This API is used to get the list of scan task reports.
+        r"""This API is used to get the list of scan task reports.
 
         :param request: Request instance for DescribeTaskLogList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogListRequest`
@@ -694,7 +694,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeTaskLogURL(self, request):
-        """This API is used to get the temp download link of a report.
+        r"""This API is used to get the temp download link of a report.
 
         :param request: Request instance for DescribeTaskLogURL.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogURLRequest`
@@ -717,7 +717,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVULRiskAdvanceCFGList(self, request):
-        """This API is used to query the advanced configuration of vulnerability scan.
+        r"""This API is used to query the advanced configuration of vulnerability scan.
 
         :param request: Request instance for DescribeVULRiskAdvanceCFGList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVULRiskAdvanceCFGListRequest`
@@ -740,7 +740,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeVpcAssets(self, request):
-        """This API is used to get the list of VPCs.
+        r"""This API is used to get the list of VPCs.
 
         :param request: Request instance for DescribeVpcAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVpcAssetsRequest`
@@ -763,7 +763,7 @@ class CsipClient(AbstractClient):
 
 
     def ModifyRiskCenterRiskStatus(self, request):
-        """This API is used to modify the status of a risk.
+        r"""This API is used to modify the status of a risk.
 
         :param request: Request instance for ModifyRiskCenterRiskStatus.
         :type request: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterRiskStatusRequest`
@@ -786,7 +786,7 @@ class CsipClient(AbstractClient):
 
 
     def StopRiskCenterTask(self, request):
-        """This API is used to stop a scan task.
+        r"""This API is used to stop a scan task.
 
         :param request: Request instance for StopRiskCenterTask.
         :type request: :class:`tencentcloud.csip.v20221121.models.StopRiskCenterTaskRequest`

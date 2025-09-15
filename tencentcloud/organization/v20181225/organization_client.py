@@ -27,7 +27,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AcceptOrganizationInvitation(self, request):
-        """This API is used to accept an invitation to an organization.
+        r"""This API is used to accept an invitation to an organization.
 
         :param request: Request instance for AcceptOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.AcceptOrganizationInvitationRequest`
@@ -50,7 +50,7 @@ class OrganizationClient(AbstractClient):
 
 
     def AddOrganizationNode(self, request):
-        """This API is used to add an organizational unit.
+        r"""This API is used to add an organizational unit.
 
         :param request: Request instance for AddOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.AddOrganizationNodeRequest`
@@ -73,7 +73,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CancelOrganizationInvitation(self, request):
-        """This API is used to cancel an invitation to an organization.
+        r"""This API is used to cancel an invitation to an organization.
 
         :param request: Request instance for CancelOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.CancelOrganizationInvitationRequest`
@@ -96,7 +96,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CreateOrganization(self, request):
-        """This API is used to create an organization.
+        r"""This API is used to create an organization.
 
         :param request: Request instance for CreateOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.CreateOrganizationRequest`
@@ -119,7 +119,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganization(self, request):
-        """This API is used to delete an organization.
+        r"""This API is used to delete an organization.
 
         :param request: Request instance for DeleteOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationRequest`
@@ -142,7 +142,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMemberFromNode(self, request):
-        """This API is used to delete an organization member.
+        r"""This API is used to delete an organization member.
 
         :param request: Request instance for DeleteOrganizationMemberFromNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMemberFromNodeRequest`
@@ -165,7 +165,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationMembers(self, request):
-        """This API is used to delete multiple organization members in a single request.
+        r"""This API is used to delete multiple organization members in a single request.
 
         :param request: Request instance for DeleteOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMembersRequest`
@@ -188,7 +188,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DeleteOrganizationNodes(self, request):
-        """This API is used to delete multiple organizational units in a single request.
+        r"""This API is used to delete multiple organizational units in a single request.
 
         :param request: Request instance for DeleteOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationNodesRequest`
@@ -211,7 +211,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DenyOrganizationInvitation(self, request):
-        """This API is used to decline an invitation to an organization.
+        r"""This API is used to decline an invitation to an organization.
 
         :param request: Request instance for DenyOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.DenyOrganizationInvitationRequest`
@@ -234,7 +234,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetOrganization(self, request):
-        """This API is used to obtain information on organizations.
+        r"""This API is used to obtain information on organizations.
 
         :param request: Request instance for GetOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.GetOrganizationRequest`
@@ -257,7 +257,7 @@ class OrganizationClient(AbstractClient):
 
 
     def GetOrganizationMember(self, request):
-        """This API is used to obtain information on organization members.
+        r"""This API is used to obtain information on organization members.
 
         :param request: Request instance for GetOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20181225.models.GetOrganizationMemberRequest`
@@ -280,7 +280,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationInvitations(self, request):
-        """This API is used to obtain an invitation list.
+        r"""This API is used to obtain an invitation list.
 
         :param request: Request instance for ListOrganizationInvitations.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationInvitationsRequest`
@@ -303,7 +303,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationMembers(self, request):
-        """This API is used to obtain a list of organization members.
+        r"""This API is used to obtain a list of organization members.
 
         :param request: Request instance for ListOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationMembersRequest`
@@ -326,7 +326,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationNodeMembers(self, request):
-        """This API is used to obtain a list of organizational unit members.
+        r"""This API is used to obtain a list of organizational unit members.
 
         :param request: Request instance for ListOrganizationNodeMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodeMembersRequest`
@@ -349,7 +349,7 @@ class OrganizationClient(AbstractClient):
 
 
     def ListOrganizationNodes(self, request):
-        """This API is used to obtain a list of organizational units.
+        r"""This API is used to obtain a list of organizational units.
 
         :param request: Request instance for ListOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodesRequest`
@@ -372,7 +372,7 @@ class OrganizationClient(AbstractClient):
 
 
     def MoveOrganizationMembersToNode(self, request):
-        """This API is used to move members to a specified organizational unit.
+        r"""This API is used to move members to a specified organizational unit.
 
         :param request: Request instance for MoveOrganizationMembersToNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.MoveOrganizationMembersToNodeRequest`
@@ -395,7 +395,7 @@ class OrganizationClient(AbstractClient):
 
 
     def QuitOrganization(self, request):
-        """This API is used to quit an organization.
+        r"""This API is used to quit an organization.
 
         :param request: Request instance for QuitOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.QuitOrganizationRequest`
@@ -418,7 +418,7 @@ class OrganizationClient(AbstractClient):
 
 
     def SendOrganizationInvitation(self, request):
-        """This API is used to send an invitation to join an organization.
+        r"""This API is used to send an invitation to join an organization.
 
         :param request: Request instance for SendOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.SendOrganizationInvitationRequest`
@@ -441,7 +441,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationMember(self, request):
-        """This API is used to update information on organization members.
+        r"""This API is used to update information on organization members.
 
         :param request: Request instance for UpdateOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationMemberRequest`
@@ -464,7 +464,7 @@ class OrganizationClient(AbstractClient):
 
 
     def UpdateOrganizationNode(self, request):
-        """This API is used to update organizational units.
+        r"""This API is used to update organizational units.
 
         :param request: Request instance for UpdateOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationNodeRequest`

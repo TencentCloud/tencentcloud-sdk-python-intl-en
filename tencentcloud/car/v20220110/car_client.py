@@ -27,7 +27,7 @@ class CarClient(AbstractClient):
 
 
     def ApplyConcurrent(self, request):
-        """This API is used to request concurrency quota. The timeout period of the API is 20 seconds.
+        r"""This API is used to request concurrency quota. The timeout period of the API is 20 seconds.
 
         :param request: Request instance for ApplyConcurrent.
         :type request: :class:`tencentcloud.car.v20220110.models.ApplyConcurrentRequest`
@@ -50,7 +50,7 @@ class CarClient(AbstractClient):
 
 
     def BindConcurrentPackagesToProject(self, request):
-        """This API is used to bind a concurrency pack to a project.
+        r"""This API is used to bind a concurrency pack to a project.
 
         :param request: Request instance for BindConcurrentPackagesToProject.
         :type request: :class:`tencentcloud.car.v20220110.models.BindConcurrentPackagesToProjectRequest`
@@ -73,7 +73,7 @@ class CarClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """This API is used to create an application.
+        r"""This API is used to create an application.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateApplicationRequest`
@@ -96,7 +96,7 @@ class CarClient(AbstractClient):
 
 
     def CreateApplicationProject(self, request):
-        """This API is used to create a cloud application project.
+        r"""This API is used to create a cloud application project.
 
         :param request: Request instance for CreateApplicationProject.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateApplicationProjectRequest`
@@ -119,7 +119,7 @@ class CarClient(AbstractClient):
 
 
     def CreateApplicationSnapshot(self, request):
-        """This API is used to create a cloud application version snapshot.
+        r"""This API is used to create a cloud application version snapshot.
 
         :param request: Request instance for CreateApplicationSnapshot.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateApplicationSnapshotRequest`
@@ -142,7 +142,7 @@ class CarClient(AbstractClient):
 
 
     def CreateApplicationVersion(self, request):
-        """This API is used to create a cloud application version.
+        r"""This API is used to create a cloud application version.
 
         :param request: Request instance for CreateApplicationVersion.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateApplicationVersionRequest`
@@ -165,7 +165,7 @@ class CarClient(AbstractClient):
 
 
     def CreateSession(self, request):
-        """This API is used to create a session. The timeout period of the API is 5 seconds.
+        r"""This API is used to create a session. The timeout period of the API is 5 seconds.
 
         :param request: Request instance for CreateSession.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateSessionRequest`
@@ -188,7 +188,7 @@ class CarClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        """This API is used to delete a cloud application.
+        r"""This API is used to delete a cloud application.
 
         :param request: Request instance for DeleteApplication.
         :type request: :class:`tencentcloud.car.v20220110.models.DeleteApplicationRequest`
@@ -211,7 +211,7 @@ class CarClient(AbstractClient):
 
 
     def DeleteApplicationProjects(self, request):
-        """This API is used to delete cloud application projects in batches.
+        r"""This API is used to delete cloud application projects in batches.
 
         :param request: Request instance for DeleteApplicationProjects.
         :type request: :class:`tencentcloud.car.v20220110.models.DeleteApplicationProjectsRequest`
@@ -234,7 +234,7 @@ class CarClient(AbstractClient):
 
 
     def DeleteApplicationVersion(self, request):
-        """This API is used to delete a cloud application version.
+        r"""This API is used to delete a cloud application version.
 
         :param request: Request instance for DeleteApplicationVersion.
         :type request: :class:`tencentcloud.car.v20220110.models.DeleteApplicationVersionRequest`
@@ -257,7 +257,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationFileInfo(self, request):
-        """This API is used to query application file information.
+        r"""This API is used to query application file information.
 
         :param request: Request instance for DescribeApplicationFileInfo.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationFileInfoRequest`
@@ -280,7 +280,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationList(self, request):
-        """This API is used to query the cloud application list.
+        r"""This API is used to query the cloud application list.
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationListRequest`
@@ -303,7 +303,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationPathList(self, request):
-        """This API is used to query the cloud application startup path list.
+        r"""This API is used to query the cloud application startup path list.
 
         :param request: Request instance for DescribeApplicationPathList.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationPathListRequest`
@@ -326,7 +326,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationProjectAdvancedConfig(self, request):
-        """This API is used to obtain the advanced configuration information of a cloud application project.
+        r"""This API is used to obtain the advanced configuration information of a cloud application project.
 
         :param request: Request instance for DescribeApplicationProjectAdvancedConfig.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectAdvancedConfigRequest`
@@ -349,7 +349,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationProjects(self, request):
-        """This API is used to obtain the cloud application project list.
+        r"""This API is used to obtain the cloud application project list.
 
         :param request: Request instance for DescribeApplicationProjects.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectsRequest`
@@ -372,7 +372,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationStatus(self, request):
-        """This API is used to query the running status of a cloud application and update status information.
+        r"""This API is used to query the running status of a cloud application and update status information.
 
         :param request: Request instance for DescribeApplicationStatus.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationStatusRequest`
@@ -395,7 +395,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeApplicationVersion(self, request):
-        """This API is used to query the version information of a cloud application.
+        r"""This API is used to query the version information of a cloud application.
 
         :param request: Request instance for DescribeApplicationVersion.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationVersionRequest`
@@ -418,7 +418,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeConcurrentCount(self, request):
-        """This API is used to obtain the concurrency count.
+        r"""This API is used to obtain the concurrency count.
 
         :param request: Request instance for DescribeConcurrentCount.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentCountRequest`
@@ -441,7 +441,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeConcurrentPackages(self, request):
-        """This API is used to obtain the cloud application concurrency pack list.
+        r"""This API is used to obtain the cloud application concurrency pack list.
 
         :param request: Request instance for DescribeConcurrentPackages.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentPackagesRequest`
@@ -464,7 +464,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeConcurrentSummary(self, request):
-        """This API is used to query the concurrency overview.
+        r"""This API is used to query the concurrency overview.
 
         :param request: Request instance for DescribeConcurrentSummary.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentSummaryRequest`
@@ -487,7 +487,7 @@ class CarClient(AbstractClient):
 
 
     def DescribeCosCredential(self, request):
-        """This API is used to query COS key information.
+        r"""This API is used to query COS key information.
 
         :param request: Request instance for DescribeCosCredential.
         :type request: :class:`tencentcloud.car.v20220110.models.DescribeCosCredentialRequest`
@@ -510,7 +510,7 @@ class CarClient(AbstractClient):
 
 
     def DestroySession(self, request):
-        """This API is used to terminate a session. If cloud-based streaming has been enabled for this session, the cloud-based streaming will end upon session termination.
+        r"""This API is used to terminate a session. If cloud-based streaming has been enabled for this session, the cloud-based streaming will end upon session termination.
 
         :param request: Request instance for DestroySession.
         :type request: :class:`tencentcloud.car.v20220110.models.DestroySessionRequest`
@@ -533,7 +533,7 @@ class CarClient(AbstractClient):
 
 
     def ModifyApplicationBaseInfo(self, request):
-        """This API is used to modify basic information of a cloud application.
+        r"""This API is used to modify basic information of a cloud application.
 
         :param request: Request instance for ModifyApplicationBaseInfo.
         :type request: :class:`tencentcloud.car.v20220110.models.ModifyApplicationBaseInfoRequest`
@@ -556,7 +556,7 @@ class CarClient(AbstractClient):
 
 
     def ModifyApplicationProject(self, request):
-        """This API is used to modify a cloud application project.
+        r"""This API is used to modify a cloud application project.
 
         :param request: Request instance for ModifyApplicationProject.
         :type request: :class:`tencentcloud.car.v20220110.models.ModifyApplicationProjectRequest`
@@ -579,7 +579,7 @@ class CarClient(AbstractClient):
 
 
     def ModifyApplicationVersion(self, request):
-        """This API is used to modify the version information of a cloud application.
+        r"""This API is used to modify the version information of a cloud application.
 
         :param request: Request instance for ModifyApplicationVersion.
         :type request: :class:`tencentcloud.car.v20220110.models.ModifyApplicationVersionRequest`
@@ -602,7 +602,7 @@ class CarClient(AbstractClient):
 
 
     def ModifyConcurrentPackage(self, request):
-        """This API is used to modify a cloud application concurrency pack.
+        r"""This API is used to modify a cloud application concurrency pack.
 
         :param request: Request instance for ModifyConcurrentPackage.
         :type request: :class:`tencentcloud.car.v20220110.models.ModifyConcurrentPackageRequest`
@@ -625,7 +625,7 @@ class CarClient(AbstractClient):
 
 
     def ModifyMobileApplicationInfo(self, request):
-        """This API is used to modify the mobile application data.
+        r"""This API is used to modify the mobile application data.
 
         :param request: Request instance for ModifyMobileApplicationInfo.
         :type request: :class:`tencentcloud.car.v20220110.models.ModifyMobileApplicationInfoRequest`
@@ -648,7 +648,7 @@ class CarClient(AbstractClient):
 
 
     def ResetConcurrentPackages(self, request):
-        """This API is used to reset a concurrency pack and disconnect all user connections.
+        r"""This API is used to reset a concurrency pack and disconnect all user connections.
 
         :param request: Request instance for ResetConcurrentPackages.
         :type request: :class:`tencentcloud.car.v20220110.models.ResetConcurrentPackagesRequest`
@@ -671,7 +671,7 @@ class CarClient(AbstractClient):
 
 
     def SetApplicationVersionOnline(self, request):
-        """This API is used to launch an application version.
+        r"""This API is used to launch an application version.
 
         :param request: Request instance for SetApplicationVersionOnline.
         :type request: :class:`tencentcloud.car.v20220110.models.SetApplicationVersionOnlineRequest`
@@ -694,7 +694,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStream(self, request):
-        """This API is used to start pushing your cloud application's video streams in real time to CSS. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.
+        r"""This API is used to start pushing your cloud application's video streams in real time to CSS. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.
 
         :param request: Request instance for StartPublishStream.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamRequest`
@@ -717,7 +717,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStreamWithURL(self, request):
-        """This API is used to start pushing your cloud application's video streams to a specified URL. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).
+        r"""This API is used to start pushing your cloud application's video streams to a specified URL. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).
 
         :param request: Request instance for StartPublishStreamWithURL.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLRequest`
@@ -740,7 +740,7 @@ class CarClient(AbstractClient):
 
 
     def StopPublishStream(self, request):
-        """This API is used to stop pushing streams.
+        r"""This API is used to stop pushing streams.
 
         :param request: Request instance for StopPublishStream.
         :type request: :class:`tencentcloud.car.v20220110.models.StopPublishStreamRequest`
@@ -763,7 +763,7 @@ class CarClient(AbstractClient):
 
 
     def UnbindConcurrentPackagesFromProject(self, request):
-        """This API is used to unbind a concurrency pack from a project.
+        r"""This API is used to unbind a concurrency pack from a project.
 
         :param request: Request instance for UnbindConcurrentPackagesFromProject.
         :type request: :class:`tencentcloud.car.v20220110.models.UnbindConcurrentPackagesFromProjectRequest`

@@ -27,7 +27,7 @@ class AdvisorClient(AbstractClient):
 
 
     def DescribeStrategies(self, request):
-        """This API is used to query information about assessment items.
+        r"""This API is used to query information about assessment items.
 
         :param request: Request instance for DescribeStrategies.
         :type request: :class:`tencentcloud.advisor.v20200721.models.DescribeStrategiesRequest`
@@ -50,7 +50,7 @@ class AdvisorClient(AbstractClient):
 
 
     def DescribeTaskStrategyRisks(self, request):
-        """This API is used to query the risky instance list of the assessment item.
+        r"""This API is used to query the risky instance list of the assessment item.
 
         :param request: Request instance for DescribeTaskStrategyRisks.
         :type request: :class:`tencentcloud.advisor.v20200721.models.DescribeTaskStrategyRisksRequest`

@@ -27,7 +27,7 @@ class TmsClient(AbstractClient):
 
 
     def TextModeration(self, request):
-        """This API is used to submit text content for intelligent moderation.
+        r"""This API is used to submit text content for intelligent moderation.
 
         ### Notes
         - Before invoking this API, be sure you have activated Tencent Cloud Text Moderation System in the [Content Moderation - Text Moderation System](https://console.cloud.tencent.com/cms/text/package) console.

@@ -27,7 +27,7 @@ class IotcloudClient(AbstractClient):
 
 
     def CreateDevice(self, request):
-        """This API is used to create an IoT Hub device.
+        r"""This API is used to create an IoT Hub device.
 
         :param request: Request instance for CreateDevice.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.CreateDeviceRequest`
@@ -50,7 +50,7 @@ class IotcloudClient(AbstractClient):
 
 
     def CreatePrivateCA(self, request):
-        """This API is used to create a private CA certificate.
+        r"""This API is used to create a private CA certificate.
 
         :param request: Request instance for CreatePrivateCA.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.CreatePrivateCARequest`
@@ -73,7 +73,7 @@ class IotcloudClient(AbstractClient):
 
 
     def CreateProduct(self, request):
-        """This API is used to create a new IoT communication product.
+        r"""This API is used to create a new IoT communication product.
 
         :param request: Request instance for CreateProduct.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.CreateProductRequest`
@@ -96,7 +96,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """This API is used to delete an IoT Hub device.
+        r"""This API is used to delete an IoT Hub device.
 
         :param request: Request instance for DeleteDevice.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DeleteDeviceRequest`
@@ -119,7 +119,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DeleteDeviceShadow(self, request):
-        """This API is used to delete a device shadow.
+        r"""This API is used to delete a device shadow.
 
         :param request: Request instance for DeleteDeviceShadow.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DeleteDeviceShadowRequest`
@@ -142,7 +142,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DeletePrivateCA(self, request):
-        """This API is used to delete a private CA certificate.
+        r"""This API is used to delete a private CA certificate.
 
         :param request: Request instance for DeletePrivateCA.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DeletePrivateCARequest`
@@ -165,7 +165,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """This API is used to delete an IoT Hub product.
+        r"""This API is used to delete an IoT Hub product.
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DeleteProductRequest`
@@ -188,7 +188,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeDevice(self, request):
-        """This API is used to query device details.
+        r"""This API is used to query device details.
 
         :param request: Request instance for DescribeDevice.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeDeviceRequest`
@@ -211,7 +211,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeDevices(self, request):
-        """This API is used to get the list of IoT Hub devices.
+        r"""This API is used to get the list of IoT Hub devices.
 
         :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeDevicesRequest`
@@ -234,7 +234,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribePrivateCA(self, request):
-        """This API is used to query private CA certificate details.
+        r"""This API is used to query private CA certificate details.
 
         :param request: Request instance for DescribePrivateCA.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribePrivateCARequest`
@@ -257,7 +257,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribePrivateCABindedProducts(self, request):
-        """This API is used to query the products bound to a private CA certificate.
+        r"""This API is used to query the products bound to a private CA certificate.
 
         :param request: Request instance for DescribePrivateCABindedProducts.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribePrivateCABindedProductsRequest`
@@ -280,7 +280,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribePrivateCAs(self, request):
-        """This API is used to get the list of private CA certificates.
+        r"""This API is used to get the list of private CA certificates.
 
         :param request: Request instance for DescribePrivateCAs.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribePrivateCAsRequest`
@@ -303,7 +303,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeProduct(self, request):
-        """This API is used to query product details.
+        r"""This API is used to query product details.
 
         :param request: Request instance for DescribeProduct.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeProductRequest`
@@ -326,7 +326,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeProductCA(self, request):
-        """This API is used to query the CA certificates bound to a product.
+        r"""This API is used to query the CA certificates bound to a product.
 
         :param request: Request instance for DescribeProductCA.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeProductCARequest`
@@ -349,7 +349,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """This API is used to obtain the product list.
+        r"""This API is used to obtain the product list.
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.DescribeProductsRequest`
@@ -372,7 +372,7 @@ class IotcloudClient(AbstractClient):
 
 
     def SetProductsForbiddenStatus(self, request):
-        """This API is used to enable or disable multiple products at a time.
+        r"""This API is used to enable or disable multiple products at a time.
 
         :param request: Request instance for SetProductsForbiddenStatus.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.SetProductsForbiddenStatusRequest`
@@ -395,7 +395,7 @@ class IotcloudClient(AbstractClient):
 
 
     def UpdateDeviceLogLevel(self, request):
-        """This API is used to set the device log level.
+        r"""This API is used to set the device log level.
 
         :param request: Request instance for UpdateDeviceLogLevel.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.UpdateDeviceLogLevelRequest`
@@ -418,7 +418,7 @@ class IotcloudClient(AbstractClient):
 
 
     def UpdateDevicesEnableState(self, request):
-        """This API is used to enable or disable multiple devices.
+        r"""This API is used to enable or disable multiple devices.
 
         :param request: Request instance for UpdateDevicesEnableState.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.UpdateDevicesEnableStateRequest`
@@ -441,7 +441,7 @@ class IotcloudClient(AbstractClient):
 
 
     def UpdatePrivateCA(self, request):
-        """This API is used to update a private CA certificate.
+        r"""This API is used to update a private CA certificate.
 
         :param request: Request instance for UpdatePrivateCA.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.UpdatePrivateCARequest`
@@ -464,7 +464,7 @@ class IotcloudClient(AbstractClient):
 
 
     def UpdateProductDynamicRegister(self, request):
-        """This API is used to update the configuration of product dynamic registration.
+        r"""This API is used to update the configuration of product dynamic registration.
 
         :param request: Request instance for UpdateProductDynamicRegister.
         :type request: :class:`tencentcloud.iotcloud.v20210408.models.UpdateProductDynamicRegisterRequest`

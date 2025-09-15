@@ -27,7 +27,7 @@ class SmsClient(AbstractClient):
 
 
     def AddSmsSign(self, request):
-        """This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before starting an application.
+        r"""This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before starting an application.
         > Note: individual users cannot use this API to apply for SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, please log in to the console to apply for SMS signatures. For detailed directions, please see [Creating SMS Signatures](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Sign).
 
         :param request: Request instance for AddSmsSign.
@@ -51,7 +51,7 @@ class SmsClient(AbstractClient):
 
 
     def AddSmsTemplate(self, request):
-        """This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before starting an application.
+        r"""This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before starting an application.
         > Note: individual users cannot use this API to apply for SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, please log in to the console to apply for SMS body templates. For detailed directions, please see [Creating SMS Body Templates](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Template).
 
         :param request: Request instance for AddSmsTemplate.
@@ -75,7 +75,7 @@ class SmsClient(AbstractClient):
 
 
     def CallbackStatusStatistics(self, request):
-        """This API is used to collect statistics on user receipts.
+        r"""This API is used to collect statistics on user receipts.
 
         :param request: Request instance for CallbackStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsRequest`
@@ -98,7 +98,7 @@ class SmsClient(AbstractClient):
 
 
     def DeleteSmsSign(self, request):
-        """> Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). You can log in to the console to delete SMS signatures. For detailed directions, please see the notes on deleting SMS signatures in [SMS Signature Operations](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Sign).
+        r"""> Note: individual users cannot use this API to delete SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). You can log in to the console to delete SMS signatures. For detailed directions, please see the notes on deleting SMS signatures in [SMS Signature Operations](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Sign).
 
         :param request: Request instance for DeleteSmsSign.
         :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsSignRequest`
@@ -121,7 +121,7 @@ class SmsClient(AbstractClient):
 
 
     def DeleteSmsTemplate(self, request):
-        """> Note: individual users cannot use this API to delete SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). You can log in to the console to delete SMS body templates. For detailed directions, please see the notes on deleting SMS body templates in [SMS Body Template Operations](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Template).
+        r"""> Note: individual users cannot use this API to delete SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). You can log in to the console to delete SMS body templates. For detailed directions, please see the notes on deleting SMS body templates in [SMS Body Template Operations](https://intl.cloud.tencent.com/document/product/382/36136?from_cn_redirect=1#Template).
 
         :param request: Request instance for DeleteSmsTemplate.
         :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsTemplateRequest`
@@ -144,7 +144,7 @@ class SmsClient(AbstractClient):
 
 
     def DescribeSmsSignList(self, request):
-        """> Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).
+        r"""> Note: individual users cannot use this API to query SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).
 
         :param request: Request instance for DescribeSmsSignList.
         :type request: :class:`tencentcloud.sms.v20190711.models.DescribeSmsSignListRequest`
@@ -167,7 +167,7 @@ class SmsClient(AbstractClient):
 
 
     def DescribeSmsTemplateList(self, request):
-        """> Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).
+        r"""> Note: individual users cannot use this API to query SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1).
 
         :param request: Request instance for DescribeSmsTemplateList.
         :type request: :class:`tencentcloud.sms.v20190711.models.DescribeSmsTemplateListRequest`
@@ -190,7 +190,7 @@ class SmsClient(AbstractClient):
 
 
     def ModifySmsSign(self, request):
-        """This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before making a modification.
+        r"""This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before making a modification.
         >-  Note: individual users cannot use this API to modify SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to modify SMS signatures.
         >- Modifications can be made only if the signature status is **pending review** or **rejected**. **Approved** signatures cannot be modified.
 
@@ -215,7 +215,7 @@ class SmsClient(AbstractClient):
 
 
     def ModifySmsTemplate(self, request):
-        """This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.
+        r"""This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.
         >-  Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to modify SMS body templates.
         >- Modifications can be made only if the body template status is **pending review** or **rejected**. **Approved** body templates cannot be modified.
 
@@ -240,7 +240,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsReplyStatus(self, request):
-        """This API is used to pull SMS reply status.
+        r"""This API is used to pull SMS reply status.
 
         :param request: Request instance for PullSmsReplyStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusRequest`
@@ -263,7 +263,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsReplyStatusByPhoneNumber(self, request):
-        """This API is used to pull SMS reply status for one single number.
+        r"""This API is used to pull SMS reply status for one single number.
 
         :param request: Request instance for PullSmsReplyStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusByPhoneNumberRequest`
@@ -286,7 +286,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsSendStatus(self, request):
-        """This API is used to pull SMS delivery status.
+        r"""This API is used to pull SMS delivery status.
 
         :param request: Request instance for PullSmsSendStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusRequest`
@@ -309,7 +309,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsSendStatusByPhoneNumber(self, request):
-        """This API is used to pull SMS delivery status for one single number.
+        r"""This API is used to pull SMS delivery status for one single number.
 
         :param request: Request instance for PullSmsSendStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberRequest`
@@ -332,7 +332,7 @@ class SmsClient(AbstractClient):
 
 
     def SendSms(self, request):
-        """This API is used to send SMS verification codes, notification, or marketing messages to users.
+        r"""This API is used to send SMS verification codes, notification, or marketing messages to users.
 
 
         :param request: Request instance for SendSms.
@@ -356,7 +356,7 @@ class SmsClient(AbstractClient):
 
 
     def SendStatusStatistics(self, request):
-        """This API is used to collect statistics on SMS sent by users.
+        r"""This API is used to collect statistics on SMS sent by users.
 
         :param request: Request instance for SendStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsRequest`
@@ -379,7 +379,7 @@ class SmsClient(AbstractClient):
 
 
     def SmsPackagesStatistics(self, request):
-        """This API is used to collect statistics on user's packages.
+        r"""This API is used to collect statistics on user's packages.
 
         :param request: Request instance for SmsPackagesStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsRequest`

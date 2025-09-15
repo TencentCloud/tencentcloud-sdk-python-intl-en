@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AirTransport(AbstractModel):
-    """Itinerary/Receipt of e-ticket for air transportation
+    r"""Itinerary/Receipt of e-ticket for air transportation
 
     """
 
@@ -101,7 +101,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -112,7 +112,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Number(self):
-        """E-ticket No.
+        r"""E-ticket No.
         :rtype: str
         """
         return self._Number
@@ -123,7 +123,7 @@ class AirTransport(AbstractModel):
 
     @property
     def CheckCode(self):
-        """Check code
+        r"""Check code
         :rtype: str
         """
         return self._CheckCode
@@ -134,7 +134,7 @@ class AirTransport(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """Serial number
+        r"""Serial number
         :rtype: str
         """
         return self._SerialNumber
@@ -145,7 +145,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -156,7 +156,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCode(self):
-        """Agent code
+        r"""Agent code
         :rtype: str
         """
         return self._AgentCode
@@ -167,7 +167,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCodeFirst(self):
-        """First line of the agent code
+        r"""First line of the agent code
         :rtype: str
         """
         return self._AgentCodeFirst
@@ -178,7 +178,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AgentCodeSecond(self):
-        """Second line of the agent code
+        r"""Second line of the agent code
         :rtype: str
         """
         return self._AgentCodeSecond
@@ -189,7 +189,7 @@ class AirTransport(AbstractModel):
 
     @property
     def UserName(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._UserName
@@ -200,7 +200,7 @@ class AirTransport(AbstractModel):
 
     @property
     def UserID(self):
-        """ID card number
+        r"""ID card number
         :rtype: str
         """
         return self._UserID
@@ -211,7 +211,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Issuer(self):
-        """Issuer
+        r"""Issuer
         :rtype: str
         """
         return self._Issuer
@@ -222,7 +222,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Fare(self):
-        """Fare
+        r"""Fare
         :rtype: str
         """
         return self._Fare
@@ -233,7 +233,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax
+        r"""Tax
         :rtype: str
         """
         return self._Tax
@@ -244,7 +244,7 @@ class AirTransport(AbstractModel):
 
     @property
     def FuelSurcharge(self):
-        """Fuel surcharge
+        r"""Fuel surcharge
         :rtype: str
         """
         return self._FuelSurcharge
@@ -255,7 +255,7 @@ class AirTransport(AbstractModel):
 
     @property
     def AirDevelopmentFund(self):
-        """Aviation Development Fund
+        r"""Aviation Development Fund
         :rtype: str
         """
         return self._AirDevelopmentFund
@@ -266,7 +266,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Insurance(self):
-        """Insurance
+        r"""Insurance
         :rtype: str
         """
         return self._Insurance
@@ -277,7 +277,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -288,7 +288,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -299,7 +299,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DomesticInternationalTag(self):
-        """Domestic or international tag
+        r"""Domestic or international tag
         :rtype: str
         """
         return self._DomesticInternationalTag
@@ -310,7 +310,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DateStart(self):
-        """Not-valid-before date
+        r"""Not-valid-before date
         :rtype: str
         """
         return self._DateStart
@@ -321,7 +321,7 @@ class AirTransport(AbstractModel):
 
     @property
     def DateEnd(self):
-        """Not-valid-after date
+        r"""Not-valid-after date
         :rtype: str
         """
         return self._DateEnd
@@ -332,7 +332,7 @@ class AirTransport(AbstractModel):
 
     @property
     def Endorsement(self):
-        """Endorsements/Restrictions
+        r"""Endorsements/Restrictions
         :rtype: str
         """
         return self._Endorsement
@@ -343,7 +343,7 @@ class AirTransport(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -354,7 +354,7 @@ class AirTransport(AbstractModel):
 
     @property
     def FlightItems(self):
-        """Items
+        r"""Items
         :rtype: list of FlightItem
         """
         return self._FlightItems
@@ -405,7 +405,7 @@ class AirTransport(AbstractModel):
 
 
 class BankCardOCRRequest(AbstractModel):
-    """BankCardOCR request structure.
+    r"""BankCardOCR request structure.
 
     """
 
@@ -444,7 +444,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
         :rtype: str
         """
@@ -456,7 +456,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """URL address of image. (This field is not supported outside Chinese mainland)
+        r"""URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -471,7 +471,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def RetBorderCutImage(self):
-        """Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`
+        r"""Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`
         :rtype: bool
         """
         return self._RetBorderCutImage
@@ -482,7 +482,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def RetCardNoImage(self):
-        """Whether to return the card number image data after slicing. Default value: `false`
+        r"""Whether to return the card number image data after slicing. Default value: `false`
         :rtype: bool
         """
         return self._RetCardNoImage
@@ -493,7 +493,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def EnableCopyCheck(self):
-        """Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`
+        r"""Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`
         :rtype: bool
         """
         return self._EnableCopyCheck
@@ -504,7 +504,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def EnableReshootCheck(self):
-        """Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`
+        r"""Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`
         :rtype: bool
         """
         return self._EnableReshootCheck
@@ -515,7 +515,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def EnableBorderCheck(self):
-        """Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`
+        r"""Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`
         :rtype: bool
         """
         return self._EnableBorderCheck
@@ -526,7 +526,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def EnableQualityValue(self):
-        """Whether to return the image quality value, which measures how clear an image is. Default value: `false`
+        r"""Whether to return the image quality value, which measures how clear an image is. Default value: `false`
         :rtype: bool
         """
         return self._EnableQualityValue
@@ -556,7 +556,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class BankCardOCRResponse(AbstractModel):
-    """BankCardOCR response structure.
+    r"""BankCardOCR response structure.
 
     """
 
@@ -606,7 +606,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CardNo(self):
-        """Card number
+        r"""Card number
         :rtype: str
         """
         return self._CardNo
@@ -617,7 +617,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BankInfo(self):
-        """Bank information
+        r"""Bank information
         :rtype: str
         """
         return self._BankInfo
@@ -628,7 +628,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ValidDate(self):
-        """Expiration date. Format: 07/2023
+        r"""Expiration date. Format: 07/2023
         :rtype: str
         """
         return self._ValidDate
@@ -639,7 +639,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CardType(self):
-        """Card type
+        r"""Card type
         :rtype: str
         """
         return self._CardType
@@ -650,7 +650,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CardName(self):
-        """Card name
+        r"""Card name
         :rtype: str
         """
         return self._CardName
@@ -661,7 +661,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BorderCutImage(self):
-        """Sliced image data
+        r"""Sliced image data
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -673,7 +673,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CardNoImage(self):
-        """Card number image data
+        r"""Card number image data
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -685,7 +685,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WarningCode(self):
-        """Warning code:
+        r"""Warning code:
 -9110: the bank card date is invalid. 
 -9111: the bank card border is incomplete. 
 -9112: the bank card image is reflective.
@@ -703,7 +703,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def QualityValue(self):
-        """Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)
+        r"""Image quality value, which is returned when `EnableQualityValue` is set to `true`. The smaller the value, the less clear the image is. Value range: 0−100 (a threshold greater than or equal to 50 is recommended.)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -715,7 +715,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -739,7 +739,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class BrazilCardInfo(AbstractModel):
-    """Type of document in brazil.
+    r"""Type of document in brazil.
 
     """
 
@@ -765,7 +765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RNE(self):
-        """RNE document.
+        r"""RNE document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilRNEInfo`
         """
@@ -777,7 +777,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RNM(self):
-        """Specifies the document.
+        r"""Specifies the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilRNMInfo`
         """
@@ -789,7 +789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DriverLicense(self):
-        """Driver license document.
+        r"""Driver license document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilDriverLicenseInfo`
         """
@@ -801,7 +801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IDCard(self):
-        """ID card document.
+        r"""ID card document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilIDCardInfo`
         """
@@ -836,7 +836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BrazilDriverLicenseInfo(AbstractModel):
-    """Driver'S license type in brazil.
+    r"""Driver'S license type in brazil.
 
     """
 
@@ -891,7 +891,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def NOME(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._NOME
@@ -902,7 +902,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def CatHab(self):
-        """Specifies the driver's license type.
+        r"""Specifies the driver's license type.
         :rtype: str
         """
         return self._CatHab
@@ -913,7 +913,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def CNHNumber(self):
-        """Driver’s license id.
+        r"""Driver’s license id.
         :rtype: str
         """
         return self._CNHNumber
@@ -924,7 +924,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """Expiration date.
+        r"""Expiration date.
         :rtype: str
         """
         return self._VALIDADE
@@ -935,7 +935,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def QUALIFICATION(self):
-        """Indicates the qualification.
+        r"""Indicates the qualification.
         :rtype: str
         """
         return self._QUALIFICATION
@@ -946,7 +946,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def IDENTIDADE(self):
-        """Identity card number.
+        r"""Identity card number.
         :rtype: str
         """
         return self._IDENTIDADE
@@ -957,7 +957,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def CPF(self):
-        """Tax number of the person.
+        r"""Tax number of the person.
         :rtype: str
         """
         return self._CPF
@@ -968,7 +968,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def NASCIMENTO(self):
-        """Date of birth.
+        r"""Date of birth.
         :rtype: str
         """
         return self._NASCIMENTO
@@ -979,7 +979,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def MEMBERSHIP(self):
-        """Membership status.
+        r"""Membership status.
         :rtype: str
         """
         return self._MEMBERSHIP
@@ -990,7 +990,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def REGISTRO(self):
-        """Registration number.
+        r"""Registration number.
         :rtype: str
         """
         return self._REGISTRO
@@ -1001,7 +1001,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def OBSERVATIONS(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._OBSERVATIONS
@@ -1012,7 +1012,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def IssueDate(self):
-        """Issue date.
+        r"""Issue date.
         :rtype: str
         """
         return self._IssueDate
@@ -1023,7 +1023,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def LOCAL(self):
-        """Issuing location.
+        r"""Issuing location.
         :rtype: str
         """
         return self._LOCAL
@@ -1034,7 +1034,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def BackNumber(self):
-        """Record number.
+        r"""Record number.
         :rtype: str
         """
         return self._BackNumber
@@ -1045,7 +1045,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Specifies the avatar in base64 format.
+        r"""Specifies the avatar in base64 format.
         :rtype: str
         """
         return self._PortraitImage
@@ -1082,7 +1082,7 @@ class BrazilDriverLicenseInfo(AbstractModel):
 
 
 class BrazilIDCardInfo(AbstractModel):
-    """Specifies the identity card type in brazil.
+    r"""Specifies the identity card type in brazil.
 
     """
 
@@ -1134,7 +1134,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def Nome(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Nome
@@ -1145,7 +1145,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def MemberShip(self):
-        """Parent information.
+        r"""Parent information.
         :rtype: str
         """
         return self._MemberShip
@@ -1156,7 +1156,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def DataNascimento(self):
-        """Date of birth.
+        r"""Date of birth.
         :rtype: str
         """
         return self._DataNascimento
@@ -1167,7 +1167,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def IssuingAgency(self):
-        """Issuing organization.
+        r"""Issuing organization.
         :rtype: str
         """
         return self._IssuingAgency
@@ -1178,7 +1178,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def Fatorrh(self):
-        """Specifies the blood type.
+        r"""Specifies the blood type.
         :rtype: str
         """
         return self._Fatorrh
@@ -1189,7 +1189,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def NaturalIDade(self):
-        """Birthplace.
+        r"""Birthplace.
         :rtype: str
         """
         return self._NaturalIDade
@@ -1200,7 +1200,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def Observations(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Observations
@@ -1211,7 +1211,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def CPF(self):
-        """CPF Type
+        r"""CPF Type
         :rtype: str
         """
         return self._CPF
@@ -1222,7 +1222,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def DNI(self):
-        """DNI Type
+        r"""DNI Type
         :rtype: str
         """
         return self._DNI
@@ -1233,7 +1233,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def RegistroGeral(self):
-        """Common registration.
+        r"""Common registration.
         :rtype: str
         """
         return self._RegistroGeral
@@ -1244,7 +1244,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def DispatchDate(self):
-        """Issue date. valid values: dd/mm/yyyy.
+        r"""Issue date. valid values: dd/mm/yyyy.
         :rtype: str
         """
         return self._DispatchDate
@@ -1255,7 +1255,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def Registro(self):
-        """Address.
+        r"""Address.
         :rtype: str
         """
         return self._Registro
@@ -1266,7 +1266,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Specifies the avatar in Base64 format of the id card.
+        r"""Specifies the avatar in Base64 format of the id card.
         :rtype: str
         """
         return self._PortraitImage
@@ -1277,7 +1277,7 @@ class BrazilIDCardInfo(AbstractModel):
 
     @property
     def DocOrigem(self):
-        """Original identity information.
+        r"""Original identity information.
         :rtype: str
         """
         return self._DocOrigem
@@ -1313,7 +1313,7 @@ class BrazilIDCardInfo(AbstractModel):
 
 
 class BrazilRNEInfo(AbstractModel):
-    """BrazilRNEInfo
+    r"""BrazilRNEInfo
 
     """
 
@@ -1368,7 +1368,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def RNE(self):
-        """RNE
+        r"""RNE
         :rtype: str
         """
         return self._RNE
@@ -1379,7 +1379,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def CLASSIFICATION(self):
-        """CLASSIFICAÇÃO(CLASSIFICATION)
+        r"""CLASSIFICAÇÃO(CLASSIFICATION)
         :rtype: str
         """
         return self._CLASSIFICATION
@@ -1390,7 +1390,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """VALIDADE
+        r"""VALIDADE
         :rtype: str
         """
         return self._VALIDADE
@@ -1401,7 +1401,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def NOME(self):
-        """NOME
+        r"""NOME
         :rtype: str
         """
         return self._NOME
@@ -1412,7 +1412,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def Membership(self):
-        """FILIAÇÃO(MEMBERSHIP)
+        r"""FILIAÇÃO(MEMBERSHIP)
         :rtype: str
         """
         return self._Membership
@@ -1423,7 +1423,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def NACIONALIDADE(self):
-        """NACIONALIDADE
+        r"""NACIONALIDADE
         :rtype: str
         """
         return self._NACIONALIDADE
@@ -1434,7 +1434,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def NATURALIDADE(self):
-        """NATURALIDADE(PAÍS)
+        r"""NATURALIDADE(PAÍS)
         :rtype: str
         """
         return self._NATURALIDADE
@@ -1445,7 +1445,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def IssuingAgency(self):
-        """ORGÃO EXPEDIDOR(IssuingAgency)
+        r"""ORGÃO EXPEDIDOR(IssuingAgency)
         :rtype: str
         """
         return self._IssuingAgency
@@ -1456,7 +1456,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """DATA DE NASCIMENTO(DateOfBirth)
+        r"""DATA DE NASCIMENTO(DateOfBirth)
         :rtype: str
         """
         return self._DateOfBirth
@@ -1467,7 +1467,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def Sex(self):
-        """SEXO
+        r"""SEXO
         :rtype: str
         """
         return self._Sex
@@ -1478,7 +1478,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def EntryDate(self):
-        """DATA DE ENTRADA(EntryDate)
+        r"""DATA DE ENTRADA(EntryDate)
         :rtype: str
         """
         return self._EntryDate
@@ -1489,7 +1489,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def VIA(self):
-        """VIA
+        r"""VIA
         :rtype: str
         """
         return self._VIA
@@ -1500,7 +1500,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def DispatchDate(self):
-        """DATA DE EXPEDIÇÃO(DispatchDate)
+        r"""DATA DE EXPEDIÇÃO(DispatchDate)
         :rtype: str
         """
         return self._DispatchDate
@@ -1511,7 +1511,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def MRZ(self):
-        """MRZ
+        r"""MRZ
         :rtype: str
         """
         return self._MRZ
@@ -1522,7 +1522,7 @@ class BrazilRNEInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """PortraitImage
+        r"""PortraitImage
         :rtype: str
         """
         return self._PortraitImage
@@ -1559,7 +1559,7 @@ class BrazilRNEInfo(AbstractModel):
 
 
 class BrazilRNMInfo(AbstractModel):
-    """Document type for brazil RNM.
+    r"""Document type for brazil RNM.
 
     """
 
@@ -1617,7 +1617,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def SOBRENOME(self):
-        """SOBRENOME Type
+        r"""SOBRENOME Type
         :rtype: str
         """
         return self._SOBRENOME
@@ -1628,7 +1628,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def NOME(self):
-        """NOME Type
+        r"""NOME Type
         :rtype: str
         """
         return self._NOME
@@ -1639,7 +1639,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def DATADENASCIMENTO(self):
-        """DATA DE NASCIMENTO
+        r"""DATA DE NASCIMENTO
         :rtype: str
         """
         return self._DATADENASCIMENTO
@@ -1650,7 +1650,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def SEXO(self):
-        """SEXO F
+        r"""SEXO F
         :rtype: str
         """
         return self._SEXO
@@ -1661,7 +1661,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def MEMBERSHIP(self):
-        """FILIAÇÃO(MEMBERSHIP)
+        r"""FILIAÇÃO(MEMBERSHIP)
         :rtype: str
         """
         return self._MEMBERSHIP
@@ -1672,7 +1672,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def NACIONALIDADE(self):
-        """NACIONALIDADE Type
+        r"""NACIONALIDADE Type
         :rtype: str
         """
         return self._NACIONALIDADE
@@ -1683,7 +1683,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """VALIDADE Type
+        r"""VALIDADE Type
         :rtype: str
         """
         return self._VALIDADE
@@ -1694,7 +1694,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def RNM(self):
-        """RNM Type
+        r"""RNM Type
         :rtype: str
         """
         return self._RNM
@@ -1705,7 +1705,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def CPF(self):
-        """CPF Type
+        r"""CPF Type
         :rtype: str
         """
         return self._CPF
@@ -1716,7 +1716,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def CLASSIFICATION(self):
-        """CLASSIFICAÇÃO(CLASSIFICATION)
+        r"""CLASSIFICAÇÃO(CLASSIFICATION)
         :rtype: str
         """
         return self._CLASSIFICATION
@@ -1727,7 +1727,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def PRAZODERESIDENCIA(self):
-        """PRAZO DE RESIDENCIA
+        r"""PRAZO DE RESIDENCIA
         :rtype: str
         """
         return self._PRAZODERESIDENCIA
@@ -1738,7 +1738,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def ISSUANCE(self):
-        """EMISSÃO(ISSUANCE)
+        r"""EMISSÃO(ISSUANCE)
         :rtype: str
         """
         return self._ISSUANCE
@@ -1749,7 +1749,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def AMPAROLEGAL(self):
-        """AMPARO LEGAL(LegalHelp)
+        r"""AMPARO LEGAL(LegalHelp)
         :rtype: str
         """
         return self._AMPAROLEGAL
@@ -1760,7 +1760,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def MRZ(self):
-        """MRZCode
+        r"""MRZCode
         :rtype: str
         """
         return self._MRZ
@@ -1771,7 +1771,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait Image
+        r"""Portrait Image
         :rtype: str
         """
         return self._PortraitImage
@@ -1782,7 +1782,7 @@ class BrazilRNMInfo(AbstractModel):
 
     @property
     def PortraitImageBack(self):
-        """PortraitImage(Back)
+        r"""PortraitImage(Back)
         :rtype: str
         """
         return self._PortraitImageBack
@@ -1820,7 +1820,7 @@ class BrazilRNMInfo(AbstractModel):
 
 
 class BusInvoice(AbstractModel):
-    """Bus ticket
+    r"""Bus ticket
 
     """
 
@@ -1893,7 +1893,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -1904,7 +1904,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -1915,7 +1915,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -1926,7 +1926,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -1937,7 +1937,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -1948,7 +1948,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """Departure time
+        r"""Departure time
         :rtype: str
         """
         return self._TimeGetOn
@@ -1959,7 +1959,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """Departure date
+        r"""Departure date
         :rtype: str
         """
         return self._DateGetOn
@@ -1970,7 +1970,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """Departure station
+        r"""Departure station
         :rtype: str
         """
         return self._StationGetOn
@@ -1981,7 +1981,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """Destination
+        r"""Destination
         :rtype: str
         """
         return self._StationGetOff
@@ -1992,7 +1992,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Fare
+        r"""Fare
         :rtype: str
         """
         return self._Total
@@ -2003,7 +2003,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def UserName(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._UserName
@@ -2014,7 +2014,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Consumption type
+        r"""Consumption type
         :rtype: str
         """
         return self._Kind
@@ -2025,7 +2025,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def UserID(self):
-        """ID card number
+        r"""ID card number
         :rtype: str
         """
         return self._UserID
@@ -2036,7 +2036,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -2047,7 +2047,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -2058,7 +2058,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def PlaceGetOn(self):
-        """Departure place
+        r"""Departure place
         :rtype: str
         """
         return self._PlaceGetOn
@@ -2069,7 +2069,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def GateNumber(self):
-        """Check-in gate
+        r"""Check-in gate
         :rtype: str
         """
         return self._GateNumber
@@ -2080,7 +2080,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TicketType(self):
-        """Fare category
+        r"""Fare category
         :rtype: str
         """
         return self._TicketType
@@ -2091,7 +2091,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """Vehicle type
+        r"""Vehicle type
         :rtype: str
         """
         return self._VehicleType
@@ -2102,7 +2102,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def SeatNumber(self):
-        """Seat No.
+        r"""Seat No.
         :rtype: str
         """
         return self._SeatNumber
@@ -2113,7 +2113,7 @@ class BusInvoice(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """Fleet number
+        r"""Fleet number
         :rtype: str
         """
         return self._TrainNumber
@@ -2156,7 +2156,7 @@ class BusInvoice(AbstractModel):
 
 
 class ConfigAdvanced(AbstractModel):
-    """Supports single attribute configuration for templates.
+    r"""Supports single attribute configuration for templates.
 
     """
 
@@ -2169,7 +2169,7 @@ class ConfigAdvanced(AbstractModel):
 
     @property
     def Scene(self):
-        """Single attribute configuration of a template.
+        r"""Single attribute configuration of a template.
         :rtype: str
         """
         return self._Scene
@@ -2192,7 +2192,7 @@ class ConfigAdvanced(AbstractModel):
 
 
 class Coord(AbstractModel):
-    """Coordinates
+    r"""Coordinates
 
     """
 
@@ -2208,7 +2208,7 @@ class Coord(AbstractModel):
 
     @property
     def X(self):
-        """Horizontal coordinate
+        r"""Horizontal coordinate
         :rtype: int
         """
         return self._X
@@ -2219,7 +2219,7 @@ class Coord(AbstractModel):
 
     @property
     def Y(self):
-        """Vertical coordinate
+        r"""Vertical coordinate
         :rtype: int
         """
         return self._Y
@@ -2243,7 +2243,7 @@ class Coord(AbstractModel):
 
 
 class DetectedWordCoordPoint(AbstractModel):
-    """Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
+    r"""Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
 
     """
 
@@ -2256,7 +2256,7 @@ class DetectedWordCoordPoint(AbstractModel):
 
     @property
     def WordCoordinate(self):
-        """Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
+        r"""Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner
         :rtype: list of Coord
         """
         return self._WordCoordinate
@@ -2284,7 +2284,7 @@ class DetectedWordCoordPoint(AbstractModel):
 
 
 class DetectedWords(AbstractModel):
-    """Information about a character detected, including the character itself and its confidence
+    r"""Information about a character detected, including the character itself and its confidence
 
     """
 
@@ -2300,7 +2300,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Confidence(self):
-        """Confidence. Value range: 0–100
+        r"""Confidence. Value range: 0–100
         :rtype: int
         """
         return self._Confidence
@@ -2311,7 +2311,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Character(self):
-        """A possible character
+        r"""A possible character
         :rtype: str
         """
         return self._Character
@@ -2335,7 +2335,7 @@ class DetectedWords(AbstractModel):
 
 
 class ExtractDocMultiRequest(AbstractModel):
-    """ExtractDocMulti request structure.
+    r"""ExtractDocMulti request structure.
 
     """
 
@@ -2402,7 +2402,7 @@ When set to en, the added key is english.
 
     @property
     def ImageUrl(self):
-        """The Url address of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after Base64 encoding. image download time should not exceed 3 seconds. supported image pixels: between 20-10000px. images stored in tencent cloud's Url ensure higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
+        r"""The Url address of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after Base64 encoding. image download time should not exceed 3 seconds. supported image pixels: between 20-10000px. images stored in tencent cloud's Url ensure higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
         :rtype: str
         """
         return self._ImageUrl
@@ -2413,7 +2413,7 @@ When set to en, the added key is english.
 
     @property
     def ImageBase64(self):
-        """The Base64 value of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after encoding the downloaded image with Base64. image download time: no more than 3 seconds. supported image pixels: between 20-10000px. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        r"""The Base64 value of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after encoding the downloaded image with Base64. image download time: no more than 3 seconds. supported image pixels: between 20-10000px. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
         :rtype: str
         """
         return self._ImageBase64
@@ -2424,7 +2424,7 @@ When set to en, the added key is english.
 
     @property
     def PdfPageNumber(self):
-        """Specifies the page number of the PDF to be recognized. only single page recognition is supported. valid when uploading a PDF file with the IsPdf parameter set to true. default value is the first 3 pages.
+        r"""Specifies the page number of the PDF to be recognized. only single page recognition is supported. valid when uploading a PDF file with the IsPdf parameter set to true. default value is the first 3 pages.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -2435,7 +2435,7 @@ When set to en, the added key is english.
 
     @property
     def ItemNames(self):
-        """Specifies the field names to be returned by the customized structuring feature. for example, if the customer wants to add the recognition result of two fields, name and gender, manually input ItemNames=["name","gender"].
+        r"""Specifies the field names to be returned by the customized structuring feature. for example, if the customer wants to add the recognition result of two fields, name and gender, manually input ItemNames=["name","gender"].
         :rtype: list of str
         """
         return self._ItemNames
@@ -2446,7 +2446,7 @@ When set to en, the added key is english.
 
     @property
     def ItemNamesShowMode(self):
-        """true: only custom field.
+        r"""true: only custom field.
 False: default value field + custom field.
 Default true.
         :rtype: bool
@@ -2459,7 +2459,7 @@ Default true.
 
     @property
     def ReturnFullText(self):
-        """Whether the full-text field recognition is enabled.
+        r"""Whether the full-text field recognition is enabled.
         :rtype: bool
         """
         return self._ReturnFullText
@@ -2470,7 +2470,7 @@ Default true.
 
     @property
     def ConfigId(self):
-        """Configuration ID support: 
+        r"""Configuration ID support: 
 -- General
 -- InvoiceEng
 -- WayBillEng
@@ -2502,7 +2502,7 @@ Default true.
 
     @property
     def EnableCoord(self):
-        """Whether the full-text field coordinate value recognition is enabled.
+        r"""Whether the full-text field coordinate value recognition is enabled.
         :rtype: bool
         """
         return self._EnableCoord
@@ -2513,7 +2513,7 @@ Default true.
 
     @property
     def OutputParentKey(self):
-        """Whether parent-child key recognition is enabled. the option is selected by default.
+        r"""Whether parent-child key recognition is enabled. the option is selected by default.
         :rtype: bool
         """
         return self._OutputParentKey
@@ -2524,7 +2524,7 @@ Default true.
 
     @property
     def ConfigAdvanced(self):
-        """Single attribute configuration of a template.
+        r"""Single attribute configuration of a template.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -2535,7 +2535,7 @@ Default true.
 
     @property
     def OutputLanguage(self):
-        """When cn, the added key is chinese.  
+        r"""When cn, the added key is chinese.  
 When set to en, the added key is english.
         :rtype: str
         """
@@ -2571,7 +2571,7 @@ When set to en, the added key is english.
 
 
 class ExtractDocMultiResponse(AbstractModel):
-    """ExtractDocMulti response structure.
+    r"""ExtractDocMulti response structure.
 
     """
 
@@ -2596,7 +2596,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.
+        r"""Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.
         :rtype: float
         """
         return self._Angle
@@ -2607,7 +2607,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        """Configures the structured text info.
+        r"""Configures the structured text info.
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -2618,7 +2618,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """Restore text information.
+        r"""Restore text information.
         :rtype: list of WordItem
         """
         return self._WordList
@@ -2629,7 +2629,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def TokenNum(self):
-        """Number of sample identification fields.
+        r"""Number of sample identification fields.
         :rtype: int
         """
         return self._TokenNum
@@ -2640,7 +2640,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2669,7 +2669,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
 
 class FlightItem(AbstractModel):
-    """Flight items
+    r"""Flight items
 
     """
 
@@ -2712,7 +2712,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TerminalGetOn(self):
-        """Departure terminal
+        r"""Departure terminal
         :rtype: str
         """
         return self._TerminalGetOn
@@ -2723,7 +2723,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TerminalGetOff(self):
-        """Arrival terminal
+        r"""Arrival terminal
         :rtype: str
         """
         return self._TerminalGetOff
@@ -2734,7 +2734,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Carrier(self):
-        """Carrier
+        r"""Carrier
         :rtype: str
         """
         return self._Carrier
@@ -2745,7 +2745,7 @@ class FlightItem(AbstractModel):
 
     @property
     def FlightNumber(self):
-        """Flight number
+        r"""Flight number
         :rtype: str
         """
         return self._FlightNumber
@@ -2756,7 +2756,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Seat(self):
-        """Class
+        r"""Class
         :rtype: str
         """
         return self._Seat
@@ -2767,7 +2767,7 @@ class FlightItem(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """Departure date
+        r"""Departure date
         :rtype: str
         """
         return self._DateGetOn
@@ -2778,7 +2778,7 @@ class FlightItem(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """Departure time
+        r"""Departure time
         :rtype: str
         """
         return self._TimeGetOn
@@ -2789,7 +2789,7 @@ class FlightItem(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """Departure city
+        r"""Departure city
         :rtype: str
         """
         return self._StationGetOn
@@ -2800,7 +2800,7 @@ class FlightItem(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """Arrival city
+        r"""Arrival city
         :rtype: str
         """
         return self._StationGetOff
@@ -2811,7 +2811,7 @@ class FlightItem(AbstractModel):
 
     @property
     def Allow(self):
-        """Baggage allowance
+        r"""Baggage allowance
         :rtype: str
         """
         return self._Allow
@@ -2822,7 +2822,7 @@ class FlightItem(AbstractModel):
 
     @property
     def FareBasis(self):
-        """Fare category
+        r"""Fare category
         :rtype: str
         """
         return self._FareBasis
@@ -2855,7 +2855,7 @@ class FlightItem(AbstractModel):
 
 
 class GeneralAccurateOCRRequest(AbstractModel):
-    """GeneralAccurateOCR request structure.
+    r"""GeneralAccurateOCR request structure.
 
     """
 
@@ -2887,7 +2887,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of image.
+        r"""Base64-encoded value of image.
 The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
         :rtype: str
@@ -2900,7 +2900,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
 
     @property
     def ImageUrl(self):
-        """URL address of image. (This field is not supported outside Chinese mainland)
+        r"""URL address of image. (This field is not supported outside Chinese mainland)
 The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :rtype: str
@@ -2913,7 +2913,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def IsWords(self):
-        """Whether to return the character information. Default value: `false`
+        r"""Whether to return the character information. Default value: `false`
         :rtype: bool
         """
         return self._IsWords
@@ -2924,7 +2924,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def EnableDetectSplit(self):
-        """Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.
+        r"""Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.
         :rtype: bool
         """
         return self._EnableDetectSplit
@@ -2935,7 +2935,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def IsPdf(self):
-        """Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
+        r"""Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
         :rtype: bool
         """
         return self._IsPdf
@@ -2946,7 +2946,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def PdfPageNumber(self):
-        """Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`
+        r"""Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`
         :rtype: int
         """
         return self._PdfPageNumber
@@ -2974,7 +2974,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
 
 class GeneralAccurateOCRResponse(AbstractModel):
-    """GeneralAccurateOCR response structure.
+    r"""GeneralAccurateOCR response structure.
 
     """
 
@@ -2993,7 +2993,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        r"""Information on recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -3004,7 +3004,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
-        """Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
+        r"""Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :rtype: float
         """
         return self._Angel
@@ -3015,7 +3015,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3037,7 +3037,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
 
 class GeneralBasicOCRRequest(AbstractModel):
-    """GeneralBasicOCR request structure.
+    r"""GeneralBasicOCR request structure.
 
     """
 
@@ -3096,7 +3096,7 @@ Valid values:
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of image/PDF.
+        r"""Base64-encoded value of image/PDF.
 The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
         :rtype: str
         """
@@ -3108,7 +3108,7 @@ The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 
 
     @property
     def ImageUrl(self):
-        """URL address of image/PDF. (This field is not supported outside Chinese mainland)
+        r"""URL address of image/PDF. (This field is not supported outside Chinese mainland)
 The image/PDF cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :rtype: str
@@ -3121,7 +3121,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def Scene(self):
-        """Reserved field.
+        r"""Reserved field.
         :rtype: str
         """
         return self._Scene
@@ -3132,7 +3132,7 @@ We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def LanguageType(self):
-        """Language to recognize
+        r"""Language to recognize
 The language can be automatically recognized or manually specified. Chinese-English mix (`zh`) is selected by default. Mixed characters in English and each supported language can be recognized together.
 Valid values:
 `zh`: Chinese-English mix
@@ -3168,7 +3168,7 @@ Valid values:
 
     @property
     def IsPdf(self):
-        """Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.
+        r"""Whether to enable PDF recognition. Default value: false. After this feature is enabled, both images and PDF files can be recognized at the same time.
         :rtype: bool
         """
         return self._IsPdf
@@ -3179,7 +3179,7 @@ Valid values:
 
     @property
     def PdfPageNumber(self):
-        """Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.
+        r"""Page number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of the `IsPdf` parameter is `true`. Default value: 1.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -3190,7 +3190,7 @@ Valid values:
 
     @property
     def IsWords(self):
-        """Whether to return the character information. Default value: `false`
+        r"""Whether to return the character information. Default value: `false`
         :rtype: bool
         """
         return self._IsWords
@@ -3219,7 +3219,7 @@ Valid values:
 
 
 class GeneralBasicOCRResponse(AbstractModel):
-    """GeneralBasicOCR response structure.
+    r"""GeneralBasicOCR response structure.
 
     """
 
@@ -3244,7 +3244,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
+        r"""Information of recognized text, including the text line content, confidence, text line coordinates, and text line coordinates after rotation correction. For more information, please click the link on the left.
         :rtype: list of TextDetection
         """
         return self._TextDetections
@@ -3255,7 +3255,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def Language(self):
-        """Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
+        r"""Detected language. For more information on the supported languages, please see the description of the `LanguageType` input parameter.
         :rtype: str
         """
         return self._Language
@@ -3266,7 +3266,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
-        """Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
+        r"""Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.
         :rtype: float
         """
         return self._Angel
@@ -3277,7 +3277,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        """Total number of PDF pages to be returned if the image is a PDF. Default value: 0.
+        r"""Total number of PDF pages to be returned if the image is a PDF. Default value: 0.
         :rtype: int
         """
         return self._PdfPageSize
@@ -3288,7 +3288,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3312,7 +3312,7 @@ class GeneralBasicOCRResponse(AbstractModel):
 
 
 class GeneralMachineItem(AbstractModel):
-    """Items of a general machine-printed invoice
+    r"""Items of a general machine-printed invoice
 
     """
 
@@ -3346,7 +3346,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Name(self):
-        """Item name
+        r"""Item name
         :rtype: str
         """
         return self._Name
@@ -3357,7 +3357,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Specification(self):
-        """Specification
+        r"""Specification
         :rtype: str
         """
         return self._Specification
@@ -3368,7 +3368,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
         :rtype: str
         """
         return self._Unit
@@ -3379,7 +3379,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """Quantity
+        r"""Quantity
         :rtype: str
         """
         return self._Quantity
@@ -3390,7 +3390,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Price(self):
-        """Unit price
+        r"""Unit price
         :rtype: str
         """
         return self._Price
@@ -3401,7 +3401,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -3412,7 +3412,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def TaxRate(self):
-        """Tax rate
+        r"""Tax rate
         :rtype: str
         """
         return self._TaxRate
@@ -3423,7 +3423,7 @@ class GeneralMachineItem(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax amount
+        r"""Tax amount
         :rtype: str
         """
         return self._Tax
@@ -3453,7 +3453,7 @@ class GeneralMachineItem(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """The sequence number of an element group in the image
+    r"""The sequence number of an element group in the image
 
     """
 
@@ -3466,7 +3466,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Groups(self):
-        """The elements in each line.
+        r"""The elements in each line.
         :rtype: list of LineInfo
         """
         return self._Groups
@@ -3494,7 +3494,7 @@ class GroupInfo(AbstractModel):
 
 
 class HKIDCardOCRRequest(AbstractModel):
-    """HKIDCardOCR request structure.
+    r"""HKIDCardOCR request structure.
 
     """
 
@@ -3522,7 +3522,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return identity photo.
+        r"""Whether to return identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -3535,7 +3535,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
     def DetectFake(self):
         warnings.warn("parameter `DetectFake` is deprecated", DeprecationWarning) 
 
-        """Whether to check for authenticity.
+        r"""Whether to check for authenticity.
         :rtype: bool
         """
         return self._DetectFake
@@ -3548,7 +3548,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """Base64 string of the image
+        r"""Base64 string of the image
 Supported image formats: PNG, JPG, JPEG. GIF is not supported yet.
 Supported image size: The downloaded image cannot exceed 7 MB after being Base64-encoded, and it cannot take longer than 3 seconds to download the image.
         :rtype: str
@@ -3561,7 +3561,7 @@ Supported image size: The downloaded image cannot exceed 7 MB after being Base64
 
     @property
     def ImageUrl(self):
-        """URL address of image. (This field is not supported outside Chinese mainland)
+        r"""URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -3591,7 +3591,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class HKIDCardOCRResponse(AbstractModel):
-    """HKIDCardOCR response structure.
+    r"""HKIDCardOCR response structure.
 
     """
 
@@ -3664,7 +3664,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnName(self):
-        """Name in Chinese
+        r"""Name in Chinese
         :rtype: str
         """
         return self._CnName
@@ -3675,7 +3675,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnName
@@ -3686,7 +3686,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TelexCode(self):
-        """Telecode for the name in Chinese
+        r"""Telecode for the name in Chinese
         :rtype: str
         """
         return self._TelexCode
@@ -3697,7 +3697,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
-        """Gender. Valid values: Male, Female
+        r"""Gender. Valid values: Male, Female
         :rtype: str
         """
         return self._Sex
@@ -3708,7 +3708,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
-        """Date of birth
+        r"""Date of birth
         :rtype: str
         """
         return self._Birthday
@@ -3719,7 +3719,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Permanent(self):
-        """Permanent identity card.
+        r"""Permanent identity card.
 0: non-permanent;
 1: permanent;
 -1: unknown.
@@ -3733,7 +3733,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IdNum(self):
-        """Identity card number
+        r"""Identity card number
         :rtype: str
         """
         return self._IdNum
@@ -3744,7 +3744,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Symbol(self):
-        """Document symbol, i.e., the symbol under the date of birth, such as "***AZ"
+        r"""Document symbol, i.e., the symbol under the date of birth, such as "***AZ"
         :rtype: str
         """
         return self._Symbol
@@ -3755,7 +3755,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstIssueDate(self):
-        """First issue date
+        r"""First issue date
         :rtype: str
         """
         return self._FirstIssueDate
@@ -3766,7 +3766,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentIssueDate(self):
-        """Last receipt date
+        r"""Last receipt date
         :rtype: str
         """
         return self._CurrentIssueDate
@@ -3779,7 +3779,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def FakeDetectResult(self):
         warnings.warn("parameter `FakeDetectResult` is deprecated", DeprecationWarning) 
 
-        """Authenticity check.
+        r"""Authenticity check.
 0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);
 1: forged;
 2: authentic.
@@ -3796,7 +3796,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadImage(self):
-        """Base64-encoded identity photo
+        r"""Base64-encoded identity photo
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3810,7 +3810,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def WarningCode(self):
         warnings.warn("parameter `WarningCode` is deprecated", DeprecationWarning) 
 
-        """Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.
+        r"""Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.
 -9102: Alarm for photocopied document
 -9103: Alarm for spoofed document
         :rtype: list of int
@@ -3825,7 +3825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -3844,7 +3844,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3873,7 +3873,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class HmtResidentPermitOCRRequest(AbstractModel):
-    """HmtResidentPermitOCR request structure.
+    r"""HmtResidentPermitOCR request structure.
 
     """
 
@@ -3901,7 +3901,7 @@ If this parameter is not specified, the system will automatically determine the 
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -3915,7 +3915,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -3930,7 +3930,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def CardSide(self):
-        """`FRONT`: The side with the profile photo.
+        r"""`FRONT`: The side with the profile photo.
 `BACK`: The side with the national emblem.
 If this parameter is not specified, the system will automatically determine the ID card side.
         :rtype: str
@@ -3957,7 +3957,7 @@ If this parameter is not specified, the system will automatically determine the 
 
 
 class HmtResidentPermitOCRResponse(AbstractModel):
-    """HmtResidentPermitOCR response structure.
+    r"""HmtResidentPermitOCR response structure.
 
     """
 
@@ -4001,7 +4001,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -4012,7 +4012,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._Sex
@@ -4023,7 +4023,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Birth(self):
-        """Date of birth
+        r"""Date of birth
         :rtype: str
         """
         return self._Birth
@@ -4034,7 +4034,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address
+        r"""Address
         :rtype: str
         """
         return self._Address
@@ -4045,7 +4045,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def IdCardNo(self):
-        """ID card number
+        r"""ID card number
         :rtype: str
         """
         return self._IdCardNo
@@ -4056,7 +4056,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def CardType(self):
-        """0: Front side.
+        r"""0: Front side.
 1: Back side.
         :rtype: int
         """
@@ -4068,7 +4068,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """Validity period
+        r"""Validity period
         :rtype: str
         """
         return self._ValidDate
@@ -4079,7 +4079,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Authority(self):
-        """Issuing authority
+        r"""Issuing authority
         :rtype: str
         """
         return self._Authority
@@ -4090,7 +4090,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def VisaNum(self):
-        """Number of issues
+        r"""Number of issues
         :rtype: str
         """
         return self._VisaNum
@@ -4101,7 +4101,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def PassNo(self):
-        """Permit number
+        r"""Permit number
         :rtype: str
         """
         return self._PassNo
@@ -4112,7 +4112,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4137,7 +4137,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
 
 class IDCardOCRRequest(AbstractModel):
-    """IDCardOCR request structure.
+    r"""IDCardOCR request structure.
 
     """
 
@@ -4179,7 +4179,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
         :rtype: str
         """
@@ -4191,7 +4191,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
         :rtype: str
         """
@@ -4203,7 +4203,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def CardSide(self):
-        """`FRONT`: The side with the profile photo.
+        r"""`FRONT`: The side with the profile photo.
 `BACK`: The side with the national emblem.
 If this parameter is not specified, the system will automatically determine the ID card side.
         :rtype: str
@@ -4216,7 +4216,7 @@ If this parameter is not specified, the system will automatically determine the 
 
     @property
     def Config(self):
-        """The following parameters are all of `bool` type and default to `false`:
+        r"""The following parameters are all of `bool` type and default to `false`:
 `CropIdCard`: Crops the ID card photo (by removing extra edges outside the ID card and automatically correcting the shooting angle).
 `CropPortrait`: Crops the profile photo (by automatically cutting out the face area in the ID card).
 `CopyWarn`: Warns about photocopied images.
@@ -4258,7 +4258,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
 
 
 class IDCardOCRResponse(AbstractModel):
-    """IDCardOCR response structure.
+    r"""IDCardOCR response structure.
 
     """
 
@@ -4313,7 +4313,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name (profile photo side)
+        r"""Name (profile photo side)
         :rtype: str
         """
         return self._Name
@@ -4324,7 +4324,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Gender (profile photo side)
+        r"""Gender (profile photo side)
         :rtype: str
         """
         return self._Sex
@@ -4335,7 +4335,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Nation(self):
-        """Ethnicity (profile photo side)
+        r"""Ethnicity (profile photo side)
         :rtype: str
         """
         return self._Nation
@@ -4346,7 +4346,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Birth(self):
-        """Date of birth (profile photo side)
+        r"""Date of birth (profile photo side)
         :rtype: str
         """
         return self._Birth
@@ -4357,7 +4357,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address (profile photo side)
+        r"""Address (profile photo side)
         :rtype: str
         """
         return self._Address
@@ -4368,7 +4368,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def IdNum(self):
-        """ID number (profile photo side)
+        r"""ID number (profile photo side)
         :rtype: str
         """
         return self._IdNum
@@ -4379,7 +4379,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def Authority(self):
-        """Issuing authority (national emblem side)
+        r"""Issuing authority (national emblem side)
         :rtype: str
         """
         return self._Authority
@@ -4390,7 +4390,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """Validity period (national emblem side)
+        r"""Validity period (national emblem side)
         :rtype: str
         """
         return self._ValidDate
@@ -4401,7 +4401,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """Extended information, which will be returned only when requested. For the input parameters, please see example 3 and example 4.
+        r"""Extended information, which will be returned only when requested. For the input parameters, please see example 3 and example 4.
 `IdCard`: Base64-encoded content of the cropped ID card photo, which will be returned if `Config.CropIdCard` is set to `true`.
 `Portrait`: Base64-encoded content of the ID photo on the card, which will be returned if `Config.CropPortrait` is set to `true`.
 
@@ -4427,7 +4427,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4451,7 +4451,7 @@ class IDCardOCRResponse(AbstractModel):
 
 
 class InvoiceItem(AbstractModel):
-    """Recognition information of a single invoice/ticket among multiple types of invoices/tickets
+    r"""Recognition information of a single invoice/ticket among multiple types of invoices/tickets
 
     """
 
@@ -4509,7 +4509,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def Code(self):
-        """The recognition result.
+        r"""The recognition result.
 `OK`: Recognition is successful.
 `FailedOperation.UnsupportedInvoice`: Recognition is not supported.
 `FailedOperation.UnKnowError`: Recognition failed.
@@ -4524,7 +4524,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def Type(self):
-        """The type of invoice/ticket to which the recognized image belongs.
+        r"""The type of invoice/ticket to which the recognized image belongs.
 -1: Unknown
 0: Taxi receipt
 1: Quota invoice
@@ -4549,7 +4549,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def Polygon(self):
-        """The coordinates of the four vertices of the rotated image.
+        r"""The coordinates of the four vertices of the rotated image.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Polygon
@@ -4560,7 +4560,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def Angle(self):
-        """The rotation angle of the recognized image in the image with multiple types of invoices/tickets.
+        r"""The rotation angle of the recognized image in the image with multiple types of invoices/tickets.
         :rtype: float
         """
         return self._Angle
@@ -4571,7 +4571,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def SingleInvoiceInfos(self):
-        """The recognized content.
+        r"""The recognized content.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.SingleInvoiceItem`
         """
         return self._SingleInvoiceInfos
@@ -4582,7 +4582,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def Page(self):
-        """The number of the page on which the recognized invoice is in the image or PDF file, starting from 1 by default.
+        r"""The number of the page on which the recognized invoice is in the image or PDF file, starting from 1 by default.
         :rtype: int
         """
         return self._Page
@@ -4593,7 +4593,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def SubType(self):
-        """The detailed invoice type. See the description of `SubType`.
+        r"""The detailed invoice type. See the description of `SubType`.
         :rtype: str
         """
         return self._SubType
@@ -4604,7 +4604,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def TypeDescription(self):
-        """The invoice description. See the description of `TypeDescription`.
+        r"""The invoice description. See the description of `TypeDescription`.
         :rtype: str
         """
         return self._TypeDescription
@@ -4615,7 +4615,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def CutImage(self):
-        """The image file after cropping, encoded in Base64. This is returned if `EnableCutImage` is set to `true`.
+        r"""The image file after cropping, encoded in Base64. This is returned if `EnableCutImage` is set to `true`.
         :rtype: str
         """
         return self._CutImage
@@ -4626,7 +4626,7 @@ For the information about other error codes, see the OCR API description for eac
 
     @property
     def SubTypeDescription(self):
-        """The description of the detailed invoice type. See the description of `SubType`.
+        r"""The description of the detailed invoice type. See the description of `SubType`.
         :rtype: str
         """
         return self._SubTypeDescription
@@ -4662,7 +4662,7 @@ For the information about other error codes, see the OCR API description for eac
 
 
 class ItemCoord(AbstractModel):
-    """Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
+    r"""Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
 
     """
 
@@ -4684,7 +4684,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def X(self):
-        """X-coordinate of top-left point.
+        r"""X-coordinate of top-left point.
         :rtype: int
         """
         return self._X
@@ -4695,7 +4695,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Y(self):
-        """Y-coordinate of top-left point.
+        r"""Y-coordinate of top-left point.
         :rtype: int
         """
         return self._Y
@@ -4706,7 +4706,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Width(self):
-        """Width
+        r"""Width
         :rtype: int
         """
         return self._Width
@@ -4717,7 +4717,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Height(self):
-        """Height
+        r"""Height
         :rtype: int
         """
         return self._Height
@@ -4743,7 +4743,7 @@ class ItemCoord(AbstractModel):
 
 
 class ItemInfo(AbstractModel):
-    """Structured element group
+    r"""Structured element group
 
     """
 
@@ -4761,7 +4761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """The key information.
+        r"""The key information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Key`
         """
@@ -4773,7 +4773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """The value information.
+        r"""The value information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Value`
         """
@@ -4802,7 +4802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Key(AbstractModel):
-    """Key information
+    r"""Key information
 
     """
 
@@ -4819,7 +4819,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoName(self):
-        """The name of the recognized field.
+        r"""The name of the recognized field.
         :rtype: str
         """
         return self._AutoName
@@ -4830,7 +4830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConfigName(self):
-        """The name of a defined field (the key passed in).
+        r"""The name of a defined field (the key passed in).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4855,7 +4855,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class LicensePlateInfo(AbstractModel):
-    """Vehicle license plate information
+    r"""Vehicle license plate information
 
     """
 
@@ -4877,7 +4877,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Number(self):
-        """The recognized license plate number.
+        r"""The recognized license plate number.
         :rtype: str
         """
         return self._Number
@@ -4888,7 +4888,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        """The confidence score (0–100).
+        r"""The confidence score (0–100).
         :rtype: int
         """
         return self._Confidence
@@ -4899,7 +4899,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Rect(self):
-        """The bounding box coordinates of the text line in the original image.
+        r"""The bounding box coordinates of the text line in the original image.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -4910,7 +4910,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Color(self):
-        """The recognized license plate color, which currently includes "white", "black", "blue", "green", "yellow", "yellow-green", and "temporary plate".
+        r"""The recognized license plate color, which currently includes "white", "black", "blue", "green", "yellow", "yellow-green", and "temporary plate".
         :rtype: str
         """
         return self._Color
@@ -4938,7 +4938,7 @@ class LicensePlateInfo(AbstractModel):
 
 
 class LicensePlateOCRRequest(AbstractModel):
-    """LicensePlateOCR request structure.
+    r"""LicensePlateOCR request structure.
 
     """
 
@@ -4961,7 +4961,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -4975,7 +4975,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -5003,7 +5003,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class LicensePlateOCRResponse(AbstractModel):
-    """LicensePlateOCR response structure.
+    r"""LicensePlateOCR response structure.
 
     """
 
@@ -5031,7 +5031,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """The recognized license plate number.
+        r"""The recognized license plate number.
         :rtype: str
         """
         return self._Number
@@ -5042,7 +5042,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Confidence(self):
-        """The confidence score (0–100).
+        r"""The confidence score (0–100).
         :rtype: int
         """
         return self._Confidence
@@ -5053,7 +5053,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Rect(self):
-        """The bounding box coordinates of the text line in the original image.
+        r"""The bounding box coordinates of the text line in the original image.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -5064,7 +5064,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        """The recognized license plate color, which currently includes "white", "black", "blue", "green", "yellow", "yellow-green", and "temporary plate".
+        r"""The recognized license plate color, which currently includes "white", "black", "blue", "green", "yellow", "yellow-green", and "temporary plate".
         :rtype: str
         """
         return self._Color
@@ -5075,7 +5075,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def LicensePlateInfos(self):
-        """The vehicle license plate information.
+        r"""The vehicle license plate information.
         :rtype: list of LicensePlateInfo
         """
         return self._LicensePlateInfos
@@ -5086,7 +5086,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5113,7 +5113,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
 
 class LineInfo(AbstractModel):
-    """Line number
+    r"""Line number
 
     """
 
@@ -5126,7 +5126,7 @@ class LineInfo(AbstractModel):
 
     @property
     def Lines(self):
-        """The elements in a line
+        r"""The elements in a line
         :rtype: list of ItemInfo
         """
         return self._Lines
@@ -5154,7 +5154,7 @@ class LineInfo(AbstractModel):
 
 
 class MLIDCardOCRRequest(AbstractModel):
-    """MLIDCardOCR request structure.
+    r"""MLIDCardOCR request structure.
 
     """
 
@@ -5185,7 +5185,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
         :rtype: str
@@ -5198,7 +5198,7 @@ Supported image size: The downloaded image after Base64 encoding can be up to 7 
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -5209,7 +5209,7 @@ Supported image size: The downloaded image after Base64 encoding can be up to 7 
 
     @property
     def ImageUrl(self):
-        """The URL of an image. (This field is not available outside the Chinese mainland.)
+        r"""The URL of an image. (This field is not available outside the Chinese mainland.)
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -5224,7 +5224,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -5235,7 +5235,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
 
     @property
     def RetImage(self):
-        """Whether to return an image. Default value: `false`.
+        r"""Whether to return an image. Default value: `false`.
         :rtype: bool
         """
         return self._RetImage
@@ -5262,7 +5262,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
 
 
 class MLIDCardOCRResponse(AbstractModel):
-    """MLIDCardOCR response structure.
+    r"""MLIDCardOCR response structure.
 
     """
 
@@ -5333,7 +5333,7 @@ MyKid   Kid card
 
     @property
     def ID(self):
-        """ID number
+        r"""ID number
         :rtype: str
         """
         return self._ID
@@ -5344,7 +5344,7 @@ MyKid   Kid card
 
     @property
     def Name(self):
-        """Full name
+        r"""Full name
         :rtype: str
         """
         return self._Name
@@ -5355,7 +5355,7 @@ MyKid   Kid card
 
     @property
     def Address(self):
-        """Address
+        r"""Address
         :rtype: str
         """
         return self._Address
@@ -5366,7 +5366,7 @@ MyKid   Kid card
 
     @property
     def Sex(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._Sex
@@ -5379,7 +5379,7 @@ MyKid   Kid card
     def Warn(self):
         warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
 
-        """Alarm codes
+        r"""Alarm codes
 -9103 Alarm for photographed certificate
 -9102 Alarm for photocopied certificate
 -9106 Alarm for covered certificate
@@ -5396,7 +5396,7 @@ MyKid   Kid card
 
     @property
     def Image(self):
-        """Identity photo
+        r"""Identity photo
         :rtype: str
         """
         return self._Image
@@ -5407,7 +5407,7 @@ MyKid   Kid card
 
     @property
     def AdvancedInfo(self):
-        """This is an extended field, 
+        r"""This is an extended field, 
 with the confidence of a field recognition result returned in the following format.
 {
   Field name:{
@@ -5424,7 +5424,7 @@ with the confidence of a field recognition result returned in the following form
 
     @property
     def Type(self):
-        """Certificate type
+        r"""Certificate type
 MyKad  ID card
 MyPR    Permanent resident card
 MyTentera   Military identity card
@@ -5442,7 +5442,7 @@ MyKid   Kid card
 
     @property
     def Birthday(self):
-        """Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).
+        r"""Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).
         :rtype: str
         """
         return self._Birthday
@@ -5453,7 +5453,7 @@ MyKid   Kid card
 
     @property
     def MyKadNumber(self):
-        """Number on the back of Malaysia ID card 
+        r"""Number on the back of Malaysia ID card 
         :rtype: str
         """
         return self._MyKadNumber
@@ -5464,7 +5464,7 @@ MyKid   Kid card
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -5483,7 +5483,7 @@ MyKid   Kid card
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5509,7 +5509,7 @@ MyKid   Kid card
 
 
 class MLIDPassportOCRRequest(AbstractModel):
-    """MLIDPassportOCR request structure.
+    r"""MLIDPassportOCR request structure.
 
     """
 
@@ -5533,7 +5533,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
+        r"""Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
         :rtype: str
         """
         return self._ImageBase64
@@ -5544,7 +5544,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def RetImage(self):
-        """Whether to return an image. 
+        r"""Whether to return an image. 
 Default value: false.
         :rtype: bool
         """
@@ -5556,7 +5556,7 @@ Default value: false.
 
     @property
     def ImageUrl(self):
-        """URL address of image. (This field is not supported outside Chinese mainland)
+        r"""URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG, BMP, PDF.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -5585,7 +5585,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class MLIDPassportOCRResponse(AbstractModel):
-    """MLIDPassportOCR response structure.
+    r"""MLIDPassportOCR response structure.
 
     """
 
@@ -5662,7 +5662,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
-        """Passport ID
+        r"""Passport ID
         :rtype: str
         """
         return self._ID
@@ -5673,7 +5673,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -5684,7 +5684,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfBirth(self):
-        """Date of birth
+        r"""Date of birth
         :rtype: str
         """
         return self._DateOfBirth
@@ -5695,7 +5695,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
-        """Gender (F: female, M: male)
+        r"""Gender (F: female, M: male)
         :rtype: str
         """
         return self._Sex
@@ -5706,7 +5706,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfExpiration(self):
-        """Expiration date
+        r"""Expiration date
         :rtype: str
         """
         return self._DateOfExpiration
@@ -5717,7 +5717,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuingCountry(self):
-        """Issuing country
+        r"""Issuing country
         :rtype: str
         """
         return self._IssuingCountry
@@ -5728,7 +5728,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
-        """Country/region code
+        r"""Country/region code
         :rtype: str
         """
         return self._Nationality
@@ -5741,7 +5741,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Warn(self):
         warnings.warn("parameter `Warn` is deprecated", DeprecationWarning) 
 
-        """This field is deprecated and will always return an empty array. Usage is not recommended.
+        r"""This field is deprecated and will always return an empty array. Usage is not recommended.
         :rtype: list of int
         """
         return self._Warn
@@ -5754,7 +5754,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Image(self):
-        """Identity photo
+        r"""Identity photo
         :rtype: str
         """
         return self._Image
@@ -5767,7 +5767,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        """This field is deprecated and will always return "1". Usage is not recommended.
+        r"""This field is deprecated and will always return "1". Usage is not recommended.
         :rtype: str
         """
         return self._AdvancedInfo
@@ -5780,7 +5780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CodeSet(self):
-        """The first row of the machine-readable zone (MRZ) at the bottom
+        r"""The first row of the machine-readable zone (MRZ) at the bottom
         :rtype: str
         """
         return self._CodeSet
@@ -5791,7 +5791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CodeCrc(self):
-        """The second row of the MRZ at the bottom
+        r"""The second row of the MRZ at the bottom
         :rtype: str
         """
         return self._CodeCrc
@@ -5802,7 +5802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Surname(self):
-        """The surname.
+        r"""The surname.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5814,7 +5814,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GivenName(self):
-        """The given name.
+        r"""The given name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5826,7 +5826,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Type (in Machine Readable Zone)
+        r"""Type (in Machine Readable Zone)
         :rtype: str
         """
         return self._Type
@@ -5837,7 +5837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PassportRecognizeInfos(self):
-        """Document content in Information Zone
+        r"""Document content in Information Zone
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
         """
         return self._PassportRecognizeInfos
@@ -5848,7 +5848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -5867,7 +5867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardCount(self):
-        """The number of cards detected in the input image.(Currently supported only in ap-bangkok region)
+        r"""The number of cards detected in the input image.(Currently supported only in ap-bangkok region)
         :rtype: int
         """
         return self._CardCount
@@ -5878,7 +5878,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5913,7 +5913,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MachinePrintedInvoice(AbstractModel):
-    """General machine-printed invoice
+    r"""General machine-printed invoice
 
     """
 
@@ -6031,7 +6031,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -6042,7 +6042,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -6053,7 +6053,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -6064,7 +6064,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -6075,7 +6075,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -6086,7 +6086,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Time
@@ -6097,7 +6097,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def CheckCode(self):
-        """Check code
+        r"""Check code
         :rtype: str
         """
         return self._CheckCode
@@ -6108,7 +6108,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Ciphertext(self):
-        """Ciphertext
+        r"""Ciphertext
         :rtype: str
         """
         return self._Ciphertext
@@ -6119,7 +6119,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Category(self):
-        """Category
+        r"""Category
         :rtype: str
         """
         return self._Category
@@ -6130,7 +6130,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """Amount before tax
+        r"""Amount before tax
         :rtype: str
         """
         return self._PretaxAmount
@@ -6141,7 +6141,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -6152,7 +6152,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -6163,7 +6163,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax
+        r"""Tax
         :rtype: str
         """
         return self._Tax
@@ -6174,7 +6174,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def IndustryClass(self):
-        """Industry
+        r"""Industry
         :rtype: str
         """
         return self._IndustryClass
@@ -6185,7 +6185,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -6196,7 +6196,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's taxpayer identification number
+        r"""Seller's taxpayer identification number
         :rtype: str
         """
         return self._SellerTaxID
@@ -6207,7 +6207,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerAddrTel(self):
-        """Seller's address and phone number
+        r"""Seller's address and phone number
         :rtype: str
         """
         return self._SellerAddrTel
@@ -6218,7 +6218,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """Seller's bank account number
+        r"""Seller's bank account number
         :rtype: str
         """
         return self._SellerBankAccount
@@ -6229,7 +6229,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -6240,7 +6240,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Buyer's taxpayer identification number
+        r"""Buyer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -6251,7 +6251,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerAddrTel(self):
-        """Buyer's address and phone number
+        r"""Buyer's address and phone number
         :rtype: str
         """
         return self._BuyerAddrTel
@@ -6262,7 +6262,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def BuyerBankAccount(self):
-        """Buyer's bank account number
+        r"""Buyer's bank account number
         :rtype: str
         """
         return self._BuyerBankAccount
@@ -6273,7 +6273,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -6284,7 +6284,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -6295,7 +6295,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -6306,7 +6306,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -6317,7 +6317,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def ElectronicMark(self):
-        """Whether it is a general machine-printed invoice issued by Zhejiang or Guangdong province (0: No, 1: Yes)
+        r"""Whether it is a general machine-printed invoice issued by Zhejiang or Guangdong province (0: No, 1: Yes)
         :rtype: int
         """
         return self._ElectronicMark
@@ -6328,7 +6328,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Issuer(self):
-        """Issuer
+        r"""Issuer
         :rtype: str
         """
         return self._Issuer
@@ -6339,7 +6339,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Receiptor(self):
-        """Payee
+        r"""Payee
         :rtype: str
         """
         return self._Receiptor
@@ -6350,7 +6350,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Reviewer(self):
-        """Reviewer
+        r"""Reviewer
         :rtype: str
         """
         return self._Reviewer
@@ -6361,7 +6361,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -6372,7 +6372,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def PaymentInfo(self):
-        """Operator's payment information
+        r"""Operator's payment information
         :rtype: str
         """
         return self._PaymentInfo
@@ -6383,7 +6383,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def TicketPickupUser(self):
-        """Operator-assigned invoice pickup user
+        r"""Operator-assigned invoice pickup user
         :rtype: str
         """
         return self._TicketPickupUser
@@ -6394,7 +6394,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def MerchantNumber(self):
-        """Operator's merchant number
+        r"""Operator's merchant number
         :rtype: str
         """
         return self._MerchantNumber
@@ -6405,7 +6405,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def OrderNumber(self):
-        """Operator's order number
+        r"""Operator's order number
         :rtype: str
         """
         return self._OrderNumber
@@ -6416,7 +6416,7 @@ class MachinePrintedInvoice(AbstractModel):
 
     @property
     def GeneralMachineItems(self):
-        """Items
+        r"""Items
         :rtype: list of GeneralMachineItem
         """
         return self._GeneralMachineItems
@@ -6479,7 +6479,7 @@ class MachinePrintedInvoice(AbstractModel):
 
 
 class MainlandPermitOCRRequest(AbstractModel):
-    """MainlandPermitOCR request structure.
+    r"""MainlandPermitOCR request structure.
 
     """
 
@@ -6505,7 +6505,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -6519,7 +6519,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -6534,7 +6534,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def RetProfile(self):
-        """Whether to return the ID photo. By default, the ID photo is not returned.
+        r"""Whether to return the ID photo. By default, the ID photo is not returned.
         :rtype: bool
         """
         return self._RetProfile
@@ -6559,7 +6559,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class MainlandPermitOCRResponse(AbstractModel):
-    """MainlandPermitOCR response structure.
+    r"""MainlandPermitOCR response structure.
 
     """
 
@@ -6605,7 +6605,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name in Chinese
+        r"""Name in Chinese
         :rtype: str
         """
         return self._Name
@@ -6616,7 +6616,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnglishName
@@ -6627,7 +6627,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._Sex
@@ -6638,7 +6638,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """Date of birth
+        r"""Date of birth
         :rtype: str
         """
         return self._Birthday
@@ -6649,7 +6649,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAuthority(self):
-        """Issuing authority
+        r"""Issuing authority
         :rtype: str
         """
         return self._IssueAuthority
@@ -6660,7 +6660,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """Validity period
+        r"""Validity period
         :rtype: str
         """
         return self._ValidDate
@@ -6671,7 +6671,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """ID number
+        r"""ID number
         :rtype: str
         """
         return self._Number
@@ -6682,7 +6682,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        """Place of issue
+        r"""Place of issue
         :rtype: str
         """
         return self._IssueAddress
@@ -6693,7 +6693,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueNumber(self):
-        """Number of issues
+        r"""Number of issues
         :rtype: str
         """
         return self._IssueNumber
@@ -6704,7 +6704,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Document type
+        r"""Document type
         :rtype: str
         """
         return self._Type
@@ -6715,7 +6715,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Profile(self):
-        """Base64-encoded profile photo, which is returned only when `RetProfile` is set to `True`
+        r"""Base64-encoded profile photo, which is returned only when `RetProfile` is set to `True`
         :rtype: str
         """
         return self._Profile
@@ -6726,7 +6726,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6752,7 +6752,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
 
 class MedicalInvoice(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -6789,7 +6789,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Title
@@ -6800,7 +6800,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Code
@@ -6811,7 +6811,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Number
@@ -6822,7 +6822,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Total
@@ -6833,7 +6833,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TotalCn
@@ -6844,7 +6844,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Date
@@ -6855,7 +6855,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def CheckCode(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CheckCode
@@ -6866,7 +6866,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Place(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Place
@@ -6877,7 +6877,7 @@ class MedicalInvoice(AbstractModel):
 
     @property
     def Reviewer(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Reviewer
@@ -6908,7 +6908,7 @@ class MedicalInvoice(AbstractModel):
 
 
 class MotorVehicleSaleInvoice(AbstractModel):
-    """Motor vehicle sales invoice
+    r"""Motor vehicle sales invoice
 
     """
 
@@ -7044,7 +7044,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -7055,7 +7055,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -7066,7 +7066,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -7077,7 +7077,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -7088,7 +7088,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """Amount before tax
+        r"""Amount before tax
         :rtype: str
         """
         return self._PretaxAmount
@@ -7099,7 +7099,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -7110,7 +7110,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -7121,7 +7121,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -7132,7 +7132,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's company code
+        r"""Seller's company code
         :rtype: str
         """
         return self._SellerTaxID
@@ -7143,7 +7143,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerTel(self):
-        """Seller's phone number
+        r"""Seller's phone number
         :rtype: str
         """
         return self._SellerTel
@@ -7154,7 +7154,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """Seller's address
+        r"""Seller's address
         :rtype: str
         """
         return self._SellerAddress
@@ -7165,7 +7165,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerBank(self):
-        """Seller's account opening bank
+        r"""Seller's account opening bank
         :rtype: str
         """
         return self._SellerBank
@@ -7176,7 +7176,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """Seller's bank account number
+        r"""Seller's bank account number
         :rtype: str
         """
         return self._SellerBankAccount
@@ -7187,7 +7187,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -7198,7 +7198,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Buyer's taxpayer identification number
+        r"""Buyer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -7209,7 +7209,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def BuyerID(self):
-        """Buyer's ID number/organization code
+        r"""Buyer's ID number/organization code
         :rtype: str
         """
         return self._BuyerID
@@ -7220,7 +7220,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxAuthorities(self):
-        """Tax authority
+        r"""Tax authority
         :rtype: str
         """
         return self._TaxAuthorities
@@ -7231,7 +7231,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxAuthoritiesCode(self):
-        """Code of the tax authority
+        r"""Code of the tax authority
         :rtype: str
         """
         return self._TaxAuthoritiesCode
@@ -7242,7 +7242,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VIN(self):
-        """VIN
+        r"""VIN
         :rtype: str
         """
         return self._VIN
@@ -7253,7 +7253,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleModel(self):
-        """Vehicle model
+        r"""Vehicle model
         :rtype: str
         """
         return self._VehicleModel
@@ -7264,7 +7264,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleEngineCode(self):
-        """Engine No.
+        r"""Engine No.
         :rtype: str
         """
         return self._VehicleEngineCode
@@ -7275,7 +7275,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def CertificateNumber(self):
-        """No. of the certificate of conformity
+        r"""No. of the certificate of conformity
         :rtype: str
         """
         return self._CertificateNumber
@@ -7286,7 +7286,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def InspectionNumber(self):
-        """Inspection No.
+        r"""Inspection No.
         :rtype: str
         """
         return self._InspectionNumber
@@ -7297,7 +7297,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineID(self):
-        """Machine No.
+        r"""Machine No.
         :rtype: str
         """
         return self._MachineID
@@ -7308,7 +7308,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """Vehicle type
+        r"""Vehicle type
         :rtype: str
         """
         return self._VehicleType
@@ -7319,7 +7319,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -7330,7 +7330,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -7341,7 +7341,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -7352,7 +7352,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax
+        r"""Tax
         :rtype: str
         """
         return self._Tax
@@ -7363,7 +7363,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxRate(self):
-        """Tax rate
+        r"""Tax rate
         :rtype: str
         """
         return self._TaxRate
@@ -7374,7 +7374,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -7385,7 +7385,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Tonnage(self):
-        """Tonnage
+        r"""Tonnage
         :rtype: str
         """
         return self._Tonnage
@@ -7396,7 +7396,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -7407,7 +7407,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def FormType(self):
-        """Form type
+        r"""Form type
         :rtype: str
         """
         return self._FormType
@@ -7418,7 +7418,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def FormName(self):
-        """Form name
+        r"""Form name
         :rtype: str
         """
         return self._FormName
@@ -7429,7 +7429,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Issuer(self):
-        """Issuer
+        r"""Issuer
         :rtype: str
         """
         return self._Issuer
@@ -7440,7 +7440,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def TaxNum(self):
-        """Tax payment voucher number
+        r"""Tax payment voucher number
         :rtype: str
         """
         return self._TaxNum
@@ -7451,7 +7451,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MaxPeopleNum(self):
-        """Passenger capacity
+        r"""Passenger capacity
         :rtype: str
         """
         return self._MaxPeopleNum
@@ -7462,7 +7462,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def Origin(self):
-        """Origin
+        r"""Origin
         :rtype: str
         """
         return self._Origin
@@ -7473,7 +7473,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineCode(self):
-        """Machine-printed invoice code
+        r"""Machine-printed invoice code
         :rtype: str
         """
         return self._MachineCode
@@ -7484,7 +7484,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def MachineNumber(self):
-        """Machine-printed invoice number
+        r"""Machine-printed invoice number
         :rtype: str
         """
         return self._MachineNumber
@@ -7495,7 +7495,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -7559,7 +7559,7 @@ class MotorVehicleSaleInvoice(AbstractModel):
 
 
 class NonTaxIncomeBill(AbstractModel):
-    """Non-tax revenue
+    r"""Non-tax revenue
 
     """
 
@@ -7644,7 +7644,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -7655,7 +7655,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -7666,7 +7666,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -7677,7 +7677,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CheckCode(self):
-        """Check code
+        r"""Check code
         :rtype: str
         """
         return self._CheckCode
@@ -7688,7 +7688,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -7699,7 +7699,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -7710,7 +7710,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -7721,7 +7721,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Buyer(self):
-        """Payer's name
+        r"""Payer's name
         :rtype: str
         """
         return self._Buyer
@@ -7732,7 +7732,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Payer's taxpayer identification number
+        r"""Payer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -7743,7 +7743,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Seller(self):
-        """Payee's name
+        r"""Payee's name
         :rtype: str
         """
         return self._Seller
@@ -7754,7 +7754,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def SellerCompany(self):
-        """Payee's company name
+        r"""Payee's company name
         :rtype: str
         """
         return self._SellerCompany
@@ -7765,7 +7765,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -7776,7 +7776,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CurrencyCode(self):
-        """Currency
+        r"""Currency
         :rtype: str
         """
         return self._CurrencyCode
@@ -7787,7 +7787,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Reviewer(self):
-        """Reviewer
+        r"""Reviewer
         :rtype: str
         """
         return self._Reviewer
@@ -7798,7 +7798,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -7809,7 +7809,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def OtherInfo(self):
-        """Other information
+        r"""Other information
         :rtype: str
         """
         return self._OtherInfo
@@ -7820,7 +7820,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PaymentCode(self):
-        """Payment code
+        r"""Payment code
         :rtype: str
         """
         return self._PaymentCode
@@ -7831,7 +7831,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiveUnitCode(self):
-        """Collecting organization's code
+        r"""Collecting organization's code
         :rtype: str
         """
         return self._ReceiveUnitCode
@@ -7842,7 +7842,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Receiver(self):
-        """Collecting organization's name
+        r"""Collecting organization's name
         :rtype: str
         """
         return self._Receiver
@@ -7853,7 +7853,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -7864,7 +7864,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerAccount(self):
-        """Payer's account
+        r"""Payer's account
         :rtype: str
         """
         return self._PayerAccount
@@ -7875,7 +7875,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerBank(self):
-        """Payer's account opening bank
+        r"""Payer's account opening bank
         :rtype: str
         """
         return self._PayerBank
@@ -7886,7 +7886,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverAccount(self):
-        """Payee's account
+        r"""Payee's account
         :rtype: str
         """
         return self._ReceiverAccount
@@ -7897,7 +7897,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverBank(self):
-        """Payee's account opening bank
+        r"""Payee's account opening bank
         :rtype: str
         """
         return self._ReceiverBank
@@ -7908,7 +7908,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def NonTaxItems(self):
-        """Items
+        r"""Items
         :rtype: list of NonTaxItem
         """
         return self._NonTaxItems
@@ -7960,7 +7960,7 @@ class NonTaxIncomeBill(AbstractModel):
 
 
 class NonTaxItem(AbstractModel):
-    """Non-tax revenue items
+    r"""Non-tax revenue items
 
     """
 
@@ -7988,7 +7988,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def ItemID(self):
-        """Item code
+        r"""Item code
         :rtype: str
         """
         return self._ItemID
@@ -7999,7 +7999,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Name(self):
-        """Item name
+        r"""Item name
         :rtype: str
         """
         return self._Name
@@ -8010,7 +8010,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
         :rtype: str
         """
         return self._Unit
@@ -8021,7 +8021,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """Quantity
+        r"""Quantity
         :rtype: str
         """
         return self._Quantity
@@ -8032,7 +8032,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Standard(self):
-        """Standard
+        r"""Standard
         :rtype: str
         """
         return self._Standard
@@ -8043,7 +8043,7 @@ class NonTaxItem(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -8071,7 +8071,7 @@ class NonTaxItem(AbstractModel):
 
 
 class OtherInvoice(AbstractModel):
-    """Other invoices
+    r"""Other invoices
 
     """
 
@@ -8093,7 +8093,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -8104,7 +8104,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -8115,7 +8115,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def OtherInvoiceListItems(self):
-        """List
+        r"""List
         :rtype: list of OtherInvoiceItem
         """
         return self._OtherInvoiceListItems
@@ -8126,7 +8126,7 @@ class OtherInvoice(AbstractModel):
 
     @property
     def OtherInvoiceTableItems(self):
-        """Table
+        r"""Table
         :rtype: list of OtherInvoiceList
         """
         return self._OtherInvoiceTableItems
@@ -8162,7 +8162,7 @@ class OtherInvoice(AbstractModel):
 
 
 class OtherInvoiceItem(AbstractModel):
-    """Items of other invoices
+    r"""Items of other invoices
 
     """
 
@@ -8178,7 +8178,7 @@ class OtherInvoiceItem(AbstractModel):
 
     @property
     def Name(self):
-        """Field name
+        r"""Field name
         :rtype: str
         """
         return self._Name
@@ -8189,7 +8189,7 @@ class OtherInvoiceItem(AbstractModel):
 
     @property
     def Value(self):
-        """Field value
+        r"""Field value
         :rtype: str
         """
         return self._Value
@@ -8213,7 +8213,7 @@ class OtherInvoiceItem(AbstractModel):
 
 
 class OtherInvoiceList(AbstractModel):
-    """Table of other invoices
+    r"""Table of other invoices
 
     """
 
@@ -8226,7 +8226,7 @@ class OtherInvoiceList(AbstractModel):
 
     @property
     def OtherInvoiceItemList(self):
-        """List
+        r"""List
         :rtype: list of OtherInvoiceItem
         """
         return self._OtherInvoiceItemList
@@ -8254,7 +8254,7 @@ class OtherInvoiceList(AbstractModel):
 
 
 class PassportRecognizeInfos(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -8306,7 +8306,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Type(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Type
@@ -8317,7 +8317,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        """
+        r"""
         :rtype: str
         """
         return self._IssuingCountry
@@ -8328,7 +8328,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def PassportID(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PassportID
@@ -8339,7 +8339,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Surname(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Surname
@@ -8350,7 +8350,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def GivenName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._GivenName
@@ -8361,7 +8361,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -8372,7 +8372,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Nationality(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Nationality
@@ -8383,7 +8383,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DateOfBirth
@@ -8394,7 +8394,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Sex(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Sex
@@ -8405,7 +8405,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfIssuance(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DateOfIssuance
@@ -8416,7 +8416,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DateOfExpiration
@@ -8427,7 +8427,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Signature(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Signature
@@ -8438,7 +8438,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuePlace(self):
-        """
+        r"""
         :rtype: str
         """
         return self._IssuePlace
@@ -8449,7 +8449,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingAuthority(self):
-        """
+        r"""
         :rtype: str
         """
         return self._IssuingAuthority
@@ -8485,7 +8485,7 @@ class PassportRecognizeInfos(AbstractModel):
 
 
 class PermitOCRRequest(AbstractModel):
-    """PermitOCR request structure.
+    r"""PermitOCR request structure.
 
     """
 
@@ -8511,7 +8511,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -8525,7 +8525,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -8540,7 +8540,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def CropPortrait(self):
-        """Whether to return the profile photo, default is false.
+        r"""Whether to return the profile photo, default is false.
         :rtype: bool
         """
         return self._CropPortrait
@@ -8565,7 +8565,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class PermitOCRResponse(AbstractModel):
-    """PermitOCR response structure.
+    r"""PermitOCR response structure.
 
     """
 
@@ -8608,7 +8608,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -8619,7 +8619,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnglishName
@@ -8630,7 +8630,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """ID number
+        r"""ID number
         :rtype: str
         """
         return self._Number
@@ -8641,7 +8641,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._Sex
@@ -8652,7 +8652,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """Validity period
+        r"""Validity period
         :rtype: str
         """
         return self._ValidDate
@@ -8663,7 +8663,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def IssueAuthority(self):
-        """Issuing authority
+        r"""Issuing authority
         :rtype: str
         """
         return self._IssueAuthority
@@ -8674,7 +8674,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        """Place of issue
+        r"""Place of issue
         :rtype: str
         """
         return self._IssueAddress
@@ -8685,7 +8685,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """Date of birth
+        r"""Date of birth
         :rtype: str
         """
         return self._Birthday
@@ -8696,7 +8696,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Base64 of profile picture
+        r"""Base64 of profile picture
         :rtype: str
         """
         return self._PortraitImage
@@ -8707,7 +8707,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """return type
+        r"""return type
         :rtype: str
         """
         return self._Type
@@ -8718,7 +8718,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8743,7 +8743,7 @@ class PermitOCRResponse(AbstractModel):
 
 
 class Polygon(AbstractModel):
-    """The coordinates of the four vertices of the text
+    r"""The coordinates of the four vertices of the text
     Note: This field may return null, indicating that no valid values can be obtained.
 
     """
@@ -8766,7 +8766,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftTop(self):
-        """The coordinates of the upper-left vertex.
+        r"""The coordinates of the upper-left vertex.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftTop
@@ -8777,7 +8777,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightTop(self):
-        """The coordinates of the upper-right vertex.
+        r"""The coordinates of the upper-right vertex.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightTop
@@ -8788,7 +8788,7 @@ class Polygon(AbstractModel):
 
     @property
     def RightBottom(self):
-        """The coordinates of the lower-left vertex.
+        r"""The coordinates of the lower-left vertex.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._RightBottom
@@ -8799,7 +8799,7 @@ class Polygon(AbstractModel):
 
     @property
     def LeftBottom(self):
-        """The coordinates of the lower-right vertex.
+        r"""The coordinates of the lower-right vertex.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
         """
         return self._LeftBottom
@@ -8833,7 +8833,7 @@ class Polygon(AbstractModel):
 
 
 class QuotaInvoice(AbstractModel):
-    """Quota invoice
+    r"""Quota invoice
 
     """
 
@@ -8873,7 +8873,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -8884,7 +8884,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -8895,7 +8895,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -8906,7 +8906,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -8917,7 +8917,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -8928,7 +8928,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -8939,7 +8939,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -8950,7 +8950,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -8961,7 +8961,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -8972,7 +8972,7 @@ class QuotaInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -9004,7 +9004,7 @@ class QuotaInvoice(AbstractModel):
 
 
 class RecognizeBrazilCommonOCRRequest(AbstractModel):
-    """RecognizeBrazilCommonOCR request structure.
+    r"""RecognizeBrazilCommonOCR request structure.
 
     """
 
@@ -9029,7 +9029,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: no more than 3 seconds.
+        r"""The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: no more than 3 seconds.
         :rtype: str
         """
         return self._ImageBase64
@@ -9040,7 +9040,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is advisable to store images in tencent cloud. urls not stored in tencent cloud may possibly be impacted in speed and stability.
+        r"""The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is advisable to store images in tencent cloud. urls not stored in tencent cloud may possibly be impacted in speed and stability.
         :rtype: str
         """
         return self._ImageUrl
@@ -9051,7 +9051,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """The Base64 value of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        r"""The Base64 value of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
         :rtype: str
         """
         return self._BackImageBase64
@@ -9062,7 +9062,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """The Url address of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is recommended to store images in tencent cloud. speed and stability of non-tencent cloud storage urls may be impacted.
+        r"""The Url address of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is recommended to store images in tencent cloud. speed and stability of non-tencent cloud storage urls may be impacted.
         :rtype: str
         """
         return self._BackImageUrl
@@ -9073,7 +9073,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Specifies whether to return the portrait photo.
+        r"""Specifies whether to return the portrait photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -9100,7 +9100,7 @@ class RecognizeBrazilCommonOCRRequest(AbstractModel):
 
 
 class RecognizeBrazilCommonOCRResponse(AbstractModel):
-    """RecognizeBrazilCommonOCR response structure.
+    r"""RecognizeBrazilCommonOCR response structure.
 
     """
 
@@ -9119,7 +9119,7 @@ class RecognizeBrazilCommonOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Specifies the type of document in brazil. valid values: 1. RNE 2. RNM 3. IDCard 4. DrivingLicense.
+        r"""Specifies the type of document in brazil. valid values: 1. RNE 2. RNM 3. IDCard 4. DrivingLicense.
         :rtype: int
         """
         return self._Type
@@ -9130,7 +9130,7 @@ class RecognizeBrazilCommonOCRResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Identifies the content of a brazil document.
+        r"""Identifies the content of a brazil document.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilCardInfo`
         """
         return self._Result
@@ -9141,7 +9141,7 @@ class RecognizeBrazilCommonOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9160,7 +9160,7 @@ class RecognizeBrazilCommonOCRResponse(AbstractModel):
 
 
 class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
-    """RecognizeBrazilDriverLicenseOCR request structure.
+    r"""RecognizeBrazilDriverLicenseOCR request structure.
 
     """
 
@@ -9185,7 +9185,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._ImageBase64
@@ -9196,7 +9196,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -9207,7 +9207,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        r"""The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
         :rtype: str
         """
         return self._ImageUrl
@@ -9218,7 +9218,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        r"""The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
         :rtype: str
         """
         return self._BackImageUrl
@@ -9229,7 +9229,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """Picture switch. The default is false, and the base64 encoding of the avatar photo is not returned. When set to true, the base64 encoding of the portrait photo is returned.
+        r"""Picture switch. The default is false, and the base64 encoding of the avatar photo is not returned. When set to true, the base64 encoding of the portrait photo is returned.
         :rtype: bool
         """
         return self._CropPortrait
@@ -9256,7 +9256,7 @@ class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
 
 
 class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
-    """RecognizeBrazilDriverLicenseOCR response structure.
+    r"""RecognizeBrazilDriverLicenseOCR response structure.
 
     """
 
@@ -9317,7 +9317,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def NOME(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._NOME
@@ -9328,7 +9328,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def CatHab(self):
-        """Driving license type
+        r"""Driving license type
         :rtype: str
         """
         return self._CatHab
@@ -9339,7 +9339,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def CNHNumber(self):
-        """CNH number
+        r"""CNH number
         :rtype: str
         """
         return self._CNHNumber
@@ -9350,7 +9350,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """Valid date
+        r"""Valid date
         :rtype: str
         """
         return self._VALIDADE
@@ -9361,7 +9361,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def QUALIFICATION(self):
-        """Qualification
+        r"""Qualification
         :rtype: str
         """
         return self._QUALIFICATION
@@ -9372,7 +9372,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def IDENTIDADE(self):
-        """ID number
+        r"""ID number
         :rtype: str
         """
         return self._IDENTIDADE
@@ -9383,7 +9383,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def CPF(self):
-        """CPF
+        r"""CPF
         :rtype: str
         """
         return self._CPF
@@ -9394,7 +9394,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def NASCIMENTO(self):
-        """Birthday
+        r"""Birthday
         :rtype: str
         """
         return self._NASCIMENTO
@@ -9405,7 +9405,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def MEMBERSHIP(self):
-        """Membership
+        r"""Membership
         :rtype: str
         """
         return self._MEMBERSHIP
@@ -9416,7 +9416,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def REGISTRO(self):
-        """Registration number
+        r"""Registration number
         :rtype: str
         """
         return self._REGISTRO
@@ -9427,7 +9427,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def OBSERVATIONS(self):
-        """Remark
+        r"""Remark
         :rtype: str
         """
         return self._OBSERVATIONS
@@ -9438,7 +9438,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """Issue date
+        r"""Issue date
         :rtype: str
         """
         return self._IssueDate
@@ -9449,7 +9449,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def LOCAL(self):
-        """Issue location
+        r"""Issue location
         :rtype: str
         """
         return self._LOCAL
@@ -9460,7 +9460,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def BackNumber(self):
-        """Number in the back of the card
+        r"""Number in the back of the card
         :rtype: str
         """
         return self._BackNumber
@@ -9471,7 +9471,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """Field confidence
+        r"""Field confidence
         :rtype: str
         """
         return self._AdvancedInfo
@@ -9482,7 +9482,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """PortraitImage base64
+        r"""PortraitImage base64
         :rtype: str
         """
         return self._PortraitImage
@@ -9493,7 +9493,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9524,7 +9524,7 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
 
 
 class RecognizeBrazilIDCardOCRRequest(AbstractModel):
-    """RecognizeBrazilIDCardOCR request structure.
+    r"""RecognizeBrazilIDCardOCR request structure.
 
     """
 
@@ -9549,7 +9549,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. Image download time does not exceed 3 seconds.
+        r"""Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. Image download time does not exceed 3 seconds.
         :rtype: str
         """
         return self._ImageBase64
@@ -9560,7 +9560,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        r"""URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._ImageUrl
@@ -9571,7 +9571,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -9582,7 +9582,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -9593,7 +9593,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return portrait photos.
+        r"""Whether to return portrait photos.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -9620,7 +9620,7 @@ class RecognizeBrazilIDCardOCRRequest(AbstractModel):
 
 
 class RecognizeBrazilIDCardOCRResponse(AbstractModel):
-    """RecognizeBrazilIDCardOCR response structure.
+    r"""RecognizeBrazilIDCardOCR response structure.
 
     """
 
@@ -9675,7 +9675,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def Nome(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Nome
@@ -9686,7 +9686,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def MemberShip(self):
-        """Family information
+        r"""Family information
         :rtype: str
         """
         return self._MemberShip
@@ -9697,7 +9697,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def DataNascimento(self):
-        """Birthday
+        r"""Birthday
         :rtype: str
         """
         return self._DataNascimento
@@ -9708,7 +9708,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def IssuingAgency(self):
-        """Issuing agency
+        r"""Issuing agency
         :rtype: str
         """
         return self._IssuingAgency
@@ -9719,7 +9719,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def Fatorrh(self):
-        """blood type
+        r"""blood type
         :rtype: str
         """
         return self._Fatorrh
@@ -9730,7 +9730,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def NaturalIDade(self):
-        """Birth place
+        r"""Birth place
         :rtype: str
         """
         return self._NaturalIDade
@@ -9741,7 +9741,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def Observations(self):
-        """Additional information 
+        r"""Additional information 
         :rtype: str
         """
         return self._Observations
@@ -9752,7 +9752,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def CPF(self):
-        """CPF
+        r"""CPF
         :rtype: str
         """
         return self._CPF
@@ -9763,7 +9763,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def DNI(self):
-        """DNI
+        r"""DNI
         :rtype: str
         """
         return self._DNI
@@ -9774,7 +9774,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def RegistroGeral(self):
-        """universal registration
+        r"""universal registration
         :rtype: str
         """
         return self._RegistroGeral
@@ -9785,7 +9785,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def DispatchDate(self):
-        """Issue date
+        r"""Issue date
         :rtype: str
         """
         return self._DispatchDate
@@ -9796,7 +9796,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def Registro(self):
-        """address
+        r"""address
         :rtype: str
         """
         return self._Registro
@@ -9807,7 +9807,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait image
+        r"""Portrait image
         :rtype: str
         """
         return self._PortraitImage
@@ -9818,7 +9818,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def DocOrigem(self):
-        """Original identity information
+        r"""Original identity information
         :rtype: str
         """
         return self._DocOrigem
@@ -9829,7 +9829,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9858,7 +9858,7 @@ class RecognizeBrazilIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeBrazilRNEOCRRequest(AbstractModel):
-    """RecognizeBrazilRNEOCR request structure.
+    r"""RecognizeBrazilRNEOCR request structure.
 
     """
 
@@ -9883,7 +9883,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
+        r"""Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
         :rtype: str
         """
         return self._ImageBase64
@@ -9894,7 +9894,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        r"""URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._ImageUrl
@@ -9905,7 +9905,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -9916,7 +9916,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -9927,7 +9927,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return portrait photos.
+        r"""Whether to return portrait photos.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -9954,7 +9954,7 @@ class RecognizeBrazilRNEOCRRequest(AbstractModel):
 
 
 class RecognizeBrazilRNEOCRResponse(AbstractModel):
-    """RecognizeBrazilRNEOCR response structure.
+    r"""RecognizeBrazilRNEOCR response structure.
 
     """
 
@@ -10012,7 +10012,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def RNE(self):
-        """RNE
+        r"""RNE
         :rtype: str
         """
         return self._RNE
@@ -10023,7 +10023,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def CLASSIFICATION(self):
-        """Classification
+        r"""Classification
         :rtype: str
         """
         return self._CLASSIFICATION
@@ -10034,7 +10034,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """Valid date
+        r"""Valid date
         :rtype: str
         """
         return self._VALIDADE
@@ -10045,7 +10045,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def NOME(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._NOME
@@ -10056,7 +10056,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def Membership(self):
-        """Family information
+        r"""Family information
         :rtype: str
         """
         return self._Membership
@@ -10067,7 +10067,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def NACIONALIDADE(self):
-        """Nationality
+        r"""Nationality
         :rtype: str
         """
         return self._NACIONALIDADE
@@ -10078,7 +10078,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def NATURALIDADE(self):
-        """Place of Birth
+        r"""Place of Birth
         :rtype: str
         """
         return self._NATURALIDADE
@@ -10089,7 +10089,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def IssuingAgency(self):
-        """Issuing agency
+        r"""Issuing agency
         :rtype: str
         """
         return self._IssuingAgency
@@ -10100,7 +10100,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        """Birthday
+        r"""Birthday
         :rtype: str
         """
         return self._DateOfBirth
@@ -10111,7 +10111,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._Sex
@@ -10122,7 +10122,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def EntryDate(self):
-        """Date of entry
+        r"""Date of entry
         :rtype: str
         """
         return self._EntryDate
@@ -10133,7 +10133,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def VIA(self):
-        """VIA
+        r"""VIA
         :rtype: str
         """
         return self._VIA
@@ -10144,7 +10144,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def DispatchDate(self):
-        """Dispatch date
+        r"""Dispatch date
         :rtype: str
         """
         return self._DispatchDate
@@ -10155,7 +10155,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def MRZ(self):
-        """MRZ
+        r"""MRZ
         :rtype: str
         """
         return self._MRZ
@@ -10166,7 +10166,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """PortraitImage base64
+        r"""PortraitImage base64
         :rtype: str
         """
         return self._PortraitImage
@@ -10177,7 +10177,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10207,7 +10207,7 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
 
 
 class RecognizeBrazilRNMOCRRequest(AbstractModel):
-    """RecognizeBrazilRNMOCR request structure.
+    r"""RecognizeBrazilRNMOCR request structure.
 
     """
 
@@ -10232,7 +10232,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
+        r"""Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
         :rtype: str
         """
         return self._ImageBase64
@@ -10243,7 +10243,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        r"""URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._ImageUrl
@@ -10254,7 +10254,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -10265,7 +10265,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -10276,7 +10276,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return portrait photos.
+        r"""Whether to return portrait photos.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -10303,7 +10303,7 @@ class RecognizeBrazilRNMOCRRequest(AbstractModel):
 
 
 class RecognizeBrazilRNMOCRResponse(AbstractModel):
-    """RecognizeBrazilRNMOCR response structure.
+    r"""RecognizeBrazilRNMOCR response structure.
 
     """
 
@@ -10364,7 +10364,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def SOBRENOME(self):
-        """Last name
+        r"""Last name
         :rtype: str
         """
         return self._SOBRENOME
@@ -10375,7 +10375,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def NOME(self):
-        """First name
+        r"""First name
         :rtype: str
         """
         return self._NOME
@@ -10386,7 +10386,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def DATADENASCIMENTO(self):
-        """Date of Birth
+        r"""Date of Birth
         :rtype: str
         """
         return self._DATADENASCIMENTO
@@ -10397,7 +10397,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def SEXO(self):
-        """Gender
+        r"""Gender
         :rtype: str
         """
         return self._SEXO
@@ -10408,7 +10408,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def MEMBERSHIP(self):
-        """Parents name
+        r"""Parents name
         :rtype: str
         """
         return self._MEMBERSHIP
@@ -10419,7 +10419,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def NACIONALIDADE(self):
-        """Nationality
+        r"""Nationality
         :rtype: str
         """
         return self._NACIONALIDADE
@@ -10430,7 +10430,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def VALIDADE(self):
-        """Expiry Date
+        r"""Expiry Date
         :rtype: str
         """
         return self._VALIDADE
@@ -10441,7 +10441,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def RNM(self):
-        """RNM
+        r"""RNM
         :rtype: str
         """
         return self._RNM
@@ -10452,7 +10452,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def CPF(self):
-        """CPF
+        r"""CPF
         :rtype: str
         """
         return self._CPF
@@ -10463,7 +10463,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def CLASSIFICATION(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CLASSIFICATION
@@ -10474,7 +10474,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def PRAZODERESIDENCIA(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PRAZODERESIDENCIA
@@ -10485,7 +10485,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def ISSUANCE(self):
-        """Issue Date
+        r"""Issue Date
         :rtype: str
         """
         return self._ISSUANCE
@@ -10496,7 +10496,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def AMPAROLEGAL(self):
-        """Legal basis
+        r"""Legal basis
         :rtype: str
         """
         return self._AMPAROLEGAL
@@ -10507,7 +10507,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def MRZ(self):
-        """Machine readable zone code
+        r"""Machine readable zone code
         :rtype: str
         """
         return self._MRZ
@@ -10518,7 +10518,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """PortraitImage
+        r"""PortraitImage
         :rtype: str
         """
         return self._PortraitImage
@@ -10529,7 +10529,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def PortraitImageBack(self):
-        """PortraitImage(Back)
+        r"""PortraitImage(Back)
         :rtype: str
         """
         return self._PortraitImageBack
@@ -10540,7 +10540,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10571,7 +10571,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
 
 class RecognizeGeneralInvoiceRequest(AbstractModel):
-    """RecognizeGeneralInvoice request structure.
+    r"""RecognizeGeneralInvoice request structure.
 
     """
 
@@ -10632,7 +10632,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, JPEG, and PDF. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Supported image pixels: 20 to 10,000
@@ -10647,7 +10647,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, JPEG, and PDF. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Supported image pixels: 20 to 10,000
@@ -10663,7 +10663,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def Types(self):
-        """The list of the types of invoices to be recognized. If this parameter is left empty, all types of invoices are recognized.
+        r"""The list of the types of invoices to be recognized. If this parameter is left empty, all types of invoices are recognized.
 0: Taxi receipt
 1: Quota invoice
 2: Train ticket
@@ -10692,7 +10692,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def EnableOther(self):
-        """Whether to enable recognition of other invoices. If you enable this feature, other invoices can be recognized. Default value: `true`.	
+        r"""Whether to enable recognition of other invoices. If you enable this feature, other invoices can be recognized. Default value: `true`.	
         :rtype: bool
         """
         return self._EnableOther
@@ -10703,7 +10703,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def EnablePdf(self):
-        """Whether to enable PDF recognition. If you enable this feature, both images and PDF files can be recognized. Default value: `true`.
+        r"""Whether to enable PDF recognition. If you enable this feature, both images and PDF files can be recognized. Default value: `true`.
         :rtype: bool
         """
         return self._EnablePdf
@@ -10714,7 +10714,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def PdfPageNumber(self):
-        """The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `EnablePdf` is `true`. Default value: 1.
+        r"""The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `EnablePdf` is `true`. Default value: 1.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -10725,7 +10725,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def EnableMultiplePage(self):
-        """Whether to enable multi-page PDF recognition. If you enable this feature, multiple pages of a PDF file can be recognized, and the recognition results of a maximum of the first 30 pages can be returned. After you enable this feature, input parameters `EnablePdf` and `PdfPageNumber` are invalid. Default value: `false`.
+        r"""Whether to enable multi-page PDF recognition. If you enable this feature, multiple pages of a PDF file can be recognized, and the recognition results of a maximum of the first 30 pages can be returned. After you enable this feature, input parameters `EnablePdf` and `PdfPageNumber` are invalid. Default value: `false`.
         :rtype: bool
         """
         return self._EnableMultiplePage
@@ -10736,7 +10736,7 @@ You can only specify a singe type or all types, but not some types.
 
     @property
     def EnableCutImage(self):
-        """Whether to return the Base64-encoded value of the cropped image. Default value: `false`.
+        r"""Whether to return the Base64-encoded value of the cropped image. Default value: `false`.
         :rtype: bool
         """
         return self._EnableCutImage
@@ -10766,7 +10766,7 @@ You can only specify a singe type or all types, but not some types.
 
 
 class RecognizeGeneralInvoiceResponse(AbstractModel):
-    """RecognizeGeneralInvoice response structure.
+    r"""RecognizeGeneralInvoice response structure.
 
     """
 
@@ -10785,7 +10785,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def MixedInvoiceItems(self):
-        """Mixed invoice/ticket recognition result. Please click the link on the left for details.
+        r"""Mixed invoice/ticket recognition result. Please click the link on the left for details.
         :rtype: list of InvoiceItem
         """
         return self._MixedInvoiceItems
@@ -10796,7 +10796,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def TotalPDFCount(self):
-        """Total number of pages in the PDF file.
+        r"""Total number of pages in the PDF file.
         :rtype: int
         """
         return self._TotalPDFCount
@@ -10807,7 +10807,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10829,7 +10829,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
 
 
 class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
-    """RecognizeIndonesiaIDCardOCR request structure.
+    r"""RecognizeIndonesiaIDCardOCR request structure.
 
     """
 
@@ -10861,7 +10861,7 @@ V2
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
@@ -10875,7 +10875,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -10890,7 +10890,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -10901,7 +10901,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def Scene(self):
-        """The scene, which defaults to `V1`.
+        r"""The scene, which defaults to `V1`.
 Valid values:
 V1
 V2
@@ -10930,7 +10930,7 @@ V2
 
 
 class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
-    """RecognizeIndonesiaIDCardOCR response structure.
+    r"""RecognizeIndonesiaIDCardOCR response structure.
 
     """
 
@@ -11007,7 +11007,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def NIK(self):
-        """The Single Identity Number.
+        r"""The Single Identity Number.
         :rtype: str
         """
         return self._NIK
@@ -11018,7 +11018,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Nama(self):
-        """The full name.
+        r"""The full name.
         :rtype: str
         """
         return self._Nama
@@ -11029,7 +11029,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def TempatTglLahir(self):
-        """The place and date of birth.
+        r"""The place and date of birth.
         :rtype: str
         """
         return self._TempatTglLahir
@@ -11040,7 +11040,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def JenisKelamin(self):
-        """The gender.
+        r"""The gender.
         :rtype: str
         """
         return self._JenisKelamin
@@ -11051,7 +11051,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def GolDarah(self):
-        """The blood type.
+        r"""The blood type.
         :rtype: str
         """
         return self._GolDarah
@@ -11062,7 +11062,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Alamat(self):
-        """The address.
+        r"""The address.
         :rtype: str
         """
         return self._Alamat
@@ -11073,7 +11073,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def RTRW(self):
-        """The street.
+        r"""The street.
         :rtype: str
         """
         return self._RTRW
@@ -11084,7 +11084,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def KelDesa(self):
-        """The village.
+        r"""The village.
         :rtype: str
         """
         return self._KelDesa
@@ -11095,7 +11095,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Kecamatan(self):
-        """The region.
+        r"""The region.
         :rtype: str
         """
         return self._Kecamatan
@@ -11106,7 +11106,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Agama(self):
-        """The religion.
+        r"""The religion.
         :rtype: str
         """
         return self._Agama
@@ -11117,7 +11117,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def StatusPerkawinan(self):
-        """The marital status.
+        r"""The marital status.
         :rtype: str
         """
         return self._StatusPerkawinan
@@ -11128,7 +11128,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Perkerjaan(self):
-        """The occupation.
+        r"""The occupation.
         :rtype: str
         """
         return self._Perkerjaan
@@ -11139,7 +11139,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def KewargaNegaraan(self):
-        """The nationality.
+        r"""The nationality.
         :rtype: str
         """
         return self._KewargaNegaraan
@@ -11150,7 +11150,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def BerlakuHingga(self):
-        """The expiry date.
+        r"""The expiry date.
         :rtype: str
         """
         return self._BerlakuHingga
@@ -11161,7 +11161,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def IssuedDate(self):
-        """The issue date.
+        r"""The issue date.
         :rtype: str
         """
         return self._IssuedDate
@@ -11172,7 +11172,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Photo(self):
-        """The photo.
+        r"""The photo.
         :rtype: str
         """
         return self._Photo
@@ -11183,7 +11183,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Provinsi(self):
-        """The province, which is supported when the value of `Scene` is `V2`.
+        r"""The province, which is supported when the value of `Scene` is `V2`.
         :rtype: str
         """
         return self._Provinsi
@@ -11194,7 +11194,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Kota(self):
-        """The city, which is supported when the value of `Scene` is `V2`.
+        r"""The city, which is supported when the value of `Scene` is `V2`.
         :rtype: str
         """
         return self._Kota
@@ -11205,7 +11205,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -11223,7 +11223,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11257,7 +11257,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeKoreanDrivingLicenseOCRRequest(AbstractModel):
-    """RecognizeKoreanDrivingLicenseOCR request structure.
+    r"""RecognizeKoreanDrivingLicenseOCR request structure.
 
     """
 
@@ -11283,7 +11283,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -11297,7 +11297,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -11312,7 +11312,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -11337,7 +11337,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
-    """RecognizeKoreanDrivingLicenseOCR response structure.
+    r"""RecognizeKoreanDrivingLicenseOCR response structure.
 
     """
 
@@ -11383,7 +11383,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """The ID card number.
+        r"""The ID card number.
         :rtype: str
         """
         return self._ID
@@ -11394,7 +11394,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def LicenseNumber(self):
-        """The license number.
+        r"""The license number.
         :rtype: str
         """
         return self._LicenseNumber
@@ -11405,7 +11405,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        """The resident registration number.
+        r"""The resident registration number.
         :rtype: str
         """
         return self._Number
@@ -11416,7 +11416,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        """The license class type.
+        r"""The license class type.
         :rtype: str
         """
         return self._Type
@@ -11427,7 +11427,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: str
         """
         return self._Address
@@ -11438,7 +11438,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """The name.
+        r"""The name.
         :rtype: str
         """
         return self._Name
@@ -11449,7 +11449,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def AptitudeTesDate(self):
-        """The renewal period.
+        r"""The renewal period.
         :rtype: str
         """
         return self._AptitudeTesDate
@@ -11460,7 +11460,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def DateOfIssue(self):
-        """The issue date.
+        r"""The issue date.
         :rtype: str
         """
         return self._DateOfIssue
@@ -11471,7 +11471,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Photo(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: str
         """
         return self._Photo
@@ -11482,7 +11482,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """The gender.
+        r"""The gender.
         :rtype: str
         """
         return self._Sex
@@ -11493,7 +11493,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The birth date in the format of dd/mm/yyyy.
+        r"""The birth date in the format of dd/mm/yyyy.
         :rtype: str
         """
         return self._Birthday
@@ -11504,7 +11504,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11530,7 +11530,7 @@ class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
 
 
 class RecognizeKoreanIDCardOCRRequest(AbstractModel):
-    """RecognizeKoreanIDCardOCR request structure.
+    r"""RecognizeKoreanIDCardOCR request structure.
 
     """
 
@@ -11556,7 +11556,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -11570,7 +11570,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -11585,7 +11585,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -11610,7 +11610,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class RecognizeKoreanIDCardOCRResponse(AbstractModel):
-    """RecognizeKoreanIDCardOCR response structure.
+    r"""RecognizeKoreanIDCardOCR response structure.
 
     """
 
@@ -11644,7 +11644,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """The ID card number.
+        r"""The ID card number.
         :rtype: str
         """
         return self._ID
@@ -11655,7 +11655,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: str
         """
         return self._Address
@@ -11666,7 +11666,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """The name.
+        r"""The name.
         :rtype: str
         """
         return self._Name
@@ -11677,7 +11677,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def DateOfIssue(self):
-        """The issue date.
+        r"""The issue date.
         :rtype: str
         """
         return self._DateOfIssue
@@ -11688,7 +11688,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def Photo(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: str
         """
         return self._Photo
@@ -11699,7 +11699,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """The gender.
+        r"""The gender.
         :rtype: str
         """
         return self._Sex
@@ -11710,7 +11710,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The birth date in the format of dd/mm/yyyy.
+        r"""The birth date in the format of dd/mm/yyyy.
         :rtype: str
         """
         return self._Birthday
@@ -11721,7 +11721,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11743,7 +11743,7 @@ class RecognizeKoreanIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeMacaoIDCardOCRRequest(AbstractModel):
-    """RecognizeMacaoIDCardOCR request structure.
+    r"""RecognizeMacaoIDCardOCR request structure.
 
     """
 
@@ -11773,7 +11773,7 @@ RetImage: whether to return the processed image (base64 encrypted string); the v
 
     @property
     def ImageUrl(self):
-        """The URL address of the image. 
+        r"""The URL address of the image. 
 Supported image formats: PNG, JPG, JPEG. Not support GIF yet.
 Supported image size: The downloaded image should not exceed 7M. The image download takes no more than 3 seconds.Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
         :rtype: str
@@ -11786,7 +11786,7 @@ Supported image size: The downloaded image should not exceed 7M. The image downl
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -11797,7 +11797,7 @@ Supported image size: The downloaded image should not exceed 7M. The image downl
 
     @property
     def ImageBase64(self):
-        """Base64 value of the image.Supported image formats: PNG, JPG, JPEG. Not support GIF yet.
+        r"""Base64 value of the image.Supported image formats: PNG, JPG, JPEG. Not support GIF yet.
 Supported image size: The downloaded image should not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds.
 One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
@@ -11810,7 +11810,7 @@ One of ImageUrl and ImageBase64 of the image must be provided. If both are provi
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -11821,7 +11821,7 @@ One of ImageUrl and ImageBase64 of the image must be provided. If both are provi
 
     @property
     def Config(self):
-        """The following optional fields are of string type and are empty by default: 
+        r"""The following optional fields are of string type and are empty by default: 
 RetImage: whether to return the processed image (base64 encrypted string); the value and meaning of RetImage are as follows: 1.portrait Return portrait image data 2."" Do not return image data SDK setting method reference: Config = Json.stringify({"RetImage":"portrait"}) API 3.0 Explorer setting method reference: Config = {"RetImage":"portrait" }
         :rtype: str
         """
@@ -11849,7 +11849,7 @@ RetImage: whether to return the processed image (base64 encrypted string); the v
 
 
 class RecognizeMacaoIDCardOCRResponse(AbstractModel):
-    """RecognizeMacaoIDCardOCR response structure.
+    r"""RecognizeMacaoIDCardOCR response structure.
 
     """
 
@@ -11924,7 +11924,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def CnLastName(self):
-        """Chinese last name
+        r"""Chinese last name
         :rtype: str
         """
         return self._CnLastName
@@ -11935,7 +11935,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def EnLastName(self):
-        """English last name
+        r"""English last name
         :rtype: str
         """
         return self._EnLastName
@@ -11946,7 +11946,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def LastNameCode(self):
-        """Last name code
+        r"""Last name code
         :rtype: str
         """
         return self._LastNameCode
@@ -11957,7 +11957,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def CnFirstName(self):
-        """Chinese first name
+        r"""Chinese first name
         :rtype: str
         """
         return self._CnFirstName
@@ -11968,7 +11968,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def EnFirstName(self):
-        """English first name
+        r"""English first name
         :rtype: str
         """
         return self._EnFirstName
@@ -11979,7 +11979,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def FirstNameCode(self):
-        """First name code
+        r"""First name code
         :rtype: str
         """
         return self._FirstNameCode
@@ -11990,7 +11990,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """ID Number
+        r"""ID Number
         :rtype: str
         """
         return self._ID
@@ -12001,7 +12001,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """Birthday(DD-MM-YYYY)
+        r"""Birthday(DD-MM-YYYY)
         :rtype: str
         """
         return self._Birthday
@@ -12012,7 +12012,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """gender
+        r"""gender
         :rtype: str
         """
         return self._Sex
@@ -12023,7 +12023,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def FirstIssueDate(self):
-        """First issue Date (DD-MM-YYYY)
+        r"""First issue Date (DD-MM-YYYY)
         :rtype: str
         """
         return self._FirstIssueDate
@@ -12034,7 +12034,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def CurrentIssueDate(self):
-        """Issue date (DD-MM-YYYY)
+        r"""Issue date (DD-MM-YYYY)
         :rtype: str
         """
         return self._CurrentIssueDate
@@ -12045,7 +12045,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def ValidityPeriod(self):
-        """Validity period (DD-MM-YYYY)
+        r"""Validity period (DD-MM-YYYY)
         :rtype: str
         """
         return self._ValidityPeriod
@@ -12056,7 +12056,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def Symbol(self):
-        """ID symbol
+        r"""ID symbol
         :rtype: str
         """
         return self._Symbol
@@ -12067,7 +12067,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def Height(self):
-        """Height (unit: meters)
+        r"""Height (unit: meters)
         :rtype: str
         """
         return self._Height
@@ -12078,7 +12078,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def RetImage(self):
-        """Processed image (Base64)
+        r"""Processed image (Base64)
         :rtype: str
         """
         return self._RetImage
@@ -12089,7 +12089,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """Image rotation angle, the horizontal direction of the text is 0, clockwise is positive, counterclockwise is negative
+        r"""Image rotation angle, the horizontal direction of the text is 0, clockwise is positive, counterclockwise is negative
         :rtype: str
         """
         return self._Angle
@@ -12100,7 +12100,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def ResidentType(self):
-        """Resident type.
+        r"""Resident type.
         :rtype: str
         """
         return self._ResidentType
@@ -12111,7 +12111,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -12130,7 +12130,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12163,7 +12163,7 @@ class RecognizeMacaoIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeMainlandIDCardOCRRequest(AbstractModel):
-    """RecognizeMainlandIDCardOCR request structure.
+    r"""RecognizeMainlandIDCardOCR request structure.
 
     """
 
@@ -12188,7 +12188,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._ImageBase64
@@ -12199,7 +12199,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        r"""The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
         :rtype: str
         """
         return self._ImageUrl
@@ -12210,7 +12210,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
     @property
     def CardSide(self):
-        """FRONT: The side of the ID card with the photo (portrait side), BACK: The side of the ID card with the national emblem (national emblem side). If this parameter is not filled in, the front and back of the ID card will be automatically determined for you.
+        r"""FRONT: The side of the ID card with the photo (portrait side), BACK: The side of the ID card with the national emblem (national emblem side). If this parameter is not filled in, the front and back of the ID card will be automatically determined for you.
         :rtype: str
         """
         return self._CardSide
@@ -12221,7 +12221,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        """Whether to return the ID card portrait, the default is false
+        r"""Whether to return the ID card portrait, the default is false
         :rtype: bool
         """
         return self._CropPortrait
@@ -12232,7 +12232,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
     @property
     def CropIdCard(self):
-        """Whether to enable ID card photo cropping (removing excess edges outside the ID, automatically correcting the shooting angle), the default value is false
+        r"""Whether to enable ID card photo cropping (removing excess edges outside the ID, automatically correcting the shooting angle), the default value is false
         :rtype: bool
         """
         return self._CropIdCard
@@ -12259,7 +12259,7 @@ class RecognizeMainlandIDCardOCRRequest(AbstractModel):
 
 
 class RecognizeMainlandIDCardOCRResponse(AbstractModel):
-    """RecognizeMainlandIDCardOCR response structure.
+    r"""RecognizeMainlandIDCardOCR response structure.
 
     """
 
@@ -12313,7 +12313,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name((portrait side))
+        r"""Name((portrait side))
         :rtype: str
         """
         return self._Name
@@ -12324,7 +12324,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Sex((portrait side))
+        r"""Sex((portrait side))
         :rtype: str
         """
         return self._Sex
@@ -12335,7 +12335,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Nation(self):
-        """Nation((portrait side))
+        r"""Nation((portrait side))
         :rtype: str
         """
         return self._Nation
@@ -12346,7 +12346,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Birth(self):
-        """Brithday((portrait side))
+        r"""Brithday((portrait side))
         :rtype: str
         """
         return self._Birth
@@ -12357,7 +12357,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address(portrait side)
+        r"""Address(portrait side)
         :rtype: str
         """
         return self._Address
@@ -12368,7 +12368,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def IdNum(self):
-        """ID number (portrait side)
+        r"""ID number (portrait side)
         :rtype: str
         """
         return self._IdNum
@@ -12379,7 +12379,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def Authority(self):
-        """Card authority(national emblem side)
+        r"""Card authority(national emblem side)
         :rtype: str
         """
         return self._Authority
@@ -12390,7 +12390,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """Card valid date (national emblem side)
+        r"""Card valid date (national emblem side)
         :rtype: str
         """
         return self._ValidDate
@@ -12401,7 +12401,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -12420,7 +12420,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait image base64
+        r"""Portrait image base64
         :rtype: str
         """
         return self._PortraitImage
@@ -12431,7 +12431,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def IdCardImage(self):
-        """ID card photo cropping results base64
+        r"""ID card photo cropping results base64
         :rtype: str
         """
         return self._IdCardImage
@@ -12442,7 +12442,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12468,7 +12468,7 @@ class RecognizeMainlandIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeMexicoVTIDRequest(AbstractModel):
-    """RecognizeMexicoVTID request structure.
+    r"""RecognizeMexicoVTID request structure.
 
     """
 
@@ -12487,7 +12487,7 @@ class RecognizeMexicoVTIDRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
+        r"""Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
         :rtype: str
         """
         return self._ImageBase64
@@ -12498,7 +12498,7 @@ class RecognizeMexicoVTIDRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        r"""URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
         :rtype: str
         """
         return self._ImageUrl
@@ -12509,7 +12509,7 @@ class RecognizeMexicoVTIDRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return portrait photos.
+        r"""Whether to return portrait photos.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -12534,7 +12534,7 @@ class RecognizeMexicoVTIDRequest(AbstractModel):
 
 
 class RecognizeMexicoVTIDResponse(AbstractModel):
-    """RecognizeMexicoVTID response structure.
+    r"""RecognizeMexicoVTID response structure.
 
     """
 
@@ -12589,7 +12589,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -12600,7 +12600,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """Sex
+        r"""Sex
         :rtype: str
         """
         return self._Sex
@@ -12611,7 +12611,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address
+        r"""Address
         :rtype: str
         """
         return self._Address
@@ -12622,7 +12622,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def VotePIN(self):
-        """Vote PIN Code
+        r"""Vote PIN Code
         :rtype: str
         """
         return self._VotePIN
@@ -12633,7 +12633,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def CURP(self):
-        """Unique Population Registry Code
+        r"""Unique Population Registry Code
         :rtype: str
         """
         return self._CURP
@@ -12644,7 +12644,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def Birth(self):
-        """Birthday
+        r"""Birthday
         :rtype: str
         """
         return self._Birth
@@ -12655,7 +12655,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def SECCION(self):
-        """Section Number
+        r"""Section Number
         :rtype: str
         """
         return self._SECCION
@@ -12666,7 +12666,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """IssueDate
+        r"""IssueDate
         :rtype: str
         """
         return self._IssueDate
@@ -12677,7 +12677,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        """ValidDate
+        r"""ValidDate
         :rtype: str
         """
         return self._ValidDate
@@ -12688,7 +12688,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def State(self):
-        """State
+        r"""State
         :rtype: str
         """
         return self._State
@@ -12699,7 +12699,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -12710,7 +12710,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def Locality(self):
-        """Locality
+        r"""Locality
         :rtype: str
         """
         return self._Locality
@@ -12721,7 +12721,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def EMISION(self):
-        """Edition
+        r"""Edition
         :rtype: str
         """
         return self._EMISION
@@ -12732,7 +12732,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Portrait image base64
+        r"""Portrait image base64
         :rtype: str
         """
         return self._PortraitImage
@@ -12743,7 +12743,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12772,7 +12772,7 @@ class RecognizeMexicoVTIDResponse(AbstractModel):
 
 
 class RecognizePhilippinesDrivingLicenseOCRRequest(AbstractModel):
-    """RecognizePhilippinesDrivingLicenseOCR request structure.
+    r"""RecognizePhilippinesDrivingLicenseOCR request structure.
 
     """
 
@@ -12798,7 +12798,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
@@ -12812,7 +12812,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -12827,7 +12827,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -12852,7 +12852,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
 
 class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
-    """RecognizePhilippinesDrivingLicenseOCR response structure.
+    r"""RecognizePhilippinesDrivingLicenseOCR response structure.
 
     """
 
@@ -12901,7 +12901,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -12912,7 +12912,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        """The full name.
+        r"""The full name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Name
@@ -12923,7 +12923,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._LastName
@@ -12934,7 +12934,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._FirstName
@@ -12945,7 +12945,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def MiddleName(self):
-        """The middle name.
+        r"""The middle name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._MiddleName
@@ -12956,7 +12956,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        """The nationality.
+        r"""The nationality.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Nationality
@@ -12967,7 +12967,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """The gender.
+        r"""The gender.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Sex
@@ -12978,7 +12978,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Address
@@ -12989,7 +12989,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def LicenseNo(self):
-        """The license No.
+        r"""The license No.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._LicenseNo
@@ -13000,7 +13000,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def ExpiresDate(self):
-        """The expiration date.
+        r"""The expiration date.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._ExpiresDate
@@ -13011,7 +13011,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def AgencyCode(self):
-        """The agency code.
+        r"""The agency code.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._AgencyCode
@@ -13022,7 +13022,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The date of birth.
+        r"""The date of birth.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Birthday
@@ -13033,7 +13033,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13084,7 +13084,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
 
 
 class RecognizePhilippinesSssIDOCRRequest(AbstractModel):
-    """RecognizePhilippinesSssIDOCR request structure.
+    r"""RecognizePhilippinesSssIDOCR request structure.
 
     """
 
@@ -13110,7 +13110,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -13121,7 +13121,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
@@ -13135,7 +13135,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -13164,7 +13164,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
 
 class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
-    """RecognizePhilippinesSssIDOCR response structure.
+    r"""RecognizePhilippinesSssIDOCR response structure.
 
     """
 
@@ -13189,7 +13189,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -13200,7 +13200,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     @property
     def LicenseNumber(self):
-        """The common reference number (CRN).
+        r"""The common reference number (CRN).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._LicenseNumber
@@ -13211,7 +13211,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     @property
     def FullName(self):
-        """The full name.
+        r"""The full name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._FullName
@@ -13222,7 +13222,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The date of birth.
+        r"""The date of birth.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Birthday
@@ -13233,7 +13233,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13260,7 +13260,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
 
 
 class RecognizePhilippinesTinIDOCRRequest(AbstractModel):
-    """RecognizePhilippinesTinIDOCR request structure.
+    r"""RecognizePhilippinesTinIDOCR request structure.
 
     """
 
@@ -13286,7 +13286,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -13297,7 +13297,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
@@ -13311,7 +13311,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -13340,7 +13340,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
 
 class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
-    """RecognizePhilippinesTinIDOCR response structure.
+    r"""RecognizePhilippinesTinIDOCR response structure.
 
     """
 
@@ -13371,7 +13371,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -13382,7 +13382,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def LicenseNumber(self):
-        """The tax identification number (TIN).
+        r"""The tax identification number (TIN).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._LicenseNumber
@@ -13393,7 +13393,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def FullName(self):
-        """The name.
+        r"""The name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._FullName
@@ -13404,7 +13404,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Address
@@ -13415,7 +13415,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The birth date.
+        r"""The birth date.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Birthday
@@ -13426,7 +13426,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """The issue date.
+        r"""The issue date.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._IssueDate
@@ -13437,7 +13437,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13470,7 +13470,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
 
 
 class RecognizePhilippinesUMIDOCRRequest(AbstractModel):
-    """RecognizePhilippinesUMIDOCR request structure.
+    r"""RecognizePhilippinesUMIDOCR request structure.
 
     """
 
@@ -13496,7 +13496,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -13510,7 +13510,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -13525,7 +13525,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -13550,7 +13550,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
-    """RecognizePhilippinesUMIDOCR response structure.
+    r"""RecognizePhilippinesUMIDOCR response structure.
 
     """
 
@@ -13587,7 +13587,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def Surname(self):
-        """The surname.
+        r"""The surname.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Surname
@@ -13598,7 +13598,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def MiddleName(self):
-        """The middle name.
+        r"""The middle name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._MiddleName
@@ -13609,7 +13609,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def GivenName(self):
-        """The given name.
+        r"""The given name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._GivenName
@@ -13620,7 +13620,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Address
@@ -13631,7 +13631,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The date of birth.
+        r"""The date of birth.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Birthday
@@ -13642,7 +13642,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def CRN(self):
-        """The common reference number (CRN).
+        r"""The common reference number (CRN).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._CRN
@@ -13653,7 +13653,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """The gender.
+        r"""The gender.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Sex
@@ -13664,7 +13664,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -13675,7 +13675,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13714,7 +13714,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
 
 
 class RecognizePhilippinesVoteIDOCRRequest(AbstractModel):
-    """RecognizePhilippinesVoteIDOCR request structure.
+    r"""RecognizePhilippinesVoteIDOCR request structure.
 
     """
 
@@ -13740,7 +13740,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return the identity photo.
+        r"""Whether to return the identity photo.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -13751,7 +13751,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
@@ -13765,7 +13765,7 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -13794,7 +13794,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
 
 class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
-    """RecognizePhilippinesVoteIDOCR response structure.
+    r"""RecognizePhilippinesVoteIDOCR response structure.
 
     """
 
@@ -13834,7 +13834,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def HeadPortrait(self):
-        """The Base64-encoded identity photo.
+        r"""The Base64-encoded identity photo.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._HeadPortrait
@@ -13845,7 +13845,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def VIN(self):
-        """The voter's identification number (VIN).
+        r"""The voter's identification number (VIN).
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._VIN
@@ -13856,7 +13856,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._FirstName
@@ -13867,7 +13867,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._LastName
@@ -13878,7 +13878,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """The date of birth.
+        r"""The date of birth.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Birthday
@@ -13889,7 +13889,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def CivilStatus(self):
-        """The civil status.
+        r"""The civil status.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._CivilStatus
@@ -13900,7 +13900,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def Citizenship(self):
-        """The citizenship.
+        r"""The citizenship.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Citizenship
@@ -13911,7 +13911,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """The address.
+        r"""The address.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._Address
@@ -13922,7 +13922,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def PrecinctNo(self):
-        """The precinct.
+        r"""The precinct.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         """
         return self._PrecinctNo
@@ -13933,7 +13933,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13975,7 +13975,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
 
 
 class RecognizeSingaporeIDCardOCRRequest(AbstractModel):
-    """RecognizeSingaporeIDCardOCR request structure.
+    r"""RecognizeSingaporeIDCardOCR request structure.
 
     """
 
@@ -13994,7 +13994,7 @@ class RecognizeSingaporeIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        """The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._ImageBase64
@@ -14005,7 +14005,7 @@ class RecognizeSingaporeIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        r"""The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
         :rtype: str
         """
         return self._ImageUrl
@@ -14016,7 +14016,7 @@ class RecognizeSingaporeIDCardOCRRequest(AbstractModel):
 
     @property
     def ReturnHeadImage(self):
-        """Whether to return portrait photos.
+        r"""Whether to return portrait photos.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -14041,7 +14041,7 @@ class RecognizeSingaporeIDCardOCRRequest(AbstractModel):
 
 
 class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
-    """RecognizeSingaporeIDCardOCR response structure.
+    r"""RecognizeSingaporeIDCardOCR response structure.
 
     """
 
@@ -14104,7 +14104,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def ChName(self):
-        """Chinese name
+        r"""Chinese name
         :rtype: str
         """
         return self._ChName
@@ -14115,7 +14115,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def EnName(self):
-        """English name
+        r"""English name
         :rtype: str
         """
         return self._EnName
@@ -14126,7 +14126,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        """gender
+        r"""gender
         :rtype: str
         """
         return self._Sex
@@ -14137,7 +14137,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def CountryOfBirth(self):
-        """Birth Country
+        r"""Birth Country
         :rtype: str
         """
         return self._CountryOfBirth
@@ -14148,7 +14148,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """Brithday
+        r"""Brithday
         :rtype: str
         """
         return self._Birthday
@@ -14159,7 +14159,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address(back side)
+        r"""Address(back side)
         :rtype: str
         """
         return self._Address
@@ -14170,7 +14170,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """License number
+        r"""License number
         :rtype: str
         """
         return self._ID
@@ -14181,7 +14181,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def Race(self):
-        """Nationality(back side)
+        r"""Nationality(back side)
         :rtype: str
         """
         return self._Race
@@ -14192,7 +14192,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def NRICCode(self):
-        """NRIC code(back side)
+        r"""NRIC code(back side)
         :rtype: str
         """
         return self._NRICCode
@@ -14203,7 +14203,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def PostCode(self):
-        """Post code(back side)
+        r"""Post code(back side)
         :rtype: str
         """
         return self._PostCode
@@ -14214,7 +14214,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        """Date of Expiration(back side)
+        r"""Date of Expiration(back side)
         :rtype: str
         """
         return self._DateOfExpiration
@@ -14225,7 +14225,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def DateOfIssue(self):
-        """Date of issue(back side)
+        r"""Date of issue(back side)
         :rtype: str
         """
         return self._DateOfIssue
@@ -14236,7 +14236,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def Photo(self):
-        """Head image 
+        r"""Head image 
         :rtype: str
         """
         return self._Photo
@@ -14247,7 +14247,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -14266,7 +14266,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14295,7 +14295,7 @@ class RecognizeSingaporeIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeTableAccurateOCRRequest(AbstractModel):
-    """RecognizeTableAccurateOCR request structure.
+    r"""RecognizeTableAccurateOCR request structure.
 
     """
 
@@ -14321,7 +14321,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image.
+        r"""The Base64-encoded value of an image.
 The image cannot exceed 7 MB after being Base64-encoded. A resolution above 600 x 800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
 Supported image pixels: 20 to 10,000
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -14335,7 +14335,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image or PDF file.
+        r"""The URL of the image or PDF file.
 The image or PDF file cannot exceed 7 MB after being Base64-encoded. A resolution above 600 x 800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported.
 Supported image pixels: 20 to 10,000
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -14350,7 +14350,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def PdfPageNumber(self):
-        """The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.
+        r"""The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -14375,7 +14375,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class RecognizeTableAccurateOCRResponse(AbstractModel):
-    """RecognizeTableAccurateOCR response structure.
+    r"""RecognizeTableAccurateOCR response structure.
 
     """
 
@@ -14403,7 +14403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableDetections(self):
-        """The recognized text information. Please click the link on the left for details.
+        r"""The recognized text information. Please click the link on the left for details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TableInfo
         """
@@ -14415,7 +14415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Base64-encoded Excel data.
+        r"""Base64-encoded Excel data.
         :rtype: str
         """
         return self._Data
@@ -14426,7 +14426,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PdfPageSize(self):
-        """The total number of pages in the PDF file.
+        r"""The total number of pages in the PDF file.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14438,7 +14438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Angle(self):
-        """Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a negative value: rotate counterclockwise. Value range: -360° to 0°.
+        r"""Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a negative value: rotate counterclockwise. Value range: -360° to 0°.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -14450,7 +14450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14474,7 +14474,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RecognizeThaiIDCardOCRRequest(AbstractModel):
-    """RecognizeThaiIDCardOCR request structure.
+    r"""RecognizeThaiIDCardOCR request structure.
 
     """
 
@@ -14502,7 +14502,7 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
         :rtype: str
         """
@@ -14514,7 +14514,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def BackImageBase64(self):
-        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        r"""Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
         :rtype: str
         """
         return self._BackImageBase64
@@ -14525,7 +14525,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
         :rtype: str
         """
@@ -14537,7 +14537,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def BackImageUrl(self):
-        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        r"""The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
         :rtype: str
         """
         return self._BackImageUrl
@@ -14548,7 +14548,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def CropPortrait(self):
-        """Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+        r"""Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
 When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
         :rtype: bool
         """
@@ -14576,7 +14576,7 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
 
 
 class RecognizeThaiIDCardOCRResponse(AbstractModel):
-    """RecognizeThaiIDCardOCR response structure.
+    r"""RecognizeThaiIDCardOCR response structure.
 
     """
 
@@ -14651,7 +14651,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        """ID card number
+        r"""ID card number
         :rtype: str
         """
         return self._ID
@@ -14662,7 +14662,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ThaiName(self):
-        """Name in Thai
+        r"""Name in Thai
         :rtype: str
         """
         return self._ThaiName
@@ -14673,7 +14673,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnFirstName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnFirstName
@@ -14684,7 +14684,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnLastName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnLastName
@@ -14695,7 +14695,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        """Date of issue in Thai
+        r"""Date of issue in Thai
         :rtype: str
         """
         return self._IssueDate
@@ -14706,7 +14706,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """Expiration date in Thai
+        r"""Expiration date in Thai
         :rtype: str
         """
         return self._ExpirationDate
@@ -14717,7 +14717,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnIssueDate(self):
-        """Date of issue in English
+        r"""Date of issue in English
         :rtype: str
         """
         return self._EnIssueDate
@@ -14728,7 +14728,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnExpirationDate(self):
-        """Expiration date in English
+        r"""Expiration date in English
         :rtype: str
         """
         return self._EnExpirationDate
@@ -14739,7 +14739,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        """Date of birth in Thai
+        r"""Date of birth in Thai
         :rtype: str
         """
         return self._Birthday
@@ -14750,7 +14750,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnBirthday(self):
-        """Date of birth in English
+        r"""Date of birth in English
         :rtype: str
         """
         return self._EnBirthday
@@ -14761,7 +14761,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Religion(self):
-        """Religion
+        r"""Religion
         :rtype: str
         """
         return self._Religion
@@ -14772,7 +14772,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """Serial number
+        r"""Serial number
         :rtype: str
         """
         return self._SerialNumber
@@ -14783,7 +14783,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        """Address
+        r"""Address
         :rtype: str
         """
         return self._Address
@@ -14794,7 +14794,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def LaserID(self):
-        """LaserID in the back of the card.
+        r"""LaserID in the back of the card.
         :rtype: str
         """
         return self._LaserID
@@ -14805,7 +14805,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Identity photo
+        r"""Identity photo
         :rtype: str
         """
         return self._PortraitImage
@@ -14816,7 +14816,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -14837,7 +14837,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        """This field is deprecated and will always return "1". Usage is not recommended.
+        r"""This field is deprecated and will always return "1". Usage is not recommended.
         :rtype: str
         """
         return self._AdvancedInfo
@@ -14850,7 +14850,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def CardCount(self):
-        """The number of cards detected in the input image provided via ImageBase64 parameter.(Currently supported only in ap-bangkok region)
+        r"""The number of cards detected in the input image provided via ImageBase64 parameter.(Currently supported only in ap-bangkok region)
         :rtype: int
         """
         return self._CardCount
@@ -14861,7 +14861,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14894,7 +14894,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
 
 class RecognizeThaiPinkCardRequest(AbstractModel):
-    """RecognizeThaiPinkCard request structure.
+    r"""RecognizeThaiPinkCard request structure.
 
     """
 
@@ -14916,7 +14916,7 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
         :rtype: str
         """
@@ -14928,7 +14928,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
         :rtype: str
         """
@@ -14940,7 +14940,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def CropPortrait(self):
-        """Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+        r"""Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
 When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
         :rtype: bool
         """
@@ -14966,7 +14966,7 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
 
 
 class RecognizeThaiPinkCardResponse(AbstractModel):
-    """RecognizeThaiPinkCard response structure.
+    r"""RecognizeThaiPinkCard response structure.
 
     """
 
@@ -15041,7 +15041,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def Country(self):
-        """Country
+        r"""Country
         :rtype: str
         """
         return self._Country
@@ -15052,7 +15052,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def IDNumber(self):
-        """ID number
+        r"""ID number
         :rtype: str
         """
         return self._IDNumber
@@ -15063,7 +15063,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiName(self):
-        """Name in Thai
+        r"""Name in Thai
         :rtype: str
         """
         return self._ThaiName
@@ -15074,7 +15074,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def EnName(self):
-        """Name in English
+        r"""Name in English
         :rtype: str
         """
         return self._EnName
@@ -15085,7 +15085,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiSurName(self):
-        """Surname in Thai
+        r"""Surname in Thai
         :rtype: str
         """
         return self._ThaiSurName
@@ -15096,7 +15096,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiDOB(self):
-        """Date of birth in Thai
+        r"""Date of birth in Thai
         :rtype: str
         """
         return self._ThaiDOB
@@ -15107,7 +15107,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def EnDOB(self):
-        """Date of birth in English
+        r"""Date of birth in English
         :rtype: str
         """
         return self._EnDOB
@@ -15118,7 +15118,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def PhotoNumber(self):
-        """Photo number
+        r"""Photo number
         :rtype: str
         """
         return self._PhotoNumber
@@ -15129,7 +15129,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiAddress(self):
-        """Address in Thai
+        r"""Address in Thai
         :rtype: str
         """
         return self._ThaiAddress
@@ -15140,7 +15140,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiDateOfIssue(self):
-        """Date of issue in Thai
+        r"""Date of issue in Thai
         :rtype: str
         """
         return self._ThaiDateOfIssue
@@ -15151,7 +15151,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def DateOfIssue(self):
-        """Date of issue in English
+        r"""Date of issue in English
         :rtype: str
         """
         return self._DateOfIssue
@@ -15162,7 +15162,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def ThaiDateOfExpiry(self):
-        """Expiration date in Thai
+        r"""Expiration date in Thai
         :rtype: str
         """
         return self._ThaiDateOfExpiry
@@ -15173,7 +15173,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def DateOfExpiry(self):
-        """Expiration date in English
+        r"""Expiration date in English
         :rtype: str
         """
         return self._DateOfExpiry
@@ -15184,7 +15184,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def IssuingAgency(self):
-        """Issuing agency
+        r"""Issuing agency
         :rtype: str
         """
         return self._IssuingAgency
@@ -15195,7 +15195,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def RefNumber(self):
-        """Ref number
+        r"""Ref number
         :rtype: str
         """
         return self._RefNumber
@@ -15206,7 +15206,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """Field confidence:
+        r"""Field confidence:
  { "ID": { "Confidence": 0.9999 }, "ThaiName": { "Confidence": 0.9996 } }
         :rtype: str
         """
@@ -15218,7 +15218,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        """Identity photo
+        r"""Identity photo
         :rtype: str
         """
         return self._PortraitImage
@@ -15229,7 +15229,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        """Card Warning Information
+        r"""Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
@@ -15247,7 +15247,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15280,7 +15280,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
 
 
 class Rect(AbstractModel):
-    """Coordinates
+    r"""Coordinates
 
     """
 
@@ -15302,7 +15302,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        """X-coordinate of top-left point
+        r"""X-coordinate of top-left point
         :rtype: int
         """
         return self._X
@@ -15313,7 +15313,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        """Y-coordinate of top-left point
+        r"""Y-coordinate of top-left point
         :rtype: int
         """
         return self._Y
@@ -15324,7 +15324,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        """Width
+        r"""Width
         :rtype: int
         """
         return self._Width
@@ -15335,7 +15335,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        """Height
+        r"""Height
         :rtype: int
         """
         return self._Height
@@ -15361,7 +15361,7 @@ class Rect(AbstractModel):
 
 
 class SealInfo(AbstractModel):
-    """Seal information
+    r"""Seal information
 
     """
 
@@ -15388,7 +15388,7 @@ class SealInfo(AbstractModel):
 
     @property
     def SealBody(self):
-        """Seal body information
+        r"""Seal body information
         :rtype: str
         """
         return self._SealBody
@@ -15399,7 +15399,7 @@ class SealInfo(AbstractModel):
 
     @property
     def Location(self):
-        """Seal coordinates
+        r"""Seal coordinates
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Location
@@ -15410,7 +15410,7 @@ class SealInfo(AbstractModel):
 
     @property
     def OtherTexts(self):
-        """Other text content
+        r"""Other text content
         :rtype: list of str
         """
         return self._OtherTexts
@@ -15421,7 +15421,7 @@ class SealInfo(AbstractModel):
 
     @property
     def SealShape(self):
-        """Seal shape. Valid values:
+        r"""Seal shape. Valid values:
 0: Round
 1: Oval
 2: Rectangle
@@ -15454,7 +15454,7 @@ class SealInfo(AbstractModel):
 
 
 class SealOCRRequest(AbstractModel):
-    """SealOCR request structure.
+    r"""SealOCR request structure.
 
     """
 
@@ -15472,7 +15472,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+        r"""The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
         :rtype: str
         """
@@ -15484,7 +15484,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image. The download time of the image cannot exceed 3s.
+        r"""The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
         :rtype: str
         """
@@ -15509,7 +15509,7 @@ We recommend that you store the image in Tencent Cloud for higher download speed
 
 
 class SealOCRResponse(AbstractModel):
-    """SealOCR response structure.
+    r"""SealOCR response structure.
 
     """
 
@@ -15542,7 +15542,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealBody(self):
-        """Seal content
+        r"""Seal content
         :rtype: str
         """
         return self._SealBody
@@ -15553,7 +15553,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def Location(self):
-        """Seal coordinates
+        r"""Seal coordinates
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Location
@@ -15564,7 +15564,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def OtherTexts(self):
-        """Other text content
+        r"""Other text content
         :rtype: list of str
         """
         return self._OtherTexts
@@ -15575,7 +15575,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealInfos(self):
-        """All seal information
+        r"""All seal information
         :rtype: list of SealInfo
         """
         return self._SealInfos
@@ -15586,7 +15586,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def SealShape(self):
-        """Seal shape. Valid values:
+        r"""Seal shape. Valid values:
 0: Round
 1: Oval
 2: Rectangle
@@ -15602,7 +15602,7 @@ class SealOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15629,7 +15629,7 @@ class SealOCRResponse(AbstractModel):
 
 
 class ShippingInvoice(AbstractModel):
-    """Ship ticket
+    r"""Ship ticket
 
     """
 
@@ -15681,7 +15681,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -15692,7 +15692,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -15703,7 +15703,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -15714,7 +15714,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -15725,7 +15725,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def UserName(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._UserName
@@ -15736,7 +15736,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date
+        r"""Date
         :rtype: str
         """
         return self._Date
@@ -15747,7 +15747,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Time
@@ -15758,7 +15758,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """Departure station
+        r"""Departure station
         :rtype: str
         """
         return self._StationGetOn
@@ -15769,7 +15769,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """Destination
+        r"""Destination
         :rtype: str
         """
         return self._StationGetOff
@@ -15780,7 +15780,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Fare
+        r"""Fare
         :rtype: str
         """
         return self._Total
@@ -15791,7 +15791,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -15802,7 +15802,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -15813,7 +15813,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -15824,7 +15824,7 @@ class ShippingInvoice(AbstractModel):
 
     @property
     def CurrencyCode(self):
-        """Currency
+        r"""Currency
         :rtype: str
         """
         return self._CurrencyCode
@@ -15860,7 +15860,7 @@ class ShippingInvoice(AbstractModel):
 
 
 class SingleInvoiceItem(AbstractModel):
-    """Content of a single invoice/ticket among multiple types of invoices/tickets
+    r"""Content of a single invoice/ticket among multiple types of invoices/tickets
 
     """
 
@@ -15964,7 +15964,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatSpecialInvoice(self):
-        """Special VAT invoice
+        r"""Special VAT invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -15976,7 +15976,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatCommonInvoice(self):
-        """General VAT invoice
+        r"""General VAT invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -15988,7 +15988,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicCommonInvoice(self):
-        """Electronic general VAT invoice
+        r"""Electronic general VAT invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -16000,7 +16000,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicSpecialInvoice(self):
-        """Electronic special VAT invoice
+        r"""Electronic special VAT invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -16012,7 +16012,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicInvoiceBlockchain(self):
-        """Blockchain electronic invoice
+        r"""Blockchain electronic invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -16024,7 +16024,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicInvoiceToll(self):
-        """Electronic general VAT invoice (toll)
+        r"""Electronic general VAT invoice (toll)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
         """
@@ -16036,7 +16036,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicSpecialInvoiceFull(self):
-        """Electronic invoice (special)
+        r"""Electronic invoice (special)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatElectronicInfo`
         """
@@ -16048,7 +16048,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatElectronicInvoiceFull(self):
-        """Electronic invoice (general)
+        r"""Electronic invoice (general)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatElectronicInfo`
         """
@@ -16060,7 +16060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MachinePrintedInvoice(self):
-        """General machine-printed invoice
+        r"""General machine-printed invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MachinePrintedInvoice`
         """
@@ -16072,7 +16072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusInvoice(self):
-        """Bus ticket
+        r"""Bus ticket
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.BusInvoice`
         """
@@ -16084,7 +16084,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShippingInvoice(self):
-        """Ship ticket
+        r"""Ship ticket
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ShippingInvoice`
         """
@@ -16096,7 +16096,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TollInvoice(self):
-        """Toll receipt
+        r"""Toll receipt
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TollInvoice`
         """
@@ -16108,7 +16108,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OtherInvoice(self):
-        """Other invoice
+        r"""Other invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.OtherInvoice`
         """
@@ -16120,7 +16120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MotorVehicleSaleInvoice(self):
-        """Motor vehicle sales invoice
+        r"""Motor vehicle sales invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MotorVehicleSaleInvoice`
         """
@@ -16132,7 +16132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsedCarPurchaseInvoice(self):
-        """Used car invoice
+        r"""Used car invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.UsedCarPurchaseInvoice`
         """
@@ -16144,7 +16144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VatInvoiceRoll(self):
-        """General VAT invoice (roll)
+        r"""General VAT invoice (roll)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceRoll`
         """
@@ -16156,7 +16156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaxiTicket(self):
-        """Taxi receipt
+        r"""Taxi receipt
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxiTicket`
         """
@@ -16168,7 +16168,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QuotaInvoice(self):
-        """Quota invoice
+        r"""Quota invoice
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.QuotaInvoice`
         """
@@ -16180,7 +16180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AirTransport(self):
-        """Itinerary/Receipt of e-ticket for air transportation
+        r"""Itinerary/Receipt of e-ticket for air transportation
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AirTransport`
         """
@@ -16192,7 +16192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NonTaxIncomeGeneralBill(self):
-        """Non-tax revenue general receipt
+        r"""Non-tax revenue general receipt
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.NonTaxIncomeBill`
         """
@@ -16204,7 +16204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NonTaxIncomeElectronicBill(self):
-        """Non-tax revenue unified payment voucher
+        r"""Non-tax revenue unified payment voucher
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.NonTaxIncomeBill`
         """
@@ -16216,7 +16216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrainTicket(self):
-        """Train ticket
+        r"""Train ticket
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TrainTicket`
         """
@@ -16228,7 +16228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MedicalOutpatientInvoice(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         return self._MedicalOutpatientInvoice
@@ -16239,7 +16239,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MedicalHospitalizedInvoice(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         return self._MedicalHospitalizedInvoice
@@ -16333,7 +16333,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SmartStructuralOCRV2Request(AbstractModel):
-    """SmartStructuralOCRV2 request structure.
+    r"""SmartStructuralOCRV2 request structure.
 
     """
 
@@ -16370,7 +16370,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -16385,7 +16385,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -16399,7 +16399,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def IsPdf(self):
-        """Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
+        r"""Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
         :rtype: bool
         """
         return self._IsPdf
@@ -16410,7 +16410,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def PdfPageNumber(self):
-        """The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.
+        r"""The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -16421,7 +16421,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ItemNames(self):
-        """The names of the fields you want to return for the structured information recognition.
+        r"""The names of the fields you want to return for the structured information recognition.
 For example, if you want to return only the recognition result of the "Name" and "Gender" fields, set this parameter as follows:
 ItemNames=["Name","Gender"]
         :rtype: list of str
@@ -16434,7 +16434,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def ReturnFullText(self):
-        """Whether to enable recognition of all fields.
+        r"""Whether to enable recognition of all fields.
         :rtype: bool
         """
         return self._ReturnFullText
@@ -16462,7 +16462,7 @@ ItemNames=["Name","Gender"]
 
 
 class SmartStructuralOCRV2Response(AbstractModel):
-    """SmartStructuralOCRV2 response structure.
+    r"""SmartStructuralOCRV2 response structure.
 
     """
 
@@ -16484,7 +16484,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
 
     @property
     def Angle(self):
-        """The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
+        r"""The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
         :rtype: float
         """
         return self._Angle
@@ -16495,7 +16495,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
 
     @property
     def StructuralList(self):
-        """The structural information (key-value).
+        r"""The structural information (key-value).
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -16506,7 +16506,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
 
     @property
     def WordList(self):
-        """The recognized text information.
+        r"""The recognized text information.
         :rtype: list of WordItem
         """
         return self._WordList
@@ -16517,7 +16517,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16545,7 +16545,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
 
 
 class SmartStructuralProRequest(AbstractModel):
-    """SmartStructuralPro request structure.
+    r"""SmartStructuralPro request structure.
 
     """
 
@@ -16591,7 +16591,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -16606,7 +16606,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -16620,7 +16620,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def PdfPageNumber(self):
-        """The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.
+        r"""The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.
         :rtype: int
         """
         return self._PdfPageNumber
@@ -16631,7 +16631,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ItemNames(self):
-        """The names of the fields you want to return for the structured information recognition.
+        r"""The names of the fields you want to return for the structured information recognition.
 For example, if you want to return only the recognition result of the "Name" and "Gender" fields, set this parameter as follows:
 ItemNames=["Name","Gender"]
         :rtype: list of str
@@ -16644,7 +16644,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def ReturnFullText(self):
-        """Whether to enable recognition of all fields.
+        r"""Whether to enable recognition of all fields.
         :rtype: bool
         """
         return self._ReturnFullText
@@ -16655,7 +16655,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def ConfigId(self):
-        """Configuration ID support: General 
+        r"""Configuration ID support: General 
 -- General scenarios; InvoiceEng 
 -- Ocean bill of lading, international invoice template; 
 -- Ocean shipment order template; WayBillEng 
@@ -16672,7 +16672,7 @@ ItemNames=["Name","Gender"]
 
     @property
     def EnableCoord(self):
-        """Enable recognition of coordinate values in full-text fields
+        r"""Enable recognition of coordinate values in full-text fields
         :rtype: bool
         """
         return self._EnableCoord
@@ -16701,7 +16701,7 @@ ItemNames=["Name","Gender"]
 
 
 class SmartStructuralProResponse(AbstractModel):
-    """SmartStructuralPro response structure.
+    r"""SmartStructuralPro response structure.
 
     """
 
@@ -16723,7 +16723,7 @@ class SmartStructuralProResponse(AbstractModel):
 
     @property
     def Angle(self):
-        """The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
+        r"""The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
         :rtype: float
         """
         return self._Angle
@@ -16734,7 +16734,7 @@ class SmartStructuralProResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        """The structural information (key-value).
+        r"""The structural information (key-value).
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -16745,7 +16745,7 @@ class SmartStructuralProResponse(AbstractModel):
 
     @property
     def WordList(self):
-        """The recognized text information.
+        r"""The recognized text information.
         :rtype: list of WordItem
         """
         return self._WordList
@@ -16756,7 +16756,7 @@ class SmartStructuralProResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16784,7 +16784,7 @@ class SmartStructuralProResponse(AbstractModel):
 
 
 class TableCellInfo(AbstractModel):
-    """Cell data
+    r"""Cell data
 
     """
 
@@ -16818,7 +16818,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def ColTl(self):
-        """Column index of the upper-left corner of the cell
+        r"""Column index of the upper-left corner of the cell
         :rtype: int
         """
         return self._ColTl
@@ -16829,7 +16829,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def RowTl(self):
-        """Row index of the upper-left corner of the cell
+        r"""Row index of the upper-left corner of the cell
         :rtype: int
         """
         return self._RowTl
@@ -16840,7 +16840,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def ColBr(self):
-        """Column index of the lower-right corner of the cell
+        r"""Column index of the lower-right corner of the cell
         :rtype: int
         """
         return self._ColBr
@@ -16851,7 +16851,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def RowBr(self):
-        """Row index of the lower-right corner of the cell
+        r"""Row index of the lower-right corner of the cell
         :rtype: int
         """
         return self._RowBr
@@ -16862,7 +16862,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Text(self):
-        """Recognized string text within the cell. If there are multiple lines, they are separated by "\n".
+        r"""Recognized string text within the cell. If there are multiple lines, they are separated by "\n".
         :rtype: str
         """
         return self._Text
@@ -16873,7 +16873,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Cell type
+        r"""Cell type
         :rtype: str
         """
         return self._Type
@@ -16884,7 +16884,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        """Cell confidence
+        r"""Cell confidence
         :rtype: float
         """
         return self._Confidence
@@ -16895,7 +16895,7 @@ class TableCellInfo(AbstractModel):
 
     @property
     def Polygon(self):
-        """Four-point coordinates of the cell in the image
+        r"""Four-point coordinates of the cell in the image
         :rtype: list of Coord
         """
         return self._Polygon
@@ -16930,7 +16930,7 @@ class TableCellInfo(AbstractModel):
 
 
 class TableInfo(AbstractModel):
-    """Recognized table information
+    r"""Recognized table information
 
     """
 
@@ -16955,7 +16955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cells(self):
-        """Cell content
+        r"""Cell content
 Note: This parameter may return null, indicating that no valid values can be obtained.
         :rtype: list of TableCellInfo
         """
@@ -16967,7 +16967,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Type(self):
-        """Type of text in the image. Valid values:
+        r"""Type of text in the image. Valid values:
 0: Non-table text
 1: Text in a bordered table
 2: Text in a borderless table
@@ -16982,7 +16982,7 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TableCoordPoint(self):
-        """The coordinates of the four vertices (upper-left, upper-right, lower-right, and lower-left) of the table body.
+        r"""The coordinates of the four vertices (upper-left, upper-right, lower-right, and lower-left) of the table body.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Coord
         """
@@ -17018,7 +17018,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableOCRRequest(AbstractModel):
-    """TableOCR request structure.
+    r"""TableOCR request structure.
 
     """
 
@@ -17041,7 +17041,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of image.
+        r"""Base64-encoded value of image.
 Supported image formats: PNG, JPG, JPEG. GIF is not supported at present.
 Supported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.
@@ -17055,7 +17055,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided; if both are pr
 
     @property
     def ImageUrl(self):
-        """URL address of image. (This field is not supported outside Chinese mainland)
+        r"""URL address of image. (This field is not supported outside Chinese mainland)
 Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
 Supported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -17083,7 +17083,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class TableOCRResponse(AbstractModel):
-    """TableOCR response structure.
+    r"""TableOCR response structure.
 
     """
 
@@ -17102,7 +17102,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def TextDetections(self):
-        """Recognized text. For more information, please click the link on the left
+        r"""Recognized text. For more information, please click the link on the left
         :rtype: list of TextTable
         """
         return self._TextDetections
@@ -17113,7 +17113,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Base64-encoded Excel data.
+        r"""Base64-encoded Excel data.
         :rtype: str
         """
         return self._Data
@@ -17124,7 +17124,7 @@ class TableOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17146,7 +17146,7 @@ class TableOCRResponse(AbstractModel):
 
 
 class TaxiTicket(AbstractModel):
-    """Taxi receipt
+    r"""Taxi receipt
 
     """
 
@@ -17210,7 +17210,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -17221,7 +17221,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -17232,7 +17232,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -17243,7 +17243,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -17254,7 +17254,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -17265,7 +17265,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._TimeGetOn
@@ -17276,7 +17276,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def TimeGetOff(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._TimeGetOff
@@ -17287,7 +17287,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Price(self):
-        """Unit price
+        r"""Unit price
         :rtype: str
         """
         return self._Price
@@ -17298,7 +17298,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Mileage(self):
-        """Distance
+        r"""Distance
         :rtype: str
         """
         return self._Mileage
@@ -17309,7 +17309,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount
+        r"""Total amount
         :rtype: str
         """
         return self._Total
@@ -17320,7 +17320,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Place(self):
-        """Invoice place
+        r"""Invoice place
         :rtype: str
         """
         return self._Place
@@ -17331,7 +17331,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -17342,7 +17342,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -17353,7 +17353,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -17364,7 +17364,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """License plate number
+        r"""License plate number
         :rtype: str
         """
         return self._LicensePlate
@@ -17375,7 +17375,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def FuelFee(self):
-        """Fuel surcharge
+        r"""Fuel surcharge
         :rtype: str
         """
         return self._FuelFee
@@ -17386,7 +17386,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def BookingCallFee(self):
-        """Booking fee
+        r"""Booking fee
         :rtype: str
         """
         return self._BookingCallFee
@@ -17397,7 +17397,7 @@ class TaxiTicket(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -17437,7 +17437,7 @@ class TaxiTicket(AbstractModel):
 
 
 class TextDetection(AbstractModel):
-    """OCR result.
+    r"""OCR result.
 
     """
 
@@ -17470,7 +17470,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def DetectedText(self):
-        """Recognized text line content.
+        r"""Recognized text line content.
         :rtype: str
         """
         return self._DetectedText
@@ -17481,7 +17481,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def Confidence(self):
-        """Confidence. Value range: 0–100.
+        r"""Confidence. Value range: 0–100.
         :rtype: int
         """
         return self._Confidence
@@ -17492,7 +17492,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def Polygon(self):
-        """Text line coordinates, which are represented as 4 vertex coordinates.
+        r"""Text line coordinates, which are represented as 4 vertex coordinates.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Coord
         """
@@ -17504,7 +17504,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedInfo(self):
-        """Extended field.
+        r"""Extended field.
 The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.
         :rtype: str
         """
@@ -17516,7 +17516,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def ItemPolygon(self):
-        """Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
+        r"""Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemPolygon
@@ -17527,7 +17527,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def Words(self):
-        """Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
+        r"""Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
         :rtype: list of DetectedWords
         """
         return self._Words
@@ -17538,7 +17538,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
     @property
     def WordCoordPoint(self):
-        """Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
+        r"""Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`
         :rtype: list of DetectedWordCoordPoint
         """
         return self._WordCoordPoint
@@ -17584,7 +17584,7 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
 
 
 class TextDetectionResult(AbstractModel):
-    """Recognition result
+    r"""Recognition result
 
     """
 
@@ -17600,7 +17600,7 @@ class TextDetectionResult(AbstractModel):
 
     @property
     def Value(self):
-        """The recognized text line content.
+        r"""The recognized text line content.
         :rtype: str
         """
         return self._Value
@@ -17611,7 +17611,7 @@ class TextDetectionResult(AbstractModel):
 
     @property
     def Polygon(self):
-        """The coordinates, represented in the coordinates of the four points.
+        r"""The coordinates, represented in the coordinates of the four points.
         :rtype: list of Coord
         """
         return self._Polygon
@@ -17640,7 +17640,7 @@ class TextDetectionResult(AbstractModel):
 
 
 class TextTable(AbstractModel):
-    """Form recognition result.
+    r"""Form recognition result.
 
     """
 
@@ -17677,7 +17677,7 @@ class TextTable(AbstractModel):
 
     @property
     def ColTl(self):
-        """Column index of the top-left corner of the cell.
+        r"""Column index of the top-left corner of the cell.
         :rtype: int
         """
         return self._ColTl
@@ -17688,7 +17688,7 @@ class TextTable(AbstractModel):
 
     @property
     def RowTl(self):
-        """Row index of the top-left corner of the cell.
+        r"""Row index of the top-left corner of the cell.
         :rtype: int
         """
         return self._RowTl
@@ -17699,7 +17699,7 @@ class TextTable(AbstractModel):
 
     @property
     def ColBr(self):
-        """Column index of the bottom-right corner of the cell.
+        r"""Column index of the bottom-right corner of the cell.
         :rtype: int
         """
         return self._ColBr
@@ -17710,7 +17710,7 @@ class TextTable(AbstractModel):
 
     @property
     def RowBr(self):
-        """Row index of the bottom-right corner of the cell.
+        r"""Row index of the bottom-right corner of the cell.
         :rtype: int
         """
         return self._RowBr
@@ -17721,7 +17721,7 @@ class TextTable(AbstractModel):
 
     @property
     def Text(self):
-        """Cell text
+        r"""Cell text
         :rtype: str
         """
         return self._Text
@@ -17732,7 +17732,7 @@ class TextTable(AbstractModel):
 
     @property
     def Type(self):
-        """Cell type. Valid values: body, header, footer
+        r"""Cell type. Valid values: body, header, footer
         :rtype: str
         """
         return self._Type
@@ -17743,7 +17743,7 @@ class TextTable(AbstractModel):
 
     @property
     def Confidence(self):
-        """Confidence. Value range: 0–100
+        r"""Confidence. Value range: 0–100
         :rtype: int
         """
         return self._Confidence
@@ -17754,7 +17754,7 @@ class TextTable(AbstractModel):
 
     @property
     def Polygon(self):
-        """Text line coordinates, which are represented as 4 vertex coordinates.
+        r"""Text line coordinates, which are represented as 4 vertex coordinates.
         :rtype: list of Coord
         """
         return self._Polygon
@@ -17765,7 +17765,7 @@ class TextTable(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """Extended field
+        r"""Extended field
         :rtype: str
         """
         return self._AdvancedInfo
@@ -17801,7 +17801,7 @@ class TextTable(AbstractModel):
 
 
 class TollInvoice(AbstractModel):
-    """Toll receipt
+    r"""Toll receipt
 
     """
 
@@ -17844,7 +17844,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -17855,7 +17855,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -17866,7 +17866,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -17877,7 +17877,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -17888,7 +17888,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -17899,7 +17899,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date
+        r"""Date
         :rtype: str
         """
         return self._Date
@@ -17910,7 +17910,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Time(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Time
@@ -17921,7 +17921,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Entrance(self):
-        """Entrance
+        r"""Entrance
         :rtype: str
         """
         return self._Entrance
@@ -17932,7 +17932,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def Exit(self):
-        """Exit
+        r"""Exit
         :rtype: str
         """
         return self._Exit
@@ -17943,7 +17943,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def HighwayMark(self):
-        """Highway mark (0: No, 1: Yes)
+        r"""Highway mark (0: No, 1: Yes)
         :rtype: int
         """
         return self._HighwayMark
@@ -17954,7 +17954,7 @@ class TollInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -17987,7 +17987,7 @@ class TollInvoice(AbstractModel):
 
 
 class TrainTicket(AbstractModel):
-    """Train ticket
+    r"""Train ticket
 
     """
 
@@ -18069,7 +18069,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -18080,7 +18080,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -18091,7 +18091,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def DateGetOn(self):
-        """Departure date
+        r"""Departure date
         :rtype: str
         """
         return self._DateGetOn
@@ -18102,7 +18102,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        """Departure time
+        r"""Departure time
         :rtype: str
         """
         return self._TimeGetOn
@@ -18113,7 +18113,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Name(self):
-        """Passenger's name
+        r"""Passenger's name
         :rtype: str
         """
         return self._Name
@@ -18124,7 +18124,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def StationGetOn(self):
-        """Departure station
+        r"""Departure station
         :rtype: str
         """
         return self._StationGetOn
@@ -18135,7 +18135,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def StationGetOff(self):
-        """Destination
+        r"""Destination
         :rtype: str
         """
         return self._StationGetOff
@@ -18146,7 +18146,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Seat(self):
-        """Seat class
+        r"""Seat class
         :rtype: str
         """
         return self._Seat
@@ -18157,7 +18157,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount
+        r"""Total amount
         :rtype: str
         """
         return self._Total
@@ -18168,7 +18168,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -18179,7 +18179,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def SerialNumber(self):
-        """Serial number
+        r"""Serial number
         :rtype: str
         """
         return self._SerialNumber
@@ -18190,7 +18190,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def UserID(self):
-        """ID card number
+        r"""ID card number
         :rtype: str
         """
         return self._UserID
@@ -18201,7 +18201,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def GateNumber(self):
-        """Check-in gate
+        r"""Check-in gate
         :rtype: str
         """
         return self._GateNumber
@@ -18212,7 +18212,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TrainNumber(self):
-        """Fleet number
+        r"""Fleet number
         :rtype: str
         """
         return self._TrainNumber
@@ -18223,7 +18223,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def HandlingFee(self):
-        """Handling fee
+        r"""Handling fee
         :rtype: str
         """
         return self._HandlingFee
@@ -18234,7 +18234,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def OriginalFare(self):
-        """Original ticket price
+        r"""Original ticket price
         :rtype: str
         """
         return self._OriginalFare
@@ -18245,7 +18245,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -18256,7 +18256,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def SeatNumber(self):
-        """Seat No.
+        r"""Seat No.
         :rtype: str
         """
         return self._SeatNumber
@@ -18267,7 +18267,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def PickUpAddress(self):
-        """Ticket pickup address
+        r"""Ticket pickup address
         :rtype: str
         """
         return self._PickUpAddress
@@ -18278,7 +18278,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def TicketChange(self):
-        """Ticket change information
+        r"""Ticket change information
         :rtype: str
         """
         return self._TicketChange
@@ -18289,7 +18289,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def AdditionalFare(self):
-        """Additional fare
+        r"""Additional fare
         :rtype: str
         """
         return self._AdditionalFare
@@ -18300,7 +18300,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def ReceiptNumber(self):
-        """Receipt No.
+        r"""Receipt No.
         :rtype: str
         """
         return self._ReceiptNumber
@@ -18311,7 +18311,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -18322,7 +18322,7 @@ class TrainTicket(AbstractModel):
 
     @property
     def ReimburseOnlyMark(self):
-        """Whether it is for reimbursement only (0: No, 1: Yes)
+        r"""Whether it is for reimbursement only (0: No, 1: Yes)
         :rtype: int
         """
         return self._ReimburseOnlyMark
@@ -18368,7 +18368,7 @@ class TrainTicket(AbstractModel):
 
 
 class UsedCarPurchaseInvoice(AbstractModel):
-    """Used car sales invoice
+    r"""Used car sales invoice
 
     """
 
@@ -18477,7 +18477,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -18488,7 +18488,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -18499,7 +18499,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -18510,7 +18510,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -18521,7 +18521,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -18532,7 +18532,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -18543,7 +18543,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -18554,7 +18554,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -18565,7 +18565,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerTel(self):
-        """Seller's phone number
+        r"""Seller's phone number
         :rtype: str
         """
         return self._SellerTel
@@ -18576,7 +18576,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's company code/personal ID card number
+        r"""Seller's company code/personal ID card number
         :rtype: str
         """
         return self._SellerTaxID
@@ -18587,7 +18587,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def SellerAddress(self):
-        """Seller's address
+        r"""Seller's address
         :rtype: str
         """
         return self._SellerAddress
@@ -18598,7 +18598,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -18609,7 +18609,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerID(self):
-        """Buyer's company code/personal ID card number
+        r"""Buyer's company code/personal ID card number
         :rtype: str
         """
         return self._BuyerID
@@ -18620,7 +18620,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerAddress(self):
-        """Buyer's address
+        r"""Buyer's address
         :rtype: str
         """
         return self._BuyerAddress
@@ -18631,7 +18631,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def BuyerTel(self):
-        """Buyer's phone number
+        r"""Buyer's phone number
         :rtype: str
         """
         return self._BuyerTel
@@ -18642,7 +18642,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyName(self):
-        """Company (used car market) name
+        r"""Company (used car market) name
         :rtype: str
         """
         return self._CompanyName
@@ -18653,7 +18653,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyTaxID(self):
-        """Company's taxpayer identification number
+        r"""Company's taxpayer identification number
         :rtype: str
         """
         return self._CompanyTaxID
@@ -18664,7 +18664,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyBankAccount(self):
-        """Company's account opening bank and account number
+        r"""Company's account opening bank and account number
         :rtype: str
         """
         return self._CompanyBankAccount
@@ -18675,7 +18675,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyTel(self):
-        """Company's phone number
+        r"""Company's phone number
         :rtype: str
         """
         return self._CompanyTel
@@ -18686,7 +18686,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanyAddress(self):
-        """Company's address
+        r"""Company's address
         :rtype: str
         """
         return self._CompanyAddress
@@ -18697,7 +18697,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def TransferAdministrationName(self):
-        """Name of the transfer-to department of motor vehicles
+        r"""Name of the transfer-to department of motor vehicles
         :rtype: str
         """
         return self._TransferAdministrationName
@@ -18708,7 +18708,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """License plate number
+        r"""License plate number
         :rtype: str
         """
         return self._LicensePlate
@@ -18719,7 +18719,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def RegistrationNumber(self):
-        """Registration certificate No.
+        r"""Registration certificate No.
         :rtype: str
         """
         return self._RegistrationNumber
@@ -18730,7 +18730,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VIN(self):
-        """VIN
+        r"""VIN
         :rtype: str
         """
         return self._VIN
@@ -18741,7 +18741,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VehicleModel(self):
-        """Vehicle model
+        r"""Vehicle model
         :rtype: str
         """
         return self._VehicleModel
@@ -18752,7 +18752,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -18763,7 +18763,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -18774,7 +18774,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -18785,7 +18785,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def VehicleType(self):
-        """Vehicle type
+        r"""Vehicle type
         :rtype: str
         """
         return self._VehicleType
@@ -18796,7 +18796,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -18807,7 +18807,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def FormType(self):
-        """Form type
+        r"""Form type
         :rtype: str
         """
         return self._FormType
@@ -18818,7 +18818,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def FormName(self):
-        """Form name
+        r"""Form name
         :rtype: str
         """
         return self._FormName
@@ -18829,7 +18829,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -18884,7 +18884,7 @@ class UsedCarPurchaseInvoice(AbstractModel):
 
 
 class Value(AbstractModel):
-    """Value information
+    r"""Value information
 
     """
 
@@ -18901,7 +18901,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoContent(self):
-        """The value of the recognized field.
+        r"""The value of the recognized field.
         :rtype: str
         """
         return self._AutoContent
@@ -18912,7 +18912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Coord(self):
-        """The coordinates of the four vertices.
+        r"""The coordinates of the four vertices.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
@@ -18939,7 +18939,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class VatElectronicInfo(AbstractModel):
-    """Return values for an electronic invoice
+    r"""Return values for an electronic invoice
 
     """
 
@@ -18997,7 +18997,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -19008,7 +19008,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -19019,7 +19019,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -19030,7 +19030,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """Amount before tax
+        r"""Amount before tax
         :rtype: str
         """
         return self._PretaxAmount
@@ -19041,7 +19041,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax
+        r"""Tax
         :rtype: str
         """
         return self._Tax
@@ -19052,7 +19052,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -19063,7 +19063,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -19074,7 +19074,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -19085,7 +19085,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's taxpayer identification number
+        r"""Seller's taxpayer identification number
         :rtype: str
         """
         return self._SellerTaxID
@@ -19096,7 +19096,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -19107,7 +19107,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Buyer's taxpayer identification number
+        r"""Buyer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -19118,7 +19118,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Issuer(self):
-        """Issuer
+        r"""Issuer
         :rtype: str
         """
         return self._Issuer
@@ -19129,7 +19129,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -19140,7 +19140,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SubTotal(self):
-        """Subtotal amount
+        r"""Subtotal amount
         :rtype: str
         """
         return self._SubTotal
@@ -19151,7 +19151,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def SubTax(self):
-        """Subtotal tax
+        r"""Subtotal tax
         :rtype: str
         """
         return self._SubTax
@@ -19162,7 +19162,7 @@ class VatElectronicInfo(AbstractModel):
 
     @property
     def VatElectronicItems(self):
-        """Detailed items of an electronic invoice
+        r"""Detailed items of an electronic invoice
         :rtype: list of VatElectronicItemInfo
         """
         return self._VatElectronicItems
@@ -19205,7 +19205,7 @@ class VatElectronicInfo(AbstractModel):
 
 
 class VatElectronicItemInfo(AbstractModel):
-    """Detailed items of an electronic invoice
+    r"""Detailed items of an electronic invoice
 
     """
 
@@ -19266,7 +19266,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Item name
+        r"""Item name
         :rtype: str
         """
         return self._Name
@@ -19277,7 +19277,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """Quantity
+        r"""Quantity
         :rtype: str
         """
         return self._Quantity
@@ -19288,7 +19288,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """Specification
+        r"""Specification
         :rtype: str
         """
         return self._Specification
@@ -19299,7 +19299,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Price(self):
-        """Unit price
+        r"""Unit price
         :rtype: str
         """
         return self._Price
@@ -19310,7 +19310,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -19321,7 +19321,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        """Tax rate
+        r"""Tax rate
         :rtype: str
         """
         return self._TaxRate
@@ -19332,7 +19332,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax amount
+        r"""Tax amount
         :rtype: str
         """
         return self._Tax
@@ -19343,7 +19343,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
         :rtype: str
         """
         return self._Unit
@@ -19354,7 +19354,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleType(self):
-        """Vehicle type
+        r"""Vehicle type
         :rtype: str
         """
         return self._VehicleType
@@ -19365,7 +19365,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleBrand(self):
-        """Vehicle No.
+        r"""Vehicle No.
         :rtype: str
         """
         return self._VehicleBrand
@@ -19376,7 +19376,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def DeparturePlace(self):
-        """Departure place
+        r"""Departure place
         :rtype: str
         """
         return self._DeparturePlace
@@ -19387,7 +19387,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def ArrivalPlace(self):
-        """Destination
+        r"""Destination
         :rtype: str
         """
         return self._ArrivalPlace
@@ -19398,7 +19398,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TransportItemsName(self):
-        """Name of the transported goods. It is returned only for a goods transport service invoice.
+        r"""Name of the transported goods. It is returned only for a goods transport service invoice.
         :rtype: str
         """
         return self._TransportItemsName
@@ -19409,7 +19409,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def PlaceOfBuildingService(self):
-        """Location of the construction service. It is returned only for a construction invoice.
+        r"""Location of the construction service. It is returned only for a construction invoice.
         :rtype: str
         """
         return self._PlaceOfBuildingService
@@ -19420,7 +19420,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def BuildingName(self):
-        """Name of the construction project. It is returned only for a construction invoice.
+        r"""Name of the construction project. It is returned only for a construction invoice.
         :rtype: str
         """
         return self._BuildingName
@@ -19431,7 +19431,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def EstateNumber(self):
-        """Property or real estate ownership certificate No. It is returned only for a real estate operation and leasing service invoice.
+        r"""Property or real estate ownership certificate No. It is returned only for a real estate operation and leasing service invoice.
         :rtype: str
         """
         return self._EstateNumber
@@ -19442,7 +19442,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def AreaUnit(self):
-        """Unit of area. It is returned only for a real estate operation and leasing service invoice.
+        r"""Unit of area. It is returned only for a real estate operation and leasing service invoice.
         :rtype: str
         """
         return self._AreaUnit
@@ -19481,7 +19481,7 @@ class VatElectronicItemInfo(AbstractModel):
 
 
 class VatInvoiceInfo(AbstractModel):
-    """Return values for a VAT invoice
+    r"""Return values for a VAT invoice
 
     """
 
@@ -19617,7 +19617,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CheckCode(self):
-        """Check code
+        r"""Check code
         :rtype: str
         """
         return self._CheckCode
@@ -19628,7 +19628,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def FormType(self):
-        """Form type
+        r"""Form type
         :rtype: str
         """
         return self._FormType
@@ -19639,7 +19639,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TravelTax(self):
-        """Vehicle and vessel tax
+        r"""Vehicle and vessel tax
         :rtype: str
         """
         return self._TravelTax
@@ -19650,7 +19650,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerAddrTel(self):
-        """Buyer's address and phone number
+        r"""Buyer's address and phone number
         :rtype: str
         """
         return self._BuyerAddrTel
@@ -19661,7 +19661,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerBankAccount(self):
-        """Buyer's bank account number
+        r"""Buyer's bank account number
         :rtype: str
         """
         return self._BuyerBankAccount
@@ -19672,7 +19672,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CompanySealContent(self):
-        """Company seal content
+        r"""Company seal content
         :rtype: str
         """
         return self._CompanySealContent
@@ -19683,7 +19683,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TaxSealContent(self):
-        """Tax authority seal content
+        r"""Tax authority seal content
         :rtype: str
         """
         return self._TaxSealContent
@@ -19694,7 +19694,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Service type
+        r"""Service type
         :rtype: str
         """
         return self._ServiceName
@@ -19705,7 +19705,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -19716,7 +19716,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -19727,7 +19727,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def AgentMark(self):
-        """Whether there is an agent (0: No, 1: Yes)
+        r"""Whether there is an agent (0: No, 1: Yes)
         :rtype: int
         """
         return self._AgentMark
@@ -19738,7 +19738,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TransitMark(self):
-        """Whether there is a toll (0: No, 1: Yes)
+        r"""Whether there is a toll (0: No, 1: Yes)
         :rtype: int
         """
         return self._TransitMark
@@ -19749,7 +19749,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def OilMark(self):
-        """Whether there is refined oil (0: No, 1: Yes)
+        r"""Whether there is refined oil (0: No, 1: Yes)
         :rtype: int
         """
         return self._OilMark
@@ -19760,7 +19760,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -19771,7 +19771,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -19782,7 +19782,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -19793,7 +19793,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -19804,7 +19804,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def NumberConfirm(self):
-        """Machine-printed invoice number
+        r"""Machine-printed invoice number
         :rtype: str
         """
         return self._NumberConfirm
@@ -19815,7 +19815,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -19826,7 +19826,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -19837,7 +19837,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -19848,7 +19848,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def PretaxAmount(self):
-        """Amount before tax
+        r"""Amount before tax
         :rtype: str
         """
         return self._PretaxAmount
@@ -19859,7 +19859,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax
+        r"""Tax
         :rtype: str
         """
         return self._Tax
@@ -19870,7 +19870,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def MachineCode(self):
-        """Machine No.
+        r"""Machine No.
         :rtype: str
         """
         return self._MachineCode
@@ -19881,7 +19881,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Ciphertext(self):
-        """Ciphertext
+        r"""Ciphertext
         :rtype: str
         """
         return self._Ciphertext
@@ -19892,7 +19892,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -19903,7 +19903,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -19914,7 +19914,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's taxpayer identification number
+        r"""Seller's taxpayer identification number
         :rtype: str
         """
         return self._SellerTaxID
@@ -19925,7 +19925,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddrTel(self):
-        """Seller's address and phone number
+        r"""Seller's address and phone number
         :rtype: str
         """
         return self._SellerAddrTel
@@ -19936,7 +19936,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def SellerBankAccount(self):
-        """Seller's bank account number
+        r"""Seller's bank account number
         :rtype: str
         """
         return self._SellerBankAccount
@@ -19947,7 +19947,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -19958,7 +19958,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Buyer's taxpayer identification number
+        r"""Buyer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -19969,7 +19969,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -19980,7 +19980,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Issuer(self):
-        """Issuer
+        r"""Issuer
         :rtype: str
         """
         return self._Issuer
@@ -19991,7 +19991,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Reviewer(self):
-        """Reviewer
+        r"""Reviewer
         :rtype: str
         """
         return self._Reviewer
@@ -20002,7 +20002,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -20013,7 +20013,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def VatInvoiceItemInfos(self):
-        """Information about VAT invoice items
+        r"""Information about VAT invoice items
         :rtype: list of VatInvoiceItemInfo
         """
         return self._VatInvoiceItemInfos
@@ -20024,7 +20024,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def CodeConfirm(self):
-        """Machine-printed invoice code
+        r"""Machine-printed invoice code
         :rtype: str
         """
         return self._CodeConfirm
@@ -20035,7 +20035,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def Receiptor(self):
-        """Payee
+        r"""Payee
         :rtype: str
         """
         return self._Receiptor
@@ -20046,7 +20046,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullMark(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ElectronicFullMark
@@ -20057,7 +20057,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def ElectronicFullNumber(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ElectronicFullNumber
@@ -20068,7 +20068,7 @@ class VatInvoiceInfo(AbstractModel):
 
     @property
     def FormName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._FormName
@@ -20137,7 +20137,7 @@ class VatInvoiceInfo(AbstractModel):
 
 
 class VatInvoiceItemInfo(AbstractModel):
-    """Information about VAT invoice items
+    r"""Information about VAT invoice items
 
     """
 
@@ -20183,7 +20183,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Item name
+        r"""Item name
         :rtype: str
         """
         return self._Name
@@ -20194,7 +20194,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Specification(self):
-        """Specification
+        r"""Specification
         :rtype: str
         """
         return self._Specification
@@ -20205,7 +20205,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
         :rtype: str
         """
         return self._Unit
@@ -20216,7 +20216,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        """Quantity
+        r"""Quantity
         :rtype: str
         """
         return self._Quantity
@@ -20227,7 +20227,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Price(self):
-        """Unit price
+        r"""Unit price
         :rtype: str
         """
         return self._Price
@@ -20238,7 +20238,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -20249,7 +20249,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        """Tax rate
+        r"""Tax rate
         :rtype: str
         """
         return self._TaxRate
@@ -20260,7 +20260,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def Tax(self):
-        """Tax amount
+        r"""Tax amount
         :rtype: str
         """
         return self._Tax
@@ -20271,7 +20271,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def DateStart(self):
-        """Start date
+        r"""Start date
         :rtype: str
         """
         return self._DateStart
@@ -20282,7 +20282,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def DateEnd(self):
-        """End date
+        r"""End date
         :rtype: str
         """
         return self._DateEnd
@@ -20293,7 +20293,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def LicensePlate(self):
-        """License plate number
+        r"""License plate number
         :rtype: str
         """
         return self._LicensePlate
@@ -20304,7 +20304,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
     @property
     def VehicleType(self):
-        """Vehicle type
+        r"""Vehicle type
         :rtype: str
         """
         return self._VehicleType
@@ -20338,7 +20338,7 @@ class VatInvoiceItemInfo(AbstractModel):
 
 
 class VatInvoiceRoll(AbstractModel):
-    """General VAT invoice (roll)
+    r"""General VAT invoice (roll)
 
     """
 
@@ -20414,7 +20414,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Title(self):
-        """Invoice title
+        r"""Invoice title
         :rtype: str
         """
         return self._Title
@@ -20425,7 +20425,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Code(self):
-        """Invoice code
+        r"""Invoice code
         :rtype: str
         """
         return self._Code
@@ -20436,7 +20436,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Number(self):
-        """Invoice number
+        r"""Invoice number
         :rtype: str
         """
         return self._Number
@@ -20447,7 +20447,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def NumberConfirm(self):
-        """Machine-printed invoice number
+        r"""Machine-printed invoice number
         :rtype: str
         """
         return self._NumberConfirm
@@ -20458,7 +20458,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Date(self):
-        """Date of issue
+        r"""Date of issue
         :rtype: str
         """
         return self._Date
@@ -20469,7 +20469,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CheckCode(self):
-        """Check code
+        r"""Check code
         :rtype: str
         """
         return self._CheckCode
@@ -20480,7 +20480,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Seller(self):
-        """Seller's name
+        r"""Seller's name
         :rtype: str
         """
         return self._Seller
@@ -20491,7 +20491,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def SellerTaxID(self):
-        """Seller's taxpayer identification number
+        r"""Seller's taxpayer identification number
         :rtype: str
         """
         return self._SellerTaxID
@@ -20502,7 +20502,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Buyer(self):
-        """Buyer's name
+        r"""Buyer's name
         :rtype: str
         """
         return self._Buyer
@@ -20513,7 +20513,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        """Buyer's taxpayer identification number
+        r"""Buyer's taxpayer identification number
         :rtype: str
         """
         return self._BuyerTaxID
@@ -20524,7 +20524,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Category(self):
-        """Category
+        r"""Category
         :rtype: str
         """
         return self._Category
@@ -20535,7 +20535,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount (in figures)
+        r"""Total amount (in figures)
         :rtype: str
         """
         return self._Total
@@ -20546,7 +20546,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def TotalCn(self):
-        """Total amount (in words)
+        r"""Total amount (in words)
         :rtype: str
         """
         return self._TotalCn
@@ -20557,7 +20557,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Kind(self):
-        """Invoice type
+        r"""Invoice type
         :rtype: str
         """
         return self._Kind
@@ -20568,7 +20568,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def Province(self):
-        """Province
+        r"""Province
         :rtype: str
         """
         return self._Province
@@ -20579,7 +20579,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def City(self):
-        """City
+        r"""City
         :rtype: str
         """
         return self._City
@@ -20590,7 +20590,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CompanySealMark(self):
-        """Whether there is a company seal (0: No, 1: Yes)
+        r"""Whether there is a company seal (0: No, 1: Yes)
         :rtype: int
         """
         return self._CompanySealMark
@@ -20601,7 +20601,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        """Whether there is a QR code (0: No, 1: Yes)
+        r"""Whether there is a QR code (0: No, 1: Yes)
         :rtype: int
         """
         return self._QRCodeMark
@@ -20612,7 +20612,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Service type
+        r"""Service type
         :rtype: str
         """
         return self._ServiceName
@@ -20623,7 +20623,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def CompanySealContent(self):
-        """Company seal content
+        r"""Company seal content
         :rtype: str
         """
         return self._CompanySealContent
@@ -20634,7 +20634,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def TaxSealContent(self):
-        """Tax authority seal content
+        r"""Tax authority seal content
         :rtype: str
         """
         return self._TaxSealContent
@@ -20645,7 +20645,7 @@ class VatInvoiceRoll(AbstractModel):
 
     @property
     def VatRollItems(self):
-        """Items
+        r"""Items
         :rtype: list of VatRollItem
         """
         return self._VatRollItems
@@ -20694,7 +20694,7 @@ class VatInvoiceRoll(AbstractModel):
 
 
 class VatRollItem(AbstractModel):
-    """Items of a general VAT invoice (roll)
+    r"""Items of a general VAT invoice (roll)
 
     """
 
@@ -20716,7 +20716,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Name(self):
-        """Item name
+        r"""Item name
         :rtype: str
         """
         return self._Name
@@ -20727,7 +20727,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Quantity(self):
-        """Quantity
+        r"""Quantity
         :rtype: str
         """
         return self._Quantity
@@ -20738,7 +20738,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Price(self):
-        """Unit price
+        r"""Unit price
         :rtype: str
         """
         return self._Price
@@ -20749,7 +20749,7 @@ class VatRollItem(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -20775,7 +20775,7 @@ class VatRollItem(AbstractModel):
 
 
 class VinOCRRequest(AbstractModel):
-    """VinOCR request structure.
+    r"""VinOCR request structure.
 
     """
 
@@ -20798,7 +20798,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """The Base64-encoded value of the image.
+        r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
@@ -20812,7 +20812,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        """The URL of the image.
+        r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -20840,7 +20840,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
 
 class VinOCRResponse(AbstractModel):
-    """VinOCR response structure.
+    r"""VinOCR response structure.
 
     """
 
@@ -20856,7 +20856,7 @@ class VinOCRResponse(AbstractModel):
 
     @property
     def Vin(self):
-        """The detected VIN.
+        r"""The detected VIN.
         :rtype: str
         """
         return self._Vin
@@ -20867,7 +20867,7 @@ class VinOCRResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20883,7 +20883,7 @@ class VinOCRResponse(AbstractModel):
 
 
 class WordItem(AbstractModel):
-    """The recognized text information.
+    r"""The recognized text information.
 
     """
 
@@ -20905,7 +20905,7 @@ class WordItem(AbstractModel):
 
     @property
     def DetectedText(self):
-        """The text content.
+        r"""The text content.
         :rtype: str
         """
         return self._DetectedText
@@ -20916,7 +20916,7 @@ class WordItem(AbstractModel):
 
     @property
     def Coord(self):
-        """The coordinates of the four vertices.
+        r"""The coordinates of the four vertices.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord
@@ -20927,7 +20927,7 @@ class WordItem(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._AdvancedInfo
@@ -20938,7 +20938,7 @@ class WordItem(AbstractModel):
 
     @property
     def WordCoord(self):
-        """Specifies the four-point coordinate of the word.
+        r"""Specifies the four-point coordinate of the word.
         :rtype: list of WordPolygon
         """
         return self._WordCoord
@@ -20971,7 +20971,7 @@ class WordItem(AbstractModel):
 
 
 class WordPolygon(AbstractModel):
-    """Word coordinates info.
+    r"""Word coordinates info.
 
     """
 
@@ -20987,7 +20987,7 @@ class WordPolygon(AbstractModel):
 
     @property
     def DetectedText(self):
-        """The text content.
+        r"""The text content.
         :rtype: str
         """
         return self._DetectedText
@@ -20998,7 +20998,7 @@ class WordPolygon(AbstractModel):
 
     @property
     def Coord(self):
-        """The coordinates of the four vertices.
+        r"""The coordinates of the four vertices.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         return self._Coord

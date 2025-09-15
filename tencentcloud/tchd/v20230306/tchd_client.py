@@ -27,7 +27,7 @@ class TchdClient(AbstractClient):
 
 
     def DescribeEvents(self, request):
-        """This API is used to query the availability event list of tencent cloud services. It can be filtered by product, region, or event occurrence date.
+        r"""This API is used to query the availability event list of tencent cloud services. It can be filtered by product, region, or event occurrence date.
 
         :param request: Request instance for DescribeEvents.
         :type request: :class:`tencentcloud.tchd.v20230306.models.DescribeEventsRequest`

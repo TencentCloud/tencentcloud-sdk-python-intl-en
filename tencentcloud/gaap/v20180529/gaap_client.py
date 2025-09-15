@@ -27,7 +27,7 @@ class GaapClient(AbstractClient):
 
 
     def AddRealServers(self, request):
-        """This API is used to add the information of the origin server (server), which supports IP or the domain name.
+        r"""This API is used to add the information of the origin server (server), which supports IP or the domain name.
 
         :param request: Request instance for AddRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.AddRealServersRequest`
@@ -50,7 +50,7 @@ class GaapClient(AbstractClient):
 
 
     def BindListenerRealServers(self, request):
-        """This API (BindListenerRealServers) is used for the TCP/UDP listener to bind/unbind the origin server.
+        r"""This API (BindListenerRealServers) is used for the TCP/UDP listener to bind/unbind the origin server.
         Note: This API unbinds the previously bound origin servers, and binds the origin servers selected for this call. For example, the previously bound origin servers are A, B and C, and the origin servers selected for this call are C, D and E, then the origin servers bound after this call will be C, D and E.
 
         :param request: Request instance for BindListenerRealServers.
@@ -74,7 +74,7 @@ class GaapClient(AbstractClient):
 
 
     def BindRuleRealServers(self, request):
-        """This API is used to bind an origin server to the forwarding rules of layer-7 listeners. Note: This API unbinds all previously bound origin servers before binding those selected.
+        r"""This API is used to bind an origin server to the forwarding rules of layer-7 listeners. Note: This API unbinds all previously bound origin servers before binding those selected.
 
         :param request: Request instance for BindRuleRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.BindRuleRealServersRequest`
@@ -97,7 +97,7 @@ class GaapClient(AbstractClient):
 
 
     def CheckProxyCreate(self, request):
-        """This API (CheckProxyCreate) is used to query whether an acceleration connection with the specified configuration can be created.
+        r"""This API (CheckProxyCreate) is used to query whether an acceleration connection with the specified configuration can be created.
 
         :param request: Request instance for CheckProxyCreate.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CheckProxyCreateRequest`
@@ -120,7 +120,7 @@ class GaapClient(AbstractClient):
 
 
     def CloseProxies(self, request):
-        """This API (CloseProxies) is used to disable connections. If disabled, no traffic will be generated, but the basic configuration fee will still be incurred.
+        r"""This API (CloseProxies) is used to disable connections. If disabled, no traffic will be generated, but the basic configuration fee will still be incurred.
 
         :param request: Request instance for CloseProxies.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CloseProxiesRequest`
@@ -143,7 +143,7 @@ class GaapClient(AbstractClient):
 
 
     def CloseProxyGroup(self, request):
-        """This API is used to disable a connection group. Once disabled, the connection group will no longer generate traffic, but the basic connection configuration fees will still be incurred every day.
+        r"""This API is used to disable a connection group. Once disabled, the connection group will no longer generate traffic, but the basic connection configuration fees will still be incurred every day.
 
         :param request: Request instance for CloseProxyGroup.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CloseProxyGroupRequest`
@@ -166,7 +166,7 @@ class GaapClient(AbstractClient):
 
 
     def CloseSecurityPolicy(self, request):
-        """This API is used to disable a security policy.
+        r"""This API is used to disable a security policy.
 
         :param request: Request instance for CloseSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CloseSecurityPolicyRequest`
@@ -189,7 +189,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateCertificate(self, request):
-        """This API (CreateCertificate) is used to create the GAAP certificates and configuration files, including basic authentication configuration files, client CA certificates, server SSL certificates, GAAP SSL certificates, and origin server CA certificates.
+        r"""This API (CreateCertificate) is used to create the GAAP certificates and configuration files, including basic authentication configuration files, client CA certificates, server SSL certificates, GAAP SSL certificates, and origin server CA certificates.
 
         :param request: Request instance for CreateCertificate.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateCertificateRequest`
@@ -212,7 +212,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateCustomHeader(self, request):
-        """This API is used to create a custom header of the HTTP/HTTPS listener. When client requests reach the listener, they will be forwarded to the origin with this custom hearer.
+        r"""This API is used to create a custom header of the HTTP/HTTPS listener. When client requests reach the listener, they will be forwarded to the origin with this custom hearer.
 
         :param request: Request instance for CreateCustomHeader.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateCustomHeaderRequest`
@@ -235,7 +235,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateDomain(self, request):
-        """This API (CreateDomain) is used to create the access domain name for the HTTP/HTTPS listener. Clients request the backend data by accessing this domain.
+        r"""This API (CreateDomain) is used to create the access domain name for the HTTP/HTTPS listener. Clients request the backend data by accessing this domain.
         This API only supports connections of version 3.0.
 
         :param request: Request instance for CreateDomain.
@@ -259,7 +259,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateDomainErrorPageInfo(self, request):
-        """This API is used to customize the error code of an error response to the specified domain name.
+        r"""This API is used to customize the error code of an error response to the specified domain name.
 
         :param request: Request instance for CreateDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateDomainErrorPageInfoRequest`
@@ -282,7 +282,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateHTTPListener(self, request):
-        """This API (CreateHTTPListener) is used to create an HTTP listener in the connection instance.
+        r"""This API (CreateHTTPListener) is used to create an HTTP listener in the connection instance.
 
         :param request: Request instance for CreateHTTPListener.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateHTTPListenerRequest`
@@ -305,7 +305,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateHTTPSListener(self, request):
-        """This API (CreateHTTPListener) is used to create an HTTPS listener in the connection instance.
+        r"""This API (CreateHTTPListener) is used to create an HTTPS listener in the connection instance.
 
         :param request: Request instance for CreateHTTPSListener.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateHTTPSListenerRequest`
@@ -328,7 +328,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateProxy(self, request):
-        """This API is used to create/replicate an acceleration connection with the specified configuration. To replicate a connection, the basic configuration parameters need to be set for the new connection, and `ClonedProxyId` is needed to identify the replicated connection.
+        r"""This API is used to create/replicate an acceleration connection with the specified configuration. To replicate a connection, the basic configuration parameters need to be set for the new connection, and `ClonedProxyId` is needed to identify the replicated connection.
 
         :param request: Request instance for CreateProxy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateProxyRequest`
@@ -351,7 +351,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateProxyGroup(self, request):
-        """This API (CreateProxyGroup) is used to create a connection group.
+        r"""This API (CreateProxyGroup) is used to create a connection group.
 
         :param request: Request instance for CreateProxyGroup.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateProxyGroupRequest`
@@ -374,7 +374,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateProxyGroupDomain(self, request):
-        """This API (CreateProxyGroupDomain) is used to create the connection group domain name, and enable the domain name resolution.
+        r"""This API (CreateProxyGroupDomain) is used to create the connection group domain name, and enable the domain name resolution.
 
         :param request: Request instance for CreateProxyGroupDomain.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateProxyGroupDomainRequest`
@@ -397,7 +397,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API (CreateRule) is used to create the forwarding rules of HTTP/HTTPS listeners.
+        r"""This API (CreateRule) is used to create the forwarding rules of HTTP/HTTPS listeners.
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateRuleRequest`
@@ -420,7 +420,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateSecurityPolicy(self, request):
-        """This API is used to create security policies.
+        r"""This API is used to create security policies.
 
         :param request: Request instance for CreateSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateSecurityPolicyRequest`
@@ -443,7 +443,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateSecurityRules(self, request):
-        """This API is used to add security policy rules.
+        r"""This API is used to add security policy rules.
 
         :param request: Request instance for CreateSecurityRules.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateSecurityRulesRequest`
@@ -466,7 +466,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateTCPListeners(self, request):
-        """This API (CreateTCPListeners) is used to batch create TCP listeners of single connections or connection groups.
+        r"""This API (CreateTCPListeners) is used to batch create TCP listeners of single connections or connection groups.
 
         :param request: Request instance for CreateTCPListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateTCPListenersRequest`
@@ -489,7 +489,7 @@ class GaapClient(AbstractClient):
 
 
     def CreateUDPListeners(self, request):
-        """This API (CreateTCPListeners) is used to batch create UDP listeners of single connections or connection groups.
+        r"""This API (CreateTCPListeners) is used to batch create UDP listeners of single connections or connection groups.
 
         :param request: Request instance for CreateUDPListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.CreateUDPListenersRequest`
@@ -512,7 +512,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteCertificate(self, request):
-        """This API is used to delete a certificate.
+        r"""This API is used to delete a certificate.
 
         :param request: Request instance for DeleteCertificate.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteCertificateRequest`
@@ -535,7 +535,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteDomain(self, request):
-        """This API (DeleteDomain) is only applicable to layer-7 listeners. It is used to delete the domain names of this listener, and all the rules under the domain name. All rules bound to the origin server are unbound automatically.
+        r"""This API (DeleteDomain) is only applicable to layer-7 listeners. It is used to delete the domain names of this listener, and all the rules under the domain name. All rules bound to the origin server are unbound automatically.
 
         :param request: Request instance for DeleteDomain.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteDomainRequest`
@@ -558,7 +558,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteDomainErrorPageInfo(self, request):
-        """This API is used to delete a custom error code for a domain name.
+        r"""This API is used to delete a custom error code for a domain name.
 
         :param request: Request instance for DeleteDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteDomainErrorPageInfoRequest`
@@ -581,7 +581,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteListeners(self, request):
-        """This API (DeleteListeners) is used to batch delete the listeners of a connection or connection group, including layer-4/7 listeners.
+        r"""This API (DeleteListeners) is used to batch delete the listeners of a connection or connection group, including layer-4/7 listeners.
 
         :param request: Request instance for DeleteListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteListenersRequest`
@@ -604,7 +604,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteProxyGroup(self, request):
-        """This API (DeleteProxyGroup) is used to delete a connection group.
+        r"""This API (DeleteProxyGroup) is used to delete a connection group.
 
         :param request: Request instance for DeleteProxyGroup.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteProxyGroupRequest`
@@ -627,7 +627,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """This API (DeleteRule) is used to delete the forwarding rules of HTTP/HTTPS listeners.
+        r"""This API (DeleteRule) is used to delete the forwarding rules of HTTP/HTTPS listeners.
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteRuleRequest`
@@ -650,7 +650,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteSecurityPolicy(self, request):
-        """This API is used to delete a security policy.
+        r"""This API is used to delete a security policy.
 
         :param request: Request instance for DeleteSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteSecurityPolicyRequest`
@@ -673,7 +673,7 @@ class GaapClient(AbstractClient):
 
 
     def DeleteSecurityRules(self, request):
-        """This API is used to delete security policy rules.
+        r"""This API is used to delete security policy rules.
 
         :param request: Request instance for DeleteSecurityRules.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteSecurityRulesRequest`
@@ -696,7 +696,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeAccessRegions(self, request):
-        """This API (DescribeAccessRegions) is used to query acceleration region (client access region).
+        r"""This API (DescribeAccessRegions) is used to query acceleration region (client access region).
 
         :param request: Request instance for DescribeAccessRegions.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAccessRegionsRequest`
@@ -719,7 +719,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeAccessRegionsByDestRegion(self, request):
-        """This API is used to query the available accelerator region based on the origin server region.
+        r"""This API is used to query the available accelerator region based on the origin server region.
 
         :param request: Request instance for DescribeAccessRegionsByDestRegion.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAccessRegionsByDestRegionRequest`
@@ -742,7 +742,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeAuthSignature(self, request):
-        """This API is used to get a request signature that can prevent parameter tampering in the process of triggering orders, getting quotes, or activating subscription services.
+        r"""This API is used to get a request signature that can prevent parameter tampering in the process of triggering orders, getting quotes, or activating subscription services.
 
         :param request: Request instance for DescribeAuthSignature.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAuthSignatureRequest`
@@ -765,7 +765,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeBlackHeader(self, request):
-        """This API is used to query names of blocked custom headers.
+        r"""This API is used to query names of blocked custom headers.
 
         :param request: Request instance for DescribeBlackHeader.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeBlackHeaderRequest`
@@ -788,7 +788,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeCertificateDetail(self, request):
-        """This API (DescribeCertificateDetail) is used to query certificate details, including the certificate ID, name, type, content, key, and other information.
+        r"""This API (DescribeCertificateDetail) is used to query certificate details, including the certificate ID, name, type, content, key, and other information.
 
         :param request: Request instance for DescribeCertificateDetail.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCertificateDetailRequest`
@@ -811,7 +811,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeCertificates(self, request):
-        """This API (DescribeCertificates) is used to query the list of available certificates.
+        r"""This API (DescribeCertificates) is used to query the list of available certificates.
 
         :param request: Request instance for DescribeCertificates.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCertificatesRequest`
@@ -834,7 +834,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeCountryAreaMapping(self, request):
-        """This API (DescribeCountryAreaMapping) is used to obtain the country/region code mapping table.
+        r"""This API (DescribeCountryAreaMapping) is used to obtain the country/region code mapping table.
 
         :param request: Request instance for DescribeCountryAreaMapping.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCountryAreaMappingRequest`
@@ -857,7 +857,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeCustomHeader(self, request):
-        """This API is used to query the list of custom headers.
+        r"""This API is used to query the list of custom headers.
 
         :param request: Request instance for DescribeCustomHeader.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCustomHeaderRequest`
@@ -880,7 +880,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDestRegions(self, request):
-        """This API (DescribeDestRegions) is used to query an origin server region (i.e., the region in which the origin server locates).
+        r"""This API (DescribeDestRegions) is used to query an origin server region (i.e., the region in which the origin server locates).
 
         :param request: Request instance for DescribeDestRegions.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDestRegionsRequest`
@@ -903,7 +903,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDomainErrorPageInfo(self, request):
-        """This API is used to query the custom error response to a domain name.
+        r"""This API is used to query the custom error response to a domain name.
 
         :param request: Request instance for DescribeDomainErrorPageInfo.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoRequest`
@@ -926,7 +926,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDomainErrorPageInfoByIds(self, request):
-        """This API is used to query the corresponding error response by a custom error ID.
+        r"""This API is used to query the corresponding error response by a custom error ID.
 
         :param request: Request instance for DescribeDomainErrorPageInfoByIds.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoByIdsRequest`
@@ -949,7 +949,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeGroupAndStatisticsProxy(self, request):
-        """This is an internal API. It is used to query the information of connections and connection groups from which the statistics can be derived.
+        r"""This is an internal API. It is used to query the information of connections and connection groups from which the statistics can be derived.
 
         :param request: Request instance for DescribeGroupAndStatisticsProxy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeGroupAndStatisticsProxyRequest`
@@ -972,7 +972,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeGroupDomainConfig(self, request):
-        """This API (DescribeGroupDomainConfig) is used to obtain the domain name resolution configuration details of a connection group.
+        r"""This API (DescribeGroupDomainConfig) is used to obtain the domain name resolution configuration details of a connection group.
 
         :param request: Request instance for DescribeGroupDomainConfig.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeGroupDomainConfigRequest`
@@ -995,7 +995,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeHTTPListeners(self, request):
-        """This API (DescribeHTTPListeners) is used to query HTTP listener information.
+        r"""This API (DescribeHTTPListeners) is used to query HTTP listener information.
 
         :param request: Request instance for DescribeHTTPListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeHTTPListenersRequest`
@@ -1018,7 +1018,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeHTTPSListeners(self, request):
-        """This API (DescribeHTTPSListeners) is used to query HTTPS listener information.
+        r"""This API (DescribeHTTPSListeners) is used to query HTTPS listener information.
 
         :param request: Request instance for DescribeHTTPSListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeHTTPSListenersRequest`
@@ -1041,7 +1041,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeListenerRealServers(self, request):
-        """This API (DescribeListenerRealServers) is used to query the origin server list of TCP/UDP listeners, including the list of bound origin servers and origin servers that can be bound.
+        r"""This API (DescribeListenerRealServers) is used to query the origin server list of TCP/UDP listeners, including the list of bound origin servers and origin servers that can be bound.
 
         :param request: Request instance for DescribeListenerRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeListenerRealServersRequest`
@@ -1064,7 +1064,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeListenerStatistics(self, request):
-        """This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
+        r"""This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
 
         :param request: Request instance for DescribeListenerStatistics.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeListenerStatisticsRequest`
@@ -1087,7 +1087,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxies(self, request):
-        """This API (DescribeProxies) is used to query the connection instance list.
+        r"""This API (DescribeProxies) is used to query the connection instance list.
 
         :param request: Request instance for DescribeProxies.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxiesRequest`
@@ -1110,7 +1110,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxiesStatus(self, request):
-        """This API (DescribeProxiesStatus) is used to query the connection status list.
+        r"""This API (DescribeProxiesStatus) is used to query the connection status list.
 
         :param request: Request instance for DescribeProxiesStatus.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxiesStatusRequest`
@@ -1133,7 +1133,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyAndStatisticsListeners(self, request):
-        """This is an internal API. It is used to query the information of connections and listeners from which the statistics can be derived.
+        r"""This is an internal API. It is used to query the information of connections and listeners from which the statistics can be derived.
 
         :param request: Request instance for DescribeProxyAndStatisticsListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyAndStatisticsListenersRequest`
@@ -1156,7 +1156,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyDetail(self, request):
-        """This API (DescribeProxyDetail) is used to query connection details.
+        r"""This API (DescribeProxyDetail) is used to query connection details.
 
         :param request: Request instance for DescribeProxyDetail.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyDetailRequest`
@@ -1179,7 +1179,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyGroupDetails(self, request):
-        """This API (DescribeProxyGroupDetails) is used to query connection group details.
+        r"""This API (DescribeProxyGroupDetails) is used to query connection group details.
 
         :param request: Request instance for DescribeProxyGroupDetails.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyGroupDetailsRequest`
@@ -1202,7 +1202,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyGroupList(self, request):
-        """This API (DescribeProxyGroupList) is used to pull the list of connection groups and the basic information of each connection group.
+        r"""This API (DescribeProxyGroupList) is used to pull the list of connection groups and the basic information of each connection group.
 
         :param request: Request instance for DescribeProxyGroupList.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyGroupListRequest`
@@ -1225,7 +1225,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyGroupStatistics(self, request):
-        """This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
+        r"""This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
 
         :param request: Request instance for DescribeProxyGroupStatistics.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyGroupStatisticsRequest`
@@ -1248,7 +1248,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeProxyStatistics(self, request):
-        """This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, concurrence, packet loss, and latency data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
+        r"""This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, concurrence, packet loss, and latency data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.
 
         :param request: Request instance for DescribeProxyStatistics.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeProxyStatisticsRequest`
@@ -1271,7 +1271,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServerStatistics(self, request):
-        """This API is used to query the statistics of an origin server's health check results. Origin server status is displayed as 1 (normal) or 0 (exceptional). The queried origin server must be bound to a listener or rule, and the ID of the bound listener or rule must be specified for the query. This API supports displaying origin server status statistics at a 1-minute granularity.
+        r"""This API is used to query the statistics of an origin server's health check results. Origin server status is displayed as 1 (normal) or 0 (exceptional). The queried origin server must be bound to a listener or rule, and the ID of the bound listener or rule must be specified for the query. This API supports displaying origin server status statistics at a 1-minute granularity.
 
         :param request: Request instance for DescribeRealServerStatistics.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServerStatisticsRequest`
@@ -1294,7 +1294,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServers(self, request):
-        """This API is used to query origin server information. It can query all origin servers under the specified project name, and supports fuzzy query by specified IPs or domain names.
+        r"""This API is used to query origin server information. It can query all origin servers under the specified project name, and supports fuzzy query by specified IPs or domain names.
 
         :param request: Request instance for DescribeRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServersRequest`
@@ -1317,7 +1317,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServersStatus(self, request):
-        """This API (DescribeRealServersStatus) is used to query whether an origin server has been bound to a rule or listener.
+        r"""This API (DescribeRealServersStatus) is used to query whether an origin server has been bound to a rule or listener.
 
         :param request: Request instance for DescribeRealServersStatus.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServersStatusRequest`
@@ -1340,7 +1340,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRegionAndPrice(self, request):
-        """This API (DescribeRegionAndPrice) is used to obtain the origin server regions and the bandwidth price gradient.
+        r"""This API (DescribeRegionAndPrice) is used to obtain the origin server regions and the bandwidth price gradient.
 
         :param request: Request instance for DescribeRegionAndPrice.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRegionAndPriceRequest`
@@ -1363,7 +1363,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeResourcesByTag(self, request):
-        """This API (DescribeResourcesByTag) is used to query corresponding resource information by tags, including connection, connection group, and origin server.
+        r"""This API (DescribeResourcesByTag) is used to query corresponding resource information by tags, including connection, connection group, and origin server.
 
         :param request: Request instance for DescribeResourcesByTag.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeResourcesByTagRequest`
@@ -1386,7 +1386,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRuleRealServers(self, request):
-        """This API (DescribeRuleRealServers) is used to query forwarding rules-related origin server information, including information of origin servers that can be bound and have been bound.
+        r"""This API (DescribeRuleRealServers) is used to query forwarding rules-related origin server information, including information of origin servers that can be bound and have been bound.
 
         :param request: Request instance for DescribeRuleRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRuleRealServersRequest`
@@ -1409,7 +1409,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """This API (DescribeRules) is used to query all rule information of a listener, including the domain names, paths, and list of bound origin servers. For version 3.0 connections, this API returns the advanced authentication configuration information of the domain name.
+        r"""This API (DescribeRules) is used to query all rule information of a listener, including the domain names, paths, and list of bound origin servers. For version 3.0 connections, this API returns the advanced authentication configuration information of the domain name.
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRulesRequest`
@@ -1432,7 +1432,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRulesByRuleIds(self, request):
-        """This API is used to pull the list of rules based on rule ID. It supports pulling 1 to 10 rules at a time.
+        r"""This API is used to pull the list of rules based on rule ID. It supports pulling 1 to 10 rules at a time.
 
         :param request: Request instance for DescribeRulesByRuleIds.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRulesByRuleIdsRequest`
@@ -1455,7 +1455,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeSecurityPolicyDetail(self, request):
-        """This API is used to obtain security policy details.
+        r"""This API is used to obtain security policy details.
 
         :param request: Request instance for DescribeSecurityPolicyDetail.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeSecurityPolicyDetailRequest`
@@ -1478,7 +1478,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeSecurityRules(self, request):
-        """This API is used to query the list of security rules based on security rule ID. It supports querying 1 to 20 security rules at a time.
+        r"""This API is used to query the list of security rules based on security rule ID. It supports querying 1 to 20 security rules at a time.
 
         :param request: Request instance for DescribeSecurityRules.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeSecurityRulesRequest`
@@ -1501,7 +1501,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeTCPListeners(self, request):
-        """This API (DescribeTCPListeners) is used to query the TCP listener information of a single connection or connection group.
+        r"""This API (DescribeTCPListeners) is used to query the TCP listener information of a single connection or connection group.
 
         :param request: Request instance for DescribeTCPListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeTCPListenersRequest`
@@ -1524,7 +1524,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeUDPListeners(self, request):
-        """This API (DescribeUDPListeners) is used to query the UDP listener information of a single connection or connection group.
+        r"""This API (DescribeUDPListeners) is used to query the UDP listener information of a single connection or connection group.
 
         :param request: Request instance for DescribeUDPListeners.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeUDPListenersRequest`
@@ -1547,7 +1547,7 @@ class GaapClient(AbstractClient):
 
 
     def DestroyProxies(self, request):
-        """This API (DestroyProxies) is used to terminate a connection. If terminated, no fees will be incurred.
+        r"""This API (DestroyProxies) is used to terminate a connection. If terminated, no fees will be incurred.
 
         :param request: Request instance for DestroyProxies.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DestroyProxiesRequest`
@@ -1570,7 +1570,7 @@ class GaapClient(AbstractClient):
 
 
     def InquiryPriceCreateProxy(self, request):
-        """This API (InquiryPriceCreateProxy) is used to create the price inquiries of acceleration connections.
+        r"""This API (InquiryPriceCreateProxy) is used to create the price inquiries of acceleration connections.
 
         :param request: Request instance for InquiryPriceCreateProxy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.InquiryPriceCreateProxyRequest`
@@ -1593,7 +1593,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyCertificate(self, request):
-        """This API (ModifyCertificate) is used to modify a domain name certificate of a listener. domain name certificate. This API is only applicable to connections of version 3.0.
+        r"""This API (ModifyCertificate) is used to modify a domain name certificate of a listener. domain name certificate. This API is only applicable to connections of version 3.0.
 
         :param request: Request instance for ModifyCertificate.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyCertificateRequest`
@@ -1616,7 +1616,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyCertificateAttributes(self, request):
-        """This API is used to modify certificate name and content.
+        r"""This API is used to modify certificate name and content.
 
         :param request: Request instance for ModifyCertificateAttributes.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyCertificateAttributesRequest`
@@ -1639,7 +1639,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyDomain(self, request):
-        """This API (ModifyDomain) is used to modify domain names of listeners. For connections of version 3.0, it supports modifying certificates of the domain names.
+        r"""This API (ModifyDomain) is used to modify domain names of listeners. For connections of version 3.0, it supports modifying certificates of the domain names.
 
         :param request: Request instance for ModifyDomain.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyDomainRequest`
@@ -1662,7 +1662,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyGroupDomainConfig(self, request):
-        """This API (ModifyGroupDomainConfig) is used to configure the nearest access domain name of a connection group.
+        r"""This API (ModifyGroupDomainConfig) is used to configure the nearest access domain name of a connection group.
 
         :param request: Request instance for ModifyGroupDomainConfig.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyGroupDomainConfigRequest`
@@ -1685,7 +1685,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyHTTPListenerAttribute(self, request):
-        """This API (ModifyHTTPListenerAttribute) is used to modify the HTTP listener configuration information of a connection. Currently only supports modifying listener name.
+        r"""This API (ModifyHTTPListenerAttribute) is used to modify the HTTP listener configuration information of a connection. Currently only supports modifying listener name.
         Note: Grouped connections currently do not support HTTP/HTTPS listeners.
 
         :param request: Request instance for ModifyHTTPListenerAttribute.
@@ -1709,7 +1709,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyHTTPSListenerAttribute(self, request):
-        """This API (ModifyHTTPSListenerAttribute) is used to modify HTTPS listener configurations. It currently do not support connection groups and connections of version 1.0.
+        r"""This API (ModifyHTTPSListenerAttribute) is used to modify HTTPS listener configurations. It currently do not support connection groups and connections of version 1.0.
 
         :param request: Request instance for ModifyHTTPSListenerAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyHTTPSListenerAttributeRequest`
@@ -1732,7 +1732,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyProxiesAttribute(self, request):
-        """This API (ModifyProxiesAttribute) is used to modify instance attributes (currently only supports modifying connection name).
+        r"""This API (ModifyProxiesAttribute) is used to modify instance attributes (currently only supports modifying connection name).
 
         :param request: Request instance for ModifyProxiesAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyProxiesAttributeRequest`
@@ -1755,7 +1755,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyProxiesProject(self, request):
-        """This API (ModifyProxiesProject) is used to modify the project to which a connection belongs.
+        r"""This API (ModifyProxiesProject) is used to modify the project to which a connection belongs.
 
         :param request: Request instance for ModifyProxiesProject.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyProxiesProjectRequest`
@@ -1778,7 +1778,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyProxyConfiguration(self, request):
-        """This API (ModifyProxyConfiguration) is used to modify connection configurations. You can expand or reduce the capacity based on current business requirements. It only supports connections with a Scalarable of 1. Scalarable can be obtained via DescribeProxies API.
+        r"""This API (ModifyProxyConfiguration) is used to modify connection configurations. You can expand or reduce the capacity based on current business requirements. It only supports connections with a Scalarable of 1. Scalarable can be obtained via DescribeProxies API.
 
         :param request: Request instance for ModifyProxyConfiguration.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyProxyConfigurationRequest`
@@ -1801,7 +1801,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyProxyGroupAttribute(self, request):
-        """This API (ModifyProxyGroupAttribute) is used to modify connection group attributes. It currently only supports modifying connection group name.
+        r"""This API (ModifyProxyGroupAttribute) is used to modify connection group attributes. It currently only supports modifying connection group name.
 
         :param request: Request instance for ModifyProxyGroupAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyProxyGroupAttributeRequest`
@@ -1824,7 +1824,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyRealServerName(self, request):
-        """This API (ModifyRealServerName) is used to modify origin server names.
+        r"""This API (ModifyRealServerName) is used to modify origin server names.
 
         :param request: Request instance for ModifyRealServerName.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyRealServerNameRequest`
@@ -1847,7 +1847,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyRuleAttribute(self, request):
-        """This API (ModifyRuleAttribute) is used to modify forwarding rule information, including health check configuration and forwarding policies.
+        r"""This API (ModifyRuleAttribute) is used to modify forwarding rule information, including health check configuration and forwarding policies.
 
         :param request: Request instance for ModifyRuleAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyRuleAttributeRequest`
@@ -1870,7 +1870,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifySecurityRule(self, request):
-        """This API is used to modify security policy rule names.
+        r"""This API is used to modify security policy rule names.
 
         :param request: Request instance for ModifySecurityRule.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifySecurityRuleRequest`
@@ -1893,7 +1893,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyTCPListenerAttribute(self, request):
-        """This API (ModifyTCPListenerAttribute) is used to modify the TCP listener configuration of a connection instance, including health check configuration and scheduling policies.
+        r"""This API (ModifyTCPListenerAttribute) is used to modify the TCP listener configuration of a connection instance, including health check configuration and scheduling policies.
 
         :param request: Request instance for ModifyTCPListenerAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyTCPListenerAttributeRequest`
@@ -1916,7 +1916,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyUDPListenerAttribute(self, request):
-        """This API (ModifyUDPListenerAttribute) is used to modify the UDP listener configuration of a connection instance, including modification of listener names and scheduling policies.
+        r"""This API (ModifyUDPListenerAttribute) is used to modify the UDP listener configuration of a connection instance, including modification of listener names and scheduling policies.
 
         :param request: Request instance for ModifyUDPListenerAttribute.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyUDPListenerAttributeRequest`
@@ -1939,7 +1939,7 @@ class GaapClient(AbstractClient):
 
 
     def OpenProxies(self, request):
-        """This API (OpenProxies) is used to enable one or more connections.
+        r"""This API (OpenProxies) is used to enable one or more connections.
 
         :param request: Request instance for OpenProxies.
         :type request: :class:`tencentcloud.gaap.v20180529.models.OpenProxiesRequest`
@@ -1962,7 +1962,7 @@ class GaapClient(AbstractClient):
 
 
     def OpenProxyGroup(self, request):
-        """This API is used to enable all connections in a connection group.
+        r"""This API is used to enable all connections in a connection group.
 
         :param request: Request instance for OpenProxyGroup.
         :type request: :class:`tencentcloud.gaap.v20180529.models.OpenProxyGroupRequest`
@@ -1985,7 +1985,7 @@ class GaapClient(AbstractClient):
 
 
     def OpenSecurityPolicy(self, request):
-        """This API is used to enable a security policy.
+        r"""This API is used to enable a security policy.
 
         :param request: Request instance for OpenSecurityPolicy.
         :type request: :class:`tencentcloud.gaap.v20180529.models.OpenSecurityPolicyRequest`
@@ -2008,7 +2008,7 @@ class GaapClient(AbstractClient):
 
 
     def RemoveRealServers(self, request):
-        """This API is used to delete the added origin server (server) IP or domain name.
+        r"""This API is used to delete the added origin server (server) IP or domain name.
 
         :param request: Request instance for RemoveRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.RemoveRealServersRequest`
@@ -2031,7 +2031,7 @@ class GaapClient(AbstractClient):
 
 
     def SetAuthentication(self, request):
-        """This API (SetAuthentication) is used for the advanced authentication configuration of connections, including authentication methods and their certificates. If only supports connections of version 3.0.
+        r"""This API (SetAuthentication) is used for the advanced authentication configuration of connections, including authentication methods and their certificates. If only supports connections of version 3.0.
 
         :param request: Request instance for SetAuthentication.
         :type request: :class:`tencentcloud.gaap.v20180529.models.SetAuthenticationRequest`

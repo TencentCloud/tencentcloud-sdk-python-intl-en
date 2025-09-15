@@ -27,7 +27,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessBinding(self, request):
-        """This API is used to create RabbitMQ binding relationships.
+        r"""This API is used to create RabbitMQ binding relationships.
 
         :param request: Request instance for CreateRabbitMQServerlessBinding.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessBindingRequest`
@@ -50,7 +50,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessExchange(self, request):
-        """This API is used to create a RabbitMQ exchange.
+        r"""This API is used to create a RabbitMQ exchange.
 
         :param request: Request instance for CreateRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessExchangeRequest`
@@ -73,7 +73,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessQueue(self, request):
-        """This API is used to create an RabbitMQ queue.
+        r"""This API is used to create an RabbitMQ queue.
 
         :param request: Request instance for CreateRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessQueueRequest`
@@ -96,7 +96,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessUser(self, request):
-        """This API is used to create a user for RabbitMQ.
+        r"""This API is used to create a user for RabbitMQ.
 
         :param request: Request instance for CreateRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessUserRequest`
@@ -119,7 +119,7 @@ class TrabbitClient(AbstractClient):
 
 
     def CreateRabbitMQServerlessVirtualHost(self, request):
-        """This API is used to create a vhost for RabbitMQ.
+        r"""This API is used to create a vhost for RabbitMQ.
 
         :param request: Request instance for CreateRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.CreateRabbitMQServerlessVirtualHostRequest`
@@ -142,7 +142,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessBinding(self, request):
-        """This API is used to unbind RabbitMQ binding relationships.
+        r"""This API is used to unbind RabbitMQ binding relationships.
 
         :param request: Request instance for DeleteRabbitMQServerlessBinding.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessBindingRequest`
@@ -165,7 +165,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessExchange(self, request):
-        """This API is used to delete the RabbitMQ exchange.
+        r"""This API is used to delete the RabbitMQ exchange.
 
         :param request: Request instance for DeleteRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessExchangeRequest`
@@ -188,7 +188,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessPermission(self, request):
-        """This API is used to delete the permission of RabbitMQ.
+        r"""This API is used to delete the permission of RabbitMQ.
 
         :param request: Request instance for DeleteRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessPermissionRequest`
@@ -211,7 +211,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessQueue(self, request):
-        """This API is used to delete an RabbitMQ queue.
+        r"""This API is used to delete an RabbitMQ queue.
 
         :param request: Request instance for DeleteRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessQueueRequest`
@@ -234,7 +234,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessUser(self, request):
-        """This API is used to delete the user of RabbitMQ.
+        r"""This API is used to delete the user of RabbitMQ.
 
         :param request: Request instance for DeleteRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessUserRequest`
@@ -257,7 +257,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DeleteRabbitMQServerlessVirtualHost(self, request):
-        """This API is used to delete a vhost for RabbitMQ.
+        r"""This API is used to delete a vhost for RabbitMQ.
 
         :param request: Request instance for DeleteRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DeleteRabbitMQServerlessVirtualHostRequest`
@@ -280,7 +280,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessBindings(self, request):
-        """This API is used to retrieve the binding relationship list.
+        r"""This API is used to retrieve the binding relationship list.
 
         :param request: Request instance for DescribeRabbitMQServerlessBindings.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessBindingsRequest`
@@ -303,7 +303,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessConnection(self, request):
-        """This API is used to query RabbitMQ connection list.
+        r"""This API is used to query RabbitMQ connection list.
 
         :param request: Request instance for DescribeRabbitMQServerlessConnection.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessConnectionRequest`
@@ -326,7 +326,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessConsumers(self, request):
-        """This API is used to query RabbitMQ queue consumer list.
+        r"""This API is used to query RabbitMQ queue consumer list.
 
         :param request: Request instance for DescribeRabbitMQServerlessConsumers.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessConsumersRequest`
@@ -349,7 +349,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessExchangeDetail(self, request):
-        """This API is used to query RabbitMQ exchange details.
+        r"""This API is used to query RabbitMQ exchange details.
 
         :param request: Request instance for DescribeRabbitMQServerlessExchangeDetail.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessExchangeDetailRequest`
@@ -372,7 +372,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessExchanges(self, request):
-        """This API is used to query the list of RabbitMQ exchanges.
+        r"""This API is used to query the list of RabbitMQ exchanges.
 
         :param request: Request instance for DescribeRabbitMQServerlessExchanges.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessExchangesRequest`
@@ -395,7 +395,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessInstance(self, request):
-        """This API is used to retrieve dedicated instance information for a single RabbitMQ.
+        r"""This API is used to retrieve dedicated instance information for a single RabbitMQ.
 
         :param request: Request instance for DescribeRabbitMQServerlessInstance.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessInstanceRequest`
@@ -418,7 +418,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessPermission(self, request):
-        """This API is used to query RabbitMQ permission list.
+        r"""This API is used to query RabbitMQ permission list.
 
         :param request: Request instance for DescribeRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessPermissionRequest`
@@ -441,7 +441,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessQueueDetail(self, request):
-        """This API is used to query RabbitMQ queue details.
+        r"""This API is used to query RabbitMQ queue details.
 
         :param request: Request instance for DescribeRabbitMQServerlessQueueDetail.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessQueueDetailRequest`
@@ -464,7 +464,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessQueues(self, request):
-        """This API is used to query a RabbitMQ queue list.
+        r"""This API is used to query a RabbitMQ queue list.
 
         :param request: Request instance for DescribeRabbitMQServerlessQueues.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessQueuesRequest`
@@ -487,7 +487,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessUser(self, request):
-        """This API is used to query RabbitMQ user list.
+        r"""This API is used to query RabbitMQ user list.
 
         :param request: Request instance for DescribeRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessUserRequest`
@@ -510,7 +510,7 @@ class TrabbitClient(AbstractClient):
 
 
     def DescribeRabbitMQServerlessVirtualHost(self, request):
-        """This API is used to query a RabbitMQ vhost list.
+        r"""This API is used to query a RabbitMQ vhost list.
 
         :param request: Request instance for DescribeRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.DescribeRabbitMQServerlessVirtualHostRequest`
@@ -533,7 +533,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ListRabbitMQServerlessInstances(self, request):
-        """This API is used to obtain instance lists.
+        r"""This API is used to obtain instance lists.
 
         :param request: Request instance for ListRabbitMQServerlessInstances.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ListRabbitMQServerlessInstancesRequest`
@@ -556,7 +556,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessExchange(self, request):
-        """This API is used to modify the RabbitMQ exchange.
+        r"""This API is used to modify the RabbitMQ exchange.
 
         :param request: Request instance for ModifyRabbitMQServerlessExchange.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessExchangeRequest`
@@ -579,7 +579,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessInstance(self, request):
-        """This API is used to modify cluster information.
+        r"""This API is used to modify cluster information.
 
         :param request: Request instance for ModifyRabbitMQServerlessInstance.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessInstanceRequest`
@@ -602,7 +602,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessPermission(self, request):
-        """This API is used to modify the permission of RabbitMQ.
+        r"""This API is used to modify the permission of RabbitMQ.
 
         :param request: Request instance for ModifyRabbitMQServerlessPermission.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessPermissionRequest`
@@ -625,7 +625,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessQueue(self, request):
-        """This API is used to modify an RabbitMQ queue.
+        r"""This API is used to modify an RabbitMQ queue.
 
         :param request: Request instance for ModifyRabbitMQServerlessQueue.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessQueueRequest`
@@ -648,7 +648,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessUser(self, request):
-        """This API is used to modify the user of RabbitMQ.
+        r"""This API is used to modify the user of RabbitMQ.
 
         :param request: Request instance for ModifyRabbitMQServerlessUser.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessUserRequest`
@@ -671,7 +671,7 @@ class TrabbitClient(AbstractClient):
 
 
     def ModifyRabbitMQServerlessVirtualHost(self, request):
-        """This API is used to modify a vhost for RabbitMQ.
+        r"""This API is used to modify a vhost for RabbitMQ.
 
         :param request: Request instance for ModifyRabbitMQServerlessVirtualHost.
         :type request: :class:`tencentcloud.trabbit.v20230418.models.ModifyRabbitMQServerlessVirtualHostRequest`

@@ -27,7 +27,7 @@ class AntiddosClient(AbstractClient):
 
 
     def AssociateDDoSEipAddress(self, request):
-        """This API is used to bind an EIP to an Anti-DDoS Advanced instance or a specified private IP of an ENI.
+        r"""This API is used to bind an EIP to an Anti-DDoS Advanced instance or a specified private IP of an ENI.
 
         :param request: Request instance for AssociateDDoSEipAddress.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipAddressRequest`
@@ -50,7 +50,7 @@ class AntiddosClient(AbstractClient):
 
 
     def AssociateDDoSEipLoadBalancer(self, request):
-        """This API is used to bind an Anti-DDoS EIP to the specified private IP of a CLB instance.
+        r"""This API is used to bind an Anti-DDoS EIP to the specified private IP of a CLB instance.
 
         :param request: Request instance for AssociateDDoSEipLoadBalancer.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerRequest`
@@ -73,7 +73,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateBlackWhiteIpList(self, request):
-        """This API is used to add an Anti-DDoS IP blocklist/allowlist.
+        r"""This API is used to add an Anti-DDoS IP blocklist/allowlist.
 
         :param request: Request instance for CreateBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBlackWhiteIpListRequest`
@@ -96,7 +96,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateBoundIP(self, request):
-        """This API is used to bind an IP to an Anti-DDoS Pro instance Both single IP instances and multi-IP instances are available. Note that you should wait until the current binding or unbinding completes before using this async API for new operations.
+        r"""This API is used to bind an IP to an Anti-DDoS Pro instance Both single IP instances and multi-IP instances are available. Note that you should wait until the current binding or unbinding completes before using this async API for new operations.
 
         :param request: Request instance for CreateBoundIP.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBoundIPRequest`
@@ -119,7 +119,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCCPrecisionPolicy(self, request):
-        """This API is used to create a CC precise protection policy.
+        r"""This API is used to create a CC precise protection policy.
 
         :param request: Request instance for CreateCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCPrecisionPolicyRequest`
@@ -142,7 +142,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCCReqLimitPolicy(self, request):
-        """This API is used to create a CC frequency limit policy.
+        r"""This API is used to create a CC frequency limit policy.
 
         :param request: Request instance for CreateCCReqLimitPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCCReqLimitPolicyRequest`
@@ -165,7 +165,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCcBlackWhiteIpList(self, request):
-        """This API is used to create a layer 4 access control list to prevent CC attacks.
+        r"""This API is used to create a layer 4 access control list to prevent CC attacks.
 
         :param request: Request instance for CreateCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcBlackWhiteIpListRequest`
@@ -188,7 +188,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCcGeoIPBlockConfig(self, request):
-        """This API is used to create a regional blocking configuration.
+        r"""This API is used to create a regional blocking configuration.
 
         :param request: Request instance for CreateCcGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcGeoIPBlockConfigRequest`
@@ -211,7 +211,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSAI(self, request):
-        """This API is used to set Anti-DDoS AI protection switches.
+        r"""This API is used to set Anti-DDoS AI protection switches.
 
         :param request: Request instance for CreateDDoSAI.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSAIRequest`
@@ -234,7 +234,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSGeoIPBlockConfig(self, request):
-        """This API is used to add an Anti-DDoS region blocking configuration.
+        r"""This API is used to add an Anti-DDoS region blocking configuration.
 
         :param request: Request instance for CreateDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSGeoIPBlockConfigRequest`
@@ -257,7 +257,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDDoSSpeedLimitConfig(self, request):
-        """This API is used to add Anti-DDoS access rate limit configurations.
+        r"""This API is used to add Anti-DDoS access rate limit configurations.
 
         :param request: Request instance for CreateDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSSpeedLimitConfigRequest`
@@ -280,7 +280,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateDefaultAlarmThreshold(self, request):
-        """This API is used to set the default alarm threshold of an IP.
+        r"""This API is used to set the default alarm threshold of an IP.
 
         :param request: Request instance for CreateDefaultAlarmThreshold.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDefaultAlarmThresholdRequest`
@@ -303,7 +303,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateIPAlarmThresholdConfig(self, request):
-        """This API is used to set the default alarm threshold of an IP.
+        r"""This API is used to set the default alarm threshold of an IP.
 
         :param request: Request instance for CreateIPAlarmThresholdConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateIPAlarmThresholdConfigRequest`
@@ -326,7 +326,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateL7RuleCerts(self, request):
-        """This API is used to configure certificates with layer-7 forwarding rules in a batch for SSL testing.
+        r"""This API is used to configure certificates with layer-7 forwarding rules in a batch for SSL testing.
 
         :param request: Request instance for CreateL7RuleCerts.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsRequest`
@@ -349,7 +349,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateNewL7Rules(self, request):
-        """This API is used to add layer-7 forwarding rules.
+        r"""This API is used to add layer-7 forwarding rules.
 
         :param request: Request instance for CreateNewL7Rules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateNewL7RulesRequest`
@@ -372,7 +372,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreatePacketFilterConfig(self, request):
-        """This API is used to add Anti-DDoS feature filtering rules.
+        r"""This API is used to add Anti-DDoS feature filtering rules.
 
         :param request: Request instance for CreatePacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreatePacketFilterConfigRequest`
@@ -395,7 +395,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateProtocolBlockConfig(self, request):
-        """This API is used to set Anti-DDoS protocol blocking configurations.
+        r"""This API is used to set Anti-DDoS protocol blocking configurations.
 
         :param request: Request instance for CreateProtocolBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateProtocolBlockConfigRequest`
@@ -418,7 +418,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateSchedulingDomain(self, request):
-        """This API is used to create a domain name for IP scheduling and switching.
+        r"""This API is used to create a domain name for IP scheduling and switching.
 
         :param request: Request instance for CreateSchedulingDomain.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateSchedulingDomainRequest`
@@ -441,7 +441,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateWaterPrintConfig(self, request):
-        """This API is used to add Anti-DDoS watermark configurations.
+        r"""This API is used to add Anti-DDoS watermark configurations.
 
         :param request: Request instance for CreateWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateWaterPrintConfigRequest`
@@ -464,7 +464,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateWaterPrintKey(self, request):
-        """This API is used to add Anti-DDoS watermark keys.
+        r"""This API is used to add Anti-DDoS watermark keys.
 
         :param request: Request instance for CreateWaterPrintKey.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateWaterPrintKeyRequest`
@@ -487,7 +487,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCLevelPolicy(self, request):
-        """This API is used to delete a level-defining policy of CC attacks.
+        r"""This API is used to delete a level-defining policy of CC attacks.
 
         :param request: Request instance for DeleteCCLevelPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCLevelPolicyRequest`
@@ -510,7 +510,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCPrecisionPolicy(self, request):
-        """This API is used to delete a CC precise protection policy.
+        r"""This API is used to delete a CC precise protection policy.
 
         :param request: Request instance for DeleteCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCPrecisionPolicyRequest`
@@ -533,7 +533,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCCThresholdPolicy(self, request):
-        """This API is used to delete a CC cleansing threshold policy.
+        r"""This API is used to delete a CC cleansing threshold policy.
 
         :param request: Request instance for DeleteCCThresholdPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCCThresholdPolicyRequest`
@@ -556,7 +556,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCcBlackWhiteIpList(self, request):
-        """This API is used to delete a layer-4 access control list.
+        r"""This API is used to delete a layer-4 access control list.
 
         :param request: Request instance for DeleteCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcBlackWhiteIpListRequest`
@@ -579,7 +579,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteCcGeoIPBlockConfig(self, request):
-        """This API is used to delete a regional blocking configuration.
+        r"""This API is used to delete a regional blocking configuration.
 
         :param request: Request instance for DeleteCcGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteCcGeoIPBlockConfigRequest`
@@ -602,7 +602,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteDDoSGeoIPBlockConfig(self, request):
-        """This API is used to delete Anti-DDoS region blocking configurations.
+        r"""This API is used to delete Anti-DDoS region blocking configurations.
 
         :param request: Request instance for DeleteDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteDDoSGeoIPBlockConfigRequest`
@@ -625,7 +625,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteDDoSSpeedLimitConfig(self, request):
-        """This API is used to delete Anti-DDoS access rate limit configurations.
+        r"""This API is used to delete Anti-DDoS access rate limit configurations.
 
         :param request: Request instance for DeleteDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteDDoSSpeedLimitConfigRequest`
@@ -648,7 +648,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeletePacketFilterConfig(self, request):
-        """This API is used to delete Anti-DDoS feature filtering rules.
+        r"""This API is used to delete Anti-DDoS feature filtering rules.
 
         :param request: Request instance for DeletePacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeletePacketFilterConfigRequest`
@@ -671,7 +671,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteWaterPrintConfig(self, request):
-        """This API is used to delete Anti-DDoS watermark configurations.
+        r"""This API is used to delete Anti-DDoS watermark configurations.
 
         :param request: Request instance for DeleteWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteWaterPrintConfigRequest`
@@ -694,7 +694,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DeleteWaterPrintKey(self, request):
-        """This API is used to delete Anti-DDoS watermark keys.
+        r"""This API is used to delete Anti-DDoS watermark keys.
 
         :param request: Request instance for DeleteWaterPrintKey.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteWaterPrintKeyRequest`
@@ -717,7 +717,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBasicDeviceStatus(self, request):
-        """This API is used to querying the status of Anti-DDoS IP.
+        r"""This API is used to querying the status of Anti-DDoS IP.
 
         :param request: Request instance for DescribeBasicDeviceStatus.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBasicDeviceStatusRequest`
@@ -740,7 +740,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBgpBizTrend(self, request):
-        """This API is used to obtain Anti-DDoS Pro traffic data.
+        r"""This API is used to obtain Anti-DDoS Pro traffic data.
 
         :param request: Request instance for DescribeBgpBizTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendRequest`
@@ -763,7 +763,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBizHttpStatus(self, request):
-        """This API is used to get the statistics on the status codes of business traffic.
+        r"""This API is used to get the statistics on the status codes of business traffic.
 
         :param request: Request instance for DescribeBizHttpStatus.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizHttpStatusRequest`
@@ -786,7 +786,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBizTrend(self, request):
-        """This API is used to get the traffic flow data collected in the specified period.
+        r"""This API is used to get the traffic flow data collected in the specified period.
 
         :param request: Request instance for DescribeBizTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizTrendRequest`
@@ -809,7 +809,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCLevelList(self, request):
-        """Gets the list of CC protection levels
+        r"""Gets the list of CC protection levels
 
         :param request: Request instance for DescribeCCLevelList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelListRequest`
@@ -832,7 +832,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCLevelPolicy(self, request):
-        """This API is used the query a level-defining policy of CC attacks
+        r"""This API is used the query a level-defining policy of CC attacks
 
         :param request: Request instance for DescribeCCLevelPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelPolicyRequest`
@@ -855,7 +855,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCPrecisionPlyList(self, request):
-        """This API is used to obtain the list of CC precise protection policies.
+        r"""This API is used to obtain the list of CC precise protection policies.
 
         :param request: Request instance for DescribeCCPrecisionPlyList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCPrecisionPlyListRequest`
@@ -878,7 +878,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCThresholdList(self, request):
-        """This API is used to query the list of CC cleansing thresholds.
+        r"""This API is used to query the list of CC cleansing thresholds.
 
         :param request: Request instance for DescribeCCThresholdList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCThresholdListRequest`
@@ -901,7 +901,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCTrend(self, request):
-        """This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.
+        r"""This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.
 
         :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendRequest`
@@ -924,7 +924,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCcBlackWhiteIpList(self, request):
-        """This API is used to obtain the layer-4 access control list.
+        r"""This API is used to obtain the layer-4 access control list.
 
         :param request: Request instance for DescribeCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcBlackWhiteIpListRequest`
@@ -947,7 +947,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCcGeoIPBlockConfigList(self, request):
-        """This API is used to obtain a list of regional blocking configurations.
+        r"""This API is used to obtain a list of regional blocking configurations.
 
         :param request: Request instance for DescribeCcGeoIPBlockConfigList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCcGeoIPBlockConfigListRequest`
@@ -970,7 +970,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDDoSTrend(self, request):
-        """This API is used to get DDoS attack traffic bandwidth and attack packet rate.
+        r"""This API is used to get DDoS attack traffic bandwidth and attack packet rate.
 
         :param request: Request instance for DescribeDDoSTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDDoSTrendRequest`
@@ -993,7 +993,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeDefaultAlarmThreshold(self, request):
-        """This API is used to get the default alarm threshold of an IP.
+        r"""This API is used to get the default alarm threshold of an IP.
 
         :param request: Request instance for DescribeDefaultAlarmThreshold.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeDefaultAlarmThresholdRequest`
@@ -1016,7 +1016,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeIpBlockList(self, request):
-        """
+        r"""
 
         :param request: Request instance for DescribeIpBlockList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListRequest`
@@ -1039,7 +1039,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeL7RulesBySSLCertId(self, request):
-        """This API is used to query layer-7 rules matched with certificate IDs.
+        r"""This API is used to query layer-7 rules matched with certificate IDs.
 
         :param request: Request instance for DescribeL7RulesBySSLCertId.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdRequest`
@@ -1062,7 +1062,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBGPIPInstances(self, request):
-        """This API is used to get a list of Anti-DDoS Advanced instances.
+        r"""This API is used to get a list of Anti-DDoS Advanced instances.
 
         :param request: Request instance for DescribeListBGPIPInstances.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBGPIPInstancesRequest`
@@ -1085,7 +1085,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBGPInstances(self, request):
-        """This API is used to get the list of Anti-DDoS Pro instances.
+        r"""This API is used to get the list of Anti-DDoS Pro instances.
 
         :param request: Request instance for DescribeListBGPInstances.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBGPInstancesRequest`
@@ -1108,7 +1108,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBlackWhiteIpList(self, request):
-        """This API is used to get a list of Anti-DDoS IP blocklists/allowlists.
+        r"""This API is used to get a list of Anti-DDoS IP blocklists/allowlists.
 
         :param request: Request instance for DescribeListBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBlackWhiteIpListRequest`
@@ -1131,7 +1131,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSAI(self, request):
-        """This API is used to get a list of Anti-DDoS AI protection switches.
+        r"""This API is used to get a list of Anti-DDoS AI protection switches.
 
         :param request: Request instance for DescribeListDDoSAI.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSAIRequest`
@@ -1154,7 +1154,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSGeoIPBlockConfig(self, request):
-        """This API is used to get a list of Anti-DDoS region blocking configurations.
+        r"""This API is used to get a list of Anti-DDoS region blocking configurations.
 
         :param request: Request instance for DescribeListDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSGeoIPBlockConfigRequest`
@@ -1177,7 +1177,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListDDoSSpeedLimitConfig(self, request):
-        """This API is used to get a list of Anti-DDoS access rate limit configurations.
+        r"""This API is used to get a list of Anti-DDoS access rate limit configurations.
 
         :param request: Request instance for DescribeListDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListDDoSSpeedLimitConfigRequest`
@@ -1200,7 +1200,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListIPAlarmConfig(self, request):
-        """This API is used to get a list of IP alarm threshold configurations.
+        r"""This API is used to get a list of IP alarm threshold configurations.
 
         :param request: Request instance for DescribeListIPAlarmConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListIPAlarmConfigRequest`
@@ -1223,7 +1223,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListListener(self, request):
-        """This API is used to get a list of forwarding listeners.
+        r"""This API is used to get a list of forwarding listeners.
 
         :param request: Request instance for DescribeListListener.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListListenerRequest`
@@ -1246,7 +1246,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListPacketFilterConfig(self, request):
-        """This API is used to get a list of Anti-DDoS feature filtering rules.
+        r"""This API is used to get a list of Anti-DDoS feature filtering rules.
 
         :param request: Request instance for DescribeListPacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListPacketFilterConfigRequest`
@@ -1269,7 +1269,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListProtocolBlockConfig(self, request):
-        """This API is used to get a list of Anti-DDoS protocol blocking configurations.
+        r"""This API is used to get a list of Anti-DDoS protocol blocking configurations.
 
         :param request: Request instance for DescribeListProtocolBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtocolBlockConfigRequest`
@@ -1292,7 +1292,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListSchedulingDomain(self, request):
-        """This API is used to get a list of intelligent scheduling domain names.
+        r"""This API is used to get a list of intelligent scheduling domain names.
 
         :param request: Request instance for DescribeListSchedulingDomain.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListSchedulingDomainRequest`
@@ -1315,7 +1315,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListWaterPrintConfig(self, request):
-        """This API is used to get a list of Anti-DDoS watermark configurations.
+        r"""This API is used to get a list of Anti-DDoS watermark configurations.
 
         :param request: Request instance for DescribeListWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListWaterPrintConfigRequest`
@@ -1338,7 +1338,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeNewL7Rules(self, request):
-        """This API is used to obtain layer-7 forwarding rules.
+        r"""This API is used to obtain layer-7 forwarding rules.
 
         :param request: Request instance for DescribeNewL7Rules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesRequest`
@@ -1361,7 +1361,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeNewL7RulesErrHealth(self, request):
-        """This API is used to getting the exception results of the health check on layer-7 forwarding rules.
+        r"""This API is used to getting the exception results of the health check on layer-7 forwarding rules.
 
         :param request: Request instance for DescribeNewL7RulesErrHealth.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesErrHealthRequest`
@@ -1384,7 +1384,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeOverviewDDoSEventList(self, request):
-        """This API is used to obtain the list of DDoS attacks.
+        r"""This API is used to obtain the list of DDoS attacks.
 
         :param request: Request instance for DescribeOverviewDDoSEventList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListRequest`
@@ -1407,7 +1407,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribePendingRiskInfo(self, request):
-        """This API is used to query the information of pending risks at the account level.
+        r"""This API is used to query the information of pending risks at the account level.
 
         :param request: Request instance for DescribePendingRiskInfo.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribePendingRiskInfoRequest`
@@ -1430,7 +1430,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DisassociateDDoSEipAddress(self, request):
-        """This API is used to unbind an Anti-DDoS EIP.
+        r"""This API is used to unbind an Anti-DDoS EIP.
 
         :param request: Request instance for DisassociateDDoSEipAddress.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DisassociateDDoSEipAddressRequest`
@@ -1453,7 +1453,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCCPrecisionPolicy(self, request):
-        """This API is used to modify a CC precise protection policy.
+        r"""This API is used to modify a CC precise protection policy.
 
         :param request: Request instance for ModifyCCPrecisionPolicy.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCCPrecisionPolicyRequest`
@@ -1476,7 +1476,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyCcBlackWhiteIpList(self, request):
-        """This API is used to modify a layer-4 access control list.
+        r"""This API is used to modify a layer-4 access control list.
 
         :param request: Request instance for ModifyCcBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyCcBlackWhiteIpListRequest`
@@ -1499,7 +1499,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSGeoIPBlockConfig(self, request):
-        """This API is used to modify Anti-DDoS region blocking configurations.
+        r"""This API is used to modify Anti-DDoS region blocking configurations.
 
         :param request: Request instance for ModifyDDoSGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSGeoIPBlockConfigRequest`
@@ -1522,7 +1522,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDDoSSpeedLimitConfig(self, request):
-        """This API is used to modify Anti-DDoS access rate limit configurations.
+        r"""This API is used to modify Anti-DDoS access rate limit configurations.
 
         :param request: Request instance for ModifyDDoSSpeedLimitConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDDoSSpeedLimitConfigRequest`
@@ -1545,7 +1545,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyDomainUsrName(self, request):
-        """This API is used to modify intelligent scheduling domain names.
+        r"""This API is used to modify intelligent scheduling domain names.
 
         :param request: Request instance for ModifyDomainUsrName.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyDomainUsrNameRequest`
@@ -1568,7 +1568,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyNewDomainRules(self, request):
-        """This API is used to modify layer-7 forwarding rules.
+        r"""This API is used to modify layer-7 forwarding rules.
 
         :param request: Request instance for ModifyNewDomainRules.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyNewDomainRulesRequest`
@@ -1591,7 +1591,7 @@ class AntiddosClient(AbstractClient):
 
 
     def ModifyPacketFilterConfig(self, request):
-        """This API is used to modify Anti-DDoS feature filtering rules.
+        r"""This API is used to modify Anti-DDoS feature filtering rules.
 
         :param request: Request instance for ModifyPacketFilterConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyPacketFilterConfigRequest`
@@ -1614,7 +1614,7 @@ class AntiddosClient(AbstractClient):
 
 
     def SwitchWaterPrintConfig(self, request):
-        """This API is used to enable or disable Anti-DDoS watermark configurations.
+        r"""This API is used to enable or disable Anti-DDoS watermark configurations.
 
         :param request: Request instance for SwitchWaterPrintConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.SwitchWaterPrintConfigRequest`

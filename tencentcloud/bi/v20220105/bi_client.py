@@ -27,7 +27,7 @@ class BiClient(AbstractClient):
 
 
     def ApplyEmbedInterval(self, request):
-        """This API is used to extend the available time of a token with strong authentication.
+        r"""This API is used to extend the available time of a token with strong authentication.
 
         :param request: Request instance for ApplyEmbedInterval.
         :type request: :class:`tencentcloud.bi.v20220105.models.ApplyEmbedIntervalRequest`
@@ -50,7 +50,7 @@ class BiClient(AbstractClient):
 
 
     def CreateDatasource(self, request):
-        """This API is used to create a data source.
+        r"""This API is used to create a data source.
 
         :param request: Request instance for CreateDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateDatasourceRequest`
@@ -73,7 +73,7 @@ class BiClient(AbstractClient):
 
 
     def CreateDatasourceCloud(self, request):
-        """This API is used to create a cloud database.
+        r"""This API is used to create a cloud database.
 
         :param request: Request instance for CreateDatasourceCloud.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateDatasourceCloudRequest`
@@ -96,7 +96,7 @@ class BiClient(AbstractClient):
 
 
     def CreateEmbedToken(self, request):
-        """This API is used to create an embedded report with strong authentication.
+        r"""This API is used to create an embedded report with strong authentication.
 
         :param request: Request instance for CreateEmbedToken.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateEmbedTokenRequest`
@@ -119,7 +119,7 @@ class BiClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """This API is used to create a project.
+        r"""This API is used to create a project.
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateProjectRequest`
@@ -142,7 +142,7 @@ class BiClient(AbstractClient):
 
 
     def CreateUserRole(self, request):
-        """This API is used to create a user role.
+        r"""This API is used to create a user role.
 
         :param request: Request instance for CreateUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserRoleRequest`
@@ -165,7 +165,7 @@ class BiClient(AbstractClient):
 
 
     def CreateUserRoleProject(self, request):
-        """This API is used to create a user role in the project.
+        r"""This API is used to create a user role in the project.
 
         :param request: Request instance for CreateUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserRoleProjectRequest`
@@ -188,7 +188,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteDatasource(self, request):
-        """This API is used to delete a data source.
+        r"""This API is used to delete a data source.
 
         :param request: Request instance for DeleteDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteDatasourceRequest`
@@ -211,7 +211,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """This API is used to delete a project.
+        r"""This API is used to delete a project.
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteProjectRequest`
@@ -234,7 +234,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteUserRole(self, request):
-        """This API is used to remove a user role, which will result in user deletion.
+        r"""This API is used to remove a user role, which will result in user deletion.
 
         :param request: Request instance for DeleteUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserRoleRequest`
@@ -257,7 +257,7 @@ class BiClient(AbstractClient):
 
 
     def DeleteUserRoleProject(self, request):
-        """This API is used to delete a user role in the project.
+        r"""This API is used to delete a user role in the project.
 
         :param request: Request instance for DeleteUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserRoleProjectRequest`
@@ -280,7 +280,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeDatasourceList(self, request):
-        """This API is used to query a data source list.
+        r"""This API is used to query a data source list.
 
         :param request: Request instance for DescribeDatasourceList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeDatasourceListRequest`
@@ -303,7 +303,7 @@ class BiClient(AbstractClient):
 
 
     def DescribePageWidgetList(self, request):
-        """This API is used to query component information on the page.
+        r"""This API is used to query component information on the page.
 
         :param request: Request instance for DescribePageWidgetList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribePageWidgetListRequest`
@@ -326,7 +326,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeProjectInfo(self, request):
-        """This API is used to obtain project details.
+        r"""This API is used to obtain project details.
 
         :param request: Request instance for DescribeProjectInfo.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeProjectInfoRequest`
@@ -349,7 +349,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeProjectList(self, request):
-        """This API is used to obtain project information.
+        r"""This API is used to obtain project information.
 
         :param request: Request instance for DescribeProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeProjectListRequest`
@@ -372,7 +372,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserProjectList(self, request):
-        """This API is used to obtain the user interface in the project.
+        r"""This API is used to obtain the user interface in the project.
 
         :param request: Request instance for DescribeUserProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserProjectListRequest`
@@ -395,7 +395,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserRoleList(self, request):
-        """This API is used to obtain the user role list.
+        r"""This API is used to obtain the user role list.
 
         :param request: Request instance for DescribeUserRoleList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleListRequest`
@@ -418,7 +418,7 @@ class BiClient(AbstractClient):
 
 
     def DescribeUserRoleProjectList(self, request):
-        """This API is used to obtain the user role list in the project.
+        r"""This API is used to obtain the user role list in the project.
 
         :param request: Request instance for DescribeUserRoleProjectList.
         :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleProjectListRequest`
@@ -441,7 +441,7 @@ class BiClient(AbstractClient):
 
 
     def ExportScreenPage(self, request):
-        """This API is used to export a screenshot.
+        r"""This API is used to export a screenshot.
 
         :param request: Request instance for ExportScreenPage.
         :type request: :class:`tencentcloud.bi.v20220105.models.ExportScreenPageRequest`
@@ -464,7 +464,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyDatasource(self, request):
-        """This API is used to update a data source.
+        r"""This API is used to update a data source.
 
         :param request: Request instance for ModifyDatasource.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyDatasourceRequest`
@@ -487,7 +487,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyDatasourceCloud(self, request):
-        """This API is used to update a cloud database.
+        r"""This API is used to update a cloud database.
 
         :param request: Request instance for ModifyDatasourceCloud.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyDatasourceCloudRequest`
@@ -510,7 +510,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """This API is used to modify project information.
+        r"""This API is used to modify project information.
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyProjectRequest`
@@ -533,7 +533,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyUserRole(self, request):
-        """This API is used to modify user role info.
+        r"""This API is used to modify user role info.
 
         :param request: Request instance for ModifyUserRole.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleRequest`
@@ -556,7 +556,7 @@ class BiClient(AbstractClient):
 
 
     def ModifyUserRoleProject(self, request):
-        """This API is used to modify the user role info in the project.
+        r"""This API is used to modify the user role info in the project.
 
         :param request: Request instance for ModifyUserRoleProject.
         :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleProjectRequest`

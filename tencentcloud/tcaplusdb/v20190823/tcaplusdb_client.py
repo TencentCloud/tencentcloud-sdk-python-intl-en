@@ -27,7 +27,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ClearTables(self, request):
-        """This API is used to clear table data based on the specified table information.
+        r"""This API is used to clear table data based on the specified table information.
 
         :param request: Request instance for ClearTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ClearTablesRequest`
@@ -50,7 +50,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CompareIdlFiles(self, request):
-        """This API is used to select a target table, upload and verify the table modification file, and return the result of whether the table structure is allowed to be modified.
+        r"""This API is used to select a target table, upload and verify the table modification file, and return the result of whether the table structure is allowed to be modified.
 
         :param request: Request instance for CompareIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareIdlFilesRequest`
@@ -73,7 +73,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        """This API is used to create a backup task.
+        r"""This API is used to create a backup task.
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateBackupRequest`
@@ -96,7 +96,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """This API is used to create a TcaplusDB cluster.
+        r"""This API is used to create a TcaplusDB cluster.
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateClusterRequest`
@@ -119,7 +119,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateSnapshots(self, request):
-        """This API is used to create one or more table snapshots at a specified past time point.
+        r"""This API is used to create one or more table snapshots at a specified past time point.
 
         :param request: Request instance for CreateSnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateSnapshotsRequest`
@@ -142,7 +142,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateTableGroup(self, request):
-        """This API is used to create a table group in a TcaplusDB cluster.
+        r"""This API is used to create a table group in a TcaplusDB cluster.
 
         :param request: Request instance for CreateTableGroup.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateTableGroupRequest`
@@ -165,7 +165,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateTables(self, request):
-        """This API is used to create tables in batches based on the selected IDL file list.
+        r"""This API is used to create tables in batches based on the selected IDL file list.
 
         :param request: Request instance for CreateTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateTablesRequest`
@@ -188,7 +188,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteBackupRecords(self, request):
-        """This API is used to delete a manual backup.
+        r"""This API is used to delete a manual backup.
 
         :param request: Request instance for DeleteBackupRecords.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteBackupRecordsRequest`
@@ -211,7 +211,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.
+        r"""This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteClusterRequest`
@@ -234,7 +234,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteIdlFiles(self, request):
-        """This API is used to delete a target IDL file by specifying the cluster ID and information of the file to be deleted. If the file is associated with a table, deletion will fail.
+        r"""This API is used to delete a target IDL file by specifying the cluster ID and information of the file to be deleted. If the file is associated with a table, deletion will fail.
 
         :param request: Request instance for DeleteIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteIdlFilesRequest`
@@ -257,7 +257,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteSnapshots(self, request):
-        """This API is used to delete one or more table snapshots.
+        r"""This API is used to delete one or more table snapshots.
 
         :param request: Request instance for DeleteSnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteSnapshotsRequest`
@@ -280,7 +280,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteTableDataFlow(self, request):
-        """This API is used to disable data subscription for tables.
+        r"""This API is used to disable data subscription for tables.
 
         :param request: Request instance for DeleteTableDataFlow.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableDataFlowRequest`
@@ -303,7 +303,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteTableGroup(self, request):
-        """This API is used to delete a table group.
+        r"""This API is used to delete a table group.
 
         :param request: Request instance for DeleteTableGroup.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableGroupRequest`
@@ -326,7 +326,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteTableIndex(self, request):
-        """This API is used to delete the global index from a table.
+        r"""This API is used to delete the global index from a table.
 
         :param request: Request instance for DeleteTableIndex.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableIndexRequest`
@@ -349,7 +349,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteTables(self, request):
-        """This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.
+        r"""This API is used to drop a specified table. Calling this API for the first time means to move the table to the recycle bin, while calling it again means to drop the table completely from the recycle bin.
 
         :param request: Request instance for DeleteTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTablesRequest`
@@ -372,7 +372,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeBackupRecords(self, request):
-        """This API is used to query backup records.
+        r"""This API is used to query backup records.
 
         When querying the cluster level, set `TableGroupId` to `-1` and `TableName` to `-1`.
         When querying the cluster and table group levels, set `TableName` to `-1`.
@@ -399,7 +399,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeClusterTags(self, request):
-        """This API is used to get the associated tag list of a cluster.
+        r"""This API is used to get the associated tag list of a cluster.
 
         :param request: Request instance for DescribeClusterTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClusterTagsRequest`
@@ -422,7 +422,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """This API is used to query the TcaplusDB cluster list, including cluster details.
+        r"""This API is used to query the TcaplusDB cluster list, including cluster details.
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClustersRequest`
@@ -445,7 +445,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeIdlFileInfos(self, request):
-        """This API is used to query table description file details.
+        r"""This API is used to query table description file details.
 
         :param request: Request instance for DescribeIdlFileInfos.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeIdlFileInfosRequest`
@@ -468,7 +468,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeMachine(self, request):
-        """This API is used to query the available machines in a dedicated cluster.
+        r"""This API is used to query the available machines in a dedicated cluster.
 
         :param request: Request instance for DescribeMachine.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeMachineRequest`
@@ -491,7 +491,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query the list of regions supported by the TcaplusDB service.
+        r"""This API is used to query the list of regions supported by the TcaplusDB service.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeRegionsRequest`
@@ -514,7 +514,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeSnapshots(self, request):
-        """This API is used to query the list of table snapshots.
+        r"""This API is used to query the list of table snapshots.
 
         :param request: Request instance for DescribeSnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeSnapshotsRequest`
@@ -537,7 +537,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTableGroupTags(self, request):
-        """This API is used to get the associated tag list of a table group.
+        r"""This API is used to get the associated tag list of a table group.
 
         :param request: Request instance for DescribeTableGroupTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupTagsRequest`
@@ -560,7 +560,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTableGroups(self, request):
-        """This API is used to query the table group list.
+        r"""This API is used to query the table group list.
 
         :param request: Request instance for DescribeTableGroups.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupsRequest`
@@ -583,7 +583,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTableTags(self, request):
-        """This API is used to get table tags.
+        r"""This API is used to get table tags.
 
         :param request: Request instance for DescribeTableTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableTagsRequest`
@@ -606,7 +606,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """This API is used to query table details.
+        r"""This API is used to query table details.
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTablesRequest`
@@ -629,7 +629,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTablesInRecycle(self, request):
-        """This API is used to query the details of a table in recycle bin.
+        r"""This API is used to query the details of a table in recycle bin.
 
         :param request: Request instance for DescribeTablesInRecycle.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTablesInRecycleRequest`
@@ -652,7 +652,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API is used to query the task list.
+        r"""This API is used to query the task list.
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTasksRequest`
@@ -675,7 +675,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DescribeUinInWhitelist(self, request):
-        """This API is used to query whether the current user is in the allowlist and control whether the user can create TDR-type apps or tables.
+        r"""This API is used to query whether the current user is in the allowlist and control whether the user can create TDR-type apps or tables.
 
         :param request: Request instance for DescribeUinInWhitelist.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeUinInWhitelistRequest`
@@ -698,7 +698,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DisableRestProxy(self, request):
-        """This API is used to disable the RESTful API.
+        r"""This API is used to disable the RESTful API.
 
         :param request: Request instance for DisableRestProxy.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DisableRestProxyRequest`
@@ -721,7 +721,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def EnableRestProxy(self, request):
-        """This API is used to enable the RESTful API.
+        r"""This API is used to enable the RESTful API.
 
         :param request: Request instance for EnableRestProxy.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.EnableRestProxyRequest`
@@ -744,7 +744,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ImportSnapshots(self, request):
-        """This API is used to import a snapshot into a new table or the original table from which the snapshot was created.
+        r"""This API is used to import a snapshot into a new table or the original table from which the snapshot was created.
 
         :param request: Request instance for ImportSnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ImportSnapshotsRequest`
@@ -767,7 +767,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def MergeTablesData(self, request):
-        """This API is used to merge tables.
+        r"""This API is used to merge tables.
 
         :param request: Request instance for MergeTablesData.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.MergeTablesDataRequest`
@@ -790,7 +790,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyCensorship(self, request):
-        """This API is used to enable or disable the cluster operation approval feature.
+        r"""This API is used to enable or disable the cluster operation approval feature.
 
         :param request: Request instance for ModifyCensorship.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyCensorshipRequest`
@@ -813,7 +813,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyClusterMachine(self, request):
-        """This API is used to modify the machines of a dedicated cluster.
+        r"""This API is used to modify the machines of a dedicated cluster.
 
         :param request: Request instance for ModifyClusterMachine.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterMachineRequest`
@@ -836,7 +836,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyClusterName(self, request):
-        """This API is used to rename a specified cluster.
+        r"""This API is used to rename a specified cluster.
 
         :param request: Request instance for ModifyClusterName.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterNameRequest`
@@ -859,7 +859,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyClusterPassword(self, request):
-        """This API is used to change the password of a specified cluster. The backend will allow the TcaplusDB SDK to access databases with both old and new passwords before the old password expires. You cannot submit a new password change request before the old password expires or submit a request to modify the expiration time of the old password after the old password expires.
+        r"""This API is used to change the password of a specified cluster. The backend will allow the TcaplusDB SDK to access databases with both old and new passwords before the old password expires. You cannot submit a new password change request before the old password expires or submit a request to modify the expiration time of the old password after the old password expires.
 
         :param request: Request instance for ModifyClusterPassword.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterPasswordRequest`
@@ -882,7 +882,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyClusterTags(self, request):
-        """This API is used to modify cluster tags.
+        r"""This API is used to modify cluster tags.
 
         :param request: Request instance for ModifyClusterTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterTagsRequest`
@@ -905,7 +905,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifySnapshots(self, request):
-        """This API is used to modify the expiration time of one or more table snapshots.
+        r"""This API is used to modify the expiration time of one or more table snapshots.
 
         :param request: Request instance for ModifySnapshots.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifySnapshotsRequest`
@@ -928,7 +928,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableGroupName(self, request):
-        """This API is used to rename a TcaplusDB table group.
+        r"""This API is used to rename a TcaplusDB table group.
 
         :param request: Request instance for ModifyTableGroupName.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupNameRequest`
@@ -951,7 +951,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableGroupTags(self, request):
-        """This API is used to modify table group tags.
+        r"""This API is used to modify table group tags.
 
         :param request: Request instance for ModifyTableGroupTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupTagsRequest`
@@ -974,7 +974,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableMemos(self, request):
-        """This API is used to modify table remarks.
+        r"""This API is used to modify table remarks.
 
         :param request: Request instance for ModifyTableMemos.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableMemosRequest`
@@ -997,7 +997,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableQuotas(self, request):
-        """This API is used to scale a table.
+        r"""This API is used to scale a table.
 
         :param request: Request instance for ModifyTableQuotas.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableQuotasRequest`
@@ -1020,7 +1020,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableTags(self, request):
-        """This API is used to modify table tags.
+        r"""This API is used to modify table tags.
 
         :param request: Request instance for ModifyTableTags.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableTagsRequest`
@@ -1043,7 +1043,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTables(self, request):
-        """This API is used to modify specified tables in batches based on the selected table definition IDL file.
+        r"""This API is used to modify specified tables in batches based on the selected table definition IDL file.
 
         :param request: Request instance for ModifyTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTablesRequest`
@@ -1066,7 +1066,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def RecoverRecycleTables(self, request):
-        """This API is used to recover a dropped table from the recycle bin. It will not work for tables to be released due to arrears.
+        r"""This API is used to recover a dropped table from the recycle bin. It will not work for tables to be released due to arrears.
 
         :param request: Request instance for RecoverRecycleTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.RecoverRecycleTablesRequest`
@@ -1089,7 +1089,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def RollbackTables(self, request):
-        """This API is used to roll back table data.
+        r"""This API is used to roll back table data.
 
         :param request: Request instance for RollbackTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.RollbackTablesRequest`
@@ -1112,7 +1112,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def SetBackupExpireRule(self, request):
-        """This API is used to add/delete/modify backup expiration policy. `ClusterId` must be a specific cluster ID (appid).
+        r"""This API is used to add/delete/modify backup expiration policy. `ClusterId` must be a specific cluster ID (appid).
 
         :param request: Request instance for SetBackupExpireRule.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetBackupExpireRuleRequest`
@@ -1135,7 +1135,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def SetTableDataFlow(self, request):
-        """This API is used to enable data subscription for tables or modify the feature's configurations.
+        r"""This API is used to enable data subscription for tables or modify the feature's configurations.
 
         :param request: Request instance for SetTableDataFlow.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableDataFlowRequest`
@@ -1158,7 +1158,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def SetTableIndex(self, request):
-        """This API is used to create a global index for a table.
+        r"""This API is used to create a global index for a table.
 
         :param request: Request instance for SetTableIndex.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableIndexRequest`
@@ -1181,7 +1181,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def UpdateApply(self, request):
-        """This API is used to update the application status.
+        r"""This API is used to update the application status.
 
         :param request: Request instance for UpdateApply.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.UpdateApplyRequest`
@@ -1204,7 +1204,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def VerifyIdlFiles(self, request):
-        """This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid.
+        r"""This API is used to upload and verify a table creation file and return the definition of tables that are verified to be valid.
 
         :param request: Request instance for VerifyIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.VerifyIdlFilesRequest`

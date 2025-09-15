@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Device(AbstractModel):
-    """Indicates the information of the business user's device
+    r"""Indicates the information of the business user's device
 
     """
 
@@ -54,7 +54,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def Ip(self):
-        """This field indicates the IP address of the business user's device and supports recording both **IPv4 and IPv6** addresses. It needs to be used together with the `IpType` parameter.
+        r"""This field indicates the IP address of the business user's device and supports recording both **IPv4 and IPv6** addresses. It needs to be used together with the `IpType` parameter.
         :rtype: str
         """
         return self._Ip
@@ -65,7 +65,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def Mac(self):
-        """This field indicates the MAC address of the business user, which makes it easier to identify and manage devices. Its format and value are the same as those of a standard MAC address.
+        r"""This field indicates the MAC address of the business user, which makes it easier to identify and manage devices. Its format and value are the same as those of a standard MAC address.
         :rtype: str
         """
         return self._Mac
@@ -76,7 +76,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def TokenId(self):
-        """*In beta test. Stay tuned.*
+        r"""*In beta test. Stay tuned.*
         :rtype: str
         """
         return self._TokenId
@@ -87,7 +87,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def DeviceId(self):
-        """*In beta test. Stay tuned.*
+        r"""*In beta test. Stay tuned.*
         :rtype: str
         """
         return self._DeviceId
@@ -98,7 +98,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def IMEI(self):
-        """This field indicates the international mobile equipment identity **(IMEI)** number of the business user's device, which can be used to identify each mobile communication device such as mobile phone for easier device identification and management.<br>Note: the format is **15–17 digits**.
+        r"""This field indicates the international mobile equipment identity **(IMEI)** number of the business user's device, which can be used to identify each mobile communication device such as mobile phone for easier device identification and management.<br>Note: the format is **15–17 digits**.
         :rtype: str
         """
         return self._IMEI
@@ -109,7 +109,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def IDFA(self):
-        """**For iOS devices**: this field indicates the identifier for advertisers **(IDFA)** of the business user, which is provided by Apple to identify the user and contains a hexadecimal string of 32 digits and letters.<br>
+        r"""**For iOS devices**: this field indicates the identifier for advertisers **(IDFA)** of the business user, which is provided by Apple to identify the user and contains a hexadecimal string of 32 digits and letters.<br>
 Note: as iOS 14 has been updated by Apple to allow users to manually enable or disable IDFA since 2021, the validity of this string may be reduced.
         :rtype: str
         """
@@ -121,7 +121,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def IDFV(self):
-        """**For iOS devices**: this field indicates the identifier for vendors **(IDFV)** of the business user, which is provided by Apple to identify the app vendor and contains a hexadecimal string of 32 digits and letters. It can be used to uniquely identify a device.
+        r"""**For iOS devices**: this field indicates the identifier for vendors **(IDFV)** of the business user, which is provided by Apple to identify the app vendor and contains a hexadecimal string of 32 digits and letters. It can be used to uniquely identify a device.
         :rtype: str
         """
         return self._IDFV
@@ -132,7 +132,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
     @property
     def IpType(self):
-        """This field indicates the type of the recorded IP address. Valid values: **0** (IPv4 address), **1** (IPv6 address). It needs to be used together with the `IpType` parameter.
+        r"""This field indicates the type of the recorded IP address. Valid values: **0** (IPv4 address), **1** (IPv6 address). It needs to be used together with the `IpType` parameter.
         :rtype: int
         """
         return self._IpType
@@ -162,7 +162,7 @@ Note: as iOS 14 has been updated by Apple to allow users to manually enable or d
 
 
 class ImageModerationRequest(AbstractModel):
-    """ImageModeration request structure.
+    r"""ImageModeration request structure.
 
     """
 
@@ -199,7 +199,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """This field indicates the specific number of the policy, which is used for API scheduling and can be configured in the CMS console. If the `Biztype` parameter is passed in, a moderation policy will be used based on the business scenario; otherwise, the default moderation policy will be used.<br>Note: `Biztype` can contain 3-32 digits, letters, and underscores; different `Biztype` values are associated with different business scenarios and moderation policies, so you need to verify the `Biztype` before calling this API.
+        r"""This field indicates the specific number of the policy, which is used for API scheduling and can be configured in the CMS console. If the `Biztype` parameter is passed in, a moderation policy will be used based on the business scenario; otherwise, the default moderation policy will be used.<br>Note: `Biztype` can contain 3-32 digits, letters, and underscores; different `Biztype` values are associated with different business scenarios and moderation policies, so you need to verify the `Biztype` before calling this API.
         :rtype: str
         """
         return self._BizType
@@ -210,7 +210,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """This field indicates the data ID assigned by you to the object to be detected for easier file identification and management.<br>It **can contain up to 64 letters, digits, and special symbols (_-@#)**.
+        r"""This field indicates the data ID assigned by you to the object to be detected for easier file identification and management.<br>It **can contain up to 64 letters, digits, and special symbols (_-@#)**.
         :rtype: str
         """
         return self._DataId
@@ -221,7 +221,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        """This field indicates the Base64 encoding of the image to be detected. The image **size cannot exceed 5 MB**. **A resolution of 256x256 or higher is recommended**; otherwise, the recognition effect may be affected.<br>Note: **you must enter a value for either this field or `FileUrl`**.
+        r"""This field indicates the Base64 encoding of the image to be detected. The image **size cannot exceed 5 MB**. **A resolution of 256x256 or higher is recommended**; otherwise, the recognition effect may be affected.<br>Note: **you must enter a value for either this field or `FileUrl`**.
         :rtype: str
         """
         return self._FileContent
@@ -232,7 +232,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """URL of the image to moderate. It supports PNG, JPG, JPEG, BMP, GIF AND WEBP files. The file **cannot exceed 5 MB** and the resolution should not below **256*246**. The default timeout period is 3 seconds. Note that **redirection URLs may be blocked by security policies**. In this case, an error message will return. For example, if an HTTP request gets the 302 code, the error `ResourceUnavailable.ImageDownloadError` is returned. <br>**Either `FileUrl` or `FileContent` must be specified. 
+        r"""URL of the image to moderate. It supports PNG, JPG, JPEG, BMP, GIF AND WEBP files. The file **cannot exceed 5 MB** and the resolution should not below **256*246**. The default timeout period is 3 seconds. Note that **redirection URLs may be blocked by security policies**. In this case, an error message will return. For example, if an HTTP request gets the 302 code, the error `ResourceUnavailable.ImageDownloadError` is returned. <br>**Either `FileUrl` or `FileContent` must be specified. 
         :rtype: str
         """
         return self._FileUrl
@@ -243,7 +243,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """**For GIF/long image detection only**. This field indicates the GIF frame capturing frequency (the image interval for capturing a frame for detection). For long images, you should round the width:height ratio as the total number of images to be split. The default value is 0, where only the first frame of the GIF image will be detected, and the long image will not be split.<br>Note: the `Interval` and `MaxFrames` parameters need to be used in combination; for example, if `Interval` is `3` and `MaxFrames` is `400`, the GIF/long image will be detected once every two frames for up to 400 frames.
+        r"""**For GIF/long image detection only**. This field indicates the GIF frame capturing frequency (the image interval for capturing a frame for detection). For long images, you should round the width:height ratio as the total number of images to be split. The default value is 0, where only the first frame of the GIF image will be detected, and the long image will not be split.<br>Note: the `Interval` and `MaxFrames` parameters need to be used in combination; for example, if `Interval` is `3` and `MaxFrames` is `400`, the GIF/long image will be detected once every two frames for up to 400 frames.
         :rtype: int
         """
         return self._Interval
@@ -254,7 +254,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def MaxFrames(self):
-        """**For GIF/long image detection only**. This field indicates the maximum number of frames that can be captured. The default value is 1, where only the first frame of the input GIF image will be detected, and the long image will not be split (which may cause a processing timeout).<br>Note: the `Interval` and `MaxFrames` parameters need to be used in combination; for example, if `Interval` is `3` and `MaxFrames` is `400`, the GIF/long image will be detected once every two frames for up to 400 frames.
+        r"""**For GIF/long image detection only**. This field indicates the maximum number of frames that can be captured. The default value is 1, where only the first frame of the input GIF image will be detected, and the long image will not be split (which may cause a processing timeout).<br>Note: the `Interval` and `MaxFrames` parameters need to be used in combination; for example, if `Interval` is `3` and `MaxFrames` is `400`, the GIF/long image will be detected once every two frames for up to 400 frames.
         :rtype: int
         """
         return self._MaxFrames
@@ -265,7 +265,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        """This field indicates the information of the user that corresponds to the object to be detected. It can be passed in to identify the user involved in the violation.
+        r"""This field indicates the information of the user that corresponds to the object to be detected. It can be passed in to identify the user involved in the violation.
         :rtype: :class:`tencentcloud.ims.v20201229.models.User`
         """
         return self._User
@@ -276,7 +276,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        """This field indicates the information of the device that corresponds to the object to be detected. It can be passed in to identify the device involved in the violation.
+        r"""This field indicates the information of the device that corresponds to the object to be detected. It can be passed in to identify the device involved in the violation.
         :rtype: :class:`tencentcloud.ims.v20201229.models.Device`
         """
         return self._Device
@@ -287,7 +287,7 @@ class ImageModerationRequest(AbstractModel):
 
     @property
     def Type(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Type
@@ -322,7 +322,7 @@ class ImageModerationRequest(AbstractModel):
 
 
 class ImageModerationResponse(AbstractModel):
-    """ImageModeration response structure.
+    r"""ImageModeration response structure.
 
     """
 
@@ -380,7 +380,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Suggestion(self):
-        """This field is used to return the operation suggestion for the `Label` tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        r"""This field is used to return the operation suggestion for the `Label` tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
         :rtype: str
         """
         return self._Suggestion
@@ -391,7 +391,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Label(self):
-        """This field is used to return the **maliciousness tag with the highest priority** in the detection result (LabelResults), which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the **maliciousness tag with the highest priority** in the detection result (LabelResults), which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -402,7 +402,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubLabel(self):
-        """This field is used to return the subtag name under the maliciousness tag with the highest priority hit by the detection result, such as *Porn-SexBehavior*. If no subtag is hit, an empty string will be returned.
+        r"""This field is used to return the subtag name under the maliciousness tag with the highest priority hit by the detection result, such as *Porn-SexBehavior*. If no subtag is hit, an empty string will be returned.
         :rtype: str
         """
         return self._SubLabel
@@ -413,7 +413,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Score(self):
-        """Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
+        r"""Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
         :rtype: int
         """
         return self._Score
@@ -424,7 +424,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LabelResults(self):
-        """This field is used to return the detailed recognition result for the maliciousness tag hit by the categorization model, such as porn, advertising, or any other offensive, unsafe, or inappropriate type of content.
+        r"""This field is used to return the detailed recognition result for the maliciousness tag hit by the categorization model, such as porn, advertising, or any other offensive, unsafe, or inappropriate type of content.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LabelResult
         """
@@ -436,7 +436,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectResults(self):
-        """This field is used to return the detailed detection result of the object detection model, including the tag name hit by the content such as object, advertising logo, or QR code, tag score, coordinate information, scenario recognition result, and operation suggestion. For more information on the returned value, see the description of the `ObjectResults` data structure.
+        r"""This field is used to return the detailed detection result of the object detection model, including the tag name hit by the content such as object, advertising logo, or QR code, tag score, coordinate information, scenario recognition result, and operation suggestion. For more information on the returned value, see the description of the `ObjectResults` data structure.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ObjectResult
         """
@@ -448,7 +448,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcrResults(self):
-        """This field is used to return the detailed text OCR result, including the text coordinate information, text recognition result, and operation suggestion. For more information on the returned value, see the description of the `OcrResults` data structure.
+        r"""This field is used to return the detailed text OCR result, including the text coordinate information, text recognition result, and operation suggestion. For more information on the returned value, see the description of the `OcrResults` data structure.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of OcrResult
         """
@@ -460,7 +460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LibResults(self):
-        """This field is used to return the result of recognition based on image risk libraries (blocklist and allowlist). For more information on the returned value, see the description of the `LibResults` data structure.<br>Note: currently, **you cannot customize image risk libraries**.
+        r"""This field is used to return the result of recognition based on image risk libraries (blocklist and allowlist). For more information on the returned value, see the description of the `LibResults` data structure.<br>Note: currently, **you cannot customize image risk libraries**.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LibResult
         """
@@ -472,7 +472,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataId(self):
-        """This field is used to return the `DataId` in the request parameters that correspond to the detected object.
+        r"""This field is used to return the `DataId` in the request parameters that correspond to the detected object.
         :rtype: str
         """
         return self._DataId
@@ -483,7 +483,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BizType(self):
-        """This field is used to return the `BizType` in the request parameters that correspond to the detected object.
+        r"""This field is used to return the `BizType` in the request parameters that correspond to the detected object.
         :rtype: str
         """
         return self._BizType
@@ -494,7 +494,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extra(self):
-        """This field is used to return the additional information (Extra) configured based on your needs. If it is not configured, an empty value will be returned by default.<br>Note: the returned information varies by customer or `Biztype`. If you need to configure this field, submit a ticket or contact the aftersales service for assistance.
+        r"""This field is used to return the additional information (Extra) configured based on your needs. If it is not configured, an empty value will be returned by default.<br>Note: the returned information varies by customer or `Biztype`. If you need to configure this field, submit a ticket or contact the aftersales service for assistance.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -506,7 +506,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileMD5(self):
-        """This field is used to return the MD5 checksum of the detected object for easier verification of the file integrity.
+        r"""This field is used to return the MD5 checksum of the detected object for easier verification of the file integrity.
         :rtype: str
         """
         return self._FileMD5
@@ -517,7 +517,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecognitionResults(self):
-        """Image recognition result, including the hit tags, confidence and location.
+        r"""Image recognition result, including the hit tags, confidence and location.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of RecognitionResult
         """
@@ -529,7 +529,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -582,7 +582,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class LabelDetailItem(AbstractModel):
-    """Returns the details of the subtag hit by the categorization model
+    r"""Returns the details of the subtag hit by the categorization model
 
     """
 
@@ -604,7 +604,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """This field is used to return the ID of the recognized object for easier recognition and distinction.
+        r"""This field is used to return the ID of the recognized object for easier recognition and distinction.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -616,7 +616,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """This field is used to return the hit subtag name.
+        r"""This field is used to return the hit subtag name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -628,7 +628,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field is used to return the hit score of the subtag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.
+        r"""This field is used to return the hit score of the subtag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -654,7 +654,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LabelResult(AbstractModel):
-    """Hit result of the categorization model
+    r"""Hit result of the categorization model
 
     """
 
@@ -683,7 +683,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scene(self):
-        """This field is used to return the scenario result recognized by the model, such as advertising, pornographic, and harmful.
+        r"""This field is used to return the scenario result recognized by the model, such as advertising, pornographic, and harmful.
         :rtype: str
         """
         return self._Scene
@@ -694,7 +694,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        r"""This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
         :rtype: str
         """
         return self._Suggestion
@@ -705,7 +705,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -716,7 +716,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubLabel(self):
-        """This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.
+        r"""This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.
         :rtype: str
         """
         return self._SubLabel
@@ -727,7 +727,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
+        r"""Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
         :rtype: int
         """
         return self._Score
@@ -738,7 +738,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Details(self):
-        """This field is used to return the details of the subtag hit by the categorization model, such as number, hit tag name, and score.
+        r"""This field is used to return the details of the subtag hit by the categorization model, such as number, hit tag name, and score.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LabelDetailItem
         """
@@ -772,7 +772,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LibDetail(AbstractModel):
-    """Returns the details of the custom library/blocklist/allowlist
+    r"""Returns the details of the custom library/blocklist/allowlist
 
     """
 
@@ -805,7 +805,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """This field is used to return the ID of the recognized object for easier recognition and distinction.
+        r"""This field is used to return the ID of the recognized object for easier recognition and distinction.
         :rtype: int
         """
         return self._Id
@@ -816,7 +816,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LibId(self):
-        """This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.
+        r"""This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.
         :rtype: str
         """
         return self._LibId
@@ -827,7 +827,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LibName(self):
-        """This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.
+        r"""This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -839,7 +839,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageId(self):
-        """This field is used to return the ID of the recognized image object for easier file management.
+        r"""This field is used to return the ID of the recognized image object for easier file management.
         :rtype: str
         """
         return self._ImageId
@@ -850,7 +850,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -861,7 +861,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tag(self):
-        """This field is used to return other custom tags to meet the needs in your customized scenarios. It can be skipped if you have no custom needs.
+        r"""This field is used to return other custom tags to meet the needs in your customized scenarios. It can be skipped if you have no custom needs.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -873,7 +873,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field is used to return the hit score of the model. Value range: **0–100**; for example, *Porn 99* indicates that the hit score of the porn tag for the recognized content is 99.
+        r"""This field is used to return the hit score of the model. Value range: **0–100**; for example, *Porn 99* indicates that the hit score of the porn tag for the recognized content is 99.
         :rtype: int
         """
         return self._Score
@@ -902,7 +902,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LibResult(AbstractModel):
-    """Returns the detailed result of the comparison with the blocklist/allowlist
+    r"""Returns the detailed result of the comparison with the blocklist/allowlist
 
     """
 
@@ -932,7 +932,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scene(self):
-        """This field indicates the scenario recognition result of the model. Default value: Similar.
+        r"""This field indicates the scenario recognition result of the model. Default value: Similar.
         :rtype: str
         """
         return self._Scene
@@ -943,7 +943,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """This field is used to return the operation suggestion. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        r"""This field is used to return the operation suggestion. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
         :rtype: str
         """
         return self._Suggestion
@@ -954,7 +954,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -965,7 +965,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubLabel(self):
-        """This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.
+        r"""This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -977,7 +977,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field is used to return the recognition score of the image search model. Value range: **0–100**. It indicates the score for the similarity between the moderated image **and the samples in the library**. A higher score indicates that the content is more likely to hit a sample in the library of similar images.
+        r"""This field is used to return the recognition score of the image search model. Value range: **0–100**. It indicates the score for the similarity between the moderated image **and the samples in the library**. A higher score indicates that the content is more likely to hit a sample in the library of similar images.
         :rtype: int
         """
         return self._Score
@@ -988,7 +988,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Details(self):
-        """This field is used to return the detailed result of the comparison with the blocklist/allowlist, such as number, library name, and maliciousness tag. For more information on the returned value, see the description of the [LibDetail](https://intl.cloud.tencent.com/document/product/1125/53274?from_cn_redirect=1#LibDetail) data structure.
+        r"""This field is used to return the detailed result of the comparison with the blocklist/allowlist, such as number, library name, and maliciousness tag. For more information on the returned value, see the description of the [LibDetail](https://intl.cloud.tencent.com/document/product/1125/53274?from_cn_redirect=1#LibDetail) data structure.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LibDetail
         """
@@ -1022,7 +1022,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Location(AbstractModel):
-    """Coordinate
+    r"""Coordinate
 
     """
 
@@ -1047,7 +1047,7 @@ class Location(AbstractModel):
 
     @property
     def X(self):
-        """This parameter is used to return the pixel position of the **abscissa (X) of the top-left corner** of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.
+        r"""This parameter is used to return the pixel position of the **abscissa (X) of the top-left corner** of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.
         :rtype: float
         """
         return self._X
@@ -1058,7 +1058,7 @@ class Location(AbstractModel):
 
     @property
     def Y(self):
-        """This parameter is used to return the pixel position of the **ordinate of the top-left corner** (Y) of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.
+        r"""This parameter is used to return the pixel position of the **ordinate of the top-left corner** (Y) of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.
         :rtype: float
         """
         return self._Y
@@ -1069,7 +1069,7 @@ class Location(AbstractModel):
 
     @property
     def Width(self):
-        """This parameter is used to return the **width of the detection frame** (the length starting from the top-left corner and extending to the right on the X axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.
+        r"""This parameter is used to return the **width of the detection frame** (the length starting from the top-left corner and extending to the right on the X axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.
         :rtype: float
         """
         return self._Width
@@ -1080,7 +1080,7 @@ class Location(AbstractModel):
 
     @property
     def Height(self):
-        """This parameter is used to return the **height of the detection frame** (the length starting from the top-left corner and extending down the Y axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.
+        r"""This parameter is used to return the **height of the detection frame** (the length starting from the top-left corner and extending down the Y axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.
         :rtype: float
         """
         return self._Height
@@ -1091,7 +1091,7 @@ class Location(AbstractModel):
 
     @property
     def Rotate(self):
-        """This parameter is used to return the **rotation angle of the detection frame**. Valid values: **0–360** (**degrees**), and the direction is **counterclockwise rotation**. This parameter can be combined with the `X` and `Y` coordinate parameters to uniquely determine the specific position of the detection frame.
+        r"""This parameter is used to return the **rotation angle of the detection frame**. Valid values: **0–360** (**degrees**), and the direction is **counterclockwise rotation**. This parameter can be combined with the `X` and `Y` coordinate parameters to uniquely determine the specific position of the detection frame.
         :rtype: float
         """
         return self._Rotate
@@ -1118,7 +1118,7 @@ class Location(AbstractModel):
 
 
 class ObjectDetail(AbstractModel):
-    """Object detection result details. When the detection scenario is an object, advertising logo, or QR code, it represents the tag name, tag value, tag score, and position information of the model detection frame.
+    r"""Object detection result details. When the detection scenario is an object, advertising logo, or QR code, it represents the tag name, tag value, tag score, and position information of the model detection frame.
 
     """
 
@@ -1146,7 +1146,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Id(self):
-        """This parameter is used to return the ID of the recognized object for easier recognition and distinction.
+        r"""This parameter is used to return the ID of the recognized object for easier recognition and distinction.
         :rtype: int
         """
         return self._Id
@@ -1157,7 +1157,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Name(self):
-        """This parameter is used to return the hit object tag.
+        r"""This parameter is used to return the hit object tag.
         :rtype: str
         """
         return self._Name
@@ -1168,7 +1168,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Value(self):
-        """This parameter is used to return the value or content of the object tag; for example, when the tag is *QR code (QrCode)*, this field will be the URL of the recognized QR code.
+        r"""This parameter is used to return the value or content of the object tag; for example, when the tag is *QR code (QrCode)*, this field will be the URL of the recognized QR code.
         :rtype: str
         """
         return self._Value
@@ -1179,7 +1179,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Score(self):
-        """This parameter is used to return the hit score of the object tag. Valid values: **0–100**; for example, *QrCode 99* indicates that it is highly likely that the recognized content will hit the QR code tag.
+        r"""This parameter is used to return the hit score of the object tag. Valid values: **0–100**; for example, *QrCode 99* indicates that it is highly likely that the recognized content will hit the QR code tag.
         :rtype: int
         """
         return self._Score
@@ -1190,7 +1190,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def Location(self):
-        """This field is used to return the coordinate position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the object detection frame for quick location of the object information.
+        r"""This field is used to return the coordinate position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the object detection frame for quick location of the object information.
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location
@@ -1201,7 +1201,7 @@ class ObjectDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """This parameter is used to return the hit object subtag.
+        r"""This parameter is used to return the hit object subtag.
         :rtype: str
         """
         return self._SubLabel
@@ -1231,7 +1231,7 @@ class ObjectDetail(AbstractModel):
 
 
 class ObjectResult(AbstractModel):
-    """Returns object detection result details
+    r"""Returns object detection result details
 
     """
 
@@ -1265,7 +1265,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scene(self):
-        """This field is used to return the recognized object scenario result, such as QR code, logo, and image OCR.
+        r"""This field is used to return the recognized object scenario result, such as QR code, logo, and image OCR.
         :rtype: str
         """
         return self._Scene
@@ -1276,7 +1276,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        r"""This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
         :rtype: str
         """
         return self._Suggestion
@@ -1287,7 +1287,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag in the detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag in the detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -1298,7 +1298,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubLabel(self):
-        """This field is used to return the detection result for a subtag under the current maliciousness tag, such as *Porn-SexBehavior*.
+        r"""This field is used to return the detection result for a subtag under the current maliciousness tag, such as *Porn-SexBehavior*.
         :rtype: str
         """
         return self._SubLabel
@@ -1309,7 +1309,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field is used to return the hit score of a subtag under the current maliciousness tag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.
+        r"""This field is used to return the hit score of a subtag under the current maliciousness tag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.
         :rtype: int
         """
         return self._Score
@@ -1320,7 +1320,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Names(self):
-        """This field is used to return the name of the recognized object.
+        r"""This field is used to return the name of the recognized object.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1332,7 +1332,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Details(self):
-        """This field is used to return the details of the recognized object, such as number, hit tag name, and position coordinates. For more information on the returned value, see the description of the [ObjectDetail](https://intl.cloud.tencent.com/document/api/1125/53274?from_cn_redirect=1#ObjectDetail) data structure.
+        r"""This field is used to return the details of the recognized object, such as number, hit tag name, and position coordinates. For more information on the returned value, see the description of the [ObjectDetail](https://intl.cloud.tencent.com/document/api/1125/53274?from_cn_redirect=1#ObjectDetail) data structure.
  
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ObjectDetail
@@ -1368,7 +1368,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class OcrResult(AbstractModel):
-    """Returns OCR detection result details
+    r"""Returns OCR detection result details
 
     """
 
@@ -1400,7 +1400,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scene(self):
-        """This field indicates the recognition scenario. Default value: OCR (image OCR).
+        r"""This field indicates the recognition scenario. Default value: OCR (image OCR).
         :rtype: str
         """
         return self._Scene
@@ -1411,7 +1411,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """This field is used to return the operation suggestion for the maliciousness tag with the highest priority. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        r"""This field is used to return the operation suggestion for the maliciousness tag with the highest priority. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
         :rtype: str
         """
         return self._Suggestion
@@ -1422,7 +1422,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag with the highest priority in the OCR detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag with the highest priority in the OCR detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -1433,7 +1433,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubLabel(self):
-        """This field is used to return the detection result for a subtag under the current tag (Label), such as *Porn-SexBehavior*.
+        r"""This field is used to return the detection result for a subtag under the current tag (Label), such as *Porn-SexBehavior*.
         :rtype: str
         """
         return self._SubLabel
@@ -1444,7 +1444,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.
+        r"""This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.
         :rtype: int
         """
         return self._Score
@@ -1455,7 +1455,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Details(self):
-        """This field is used to return the details of the OCR recognition result, such as text content, tag, and recognition frame position.
+        r"""This field is used to return the details of the OCR recognition result, such as text content, tag, and recognition frame position.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of OcrTextDetail
         """
@@ -1467,7 +1467,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Text(self):
-        """This field is used to return the text information recognized by OCR.
+        r"""This field is used to return the text information recognized by OCR.
         :rtype: str
         """
         return self._Text
@@ -1501,7 +1501,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class OcrTextDetail(AbstractModel):
-    """This field is used to return the OCR text result details. More text in the image may increase the time it takes the API to return the result.
+    r"""This field is used to return the OCR text result details. More text in the image may increase the time it takes the API to return the result.
 
     """
 
@@ -1538,7 +1538,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Text(self):
-        """This field is used to return the text content recognized by OCR.<br>Note: OCR can recognize text of **up to 5,000 bytes**.
+        r"""This field is used to return the text content recognized by OCR.<br>Note: OCR can recognize text of **up to 5,000 bytes**.
         :rtype: str
         """
         return self._Text
@@ -1549,7 +1549,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Label(self):
-        """This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
+        r"""This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
         :rtype: str
         """
         return self._Label
@@ -1560,7 +1560,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibId(self):
-        """This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.
+        r"""This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.
         :rtype: str
         """
         return self._LibId
@@ -1571,7 +1571,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def LibName(self):
-        """This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.
+        r"""This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.
         :rtype: str
         """
         return self._LibName
@@ -1582,7 +1582,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Keywords(self):
-        """This parameter is used to return the hit keyword under the current tag (label).
+        r"""This parameter is used to return the hit keyword under the current tag (label).
         :rtype: list of str
         """
         return self._Keywords
@@ -1593,7 +1593,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Score(self):
-        """This parameter is used to return the model hit score of the current maliciousness tag. Value range: **0–100**, where a higher value indicates that the current scenario agrees more with the scenario represented by the maliciousness tag.
+        r"""This parameter is used to return the model hit score of the current maliciousness tag. Value range: **0–100**, where a higher value indicates that the current scenario agrees more with the scenario represented by the maliciousness tag.
         :rtype: int
         """
         return self._Score
@@ -1604,7 +1604,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Location(self):
-        """This parameter is used to return the position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the OCR detection frame in the image for quick location of the recognized text.
+        r"""This parameter is used to return the position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the OCR detection frame in the image for quick location of the recognized text.
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
         return self._Location
@@ -1615,7 +1615,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def Rate(self):
-        """This parameter is used to return the confidence of the text OCR result. Valid values: **0** (**the lowest confidence**)–**100** (**the highest confidence**), where a higher value indicates that it is more likely that the image contains the recognized text; for example, *Hello 99* indicates that it is highly likely that the text in the OCR recognition frame is "Hello".
+        r"""This parameter is used to return the confidence of the text OCR result. Valid values: **0** (**the lowest confidence**)–**100** (**the highest confidence**), where a higher value indicates that it is more likely that the image contains the recognized text; for example, *Hello 99* indicates that it is highly likely that the text in the OCR recognition frame is "Hello".
         :rtype: int
         """
         return self._Rate
@@ -1626,7 +1626,7 @@ class OcrTextDetail(AbstractModel):
 
     @property
     def SubLabel(self):
-        """This field is used to return the maliciousness subtag that corresponds to the detection result.
+        r"""This field is used to return the maliciousness subtag that corresponds to the detection result.
         :rtype: str
         """
         return self._SubLabel
@@ -1659,7 +1659,7 @@ class OcrTextDetail(AbstractModel):
 
 
 class RecognitionResult(AbstractModel):
-    """Label of the identification moderation result
+    r"""Label of the identification moderation result
 
     """
 
@@ -1677,7 +1677,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Label(self):
-        """Value: `Scene`
+        r"""Value: `Scene`
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1689,7 +1689,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
-        """Hit tags under the `Label`
+        r"""Hit tags under the `Label`
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of RecognitionTag
         """
@@ -1719,7 +1719,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class RecognitionTag(AbstractModel):
-    """Recognition tag information
+    r"""Recognition tag information
 
     """
 
@@ -1741,7 +1741,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
-        """Tag name
+        r"""Tag name
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1753,7 +1753,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Score(self):
-        """Confidence score. Value: 1 to 100. 
+        r"""Confidence score. Value: 1 to 100. 
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1765,7 +1765,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Location(self):
-        """Location information. It returns 0 if there is not location information.
+        r"""Location information. It returns 0 if there is not location information.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ims.v20201229.models.Location`
         """
@@ -1793,7 +1793,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class User(AbstractModel):
-    """Indicates the information of the business user's account
+    r"""Indicates the information of the business user's account
 
     """
 
@@ -1835,7 +1835,7 @@ Note: you need to use a consistent mobile number format, such as area code forma
 
     @property
     def UserId(self):
-        """This field indicates the business user ID. After it is specified, the system can optimize the moderation result according to the violation history to facilitate determination when a suspicious violation risk exists.
+        r"""This field indicates the business user ID. After it is specified, the system can optimize the moderation result according to the violation history to facilitate determination when a suspicious violation risk exists.
         :rtype: str
         """
         return self._UserId
@@ -1846,7 +1846,7 @@ Note: you need to use a consistent mobile number format, such as area code forma
 
     @property
     def Nickname(self):
-        """This field indicates the nickname of the business user's account.
+        r"""This field indicates the nickname of the business user's account.
         :rtype: str
         """
         return self._Nickname
@@ -1857,7 +1857,7 @@ Note: you need to use a consistent mobile number format, such as area code forma
 
     @property
     def AccountType(self):
-        """This field indicates the account type of the business user ID.<br>
+        r"""This field indicates the account type of the business user ID.<br>
 This field can be used together with the ID parameter (UserId) to uniquely identify the account.
         :rtype: str
         """
@@ -1869,7 +1869,7 @@ This field can be used together with the ID parameter (UserId) to uniquely ident
 
     @property
     def Gender(self):
-        """This field indicates the gender of the business user's account.<br>
+        r"""This field indicates the gender of the business user's account.<br>
 Valid values: **0** (default value): unknown; **1** (male); **2** (female).
         :rtype: int
         """
@@ -1881,7 +1881,7 @@ Valid values: **0** (default value): unknown; **1** (male); **2** (female).
 
     @property
     def Age(self):
-        """This field indicates the age of the business user's account.<br>
+        r"""This field indicates the age of the business user's account.<br>
 Valid values: integers between **0** (default value, which indicates unknown) and **custom age limit**.
         :rtype: int
         """
@@ -1893,7 +1893,7 @@ Valid values: integers between **0** (default value, which indicates unknown) an
 
     @property
     def Level(self):
-        """This field indicates the level of the business user's account.<br>
+        r"""This field indicates the level of the business user's account.<br>
 Valid values: **0** (default value): unknown; **1**: low level; **2**: medium level; **3**: high level. Currently, **the level is not customizable**.
         :rtype: int
         """
@@ -1905,7 +1905,7 @@ Valid values: **0** (default value): unknown; **1**: low level; **2**: medium le
 
     @property
     def Phone(self):
-        """This field indicates the mobile number of the business user's account. It supports recording mobile numbers across the world.<br>
+        r"""This field indicates the mobile number of the business user's account. It supports recording mobile numbers across the world.<br>
 Note: you need to use a consistent mobile number format, such as area code format (086/+86).
         :rtype: str
         """
@@ -1917,7 +1917,7 @@ Note: you need to use a consistent mobile number format, such as area code forma
 
     @property
     def Desc(self):
-        """This field indicates the profile of the business user. It can contain **up to 5,000 letters and special symbols**.
+        r"""This field indicates the profile of the business user. It can contain **up to 5,000 letters and special symbols**.
         :rtype: str
         """
         return self._Desc
@@ -1928,7 +1928,7 @@ Note: you need to use a consistent mobile number format, such as area code forma
 
     @property
     def HeadUrl(self):
-        """This field indicates the access URL of the business user's profile photo in PNG, JPG, JPEG, BMP, GIF, or WEBP format.<br>Note: the profile photo **cannot exceed 5 MB in size**. **A resolution of 256x256 or higher** is recommended. The image download time should be limited to 3 seconds; otherwise, a download timeout will be returned.
+        r"""This field indicates the access URL of the business user's profile photo in PNG, JPG, JPEG, BMP, GIF, or WEBP format.<br>Note: the profile photo **cannot exceed 5 MB in size**. **A resolution of 256x256 or higher** is recommended. The image download time should be limited to 3 seconds; otherwise, a download timeout will be returned.
         :rtype: str
         """
         return self._HeadUrl

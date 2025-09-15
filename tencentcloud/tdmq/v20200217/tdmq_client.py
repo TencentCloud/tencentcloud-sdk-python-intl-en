@@ -27,7 +27,7 @@ class TdmqClient(AbstractClient):
 
 
     def AcknowledgeMessage(self, request):
-        """This API is used to acknowledge the message in the specified topic by the provided `MessageID`.
+        r"""This API is used to acknowledge the message in the specified topic by the provided `MessageID`.
 
         :param request: Request instance for AcknowledgeMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.AcknowledgeMessageRequest`
@@ -50,7 +50,7 @@ class TdmqClient(AbstractClient):
 
 
     def ClearCmqQueue(self, request):
-        """This API is used to clear the messages in the CMQ message queue.
+        r"""This API is used to clear the messages in the CMQ message queue.
 
         :param request: Request instance for ClearCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ClearCmqQueueRequest`
@@ -73,7 +73,7 @@ class TdmqClient(AbstractClient):
 
 
     def ClearCmqSubscriptionFilterTags(self, request):
-        """This API is used to clear the message tags of a subscriber.
+        r"""This API is used to clear the message tags of a subscriber.
 
         :param request: Request instance for ClearCmqSubscriptionFilterTags.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ClearCmqSubscriptionFilterTagsRequest`
@@ -96,7 +96,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """This API is used to create a cluster.
+        r"""This API is used to create a cluster.
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterRequest`
@@ -119,7 +119,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqQueue(self, request):
-        """This API is used to create a CMQ queue.
+        r"""This API is used to create a CMQ queue.
 
         :param request: Request instance for CreateCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqQueueRequest`
@@ -142,7 +142,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqSubscribe(self, request):
-        """This API is used to create a CMQ subscription.
+        r"""This API is used to create a CMQ subscription.
 
         :param request: Request instance for CreateCmqSubscribe.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqSubscribeRequest`
@@ -165,7 +165,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateCmqTopic(self, request):
-        """This API is used to create a CMQ topic.
+        r"""This API is used to create a CMQ topic.
 
         :param request: Request instance for CreateCmqTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateCmqTopicRequest`
@@ -188,7 +188,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """This API is used to create a TDMQ namespace.
+        r"""This API is used to create a TDMQ namespace.
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRequest`
@@ -211,7 +211,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateEnvironmentRole(self, request):
-        """This API is used to create an environment role.
+        r"""This API is used to create an environment role.
 
         :param request: Request instance for CreateEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRoleRequest`
@@ -234,7 +234,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQUser(self, request):
-        """This API is used to create a TDMQ for RabbitMQ user.
+        r"""This API is used to create a TDMQ for RabbitMQ user.
 
         :param request: Request instance for CreateRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQUserRequest`
@@ -257,7 +257,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQVipInstance(self, request):
-        """This API is used to create a TDMQ for RabbitMQ exclusive instance.
+        r"""This API is used to create a TDMQ for RabbitMQ exclusive instance.
 
         :param request: Request instance for CreateRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVipInstanceRequest`
@@ -280,7 +280,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRabbitMQVirtualHost(self, request):
-        """This API is used to create a TDMQ for RabbitMQ vhost.
+        r"""This API is used to create a TDMQ for RabbitMQ vhost.
 
         :param request: Request instance for CreateRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVirtualHostRequest`
@@ -303,7 +303,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQCluster(self, request):
-        """This API is used to create a RocketMQ cluster.
+        r"""This API is used to create a RocketMQ cluster.
 
         :param request: Request instance for CreateRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterRequest`
@@ -326,7 +326,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQGroup(self, request):
-        """This API is used to create a RocketMQ consumer group.
+        r"""This API is used to create a RocketMQ consumer group.
 
         :param request: Request instance for CreateRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupRequest`
@@ -349,7 +349,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQNamespace(self, request):
-        """This API is used to create a RocketMQ namespace.
+        r"""This API is used to create a RocketMQ namespace.
 
         :param request: Request instance for CreateRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceRequest`
@@ -372,7 +372,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRocketMQTopic(self, request):
-        """This API is used to create a RocketMQ topic.
+        r"""This API is used to create a RocketMQ topic.
 
         :param request: Request instance for CreateRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicRequest`
@@ -395,7 +395,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateRole(self, request):
-        """This API is used to create a role.
+        r"""This API is used to create a role.
 
         :param request: Request instance for CreateRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRoleRequest`
@@ -418,7 +418,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateSubscription(self, request):
-        """This API is used to create a subscription to a topic.
+        r"""This API is used to create a subscription to a topic.
 
         :param request: Request instance for CreateSubscription.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateSubscriptionRequest`
@@ -441,7 +441,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """This API is used to add a message topic in the specified partition and type.
+        r"""This API is used to add a message topic in the specified partition and type.
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateTopicRequest`
@@ -464,7 +464,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """This API is used to delete a cluster.
+        r"""This API is used to delete a cluster.
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteClusterRequest`
@@ -487,7 +487,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqQueue(self, request):
-        """This API is used to delete a CMQ queue.
+        r"""This API is used to delete a CMQ queue.
 
         :param request: Request instance for DeleteCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqQueueRequest`
@@ -510,7 +510,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqSubscribe(self, request):
-        """This API is used to delete a CMQ subscription.
+        r"""This API is used to delete a CMQ subscription.
 
         :param request: Request instance for DeleteCmqSubscribe.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqSubscribeRequest`
@@ -533,7 +533,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteCmqTopic(self, request):
-        """This API is used to delete a CMQ topic.
+        r"""This API is used to delete a CMQ topic.
 
         :param request: Request instance for DeleteCmqTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteCmqTopicRequest`
@@ -556,7 +556,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteEnvironmentRoles(self, request):
-        """This API is used to delete an environment role.
+        r"""This API is used to delete an environment role.
 
         :param request: Request instance for DeleteEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentRolesRequest`
@@ -579,7 +579,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteEnvironments(self, request):
-        """This API is used to batch delete namespaces under a tenant.
+        r"""This API is used to batch delete namespaces under a tenant.
 
         :param request: Request instance for DeleteEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentsRequest`
@@ -602,7 +602,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQUser(self, request):
-        """This API is used to delete a TDMQ for RabbitMQ user.
+        r"""This API is used to delete a TDMQ for RabbitMQ user.
 
         :param request: Request instance for DeleteRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQUserRequest`
@@ -625,7 +625,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQVipInstance(self, request):
-        """This API is used to delete a TDMQ for RabbitMQ exclusive instance.
+        r"""This API is used to delete a TDMQ for RabbitMQ exclusive instance.
 
         :param request: Request instance for DeleteRabbitMQVipInstance.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceRequest`
@@ -648,7 +648,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRabbitMQVirtualHost(self, request):
-        """This API is used to delete a TDMQ for RabbitMQ vhost.
+        r"""This API is used to delete a TDMQ for RabbitMQ vhost.
 
         :param request: Request instance for DeleteRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVirtualHostRequest`
@@ -671,7 +671,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQCluster(self, request):
-        """This API is used to delete a RocketMQ cluster.
+        r"""This API is used to delete a RocketMQ cluster.
 
         :param request: Request instance for DeleteRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterRequest`
@@ -694,7 +694,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQGroup(self, request):
-        """This API is used to delete a RocketMQ consumer group.
+        r"""This API is used to delete a RocketMQ consumer group.
 
         :param request: Request instance for DeleteRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupRequest`
@@ -717,7 +717,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQNamespace(self, request):
-        """This API is used to delete a RocketMQ namespace.
+        r"""This API is used to delete a RocketMQ namespace.
 
         :param request: Request instance for DeleteRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceRequest`
@@ -740,7 +740,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRocketMQTopic(self, request):
-        """This API is used to delete a RocketMQ topic.
+        r"""This API is used to delete a RocketMQ topic.
 
         :param request: Request instance for DeleteRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicRequest`
@@ -763,7 +763,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteRoles(self, request):
-        """This API is used to delete one or multiple roles.
+        r"""This API is used to delete one or multiple roles.
 
         :param request: Request instance for DeleteRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRolesRequest`
@@ -786,7 +786,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteSubscriptions(self, request):
-        """This API is used to delete a subscription.
+        r"""This API is used to delete a subscription.
 
         :param request: Request instance for DeleteSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteSubscriptionsRequest`
@@ -809,7 +809,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteTopics(self, request):
-        """This API is used to batch delete topics.
+        r"""This API is used to batch delete topics.
 
         :param request: Request instance for DeleteTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteTopicsRequest`
@@ -832,7 +832,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeBindClusters(self, request):
-        """This API is used to get the list of dedicated clusters bound to a user.
+        r"""This API is used to get the list of dedicated clusters bound to a user.
 
         :param request: Request instance for DescribeBindClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindClustersRequest`
@@ -855,7 +855,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeBindVpcs(self, request):
-        """This API is used to get the tenant-VPC binding relationship.
+        r"""This API is used to get the tenant-VPC binding relationship.
 
         :param request: Request instance for DescribeBindVpcs.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindVpcsRequest`
@@ -878,7 +878,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """This API is used to get the details of a cluster.
+        r"""This API is used to get the details of a cluster.
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClusterDetailRequest`
@@ -901,7 +901,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """This API is used to get the list of clusters.
+        r"""This API is used to get the list of clusters.
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClustersRequest`
@@ -924,7 +924,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqDeadLetterSourceQueues(self, request):
-        """This API is used to enumerate the source queues of a CMQ dead letter queue.
+        r"""This API is used to enumerate the source queues of a CMQ dead letter queue.
 
         :param request: Request instance for DescribeCmqDeadLetterSourceQueues.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqDeadLetterSourceQueuesRequest`
@@ -947,7 +947,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqQueueDetail(self, request):
-        """This API is used to query the details of a CMQ queue.
+        r"""This API is used to query the details of a CMQ queue.
 
         :param request: Request instance for DescribeCmqQueueDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqQueueDetailRequest`
@@ -970,7 +970,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqQueues(self, request):
-        """This API is used to query all CMQ queues.
+        r"""This API is used to query all CMQ queues.
 
         :param request: Request instance for DescribeCmqQueues.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqQueuesRequest`
@@ -993,7 +993,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqSubscriptionDetail(self, request):
-        """This API is used to query the CMQ subscription details.
+        r"""This API is used to query the CMQ subscription details.
 
         :param request: Request instance for DescribeCmqSubscriptionDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqSubscriptionDetailRequest`
@@ -1016,7 +1016,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqTopicDetail(self, request):
-        """This API is used to query the details of a CMQ topic.
+        r"""This API is used to query the details of a CMQ topic.
 
         :param request: Request instance for DescribeCmqTopicDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqTopicDetailRequest`
@@ -1039,7 +1039,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeCmqTopics(self, request):
-        """This API is used to enumerate all CMQ topics.
+        r"""This API is used to enumerate all CMQ topics.
 
         :param request: Request instance for DescribeCmqTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeCmqTopicsRequest`
@@ -1062,7 +1062,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentAttributes(self, request):
-        """This API is used to get the attributes of the specified namespace.
+        r"""This API is used to get the attributes of the specified namespace.
 
         :param request: Request instance for DescribeEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentAttributesRequest`
@@ -1085,7 +1085,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentRoles(self, request):
-        """This API is used to get the list of namespace roles.
+        r"""This API is used to get the list of namespace roles.
 
         :param request: Request instance for DescribeEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentRolesRequest`
@@ -1108,7 +1108,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """This API is used to get the list of namespaces under a tenant.
+        r"""This API is used to get the list of namespaces under a tenant.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentsRequest`
@@ -1131,7 +1131,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePublisherSummary(self, request):
-        """This API is used to obtain message production overview information.
+        r"""This API is used to obtain message production overview information.
 
         :param request: Request instance for DescribePublisherSummary.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryRequest`
@@ -1154,7 +1154,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePublishers(self, request):
-        """This API is used to obtain the list of producer information.
+        r"""This API is used to obtain the list of producer information.
 
         :param request: Request instance for DescribePublishers.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersRequest`
@@ -1177,7 +1177,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstanceDetail(self, request):
-        """This API is used to obtain the information of a TDMQ for Pulsar pro cluster instance.
+        r"""This API is used to obtain the information of a TDMQ for Pulsar pro cluster instance.
 
         :param request: Request instance for DescribePulsarProInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailRequest`
@@ -1200,7 +1200,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstances(self, request):
-        """This API is used to query the list of the purchased TDMQ for Pulsar pro instances.
+        r"""This API is used to query the list of the purchased TDMQ for Pulsar pro instances.
 
         :param request: Request instance for DescribePulsarProInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesRequest`
@@ -1223,7 +1223,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQNodeList(self, request):
-        """This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.
+        r"""This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.
 
         :param request: Request instance for DescribeRabbitMQNodeList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQNodeListRequest`
@@ -1246,7 +1246,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQUser(self, request):
-        """This API is used to query the list of TDMQ for RabbitMQ users.
+        r"""This API is used to query the list of TDMQ for RabbitMQ users.
 
         :param request: Request instance for DescribeRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQUserRequest`
@@ -1269,7 +1269,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVipInstances(self, request):
-        """This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.
+        r"""This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.
 
         :param request: Request instance for DescribeRabbitMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstancesRequest`
@@ -1292,7 +1292,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVirtualHost(self, request):
-        """This API is used to query the list of TDMQ for RabbitMQ vhosts.
+        r"""This API is used to query the list of TDMQ for RabbitMQ vhosts.
 
         :param request: Request instance for DescribeRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostRequest`
@@ -1315,7 +1315,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRabbitMQVirtualHostList(self, request):
-        """This API is used to query the list of TDMQ for RabbitMQ exclusive vhosts.
+        r"""This API is used to query the list of TDMQ for RabbitMQ exclusive vhosts.
 
         :param request: Request instance for DescribeRabbitMQVirtualHostList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostListRequest`
@@ -1338,7 +1338,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQCluster(self, request):
-        """This API is used to get the information of a specific RocketMQ cluster.
+        r"""This API is used to get the information of a specific RocketMQ cluster.
 
         :param request: Request instance for DescribeRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClusterRequest`
@@ -1361,7 +1361,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQClusters(self, request):
-        """This API is used to get the list of RocketMQ clusters.
+        r"""This API is used to get the list of RocketMQ clusters.
 
         :param request: Request instance for DescribeRocketMQClusters.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClustersRequest`
@@ -1384,7 +1384,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQGroups(self, request):
-        """This API is used to get the list of RocketMQ consumer groups.
+        r"""This API is used to get the list of RocketMQ consumer groups.
 
         :param request: Request instance for DescribeRocketMQGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsRequest`
@@ -1407,7 +1407,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMsg(self, request):
-        """This API is used to query the TDMQ for RocketMQ message details.
+        r"""This API is used to query the TDMQ for RocketMQ message details.
 
         :param request: Request instance for DescribeRocketMQMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgRequest`
@@ -1430,7 +1430,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQNamespaces(self, request):
-        """This API is used to get the list of RocketMQ namespaces.
+        r"""This API is used to get the list of RocketMQ namespaces.
 
         :param request: Request instance for DescribeRocketMQNamespaces.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesRequest`
@@ -1453,7 +1453,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQTopics(self, request):
-        """This API is used to get the list of RocketMQ topics.
+        r"""This API is used to get the list of RocketMQ topics.
 
         :param request: Request instance for DescribeRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsRequest`
@@ -1476,7 +1476,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstanceDetail(self, request):
-        """This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.
+        r"""This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.
 
         :param request: Request instance for DescribeRocketMQVipInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailRequest`
@@ -1499,7 +1499,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQVipInstances(self, request):
-        """This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
+        r"""This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
 
         :param request: Request instance for DescribeRocketMQVipInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstancesRequest`
@@ -1522,7 +1522,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRoles(self, request):
-        """This API is used to get the list of roles.
+        r"""This API is used to get the list of roles.
 
         :param request: Request instance for DescribeRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRolesRequest`
@@ -1545,7 +1545,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeSubscriptions(self, request):
-        """This API is used to query the list of subscribers under the specified environment and topic.
+        r"""This API is used to query the list of subscribers under the specified environment and topic.
 
         :param request: Request instance for DescribeSubscriptions.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeSubscriptionsRequest`
@@ -1568,7 +1568,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        """This API is used to get the list of topics under an environment.
+        r"""This API is used to get the list of topics under an environment.
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicsRequest`
@@ -1591,7 +1591,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCluster(self, request):
-        """This API is used to update a cluster.
+        r"""This API is used to update a cluster.
 
         :param request: Request instance for ModifyCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyClusterRequest`
@@ -1614,7 +1614,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqQueueAttribute(self, request):
-        """This API is used to modify the attributes of a CMQ queue.
+        r"""This API is used to modify the attributes of a CMQ queue.
 
         :param request: Request instance for ModifyCmqQueueAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqQueueAttributeRequest`
@@ -1637,7 +1637,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqSubscriptionAttribute(self, request):
-        """This API is used to modify the attributes of a CMQ subscription.
+        r"""This API is used to modify the attributes of a CMQ subscription.
 
         :param request: Request instance for ModifyCmqSubscriptionAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqSubscriptionAttributeRequest`
@@ -1660,7 +1660,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCmqTopicAttribute(self, request):
-        """This API is used to modify the attributes of a CMQ topic.
+        r"""This API is used to modify the attributes of a CMQ topic.
 
         :param request: Request instance for ModifyCmqTopicAttribute.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyCmqTopicAttributeRequest`
@@ -1683,7 +1683,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyEnvironmentAttributes(self, request):
-        """This API is used to modify the attributes of the specified namespace.
+        r"""This API is used to modify the attributes of the specified namespace.
 
         :param request: Request instance for ModifyEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentAttributesRequest`
@@ -1706,7 +1706,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyEnvironmentRole(self, request):
-        """This API is used to modify an environment role.
+        r"""This API is used to modify an environment role.
 
         :param request: Request instance for ModifyEnvironmentRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentRoleRequest`
@@ -1729,7 +1729,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQUser(self, request):
-        """This API is used to modify a TDMQ for RabbitMQ user.
+        r"""This API is used to modify a TDMQ for RabbitMQ user.
 
         :param request: Request instance for ModifyRabbitMQUser.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQUserRequest`
@@ -1752,7 +1752,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRabbitMQVirtualHost(self, request):
-        """This API is used to modify a TDMQ for RabbitMQ vhost.
+        r"""This API is used to modify a TDMQ for RabbitMQ vhost.
 
         :param request: Request instance for ModifyRabbitMQVirtualHost.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVirtualHostRequest`
@@ -1775,7 +1775,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQCluster(self, request):
-        """This API is used to update a RocketMQ cluster.
+        r"""This API is used to update a RocketMQ cluster.
 
         :param request: Request instance for ModifyRocketMQCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQClusterRequest`
@@ -1798,7 +1798,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQGroup(self, request):
-        """This API is used to update a RocketMQ consumer group.
+        r"""This API is used to update a RocketMQ consumer group.
 
         :param request: Request instance for ModifyRocketMQGroup.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupRequest`
@@ -1821,7 +1821,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQInstanceSpec(self, request):
-        """This API is used to modify the configurations of a TDMQ for RocketMQ exclusive instance, including the upgrade of the instance specification, node count, and storage, and the downgrade of the instance specification. After you call this API to place the order and make payments, the configuration modification will be in progress. You can query whether the modification has been completed through the `DescribeRocketMQVipInstances` API`.
+        r"""This API is used to modify the configurations of a TDMQ for RocketMQ exclusive instance, including the upgrade of the instance specification, node count, and storage, and the downgrade of the instance specification. After you call this API to place the order and make payments, the configuration modification will be in progress. You can query whether the modification has been completed through the `DescribeRocketMQVipInstances` API`.
 
         :param request: Request instance for ModifyRocketMQInstanceSpec.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecRequest`
@@ -1844,7 +1844,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQNamespace(self, request):
-        """This API is used to update a RocketMQ namespace.
+        r"""This API is used to update a RocketMQ namespace.
 
         :param request: Request instance for ModifyRocketMQNamespace.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceRequest`
@@ -1867,7 +1867,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRocketMQTopic(self, request):
-        """This API is used to update a RocketMQ topic.
+        r"""This API is used to update a RocketMQ topic.
 
         :param request: Request instance for ModifyRocketMQTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicRequest`
@@ -1890,7 +1890,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyRole(self, request):
-        """This API is used to modify a role.
+        r"""This API is used to modify a role.
 
         :param request: Request instance for ModifyRole.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRoleRequest`
@@ -1913,7 +1913,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        """This API is used to modify the topic remarks and number of partitions.
+        r"""This API is used to modify the topic remarks and number of partitions.
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyTopicRequest`
@@ -1936,7 +1936,7 @@ class TdmqClient(AbstractClient):
 
 
     def PublishCmqMsg(self, request):
-        """This API is used to send a CMQ topic message.
+        r"""This API is used to send a CMQ topic message.
 
         :param request: Request instance for PublishCmqMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.PublishCmqMsgRequest`
@@ -1959,7 +1959,7 @@ class TdmqClient(AbstractClient):
 
 
     def ReceiveMessage(self, request):
-        """Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.
+        r"""Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.
 
         Instructions on how to use `BatchReceivePolicy`:
 
@@ -2001,7 +2001,7 @@ class TdmqClient(AbstractClient):
 
 
     def ResetMsgSubOffsetByTimestamp(self, request):
-        """This API is used to rewind a message by timestamp, accurate down to the millisecond.
+        r"""This API is used to rewind a message by timestamp, accurate down to the millisecond.
 
         :param request: Request instance for ResetMsgSubOffsetByTimestamp.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetMsgSubOffsetByTimestampRequest`
@@ -2024,7 +2024,7 @@ class TdmqClient(AbstractClient):
 
 
     def ResetRocketMQConsumerOffSet(self, request):
-        """This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.
+        r"""This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.
 
         :param request: Request instance for ResetRocketMQConsumerOffSet.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetRocketMQConsumerOffSetRequest`
@@ -2047,7 +2047,7 @@ class TdmqClient(AbstractClient):
 
 
     def RewindCmqQueue(self, request):
-        """This API is used to rewind a CMQ queue.
+        r"""This API is used to rewind a CMQ queue.
 
         :param request: Request instance for RewindCmqQueue.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.RewindCmqQueueRequest`
@@ -2070,7 +2070,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendBatchMessages(self, request):
-        """This API is used to batch send messages.
+        r"""This API is used to batch send messages.
 
         Note: the batch message sending API in TDMQ is to package messages into a batch on the service side of TDMQ-HTTP and then send the batch as a TCP request inside the service. Therefore, when using this API, you should still follow the logic of sending a single message: each message is an independent HTTP request, and multiple HTTP requests are aggregated into one batch inside the TDMQ-HTTP service and then sent to the server; that is, batch sending messages is the same as sending a single message in terms of usage, and batch aggregation is completed inside the TDMQ-HTTP service.
 
@@ -2095,7 +2095,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendCmqMsg(self, request):
-        """This API is used to send a CMQ message.
+        r"""This API is used to send a CMQ message.
 
         :param request: Request instance for SendCmqMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendCmqMsgRequest`
@@ -2118,7 +2118,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendMessages(self, request):
-        """This API is used to send a single message.
+        r"""This API is used to send a single message.
         The message cannot be sent to a persistent topic.
 
         :param request: Request instance for SendMessages.
@@ -2142,7 +2142,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendMsg(self, request):
-        """This API is used to test message sending. It cannot be used in the production environment.
+        r"""This API is used to test message sending. It cannot be used in the production environment.
 
         :param request: Request instance for SendMsg.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMsgRequest`
@@ -2165,7 +2165,7 @@ class TdmqClient(AbstractClient):
 
 
     def SendRocketMQMessage(self, request):
-        """This document is used to send a TDMQ for RocketMQ message.
+        r"""This document is used to send a TDMQ for RocketMQ message.
 
         :param request: Request instance for SendRocketMQMessage.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageRequest`
@@ -2188,7 +2188,7 @@ class TdmqClient(AbstractClient):
 
 
     def UnbindCmqDeadLetter(self, request):
-        """This API is used to unbind a CMQ dead letter queue.
+        r"""This API is used to unbind a CMQ dead letter queue.
 
         :param request: Request instance for UnbindCmqDeadLetter.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.UnbindCmqDeadLetterRequest`

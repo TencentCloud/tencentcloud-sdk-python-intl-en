@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AdminContact(AbstractModel):
-    """The admin contact.
+    r"""The admin contact.
 
     """
 
@@ -72,7 +72,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: str
         """
         return self._FirstName
@@ -83,7 +83,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: str
         """
         return self._LastName
@@ -94,7 +94,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        """The country or region name, such as `CN`.
+        r"""The country or region name, such as `CN`.
         :rtype: str
         """
         return self._Country
@@ -105,7 +105,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
-        """The province or state name.
+        r"""The province or state name.
         :rtype: str
         """
         return self._Province
@@ -116,7 +116,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
-        """The city name.
+        r"""The city name.
         :rtype: str
         """
         return self._City
@@ -127,7 +127,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLine(self):
-        """The address line 1.
+        r"""The address line 1.
         :rtype: str
         """
         return self._AddressLine
@@ -138,7 +138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZipCode(self):
-        """The zip code.
+        r"""The zip code.
         :rtype: str
         """
         return self._ZipCode
@@ -149,7 +149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """The email address.
+        r"""The email address.
         :rtype: str
         """
         return self._Email
@@ -160,7 +160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """The mobile number, such as `+86.13600000000`.
+        r"""The mobile number, such as `+86.13600000000`.
         :rtype: str
         """
         return self._Phone
@@ -171,7 +171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompanyName(self):
-        """The company or organization name.
+        r"""The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -183,7 +183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobTitle(self):
-        """The job title.
+        r"""The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -195,7 +195,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLineTwo(self):
-        """The address line 2.
+        r"""The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -207,7 +207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fax(self):
-        """The fax number.
+        r"""The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -243,7 +243,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BatchDomainBuyDetails(AbstractModel):
-    """The log details of bulk domain purchase
+    r"""The log details of bulk domain purchase
 
     """
 
@@ -287,7 +287,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """The details ID.
+        r"""The details ID.
         :rtype: int
         """
         return self._Id
@@ -298,7 +298,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
+        r"""The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
         :rtype: str
         """
         return self._Action
@@ -309,7 +309,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """The domains.
+        r"""The domains.
         :rtype: str
         """
         return self._Domain
@@ -320,7 +320,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The status. Valid values: `SUCCESS`, `FAILURE`
+        r"""The status. Valid values: `SUCCESS`, `FAILURE`
         :rtype: str
         """
         return self._Status
@@ -331,7 +331,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """The reason for failure.
+        r"""The reason for failure.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -343,7 +343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedOn(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreatedOn
@@ -354,7 +354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """The update time.
+        r"""The update time.
         :rtype: str
         """
         return self._UpdatedOn
@@ -365,7 +365,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferDnsResult(self):
-        """Null: The DNS service is not transferred. `false`: The DNS service failed to be transferred. `true`: The DNS service is transferred successfully.
+        r"""Null: The DNS service is not transferred. `false`: The DNS service failed to be transferred. `true`: The DNS service is transferred successfully.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -377,7 +377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReasonZh(self):
-        """The reason for failure, expressed in Chinese.
+        r"""The reason for failure, expressed in Chinese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -389,7 +389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayStatus(self):
-        """The payment status.
+        r"""The payment status.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -422,7 +422,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BatchDomainBuyLog(AbstractModel):
-    """The log of bulk domain purchase
+    r"""The log of bulk domain purchase
 
     """
 
@@ -447,7 +447,7 @@ class BatchDomainBuyLog(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -458,7 +458,7 @@ class BatchDomainBuyLog(AbstractModel):
 
     @property
     def Action(self):
-        """The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
+        r"""The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
         :rtype: str
         """
         return self._Action
@@ -469,7 +469,7 @@ class BatchDomainBuyLog(AbstractModel):
 
     @property
     def Number(self):
-        """The quantity.
+        r"""The quantity.
         :rtype: int
         """
         return self._Number
@@ -480,7 +480,7 @@ class BatchDomainBuyLog(AbstractModel):
 
     @property
     def Status(self):
-        """The execution status. Valid values: `doing`, `done`
+        r"""The execution status. Valid values: `doing`, `done`
         :rtype: str
         """
         return self._Status
@@ -491,7 +491,7 @@ class BatchDomainBuyLog(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """The submission time.
+        r"""The submission time.
         :rtype: str
         """
         return self._CreatedOn
@@ -518,7 +518,7 @@ class BatchDomainBuyLog(AbstractModel):
 
 
 class BatchModifyIntlDomainDNSRequest(AbstractModel):
-    """BatchModifyIntlDomainDNS request structure.
+    r"""BatchModifyIntlDomainDNS request structure.
 
     """
 
@@ -537,7 +537,7 @@ class BatchModifyIntlDomainDNSRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The target domains.
+        r"""The target domains.
         :rtype: list of str
         """
         return self._Domains
@@ -548,7 +548,7 @@ class BatchModifyIntlDomainDNSRequest(AbstractModel):
 
     @property
     def Dns(self):
-        """The domain DNS array.
+        r"""The domain DNS array.
         :rtype: list of str
         """
         return self._Dns
@@ -559,7 +559,7 @@ class BatchModifyIntlDomainDNSRequest(AbstractModel):
 
     @property
     def BatchAction(self):
-        """Valid values: `batch_modify_domain_dns1`, `batch_modify_domain_dns2`, `batch_modify_domain_dns3`
+        r"""Valid values: `batch_modify_domain_dns1`, `batch_modify_domain_dns2`, `batch_modify_domain_dns3`
         :rtype: str
         """
         return self._BatchAction
@@ -584,7 +584,7 @@ class BatchModifyIntlDomainDNSRequest(AbstractModel):
 
 
 class BatchModifyIntlDomainDNSResponse(AbstractModel):
-    """BatchModifyIntlDomainDNS response structure.
+    r"""BatchModifyIntlDomainDNS response structure.
 
     """
 
@@ -600,7 +600,7 @@ class BatchModifyIntlDomainDNSResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -611,7 +611,7 @@ class BatchModifyIntlDomainDNSResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -627,7 +627,7 @@ class BatchModifyIntlDomainDNSResponse(AbstractModel):
 
 
 class BatchModifyIntlDomainInfoRequest(AbstractModel):
-    """BatchModifyIntlDomainInfo request structure.
+    r"""BatchModifyIntlDomainInfo request structure.
 
     """
 
@@ -646,7 +646,7 @@ class BatchModifyIntlDomainInfoRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domains whose information is to be modified.
+        r"""The domains whose information is to be modified.
         :rtype: list of str
         """
         return self._Domains
@@ -657,7 +657,7 @@ class BatchModifyIntlDomainInfoRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -668,7 +668,7 @@ class BatchModifyIntlDomainInfoRequest(AbstractModel):
 
     @property
     def LockTransfer(self):
-        """Whether to enable the 60-day inter-registrar transfer lock.
+        r"""Whether to enable the 60-day inter-registrar transfer lock.
         :rtype: bool
         """
         return self._LockTransfer
@@ -693,7 +693,7 @@ class BatchModifyIntlDomainInfoRequest(AbstractModel):
 
 
 class BatchModifyIntlDomainInfoResponse(AbstractModel):
-    """BatchModifyIntlDomainInfo response structure.
+    r"""BatchModifyIntlDomainInfo response structure.
 
     """
 
@@ -709,7 +709,7 @@ class BatchModifyIntlDomainInfoResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -720,7 +720,7 @@ class BatchModifyIntlDomainInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -736,7 +736,7 @@ class BatchModifyIntlDomainInfoResponse(AbstractModel):
 
 
 class BillingContact(AbstractModel):
-    """The contact person for bills.
+    r"""The contact person for bills.
 
     """
 
@@ -789,7 +789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: str
         """
         return self._FirstName
@@ -800,7 +800,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: str
         """
         return self._LastName
@@ -811,7 +811,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        """The country or region name, such as `CN`.
+        r"""The country or region name, such as `CN`.
         :rtype: str
         """
         return self._Country
@@ -822,7 +822,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
-        """The province or state name.
+        r"""The province or state name.
         :rtype: str
         """
         return self._Province
@@ -833,7 +833,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
-        """The city name.
+        r"""The city name.
         :rtype: str
         """
         return self._City
@@ -844,7 +844,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLine(self):
-        """The address line 1.
+        r"""The address line 1.
         :rtype: str
         """
         return self._AddressLine
@@ -855,7 +855,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZipCode(self):
-        """The zip code.
+        r"""The zip code.
         :rtype: str
         """
         return self._ZipCode
@@ -866,7 +866,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """The email address.
+        r"""The email address.
         :rtype: str
         """
         return self._Email
@@ -877,7 +877,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """The mobile number, such as `+86.13600000000`.
+        r"""The mobile number, such as `+86.13600000000`.
         :rtype: str
         """
         return self._Phone
@@ -888,7 +888,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompanyName(self):
-        """The company or organization name.
+        r"""The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -900,7 +900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobTitle(self):
-        """The job title.
+        r"""The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -912,7 +912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLineTwo(self):
-        """The address line 2.
+        r"""The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -924,7 +924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fax(self):
-        """The fax number.
+        r"""The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -960,7 +960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CheckIntlDomainNewRequest(AbstractModel):
-    """CheckIntlDomainNew request structure.
+    r"""CheckIntlDomainNew request structure.
 
     """
 
@@ -976,7 +976,7 @@ class CheckIntlDomainNewRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """The name of the domain to be checked.
+        r"""The name of the domain to be checked.
         :rtype: str
         """
         return self._Domain
@@ -987,7 +987,7 @@ class CheckIntlDomainNewRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Period, in years. If this parameter is left empty, premium domains cannot be queried.
+        r"""Period, in years. If this parameter is left empty, premium domains cannot be queried.
         :rtype: str
         """
         return self._Period
@@ -1011,7 +1011,7 @@ class CheckIntlDomainNewRequest(AbstractModel):
 
 
 class CheckIntlDomainNewResponse(AbstractModel):
-    """CheckIntlDomainNew response structure.
+    r"""CheckIntlDomainNew response structure.
 
     """
 
@@ -1070,7 +1070,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainName(self):
-        """The name of the domain checked.
+        r"""The name of the domain checked.
         :rtype: str
         """
         return self._DomainName
@@ -1081,7 +1081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Available(self):
-        """Whether the domain is available for registration.
+        r"""Whether the domain is available for registration.
         :rtype: bool
         """
         return self._Available
@@ -1092,7 +1092,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """The reason why the domain cannot be registered.
+        r"""The reason why the domain cannot be registered.
         :rtype: str
         """
         return self._Reason
@@ -1103,7 +1103,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Premium(self):
-        """Whether the domain is a premium one.
+        r"""Whether the domain is a premium one.
         :rtype: bool
         """
         return self._Premium
@@ -1114,7 +1114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Price(self):
-        """The domain price.
+        r"""The domain price.
         :rtype: float
         """
         return self._Price
@@ -1125,7 +1125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlackWord(self):
-        """Whether the domain name involves restricted words.
+        r"""Whether the domain name involves restricted words.
         :rtype: bool
         """
         return self._BlackWord
@@ -1136,7 +1136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Describe(self):
-        """The premium domain description.
+        r"""The premium domain description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1148,7 +1148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeRenew(self):
-        """The price for renewing the premium domain.
+        r"""The price for renewing the premium domain.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1160,7 +1160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealPrice(self):
-        """The real price of the domain. For a premium domain, its price varies depending on the period. For a non-premium domain, the price is the 1-year price.
+        r"""The real price of the domain. For a premium domain, its price varies depending on the period. For a non-premium domain, the price is the 1-year price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1172,7 +1172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeTransfer(self):
-        """The price for transferring a premium domain in.
+        r"""The price for transferring a premium domain in.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1184,7 +1184,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeRestore(self):
-        """The price for redeeming a premium domain.
+        r"""The price for redeeming a premium domain.
         :rtype: float
         """
         return self._FeeRestore
@@ -1195,7 +1195,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
-        """The period (in years) of the domain.
+        r"""The period (in years) of the domain.
         :rtype: int
         """
         return self._Period
@@ -1206,7 +1206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReasonZh(self):
-        """The reason why the domain cannot be registered, expressed in Chinese.
+        r"""The reason why the domain cannot be registered, expressed in Chinese.
         :rtype: str
         """
         return self._ReasonZh
@@ -1217,7 +1217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResCode(self):
-        """The internal error code.
+        r"""The internal error code.
         :rtype: str
         """
         return self._ResCode
@@ -1228,7 +1228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1257,7 +1257,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateIntlDomainBatchRequest(AbstractModel):
-    """CreateIntlDomainBatch request structure.
+    r"""CreateIntlDomainBatch request structure.
 
     """
 
@@ -1291,7 +1291,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -1302,7 +1302,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def Period(self):
-        """The purchase period (years) of the domain. Value range: [1-10]
+        r"""The purchase period (years) of the domain. Value range: [1-10]
         :rtype: int
         """
         return self._Period
@@ -1313,7 +1313,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domains (maximum 4,000) to purchase.
+        r"""The domains (maximum 4,000) to purchase.
         :rtype: list of str
         """
         return self._Domains
@@ -1324,7 +1324,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).
+        r"""The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).
         :rtype: int
         """
         return self._PayMode
@@ -1335,7 +1335,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Whether to enable auto-renewal.
+        r"""Whether to enable auto-renewal.
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -1346,7 +1346,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def TransferProhibition(self):
-        """Whether to enable the transfer prohibition lock.
+        r"""Whether to enable the transfer prohibition lock.
         :rtype: bool
         """
         return self._TransferProhibition
@@ -1357,7 +1357,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def UpdateProhibition(self):
-        """Whether to enable the update prohibition lock.
+        r"""Whether to enable the update prohibition lock.
         :rtype: bool
         """
         return self._UpdateProhibition
@@ -1368,7 +1368,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     @property
     def CustomDns(self):
-        """The custom DNS servers
+        r"""The custom DNS servers
         :rtype: list of str
         """
         return self._CustomDns
@@ -1398,7 +1398,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
 
 class CreateIntlDomainBatchResponse(AbstractModel):
-    """CreateIntlDomainBatch response structure.
+    r"""CreateIntlDomainBatch response structure.
 
     """
 
@@ -1415,7 +1415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogId(self):
-        """The bulk purchase log ID.
+        r"""The bulk purchase log ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1427,7 +1427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1443,7 +1443,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateIntlPhoneEmailRequest(AbstractModel):
-    """CreateIntlPhoneEmail request structure.
+    r"""CreateIntlPhoneEmail request structure.
 
     """
 
@@ -1462,7 +1462,7 @@ class CreateIntlPhoneEmailRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `1` (mobile number), `2` (email address).
+        r"""The type. Valid values: `1` (mobile number), `2` (email address).
         :rtype: int
         """
         return self._Type
@@ -1473,7 +1473,7 @@ class CreateIntlPhoneEmailRequest(AbstractModel):
 
     @property
     def Code(self):
-        """The mobile number or email address.
+        r"""The mobile number or email address.
         :rtype: str
         """
         return self._Code
@@ -1484,7 +1484,7 @@ class CreateIntlPhoneEmailRequest(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """The verification code.
+        r"""The verification code.
         :rtype: str
         """
         return self._VerifyCode
@@ -1509,7 +1509,7 @@ class CreateIntlPhoneEmailRequest(AbstractModel):
 
 
 class CreateIntlPhoneEmailResponse(AbstractModel):
-    """CreateIntlPhoneEmail response structure.
+    r"""CreateIntlPhoneEmail response structure.
 
     """
 
@@ -1522,7 +1522,7 @@ class CreateIntlPhoneEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1537,7 +1537,7 @@ class CreateIntlPhoneEmailResponse(AbstractModel):
 
 
 class CreateIntlTemplateRequest(AbstractModel):
-    """CreateIntlTemplate request structure.
+    r"""CreateIntlTemplate request structure.
 
     """
 
@@ -1562,7 +1562,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     @property
     def RegistrantContact(self):
-        """The registrant contact.
+        r"""The registrant contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
         """
         return self._RegistrantContact
@@ -1573,7 +1573,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     @property
     def AdminContact(self):
-        """The admin contact.
+        r"""The admin contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.AdminContact`
         """
         return self._AdminContact
@@ -1584,7 +1584,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     @property
     def TechnicalContact(self):
-        """The technical contact.
+        r"""The technical contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
         """
         return self._TechnicalContact
@@ -1595,7 +1595,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     @property
     def BillingContact(self):
-        """The contact person for bills.
+        r"""The contact person for bills.
         :rtype: :class:`tencentcloud.domain.v20180808.models.BillingContact`
         """
         return self._BillingContact
@@ -1606,7 +1606,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        """The profile type. Valid values: `I` (individual, default), `E` (organization).
+        r"""The profile type. Valid values: `I` (individual, default), `E` (organization).
         :rtype: str
         """
         return self._TemplateType
@@ -1641,7 +1641,7 @@ class CreateIntlTemplateRequest(AbstractModel):
 
 
 class CreateIntlTemplateResponse(AbstractModel):
-    """CreateIntlTemplate response structure.
+    r"""CreateIntlTemplate response structure.
 
     """
 
@@ -1657,7 +1657,7 @@ class CreateIntlTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -1668,7 +1668,7 @@ class CreateIntlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1684,7 +1684,7 @@ class CreateIntlTemplateResponse(AbstractModel):
 
 
 class DeleteIntlPhoneEmailRequest(AbstractModel):
-    """DeleteIntlPhoneEmail request structure.
+    r"""DeleteIntlPhoneEmail request structure.
 
     """
 
@@ -1700,7 +1700,7 @@ class DeleteIntlPhoneEmailRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `1` (mobile number), `2` (email address).
+        r"""The type. Valid values: `1` (mobile number), `2` (email address).
         :rtype: int
         """
         return self._Type
@@ -1711,7 +1711,7 @@ class DeleteIntlPhoneEmailRequest(AbstractModel):
 
     @property
     def Code(self):
-        """The mobile number or email address.
+        r"""The mobile number or email address.
         :rtype: str
         """
         return self._Code
@@ -1735,7 +1735,7 @@ class DeleteIntlPhoneEmailRequest(AbstractModel):
 
 
 class DeleteIntlPhoneEmailResponse(AbstractModel):
-    """DeleteIntlPhoneEmail response structure.
+    r"""DeleteIntlPhoneEmail response structure.
 
     """
 
@@ -1748,7 +1748,7 @@ class DeleteIntlPhoneEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1763,7 +1763,7 @@ class DeleteIntlPhoneEmailResponse(AbstractModel):
 
 
 class DeleteIntlTemplateRequest(AbstractModel):
-    """DeleteIntlTemplate request structure.
+    r"""DeleteIntlTemplate request structure.
 
     """
 
@@ -1776,7 +1776,7 @@ class DeleteIntlTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The unique ID of the target registrant profile.
+        r"""The unique ID of the target registrant profile.
         :rtype: str
         """
         return self._TemplateId
@@ -1799,7 +1799,7 @@ class DeleteIntlTemplateRequest(AbstractModel):
 
 
 class DeleteIntlTemplateResponse(AbstractModel):
-    """DeleteIntlTemplate response structure.
+    r"""DeleteIntlTemplate response structure.
 
     """
 
@@ -1812,7 +1812,7 @@ class DeleteIntlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1827,7 +1827,7 @@ class DeleteIntlTemplateResponse(AbstractModel):
 
 
 class DescribeIntlBatchDetailStatusRequest(AbstractModel):
-    """DescribeIntlBatchDetailStatus request structure.
+    r"""DescribeIntlBatchDetailStatus request structure.
 
     """
 
@@ -1840,7 +1840,7 @@ class DescribeIntlBatchDetailStatusRequest(AbstractModel):
 
     @property
     def LogIds(self):
-        """The IDs of the logs to be queried.
+        r"""The IDs of the logs to be queried.
         :rtype: list of int
         """
         return self._LogIds
@@ -1863,7 +1863,7 @@ class DescribeIntlBatchDetailStatusRequest(AbstractModel):
 
 
 class DescribeIntlBatchDetailStatusResponse(AbstractModel):
-    """DescribeIntlBatchDetailStatus response structure.
+    r"""DescribeIntlBatchDetailStatus response structure.
 
     """
 
@@ -1879,7 +1879,7 @@ class DescribeIntlBatchDetailStatusResponse(AbstractModel):
 
     @property
     def Details(self):
-        """The details.
+        r"""The details.
         :rtype: list of IntlBatchDetails
         """
         return self._Details
@@ -1890,7 +1890,7 @@ class DescribeIntlBatchDetailStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1911,7 +1911,7 @@ class DescribeIntlBatchDetailStatusResponse(AbstractModel):
 
 
 class DescribeIntlBatchOperationLogsRequest(AbstractModel):
-    """DescribeIntlBatchOperationLogs request structure.
+    r"""DescribeIntlBatchOperationLogs request structure.
 
     """
 
@@ -1927,7 +1927,7 @@ class DescribeIntlBatchOperationLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset. Default value: 0
+        r"""The offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -1938,7 +1938,7 @@ class DescribeIntlBatchOperationLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: 20. Maximum value: 100.
+        r"""The number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -1962,7 +1962,7 @@ class DescribeIntlBatchOperationLogsRequest(AbstractModel):
 
 
 class DescribeIntlBatchOperationLogsResponse(AbstractModel):
-    """DescribeIntlBatchOperationLogs response structure.
+    r"""DescribeIntlBatchOperationLogs response structure.
 
     """
 
@@ -1982,7 +1982,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """The total count.
+        r"""The total count.
         :rtype: int
         """
         return self._TotalCount
@@ -1993,7 +1993,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainBatchLogSet(self):
-        """The log list.
+        r"""The log list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BatchDomainBuyLog
         """
@@ -2005,7 +2005,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2027,7 +2027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
-    """DescribeIntlDomainBatchDetails request structure.
+    r"""DescribeIntlDomainBatchDetails request structure.
 
     """
 
@@ -2052,7 +2052,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -2063,7 +2063,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset. Default value: 0
+        r"""The offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -2074,7 +2074,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: 20. Maximum value: 100.
+        r"""The number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -2085,7 +2085,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     @property
     def OrderByKey(self):
-        """The sort key. Valid values: `Domain`, `UpdateOn`, `Status`
+        r"""The sort key. Valid values: `Domain`, `UpdateOn`, `Status`
         :rtype: str
         """
         return self._OrderByKey
@@ -2096,7 +2096,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Valid values: `0` (ascending), `1` (descending).
+        r"""Valid values: `0` (ascending), `1` (descending).
         :rtype: int
         """
         return self._OrderBy
@@ -2123,7 +2123,7 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
 
 class DescribeIntlDomainBatchDetailsResponse(AbstractModel):
-    """DescribeIntlDomainBatchDetails response structure.
+    r"""DescribeIntlDomainBatchDetails response structure.
 
     """
 
@@ -2143,7 +2143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """The total count.
+        r"""The total count.
         :rtype: int
         """
         return self._TotalCount
@@ -2154,7 +2154,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainBatchDetailSet(self):
-        """The list of log details.
+        r"""The list of log details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BatchDomainBuyDetails
         """
@@ -2166,7 +2166,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2188,7 +2188,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeIntlDomainListRequest(AbstractModel):
-    """DescribeIntlDomainList request structure.
+    r"""DescribeIntlDomainList request structure.
 
     """
 
@@ -2227,7 +2227,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The page number in pagination cases.
+        r"""The page number in pagination cases.
         :rtype: int
         """
         return self._Offset
@@ -2238,7 +2238,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of records on each page in pagination cases.
+        r"""The number of records on each page in pagination cases.
         :rtype: int
         """
         return self._Limit
@@ -2249,7 +2249,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        """The domain keyword for fuzzy search.
+        r"""The domain keyword for fuzzy search.
         :rtype: str
         """
         return self._KeyWord
@@ -2260,7 +2260,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def OrderByRegTime(self):
-        """The registration time sort order. Valid values: `1` (descending), `2` (ascending).
+        r"""The registration time sort order. Valid values: `1` (descending), `2` (ascending).
         :rtype: int
         """
         return self._OrderByRegTime
@@ -2271,7 +2271,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def OrderByExpireTime(self):
-        """The expiration time sort order. Valid values: `1` (descending), `2` (ascending).
+        r"""The expiration time sort order. Valid values: `1` (descending), `2` (ascending).
         :rtype: int
         """
         return self._OrderByExpireTime
@@ -2282,7 +2282,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """The domain status.
+        r"""The domain status.
 `all`: All domains.
 `UrgentNeedRenew`: The domains that are in urgent need of renewal.
 `RedemptionPending`: The domains that are in urgent need of redemption.
@@ -2298,7 +2298,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def DnsStatus(self):
-        """The DNS type. Valid values: `1` (DNSPod), `2` (others).
+        r"""The DNS type. Valid values: `1` (DNSPod), `2` (others).
         :rtype: int
         """
         return self._DnsStatus
@@ -2309,7 +2309,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     @property
     def OrderByDomainName(self):
-        """The domain sort order. Valid values: `1` (descending), `2` (ascending).
+        r"""The domain sort order. Valid values: `1` (descending), `2` (ascending).
         :rtype: int
         """
         return self._OrderByDomainName
@@ -2339,7 +2339,7 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
 
 class DescribeIntlDomainListResponse(AbstractModel):
-    """DescribeIntlDomainList response structure.
+    r"""DescribeIntlDomainList response structure.
 
     """
 
@@ -2358,7 +2358,7 @@ class DescribeIntlDomainListResponse(AbstractModel):
 
     @property
     def DomainSet(self):
-        """The domain information set.
+        r"""The domain information set.
         :rtype: list of IntlDomainInfo
         """
         return self._DomainSet
@@ -2369,7 +2369,7 @@ class DescribeIntlDomainListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total number of domains.
+        r"""The total number of domains.
         :rtype: int
         """
         return self._TotalCount
@@ -2380,7 +2380,7 @@ class DescribeIntlDomainListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2402,7 +2402,7 @@ class DescribeIntlDomainListResponse(AbstractModel):
 
 
 class DescribeIntlDomainPriceNewListRequest(AbstractModel):
-    """DescribeIntlDomainPriceNewList request structure.
+    r"""DescribeIntlDomainPriceNewList request structure.
 
     """
 
@@ -2421,7 +2421,7 @@ class DescribeIntlDomainPriceNewListRequest(AbstractModel):
 
     @property
     def TldList(self):
-        """The list of domain suffixes for which you want to query prices. This parameter defaults to all suffixes.
+        r"""The list of domain suffixes for which you want to query prices. This parameter defaults to all suffixes.
         :rtype: list of str
         """
         return self._TldList
@@ -2432,7 +2432,7 @@ class DescribeIntlDomainPriceNewListRequest(AbstractModel):
 
     @property
     def Year(self):
-        """The purchase year of the domains for which you want to query prices. This parameter defaults to all years.
+        r"""The purchase year of the domains for which you want to query prices. This parameter defaults to all years.
         :rtype: list of int
         """
         return self._Year
@@ -2443,7 +2443,7 @@ class DescribeIntlDomainPriceNewListRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
+        r"""The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
         :rtype: list of str
         """
         return self._Operation
@@ -2468,7 +2468,7 @@ class DescribeIntlDomainPriceNewListRequest(AbstractModel):
 
 
 class DescribeIntlDomainPriceNewListResponse(AbstractModel):
-    """DescribeIntlDomainPriceNewList response structure.
+    r"""DescribeIntlDomainPriceNewList response structure.
 
     """
 
@@ -2484,7 +2484,7 @@ class DescribeIntlDomainPriceNewListResponse(AbstractModel):
 
     @property
     def PriceList(self):
-        """The price list of domains.
+        r"""The price list of domains.
         :rtype: list of PriceInfoNew
         """
         return self._PriceList
@@ -2495,7 +2495,7 @@ class DescribeIntlDomainPriceNewListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2516,7 +2516,7 @@ class DescribeIntlDomainPriceNewListResponse(AbstractModel):
 
 
 class DescribeIntlDomainRequest(AbstractModel):
-    """DescribeIntlDomain request structure.
+    r"""DescribeIntlDomain request structure.
 
     """
 
@@ -2529,7 +2529,7 @@ class DescribeIntlDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID.
+        r"""The domain ID.
         :rtype: str
         """
         return self._DomainId
@@ -2552,7 +2552,7 @@ class DescribeIntlDomainRequest(AbstractModel):
 
 
 class DescribeIntlDomainResponse(AbstractModel):
-    """DescribeIntlDomain response structure.
+    r"""DescribeIntlDomain response structure.
 
     """
 
@@ -2568,7 +2568,7 @@ class DescribeIntlDomainResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
-        """The domain information.
+        r"""The domain information.
         :rtype: :class:`tencentcloud.domain.v20180808.models.IntlDomainInfo`
         """
         return self._DomainInfo
@@ -2579,7 +2579,7 @@ class DescribeIntlDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2597,7 +2597,7 @@ class DescribeIntlDomainResponse(AbstractModel):
 
 
 class DescribeIntlPhoneEmailListRequest(AbstractModel):
-    """DescribeIntlPhoneEmailList request structure.
+    r"""DescribeIntlPhoneEmailList request structure.
 
     """
 
@@ -2616,7 +2616,7 @@ class DescribeIntlPhoneEmailListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `1` (mobile number), `2` (email address).
+        r"""The type. Valid values: `1` (mobile number), `2` (email address).
         :rtype: int
         """
         return self._Type
@@ -2627,7 +2627,7 @@ class DescribeIntlPhoneEmailListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of records on each page in pagination cases.
+        r"""The number of records on each page in pagination cases.
         :rtype: int
         """
         return self._Limit
@@ -2638,7 +2638,7 @@ class DescribeIntlPhoneEmailListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The page number in pagination cases.
+        r"""The page number in pagination cases.
         :rtype: int
         """
         return self._Offset
@@ -2663,7 +2663,7 @@ class DescribeIntlPhoneEmailListRequest(AbstractModel):
 
 
 class DescribeIntlPhoneEmailListResponse(AbstractModel):
-    """DescribeIntlPhoneEmailList response structure.
+    r"""DescribeIntlPhoneEmailList response structure.
 
     """
 
@@ -2682,7 +2682,7 @@ class DescribeIntlPhoneEmailListResponse(AbstractModel):
 
     @property
     def PhoneEmailList(self):
-        """The list of verified mobile numbers and email addresses.
+        r"""The list of verified mobile numbers and email addresses.
         :rtype: list of IntlPhoneEmailLists
         """
         return self._PhoneEmailList
@@ -2693,7 +2693,7 @@ class DescribeIntlPhoneEmailListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total count.
+        r"""The total count.
         :rtype: int
         """
         return self._TotalCount
@@ -2704,7 +2704,7 @@ class DescribeIntlPhoneEmailListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2726,7 +2726,7 @@ class DescribeIntlPhoneEmailListResponse(AbstractModel):
 
 
 class DescribeIntlTemplateListRequest(AbstractModel):
-    """DescribeIntlTemplateList request structure.
+    r"""DescribeIntlTemplateList request structure.
 
     """
 
@@ -2748,7 +2748,7 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset.
+        r"""The offset.
         :rtype: int
         """
         return self._Offset
@@ -2759,7 +2759,7 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of entries.
+        r"""The maximum number of entries.
         :rtype: int
         """
         return self._Limit
@@ -2770,7 +2770,7 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """The domain registrant keyword for exact match.
+        r"""The domain registrant keyword for exact match.
         :rtype: str
         """
         return self._Keyword
@@ -2781,7 +2781,7 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `all` (all types), `I` (individual), `E` (organization).
+        r"""The type. Valid values: `all` (all types), `I` (individual), `E` (organization).
         :rtype: str
         """
         return self._Type
@@ -2807,7 +2807,7 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
 
 class DescribeIntlTemplateListResponse(AbstractModel):
-    """DescribeIntlTemplateList response structure.
+    r"""DescribeIntlTemplateList response structure.
 
     """
 
@@ -2826,7 +2826,7 @@ class DescribeIntlTemplateListResponse(AbstractModel):
 
     @property
     def TemplateSet(self):
-        """The registrant profile list information.
+        r"""The registrant profile list information.
         :rtype: list of IntlTemplate
         """
         return self._TemplateSet
@@ -2837,7 +2837,7 @@ class DescribeIntlTemplateListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total count.
+        r"""The total count.
         :rtype: int
         """
         return self._TotalCount
@@ -2848,7 +2848,7 @@ class DescribeIntlTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2870,7 +2870,7 @@ class DescribeIntlTemplateListResponse(AbstractModel):
 
 
 class DescribeIntlTemplateRequest(AbstractModel):
-    """DescribeIntlTemplate request structure.
+    r"""DescribeIntlTemplate request structure.
 
     """
 
@@ -2883,7 +2883,7 @@ class DescribeIntlTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The unique ID of a registrant profile.
+        r"""The unique ID of a registrant profile.
         :rtype: str
         """
         return self._TemplateId
@@ -2906,7 +2906,7 @@ class DescribeIntlTemplateRequest(AbstractModel):
 
 
 class DescribeIntlTemplateResponse(AbstractModel):
-    """DescribeIntlTemplate response structure.
+    r"""DescribeIntlTemplate response structure.
 
     """
 
@@ -2922,7 +2922,7 @@ class DescribeIntlTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """The details of the registrant profile.
+        r"""The details of the registrant profile.
         :rtype: :class:`tencentcloud.domain.v20180808.models.IntlTemplateInfo`
         """
         return self._Template
@@ -2933,7 +2933,7 @@ class DescribeIntlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2951,7 +2951,7 @@ class DescribeIntlTemplateResponse(AbstractModel):
 
 
 class IntlBatchDetails(AbstractModel):
-    """The details of the bulk task
+    r"""The details of the bulk task
 
     """
 
@@ -2973,7 +2973,7 @@ class IntlBatchDetails(AbstractModel):
 
     @property
     def Id(self):
-        """The ID of the bulk task.
+        r"""The ID of the bulk task.
         :rtype: int
         """
         return self._Id
@@ -2984,7 +2984,7 @@ class IntlBatchDetails(AbstractModel):
 
     @property
     def Status(self):
-        """The task status.
+        r"""The task status.
         :rtype: str
         """
         return self._Status
@@ -2995,7 +2995,7 @@ class IntlBatchDetails(AbstractModel):
 
     @property
     def Reason(self):
-        """The reason.
+        r"""The reason.
         :rtype: str
         """
         return self._Reason
@@ -3006,7 +3006,7 @@ class IntlBatchDetails(AbstractModel):
 
     @property
     def ReasonZh(self):
-        """The reason, expressed in Chinese.
+        r"""The reason, expressed in Chinese.
         :rtype: str
         """
         return self._ReasonZh
@@ -3032,7 +3032,7 @@ class IntlBatchDetails(AbstractModel):
 
 
 class IntlContactInfo(AbstractModel):
-    """The contact information.
+    r"""The contact information.
 
     """
 
@@ -3081,7 +3081,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def City(self):
-        """The city name.
+        r"""The city name.
         :rtype: str
         """
         return self._City
@@ -3092,7 +3092,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def Country(self):
-        """The country or region name.
+        r"""The country or region name.
         :rtype: str
         """
         return self._Country
@@ -3103,7 +3103,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def Email(self):
-        """The email address.
+        r"""The email address.
         :rtype: str
         """
         return self._Email
@@ -3114,7 +3114,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """The domain registrant.
+        r"""The domain registrant.
         :rtype: str
         """
         return self._OrganizationName
@@ -3125,7 +3125,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def Province(self):
-        """The province or state name.
+        r"""The province or state name.
         :rtype: str
         """
         return self._Province
@@ -3136,7 +3136,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def RegistrantName(self):
-        """The name of the registrant.
+        r"""The name of the registrant.
         :rtype: str
         """
         return self._RegistrantName
@@ -3147,7 +3147,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def RegistrantType(self):
-        """The registrant type. Valid values: `I` (individual), `E` (organization).
+        r"""The registrant type. Valid values: `I` (individual), `E` (organization).
         :rtype: str
         """
         return self._RegistrantType
@@ -3158,7 +3158,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def Street(self):
-        """The detailed address.
+        r"""The detailed address.
         :rtype: str
         """
         return self._Street
@@ -3169,7 +3169,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def Telephone(self):
-        """The mobile number.
+        r"""The mobile number.
         :rtype: str
         """
         return self._Telephone
@@ -3180,7 +3180,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def ZipCode(self):
-        """The zip code.
+        r"""The zip code.
         :rtype: str
         """
         return self._ZipCode
@@ -3191,7 +3191,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: str
         """
         return self._FirstName
@@ -3202,7 +3202,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: str
         """
         return self._LastName
@@ -3213,7 +3213,7 @@ class IntlContactInfo(AbstractModel):
 
     @property
     def CompanyName(self):
-        """The company name.
+        r"""The company name.
         :rtype: str
         """
         return self._CompanyName
@@ -3248,7 +3248,7 @@ class IntlContactInfo(AbstractModel):
 
 
 class IntlDomainInfo(AbstractModel):
-    """The domain information set.
+    r"""The domain information set.
 
     """
 
@@ -3329,7 +3329,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """The auto-renewal flag. Valid values: `0` (disabled by default), `1` (enabled), `2` (disabled).
+        r"""The auto-renewal flag. Valid values: `0` (disabled by default), `1` (enabled), `2` (disabled).
         :rtype: int
         """
         return self._AutoRenew
@@ -3340,7 +3340,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def CreationDate(self):
-        """The registration time.
+        r"""The registration time.
         :rtype: str
         """
         return self._CreationDate
@@ -3351,7 +3351,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID.
+        r"""The domain ID.
         :rtype: str
         """
         return self._DomainId
@@ -3362,7 +3362,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def DnsStatus(self):
-        """The DNS status. Valid values: `1` (DNSPod), `2` (others), `3` (unknown).
+        r"""The DNS status. Valid values: `1` (DNSPod), `2` (others), `3` (unknown).
         :rtype: int
         """
         return self._DnsStatus
@@ -3373,7 +3373,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def DomainName(self):
-        """The domains.
+        r"""The domains.
         :rtype: str
         """
         return self._DomainName
@@ -3384,7 +3384,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def DomainStatus(self):
-        """The domain status.
+        r"""The domain status.
         :rtype: list of str
         """
         return self._DomainStatus
@@ -3395,7 +3395,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def Status(self):
-        """The purchase status of the domain. Valid values:
+        r"""The purchase status of the domain. Valid values:
 `ok`: Normal.
 `RegisterPending`: Pending registration.
 `RegisterDoing`: Registration in progress.
@@ -3417,7 +3417,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """The expiration date.
+        r"""The expiration date.
         :rtype: str
         """
         return self._ExpirationDate
@@ -3428,7 +3428,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def ExpireMessage(self):
-        """The auto-renewal flag. Valid values: `1` (enabled), `2` (disabled), `3` (disabled by default).
+        r"""The auto-renewal flag. Valid values: `1` (enabled), `2` (disabled), `3` (disabled by default).
         :rtype: int
         """
         return self._ExpireMessage
@@ -3439,7 +3439,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def IsPremium(self):
-        """Whether the domain is a premium one.
+        r"""Whether the domain is a premium one.
         :rtype: bool
         """
         return self._IsPremium
@@ -3450,7 +3450,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def Dns(self):
-        """The DNS server of the domain.
+        r"""The DNS server of the domain.
         :rtype: list of str
         """
         return self._Dns
@@ -3461,7 +3461,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def ContactInfo(self):
-        """The contact information.
+        r"""The contact information.
         :rtype: :class:`tencentcloud.domain.v20180808.models.IntlContactInfo`
         """
         return self._ContactInfo
@@ -3472,7 +3472,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def CanRenewYears(self):
-        """The number of years available for renewal. The value `0` indicates that the domain has reached its maximum validity period (10 years) and cannot be renewed.
+        r"""The number of years available for renewal. The value `0` indicates that the domain has reached its maximum validity period (10 years) and cannot be renewed.
         :rtype: int
         """
         return self._CanRenewYears
@@ -3483,7 +3483,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def RegistrarType(self):
-        """The registrar type. If the value is `epp`, the registration time on the page is followed by (UTC). Otherwise, it is followed by (UTC+8).
+        r"""The registrar type. If the value is `epp`, the registration time on the page is followed by (UTC). Otherwise, it is followed by (UTC+8).
         :rtype: str
         """
         return self._RegistrarType
@@ -3494,7 +3494,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """The account to which the domain belongs.
+        r"""The account to which the domain belongs.
         :rtype: str
         """
         return self._Uin
@@ -3505,7 +3505,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -3516,7 +3516,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def SupportDnssec(self):
-        """Whether DNSSEC is supported.
+        r"""Whether DNSSEC is supported.
         :rtype: bool
         """
         return self._SupportDnssec
@@ -3527,7 +3527,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def WhoisPrivacy(self):
-        """WHOIS privacy service status. Valid values: `1` (enabled), `2` (disabled), `3` (enabling), `4` (disabling).
+        r"""WHOIS privacy service status. Valid values: `1` (enabled), `2` (disabled), `3` (enabling), `4` (disabling).
         :rtype: int
         """
         return self._WhoisPrivacy
@@ -3538,7 +3538,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def ModifyStatus(self):
-        """Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
+        r"""Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
         :rtype: str
         """
         return self._ModifyStatus
@@ -3549,7 +3549,7 @@ class IntlDomainInfo(AbstractModel):
 
     @property
     def DnsModifyStatus(self):
-        """Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
+        r"""Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
         :rtype: str
         """
         return self._DnsModifyStatus
@@ -3593,7 +3593,7 @@ class IntlDomainInfo(AbstractModel):
 
 
 class IntlPhoneEmailLists(AbstractModel):
-    """The list of verified mobile numbers and email addresses.
+    r"""The list of verified mobile numbers and email addresses.
 
     """
 
@@ -3612,7 +3612,7 @@ class IntlPhoneEmailLists(AbstractModel):
 
     @property
     def Code(self):
-        """The mobile number or email address.
+        r"""The mobile number or email address.
         :rtype: str
         """
         return self._Code
@@ -3623,7 +3623,7 @@ class IntlPhoneEmailLists(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `1` (mobile number), `2` (email address).
+        r"""The type. Valid values: `1` (mobile number), `2` (email address).
         :rtype: int
         """
         return self._Type
@@ -3634,7 +3634,7 @@ class IntlPhoneEmailLists(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """The verification time.
+        r"""The verification time.
         :rtype: str
         """
         return self._CreatedOn
@@ -3659,7 +3659,7 @@ class IntlPhoneEmailLists(AbstractModel):
 
 
 class IntlTemplate(AbstractModel):
-    """The details of the registrant profile.
+    r"""The details of the registrant profile.
 
     """
 
@@ -3693,7 +3693,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def RegistrantContact(self):
-        """The registrant contact.
+        r"""The registrant contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
         """
         return self._RegistrantContact
@@ -3704,7 +3704,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def AdminContact(self):
-        """The admin contact.
+        r"""The admin contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.AdminContact`
         """
         return self._AdminContact
@@ -3715,7 +3715,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def TechnicalContact(self):
-        """The technical contact.
+        r"""The technical contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
         """
         return self._TechnicalContact
@@ -3726,7 +3726,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def BillingContact(self):
-        """The contact person for bills.
+        r"""The contact person for bills.
         :rtype: :class:`tencentcloud.domain.v20180808.models.BillingContact`
         """
         return self._BillingContact
@@ -3737,7 +3737,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreatedOn
@@ -3748,7 +3748,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -3759,7 +3759,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def IsDefault(self):
-        """Whether the profile is the default one.
+        r"""Whether the profile is the default one.
         :rtype: int
         """
         return self._IsDefault
@@ -3770,7 +3770,7 @@ class IntlTemplate(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """The last update time.
+        r"""The last update time.
         :rtype: str
         """
         return self._UpdatedOn
@@ -3808,7 +3808,7 @@ class IntlTemplate(AbstractModel):
 
 
 class IntlTemplateInfo(AbstractModel):
-    """The registrant profile details.
+    r"""The registrant profile details.
 
     """
 
@@ -3848,7 +3848,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def RegistrantContact(self):
-        """The registrant contact.
+        r"""The registrant contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
         """
         return self._RegistrantContact
@@ -3859,7 +3859,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def AdminContact(self):
-        """The admin contact.
+        r"""The admin contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.AdminContact`
         """
         return self._AdminContact
@@ -3870,7 +3870,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def TechnicalContact(self):
-        """The technical contact.
+        r"""The technical contact.
         :rtype: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
         """
         return self._TechnicalContact
@@ -3881,7 +3881,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def BillingContact(self):
-        """The contact person for bills.
+        r"""The contact person for bills.
         :rtype: :class:`tencentcloud.domain.v20180808.models.BillingContact`
         """
         return self._BillingContact
@@ -3892,7 +3892,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreatedOn
@@ -3903,7 +3903,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -3914,7 +3914,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def TemplateType(self):
-        """The registrant type. Valid values: `I` (individual), `E` (organization).
+        r"""The registrant type. Valid values: `I` (individual), `E` (organization).
         :rtype: str
         """
         return self._TemplateType
@@ -3925,7 +3925,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """The last updated time.
+        r"""The last updated time.
         :rtype: str
         """
         return self._UpdatedOn
@@ -3936,7 +3936,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """The account ID.
+        r"""The account ID.
         :rtype: str
         """
         return self._Uin
@@ -3947,7 +3947,7 @@ class IntlTemplateInfo(AbstractModel):
 
     @property
     def IsDefault(self):
-        """Whether the profile is the default one.
+        r"""Whether the profile is the default one.
         :rtype: int
         """
         return self._IsDefault
@@ -3987,7 +3987,7 @@ class IntlTemplateInfo(AbstractModel):
 
 
 class ModifyOwnerIntlBatchRequest(AbstractModel):
-    """ModifyOwnerIntlBatch request structure.
+    r"""ModifyOwnerIntlBatch request structure.
 
     """
 
@@ -4006,7 +4006,7 @@ class ModifyOwnerIntlBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domains.
+        r"""The domains.
         :rtype: list of str
         """
         return self._Domains
@@ -4017,7 +4017,7 @@ class ModifyOwnerIntlBatchRequest(AbstractModel):
 
     @property
     def ToUin(self):
-        """The user ID.
+        r"""The user ID.
         :rtype: str
         """
         return self._ToUin
@@ -4028,7 +4028,7 @@ class ModifyOwnerIntlBatchRequest(AbstractModel):
 
     @property
     def DnsTransfer(self):
-        """Whether to transfer the DNS service.
+        r"""Whether to transfer the DNS service.
         :rtype: bool
         """
         return self._DnsTransfer
@@ -4053,7 +4053,7 @@ class ModifyOwnerIntlBatchRequest(AbstractModel):
 
 
 class ModifyOwnerIntlBatchResponse(AbstractModel):
-    """ModifyOwnerIntlBatch response structure.
+    r"""ModifyOwnerIntlBatch response structure.
 
     """
 
@@ -4069,7 +4069,7 @@ class ModifyOwnerIntlBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The ID of the bulk task.
+        r"""The ID of the bulk task.
         :rtype: int
         """
         return self._LogId
@@ -4080,7 +4080,7 @@ class ModifyOwnerIntlBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4096,7 +4096,7 @@ class ModifyOwnerIntlBatchResponse(AbstractModel):
 
 
 class PriceInfoNew(AbstractModel):
-    """The price information of the domains.
+    r"""The price information of the domains.
 
     """
 
@@ -4125,7 +4125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tld(self):
-        """The domain suffix, such as `.com`.
+        r"""The domain suffix, such as `.com`.
         :rtype: str
         """
         return self._Tld
@@ -4136,7 +4136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Year(self):
-        """The purchase years. Value range: [1-10]
+        r"""The purchase years. Value range: [1-10]
         :rtype: int
         """
         return self._Year
@@ -4147,7 +4147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Price(self):
-        """The original price of the domain.
+        r"""The original price of the domain.
         :rtype: float
         """
         return self._Price
@@ -4158,7 +4158,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealPrice(self):
-        """The current price of the domain.
+        r"""The current price of the domain.
         :rtype: float
         """
         return self._RealPrice
@@ -4169,7 +4169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
+        r"""The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
         :rtype: str
         """
         return self._Operation
@@ -4180,7 +4180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Title(self):
-        """The title.
+        r"""The title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4209,7 +4209,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RegistrantContact(AbstractModel):
-    """The registrant contact.
+    r"""The registrant contact.
 
     """
 
@@ -4262,7 +4262,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: str
         """
         return self._FirstName
@@ -4273,7 +4273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: str
         """
         return self._LastName
@@ -4284,7 +4284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        """The country or region name, such as `CN`.
+        r"""The country or region name, such as `CN`.
         :rtype: str
         """
         return self._Country
@@ -4295,7 +4295,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
-        """The province or state name.
+        r"""The province or state name.
         :rtype: str
         """
         return self._Province
@@ -4306,7 +4306,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
-        """The city name.
+        r"""The city name.
         :rtype: str
         """
         return self._City
@@ -4317,7 +4317,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLine(self):
-        """The address line 1.
+        r"""The address line 1.
         :rtype: str
         """
         return self._AddressLine
@@ -4328,7 +4328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZipCode(self):
-        """The zip code.
+        r"""The zip code.
         :rtype: str
         """
         return self._ZipCode
@@ -4339,7 +4339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """The email address.
+        r"""The email address.
         :rtype: str
         """
         return self._Email
@@ -4350,7 +4350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """The mobile number, such as `+86.1360000000`.
+        r"""The mobile number, such as `+86.1360000000`.
         :rtype: str
         """
         return self._Phone
@@ -4361,7 +4361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompanyName(self):
-        """The company or organization name.
+        r"""The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4373,7 +4373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobTitle(self):
-        """The job title.
+        r"""The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4385,7 +4385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLineTwo(self):
-        """The address line 2.
+        r"""The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4397,7 +4397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fax(self):
-        """The fax number.
+        r"""The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4433,7 +4433,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RenewIntlDomainBatchRequest(AbstractModel):
-    """RenewIntlDomainBatch request structure.
+    r"""RenewIntlDomainBatch request structure.
 
     """
 
@@ -4455,7 +4455,7 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domains to check.
+        r"""The domains to check.
         :rtype: list of str
         """
         return self._Domains
@@ -4466,7 +4466,7 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
     @property
     def Period(self):
-        """The period (1 to 10 years). If this parameter is left empty, premium domains cannot be checked.
+        r"""The period (1 to 10 years). If this parameter is left empty, premium domains cannot be checked.
         :rtype: int
         """
         return self._Period
@@ -4477,7 +4477,7 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment method. Valid value: `1` (account balance).
+        r"""Payment method. Valid value: `1` (account balance).
         :rtype: int
         """
         return self._PayMode
@@ -4488,7 +4488,7 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Whether to enable auto-renewal.
+        r"""Whether to enable auto-renewal.
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -4514,7 +4514,7 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
 
 class RenewIntlDomainBatchResponse(AbstractModel):
-    """RenewIntlDomainBatch response structure.
+    r"""RenewIntlDomainBatch response structure.
 
     """
 
@@ -4530,7 +4530,7 @@ class RenewIntlDomainBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The ID of the bulk task.
+        r"""The ID of the bulk task.
         :rtype: int
         """
         return self._LogId
@@ -4541,7 +4541,7 @@ class RenewIntlDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4557,7 +4557,7 @@ class RenewIntlDomainBatchResponse(AbstractModel):
 
 
 class SendIntlPhoneEmailCodeRequest(AbstractModel):
-    """SendIntlPhoneEmailCode request structure.
+    r"""SendIntlPhoneEmailCode request structure.
 
     """
 
@@ -4573,7 +4573,7 @@ class SendIntlPhoneEmailCodeRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The type. Valid values: `1` (mobile number), `2` (email address).
+        r"""The type. Valid values: `1` (mobile number), `2` (email address).
         :rtype: int
         """
         return self._Type
@@ -4584,7 +4584,7 @@ class SendIntlPhoneEmailCodeRequest(AbstractModel):
 
     @property
     def Code(self):
-        """The mobile number or email address.
+        r"""The mobile number or email address.
         :rtype: str
         """
         return self._Code
@@ -4608,7 +4608,7 @@ class SendIntlPhoneEmailCodeRequest(AbstractModel):
 
 
 class SendIntlPhoneEmailCodeResponse(AbstractModel):
-    """SendIntlPhoneEmailCode response structure.
+    r"""SendIntlPhoneEmailCode response structure.
 
     """
 
@@ -4621,7 +4621,7 @@ class SendIntlPhoneEmailCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4636,7 +4636,7 @@ class SendIntlPhoneEmailCodeResponse(AbstractModel):
 
 
 class SetIntlDomainAutoRenewRequest(AbstractModel):
-    """SetIntlDomainAutoRenew request structure.
+    r"""SetIntlDomainAutoRenew request structure.
 
     """
 
@@ -4652,7 +4652,7 @@ class SetIntlDomainAutoRenewRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID.
+        r"""The domain ID.
         :rtype: str
         """
         return self._DomainId
@@ -4663,7 +4663,7 @@ class SetIntlDomainAutoRenewRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """Whether to enable auto-renewal. Valid values: `1` (enable), `2` (disable).
+        r"""Whether to enable auto-renewal. Valid values: `1` (enable), `2` (disable).
         :rtype: int
         """
         return self._AutoRenew
@@ -4687,7 +4687,7 @@ class SetIntlDomainAutoRenewRequest(AbstractModel):
 
 
 class SetIntlDomainAutoRenewResponse(AbstractModel):
-    """SetIntlDomainAutoRenew response structure.
+    r"""SetIntlDomainAutoRenew response structure.
 
     """
 
@@ -4700,7 +4700,7 @@ class SetIntlDomainAutoRenewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4715,7 +4715,7 @@ class SetIntlDomainAutoRenewResponse(AbstractModel):
 
 
 class TechnicalContact(AbstractModel):
-    """The technical contact.
+    r"""The technical contact.
 
     """
 
@@ -4768,7 +4768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
-        """The first name.
+        r"""The first name.
         :rtype: str
         """
         return self._FirstName
@@ -4779,7 +4779,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
-        """The last name.
+        r"""The last name.
         :rtype: str
         """
         return self._LastName
@@ -4790,7 +4790,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        """The country or region name, such as `CN`.
+        r"""The country or region name, such as `CN`.
         :rtype: str
         """
         return self._Country
@@ -4801,7 +4801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
-        """The province or state name.
+        r"""The province or state name.
         :rtype: str
         """
         return self._Province
@@ -4812,7 +4812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
-        """The city name.
+        r"""The city name.
         :rtype: str
         """
         return self._City
@@ -4823,7 +4823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLine(self):
-        """The address line 1.
+        r"""The address line 1.
         :rtype: str
         """
         return self._AddressLine
@@ -4834,7 +4834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZipCode(self):
-        """The zip code.
+        r"""The zip code.
         :rtype: str
         """
         return self._ZipCode
@@ -4845,7 +4845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
-        """The email address.
+        r"""The email address.
         :rtype: str
         """
         return self._Email
@@ -4856,7 +4856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """The mobile number, such as `+86.13600000000`.
+        r"""The mobile number, such as `+86.13600000000`.
         :rtype: str
         """
         return self._Phone
@@ -4867,7 +4867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompanyName(self):
-        """The company or organization name.
+        r"""The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4879,7 +4879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobTitle(self):
-        """The job title.
+        r"""The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4891,7 +4891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressLineTwo(self):
-        """The address line 2.
+        r"""The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4903,7 +4903,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fax(self):
-        """The fax number.
+        r"""The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4939,7 +4939,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TransferInIntlDomainBatchRequest(AbstractModel):
-    """TransferInIntlDomainBatch request structure.
+    r"""TransferInIntlDomainBatch request structure.
 
     """
 
@@ -4973,7 +4973,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """The profile ID.
+        r"""The profile ID.
         :rtype: str
         """
         return self._TemplateId
@@ -4984,7 +4984,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def PassWords(self):
-        """The transfer passwords for the domains.
+        r"""The transfer passwords for the domains.
         :rtype: list of str
         """
         return self._PassWords
@@ -4995,7 +4995,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domains to be bulk transferred in.
+        r"""The domains to be bulk transferred in.
         :rtype: list of str
         """
         return self._Domains
@@ -5006,7 +5006,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """The payment method. Valid value: `1` (account balance).
+        r"""The payment method. Valid value: `1` (account balance).
         :rtype: int
         """
         return self._PayMode
@@ -5017,7 +5017,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Whether to enable auto-renewal.
+        r"""Whether to enable auto-renewal.
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -5028,7 +5028,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def TransferProhibition(self):
-        """Whether to enable the transfer prohibition lock.
+        r"""Whether to enable the transfer prohibition lock.
         :rtype: bool
         """
         return self._TransferProhibition
@@ -5039,7 +5039,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def UpdateProhibition(self):
-        """Whether to enable the update prohibition lock.
+        r"""Whether to enable the update prohibition lock.
         :rtype: bool
         """
         return self._UpdateProhibition
@@ -5050,7 +5050,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     @property
     def LockTransfer(self):
-        """Whether to enable the 60-day inter-registrar transfer lock.
+        r"""Whether to enable the 60-day inter-registrar transfer lock.
         :rtype: bool
         """
         return self._LockTransfer
@@ -5080,7 +5080,7 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
 
 class TransferInIntlDomainBatchResponse(AbstractModel):
-    """TransferInIntlDomainBatch response structure.
+    r"""TransferInIntlDomainBatch response structure.
 
     """
 
@@ -5097,7 +5097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogId(self):
-        """The bulk purchase log ID.
+        r"""The bulk purchase log ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5109,7 +5109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5125,7 +5125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TransferProhibitionIntlBatchRequest(AbstractModel):
-    """TransferProhibitionIntlBatch request structure.
+    r"""TransferProhibitionIntlBatch request structure.
 
     """
 
@@ -5141,7 +5141,7 @@ class TransferProhibitionIntlBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domain array.
+        r"""The domain array.
         :rtype: list of str
         """
         return self._Domains
@@ -5152,7 +5152,7 @@ class TransferProhibitionIntlBatchRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Whether to enable transfer prohibition. Valid values: `true` (enable), `false` (disable).
+        r"""Whether to enable transfer prohibition. Valid values: `true` (enable), `false` (disable).
         :rtype: bool
         """
         return self._Status
@@ -5176,7 +5176,7 @@ class TransferProhibitionIntlBatchRequest(AbstractModel):
 
 
 class TransferProhibitionIntlBatchResponse(AbstractModel):
-    """TransferProhibitionIntlBatch response structure.
+    r"""TransferProhibitionIntlBatch response structure.
 
     """
 
@@ -5192,7 +5192,7 @@ class TransferProhibitionIntlBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -5203,7 +5203,7 @@ class TransferProhibitionIntlBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5219,7 +5219,7 @@ class TransferProhibitionIntlBatchResponse(AbstractModel):
 
 
 class UpdateProhibitionIntlBatchRequest(AbstractModel):
-    """UpdateProhibitionIntlBatch request structure.
+    r"""UpdateProhibitionIntlBatch request structure.
 
     """
 
@@ -5235,7 +5235,7 @@ class UpdateProhibitionIntlBatchRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """The domain array.
+        r"""The domain array.
         :rtype: list of str
         """
         return self._Domains
@@ -5246,7 +5246,7 @@ class UpdateProhibitionIntlBatchRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Whether to enable update prohibition. Valid values: `true` (enable), `false` (disable).
+        r"""Whether to enable update prohibition. Valid values: `true` (enable), `false` (disable).
         :rtype: bool
         """
         return self._Status
@@ -5270,7 +5270,7 @@ class UpdateProhibitionIntlBatchRequest(AbstractModel):
 
 
 class UpdateProhibitionIntlBatchResponse(AbstractModel):
-    """UpdateProhibitionIntlBatch response structure.
+    r"""UpdateProhibitionIntlBatch response structure.
 
     """
 
@@ -5286,7 +5286,7 @@ class UpdateProhibitionIntlBatchResponse(AbstractModel):
 
     @property
     def LogId(self):
-        """The log ID.
+        r"""The log ID.
         :rtype: int
         """
         return self._LogId
@@ -5297,7 +5297,7 @@ class UpdateProhibitionIntlBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Cluster(AbstractModel):
-    """Instance-related information.
+    r"""Instance-related information.
 
     """
 
@@ -85,7 +85,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppID(self):
-        """User APP ID.
+        r"""User APP ID.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -98,7 +98,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterID(self):
-        """Instance ID.
+        r"""Instance ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -110,7 +110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountID(self):
-        """Account ID.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Account ID.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AccountID
@@ -121,7 +121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Customizes the instance name.
+        r"""Customizes the instance name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -133,7 +133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Region
@@ -144,7 +144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zones(self):
-        """Availability zone.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Zones
@@ -157,7 +157,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Networks(self):
         warnings.warn("parameter `Networks` is deprecated", DeprecationWarning) 
 
-        """Network information.
+        r"""Network information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Network
         """
@@ -173,7 +173,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Spec(self):
         warnings.warn("parameter `Spec` is deprecated", DeprecationWarning) 
 
-        """Instance specification.
+        r"""Instance specification.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Spec`
         """
@@ -187,7 +187,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Instance status. 0: running; 1: creating; 16: adjusting configuration; 17: isolating; 18: to be terminated; 19: recovering; 20: shutting down; 21: terminating; 22: terminated.
+        r"""Instance status. 0: running; 1: creating; 16: adjusting configuration; 17: isolating; 18: to be terminated; 19: recovering; 20: shutting down; 21: terminating; 22: terminated.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -199,7 +199,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
-        """Instance validity period.
+        r"""Instance validity period.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Period`
         """
@@ -211,7 +211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation time.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreatedAt
@@ -222,7 +222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Last modification time.
+        r"""Last modification time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -234,7 +234,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tenant(self):
-        """Internal features of the product.
+        r"""Internal features of the product.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Tenant`
         """
@@ -246,7 +246,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag.
+        r"""Tag.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -258,7 +258,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Security(self):
-        """Security group information.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Security group information.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Security
@@ -311,7 +311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Database(AbstractModel):
-    """Database-related information.
+    r"""Database-related information.
 
     """
 
@@ -350,7 +350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterID(self):
-        """Instance ID.
+        r"""Instance ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -362,7 +362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Database name.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database name.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -373,7 +373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoolDownInDays(self):
-        """Cold storage time (days).
+        r"""Cold storage time (days).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -385,7 +385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionInDays(self):
-        """Data retention time (days).
+        r"""Data retention time (days).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -397,7 +397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Remarks.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Remarks.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Remark
@@ -408,7 +408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. 0: initializing resources; 1: creating resources; 2: normal status; 3: deleting resources; 4: deleted resources; 5: disabling resources; 6: disabled resources; 7: abnormal resources, and manual operation is required.
+        r"""Status. 0: initializing resources; 1: creating resources; 2: normal status; 3: deleting resources; 4: deleted resources; 5: disabling resources; 6: disabled resources; 7: abnormal resources, and manual operation is required.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -420,7 +420,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation time.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreatedAt
@@ -431,7 +431,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Last modification time.
+        r"""Last modification time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -462,7 +462,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeClustersRequest(AbstractModel):
-    """DescribeClusters request structure.
+    r"""DescribeClusters request structure.
 
     """
 
@@ -484,7 +484,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Current page number.		
+        r"""Current page number.		
         :rtype: int
         """
         return self._PageNumber
@@ -495,7 +495,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size.
+        r"""Page size.
         :rtype: int
         """
         return self._PageSize
@@ -506,7 +506,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query parameter: Filtering and querying by instance ID (cluster_id) and instance name (name) are supported.
+        r"""Query parameter: Filtering and querying by instance ID (cluster_id) and instance name (name) are supported.
         :rtype: list of Filter
         """
         return self._Filters
@@ -517,7 +517,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Orders(self):
-        """Sorting parameter: Sorting by the creation time field (created_at) is supported. The value of Type can be set to DESC (descending order) or ASC (ascending order).
+        r"""Sorting parameter: Sorting by the creation time field (created_at) is supported. The value of Type can be set to DESC (descending order) or ASC (ascending order).
         :rtype: list of Order
         """
         return self._Orders
@@ -553,7 +553,7 @@ class DescribeClustersRequest(AbstractModel):
 
 
 class DescribeClustersResponse(AbstractModel):
-    """DescribeClusters response structure.
+    r"""DescribeClusters response structure.
 
     """
 
@@ -574,7 +574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of records under current conditions.
+        r"""Total number of records under current conditions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -586,7 +586,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Clusters(self):
-        """List of instances meeting the conditions.
+        r"""List of instances meeting the conditions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Cluster
         """
@@ -598,7 +598,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -620,7 +620,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeDatabasesRequest(AbstractModel):
-    """DescribeDatabases request structure.
+    r"""DescribeDatabases request structure.
 
     """
 
@@ -639,7 +639,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Database(self):
-        """Database parameter.
+        r"""Database parameter.
         :rtype: :class:`tencentcloud.ctsdb.v20230202.models.Database`
         """
         return self._Database
@@ -650,7 +650,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Pagination size.
+        r"""Pagination size.
         :rtype: int
         """
         return self._PageSize
@@ -661,7 +661,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Pagination page.
+        r"""Pagination page.
         :rtype: int
         """
         return self._PageNumber
@@ -688,7 +688,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
 
 class DescribeDatabasesResponse(AbstractModel):
-    """DescribeDatabases response structure.
+    r"""DescribeDatabases response structure.
 
     """
 
@@ -707,7 +707,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Databases(self):
-        """Database list.
+        r"""Database list.
         :rtype: list of Database
         """
         return self._Databases
@@ -718,7 +718,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity.
+        r"""Quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -729,7 +729,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -751,7 +751,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Query filter.
+    r"""Query filter.
 
     """
 
@@ -770,7 +770,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter parameter.
+        r"""Filter parameter.
         :rtype: str
         """
         return self._Name
@@ -781,7 +781,7 @@ class Filter(AbstractModel):
 
     @property
     def Op(self):
-        """Filter expression.
+        r"""Filter expression.
         :rtype: str
         """
         return self._Op
@@ -792,7 +792,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Value involved in filtering.
+        r"""Value involved in filtering.
         :rtype: list of str
         """
         return self._Values
@@ -817,7 +817,7 @@ class Filter(AbstractModel):
 
 
 class Network(AbstractModel):
-    """Instance network information (influxdb).
+    r"""Instance network information (influxdb).
 
     """
 
@@ -843,7 +843,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """vpc id
+        r"""vpc id
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -855,7 +855,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """vpc subnet id
+        r"""vpc subnet id
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -867,7 +867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VIP(self):
-        """VPC IP address.
+        r"""VPC IP address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -879,7 +879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        """VPC port address.
+        r"""VPC port address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -906,7 +906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Order(AbstractModel):
-    """Sorting parameter, which is used for sorting the query results.
+    r"""Sorting parameter, which is used for sorting the query results.
 
     """
 
@@ -922,7 +922,7 @@ class Order(AbstractModel):
 
     @property
     def Name(self):
-        """Sorting field.
+        r"""Sorting field.
         :rtype: str
         """
         return self._Name
@@ -933,7 +933,7 @@ class Order(AbstractModel):
 
     @property
     def Type(self):
-        """Sorting method.
+        r"""Sorting method.
         :rtype: str
         """
         return self._Type
@@ -957,7 +957,7 @@ class Order(AbstractModel):
 
 
 class Period(AbstractModel):
-    """Validity period.
+    r"""Validity period.
 
     """
 
@@ -977,7 +977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -990,7 +990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -1016,7 +1016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Spec(AbstractModel):
-    """Instance specification information (influxdb).
+    r"""Instance specification information (influxdb).
 
     """
 
@@ -1054,7 +1054,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        """1: yearly/monthly subscription; 2: bill by hour.
+        r"""1: yearly/monthly subscription; 2: bill by hour.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1066,7 +1066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestUnit(self):
-        """Request unit. 0 indicates following the resource configuration.
+        r"""Request unit. 0 indicates following the resource configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1078,7 +1078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuLimit(self):
-        """Maximum number of CPU cores.
+        r"""Maximum number of CPU cores.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1090,7 +1090,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemoryLimit(self):
-        """Maximum memory size (Gi).
+        r"""Maximum memory size (Gi).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1102,7 +1102,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskLimit(self):
-        """Maximum number of disks (Gi).
+        r"""Maximum number of disks (Gi).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1114,7 +1114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Shards(self):
-        """Number of business shards.
+        r"""Number of business shards.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1126,7 +1126,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Replicas(self):
-        """Number of business nodes.
+        r"""Number of business nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1156,7 +1156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Tag(AbstractModel):
-    """Tag.
+    r"""Tag.
 
     """
 
@@ -1174,7 +1174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Key.
+        r"""Key.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1186,7 +1186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Value.
+        r"""Value.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1211,7 +1211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Tenant(AbstractModel):
-    """Internal features of the product.
+    r"""Internal features of the product.
 
     """
 
@@ -1224,7 +1224,7 @@ class Tenant(AbstractModel):
 
     @property
     def IsPasswordEncrypted(self):
-        """Whether the password is encrypted.
+        r"""Whether the password is encrypted.
         :rtype: bool
         """
         return self._IsPasswordEncrypted

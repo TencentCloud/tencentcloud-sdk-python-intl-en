@@ -27,7 +27,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def AllocateCreditPool(self, request):
-        """This API is used to allocate credit pools to second-level resellers by distributors.
+        r"""This API is used to allocate credit pools to second-level resellers by distributors.
         Callable roles: Distributor
 
         :param request: Request instance for AllocateCreditPool.
@@ -51,7 +51,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def AllocateCustomerCredit(self, request):
-        """This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
+        r"""This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
         1. The credit is valid permanently and will not be zeroed regularly.
         2. The customer's service will be suspended when its available credit is set to 0, so caution should be exercised with this operation.
         3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.
@@ -80,7 +80,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ApproveClientApply(self, request):
-        """Description: This API is used by resellers to review applications to become sub-customers. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
+        r"""Description: This API is used by resellers to review applications to become sub-customers. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
 
         Callable roles: Reseller, Distributer, Second-level reseller
 
@@ -105,7 +105,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ApproveSubAgentApply(self, request):
-        """This API is used to approve applications for second-level resellers.
+        r"""This API is used to approve applications for second-level resellers.
         Invocation Role: Distributor.
 
         :param request: Request instance for ApproveSubAgentApply.
@@ -129,7 +129,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
+        r"""This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
         1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.
         2. Customers need to add personal information when logging in for the first time.
         3. This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.
@@ -157,7 +157,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def CreateAndSendClientInvitationMail(self, request):
-        """This API is used to perform operations. Application for allowlist is required before usage. If needed, contact your business representative to request allowlisting. The specific usage process is as follows;.
+        r"""This API is used to perform operations. Application for allowlist is required before usage. If needed, contact your business representative to request allowlisting. The specific usage process is as follows;.
         This API is used to create an invitation link. You can send the invitation link to your designated email address.
         2. Customers need to click the invitation link in the mailbox, fill in and submit relevant information.
         3. After customer submission, you can view the application of this sub-customer on the customer management page and review it.
@@ -186,7 +186,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """Description: End-customer queries its own bill details.
+        r"""Description: End-customer queries its own bill details.
         Callable role: End-customer.
 
         :param request: Request instance for DescribeBillDetail.
@@ -210,7 +210,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillDownloadUrl(self, request):
-        """Description: This API is used to download billing files and return billing file URLs for sub-customers.
+        r"""Description: This API is used to download billing files and return billing file URLs for sub-customers.
         Callable role: Enb-customer.
 
         :param request: Request instance for DescribeBillDownloadUrl.
@@ -234,7 +234,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummary(self, request):
-        """Description: External API for L1 billing of Sub-customer billing center.
+        r"""Description: External API for L1 billing of Sub-customer billing center.
         Callable role: End-customer.
 
         :param request: Request instance for DescribeBillSummary.
@@ -258,7 +258,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummaryByPayMode(self, request):
-        """This API is used to obtain the total amount of customer bills by payment mode.
+        r"""This API is used to obtain the total amount of customer bills by payment mode.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
@@ -282,7 +282,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummaryByProduct(self, request):
-        """Description: Obtain the summarized value of sub - account bills by product dimension.
+        r"""Description: Obtain the summarized value of sub - account bills by product dimension.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByProduct.
@@ -306,7 +306,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummaryByRegion(self, request):
-        """Description: Obtain the summarized value of sub - account bills by region through API.
+        r"""Description: Obtain the summarized value of sub - account bills by region through API.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByRegion.
@@ -330,7 +330,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillDetail(self, request):
-        """This API is used to query the customer bill details by resellers.
+        r"""This API is used to query the customer bill details by resellers.
         Callable roles: Distributor, Second-level reseller, Reseller.
 
         :param request: Request instance for DescribeCustomerBillDetail.
@@ -354,7 +354,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillDetailByDay(self, request):
-        """This API is used to query the daily bill expenditure of customer by resellers.
+        r"""This API is used to query the daily bill expenditure of customer by resellers.
         Invocation Role: first-level reseller, second-level reseller, reseller.
 
         :param request: Request instance for DescribeCustomerBillDetailByDay.
@@ -378,7 +378,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillDownloadUrl(self, request):
-        """This API is used to get the URL for downloading the customer bill file by reseller. The download conditions are as follows:
+        r"""This API is used to get the URL for downloading the customer bill file by reseller. The download conditions are as follows:
         1. Detailed bills (billDetail and billDetailPack) can be downloaded starting from June 2022; resource bills (billResource and billResourcePack) can be downloaded starting from November 2023.
         2. Bill packages (billDetailPack and billResourcePack) can only be downloaded after billing.
 
@@ -403,7 +403,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillSummary(self, request):
-        """This API is used to query the total amount of customer bills.
+        r"""This API is used to query the total amount of customer bills.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeCustomerBillSummary.
@@ -427,7 +427,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerInfo(self, request):
-        """This API is used to query sub-customer information.
+        r"""This API is used to query sub-customer information.
         Invocation roles: reseller, first-level distributor.
 
         :param request: Request instance for DescribeCustomerInfo.
@@ -451,7 +451,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerOwnVoucherList(self, request):
-        """This API is used to query the voucher list by Customer.
+        r"""This API is used to query the voucher list by Customer.
         Callable roles: Customer.
 
         :param request: Request instance for DescribeCustomerOwnVoucherList.
@@ -475,7 +475,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerUin(self, request):
-        """This API is used to query the list of customer UINs.
+        r"""This API is used to query the list of customer UINs.
 
         :param request: Request instance for DescribeCustomerUin.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerUinRequest`
@@ -498,7 +498,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerVoucherList(self, request):
-        """This API is used to query the customer voucher list by Reseller, Second-level Reseller or Distributor.
+        r"""This API is used to query the customer voucher list by Reseller, Second-level Reseller or Distributor.
         Callable roles: Reseller, Second-level Reseller or Distributor.
 
         :param request: Request instance for DescribeCustomerVoucherList.
@@ -522,7 +522,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeRebateDownloadUrl(self, request):
-        """This API is used to download the commission bill file by resellers/agents. The file URL is returned.
+        r"""This API is used to download the commission bill file by resellers/agents. The file URL is returned.
         Resellers/Agents can call this API.
 
         :param request: Request instance for DescribeRebateDownloadUrl.
@@ -546,7 +546,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ForceQN(self, request):
-        """Forced Service Suspension settings and cancellation can be used only after the reseller is whitelisted.
+        r"""Forced Service Suspension settings and cancellation can be used only after the reseller is whitelisted.
 
         Callable roles: Distributor, Second-level reseller, Reseller
 
@@ -571,7 +571,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def GetCountryCodes(self, request):
-        """This API is used to obtain country/region codes.
+        r"""This API is used to obtain country/region codes.
 
         :param request: Request instance for GetCountryCodes.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.GetCountryCodesRequest`
@@ -594,7 +594,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def GetTradeConfigList(self, request):
-        """This API is used to query industry information, including layer-1 industry and layer-2 industry.
+        r"""This API is used to query industry information, including layer-1 industry and layer-2 industry.
 
         Callable roles: Distributor, Second-level reseller, Reseller,End-customer
 
@@ -619,7 +619,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ModifyClientRemark(self, request):
-        """This API is used to modify customer remarks.
+        r"""This API is used to modify customer remarks.
 
         Callable roles: Distributor, Second-level reseller, Reseller
 
@@ -644,7 +644,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryAccountVerificationStatus(self, request):
-        """This API is used to query the account verification status.
+        r"""This API is used to query the account verification status.
         Callable roles: Distributor, Reseller
 
         :param request: Request instance for QueryAccountVerificationStatus.
@@ -668,7 +668,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryCreditAllocationHistory(self, request):
-        """This API is used to query all the credit allocation records of a single customer.
+        r"""This API is used to query all the credit allocation records of a single customer.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryCreditAllocationHistory.
@@ -692,7 +692,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryCreditByUinList(self, request):
-        """This API is used to query the credit of users in the list.
+        r"""This API is used to query the credit of users in the list.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryCreditByUinList.
@@ -716,7 +716,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryCustomerBillingQuota(self, request):
-        """Description: This API is used for a sub-customer to real-time query its own total credit and remaining credit in USD.
+        r"""Description: This API is used for a sub-customer to real-time query its own total credit and remaining credit in USD.
 
         Callable roles: Sub-customer
 
@@ -741,7 +741,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryCustomersCredit(self, request):
-        """This API is used for a partner to the credits and basic information of cutomers.
+        r"""This API is used for a partner to the credits and basic information of cutomers.
 
         Callable roles: Distributor, Second-level reseller, Reseller
 
@@ -766,7 +766,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryDirectCustomersCredit(self, request):
-        """This API is used to query the credits of direct customers.
+        r"""This API is used to query the credits of direct customers.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryDirectCustomersCredit.
@@ -790,7 +790,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryInvitationInfo(self, request):
-        """Query usage information of invitation link. Invitation link is valid for 30 days.And once created, the data will only be retained for 60 days, and the system will automatically delete the invitation link after 60 days.
+        r"""Query usage information of invitation link. Invitation link is valid for 30 days.And once created, the data will only be retained for 60 days, and the system will automatically delete the invitation link after 60 days.
         Invokable role types: Distributor, Second-level reseller, Reseller.
 
         :param request: Request instance for QueryInvitationInfo.
@@ -814,7 +814,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryPartnerCredit(self, request):
-        """This API is used for a partner to query its own total credit, available credit, and used credit in USD.
+        r"""This API is used for a partner to query its own total credit, available credit, and used credit in USD.
 
         Callable roles: Distributor, Second-level reseller, Reseller
 
@@ -839,7 +839,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryPendingClientsV2(self, request):
-        """Description: This API is used by resellers to query the list of sub-customers pending review. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
+        r"""Description: This API is used by resellers to query the list of sub-customers pending review. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
 
         Callable roles: Reseller, Distributer, Second-level reseller
 
@@ -864,7 +864,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryPendingSubAgentsV2(self, request):
-        """This API is used to query information of second-level resellers in application.
+        r"""This API is used to query information of second-level resellers in application.
         Invocation Role: Distributor.
 
         :param request: Request instance for QueryPendingSubAgentsV2.
@@ -888,7 +888,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryPolicyProductListByCode(self, request):
-        """This API is used to query the product list information within the specified policy range. To call this API, contact your business manager to apply for adding it to the allowlist.
+        r"""This API is used to query the product list information within the specified policy range. To call this API, contact your business manager to apply for adding it to the allowlist.
         Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryPolicyProductListByCode.
@@ -912,7 +912,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QuerySubAgentsDetailV2(self, request):
-        """This API is used to query information of second-level resellers.
+        r"""This API is used to query information of second-level resellers.
         Invocation Role:Distributor.
 
         :param request: Request instance for QuerySubAgentsDetailV2.
@@ -936,7 +936,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryT1IndirectCustomersDetail(self, request):
-        """This API is used to query the indirect sub-customers of a distributor.
+        r"""This API is used to query the indirect sub-customers of a distributor.
         Invokable role type: Distributor
 
         :param request: Request instance for QueryT1IndirectCustomersDetail.
@@ -960,7 +960,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherAmountByUin(self, request):
-        """This API is used by primary/secondary resellers to query the voucher quota based on the customer UIN.
+        r"""This API is used by primary/secondary resellers to query the voucher quota based on the customer UIN.
         Callable roles: Reseller, Distributor, Second-level reseller
 
         :param request: Request instance for QueryVoucherAmountByUin.
@@ -984,7 +984,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherListByUin(self, request):
-        """This API is used by primary/secondary resellers to query the voucher list based on the customer UIN.
+        r"""This API is used by primary/secondary resellers to query the voucher list based on the customer UIN.
         Callable roles: Reseller, Distributor, Second-level reseller
 
         :param request: Request instance for QueryVoucherListByUin.
@@ -1008,7 +1008,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherPool(self, request):
-        """This API is used by primary/secondary resellers to query the voucher quota pool.
+        r"""This API is used by primary/secondary resellers to query the voucher quota pool.
         Callable roles: Distributor, First-level reseller, Second-level reseller
 
         :param request: Request instance for QueryVoucherPool.
@@ -1032,7 +1032,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def SendVerifyCode(self, request):
-        """This API is used to send a verification code for account registration.
+        r"""This API is used to send a verification code for account registration.
 
         Callable roles: Distributor, Second-level reseller, Reseller,End-customer
 

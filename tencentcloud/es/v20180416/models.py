@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BackingIndexMetaField(AbstractModel):
-    """Backing index metadata fields
+    r"""Backing index metadata fields
 
     """
 
@@ -49,7 +49,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexName(self):
-        """Backing index name
+        r"""Backing index name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -61,7 +61,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStatus(self):
-        """Backing index status
+        r"""Backing index status
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -73,7 +73,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStorage(self):
-        """Backing index size
+        r"""Backing index size
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -85,7 +85,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexPhrase(self):
-        """Current lifecycle phase of backing index
+        r"""Current lifecycle phase of backing index
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -97,7 +97,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexCreateTime(self):
-        """Backing index creation time
+        r"""Backing index creation time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -125,7 +125,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ClusterView(AbstractModel):
-    """Cluster view data
+    r"""Cluster view data
 
     """
 
@@ -203,7 +203,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Health(self):
-        """Cluster health status
+        r"""Cluster health status
         :rtype: float
         """
         return self._Health
@@ -214,7 +214,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Visible(self):
-        """Whether the cluster is visible
+        r"""Whether the cluster is visible
         :rtype: float
         """
         return self._Visible
@@ -225,7 +225,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Break(self):
-        """Whether the cluster encounters circuit breaking
+        r"""Whether the cluster encounters circuit breaking
         :rtype: float
         """
         return self._Break
@@ -236,7 +236,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgDiskUsage(self):
-        """Average disk usage
+        r"""Average disk usage
         :rtype: float
         """
         return self._AvgDiskUsage
@@ -247,7 +247,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgMemUsage(self):
-        """Average memory usage
+        r"""Average memory usage
         :rtype: float
         """
         return self._AvgMemUsage
@@ -258,7 +258,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AvgCpuUsage(self):
-        """Average CPU usage
+        r"""Average CPU usage
         :rtype: float
         """
         return self._AvgCpuUsage
@@ -269,7 +269,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalDiskSize(self):
-        """Total disk size of the cluster
+        r"""Total disk size of the cluster
         :rtype: int
         """
         return self._TotalDiskSize
@@ -280,7 +280,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetNodeTypes(self):
-        """Types of nodes to receive client requests
+        r"""Types of nodes to receive client requests
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -291,7 +291,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NodeNum(self):
-        """Number of online nodes
+        r"""Number of online nodes
         :rtype: int
         """
         return self._NodeNum
@@ -302,7 +302,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalNodeNum(self):
-        """Total number of nodes
+        r"""Total number of nodes
         :rtype: int
         """
         return self._TotalNodeNum
@@ -313,7 +313,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DataNodeNum(self):
-        """Number of data nodes
+        r"""Number of data nodes
         :rtype: int
         """
         return self._DataNodeNum
@@ -324,7 +324,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def IndexNum(self):
-        """Number of indices
+        r"""Number of indices
         :rtype: int
         """
         return self._IndexNum
@@ -335,7 +335,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DocNum(self):
-        """Number of documents
+        r"""Number of documents
         :rtype: int
         """
         return self._DocNum
@@ -346,7 +346,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiskUsedInBytes(self):
-        """Used disk size (in bytes)
+        r"""Used disk size (in bytes)
         :rtype: int
         """
         return self._DiskUsedInBytes
@@ -357,7 +357,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ShardNum(self):
-        """Number of shards
+        r"""Number of shards
         :rtype: int
         """
         return self._ShardNum
@@ -368,7 +368,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PrimaryShardNum(self):
-        """Number of primary shards
+        r"""Number of primary shards
         :rtype: int
         """
         return self._PrimaryShardNum
@@ -379,7 +379,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RelocatingShardNum(self):
-        """Number of relocating shards
+        r"""Number of relocating shards
         :rtype: int
         """
         return self._RelocatingShardNum
@@ -390,7 +390,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InitializingShardNum(self):
-        """Number of initializing shards
+        r"""Number of initializing shards
         :rtype: int
         """
         return self._InitializingShardNum
@@ -401,7 +401,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UnassignedShardNum(self):
-        """Number of unassigned shards
+        r"""Number of unassigned shards
         :rtype: int
         """
         return self._UnassignedShardNum
@@ -412,7 +412,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalCosStorage(self):
-        """Total COS storage of an enterprise cluster, in GB
+        r"""Total COS storage of an enterprise cluster, in GB
         :rtype: int
         """
         return self._TotalCosStorage
@@ -423,7 +423,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SearchableSnapshotCosBucket(self):
-        """Name of the COS bucket that stores searchable snapshots of an enterprise cluster
+        r"""Name of the COS bucket that stores searchable snapshots of an enterprise cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -435,7 +435,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SearchableSnapshotCosAppId(self):
-        """COS app ID of the searchable snapshots of an enterprise cluster
+        r"""COS app ID of the searchable snapshots of an enterprise cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -480,7 +480,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class CosBackup(AbstractModel):
-    """Auto-backup to COS for ES
+    r"""Auto-backup to COS for ES
 
     """
 
@@ -496,7 +496,7 @@ class CosBackup(AbstractModel):
 
     @property
     def IsAutoBackup(self):
-        """Whether to enable auto-backup to COS
+        r"""Whether to enable auto-backup to COS
         :rtype: bool
         """
         return self._IsAutoBackup
@@ -507,7 +507,7 @@ class CosBackup(AbstractModel):
 
     @property
     def BackupTime(self):
-        """Auto-backup time (accurate down to the hour), such as "22:00"
+        r"""Auto-backup time (accurate down to the hour), such as "22:00"
         :rtype: str
         """
         return self._BackupTime
@@ -531,7 +531,7 @@ class CosBackup(AbstractModel):
 
 
 class CreateIndexRequest(AbstractModel):
-    """CreateIndex request structure.
+    r"""CreateIndex request structure.
 
     """
 
@@ -559,7 +559,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES cluster ID
+        r"""ES cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -570,7 +570,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        """Type of the index to create. `auto`: Automated; `normal`: General.
+        r"""Type of the index to create. `auto`: Automated; `normal`: General.
         :rtype: str
         """
         return self._IndexType
@@ -581,7 +581,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        """Name of the index to create
+        r"""Name of the index to create
         :rtype: str
         """
         return self._IndexName
@@ -592,7 +592,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def IndexMetaJson(self):
-        """JSON-formatted index metadata to create, such as `mappings` and `settings`
+        r"""JSON-formatted index metadata to create, such as `mappings` and `settings`
         :rtype: str
         """
         return self._IndexMetaJson
@@ -603,7 +603,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        """Username for cluster access
+        r"""Username for cluster access
         :rtype: str
         """
         return self._Username
@@ -614,7 +614,7 @@ class CreateIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password for cluster access
+        r"""Password for cluster access
         :rtype: str
         """
         return self._Password
@@ -642,7 +642,7 @@ class CreateIndexRequest(AbstractModel):
 
 
 class CreateIndexResponse(AbstractModel):
-    """CreateIndex response structure.
+    r"""CreateIndex response structure.
 
     """
 
@@ -655,7 +655,7 @@ class CreateIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -670,7 +670,7 @@ class CreateIndexResponse(AbstractModel):
 
 
 class CreateInstanceRequest(AbstractModel):
-    """CreateInstance request structure.
+    r"""CreateInstance request structure.
 
     """
 
@@ -790,7 +790,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def Zone(self):
-        """Availability Zone
+        r"""Availability Zone
         :rtype: str
         """
         return self._Zone
@@ -801,7 +801,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EsVersion(self):
-        """Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
+        r"""Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`
         :rtype: str
         """
         return self._EsVersion
@@ -812,7 +812,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -823,7 +823,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -834,7 +834,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def Password(self):
-        """Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        r"""Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :rtype: str
         """
         return self._Password
@@ -845,7 +845,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def InstanceName(self):
-        """Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        r"""Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :rtype: str
         """
         return self._InstanceName
@@ -856,7 +856,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def NodeNum(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Number of nodes (2-50)
         :rtype: int
         """
@@ -868,7 +868,7 @@ Number of nodes (2-50)
 
     @property
     def ChargeType(self):
-        """Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
+        r"""Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR
         :rtype: str
         """
         return self._ChargeType
@@ -879,7 +879,7 @@ Number of nodes (2-50)
 
     @property
     def ChargePeriod(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: int
         """
         return self._ChargePeriod
@@ -890,7 +890,7 @@ Number of nodes (2-50)
 
     @property
     def RenewFlag(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: str
         """
         return self._RenewFlag
@@ -901,7 +901,7 @@ Number of nodes (2-50)
 
     @property
     def NodeType(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :rtype: str
         """
@@ -913,7 +913,7 @@ Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 
 
     @property
     def DiskType(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD
         :rtype: str
         """
@@ -925,7 +925,7 @@ Node storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premi
 
     @property
     def DiskSize(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Node disk size in GB
         :rtype: int
         """
@@ -937,7 +937,7 @@ Node disk size in GB
 
     @property
     def TimeUnit(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: str
         """
         return self._TimeUnit
@@ -948,7 +948,7 @@ Node disk size in GB
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        r"""Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -959,7 +959,7 @@ Node disk size in GB
 
     @property
     def VoucherIds(self):
-        """List of voucher IDs (only one voucher can be specified at a time currently)
+        r"""List of voucher IDs (only one voucher can be specified at a time currently)
         :rtype: list of str
         """
         return self._VoucherIds
@@ -970,7 +970,7 @@ Node disk size in GB
 
     @property
     def EnableDedicatedMaster(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false
         :rtype: bool
         """
@@ -982,7 +982,7 @@ Whether to create a dedicated primary node <li>true: yes </li><li>false: no </li
 
     @property
     def MasterNodeNum(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Number of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)
         :rtype: int
         """
@@ -994,7 +994,7 @@ Number of dedicated primary nodes (only 3 and 5 are supported. This value must b
 
     @property
     def MasterNodeType(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :rtype: str
         """
@@ -1006,7 +1006,7 @@ Dedicated primary node type, which must be passed in if `EnableDedicatedMaster` 
 
     @property
     def MasterNodeDiskSize(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Dedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently
         :rtype: int
         """
@@ -1018,7 +1018,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def ClusterNameInConf(self):
-        """ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
+        r"""ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized
         :rtype: str
         """
         return self._ClusterNameInConf
@@ -1029,7 +1029,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def DeployMode(self):
-        """Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
+        r"""Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0
         :rtype: int
         """
         return self._DeployMode
@@ -1040,7 +1040,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def MultiZoneInfo(self):
-        """Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)
+        r"""Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -1051,7 +1051,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def LicenseType(self):
-        """License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
         :rtype: str
         """
         return self._LicenseType
@@ -1062,7 +1062,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def NodeInfoList(self):
-        """Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
+        r"""Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -1073,7 +1073,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def TagList(self):
-        """Node tag information list
+        r"""Node tag information list
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -1084,7 +1084,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def BasicSecurityType(self):
-        """Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -1095,7 +1095,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def SceneType(self):
-        """Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
+        r"""Scenario template type. 0: not enabled; 1: general; 2: log; 3: search
         :rtype: int
         """
         return self._SceneType
@@ -1106,7 +1106,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def WebNodeTypeInfo(self):
-        """Visual node configuration
+        r"""Visual node configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -1117,7 +1117,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def Protocol(self):
-        """Valid values: `https`, `http` (default)
+        r"""Valid values: `https`, `http` (default)
         :rtype: str
         """
         return self._Protocol
@@ -1128,7 +1128,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def OperationDuration(self):
-        """The maintenance time slot
+        r"""The maintenance time slot
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         return self._OperationDuration
@@ -1139,7 +1139,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EnableHybridStorage(self):
-        """Whether to enable the storage-computing separation feature.
+        r"""Whether to enable the storage-computing separation feature.
         :rtype: bool
         """
         return self._EnableHybridStorage
@@ -1150,7 +1150,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def DiskEnhance(self):
-        """Whether to enable enhanced SSD
+        r"""Whether to enable enhanced SSD
         :rtype: int
         """
         return self._DiskEnhance
@@ -1161,7 +1161,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
     @property
     def EnableDiagnose(self):
-        """Whether to enable smart inspection.
+        r"""Whether to enable smart inspection.
         :rtype: bool
         """
         return self._EnableDiagnose
@@ -1236,7 +1236,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
 
 
 class CreateInstanceResponse(AbstractModel):
-    """CreateInstance response structure.
+    r"""CreateInstance response structure.
 
     """
 
@@ -1256,7 +1256,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -1267,7 +1267,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DealName(self):
-        """Order ID
+        r"""Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -1279,7 +1279,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1296,7 +1296,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DeleteIndexRequest(AbstractModel):
-    """DeleteIndex request structure.
+    r"""DeleteIndex request structure.
 
     """
 
@@ -1324,7 +1324,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES cluster ID
+        r"""ES cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -1335,7 +1335,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        """Type of the index to delete. `auto`: Automated; `normal`: General.
+        r"""Type of the index to delete. `auto`: Automated; `normal`: General.
         :rtype: str
         """
         return self._IndexType
@@ -1346,7 +1346,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        """Name of the index to delete
+        r"""Name of the index to delete
         :rtype: str
         """
         return self._IndexName
@@ -1357,7 +1357,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        """Username for cluster access
+        r"""Username for cluster access
         :rtype: str
         """
         return self._Username
@@ -1368,7 +1368,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password for cluster access
+        r"""Password for cluster access
         :rtype: str
         """
         return self._Password
@@ -1379,7 +1379,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def BackingIndexName(self):
-        """Backing index name
+        r"""Backing index name
         :rtype: str
         """
         return self._BackingIndexName
@@ -1407,7 +1407,7 @@ class DeleteIndexRequest(AbstractModel):
 
 
 class DeleteIndexResponse(AbstractModel):
-    """DeleteIndex response structure.
+    r"""DeleteIndex response structure.
 
     """
 
@@ -1420,7 +1420,7 @@ class DeleteIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1435,7 +1435,7 @@ class DeleteIndexResponse(AbstractModel):
 
 
 class DeleteInstanceRequest(AbstractModel):
-    """DeleteInstance request structure.
+    r"""DeleteInstance request structure.
 
     """
 
@@ -1448,7 +1448,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -1471,7 +1471,7 @@ class DeleteInstanceRequest(AbstractModel):
 
 
 class DeleteInstanceResponse(AbstractModel):
-    """DeleteInstance response structure.
+    r"""DeleteInstance response structure.
 
     """
 
@@ -1484,7 +1484,7 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1499,7 +1499,7 @@ class DeleteInstanceResponse(AbstractModel):
 
 
 class DescribeIndexListRequest(AbstractModel):
-    """DescribeIndexList request structure.
+    r"""DescribeIndexList request structure.
 
     """
 
@@ -1539,7 +1539,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        """Index type. `auto`: Automated; `normal`: General.
+        r"""Index type. `auto`: Automated; `normal`: General.
         :rtype: str
         """
         return self._IndexType
@@ -1550,7 +1550,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES cluster ID
+        r"""ES cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -1561,7 +1561,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        """Index name. `null` indicates that all indexes are requested.
+        r"""Index name. `null` indicates that all indexes are requested.
         :rtype: str
         """
         return self._IndexName
@@ -1572,7 +1572,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Username(self):
-        """Username for cluster access
+        r"""Username for cluster access
         :rtype: str
         """
         return self._Username
@@ -1583,7 +1583,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password for cluster access
+        r"""Password for cluster access
         :rtype: str
         """
         return self._Password
@@ -1594,7 +1594,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The starting position of paging
+        r"""The starting position of paging
         :rtype: int
         """
         return self._Offset
@@ -1605,7 +1605,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of results per page
+        r"""The number of results per page
         :rtype: int
         """
         return self._Limit
@@ -1616,7 +1616,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.
+        r"""Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.
         :rtype: str
         """
         return self._OrderBy
@@ -1627,7 +1627,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexStatusList(self):
-        """Filtering by index status
+        r"""Filtering by index status
         :rtype: list of str
         """
         return self._IndexStatusList
@@ -1638,7 +1638,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sorting mode, which can be `asc` and `desc`.
+        r"""Sorting mode, which can be `asc` and `desc`.
         :rtype: str
         """
         return self._Order
@@ -1670,7 +1670,7 @@ class DescribeIndexListRequest(AbstractModel):
 
 
 class DescribeIndexListResponse(AbstractModel):
-    """DescribeIndexList response structure.
+    r"""DescribeIndexList response structure.
 
     """
 
@@ -1691,7 +1691,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexMetaFields(self):
-        """Index metadata field
+        r"""Index metadata field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of IndexMetaField
         """
@@ -1703,7 +1703,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -1715,7 +1715,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1737,7 +1737,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeIndexMetaRequest(AbstractModel):
-    """DescribeIndexMeta request structure.
+    r"""DescribeIndexMeta request structure.
 
     """
 
@@ -1762,7 +1762,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES cluster ID
+        r"""ES cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -1773,7 +1773,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        """Index type. `auto`: Automated; `normal`: General.
+        r"""Index type. `auto`: Automated; `normal`: General.
         :rtype: str
         """
         return self._IndexType
@@ -1784,7 +1784,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        """Index name. `null` indicates that all indexes are requested.
+        r"""Index name. `null` indicates that all indexes are requested.
         :rtype: str
         """
         return self._IndexName
@@ -1795,7 +1795,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def Username(self):
-        """Username for cluster access
+        r"""Username for cluster access
         :rtype: str
         """
         return self._Username
@@ -1806,7 +1806,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password for cluster access
+        r"""Password for cluster access
         :rtype: str
         """
         return self._Password
@@ -1833,7 +1833,7 @@ class DescribeIndexMetaRequest(AbstractModel):
 
 
 class DescribeIndexMetaResponse(AbstractModel):
-    """DescribeIndexMeta response structure.
+    r"""DescribeIndexMeta response structure.
 
     """
 
@@ -1850,7 +1850,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexMetaField(self):
-        """Index metadata field
+        r"""Index metadata field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
         """
@@ -1862,7 +1862,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1880,7 +1880,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeInstanceLogsRequest(AbstractModel):
-    """DescribeInstanceLogs request structure.
+    r"""DescribeInstanceLogs request structure.
 
     """
 
@@ -1920,7 +1920,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Cluster instance ID
+        r"""Cluster instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -1931,7 +1931,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """Log type. Default value: 1
+        r"""Log type. Default value: 1
 <li>1: primary log</li>
 <li>2: search slow log</li>
 <li>3: index slow log</li>
@@ -1946,7 +1946,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
+        r"""Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`
         :rtype: str
         """
         return self._SearchKey
@@ -1957,7 +1957,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        r"""Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
         :rtype: str
         """
         return self._StartTime
@@ -1968,7 +1968,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
+        r"""Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53
         :rtype: str
         """
         return self._EndTime
@@ -1979,7 +1979,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination start value. Default value: 0
+        r"""Pagination start value. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -1990,7 +1990,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Default value: 100. Maximum value: 100
+        r"""Number of entries per page. Default value: 100. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -2001,7 +2001,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Time sorting order. Default value: 0
+        r"""Time sorting order. Default value: 0
 <li>0: descending</li>
 <li>1: ascending</li>
         :rtype: int
@@ -2033,7 +2033,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
 
 
 class DescribeInstanceLogsResponse(AbstractModel):
-    """DescribeInstanceLogs response structure.
+    r"""DescribeInstanceLogs response structure.
 
     """
 
@@ -2052,7 +2052,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of returned logs
+        r"""Number of returned logs
         :rtype: int
         """
         return self._TotalCount
@@ -2063,7 +2063,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     @property
     def InstanceLogList(self):
-        """Log details list
+        r"""Log details list
         :rtype: list of InstanceLog
         """
         return self._InstanceLogList
@@ -2074,7 +2074,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2096,7 +2096,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
 
 
 class DescribeInstanceOperationsRequest(AbstractModel):
-    """DescribeInstanceOperations request structure.
+    r"""DescribeInstanceOperations request structure.
 
     """
 
@@ -2121,7 +2121,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Cluster instance ID
+        r"""Cluster instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -2132,7 +2132,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time, such as "2019-03-07 16:30:39"
+        r"""Start time, such as "2019-03-07 16:30:39"
         :rtype: str
         """
         return self._StartTime
@@ -2143,7 +2143,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, such as "2019-03-30 20:18:03"
+        r"""End time, such as "2019-03-30 20:18:03"
         :rtype: str
         """
         return self._EndTime
@@ -2154,7 +2154,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination start value
+        r"""Pagination start value
         :rtype: int
         """
         return self._Offset
@@ -2165,7 +2165,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._Limit
@@ -2192,7 +2192,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
 
 
 class DescribeInstanceOperationsResponse(AbstractModel):
-    """DescribeInstanceOperations response structure.
+    r"""DescribeInstanceOperations response structure.
 
     """
 
@@ -2211,7 +2211,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of operation records
+        r"""Total number of operation records
         :rtype: int
         """
         return self._TotalCount
@@ -2222,7 +2222,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
     @property
     def Operations(self):
-        """Operation history
+        r"""Operation history
         :rtype: list of Operation
         """
         return self._Operations
@@ -2233,7 +2233,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2255,7 +2255,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
 
 class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances request structure.
+    r"""DescribeInstances request structure.
 
     """
 
@@ -2301,7 +2301,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ of the cluster instance. If this is not passed in, all AZs are used by default
+        r"""AZ of the cluster instance. If this is not passed in, all AZs are used by default
         :rtype: str
         """
         return self._Zone
@@ -2312,7 +2312,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of cluster instance IDs
+        r"""List of cluster instance IDs
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2323,7 +2323,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        """List of cluster instance names
+        r"""List of cluster instance names
         :rtype: list of str
         """
         return self._InstanceNames
@@ -2334,7 +2334,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination start value. Default value: 0
+        r"""Pagination start value. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -2345,7 +2345,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Default value: 20
+        r"""Number of entries per page. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -2356,7 +2356,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByKey(self):
-        """The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.
+        r"""The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.
         :rtype: int
         """
         return self._OrderByKey
@@ -2367,7 +2367,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
+        r"""Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
         :rtype: int
         """
         return self._OrderByType
@@ -2378,7 +2378,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagList(self):
-        """Node tag information list
+        r"""Node tag information list
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -2389,7 +2389,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def IpList(self):
-        """VPC VIP list
+        r"""VPC VIP list
         :rtype: list of str
         """
         return self._IpList
@@ -2400,7 +2400,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ZoneList(self):
-        """List of availability zones
+        r"""List of availability zones
         :rtype: list of str
         """
         return self._ZoneList
@@ -2411,7 +2411,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def HealthStatus(self):
-        """The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).
+        r"""The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).
         :rtype: list of int
         """
         return self._HealthStatus
@@ -2422,7 +2422,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        """VPC IDs
+        r"""VPC IDs
         :rtype: list of str
         """
         return self._VpcIds
@@ -2461,7 +2461,7 @@ class DescribeInstancesRequest(AbstractModel):
 
 
 class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances response structure.
+    r"""DescribeInstances response structure.
 
     """
 
@@ -2480,7 +2480,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of returned instances
+        r"""Number of returned instances
         :rtype: int
         """
         return self._TotalCount
@@ -2491,7 +2491,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        """List of instance details
+        r"""List of instance details
         :rtype: list of InstanceInfo
         """
         return self._InstanceList
@@ -2502,7 +2502,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2524,7 +2524,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 
 class DescribeViewsRequest(AbstractModel):
-    """DescribeViews request structure.
+    r"""DescribeViews request structure.
 
     """
 
@@ -2537,7 +2537,7 @@ class DescribeViewsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Cluster instance ID
+        r"""Cluster instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -2560,7 +2560,7 @@ class DescribeViewsRequest(AbstractModel):
 
 
 class DescribeViewsResponse(AbstractModel):
-    """DescribeViews response structure.
+    r"""DescribeViews response structure.
 
     """
 
@@ -2585,7 +2585,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ClusterView(self):
-        """Cluster view
+        r"""Cluster view
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.es.v20180416.models.ClusterView`
         """
@@ -2597,7 +2597,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NodesView(self):
-        """Node view
+        r"""Node view
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of NodeView
         """
@@ -2609,7 +2609,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def KibanasView(self):
-        """Kibana view
+        r"""Kibana view
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of KibanaView
         """
@@ -2621,7 +2621,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2651,7 +2651,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DictInfo(AbstractModel):
-    """Information of the IK plugin dictionary
+    r"""Information of the IK plugin dictionary
 
     """
 
@@ -2670,7 +2670,7 @@ class DictInfo(AbstractModel):
 
     @property
     def Key(self):
-        """Dictionary key value
+        r"""Dictionary key value
         :rtype: str
         """
         return self._Key
@@ -2681,7 +2681,7 @@ class DictInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Dictionary name
+        r"""Dictionary name
         :rtype: str
         """
         return self._Name
@@ -2692,7 +2692,7 @@ class DictInfo(AbstractModel):
 
     @property
     def Size(self):
-        """Dictionary size in B
+        r"""Dictionary size in B
         :rtype: int
         """
         return self._Size
@@ -2717,7 +2717,7 @@ class DictInfo(AbstractModel):
 
 
 class EsAcl(AbstractModel):
-    """ES cluster configuration item
+    r"""ES cluster configuration item
 
     """
 
@@ -2733,7 +2733,7 @@ class EsAcl(AbstractModel):
 
     @property
     def BlackIpList(self):
-        """Kibana access blocklist
+        r"""Kibana access blocklist
         :rtype: list of str
         """
         return self._BlackIpList
@@ -2744,7 +2744,7 @@ class EsAcl(AbstractModel):
 
     @property
     def WhiteIpList(self):
-        """Kibana access allowlist
+        r"""Kibana access allowlist
         :rtype: list of str
         """
         return self._WhiteIpList
@@ -2768,7 +2768,7 @@ class EsAcl(AbstractModel):
 
 
 class EsConfigSetInfo(AbstractModel):
-    """Configuration set information
+    r"""Configuration set information
 
     """
 
@@ -2784,7 +2784,7 @@ class EsConfigSetInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Configuration set type, such as `LDAP` and `AD`.
+        r"""Configuration set type, such as `LDAP` and `AD`.
         :rtype: str
         """
         return self._Type
@@ -2795,7 +2795,7 @@ class EsConfigSetInfo(AbstractModel):
 
     @property
     def EsConfig(self):
-        """"{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
+        r""""{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
         :rtype: str
         """
         return self._EsConfig
@@ -2819,7 +2819,7 @@ class EsConfigSetInfo(AbstractModel):
 
 
 class EsDictionaryInfo(AbstractModel):
-    """ES dictionary information
+    r"""ES dictionary information
 
     """
 
@@ -2844,7 +2844,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def MainDict(self):
-        """List of non-stop words
+        r"""List of non-stop words
         :rtype: list of DictInfo
         """
         return self._MainDict
@@ -2855,7 +2855,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def Stopwords(self):
-        """List of stop words
+        r"""List of stop words
         :rtype: list of DictInfo
         """
         return self._Stopwords
@@ -2866,7 +2866,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def QQDict(self):
-        """QQ dictionary list
+        r"""QQ dictionary list
         :rtype: list of DictInfo
         """
         return self._QQDict
@@ -2877,7 +2877,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def Synonym(self):
-        """Synonym dictionary list
+        r"""Synonym dictionary list
         :rtype: list of DictInfo
         """
         return self._Synonym
@@ -2888,7 +2888,7 @@ class EsDictionaryInfo(AbstractModel):
 
     @property
     def UpdateType(self):
-        """Update dictionary type
+        r"""Update dictionary type
         :rtype: str
         """
         return self._UpdateType
@@ -2935,7 +2935,7 @@ class EsDictionaryInfo(AbstractModel):
 
 
 class EsPublicAcl(AbstractModel):
-    """Public network ACL information of ES
+    r"""Public network ACL information of ES
 
     """
 
@@ -2951,7 +2951,7 @@ class EsPublicAcl(AbstractModel):
 
     @property
     def BlackIpList(self):
-        """Access blocklist
+        r"""Access blocklist
         :rtype: list of str
         """
         return self._BlackIpList
@@ -2962,7 +2962,7 @@ class EsPublicAcl(AbstractModel):
 
     @property
     def WhiteIpList(self):
-        """Access allowlist
+        r"""Access allowlist
         :rtype: list of str
         """
         return self._WhiteIpList
@@ -2986,7 +2986,7 @@ class EsPublicAcl(AbstractModel):
 
 
 class GetRequestTargetNodeTypesRequest(AbstractModel):
-    """GetRequestTargetNodeTypes request structure.
+    r"""GetRequestTargetNodeTypes request structure.
 
     """
 
@@ -2999,7 +2999,7 @@ class GetRequestTargetNodeTypesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -3022,7 +3022,7 @@ class GetRequestTargetNodeTypesRequest(AbstractModel):
 
 
 class GetRequestTargetNodeTypesResponse(AbstractModel):
-    """GetRequestTargetNodeTypes response structure.
+    r"""GetRequestTargetNodeTypes response structure.
 
     """
 
@@ -3038,7 +3038,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
     @property
     def TargetNodeTypes(self):
-        """A list of node types used to receive requests.
+        r"""A list of node types used to receive requests.
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -3049,7 +3049,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3065,7 +3065,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
 
 class IndexMetaField(AbstractModel):
-    """Index metadata field
+    r"""Index metadata field
 
     """
 
@@ -3131,7 +3131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexType(self):
-        """Index type
+        r"""Index type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3143,7 +3143,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexName(self):
-        """Index name
+        r"""Index name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3155,7 +3155,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStatus(self):
-        """Index status
+        r"""Index status
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3167,7 +3167,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexStorage(self):
-        """Index size (in byte)
+        r"""Index size (in byte)
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -3179,7 +3179,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexCreateTime(self):
-        """Index creation time
+        r"""Index creation time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3191,7 +3191,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BackingIndices(self):
-        """Backing index
+        r"""Backing index
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of BackingIndexMetaField
         """
@@ -3203,7 +3203,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3215,7 +3215,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterName(self):
-        """Cluster name
+        r"""Cluster name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3227,7 +3227,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterVersion(self):
-        """Cluster version
+        r"""Cluster version
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3239,7 +3239,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexPolicyField(self):
-        """Index lifecycle policy field
+        r"""Index lifecycle policy field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
         """
@@ -3251,7 +3251,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexOptionsField(self):
-        """Index automation field
+        r"""Index automation field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
         """
@@ -3263,7 +3263,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexSettingsField(self):
-        """Index setting field
+        r"""Index setting field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
         """
@@ -3275,7 +3275,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AppId(self):
-        """Cluster APP ID
+        r"""Cluster APP ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -3287,7 +3287,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IndexDocs(self):
-        """The number of index docs.
+        r"""The number of index docs.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3335,7 +3335,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IndexOptionsField(AbstractModel):
-    """Index automation field
+    r"""Index automation field
 
     """
 
@@ -3373,7 +3373,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExpireMaxAge(self):
-        """Max age for expiry purpose
+        r"""Max age for expiry purpose
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3385,7 +3385,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExpireMaxSize(self):
-        """Max size for expiry purpose
+        r"""Max size for expiry purpose
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3397,7 +3397,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RolloverMaxAge(self):
-        """Rollover cycle
+        r"""Rollover cycle
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3409,7 +3409,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RolloverDynamic(self):
-        """Whether to enable the dynamic rollover
+        r"""Whether to enable the dynamic rollover
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3421,7 +3421,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ShardNumDynamic(self):
-        """Whether to enable dynamic sharding
+        r"""Whether to enable dynamic sharding
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3433,7 +3433,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TimestampField(self):
-        """Timestamp field
+        r"""Timestamp field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3445,7 +3445,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WriteMode(self):
-        """Write mode
+        r"""Write mode
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3475,7 +3475,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class IndexPolicyField(AbstractModel):
-    """Index lifecycle policy field
+    r"""Index lifecycle policy field
 
     """
 
@@ -3513,7 +3513,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WarmEnable(self):
-        """Whether to enable the warm phase
+        r"""Whether to enable the warm phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3525,7 +3525,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WarmMinAge(self):
-        """Min age before data transitions to the warm phase
+        r"""Min age before data transitions to the warm phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3537,7 +3537,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ColdEnable(self):
-        """Whether to enable the cold phase
+        r"""Whether to enable the cold phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3549,7 +3549,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ColdMinAge(self):
-        """Min age before data transitions to the cold phase
+        r"""Min age before data transitions to the cold phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3561,7 +3561,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FrozenEnable(self):
-        """Whether to enable the frozen phase
+        r"""Whether to enable the frozen phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3573,7 +3573,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FrozenMinAge(self):
-        """Min age before data transitions to the frozen phase
+        r"""Min age before data transitions to the frozen phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3585,7 +3585,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ColdAction(self):
-        """/
+        r"""/
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3615,7 +3615,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class IndexSettingsField(AbstractModel):
-    """Index configuration fields
+    r"""Index configuration fields
 
     """
 
@@ -3637,7 +3637,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NumberOfShards(self):
-        """Number of primary shards
+        r"""Number of primary shards
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3649,7 +3649,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NumberOfReplicas(self):
-        """Number of replica shards
+        r"""Number of replica shards
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3661,7 +3661,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RefreshInterval(self):
-        """Index refresh interval
+        r"""Index refresh interval
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3687,7 +3687,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class InstanceInfo(AbstractModel):
-    """Instance details
+    r"""Instance details
 
     """
 
@@ -3985,7 +3985,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3996,7 +3996,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -4007,7 +4007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -4018,7 +4018,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
-        """Availability Zone
+        r"""Availability Zone
         :rtype: str
         """
         return self._Zone
@@ -4029,7 +4029,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
-        """User ID
+        r"""User ID
         :rtype: int
         """
         return self._AppId
@@ -4040,7 +4040,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        """User UIN
+        r"""User UIN
         :rtype: str
         """
         return self._Uin
@@ -4051,7 +4051,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcUid(self):
-        """UID of the VPC where the instance resides
+        r"""UID of the VPC where the instance resides
         :rtype: str
         """
         return self._VpcUid
@@ -4062,7 +4062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetUid(self):
-        """UID of the subnet where the instance resides
+        r"""UID of the subnet where the instance resides
         :rtype: str
         """
         return self._SubnetUid
@@ -4073,7 +4073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.
+        r"""Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.
         :rtype: int
         """
         return self._Status
@@ -4084,7 +4084,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: str
         """
         return self._RenewFlag
@@ -4095,7 +4095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
-        """Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
+        r"""Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)
         :rtype: str
         """
         return self._ChargeType
@@ -4106,7 +4106,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargePeriod(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: int
         """
         return self._ChargePeriod
@@ -4117,7 +4117,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
-        """Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :rtype: str
         """
         return self._NodeType
@@ -4128,7 +4128,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeNum(self):
-        """Number of nodes
+        r"""Number of nodes
         :rtype: int
         """
         return self._NodeNum
@@ -4139,7 +4139,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuNum(self):
-        """Number of CPU cores of the node
+        r"""Number of CPU cores of the node
         :rtype: int
         """
         return self._CpuNum
@@ -4150,7 +4150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
-        """Node memory size in GB
+        r"""Node memory size in GB
         :rtype: int
         """
         return self._MemSize
@@ -4161,7 +4161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        """Node disk type
+        r"""Node disk type
         :rtype: str
         """
         return self._DiskType
@@ -4172,7 +4172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
-        """Node disk size in GB
+        r"""Node disk size in GB
         :rtype: int
         """
         return self._DiskSize
@@ -4183,7 +4183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsDomain(self):
-        """ES domain name
+        r"""ES domain name
         :rtype: str
         """
         return self._EsDomain
@@ -4194,7 +4194,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsVip(self):
-        """ES VIP
+        r"""ES VIP
         :rtype: str
         """
         return self._EsVip
@@ -4205,7 +4205,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPort(self):
-        """ES port
+        r"""ES port
         :rtype: int
         """
         return self._EsPort
@@ -4216,7 +4216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaUrl(self):
-        """Kibana access URL
+        r"""Kibana access URL
         :rtype: str
         """
         return self._KibanaUrl
@@ -4227,7 +4227,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsVersion(self):
-        """ES version number
+        r"""ES version number
         :rtype: str
         """
         return self._EsVersion
@@ -4238,7 +4238,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsConfig(self):
-        """ES configuration item
+        r"""ES configuration item
         :rtype: str
         """
         return self._EsConfig
@@ -4249,7 +4249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsAcl(self):
-        """Kibana access control configuration
+        r"""Kibana access control configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -4260,7 +4260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Instance creation time
+        r"""Instance creation time
         :rtype: str
         """
         return self._CreateTime
@@ -4271,7 +4271,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Last modified time of the instance
+        r"""Last modified time of the instance
         :rtype: str
         """
         return self._UpdateTime
@@ -4282,7 +4282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deadline(self):
-        """This parameter is not used on the global website
+        r"""This parameter is not used on the global website
         :rtype: str
         """
         return self._Deadline
@@ -4293,7 +4293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance type (instance type identifier, which can be only 1 or 2 currently)
+        r"""Instance type (instance type identifier, which can be only 1 or 2 currently)
         :rtype: int
         """
         return self._InstanceType
@@ -4304,7 +4304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IkConfig(self):
-        """IK analyzer configuration
+        r"""IK analyzer configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
         """
         return self._IkConfig
@@ -4315,7 +4315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterNodeInfo(self):
-        """Dedicated primary node configuration
+        r"""Dedicated primary node configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
         """
         return self._MasterNodeInfo
@@ -4326,7 +4326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosBackup(self):
-        """Auto-backup to COS configuration
+        r"""Auto-backup to COS configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -4337,7 +4337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllowCosBackup(self):
-        """Whether to allow auto-backup to COS
+        r"""Whether to allow auto-backup to COS
         :rtype: bool
         """
         return self._AllowCosBackup
@@ -4348,7 +4348,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagList(self):
-        """List of tags owned by the instance
+        r"""List of tags owned by the instance
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -4359,7 +4359,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseType(self):
-        """License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
         :rtype: str
         """
         return self._LicenseType
@@ -4370,7 +4370,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableHotWarmMode(self):
-        """Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
+        r"""Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4382,7 +4382,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarmNodeType(self):
-        """Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4394,7 +4394,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmNodeNum(self):
-        """Number of warm nodes
+        r"""Number of warm nodes
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4406,7 +4406,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmCpuNum(self):
-        """Number of warm node CPU cores
+        r"""Number of warm node CPU cores
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4418,7 +4418,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmMemSize(self):
-        """Warm node memory size (in GB)
+        r"""Warm node memory size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4430,7 +4430,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmDiskType(self):
-        """Warm node disk type
+        r"""Warm node disk type
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4442,7 +4442,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WarmDiskSize(self):
-        """Warm node disk size (in GB)
+        r"""Warm node disk size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4454,7 +4454,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NodeInfoList(self):
-        """Cluster node information list
+        r"""Cluster node information list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of NodeInfo
         """
@@ -4466,7 +4466,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPublicUrl(self):
-        """ES public IP address
+        r"""ES public IP address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4478,7 +4478,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MultiZoneInfo(self):
-        """Multi-AZ network information
+        r"""Multi-AZ network information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ZoneDetail
         """
@@ -4490,7 +4490,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeployMode(self):
-        """Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
+        r"""Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4502,7 +4502,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAccess(self):
-        """ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
+        r"""ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4514,7 +4514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EsPublicAcl(self):
-        """ES public access control configuration
+        r"""ES public access control configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsPublicAcl
@@ -4525,7 +4525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPrivateUrl(self):
-        """Kibana private IP address
+        r"""Kibana private IP address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4537,7 +4537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPublicAccess(self):
-        """Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
+        r"""Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4549,7 +4549,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaPrivateAccess(self):
-        """Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
+        r"""Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4561,7 +4561,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityType(self):
-        """Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4573,7 +4573,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneType(self):
-        """Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
+        r"""Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4585,7 +4585,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaConfig(self):
-        """Kibana configuration item.
+        r"""Kibana configuration item.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4597,7 +4597,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KibanaNodeInfo(self):
-        """Kibana node information
+        r"""Kibana node information
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
@@ -4609,7 +4609,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WebNodeTypeInfo(self):
-        """Visual node configuration
+        r"""Visual node configuration
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
@@ -4621,7 +4621,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Jdk(self):
-        """JDK type. Valid values: `oracle`, `kona`
+        r"""JDK type. Valid values: `oracle`, `kona`
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4633,7 +4633,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Protocol(self):
-        """Cluster network communication protocol
+        r"""Cluster network communication protocol
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4645,7 +4645,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroups(self):
-        """Security group ID
+        r"""Security group ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4657,7 +4657,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ColdNodeType(self):
-        """Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4669,7 +4669,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdNodeNum(self):
-        """Number of cold nodes
+        r"""Number of cold nodes
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4681,7 +4681,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdCpuNum(self):
-        """Number of cold node CPU cores
+        r"""Number of cold node CPU cores
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4693,7 +4693,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdMemSize(self):
-        """Cold node memory size (in GB)
+        r"""Cold node memory size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4705,7 +4705,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdDiskType(self):
-        """Cold node disk type
+        r"""Cold node disk type
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4717,7 +4717,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColdDiskSize(self):
-        """Cold node disk size (in GB)
+        r"""Cold node disk size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4729,7 +4729,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenNodeType(self):
-        """Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4741,7 +4741,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenNodeNum(self):
-        """Number of frozen nodes
+        r"""Number of frozen nodes
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4753,7 +4753,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenCpuNum(self):
-        """Number of frozen node CPU cores
+        r"""Number of frozen node CPU cores
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4765,7 +4765,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenMemSize(self):
-        """Frozen node memory size (GB)
+        r"""Frozen node memory size (GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4777,7 +4777,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenDiskType(self):
-        """Frozen node disk type
+        r"""Frozen node disk type
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4789,7 +4789,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrozenDiskSize(self):
-        """Frozen node disk size (in GB)
+        r"""Frozen node disk size (in GB)
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4801,7 +4801,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HealthStatus(self):
-        """Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
+        r"""Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -4813,7 +4813,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsPrivateUrl(self):
-        """Private URL of the HTTPS cluster
+        r"""Private URL of the HTTPS cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4825,7 +4825,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsPrivateDomain(self):
-        """Private domain of the HTTPS cluster
+        r"""Private domain of the HTTPS cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -4837,7 +4837,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EsConfigSets(self):
-        """Configuration set info of the cluster.
+        r"""Configuration set info of the cluster.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of EsConfigSetInfo
         """
@@ -4849,7 +4849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperationDuration(self):
-        """The maintenance time slot of the cluster
+        r"""The maintenance time slot of the cluster
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
@@ -4861,7 +4861,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OptionalWebServiceInfos(self):
-        """Web node list
+        r"""Web node list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of OptionalWebServiceInfo
         """
@@ -4873,7 +4873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoIndexEnabled(self):
-        """Autonomous index option
+        r"""Autonomous index option
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4885,7 +4885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableHybridStorage(self):
-        """Whether the storage-computing separation feature is enabled.
+        r"""Whether the storage-computing separation feature is enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4897,7 +4897,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessPercent(self):
-        """The process progress
+        r"""The process progress
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -4909,7 +4909,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KibanaAlteringPublicAccess(self):
-        """The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.
+        r"""The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5054,7 +5054,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class InstanceLog(AbstractModel):
-    """ES cluster log details
+    r"""ES cluster log details
 
     """
 
@@ -5076,7 +5076,7 @@ class InstanceLog(AbstractModel):
 
     @property
     def Time(self):
-        """Log time
+        r"""Log time
         :rtype: str
         """
         return self._Time
@@ -5087,7 +5087,7 @@ class InstanceLog(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -5098,7 +5098,7 @@ class InstanceLog(AbstractModel):
 
     @property
     def Ip(self):
-        """Cluster node IP
+        r"""Cluster node IP
         :rtype: str
         """
         return self._Ip
@@ -5109,7 +5109,7 @@ class InstanceLog(AbstractModel):
 
     @property
     def Message(self):
-        """Log content
+        r"""Log content
         :rtype: str
         """
         return self._Message
@@ -5135,7 +5135,7 @@ class InstanceLog(AbstractModel):
 
 
 class KeyValue(AbstractModel):
-    """`OperationDetail` uses an array of this structure to describe the old and new configuration information
+    r"""`OperationDetail` uses an array of this structure to describe the old and new configuration information
 
     """
 
@@ -5151,7 +5151,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Key(self):
-        """Key
+        r"""Key
         :rtype: str
         """
         return self._Key
@@ -5162,7 +5162,7 @@ class KeyValue(AbstractModel):
 
     @property
     def Value(self):
-        """Value
+        r"""Value
         :rtype: str
         """
         return self._Value
@@ -5186,7 +5186,7 @@ class KeyValue(AbstractModel):
 
 
 class KibanaNodeInfo(AbstractModel):
-    """Kibana node information
+    r"""Kibana node information
 
     """
 
@@ -5214,7 +5214,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeType(self):
-        """Kibana node specification
+        r"""Kibana node specification
         :rtype: str
         """
         return self._KibanaNodeType
@@ -5225,7 +5225,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeNum(self):
-        """Number of Kibana nodes
+        r"""Number of Kibana nodes
         :rtype: int
         """
         return self._KibanaNodeNum
@@ -5236,7 +5236,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeCpuNum(self):
-        """Number of Kibana node's CPUs
+        r"""Number of Kibana node's CPUs
         :rtype: int
         """
         return self._KibanaNodeCpuNum
@@ -5247,7 +5247,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeMemSize(self):
-        """Kibana node's memory in GB
+        r"""Kibana node's memory in GB
         :rtype: int
         """
         return self._KibanaNodeMemSize
@@ -5258,7 +5258,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeDiskType(self):
-        """Kibana node's disk type
+        r"""Kibana node's disk type
         :rtype: str
         """
         return self._KibanaNodeDiskType
@@ -5269,7 +5269,7 @@ class KibanaNodeInfo(AbstractModel):
 
     @property
     def KibanaNodeDiskSize(self):
-        """Kibana node's disk size
+        r"""Kibana node's disk size
         :rtype: int
         """
         return self._KibanaNodeDiskSize
@@ -5297,7 +5297,7 @@ class KibanaNodeInfo(AbstractModel):
 
 
 class KibanaView(AbstractModel):
-    """Kibana view data
+    r"""Kibana view data
 
     """
 
@@ -5331,7 +5331,7 @@ class KibanaView(AbstractModel):
 
     @property
     def Ip(self):
-        """Kibana node IP
+        r"""Kibana node IP
         :rtype: str
         """
         return self._Ip
@@ -5342,7 +5342,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskSize(self):
-        """Node disk size
+        r"""Node disk size
         :rtype: int
         """
         return self._DiskSize
@@ -5353,7 +5353,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskUsage(self):
-        """Disk usage
+        r"""Disk usage
         :rtype: float
         """
         return self._DiskUsage
@@ -5364,7 +5364,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemSize(self):
-        """Node memory size
+        r"""Node memory size
         :rtype: int
         """
         return self._MemSize
@@ -5375,7 +5375,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemUsage(self):
-        """Memory usage
+        r"""Memory usage
         :rtype: float
         """
         return self._MemUsage
@@ -5386,7 +5386,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuNum(self):
-        """Number of node CPUs
+        r"""Number of node CPUs
         :rtype: int
         """
         return self._CpuNum
@@ -5397,7 +5397,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuUsage(self):
-        """CPU usage
+        r"""CPU usage
         :rtype: float
         """
         return self._CpuUsage
@@ -5408,7 +5408,7 @@ class KibanaView(AbstractModel):
 
     @property
     def Zone(self):
-        """Availability zone
+        r"""Availability zone
         :rtype: str
         """
         return self._Zone
@@ -5438,7 +5438,7 @@ class KibanaView(AbstractModel):
 
 
 class LocalDiskInfo(AbstractModel):
-    """Local disk information of node
+    r"""Local disk information of node
 
     """
 
@@ -5457,7 +5457,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskType(self):
-        """Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
+        r"""Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>
         :rtype: str
         """
         return self._LocalDiskType
@@ -5468,7 +5468,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskSize(self):
-        """Size of a single local disk
+        r"""Size of a single local disk
         :rtype: int
         """
         return self._LocalDiskSize
@@ -5479,7 +5479,7 @@ class LocalDiskInfo(AbstractModel):
 
     @property
     def LocalDiskCount(self):
-        """Number of local disks
+        r"""Number of local disks
         :rtype: int
         """
         return self._LocalDiskCount
@@ -5504,7 +5504,7 @@ class LocalDiskInfo(AbstractModel):
 
 
 class MasterNodeInfo(AbstractModel):
-    """Information of the dedicated primary node in an instance
+    r"""Information of the dedicated primary node in an instance
 
     """
 
@@ -5535,7 +5535,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def EnableDedicatedMaster(self):
-        """Whether to enable the dedicated primary node
+        r"""Whether to enable the dedicated primary node
         :rtype: bool
         """
         return self._EnableDedicatedMaster
@@ -5546,7 +5546,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeType(self):
-        """Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
+        r"""Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :rtype: str
         """
         return self._MasterNodeType
@@ -5557,7 +5557,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeNum(self):
-        """Number of dedicated primary nodes
+        r"""Number of dedicated primary nodes
         :rtype: int
         """
         return self._MasterNodeNum
@@ -5568,7 +5568,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeCpuNum(self):
-        """Number of CPU cores of the dedicated primary node
+        r"""Number of CPU cores of the dedicated primary node
         :rtype: int
         """
         return self._MasterNodeCpuNum
@@ -5579,7 +5579,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeMemSize(self):
-        """Memory size of the dedicated primary node in GB
+        r"""Memory size of the dedicated primary node in GB
         :rtype: int
         """
         return self._MasterNodeMemSize
@@ -5590,7 +5590,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeDiskSize(self):
-        """Disk size of the dedicated primary node in GB
+        r"""Disk size of the dedicated primary node in GB
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -5601,7 +5601,7 @@ class MasterNodeInfo(AbstractModel):
 
     @property
     def MasterNodeDiskType(self):
-        """Disk type of the dedicated primary node
+        r"""Disk type of the dedicated primary node
         :rtype: str
         """
         return self._MasterNodeDiskType
@@ -5630,7 +5630,7 @@ class MasterNodeInfo(AbstractModel):
 
 
 class NodeInfo(AbstractModel):
-    """Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)
+    r"""Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)
 
     """
 
@@ -5680,7 +5680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeNum(self):
-        """Number of nodes
+        r"""Number of nodes
         :rtype: int
         """
         return self._NodeNum
@@ -5691,7 +5691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
-        """Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
+        r"""Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :rtype: str
         """
         return self._NodeType
@@ -5702,7 +5702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Node type<li>`hotData`: hot data node</li>
+        r"""Node type<li>`hotData`: hot data node</li>
 <li>`warmData`: warm data node</li>
 <li>`dedicatedMaster`: dedicated master node</li>
 Default value: `hotData`
@@ -5716,7 +5716,7 @@ Default value: `hotData`
 
     @property
     def DiskType(self):
-        """Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
+        r"""Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD
         :rtype: str
         """
         return self._DiskType
@@ -5727,7 +5727,7 @@ Default value: `hotData`
 
     @property
     def DiskSize(self):
-        """Node disk size in GB
+        r"""Node disk size in GB
         :rtype: int
         """
         return self._DiskSize
@@ -5738,7 +5738,7 @@ Default value: `hotData`
 
     @property
     def LocalDiskInfo(self):
-        """Local disk information
+        r"""Local disk information
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
@@ -5750,7 +5750,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskCount(self):
-        """Number of node disks
+        r"""Number of node disks
         :rtype: int
         """
         return self._DiskCount
@@ -5761,7 +5761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskEncrypt(self):
-        """Whether to encrypt node disk. 0: no (default); 1: yes.
+        r"""Whether to encrypt node disk. 0: no (default); 1: yes.
         :rtype: int
         """
         return self._DiskEncrypt
@@ -5772,7 +5772,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuNum(self):
-        """CPU number
+        r"""CPU number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5784,7 +5784,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
-        """Memory size in GB
+        r"""Memory size in GB
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5796,7 +5796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskEnhance(self):
-        """/
+        r"""/
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5832,7 +5832,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class NodeView(AbstractModel):
-    """Node view data
+    r"""Node view data
 
     """
 
@@ -5893,7 +5893,7 @@ class NodeView(AbstractModel):
 
     @property
     def NodeId(self):
-        """Node ID
+        r"""Node ID
         :rtype: str
         """
         return self._NodeId
@@ -5904,7 +5904,7 @@ class NodeView(AbstractModel):
 
     @property
     def NodeIp(self):
-        """Node IP
+        r"""Node IP
         :rtype: str
         """
         return self._NodeIp
@@ -5915,7 +5915,7 @@ class NodeView(AbstractModel):
 
     @property
     def Visible(self):
-        """Whether the node is visible
+        r"""Whether the node is visible
         :rtype: float
         """
         return self._Visible
@@ -5926,7 +5926,7 @@ class NodeView(AbstractModel):
 
     @property
     def Break(self):
-        """Whether the node encounters circuit breaking
+        r"""Whether the node encounters circuit breaking
         :rtype: float
         """
         return self._Break
@@ -5937,7 +5937,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskSize(self):
-        """Node disk size
+        r"""Node disk size
         :rtype: int
         """
         return self._DiskSize
@@ -5948,7 +5948,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskUsage(self):
-        """Disk usage
+        r"""Disk usage
         :rtype: float
         """
         return self._DiskUsage
@@ -5959,7 +5959,7 @@ class NodeView(AbstractModel):
 
     @property
     def MemSize(self):
-        """Node memory size (in GB)
+        r"""Node memory size (in GB)
         :rtype: int
         """
         return self._MemSize
@@ -5970,7 +5970,7 @@ class NodeView(AbstractModel):
 
     @property
     def MemUsage(self):
-        """Memory usage
+        r"""Memory usage
         :rtype: float
         """
         return self._MemUsage
@@ -5981,7 +5981,7 @@ class NodeView(AbstractModel):
 
     @property
     def CpuNum(self):
-        """Number of node CPUs
+        r"""Number of node CPUs
         :rtype: int
         """
         return self._CpuNum
@@ -5992,7 +5992,7 @@ class NodeView(AbstractModel):
 
     @property
     def CpuUsage(self):
-        """CPU usage
+        r"""CPU usage
         :rtype: float
         """
         return self._CpuUsage
@@ -6003,7 +6003,7 @@ class NodeView(AbstractModel):
 
     @property
     def Zone(self):
-        """Availability zone
+        r"""Availability zone
         :rtype: str
         """
         return self._Zone
@@ -6014,7 +6014,7 @@ class NodeView(AbstractModel):
 
     @property
     def NodeRole(self):
-        """Node role
+        r"""Node role
         :rtype: str
         """
         return self._NodeRole
@@ -6025,7 +6025,7 @@ class NodeView(AbstractModel):
 
     @property
     def NodeHttpIp(self):
-        """Node HTTP IP
+        r"""Node HTTP IP
         :rtype: str
         """
         return self._NodeHttpIp
@@ -6036,7 +6036,7 @@ class NodeView(AbstractModel):
 
     @property
     def JvmMemUsage(self):
-        """JVM memory usage
+        r"""JVM memory usage
         :rtype: float
         """
         return self._JvmMemUsage
@@ -6047,7 +6047,7 @@ class NodeView(AbstractModel):
 
     @property
     def ShardNum(self):
-        """Number of node shards
+        r"""Number of node shards
         :rtype: int
         """
         return self._ShardNum
@@ -6058,7 +6058,7 @@ class NodeView(AbstractModel):
 
     @property
     def DiskIds(self):
-        """ID list of node disks
+        r"""ID list of node disks
         :rtype: list of str
         """
         return self._DiskIds
@@ -6069,7 +6069,7 @@ class NodeView(AbstractModel):
 
     @property
     def Hidden(self):
-        """Whether a hidden availability zone
+        r"""Whether a hidden availability zone
         :rtype: bool
         """
         return self._Hidden
@@ -6108,7 +6108,7 @@ class NodeView(AbstractModel):
 
 
 class Operation(AbstractModel):
-    """ES cluster operation details
+    r"""ES cluster operation details
 
     """
 
@@ -6139,7 +6139,7 @@ class Operation(AbstractModel):
 
     @property
     def Id(self):
-        """Unique operation ID
+        r"""Unique operation ID
         :rtype: int
         """
         return self._Id
@@ -6150,7 +6150,7 @@ class Operation(AbstractModel):
 
     @property
     def StartTime(self):
-        """Operation start time
+        r"""Operation start time
         :rtype: str
         """
         return self._StartTime
@@ -6161,7 +6161,7 @@ class Operation(AbstractModel):
 
     @property
     def Type(self):
-        """Operation type
+        r"""Operation type
         :rtype: str
         """
         return self._Type
@@ -6172,7 +6172,7 @@ class Operation(AbstractModel):
 
     @property
     def Detail(self):
-        """Operation details
+        r"""Operation details
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDetail`
         """
         return self._Detail
@@ -6183,7 +6183,7 @@ class Operation(AbstractModel):
 
     @property
     def Result(self):
-        """Operation result
+        r"""Operation result
         :rtype: str
         """
         return self._Result
@@ -6194,7 +6194,7 @@ class Operation(AbstractModel):
 
     @property
     def Tasks(self):
-        """Workflow task information
+        r"""Workflow task information
         :rtype: list of TaskDetail
         """
         return self._Tasks
@@ -6205,7 +6205,7 @@ class Operation(AbstractModel):
 
     @property
     def Progress(self):
-        """Operation progress
+        r"""Operation progress
         :rtype: float
         """
         return self._Progress
@@ -6241,7 +6241,7 @@ class Operation(AbstractModel):
 
 
 class OperationDetail(AbstractModel):
-    """Operation details
+    r"""Operation details
 
     """
 
@@ -6257,7 +6257,7 @@ class OperationDetail(AbstractModel):
 
     @property
     def OldInfo(self):
-        """Original instance configuration information
+        r"""Original instance configuration information
         :rtype: list of KeyValue
         """
         return self._OldInfo
@@ -6268,7 +6268,7 @@ class OperationDetail(AbstractModel):
 
     @property
     def NewInfo(self):
-        """Updated instance configuration information
+        r"""Updated instance configuration information
         :rtype: list of KeyValue
         """
         return self._NewInfo
@@ -6302,7 +6302,7 @@ class OperationDetail(AbstractModel):
 
 
 class OperationDuration(AbstractModel):
-    """The maintenance time slot of the cluster
+    r"""The maintenance time slot of the cluster
 
     """
 
@@ -6325,7 +6325,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Periods(self):
-        """Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+        r"""Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int non-negative
         """
@@ -6337,7 +6337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeStart(self):
-        """The maintenance start time
+        r"""The maintenance start time
         :rtype: str
         """
         return self._TimeStart
@@ -6348,7 +6348,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeEnd(self):
-        """The maintenance end time
+        r"""The maintenance end time
         :rtype: str
         """
         return self._TimeEnd
@@ -6359,7 +6359,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeZone(self):
-        """The time zone expressed in UTC.
+        r"""The time zone expressed in UTC.
         :rtype: str
         """
         return self._TimeZone
@@ -6385,7 +6385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OperationDurationUpdated(AbstractModel):
-    """The maintenance time slot of the cluster
+    r"""The maintenance time slot of the cluster
 
     """
 
@@ -6410,7 +6410,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def Periods(self):
-        """Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
+        r"""Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].
         :rtype: list of int non-negative
         """
         return self._Periods
@@ -6421,7 +6421,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeStart(self):
-        """The maintenance start time
+        r"""The maintenance start time
         :rtype: str
         """
         return self._TimeStart
@@ -6432,7 +6432,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeEnd(self):
-        """The maintenance end time
+        r"""The maintenance end time
         :rtype: str
         """
         return self._TimeEnd
@@ -6443,7 +6443,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def TimeZone(self):
-        """The time zone expressed in UTC.
+        r"""The time zone expressed in UTC.
         :rtype: str
         """
         return self._TimeZone
@@ -6454,7 +6454,7 @@ class OperationDurationUpdated(AbstractModel):
 
     @property
     def MoreInstances(self):
-        """The array of ES cluster IDs
+        r"""The array of ES cluster IDs
         :rtype: list of str
         """
         return self._MoreInstances
@@ -6481,7 +6481,7 @@ class OperationDurationUpdated(AbstractModel):
 
 
 class OptionalWebServiceInfo(AbstractModel):
-    """The information of optional web components
+    r"""The information of optional web components
 
     """
 
@@ -6519,7 +6519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Type
+        r"""Type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6531,7 +6531,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6543,7 +6543,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicUrl(self):
-        """Public URL
+        r"""Public URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6555,7 +6555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateUrl(self):
-        """Private URL
+        r"""Private URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6567,7 +6567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAccess(self):
-        """Public network access
+        r"""Public network access
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6579,7 +6579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateAccess(self):
-        """Private network access
+        r"""Private network access
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6591,7 +6591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Version
+        r"""Version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6621,7 +6621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RestartInstanceRequest(AbstractModel):
-    """RestartInstance request structure.
+    r"""RestartInstance request structure.
 
     """
 
@@ -6640,7 +6640,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6651,7 +6651,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        """Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
+        r"""Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -6662,7 +6662,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def RestartMode(self):
-        """Restart mode. `0`: rolling restart; `1`: full restart
+        r"""Restart mode. `0`: rolling restart; `1`: full restart
         :rtype: int
         """
         return self._RestartMode
@@ -6687,7 +6687,7 @@ class RestartInstanceRequest(AbstractModel):
 
 
 class RestartInstanceResponse(AbstractModel):
-    """RestartInstance response structure.
+    r"""RestartInstance response structure.
 
     """
 
@@ -6700,7 +6700,7 @@ class RestartInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6715,7 +6715,7 @@ class RestartInstanceResponse(AbstractModel):
 
 
 class RestartKibanaRequest(AbstractModel):
-    """RestartKibana request structure.
+    r"""RestartKibana request structure.
 
     """
 
@@ -6728,7 +6728,7 @@ class RestartKibanaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES instance ID
+        r"""ES instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6751,7 +6751,7 @@ class RestartKibanaRequest(AbstractModel):
 
 
 class RestartKibanaResponse(AbstractModel):
-    """RestartKibana response structure.
+    r"""RestartKibana response structure.
 
     """
 
@@ -6764,7 +6764,7 @@ class RestartKibanaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6779,7 +6779,7 @@ class RestartKibanaResponse(AbstractModel):
 
 
 class RestartNodesRequest(AbstractModel):
-    """RestartNodes request structure.
+    r"""RestartNodes request structure.
 
     """
 
@@ -6804,7 +6804,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Cluster instance ID
+        r"""Cluster instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6815,7 +6815,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def NodeNames(self):
-        """Node name list
+        r"""Node name list
         :rtype: list of str
         """
         return self._NodeNames
@@ -6826,7 +6826,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        """Whether to force restart
+        r"""Whether to force restart
         :rtype: bool
         """
         return self._ForceRestart
@@ -6837,7 +6837,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def RestartMode(self):
-        """The restart mode. Valid values: `in-place` (default), `blue-green`.
+        r"""The restart mode. Valid values: `in-place` (default), `blue-green`.
         :rtype: str
         """
         return self._RestartMode
@@ -6848,7 +6848,7 @@ class RestartNodesRequest(AbstractModel):
 
     @property
     def IsOffline(self):
-        """The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.
+        r"""The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.
         :rtype: bool
         """
         return self._IsOffline
@@ -6875,7 +6875,7 @@ class RestartNodesRequest(AbstractModel):
 
 
 class RestartNodesResponse(AbstractModel):
-    """RestartNodes response structure.
+    r"""RestartNodes response structure.
 
     """
 
@@ -6888,7 +6888,7 @@ class RestartNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6903,7 +6903,7 @@ class RestartNodesResponse(AbstractModel):
 
 
 class SubTaskDetail(AbstractModel):
-    """Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)
+    r"""Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)
 
     """
 
@@ -6937,7 +6937,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Subtask name
+        r"""Subtask name
         :rtype: str
         """
         return self._Name
@@ -6948,7 +6948,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Result(self):
-        """Subtask result
+        r"""Subtask result
         :rtype: bool
         """
         return self._Result
@@ -6959,7 +6959,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def ErrMsg(self):
-        """Subtask error message
+        r"""Subtask error message
         :rtype: str
         """
         return self._ErrMsg
@@ -6970,7 +6970,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Type(self):
-        """Subtask type
+        r"""Subtask type
         :rtype: str
         """
         return self._Type
@@ -6981,7 +6981,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Subtask status. 0: processing, 1: succeeded, -1: failed
+        r"""Subtask status. 0: processing, 1: succeeded, -1: failed
         :rtype: int
         """
         return self._Status
@@ -6992,7 +6992,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def FailedIndices(self):
-        """Name of the index for which the check for upgrade failed
+        r"""Name of the index for which the check for upgrade failed
         :rtype: list of str
         """
         return self._FailedIndices
@@ -7003,7 +7003,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def FinishTime(self):
-        """Subtask end time
+        r"""Subtask end time
         :rtype: str
         """
         return self._FinishTime
@@ -7014,7 +7014,7 @@ class SubTaskDetail(AbstractModel):
 
     @property
     def Level(self):
-        """Subtask level. 1: warning, 2: failed
+        r"""Subtask level. 1: warning, 2: failed
         :rtype: int
         """
         return self._Level
@@ -7044,7 +7044,7 @@ class SubTaskDetail(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """Instance tag information
+    r"""Instance tag information
 
     """
 
@@ -7060,7 +7060,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -7071,7 +7071,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -7095,7 +7095,7 @@ class TagInfo(AbstractModel):
 
 
 class TaskDetail(AbstractModel):
-    """Information of workflow task in instance operation history
+    r"""Information of workflow task in instance operation history
 
     """
 
@@ -7121,7 +7121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._Name
@@ -7132,7 +7132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Task progress
+        r"""Task progress
         :rtype: float
         """
         return self._Progress
@@ -7143,7 +7143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishTime(self):
-        """Task completion time
+        r"""Task completion time
         :rtype: str
         """
         return self._FinishTime
@@ -7154,7 +7154,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubTasks(self):
-        """Subtask
+        r"""Subtask
         :rtype: list of SubTaskDetail
         """
         return self._SubTasks
@@ -7165,7 +7165,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ElapsedTime(self):
-        """The task time.
+        r"""The task time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7198,7 +7198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateDictionariesRequest(AbstractModel):
-    """UpdateDictionaries request structure.
+    r"""UpdateDictionaries request structure.
 
     """
 
@@ -7229,7 +7229,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES instance ID
+        r"""ES instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7240,7 +7240,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def IkMainDicts(self):
-        """COS address of the main dictionary for the IK analyzer
+        r"""COS address of the main dictionary for the IK analyzer
         :rtype: list of str
         """
         return self._IkMainDicts
@@ -7251,7 +7251,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def IkStopwords(self):
-        """COS address of the stopword dictionary for the IK analyzer
+        r"""COS address of the stopword dictionary for the IK analyzer
         :rtype: list of str
         """
         return self._IkStopwords
@@ -7262,7 +7262,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def Synonym(self):
-        """COS address of the synonym dictionary
+        r"""COS address of the synonym dictionary
         :rtype: list of str
         """
         return self._Synonym
@@ -7273,7 +7273,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def QQDict(self):
-        """COS address of the QQ dictionary
+        r"""COS address of the QQ dictionary
         :rtype: list of str
         """
         return self._QQDict
@@ -7284,7 +7284,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def UpdateType(self):
-        """`0` (default): Install, `1`: Delete
+        r"""`0` (default): Install, `1`: Delete
         :rtype: int
         """
         return self._UpdateType
@@ -7295,7 +7295,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        """Whether to force restart the cluster. The default value is `false`.
+        r"""Whether to force restart the cluster. The default value is `false`.
         :rtype: bool
         """
         return self._ForceRestart
@@ -7324,7 +7324,7 @@ class UpdateDictionariesRequest(AbstractModel):
 
 
 class UpdateDictionariesResponse(AbstractModel):
-    """UpdateDictionaries response structure.
+    r"""UpdateDictionaries response structure.
 
     """
 
@@ -7337,7 +7337,7 @@ class UpdateDictionariesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7352,7 +7352,7 @@ class UpdateDictionariesResponse(AbstractModel):
 
 
 class UpdateIndexRequest(AbstractModel):
-    """UpdateIndex request structure.
+    r"""UpdateIndex request structure.
 
     """
 
@@ -7383,7 +7383,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ES cluster ID
+        r"""ES cluster ID
         :rtype: str
         """
         return self._InstanceId
@@ -7394,7 +7394,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        """Type of the index to update. `auto`: Automated; `normal`: General.
+        r"""Type of the index to update. `auto`: Automated; `normal`: General.
         :rtype: str
         """
         return self._IndexType
@@ -7405,7 +7405,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        """Name of the index to update
+        r"""Name of the index to update
         :rtype: str
         """
         return self._IndexName
@@ -7416,7 +7416,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def UpdateMetaJson(self):
-        """JSON-formatted index metadata to update, such as `mappings` and `settings`.
+        r"""JSON-formatted index metadata to update, such as `mappings` and `settings`.
         :rtype: str
         """
         return self._UpdateMetaJson
@@ -7427,7 +7427,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        """Username for cluster access
+        r"""Username for cluster access
         :rtype: str
         """
         return self._Username
@@ -7438,7 +7438,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password for cluster access
+        r"""Password for cluster access
         :rtype: str
         """
         return self._Password
@@ -7449,7 +7449,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def RolloverBackingIndex(self):
-        """Whether to roll over the backup index
+        r"""Whether to roll over the backup index
         :rtype: bool
         """
         return self._RolloverBackingIndex
@@ -7478,7 +7478,7 @@ class UpdateIndexRequest(AbstractModel):
 
 
 class UpdateIndexResponse(AbstractModel):
-    """UpdateIndex response structure.
+    r"""UpdateIndex response structure.
 
     """
 
@@ -7491,7 +7491,7 @@ class UpdateIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7506,7 +7506,7 @@ class UpdateIndexResponse(AbstractModel):
 
 
 class UpdateInstanceRequest(AbstractModel):
-    """UpdateInstance request structure.
+    r"""UpdateInstance request structure.
 
     """
 
@@ -7630,7 +7630,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7641,7 +7641,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def InstanceName(self):
-        """Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
+        r"""Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)
         :rtype: str
         """
         return self._InstanceName
@@ -7652,7 +7652,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def NodeNum(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Number of nodes (2-50)
         :rtype: int
         """
@@ -7664,7 +7664,7 @@ Number of nodes (2-50)
 
     @property
     def EsConfig(self):
-        """ES configuration item (JSON string)
+        r"""ES configuration item (JSON string)
         :rtype: str
         """
         return self._EsConfig
@@ -7675,7 +7675,7 @@ Number of nodes (2-50)
 
     @property
     def Password(self):
-        """Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
+        r"""Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :rtype: str
         """
         return self._Password
@@ -7686,7 +7686,7 @@ Number of nodes (2-50)
 
     @property
     def EsAcl(self):
-        """The policy for visual component (Kibana and Cerebro) access over public network.
+        r"""The policy for visual component (Kibana and Cerebro) access over public network.
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -7697,7 +7697,7 @@ Number of nodes (2-50)
 
     @property
     def DiskSize(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Disk size in GB
         :rtype: int
         """
@@ -7709,7 +7709,7 @@ Disk size in GB
 
     @property
     def NodeType(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>
         :rtype: str
         """
@@ -7721,7 +7721,7 @@ Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 
 
     @property
     def MasterNodeNum(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Number of dedicated primary nodes (only 3 and 5 are supported)
         :rtype: int
         """
@@ -7733,7 +7733,7 @@ Number of dedicated primary nodes (only 3 and 5 are supported)
 
     @property
     def MasterNodeType(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>
         :rtype: str
         """
@@ -7745,7 +7745,7 @@ Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1
 
     @property
     def MasterNodeDiskSize(self):
-        """This parameter has been disused. Please use `NodeInfoList`
+        r"""This parameter has been disused. Please use `NodeInfoList`
 Dedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized
         :rtype: int
         """
@@ -7757,7 +7757,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def ForceRestart(self):
-        """Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
+        r"""Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -7768,7 +7768,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CosBackup(self):
-        """Auto-backup to COS
+        r"""Auto-backup to COS
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -7779,7 +7779,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def NodeInfoList(self):
-        """Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
+        r"""Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -7790,7 +7790,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def PublicAccess(self):
-        """The status of ES cluster access over public network.
+        r"""The status of ES cluster access over public network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -7803,7 +7803,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EsPublicAcl(self):
-        """Public network ACL
+        r"""Public network ACL
         :rtype: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
         """
         return self._EsPublicAcl
@@ -7814,7 +7814,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPublicAccess(self):
-        """The status of Kibana access over public network.
+        r"""The status of Kibana access over public network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -7827,7 +7827,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPrivateAccess(self):
-        """The status of Kibana access over private network.
+        r"""The status of Kibana access over private network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -7840,7 +7840,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def BasicSecurityType(self):
-        """Enables or disables user authentication for ES Basic Edition v6.8 and above
+        r"""Enables or disables user authentication for ES Basic Edition v6.8 and above
         :rtype: int
         """
         return self._BasicSecurityType
@@ -7851,7 +7851,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaPrivatePort(self):
-        """Kibana private port
+        r"""Kibana private port
         :rtype: int
         """
         return self._KibanaPrivatePort
@@ -7862,7 +7862,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def ScaleType(self):
-        """0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
+        r"""0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart
         :rtype: int
         """
         return self._ScaleType
@@ -7873,7 +7873,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def MultiZoneInfo(self):
-        """Multi-AZ deployment
+        r"""Multi-AZ deployment
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -7884,7 +7884,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def SceneType(self):
-        """Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
+        r"""Scenario template type. -1: not enabled; 1: general; 2: log; 3: search
         :rtype: int
         """
         return self._SceneType
@@ -7895,7 +7895,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaConfig(self):
-        """Kibana configuration item (JSON string)
+        r"""Kibana configuration item (JSON string)
         :rtype: str
         """
         return self._KibanaConfig
@@ -7906,7 +7906,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def WebNodeTypeInfo(self):
-        """Visual node configuration
+        r"""Visual node configuration
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -7917,7 +7917,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def SwitchPrivateLink(self):
-        """Whether to switch to the new network architecture
+        r"""Whether to switch to the new network architecture
         :rtype: str
         """
         return self._SwitchPrivateLink
@@ -7928,7 +7928,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EnableCerebro(self):
-        """Whether to enable Cerebro
+        r"""Whether to enable Cerebro
         :rtype: bool
         """
         return self._EnableCerebro
@@ -7939,7 +7939,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CerebroPublicAccess(self):
-        """The status of Cerebro access over public network.
+        r"""The status of Cerebro access over public network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -7952,7 +7952,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def CerebroPrivateAccess(self):
-        """The status of Cerebro access over private network.
+        r"""The status of Cerebro access over private network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -7965,7 +7965,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def EsConfigSet(self):
-        """Added or modified configuration set information
+        r"""Added or modified configuration set information
         :rtype: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         """
         return self._EsConfigSet
@@ -7976,7 +7976,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def OperationDuration(self):
-        """The maintenance time slot
+        r"""The maintenance time slot
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         return self._OperationDuration
@@ -7987,7 +7987,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
     @property
     def KibanaAlteringPublicAccess(self):
-        """Whether to enable the option for sending alerting messages over the public network.
+        r"""Whether to enable the option for sending alerting messages over the public network.
 `OPEN`: Enabled.
 `CLOSE`: Disabled.
         :rtype: str
@@ -8065,7 +8065,7 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
 
 
 class UpdateInstanceResponse(AbstractModel):
-    """UpdateInstance response structure.
+    r"""UpdateInstance response structure.
 
     """
 
@@ -8082,7 +8082,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DealName(self):
-        """Order ID
+        r"""Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -8094,7 +8094,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8110,7 +8110,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class UpdatePluginsRequest(AbstractModel):
-    """UpdatePlugins request structure.
+    r"""UpdatePlugins request structure.
 
     """
 
@@ -8138,7 +8138,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8149,7 +8149,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def InstallPluginList(self):
-        """List of names of the plugins to be installed
+        r"""List of names of the plugins to be installed
         :rtype: list of str
         """
         return self._InstallPluginList
@@ -8160,7 +8160,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def RemovePluginList(self):
-        """List of names of the plugins to be uninstalled
+        r"""List of names of the plugins to be uninstalled
         :rtype: list of str
         """
         return self._RemovePluginList
@@ -8171,7 +8171,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        """Whether to force restart the cluster. The default value is `false`.
+        r"""Whether to force restart the cluster. The default value is `false`.
         :rtype: bool
         """
         return self._ForceRestart
@@ -8182,7 +8182,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def ForceUpdate(self):
-        """Whether to reinstall the cluster. The default value is `false`.
+        r"""Whether to reinstall the cluster. The default value is `false`.
         :rtype: bool
         """
         return self._ForceUpdate
@@ -8193,7 +8193,7 @@ class UpdatePluginsRequest(AbstractModel):
 
     @property
     def PluginType(self):
-        """0: system plugin
+        r"""0: system plugin
         :rtype: int
         """
         return self._PluginType
@@ -8221,7 +8221,7 @@ class UpdatePluginsRequest(AbstractModel):
 
 
 class UpdatePluginsResponse(AbstractModel):
-    """UpdatePlugins response structure.
+    r"""UpdatePlugins response structure.
 
     """
 
@@ -8234,7 +8234,7 @@ class UpdatePluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8249,7 +8249,7 @@ class UpdatePluginsResponse(AbstractModel):
 
 
 class UpdateRequestTargetNodeTypesRequest(AbstractModel):
-    """UpdateRequestTargetNodeTypes request structure.
+    r"""UpdateRequestTargetNodeTypes request structure.
 
     """
 
@@ -8265,7 +8265,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -8276,7 +8276,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
     @property
     def TargetNodeTypes(self):
-        """A list of node types used to receive requests.
+        r"""A list of node types used to receive requests.
         :rtype: list of str
         """
         return self._TargetNodeTypes
@@ -8300,7 +8300,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
 
 
 class UpdateRequestTargetNodeTypesResponse(AbstractModel):
-    """UpdateRequestTargetNodeTypes response structure.
+    r"""UpdateRequestTargetNodeTypes response structure.
 
     """
 
@@ -8313,7 +8313,7 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8328,7 +8328,7 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
 
 
 class UpgradeInstanceRequest(AbstractModel):
-    """UpgradeInstance request structure.
+    r"""UpgradeInstance request structure.
 
     """
 
@@ -8362,7 +8362,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8373,7 +8373,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def EsVersion(self):
-        """Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
+        r"""Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1
         :rtype: str
         """
         return self._EsVersion
@@ -8384,7 +8384,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def CheckOnly(self):
-        """Whether to check for upgrade only. Default value: false
+        r"""Whether to check for upgrade only. Default value: false
         :rtype: bool
         """
         return self._CheckOnly
@@ -8395,7 +8395,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
+        r"""Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic
         :rtype: str
         """
         return self._LicenseType
@@ -8406,7 +8406,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def BasicSecurityType(self):
-        """Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -8417,7 +8417,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def UpgradeMode(self):
-        """Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
+        r"""Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale
         :rtype: str
         """
         return self._UpgradeMode
@@ -8428,7 +8428,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def CosBackup(self):
-        """Whether to back up the cluster before version upgrade (no backup by default)
+        r"""Whether to back up the cluster before version upgrade (no backup by default)
         :rtype: bool
         """
         return self._CosBackup
@@ -8439,7 +8439,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def SkipCheckForceRestart(self):
-        """Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.
+        r"""Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.
         :rtype: bool
         """
         return self._SkipCheckForceRestart
@@ -8469,7 +8469,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
 
 class UpgradeInstanceResponse(AbstractModel):
-    """UpgradeInstance response structure.
+    r"""UpgradeInstance response structure.
 
     """
 
@@ -8482,7 +8482,7 @@ class UpgradeInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8497,7 +8497,7 @@ class UpgradeInstanceResponse(AbstractModel):
 
 
 class UpgradeLicenseRequest(AbstractModel):
-    """UpgradeLicense request structure.
+    r"""UpgradeLicense request structure.
 
     """
 
@@ -8525,7 +8525,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8536,7 +8536,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        """License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
+        r"""License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum
         :rtype: str
         """
         return self._LicenseType
@@ -8547,7 +8547,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
+        r"""Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -8558,7 +8558,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """List of voucher IDs (only one voucher can be specified at a time currently)
+        r"""List of voucher IDs (only one voucher can be specified at a time currently)
         :rtype: list of str
         """
         return self._VoucherIds
@@ -8569,7 +8569,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def BasicSecurityType(self):
-        """Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
+        r"""Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -8580,7 +8580,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        """Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
+        r"""Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false
         :rtype: bool
         """
         return self._ForceRestart
@@ -8608,7 +8608,7 @@ class UpgradeLicenseRequest(AbstractModel):
 
 
 class UpgradeLicenseResponse(AbstractModel):
-    """UpgradeLicense response structure.
+    r"""UpgradeLicense response structure.
 
     """
 
@@ -8625,7 +8625,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DealName(self):
-        """Order ID
+        r"""Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -8637,7 +8637,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8653,7 +8653,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class WebNodeTypeInfo(AbstractModel):
-    """Visual node configuration
+    r"""Visual node configuration
 
     """
 
@@ -8669,7 +8669,7 @@ class WebNodeTypeInfo(AbstractModel):
 
     @property
     def NodeNum(self):
-        """Number of visual nodes. The value is always `1`.
+        r"""Number of visual nodes. The value is always `1`.
         :rtype: int
         """
         return self._NodeNum
@@ -8680,7 +8680,7 @@ class WebNodeTypeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        """Visual node specification
+        r"""Visual node specification
         :rtype: str
         """
         return self._NodeType
@@ -8704,7 +8704,7 @@ class WebNodeTypeInfo(AbstractModel):
 
 
 class ZoneDetail(AbstractModel):
-    """Details of AZs in multi-AZ deployment mode
+    r"""Details of AZs in multi-AZ deployment mode
 
     """
 
@@ -8720,7 +8720,7 @@ class ZoneDetail(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ
+        r"""AZ
         :rtype: str
         """
         return self._Zone
@@ -8731,7 +8731,7 @@ class ZoneDetail(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId

@@ -27,7 +27,7 @@ class ClsClient(AbstractClient):
 
 
     def AddMachineGroupInfo(self, request):
-        """This API is used to add machine group information.
+        r"""This API is used to add machine group information.
 
         :param request: Request instance for AddMachineGroupInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.AddMachineGroupInfoRequest`
@@ -50,7 +50,7 @@ class ClsClient(AbstractClient):
 
 
     def ApplyConfigToMachineGroup(self, request):
-        """This API is used to apply the collection configuration to a specified machine group.
+        r"""This API is used to apply the collection configuration to a specified machine group.
 
         :param request: Request instance for ApplyConfigToMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.ApplyConfigToMachineGroupRequest`
@@ -73,7 +73,7 @@ class ClsClient(AbstractClient):
 
 
     def CheckFunction(self, request):
-        """This API is used to verify the syntax of data processing DSL functions.
+        r"""This API is used to verify the syntax of data processing DSL functions.
 
         :param request: Request instance for CheckFunction.
         :type request: :class:`tencentcloud.cls.v20201016.models.CheckFunctionRequest`
@@ -96,7 +96,7 @@ class ClsClient(AbstractClient):
 
 
     def CheckRechargeKafkaServer(self, request):
-        """This API is used to check whether the Kafka service cluster is accessible.
+        r"""This API is used to check whether the Kafka service cluster is accessible.
 
         :param request: Request instance for CheckRechargeKafkaServer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerRequest`
@@ -119,7 +119,7 @@ class ClsClient(AbstractClient):
 
 
     def CloseKafkaConsumer(self, request):
-        """This API is used to disable Kafka consumption.
+        r"""This API is used to disable Kafka consumption.
 
         :param request: Request instance for CloseKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CloseKafkaConsumerRequest`
@@ -142,7 +142,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarm(self, request):
-        """This API is used to create an alarm policy.
+        r"""This API is used to create an alarm policy.
 
         :param request: Request instance for CreateAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmRequest`
@@ -165,7 +165,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """This API is used to create a notification group.
+        r"""This API is used to create a notification group.
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmNoticeRequest`
@@ -188,7 +188,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmShield(self, request):
-        """This API is used to create an alarm blocking rule.
+        r"""This API is used to create an alarm blocking rule.
 
         :param request: Request instance for CreateAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldRequest`
@@ -211,7 +211,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConfig(self, request):
-        """This API is used to create collection rule configuration.
+        r"""This API is used to create collection rule configuration.
 
         :param request: Request instance for CreateConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigRequest`
@@ -234,7 +234,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """This API is used to create a CKafka delivery task.
+        r"""This API is used to create a CKafka delivery task.
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsumerRequest`
@@ -257,7 +257,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateCosRecharge(self, request):
-        """This API is used to create a COS import task.
+        r"""This API is used to create a COS import task.
 
         :param request: Request instance for CreateCosRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeRequest`
@@ -280,7 +280,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateDataTransform(self, request):
-        """This API is used to create a data processing task.
+        r"""This API is used to create a data processing task.
 
         :param request: Request instance for CreateDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformRequest`
@@ -303,7 +303,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateDeliverCloudFunction(self, request):
-        """This API is used to create a delivery SCF task.
+        r"""This API is used to create a delivery SCF task.
 
         :param request: Request instance for CreateDeliverCloudFunction.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionRequest`
@@ -326,7 +326,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """This API is used to create a download task. To get the returned download address, call DescribeExports to view the task list. The CosPath parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
+        r"""This API is used to create a download task. To get the returned download address, call DescribeExports to view the task list. The CosPath parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`
@@ -349,7 +349,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateIndex(self, request):
-        """This API is used to create an index.
+        r"""This API is used to create an index.
 
         :param request: Request instance for CreateIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateIndexRequest`
@@ -372,7 +372,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateKafkaRecharge(self, request):
-        """This API is used to create a Kafka data subscription task.
+        r"""This API is used to create a Kafka data subscription task.
 
         :param request: Request instance for CreateKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeRequest`
@@ -395,7 +395,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateLogset(self, request):
-        """This API is used to create a logset. The ID of the created logset is returned.
+        r"""This API is used to create a logset. The ID of the created logset is returned.
 
         :param request: Request instance for CreateLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateLogsetRequest`
@@ -418,7 +418,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateMachineGroup(self, request):
-        """This API is used to create a machine group.
+        r"""This API is used to create a machine group.
 
         :param request: Request instance for CreateMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateMachineGroupRequest`
@@ -441,7 +441,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateScheduledSql(self, request):
-        """This API is used to create a scheduled SQL analysis task.
+        r"""This API is used to create a scheduled SQL analysis task.
 
         :param request: Request instance for CreateScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateScheduledSqlRequest`
@@ -464,7 +464,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateShipper(self, request):
-        """This API is used to create a task to ship to COS. Note: To use this API, you need to check whether you have configured the role and permission for shipping to COS. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
+        r"""This API is used to create a task to ship to COS. Note: To use this API, you need to check whether you have configured the role and permission for shipping to COS. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
 
         :param request: Request instance for CreateShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
@@ -487,7 +487,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """This API is used to create a log topic.
+        r"""This API is used to create a log topic.
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateTopicRequest`
@@ -510,7 +510,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarm(self, request):
-        """This API is used to delete an alarm policy.
+        r"""This API is used to delete an alarm policy.
 
         :param request: Request instance for DeleteAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmRequest`
@@ -533,7 +533,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmNotice(self, request):
-        """This API is used to delete a notification group.
+        r"""This API is used to delete a notification group.
 
         :param request: Request instance for DeleteAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmNoticeRequest`
@@ -556,7 +556,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmShield(self, request):
-        """This API is used to delete an alarm blocking rule.
+        r"""This API is used to delete an alarm blocking rule.
 
         :param request: Request instance for DeleteAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldRequest`
@@ -579,7 +579,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfig(self, request):
-        """This API is used to delete collection rule configuration.
+        r"""This API is used to delete collection rule configuration.
 
         :param request: Request instance for DeleteConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigRequest`
@@ -602,7 +602,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfigFromMachineGroup(self, request):
-        """This API is used to delete the collection configuration applied to a machine group.
+        r"""This API is used to delete the collection configuration applied to a machine group.
 
         :param request: Request instance for DeleteConfigFromMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigFromMachineGroupRequest`
@@ -625,7 +625,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConsumer(self, request):
-        """This API is used to delete a shipping task.
+        r"""This API is used to delete a shipping task.
 
         :param request: Request instance for DeleteConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerRequest`
@@ -648,7 +648,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteDataTransform(self, request):
-        """This API is used to delete a data processing task.
+        r"""This API is used to delete a data processing task.
 
         :param request: Request instance for DeleteDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformRequest`
@@ -671,7 +671,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteExport(self, request):
-        """This API is used to delete a log download task.
+        r"""This API is used to delete a log download task.
 
         :param request: Request instance for DeleteExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteExportRequest`
@@ -694,7 +694,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """This API is used to delete the index configuration of a log topic. After deleting, you cannot retrieve or query the collected logs.
+        r"""This API is used to delete the index configuration of a log topic. After deleting, you cannot retrieve or query the collected logs.
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteIndexRequest`
@@ -717,7 +717,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteKafkaRecharge(self, request):
-        """This API is used to delete a Kafka data subscription task.
+        r"""This API is used to delete a Kafka data subscription task.
 
         :param request: Request instance for DeleteKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeRequest`
@@ -740,7 +740,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteLogset(self, request):
-        """This API is used to delete a logset.
+        r"""This API is used to delete a logset.
 
         :param request: Request instance for DeleteLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteLogsetRequest`
@@ -763,7 +763,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteMachineGroup(self, request):
-        """This API is used to delete a machine group.
+        r"""This API is used to delete a machine group.
 
         :param request: Request instance for DeleteMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupRequest`
@@ -786,7 +786,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteMachineGroupInfo(self, request):
-        """This API is used to delete machine group information.
+        r"""This API is used to delete machine group information.
 
         :param request: Request instance for DeleteMachineGroupInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupInfoRequest`
@@ -809,7 +809,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteScheduledSql(self, request):
-        """This API is used to delete a scheduled SQL analysis task.
+        r"""This API is used to delete a scheduled SQL analysis task.
 
         :param request: Request instance for DeleteScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
@@ -832,7 +832,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteShipper(self, request):
-        """This API is used to delete a COS shipping task.
+        r"""This API is used to delete a COS shipping task.
 
         :param request: Request instance for DeleteShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteShipperRequest`
@@ -855,7 +855,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """This API is used to delete a log topic.
+        r"""This API is used to delete a log topic.
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteTopicRequest`
@@ -878,7 +878,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """This API is used to get the notification group list.
+        r"""This API is used to get the notification group list.
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmNoticesRequest`
@@ -901,7 +901,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmShields(self, request):
-        """This API is used to access alarm blocking configuration rules.
+        r"""This API is used to access alarm blocking configuration rules.
 
         :param request: Request instance for DescribeAlarmShields.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsRequest`
@@ -924,7 +924,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarms(self, request):
-        """This API is used to get the alarm policy list.
+        r"""This API is used to get the alarm policy list.
 
         :param request: Request instance for DescribeAlarms.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmsRequest`
@@ -947,7 +947,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlertRecordHistory(self, request):
-        """This API is used to get alarm records, such as today's uncleared alarms.
+        r"""This API is used to get alarm records, such as today's uncleared alarms.
 
         :param request: Request instance for DescribeAlertRecordHistory.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlertRecordHistoryRequest`
@@ -970,7 +970,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigMachineGroups(self, request):
-        """This API is used to get the machine group bound to collection rule configuration.
+        r"""This API is used to get the machine group bound to collection rule configuration.
 
         :param request: Request instance for DescribeConfigMachineGroups.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigMachineGroupsRequest`
@@ -993,7 +993,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigs(self, request):
-        """This API is used to get collection rule configuration.
+        r"""This API is used to get collection rule configuration.
 
         :param request: Request instance for DescribeConfigs.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigsRequest`
@@ -1016,7 +1016,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConsumer(self, request):
-        """This API is used to query a shipping task.
+        r"""This API is used to query a shipping task.
 
         :param request: Request instance for DescribeConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerRequest`
@@ -1039,7 +1039,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeCosRecharges(self, request):
-        """This API is used to get COS import configuration.
+        r"""This API is used to get COS import configuration.
 
         :param request: Request instance for DescribeCosRecharges.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesRequest`
@@ -1062,7 +1062,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeDataTransformInfo(self, request):
-        """This API is used to get the basic information of data processing tasks.
+        r"""This API is used to get the basic information of data processing tasks.
 
         :param request: Request instance for DescribeDataTransformInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoRequest`
@@ -1085,7 +1085,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeExports(self, request):
-        """This API is used to get the list of log download tasks.
+        r"""This API is used to get the list of log download tasks.
 
         :param request: Request instance for DescribeExports.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeExportsRequest`
@@ -1108,7 +1108,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeIndex(self, request):
-        """This API is used to get the index configuration information.
+        r"""This API is used to get the index configuration information.
 
         :param request: Request instance for DescribeIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeIndexRequest`
@@ -1131,7 +1131,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaConsumer(self, request):
-        """This API is used to access Kafka protocol consumption information.
+        r"""This API is used to access Kafka protocol consumption information.
 
         :param request: Request instance for DescribeKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`
@@ -1154,7 +1154,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaRecharges(self, request):
-        """This API is used to get the list of Kafka data subscription tasks.
+        r"""This API is used to get the list of Kafka data subscription tasks.
 
         :param request: Request instance for DescribeKafkaRecharges.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesRequest`
@@ -1177,7 +1177,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogContext(self, request):
-        """This API is used to search for content near the log context. For more details, see [Context Search](https://intl.cloud.tencent.com/document/product/614/53248?from_cn_redirect=1).The maximum value of API's return data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
+        r"""This API is used to search for content near the log context. For more details, see [Context Search](https://intl.cloud.tencent.com/document/product/614/53248?from_cn_redirect=1).The maximum value of API's return data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
 
         :param request: Request instance for DescribeLogContext.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogContextRequest`
@@ -1200,7 +1200,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """This API is used to get a log count histogram.
+        r"""This API is used to get a log count histogram.
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`
@@ -1223,7 +1223,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogsets(self, request):
-        """This API is used to get the list of logsets.
+        r"""This API is used to get the list of logsets.
 
         :param request: Request instance for DescribeLogsets.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogsetsRequest`
@@ -1246,7 +1246,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachineGroupConfigs(self, request):
-        """This API is used to get the collection rule configuration bound to a machine group.
+        r"""This API is used to get the collection rule configuration bound to a machine group.
 
         :param request: Request instance for DescribeMachineGroupConfigs.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupConfigsRequest`
@@ -1269,7 +1269,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachineGroups(self, request):
-        """This API is used to get the list of machine groups.
+        r"""This API is used to get the list of machine groups.
 
         :param request: Request instance for DescribeMachineGroups.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupsRequest`
@@ -1292,7 +1292,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """This API is used to get the status of a machine under the specified machine group.
+        r"""This API is used to get the status of a machine under the specified machine group.
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachinesRequest`
@@ -1315,7 +1315,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribePartitions(self, request):
-        """This API is used to get the list of topic partitions.
+        r"""This API is used to get the list of topic partitions.
 
         :param request: Request instance for DescribePartitions.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribePartitionsRequest`
@@ -1338,7 +1338,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeScheduledSqlInfo(self, request):
-        """This API is used to access the scheduled SQL analysis task list.
+        r"""This API is used to access the scheduled SQL analysis task list.
 
         :param request: Request instance for DescribeScheduledSqlInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoRequest`
@@ -1361,7 +1361,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShipperTasks(self, request):
-        """This API is used to get the list of shipping tasks.
+        r"""This API is used to get the list of shipping tasks.
 
         :param request: Request instance for DescribeShipperTasks.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShipperTasksRequest`
@@ -1384,7 +1384,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShippers(self, request):
-        """This API is used to get the configuration of the task shipped to COS.
+        r"""This API is used to get the configuration of the task shipped to COS.
 
         :param request: Request instance for DescribeShippers.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShippersRequest`
@@ -1407,7 +1407,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeTopics(self, request):
-        """This API is used to get the list of log topics and supports pagination.
+        r"""This API is used to get the list of log topics and supports pagination.
 
         :param request: Request instance for DescribeTopics.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeTopicsRequest`
@@ -1430,7 +1430,7 @@ class ClsClient(AbstractClient):
 
 
     def GetAlarmLog(self, request):
-        """This API is used to access alarm policy execution details.
+        r"""This API is used to access alarm policy execution details.
 
         :param request: Request instance for GetAlarmLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.GetAlarmLogRequest`
@@ -1453,7 +1453,7 @@ class ClsClient(AbstractClient):
 
 
     def MergePartition(self, request):
-        """This API is used to merge a topic partition in read/write state. During merge, a topic partition ID can be specified, and CLS will automatically merge the partition adjacent to the right of the range.
+        r"""This API is used to merge a topic partition in read/write state. During merge, a topic partition ID can be specified, and CLS will automatically merge the partition adjacent to the right of the range.
 
         :param request: Request instance for MergePartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.MergePartitionRequest`
@@ -1476,7 +1476,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarm(self, request):
-        """This API is used to modify an alarm policy. At least one valid configuration item needs to be modified.
+        r"""This API is used to modify an alarm policy. At least one valid configuration item needs to be modified.
 
         :param request: Request instance for ModifyAlarm.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmRequest`
@@ -1499,7 +1499,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """This API is used to modify a notification group.
+        r"""This API is used to modify a notification group.
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmNoticeRequest`
@@ -1522,7 +1522,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmShield(self, request):
-        """This API is used to modify alarm blocking rules.
+        r"""This API is used to modify alarm blocking rules.
 
         :param request: Request instance for ModifyAlarmShield.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldRequest`
@@ -1545,7 +1545,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConfig(self, request):
-        """This API is used to modify collection rule configuration.
+        r"""This API is used to modify collection rule configuration.
 
         :param request: Request instance for ModifyConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigRequest`
@@ -1568,7 +1568,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConsumer(self, request):
-        """This API is used to modify a CKafka delivery task.
+        r"""This API is used to modify a CKafka delivery task.
 
         :param request: Request instance for ModifyConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
@@ -1591,7 +1591,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyCosRecharge(self, request):
-        """This API is used to modify a COS import task.
+        r"""This API is used to modify a COS import task.
 
         :param request: Request instance for ModifyCosRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeRequest`
@@ -1614,7 +1614,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyDataTransform(self, request):
-        """This API is used to modify a data processing task.
+        r"""This API is used to modify a data processing task.
 
         :param request: Request instance for ModifyDataTransform.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformRequest`
@@ -1637,7 +1637,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyIndex(self, request):
-        """This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.
+        r"""This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.
 
         :param request: Request instance for ModifyIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyIndexRequest`
@@ -1660,7 +1660,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyKafkaConsumer(self, request):
-        """This API is used to modify Kafka protocol consumption information.
+        r"""This API is used to modify Kafka protocol consumption information.
 
         :param request: Request instance for ModifyKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerRequest`
@@ -1683,7 +1683,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyKafkaRecharge(self, request):
-        """This API is used to modify a Kafka data subscription task.
+        r"""This API is used to modify a Kafka data subscription task.
 
         :param request: Request instance for ModifyKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeRequest`
@@ -1706,7 +1706,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyLogset(self, request):
-        """This API is used to modify a logset.
+        r"""This API is used to modify a logset.
 
         :param request: Request instance for ModifyLogset.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyLogsetRequest`
@@ -1729,7 +1729,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyMachineGroup(self, request):
-        """This API is used to modify a machine group.
+        r"""This API is used to modify a machine group.
 
         :param request: Request instance for ModifyMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyMachineGroupRequest`
@@ -1752,7 +1752,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyScheduledSql(self, request):
-        """This API is used to modify a scheduled SQL analysis task.
+        r"""This API is used to modify a scheduled SQL analysis task.
 
         :param request: Request instance for ModifyScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`
@@ -1775,7 +1775,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyShipper(self, request):
-        """This API is used to modify an existing shipping rule. To use this API, you need to grant CLS the write permission of the specified bucket.
+        r"""This API is used to modify an existing shipping rule. To use this API, you need to grant CLS the write permission of the specified bucket.
 
         :param request: Request instance for ModifyShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyShipperRequest`
@@ -1798,7 +1798,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyTopic(self, request):
-        """This API is used to modify a log topic.
+        r"""This API is used to modify a log topic.
 
         :param request: Request instance for ModifyTopic.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyTopicRequest`
@@ -1821,7 +1821,7 @@ class ClsClient(AbstractClient):
 
 
     def OpenKafkaConsumer(self, request):
-        """This API is used to enable the Kafka consumption feature.
+        r"""This API is used to enable the Kafka consumption feature.
 
         :param request: Request instance for OpenKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.OpenKafkaConsumerRequest`
@@ -1844,7 +1844,7 @@ class ClsClient(AbstractClient):
 
 
     def PreviewKafkaRecharge(self, request):
-        """This API is used to preview the logs of Kafka data subscription tasks.
+        r"""This API is used to preview the logs of Kafka data subscription tasks.
 
         :param request: Request instance for PreviewKafkaRecharge.
         :type request: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeRequest`
@@ -1867,7 +1867,7 @@ class ClsClient(AbstractClient):
 
 
     def QueryMetric(self, request):
-        """This API is used to query the latest metric value at a specified time.
+        r"""This API is used to query the latest metric value at a specified time.
 
         :param request: Request instance for QueryMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`
@@ -1890,7 +1890,7 @@ class ClsClient(AbstractClient):
 
 
     def QueryRangeMetric(self, request):
-        """This API is used to query the trend of metrics within a specified time range.
+        r"""This API is used to query the trend of metrics within a specified time range.
 
         :param request: Request instance for QueryRangeMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricRequest`
@@ -1913,7 +1913,7 @@ class ClsClient(AbstractClient):
 
 
     def RetryShipperTask(self, request):
-        """This API is used to retry a failed shipping task.
+        r"""This API is used to retry a failed shipping task.
 
         :param request: Request instance for RetryShipperTask.
         :type request: :class:`tencentcloud.cls.v20201016.models.RetryShipperTaskRequest`
@@ -1936,7 +1936,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchCosRechargeInfo(self, request):
-        """This API is used to preview COS import information.
+        r"""This API is used to preview COS import information.
 
         :param request: Request instance for SearchCosRechargeInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoRequest`
@@ -1959,7 +1959,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """This API is used to search and analyze logs. When using this API, please note the following:1. Besides being subject to the default API request frequency limit by this API, for a single log topic, the concurrency number cannot exceed 15. 2. For search syntax, it's recommended to use the CQL syntax rule. Please use the SyntaxRule parameter and set its value to 1.
+        r"""This API is used to search and analyze logs. When using this API, please note the following:1. Besides being subject to the default API request frequency limit by this API, for a single log topic, the concurrency number cannot exceed 15. 2. For search syntax, it's recommended to use the CQL syntax rule. Please use the SyntaxRule parameter and set its value to 1.
         3. The maximum value of API's response data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
 
         :param request: Request instance for SearchLog.
@@ -1983,7 +1983,7 @@ class ClsClient(AbstractClient):
 
 
     def SplitPartition(self, request):
-        """This API is used to split a topic partition.
+        r"""This API is used to split a topic partition.
 
         :param request: Request instance for SplitPartition.
         :type request: :class:`tencentcloud.cls.v20201016.models.SplitPartitionRequest`
@@ -2006,7 +2006,7 @@ class ClsClient(AbstractClient):
 
 
     def UploadLog(self, request, body):
-        """## Note
+        r"""## Note
         To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://intl.cloud.tencent.com/document/product/614/16873?from_cn_redirect=1).
 
         For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/67157?from_cn_redirect=1).

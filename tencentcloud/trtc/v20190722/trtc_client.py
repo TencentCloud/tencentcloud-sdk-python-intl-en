@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def ControlAIConversation(self, request):
-        """Provides server-side control of AI Conversation
+        r"""Provides server-side control of AI Conversation
 
         :param request: Request instance for ControlAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ControlAIConversationRequest`
@@ -50,7 +50,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudModeration(self, request):
-        """API description:
+        r"""API description:
         This API is used to enable the cloud moderation feature to complete audio and video slicing, video frame extraction, and audio stream recording in the room, and submit them to the specified moderation supplier for completing the moderation.
 
         This API is used to achieve the following goals:
@@ -78,7 +78,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudRecording(self, request):
-        """API description:
+        r"""API description:
         This API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.
 
         You can use this API to perform the following operations:
@@ -112,7 +112,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreateCloudSliceTask(self, request):
-        """API description:
+        r"""API description:
         This API is used to enable the cloud slicing feature, completing audio and video slicing tasks in the room, and uploading them to the specified cloud storage.
         This API is used to achieve the following goals:
         * This API is used to specify the slicing parameter (SliceParams) to define the blocklist or allowlist of the anchors that require slicing.
@@ -139,7 +139,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudModeration(self, request):
-        """This API is used to stop submission for moderation after the cloud moderation task is successfully started.
+        r"""This API is used to stop submission for moderation after the cloud moderation task is successfully started.
 
         :param request: Request instance for DeleteCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationRequest`
@@ -162,7 +162,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudRecording(self, request):
-        """This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.
+        r"""This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.
 
         :param request: Request instance for DeleteCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudRecordingRequest`
@@ -185,7 +185,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeleteCloudSliceTask(self, request):
-        """This API is used to stop the slicing task after it is started. Successfully stopping the slicing does not mean that all files are fully transmitted; if the transmission is not completed, the backend will continue to upload files. After the upload is successful, a notification is sent to the customer, prompting that all files have been transmitted, through the event callback.
+        r"""This API is used to stop the slicing task after it is started. Successfully stopping the slicing does not mean that all files are fully transmitted; if the transmission is not completed, the backend will continue to upload files. After the upload is successful, a notification is sent to the customer, prompting that all files have been transmitted, through the event callback.
 
         :param request: Request instance for DeleteCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskRequest`
@@ -208,7 +208,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAIConversation(self, request):
-        """Describe the AI conversation task status
+        r"""Describe the AI conversation task status
 
         :param request: Request instance for DescribeAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationRequest`
@@ -231,7 +231,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAITranscription(self, request):
-        """Describe AI transcription task status
+        r"""Describe AI transcription task status
 
         :param request: Request instance for DescribeAITranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionRequest`
@@ -254,7 +254,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetailInfo(self, request):
-        """This API (the old `DescribeCallDetail`) is used to query the user list and call quality data of a specified time range in the last 14 days. If `DataType` is not null, the data of up to six users during a period of up to one hour can be queried (the period can start and end on different days). If `DataType` is null, the data of up to 100 users can be returned per page (the value of `PageSize` cannot exceed 100). Six users are queried by default. The period queried cannot exceed four hours. This API is used to query call quality and is not recommended for billing purposes.
+        r"""This API (the old `DescribeCallDetail`) is used to query the user list and call quality data of a specified time range in the last 14 days. If `DataType` is not null, the data of up to six users during a period of up to one hour can be queried (the period can start and end on different days). If `DataType` is null, the data of up to 100 users can be returned per page (the value of `PageSize` cannot exceed 100). Six users are queried by default. The period queried cannot exceed four hours. This API is used to query call quality and is not recommended for billing purposes.
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
         2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481?product=pricing.
@@ -280,7 +280,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudModeration(self, request):
-        """This API is used to query the status of the moderation task and information about the subscription blocklist and allowlist after the task is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
+        r"""This API is used to query the status of the moderation task and information about the subscription blocklist and allowlist after the task is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
 
         :param request: Request instance for DescribeCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationRequest`
@@ -303,7 +303,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudRecording(self, request):
-        """This API is used to query the status of a recording task after it starts. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned.
+        r"""This API is used to query the status of a recording task after it starts. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned.
         If a recording file is being uploaded to VOD, the response parameter `StorageFileList` will not contain the information of the recording file. Please listen for the recording file callback to get the information.
 
         :param request: Request instance for DescribeCloudRecording.
@@ -327,7 +327,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCloudSliceTask(self, request):
-        """This API is used to query the status of the slicing task after it is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
+        r"""This API is used to query the status of the slicing task after it is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
 
         :param request: Request instance for DescribeCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskRequest`
@@ -350,7 +350,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeMixTranscodingUsage(self, request):
-        """This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.
+        r"""This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.
         - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
         - The period queried per request cannot be longer than 31 days.
         - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
@@ -378,7 +378,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRecordingUsage(self, request):
-        """This API is used to query your TRTC recording usage.
+        r"""This API is used to query your TRTC recording usage.
         - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
         - The period queried per request cannot be longer than 31 days.
         - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
@@ -406,7 +406,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRelayUsage(self, request):
-        """This API is used to query your usage of TRTC’s relay to CDN service.
+        r"""This API is used to query your usage of TRTC’s relay to CDN service.
         - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
         - The period queried per request cannot be longer than 31 days.
         - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
@@ -434,7 +434,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRoomInfo(self, request):
-        """This API (the old `DescribeRoomInformation`) is used to query the rooms of an application (`SDKAppID`) in the last 14 days. Up to 100 records can be returned per call (10 are returned by default).
+        r"""This API (the old `DescribeRoomInformation`) is used to query the rooms of an application (`SDKAppID`) in the last 14 days. Up to 100 records can be returned per call (10 are returned by default).
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
         2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481
@@ -460,7 +460,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeScaleInfo(self, request):
-        """This API (the old `DescribeHistoryScale`) is used to query the daily number of rooms and users of an application (`SDKAppID`) in the last 14 days. Data for the current day cannot be queried.
+        r"""This API (the old `DescribeHistoryScale`) is used to query the daily number of rooms and users of an application (`SDKAppID`) in the last 14 days. Data for the current day cannot be queried.
 
         :param request: Request instance for DescribeScaleInfo.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeScaleInfoRequest`
@@ -483,7 +483,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeStreamIngest(self, request):
-        """You can query the status of the Relay task.
+        r"""You can query the status of the Relay task.
 
         :param request: Request instance for DescribeStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestRequest`
@@ -506,7 +506,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketQualityData(self, request):
-        """Query TRTC Monitoring Dashboard - Data Dashboard Quality Metrics (including the following metrics)
+        r"""Query TRTC Monitoring Dashboard - Data Dashboard Quality Metrics (including the following metrics)
         joinSuccessRate: Join channel success rate.
         joinSuccessIn5sRate: Join channel success rate within 5s.
         audioFreezeRate: Audio stutter rate.
@@ -537,7 +537,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCMarketScaleData(self, request):
-        """Query TRTC Monitoring Dashboard - Data Dashboard Scale Metrics (will return userCount, roomCount, peakCurrentUsers, peakCurrentChannels)
+        r"""Query TRTC Monitoring Dashboard - Data Dashboard Scale Metrics (will return userCount, roomCount, peakCurrentUsers, peakCurrentChannels)
         - userCount: number of users in the call,
         - roomCount: number of rooms in the call, counted as one call channel from the time a user joins the channel to the time all users leave the channel.
         - peakCurrentChannels: peak number of channels online at the same time.
@@ -567,7 +567,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeQualityData(self, request):
-        """Query TRTC Monitoring Dashboard - Real-Time Monitoring Quality Metrics (return the following metrics)
+        r"""Query TRTC Monitoring Dashboard - Real-Time Monitoring Quality Metrics (return the following metrics)
          -Video stutter rate
          -Audio stutter rate
          Note:
@@ -595,7 +595,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTRTCRealTimeScaleData(self, request):
-        """Query TRTC Monitoring Dashboard - Real-Time Monitoring Scale Metrics (the following metrics will be returned) -userCount (Online users) -roomCount (Online rooms) Note: 1. To call the interface, you need to activate the monitoring dashboard Standard Edition and Premium Edition, the monitoring dashboard Free Edition does not support calling. For monitoring dashboard version features and billing overview, please visit: https://trtc.io/document/54481. 2. The query time range depends on the function version of the monitoring dashboard. The premium edition can query the last 1 hours
+        r"""Query TRTC Monitoring Dashboard - Real-Time Monitoring Scale Metrics (the following metrics will be returned) -userCount (Online users) -roomCount (Online rooms) Note: 1. To call the interface, you need to activate the monitoring dashboard Standard Edition and Premium Edition, the monitoring dashboard Free Edition does not support calling. For monitoring dashboard version features and billing overview, please visit: https://trtc.io/document/54481. 2. The query time range depends on the function version of the monitoring dashboard. The premium edition can query the last 1 hours
 
         :param request: Request instance for DescribeTRTCRealTimeScaleData.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeScaleDataRequest`
@@ -618,7 +618,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcRoomUsage(self, request):
-        """This API is used to query usage data grouped by room.
+        r"""This API is used to query usage data grouped by room.
         - The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.
         - You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.
         - The rate limit of this API is one call every 15 seconds.
@@ -644,7 +644,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeTrtcUsage(self, request):
-        """This API is used to query your TRTC audio/video duration.
+        r"""This API is used to query your TRTC audio/video duration.
         - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
         - The period queried per request cannot be longer than 31 days.
         - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
@@ -672,7 +672,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUnusualEvent(self, request):
-        """This API (the old `DescribeAbnormalEvent`) is used to query up to 20 random abnormal user experiences of an application (`SDKAppID`) in the last 14 days. The start and end time can be on two different days, but they cannot be more than one hour apart.
+        r"""This API (the old `DescribeAbnormalEvent`) is used to query up to 20 random abnormal user experiences of an application (`SDKAppID`) in the last 14 days. The start and end time can be on two different days, but they cannot be more than one hour apart.
         For details about the error events, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
@@ -699,7 +699,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserEvent(self, request):
-        """This API (the old `DescribeDetailEvent`) is used to query the events of a call in the last 14 days, including user entry and exit, turning the camera on/off, etc.
+        r"""This API (the old `DescribeDetailEvent`) is used to query the events of a call in the last 14 days, including user entry and exit, turning the camera on/off, etc.
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
         2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481?product=pricing.
@@ -725,7 +725,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """This API (the old `DescribeUserInformation`) is used to query the user list of a specified time range (up to four hours) in the last 14 days. The data of up to 100 users can be returned per page (six are returned by default).
+        r"""This API (the old `DescribeUserInformation`) is used to query the user list of a specified time range (up to four hours) in the last 14 days. The data of up to 100 users can be returned per page (six are returned by default).
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
         2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/60214?product=pricing.
@@ -751,7 +751,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeWebRecord(self, request):
-        """Queries the status of a web-page recording task
+        r"""Queries the status of a web-page recording task
 
         :param request: Request instance for DescribeWebRecord.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordRequest`
@@ -774,7 +774,7 @@ class TrtcClient(AbstractClient):
 
 
     def DismissRoom(self, request):
-        """This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
+        r"""This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
 
         :param request: Request instance for DismissRoom.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomRequest`
@@ -797,7 +797,7 @@ class TrtcClient(AbstractClient):
 
 
     def DismissRoomByStrRoomId(self, request):
-        """This API is used to remove all users from a room and close the room. It works on all platforms. For Android, iOS, Windows, and macOS, you need to update the TRTC SDK to version 6.6 or above.
+        r"""This API is used to remove all users from a room and close the room. It works on all platforms. For Android, iOS, Windows, and macOS, you need to update the TRTC SDK to version 6.6 or above.
 
         :param request: Request instance for DismissRoomByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomByStrRoomIdRequest`
@@ -820,7 +820,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudModeration(self, request):
-        """This API is used to update the subscription blocklist and allowlist after the cloud moderation task is successfully started.
+        r"""This API is used to update the subscription blocklist and allowlist after the cloud moderation task is successfully started.
 
         :param request: Request instance for ModifyCloudModeration.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationRequest`
@@ -843,7 +843,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudRecording(self, request):
-        """This API is used to modify a recording task. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned. You need to specify all the parameters for each request instead of just the ones you want to modify.
+        r"""This API is used to modify a recording task. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned. You need to specify all the parameters for each request instead of just the ones you want to modify.
 
         :param request: Request instance for ModifyCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudRecordingRequest`
@@ -866,7 +866,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyCloudSliceTask(self, request):
-        """This API is used to update the slicing task after it is started. It can be used to update the allowlist or blocklist for the specified subscription stream.
+        r"""This API is used to update the slicing task after it is started. It can be used to update the allowlist or blocklist for the specified subscription stream.
 
         :param request: Request instance for ModifyCloudSliceTask.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskRequest`
@@ -889,7 +889,7 @@ class TrtcClient(AbstractClient):
 
 
     def RemoveUser(self, request):
-        """This API is used to remove a user from a room. It is applicable to scenarios where the anchor, room owner, or admin wants to kick out a user. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
+        r"""This API is used to remove a user from a room. It is applicable to scenarios where the anchor, room owner, or admin wants to kick out a user. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
 
         :param request: Request instance for RemoveUser.
         :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserRequest`
@@ -912,7 +912,7 @@ class TrtcClient(AbstractClient):
 
 
     def RemoveUserByStrRoomId(self, request):
-        """This API is used to remove a user from a room. It allows the anchor, room owner, or admin to kick out a user, and works on all platforms. For Android, iOS, Windows, and macOS, you need to update the TRTC SDK to version 6.6 or above.
+        r"""This API is used to remove a user from a room. It allows the anchor, room owner, or admin to kick out a user, and works on all platforms. For Android, iOS, Windows, and macOS, you need to update the TRTC SDK to version 6.6 or above.
 
         :param request: Request instance for RemoveUserByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserByStrRoomIdRequest`
@@ -935,7 +935,7 @@ class TrtcClient(AbstractClient):
 
 
     def SetUserBlocked(self, request):
-        """This API is used to disable or enable the audio and video of a user. It can be used by an anchor, room owner, or admin to block or unblock a user. It supports platforms including Android, iOS, Windows, macOS, web, and WeChat Mini Program. Use this API if the room ID is a number.
+        r"""This API is used to disable or enable the audio and video of a user. It can be used by an anchor, room owner, or admin to block or unblock a user. It supports platforms including Android, iOS, Windows, macOS, web, and WeChat Mini Program. Use this API if the room ID is a number.
 
         :param request: Request instance for SetUserBlocked.
         :type request: :class:`tencentcloud.trtc.v20190722.models.SetUserBlockedRequest`
@@ -958,7 +958,7 @@ class TrtcClient(AbstractClient):
 
 
     def SetUserBlockedByStrRoomId(self, request):
-        """This API allows an anchor, room owner, admin to mute/unmute a user. It can be used on platforms including Android, iOS, Windows, macOS, web, and WeChat Mini Program. Use this API when the room ID is a string.
+        r"""This API allows an anchor, room owner, admin to mute/unmute a user. It can be used on platforms including Android, iOS, Windows, macOS, web, and WeChat Mini Program. Use this API when the room ID is a string.
 
         :param request: Request instance for SetUserBlockedByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.SetUserBlockedByStrRoomIdRequest`
@@ -981,7 +981,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartAIConversation(self, request):
-        """Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).
+        r"""Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).
 
         :param request: Request instance for StartAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationRequest`
@@ -1004,7 +1004,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartAITranscription(self, request):
-        """Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:
+        r"""Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:
         - Pull the stream of the entire room.
         - Pull the stream of a specific user.
 
@@ -1031,7 +1031,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartPublishCdnStream(self, request):
-        """In a TRTC room, there may be multiple audio and video streams concurrently active. You can use the MixTranscoding API to notify Tencent Cloud server to mix multiple video screens from the same room or multiple rooms together, and specify the position of each screen, while mixing multiple audio streams together. The final result is a single audio and video stream, which can be used for recording and live viewing. It also supports pushing this mixed audio and video stream back to the TRTC room.
+        r"""In a TRTC room, there may be multiple audio and video streams concurrently active. You can use the MixTranscoding API to notify Tencent Cloud server to mix multiple video screens from the same room or multiple rooms together, and specify the position of each screen, while mixing multiple audio streams together. The final result is a single audio and video stream, which can be used for recording and live viewing. It also supports pushing this mixed audio and video stream back to the TRTC room.
 
         The Cloud API MixTranscoding feature includes three interfaces:
         1. StartPublishCdnStream: Start a MixTranscoding task. This interface will initiate a new MixTranscoding task. After the task is successfully started, a unique TaskId will be returned under the sdkappid dimension. You need to save this TaskId, as it will be required for updating and stopping the task later.
@@ -1108,7 +1108,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartStreamIngest(self, request):
-        """Push an online media stream to the TRTC room.
+        r"""Push an online media stream to the TRTC room.
 
         :param request: Request instance for StartStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestRequest`
@@ -1131,7 +1131,7 @@ class TrtcClient(AbstractClient):
 
 
     def StartWebRecord(self, request):
-        """This interface can be used to initiate a web-page recording task. In the interface parameters, specify the recording URL, recording resolution, recording result storage and other parameters. If there are parameter or API logic problems, the result will be returned immediately. If there are page problems, such as the page cannot be accessed, the result will be returned in the callback. Please pay attention.
+        r"""This interface can be used to initiate a web-page recording task. In the interface parameters, specify the recording URL, recording resolution, recording result storage and other parameters. If there are parameter or API logic problems, the result will be returned immediately. If there are page problems, such as the page cannot be accessed, the result will be returned in the callback. Please pay attention.
 
         :param request: Request instance for StartWebRecord.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartWebRecordRequest`
@@ -1154,7 +1154,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopAIConversation(self, request):
-        """Stop AI conversation task
+        r"""Stop AI conversation task
 
         :param request: Request instance for StopAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationRequest`
@@ -1177,7 +1177,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopAITranscription(self, request):
-        """Stop AI Transcription task
+        r"""Stop AI Transcription task
 
         :param request: Request instance for StopAITranscription.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionRequest`
@@ -1200,7 +1200,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopPublishCdnStream(self, request):
-        """This API is used to stop a relaying task.
+        r"""This API is used to stop a relaying task.
 
         :param request: Request instance for StopPublishCdnStream.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopPublishCdnStreamRequest`
@@ -1223,7 +1223,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopStreamIngest(self, request):
-        """Stop a Pull stream Relay task.
+        r"""Stop a Pull stream Relay task.
 
         :param request: Request instance for StopStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestRequest`
@@ -1246,7 +1246,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopWebRecord(self, request):
-        """Stop an web-page recording task
+        r"""Stop an web-page recording task
 
         :param request: Request instance for StopWebRecord.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordRequest`
@@ -1269,7 +1269,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdateAIConversation(self, request):
-        """Update AI conversation task parameters
+        r"""Update AI conversation task parameters
 
         :param request: Request instance for UpdateAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateAIConversationRequest`
@@ -1292,7 +1292,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdatePublishCdnStream(self, request):
-        """This API is used to change the parameters of a relaying task.
+        r"""This API is used to change the parameters of a relaying task.
         Note: For details about how to use this API, see the `StartPublishCdnStream` document.
 
         :param request: Request instance for UpdatePublishCdnStream.
@@ -1316,7 +1316,7 @@ class TrtcClient(AbstractClient):
 
 
     def UpdateStreamIngest(self, request):
-        """You can update the StreamUrl of the Relay task.
+        r"""You can update the StreamUrl of the Relay task.
 
         :param request: Request instance for UpdateStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateStreamIngestRequest`

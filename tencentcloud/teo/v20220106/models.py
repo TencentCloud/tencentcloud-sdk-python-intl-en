@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ACLCondition(AbstractModel):
-    """Condition that makes up an access control rule
+    r"""Condition that makes up an access control rule
 
     """
 
@@ -41,7 +41,7 @@ class ACLCondition(AbstractModel):
 
     @property
     def MatchFrom(self):
-        """Field to match
+        r"""Field to match
         :rtype: str
         """
         return self._MatchFrom
@@ -52,7 +52,7 @@ class ACLCondition(AbstractModel):
 
     @property
     def MatchParam(self):
-        """String to match
+        r"""String to match
         :rtype: str
         """
         return self._MatchParam
@@ -63,7 +63,7 @@ class ACLCondition(AbstractModel):
 
     @property
     def Operator(self):
-        """Relation between the field and content
+        r"""Relation between the field and content
         :rtype: str
         """
         return self._Operator
@@ -74,7 +74,7 @@ class ACLCondition(AbstractModel):
 
     @property
     def MatchContent(self):
-        """Content to match
+        r"""Content to match
         :rtype: str
         """
         return self._MatchContent
@@ -100,7 +100,7 @@ class ACLCondition(AbstractModel):
 
 
 class ACLUserRule(AbstractModel):
-    """Custom ACL rule
+    r"""Custom ACL rule
 
     """
 
@@ -157,7 +157,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleName(self):
-        """Name of the rule
+        r"""Name of the rule
         :rtype: str
         """
         return self._RuleName
@@ -168,7 +168,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Action(self):
-        """Action
+        r"""Action
         :rtype: str
         """
         return self._Action
@@ -179,7 +179,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleStatus(self):
-        """Status of the rule
+        r"""Status of the rule
         :rtype: str
         """
         return self._RuleStatus
@@ -190,7 +190,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Conditions(self):
-        """ACL rule
+        r"""ACL rule
         :rtype: list of ACLCondition
         """
         return self._Conditions
@@ -201,7 +201,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RulePriority(self):
-        """Priority of the rule
+        r"""Priority of the rule
         :rtype: int
         """
         return self._RulePriority
@@ -212,7 +212,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleID(self):
-        """ID of the rule
+        r"""ID of the rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -224,7 +224,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -236,7 +236,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTime(self):
-        """IP blocking time
+        r"""IP blocking time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -248,7 +248,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTimeUnit(self):
-        """IP blocking time unit
+        r"""IP blocking time unit
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -260,7 +260,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Name of the custom block page
+        r"""Name of the custom block page
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -272,7 +272,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PageId(self):
-        """ID of the custom block page
+        r"""ID of the custom block page
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -284,7 +284,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RedirectUrl(self):
-        """Redirection URL, which must be a subdomain name of the site
+        r"""Redirection URL, which must be a subdomain name of the site
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -296,7 +296,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ResponseCode(self):
-        """Return code configured on the custom block page
+        r"""Return code configured on the custom block page
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -337,7 +337,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class AclConfig(AbstractModel):
-    """ACL configuration
+    r"""ACL configuration
 
     """
 
@@ -353,7 +353,7 @@ class AclConfig(AbstractModel):
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
         :rtype: str
         """
         return self._Switch
@@ -364,7 +364,7 @@ class AclConfig(AbstractModel):
 
     @property
     def UserRules(self):
-        """ACL user rule
+        r"""ACL user rule
         :rtype: list of ACLUserRule
         """
         return self._UserRules
@@ -393,7 +393,7 @@ class AclConfig(AbstractModel):
 
 
 class AiRule(AbstractModel):
-    """AI rule engine
+    r"""AI rule engine
 
     """
 
@@ -408,7 +408,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """`smart_status_close`: Disable; `smart_status_open`: Block;
+        r"""`smart_status_close`: Disable; `smart_status_open`: Block;
 `smart_status_observe`: Observe.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
@@ -433,7 +433,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ApplicationProxy(AbstractModel):
-    """Application proxy instance
+    r"""Application proxy instance
 
     """
 
@@ -513,7 +513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -525,7 +525,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ProxyName(self):
-        """Name of the proxy:
+        r"""Name of the proxy:
 Domain name or subdomain name when `ProxyType=hostname`
 Instance name when `ProxyType=instance`
         :rtype: str
@@ -538,7 +538,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def PlatType(self):
-        """Scheduling mode:
+        r"""Scheduling mode:
 `ip`: Anycast IP
 `domain`: CNAME
         :rtype: str
@@ -551,7 +551,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SecurityType(self):
-        """`0`: Disable security protection; `1`: Enable security protection.
+        r"""`0`: Disable security protection; `1`: Enable security protection.
         :rtype: int
         """
         return self._SecurityType
@@ -562,7 +562,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def AccelerateType(self):
-        """`0`: Disable acceleration; `1`: Enable acceleration.
+        r"""`0`: Disable acceleration; `1`: Enable acceleration.
         :rtype: int
         """
         return self._AccelerateType
@@ -573,7 +573,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ForwardClientIp(self):
-        """This field is moved to `Rule.ForwardClientIp`.
+        r"""This field is moved to `Rule.ForwardClientIp`.
         :rtype: str
         """
         return self._ForwardClientIp
@@ -584,7 +584,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersist(self):
-        """This field is moved to `Rule.SessionPersist`.
+        r"""This field is moved to `Rule.SessionPersist`.
         :rtype: bool
         """
         return self._SessionPersist
@@ -595,7 +595,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def Rule(self):
-        """Rule list
+        r"""Rule list
         :rtype: list of ApplicationProxyRule
         """
         return self._Rule
@@ -606,7 +606,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def Status(self):
-        """Status:
+        r"""Status:
 `online`: Enable
 `offline`: Disable
 `progress`: Deploying
@@ -623,7 +623,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ScheduleValue(self):
-        """Scheduling information
+        r"""Scheduling information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -635,7 +635,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -647,7 +647,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -659,7 +659,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -671,7 +671,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SessionPersistTime(self):
-        """Session persistence duration
+        r"""Session persistence duration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -683,7 +683,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ProxyType(self):
-        """Specifies how a layer-4 proxy is created.
+        r"""Specifies how a layer-4 proxy is created.
 `hostname`: Create by subdomain name
 `instance`: Create by instance
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -697,7 +697,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostId(self):
-        """When `ProxyType=hostname`:
+        r"""When `ProxyType=hostname`:
 `ProxyName` indicates a specified domain name;
 `HostId` indicates a unique ID of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -743,7 +743,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ApplicationProxyRule(AbstractModel):
-    """Application proxy rule
+    r"""Application proxy rule
 
     """
 
@@ -800,7 +800,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Proto(self):
-        """Protocol. Valid values: `TCP` and `UDP`.
+        r"""Protocol. Valid values: `TCP` and `UDP`.
         :rtype: str
         """
         return self._Proto
@@ -811,7 +811,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Port(self):
-        """Port. Valid values:
+        r"""Port. Valid values:
 `80`: Port 80
 `81-90`: Port range 81-90
         :rtype: list of str
@@ -824,7 +824,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginType(self):
-        """Origin server type. Valid values:
+        r"""Origin server type. Valid values:
 `custom`: Specified origins
 `origins`: Origin group
         :rtype: str
@@ -837,7 +837,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginValue(self):
-        """Origin server information:
+        r"""Origin server information:
 When `OriginType=custom`, it indicates one or more origin servers. Example:
 OriginValue=["8.8.8.8:80","9.9.9.9:80"]
 OriginValue=["test.com:80"]
@@ -854,7 +854,7 @@ OriginValue=["origin-xxx"]
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -866,7 +866,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Status:
+        r"""Status:
 `online`: Enable
 `offline`: Disable
 `progress`: Deploying
@@ -882,7 +882,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ForwardClientIp(self):
-        """Passes the client IP. When `Proto=TCP`, valid values:
+        r"""Passes the client IP. When `Proto=TCP`, valid values:
 `TOA`: Pass the client IP via TOA
 `PPV1`: Pass the client IP via Proxy Protocol V1
 `PPV2`: Pass the client IP via Proxy Protocol V2
@@ -900,7 +900,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def SessionPersist(self):
-        """Specifies whether to enable session persistence
+        r"""Specifies whether to enable session persistence
         :rtype: bool
         """
         return self._SessionPersist
@@ -930,7 +930,7 @@ When `Proto=UDP`, valid values:
 
 
 class BotConfig(AbstractModel):
-    """Bot security configuration
+    r"""Bot security configuration
 
     """
 
@@ -959,7 +959,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Whether to enable bot security configuration
+        r"""Whether to enable bot security configuration
         :rtype: str
         """
         return self._Switch
@@ -970,7 +970,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ManagedRule(self):
-        """Preset rules
+        r"""Preset rules
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
         """
         return self._ManagedRule
@@ -981,7 +981,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UaBotRule(self):
-        """Not supported currently
+        r"""Not supported currently
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
         """
         return self._UaBotRule
@@ -992,7 +992,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IspBotRule(self):
-        """Not supported currently
+        r"""Not supported currently
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
         """
         return self._IspBotRule
@@ -1003,7 +1003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PortraitRule(self):
-        """User portrait rules
+        r"""User portrait rules
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotPortraitRule`
         """
         return self._PortraitRule
@@ -1014,7 +1014,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntelligenceRule(self):
-        """Bot intelligence rules
+        r"""Bot intelligence rules
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.IntelligenceRule`
         """
@@ -1053,7 +1053,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BotLog(AbstractModel):
-    """Bot attack log
+    r"""Bot attack log
 
     """
 
@@ -1131,7 +1131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackTime(self):
-        """Attack time
+        r"""Attack time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1143,7 +1143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackIp(self):
-        """Attack IP
+        r"""Attack IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1155,7 +1155,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain name
+        r"""Domain name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1167,7 +1167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestUri(self):
-        """Request URI
+        r"""Request URI
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1179,7 +1179,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackType(self):
-        """Attack type
+        r"""Attack type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1191,7 +1191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestMethod(self):
-        """Request method
+        r"""Request method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1203,7 +1203,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackContent(self):
-        """Attack content
+        r"""Attack content
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1215,7 +1215,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiskLevel(self):
-        """Risk grade
+        r"""Risk grade
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1227,7 +1227,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule number
+        r"""Rule number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1239,7 +1239,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SipCountryCode(self):
-        """IP country/region
+        r"""IP country/region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1251,7 +1251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1263,7 +1263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisposalMethod(self):
-        """Processing method
+        r"""Processing method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1275,7 +1275,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HttpLog(self):
-        """http_log
+        r"""http_log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1287,7 +1287,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ua(self):
-        """user agent
+        r"""user agent
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1299,7 +1299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetectionMethod(self):
-        """Detection method
+        r"""Detection method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1311,7 +1311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
-        """Confidence
+        r"""Confidence
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1323,7 +1323,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Maliciousness(self):
-        """Maliciousness
+        r"""Maliciousness
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1363,7 +1363,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BotLogData(AbstractModel):
-    """Block log in rate-limiting policy
+    r"""Block log in rate-limiting policy
 
     """
 
@@ -1393,7 +1393,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data set of bot attack logs
+        r"""Data set of bot attack logs
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BotLog
         """
@@ -1405,7 +1405,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1417,7 +1417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1429,7 +1429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1441,7 +1441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1474,7 +1474,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BotManagedRule(AbstractModel):
-    """Bot managed rules
+    r"""Bot managed rules
 
     """
 
@@ -1538,7 +1538,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ManagedIds(self):
-        """ID of the rule to be enabled
+        r"""ID of the rule to be enabled
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1550,7 +1550,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleID(self):
-        """ID of the rule being applied
+        r"""ID of the rule being applied
         :rtype: int
         """
         return self._RuleID
@@ -1561,7 +1561,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Action(self):
-        """Action of the rule. Values: `drop`; `trans`; `monitor`; `alg`.
+        r"""Action of the rule. Values: `drop`; `trans`; `monitor`; `alg`.
         :rtype: str
         """
         return self._Action
@@ -1572,7 +1572,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTime(self):
-        """The amount of time the IP is blocked
+        r"""The amount of time the IP is blocked
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -1584,7 +1584,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTimeUnit(self):
-        """Unit of IP blocking time
+        r"""Unit of IP blocking time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -1596,7 +1596,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Name of the custom block page
+        r"""Name of the custom block page
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -1608,7 +1608,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PageId(self):
-        """ID of the custom block page
+        r"""ID of the custom block page
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -1620,7 +1620,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RedirectUrl(self):
-        """Redirection URL, which must be a subdomain name of your site encoded by URLEncode
+        r"""Redirection URL, which must be a subdomain name of your site encoded by URLEncode
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -1632,7 +1632,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ResponseCode(self):
-        """Response code returned after redirection
+        r"""Response code returned after redirection
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -1644,7 +1644,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TransManagedIds(self):
-        """ID of the rule that is set to allow requests
+        r"""ID of the rule that is set to allow requests
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1656,7 +1656,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AlgManagedIds(self):
-        """ID of the rule that is set to verify requests by JavaScript challenge
+        r"""ID of the rule that is set to verify requests by JavaScript challenge
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1668,7 +1668,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CapManagedIds(self):
-        """ID of the rule that is set to verify requests by CAPTCHA
+        r"""ID of the rule that is set to verify requests by CAPTCHA
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1680,7 +1680,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MonManagedIds(self):
-        """ID of the rule that is set to observe requests
+        r"""ID of the rule that is set to observe requests
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1692,7 +1692,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DropManagedIds(self):
-        """ID of the rule that is set to block requests
+        r"""ID of the rule that is set to block requests
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1729,7 +1729,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class BotManagedRuleDetail(AbstractModel):
-    """Bot managed rule details
+    r"""Bot managed rule details
 
     """
 
@@ -1751,7 +1751,7 @@ class BotManagedRuleDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        """ID of the rule
+        r"""ID of the rule
         :rtype: int
         """
         return self._RuleId
@@ -1762,7 +1762,7 @@ class BotManagedRuleDetail(AbstractModel):
 
     @property
     def Description(self):
-        """Rule description
+        r"""Rule description
         :rtype: str
         """
         return self._Description
@@ -1773,7 +1773,7 @@ class BotManagedRuleDetail(AbstractModel):
 
     @property
     def RuleTypeName(self):
-        """Rule type
+        r"""Rule type
         :rtype: str
         """
         return self._RuleTypeName
@@ -1784,7 +1784,7 @@ class BotManagedRuleDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Whether the rule is enabled
+        r"""Whether the rule is enabled
         :rtype: str
         """
         return self._Status
@@ -1810,7 +1810,7 @@ class BotManagedRuleDetail(AbstractModel):
 
 
 class BotPortraitRule(AbstractModel):
-    """Bot user portrait rules
+    r"""Bot user portrait rules
 
     """
 
@@ -1844,7 +1844,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleID(self):
-        """ID of the rule being applied
+        r"""ID of the rule being applied
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -1856,7 +1856,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AlgManagedIds(self):
-        """ID of the rule that is set to verify requests by JavaScript challenge
+        r"""ID of the rule that is set to verify requests by JavaScript challenge
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1868,7 +1868,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CapManagedIds(self):
-        """ID of the rule that is set to verify requests by CAPTCHA
+        r"""ID of the rule that is set to verify requests by CAPTCHA
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1880,7 +1880,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MonManagedIds(self):
-        """ID of the rule that is set to observe requests
+        r"""ID of the rule that is set to observe requests
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1892,7 +1892,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DropManagedIds(self):
-        """ID of the rule that is set to block requests
+        r"""ID of the rule that is set to block requests
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -1904,7 +1904,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Feature switch
+        r"""Feature switch
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1933,7 +1933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CCInterceptEvent(AbstractModel):
-    """CC block event
+    r"""CC block event
 
     """
 
@@ -1954,7 +1954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientIp(self):
-        """Client IP
+        r"""Client IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1966,7 +1966,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InterceptNum(self):
-        """Number of blocks per minute
+        r"""Number of blocks per minute
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1978,7 +1978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InterceptTime(self):
-        """Block time in rate-limiting policy per minute in seconds
+        r"""Block time in rate-limiting policy per minute in seconds
         :rtype: int
         """
         return self._InterceptTime
@@ -2003,7 +2003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CCInterceptEventData(AbstractModel):
-    """CC block event data
+    r"""CC block event data
 
     """
 
@@ -2033,7 +2033,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data set of attack events
+        r"""Data set of attack events
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CCInterceptEvent
         """
@@ -2045,7 +2045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2057,7 +2057,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2069,7 +2069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2081,7 +2081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2114,7 +2114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CCLog(AbstractModel):
-    """Block log in rate-limiting policy
+    r"""Block log in rate-limiting policy
 
     """
 
@@ -2168,7 +2168,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackTime(self):
-        """Attack time
+        r"""Attack time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2180,7 +2180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackSip(self):
-        """Attack source IP
+        r"""Attack source IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2192,7 +2192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackDomain(self):
-        """Attack domain name
+        r"""Attack domain name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2204,7 +2204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestUri(self):
-        """Request URI
+        r"""Request URI
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2216,7 +2216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HitCount(self):
-        """Number of hits
+        r"""Number of hits
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2228,7 +2228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SipCountryCode(self):
-        """IP country/region
+        r"""IP country/region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2240,7 +2240,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2252,7 +2252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisposalMethod(self):
-        """Processing method
+        r"""Processing method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2264,7 +2264,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HttpLog(self):
-        """http_log
+        r"""http_log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2276,7 +2276,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule number
+        r"""Rule number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2288,7 +2288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiskLevel(self):
-        """Risk grade
+        r"""Risk grade
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2322,7 +2322,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CCLogData(AbstractModel):
-    """Block log in rate-limiting policy
+    r"""Block log in rate-limiting policy
 
     """
 
@@ -2352,7 +2352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data set of CC block logs
+        r"""Data set of CC block logs
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CCLog
         """
@@ -2364,7 +2364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2376,7 +2376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2388,7 +2388,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2400,7 +2400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2433,7 +2433,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CacheConfig(AbstractModel):
-    """Cache rule configuration
+    r"""Cache rule configuration
 
     """
 
@@ -2455,7 +2455,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cache(self):
-        """Cache configuration
+        r"""Cache configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheConfigCache`
         """
@@ -2467,7 +2467,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NoCache(self):
-        """No-cache configuration
+        r"""No-cache configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheConfigNoCache`
         """
@@ -2479,7 +2479,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FollowOrigin(self):
-        """Follows the origin server configuration
+        r"""Follows the origin server configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheConfigFollowOrigin`
         """
@@ -2511,7 +2511,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CacheConfigCache(AbstractModel):
-    """Cache time settings
+    r"""Cache time settings
 
     """
 
@@ -2538,7 +2538,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Cache configuration switch
+        r"""Cache configuration switch
 `on`: Enable
 `off`: Disable
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -2552,7 +2552,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CacheTime(self):
-        """Cache expiration time settings
+        r"""Cache expiration time settings
 Unit: second. The maximum value is 365 days.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
@@ -2565,7 +2565,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IgnoreCacheControl(self):
-        """Specifies whether to enable force cache
+        r"""Specifies whether to enable force cache
 `on`: Enable
 `off`: Disable
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -2593,7 +2593,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CacheConfigFollowOrigin(AbstractModel):
-    """Follows the origin server configuration
+    r"""Follows the origin server configuration
 
     """
 
@@ -2609,7 +2609,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Specifies whether to follow the origin server configuration
+        r"""Specifies whether to follow the origin server configuration
 `on`: Enable
 `off`: Disable
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -2635,7 +2635,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CacheConfigNoCache(AbstractModel):
-    """Do not cache the configuration
+    r"""Do not cache the configuration
 
     """
 
@@ -2651,7 +2651,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Switch(self):
-        """Whether to cache the configuration
+        r"""Whether to cache the configuration
 `on`: Do not cache
 `off`: Cache
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -2677,7 +2677,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class CacheKey(AbstractModel):
-    """Cache key configuration
+    r"""Cache key configuration
 
     """
 
@@ -2701,7 +2701,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FullUrlCache(self):
-        """Specifies whether to enable full-path cache
+        r"""Specifies whether to enable full-path cache
 `on`: Enable full-path cache (i.e., disable Ignore Query String)
 `off`: Disable full-path cache (i.e., enable Ignore Query String)
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -2715,7 +2715,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IgnoreCase(self):
-        """Specifies whether the cache key is case sensitive
+        r"""Specifies whether the cache key is case sensitive
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -2727,7 +2727,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def QueryString(self):
-        """Request parameter contained in `CacheKey`
+        r"""Request parameter contained in `CacheKey`
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.QueryString`
         """
@@ -2755,7 +2755,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CachePrefresh(AbstractModel):
-    """Cache prefresh
+    r"""Cache prefresh
 
     """
 
@@ -2772,7 +2772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Configuration switch
+        r"""Configuration switch
         :rtype: str
         """
         return self._Switch
@@ -2783,7 +2783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        """Cache prefresh percentage. Values: 1-99
+        r"""Cache prefresh percentage. Values: 1-99
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2808,7 +2808,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CertFilter(AbstractModel):
-    """Query filter to search for certificates
+    r"""Query filter to search for certificates
 
     """
 
@@ -2832,7 +2832,7 @@ If it is enabled, the length of `Value` must be 1.
 
     @property
     def Name(self):
-        """Filters by the field name. Values:
+        r"""Filters by the field name. Values:
  - `host`: Domain name
  - `certId`: Certificate ID
  - `certAlias`: Certificate alias
@@ -2847,7 +2847,7 @@ If it is enabled, the length of `Value` must be 1.
 
     @property
     def Values(self):
-        """Filters by the field value
+        r"""Filters by the field value
         :rtype: list of str
         """
         return self._Values
@@ -2858,7 +2858,7 @@ If it is enabled, the length of `Value` must be 1.
 
     @property
     def Fuzzy(self):
-        """Specifies whether to enable fuzzy query, which only supports the `host` field.
+        r"""Specifies whether to enable fuzzy query, which only supports the `host` field.
 If it is enabled, the length of `Value` must be 1.
         :rtype: bool
         """
@@ -2884,7 +2884,7 @@ If it is enabled, the length of `Value` must be 1.
 
 
 class CertSort(AbstractModel):
-    """Sorting conditions for query results.
+    r"""Sorting conditions for query results.
 
     """
 
@@ -2903,7 +2903,7 @@ class CertSort(AbstractModel):
 
     @property
     def Key(self):
-        """Fields that can be sorted. Values:
+        r"""Fields that can be sorted. Values:
 `createTime`: Domain name creation time
 `certExpireTime`: Certificate expiration time
 `certDeployTime`: Certificate deployment time
@@ -2917,7 +2917,7 @@ class CertSort(AbstractModel):
 
     @property
     def Sequence(self):
-        """Sorting order. Valid values: `asc` and `desc` (default).
+        r"""Sorting order. Valid values: `asc` and `desc` (default).
         :rtype: str
         """
         return self._Sequence
@@ -2941,7 +2941,7 @@ class CertSort(AbstractModel):
 
 
 class CheckCertificateRequest(AbstractModel):
-    """CheckCertificate request structure.
+    r"""CheckCertificate request structure.
 
     """
 
@@ -2957,7 +2957,7 @@ class CheckCertificateRequest(AbstractModel):
 
     @property
     def Certificate(self):
-        """Certificate
+        r"""Certificate
         :rtype: str
         """
         return self._Certificate
@@ -2968,7 +2968,7 @@ class CheckCertificateRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """Private key
+        r"""Private key
         :rtype: str
         """
         return self._PrivateKey
@@ -2992,7 +2992,7 @@ class CheckCertificateRequest(AbstractModel):
 
 
 class CheckCertificateResponse(AbstractModel):
-    """CheckCertificate response structure.
+    r"""CheckCertificate response structure.
 
     """
 
@@ -3005,7 +3005,7 @@ class CheckCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3020,7 +3020,7 @@ class CheckCertificateResponse(AbstractModel):
 
 
 class ClientIp(AbstractModel):
-    """Client IP header
+    r"""Client IP header
 
     """
 
@@ -3038,7 +3038,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Specifies whether to enable client IP header
+        r"""Specifies whether to enable client IP header
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3050,7 +3050,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HeaderName(self):
-        """Name of the origin-pull client IP request header
+        r"""Name of the origin-pull client IP request header
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3075,7 +3075,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CnameStatus(AbstractModel):
-    """CNAME status
+    r"""CNAME status
 
     """
 
@@ -3098,7 +3098,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Record name
+        r"""Record name
         :rtype: str
         """
         return self._Name
@@ -3109,7 +3109,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """CNAME address
+        r"""CNAME address
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3121,7 +3121,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 `active`: Activated
 `moved`: Not activated
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -3149,7 +3149,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class Compression(AbstractModel):
-    """Smart compression
+    r"""Smart compression
 
     """
 
@@ -3164,7 +3164,7 @@ class Compression(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable Smart compression
+        r"""Whether to enable Smart compression
 `on`: Enable
 `off`: Disable
         :rtype: str
@@ -3189,7 +3189,7 @@ class Compression(AbstractModel):
 
 
 class CreateApplicationProxyRequest(AbstractModel):
-    """CreateApplicationProxy request structure.
+    r"""CreateApplicationProxy request structure.
 
     """
 
@@ -3238,7 +3238,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -3249,7 +3249,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -3260,7 +3260,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyName(self):
-        """Name of the proxy:
+        r"""Name of the proxy:
 Domain name or subdomain name when `ProxyType=hostname`
 Instance name when `ProxyType=instance`
         :rtype: str
@@ -3273,7 +3273,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def PlatType(self):
-        """Scheduling mode. Values:
+        r"""Scheduling mode. Values:
 `ip`: Anycast IP
 `domain`: CNAME
         :rtype: str
@@ -3286,7 +3286,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SecurityType(self):
-        """`0`: Disable security protection; `1`: Enable security protection.
+        r"""`0`: Disable security protection; `1`: Enable security protection.
         :rtype: int
         """
         return self._SecurityType
@@ -3297,7 +3297,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def AccelerateType(self):
-        """`0`: Disable acceleration; `1`: Enable acceleration.
+        r"""`0`: Disable acceleration; `1`: Enable acceleration.
         :rtype: int
         """
         return self._AccelerateType
@@ -3308,7 +3308,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ForwardClientIp(self):
-        """This field is moved to `Rule.ForwardClientIp`.
+        r"""This field is moved to `Rule.ForwardClientIp`.
         :rtype: str
         """
         return self._ForwardClientIp
@@ -3319,7 +3319,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersist(self):
-        """This field is moved to `Rule.SessionPersist`.
+        r"""This field is moved to `Rule.SessionPersist`.
         :rtype: bool
         """
         return self._SessionPersist
@@ -3330,7 +3330,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def Rule(self):
-        """Rule details
+        r"""Rule details
         :rtype: list of ApplicationProxyRule
         """
         return self._Rule
@@ -3341,7 +3341,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersistTime(self):
-        """Session persistence duration. Value range: 30-3600 (in seconds).
+        r"""Session persistence duration. Value range: 30-3600 (in seconds).
         :rtype: int
         """
         return self._SessionPersistTime
@@ -3352,7 +3352,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyType(self):
-        """Specifies how a layer-4 proxy is created.
+        r"""Specifies how a layer-4 proxy is created.
 `hostname`: Create by subdomain name
 `instance`: Create by instance
         :rtype: str
@@ -3392,7 +3392,7 @@ Instance name when `ProxyType=instance`
 
 
 class CreateApplicationProxyResponse(AbstractModel):
-    """CreateApplicationProxy response structure.
+    r"""CreateApplicationProxy response structure.
 
     """
 
@@ -3408,7 +3408,7 @@ class CreateApplicationProxyResponse(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Layer-4 application proxy ID
+        r"""Layer-4 application proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -3419,7 +3419,7 @@ class CreateApplicationProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3435,7 +3435,7 @@ class CreateApplicationProxyResponse(AbstractModel):
 
 
 class CreateApplicationProxyRuleRequest(AbstractModel):
-    """CreateApplicationProxyRule request structure.
+    r"""CreateApplicationProxyRule request structure.
 
     """
 
@@ -3484,7 +3484,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -3495,7 +3495,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -3506,7 +3506,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Proto(self):
-        """Protocol. Valid values: `TCP` and `UDP`.
+        r"""Protocol. Valid values: `TCP` and `UDP`.
         :rtype: str
         """
         return self._Proto
@@ -3517,7 +3517,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Port(self):
-        """Port. Valid values:
+        r"""Port. Valid values:
 `80`: Port 80
 `81-90`: Port range 81-90
         :rtype: list of str
@@ -3530,7 +3530,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginType(self):
-        """Origin type. Valid values:
+        r"""Origin type. Valid values:
 `custom`: Specified origins
 `origins`: Origin group
         :rtype: str
@@ -3543,7 +3543,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginValue(self):
-        """Origin information:
+        r"""Origin information:
 When `OriginType=custom`, it can include one or more origins in either of the following formats:
 IP:Port
 Domain name:Port
@@ -3558,7 +3558,7 @@ When `OriginType=origins`, it is an origin group ID.
 
     @property
     def ForwardClientIp(self):
-        """Passes the client IP. When `Proto=TCP`, valid values:
+        r"""Passes the client IP. When `Proto=TCP`, valid values:
 `TOA`: Pass the client IP via TOA
 `PPV1`: Pass the client IP via Proxy Protocol V1
 `PPV2`: Pass the client IP via Proxy Protocol V2
@@ -3576,7 +3576,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def SessionPersist(self):
-        """Specifies whether to enable session persistence 
+        r"""Specifies whether to enable session persistence 
         :rtype: bool
         """
         return self._SessionPersist
@@ -3606,7 +3606,7 @@ When `Proto=UDP`, valid values:
 
 
 class CreateApplicationProxyRuleResponse(AbstractModel):
-    """CreateApplicationProxyRule response structure.
+    r"""CreateApplicationProxyRule response structure.
 
     """
 
@@ -3622,7 +3622,7 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -3633,7 +3633,7 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3649,7 +3649,7 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
 
 class CreateApplicationProxyRulesRequest(AbstractModel):
-    """CreateApplicationProxyRules request structure.
+    r"""CreateApplicationProxyRules request structure.
 
     """
 
@@ -3668,7 +3668,7 @@ class CreateApplicationProxyRulesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -3679,7 +3679,7 @@ class CreateApplicationProxyRulesRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -3690,7 +3690,7 @@ class CreateApplicationProxyRulesRequest(AbstractModel):
 
     @property
     def Rule(self):
-        """Rule list
+        r"""Rule list
         :rtype: list of ApplicationProxyRule
         """
         return self._Rule
@@ -3720,7 +3720,7 @@ class CreateApplicationProxyRulesRequest(AbstractModel):
 
 
 class CreateApplicationProxyRulesResponse(AbstractModel):
-    """CreateApplicationProxyRules response structure.
+    r"""CreateApplicationProxyRules response structure.
 
     """
 
@@ -3736,7 +3736,7 @@ class CreateApplicationProxyRulesResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Array of rule IDs
+        r"""Array of rule IDs
         :rtype: list of str
         """
         return self._RuleId
@@ -3747,7 +3747,7 @@ class CreateApplicationProxyRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3763,7 +3763,7 @@ class CreateApplicationProxyRulesResponse(AbstractModel):
 
 
 class CreateCustomErrorPageRequest(AbstractModel):
-    """CreateCustomErrorPage request structure.
+    r"""CreateCustomErrorPage request structure.
 
     """
 
@@ -3785,7 +3785,7 @@ class CreateCustomErrorPageRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -3796,7 +3796,7 @@ class CreateCustomErrorPageRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Subdomain name of the site
+        r"""Subdomain name of the site
         :rtype: str
         """
         return self._Entity
@@ -3807,7 +3807,7 @@ class CreateCustomErrorPageRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the file specified to be returned
+        r"""Name of the file specified to be returned
         :rtype: str
         """
         return self._Name
@@ -3818,7 +3818,7 @@ class CreateCustomErrorPageRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Content of the custom page
+        r"""Content of the custom page
         :rtype: str
         """
         return self._Content
@@ -3844,7 +3844,7 @@ class CreateCustomErrorPageRequest(AbstractModel):
 
 
 class CreateCustomErrorPageResponse(AbstractModel):
-    """CreateCustomErrorPage response structure.
+    r"""CreateCustomErrorPage response structure.
 
     """
 
@@ -3860,7 +3860,7 @@ class CreateCustomErrorPageResponse(AbstractModel):
 
     @property
     def PageId(self):
-        """ID of the custom page
+        r"""ID of the custom page
         :rtype: int
         """
         return self._PageId
@@ -3871,7 +3871,7 @@ class CreateCustomErrorPageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3887,7 +3887,7 @@ class CreateCustomErrorPageResponse(AbstractModel):
 
 
 class CreateDnsRecordRequest(AbstractModel):
-    """CreateDnsRecord request structure.
+    r"""CreateDnsRecord request structure.
 
     """
 
@@ -3918,7 +3918,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -3929,7 +3929,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._Type
@@ -3940,7 +3940,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Record name
+        r"""Record name
         :rtype: str
         """
         return self._Name
@@ -3951,7 +3951,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Record content
+        r"""Record content
         :rtype: str
         """
         return self._Content
@@ -3962,7 +3962,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Proxy mode. Valid values: `dns_only`, `cdn_only`, and `secure_cdn`.
+        r"""Proxy mode. Valid values: `dns_only`, `cdn_only`, and `secure_cdn`.
         :rtype: str
         """
         return self._Mode
@@ -3973,7 +3973,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Ttl
@@ -3984,7 +3984,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._Priority
@@ -4013,7 +4013,7 @@ class CreateDnsRecordRequest(AbstractModel):
 
 
 class CreateDnsRecordResponse(AbstractModel):
-    """CreateDnsRecord response structure.
+    r"""CreateDnsRecord response structure.
 
     """
 
@@ -4071,7 +4071,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._Id
@@ -4082,7 +4082,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._Type
@@ -4093,7 +4093,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Record name
+        r"""Record name
         :rtype: str
         """
         return self._Name
@@ -4104,7 +4104,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Content(self):
-        """Record content
+        r"""Record content
         :rtype: str
         """
         return self._Content
@@ -4115,7 +4115,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Ttl(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Ttl
@@ -4126,7 +4126,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Priority(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._Priority
@@ -4137,7 +4137,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """Proxy mode
+        r"""Proxy mode
         :rtype: str
         """
         return self._Mode
@@ -4148,7 +4148,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Resolution status. Valid values:
+        r"""Resolution status. Valid values:
 `active`: Activated
 `pending`: Not activated
         :rtype: str
@@ -4161,7 +4161,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Locked(self):
-        """Whether the DNS record is locked
+        r"""Whether the DNS record is locked
         :rtype: bool
         """
         return self._Locked
@@ -4172,7 +4172,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedOn(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -4183,7 +4183,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -4194,7 +4194,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -4205,7 +4205,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -4216,7 +4216,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """CNAME address
+        r"""CNAME address
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -4228,7 +4228,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4257,7 +4257,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CreateLoadBalancingRequest(AbstractModel):
-    """CreateLoadBalancing request structure.
+    r"""CreateLoadBalancing request structure.
 
     """
 
@@ -4284,7 +4284,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -4295,7 +4295,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
     @property
     def Host(self):
-        """Subdomain name
+        r"""Subdomain name
         :rtype: str
         """
         return self._Host
@@ -4306,7 +4306,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Proxy mode. Valid values:
+        r"""Proxy mode. Valid values:
 `dns_only`: Only DNS
 `proxied`: Enable proxy
         :rtype: str
@@ -4319,7 +4319,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """ID of the origin group used
+        r"""ID of the origin group used
         :rtype: list of str
         """
         return self._OriginId
@@ -4330,7 +4330,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """Indicates DNS TTL time when `Type=dns_only` 
+        r"""Indicates DNS TTL time when `Type=dns_only` 
         :rtype: int
         """
         return self._TTL
@@ -4357,7 +4357,7 @@ class CreateLoadBalancingRequest(AbstractModel):
 
 
 class CreateLoadBalancingResponse(AbstractModel):
-    """CreateLoadBalancing response structure.
+    r"""CreateLoadBalancing response structure.
 
     """
 
@@ -4373,7 +4373,7 @@ class CreateLoadBalancingResponse(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -4384,7 +4384,7 @@ class CreateLoadBalancingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4400,7 +4400,7 @@ class CreateLoadBalancingResponse(AbstractModel):
 
 
 class CreateOriginGroupRequest(AbstractModel):
-    """CreateOriginGroup request structure.
+    r"""CreateOriginGroup request structure.
 
     """
 
@@ -4431,7 +4431,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def OriginName(self):
-        """Name of the origin group
+        r"""Name of the origin group
         :rtype: str
         """
         return self._OriginName
@@ -4442,7 +4442,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def Type(self):
-        """Origin-pull configuration type. This field is required when `OriginType=self`.
+        r"""Origin-pull configuration type. This field is required when `OriginType=self`.
 `area`: Origin-pull by region
 `weight`: Origin-pull by weight
 When `OriginType=third_party/cos`, it can be left empty.
@@ -4456,7 +4456,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def Record(self):
-        """Origin records
+        r"""Origin records
         :rtype: list of OriginRecord
         """
         return self._Record
@@ -4467,7 +4467,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -4478,7 +4478,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def OriginType(self):
-        """Origin type
+        r"""Origin type
 `self`: Customer origin
 `third_party`: Third-party origin
 `cos`: Tencent Cloud COS origin
@@ -4513,7 +4513,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
 
 class CreateOriginGroupResponse(AbstractModel):
-    """CreateOriginGroup response structure.
+    r"""CreateOriginGroup response structure.
 
     """
 
@@ -4529,7 +4529,7 @@ class CreateOriginGroupResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        """ID of the newly added origin group
+        r"""ID of the newly added origin group
         :rtype: str
         """
         return self._OriginId
@@ -4540,7 +4540,7 @@ class CreateOriginGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4556,7 +4556,7 @@ class CreateOriginGroupResponse(AbstractModel):
 
 
 class CreatePrefetchTaskRequest(AbstractModel):
-    """CreatePrefetchTask request structure.
+    r"""CreatePrefetchTask request structure.
 
     """
 
@@ -4580,7 +4580,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -4591,7 +4591,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def Targets(self):
-        """List of resources to be pre-warmed, for example:
+        r"""List of resources to be pre-warmed, for example:
 http://www.example.com/example.txt
         :rtype: list of str
         """
@@ -4603,7 +4603,7 @@ http://www.example.com/example.txt
 
     @property
     def EncodeUrl(self):
-        """Specifies whether to encode the URL
+        r"""Specifies whether to encode the URL
 Note that if it’s enabled, the purging is based on the converted URLs.
         :rtype: bool
         """
@@ -4615,7 +4615,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def Headers(self):
-        """HTTP header information
+        r"""HTTP header information
         :rtype: list of Header
         """
         return self._Headers
@@ -4646,7 +4646,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
 
 class CreatePrefetchTaskResponse(AbstractModel):
-    """CreatePrefetchTask response structure.
+    r"""CreatePrefetchTask response structure.
 
     """
 
@@ -4666,7 +4666,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -4677,7 +4677,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FailedList(self):
-        """List of failed tasks
+        r"""List of failed tasks
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of FailReason
         """
@@ -4689,7 +4689,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4711,7 +4711,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CreatePurgeTaskRequest(AbstractModel):
-    """CreatePurgeTask request structure.
+    r"""CreatePurgeTask request structure.
 
     """
 
@@ -4746,7 +4746,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -4757,7 +4757,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def Type(self):
-        """Type of the purging task. Values:
+        r"""Type of the purging task. Values:
 - `purge_url`: Purge by the URL
 - `purge_prefix`: Purge by the prefix
 - `purge_host`: Purge by the Hostname
@@ -4772,7 +4772,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def Targets(self):
-        """Target resource to be purged, which depends on the `Type` field.
+        r"""Target resource to be purged, which depends on the `Type` field.
 1. When `Type = purge_host`:
 Hostnames are purged, such as www.example.com and foo.bar.example.com.
 2. When `Type = purge_prefix`:
@@ -4791,7 +4791,7 @@ URLs are purged, such as https://www.example.com/example.jpg.
 
     @property
     def EncodeUrl(self):
-        """Specifies whether to transcode non-ASCII URLs according to RFC3986.
+        r"""Specifies whether to transcode non-ASCII URLs according to RFC3986.
 Note that if it’s enabled, the purging is based on the converted URLs.
         :rtype: bool
         """
@@ -4818,7 +4818,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
 
 class CreatePurgeTaskResponse(AbstractModel):
-    """CreatePurgeTask response structure.
+    r"""CreatePurgeTask response structure.
 
     """
 
@@ -4838,7 +4838,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -4849,7 +4849,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FailedList(self):
-        """List of failed tasks and reasons
+        r"""List of failed tasks and reasons
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of FailReason
         """
@@ -4861,7 +4861,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4883,7 +4883,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class CreateZoneRequest(AbstractModel):
-    """CreateZone request structure.
+    r"""CreateZone request structure.
 
     """
 
@@ -4907,7 +4907,7 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -4918,7 +4918,7 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Access mode. Valid values:
+        r"""Access mode. Valid values:
 - `full` (default): Access via NS
 - `partial`: Access via CNAME
         :rtype: str
@@ -4931,7 +4931,7 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def JumpStart(self):
-        """Specifies whether to skip resolution record scanning
+        r"""Specifies whether to skip resolution record scanning
         :rtype: bool
         """
         return self._JumpStart
@@ -4942,7 +4942,7 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Resource tag
+        r"""Resource tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -4973,7 +4973,7 @@ class CreateZoneRequest(AbstractModel):
 
 
 class CreateZoneResponse(AbstractModel):
-    """CreateZone response structure.
+    r"""CreateZone response structure.
 
     """
 
@@ -5013,7 +5013,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -5024,7 +5024,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -5035,7 +5035,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Specifies how the site is connected to EdgeOne.
+        r"""Specifies how the site is connected to EdgeOne.
         :rtype: str
         """
         return self._Type
@@ -5046,7 +5046,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Site status
+        r"""Site status
 - `pending`: The name server is not switched.
 - `active`: The name server is switched to another assigned.
 - `moved`: Move the NS out of Tencent Cloud
@@ -5060,7 +5060,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def OriginalNameServers(self):
-        """List of name servers
+        r"""List of name servers
         :rtype: list of str
         """
         return self._OriginalNameServers
@@ -5071,7 +5071,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def NameServers(self):
-        """List of name servers assigned to users
+        r"""List of name servers assigned to users
         :rtype: list of str
         """
         return self._NameServers
@@ -5082,7 +5082,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """Site creation date
+        r"""Site creation date
         :rtype: str
         """
         return self._CreatedOn
@@ -5093,7 +5093,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def ModifiedOn(self):
-        """Site update time
+        r"""Site update time
         :rtype: str
         """
         return self._ModifiedOn
@@ -5104,7 +5104,7 @@ class CreateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5127,7 +5127,7 @@ class CreateZoneResponse(AbstractModel):
 
 
 class DDoSAcl(AbstractModel):
-    """DDoS port filtering configuration
+    r"""DDoS port filtering configuration
 
     """
 
@@ -5158,7 +5158,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def DportEnd(self):
-        """Destination port used as the end port
+        r"""Destination port used as the end port
         :rtype: int
         """
         return self._DportEnd
@@ -5169,7 +5169,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def DportStart(self):
-        """Destination port used as the start port
+        r"""Destination port used as the start port
         :rtype: int
         """
         return self._DportStart
@@ -5180,7 +5180,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def SportEnd(self):
-        """Source port used as the end port
+        r"""Source port used as the end port
         :rtype: int
         """
         return self._SportEnd
@@ -5191,7 +5191,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def SportStart(self):
-        """Source port used as the start port
+        r"""Source port used as the start port
         :rtype: int
         """
         return self._SportStart
@@ -5202,7 +5202,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol. Values: `tcp`, `udp`, and `all`.
+        r"""Protocol. Values: `tcp`, `udp`, and `all`.
         :rtype: str
         """
         return self._Protocol
@@ -5213,7 +5213,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def Action(self):
-        """Action. Values: `drop` (Drop the request); `transmit` (Allow the request); `forward` (Continue to offer protection).
+        r"""Action. Values: `drop` (Drop the request); `transmit` (Allow the request); `forward` (Continue to offer protection).
         :rtype: str
         """
         return self._Action
@@ -5224,7 +5224,7 @@ class DDoSAcl(AbstractModel):
 
     @property
     def Default(self):
-        """Whether it is a system configuration. Values: `0` (manual configuration); `1` (system configuration).
+        r"""Whether it is a system configuration. Values: `0` (manual configuration); `1` (system configuration).
         :rtype: int
         """
         return self._Default
@@ -5253,7 +5253,7 @@ class DDoSAcl(AbstractModel):
 
 
 class DDoSAntiPly(AbstractModel):
-    """DDoS protection against protocol and connection attacks
+    r"""DDoS protection against protocol and connection attacks
 
     """
 
@@ -5306,7 +5306,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropTcp(self):
-        """Enables TCP protocol blocking. `on` (enable); `off` (disable).
+        r"""Enables TCP protocol blocking. `on` (enable); `off` (disable).
         :rtype: str
         """
         return self._DropTcp
@@ -5317,7 +5317,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropUdp(self):
-        """Enables UDP protocol blocking. `on` (enable); `off` (disable).
+        r"""Enables UDP protocol blocking. `on` (enable); `off` (disable).
         :rtype: str
         """
         return self._DropUdp
@@ -5328,7 +5328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropIcmp(self):
-        """Enables ICMP protocol blocking. `on` (enable); `off` (disable).
+        r"""Enables ICMP protocol blocking. `on` (enable); `off` (disable).
         :rtype: str
         """
         return self._DropIcmp
@@ -5339,7 +5339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropOther(self):
-        """Enables blocking for other protocols. `on` (enable); `off` (disable).
+        r"""Enables blocking for other protocols. `on` (enable); `off` (disable).
         :rtype: str
         """
         return self._DropOther
@@ -5350,7 +5350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceCreateLimit(self):
-        """Number of new connections the source port can establish. Value range: 0-4294967295.
+        r"""Number of new connections the source port can establish. Value range: 0-4294967295.
         :rtype: int
         """
         return self._SourceCreateLimit
@@ -5361,7 +5361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceConnectLimit(self):
-        """Number of concurrent connections the source port can establish. Value range: 0-4294967295.
+        r"""Number of concurrent connections the source port can establish. Value range: 0-4294967295.
         :rtype: int
         """
         return self._SourceConnectLimit
@@ -5372,7 +5372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationCreateLimit(self):
-        """Number of new connections the destination port can establish. Value range: 0-4294967295.
+        r"""Number of new connections the destination port can establish. Value range: 0-4294967295.
         :rtype: int
         """
         return self._DestinationCreateLimit
@@ -5383,7 +5383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationConnectLimit(self):
-        """Number of concurrent connections the destination port can establish. Value range: 0-4294967295.
+        r"""Number of concurrent connections the destination port can establish. Value range: 0-4294967295.
         :rtype: int
         """
         return self._DestinationConnectLimit
@@ -5394,7 +5394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AbnormalConnectNum(self):
-        """Number of abnormal connections allowed. Value range: 0-4294967295.
+        r"""Number of abnormal connections allowed. Value range: 0-4294967295.
         :rtype: int
         """
         return self._AbnormalConnectNum
@@ -5405,7 +5405,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AbnormalSynRatio(self):
-        """Specifies the ratio of SYN exceptions to trigger alerts. Value range: 0-100
+        r"""Specifies the ratio of SYN exceptions to trigger alerts. Value range: 0-100
         :rtype: int
         """
         return self._AbnormalSynRatio
@@ -5416,7 +5416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AbnormalSynNum(self):
-        """Specifies a max number of SYN packets that triggers alarms. Value range: 0-65535
+        r"""Specifies a max number of SYN packets that triggers alarms. Value range: 0-65535
         :rtype: int
         """
         return self._AbnormalSynNum
@@ -5427,7 +5427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectTimeout(self):
-        """Connection timeout period. Value range: 0-65535.
+        r"""Connection timeout period. Value range: 0-65535.
         :rtype: int
         """
         return self._ConnectTimeout
@@ -5438,7 +5438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmptyConnectProtect(self):
-        """Whether to enable null session protection. `0`: Disable; `1`: Enable.
+        r"""Whether to enable null session protection. `0`: Disable; `1`: Enable.
         :rtype: str
         """
         return self._EmptyConnectProtect
@@ -5449,7 +5449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UdpShard(self):
-        """Whether to enable UDP fragmentation. `off`: Disable; `on`: Enable.
+        r"""Whether to enable UDP fragmentation. `off`: Disable; `on`: Enable.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5486,7 +5486,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DDoSApplication(AbstractModel):
-    """DDoS protection for the application layer (layer 7)
+    r"""DDoS protection for the application layer (layer 7)
 
     """
 
@@ -5516,7 +5516,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Host(self):
-        """Second-level domain name
+        r"""Second-level domain name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -5528,7 +5528,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Status of the domain name
+        r"""Status of the domain name
 `init`: NS to be switched
 `offline`: Site acceleration not enabled with DNS
 `process`: Deployment in progress
@@ -5544,7 +5544,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AccelerateType(self):
-        """Site acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `SecurityType`.
+        r"""Site acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `SecurityType`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -5556,7 +5556,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SecurityType(self):
-        """Security acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `AccelerateType`.
+        r"""Security acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `AccelerateType`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -5583,7 +5583,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DDoSConfig(AbstractModel):
-    """DDoS configuration
+    r"""DDoS configuration
 
     """
 
@@ -5596,7 +5596,7 @@ class DDoSConfig(AbstractModel):
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
         :rtype: str
         """
         return self._Switch
@@ -5619,7 +5619,7 @@ class DDoSConfig(AbstractModel):
 
 
 class DDoSFeaturesFilter(AbstractModel):
-    """DDoS feature filtering
+    r"""DDoS feature filtering
 
     """
 
@@ -5692,7 +5692,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Action(self):
-        """Action. `drop`: Drop the request; `transmit`: Allow the request; `drop_block`: Drop the request and block it; `forward`: Continue to offer protection.
+        r"""Action. `drop`: Drop the request; `transmit`: Allow the request; `drop_block`: Drop the request and block it; `forward`: Continue to offer protection.
         :rtype: str
         """
         return self._Action
@@ -5703,7 +5703,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Depth(self):
-        """Sets how far from the first search position
+        r"""Sets how far from the first search position
         :rtype: int
         """
         return self._Depth
@@ -5714,7 +5714,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Depth2(self):
-        """Sets how far from the second search position
+        r"""Sets how far from the second search position
         :rtype: int
         """
         return self._Depth2
@@ -5725,7 +5725,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def DportEnd(self):
-        """End of the destination port
+        r"""End of the destination port
         :rtype: int
         """
         return self._DportEnd
@@ -5736,7 +5736,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def DportStart(self):
-        """Start of the destination port
+        r"""Start of the destination port
         :rtype: int
         """
         return self._DportStart
@@ -5747,7 +5747,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def IsNot(self):
-        """Whether to match string 1 that does not contain all the specified elements
+        r"""Whether to match string 1 that does not contain all the specified elements
         :rtype: int
         """
         return self._IsNot
@@ -5758,7 +5758,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def IsNot2(self):
-        """Whether to match string 2 that does not contain all the specified elements
+        r"""Whether to match string 2 that does not contain all the specified elements
         :rtype: int
         """
         return self._IsNot2
@@ -5769,7 +5769,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def MatchLogic(self):
-        """Logical operator that combines two conditions. Values: `none`, `and` and `or`. If there is only one condition, pass in `none` for this condition only.
+        r"""Logical operator that combines two conditions. Values: `none`, `and` and `or`. If there is only one condition, pass in `none` for this condition only.
         :rtype: str
         """
         return self._MatchLogic
@@ -5780,7 +5780,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def MatchType(self):
-        """Matching method of the first condition. `pcre`: Regex match; `sunday`: String match.
+        r"""Matching method of the first condition. `pcre`: Regex match; `sunday`: String match.
         :rtype: str
         """
         return self._MatchType
@@ -5791,7 +5791,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def MatchType2(self):
-        """Matching method of the second condition. `pcre`: Regex match; `sunday`: String match.
+        r"""Matching method of the second condition. `pcre`: Regex match; `sunday`: String match.
         :rtype: str
         """
         return self._MatchType2
@@ -5802,7 +5802,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset from the first search position
+        r"""Offset from the first search position
         :rtype: int
         """
         return self._Offset
@@ -5813,7 +5813,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Offset2(self):
-        """Offset from the second search position
+        r"""Offset from the second search position
         :rtype: int
         """
         return self._Offset2
@@ -5824,7 +5824,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def PacketMax(self):
-        """Maximum packet length
+        r"""Maximum packet length
         :rtype: int
         """
         return self._PacketMax
@@ -5835,7 +5835,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def PacketMin(self):
-        """Minimum packet length
+        r"""Minimum packet length
         :rtype: int
         """
         return self._PacketMin
@@ -5846,7 +5846,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol. Values: `tcp`, `udp`, `icmp` and `all`.
+        r"""Protocol. Values: `tcp`, `udp`, `icmp` and `all`.
         :rtype: str
         """
         return self._Protocol
@@ -5857,7 +5857,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def SportEnd(self):
-        """End of the source port
+        r"""End of the source port
         :rtype: int
         """
         return self._SportEnd
@@ -5868,7 +5868,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def SportStart(self):
-        """Start of the source port
+        r"""Start of the source port
         :rtype: int
         """
         return self._SportStart
@@ -5879,7 +5879,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Str(self):
-        """String in the first condition
+        r"""String in the first condition
         :rtype: str
         """
         return self._Str
@@ -5890,7 +5890,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def Str2(self):
-        """String in the second condition
+        r"""String in the second condition
         :rtype: str
         """
         return self._Str2
@@ -5901,7 +5901,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def MatchBegin(self):
-        """Layer at which each match starts. Values: `begin_l5`, `no_match`, `begin_l3` and `begin_l4`.
+        r"""Layer at which each match starts. Values: `begin_l5`, `no_match`, `begin_l3` and `begin_l4`.
         :rtype: str
         """
         return self._MatchBegin
@@ -5912,7 +5912,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
     @property
     def MatchBegin2(self):
-        """Layer at which each match starts. Values: `begin_l5`, `no_match`, `begin_l3` and `begin_l4`.
+        r"""Layer at which each match starts. Values: `begin_l5`, `no_match`, `begin_l3` and `begin_l4`.
         :rtype: str
         """
         return self._MatchBegin2
@@ -5955,7 +5955,7 @@ class DDoSFeaturesFilter(AbstractModel):
 
 
 class DDoSGeoIp(AbstractModel):
-    """DDoS regional blocking
+    r"""DDoS regional blocking
 
     """
 
@@ -5973,7 +5973,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RegionId(self):
-        """Region information
+        r"""Region information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -5985,7 +5985,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
+        r"""Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -6010,7 +6010,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DDoSStatusInfo(AbstractModel):
-    """DDoS protection level
+    r"""DDoS protection level
 
     """
 
@@ -6029,7 +6029,7 @@ class DDoSStatusInfo(AbstractModel):
 
     @property
     def AiStatus(self):
-        """This field is not supported. Value: `off`.
+        r"""This field is not supported. Value: `off`.
         :rtype: str
         """
         return self._AiStatus
@@ -6040,7 +6040,7 @@ class DDoSStatusInfo(AbstractModel):
 
     @property
     def Appid(self):
-        """User appid
+        r"""User appid
         :rtype: str
         """
         return self._Appid
@@ -6051,7 +6051,7 @@ class DDoSStatusInfo(AbstractModel):
 
     @property
     def PlyLevel(self):
-        """Protection level. Values: `low`, `middle`, and `high`.
+        r"""Protection level. Values: `low`, `middle`, and `high`.
         :rtype: str
         """
         return self._PlyLevel
@@ -6076,7 +6076,7 @@ class DDoSStatusInfo(AbstractModel):
 
 
 class DDoSUserAllowBlockIP(AbstractModel):
-    """IP Allowlist/Blocklist for DDoS protection
+    r"""IP Allowlist/Blocklist for DDoS protection
 
     """
 
@@ -6110,7 +6110,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Ip(self):
-        """Start IP address in a specific range
+        r"""Start IP address in a specific range
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -6122,7 +6122,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mask(self):
-        """Start mask in a specific range
+        r"""Start mask in a specific range
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -6134,7 +6134,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """IP type. `block`: IP blocklist; `allow`: IP allowlist.
+        r"""IP type. `block`: IP blocklist; `allow`: IP allowlist.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -6146,7 +6146,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Timestamp
+        r"""Timestamp
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -6158,7 +6158,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Ip2(self):
-        """End IP address in a specific range
+        r"""End IP address in a specific range
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -6170,7 +6170,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mask2(self):
-        """End mask in a specific range
+        r"""End mask in a specific range
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -6199,7 +6199,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DDosAttackEvent(AbstractModel):
-    """DDoS attack event object
+    r"""DDoS attack event object
 
     """
 
@@ -6245,7 +6245,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """DDoS policy group ID
+        r"""DDoS policy group ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6257,7 +6257,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackType(self):
-        """Attack type (corresponding to interaction event name)
+        r"""Attack type (corresponding to interaction event name)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6269,7 +6269,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackStatus(self):
-        """Attack status
+        r"""Attack status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6281,7 +6281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackMaxBandWidth(self):
-        """Maximum attack bandwidth
+        r"""Maximum attack bandwidth
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6293,7 +6293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackPacketMaxRate(self):
-        """Peak attack packet rate
+        r"""Peak attack packet rate
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6305,7 +6305,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackStartTime(self):
-        """Attack start time in seconds
+        r"""Attack start time in seconds
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6317,7 +6317,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackEndTime(self):
-        """Attack end time in seconds
+        r"""Attack end time in seconds
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6329,7 +6329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6341,7 +6341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6373,7 +6373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DDosAttackEventData(AbstractModel):
-    """DDoS attack event data
+    r"""DDoS attack event data
 
     """
 
@@ -6403,7 +6403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data set of attack events
+        r"""Data set of attack events
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DDosAttackEvent
         """
@@ -6415,7 +6415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6427,7 +6427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6439,7 +6439,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6451,7 +6451,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6484,7 +6484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DDosAttackEventDetailData(AbstractModel):
-    """DDoS attack event details
+    r"""DDoS attack event details
 
     """
 
@@ -6518,7 +6518,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def AttackStatus(self):
-        """Attack status
+        r"""Attack status
         :rtype: int
         """
         return self._AttackStatus
@@ -6529,7 +6529,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def AttackType(self):
-        """Attack type
+        r"""Attack type
         :rtype: str
         """
         return self._AttackType
@@ -6540,7 +6540,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -6551,7 +6551,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -6562,7 +6562,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        """Maximum bandwidth
+        r"""Maximum bandwidth
         :rtype: int
         """
         return self._MaxBandWidth
@@ -6573,7 +6573,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def PacketMaxRate(self):
-        """Maximum packet rate
+        r"""Maximum packet rate
         :rtype: int
         """
         return self._PacketMaxRate
@@ -6584,7 +6584,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
         :rtype: str
         """
         return self._EventId
@@ -6595,7 +6595,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
     @property
     def PolicyId(self):
-        """DDoS policy group ID
+        r"""DDoS policy group ID
         :rtype: int
         """
         return self._PolicyId
@@ -6625,7 +6625,7 @@ class DDosAttackEventDetailData(AbstractModel):
 
 
 class DDosAttackSourceEvent(AbstractModel):
-    """DDoS attack event object
+    r"""DDoS attack event object
 
     """
 
@@ -6651,7 +6651,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackSourceIp(self):
-        """Attack source IP
+        r"""Attack source IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6663,7 +6663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackRegion(self):
-        """Country/Region
+        r"""Country/Region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6675,7 +6675,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackFlow(self):
-        """Accumulative attack traffic
+        r"""Accumulative attack traffic
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6687,7 +6687,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackPacketNum(self):
-        """Accumulative number of attack packets
+        r"""Accumulative number of attack packets
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6714,7 +6714,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DDosAttackSourceEventData(AbstractModel):
-    """DDoS attack source data
+    r"""DDoS attack source data
 
     """
 
@@ -6744,7 +6744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """DDoS attack source data set
+        r"""DDoS attack source data set
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DDosAttackSourceEvent
         """
@@ -6756,7 +6756,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6768,7 +6768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6780,7 +6780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6792,7 +6792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6825,7 +6825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DDosMajorAttackEvent(AbstractModel):
-    """Major DDoS attack event
+    r"""Major DDoS attack event
 
     """
 
@@ -6844,7 +6844,7 @@ class DDosMajorAttackEvent(AbstractModel):
 
     @property
     def PolicyId(self):
-        """DDoS policy group ID
+        r"""DDoS policy group ID
         :rtype: int
         """
         return self._PolicyId
@@ -6855,7 +6855,7 @@ class DDosMajorAttackEvent(AbstractModel):
 
     @property
     def AttackMaxBandWidth(self):
-        """Maximum attack bandwidth
+        r"""Maximum attack bandwidth
         :rtype: int
         """
         return self._AttackMaxBandWidth
@@ -6866,7 +6866,7 @@ class DDosMajorAttackEvent(AbstractModel):
 
     @property
     def AttackTime(self):
-        """Attack time in seconds
+        r"""Attack time in seconds
         :rtype: int
         """
         return self._AttackTime
@@ -6891,7 +6891,7 @@ class DDosMajorAttackEvent(AbstractModel):
 
 
 class DDosMajorAttackEventData(AbstractModel):
-    """Major attack object data
+    r"""Major attack object data
 
     """
 
@@ -6921,7 +6921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """`DDosMajorAttackEvent` DDoS attack event
+        r"""`DDosMajorAttackEvent` DDoS attack event
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DDosMajorAttackEvent
         """
@@ -6933,7 +6933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6945,7 +6945,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6957,7 +6957,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6969,7 +6969,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7002,7 +7002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DataItem(AbstractModel):
-    """Data items in a DNS request curve
+    r"""Data items in a DNS request curve
 
     """
 
@@ -7019,7 +7019,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Time(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Time
@@ -7030,7 +7030,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Value(self):
-        """Value
+        r"""Value
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -7055,7 +7055,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DdosAcls(AbstractModel):
-    """DDoS port filtering
+    r"""DDoS port filtering
 
     """
 
@@ -7071,7 +7071,7 @@ class DdosAcls(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
+        r"""Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
         :rtype: str
         """
         return self._Switch
@@ -7082,7 +7082,7 @@ class DdosAcls(AbstractModel):
 
     @property
     def Acl(self):
-        """DDoS port filtering parameters
+        r"""DDoS port filtering parameters
         :rtype: list of DDoSAcl
         """
         return self._Acl
@@ -7111,7 +7111,7 @@ class DdosAcls(AbstractModel):
 
 
 class DdosAllowBlock(AbstractModel):
-    """DDoS blocklist/allowlist
+    r"""DDoS blocklist/allowlist
 
     """
 
@@ -7127,7 +7127,7 @@ class DdosAllowBlock(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
+        r"""Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
         :rtype: str
         """
         return self._Switch
@@ -7138,7 +7138,7 @@ class DdosAllowBlock(AbstractModel):
 
     @property
     def UserAllowBlockIp(self):
-        """Array of objects in blocklist/allowlist configuration
+        r"""Array of objects in blocklist/allowlist configuration
         :rtype: list of DDoSUserAllowBlockIP
         """
         return self._UserAllowBlockIp
@@ -7167,7 +7167,7 @@ class DdosAllowBlock(AbstractModel):
 
 
 class DdosPacketFilter(AbstractModel):
-    """DDoS feature filtering
+    r"""DDoS feature filtering
 
     """
 
@@ -7183,7 +7183,7 @@ class DdosPacketFilter(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
+        r"""Whether to remove all settings when empty strings are passed in. Default value: `off` (remove)
         :rtype: str
         """
         return self._Switch
@@ -7194,7 +7194,7 @@ class DdosPacketFilter(AbstractModel):
 
     @property
     def PacketFilter(self):
-        """Array of objects in feature filtering configuration
+        r"""Array of objects in feature filtering configuration
         :rtype: list of DDoSFeaturesFilter
         """
         return self._PacketFilter
@@ -7223,7 +7223,7 @@ class DdosPacketFilter(AbstractModel):
 
 
 class DdosRule(AbstractModel):
-    """DDoS mitigation configuration
+    r"""DDoS mitigation configuration
 
     """
 
@@ -7265,7 +7265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdosStatusInfo(self):
-        """DDoS mitigation level
+        r"""DDoS mitigation level
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDoSStatusInfo`
         """
@@ -7277,7 +7277,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosGeoIp(self):
-        """DDoS regional blocking
+        r"""DDoS regional blocking
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDoSGeoIp`
         """
@@ -7289,7 +7289,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosAllowBlock(self):
-        """DDoS blocklist/allowlist
+        r"""DDoS blocklist/allowlist
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DdosAllowBlock`
         """
@@ -7301,7 +7301,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosAntiPly(self):
-        """Protocol blocking and null session protection
+        r"""Protocol blocking and null session protection
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDoSAntiPly`
         """
@@ -7313,7 +7313,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosPacketFilter(self):
-        """DDoS feature filtering
+        r"""DDoS feature filtering
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DdosPacketFilter`
         """
@@ -7325,7 +7325,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosAcl(self):
-        """DDoS port filtering
+        r"""DDoS port filtering
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DdosAcls`
         """
@@ -7337,7 +7337,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """DDoS mitigation switch. `on`: Enable; `off`: Disable.
+        r"""DDoS mitigation switch. `on`: Enable; `off`: Disable.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7349,7 +7349,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UdpShardOpen(self):
-        """Whether to enable UDP fragmentation. `on`: Enable; `off`: Disable.
+        r"""Whether to enable UDP fragmentation. `on`: Enable; `off`: Disable.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7392,7 +7392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DefaultServerCertInfo(AbstractModel):
-    """HTTPS server certificate configuration
+    r"""HTTPS server certificate configuration
 
     """
 
@@ -7446,7 +7446,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertId(self):
-        """Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.
+        r"""Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7458,7 +7458,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Alias(self):
-        """Certificate alias
+        r"""Certificate alias
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7470,7 +7470,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Certificate type. Valid values:
+        r"""Certificate type. Valid values:
 `default`: Default certificate
 `upload`: External certificate
 `managed`: Tencent Cloud managed certificate
@@ -7485,7 +7485,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExpireTime(self):
-        """Time when the certificate expires
+        r"""Time when the certificate expires
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7497,7 +7497,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def EffectiveTime(self):
-        """Time when the certificate takes effect
+        r"""Time when the certificate takes effect
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7509,7 +7509,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CommonName(self):
-        """Certificate common name
+        r"""Certificate common name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7521,7 +7521,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SubjectAltName(self):
-        """Domain names added to the SAN certificate
+        r"""Domain names added to the SAN certificate
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -7533,7 +7533,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Certificate status. Valid values:
+        r"""Certificate status. Valid values:
 `applying`: Application in progress
 `failed`: Application failed
 `processing`: Deploying certificate
@@ -7550,7 +7550,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Message(self):
-        """Returns a message to display failure causes when `Status=failed`
+        r"""Returns a message to display failure causes when `Status=failed`
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -7582,7 +7582,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DeleteApplicationProxyRequest(AbstractModel):
-    """DeleteApplicationProxy request structure.
+    r"""DeleteApplicationProxy request structure.
 
     """
 
@@ -7598,7 +7598,7 @@ class DeleteApplicationProxyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -7609,7 +7609,7 @@ class DeleteApplicationProxyRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -7633,7 +7633,7 @@ class DeleteApplicationProxyRequest(AbstractModel):
 
 
 class DeleteApplicationProxyResponse(AbstractModel):
-    """DeleteApplicationProxy response structure.
+    r"""DeleteApplicationProxy response structure.
 
     """
 
@@ -7649,7 +7649,7 @@ class DeleteApplicationProxyResponse(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -7660,7 +7660,7 @@ class DeleteApplicationProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7676,7 +7676,7 @@ class DeleteApplicationProxyResponse(AbstractModel):
 
 
 class DeleteApplicationProxyRuleRequest(AbstractModel):
-    """DeleteApplicationProxyRule request structure.
+    r"""DeleteApplicationProxyRule request structure.
 
     """
 
@@ -7695,7 +7695,7 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -7706,7 +7706,7 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -7717,7 +7717,7 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -7742,7 +7742,7 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
 
 class DeleteApplicationProxyRuleResponse(AbstractModel):
-    """DeleteApplicationProxyRule response structure.
+    r"""DeleteApplicationProxyRule response structure.
 
     """
 
@@ -7758,7 +7758,7 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -7769,7 +7769,7 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7785,7 +7785,7 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
 
 
 class DeleteDnsRecordsRequest(AbstractModel):
-    """DeleteDnsRecords request structure.
+    r"""DeleteDnsRecords request structure.
 
     """
 
@@ -7801,7 +7801,7 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -7812,7 +7812,7 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
     @property
     def Ids(self):
-        """Record ID
+        r"""Record ID
         :rtype: list of str
         """
         return self._Ids
@@ -7836,7 +7836,7 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
 
 class DeleteDnsRecordsResponse(AbstractModel):
-    """DeleteDnsRecords response structure.
+    r"""DeleteDnsRecords response structure.
 
     """
 
@@ -7852,7 +7852,7 @@ class DeleteDnsRecordsResponse(AbstractModel):
 
     @property
     def Ids(self):
-        """Record ID
+        r"""Record ID
         :rtype: list of str
         """
         return self._Ids
@@ -7863,7 +7863,7 @@ class DeleteDnsRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7879,7 +7879,7 @@ class DeleteDnsRecordsResponse(AbstractModel):
 
 
 class DeleteLoadBalancingRequest(AbstractModel):
-    """DeleteLoadBalancing request structure.
+    r"""DeleteLoadBalancing request structure.
 
     """
 
@@ -7895,7 +7895,7 @@ class DeleteLoadBalancingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -7906,7 +7906,7 @@ class DeleteLoadBalancingRequest(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -7930,7 +7930,7 @@ class DeleteLoadBalancingRequest(AbstractModel):
 
 
 class DeleteLoadBalancingResponse(AbstractModel):
-    """DeleteLoadBalancing response structure.
+    r"""DeleteLoadBalancing response structure.
 
     """
 
@@ -7946,7 +7946,7 @@ class DeleteLoadBalancingResponse(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -7957,7 +7957,7 @@ class DeleteLoadBalancingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7973,7 +7973,7 @@ class DeleteLoadBalancingResponse(AbstractModel):
 
 
 class DeleteOriginGroupRequest(AbstractModel):
-    """DeleteOriginGroup request structure.
+    r"""DeleteOriginGroup request structure.
 
     """
 
@@ -7989,7 +7989,7 @@ class DeleteOriginGroupRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -8000,7 +8000,7 @@ class DeleteOriginGroupRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -8024,7 +8024,7 @@ class DeleteOriginGroupRequest(AbstractModel):
 
 
 class DeleteOriginGroupResponse(AbstractModel):
-    """DeleteOriginGroup response structure.
+    r"""DeleteOriginGroup response structure.
 
     """
 
@@ -8040,7 +8040,7 @@ class DeleteOriginGroupResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -8051,7 +8051,7 @@ class DeleteOriginGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8067,7 +8067,7 @@ class DeleteOriginGroupResponse(AbstractModel):
 
 
 class DeleteZoneRequest(AbstractModel):
-    """DeleteZone request structure.
+    r"""DeleteZone request structure.
 
     """
 
@@ -8080,7 +8080,7 @@ class DeleteZoneRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -8103,7 +8103,7 @@ class DeleteZoneRequest(AbstractModel):
 
 
 class DeleteZoneResponse(AbstractModel):
-    """DeleteZone response structure.
+    r"""DeleteZone response structure.
 
     """
 
@@ -8119,7 +8119,7 @@ class DeleteZoneResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -8130,7 +8130,7 @@ class DeleteZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8146,7 +8146,7 @@ class DeleteZoneResponse(AbstractModel):
 
 
 class DescribeApplicationProxyDetailRequest(AbstractModel):
-    """DescribeApplicationProxyDetail request structure.
+    r"""DescribeApplicationProxyDetail request structure.
 
     """
 
@@ -8162,7 +8162,7 @@ class DescribeApplicationProxyDetailRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -8173,7 +8173,7 @@ class DescribeApplicationProxyDetailRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._ProxyId
@@ -8197,7 +8197,7 @@ class DescribeApplicationProxyDetailRequest(AbstractModel):
 
 
 class DescribeApplicationProxyDetailResponse(AbstractModel):
-    """DescribeApplicationProxyDetail response structure.
+    r"""DescribeApplicationProxyDetail response structure.
 
     """
 
@@ -8269,7 +8269,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._ProxyId
@@ -8280,7 +8280,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyName(self):
-        """Name of the proxy:
+        r"""Name of the proxy:
 Domain name or subdomain name when `ProxyType=hostname`
 Instance name when `ProxyType=instance`
         :rtype: str
@@ -8293,7 +8293,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def PlatType(self):
-        """Proxy mode. Valid values:
+        r"""Proxy mode. Valid values:
 `ip`: Anycast IP
 `domain`: CNAME
         :rtype: str
@@ -8306,7 +8306,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SecurityType(self):
-        """`0`: Disable security protection; `1`: Enable security protection.
+        r"""`0`: Disable security protection; `1`: Enable security protection.
         :rtype: int
         """
         return self._SecurityType
@@ -8317,7 +8317,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def AccelerateType(self):
-        """`0`: Disable acceleration; `1`: Enable acceleration.
+        r"""`0`: Disable acceleration; `1`: Enable acceleration.
         :rtype: int
         """
         return self._AccelerateType
@@ -8328,7 +8328,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ForwardClientIp(self):
-        """This field is moved to `Rule.ForwardClientIp`.
+        r"""This field is moved to `Rule.ForwardClientIp`.
         :rtype: str
         """
         return self._ForwardClientIp
@@ -8339,7 +8339,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersist(self):
-        """This field is moved to `Rule.SessionPersist`.
+        r"""This field is moved to `Rule.SessionPersist`.
         :rtype: bool
         """
         return self._SessionPersist
@@ -8350,7 +8350,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def Rule(self):
-        """List of rules
+        r"""List of rules
         :rtype: list of ApplicationProxyRule
         """
         return self._Rule
@@ -8361,7 +8361,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def Status(self):
-        """Status. Valid values:
+        r"""Status. Valid values:
 `online`: Enable
 `offline`: Disable
 `progress`: Deploying
@@ -8375,7 +8375,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ScheduleValue(self):
-        """Scheduling information
+        r"""Scheduling information
         :rtype: list of str
         """
         return self._ScheduleValue
@@ -8386,7 +8386,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -8397,7 +8397,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -8408,7 +8408,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -8419,7 +8419,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersistTime(self):
-        """Session persistence time
+        r"""Session persistence time
         :rtype: int
         """
         return self._SessionPersistTime
@@ -8430,7 +8430,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyType(self):
-        """Specifies how a layer-4 proxy is created.
+        r"""Specifies how a layer-4 proxy is created.
 `hostname`: Create by subdomain name
 `instance`: Create by instance
         :rtype: str
@@ -8443,7 +8443,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def HostId(self):
-        """When `ProxyType=hostname`:
+        r"""When `ProxyType=hostname`:
 `ProxyName` indicates a specified domain name, such as test.123.com
 `HostId` indicates a unique ID of the domain name.
         :rtype: str
@@ -8456,7 +8456,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8492,7 +8492,7 @@ Instance name when `ProxyType=instance`
 
 
 class DescribeApplicationProxyRequest(AbstractModel):
-    """DescribeApplicationProxy request structure.
+    r"""DescribeApplicationProxy request structure.
 
     """
 
@@ -8511,7 +8511,7 @@ class DescribeApplicationProxyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -8522,7 +8522,7 @@ class DescribeApplicationProxyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Offset
@@ -8533,7 +8533,7 @@ class DescribeApplicationProxyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Limit
@@ -8558,7 +8558,7 @@ class DescribeApplicationProxyRequest(AbstractModel):
 
 
 class DescribeApplicationProxyResponse(AbstractModel):
-    """DescribeApplicationProxy response structure.
+    r"""DescribeApplicationProxy response structure.
 
     """
 
@@ -8591,7 +8591,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Data(self):
-        """List of data
+        r"""List of data
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of ApplicationProxy
         """
@@ -8603,7 +8603,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        """Total number of records
+        r"""Total number of records
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8615,7 +8615,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Quota(self):
-        """Disused
+        r"""Disused
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -8627,7 +8627,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IpCount(self):
-        """When `PlatType` is `ip`, it indicates the number of proxies that schedule via Anycast IP.
+        r"""When `PlatType` is `ip`, it indicates the number of proxies that schedule via Anycast IP.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8639,7 +8639,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DomainCount(self):
-        """When `PlatType` is `domain`, it indicates the number of proxies that schedule via CNAME.
+        r"""When `PlatType` is `domain`, it indicates the number of proxies that schedule via CNAME.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -8651,7 +8651,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8676,7 +8676,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeBotLogRequest(AbstractModel):
-    """DescribeBotLog request structure.
+    r"""DescribeBotLog request structure.
 
     """
 
@@ -8707,7 +8707,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -8718,7 +8718,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -8729,7 +8729,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
         :rtype: int
         """
         return self._PageSize
@@ -8740,7 +8740,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -8751,7 +8751,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -8762,7 +8762,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Domain name set
+        r"""Domain name set
         :rtype: list of str
         """
         return self._Domains
@@ -8773,7 +8773,7 @@ class DescribeBotLogRequest(AbstractModel):
 
     @property
     def QueryCondition(self):
-        """Query condition
+        r"""Query condition
         :rtype: list of QueryCondition
         """
         return self._QueryCondition
@@ -8807,7 +8807,7 @@ class DescribeBotLogRequest(AbstractModel):
 
 
 class DescribeBotLogResponse(AbstractModel):
-    """DescribeBotLog response structure.
+    r"""DescribeBotLog response structure.
 
     """
 
@@ -8829,7 +8829,7 @@ class DescribeBotLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Bot attack data
+        r"""Bot attack data
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotLogData`
         """
         return self._Data
@@ -8840,7 +8840,7 @@ class DescribeBotLogResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -8851,7 +8851,7 @@ class DescribeBotLogResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -8862,7 +8862,7 @@ class DescribeBotLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8882,7 +8882,7 @@ class DescribeBotLogResponse(AbstractModel):
 
 
 class DescribeBotManagedRulesRequest(AbstractModel):
-    """DescribeBotManagedRules request structure.
+    r"""DescribeBotManagedRules request structure.
 
     """
 
@@ -8907,7 +8907,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -8918,7 +8918,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Subdomain name/layer-4 proxy
+        r"""Subdomain name/layer-4 proxy
         :rtype: str
         """
         return self._Entity
@@ -8929,7 +8929,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Total number of pages
+        r"""Total number of pages
         :rtype: int
         """
         return self._Page
@@ -8940,7 +8940,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     @property
     def PerPage(self):
-        """Number of rules per page
+        r"""Number of rules per page
         :rtype: int
         """
         return self._PerPage
@@ -8951,7 +8951,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        """Rule type. Values: `idcid`, `sipbot` and `uabot`. All rules will be returned if this field is not specified.
+        r"""Rule type. Values: `idcid`, `sipbot` and `uabot`. All rules will be returned if this field is not specified.
         :rtype: str
         """
         return self._RuleType
@@ -8978,7 +8978,7 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
 
 class DescribeBotManagedRulesResponse(AbstractModel):
-    """DescribeBotManagedRules response structure.
+    r"""DescribeBotManagedRules response structure.
 
     """
 
@@ -9000,7 +9000,7 @@ class DescribeBotManagedRulesResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Number of bot managed rules returned
+        r"""Number of bot managed rules returned
         :rtype: int
         """
         return self._Count
@@ -9011,7 +9011,7 @@ class DescribeBotManagedRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """Bot managed rules
+        r"""Bot managed rules
         :rtype: list of BotManagedRuleDetail
         """
         return self._Rules
@@ -9022,7 +9022,7 @@ class DescribeBotManagedRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of bot managed rules
+        r"""Total number of bot managed rules
         :rtype: int
         """
         return self._Total
@@ -9033,7 +9033,7 @@ class DescribeBotManagedRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9056,7 +9056,7 @@ class DescribeBotManagedRulesResponse(AbstractModel):
 
 
 class DescribeCnameStatusRequest(AbstractModel):
-    """DescribeCnameStatus request structure.
+    r"""DescribeCnameStatus request structure.
 
     """
 
@@ -9072,7 +9072,7 @@ class DescribeCnameStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -9083,7 +9083,7 @@ class DescribeCnameStatusRequest(AbstractModel):
 
     @property
     def Names(self):
-        """List of domain names
+        r"""List of domain names
         :rtype: list of str
         """
         return self._Names
@@ -9107,7 +9107,7 @@ class DescribeCnameStatusRequest(AbstractModel):
 
 
 class DescribeCnameStatusResponse(AbstractModel):
-    """DescribeCnameStatus response structure.
+    r"""DescribeCnameStatus response structure.
 
     """
 
@@ -9123,7 +9123,7 @@ class DescribeCnameStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """List of CNAME statuses
+        r"""List of CNAME statuses
         :rtype: list of CnameStatus
         """
         return self._Status
@@ -9134,7 +9134,7 @@ class DescribeCnameStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9155,7 +9155,7 @@ class DescribeCnameStatusResponse(AbstractModel):
 
 
 class DescribeDDoSPolicyRequest(AbstractModel):
-    """DescribeDDoSPolicy request structure.
+    r"""DescribeDDoSPolicy request structure.
 
     """
 
@@ -9171,7 +9171,7 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy group ID
+        r"""Policy group ID
         :rtype: int
         """
         return self._PolicyId
@@ -9182,7 +9182,7 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name (site)
+        r"""Top-level domain name (site)
         :rtype: str
         """
         return self._ZoneId
@@ -9206,7 +9206,7 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
 
 class DescribeDDoSPolicyResponse(AbstractModel):
-    """DescribeDDoSPolicy response structure.
+    r"""DescribeDDoSPolicy response structure.
 
     """
 
@@ -9219,7 +9219,7 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9234,7 +9234,7 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
 
 class DescribeDDosAttackDataRequest(AbstractModel):
-    """DescribeDDosAttackData request structure.
+    r"""DescribeDDosAttackData request structure.
 
     """
 
@@ -9271,7 +9271,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -9282,7 +9282,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -9293,7 +9293,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """List of statistical metrics
+        r"""List of statistical metrics
         :rtype: list of str
         """
         return self._MetricNames
@@ -9304,7 +9304,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of site IDs
+        r"""List of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -9315,7 +9315,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """List of DDoS policy group IDs
+        r"""List of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -9326,7 +9326,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Port number
+        r"""Port number
         :rtype: int
         """
         return self._Port
@@ -9337,7 +9337,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: tcp, udp, all
+        r"""Protocol type. Valid values: tcp, udp, all
         :rtype: str
         """
         return self._ProtocolType
@@ -9348,7 +9348,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def AttackType(self):
-        """Attack type. Valid values: flood, icmpFlood..., all
+        r"""Attack type. Valid values: flood, icmpFlood..., all
         :rtype: str
         """
         return self._AttackType
@@ -9359,7 +9359,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -9390,7 +9390,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
 
 class DescribeDDosAttackDataResponse(AbstractModel):
-    """DescribeDDosAttackData response structure.
+    r"""DescribeDDosAttackData response structure.
 
     """
 
@@ -9416,7 +9416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """DDoS attack data
+        r"""DDoS attack data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SecEntry
         """
@@ -9428,7 +9428,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -9439,7 +9439,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Returned data
+        r"""Returned data
         :rtype: str
         """
         return self._Msg
@@ -9450,7 +9450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -9461,7 +9461,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9485,7 +9485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeDDosAttackEventDetailRequest(AbstractModel):
-    """DescribeDDosAttackEventDetail request structure.
+    r"""DescribeDDosAttackEventDetail request structure.
 
     """
 
@@ -9498,7 +9498,7 @@ class DescribeDDosAttackEventDetailRequest(AbstractModel):
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
         :rtype: str
         """
         return self._EventId
@@ -9521,7 +9521,7 @@ class DescribeDDosAttackEventDetailRequest(AbstractModel):
 
 
 class DescribeDDosAttackEventDetailResponse(AbstractModel):
-    """DescribeDDosAttackEventDetail response structure.
+    r"""DescribeDDosAttackEventDetail response structure.
 
     """
 
@@ -9543,7 +9543,7 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
     @property
     def Data(self):
-        """DDoS attack event details
+        r"""DDoS attack event details
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDosAttackEventDetailData`
         """
         return self._Data
@@ -9554,7 +9554,7 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -9565,7 +9565,7 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -9576,7 +9576,7 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9596,7 +9596,7 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
 
 class DescribeDDosAttackEventRequest(AbstractModel):
-    """DescribeDDosAttackEvent request structure.
+    r"""DescribeDDosAttackEvent request structure.
 
     """
 
@@ -9630,7 +9630,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -9641,7 +9641,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -9652,7 +9652,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._PageSize
@@ -9663,7 +9663,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -9674,7 +9674,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Set of DDoS policy group IDs
+        r"""Set of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -9685,7 +9685,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -9696,7 +9696,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: {tcp,udp,all}
+        r"""Protocol type. Valid values: {tcp,udp,all}
         :rtype: str
         """
         return self._ProtocolType
@@ -9707,7 +9707,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     @property
     def IsShowDetail(self):
-        """Whether to show details. Valid values: Y (yes), N (no).
+        r"""Whether to show details. Valid values: Y (yes), N (no).
         :rtype: str
         """
         return self._IsShowDetail
@@ -9737,7 +9737,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
 
 class DescribeDDosAttackEventResponse(AbstractModel):
-    """DescribeDDosAttackEvent response structure.
+    r"""DescribeDDosAttackEvent response structure.
 
     """
 
@@ -9759,7 +9759,7 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
     @property
     def Data(self):
-        """DDoS attack event data
+        r"""DDoS attack event data
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDosAttackEventData`
         """
         return self._Data
@@ -9770,7 +9770,7 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -9781,7 +9781,7 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -9792,7 +9792,7 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9812,7 +9812,7 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
 
 class DescribeDDosAttackSourceEventRequest(AbstractModel):
-    """DescribeDDosAttackSourceEvent request structure.
+    r"""DescribeDDosAttackSourceEvent request structure.
 
     """
 
@@ -9843,7 +9843,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -9854,7 +9854,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -9865,7 +9865,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._PageSize
@@ -9876,7 +9876,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -9887,7 +9887,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Set of DDoS policy group IDs
+        r"""Set of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -9898,7 +9898,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -9909,7 +9909,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: {tcp,udp,all}
+        r"""Protocol type. Valid values: {tcp,udp,all}
         :rtype: str
         """
         return self._ProtocolType
@@ -9938,7 +9938,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
 
 class DescribeDDosAttackSourceEventResponse(AbstractModel):
-    """DescribeDDosAttackSourceEvent response structure.
+    r"""DescribeDDosAttackSourceEvent response structure.
 
     """
 
@@ -9960,7 +9960,7 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
     @property
     def Data(self):
-        """DDoS attack source data
+        r"""DDoS attack source data
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDosAttackSourceEventData`
         """
         return self._Data
@@ -9971,7 +9971,7 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -9982,7 +9982,7 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -9993,7 +9993,7 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10013,7 +10013,7 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
 
 class DescribeDDosAttackTopDataRequest(AbstractModel):
-    """DescribeDDosAttackTopData request structure.
+    r"""DescribeDDosAttackTopData request structure.
 
     """
 
@@ -10050,7 +10050,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -10061,7 +10061,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -10072,7 +10072,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Filter metric
+        r"""Filter metric
         :rtype: str
         """
         return self._MetricName
@@ -10083,7 +10083,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of the top data entries to query. 0: queries all data entries.
+        r"""Number of the top data entries to query. 0: queries all data entries.
         :rtype: int
         """
         return self._Limit
@@ -10094,7 +10094,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -10105,7 +10105,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Set of DDoS policy group IDs
+        r"""Set of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -10116,7 +10116,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Port number
+        r"""Port number
         :rtype: int
         """
         return self._Port
@@ -10127,7 +10127,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: tcp, udp, all
+        r"""Protocol type. Valid values: tcp, udp, all
         :rtype: str
         """
         return self._ProtocolType
@@ -10138,7 +10138,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     @property
     def AttackType(self):
-        """Attack type. Valid values: flood, icmpFlood..., all
+        r"""Attack type. Valid values: flood, icmpFlood..., all
         :rtype: str
         """
         return self._AttackType
@@ -10169,7 +10169,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
 
 class DescribeDDosAttackTopDataResponse(AbstractModel):
-    """DescribeDDosAttackTopData response structure.
+    r"""DescribeDDosAttackTopData response structure.
 
     """
 
@@ -10191,7 +10191,7 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Top N data
+        r"""Top N data
         :rtype: list of TopNEntry
         """
         return self._Data
@@ -10202,7 +10202,7 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -10213,7 +10213,7 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -10224,7 +10224,7 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10247,7 +10247,7 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
 
 class DescribeDDosMajorAttackEventRequest(AbstractModel):
-    """DescribeDDosMajorAttackEvent request structure.
+    r"""DescribeDDosMajorAttackEvent request structure.
 
     """
 
@@ -10278,7 +10278,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -10289,7 +10289,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -10300,7 +10300,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._PageSize
@@ -10311,7 +10311,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -10322,7 +10322,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Set of DDoS policy group IDs
+        r"""Set of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -10333,7 +10333,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: {tcp,udp,all}
+        r"""Protocol type. Valid values: {tcp,udp,all}
         :rtype: str
         """
         return self._ProtocolType
@@ -10344,7 +10344,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -10373,7 +10373,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
 
 class DescribeDDosMajorAttackEventResponse(AbstractModel):
-    """DescribeDDosMajorAttackEvent response structure.
+    r"""DescribeDDosMajorAttackEvent response structure.
 
     """
 
@@ -10395,7 +10395,7 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Major DDoS attack event
+        r"""Major DDoS attack event
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDosMajorAttackEventData`
         """
         return self._Data
@@ -10406,7 +10406,7 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -10417,7 +10417,7 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -10428,7 +10428,7 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10448,7 +10448,7 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
 
 class DescribeDefaultCertificatesRequest(AbstractModel):
-    """DescribeDefaultCertificates request structure.
+    r"""DescribeDefaultCertificates request structure.
 
     """
 
@@ -10461,7 +10461,7 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -10484,7 +10484,7 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
 
 class DescribeDefaultCertificatesResponse(AbstractModel):
-    """DescribeDefaultCertificates response structure.
+    r"""DescribeDefaultCertificates response structure.
 
     """
 
@@ -10504,7 +10504,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        """Total number of certificates
+        r"""Total number of certificates
         :rtype: int
         """
         return self._TotalCount
@@ -10515,7 +10515,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertInfo(self):
-        """List of default certificates
+        r"""List of default certificates
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of DefaultServerCertInfo
         """
@@ -10527,7 +10527,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10549,7 +10549,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeDnsDataRequest(AbstractModel):
-    """DescribeDnsData request structure.
+    r"""DescribeDnsData request structure.
 
     """
 
@@ -10576,7 +10576,7 @@ Valid values:
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -10587,7 +10587,7 @@ Valid values:
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -10598,7 +10598,7 @@ Valid values:
 
     @property
     def Filters(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: list of DnsDataFilter
         """
         return self._Filters
@@ -10609,7 +10609,7 @@ Valid values:
 
     @property
     def Interval(self):
-        """Time granularity. The default value is `min`. The server can adapt to the time granularity specified.
+        r"""Time granularity. The default value is `min`. The server can adapt to the time granularity specified.
 Valid values:
 `min`: 1 minute
 `5min`: 5 minutes
@@ -10645,7 +10645,7 @@ Valid values:
 
 
 class DescribeDnsDataResponse(AbstractModel):
-    """DescribeDnsData response structure.
+    r"""DescribeDnsData response structure.
 
     """
 
@@ -10666,7 +10666,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Data(self):
-        """DNS request data
+        r"""DNS request data
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of DataItem
         """
@@ -10678,7 +10678,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Interval(self):
-        """Interval
+        r"""Interval
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -10690,7 +10690,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10712,7 +10712,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeDnsRecordsRequest(AbstractModel):
-    """DescribeDnsRecords request structure.
+    r"""DescribeDnsRecords request structure.
 
     """
 
@@ -10743,7 +10743,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query filter
+        r"""Query filter
         :rtype: list of DnsRecordFilter
         """
         return self._Filters
@@ -10754,7 +10754,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sorts the order
+        r"""Sorts the order
         :rtype: str
         """
         return self._Order
@@ -10765,7 +10765,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Valid values: `asc`, and `desc`.
+        r"""Valid values: `asc`, and `desc`.
         :rtype: str
         """
         return self._Direction
@@ -10776,7 +10776,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Match(self):
-        """Valid values: `all`, and `any`.
+        r"""Valid values: `all`, and `any`.
         :rtype: str
         """
         return self._Match
@@ -10787,7 +10787,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit on paginated queries. Default value: 100. Maximum value: 1000.
+        r"""Limit on paginated queries. Default value: 100. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -10798,7 +10798,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset for paginated queries. Default value: 0
+        r"""Offset for paginated queries. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -10809,7 +10809,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -10843,7 +10843,7 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
 
 class DescribeDnsRecordsResponse(AbstractModel):
-    """DescribeDnsRecords response structure.
+    r"""DescribeDnsRecords response structure.
 
     """
 
@@ -10862,7 +10862,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Used for paginated query by total count
+        r"""Used for paginated query by total count
         :rtype: int
         """
         return self._TotalCount
@@ -10873,7 +10873,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     @property
     def Records(self):
-        """List of DNS records
+        r"""List of DNS records
         :rtype: list of DnsRecord
         """
         return self._Records
@@ -10884,7 +10884,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10906,7 +10906,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
 
 class DescribeDnssecRequest(AbstractModel):
-    """DescribeDnssec request structure.
+    r"""DescribeDnssec request structure.
 
     """
 
@@ -10919,7 +10919,7 @@ class DescribeDnssecRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -10942,7 +10942,7 @@ class DescribeDnssecRequest(AbstractModel):
 
 
 class DescribeDnssecResponse(AbstractModel):
-    """DescribeDnssec response structure.
+    r"""DescribeDnssec response structure.
 
     """
 
@@ -10972,7 +10972,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -10983,7 +10983,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -10994,7 +10994,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def Status(self):
-        """DNSSEC status. Valid values:
+        r"""DNSSEC status. Valid values:
 - `enabled`: Enabled
 - `disabled`: Disabled
         :rtype: str
@@ -11007,7 +11007,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def Dnssec(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.teo.v20220106.models.DnssecInfo`
         """
         return self._Dnssec
@@ -11018,7 +11018,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -11029,7 +11029,7 @@ class DescribeDnssecResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11051,7 +11051,7 @@ class DescribeDnssecResponse(AbstractModel):
 
 
 class DescribeHostsCertificateRequest(AbstractModel):
-    """DescribeHostsCertificate request structure.
+    r"""DescribeHostsCertificate request structure.
 
     """
 
@@ -11076,7 +11076,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -11087,7 +11087,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset for paginated queries. Default value: 0
+        r"""Offset for paginated queries. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -11098,7 +11098,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit on paginated queries. Default value: 100. Maximum value: 1000.
+        r"""Limit on paginated queries. Default value: 100. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -11109,7 +11109,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query filter
+        r"""Query filter
         :rtype: list of CertFilter
         """
         return self._Filters
@@ -11120,7 +11120,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Sorting order
+        r"""Sorting order
         :rtype: :class:`tencentcloud.teo.v20220106.models.CertSort`
         """
         return self._Sort
@@ -11154,7 +11154,7 @@ class DescribeHostsCertificateRequest(AbstractModel):
 
 
 class DescribeHostsCertificateResponse(AbstractModel):
-    """DescribeHostsCertificate response structure.
+    r"""DescribeHostsCertificate response structure.
 
     """
 
@@ -11174,7 +11174,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        """Used for paginated query by total count
+        r"""Used for paginated query by total count
         :rtype: int
         """
         return self._TotalCount
@@ -11185,7 +11185,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Hosts(self):
-        """List of certificate configurations for domain names
+        r"""List of certificate configurations for domain names
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of HostCertSetting
         """
@@ -11197,7 +11197,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11219,7 +11219,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeHostsSettingRequest(AbstractModel):
-    """DescribeHostsSetting request structure.
+    r"""DescribeHostsSetting request structure.
 
     """
 
@@ -11241,7 +11241,7 @@ class DescribeHostsSettingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -11252,7 +11252,7 @@ class DescribeHostsSettingRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset for paginated queries. Default value: 0
+        r"""Offset for paginated queries. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -11263,7 +11263,7 @@ class DescribeHostsSettingRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit on paginated queries. Default value: 100. Maximum value: 1000.
+        r"""Limit on paginated queries. Default value: 100. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -11274,7 +11274,7 @@ class DescribeHostsSettingRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        """Specifies a domain name for the query
+        r"""Specifies a domain name for the query
         :rtype: list of str
         """
         return self._Hosts
@@ -11300,7 +11300,7 @@ class DescribeHostsSettingRequest(AbstractModel):
 
 
 class DescribeHostsSettingResponse(AbstractModel):
-    """DescribeHostsSetting response structure.
+    r"""DescribeHostsSetting response structure.
 
     """
 
@@ -11319,7 +11319,7 @@ class DescribeHostsSettingResponse(AbstractModel):
 
     @property
     def Hosts(self):
-        """List of domain names
+        r"""List of domain names
         :rtype: list of DetailHost
         """
         return self._Hosts
@@ -11330,7 +11330,7 @@ class DescribeHostsSettingResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
-        """Number of domain names
+        r"""Number of domain names
         :rtype: int
         """
         return self._TotalNumber
@@ -11341,7 +11341,7 @@ class DescribeHostsSettingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11363,7 +11363,7 @@ class DescribeHostsSettingResponse(AbstractModel):
 
 
 class DescribeIdentificationRequest(AbstractModel):
-    """DescribeIdentification request structure.
+    r"""DescribeIdentification request structure.
 
     """
 
@@ -11376,7 +11376,7 @@ class DescribeIdentificationRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -11399,7 +11399,7 @@ class DescribeIdentificationRequest(AbstractModel):
 
 
 class DescribeIdentificationResponse(AbstractModel):
-    """DescribeIdentification response structure.
+    r"""DescribeIdentification response structure.
 
     """
 
@@ -11433,7 +11433,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -11444,7 +11444,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Verification status. Valid values:
+        r"""Verification status. Valid values:
 - `pending`: Verifying
 - `finished`: The site is verified.
         :rtype: str
@@ -11457,7 +11457,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Subdomain(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Subdomain
@@ -11468,7 +11468,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RecordType(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._RecordType
@@ -11479,7 +11479,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RecordValue(self):
-        """Record value
+        r"""Record value
         :rtype: str
         """
         return self._RecordValue
@@ -11490,7 +11490,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginalNameServers(self):
-        """NS records of the domain name
+        r"""NS records of the domain name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -11502,7 +11502,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11523,7 +11523,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeLoadBalancingDetailRequest(AbstractModel):
-    """DescribeLoadBalancingDetail request structure.
+    r"""DescribeLoadBalancingDetail request structure.
 
     """
 
@@ -11539,7 +11539,7 @@ class DescribeLoadBalancingDetailRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -11550,7 +11550,7 @@ class DescribeLoadBalancingDetailRequest(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -11574,7 +11574,7 @@ class DescribeLoadBalancingDetailRequest(AbstractModel):
 
 
 class DescribeLoadBalancingDetailResponse(AbstractModel):
-    """DescribeLoadBalancingDetail response structure.
+    r"""DescribeLoadBalancingDetail response structure.
 
     """
 
@@ -11620,7 +11620,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -11631,7 +11631,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -11642,7 +11642,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Host(self):
-        """Subdomain name. You can use @ to represent the root domain.
+        r"""Subdomain name. You can use @ to represent the root domain.
         :rtype: str
         """
         return self._Host
@@ -11653,7 +11653,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Proxy mode. Valid values:
+        r"""Proxy mode. Valid values:
 `dns_only`: Only DNS
 `proxied`: Enable proxy
         :rtype: str
@@ -11666,7 +11666,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TTL(self):
-        """Indicates DNS TTL time when `Type=dns_only`
+        r"""Indicates DNS TTL time when `Type=dns_only`
         :rtype: int
         """
         return self._TTL
@@ -11677,7 +11677,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginId(self):
-        """ID of the origin group used
+        r"""ID of the origin group used
         :rtype: list of str
         """
         return self._OriginId
@@ -11688,7 +11688,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Origin(self):
-        """Information of the origin server used
+        r"""Information of the origin server used
         :rtype: list of OriginGroup
         """
         return self._Origin
@@ -11699,7 +11699,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -11710,7 +11710,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Status of the task
+        r"""Status of the task
         :rtype: str
         """
         return self._Status
@@ -11721,7 +11721,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """Schedules domain names
+        r"""Schedules domain names
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11733,7 +11733,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11763,7 +11763,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeLoadBalancingRequest(AbstractModel):
-    """DescribeLoadBalancing request structure.
+    r"""DescribeLoadBalancing request structure.
 
     """
 
@@ -11788,7 +11788,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -11799,7 +11799,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Offset
@@ -11810,7 +11810,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Limit
@@ -11821,7 +11821,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
     @property
     def Host(self):
-        """Ignore query string parameter
+        r"""Ignore query string parameter
         :rtype: str
         """
         return self._Host
@@ -11832,7 +11832,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """Specifies whether the `Host` parameter supports fuzzy match
+        r"""Specifies whether the `Host` parameter supports fuzzy match
         :rtype: bool
         """
         return self._Fuzzy
@@ -11859,7 +11859,7 @@ class DescribeLoadBalancingRequest(AbstractModel):
 
 
 class DescribeLoadBalancingResponse(AbstractModel):
-    """DescribeLoadBalancing response structure.
+    r"""DescribeLoadBalancing response structure.
 
     """
 
@@ -11878,7 +11878,7 @@ class DescribeLoadBalancingResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of records
+        r"""Total number of records
         :rtype: int
         """
         return self._TotalCount
@@ -11889,7 +11889,7 @@ class DescribeLoadBalancingResponse(AbstractModel):
 
     @property
     def Data(self):
-        """CLB information
+        r"""CLB information
         :rtype: list of LoadBalancing
         """
         return self._Data
@@ -11900,7 +11900,7 @@ class DescribeLoadBalancingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11922,7 +11922,7 @@ class DescribeLoadBalancingResponse(AbstractModel):
 
 
 class DescribeOriginGroupDetailRequest(AbstractModel):
-    """DescribeOriginGroupDetail request structure.
+    r"""DescribeOriginGroupDetail request structure.
 
     """
 
@@ -11938,7 +11938,7 @@ class DescribeOriginGroupDetailRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -11949,7 +11949,7 @@ class DescribeOriginGroupDetailRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -11973,7 +11973,7 @@ class DescribeOriginGroupDetailRequest(AbstractModel):
 
 
 class DescribeOriginGroupDetailResponse(AbstractModel):
-    """DescribeOriginGroupDetail response structure.
+    r"""DescribeOriginGroupDetail response structure.
 
     """
 
@@ -12029,7 +12029,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -12040,7 +12040,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginName(self):
-        """Origin group name
+        r"""Origin group name
         :rtype: str
         """
         return self._OriginName
@@ -12051,7 +12051,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Origin-pull configuration type
+        r"""Origin-pull configuration type
 `area`: Origin-pull by the client IP’s region specified by `Area` in OriginRecord.
 `weight`: Origin-pull by the weight specified by `Weight` in OriginRecord.
         :rtype: str
@@ -12064,7 +12064,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Record(self):
-        """Record
+        r"""Record
         :rtype: list of OriginRecord
         """
         return self._Record
@@ -12075,7 +12075,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -12086,7 +12086,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -12097,7 +12097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -12108,7 +12108,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginType(self):
-        """Origin type
+        r"""Origin type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -12120,7 +12120,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ApplicationProxyUsed(self):
-        """Whether the origin group uses layer-4 proxy.
+        r"""Whether the origin group uses layer-4 proxy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -12132,7 +12132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancingUsed(self):
-        """Whether the origin group is used for load balancing.
+        r"""Whether the origin group is used for load balancing.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -12144,7 +12144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancingUsedType(self):
-        """Proxy mode of the load balancing task associated with the origin group.
+        r"""Proxy mode of the load balancing task associated with the origin group.
 `none`: Not used for load balancing.
 `dns_only`: Used for DNS-only load balancing.
 `proxied`: Used for proxied load balancing.
@@ -12160,7 +12160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12191,7 +12191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOriginGroupRequest(AbstractModel):
-    """DescribeOriginGroup request structure.
+    r"""DescribeOriginGroup request structure.
 
     """
 
@@ -12214,7 +12214,7 @@ If it’s not specified, all origin groups will be obtained.
 
     @property
     def Offset(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Offset
@@ -12225,7 +12225,7 @@ If it’s not specified, all origin groups will be obtained.
 
     @property
     def Limit(self):
-        """Pagination parameter
+        r"""Pagination parameter
         :rtype: int
         """
         return self._Limit
@@ -12236,7 +12236,7 @@ If it’s not specified, all origin groups will be obtained.
 
     @property
     def Filters(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: list of OriginFilter
         """
         return self._Filters
@@ -12247,7 +12247,7 @@ If it’s not specified, all origin groups will be obtained.
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
 If it’s not specified, all origin groups will be obtained.
         :rtype: str
         """
@@ -12279,7 +12279,7 @@ If it’s not specified, all origin groups will be obtained.
 
 
 class DescribeOriginGroupResponse(AbstractModel):
-    """DescribeOriginGroup response structure.
+    r"""DescribeOriginGroup response structure.
 
     """
 
@@ -12298,7 +12298,7 @@ class DescribeOriginGroupResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Origin group information
+        r"""Origin group information
         :rtype: list of OriginGroup
         """
         return self._Data
@@ -12309,7 +12309,7 @@ class DescribeOriginGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of records
+        r"""Total number of records
         :rtype: int
         """
         return self._TotalCount
@@ -12320,7 +12320,7 @@ class DescribeOriginGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12342,7 +12342,7 @@ class DescribeOriginGroupResponse(AbstractModel):
 
 
 class DescribeOverviewL7DataRequest(AbstractModel):
-    """DescribeOverviewL7Data request structure.
+    r"""DescribeOverviewL7Data request structure.
 
     """
 
@@ -12376,7 +12376,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._StartTime
@@ -12387,7 +12387,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._EndTime
@@ -12398,7 +12398,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Supported metrics for data query:
+        r"""Supported metrics for data query:
 `l7Flow_outFlux`: Access traffic
 `l7Flow_request`: Access requests
 `l7Flow_outBandwidth`: Access bandwidth
@@ -12412,7 +12412,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Valid values: {min, 5min, hour, day, week}
+        r"""Time interval. Valid values: {min, 5min, hour, day, week}
         :rtype: str
         """
         return self._Interval
@@ -12423,7 +12423,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of `ZoneId` values. This parameter takes effect only when querying in the zone/domain dimension.
+        r"""List of `ZoneId` values. This parameter takes effect only when querying in the zone/domain dimension.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -12434,7 +12434,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of `Domain` values. This parameter takes effect only when querying in the domain dimension.
+        r"""List of `Domain` values. This parameter takes effect only when querying in the domain dimension.
         :rtype: list of str
         """
         return self._Domains
@@ -12445,7 +12445,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol type. Valid values: {http,http2,https,all}
+        r"""Protocol type. Valid values: {http,http2,https,all}
         :rtype: str
         """
         return self._Protocol
@@ -12474,7 +12474,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
 
 class DescribeOverviewL7DataResponse(AbstractModel):
-    """DescribeOverviewL7Data response structure.
+    r"""DescribeOverviewL7Data response structure.
 
     """
 
@@ -12496,7 +12496,7 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Query dimension
+        r"""Query dimension
         :rtype: str
         """
         return self._Type
@@ -12507,7 +12507,7 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval
+        r"""Time interval
         :rtype: str
         """
         return self._Interval
@@ -12518,7 +12518,7 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Detailed data
+        r"""Detailed data
         :rtype: list of TimingDataRecord
         """
         return self._Data
@@ -12529,7 +12529,7 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12552,7 +12552,7 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
 
 class DescribePrefetchTasksRequest(AbstractModel):
-    """DescribePrefetchTasks request structure.
+    r"""DescribePrefetchTasks request structure.
 
     """
 
@@ -12590,7 +12590,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -12601,7 +12601,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query
+        r"""Start time of the query
         :rtype: str
         """
         return self._StartTime
@@ -12612,7 +12612,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the query
+        r"""End time of the query
         :rtype: str
         """
         return self._EndTime
@@ -12623,7 +12623,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset of the query
+        r"""Offset of the query
         :rtype: int
         """
         return self._Offset
@@ -12634,7 +12634,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of results returned
+        r"""Maximum number of results returned
         :rtype: int
         """
         return self._Limit
@@ -12645,7 +12645,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Statuses(self):
-        """Statuses of tasks to be queried. Values:
+        r"""Statuses of tasks to be queried. Values:
 `processing`, `success`, `failed`, `timeout` and `invalid`
         :rtype: list of str
         """
@@ -12657,7 +12657,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -12668,7 +12668,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of domain names queried
+        r"""List of domain names queried
         :rtype: list of str
         """
         return self._Domains
@@ -12679,7 +12679,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     @property
     def Target(self):
-        """Resources queried
+        r"""Resources queried
         :rtype: str
         """
         return self._Target
@@ -12710,7 +12710,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
 
 class DescribePrefetchTasksResponse(AbstractModel):
-    """DescribePrefetchTasks response structure.
+    r"""DescribePrefetchTasks response structure.
 
     """
 
@@ -12729,7 +12729,7 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total entries that match the specified query condition
+        r"""Total entries that match the specified query condition
         :rtype: int
         """
         return self._TotalCount
@@ -12740,7 +12740,7 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """List of tasks returned
+        r"""List of tasks returned
         :rtype: list of Task
         """
         return self._Tasks
@@ -12751,7 +12751,7 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12773,7 +12773,7 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
 
 class DescribePurgeTasksRequest(AbstractModel):
-    """DescribePurgeTasks request structure.
+    r"""DescribePurgeTasks request structure.
 
     """
 
@@ -12814,7 +12814,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -12825,7 +12825,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type of the purging task
+        r"""Type of the purging task
         :rtype: str
         """
         return self._Type
@@ -12836,7 +12836,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query
+        r"""Start time of the query
         :rtype: str
         """
         return self._StartTime
@@ -12847,7 +12847,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the query
+        r"""End time of the query
         :rtype: str
         """
         return self._EndTime
@@ -12858,7 +12858,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset of the query
+        r"""Offset of the query
         :rtype: int
         """
         return self._Offset
@@ -12869,7 +12869,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of results returned
+        r"""Maximum number of results returned
         :rtype: int
         """
         return self._Limit
@@ -12880,7 +12880,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Statuses(self):
-        """Statuses of tasks to be queried. Values:
+        r"""Statuses of tasks to be queried. Values:
 `processing`, `success`, `failed`, `timeout` and `invalid`
         :rtype: list of str
         """
@@ -12892,7 +12892,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -12903,7 +12903,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of domain names queried
+        r"""List of domain names queried
         :rtype: list of str
         """
         return self._Domains
@@ -12914,7 +12914,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Target(self):
-        """Queries content
+        r"""Queries content
         :rtype: str
         """
         return self._Target
@@ -12946,7 +12946,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
 
 class DescribePurgeTasksResponse(AbstractModel):
-    """DescribePurgeTasks response structure.
+    r"""DescribePurgeTasks response structure.
 
     """
 
@@ -12965,7 +12965,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total entries that match the specified query condition
+        r"""Total entries that match the specified query condition
         :rtype: int
         """
         return self._TotalCount
@@ -12976,7 +12976,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """List of tasks returned
+        r"""List of tasks returned
         :rtype: list of Task
         """
         return self._Tasks
@@ -12987,7 +12987,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13009,7 +13009,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyListRequest(AbstractModel):
-    """DescribeSecurityPolicyList request structure.
+    r"""DescribeSecurityPolicyList request structure.
 
     """
 
@@ -13022,7 +13022,7 @@ class DescribeSecurityPolicyListRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -13045,7 +13045,7 @@ class DescribeSecurityPolicyListRequest(AbstractModel):
 
 
 class DescribeSecurityPolicyListResponse(AbstractModel):
-    """DescribeSecurityPolicyList response structure.
+    r"""DescribeSecurityPolicyList response structure.
 
     """
 
@@ -13061,7 +13061,7 @@ class DescribeSecurityPolicyListResponse(AbstractModel):
 
     @property
     def Entities(self):
-        """List of protected resources
+        r"""List of protected resources
         :rtype: list of SecurityEntity
         """
         return self._Entities
@@ -13072,7 +13072,7 @@ class DescribeSecurityPolicyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13093,7 +13093,7 @@ class DescribeSecurityPolicyListResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyManagedRulesIdRequest(AbstractModel):
-    """DescribeSecurityPolicyManagedRulesId request structure.
+    r"""DescribeSecurityPolicyManagedRulesId request structure.
 
     """
 
@@ -13106,7 +13106,7 @@ class DescribeSecurityPolicyManagedRulesIdRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """List of rule IDs
+        r"""List of rule IDs
         :rtype: list of int
         """
         return self._RuleId
@@ -13129,7 +13129,7 @@ class DescribeSecurityPolicyManagedRulesIdRequest(AbstractModel):
 
 
 class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
-    """DescribeSecurityPolicyManagedRulesId response structure.
+    r"""DescribeSecurityPolicyManagedRulesId response structure.
 
     """
 
@@ -13151,7 +13151,7 @@ class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of returned items
+        r"""Total number of returned items
         :rtype: int
         """
         return self._Total
@@ -13162,7 +13162,7 @@ class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """Managed rule
+        r"""Managed rule
         :rtype: list of ManagedRule
         """
         return self._Rules
@@ -13173,7 +13173,7 @@ class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Total number of returned items
+        r"""Total number of returned items
         :rtype: int
         """
         return self._Count
@@ -13184,7 +13184,7 @@ class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13207,7 +13207,7 @@ class DescribeSecurityPolicyManagedRulesIdResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
-    """DescribeSecurityPolicyManagedRules request structure.
+    r"""DescribeSecurityPolicyManagedRules request structure.
 
     """
 
@@ -13229,7 +13229,7 @@ class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -13240,7 +13240,7 @@ class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Subdomain name/layer-4 proxy
+        r"""Subdomain name/layer-4 proxy
         :rtype: str
         """
         return self._Entity
@@ -13251,7 +13251,7 @@ class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Total number of pages
+        r"""Total number of pages
         :rtype: int
         """
         return self._Page
@@ -13262,7 +13262,7 @@ class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
 
     @property
     def PerPage(self):
-        """Number of rules per page
+        r"""Number of rules per page
         :rtype: int
         """
         return self._PerPage
@@ -13288,7 +13288,7 @@ class DescribeSecurityPolicyManagedRulesRequest(AbstractModel):
 
 
 class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
-    """DescribeSecurityPolicyManagedRules response structure.
+    r"""DescribeSecurityPolicyManagedRules response structure.
 
     """
 
@@ -13310,7 +13310,7 @@ class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Number of rules returned
+        r"""Number of rules returned
         :rtype: int
         """
         return self._Count
@@ -13321,7 +13321,7 @@ class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """Managed rule
+        r"""Managed rule
         :rtype: list of ManagedRule
         """
         return self._Rules
@@ -13332,7 +13332,7 @@ class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of rules
+        r"""Total number of rules
         :rtype: int
         """
         return self._Total
@@ -13343,7 +13343,7 @@ class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13366,13 +13366,13 @@ class DescribeSecurityPolicyManagedRulesResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyRegionsRequest(AbstractModel):
-    """DescribeSecurityPolicyRegions request structure.
+    r"""DescribeSecurityPolicyRegions request structure.
 
     """
 
 
 class DescribeSecurityPolicyRegionsResponse(AbstractModel):
-    """DescribeSecurityPolicyRegions response structure.
+    r"""DescribeSecurityPolicyRegions response structure.
 
     """
 
@@ -13391,7 +13391,7 @@ class DescribeSecurityPolicyRegionsResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Total number of regions
+        r"""Total number of regions
         :rtype: int
         """
         return self._Count
@@ -13402,7 +13402,7 @@ class DescribeSecurityPolicyRegionsResponse(AbstractModel):
 
     @property
     def GeoIp(self):
-        """Region information
+        r"""Region information
         :rtype: list of GeoIp
         """
         return self._GeoIp
@@ -13413,7 +13413,7 @@ class DescribeSecurityPolicyRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13435,7 +13435,7 @@ class DescribeSecurityPolicyRegionsResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyRequest(AbstractModel):
-    """DescribeSecurityPolicy request structure.
+    r"""DescribeSecurityPolicy request structure.
 
     """
 
@@ -13451,7 +13451,7 @@ class DescribeSecurityPolicyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -13462,7 +13462,7 @@ class DescribeSecurityPolicyRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Second-level domain name
+        r"""Second-level domain name
         :rtype: str
         """
         return self._Entity
@@ -13486,7 +13486,7 @@ class DescribeSecurityPolicyRequest(AbstractModel):
 
 
 class DescribeSecurityPolicyResponse(AbstractModel):
-    """DescribeSecurityPolicy response structure.
+    r"""DescribeSecurityPolicy response structure.
 
     """
 
@@ -13512,7 +13512,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AppId(self):
-        """User ID
+        r"""User ID
         :rtype: int
         """
         return self._AppId
@@ -13523,7 +13523,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -13534,7 +13534,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Entity(self):
-        """Second-level domain name
+        r"""Second-level domain name
         :rtype: str
         """
         return self._Entity
@@ -13545,7 +13545,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Config(self):
-        """Security configuration
+        r"""Security configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.SecurityConfig`
         """
@@ -13557,7 +13557,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13578,7 +13578,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeSecurityPortraitRulesRequest(AbstractModel):
-    """DescribeSecurityPortraitRules request structure.
+    r"""DescribeSecurityPortraitRules request structure.
 
     """
 
@@ -13594,7 +13594,7 @@ class DescribeSecurityPortraitRulesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -13605,7 +13605,7 @@ class DescribeSecurityPortraitRulesRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Subdomain name/Application name
+        r"""Subdomain name/Application name
         :rtype: str
         """
         return self._Entity
@@ -13629,7 +13629,7 @@ class DescribeSecurityPortraitRulesRequest(AbstractModel):
 
 
 class DescribeSecurityPortraitRulesResponse(AbstractModel):
-    """DescribeSecurityPortraitRules response structure.
+    r"""DescribeSecurityPortraitRules response structure.
 
     """
 
@@ -13651,7 +13651,7 @@ class DescribeSecurityPortraitRulesResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Number of rules returned in this request
+        r"""Number of rules returned in this request
         :rtype: int
         """
         return self._Count
@@ -13662,7 +13662,7 @@ class DescribeSecurityPortraitRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """Bot user profiling rule
+        r"""Bot user profiling rule
         :rtype: list of PortraitManagedRuleDetail
         """
         return self._Rules
@@ -13673,7 +13673,7 @@ class DescribeSecurityPortraitRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of rules
+        r"""Total number of rules
         :rtype: int
         """
         return self._Total
@@ -13684,7 +13684,7 @@ class DescribeSecurityPortraitRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13707,7 +13707,7 @@ class DescribeSecurityPortraitRulesResponse(AbstractModel):
 
 
 class DescribeTimingL4DataRequest(AbstractModel):
-    """DescribeTimingL4Data request structure.
+    r"""DescribeTimingL4Data request structure.
 
     """
 
@@ -13751,7 +13751,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._StartTime
@@ -13762,7 +13762,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._EndTime
@@ -13773,7 +13773,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Supported metrics for data query:
+        r"""Supported metrics for data query:
 `l4Flow_connections`: Access connections
 `l4Flow_flux`: Access traffic
 `l4Flow_inFlux`: Inbound traffic
@@ -13788,7 +13788,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of site IDs
+        r"""List of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -13799,7 +13799,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """This field has been disused. Use `ProxyIds` instead.
+        r"""This field has been disused. Use `ProxyIds` instead.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13810,7 +13810,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """This field is not supported currently.
+        r"""This field is not supported currently.
         :rtype: str
         """
         return self._Protocol
@@ -13821,7 +13821,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Valid values: {min, 5min, hour, day}
+        r"""Time interval. Valid values: {min, 5min, hour, day}
         :rtype: str
         """
         return self._Interval
@@ -13832,7 +13832,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """This field is not supported currently. Use `Filter` instead.
+        r"""This field is not supported currently. Use `Filter` instead.
         :rtype: str
         """
         return self._RuleId
@@ -13843,7 +13843,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Supported filters: `proxyd`, `ruleId`
+        r"""Supported filters: `proxyd`, `ruleId`
         :rtype: list of Filter
         """
         return self._Filters
@@ -13854,7 +13854,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def ProxyIds(self):
-        """List of layer-4 proxies
+        r"""List of layer-4 proxies
         :rtype: list of str
         """
         return self._ProxyIds
@@ -13891,7 +13891,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
 
 class DescribeTimingL4DataResponse(AbstractModel):
-    """DescribeTimingL4Data response structure.
+    r"""DescribeTimingL4Data response structure.
 
     """
 
@@ -13914,7 +13914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Query dimension
+        r"""Query dimension
         :rtype: str
         """
         return self._Type
@@ -13925,7 +13925,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Time interval
+        r"""Time interval
         :rtype: str
         """
         return self._Interval
@@ -13936,7 +13936,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Detailed data
+        r"""Detailed data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataRecord
         """
@@ -13948,7 +13948,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13971,7 +13971,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTimingL7AnalysisDataRequest(AbstractModel):
-    """DescribeTimingL7AnalysisData request structure.
+    r"""DescribeTimingL7AnalysisData request structure.
 
     """
 
@@ -14002,7 +14002,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._StartTime
@@ -14013,7 +14013,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._EndTime
@@ -14024,7 +14024,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Supported metrics for data query:
+        r"""Supported metrics for data query:
 `l7Flow_outFlux`: Access traffic
 `l7Flow_request`: Access requests
 `l7Flow_outBandwidth`: Access bandwidth
@@ -14038,7 +14038,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Valid values: {min, 5min, hour, day, week}
+        r"""Time interval. Valid values: {min, 5min, hour, day, week}
         :rtype: str
         """
         return self._Interval
@@ -14049,7 +14049,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Array of `ZoneId` values
+        r"""Array of `ZoneId` values
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14060,7 +14060,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter
+        r"""Filter
         :rtype: list of Filter
         """
         return self._Filters
@@ -14093,7 +14093,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
 
 class DescribeTimingL7AnalysisDataResponse(AbstractModel):
-    """DescribeTimingL7AnalysisData response structure.
+    r"""DescribeTimingL7AnalysisData response structure.
 
     """
 
@@ -14116,7 +14116,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Detailed data
+        r"""Detailed data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataRecord
         """
@@ -14128,7 +14128,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Query dimension
+        r"""Query dimension
         :rtype: str
         """
         return self._Type
@@ -14139,7 +14139,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Time interval
+        r"""Time interval
         :rtype: str
         """
         return self._Interval
@@ -14150,7 +14150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14173,7 +14173,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTimingL7CacheDataRequest(AbstractModel):
-    """DescribeTimingL7CacheData request structure.
+    r"""DescribeTimingL7CacheData request structure.
 
     """
 
@@ -14205,7 +14205,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query (client time in RFC 3339)
+        r"""Start time of the query (client time in RFC 3339)
         :rtype: str
         """
         return self._StartTime
@@ -14216,7 +14216,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Start time of the query (client time in RFC 3339)
+        r"""Start time of the query (client time in RFC 3339)
         :rtype: str
         """
         return self._EndTime
@@ -14227,7 +14227,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Supported metrics for data query:
+        r"""Supported metrics for data query:
 `l7Cache_outFlux`: Access traffic
 `l7Cache_request`: Access requests
         :rtype: list of str
@@ -14240,7 +14240,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Values: {min, 5min, hour, day, week}
+        r"""Time interval. Values: {min, 5min, hour, day, week}
         :rtype: str
         """
         return self._Interval
@@ -14251,7 +14251,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of site IDs
+        r"""List of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14262,7 +14262,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter condition:
+        r"""Filter condition:
 {Key: "cacheType", Value: ["hit"], Operator: "equals"}: Filter by data responded from EdgeOne
 {Key: "cacheType", Value: ["miss", "dynamic"], Operator: "equals"}: Filter by data responded from the origin server
         :rtype: list of Filter
@@ -14297,7 +14297,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 
 
 class DescribeTimingL7CacheDataResponse(AbstractModel):
-    """DescribeTimingL7CacheData response structure.
+    r"""DescribeTimingL7CacheData response structure.
 
     """
 
@@ -14320,7 +14320,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Details
+        r"""Details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataRecord
         """
@@ -14332,7 +14332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Metric specified for data query
+        r"""Metric specified for data query
         :rtype: str
         """
         return self._Type
@@ -14343,7 +14343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Time interval
+        r"""Time interval
         :rtype: str
         """
         return self._Interval
@@ -14354,7 +14354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14377,7 +14377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTopL7AnalysisDataRequest(AbstractModel):
-    """DescribeTopL7AnalysisData request structure.
+    r"""DescribeTopL7AnalysisData request structure.
 
     """
 
@@ -14408,7 +14408,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._StartTime
@@ -14419,7 +14419,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Client time in RFC 3339 format
+        r"""Client time in RFC 3339 format
         :rtype: str
         """
         return self._EndTime
@@ -14430,7 +14430,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Time series-type access traffic metric
+        r"""Time series-type access traffic metric
         :rtype: str
         """
         return self._MetricName
@@ -14441,7 +14441,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Top N. 0 indicates to return the full data.
+        r"""Top N. 0 indicates to return the full data.
         :rtype: int
         """
         return self._Limit
@@ -14452,7 +14452,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Valid values: {min, 5min, hour, day, week}
+        r"""Time interval. Valid values: {min, 5min, hour, day, week}
         :rtype: str
         """
         return self._Interval
@@ -14463,7 +14463,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Array of `ZoneId` values
+        r"""Array of `ZoneId` values
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14474,7 +14474,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter
+        r"""Filter
         :rtype: list of Filter
         """
         return self._Filters
@@ -14508,7 +14508,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
 
 class DescribeTopL7AnalysisDataResponse(AbstractModel):
-    """DescribeTopL7AnalysisData response structure.
+    r"""DescribeTopL7AnalysisData response structure.
 
     """
 
@@ -14531,7 +14531,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Top detailed data
+        r"""Top detailed data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TopDataRecord
         """
@@ -14543,7 +14543,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Query dimension
+        r"""Query dimension
         :rtype: str
         """
         return self._Type
@@ -14554,7 +14554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Query metric
+        r"""Query metric
         :rtype: str
         """
         return self._MetricName
@@ -14565,7 +14565,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14588,7 +14588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTopL7CacheDataRequest(AbstractModel):
-    """DescribeTopL7CacheData request structure.
+    r"""DescribeTopL7CacheData request structure.
 
     """
 
@@ -14619,7 +14619,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query (client time in RFC 3339)
+        r"""Start time of the query (client time in RFC 3339)
         :rtype: str
         """
         return self._StartTime
@@ -14630,7 +14630,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the query (client time in RFC 3339)
+        r"""End time of the query (client time in RFC 3339)
         :rtype: str
         """
         return self._EndTime
@@ -14641,7 +14641,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric for time-series data query
+        r"""Metric for time-series data query
         :rtype: str
         """
         return self._MetricName
@@ -14652,7 +14652,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Specifies the number of data records to return. If `0` is passed in, all data is returned.
+        r"""Specifies the number of data records to return. If `0` is passed in, all data is returned.
         :rtype: int
         """
         return self._Limit
@@ -14663,7 +14663,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Time interval. Values: {min, 5min, hour, day, week}. This field is optional.
+        r"""Time interval. Values: {min, 5min, hour, day, week}. This field is optional.
         :rtype: str
         """
         return self._Interval
@@ -14674,7 +14674,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Array of site IDs
+        r"""Array of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14685,7 +14685,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter condition
+        r"""Filter condition
         :rtype: list of Filter
         """
         return self._Filters
@@ -14719,7 +14719,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 
 
 class DescribeTopL7CacheDataResponse(AbstractModel):
-    """DescribeTopL7CacheData response structure.
+    r"""DescribeTopL7CacheData response structure.
 
     """
 
@@ -14742,7 +14742,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Top-ranked data details
+        r"""Top-ranked data details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TopDataRecord
         """
@@ -14754,7 +14754,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Dimension specified for data query
+        r"""Dimension specified for data query
         :rtype: str
         """
         return self._Type
@@ -14765,7 +14765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric specified for data query
+        r"""Metric specified for data query
         :rtype: str
         """
         return self._MetricName
@@ -14776,7 +14776,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14799,7 +14799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
-    """DescribeWebManagedRulesAttackEvents request structure.
+    r"""DescribeWebManagedRulesAttackEvents request structure.
 
     """
 
@@ -14833,7 +14833,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -14844,7 +14844,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -14855,7 +14855,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._PageSize
@@ -14866,7 +14866,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -14877,7 +14877,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """List of DDoS policy group IDs
+        r"""List of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -14888,7 +14888,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -14899,7 +14899,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of subdomain names
+        r"""List of subdomain names
         :rtype: list of str
         """
         return self._Domains
@@ -14910,7 +14910,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
     @property
     def IsShowDetail(self):
-        """Whether to show details. Valid values: Y (yes), N (no).
+        r"""Whether to show details. Valid values: Y (yes), N (no).
         :rtype: str
         """
         return self._IsShowDetail
@@ -14940,7 +14940,7 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
 
 
 class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
-    """DescribeWebManagedRulesAttackEvents response structure.
+    r"""DescribeWebManagedRulesAttackEvents response structure.
 
     """
 
@@ -14962,7 +14962,7 @@ class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Web attack event data
+        r"""Web attack event data
         :rtype: :class:`tencentcloud.teo.v20220106.models.WebEventData`
         """
         return self._Data
@@ -14973,7 +14973,7 @@ class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -14984,7 +14984,7 @@ class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned data
+        r"""Returned data
         :rtype: str
         """
         return self._Msg
@@ -14995,7 +14995,7 @@ class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15015,7 +15015,7 @@ class DescribeWebManagedRulesAttackEventsResponse(AbstractModel):
 
 
 class DescribeWebManagedRulesDataRequest(AbstractModel):
-    """DescribeWebManagedRulesData request structure.
+    r"""DescribeWebManagedRulesData request structure.
 
     """
 
@@ -15063,7 +15063,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -15074,7 +15074,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -15085,7 +15085,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """List of statistical metrics
+        r"""List of statistical metrics
         :rtype: list of str
         """
         return self._MetricNames
@@ -15096,7 +15096,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of site IDs
+        r"""List of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15107,7 +15107,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of subdomain names
+        r"""List of subdomain names
         :rtype: list of str
         """
         return self._Domains
@@ -15118,7 +15118,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type
+        r"""Protocol type
         :rtype: str
         """
         return self._ProtocolType
@@ -15129,7 +15129,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def AttackType(self):
-        """"webshell" : WebShell detection prevention
+        r""""webshell" : WebShell detection prevention
 "oa" : Common OA vulnerability prevention
 "xss" : XSS attack prevention
 "xxe" : XXE attack prevention
@@ -15154,7 +15154,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -15184,7 +15184,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
 
 class DescribeWebManagedRulesDataResponse(AbstractModel):
-    """DescribeWebManagedRulesData response structure.
+    r"""DescribeWebManagedRulesData response structure.
 
     """
 
@@ -15210,7 +15210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Web attack log entity
+        r"""Web attack log entity
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SecEntry
         """
@@ -15222,7 +15222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -15233,7 +15233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -15244,7 +15244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -15255,7 +15255,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15279,7 +15279,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeWebManagedRulesLogRequest(AbstractModel):
-    """DescribeWebManagedRulesLog request structure.
+    r"""DescribeWebManagedRulesLog request structure.
 
     """
 
@@ -15310,7 +15310,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -15321,7 +15321,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -15332,7 +15332,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
         :rtype: int
         """
         return self._PageSize
@@ -15343,7 +15343,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -15354,7 +15354,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15365,7 +15365,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Domain name set
+        r"""Domain name set
         :rtype: list of str
         """
         return self._Domains
@@ -15376,7 +15376,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     @property
     def QueryCondition(self):
-        """Query condition
+        r"""Query condition
         :rtype: list of QueryCondition
         """
         return self._QueryCondition
@@ -15410,7 +15410,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
 
 class DescribeWebManagedRulesLogResponse(AbstractModel):
-    """DescribeWebManagedRulesLog response structure.
+    r"""DescribeWebManagedRulesLog response structure.
 
     """
 
@@ -15432,7 +15432,7 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Web attack log data
+        r"""Web attack log data
         :rtype: :class:`tencentcloud.teo.v20220106.models.WebLogData`
         """
         return self._Data
@@ -15443,7 +15443,7 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -15454,7 +15454,7 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -15465,7 +15465,7 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15485,7 +15485,7 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
 
 class DescribeWebManagedRulesTopDataRequest(AbstractModel):
-    """DescribeWebManagedRulesTopData request structure.
+    r"""DescribeWebManagedRulesTopData request structure.
 
     """
 
@@ -15525,7 +15525,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -15536,7 +15536,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -15547,7 +15547,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Filter metric
+        r"""Filter metric
         :rtype: str
         """
         return self._MetricName
@@ -15558,7 +15558,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of the top data entries to query. 0: queries all data entries.
+        r"""Number of the top data entries to query. 0: queries all data entries.
         :rtype: int
         """
         return self._Limit
@@ -15569,7 +15569,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15580,7 +15580,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Set of DDoS policy group IDs
+        r"""Set of DDoS policy group IDs
         :rtype: list of int
         """
         return self._PolicyIds
@@ -15591,7 +15591,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Port number
+        r"""Port number
         :rtype: int
         """
         return self._Port
@@ -15602,7 +15602,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type. Valid values: tcp, udp, all
+        r"""Protocol type. Valid values: tcp, udp, all
         :rtype: str
         """
         return self._ProtocolType
@@ -15613,7 +15613,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def AttackType(self):
-        """Attack type. Valid values: flood, icmpFlood..., all
+        r"""Attack type. Valid values: flood, icmpFlood..., all
         :rtype: str
         """
         return self._AttackType
@@ -15624,7 +15624,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Domain name set
+        r"""Domain name set
         :rtype: list of str
         """
         return self._Domains
@@ -15656,7 +15656,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
 
 class DescribeWebManagedRulesTopDataResponse(AbstractModel):
-    """DescribeWebManagedRulesTopData response structure.
+    r"""DescribeWebManagedRulesTopData response structure.
 
     """
 
@@ -15678,7 +15678,7 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Top N data
+        r"""Top N data
         :rtype: list of TopNEntry
         """
         return self._Data
@@ -15689,7 +15689,7 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -15700,7 +15700,7 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -15711,7 +15711,7 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15734,7 +15734,7 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
 
 class DescribeWebProtectionAttackEventsRequest(AbstractModel):
-    """DescribeWebProtectionAttackEvents request structure.
+    r"""DescribeWebProtectionAttackEvents request structure.
 
     """
 
@@ -15762,7 +15762,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -15773,7 +15773,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -15784,7 +15784,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._PageSize
@@ -15795,7 +15795,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -15806,7 +15806,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Domain name
+        r"""Domain name
         :rtype: list of str
         """
         return self._Domains
@@ -15817,7 +15817,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15845,7 +15845,7 @@ class DescribeWebProtectionAttackEventsRequest(AbstractModel):
 
 
 class DescribeWebProtectionAttackEventsResponse(AbstractModel):
-    """DescribeWebProtectionAttackEvents response structure.
+    r"""DescribeWebProtectionAttackEvents response structure.
 
     """
 
@@ -15867,7 +15867,7 @@ class DescribeWebProtectionAttackEventsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """DDoS attack event data
+        r"""DDoS attack event data
         :rtype: :class:`tencentcloud.teo.v20220106.models.CCInterceptEventData`
         """
         return self._Data
@@ -15878,7 +15878,7 @@ class DescribeWebProtectionAttackEventsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -15889,7 +15889,7 @@ class DescribeWebProtectionAttackEventsResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -15900,7 +15900,7 @@ class DescribeWebProtectionAttackEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15920,7 +15920,7 @@ class DescribeWebProtectionAttackEventsResponse(AbstractModel):
 
 
 class DescribeWebProtectionDataRequest(AbstractModel):
-    """DescribeWebProtectionData request structure.
+    r"""DescribeWebProtectionData request structure.
 
     """
 
@@ -15968,7 +15968,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -15979,7 +15979,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -15990,7 +15990,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """List of statistical metrics
+        r"""List of statistical metrics
         :rtype: list of str
         """
         return self._MetricNames
@@ -16001,7 +16001,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """List of site IDs
+        r"""List of site IDs
         :rtype: list of str
         """
         return self._ZoneIds
@@ -16012,7 +16012,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """List of subdomain names
+        r"""List of subdomain names
         :rtype: list of str
         """
         return self._Domains
@@ -16023,7 +16023,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        """Protocol type
+        r"""Protocol type
         :rtype: str
         """
         return self._ProtocolType
@@ -16034,7 +16034,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def AttackType(self):
-        """"webshell" : WebShell detection prevention
+        r""""webshell" : WebShell detection prevention
 "oa" : Common OA vulnerability prevention
 "xss" : XSS attack prevention
 "xxe" : XXE attack prevention
@@ -16059,7 +16059,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -16089,7 +16089,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
 
 class DescribeWebProtectionDataResponse(AbstractModel):
-    """DescribeWebProtectionData response structure.
+    r"""DescribeWebProtectionData response structure.
 
     """
 
@@ -16115,7 +16115,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Data details
+        r"""Data details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SecEntry
         """
@@ -16127,7 +16127,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -16138,7 +16138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Message
+        r"""Message
         :rtype: str
         """
         return self._Msg
@@ -16149,7 +16149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Interval(self):
-        """Query time granularity. Valid values: {min,5min,hour,day}
+        r"""Query time granularity. Valid values: {min,5min,hour,day}
         :rtype: str
         """
         return self._Interval
@@ -16160,7 +16160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16184,7 +16184,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeWebProtectionLogRequest(AbstractModel):
-    """DescribeWebProtectionLog request structure.
+    r"""DescribeWebProtectionLog request structure.
 
     """
 
@@ -16215,7 +16215,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -16226,7 +16226,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -16237,7 +16237,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
         :rtype: int
         """
         return self._PageSize
@@ -16248,7 +16248,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -16259,7 +16259,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site set
+        r"""Site set
         :rtype: list of str
         """
         return self._ZoneIds
@@ -16270,7 +16270,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Domain name set
+        r"""Domain name set
         :rtype: list of str
         """
         return self._Domains
@@ -16281,7 +16281,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     @property
     def QueryCondition(self):
-        """Query condition
+        r"""Query condition
         :rtype: list of QueryCondition
         """
         return self._QueryCondition
@@ -16315,7 +16315,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
 
 class DescribeWebProtectionLogResponse(AbstractModel):
-    """DescribeWebProtectionLog response structure.
+    r"""DescribeWebProtectionLog response structure.
 
     """
 
@@ -16337,7 +16337,7 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Block data in rate-limiting policy
+        r"""Block data in rate-limiting policy
         :rtype: :class:`tencentcloud.teo.v20220106.models.CCLogData`
         """
         return self._Data
@@ -16348,7 +16348,7 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 1: failed; 0: succeeded
+        r"""Status. 1: failed; 0: succeeded
         :rtype: int
         """
         return self._Status
@@ -16359,7 +16359,7 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -16370,7 +16370,7 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16390,7 +16390,7 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
 
 class DescribeZoneDDoSPolicyRequest(AbstractModel):
-    """DescribeZoneDDoSPolicy request structure.
+    r"""DescribeZoneDDoSPolicy request structure.
 
     """
 
@@ -16403,7 +16403,7 @@ class DescribeZoneDDoSPolicyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site (top-level domain name)
+        r"""ID of the site (top-level domain name)
         :rtype: str
         """
         return self._ZoneId
@@ -16426,7 +16426,7 @@ class DescribeZoneDDoSPolicyRequest(AbstractModel):
 
 
 class DescribeZoneDDoSPolicyResponse(AbstractModel):
-    """DescribeZoneDDoSPolicy response structure.
+    r"""DescribeZoneDDoSPolicy response structure.
 
     """
 
@@ -16449,7 +16449,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AppId(self):
-        """User APPID
+        r"""User APPID
         :rtype: int
         """
         return self._AppId
@@ -16460,7 +16460,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ShieldAreas(self):
-        """DDoS mitigation configuration
+        r"""DDoS mitigation configuration
         :rtype: list of ShieldArea
         """
         return self._ShieldAreas
@@ -16471,7 +16471,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Domains(self):
-        """Includes the details of all subdomain names
+        r"""Includes the details of all subdomain names
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of DDoSApplication
         """
@@ -16483,7 +16483,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16511,7 +16511,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeZoneDetailsRequest(AbstractModel):
-    """DescribeZoneDetails request structure.
+    r"""DescribeZoneDetails request structure.
 
     """
 
@@ -16524,7 +16524,7 @@ class DescribeZoneDetailsRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -16547,7 +16547,7 @@ class DescribeZoneDetailsRequest(AbstractModel):
 
 
 class DescribeZoneDetailsResponse(AbstractModel):
-    """DescribeZoneDetails response structure.
+    r"""DescribeZoneDetails response structure.
 
     """
 
@@ -16625,7 +16625,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -16636,7 +16636,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -16647,7 +16647,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginalNameServers(self):
-        """List of name servers used
+        r"""List of name servers used
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -16659,7 +16659,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NameServers(self):
-        """List of name servers assigned to users by Tencent Cloud
+        r"""List of name servers assigned to users by Tencent Cloud
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -16671,7 +16671,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Site status
+        r"""Site status
 - `active`: The name server is switched.
 - `pending`: The name server is not switched.
 - `moved`: The name server is moved.
@@ -16686,7 +16686,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Specifies how the site is connected to EdgeOne.
+        r"""Specifies how the site is connected to EdgeOne.
 - `full`: The site is connected via name server.
 - `partial`: The site is connected via CNAME.
         :rtype: str
@@ -16699,7 +16699,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Paused(self):
-        """Indicates whether the site is disabled
+        r"""Indicates whether the site is disabled
         :rtype: bool
         """
         return self._Paused
@@ -16710,7 +16710,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CnameSpeedUp(self):
-        """Specifies whether to enable CNAME acceleration
+        r"""Specifies whether to enable CNAME acceleration
 - `enabled`: Enable
 - `disabled`: Disable
         :rtype: str
@@ -16723,7 +16723,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CnameStatus(self):
-        """Ownership verification status of the site when it accesses via CNAME.
+        r"""Ownership verification status of the site when it accesses via CNAME.
 - `finished`: The site is verified.
 - `pending`: The site is waiting for verification.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -16737,7 +16737,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Tags(self):
-        """Resource tag
+        r"""Resource tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -16749,7 +16749,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Area(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Area
@@ -16760,7 +16760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resources(self):
-        """Billable resource
+        r"""Billable resource
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Resource
         """
@@ -16772,7 +16772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedOn(self):
-        """Site modification date
+        r"""Site modification date
         :rtype: str
         """
         return self._ModifiedOn
@@ -16783,7 +16783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedOn(self):
-        """Site creation date
+        r"""Site creation date
         :rtype: str
         """
         return self._CreatedOn
@@ -16794,7 +16794,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VanityNameServers(self):
-        """User-defined name server information
+        r"""User-defined name server information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
         """
@@ -16806,7 +16806,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def VanityNameServersIps(self):
-        """User-defined name server IP information
+        r"""User-defined name server IP information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of VanityNameServersIps
         """
@@ -16818,7 +16818,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16866,7 +16866,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeZoneSettingRequest(AbstractModel):
-    """DescribeZoneSetting request structure.
+    r"""DescribeZoneSetting request structure.
 
     """
 
@@ -16879,7 +16879,7 @@ class DescribeZoneSettingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -16902,7 +16902,7 @@ class DescribeZoneSettingRequest(AbstractModel):
 
 
 class DescribeZoneSettingResponse(AbstractModel):
-    """DescribeZoneSetting response structure.
+    r"""DescribeZoneSetting response structure.
 
     """
 
@@ -16981,7 +16981,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cache(self):
-        """Cache expiration time configuration
+        r"""Cache expiration time configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheConfig`
         """
@@ -16993,7 +16993,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CacheKey(self):
-        """Node cache key configuration
+        r"""Node cache key configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheKey`
         """
@@ -17005,7 +17005,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MaxAge(self):
-        """Browser cache configuration
+        r"""Browser cache configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.MaxAge`
         """
@@ -17017,7 +17017,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OfflineCache(self):
-        """Offline cache
+        r"""Offline cache
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.OfflineCache`
         """
@@ -17029,7 +17029,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Quic(self):
-        """QUIC access
+        r"""QUIC access
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.Quic`
         """
@@ -17041,7 +17041,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PostMaxSize(self):
-        """POST transport configuration
+        r"""POST transport configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.PostMaxSize`
         """
@@ -17053,7 +17053,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Compression(self):
-        """Smart compression configuration
+        r"""Smart compression configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.Compression`
         """
@@ -17065,7 +17065,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpstreamHttp2(self):
-        """HTTP2 origin-pull configuration
+        r"""HTTP2 origin-pull configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.UpstreamHttp2`
         """
@@ -17077,7 +17077,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ForceRedirect(self):
-        """Force HTTPS redirect configuration
+        r"""Force HTTPS redirect configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.ForceRedirect`
         """
@@ -17089,7 +17089,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Https(self):
-        """HTTPS acceleration configuration
+        r"""HTTPS acceleration configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.Https`
         """
@@ -17101,7 +17101,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Origin(self):
-        """Origin server configuration
+        r"""Origin server configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.Origin`
         """
@@ -17113,7 +17113,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SmartRouting(self):
-        """Dynamic acceleration configuration
+        r"""Dynamic acceleration configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.SmartRouting`
         """
@@ -17125,7 +17125,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -17136,7 +17136,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Zone(self):
-        """Domain name of the site
+        r"""Domain name of the site
         :rtype: str
         """
         return self._Zone
@@ -17147,7 +17147,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WebSocket(self):
-        """WebSocket configuration.
+        r"""WebSocket configuration.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.WebSocket`
         """
@@ -17159,7 +17159,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClientIpHeader(self):
-        """Origin-pull client IP header configuration
+        r"""Origin-pull client IP header configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.ClientIp`
         """
@@ -17171,7 +17171,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CachePrefresh(self):
-        """Cache prefresh configuration
+        r"""Cache prefresh configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
         """
@@ -17183,7 +17183,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17245,7 +17245,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeZonesRequest(AbstractModel):
-    """DescribeZones request structure.
+    r"""DescribeZones request structure.
 
     """
 
@@ -17264,7 +17264,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination parameter, which specifies the offset.
+        r"""Pagination parameter, which specifies the offset.
         :rtype: int
         """
         return self._Offset
@@ -17275,7 +17275,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination parameter, which specifies the number of sites returned in each page.
+        r"""Pagination parameter, which specifies the number of sites returned in each page.
         :rtype: int
         """
         return self._Limit
@@ -17286,7 +17286,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query condition filter, which supports complex type.
+        r"""Query condition filter, which supports complex type.
         :rtype: list of ZoneFilter
         """
         return self._Filters
@@ -17316,7 +17316,7 @@ class DescribeZonesRequest(AbstractModel):
 
 
 class DescribeZonesResponse(AbstractModel):
-    """DescribeZones response structure.
+    r"""DescribeZones response structure.
 
     """
 
@@ -17336,7 +17336,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        """Number of sites that match the specified conditions
+        r"""Number of sites that match the specified conditions
         :rtype: int
         """
         return self._TotalCount
@@ -17347,7 +17347,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Zones(self):
-        """Details of sites
+        r"""Details of sites
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of Zone
         """
@@ -17359,7 +17359,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17381,7 +17381,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DetailHost(AbstractModel):
-    """Domain name configuration information
+    r"""Domain name configuration information
 
     """
 
@@ -17406,7 +17406,7 @@ class DetailHost(AbstractModel):
 
     @property
     def AppId(self):
-        """Tencent Cloud account ID
+        r"""Tencent Cloud account ID
         :rtype: int
         """
         return self._AppId
@@ -17417,7 +17417,7 @@ class DetailHost(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -17428,7 +17428,7 @@ class DetailHost(AbstractModel):
 
     @property
     def Status(self):
-        """Acceleration service status
+        r"""Acceleration service status
 `process`: Deploying
 `online`: Enabled
 `offline`: Disabled
@@ -17442,7 +17442,7 @@ class DetailHost(AbstractModel):
 
     @property
     def Host(self):
-        """Domain name
+        r"""Domain name
         :rtype: str
         """
         return self._Host
@@ -17468,7 +17468,7 @@ class DetailHost(AbstractModel):
 
 
 class DnsDataFilter(AbstractModel):
-    """Ignore query string parameters for DNS data
+    r"""Ignore query string parameters for DNS data
 
     """
 
@@ -17516,7 +17516,7 @@ When `Name=code`, valid values:
 
     @property
     def Name(self):
-        """Parameter name. Valid values:
+        r"""Parameter name. Valid values:
 `zone`: Site name
 `host`: Domain name
 `type`: DNS resolution type
@@ -17532,7 +17532,7 @@ When `Name=code`, valid values:
 
     @property
     def Value(self):
-        """Parameter value
+        r"""Parameter value
 When `Name=area`, valid values:
 `Asia`
 `Europe`
@@ -17555,7 +17555,7 @@ When `Name=code`, valid values:
 
     @property
     def Values(self):
-        """Parameter value
+        r"""Parameter value
 When `Name=area`, valid values:
 `Asia`
 `Europe`
@@ -17592,7 +17592,7 @@ When `Name=code`, valid values:
 
 
 class DnsRecord(AbstractModel):
-    """DNS record
+    r"""DNS record
 
     """
 
@@ -17655,7 +17655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._Id
@@ -17666,7 +17666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._Type
@@ -17677,7 +17677,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Host record
+        r"""Host record
         :rtype: str
         """
         return self._Name
@@ -17688,7 +17688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """Record value
+        r"""Record value
         :rtype: str
         """
         return self._Content
@@ -17699,7 +17699,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
-        """Proxy mode
+        r"""Proxy mode
         :rtype: str
         """
         return self._Mode
@@ -17710,7 +17710,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ttl(self):
-        """TTL value
+        r"""TTL value
         :rtype: int
         """
         return self._Ttl
@@ -17721,7 +17721,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Priority(self):
-        """Priority
+        r"""Priority
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -17733,7 +17733,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedOn(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -17744,7 +17744,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -17755,7 +17755,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Locked(self):
-        """Domain name lock
+        r"""Domain name lock
         :rtype: bool
         """
         return self._Locked
@@ -17766,7 +17766,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -17777,7 +17777,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -17788,7 +17788,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Resolution status
+        r"""Resolution status
 `active`: Activated
 `pending`: Not activated
         :rtype: str
@@ -17801,7 +17801,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """CNAME address
+        r"""CNAME address
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -17813,7 +17813,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DomainStatus(self):
-        """Which service is enabled for the domain name.
+        r"""Which service is enabled for the domain name.
 - `lb`: Load balancing
 - `security`: Security acceleration
 - `l4`: L4 proxy
@@ -17854,7 +17854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DnsRecordFilter(AbstractModel):
-    """Query filter to search for DNS records
+    r"""Query filter to search for DNS records
 
     """
 
@@ -17875,7 +17875,7 @@ class DnsRecordFilter(AbstractModel):
 
     @property
     def Name(self):
-        """Filters by the field name. Vaules:
+        r"""Filters by the field name. Vaules:
 - `name`: Site name.
 - `status`: Site status.
         :rtype: str
@@ -17888,7 +17888,7 @@ class DnsRecordFilter(AbstractModel):
 
     @property
     def Values(self):
-        """Filters by the field value
+        r"""Filters by the field value
         :rtype: list of str
         """
         return self._Values
@@ -17899,7 +17899,7 @@ class DnsRecordFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """Specifies whether to enable fuzzy query. It’s only available when the filter name is `name`. If it’s enabled, the length of `Values` must be 1.
+        r"""Specifies whether to enable fuzzy query. It’s only available when the filter name is `name`. If it’s enabled, the length of `Values` must be 1.
         :rtype: bool
         """
         return self._Fuzzy
@@ -17924,7 +17924,7 @@ class DnsRecordFilter(AbstractModel):
 
 
 class DnssecInfo(AbstractModel):
-    """DNSSEC information
+    r"""DNSSEC information
 
     """
 
@@ -17961,7 +17961,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def Flags(self):
-        """Flag
+        r"""Flag
         :rtype: int
         """
         return self._Flags
@@ -17972,7 +17972,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def Algorithm(self):
-        """Encryption algorithm
+        r"""Encryption algorithm
         :rtype: str
         """
         return self._Algorithm
@@ -17983,7 +17983,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def KeyType(self):
-        """Encryption type
+        r"""Encryption type
         :rtype: str
         """
         return self._KeyType
@@ -17994,7 +17994,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def DigestType(self):
-        """Digest type
+        r"""Digest type
         :rtype: str
         """
         return self._DigestType
@@ -18005,7 +18005,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def DigestAlgorithm(self):
-        """Digest algorithm
+        r"""Digest algorithm
         :rtype: str
         """
         return self._DigestAlgorithm
@@ -18016,7 +18016,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def Digest(self):
-        """Digest message
+        r"""Digest message
         :rtype: str
         """
         return self._Digest
@@ -18027,7 +18027,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def DS(self):
-        """DS record value
+        r"""DS record value
         :rtype: str
         """
         return self._DS
@@ -18038,7 +18038,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def KeyTag(self):
-        """Key tag
+        r"""Key tag
         :rtype: int
         """
         return self._KeyTag
@@ -18049,7 +18049,7 @@ class DnssecInfo(AbstractModel):
 
     @property
     def PublicKey(self):
-        """Public key
+        r"""Public key
         :rtype: str
         """
         return self._PublicKey
@@ -18080,7 +18080,7 @@ class DnssecInfo(AbstractModel):
 
 
 class DownloadL7LogsRequest(AbstractModel):
-    """DownloadL7Logs request structure.
+    r"""DownloadL7Logs request structure.
 
     """
 
@@ -18108,7 +18108,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time. It must conform to the RFC3339 standard.
+        r"""Start time. It must conform to the RFC3339 standard.
         :rtype: str
         """
         return self._StartTime
@@ -18119,7 +18119,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time. It must conform to the RFC3339 standard.
+        r"""End time. It must conform to the RFC3339 standard.
         :rtype: str
         """
         return self._EndTime
@@ -18130,7 +18130,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._PageSize
@@ -18141,7 +18141,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
         :rtype: int
         """
         return self._PageNo
@@ -18152,7 +18152,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def Zones(self):
-        """Array of site names
+        r"""Array of site names
         :rtype: list of str
         """
         return self._Zones
@@ -18163,7 +18163,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        """Array of subdomain names
+        r"""Array of subdomain names
         :rtype: list of str
         """
         return self._Domains
@@ -18191,7 +18191,7 @@ class DownloadL7LogsRequest(AbstractModel):
 
 
 class DownloadL7LogsResponse(AbstractModel):
-    """DownloadL7Logs response structure.
+    r"""DownloadL7Logs response structure.
 
     """
 
@@ -18224,7 +18224,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Data(self):
-        """Layer-7 offline log data
+        r"""Layer-7 offline log data
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of L7OfflineLog
         """
@@ -18236,7 +18236,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PageSize(self):
-        """Page size
+        r"""Page size
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18248,7 +18248,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PageNo(self):
-        """Page number
+        r"""Page number
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18260,7 +18260,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18272,7 +18272,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalSize(self):
-        """Total number of entries
+        r"""Total number of entries
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18284,7 +18284,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18309,7 +18309,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class FailReason(AbstractModel):
-    """Failure reason
+    r"""Failure reason
 
     """
 
@@ -18326,7 +18326,7 @@ class FailReason(AbstractModel):
 
     @property
     def Reason(self):
-        """Failure reason
+        r"""Failure reason
         :rtype: str
         """
         return self._Reason
@@ -18337,7 +18337,7 @@ class FailReason(AbstractModel):
 
     @property
     def Targets(self):
-        """List of resources failed to be processed. 
+        r"""List of resources failed to be processed. 
  
         :rtype: list of str
         """
@@ -18362,7 +18362,7 @@ class FailReason(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Filter
+    r"""Filter
 
     """
 
@@ -18381,7 +18381,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        """Filter dimension
+        r"""Filter dimension
         :rtype: str
         """
         return self._Key
@@ -18392,7 +18392,7 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -18403,7 +18403,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        """Filter dimension value
+        r"""Filter dimension value
         :rtype: list of str
         """
         return self._Value
@@ -18428,7 +18428,7 @@ class Filter(AbstractModel):
 
 
 class ForceRedirect(AbstractModel):
-    """Force HTTPS redirect configuration
+    r"""Force HTTPS redirect configuration
 
     """
 
@@ -18449,7 +18449,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Force redirect configuration switch
+        r"""Force redirect configuration switch
 `on`: Enable
 `off`: Disable
         :rtype: str
@@ -18462,7 +18462,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RedirectStatusCode(self):
-        """Redirection status code
+        r"""Redirection status code
 301
 302
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -18489,7 +18489,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class GeoIp(AbstractModel):
-    """Region information
+    r"""Region information
 
     """
 
@@ -18514,7 +18514,7 @@ class GeoIp(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -18525,7 +18525,7 @@ class GeoIp(AbstractModel):
 
     @property
     def Country(self):
-        """Country name
+        r"""Country name
         :rtype: str
         """
         return self._Country
@@ -18536,7 +18536,7 @@ class GeoIp(AbstractModel):
 
     @property
     def Continent(self):
-        """Continent name
+        r"""Continent name
         :rtype: str
         """
         return self._Continent
@@ -18547,7 +18547,7 @@ class GeoIp(AbstractModel):
 
     @property
     def CountryEn(self):
-        """Country name in English
+        r"""Country name in English
         :rtype: str
         """
         return self._CountryEn
@@ -18558,7 +18558,7 @@ class GeoIp(AbstractModel):
 
     @property
     def ContinentEn(self):
-        """Continent name in English
+        r"""Continent name in English
         :rtype: str
         """
         return self._ContinentEn
@@ -18585,7 +18585,7 @@ class GeoIp(AbstractModel):
 
 
 class Header(AbstractModel):
-    """HTTP header, used as input for the CreatePrefetchTask API
+    r"""HTTP header, used as input for the CreatePrefetchTask API
 
     """
 
@@ -18601,7 +18601,7 @@ class Header(AbstractModel):
 
     @property
     def Name(self):
-        """HTTP header name
+        r"""HTTP header name
         :rtype: str
         """
         return self._Name
@@ -18612,7 +18612,7 @@ class Header(AbstractModel):
 
     @property
     def Value(self):
-        """HTTP header value
+        r"""HTTP header value
         :rtype: str
         """
         return self._Value
@@ -18636,7 +18636,7 @@ class Header(AbstractModel):
 
 
 class HostCertSetting(AbstractModel):
-    """Certificate configurations for domain names
+    r"""Certificate configurations for domain names
 
     """
 
@@ -18654,7 +18654,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Host(self):
-        """Domain name
+        r"""Domain name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18666,7 +18666,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertInfo(self):
-        """Server certificate configuration
+        r"""Server certificate configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of ServerCertInfo
         """
@@ -18696,7 +18696,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class Hsts(AbstractModel):
-    """HSTS configuration
+    r"""HSTS configuration
 
     """
 
@@ -18721,7 +18721,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Specifies whether to enable. Valid values: `on` and `off`.
+        r"""Specifies whether to enable. Valid values: `on` and `off`.
         :rtype: str
         """
         return self._Switch
@@ -18732,7 +18732,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MaxAge(self):
-        """`MaxAge` value.
+        r"""`MaxAge` value.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18744,7 +18744,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IncludeSubDomains(self):
-        """Specifies whether to include subdomain names. Valid values: `on` and `off`.
+        r"""Specifies whether to include subdomain names. Valid values: `on` and `off`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18756,7 +18756,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Preload(self):
-        """Specifies whether to preload. Valid values: `on` and `off`.
+        r"""Specifies whether to preload. Valid values: `on` and `off`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18783,7 +18783,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class Https(AbstractModel):
-    """Domain name HTTPS acceleration configuration. This is disabled by default.
+    r"""Domain name HTTPS acceleration configuration. This is disabled by default.
 
     """
 
@@ -18814,7 +18814,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Http2(self):
-        """HTTP2 configuration switch
+        r"""HTTP2 configuration switch
 `on`: Enable
 `off`: Disable
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -18828,7 +18828,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OcspStapling(self):
-        """OCSP configuration switch
+        r"""OCSP configuration switch
 `on`: Enable
 `off`: Disable
 It is disabled by default.
@@ -18843,7 +18843,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TlsVersion(self):
-        """TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+        r"""TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -18855,7 +18855,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Hsts(self):
-        """HSTS Configuration
+        r"""HSTS Configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.Hsts`
         """
@@ -18884,7 +18884,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class IdentifyZoneRequest(AbstractModel):
-    """IdentifyZone request structure.
+    r"""IdentifyZone request structure.
 
     """
 
@@ -18897,7 +18897,7 @@ class IdentifyZoneRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -18920,7 +18920,7 @@ class IdentifyZoneRequest(AbstractModel):
 
 
 class IdentifyZoneResponse(AbstractModel):
-    """IdentifyZone response structure.
+    r"""IdentifyZone response structure.
 
     """
 
@@ -18945,7 +18945,7 @@ class IdentifyZoneResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -18956,7 +18956,7 @@ class IdentifyZoneResponse(AbstractModel):
 
     @property
     def Subdomain(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Subdomain
@@ -18967,7 +18967,7 @@ class IdentifyZoneResponse(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._RecordType
@@ -18978,7 +18978,7 @@ class IdentifyZoneResponse(AbstractModel):
 
     @property
     def RecordValue(self):
-        """Record value
+        r"""Record value
         :rtype: str
         """
         return self._RecordValue
@@ -18989,7 +18989,7 @@ class IdentifyZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19008,7 +19008,7 @@ class IdentifyZoneResponse(AbstractModel):
 
 
 class ImportDnsRecordsRequest(AbstractModel):
-    """ImportDnsRecords request structure.
+    r"""ImportDnsRecords request structure.
 
     """
 
@@ -19024,7 +19024,7 @@ class ImportDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -19035,7 +19035,7 @@ class ImportDnsRecordsRequest(AbstractModel):
 
     @property
     def File(self):
-        """File content
+        r"""File content
         :rtype: str
         """
         return self._File
@@ -19059,7 +19059,7 @@ class ImportDnsRecordsRequest(AbstractModel):
 
 
 class ImportDnsRecordsResponse(AbstractModel):
-    """ImportDnsRecords response structure.
+    r"""ImportDnsRecords response structure.
 
     """
 
@@ -19075,7 +19075,7 @@ class ImportDnsRecordsResponse(AbstractModel):
 
     @property
     def Ids(self):
-        """Record ID
+        r"""Record ID
         :rtype: list of str
         """
         return self._Ids
@@ -19086,7 +19086,7 @@ class ImportDnsRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19102,7 +19102,7 @@ class ImportDnsRecordsResponse(AbstractModel):
 
 
 class IntelligenceRule(AbstractModel):
-    """Bot intelligence rules
+    r"""Bot intelligence rules
 
     """
 
@@ -19120,7 +19120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19132,7 +19132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        """Items in a bot intelligence rule
+        r"""Items in a bot intelligence rule
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of IntelligenceRuleItem
         """
@@ -19162,7 +19162,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IntelligenceRuleItem(AbstractModel):
-    """Bot intelligence rule items
+    r"""Bot intelligence rule items
 
     """
 
@@ -19180,7 +19180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """Malicious bot, which is used to tag bad bots
+        r"""Malicious bot, which is used to tag bad bots
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19192,7 +19192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Action
+        r"""Action
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19217,7 +19217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IpTableConfig(AbstractModel):
-    """IP/Region blocklist/allowlist configuration
+    r"""IP/Region blocklist/allowlist configuration
 
     """
 
@@ -19235,7 +19235,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19247,7 +19247,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """[]
+        r"""[]
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of IpTableRule
         """
@@ -19277,7 +19277,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IpTableRule(AbstractModel):
-    """IP blocklist/allowlist rule details
+    r"""IP blocklist/allowlist rule details
 
     """
 
@@ -19307,7 +19307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Action: `drop` (block), `trans` (allow), `monitor` (observe)
+        r"""Action: `drop` (block), `trans` (allow), `monitor` (observe)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19319,7 +19319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MatchFrom(self):
-        """Matches by IP or region. Values: `ip` and `area`.
+        r"""Matches by IP or region. Values: `ip` and `area`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19331,7 +19331,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MatchContent(self):
-        """Matching content
+        r"""Matching content
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19343,7 +19343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleID(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -19355,7 +19355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19383,7 +19383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class L7OfflineLog(AbstractModel):
-    """Layer-7 offline log details
+    r"""Layer-7 offline log details
 
     """
 
@@ -19413,7 +19413,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def LogTime(self):
-        """Start time of the log packaging
+        r"""Start time of the log packaging
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -19425,7 +19425,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Domain(self):
-        """Subdomain name
+        r"""Subdomain name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19437,7 +19437,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Size(self):
-        """Log size, in bytes
+        r"""Log size, in bytes
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -19449,7 +19449,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Url(self):
-        """Download address
+        r"""Download address
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19461,7 +19461,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def LogPacketName(self):
-        """Log package name
+        r"""Log package name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19489,7 +19489,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class LoadBalancing(AbstractModel):
-    """CLB information
+    r"""CLB information
 
     """
 
@@ -19532,7 +19532,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -19543,7 +19543,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -19554,7 +19554,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Host(self):
-        """Subdomain name. You can use @ to represent the root domain.
+        r"""Subdomain name. You can use @ to represent the root domain.
         :rtype: str
         """
         return self._Host
@@ -19565,7 +19565,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Proxy mode. Valid values:
+        r"""Proxy mode. Valid values:
 `dns_only`: Only DNS
 `proxied`: Enable proxy
         :rtype: str
@@ -19578,7 +19578,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TTL(self):
-        """Indicates DNS TTL time when `Type=dns_only`
+        r"""Indicates DNS TTL time when `Type=dns_only`
         :rtype: int
         """
         return self._TTL
@@ -19589,7 +19589,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginId(self):
-        """ID of the origin group used
+        r"""ID of the origin group used
         :rtype: list of str
         """
         return self._OriginId
@@ -19600,7 +19600,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Origin(self):
-        """Information of the origin server used
+        r"""Information of the origin server used
         :rtype: list of OriginGroup
         """
         return self._Origin
@@ -19611,7 +19611,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -19622,7 +19622,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Status
+        r"""Status
         :rtype: str
         """
         return self._Status
@@ -19633,7 +19633,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """Schedules domain names
+        r"""Schedules domain names
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19671,7 +19671,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ManagedRule(AbstractModel):
-    """Managed rule
+    r"""Managed rule
 
     """
 
@@ -19711,7 +19711,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleId(self):
-        """ID of the rule
+        r"""ID of the rule
         :rtype: int
         """
         return self._RuleId
@@ -19722,7 +19722,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Description(self):
-        """Rule description
+        r"""Rule description
         :rtype: str
         """
         return self._Description
@@ -19733,7 +19733,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleTypeName(self):
-        """Rule type
+        r"""Rule type
         :rtype: str
         """
         return self._RuleTypeName
@@ -19744,7 +19744,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleLevelDesc(self):
-        """Rule level
+        r"""Rule level
         :rtype: str
         """
         return self._RuleLevelDesc
@@ -19755,7 +19755,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -19766,7 +19766,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Rule status: `block`, `allow`
+        r"""Rule status: `block`, `allow`
         :rtype: str
         """
         return self._Status
@@ -19777,7 +19777,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleTags(self):
-        """Tag of the rule
+        r"""Tag of the rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -19789,7 +19789,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleTypeDesc(self):
-        """Description of the rule type
+        r"""Description of the rule type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19801,7 +19801,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleTypeId(self):
-        """ID of the rule type
+        r"""ID of the rule type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -19833,7 +19833,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class MaxAge(AbstractModel):
-    """Browser cache rule configuration.
+    r"""Browser cache rule configuration.
 
     """
 
@@ -19852,7 +19852,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MaxAgeTime(self):
-        """Specifies the max age of the cache (in seconds). The maximum value is 365 days.
+        r"""Specifies the max age of the cache (in seconds). The maximum value is 365 days.
 Note: the value `0` means not to cache.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
@@ -19865,7 +19865,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FollowOrigin(self):
-        """Specifies whether to follow the max cache age of the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.
+        r"""Specifies whether to follow the max cache age of the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -19890,7 +19890,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ModifyApplicationProxyRequest(AbstractModel):
-    """ModifyApplicationProxy request structure.
+    r"""ModifyApplicationProxy request structure.
 
     """
 
@@ -19925,7 +19925,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -19936,7 +19936,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
         :rtype: str
         """
         return self._ProxyId
@@ -19947,7 +19947,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyName(self):
-        """Name of the proxy:
+        r"""Name of the proxy:
 Domain name or subdomain name when `ProxyType=hostname`
 Instance name when `ProxyType=instance`
         :rtype: str
@@ -19960,7 +19960,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ForwardClientIp(self):
-        """This parameter is disused.
+        r"""This parameter is disused.
         :rtype: str
         """
         return self._ForwardClientIp
@@ -19971,7 +19971,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersist(self):
-        """This parameter is disused.
+        r"""This parameter is disused.
         :rtype: bool
         """
         return self._SessionPersist
@@ -19982,7 +19982,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def SessionPersistTime(self):
-        """Session persistence time. Value range: 30-3600 (in seconds).
+        r"""Session persistence time. Value range: 30-3600 (in seconds).
         :rtype: int
         """
         return self._SessionPersistTime
@@ -19993,7 +19993,7 @@ Instance name when `ProxyType=instance`
 
     @property
     def ProxyType(self):
-        """Specifies how a layer-4 proxy is created.
+        r"""Specifies how a layer-4 proxy is created.
 `hostname`: Create by subdomain name
 `instance`: Create by instance
         :rtype: str
@@ -20024,7 +20024,7 @@ Instance name when `ProxyType=instance`
 
 
 class ModifyApplicationProxyResponse(AbstractModel):
-    """ModifyApplicationProxy response structure.
+    r"""ModifyApplicationProxy response structure.
 
     """
 
@@ -20040,7 +20040,7 @@ class ModifyApplicationProxyResponse(AbstractModel):
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
         :rtype: str
         """
         return self._ProxyId
@@ -20051,7 +20051,7 @@ class ModifyApplicationProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20067,7 +20067,7 @@ class ModifyApplicationProxyResponse(AbstractModel):
 
 
 class ModifyApplicationProxyRuleRequest(AbstractModel):
-    """ModifyApplicationProxyRule request structure.
+    r"""ModifyApplicationProxyRule request structure.
 
     """
 
@@ -20121,7 +20121,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -20132,7 +20132,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def ProxyId(self):
-        """Proxy ID
+        r"""Proxy ID
         :rtype: str
         """
         return self._ProxyId
@@ -20143,7 +20143,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -20154,7 +20154,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Proto(self):
-        """Protocol. Valid values: `TCP` and `UDP`.
+        r"""Protocol. Valid values: `TCP` and `UDP`.
         :rtype: str
         """
         return self._Proto
@@ -20165,7 +20165,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def Port(self):
-        """Port. Valid values:
+        r"""Port. Valid values:
 `80`: Port 80
 `81-90`: Port range 81-90
         :rtype: list of str
@@ -20178,7 +20178,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginType(self):
-        """Origin server type. Valid values:
+        r"""Origin server type. Valid values:
 `custom`: Specified origins
 `origins`: Origin group
         :rtype: str
@@ -20191,7 +20191,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def OriginValue(self):
-        """Origin server information:
+        r"""Origin server information:
 When `OriginType=custom`, it indicates one or more origin servers. Example:
 OriginValue=["8.8.8.8:80","9.9.9.9:80"]
 OriginValue=["test.com:80"]
@@ -20208,7 +20208,7 @@ OriginValue=["origin-xxx"]
 
     @property
     def ForwardClientIp(self):
-        """Passes the client IP. When `Proto=TCP`, valid values:
+        r"""Passes the client IP. When `Proto=TCP`, valid values:
 `TOA`: Pass the client IP via TOA.
 `PPV1`: Pass the client IP via Proxy Protocol V1.
 `PPV2`: Pass the client IP via Proxy Protocol V2.
@@ -20226,7 +20226,7 @@ When `Proto=UDP`, valid values:
 
     @property
     def SessionPersist(self):
-        """Specifies whether to enable session persistence
+        r"""Specifies whether to enable session persistence
         :rtype: bool
         """
         return self._SessionPersist
@@ -20257,7 +20257,7 @@ When `Proto=UDP`, valid values:
 
 
 class ModifyApplicationProxyRuleResponse(AbstractModel):
-    """ModifyApplicationProxyRule response structure.
+    r"""ModifyApplicationProxyRule response structure.
 
     """
 
@@ -20273,7 +20273,7 @@ class ModifyApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -20284,7 +20284,7 @@ class ModifyApplicationProxyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20300,7 +20300,7 @@ class ModifyApplicationProxyRuleResponse(AbstractModel):
 
 
 class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
-    """ModifyApplicationProxyRuleStatus request structure.
+    r"""ModifyApplicationProxyRuleStatus request structure.
 
     """
 
@@ -20324,7 +20324,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -20335,7 +20335,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
         :rtype: str
         """
         return self._ProxyId
@@ -20346,7 +20346,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -20357,7 +20357,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 `offline`: Disabled
 `online`: Enabled
         :rtype: str
@@ -20385,7 +20385,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
 
 
 class ModifyApplicationProxyRuleStatusResponse(AbstractModel):
-    """ModifyApplicationProxyRuleStatus response structure.
+    r"""ModifyApplicationProxyRuleStatus response structure.
 
     """
 
@@ -20401,7 +20401,7 @@ class ModifyApplicationProxyRuleStatusResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -20412,7 +20412,7 @@ class ModifyApplicationProxyRuleStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20428,7 +20428,7 @@ class ModifyApplicationProxyRuleStatusResponse(AbstractModel):
 
 
 class ModifyApplicationProxyStatusRequest(AbstractModel):
-    """ModifyApplicationProxyStatus request structure.
+    r"""ModifyApplicationProxyStatus request structure.
 
     """
 
@@ -20449,7 +20449,7 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -20460,7 +20460,7 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
         :rtype: str
         """
         return self._ProxyId
@@ -20471,7 +20471,7 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 `offline`: Disabled
 `online`: Enabled
         :rtype: str
@@ -20498,7 +20498,7 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
 
 
 class ModifyApplicationProxyStatusResponse(AbstractModel):
-    """ModifyApplicationProxyStatus response structure.
+    r"""ModifyApplicationProxyStatus response structure.
 
     """
 
@@ -20514,7 +20514,7 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
 
     @property
     def ProxyId(self):
-        """ID of the proxy
+        r"""ID of the proxy
         :rtype: str
         """
         return self._ProxyId
@@ -20525,7 +20525,7 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20541,7 +20541,7 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
 
 
 class ModifyDDoSPolicyHostRequest(AbstractModel):
-    """ModifyDDoSPolicyHost request structure.
+    r"""ModifyDDoSPolicyHost request structure.
 
     """
 
@@ -20566,7 +20566,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -20577,7 +20577,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
     @property
     def Host(self):
-        """Second-level domain name
+        r"""Second-level domain name
         :rtype: str
         """
         return self._Host
@@ -20588,7 +20588,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
     @property
     def AccelerateType(self):
-        """Whether to enable content acceleration. Values: `on` (enable content acceleration), and `off` (disable content acceleration). It can be used together with `SecurityType`.
+        r"""Whether to enable content acceleration. Values: `on` (enable content acceleration), and `off` (disable content acceleration). It can be used together with `SecurityType`.
         :rtype: str
         """
         return self._AccelerateType
@@ -20599,7 +20599,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -20610,7 +20610,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
     @property
     def SecurityType(self):
-        """Whether to enable security protection. Values: `on` (enable security protection) and `off` (disable security protection). It can be used together with `AccelerateType`.
+        r"""Whether to enable security protection. Values: `on` (enable security protection) and `off` (disable security protection). It can be used together with `AccelerateType`.
         :rtype: str
         """
         return self._SecurityType
@@ -20637,7 +20637,7 @@ class ModifyDDoSPolicyHostRequest(AbstractModel):
 
 
 class ModifyDDoSPolicyHostResponse(AbstractModel):
-    """ModifyDDoSPolicyHost response structure.
+    r"""ModifyDDoSPolicyHost response structure.
 
     """
 
@@ -20653,7 +20653,7 @@ class ModifyDDoSPolicyHostResponse(AbstractModel):
 
     @property
     def Host(self):
-        """Subdomain name
+        r"""Subdomain name
         :rtype: str
         """
         return self._Host
@@ -20664,7 +20664,7 @@ class ModifyDDoSPolicyHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20680,7 +20680,7 @@ class ModifyDDoSPolicyHostResponse(AbstractModel):
 
 
 class ModifyDDoSPolicyRequest(AbstractModel):
-    """ModifyDDoSPolicy request structure.
+    r"""ModifyDDoSPolicy request structure.
 
     """
 
@@ -20699,7 +20699,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """ID of the policy group
+        r"""ID of the policy group
         :rtype: int
         """
         return self._PolicyId
@@ -20710,7 +20710,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -20721,7 +20721,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def DdosRule(self):
-        """Detailed DDoS mitigation configuration
+        r"""Detailed DDoS mitigation configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.DdosRule`
         """
         return self._DdosRule
@@ -20748,7 +20748,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
 
 class ModifyDDoSPolicyResponse(AbstractModel):
-    """ModifyDDoSPolicy response structure.
+    r"""ModifyDDoSPolicy response structure.
 
     """
 
@@ -20764,7 +20764,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """ID of the policy group
+        r"""ID of the policy group
         :rtype: int
         """
         return self._PolicyId
@@ -20775,7 +20775,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20791,7 +20791,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
 
 class ModifyDefaultCertificateRequest(AbstractModel):
-    """ModifyDefaultCertificate request structure.
+    r"""ModifyDefaultCertificate request structure.
 
     """
 
@@ -20813,7 +20813,7 @@ If the deployment fails, you can pass in `Status = deployed` again.
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -20824,7 +20824,7 @@ If the deployment fails, you can pass in `Status = deployed` again.
 
     @property
     def CertId(self):
-        """Certificate ID
+        r"""Certificate ID
         :rtype: str
         """
         return self._CertId
@@ -20835,7 +20835,7 @@ If the deployment fails, you can pass in `Status = deployed` again.
 
     @property
     def Status(self):
-        """Certificate status
+        r"""Certificate status
 `deployed`: The certificate is deployed.
 `disabled`: The certificate is disabled.
 If the deployment fails, you can pass in `Status = deployed` again.
@@ -20863,7 +20863,7 @@ If the deployment fails, you can pass in `Status = deployed` again.
 
 
 class ModifyDefaultCertificateResponse(AbstractModel):
-    """ModifyDefaultCertificate response structure.
+    r"""ModifyDefaultCertificate response structure.
 
     """
 
@@ -20876,7 +20876,7 @@ class ModifyDefaultCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20891,7 +20891,7 @@ class ModifyDefaultCertificateResponse(AbstractModel):
 
 
 class ModifyDnsRecordRequest(AbstractModel):
-    """ModifyDnsRecord request structure.
+    r"""ModifyDnsRecord request structure.
 
     """
 
@@ -20925,7 +20925,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._Id
@@ -20936,7 +20936,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -20947,7 +20947,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._Type
@@ -20958,7 +20958,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Record name
+        r"""Record name
         :rtype: str
         """
         return self._Name
@@ -20969,7 +20969,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Record content
+        r"""Record content
         :rtype: str
         """
         return self._Content
@@ -20980,7 +20980,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Ttl
@@ -20991,7 +20991,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Priority(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._Priority
@@ -21002,7 +21002,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Proxy mode
+        r"""Proxy mode
         :rtype: str
         """
         return self._Mode
@@ -21032,7 +21032,7 @@ class ModifyDnsRecordRequest(AbstractModel):
 
 
 class ModifyDnsRecordResponse(AbstractModel):
-    """ModifyDnsRecord response structure.
+    r"""ModifyDnsRecord response structure.
 
     """
 
@@ -21088,7 +21088,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._Id
@@ -21099,7 +21099,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Record type
+        r"""Record type
         :rtype: str
         """
         return self._Type
@@ -21110,7 +21110,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Record name
+        r"""Record name
         :rtype: str
         """
         return self._Name
@@ -21121,7 +21121,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Content(self):
-        """Record content
+        r"""Record content
         :rtype: str
         """
         return self._Content
@@ -21132,7 +21132,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Ttl(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Ttl
@@ -21143,7 +21143,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Priority(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._Priority
@@ -21154,7 +21154,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """Proxy mode
+        r"""Proxy mode
         :rtype: str
         """
         return self._Mode
@@ -21165,7 +21165,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Resolution status
+        r"""Resolution status
         :rtype: str
         """
         return self._Status
@@ -21176,7 +21176,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cname(self):
-        """CNAME address
+        r"""CNAME address
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -21188,7 +21188,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Locked(self):
-        """Whether the DNS record is locked
+        r"""Whether the DNS record is locked
         :rtype: bool
         """
         return self._Locked
@@ -21199,7 +21199,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedOn(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -21210,7 +21210,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -21221,7 +21221,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -21232,7 +21232,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -21243,7 +21243,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21272,7 +21272,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ModifyDnssecRequest(AbstractModel):
-    """ModifyDnssec request structure.
+    r"""ModifyDnssec request structure.
 
     """
 
@@ -21290,7 +21290,7 @@ class ModifyDnssecRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -21301,7 +21301,7 @@ class ModifyDnssecRequest(AbstractModel):
 
     @property
     def Status(self):
-        """DNSSEC status
+        r"""DNSSEC status
 - `enabled`: Enabled
 - `disabled`: Disabled
         :rtype: str
@@ -21327,7 +21327,7 @@ class ModifyDnssecRequest(AbstractModel):
 
 
 class ModifyDnssecResponse(AbstractModel):
-    """ModifyDnssec response structure.
+    r"""ModifyDnssec response structure.
 
     """
 
@@ -21358,7 +21358,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -21369,7 +21369,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -21380,7 +21380,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """DNSSEC status.
+        r"""DNSSEC status.
 - `enabled`: Enabled
 - `disabled`: Disabled
         :rtype: str
@@ -21393,7 +21393,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Dnssec(self):
-        """DNSSEC information
+        r"""DNSSEC information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DnssecInfo`
         """
@@ -21405,7 +21405,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -21416,7 +21416,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21438,7 +21438,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ModifyHostsCertificateRequest(AbstractModel):
-    """ModifyHostsCertificate request structure.
+    r"""ModifyHostsCertificate request structure.
 
     """
 
@@ -21457,7 +21457,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site
+        r"""ID of the site
         :rtype: str
         """
         return self._ZoneId
@@ -21468,7 +21468,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        """Domain name that the certificate will be attached to
+        r"""Domain name that the certificate will be attached to
         :rtype: list of str
         """
         return self._Hosts
@@ -21479,7 +21479,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
     @property
     def CertInfo(self):
-        """Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.
+        r"""Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.
         :rtype: list of ServerCertInfo
         """
         return self._CertInfo
@@ -21509,7 +21509,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
 
 class ModifyHostsCertificateResponse(AbstractModel):
-    """ModifyHostsCertificate response structure.
+    r"""ModifyHostsCertificate response structure.
 
     """
 
@@ -21522,7 +21522,7 @@ class ModifyHostsCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21537,7 +21537,7 @@ class ModifyHostsCertificateResponse(AbstractModel):
 
 
 class ModifyLoadBalancingRequest(AbstractModel):
-    """ModifyLoadBalancing request structure.
+    r"""ModifyLoadBalancing request structure.
 
     """
 
@@ -21564,7 +21564,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -21575,7 +21575,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -21586,7 +21586,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Proxy mode.
+        r"""Proxy mode.
 `dns_only`: Only DNS
 `proxied`: Enable proxy
         :rtype: str
@@ -21599,7 +21599,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
     @property
     def OriginId(self):
-        """ID of the origin group used
+        r"""ID of the origin group used
         :rtype: list of str
         """
         return self._OriginId
@@ -21610,7 +21610,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """Indicates DNS TTL time when `Type=dns_only`
+        r"""Indicates DNS TTL time when `Type=dns_only`
         :rtype: int
         """
         return self._TTL
@@ -21637,7 +21637,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
 
 
 class ModifyLoadBalancingResponse(AbstractModel):
-    """ModifyLoadBalancing response structure.
+    r"""ModifyLoadBalancing response structure.
 
     """
 
@@ -21653,7 +21653,7 @@ class ModifyLoadBalancingResponse(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -21664,7 +21664,7 @@ class ModifyLoadBalancingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21680,7 +21680,7 @@ class ModifyLoadBalancingResponse(AbstractModel):
 
 
 class ModifyLoadBalancingStatusRequest(AbstractModel):
-    """ModifyLoadBalancingStatus request structure.
+    r"""ModifyLoadBalancingStatus request structure.
 
     """
 
@@ -21701,7 +21701,7 @@ class ModifyLoadBalancingStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -21712,7 +21712,7 @@ class ModifyLoadBalancingStatusRequest(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -21723,7 +21723,7 @@ class ModifyLoadBalancingStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
 `online`: Enabled
 `offline`: Disabled
         :rtype: str
@@ -21750,7 +21750,7 @@ class ModifyLoadBalancingStatusRequest(AbstractModel):
 
 
 class ModifyLoadBalancingStatusResponse(AbstractModel):
-    """ModifyLoadBalancingStatus response structure.
+    r"""ModifyLoadBalancingStatus response structure.
 
     """
 
@@ -21766,7 +21766,7 @@ class ModifyLoadBalancingStatusResponse(AbstractModel):
 
     @property
     def LoadBalancingId(self):
-        """CLB instance ID
+        r"""CLB instance ID
         :rtype: str
         """
         return self._LoadBalancingId
@@ -21777,7 +21777,7 @@ class ModifyLoadBalancingStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21793,7 +21793,7 @@ class ModifyLoadBalancingStatusResponse(AbstractModel):
 
 
 class ModifyOriginGroupRequest(AbstractModel):
-    """ModifyOriginGroup request structure.
+    r"""ModifyOriginGroup request structure.
 
     """
 
@@ -21827,7 +21827,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def OriginId(self):
-        """ID of the origin group
+        r"""ID of the origin group
         :rtype: str
         """
         return self._OriginId
@@ -21838,7 +21838,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def OriginName(self):
-        """Name of the origin group
+        r"""Name of the origin group
         :rtype: str
         """
         return self._OriginName
@@ -21849,7 +21849,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def Type(self):
-        """Origin-pull configuration type. This field is required when `OriginType=self`.
+        r"""Origin-pull configuration type. This field is required when `OriginType=self`.
 `area`: Origin-pull by region
 `weight`: Origin-pull by weight
 When `OriginType=third_party/cos`, it can be left empty.
@@ -21863,7 +21863,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def Record(self):
-        """Origin record
+        r"""Origin record
         :rtype: list of OriginRecord
         """
         return self._Record
@@ -21874,7 +21874,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -21885,7 +21885,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
     @property
     def OriginType(self):
-        """Origin type
+        r"""Origin type
 `self`: Customer origin
 `third_party`: Third-party origin
 `cos`: Tencent Cloud COS origin
@@ -21921,7 +21921,7 @@ When `OriginType=third_party/cos`, it can be left empty.
 
 
 class ModifyOriginGroupResponse(AbstractModel):
-    """ModifyOriginGroup response structure.
+    r"""ModifyOriginGroup response structure.
 
     """
 
@@ -21937,7 +21937,7 @@ class ModifyOriginGroupResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -21948,7 +21948,7 @@ class ModifyOriginGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21964,7 +21964,7 @@ class ModifyOriginGroupResponse(AbstractModel):
 
 
 class ModifySecurityPolicyRequest(AbstractModel):
-    """ModifySecurityPolicy request structure.
+    r"""ModifySecurityPolicy request structure.
 
     """
 
@@ -21983,7 +21983,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -21994,7 +21994,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def Entity(self):
-        """Subdomain name/layer-4 proxy
+        r"""Subdomain name/layer-4 proxy
         :rtype: str
         """
         return self._Entity
@@ -22005,7 +22005,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Security configuration
+        r"""Security configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.SecurityConfig`
         """
         return self._Config
@@ -22032,7 +22032,7 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
 
 class ModifySecurityPolicyResponse(AbstractModel):
-    """ModifySecurityPolicy response structure.
+    r"""ModifySecurityPolicy response structure.
 
     """
 
@@ -22045,7 +22045,7 @@ class ModifySecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22060,7 +22060,7 @@ class ModifySecurityPolicyResponse(AbstractModel):
 
 
 class ModifyZoneCnameSpeedUpRequest(AbstractModel):
-    """ModifyZoneCnameSpeedUp request structure.
+    r"""ModifyZoneCnameSpeedUp request structure.
 
     """
 
@@ -22078,7 +22078,7 @@ class ModifyZoneCnameSpeedUpRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -22089,7 +22089,7 @@ class ModifyZoneCnameSpeedUpRequest(AbstractModel):
 
     @property
     def Status(self):
-        """CNAME acceleration status.
+        r"""CNAME acceleration status.
 - `enabled`: Enabled
 - `disabled`: Disabled
         :rtype: str
@@ -22115,7 +22115,7 @@ class ModifyZoneCnameSpeedUpRequest(AbstractModel):
 
 
 class ModifyZoneCnameSpeedUpResponse(AbstractModel):
-    """ModifyZoneCnameSpeedUp response structure.
+    r"""ModifyZoneCnameSpeedUp response structure.
 
     """
 
@@ -22142,7 +22142,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -22153,7 +22153,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -22164,7 +22164,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
     @property
     def Status(self):
-        """CNAME acceleration status.
+        r"""CNAME acceleration status.
 - `enabled`: Enabled
 - `disabled`: Disabled
         :rtype: str
@@ -22177,7 +22177,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
     @property
     def ModifiedOn(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._ModifiedOn
@@ -22188,7 +22188,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22207,7 +22207,7 @@ class ModifyZoneCnameSpeedUpResponse(AbstractModel):
 
 
 class ModifyZoneRequest(AbstractModel):
-    """ModifyZone request structure.
+    r"""ModifyZone request structure.
 
     """
 
@@ -22228,7 +22228,7 @@ class ModifyZoneRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID, which is used to identify the site.
+        r"""Site ID, which is used to identify the site.
         :rtype: str
         """
         return self._Id
@@ -22239,7 +22239,7 @@ class ModifyZoneRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Specifies how the site is connected to EdgeOne.
+        r"""Specifies how the site is connected to EdgeOne.
 - `full`: Connect via the name server.
 - `partial`: Connect via the CNAME.
         :rtype: str
@@ -22252,7 +22252,7 @@ class ModifyZoneRequest(AbstractModel):
 
     @property
     def VanityNameServers(self):
-        """Custom site information
+        r"""Custom site information
         :rtype: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
         """
         return self._VanityNameServers
@@ -22279,7 +22279,7 @@ class ModifyZoneRequest(AbstractModel):
 
 
 class ModifyZoneResponse(AbstractModel):
-    """ModifyZone response structure.
+    r"""ModifyZone response structure.
 
     """
 
@@ -22327,7 +22327,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -22338,7 +22338,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -22349,7 +22349,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginalNameServers(self):
-        """Name server used by the site
+        r"""Name server used by the site
         :rtype: list of str
         """
         return self._OriginalNameServers
@@ -22360,7 +22360,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Site status.
+        r"""Site status.
 - `pending`: The name server is not connected.
 - `active`: The name server is connected.
 - `moved`: The name server is moved.
@@ -22374,7 +22374,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Specifies how the site is connected to EdgeOne.
+        r"""Specifies how the site is connected to EdgeOne.
 - `full`: Connect via the name server.
 - `partial`: Connect via the CNAME.
         :rtype: str
@@ -22387,7 +22387,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NameServers(self):
-        """List of name servers assigned by Tencent Cloud
+        r"""List of name servers assigned by Tencent Cloud
         :rtype: list of str
         """
         return self._NameServers
@@ -22398,7 +22398,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedOn(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -22409,7 +22409,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifiedOn
@@ -22420,7 +22420,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CnameStatus(self):
-        """CNAME access status.
+        r"""CNAME access status.
 - `finished`: Ownership of the site is verified.
 - `pending`: Verifying the ownership of the site.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -22434,7 +22434,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22458,7 +22458,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ModifyZoneSettingRequest(AbstractModel):
-    """ModifyZoneSetting request structure.
+    r"""ModifyZoneSetting request structure.
 
     """
 
@@ -22516,7 +22516,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the site to be modified
+        r"""ID of the site to be modified
         :rtype: str
         """
         return self._ZoneId
@@ -22527,7 +22527,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def Cache(self):
-        """Cache expiration time
+        r"""Cache expiration time
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheConfig`
         """
         return self._Cache
@@ -22538,7 +22538,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def CacheKey(self):
-        """Node cache key
+        r"""Node cache key
         :rtype: :class:`tencentcloud.teo.v20220106.models.CacheKey`
         """
         return self._CacheKey
@@ -22549,7 +22549,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def MaxAge(self):
-        """Browser cache configuration
+        r"""Browser cache configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.MaxAge`
         """
         return self._MaxAge
@@ -22560,7 +22560,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def OfflineCache(self):
-        """Offline cache
+        r"""Offline cache
         :rtype: :class:`tencentcloud.teo.v20220106.models.OfflineCache`
         """
         return self._OfflineCache
@@ -22571,7 +22571,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def Quic(self):
-        """QUIC access
+        r"""QUIC access
         :rtype: :class:`tencentcloud.teo.v20220106.models.Quic`
         """
         return self._Quic
@@ -22582,7 +22582,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def PostMaxSize(self):
-        """Maximum size of files transferred over POST request
+        r"""Maximum size of files transferred over POST request
         :rtype: :class:`tencentcloud.teo.v20220106.models.PostMaxSize`
         """
         return self._PostMaxSize
@@ -22593,7 +22593,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def Compression(self):
-        """Smart compression configuration
+        r"""Smart compression configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.Compression`
         """
         return self._Compression
@@ -22604,7 +22604,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def UpstreamHttp2(self):
-        """HTTP2 origin-pull configuration
+        r"""HTTP2 origin-pull configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.UpstreamHttp2`
         """
         return self._UpstreamHttp2
@@ -22615,7 +22615,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def ForceRedirect(self):
-        """Force HTTPS redirect configuration
+        r"""Force HTTPS redirect configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.ForceRedirect`
         """
         return self._ForceRedirect
@@ -22626,7 +22626,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def Https(self):
-        """HTTPS acceleration configuration
+        r"""HTTPS acceleration configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.Https`
         """
         return self._Https
@@ -22637,7 +22637,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def Origin(self):
-        """Origin server configuration
+        r"""Origin server configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.Origin`
         """
         return self._Origin
@@ -22648,7 +22648,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def SmartRouting(self):
-        """Smart acceleration configuration
+        r"""Smart acceleration configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.SmartRouting`
         """
         return self._SmartRouting
@@ -22659,7 +22659,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def WebSocket(self):
-        """WebSocket configuration
+        r"""WebSocket configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.WebSocket`
         """
         return self._WebSocket
@@ -22670,7 +22670,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def ClientIpHeader(self):
-        """Origin-pull client IP header configuration
+        r"""Origin-pull client IP header configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.ClientIp`
         """
         return self._ClientIpHeader
@@ -22681,7 +22681,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     @property
     def CachePrefresh(self):
-        """Cache prefresh configuration
+        r"""Cache prefresh configuration
         :rtype: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
         """
         return self._CachePrefresh
@@ -22749,7 +22749,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
 
 class ModifyZoneSettingResponse(AbstractModel):
-    """ModifyZoneSetting response structure.
+    r"""ModifyZoneSetting response structure.
 
     """
 
@@ -22765,7 +22765,7 @@ class ModifyZoneSettingResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -22776,7 +22776,7 @@ class ModifyZoneSettingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22792,7 +22792,7 @@ class ModifyZoneSettingResponse(AbstractModel):
 
 
 class ModifyZoneStatusRequest(AbstractModel):
-    """ModifyZoneStatus request structure.
+    r"""ModifyZoneStatus request structure.
 
     """
 
@@ -22810,7 +22810,7 @@ class ModifyZoneStatusRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -22821,7 +22821,7 @@ class ModifyZoneStatusRequest(AbstractModel):
 
     @property
     def Paused(self):
-        """Site status.
+        r"""Site status.
 - `false`: Enable the site.
 - `true`: Disable the site.
         :rtype: bool
@@ -22847,7 +22847,7 @@ class ModifyZoneStatusRequest(AbstractModel):
 
 
 class ModifyZoneStatusResponse(AbstractModel):
-    """ModifyZoneStatus response structure.
+    r"""ModifyZoneStatus response structure.
 
     """
 
@@ -22874,7 +22874,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -22885,7 +22885,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -22896,7 +22896,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     @property
     def Paused(self):
-        """Site status.
+        r"""Site status.
 - `false`: Enable the site.
 - `true`: Disable the site.
         :rtype: bool
@@ -22909,7 +22909,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     @property
     def ModifiedOn(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._ModifiedOn
@@ -22920,7 +22920,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22939,7 +22939,7 @@ class ModifyZoneStatusResponse(AbstractModel):
 
 
 class OfflineCache(AbstractModel):
-    """Configuration of offline cache
+    r"""Configuration of offline cache
 
     """
 
@@ -22953,7 +22953,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Whether to enable offline cache. Valid values: `on` and `off`.
+        r"""Whether to enable offline cache. Valid values: `on` and `off`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -22977,7 +22977,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class Origin(AbstractModel):
-    """Origin server configuration
+    r"""Origin server configuration
 
     """
 
@@ -22994,7 +22994,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginPullProtocol(self):
-        """Origin-pull protocol.
+        r"""Origin-pull protocol.
 `http`: Switch HTTPS requests to HTTP
 `follow`: Follow the protocol of the request.
 `https`: Switch HTTP requests to HTTPS. This only supports port 443 on the origin server.
@@ -23021,7 +23021,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class OriginCheckOriginStatus(AbstractModel):
-    """Origin health status
+    r"""Origin health status
 
     """
 
@@ -23038,7 +23038,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """`healthy`: Healthy; `unhealthy`: Unhealthy; `process`: Checking origin.
+        r"""`healthy`: Healthy; `unhealthy`: Unhealthy; `process`: Checking origin.
         :rtype: str
         """
         return self._Status
@@ -23049,7 +23049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
-        """List of unhealthy origin groups when `Status = unhealthy`
+        r"""List of unhealthy origin groups when `Status = unhealthy`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -23074,7 +23074,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OriginFilter(AbstractModel):
-    """The filter parameter to query origin groups
+    r"""The filter parameter to query origin groups
 
     """
 
@@ -23090,7 +23090,7 @@ class OriginFilter(AbstractModel):
 
     @property
     def Name(self):
-        """Field to be filtered. Supported field: name
+        r"""Field to be filtered. Supported field: name
         :rtype: str
         """
         return self._Name
@@ -23101,7 +23101,7 @@ class OriginFilter(AbstractModel):
 
     @property
     def Value(self):
-        """Value of the field
+        r"""Value of the field
         :rtype: str
         """
         return self._Value
@@ -23125,7 +23125,7 @@ class OriginFilter(AbstractModel):
 
 
 class OriginGroup(AbstractModel):
-    """Origin group information
+    r"""Origin group information
 
     """
 
@@ -23182,7 +23182,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginId(self):
-        """Origin group ID
+        r"""Origin group ID
         :rtype: str
         """
         return self._OriginId
@@ -23193,7 +23193,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginName(self):
-        """Origin group name
+        r"""Origin group name
         :rtype: str
         """
         return self._OriginName
@@ -23204,7 +23204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Origin-pull configuration type
+        r"""Origin-pull configuration type
 `area`: Origin-pull by the client IP’s region specified by `Area` in `OriginRecord`.
 `weight`: Origin-pull by the weight specified by `Weight` in `OriginRecord`.
         :rtype: str
@@ -23217,7 +23217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Record(self):
-        """Record
+        r"""Record
         :rtype: list of OriginRecord
         """
         return self._Record
@@ -23228,7 +23228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -23239,7 +23239,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -23250,7 +23250,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._ZoneName
@@ -23261,7 +23261,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginType(self):
-        """Origin server type
+        r"""Origin server type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -23273,7 +23273,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ApplicationProxyUsed(self):
-        """Whether the origin group uses layer-4 proxy.
+        r"""Whether the origin group uses layer-4 proxy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -23285,7 +23285,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancingUsed(self):
-        """Whether the origin group is used for load balancing.
+        r"""Whether the origin group is used for load balancing.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -23297,7 +23297,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Origin status 
+        r"""Origin status 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.OriginCheckOriginStatus`
         """
@@ -23309,7 +23309,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancingUsedType(self):
-        """Proxy mode of the load balancing task associated with the origin group.
+        r"""Proxy mode of the load balancing task associated with the origin group.
 `none`: This origin group is not used for load balancing.
 `dns_only`: Used for DNS-only load balancing 
 `proxied`: Used for proxied load balancing
@@ -23355,7 +23355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OriginRecord(AbstractModel):
-    """Origin group record
+    r"""Origin group record
 
     """
 
@@ -23396,7 +23396,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Record(self):
-        """Record value
+        r"""Record value
         :rtype: str
         """
         return self._Record
@@ -23407,7 +23407,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Area(self):
-        """A specific region when `Type=area`.
+        r"""A specific region when `Type=area`.
 The default region when `Type` is not specified.
         :rtype: list of str
         """
@@ -23419,7 +23419,7 @@ The default region when `Type` is not specified.
 
     @property
     def Weight(self):
-        """A specific weight when `Type=weight`.
+        r"""A specific weight when `Type=weight`.
 The value range is [1-100].
 The total weight of multiple origins in an origin group should be 100.
         :rtype: int
@@ -23432,7 +23432,7 @@ The total weight of multiple origins in an origin group should be 100.
 
     @property
     def Port(self):
-        """Port
+        r"""Port
         :rtype: int
         """
         return self._Port
@@ -23443,7 +23443,7 @@ The total weight of multiple origins in an origin group should be 100.
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -23454,7 +23454,7 @@ The total weight of multiple origins in an origin group should be 100.
 
     @property
     def Private(self):
-        """Specifies whether to run private origin authentication.
+        r"""Specifies whether to run private origin authentication.
 It is valid only when `OriginType=third_part`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: bool
@@ -23467,7 +23467,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PrivateParameter(self):
-        """Private origin parameter.
+        r"""Private origin parameter.
 It is valid only when `Private=true`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of OriginRecordPrivateParameter
@@ -23480,7 +23480,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Proto(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Proto
@@ -23515,7 +23515,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class OriginRecordPrivateParameter(AbstractModel):
-    """Private origin authentication parameter
+    r"""Private origin authentication parameter
 
     """
 
@@ -23533,7 +23533,7 @@ class OriginRecordPrivateParameter(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the private origin authentication parameter.
+        r"""Name of the private origin authentication parameter.
 `AccessKeyId`: Access key ID
 `SecretAccessKey`: Secret access key
         :rtype: str
@@ -23546,7 +23546,7 @@ class OriginRecordPrivateParameter(AbstractModel):
 
     @property
     def Value(self):
-        """Value of the private origin authentication parameter
+        r"""Value of the private origin authentication parameter
         :rtype: str
         """
         return self._Value
@@ -23570,7 +23570,7 @@ class OriginRecordPrivateParameter(AbstractModel):
 
 
 class PortraitManagedRuleDetail(AbstractModel):
-    """User profiling rule details
+    r"""User profiling rule details
 
     """
 
@@ -23600,7 +23600,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Unique rule ID
+        r"""Unique rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23612,7 +23612,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Rule description
+        r"""Rule description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23624,7 +23624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleTypeName(self):
-        """Rule type name: botdb (user profile)
+        r"""Rule type name: botdb (user profile)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23636,7 +23636,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClassificationId(self):
-        """Rule feature category ID (scanner, bot behavior, etc.)
+        r"""Rule feature category ID (scanner, bot behavior, etc.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23648,7 +23648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Current rule action status (block, alg, etc.)
+        r"""Current rule action status (block, alg, etc.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23676,7 +23676,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PostMaxSize(AbstractModel):
-    """Maximum size of the file uploaded for streaming via a POST request
+    r"""Maximum size of the file uploaded for streaming via a POST request
 
     """
 
@@ -23695,7 +23695,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Specifies whether to enable custom setting of the maximum file size. 
+        r"""Specifies whether to enable custom setting of the maximum file size. 
 `off`: Disable. In this case, the max size defaults to 32 MB.
 `on`: Enable. You can set a custom max size.
         :rtype: str
@@ -23708,7 +23708,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def MaxSize(self):
-        """Maximum size. Value range: 1-500 MB.
+        r"""Maximum size. Value range: 1-500 MB.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -23733,7 +23733,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class QueryCondition(AbstractModel):
-    """Query condition
+    r"""Query condition
 
     """
 
@@ -23752,7 +23752,7 @@ class QueryCondition(AbstractModel):
 
     @property
     def Key(self):
-        """Dimension
+        r"""Dimension
         :rtype: str
         """
         return self._Key
@@ -23763,7 +23763,7 @@ class QueryCondition(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -23774,7 +23774,7 @@ class QueryCondition(AbstractModel):
 
     @property
     def Value(self):
-        """Dimension value
+        r"""Dimension value
         :rtype: list of str
         """
         return self._Value
@@ -23799,7 +23799,7 @@ class QueryCondition(AbstractModel):
 
 
 class QueryString(AbstractModel):
-    """Request parameter contained in `CacheKey`
+    r"""Request parameter contained in `CacheKey`
 
     """
 
@@ -23822,7 +23822,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Whether to use `QueryString` as part of `CacheKey`. Valid values: `on` and `off`.
+        r"""Whether to use `QueryString` as part of `CacheKey`. Valid values: `on` and `off`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -23834,7 +23834,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Action(self):
-        """`includeCustom`: Include the specified query strings.
+        r"""`includeCustom`: Include the specified query strings.
 `excludeCustom`: Exclude the specified query strings.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
@@ -23847,7 +23847,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Value(self):
-        """Array of query strings used/excluded
+        r"""Array of query strings used/excluded
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -23873,7 +23873,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class Quic(AbstractModel):
-    """QUIC configuration item
+    r"""QUIC configuration item
 
     """
 
@@ -23886,7 +23886,7 @@ class Quic(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable QUIC
+        r"""Whether to enable QUIC
         :rtype: str
         """
         return self._Switch
@@ -23909,7 +23909,7 @@ class Quic(AbstractModel):
 
 
 class RateLimitConfig(AbstractModel):
-    """Rate limit configuration
+    r"""Rate limit configuration
 
     """
 
@@ -23933,7 +23933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
         :rtype: str
         """
         return self._Switch
@@ -23944,7 +23944,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserRules(self):
-        """Rate limit rule
+        r"""Rate limit rule
         :rtype: list of RateLimitUserRule
         """
         return self._UserRules
@@ -23955,7 +23955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Template(self):
-        """Default template
+        r"""Default template
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.RateLimitTemplate`
         """
@@ -23967,7 +23967,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Intelligence(self):
-        """Client filtering
+        r"""Client filtering
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.RateLimitIntelligence`
         """
@@ -24003,7 +24003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RateLimitIntelligence(AbstractModel):
-    """Client filtering
+    r"""Client filtering
 
     """
 
@@ -24021,7 +24021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
-        """Whether to enable this feature
+        r"""Whether to enable this feature
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24033,7 +24033,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Action. Values: `monitor` (observe), `alg` (JS/Managed challenge)
+        r"""Action. Values: `monitor` (observe), `alg` (JS/Managed challenge)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24058,7 +24058,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RateLimitTemplate(AbstractModel):
-    """Rate limit template
+    r"""Rate limit template
 
     """
 
@@ -24076,7 +24076,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """Template name
+        r"""Template name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -24088,7 +24088,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Detail(self):
-        """Template details
+        r"""Template details
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.RateLimitTemplateDetail`
         """
@@ -24115,7 +24115,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class RateLimitTemplateDetail(AbstractModel):
-    """Rate limit template configuration
+    r"""Rate limit template configuration
 
     """
 
@@ -24149,7 +24149,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """Template name
+        r"""Template name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -24161,7 +24161,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ID(self):
-        """Unique ID
+        r"""Unique ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -24173,7 +24173,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Action(self):
-        """Action
+        r"""Action
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -24185,7 +24185,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTime(self):
-        """Time it takes to perform the action
+        r"""Time it takes to perform the action
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -24197,7 +24197,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Threshold(self):
-        """Request rate threshold
+        r"""Request rate threshold
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -24209,7 +24209,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Period(self):
-        """Statistical period
+        r"""Statistical period
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -24238,7 +24238,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class RateLimitUserRule(AbstractModel):
-    """Rate limit rule
+    r"""Rate limit rule
 
     """
 
@@ -24287,7 +24287,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Threshold(self):
-        """Rate threshold
+        r"""Rate threshold
         :rtype: int
         """
         return self._Threshold
@@ -24298,7 +24298,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Period(self):
-        """Data collection time
+        r"""Data collection time
         :rtype: int
         """
         return self._Period
@@ -24309,7 +24309,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleName(self):
-        """Name of the rule
+        r"""Name of the rule
         :rtype: str
         """
         return self._RuleName
@@ -24320,7 +24320,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Action(self):
-        """Action: `monitor` (Observe), `drop` (Block)
+        r"""Action: `monitor` (Observe), `drop` (Block)
         :rtype: str
         """
         return self._Action
@@ -24331,7 +24331,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTime(self):
-        """Time it takes to perform the action
+        r"""Time it takes to perform the action
         :rtype: int
         """
         return self._PunishTime
@@ -24342,7 +24342,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PunishTimeUnit(self):
-        """Time unit: second
+        r"""Time unit: second
         :rtype: str
         """
         return self._PunishTimeUnit
@@ -24353,7 +24353,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleStatus(self):
-        """Status of the rule
+        r"""Status of the rule
         :rtype: str
         """
         return self._RuleStatus
@@ -24364,7 +24364,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Conditions(self):
-        """Rule
+        r"""Rule
         :rtype: list of ACLCondition
         """
         return self._Conditions
@@ -24375,7 +24375,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RulePriority(self):
-        """Priority of the rule
+        r"""Priority of the rule
         :rtype: int
         """
         return self._RulePriority
@@ -24386,7 +24386,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RuleID(self):
-        """ID of the rule
+        r"""ID of the rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -24398,7 +24398,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FreqFields(self):
-        """Word filter
+        r"""Word filter
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -24410,7 +24410,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -24450,7 +24450,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ReclaimZoneRequest(AbstractModel):
-    """ReclaimZone request structure.
+    r"""ReclaimZone request structure.
 
     """
 
@@ -24463,7 +24463,7 @@ class ReclaimZoneRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -24486,7 +24486,7 @@ class ReclaimZoneRequest(AbstractModel):
 
 
 class ReclaimZoneResponse(AbstractModel):
-    """ReclaimZone response structure.
+    r"""ReclaimZone response structure.
 
     """
 
@@ -24502,7 +24502,7 @@ class ReclaimZoneResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -24513,7 +24513,7 @@ class ReclaimZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24529,7 +24529,7 @@ class ReclaimZoneResponse(AbstractModel):
 
 
 class Resource(AbstractModel):
-    """Billable resource
+    r"""Billable resource
 
     """
 
@@ -24573,7 +24573,7 @@ class Resource(AbstractModel):
 
     @property
     def Id(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._Id
@@ -24584,7 +24584,7 @@ class Resource(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing mode
+        r"""Billing mode
 `0`: Pay-as-you-go
         :rtype: int
         """
@@ -24596,7 +24596,7 @@ class Resource(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -24607,7 +24607,7 @@ class Resource(AbstractModel):
 
     @property
     def EnableTime(self):
-        """Effective time
+        r"""Effective time
         :rtype: str
         """
         return self._EnableTime
@@ -24618,7 +24618,7 @@ class Resource(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """Expiration time
+        r"""Expiration time
         :rtype: str
         """
         return self._ExpireTime
@@ -24629,7 +24629,7 @@ class Resource(AbstractModel):
 
     @property
     def Status(self):
-        """Status of the plan
+        r"""Status of the plan
         :rtype: str
         """
         return self._Status
@@ -24640,7 +24640,7 @@ class Resource(AbstractModel):
 
     @property
     def Sv(self):
-        """Pricing query parameter
+        r"""Pricing query parameter
         :rtype: list of Sv
         """
         return self._Sv
@@ -24651,7 +24651,7 @@ class Resource(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Specifies whether to enable auto-renewal
+        r"""Specifies whether to enable auto-renewal
 `0`: Default
 `1`: Enable auto-renewal
 `2`: Disable auto-renewal
@@ -24665,7 +24665,7 @@ class Resource(AbstractModel):
 
     @property
     def PlanId(self):
-        """ID of the plan
+        r"""ID of the plan
         :rtype: str
         """
         return self._PlanId
@@ -24676,7 +24676,7 @@ class Resource(AbstractModel):
 
     @property
     def Area(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Area
@@ -24713,7 +24713,7 @@ class Resource(AbstractModel):
 
 
 class ScanDnsRecordsRequest(AbstractModel):
-    """ScanDnsRecords request structure.
+    r"""ScanDnsRecords request structure.
 
     """
 
@@ -24726,7 +24726,7 @@ class ScanDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._ZoneId
@@ -24749,7 +24749,7 @@ class ScanDnsRecordsRequest(AbstractModel):
 
 
 class ScanDnsRecordsResponse(AbstractModel):
-    """ScanDnsRecords response structure.
+    r"""ScanDnsRecords response structure.
 
     """
 
@@ -24770,7 +24770,7 @@ class ScanDnsRecordsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Scan status
+        r"""Scan status
 - `doing`: Scanning
 - `done`: Scanned
         :rtype: str
@@ -24783,7 +24783,7 @@ class ScanDnsRecordsResponse(AbstractModel):
 
     @property
     def RecordsAdded(self):
-        """Number of DNS records added after scanning
+        r"""Number of DNS records added after scanning
         :rtype: int
         """
         return self._RecordsAdded
@@ -24794,7 +24794,7 @@ class ScanDnsRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24811,7 +24811,7 @@ class ScanDnsRecordsResponse(AbstractModel):
 
 
 class SecEntry(AbstractModel):
-    """Returned value of security data entry
+    r"""Returned value of security data entry
 
     """
 
@@ -24829,7 +24829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Entry key
+        r"""Entry key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24841,7 +24841,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Entry value
+        r"""Entry value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SecEntryValue
         """
@@ -24871,7 +24871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SecEntryValue(AbstractModel):
-    """Corresponding value of security data entry
+    r"""Corresponding value of security data entry
 
     """
 
@@ -24901,7 +24901,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metric(self):
-        """Metric name
+        r"""Metric name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24913,7 +24913,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        """Metric data details
+        r"""Metric data details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataItem
         """
@@ -24925,7 +24925,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        """Maximum
+        r"""Maximum
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -24937,7 +24937,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Avg(self):
-        """Average
+        r"""Average
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -24949,7 +24949,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sum(self):
-        """Sum
+        r"""Sum
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -24982,7 +24982,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SecurityConfig(AbstractModel):
-    """Security configuration
+    r"""Security configuration
 
     """
 
@@ -25020,7 +25020,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WafConfig(self):
-        """WAF configuration
+        r"""WAF configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.WafConfig`
         """
@@ -25032,7 +25032,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RateLimitConfig(self):
-        """Rate limit configuration
+        r"""Rate limit configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.RateLimitConfig`
         """
@@ -25044,7 +25044,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DdosConfig(self):
-        """DDoS mitigation configuration
+        r"""DDoS mitigation configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.DDoSConfig`
         """
@@ -25056,7 +25056,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AclConfig(self):
-        """ACL configuration
+        r"""ACL configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.AclConfig`
         """
@@ -25068,7 +25068,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BotConfig(self):
-        """Bot configuration
+        r"""Bot configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.BotConfig`
         """
@@ -25080,7 +25080,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SwitchConfig(self):
-        """Switch that controls all web security configuration
+        r"""Switch that controls all web security configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.SwitchConfig`
         """
@@ -25092,7 +25092,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IpTableConfig(self):
-        """IP blocklist/allowlist
+        r"""IP blocklist/allowlist
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.IpTableConfig`
         """
@@ -25136,7 +25136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SecurityEntity(AbstractModel):
-    """Protected resource
+    r"""Protected resource
 
     """
 
@@ -25158,7 +25158,7 @@ class SecurityEntity(AbstractModel):
 
     @property
     def AppId(self):
-        """User APPID
+        r"""User APPID
         :rtype: int
         """
         return self._AppId
@@ -25169,7 +25169,7 @@ class SecurityEntity(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Top-level domain name
+        r"""Top-level domain name
         :rtype: str
         """
         return self._ZoneId
@@ -25180,7 +25180,7 @@ class SecurityEntity(AbstractModel):
 
     @property
     def Entity(self):
-        """Second-level domain name
+        r"""Second-level domain name
         :rtype: str
         """
         return self._Entity
@@ -25191,7 +25191,7 @@ class SecurityEntity(AbstractModel):
 
     @property
     def EntityType(self):
-        """Type of protected resource. Values: `domain` and `application`.
+        r"""Type of protected resource. Values: `domain` and `application`.
         :rtype: str
         """
         return self._EntityType
@@ -25217,7 +25217,7 @@ class SecurityEntity(AbstractModel):
 
 
 class ServerCertInfo(AbstractModel):
-    """HTTPS server certificate configuration
+    r"""HTTPS server certificate configuration
 
     """
 
@@ -25256,7 +25256,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertId(self):
-        """Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.
+        r"""Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25268,7 +25268,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Alias(self):
-        """Alias of the certificate
+        r"""Alias of the certificate
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25280,7 +25280,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Certificate type.
+        r"""Certificate type.
 `default`: Default certificate
 `upload`: External certificate
 `managed`: Tencent Cloud managed certificate
@@ -25295,7 +25295,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExpireTime(self):
-        """Time when the certificate expires
+        r"""Time when the certificate expires
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25307,7 +25307,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DeployTime(self):
-        """Certificate deployment time
+        r"""Certificate deployment time
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25319,7 +25319,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Certificate deployment status.
+        r"""Certificate deployment status.
 `processing`: Deploying
 `deployed`: Deployed
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -25350,7 +25350,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ShieldArea(AbstractModel):
-    """DDoS mitigation configuration
+    r"""DDoS mitigation configuration
 
     """
 
@@ -25393,7 +25393,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
-        """ID of the site (top-level domain name)
+        r"""ID of the site (top-level domain name)
         :rtype: str
         """
         return self._ZoneId
@@ -25404,7 +25404,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -25415,7 +25415,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """Type of protected resource. Values: `domain` and `application`.
+        r"""Type of protected resource. Values: `domain` and `application`.
         :rtype: str
         """
         return self._Type
@@ -25426,7 +25426,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def EntityName(self):
-        """Layer-4 proxy name
+        r"""Layer-4 proxy name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25438,7 +25438,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Application(self):
-        """Layer-7 domain name parameters
+        r"""Layer-7 domain name parameters
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of DDoSApplication
         """
@@ -25450,7 +25450,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TcpNum(self):
-        """Number of layer-4 TCP forwarding rules
+        r"""Number of layer-4 TCP forwarding rules
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -25462,7 +25462,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UdpNum(self):
-        """Number of layer-4 UDP forwarding rules
+        r"""Number of layer-4 UDP forwarding rules
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -25474,7 +25474,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Entity(self):
-        """Name of the protected resource
+        r"""Name of the protected resource
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25486,7 +25486,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Share(self):
-        """Whether the shared resource is used. Values: `true` (yes) and `false` (no). The proxy mode cannot be switched when the shared resource is used.
+        r"""Whether the shared resource is used. Values: `true` (yes) and `false` (no). The proxy mode cannot be switched when the shared resource is used.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: bool
         """
@@ -25523,7 +25523,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class SmartRouting(AbstractModel):
-    """Smart acceleration configuration
+    r"""Smart acceleration configuration
 
     """
 
@@ -25538,7 +25538,7 @@ class SmartRouting(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable smart acceleration
+        r"""Whether to enable smart acceleration
 `on`: Enable
 `off`: Disable
         :rtype: str
@@ -25563,7 +25563,7 @@ class SmartRouting(AbstractModel):
 
 
 class Sv(AbstractModel):
-    """Pricing query parameter
+    r"""Pricing query parameter
 
     """
 
@@ -25579,7 +25579,7 @@ class Sv(AbstractModel):
 
     @property
     def Key(self):
-        """Parameter key
+        r"""Parameter key
         :rtype: str
         """
         return self._Key
@@ -25590,7 +25590,7 @@ class Sv(AbstractModel):
 
     @property
     def Value(self):
-        """Parameter value
+        r"""Parameter value
         :rtype: str
         """
         return self._Value
@@ -25614,7 +25614,7 @@ class Sv(AbstractModel):
 
 
 class SwitchConfig(AbstractModel):
-    """Web security configuration switch
+    r"""Web security configuration switch
 
     """
 
@@ -25627,7 +25627,7 @@ class SwitchConfig(AbstractModel):
 
     @property
     def WebSwitch(self):
-        """Switch that controls all web security configuration: basic web protection, custom rules, and rate limiting
+        r"""Switch that controls all web security configuration: basic web protection, custom rules, and rate limiting
         :rtype: str
         """
         return self._WebSwitch
@@ -25650,7 +25650,7 @@ class SwitchConfig(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Tag configuration
+    r"""Tag configuration
 
     """
 
@@ -25668,7 +25668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -25680,7 +25680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -25705,7 +25705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Task(AbstractModel):
-    """Content management task result
+    r"""Content management task result
 
     """
 
@@ -25733,7 +25733,7 @@ class Task(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -25744,7 +25744,7 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
-        """Status of the task
+        r"""Status of the task
         :rtype: str
         """
         return self._Status
@@ -25755,7 +25755,7 @@ class Task(AbstractModel):
 
     @property
     def Target(self):
-        """Resource
+        r"""Resource
         :rtype: str
         """
         return self._Target
@@ -25766,7 +25766,7 @@ class Task(AbstractModel):
 
     @property
     def Type(self):
-        """Task type
+        r"""Task type
         :rtype: str
         """
         return self._Type
@@ -25777,7 +25777,7 @@ class Task(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Task creation time
+        r"""Task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -25788,7 +25788,7 @@ class Task(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Task completion time
+        r"""Task completion time
         :rtype: str
         """
         return self._UpdateTime
@@ -25816,7 +25816,7 @@ class Task(AbstractModel):
 
 
 class TimingDataItem(AbstractModel):
-    """Data items of the statistical curve
+    r"""Data items of the statistical curve
 
     """
 
@@ -25834,7 +25834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        """Second-level timestamp
+        r"""Second-level timestamp
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25846,7 +25846,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Value
+        r"""Value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25871,7 +25871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TimingDataRecord(AbstractModel):
-    """Time series data of L7 data analysis
+    r"""Time series data of L7 data analysis
 
     """
 
@@ -25888,7 +25888,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeKey(self):
-        """Query dimension value
+        r"""Query dimension value
         :rtype: str
         """
         return self._TypeKey
@@ -25899,7 +25899,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeValue(self):
-        """Detailed time series data
+        r"""Detailed time series data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingTypeValue
         """
@@ -25929,7 +25929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TimingTypeValue(AbstractModel):
-    """Detailed data of time series type
+    r"""Detailed data of time series type
 
     """
 
@@ -25962,7 +25962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sum(self):
-        """Sum
+        r"""Sum
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25974,7 +25974,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        """Maximum
+        r"""Maximum
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25986,7 +25986,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Avg(self):
-        """Average
+        r"""Average
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25998,7 +25998,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -26009,7 +26009,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailData(self):
-        """This field will be disused soon. Use the `Detail` field instead.
+        r"""This field will be disused soon. Use the `Detail` field instead.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -26021,7 +26021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        """Detailed data
+        r"""Detailed data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TimingDataItem
         """
@@ -26055,7 +26055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopDataRecord(AbstractModel):
-    """Top data of layer-7 data analysis
+    r"""Top data of layer-7 data analysis
 
     """
 
@@ -26072,7 +26072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeKey(self):
-        """Query dimension value
+        r"""Query dimension value
         :rtype: str
         """
         return self._TypeKey
@@ -26083,7 +26083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailData(self):
-        """Top data rankings
+        r"""Top data rankings
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TopDetailData
         """
@@ -26113,7 +26113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopDetailData(AbstractModel):
-    """The structure used to sort the top data
+    r"""The structure used to sort the top data
 
     """
 
@@ -26129,7 +26129,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Key(self):
-        """Field name
+        r"""Field name
         :rtype: str
         """
         return self._Key
@@ -26140,7 +26140,7 @@ class TopDetailData(AbstractModel):
 
     @property
     def Value(self):
-        """Field value
+        r"""Field value
         :rtype: int
         """
         return self._Value
@@ -26164,7 +26164,7 @@ class TopDetailData(AbstractModel):
 
 
 class TopNEntry(AbstractModel):
-    """TopN entry
+    r"""TopN entry
 
     """
 
@@ -26180,7 +26180,7 @@ class TopNEntry(AbstractModel):
 
     @property
     def Key(self):
-        """Entry key
+        r"""Entry key
         :rtype: str
         """
         return self._Key
@@ -26191,7 +26191,7 @@ class TopNEntry(AbstractModel):
 
     @property
     def Value(self):
-        """Top N data
+        r"""Top N data
         :rtype: list of TopNEntryValue
         """
         return self._Value
@@ -26220,7 +26220,7 @@ class TopNEntry(AbstractModel):
 
 
 class TopNEntryValue(AbstractModel):
-    """Top N data entry
+    r"""Top N data entry
 
     """
 
@@ -26236,7 +26236,7 @@ class TopNEntryValue(AbstractModel):
 
     @property
     def Name(self):
-        """Entry name
+        r"""Entry name
         :rtype: str
         """
         return self._Name
@@ -26247,7 +26247,7 @@ class TopNEntryValue(AbstractModel):
 
     @property
     def Count(self):
-        """Quantity
+        r"""Quantity
         :rtype: int
         """
         return self._Count
@@ -26271,7 +26271,7 @@ class TopNEntryValue(AbstractModel):
 
 
 class UpstreamHttp2(AbstractModel):
-    """HTTP2 origin-pull configuration
+    r"""HTTP2 origin-pull configuration
 
     """
 
@@ -26286,7 +26286,7 @@ class UpstreamHttp2(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable HTTP2 origin-pull
+        r"""Whether to enable HTTP2 origin-pull
 `on`: Enable
 `off`: Disable
         :rtype: str
@@ -26311,7 +26311,7 @@ class UpstreamHttp2(AbstractModel):
 
 
 class VanityNameServers(AbstractModel):
-    """Custom name servers
+    r"""Custom name servers
 
     """
 
@@ -26329,7 +26329,7 @@ class VanityNameServers(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable the custom name server
+        r"""Whether to enable the custom name server
 `on`: Enable
 `off`: Disable
         :rtype: str
@@ -26342,7 +26342,7 @@ class VanityNameServers(AbstractModel):
 
     @property
     def Servers(self):
-        """List of custom name servers
+        r"""List of custom name servers
         :rtype: list of str
         """
         return self._Servers
@@ -26366,7 +26366,7 @@ class VanityNameServers(AbstractModel):
 
 
 class VanityNameServersIps(AbstractModel):
-    """IP of the custom name server
+    r"""IP of the custom name server
 
     """
 
@@ -26382,7 +26382,7 @@ class VanityNameServersIps(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the custom name server
+        r"""Name of the custom name server
         :rtype: str
         """
         return self._Name
@@ -26393,7 +26393,7 @@ class VanityNameServersIps(AbstractModel):
 
     @property
     def IPv4(self):
-        """IPv4 address of the custom name server
+        r"""IPv4 address of the custom name server
         :rtype: str
         """
         return self._IPv4
@@ -26417,7 +26417,7 @@ class VanityNameServersIps(AbstractModel):
 
 
 class WafConfig(AbstractModel):
-    """WAF configuration
+    r"""WAF configuration
 
     """
 
@@ -26443,7 +26443,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Switch
+        r"""Switch
         :rtype: str
         """
         return self._Switch
@@ -26454,7 +26454,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Level(self):
-        """Protection level: `loose`, `normal`, `strict`, `stricter`, `custom`
+        r"""Protection level: `loose`, `normal`, `strict`, `stricter`, `custom`
         :rtype: str
         """
         return self._Level
@@ -26465,7 +26465,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mode(self):
-        """Mode: `block`, `observe`, `close`
+        r"""Mode: `block`, `observe`, `close`
         :rtype: str
         """
         return self._Mode
@@ -26476,7 +26476,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def WafRules(self):
-        """WAF rule allowlist/blocklist
+        r"""WAF rule allowlist/blocklist
         :rtype: :class:`tencentcloud.teo.v20220106.models.WafRule`
         """
         return self._WafRules
@@ -26487,7 +26487,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AiRule(self):
-        """AI rule engine
+        r"""AI rule engine
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.teo.v20220106.models.AiRule`
         """
@@ -26519,7 +26519,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class WafRule(AbstractModel):
-    """WAF rule
+    r"""WAF rule
 
     """
 
@@ -26539,7 +26539,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BlockRuleIDs(self):
-        """Blocklist
+        r"""Blocklist
         :rtype: list of int
         """
         return self._BlockRuleIDs
@@ -26550,7 +26550,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Switch(self):
-        """Whether the WAF rule is enabled or disabled
+        r"""Whether the WAF rule is enabled or disabled
         :rtype: str
         """
         return self._Switch
@@ -26561,7 +26561,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ObserveRuleIDs(self):
-        """Observe mode
+        r"""Observe mode
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of int
         """
@@ -26587,7 +26587,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class WebAttackEvent(AbstractModel):
-    """Web block event
+    r"""Web block event
 
     """
 
@@ -26609,7 +26609,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientIp(self):
-        """Client IP
+        r"""Client IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26621,7 +26621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackUrl(self):
-        """Attack URL
+        r"""Attack URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26633,7 +26633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackTime(self):
-        """Attack time in seconds
+        r"""Attack time in seconds
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26659,7 +26659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WebEventData(AbstractModel):
-    """Web event data
+    r"""Web event data
 
     """
 
@@ -26689,7 +26689,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data set of attack events
+        r"""Data set of attack events
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of WebAttackEvent
         """
@@ -26701,7 +26701,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26713,7 +26713,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26725,7 +26725,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26737,7 +26737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26770,7 +26770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WebLogData(AbstractModel):
-    """Web attack log data
+    r"""Web attack log data
 
     """
 
@@ -26800,7 +26800,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def List(self):
-        """Data
+        r"""Data
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of WebLogs
         """
@@ -26812,7 +26812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageNo(self):
-        """Current page
+        r"""Current page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26824,7 +26824,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of items per page
+        r"""Number of items per page
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26836,7 +26836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pages(self):
-        """Total number of pages
+        r"""Total number of pages
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26848,7 +26848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total number of items
+        r"""Total number of items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -26881,7 +26881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WebLogs(AbstractModel):
-    """Web attack log
+    r"""Web attack log
 
     """
 
@@ -26951,7 +26951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackContent(self):
-        """Attack content
+        r"""Attack content
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26963,7 +26963,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackIp(self):
-        """Attack IP
+        r"""Attack IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26975,7 +26975,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackType(self):
-        """Attack type
+        r"""Attack type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26987,7 +26987,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain name
+        r"""Domain name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26999,7 +26999,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msuuid(self):
-        """uuid
+        r"""uuid
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27011,7 +27011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestMethod(self):
-        """Request method
+        r"""Request method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27023,7 +27023,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestUri(self):
-        """Request URI
+        r"""Request URI
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27035,7 +27035,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiskLevel(self):
-        """Risk grade
+        r"""Risk grade
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27047,7 +27047,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -27059,7 +27059,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SipCountryCode(self):
-        """IP country/region
+        r"""IP country/region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27071,7 +27071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27083,7 +27083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisposalMethod(self):
-        """Processing method
+        r"""Processing method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27095,7 +27095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HttpLog(self):
-        """http_log
+        r"""http_log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27107,7 +27107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ua(self):
-        """user agent
+        r"""user agent
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27119,7 +27119,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackTime(self):
-        """Attack time. For consistency considerations, the original parameter `time` was renamed `AttackTime`.
+        r"""Attack time. For consistency considerations, the original parameter `time` was renamed `AttackTime`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -27157,7 +27157,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WebSocket(AbstractModel):
-    """WebSocket configuration.
+    r"""WebSocket configuration.
 
     """
 
@@ -27173,7 +27173,7 @@ class WebSocket(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to enable custom WebSocket timeout setting. When it’s `off`: it means to keep the default WebSocket connection timeout period, which is 15 seconds. To change the timeout period, please set it to `on`.
+        r"""Whether to enable custom WebSocket timeout setting. When it’s `off`: it means to keep the default WebSocket connection timeout period, which is 15 seconds. To change the timeout period, please set it to `on`.
         :rtype: str
         """
         return self._Switch
@@ -27184,7 +27184,7 @@ class WebSocket(AbstractModel):
 
     @property
     def Timeout(self):
-        """Sets timeout period in seconds. Maximum value: 120
+        r"""Sets timeout period in seconds. Maximum value: 120
         :rtype: int
         """
         return self._Timeout
@@ -27208,7 +27208,7 @@ class WebSocket(AbstractModel):
 
 
 class Zone(AbstractModel):
-    """Site information
+    r"""Site information
 
     """
 
@@ -27274,7 +27274,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Id(self):
-        """Site ID
+        r"""Site ID
         :rtype: str
         """
         return self._Id
@@ -27285,7 +27285,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -27296,7 +27296,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginalNameServers(self):
-        """List of name servers used by the site
+        r"""List of name servers used by the site
         :rtype: list of str
         """
         return self._OriginalNameServers
@@ -27307,7 +27307,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NameServers(self):
-        """List of name servers assigned by Tencent Cloud
+        r"""List of name servers assigned by Tencent Cloud
         :rtype: list of str
         """
         return self._NameServers
@@ -27318,7 +27318,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
-        """Site status
+        r"""Site status
 - `active`: The name server is switched.
 - `pending`: The name server is not switched.
 - `moved`: The name server is moved.
@@ -27333,7 +27333,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """How the site is connected to EdgeOne.
+        r"""How the site is connected to EdgeOne.
 - `full`: The site is connected via name server.
 - `partial`: The site is connected via CNAME.
         :rtype: str
@@ -27346,7 +27346,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Paused(self):
-        """Indicates whether the site is disabled
+        r"""Indicates whether the site is disabled
         :rtype: bool
         """
         return self._Paused
@@ -27357,7 +27357,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CnameSpeedUp(self):
-        """Specifies whether to enable CNAME acceleration
+        r"""Specifies whether to enable CNAME acceleration
 - `enabled`: Enable
 - `disabled`: Disable
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -27371,7 +27371,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnameStatus(self):
-        """Ownership verification status of the site when it is connected to EdgeOne via CNAME.
+        r"""Ownership verification status of the site when it is connected to EdgeOne via CNAME.
 - `finished`: The site is verified.
 - `pending`: Verifying the ownership of the site.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -27385,7 +27385,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Tags(self):
-        """Resource tag
+        r"""Resource tag
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of Tag
         """
@@ -27397,7 +27397,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Resources(self):
-        """Billable resource
+        r"""Billable resource
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of Resource
         """
@@ -27409,7 +27409,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedOn(self):
-        """Site creation date
+        r"""Site creation date
         :rtype: str
         """
         return self._CreatedOn
@@ -27420,7 +27420,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ModifiedOn(self):
-        """Site modification date
+        r"""Site modification date
         :rtype: str
         """
         return self._ModifiedOn
@@ -27431,7 +27431,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Area(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Area
@@ -27477,7 +27477,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ZoneFilter(AbstractModel):
-    """Site query filter
+    r"""Site query filter
 
     """
 
@@ -27500,7 +27500,7 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Name(self):
-        """Filters by the field name. Vaules:
+        r"""Filters by the field name. Vaules:
 - `name`: Site name.
 - `status`: Site status.
 - `tagKey`: Tag key.
@@ -27515,7 +27515,7 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Values(self):
-        """Filters by the field value
+        r"""Filters by the field value
         :rtype: list of str
         """
         return self._Values
@@ -27526,7 +27526,7 @@ class ZoneFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
-        """Specifies whether to enable fuzzy query. It’s only available when filter name is `name`. If it’s enabled, the length of `Values` must be 1.
+        r"""Specifies whether to enable fuzzy query. It’s only available when filter name is `name`. If it’s enabled, the length of `Values` must be 1.
         :rtype: bool
         """
         return self._Fuzzy

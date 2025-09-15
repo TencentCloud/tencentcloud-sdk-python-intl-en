@@ -27,7 +27,7 @@ class VmClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """This API is used to cancel a moderation task. It will return the `TaskId` of the task after the task is canceled successfully.<br>
+        r"""This API is used to cancel a moderation task. It will return the `TaskId` of the task after the task is canceled successfully.<br>
 
         Default API request rate limit: **20 requests/sec**.
 
@@ -52,7 +52,7 @@ class VmClient(AbstractClient):
 
 
     def CreateVideoModerationTask(self, request):
-        """This API is used to submit a video file or stream for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate VM](https://console.cloud.tencent.com/cms/video/package) and adjust the business configuration.<br>
+        r"""This API is used to submit a video file or stream for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate VM](https://console.cloud.tencent.com/cms/video/package) and adjust the business configuration.<br>
         ### Feature use instructions
 
         - Go to the "[CMS console - VM](https://console.cloud.tencent.com/cms/video/package)" to activate AMS.
@@ -112,7 +112,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This API is used to poll the details of the detection result.<br>
+        r"""This API is used to poll the details of the detection result.<br>
 
         Default API request rate limit: **200 requests/sec**.
 
@@ -137,7 +137,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>
+        r"""This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>
 
         Default API request rate limit: **20 requests/sec**.
 

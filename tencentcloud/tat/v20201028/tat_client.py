@@ -27,7 +27,7 @@ class TatClient(AbstractClient):
 
 
     def CancelInvocation(self, request):
-        """This API is used to cancel the command executed on one or more CVM instances.
+        r"""This API is used to cancel the command executed on one or more CVM instances.
 
         * If the command has not been delivered to the TAT agent, the task status is `PENDING`, `DELIVERING`, or `DELIVER_DELAYED`, and will be `CANCELLED` after the command is canceled.
         * If the command has been delivered to the TAT agent, the task status is `RUNNING`, and will be `TERMINATED` after the command is canceled.
@@ -53,7 +53,7 @@ class TatClient(AbstractClient):
 
 
     def CreateCommand(self, request):
-        """This API is used to create a command.
+        r"""This API is used to create a command.
 
         :param request: Request instance for CreateCommand.
         :type request: :class:`tencentcloud.tat.v20201028.models.CreateCommandRequest`
@@ -76,7 +76,7 @@ class TatClient(AbstractClient):
 
 
     def CreateInvoker(self, request):
-        """This API is used to create an invoker.
+        r"""This API is used to create an invoker.
 
         :param request: Request instance for CreateInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.CreateInvokerRequest`
@@ -99,7 +99,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteCommand(self, request):
-        """This API is used to delete a command.
+        r"""This API is used to delete a command.
         Commands bound to an invoker cannot be deleted.
 
         :param request: Request instance for DeleteCommand.
@@ -123,7 +123,7 @@ class TatClient(AbstractClient):
 
 
     def DeleteInvoker(self, request):
-        """This API is used to delete an invoker.
+        r"""This API is used to delete an invoker.
 
         :param request: Request instance for DeleteInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.DeleteInvokerRequest`
@@ -146,7 +146,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeAutomationAgentStatus(self, request):
-        """This API is used to query the status of the TAT agent.
+        r"""This API is used to query the status of the TAT agent.
 
         :param request: Request instance for DescribeAutomationAgentStatus.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeAutomationAgentStatusRequest`
@@ -169,7 +169,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeCommands(self, request):
-        """This API is used to query command details.
+        r"""This API is used to query command details.
 
         :param request: Request instance for DescribeCommands.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeCommandsRequest`
@@ -192,7 +192,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvocationTasks(self, request):
-        """This API is used to query execution task details.
+        r"""This API is used to query execution task details.
 
         :param request: Request instance for DescribeInvocationTasks.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvocationTasksRequest`
@@ -215,7 +215,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvocations(self, request):
-        """This API is used to query execution activity details.
+        r"""This API is used to query execution activity details.
 
         :param request: Request instance for DescribeInvocations.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvocationsRequest`
@@ -238,7 +238,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvokerRecords(self, request):
-        """This API is used to query the execution history of an invoker.
+        r"""This API is used to query the execution history of an invoker.
 
         :param request: Request instance for DescribeInvokerRecords.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvokerRecordsRequest`
@@ -261,7 +261,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeInvokers(self, request):
-        """This API is used to query invoker details.
+        r"""This API is used to query invoker details.
 
         :param request: Request instance for DescribeInvokers.
         :type request: :class:`tencentcloud.tat.v20201028.models.DescribeInvokersRequest`
@@ -284,7 +284,7 @@ class TatClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query the list of regions that supports TAT.
+        r"""This API is used to query the list of regions that supports TAT.
         If the `RegionState` is `AVAILABLE`, it means that TAT is available in the region. If no value is returned, TAT is not available in the region.
 
         :param request: Request instance for DescribeRegions.
@@ -308,7 +308,7 @@ class TatClient(AbstractClient):
 
 
     def DisableInvoker(self, request):
-        """This API is used to disable an invoker.
+        r"""This API is used to disable an invoker.
 
         :param request: Request instance for DisableInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.DisableInvokerRequest`
@@ -331,7 +331,7 @@ class TatClient(AbstractClient):
 
 
     def EnableInvoker(self, request):
-        """This API is used to enable an invoker.
+        r"""This API is used to enable an invoker.
 
         :param request: Request instance for EnableInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.EnableInvokerRequest`
@@ -354,7 +354,7 @@ class TatClient(AbstractClient):
 
 
     def InvokeCommand(self, request):
-        """This API is used to trigger a command on the specified instance and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution activity has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.
+        r"""This API is used to trigger a command on the specified instance and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution activity has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.
 
         * If the agent is not installed on the instance or is offline, an error is returned.
         * If the command type is not supported by the agent runtime environment, an error is returned.
@@ -383,7 +383,7 @@ class TatClient(AbstractClient):
 
 
     def ModifyCommand(self, request):
-        """This API is used to modify a command.
+        r"""This API is used to modify a command.
 
         :param request: Request instance for ModifyCommand.
         :type request: :class:`tencentcloud.tat.v20201028.models.ModifyCommandRequest`
@@ -406,7 +406,7 @@ class TatClient(AbstractClient):
 
 
     def ModifyInvoker(self, request):
-        """This API is used to modify an invoker.
+        r"""This API is used to modify an invoker.
 
         :param request: Request instance for ModifyInvoker.
         :type request: :class:`tencentcloud.tat.v20201028.models.ModifyInvokerRequest`
@@ -429,7 +429,7 @@ class TatClient(AbstractClient):
 
 
     def PreviewReplacedCommandContent(self, request):
-        """This API is used to preview the command with custom parameters. The command is not executed.
+        r"""This API is used to preview the command with custom parameters. The command is not executed.
 
         :param request: Request instance for PreviewReplacedCommandContent.
         :type request: :class:`tencentcloud.tat.v20201028.models.PreviewReplacedCommandContentRequest`
@@ -452,7 +452,7 @@ class TatClient(AbstractClient):
 
 
     def RunCommand(self, request):
-        """This API is used to execute a command and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.
+        r"""This API is used to execute a command and returns the execution activity ID (inv-xxxxxxxx) on success. Each execution has one or more execution tasks (invt-xxxxxxxx) and each execution task indicates an execution record on a CVM or Lighthouse instance.
 
         * If the agent is not installed on the instance or is offline, an error is returned.
         * If the command type is not supported by the agent runtime environment, an error is returned.

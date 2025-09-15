@@ -27,7 +27,7 @@ class GseClient(AbstractClient):
 
 
     def CopyFleet(self, request):
-        """This API is used to replicate server fleet.
+        r"""This API is used to replicate server fleet.
 
         :param request: Request instance for CopyFleet.
         :type request: :class:`tencentcloud.gse.v20191112.models.CopyFleetRequest`
@@ -50,7 +50,7 @@ class GseClient(AbstractClient):
 
 
     def CreateGameServerSession(self, request):
-        """This API is used to create a game server session.
+        r"""This API is used to create a game server session.
 
         :param request: Request instance for CreateGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionRequest`
@@ -73,7 +73,7 @@ class GseClient(AbstractClient):
 
 
     def DeleteTimerScalingPolicy(self, request):
-        """This API (DeleteTimerScalingPolicy) is used to delete a scheduled scaling policy of a fleet.
+        r"""This API (DeleteTimerScalingPolicy) is used to delete a scheduled scaling policy of a fleet.
 
         :param request: Request instance for DeleteTimerScalingPolicy.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteTimerScalingPolicyRequest`
@@ -96,7 +96,7 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessionDetails(self, request):
-        """This API is used to query the list of game server session details.
+        r"""This API is used to query the list of game server session details.
 
         :param request: Request instance for DescribeGameServerSessionDetails.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsRequest`
@@ -119,7 +119,7 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessionPlacement(self, request):
-        """This API is used to query the placement of a game server session.
+        r"""This API is used to query the placement of a game server session.
 
         :param request: Request instance for DescribeGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementRequest`
@@ -142,7 +142,7 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessions(self, request):
-        """This API is used to query the list of game server sessions.
+        r"""This API is used to query the list of game server sessions.
 
         :param request: Request instance for DescribeGameServerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsRequest`
@@ -165,7 +165,7 @@ class GseClient(AbstractClient):
 
 
     def DescribeInstanceTypes(self, request):
-        """This API is used to obtain the list of CVM types in the specified region.
+        r"""This API is used to obtain the list of CVM types in the specified region.
 
         :param request: Request instance for DescribeInstanceTypes.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesRequest`
@@ -188,7 +188,7 @@ class GseClient(AbstractClient):
 
 
     def DescribePlayerSessions(self, request):
-        """This API is used to get the list of player sessions.
+        r"""This API is used to get the list of player sessions.
 
         :param request: Request instance for DescribePlayerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsRequest`
@@ -211,7 +211,7 @@ class GseClient(AbstractClient):
 
 
     def DescribeTimerScalingPolicies(self, request):
-        """This API (DescribeTimerScalingPolicies) is used to query the scheduled scaling policies of a fleet. You can query the policies by `fleetID` or the fleet name. The returned results are paged.
+        r"""This API (DescribeTimerScalingPolicies) is used to query the scheduled scaling policies of a fleet. You can query the policies by `fleetID` or the fleet name. The returned results are paged.
 
         :param request: Request instance for DescribeTimerScalingPolicies.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeTimerScalingPoliciesRequest`
@@ -234,7 +234,7 @@ class GseClient(AbstractClient):
 
 
     def EndGameServerSessionAndProcess(self, request):
-        """This API is used to terminate the game server session and the corresponding process, which is applicable to time-limited protection and no protection.
+        r"""This API is used to terminate the game server session and the corresponding process, which is applicable to time-limited protection and no protection.
 
         :param request: Request instance for EndGameServerSessionAndProcess.
         :type request: :class:`tencentcloud.gse.v20191112.models.EndGameServerSessionAndProcessRequest`
@@ -257,7 +257,7 @@ class GseClient(AbstractClient):
 
 
     def GetGameServerSessionLogUrl(self, request):
-        """This API is used to get the log URL of a game server session.
+        r"""This API is used to get the log URL of a game server session.
 
         :param request: Request instance for GetGameServerSessionLogUrl.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlRequest`
@@ -280,7 +280,7 @@ class GseClient(AbstractClient):
 
 
     def GetInstanceAccess(self, request):
-        """This API is used to get the credentials required for instance login.
+        r"""This API is used to get the credentials required for instance login.
 
         :param request: Request instance for GetInstanceAccess.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessRequest`
@@ -303,7 +303,7 @@ class GseClient(AbstractClient):
 
 
     def JoinGameServerSession(self, request):
-        """This API is used to join a game server session.
+        r"""This API is used to join a game server session.
 
         :param request: Request instance for JoinGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionRequest`
@@ -326,7 +326,7 @@ class GseClient(AbstractClient):
 
 
     def JoinGameServerSessionBatch(self, request):
-        """This API is used to join game server sessions in batch.
+        r"""This API is used to join game server sessions in batch.
 
         :param request: Request instance for JoinGameServerSessionBatch.
         :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionBatchRequest`
@@ -349,7 +349,7 @@ class GseClient(AbstractClient):
 
 
     def PutTimerScalingPolicy(self, request):
-        """This API (PutTimerScalingPolicy) is used to create or update a scheduled scaling policy for a fleet.
+        r"""This API (PutTimerScalingPolicy) is used to create or update a scheduled scaling policy for a fleet.
 
         If the field `timerID` is filled in, the specified policy will be updated, and if `timerID` is left empty, a new policy will be created.
 
@@ -374,7 +374,7 @@ class GseClient(AbstractClient):
 
 
     def SearchGameServerSessions(self, request):
-        """This API is used to search in the list of game server sessions.
+        r"""This API is used to search in the list of game server sessions.
 
         :param request: Request instance for SearchGameServerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.SearchGameServerSessionsRequest`
@@ -397,7 +397,7 @@ class GseClient(AbstractClient):
 
 
     def SetServerReserved(self, request):
-        """This API (SetServerReserved) is used to mark the exceptional instances as retained for troubleshooting.
+        r"""This API (SetServerReserved) is used to mark the exceptional instances as retained for troubleshooting.
 
         `ReserveValue`: specifies whether to retain the instance. Valid values: `0` (do not retain), `1` (retain). Default value: `0`.
 
@@ -422,7 +422,7 @@ class GseClient(AbstractClient):
 
 
     def StartGameServerSessionPlacement(self, request):
-        """This API is used to start placing a game server session.
+        r"""This API is used to start placing a game server session.
 
         :param request: Request instance for StartGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementRequest`
@@ -445,7 +445,7 @@ class GseClient(AbstractClient):
 
 
     def StopGameServerSessionPlacement(self, request):
-        """This API is used to stop placing a game server session.
+        r"""This API is used to stop placing a game server session.
 
         :param request: Request instance for StopGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementRequest`
@@ -468,7 +468,7 @@ class GseClient(AbstractClient):
 
 
     def UpdateBucketAccelerateOpt(self, request):
-        """This API (UpdateBucketAccelerateOpt) is used to enable COS global acceleration.
+        r"""This API (UpdateBucketAccelerateOpt) is used to enable COS global acceleration.
 
         :param request: Request instance for UpdateBucketAccelerateOpt.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketAccelerateOptRequest`
@@ -491,7 +491,7 @@ class GseClient(AbstractClient):
 
 
     def UpdateBucketCORSOpt(self, request):
-        """This API (UpdateBucketCORSOpt) is used to configure CORS for COS.
+        r"""This API (UpdateBucketCORSOpt) is used to configure CORS for COS.
 
         :param request: Request instance for UpdateBucketCORSOpt.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketCORSOptRequest`
@@ -514,7 +514,7 @@ class GseClient(AbstractClient):
 
 
     def UpdateGameServerSession(self, request):
-        """This API is used to update a game server session.
+        r"""This API is used to update a game server session.
 
         :param request: Request instance for UpdateGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionRequest`

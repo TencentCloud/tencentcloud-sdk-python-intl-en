@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActionSummaryOverviewItem(AbstractModel):
-    """Detailed summary of costs by transaction type
+    r"""Detailed summary of costs by transaction type
 
     """
 
@@ -59,7 +59,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionType(self):
-        """Transaction type code
+        r"""Transaction type code
         :rtype: str
         """
         return self._ActionType
@@ -70,7 +70,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -81,7 +81,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """Cost ratio, to two decimal points
+        r"""Cost ratio, to two decimal points
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -92,7 +92,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -103,7 +103,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -114,7 +114,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -125,7 +125,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -136,7 +136,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -147,7 +147,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """Billing month, e.g. `2019-08`
+        r"""Billing month, e.g. `2019-08`
         :rtype: str
         """
         return self._BillMonth
@@ -158,7 +158,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -190,7 +190,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
 
 class AdjustInfoDetail(AbstractModel):
-    """This API is used to view UIN exception adjustment details.
+    r"""This API is used to view UIN exception adjustment details.
 
     """
 
@@ -233,7 +233,7 @@ Example value: 333.00000000.
 
     @property
     def PayerUin(self):
-        """Payer UIN, namely the account ID of the payer. The account ID is the user's unique account identifier on Tencent Cloud.
+        r"""Payer UIN, namely the account ID of the payer. The account ID is the user's unique account identifier on Tencent Cloud.
 Note: This field may return null, indicating that no valid values can be obtained.
 Example value: 909619400.
         :rtype: str
@@ -246,7 +246,7 @@ Example value: 909619400.
 
     @property
     def Month(self):
-        """Bill month. Format: yyyy-MM.
+        r"""Bill month. Format: yyyy-MM.
 Note: This field may return null, indicating that no valid value can be obtained.
 Example value: 2024-10.
         :rtype: str
@@ -259,7 +259,7 @@ Example value: 2024-10.
 
     @property
     def AdjustType(self):
-        """Adjustment type.
+        r"""Adjustment type.
 Adjustment: manualAdjustment.
 Supplementary settlement: supplementarySettlement.
 Re-settlement: reSettlement.
@@ -275,7 +275,7 @@ Example value: manualAdjustment.
 
     @property
     def AdjustNum(self):
-        """Adjustment order number.
+        r"""Adjustment order number.
 Note: This field may return null, indicating that no valid value can be obtained.
 Example value: 2220726096135.
         :rtype: str
@@ -288,7 +288,7 @@ Example value: 2220726096135.
 
     @property
     def AdjustCompletionTime(self):
-        """Completion time of exception adjustment. Format: yyyy-MM-dd HH:mm:ss.
+        r"""Completion time of exception adjustment. Format: yyyy-MM-dd HH:mm:ss.
 Note: This field may return null, indicating that no valid value can be obtained.
 Example value: 2022-12-02 12:39:04.
         :rtype: str
@@ -301,7 +301,7 @@ Example value: 2022-12-02 12:39:04.
 
     @property
     def AdjustAmount(self):
-        """Adjustment amount.
+        r"""Adjustment amount.
 Note: This field may return null, indicating that no valid value can be obtained.
 Example value: 333.00000000.
         :rtype: float
@@ -331,7 +331,7 @@ Example value: 333.00000000.
 
 
 class AllocationRationExpression(AbstractModel):
-    """Expression for sharing proportion.
+    r"""Expression for sharing proportion.
 
     """
 
@@ -347,7 +347,7 @@ class AllocationRationExpression(AbstractModel):
 
     @property
     def NodeId(self):
-        """Cost allocation unit ID that the sharing rule belongs to.
+        r"""Cost allocation unit ID that the sharing rule belongs to.
         :rtype: int
         """
         return self._NodeId
@@ -358,7 +358,7 @@ class AllocationRationExpression(AbstractModel):
 
     @property
     def Ratio(self):
-        """Sharing proportion occupied by allocation unit, pass 0 for allocation by proportion.
+        r"""Sharing proportion occupied by allocation unit, pass 0 for allocation by proportion.
         :rtype: float
         """
         return self._Ratio
@@ -382,7 +382,7 @@ class AllocationRationExpression(AbstractModel):
 
 
 class AllocationRuleExpression(AbstractModel):
-    """Cost allocation regular expression.
+    r"""Cost allocation regular expression.
 
     """
 
@@ -425,7 +425,7 @@ Create and bind a policy query an instance reset the access password of an insta
 
     @property
     def RuleKey(self):
-        """RuleKey: cost allocation dimension.
+        r"""RuleKey: cost allocation dimension.
 Enumeration value.
 ownerUin - user UIN.
 Operator UIN.
@@ -449,7 +449,7 @@ actionType - transaction type.
 
     @property
     def Operator(self):
-        """Specifies the dimension rules for cost allocation.
+        r"""Specifies the dimension rules for cost allocation.
 Enumeration value.
 in.
 not in.
@@ -463,7 +463,7 @@ not in.
 
     @property
     def RuleValue(self):
-        """Cost allocation dimension value. for example, when RuleKey is businessCode, ["p_cbs","p_sqlserver"] indicates the cost of products at the "p_cbs","p_sqlserver" level.
+        r"""Cost allocation dimension value. for example, when RuleKey is businessCode, ["p_cbs","p_sqlserver"] indicates the cost of products at the "p_cbs","p_sqlserver" level.
         :rtype: list of str
         """
         return self._RuleValue
@@ -474,7 +474,7 @@ not in.
 
     @property
     def Connectors(self):
-        """Logical connection for cost allocation, enumeration values are as follows:.
+        r"""Logical connection for cost allocation, enumeration values are as follows:.
 Create and bind a policy query an instance reset the access password of an instance.
 Create and bind a policy query an instance reset the access password of an instance.
         :rtype: str
@@ -487,7 +487,7 @@ Create and bind a policy query an instance reset the access password of an insta
 
     @property
     def Children(self):
-        """Nested rule.
+        r"""Nested rule.
         :rtype: list of AllocationRuleExpression
         """
         return self._Children
@@ -519,7 +519,7 @@ Create and bind a policy query an instance reset the access password of an insta
 
 
 class AllocationRuleOverview(AbstractModel):
-    """Overview of sharing rules.
+    r"""Overview of sharing rules.
 
     """
 
@@ -548,7 +548,7 @@ Enumeration value.
 
     @property
     def RuleId(self):
-        """Sharing rule ID.
+        r"""Sharing rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -559,7 +559,7 @@ Enumeration value.
 
     @property
     def RuleName(self):
-        """Sharing rule name.
+        r"""Sharing rule name.
         :rtype: str
         """
         return self._RuleName
@@ -570,7 +570,7 @@ Enumeration value.
 
     @property
     def Type(self):
-        """Public area policy type.
+        r"""Public area policy type.
 Enumeration value.
 1 - custom sharing proportion. 
 2 - proportional allocation. 
@@ -585,7 +585,7 @@ Enumeration value.
 
     @property
     def UpdateTime(self):
-        """Last update time of the sharing rules.
+        r"""Last update time of the sharing rules.
         :rtype: str
         """
         return self._UpdateTime
@@ -596,7 +596,7 @@ Enumeration value.
 
     @property
     def AllocationNode(self):
-        """Overview of cost allocation units.
+        r"""Overview of cost allocation units.
         :rtype: list of AllocationUnit
         """
         return self._AllocationNode
@@ -628,7 +628,7 @@ Enumeration value.
 
 
 class AllocationRulesSummary(AbstractModel):
-    """List of sharing rules.
+    r"""List of sharing rules.
 
     """
 
@@ -653,7 +653,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def Name(self):
-        """Add new sharing rule name.
+        r"""Add new sharing rule name.
         :rtype: str
         """
         return self._Name
@@ -664,7 +664,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def Type(self):
-        """Specifies the sharing rule policy type. the enumeration values are as follows:.
+        r"""Specifies the sharing rule policy type. the enumeration values are as follows:.
 1 - custom sharing proportion. 
 2 - proportional allocation.
 3 - allocation by proportion.
@@ -678,7 +678,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Sharing rule expression.
+        r"""Sharing rule expression.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -689,7 +689,7 @@ class AllocationRulesSummary(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """Sharing proportion expression, allocation by proportion not passed.
+        r"""Sharing proportion expression, allocation by proportion not passed.
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -722,7 +722,7 @@ class AllocationRulesSummary(AbstractModel):
 
 
 class AllocationTree(AbstractModel):
-    """Cost allocation tree.
+    r"""Cost allocation tree.
 
     """
 
@@ -744,7 +744,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Id(self):
-        """ID of a cost allocation unit.
+        r"""ID of a cost allocation unit.
         :rtype: int
         """
         return self._Id
@@ -755,7 +755,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Name(self):
-        """Cost allocation unit name.
+        r"""Cost allocation unit name.
         :rtype: str
         """
         return self._Name
@@ -766,7 +766,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """Unique identifier of a cost allocation unit
+        r"""Unique identifier of a cost allocation unit
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -777,7 +777,7 @@ class AllocationTree(AbstractModel):
 
     @property
     def Children(self):
-        """Subtree.
+        r"""Subtree.
         :rtype: list of AllocationTree
         """
         return self._Children
@@ -808,7 +808,7 @@ class AllocationTree(AbstractModel):
 
 
 class AllocationUnit(AbstractModel):
-    """Specifies the ID and name of a cost allocation unit.
+    r"""Specifies the ID and name of a cost allocation unit.
 
     """
 
@@ -824,7 +824,7 @@ class AllocationUnit(AbstractModel):
 
     @property
     def NodeId(self):
-        """Cost allocation unit ID.
+        r"""Cost allocation unit ID.
         :rtype: int
         """
         return self._NodeId
@@ -835,7 +835,7 @@ class AllocationUnit(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        """Specifies the name of a cost allocation rule.
+        r"""Specifies the name of a cost allocation rule.
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -859,7 +859,7 @@ class AllocationUnit(AbstractModel):
 
 
 class AnalyseActionTypeDetail(AbstractModel):
-    """Cost analysis transaction type complex type
+    r"""Cost analysis transaction type complex type
 
     """
 
@@ -875,7 +875,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ActionType
@@ -886,7 +886,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ActionTypeName
@@ -910,7 +910,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
 
 class AnalyseAmountDetail(AbstractModel):
-    """Cost analysis amount return data model
+    r"""Cost analysis amount return data model
 
     """
 
@@ -926,7 +926,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Key(self):
-        """Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee typeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Key
@@ -937,7 +937,7 @@ class AnalyseAmountDetail(AbstractModel):
 
     @property
     def Display(self):
-        """Whether to displayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to displayNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Display
@@ -961,7 +961,7 @@ class AnalyseAmountDetail(AbstractModel):
 
 
 class AnalyseBusinessDetail(AbstractModel):
-    """Cost analysis product return complex type
+    r"""Cost analysis product return complex type
 
     """
 
@@ -977,7 +977,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """Product codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BusinessCode
@@ -988,7 +988,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """Product nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -1012,7 +1012,7 @@ class AnalyseBusinessDetail(AbstractModel):
 
 
 class AnalyseConditionDetail(AbstractModel):
-    """Cost analysis filter box complex type
+    r"""Cost analysis filter box complex type
 
     """
 
@@ -1046,7 +1046,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Business(self):
-        """ProductNote: This field may return null, indicating that no valid values can be obtained.
+        r"""ProductNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseBusinessDetail
         """
         return self._Business
@@ -1057,7 +1057,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Project(self):
-        """ItemNote: This field may return null, indicating that no valid values can be obtained.
+        r"""ItemNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseProjectDetail
         """
         return self._Project
@@ -1068,7 +1068,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Region(self):
-        """RegionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""RegionNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseRegionDetail
         """
         return self._Region
@@ -1079,7 +1079,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing modeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing modeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysePayModeDetail
         """
         return self._PayMode
@@ -1090,7 +1090,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        """Transaction typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction typeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseActionTypeDetail
         """
         return self._ActionType
@@ -1101,7 +1101,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Zone(self):
-        """Availability zoneNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zoneNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseZoneDetail
         """
         return self._Zone
@@ -1112,7 +1112,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseOwnerUinDetail
         """
         return self._OwnerUin
@@ -1123,7 +1123,7 @@ class AnalyseConditionDetail(AbstractModel):
 
     @property
     def Amount(self):
-        """Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee typeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseAmountDetail
         """
         return self._Amount
@@ -1193,7 +1193,7 @@ class AnalyseConditionDetail(AbstractModel):
 
 
 class AnalyseConditions(AbstractModel):
-    """Cost analysis query conditions
+    r"""Cost analysis query conditions
 
     """
 
@@ -1242,7 +1242,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        """Product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Product name codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BusinessCodes
@@ -1253,7 +1253,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ProductCodes(self):
-        """Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProductCodes
@@ -1264,7 +1264,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """Component type codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Component type codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ComponentCode
@@ -1275,7 +1275,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ZoneIds
@@ -1286,7 +1286,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def RegionIds(self):
-        """Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionIds
@@ -1297,7 +1297,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProjectIds
@@ -1308,7 +1308,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def PayModes(self):
-        """Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayModes
@@ -1319,7 +1319,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ActionTypes(self):
-        """Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ActionTypes
@@ -1330,7 +1330,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def Tags(self):
-        """Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Tags
@@ -1341,7 +1341,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def FeeType(self):
-        """Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FeeType
@@ -1352,7 +1352,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def PayerUins(self):
-        """User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayerUins
@@ -1363,7 +1363,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def OwnerUins(self):
-        """User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OwnerUins
@@ -1374,7 +1374,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def ConsumptionTypes(self):
-        """Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ConsumptionTypes
@@ -1409,7 +1409,7 @@ class AnalyseConditions(AbstractModel):
 
 
 class AnalyseDetail(AbstractModel):
-    """Cost analysis data complex type
+    r"""Cost analysis data complex type
 
     """
 
@@ -1428,7 +1428,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Name
@@ -1439,7 +1439,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def Total(self):
-        """Amount
+        r"""Amount
         :rtype: str
         """
         return self._Total
@@ -1450,7 +1450,7 @@ class AnalyseDetail(AbstractModel):
 
     @property
     def TimeDetail(self):
-        """Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseTimeDetail
         """
         return self._TimeDetail
@@ -1480,7 +1480,7 @@ class AnalyseDetail(AbstractModel):
 
 
 class AnalyseHeaderDetail(AbstractModel):
-    """Cost analysis header data complex type
+    r"""Cost analysis header data complex type
 
     """
 
@@ -1499,7 +1499,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def HeadDetail(self):
-        """Header dateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Header dateNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseHeaderTimeDetail
         """
         return self._HeadDetail
@@ -1510,7 +1510,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Name(self):
-        """TimeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""TimeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -1521,7 +1521,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
     @property
     def Total(self):
-        """TotalNote: This field may return null, indicating that no valid values can be obtained.
+        r"""TotalNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Total
@@ -1551,7 +1551,7 @@ class AnalyseHeaderDetail(AbstractModel):
 
 
 class AnalyseHeaderTimeDetail(AbstractModel):
-    """Cost analysis header data
+    r"""Cost analysis header data
 
     """
 
@@ -1564,7 +1564,7 @@ class AnalyseHeaderTimeDetail(AbstractModel):
 
     @property
     def Name(self):
-        """DateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""DateNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -1587,7 +1587,7 @@ class AnalyseHeaderTimeDetail(AbstractModel):
 
 
 class AnalyseOwnerUinDetail(AbstractModel):
-    """Cost analysis user UIN complex type
+    r"""Cost analysis user UIN complex type
 
     """
 
@@ -1601,7 +1601,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """User UIN
+        r"""User UIN
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1625,7 +1625,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnalysePayModeDetail(AbstractModel):
-    """Cost analysis payment method complex type
+    r"""Cost analysis payment method complex type
 
     """
 
@@ -1641,7 +1641,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayMode
@@ -1652,7 +1652,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayModeName
@@ -1676,7 +1676,7 @@ class AnalysePayModeDetail(AbstractModel):
 
 
 class AnalyseProjectDetail(AbstractModel):
-    """Cost analysis project return complex type
+    r"""Cost analysis project return complex type
 
     """
 
@@ -1693,7 +1693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1705,7 +1705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Default projectNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Default projectNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProjectName
@@ -1729,7 +1729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnalyseRegionDetail(AbstractModel):
-    """Cost analysis region return complex type
+    r"""Cost analysis region return complex type
 
     """
 
@@ -1746,7 +1746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1758,7 +1758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionName
@@ -1782,7 +1782,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnalyseTimeDetail(AbstractModel):
-    """Cost analysis return value complex type
+    r"""Cost analysis return value complex type
 
     """
 
@@ -1798,7 +1798,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Time(self):
-        """DateNote: This field may return null, indicating that no valid values can be obtained.
+        r"""DateNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Time
@@ -1809,7 +1809,7 @@ class AnalyseTimeDetail(AbstractModel):
 
     @property
     def Money(self):
-        """AmountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""AmountNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Money
@@ -1833,7 +1833,7 @@ class AnalyseTimeDetail(AbstractModel):
 
 
 class AnalyseZoneDetail(AbstractModel):
-    """Cost analysis availability zone complex type
+    r"""Cost analysis availability zone complex type
 
     """
 
@@ -1849,7 +1849,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ZoneId
@@ -1860,7 +1860,7 @@ class AnalyseZoneDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ZoneName
@@ -1884,7 +1884,7 @@ class AnalyseZoneDetail(AbstractModel):
 
 
 class ApplicableProducts(AbstractModel):
-    """The products that are applicable.
+    r"""The products that are applicable.
 
     """
 
@@ -1900,7 +1900,7 @@ class ApplicableProducts(AbstractModel):
 
     @property
     def GoodsName(self):
-        """Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.
+        r"""Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.
         :rtype: str
         """
         return self._GoodsName
@@ -1911,7 +1911,7 @@ class ApplicableProducts(AbstractModel):
 
     @property
     def PayMode(self):
-        """Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.
+        r"""Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.
         :rtype: str
         """
         return self._PayMode
@@ -1935,7 +1935,7 @@ class ApplicableProducts(AbstractModel):
 
 
 class BillDetail(AbstractModel):
-    """Bill details
+    r"""Bill details
 
     """
 
@@ -2061,7 +2061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -2072,7 +2072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.
+        r"""Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.
         :rtype: str
         """
         return self._ProductCodeName
@@ -2083,7 +2083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        """Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -2094,7 +2094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        r"""Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :rtype: str
         """
         return self._ProjectName
@@ -2105,7 +2105,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region: The region to which a resource belongs, such as South China (Guangzhou).
+        r"""Region: The region to which a resource belongs, such as South China (Guangzhou).
         :rtype: str
         """
         return self._RegionName
@@ -2116,7 +2116,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3
+        r"""Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3
         :rtype: str
         """
         return self._ZoneName
@@ -2127,7 +2127,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
+        r"""Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
         :rtype: str
         """
         return self._ResourceId
@@ -2138,7 +2138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
-        """Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        r"""Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :rtype: str
         """
         return self._ResourceName
@@ -2149,7 +2149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTypeName(self):
-        """Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -2160,7 +2160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order ID: The order number for a monthly subscription purchase
+        r"""Order ID: The order number for a monthly subscription purchase
         :rtype: str
         """
         return self._OrderId
@@ -2171,7 +2171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillId(self):
-        """Transaction ID: The bill number for a deducted payment
+        r"""Transaction ID: The bill number for a deducted payment
         :rtype: str
         """
         return self._BillId
@@ -2182,7 +2182,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayTime(self):
-        """Transaction time: The time at which a payment was deducted
+        r"""Transaction time: The time at which a payment was deducted
         :rtype: str
         """
         return self._PayTime
@@ -2193,7 +2193,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeBeginTime(self):
-        """Usage start time: The time at which product or service usage starts
+        r"""Usage start time: The time at which product or service usage starts
         :rtype: str
         """
         return self._FeeBeginTime
@@ -2204,7 +2204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeEndTime(self):
-        """Usage end time: The time at which product or service usage ends
+        r"""Usage end time: The time at which product or service usage ends
         :rtype: str
         """
         return self._FeeEndTime
@@ -2215,7 +2215,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentSet(self):
-        """Component list
+        r"""Component list
         :rtype: list of BillDetailComponent
         """
         return self._ComponentSet
@@ -2226,7 +2226,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayerUin(self):
-        """Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
+        r"""Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
         :rtype: str
         """
         return self._PayerUin
@@ -2237,7 +2237,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """Owner account ID: The account ID of the actual resource user
+        r"""Owner account ID: The account ID of the actual resource user
         :rtype: str
         """
         return self._OwnerUin
@@ -2248,7 +2248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        """Operator account ID: The account or role ID of the operator who purchases or activates a resource
+        r"""Operator account ID: The account or role ID of the operator who purchases or activates a resource
         :rtype: str
         """
         return self._OperateUin
@@ -2259,7 +2259,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -2270,7 +2270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BusinessCode
@@ -2281,7 +2281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        """Subproduct code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProductCode
@@ -2292,7 +2292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        """Transaction type code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction type code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ActionType
@@ -2303,7 +2303,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region ID. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionId
@@ -2314,7 +2314,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -2325,7 +2325,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceInfo(self):
-        """Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
+        r"""Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2337,7 +2337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedOrder(self):
-        """Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
+        r"""Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
@@ -2349,7 +2349,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        """Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
+        r"""Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2361,7 +2361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormulaUrl(self):
-        """Billing rules: Official website links for detailed billing rules of each product.
+        r"""Billing rules: Official website links for detailed billing rules of each product.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2373,7 +2373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillDay(self):
-        """Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing dayNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillDay
@@ -2384,7 +2384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        """Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillMonth
@@ -2395,7 +2395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Billing record IDNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing record IDNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Id
@@ -2406,7 +2406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionType(self):
-        """Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionType
@@ -2417,7 +2417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionTypeName(self):
-        """Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionTypeName
@@ -2428,7 +2428,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveDetail(self):
-        """Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ReserveDetail
@@ -2439,7 +2439,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountObject(self):
-        """the discount object for the current consumption item, such as official website discount, user discount, and event discount.
+        r"""the discount object for the current consumption item, such as official website discount, user discount, and event discount.
         :rtype: str
         """
         return self._DiscountObject
@@ -2450,7 +2450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountType(self):
-        """the discount type for the current consumption item, such as discount and contract price.
+        r"""the discount type for the current consumption item, such as discount and contract price.
 
         :rtype: str
         """
@@ -2462,7 +2462,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountContent(self):
-        """supplementary description of the discount type, such as 0.2.
+        r"""supplementary description of the discount type, such as 0.2.
         :rtype: str
         """
         return self._DiscountContent
@@ -2533,7 +2533,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BillDetailAssociatedOrder(AbstractModel):
-    """Information of the document associated with bill details
+    r"""Information of the document associated with bill details
 
     """
 
@@ -2567,7 +2567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayPurchase(self):
-        """Purchase order.
+        r"""Purchase order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2579,7 +2579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayRenew(self):
-        """Renewal order.
+        r"""Renewal order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2591,7 +2591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrepayModifyUp(self):
-        """Upgrade order.
+        r"""Upgrade order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2603,7 +2603,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReverseOrder(self):
-        """Write-off order.
+        r"""Write-off order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2615,7 +2615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewOrder(self):
-        """The order after discount.
+        r"""The order after discount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2627,7 +2627,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Original(self):
-        """The original order before discount.
+        r"""The original order before discount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2656,7 +2656,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BillDetailComponent(AbstractModel):
-    """Information about components charged in the bill
+    r"""Information about components charged in the bill
 
     """
 
@@ -2768,7 +2768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentCodeName(self):
-        """Component type: The component type of a product or service purchased, such as CVM instance components including CPU and memory.
+        r"""Component type: The component type of a product or service purchased, such as CVM instance components including CPU and memory.
         :rtype: str
         """
         return self._ComponentCodeName
@@ -2779,7 +2779,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ItemCodeName(self):
-        """Component name: The specific component of a product or service purchased
+        r"""Component name: The specific component of a product or service purchased
         :rtype: str
         """
         return self._ItemCodeName
@@ -2790,7 +2790,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SinglePrice(self):
-        """Component list price: The listed unit price of a component. If a customer has applied for a fixed preferential price or contract price, this parameter will not be displayed by default.
+        r"""Component list price: The listed unit price of a component. If a customer has applied for a fixed preferential price or contract price, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._SinglePrice
@@ -2803,7 +2803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SpecifiedPrice(self):
         warnings.warn("parameter `SpecifiedPrice` is deprecated", DeprecationWarning) 
 
-        """Specified price of a component. This parameter has been deprecated.
+        r"""Specified price of a component. This parameter has been deprecated.
         :rtype: str
         """
         return self._SpecifiedPrice
@@ -2816,7 +2816,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceUnit(self):
-        """Component price measurement unit: The unit of measurement for a component price, which is composed of USD, usage unit, and duration unit.
+        r"""Component price measurement unit: The unit of measurement for a component price, which is composed of USD, usage unit, and duration unit.
         :rtype: str
         """
         return self._PriceUnit
@@ -2827,7 +2827,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsedAmount(self):
-        """Component usage: The actually settled usage of a component, which is "Raw usage - Deducted usage (including packages)".
+        r"""Component usage: The actually settled usage of a component, which is "Raw usage - Deducted usage (including packages)".
         :rtype: str
         """
         return self._UsedAmount
@@ -2838,7 +2838,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsedAmountUnit(self):
-        """Component usage unit: The unit of measurement for component usage
+        r"""Component usage unit: The unit of measurement for component usage
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -2849,7 +2849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalMeasure(self):
-        """Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RealTotalMeasure
@@ -2860,7 +2860,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeductedMeasure(self):
-        """Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DeductedMeasure
@@ -2871,7 +2871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
-        """Usage duration: The resource usage duration
+        r"""Usage duration: The resource usage duration
         :rtype: str
         """
         return self._TimeSpan
@@ -2882,7 +2882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnitName(self):
-        """Duration unit: The unit of measurement for usage duration
+        r"""Duration unit: The unit of measurement for usage duration
         :rtype: str
         """
         return self._TimeUnitName
@@ -2893,7 +2893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cost(self):
-        """Original cost: The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
+        r"""Original cost: The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._Cost
@@ -2904,7 +2904,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
-        """Discount multiplier: The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
+        r"""Discount multiplier: The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._Discount
@@ -2915,7 +2915,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReduceType(self):
-        """Offer type
+        r"""Offer type
         :rtype: str
         """
         return self._ReduceType
@@ -2926,7 +2926,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealCost(self):
-        """Total amount after discount: Total amount after discount = (Original cost - RI deduction (cost) - SP deduction (cost)) x Discount multiplier
+        r"""Total amount after discount: Total amount after discount = (Original cost - RI deduction (cost) - SP deduction (cost)) x Discount multiplier
         :rtype: str
         """
         return self._RealCost
@@ -2937,7 +2937,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -2948,7 +2948,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user's cash account
+        r"""Cash credit: The amount paid from the user's cash account
 
         :rtype: str
         """
@@ -2960,7 +2960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user's free credit
+        r"""Free credit: The amount paid with the user's free credit
 
         :rtype: str
         """
@@ -2972,7 +2972,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -2983,7 +2983,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ItemCode(self):
-        """Component type code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component type code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ItemCode
@@ -2994,7 +2994,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentCode(self):
-        """Component name code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component name code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ComponentCode
@@ -3005,7 +3005,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContractPrice(self):
-        """Component contracted price: The contracted unit price of a component, which is "List price x Discount". Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Component contracted price: The contracted unit price of a component, which is "List price x Discount". Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ContractPrice
@@ -3016,7 +3016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceType
@@ -3027,7 +3027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiTimeSpan(self):
-        """RI deduction (duration): The usage duration deducted by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""RI deduction (duration): The usage duration deducted by RI. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RiTimeSpan
@@ -3038,7 +3038,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithRI(self):
-        """RI deduction (cost): The amount deducted from the original cost by RI. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""RI deduction (cost): The amount deducted from the original cost by RI. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -3049,7 +3049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SPDeductionRate(self):
-        """Savings plan deduction rate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Savings plan deduction rate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SPDeductionRate
@@ -3062,7 +3062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """Cost deduction by SP. This parameter has been deprecated. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cost deduction by SP. This parameter has been deprecated. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SPDeduction
@@ -3075,7 +3075,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithSP(self):
-        """SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -3086,7 +3086,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlendedDiscount(self):
-        """Blended discount multiplier: The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Blended discount multiplier: The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BlendedDiscount
@@ -3097,7 +3097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentConfig(self):
-        """Configuration description: The specification configuration of an instance.
+        r"""Configuration description: The specification configuration of an instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillDetailComponentConfig
         """
@@ -3109,7 +3109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaxRate(self):
-        """The tax rate.
+        r"""The tax rate.
         :rtype: str
         """
         return self._TaxRate
@@ -3120,7 +3120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaxAmount(self):
-        """The tax amount.
+        r"""The tax amount.
         :rtype: str
         """
         return self._TaxAmount
@@ -3131,7 +3131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
-        """The currency used for the settlement of a component.
+        r"""The currency used for the settlement of a component.
         :rtype: str
         """
         return self._Currency
@@ -3191,7 +3191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BillDetailComponentConfig(AbstractModel):
-    """Bill details configuration descriptions
+    r"""Bill details configuration descriptions
 
     """
 
@@ -3209,7 +3209,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Configuration description name
+        r"""Configuration description name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3221,7 +3221,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Configuration description value
+        r"""Configuration description value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3246,7 +3246,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BillDistributionResourceSummary(AbstractModel):
-    """Summary objects for a reseller bill
+    r"""Summary objects for a reseller bill
 
     """
 
@@ -3372,7 +3372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3383,7 +3383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
+        r"""Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
         :rtype: str
         """
         return self._ProductCodeName
@@ -3394,7 +3394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        """Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -3405,7 +3405,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        r"""Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :rtype: str
         """
         return self._ProjectName
@@ -3416,7 +3416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region: The region of a resource, e.g. South China (Guangzhou).
+        r"""Region: The region of a resource, e.g. South China (Guangzhou).
         :rtype: str
         """
         return self._RegionName
@@ -3427,7 +3427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Availability zone: The availability zone of a resource, e.g. Guangzhou Zone 3.
+        r"""Availability zone: The availability zone of a resource, e.g. Guangzhou Zone 3.
         :rtype: str
         """
         return self._ZoneName
@@ -3438,7 +3438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
+        r"""Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
         :rtype: str
         """
         return self._ResourceId
@@ -3449,7 +3449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
-        """Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        r"""Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :rtype: str
         """
         return self._ResourceName
@@ -3460,7 +3460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTypeName(self):
-        """Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
         :rtype: str
         """
         return self._ActionTypeName
@@ -3471,7 +3471,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order ID: The ID of a monthly subscription order.
+        r"""Order ID: The ID of a monthly subscription order.
         :rtype: str
         """
         return self._OrderId
@@ -3482,7 +3482,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayTime(self):
-        """Deduction time: The settlement cost deduction time.
+        r"""Deduction time: The settlement cost deduction time.
         :rtype: str
         """
         return self._PayTime
@@ -3493,7 +3493,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeBeginTime(self):
-        """Usage start time: The time at which product or service usage starts.
+        r"""Usage start time: The time at which product or service usage starts.
         :rtype: str
         """
         return self._FeeBeginTime
@@ -3504,7 +3504,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeEndTime(self):
-        """Usage end time: The time at which product or service usage ends.
+        r"""Usage end time: The time at which product or service usage ends.
         :rtype: str
         """
         return self._FeeEndTime
@@ -3515,7 +3515,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConfigDesc(self):
-        """Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.
+        r"""Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.
         :rtype: str
         """
         return self._ConfigDesc
@@ -3526,7 +3526,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendField1(self):
-        """Extended Field 1: The extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended Field 1: The extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField1
@@ -3537,7 +3537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendField2(self):
-        """Extended field 2: The extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 2: The extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField2
@@ -3548,7 +3548,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        """Original cost. The original cost of a component = Component price x Usage x Usage duration. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
+        r"""Original cost. The original cost of a component = Component price x Usage x Usage duration. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._TotalCost
@@ -3559,7 +3559,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
-        """Discount multiplier: The discount multiplier that applies to the component. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
+        r"""Discount multiplier: The discount multiplier that applies to the component. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._Discount
@@ -3570,7 +3570,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReduceType(self):
-        """Offer type.
+        r"""Offer type.
         :rtype: str
         """
         return self._ReduceType
@@ -3581,7 +3581,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount.
+        r"""Total amount after discount.
         :rtype: str
         """
         return self._RealTotalCost
@@ -3592,7 +3592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount.
+        r"""Voucher payment: The voucher deduction amount.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -3603,7 +3603,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash credit payment: The amount paid through the user's cash account.
+        r"""Cash credit payment: The amount paid through the user's cash account.
         :rtype: str
         """
         return self._CashPayAmount
@@ -3614,7 +3614,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Free credit payment: The amount paid with the user's free credit.
+        r"""Free credit payment: The amount paid with the user's free credit.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -3625,7 +3625,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Commission credit payment: The amount paid with the user's commission credit.
+        r"""Commission credit payment: The amount paid with the user's commission credit.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3637,7 +3637,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendField3(self):
-        """Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField3
@@ -3648,7 +3648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendField4(self):
-        """Extended field 4: The extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 4: The extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField4
@@ -3659,7 +3659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendField5(self):
-        """Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField5
@@ -3670,7 +3670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information.
+        r"""Tag information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
@@ -3682,7 +3682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """Owner account ID: The account ID of the actual resource user.
+        r"""Owner account ID: The account ID of the actual resource user.
         :rtype: str
         """
         return self._OwnerUin
@@ -3693,7 +3693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        """Operator account ID: The account or role ID of the operator who purchases or activates a resource.
+        r"""Operator account ID: The account or role ID of the operator who purchases or activates a resource.
         :rtype: str
         """
         return self._OperateUin
@@ -3704,7 +3704,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product code.
+        r"""Product code.
         :rtype: str
         """
         return self._BusinessCode
@@ -3715,7 +3715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        """Subproduct code.
+        r"""Subproduct code.
         :rtype: str
         """
         return self._ProductCode
@@ -3726,7 +3726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID.
+        r"""Region ID.
         :rtype: int
         """
         return self._RegionId
@@ -3737,7 +3737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
+        r"""Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
         :rtype: str
         """
         return self._InstanceType
@@ -3748,7 +3748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithRI(self):
-        """RI deduction (cost): The amount deducted from the original cost by RI.	
+        r"""RI deduction (cost): The amount deducted from the original cost by RI.	
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -3761,7 +3761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """Savings plan deduction (disused).
+        r"""Savings plan deduction (disused).
         :rtype: str
         """
         return self._SPDeduction
@@ -3774,7 +3774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCostWithSP(self):
-        """SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate	
+        r"""SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -3785,7 +3785,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        """Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillMonth
@@ -3850,7 +3850,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BillResourceSummary(AbstractModel):
-    """Information about resources charged in the bill
+    r"""Information about resources charged in the bill
 
     """
 
@@ -3979,7 +3979,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -3990,7 +3990,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.
+        r"""Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.
         :rtype: str
         """
         return self._ProductCodeName
@@ -4001,7 +4001,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        """Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -4012,7 +4012,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProjectName(self):
-        """Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        r"""Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :rtype: str
         """
         return self._ProjectName
@@ -4023,7 +4023,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region: The region to which a resource belongs, such as South China (Guangzhou).
+        r"""Region: The region to which a resource belongs, such as South China (Guangzhou).
         :rtype: str
         """
         return self._RegionName
@@ -4034,7 +4034,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ZoneName(self):
-        """Availability zone: The availability zone to which a resource belongs, such as Guangzhou Zone 3.
+        r"""Availability zone: The availability zone to which a resource belongs, such as Guangzhou Zone 3.
         :rtype: str
         """
         return self._ZoneName
@@ -4045,7 +4045,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
+        r"""Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
         :rtype: str
         """
         return self._ResourceId
@@ -4056,7 +4056,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ResourceName(self):
-        """Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        r"""Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :rtype: str
         """
         return self._ResourceName
@@ -4067,7 +4067,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -4078,7 +4078,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OrderId(self):
-        """Order ID: The order number for a monthly subscription purchase
+        r"""Order ID: The order number for a monthly subscription purchase
         :rtype: str
         """
         return self._OrderId
@@ -4089,7 +4089,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayTime(self):
-        """Transaction time: The time at which a payment was deducted
+        r"""Transaction time: The time at which a payment was deducted
         :rtype: str
         """
         return self._PayTime
@@ -4100,7 +4100,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """Usage start time: The time at which product or service usage starts
+        r"""Usage start time: The time at which product or service usage starts
         :rtype: str
         """
         return self._FeeBeginTime
@@ -4111,7 +4111,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """Usage end time: The time at which product or service usage ends
+        r"""Usage end time: The time at which product or service usage ends
         :rtype: str
         """
         return self._FeeEndTime
@@ -4122,7 +4122,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ConfigDesc(self):
-        """Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.
+        r"""Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.
         :rtype: str
         """
         return self._ConfigDesc
@@ -4133,7 +4133,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField1(self):
-        """Extended field 1: Extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 1: Extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField1
@@ -4144,7 +4144,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField2(self):
-        """Extended field 2: Extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 2: Extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField2
@@ -4155,7 +4155,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TotalCost(self):
-        """Original cost: The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or applied for a refund, this parameter will not be displayed by default.
+        r"""Original cost: The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or applied for a refund, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._TotalCost
@@ -4166,7 +4166,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def Discount(self):
-        """Discount multiplier: The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or applied for a refund, this parameter will not be displayed by default.
+        r"""Discount multiplier: The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or applied for a refund, this parameter will not be displayed by default.
         :rtype: str
         """
         return self._Discount
@@ -4177,7 +4177,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ReduceType(self):
-        """Offer type
+        r"""Offer type
         :rtype: str
         """
         return self._ReduceType
@@ -4188,7 +4188,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount
+        r"""Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount
         :rtype: str
         """
         return self._RealTotalCost
@@ -4199,7 +4199,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -4210,7 +4210,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user's cash account
+        r"""Cash credit: The amount paid from the user's cash account
 
         :rtype: str
         """
@@ -4222,7 +4222,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user's free credit
+        r"""Free credit: The amount paid with the user's free credit
 
         :rtype: str
         """
@@ -4234,7 +4234,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4245,7 +4245,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField3(self):
-        """Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField3
@@ -4256,7 +4256,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField4(self):
-        """Extended field 4: Extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 4: Extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField4
@@ -4267,7 +4267,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ExtendField5(self):
-        """Extended field 5: Extended attribute information of a product, which is displayed on the resource bill only.
+        r"""Extended field 5: Extended attribute information of a product, which is displayed on the resource bill only.
         :rtype: str
         """
         return self._ExtendField5
@@ -4278,7 +4278,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -4289,7 +4289,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
+        r"""Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
         :rtype: str
         """
         return self._PayerUin
@@ -4300,7 +4300,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """Owner account ID: The account ID of the actual resource user
+        r"""Owner account ID: The account ID of the actual resource user
         :rtype: str
         """
         return self._OwnerUin
@@ -4311,7 +4311,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OperateUin(self):
-        """Operator account ID: The account or role ID of the operator who purchases or activates a resource.
+        r"""Operator account ID: The account or role ID of the operator who purchases or activates a resource.
         :rtype: str
         """
         return self._OperateUin
@@ -4322,7 +4322,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """Product code
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -4333,7 +4333,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Subproduct code
+        r"""Subproduct code
         :rtype: str
         """
         return self._ProductCode
@@ -4344,7 +4344,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -4355,7 +4355,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
+        r"""Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
         :rtype: str
         """
         return self._InstanceType
@@ -4366,7 +4366,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithRI(self):
-        """RI deduction (cost): The amount deducted from the original cost by RI	
+        r"""RI deduction (cost): The amount deducted from the original cost by RI	
         :rtype: str
         """
         return self._OriginalCostWithRI
@@ -4379,7 +4379,7 @@ class BillResourceSummary(AbstractModel):
     def SPDeduction(self):
         warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
 
-        """Cost deduction by SP. This parameter has been deprecated.
+        r"""Cost deduction by SP. This parameter has been deprecated.
         :rtype: str
         """
         return self._SPDeduction
@@ -4392,7 +4392,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OriginalCostWithSP(self):
-        """SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate	
+        r"""SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :rtype: str
         """
         return self._OriginalCostWithSP
@@ -4403,7 +4403,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def BillMonth(self):
-        """Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillMonth
@@ -4469,7 +4469,7 @@ class BillResourceSummary(AbstractModel):
 
 
 class BillTagInfo(AbstractModel):
-    """Bill tag information.
+    r"""Bill tag information.
 
     """
 
@@ -4485,7 +4485,7 @@ class BillTagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """Cost allocation tag key
+        r"""Cost allocation tag key
         :rtype: str
         """
         return self._TagKey
@@ -4496,7 +4496,7 @@ class BillTagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -4520,7 +4520,7 @@ class BillTagInfo(AbstractModel):
 
 
 class BusinessSummaryInfo(AbstractModel):
-    """Detailed summary of products
+    r"""Detailed summary of products
 
     """
 
@@ -4555,7 +4555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product code
+        r"""Product code
         :rtype: str
         """
         return self._BusinessCode
@@ -4566,7 +4566,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -4577,7 +4577,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        """Original cost in USD. This parameter became valid when Bill 3.0 took effect in May 2021. Before that, `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. 
+        r"""Original cost in USD. This parameter became valid when Bill 3.0 took effect in May 2021. Before that, `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4589,7 +4589,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -4600,7 +4600,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -4611,7 +4611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -4622,7 +4622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -4633,7 +4633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4663,7 +4663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BusinessSummaryOverviewItem(AbstractModel):
-    """Summarize product details by product
+    r"""Summarize product details by product
 
     """
 
@@ -4703,7 +4703,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """Product code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Product code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BusinessCode
@@ -4714,7 +4714,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -4725,7 +4725,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """Cost ratio, to two decimal points
+        r"""Cost ratio, to two decimal points
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -4736,7 +4736,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -4747,7 +4747,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -4758,7 +4758,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -4769,7 +4769,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -4780,7 +4780,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user’s commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4791,7 +4791,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """Billing month, e.g. `2019-08`
+        r"""Billing month, e.g. `2019-08`
         :rtype: str
         """
         return self._BillMonth
@@ -4802,7 +4802,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -4834,7 +4834,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
 
 class BusinessSummaryTotal(AbstractModel):
-    """Summarize total cost by product
+    r"""Summarize total cost by product
 
     """
 
@@ -4863,7 +4863,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
 
         :rtype: str
         """
@@ -4875,7 +4875,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -4886,7 +4886,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -4897,7 +4897,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -4908,7 +4908,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user’s commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -4919,7 +4919,7 @@ class BusinessSummaryTotal(AbstractModel):
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -4947,7 +4947,7 @@ class BusinessSummaryTotal(AbstractModel):
 
 
 class ConditionBusiness(AbstractModel):
-    """Product filter criteria
+    r"""Product filter criteria
 
     """
 
@@ -4963,7 +4963,7 @@ class ConditionBusiness(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """Product name code
+        r"""Product name code
         :rtype: str
         """
         return self._BusinessCode
@@ -4974,7 +4974,7 @@ class ConditionBusiness(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """Product name
+        r"""Product name
         :rtype: str
         """
         return self._BusinessCodeName
@@ -4998,7 +4998,7 @@ class ConditionBusiness(AbstractModel):
 
 
 class ConditionPayMode(AbstractModel):
-    """Payment mode filter criteria
+    r"""Payment mode filter criteria
 
     """
 
@@ -5014,7 +5014,7 @@ class ConditionPayMode(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment mode
+        r"""Payment mode
         :rtype: str
         """
         return self._PayMode
@@ -5025,7 +5025,7 @@ class ConditionPayMode(AbstractModel):
 
     @property
     def PayModeName(self):
-        """Payment mode name
+        r"""Payment mode name
         :rtype: str
         """
         return self._PayModeName
@@ -5049,7 +5049,7 @@ class ConditionPayMode(AbstractModel):
 
 
 class ConditionProject(AbstractModel):
-    """Project filter criteria
+    r"""Project filter criteria
 
     """
 
@@ -5065,7 +5065,7 @@ class ConditionProject(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -5076,7 +5076,7 @@ class ConditionProject(AbstractModel):
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -5100,7 +5100,7 @@ class ConditionProject(AbstractModel):
 
 
 class ConditionRegion(AbstractModel):
-    """Regional filter criteria
+    r"""Regional filter criteria
 
     """
 
@@ -5116,7 +5116,7 @@ class ConditionRegion(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -5127,7 +5127,7 @@ class ConditionRegion(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._RegionName
@@ -5151,7 +5151,7 @@ class ConditionRegion(AbstractModel):
 
 
 class Conditions(AbstractModel):
-    """Billing filter criteria object
+    r"""Billing filter criteria object
 
     """
 
@@ -5218,7 +5218,7 @@ class Conditions(AbstractModel):
 
     @property
     def TimeRange(self):
-        """Only supports two values: 6 and 12.
+        r"""Only supports two values: 6 and 12.
         :rtype: int
         """
         return self._TimeRange
@@ -5229,7 +5229,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCode(self):
-        """Product name code
+        r"""Product name code
         :rtype: str
         """
         return self._BusinessCode
@@ -5240,7 +5240,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -5251,7 +5251,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -5262,7 +5262,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment mode. Options include prePay and postPay.
+        r"""Payment mode. Options include prePay and postPay.
         :rtype: str
         """
         return self._PayMode
@@ -5273,7 +5273,7 @@ class Conditions(AbstractModel):
 
     @property
     def ResourceKeyword(self):
-        """Resource keyword
+        r"""Resource keyword
         :rtype: str
         """
         return self._ResourceKeyword
@@ -5284,7 +5284,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        """Product name code
+        r"""Product name code
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -5295,7 +5295,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProductCodes(self):
-        """Subproduct name code
+        r"""Subproduct name code
         :rtype: list of str
         """
         return self._ProductCodes
@@ -5306,7 +5306,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionIds(self):
-        """Region ID
+        r"""Region ID
         :rtype: list of int
         """
         return self._RegionIds
@@ -5317,7 +5317,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """Project ID
+        r"""Project ID
         :rtype: list of int
         """
         return self._ProjectIds
@@ -5328,7 +5328,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayModes(self):
-        """Payment mode. Options include prePay and postPay.
+        r"""Payment mode. Options include prePay and postPay.
         :rtype: list of str
         """
         return self._PayModes
@@ -5339,7 +5339,7 @@ class Conditions(AbstractModel):
 
     @property
     def ActionTypes(self):
-        """Transaction type
+        r"""Transaction type
         :rtype: list of str
         """
         return self._ActionTypes
@@ -5350,7 +5350,7 @@ class Conditions(AbstractModel):
 
     @property
     def HideFreeCost(self):
-        """Whether to hide zero-amount transactions
+        r"""Whether to hide zero-amount transactions
         :rtype: int
         """
         return self._HideFreeCost
@@ -5361,7 +5361,7 @@ class Conditions(AbstractModel):
 
     @property
     def OrderByCost(self):
-        """Sorting rule. Options include desc and asc.
+        r"""Sorting rule. Options include desc and asc.
         :rtype: str
         """
         return self._OrderByCost
@@ -5372,7 +5372,7 @@ class Conditions(AbstractModel):
 
     @property
     def BillIds(self):
-        """Transaction ID
+        r"""Transaction ID
         :rtype: list of str
         """
         return self._BillIds
@@ -5383,7 +5383,7 @@ class Conditions(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        """Component code
+        r"""Component code
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -5394,7 +5394,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileIds(self):
-        """File ID
+        r"""File ID
         :rtype: list of str
         """
         return self._FileIds
@@ -5405,7 +5405,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileTypes(self):
-        """File type
+        r"""File type
         :rtype: list of str
         """
         return self._FileTypes
@@ -5416,7 +5416,7 @@ class Conditions(AbstractModel):
 
     @property
     def Status(self):
-        """Status
+        r"""Status
         :rtype: list of int non-negative
         """
         return self._Status
@@ -5457,7 +5457,7 @@ class Conditions(AbstractModel):
 
 
 class ConsumptionBusinessSummaryDataItem(AbstractModel):
-    """Consumption details summarized by product
+    r"""Consumption details summarized by product
 
     """
 
@@ -5497,7 +5497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product name code
+        r"""Product name code
         :rtype: str
         """
         return self._BusinessCode
@@ -5508,7 +5508,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name
+        r"""Product name
         :rtype: str
         """
         return self._BusinessCodeName
@@ -5519,7 +5519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Discounted total price
+        r"""Discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -5530,7 +5530,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trend(self):
-        """Cost trend
+        r"""Cost trend
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -5541,7 +5541,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash
+        r"""Cash
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5553,7 +5553,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Bonus
+        r"""Bonus
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5565,7 +5565,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5576,7 +5576,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5587,7 +5587,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region name (only shown in regional summary)
+        r"""Region name (only shown in regional summary)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5621,7 +5621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConsumptionProjectSummaryDataItem(AbstractModel):
-    """Consumption details summarized by project
+    r"""Consumption details summarized by project
 
     """
 
@@ -5660,7 +5660,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -5671,7 +5671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -5682,7 +5682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Discounted total price
+        r"""Discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -5693,7 +5693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trend(self):
-        """Trend
+        r"""Trend
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -5704,7 +5704,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
-        """Product consumption details
+        r"""Product consumption details
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -5715,7 +5715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash
+        r"""Cash
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5727,7 +5727,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Bonus
+        r"""Bonus
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5739,7 +5739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5750,7 +5750,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5788,7 +5788,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConsumptionRegionSummaryDataItem(AbstractModel):
-    """Consumption details summarized by region
+    r"""Consumption details summarized by region
 
     """
 
@@ -5827,7 +5827,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -5838,7 +5838,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._RegionName
@@ -5849,7 +5849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Discounted total price
+        r"""Discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -5860,7 +5860,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trend(self):
-        """Trend
+        r"""Trend
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -5871,7 +5871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
-        """Product consumption details
+        r"""Product consumption details
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -5882,7 +5882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash
+        r"""Cash
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5894,7 +5894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -5905,7 +5905,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Bonus
+        r"""Bonus
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5917,7 +5917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -5955,7 +5955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConsumptionResourceSummaryConditionValue(AbstractModel):
-    """Filter criteria of consumption details summarized by resource
+    r"""Filter criteria of consumption details summarized by resource
 
     """
 
@@ -5977,7 +5977,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Business(self):
-        """Product list
+        r"""Product list
         :rtype: list of ConditionBusiness
         """
         return self._Business
@@ -5988,7 +5988,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Project(self):
-        """Project list
+        r"""Project list
         :rtype: list of ConditionProject
         """
         return self._Project
@@ -5999,7 +5999,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def Region(self):
-        """Region list
+        r"""Region list
         :rtype: list of ConditionRegion
         """
         return self._Region
@@ -6010,7 +6010,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment mode list
+        r"""Payment mode list
         :rtype: list of ConditionPayMode
         """
         return self._PayMode
@@ -6056,7 +6056,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
 
 
 class ConsumptionResourceSummaryDataItem(AbstractModel):
-    """Consumption details summarized by resource
+    r"""Consumption details summarized by resource
 
     """
 
@@ -6188,7 +6188,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -6199,7 +6199,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
-        """Resource name
+        r"""Resource name
         :rtype: str
         """
         return self._ResourceName
@@ -6210,7 +6210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Discounted total price
+        r"""Discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -6221,7 +6221,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash expenditure
+        r"""Cash expenditure
         :rtype: str
         """
         return self._CashPayAmount
@@ -6232,7 +6232,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -6243,7 +6243,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -6254,7 +6254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -6265,7 +6265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._RegionName
@@ -6276,7 +6276,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        """Payment mode
+        r"""Payment mode
         :rtype: str
         """
         return self._PayMode
@@ -6287,7 +6287,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        """Payment mode name
+        r"""Payment mode name
         :rtype: str
         """
         return self._PayModeName
@@ -6298,7 +6298,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product name code
+        r"""Product name code
         :rtype: str
         """
         return self._BusinessCode
@@ -6309,7 +6309,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name
+        r"""Product name
         :rtype: str
         """
         return self._BusinessCodeName
@@ -6320,7 +6320,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConsumptionTypeName(self):
-        """Consumption type
+        r"""Consumption type
         :rtype: str
         """
         return self._ConsumptionTypeName
@@ -6331,7 +6331,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealCost(self):
-        """Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RealCost
@@ -6342,7 +6342,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeBeginTime(self):
-        """Start time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Start time of feesNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FeeBeginTime
@@ -6353,7 +6353,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeEndTime(self):
-        """End time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""End time of feesNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FeeEndTime
@@ -6364,7 +6364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DayDiff(self):
-        """Days
+        r"""Days
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6376,7 +6376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DailyTotalCost(self):
-        """Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DailyTotalCost
@@ -6387,7 +6387,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order numberNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Order numberNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OrderId
@@ -6398,7 +6398,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        r"""VoucherNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -6409,7 +6409,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Bonus
+        r"""Bonus
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6421,7 +6421,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Share revenueNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -6432,7 +6432,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayerUin(self):
-        """Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayerUin
@@ -6443,7 +6443,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.
+        r"""User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OwnerUin
@@ -6454,7 +6454,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        """Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OperateUin
@@ -6465,7 +6465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        """Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProductCode
@@ -6476,7 +6476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProductCodeName
@@ -6487,7 +6487,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionType(self):
-        """Region typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region typeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionType
@@ -6498,7 +6498,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionTypeName(self):
-        """Region type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Region type nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RegionTypeName
@@ -6509,7 +6509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend1(self):
-        """Extended field 1Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extended field 1Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Extend1
@@ -6520,7 +6520,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend2(self):
-        """Extended field 2Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extended field 2Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Extend2
@@ -6531,7 +6531,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend3(self):
-        """Extended field 3Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extended field 3Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Extend3
@@ -6542,7 +6542,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend4(self):
-        """Extended field 4Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extended field 4Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Extend4
@@ -6553,7 +6553,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extend5(self):
-        """Extended field 5Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Extended field 5Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Extend5
@@ -6564,7 +6564,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance typeNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance typeNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceType
@@ -6575,7 +6575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypeName(self):
-        """Instance type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceTypeName
@@ -6586,7 +6586,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayTime(self):
-        """Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PayTime
@@ -6597,7 +6597,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ZoneName
@@ -6608,7 +6608,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentConfig(self):
-        """Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ComponentConfig
@@ -6619,7 +6619,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Tag information.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Tags
@@ -6681,7 +6681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConsumptionSummaryTotal(AbstractModel):
-    """Consumption summary details
+    r"""Consumption summary details
 
     """
 
@@ -6694,7 +6694,7 @@ class ConsumptionSummaryTotal(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Discounted total price
+        r"""Discounted total price
         :rtype: str
         """
         return self._RealTotalCost
@@ -6717,7 +6717,7 @@ class ConsumptionSummaryTotal(AbstractModel):
 
 
 class ConsumptionSummaryTrend(AbstractModel):
-    """Consumption cost trend
+    r"""Consumption cost trend
 
     """
 
@@ -6733,7 +6733,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
     @property
     def Type(self):
-        """Trend type, upward for rising, downward for falling, none for no change
+        r"""Trend type, upward for rising, downward for falling, none for no change
         :rtype: str
         """
         return self._Type
@@ -6744,7 +6744,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
     @property
     def Value(self):
-        """Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Value
@@ -6768,7 +6768,7 @@ class ConsumptionSummaryTrend(AbstractModel):
 
 
 class CosDetailSets(AbstractModel):
-    """Information about the data structure of the returned COS usage details
+    r"""Information about the data structure of the returned COS usage details
 
     """
 
@@ -6799,7 +6799,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def BucketName(self):
-        """Bucket name
+        r"""Bucket name
         :rtype: str
         """
         return self._BucketName
@@ -6810,7 +6810,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageBeginTime(self):
-        """The start time of the usage
+        r"""The start time of the usage
         :rtype: str
         """
         return self._DosageBeginTime
@@ -6821,7 +6821,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageEndTime(self):
-        """The end time of the usage
+        r"""The end time of the usage
         :rtype: str
         """
         return self._DosageEndTime
@@ -6832,7 +6832,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def SubProductCodeName(self):
-        """Subproduct name
+        r"""Subproduct name
         :rtype: str
         """
         return self._SubProductCodeName
@@ -6843,7 +6843,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def BillingItemCodeName(self):
-        """Billable item name
+        r"""Billable item name
         :rtype: str
         """
         return self._BillingItemCodeName
@@ -6854,7 +6854,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def DosageValue(self):
-        """Usage
+        r"""Usage
         :rtype: str
         """
         return self._DosageValue
@@ -6865,7 +6865,7 @@ class CosDetailSets(AbstractModel):
 
     @property
     def Unit(self):
-        """Unit of the billable item
+        r"""Unit of the billable item
         :rtype: str
         """
         return self._Unit
@@ -6894,7 +6894,7 @@ class CosDetailSets(AbstractModel):
 
 
 class CostComponentSet(AbstractModel):
-    """Consumption component details
+    r"""Consumption component details
 
     """
 
@@ -6940,7 +6940,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def ComponentCodeName(self):
-        """Component type name
+        r"""Component type name
         :rtype: str
         """
         return self._ComponentCodeName
@@ -6951,7 +6951,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        """Component name
+        r"""Component name
         :rtype: str
         """
         return self._ItemCodeName
@@ -6962,7 +6962,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def SinglePrice(self):
-        """List price
+        r"""List price
         :rtype: str
         """
         return self._SinglePrice
@@ -6973,7 +6973,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def PriceUnit(self):
-        """List price unit
+        r"""List price unit
         :rtype: str
         """
         return self._PriceUnit
@@ -6984,7 +6984,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmount(self):
-        """Usage
+        r"""Usage
         :rtype: str
         """
         return self._UsedAmount
@@ -6995,7 +6995,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        """Usage unit
+        r"""Usage unit
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -7006,7 +7006,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Cost(self):
-        """Original price
+        r"""Original price
         :rtype: str
         """
         return self._Cost
@@ -7017,7 +7017,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Discount(self):
-        """Discount
+        r"""Discount
         :rtype: str
         """
         return self._Discount
@@ -7028,7 +7028,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def RealCost(self):
-        """Discounted price
+        r"""Discounted price
         :rtype: str
         """
         return self._RealCost
@@ -7039,7 +7039,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment amount
+        r"""Voucher payment amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -7050,7 +7050,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash payment amount
+        r"""Cash payment amount
         :rtype: str
         """
         return self._CashPayAmount
@@ -7061,7 +7061,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Bonus payment amount
+        r"""Bonus payment amount
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -7095,7 +7095,7 @@ class CostComponentSet(AbstractModel):
 
 
 class CostDetail(AbstractModel):
-    """Consumption details data type
+    r"""Consumption details data type
 
     """
 
@@ -7153,7 +7153,7 @@ class CostDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Payer UIN
+        r"""Payer UIN
         :rtype: str
         """
         return self._PayerUin
@@ -7164,7 +7164,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        """Product name
+        r"""Product name
         :rtype: str
         """
         return self._BusinessCodeName
@@ -7175,7 +7175,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """Subproduct name
+        r"""Subproduct name
         :rtype: str
         """
         return self._ProductCodeName
@@ -7186,7 +7186,7 @@ class CostDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        """Billing mode name
+        r"""Billing mode name
         :rtype: str
         """
         return self._PayModeName
@@ -7197,7 +7197,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -7208,7 +7208,7 @@ class CostDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region Name
+        r"""Region Name
         :rtype: str
         """
         return self._RegionName
@@ -7219,7 +7219,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        """Zone name
+        r"""Zone name
         :rtype: str
         """
         return self._ZoneName
@@ -7230,7 +7230,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -7241,7 +7241,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        """Resource name
+        r"""Resource name
         :rtype: str
         """
         return self._ResourceName
@@ -7252,7 +7252,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        """Type nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Type nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ActionTypeName
@@ -7263,7 +7263,7 @@ class CostDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        """Order ID
+        r"""Order ID
         :rtype: str
         """
         return self._OrderId
@@ -7274,7 +7274,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BillId(self):
-        """Transaction ID
+        r"""Transaction ID
         :rtype: str
         """
         return self._BillId
@@ -7285,7 +7285,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        """Start time of fees
+        r"""Start time of fees
         :rtype: str
         """
         return self._FeeBeginTime
@@ -7296,7 +7296,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        """End time of fees
+        r"""End time of fees
         :rtype: str
         """
         return self._FeeEndTime
@@ -7307,7 +7307,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        """Component details
+        r"""Component details
         :rtype: list of CostComponentSet
         """
         return self._ComponentSet
@@ -7318,7 +7318,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Subproduct name code
+        r"""Subproduct name code
         :rtype: str
         """
         return self._ProductCode
@@ -7361,7 +7361,7 @@ class CostDetail(AbstractModel):
 
 
 class CreateAllocationRuleRequest(AbstractModel):
-    """CreateAllocationRule request structure.
+    r"""CreateAllocationRule request structure.
 
     """
 
@@ -7377,7 +7377,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """List of sharing rules.
+        r"""List of sharing rules.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
         """
         return self._RuleList
@@ -7388,7 +7388,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, the current month by default if not provided.
+        r"""Month, the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -7414,7 +7414,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
 
 class CreateAllocationRuleResponse(AbstractModel):
-    """CreateAllocationRule response structure.
+    r"""CreateAllocationRule response structure.
 
     """
 
@@ -7430,7 +7430,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Add new sharing rule ID.
+        r"""Add new sharing rule ID.
         :rtype: int
         """
         return self._Id
@@ -7441,7 +7441,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7457,7 +7457,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
 
 class CreateAllocationTagRequest(AbstractModel):
-    """CreateAllocationTag request structure.
+    r"""CreateAllocationTag request structure.
 
     """
 
@@ -7470,7 +7470,7 @@ class CreateAllocationTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Cost allocation tag key.
+        r"""Cost allocation tag key.
         :rtype: list of str
         """
         return self._TagKey
@@ -7493,7 +7493,7 @@ class CreateAllocationTagRequest(AbstractModel):
 
 
 class CreateAllocationTagResponse(AbstractModel):
-    """CreateAllocationTag response structure.
+    r"""CreateAllocationTag response structure.
 
     """
 
@@ -7506,7 +7506,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7521,7 +7521,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
 
 class CreateAllocationUnitRequest(AbstractModel):
-    """CreateAllocationUnit request structure.
+    r"""CreateAllocationUnit request structure.
 
     """
 
@@ -7540,7 +7540,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """New cost allocation unit parent node ID.
+        r"""New cost allocation unit parent node ID.
         :rtype: int
         """
         return self._ParentId
@@ -7551,7 +7551,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Specifies the name of a newly-added cost allocation unit.
+        r"""Specifies the name of a newly-added cost allocation unit.
         :rtype: str
         """
         return self._Name
@@ -7562,7 +7562,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -7587,7 +7587,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
 
 class CreateAllocationUnitResponse(AbstractModel):
-    """CreateAllocationUnit response structure.
+    r"""CreateAllocationUnit response structure.
 
     """
 
@@ -7606,7 +7606,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Specifies the ID of a newly-added cost allocation unit.
+        r"""Specifies the ID of a newly-added cost allocation unit.
         :rtype: int
         """
         return self._Id
@@ -7617,7 +7617,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """Unique identifier of a cost allocation unit
+        r"""Unique identifier of a cost allocation unit
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -7628,7 +7628,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7645,7 +7645,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
 
 class CreateGatherRuleRequest(AbstractModel):
-    """CreateGatherRule request structure.
+    r"""CreateGatherRule request structure.
 
     """
 
@@ -7664,7 +7664,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Cost allocation unit ID that the rule belongs to.
+        r"""Cost allocation unit ID that the rule belongs to.
         :rtype: int
         """
         return self._Id
@@ -7675,7 +7675,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """Collection rule details.
+        r"""Collection rule details.
         :rtype: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
         """
         return self._RuleList
@@ -7686,7 +7686,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -7713,7 +7713,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
 
 class CreateGatherRuleResponse(AbstractModel):
-    """CreateGatherRule response structure.
+    r"""CreateGatherRule response structure.
 
     """
 
@@ -7729,7 +7729,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Collection  rule ID.
+        r"""Collection  rule ID.
         :rtype: int
         """
         return self._Id
@@ -7740,7 +7740,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7756,7 +7756,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
 
 class Deal(AbstractModel):
-    """Order data object
+    r"""Order data object
 
     """
 
@@ -7858,7 +7858,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order ID.
+        r"""Order ID.
         :rtype: str
         """
         return self._OrderId
@@ -7869,7 +7869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The status of the order. 1: unpaid; 2: paid; 3: shipping; 4: shipped; 5: shipment failed; 6: refunded; 7: closed case; 8: order expired; 9: order invalidated; 10: product invalidated; 11: third-party payment refused; 12: payment in process
+        r"""The status of the order. 1: unpaid; 2: paid; 3: shipping; 4: shipped; 5: shipment failed; 6: refunded; 7: closed case; 8: order expired; 9: order invalidated; 10: product invalidated; 11: third-party payment refused; 12: payment in process
         :rtype: int
         """
         return self._Status
@@ -7880,7 +7880,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Payer(self):
-        """Payer
+        r"""Payer
         :rtype: str
         """
         return self._Payer
@@ -7891,7 +7891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -7902,7 +7902,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        """Creator
+        r"""Creator
         :rtype: str
         """
         return self._Creator
@@ -7913,7 +7913,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Actual payment amount (pent)
+        r"""Actual payment amount (pent)
         :rtype: int
         """
         return self._RealTotalCost
@@ -7924,7 +7924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherDecline(self):
-        """Voucher offset amount (pent)
+        r"""Voucher offset amount (pent)
         :rtype: int
         """
         return self._VoucherDecline
@@ -7935,7 +7935,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -7946,7 +7946,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GoodsCategoryId(self):
-        """Product category ID
+        r"""Product category ID
         :rtype: int
         """
         return self._GoodsCategoryId
@@ -7957,7 +7957,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductInfo(self):
-        """Product details
+        r"""Product details
         :rtype: list of ProductInfo
         """
         return self._ProductInfo
@@ -7968,7 +7968,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
-        """Duration
+        r"""Duration
         :rtype: float
         """
         return self._TimeSpan
@@ -7979,7 +7979,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
-        """Time unit
+        r"""Time unit
         :rtype: str
         """
         return self._TimeUnit
@@ -7990,7 +7990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
-        """Currency unit
+        r"""Currency unit
         :rtype: str
         """
         return self._Currency
@@ -8001,7 +8001,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Policy(self):
-        """Discount rate
+        r"""Discount rate
         :rtype: float
         """
         return self._Policy
@@ -8012,7 +8012,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Price(self):
-        """Unit price (cents)
+        r"""Unit price (cents)
         :rtype: float
         """
         return self._Price
@@ -8023,7 +8023,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        """Original price (cents)
+        r"""Original price (cents)
         :rtype: float
         """
         return self._TotalCost
@@ -8034,7 +8034,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        """Product code
+        r"""Product code
         :rtype: str
         """
         return self._ProductCode
@@ -8045,7 +8045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubProductCode(self):
-        """Subproduct code
+        r"""Subproduct code
         :rtype: str
         """
         return self._SubProductCode
@@ -8056,7 +8056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BigDealId(self):
-        """Large order number.
+        r"""Large order number.
         :rtype: str
         """
         return self._BigDealId
@@ -8067,7 +8067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        """Refund formula.
+        r"""Refund formula.
         :rtype: str
         """
         return self._Formula
@@ -8078,7 +8078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RefReturnDeals(self):
-        """Refund involves order information.
+        r"""Refund involves order information.
         :rtype: str
         """
         return self._RefReturnDeals
@@ -8089,7 +8089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        """Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
+        r"""Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
         :rtype: str
         """
         return self._PayMode
@@ -8100,7 +8100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Transaction type
+        r"""Transaction type
 
 Modify network mode adjust bandwidth mode.
 Adjust bandwidth size.
@@ -8124,7 +8124,7 @@ postMoveIn specifies the pay-as-you-go resources for inbound migration.
 
     @property
     def ProductName(self):
-        """Product code chinese name.
+        r"""Product code chinese name.
         :rtype: str
         """
         return self._ProductName
@@ -8135,7 +8135,7 @@ postMoveIn specifies the pay-as-you-go resources for inbound migration.
 
     @property
     def SubProductName(self):
-        """Sub-Product code chinese name.
+        r"""Sub-Product code chinese name.
         :rtype: str
         """
         return self._SubProductName
@@ -8146,7 +8146,7 @@ postMoveIn specifies the pay-as-you-go resources for inbound migration.
 
     @property
     def ResourceId(self):
-        """The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
+        r"""The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8200,7 +8200,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteAllocationRuleRequest(AbstractModel):
-    """DeleteAllocationRule request structure.
+    r"""DeleteAllocationRule request structure.
 
     """
 
@@ -8216,7 +8216,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """The deleted sharing rule ID.
+        r"""The deleted sharing rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -8227,7 +8227,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -8251,7 +8251,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
 
 class DeleteAllocationRuleResponse(AbstractModel):
-    """DeleteAllocationRule response structure.
+    r"""DeleteAllocationRule response structure.
 
     """
 
@@ -8264,7 +8264,7 @@ class DeleteAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8279,7 +8279,7 @@ class DeleteAllocationRuleResponse(AbstractModel):
 
 
 class DeleteAllocationTagRequest(AbstractModel):
-    """DeleteAllocationTag request structure.
+    r"""DeleteAllocationTag request structure.
 
     """
 
@@ -8292,7 +8292,7 @@ class DeleteAllocationTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Cost allocation tag key
+        r"""Cost allocation tag key
         :rtype: list of str
         """
         return self._TagKey
@@ -8315,7 +8315,7 @@ class DeleteAllocationTagRequest(AbstractModel):
 
 
 class DeleteAllocationTagResponse(AbstractModel):
-    """DeleteAllocationTag response structure.
+    r"""DeleteAllocationTag response structure.
 
     """
 
@@ -8328,7 +8328,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8343,7 +8343,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
 
 class DeleteAllocationUnitRequest(AbstractModel):
-    """DeleteAllocationUnit request structure.
+    r"""DeleteAllocationUnit request structure.
 
     """
 
@@ -8359,7 +8359,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Specifies the deleted cost allocation unit ID.
+        r"""Specifies the deleted cost allocation unit ID.
         :rtype: int
         """
         return self._Id
@@ -8370,7 +8370,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -8394,7 +8394,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
 
 class DeleteAllocationUnitResponse(AbstractModel):
-    """DeleteAllocationUnit response structure.
+    r"""DeleteAllocationUnit response structure.
 
     """
 
@@ -8407,7 +8407,7 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8422,7 +8422,7 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
 
 class DeleteGatherRuleRequest(AbstractModel):
-    """DeleteGatherRule request structure.
+    r"""DeleteGatherRule request structure.
 
     """
 
@@ -8438,7 +8438,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """The deleted collection rule ID.
+        r"""The deleted collection rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -8449,7 +8449,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -8473,7 +8473,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
 
 class DeleteGatherRuleResponse(AbstractModel):
-    """DeleteGatherRule response structure.
+    r"""DeleteGatherRule response structure.
 
     """
 
@@ -8486,7 +8486,7 @@ class DeleteGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8501,13 +8501,13 @@ class DeleteGatherRuleResponse(AbstractModel):
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
-    """DescribeAccountBalance request structure.
+    r"""DescribeAccountBalance request structure.
 
     """
 
 
 class DescribeAccountBalanceResponse(AbstractModel):
-    """DescribeAccountBalance response structure.
+    r"""DescribeAccountBalance response structure.
 
     """
 
@@ -8559,7 +8559,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Balance(self):
-        """Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.
+        r"""Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.
         :rtype: int
         """
         return self._Balance
@@ -8570,7 +8570,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """The UIN to query.
+        r"""The UIN to query.
         :rtype: int
         """
         return self._Uin
@@ -8581,7 +8581,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealBalance(self):
-        """Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.
+        r"""Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.
         :rtype: float
         """
         return self._RealBalance
@@ -8592,7 +8592,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CashAccountBalance(self):
-        """Cash account balance in cents. Currently, this field is not applied.
+        r"""Cash account balance in cents. Currently, this field is not applied.
         :rtype: float
         """
         return self._CashAccountBalance
@@ -8603,7 +8603,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IncomeIntoAccountBalance(self):
-        """Income account balance in cents. Currently, this field is not applied.
+        r"""Income account balance in cents. Currently, this field is not applied.
         :rtype: float
         """
         return self._IncomeIntoAccountBalance
@@ -8614,7 +8614,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def PresentAccountBalance(self):
-        """Present account balance in cents. Currently, this field is not applied.
+        r"""Present account balance in cents. Currently, this field is not applied.
         :rtype: float
         """
         return self._PresentAccountBalance
@@ -8625,7 +8625,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def FreezeAmount(self):
-        """Frozen amount in cents.
+        r"""Frozen amount in cents.
         :rtype: float
         """
         return self._FreezeAmount
@@ -8636,7 +8636,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def OweAmount(self):
-        """Overdue amount in cents, which is when the available credit balance is negative.
+        r"""Overdue amount in cents, which is when the available credit balance is negative.
         :rtype: float
         """
         return self._OweAmount
@@ -8647,7 +8647,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IsAllowArrears(self):
-        """Whether overdue payments are allowed. Currently, this field is not applied.
+        r"""Whether overdue payments are allowed. Currently, this field is not applied.
         :rtype: bool
         """
         return self._IsAllowArrears
@@ -8658,7 +8658,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IsCreditLimited(self):
-        """Whether you have a credit limit. Currently, this field is not applied.
+        r"""Whether you have a credit limit. Currently, this field is not applied.
         :rtype: bool
         """
         return self._IsCreditLimited
@@ -8669,7 +8669,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditAmount(self):
-        """Credit limit in cents. Credit limit－available credit balance = consumption amount
+        r"""Credit limit in cents. Credit limit－available credit balance = consumption amount
         :rtype: float
         """
         return self._CreditAmount
@@ -8680,7 +8680,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditBalance(self):
-        """Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.
+        r"""Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.
         :rtype: float
         """
         return self._CreditBalance
@@ -8691,7 +8691,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealCreditBalance(self):
-        """Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.
+        r"""Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.
         :rtype: float
         """
         return self._RealCreditBalance
@@ -8702,7 +8702,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8730,7 +8730,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
 
 class DescribeAllocationRuleDetailRequest(AbstractModel):
-    """DescribeAllocationRuleDetail request structure.
+    r"""DescribeAllocationRuleDetail request structure.
 
     """
 
@@ -8746,7 +8746,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """The queried sharing rule ID.
+        r"""The queried sharing rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -8757,7 +8757,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -8781,7 +8781,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
 
 class DescribeAllocationRuleDetailResponse(AbstractModel):
-    """DescribeAllocationRuleDetail response structure.
+    r"""DescribeAllocationRuleDetail response structure.
 
     """
 
@@ -8815,7 +8815,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Sharing rule ID.
+        r"""Sharing rule ID.
         :rtype: int
         """
         return self._Id
@@ -8826,7 +8826,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Sharing rule ownership UIN.
+        r"""Sharing rule ownership UIN.
         :rtype: str
         """
         return self._Uin
@@ -8837,7 +8837,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Sharing rule name.
+        r"""Sharing rule name.
         :rtype: str
         """
         return self._Name
@@ -8848,7 +8848,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Specifies the public area policy type. the enumeration values are as follows:.
+        r"""Specifies the public area policy type. the enumeration values are as follows:.
 1 - custom sharing proportion. 
 2 - proportional allocation. 
 3 - allocation by proportion.
@@ -8862,7 +8862,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Public sharing rule expression.
+        r"""Public sharing rule expression.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -8873,7 +8873,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """Sharing proportion expression. returns when Type is 1 or 2.
+        r"""Sharing proportion expression. returns when Type is 1 or 2.
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -8884,7 +8884,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8912,7 +8912,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
 
 class DescribeAllocationRuleSummaryRequest(AbstractModel):
-    """DescribeAllocationRuleSummary request structure.
+    r"""DescribeAllocationRuleSummary request structure.
 
     """
 
@@ -8941,7 +8941,7 @@ Enumeration values are as follows:.
 
     @property
     def Limit(self):
-        """Specifies the data quantity per fetch. the maximum value is 1000.
+        r"""Specifies the data quantity per fetch. the maximum value is 1000.
         :rtype: int
         """
         return self._Limit
@@ -8952,7 +8952,7 @@ Enumeration values are as follows:.
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -8963,7 +8963,7 @@ Enumeration values are as follows:.
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -8974,7 +8974,7 @@ Enumeration values are as follows:.
 
     @property
     def Type(self):
-        """Public area policy type, for filtering.
+        r"""Public area policy type, for filtering.
 Enumeration values are as follows:. 
 1 - custom sharing proportion. 
 2 - proportional allocation. 
@@ -8989,7 +8989,7 @@ Enumeration values are as follows:.
 
     @property
     def Name(self):
-        """Sharing rule name or cost allocation unit name, used for fuzzy filter criteria.
+        r"""Sharing rule name or cost allocation unit name, used for fuzzy filter criteria.
         :rtype: str
         """
         return self._Name
@@ -9016,7 +9016,7 @@ Enumeration values are as follows:.
 
 
 class DescribeAllocationRuleSummaryResponse(AbstractModel):
-    """DescribeAllocationRuleSummary response structure.
+    r"""DescribeAllocationRuleSummary response structure.
 
     """
 
@@ -9035,7 +9035,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def RuleList(self):
-        """Sharing rule expression.
+        r"""Sharing rule expression.
         :rtype: list of AllocationRuleOverview
         """
         return self._RuleList
@@ -9046,7 +9046,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of rules.
+        r"""Total number of rules.
         :rtype: int
         """
         return self._Total
@@ -9057,7 +9057,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9079,7 +9079,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
 
 class DescribeAllocationTreeRequest(AbstractModel):
-    """DescribeAllocationTree request structure.
+    r"""DescribeAllocationTree request structure.
 
     """
 
@@ -9092,7 +9092,7 @@ class DescribeAllocationTreeRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, the current month by default if not provided.
+        r"""Month, the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -9115,7 +9115,7 @@ class DescribeAllocationTreeRequest(AbstractModel):
 
 
 class DescribeAllocationTreeResponse(AbstractModel):
-    """DescribeAllocationTree response structure.
+    r"""DescribeAllocationTree response structure.
 
     """
 
@@ -9140,7 +9140,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Cost allocation unit ID.
+        r"""Cost allocation unit ID.
         :rtype: int
         """
         return self._Id
@@ -9151,7 +9151,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Specifies the name of a cost allocation unit.
+        r"""Specifies the name of a cost allocation unit.
         :rtype: str
         """
         return self._Name
@@ -9162,7 +9162,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """Unique identifier of a cost allocation unit
+        r"""Unique identifier of a cost allocation unit
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -9173,7 +9173,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Children(self):
-        """Specifies a subtree.
+        r"""Specifies a subtree.
         :rtype: list of AllocationTree
         """
         return self._Children
@@ -9184,7 +9184,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9208,7 +9208,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
 
 class DescribeAllocationUnitDetailRequest(AbstractModel):
-    """DescribeAllocationUnitDetail request structure.
+    r"""DescribeAllocationUnitDetail request structure.
 
     """
 
@@ -9224,7 +9224,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        """ID of the queried cost allocation unit.
+        r"""ID of the queried cost allocation unit.
         :rtype: int
         """
         return self._Id
@@ -9235,7 +9235,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, the current month by default if not provided.
+        r"""Month, the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -9259,7 +9259,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
 
 class DescribeAllocationUnitDetailResponse(AbstractModel):
-    """DescribeAllocationUnitDetail response structure.
+    r"""DescribeAllocationUnitDetail response structure.
 
     """
 
@@ -9299,7 +9299,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """ID of a cost allocation unit.
+        r"""ID of a cost allocation unit.
         :rtype: int
         """
         return self._Id
@@ -9310,7 +9310,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Associated UIN of the cost allocation unit.
+        r"""Associated UIN of the cost allocation unit.
         :rtype: str
         """
         return self._Uin
@@ -9321,7 +9321,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Specifies the name of a cost allocation unit.
+        r"""Specifies the name of a cost allocation unit.
         :rtype: str
         """
         return self._Name
@@ -9332,7 +9332,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def ParentId(self):
-        """Cost allocation unit parent node ID.
+        r"""Cost allocation unit parent node ID.
         :rtype: int
         """
         return self._ParentId
@@ -9343,7 +9343,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceName(self):
-        """Source organization name.
+        r"""Source organization name.
         :rtype: str
         """
         return self._SourceName
@@ -9354,7 +9354,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceId(self):
-        """Source organization ID.
+        r"""Source organization ID.
         :rtype: str
         """
         return self._SourceId
@@ -9365,7 +9365,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """Specifies remark description.
+        r"""Specifies remark description.
         :rtype: str
         """
         return self._Remark
@@ -9376,7 +9376,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        """Cost allocation unit identifier.
+        r"""Cost allocation unit identifier.
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -9387,7 +9387,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """If a cost allocation unit is set with an collection rule, return the collection rule ID. if no collection rule is set, do not return.
+        r"""If a cost allocation unit is set with an collection rule, return the collection rule ID. if no collection rule is set, do not return.
         :rtype: int
         """
         return self._RuleId
@@ -9398,7 +9398,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9422,7 +9422,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
 
 class DescribeBillAdjustInfoRequest(AbstractModel):
-    """DescribeBillAdjustInfo request structure.
+    r"""DescribeBillAdjustInfo request structure.
 
     """
 
@@ -9447,7 +9447,7 @@ Example: 2024-10-02.
 
     @property
     def Month(self):
-        """Format: yyyy-MM.
+        r"""Format: yyyy-MM.
 Billing month. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If the TimeFrom and TimeTo are passed, the Month field is invalid.
 Example: 2024-10.
         :rtype: str
@@ -9460,7 +9460,7 @@ Example: 2024-10.
 
     @property
     def TimeFrom(self):
-        """Format: yyyy-MM-dd.
+        r"""Format: yyyy-MM-dd.
 Start date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
 Example: 2024-10-01.
         :rtype: str
@@ -9473,7 +9473,7 @@ Example: 2024-10-01.
 
     @property
     def TimeTo(self):
-        """Format: yyyy-MM-dd.
+        r"""Format: yyyy-MM-dd.
 End date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
 Example: 2024-10-02.
         :rtype: str
@@ -9500,7 +9500,7 @@ Example: 2024-10-02.
 
 
 class DescribeBillAdjustInfoResponse(AbstractModel):
-    """DescribeBillAdjustInfo response structure.
+    r"""DescribeBillAdjustInfo response structure.
 
     """
 
@@ -9521,7 +9521,7 @@ Example value: [].
 
     @property
     def Total(self):
-        """Total amount of data.
+        r"""Total amount of data.
 Example value: 10.
         :rtype: int
         """
@@ -9533,7 +9533,7 @@ Example value: 10.
 
     @property
     def Data(self):
-        """Detailed data.
+        r"""Detailed data.
 Example value: [].
         :rtype: list of AdjustInfoDetail
         """
@@ -9545,7 +9545,7 @@ Example value: [].
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9567,7 +9567,7 @@ Example value: [].
 
 
 class DescribeBillDetailForOrganizationRequest(AbstractModel):
-    """DescribeBillDetailForOrganization request structure.
+    r"""DescribeBillDetailForOrganization request structure.
 
     """
 
@@ -9646,7 +9646,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Offset(self):
-        """Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        r"""Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -9657,7 +9657,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Limit(self):
-        """The number of entries returned at a time. The maximum value is `100`.
+        r"""The number of entries returned at a time. The maximum value is `100`.
         :rtype: int
         """
         return self._Limit
@@ -9670,7 +9670,7 @@ Note: To query the product codes used in the current month, call <a href="https:
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        r"""Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
         :rtype: str
         """
         return self._PeriodType
@@ -9683,7 +9683,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Month(self):
-        """The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.
+        r"""The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._Month
@@ -9694,7 +9694,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def BeginTime(self):
-        """The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
+        r"""The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._BeginTime
@@ -9705,7 +9705,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def EndTime(self):
-        """The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
+        r"""The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :rtype: str
         """
         return self._EndTime
@@ -9716,7 +9716,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def NeedRecordNum(self):
-        """Indicates whether the total number of records is required, used for pagination.
+        r"""Indicates whether the total number of records is required, used for pagination.
 Valid values: `1` (required), `0` (not required).
         :rtype: int
         """
@@ -9728,7 +9728,7 @@ Valid values: `1` (required), `0` (not required).
 
     @property
     def PayMode(self):
-        """Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).
+        r"""Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).
         :rtype: str
         """
         return self._PayMode
@@ -9739,7 +9739,7 @@ Valid values: `1` (required), `0` (not required).
 
     @property
     def ResourceId(self):
-        """ID of the instance to be queried.
+        r"""ID of the instance to be queried.
         :rtype: str
         """
         return self._ResourceId
@@ -9750,7 +9750,7 @@ Valid values: `1` (required), `0` (not required).
 
     @property
     def ActionType(self):
-        """Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
+        r"""Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
 Monthly subscription purchase
 Monthly subscription renewal
 Monthly subscription upgrade/downgrade
@@ -9789,7 +9789,7 @@ Hourly savings plan fee
 
     @property
     def ProjectId(self):
-        """Project ID: The ID of the project to which the resource belongs.
+        r"""Project ID: The ID of the project to which the resource belongs.
         :rtype: int
         """
         return self._ProjectId
@@ -9800,7 +9800,7 @@ Hourly savings plan fee
 
     @property
     def BusinessCode(self):
-        """Product code.
+        r"""Product code.
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :rtype: str
         """
@@ -9812,7 +9812,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Context(self):
-        """Context information returned by the last response. You can view multiple pages when querying for data after May 2023 to speed up the query. We recommend you use this query method if your data volume is above 100 thousand entries, which can improve query speed by 2-10 times.
+        r"""Context information returned by the last response. You can view multiple pages when querying for data after May 2023 to speed up the query. We recommend you use this query method if your data volume is above 100 thousand entries, which can improve query speed by 2-10 times.
         :rtype: str
         """
         return self._Context
@@ -9847,7 +9847,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
 
 class DescribeBillDetailForOrganizationResponse(AbstractModel):
-    """DescribeBillDetailForOrganization response structure.
+    r"""DescribeBillDetailForOrganization response structure.
 
     """
 
@@ -9871,7 +9871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailSet(self):
-        """Details list.
+        r"""Details list.
         :rtype: list of DistributionBillDetail
         """
         return self._DetailSet
@@ -9882,7 +9882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number of records, which is cached every 24 hours and may be less than the actual total number of records.
+        r"""Total number of records, which is cached every 24 hours and may be less than the actual total number of records.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9894,7 +9894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Context(self):
-        """Context information of the current request, which can be used in the parameters of the next request to speed up the query.
+        r"""Context information of the current request, which can be used in the parameters of the next request to speed up the query.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9906,7 +9906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9929,7 +9929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeBillDetailRequest(AbstractModel):
-    """DescribeBillDetail request structure.
+    r"""DescribeBillDetail request structure.
 
     """
 
@@ -10012,7 +10012,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -10023,7 +10023,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Limit(self):
-        """Quantity, maximum is 300
+        r"""Quantity, maximum is 300
         :rtype: int
         """
         return self._Limit
@@ -10036,7 +10036,7 @@ Note: To query the product codes used in the current month, call <a href="https:
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
+        r"""The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
         :rtype: str
         """
         return self._PeriodType
@@ -10049,7 +10049,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Month(self):
-        """Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        r"""Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
         :rtype: str
         """
         return self._Month
@@ -10060,7 +10060,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def BeginTime(self):
-        """The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
+        r"""The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
 
 Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
 
@@ -10077,7 +10077,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def EndTime(self):
-        """The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
+        r"""The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
 
 Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
 
@@ -10094,7 +10094,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def NeedRecordNum(self):
-        """Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
+        r"""Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
 1 = yes, 0 = no
         :rtype: int
         """
@@ -10108,7 +10108,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
     def ProductCode(self):
         warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
 
-        """Queries information on a specified product
+        r"""Queries information on a specified product
         :rtype: str
         """
         return self._ProductCode
@@ -10121,7 +10121,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def PayMode(self):
-        """Billing mode: prePay/postPay
+        r"""Billing mode: prePay/postPay
         :rtype: str
         """
         return self._PayMode
@@ -10132,7 +10132,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def ResourceId(self):
-        """Queries information on a specified resource
+        r"""Queries information on a specified resource
         :rtype: str
         """
         return self._ResourceId
@@ -10143,7 +10143,7 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def ActionType(self):
-        """Hourly settlement
+        r"""Hourly settlement
 Daily settlement
 Monthly settlement
 Spot
@@ -10168,7 +10168,7 @@ Offline product deduction
 
     @property
     def ProjectId(self):
-        """Project ID: ID of the project to which the resource belongs
+        r"""Project ID: ID of the project to which the resource belongs
         :rtype: int
         """
         return self._ProjectId
@@ -10179,7 +10179,7 @@ Offline product deduction
 
     @property
     def BusinessCode(self):
-        """Product code
+        r"""Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :rtype: str
         """
@@ -10191,7 +10191,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Context(self):
-        """Context information returned by the last request. You can set `Month` to `2023-05` or later to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
+        r"""Context information returned by the last request. You can set `Month` to `2023-05` or later to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
         :rtype: str
         """
         return self._Context
@@ -10202,7 +10202,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def PayerUin(self):
-        """The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
+        r"""The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
         :rtype: str
         """
         return self._PayerUin
@@ -10239,7 +10239,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
 
 class DescribeBillDetailResponse(AbstractModel):
-    """DescribeBillDetail response structure.
+    r"""DescribeBillDetail response structure.
 
     """
 
@@ -10262,7 +10262,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailSet(self):
-        """Details list
+        r"""Details list
         :rtype: list of BillDetail
         """
         return self._DetailSet
@@ -10273,7 +10273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """
+        r"""
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10285,7 +10285,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Context(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Context
@@ -10296,7 +10296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10319,7 +10319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeBillDownloadUrlRequest(AbstractModel):
-    """DescribeBillDownloadUrl request structure.
+    r"""DescribeBillDownloadUrl request structure.
 
     """
 
@@ -10345,7 +10345,7 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def FileType(self):
-        """Bill type. Valid values:
+        r"""Bill type. Valid values:
 `billOverview` (L0: PDF bills)
 `billSummary` (L1: Bill summary)	
 `billResource` (L2: Bill by instance)	
@@ -10361,7 +10361,7 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def Month(self):
-        """Bill month.
+        r"""Bill month.
 The earliest month that can be queried is January 2021.
 L0 bills and bill packs cannot be downloaded for the current month. Please download the current month's bills after it is generated at 19:00 on the 1st day of the next month.
         :rtype: str
@@ -10374,7 +10374,7 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
     @property
     def ChildUin(self):
-        """List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.
+        r"""List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.
         :rtype: list of str
         """
         return self._ChildUin
@@ -10399,7 +10399,7 @@ L0 bills and bill packs cannot be downloaded for the current month. Please downl
 
 
 class DescribeBillDownloadUrlResponse(AbstractModel):
-    """DescribeBillDownloadUrl response structure.
+    r"""DescribeBillDownloadUrl response structure.
 
     """
 
@@ -10418,7 +10418,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
+        r"""Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
         :rtype: int
         """
         return self._Ready
@@ -10429,7 +10429,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        """Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DownloadUrl
@@ -10440,7 +10440,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10457,7 +10457,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
 
 
 class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
-    """DescribeBillResourceSummaryForOrganization request structure.
+    r"""DescribeBillResourceSummaryForOrganization request structure.
 
     """
 
@@ -10531,7 +10531,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Offset(self):
-        """Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        r"""Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -10542,7 +10542,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Limit(self):
-        """The number of entries returned at a time. The maximum value is `1000`.
+        r"""The number of entries returned at a time. The maximum value is `1000`.
         :rtype: int
         """
         return self._Limit
@@ -10553,7 +10553,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Month(self):
-        """Bill month in the format of "yyyy-mm". This value must be no earlier than the month when Bill 2.0 is activated.
+        r"""Bill month in the format of "yyyy-mm". This value must be no earlier than the month when Bill 2.0 is activated.
         :rtype: str
         """
         return self._Month
@@ -10564,7 +10564,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def PeriodType(self):
-        """Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        r"""Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
         :rtype: str
         """
         return self._PeriodType
@@ -10575,7 +10575,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def NeedRecordNum(self):
-        """Indicates whether the total number of records is required, used for pagination.
+        r"""Indicates whether the total number of records is required, used for pagination.
 Valid values: `1` (required), `0` (not required).
         :rtype: int
         """
@@ -10587,7 +10587,7 @@ Valid values: `1` (required), `0` (not required).
 
     @property
     def ActionType(self):
-        """Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
+        r"""Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
 Monthly subscription purchase
 Monthly subscription renewal
 Monthly subscription upgrade/downgrade
@@ -10626,7 +10626,7 @@ Hourly savings plan fee
 
     @property
     def ResourceId(self):
-        """ID of the instance to be queried.
+        r"""ID of the instance to be queried.
         :rtype: str
         """
         return self._ResourceId
@@ -10637,7 +10637,7 @@ Hourly savings plan fee
 
     @property
     def PayMode(self):
-        """Billing mode. Valid values: `prePay`, `postPay`.
+        r"""Billing mode. Valid values: `prePay`, `postPay`.
         :rtype: str
         """
         return self._PayMode
@@ -10648,7 +10648,7 @@ Hourly savings plan fee
 
     @property
     def BusinessCode(self):
-        """Product code
+        r"""Product code
 Note: To query the product codes (`BusinessCode`) used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :rtype: str
         """
@@ -10660,7 +10660,7 @@ Note: To query the product codes (`BusinessCode`) used in the current month, cal
 
     @property
     def TagKey(self):
-        """Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
+        r"""Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
         :rtype: str
         """
         return self._TagKey
@@ -10671,7 +10671,7 @@ Note: To query the product codes (`BusinessCode`) used in the current month, cal
 
     @property
     def TagValue(self):
-        """Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
+        r"""Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
 This parameter can be used for querying bills after January 2021.
         :rtype: str
         """
@@ -10705,7 +10705,7 @@ This parameter can be used for querying bills after January 2021.
 
 
 class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
-    """DescribeBillResourceSummaryForOrganization response structure.
+    r"""DescribeBillResourceSummaryForOrganization response structure.
 
     """
 
@@ -10725,7 +10725,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceSummarySet(self):
-        """Resource summary list.
+        r"""Resource summary list.
         :rtype: list of BillDistributionResourceSummary
         """
         return self._ResourceSummarySet
@@ -10736,7 +10736,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number of resource summary lists. It will not be returned if `NeedRecordNum` is `0`.
+        r"""Total number of resource summary lists. It will not be returned if `NeedRecordNum` is `0`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10748,7 +10748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10770,7 +10770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeBillResourceSummaryRequest(AbstractModel):
-    """DescribeBillResourceSummary request structure.
+    r"""DescribeBillResourceSummary request structure.
 
     """
 
@@ -10833,7 +10833,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Offset(self):
-        """Pagination offset. If `Offset` is `0`, it indicates the first page. If `Limit` is `100`, "`Offset` = `100`" indicates the second page, then "`Offset` = `200`" indicates the third page, and so on.
+        r"""Pagination offset. If `Offset` is `0`, it indicates the first page. If `Limit` is `100`, "`Offset` = `100`" indicates the second page, then "`Offset` = `200`" indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -10844,7 +10844,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Limit(self):
-        """Quantity, maximum is 1000
+        r"""Quantity, maximum is 1000
         :rtype: int
         """
         return self._Limit
@@ -10855,7 +10855,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def Month(self):
-        """Bill month in the format of "yyyy-mm". This value must be no earlier than March 2019, when Bill 2.0 was launched.
+        r"""Bill month in the format of "yyyy-mm". This value must be no earlier than March 2019, when Bill 2.0 was launched.
         :rtype: str
         """
         return self._Month
@@ -10868,7 +10868,7 @@ This parameter can be used for querying bills after January 2021.
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        """The period type. byUsedTime
+        r"""The period type. byUsedTime
         :rtype: str
         """
         return self._PeriodType
@@ -10881,7 +10881,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def NeedRecordNum(self):
-        """Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
+        r"""Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
 1 = yes, 0 = no
         :rtype: int
         """
@@ -10893,7 +10893,7 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def ActionType(self):
-        """Hourly settlement
+        r"""Hourly settlement
 Daily settlement
 Monthly settlement
 Spot
@@ -10918,7 +10918,7 @@ Offline product deduction
 
     @property
     def ResourceId(self):
-        """ID of the instance to be queried
+        r"""ID of the instance to be queried
         :rtype: str
         """
         return self._ResourceId
@@ -10929,7 +10929,7 @@ Offline product deduction
 
     @property
     def PayMode(self):
-        """Billing mode: prePay/postPay
+        r"""Billing mode: prePay/postPay
         :rtype: str
         """
         return self._PayMode
@@ -10940,7 +10940,7 @@ Offline product deduction
 
     @property
     def BusinessCode(self):
-        """Product code
+        r"""Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :rtype: str
         """
@@ -10952,7 +10952,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def PayerUin(self):
-        """The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
+        r"""The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
         :rtype: str
         """
         return self._PayerUin
@@ -10963,7 +10963,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def TagKey(self):
-        """Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
+        r"""Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
         :rtype: str
         """
         return self._TagKey
@@ -10974,7 +10974,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def TagValue(self):
-        """Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
+        r"""Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
 This parameter can be used for querying bills after January 2021.
         :rtype: str
         """
@@ -11009,7 +11009,7 @@ This parameter can be used for querying bills after January 2021.
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):
-    """DescribeBillResourceSummary response structure.
+    r"""DescribeBillResourceSummary response structure.
 
     """
 
@@ -11028,7 +11028,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
-        """Resource summary list
+        r"""Resource summary list
         :rtype: list of BillResourceSummary
         """
         return self._ResourceSummarySet
@@ -11039,7 +11039,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of resource summary lists, which will not be returned when `NeedRecordNum` is `0`. This field may return null, indicating that no valid values can be obtained.
+        r"""Total number of resource summary lists, which will not be returned when `NeedRecordNum` is `0`. This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Total
@@ -11050,7 +11050,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11072,7 +11072,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
 
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
-    """DescribeBillSummaryByPayMode request structure.
+    r"""DescribeBillSummaryByPayMode request structure.
 
     """
 
@@ -11091,7 +11091,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -11102,7 +11102,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -11113,7 +11113,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Query bill data user's UIN
+        r"""Query bill data user's UIN
         :rtype: str
         """
         return self._PayerUin
@@ -11138,7 +11138,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
 
 class DescribeBillSummaryByPayModeResponse(AbstractModel):
-    """DescribeBillSummaryByPayMode response structure.
+    r"""DescribeBillSummaryByPayMode response structure.
 
     """
 
@@ -11158,7 +11158,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11169,7 +11169,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SummaryOverview(self):
-        """Detailed cost distribution for all billing modes
+        r"""Detailed cost distribution for all billing modes
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of PayModeSummaryOverviewItem
         """
@@ -11181,7 +11181,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11203,7 +11203,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBillSummaryByProductRequest(AbstractModel):
-    """DescribeBillSummaryByProduct request structure.
+    r"""DescribeBillSummaryByProduct request structure.
 
     """
 
@@ -11230,7 +11230,7 @@ Valid values:
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -11241,7 +11241,7 @@ Valid values:
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -11252,7 +11252,7 @@ Valid values:
 
     @property
     def PayerUin(self):
-        """Queries bill data user's UIN
+        r"""Queries bill data user's UIN
         :rtype: str
         """
         return self._PayerUin
@@ -11263,7 +11263,7 @@ Valid values:
 
     @property
     def PayType(self):
-        """A bill type, which corresponds to a subtotal type of L0 bills.
+        r"""A bill type, which corresponds to a subtotal type of L0 bills.
 This parameter has become valid since v3.0 bills took effect in May 2021.
 Valid values:
 `consume`: consumption
@@ -11294,7 +11294,7 @@ Valid values:
 
 
 class DescribeBillSummaryByProductResponse(AbstractModel):
-    """DescribeBillSummaryByProduct response structure.
+    r"""DescribeBillSummaryByProduct response structure.
 
     """
 
@@ -11318,7 +11318,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11329,7 +11329,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SummaryTotal(self):
-        """Total cost details
+        r"""Total cost details
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.billing.v20180709.models.BusinessSummaryTotal`
         """
@@ -11341,7 +11341,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SummaryOverview(self):
-        """Cost distribution of all products
+        r"""Cost distribution of all products
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of BusinessSummaryOverviewItem
         """
@@ -11353,7 +11353,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11378,7 +11378,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBillSummaryByProjectRequest(AbstractModel):
-    """DescribeBillSummaryByProject request structure.
+    r"""DescribeBillSummaryByProject request structure.
 
     """
 
@@ -11397,7 +11397,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -11408,7 +11408,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -11419,7 +11419,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Queries bill data user's UIN
+        r"""Queries bill data user's UIN
         :rtype: str
         """
         return self._PayerUin
@@ -11444,7 +11444,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
 
 class DescribeBillSummaryByProjectResponse(AbstractModel):
-    """DescribeBillSummaryByProject response structure.
+    r"""DescribeBillSummaryByProject response structure.
 
     """
 
@@ -11464,7 +11464,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11475,7 +11475,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SummaryOverview(self):
-        """Detailed cost distribution for all projects
+        r"""Detailed cost distribution for all projects
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of ProjectSummaryOverviewItem
         """
@@ -11487,7 +11487,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11509,7 +11509,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBillSummaryByRegionRequest(AbstractModel):
-    """DescribeBillSummaryByRegion request structure.
+    r"""DescribeBillSummaryByRegion request structure.
 
     """
 
@@ -11528,7 +11528,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -11539,7 +11539,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -11550,7 +11550,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Queries bill data user's UIN
+        r"""Queries bill data user's UIN
         :rtype: str
         """
         return self._PayerUin
@@ -11575,7 +11575,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
 
 class DescribeBillSummaryByRegionResponse(AbstractModel):
-    """DescribeBillSummaryByRegion response structure.
+    r"""DescribeBillSummaryByRegion response structure.
 
     """
 
@@ -11595,7 +11595,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11606,7 +11606,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SummaryOverview(self):
-        """Detailed cost distribution for all regions
+        r"""Detailed cost distribution for all regions
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of RegionSummaryOverviewItem
         """
@@ -11618,7 +11618,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11640,7 +11640,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBillSummaryByTagRequest(AbstractModel):
-    """DescribeBillSummaryByTag request structure.
+    r"""DescribeBillSummaryByTag request structure.
 
     """
 
@@ -11665,7 +11665,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -11676,7 +11676,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -11687,7 +11687,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Cost allocation tag key, which can be customized.
+        r"""Cost allocation tag key, which can be customized.
         :rtype: str
         """
         return self._TagKey
@@ -11698,7 +11698,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """Payer UIN
+        r"""Payer UIN
         :rtype: str
         """
         return self._PayerUin
@@ -11709,7 +11709,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        """Resource tag value
+        r"""Resource tag value
         :rtype: str
         """
         return self._TagValue
@@ -11736,7 +11736,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
 
 class DescribeBillSummaryByTagResponse(AbstractModel):
-    """DescribeBillSummaryByTag response structure.
+    r"""DescribeBillSummaryByTag response structure.
 
     """
 
@@ -11760,7 +11760,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11771,7 +11771,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SummaryOverview(self):
-        """Details about cost distribution over different tags
+        r"""Details about cost distribution over different tags
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagSummaryOverviewItem
         """
@@ -11783,7 +11783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SummaryTotal(self):
-        """Total cost
+        r"""Total cost
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
         """
@@ -11795,7 +11795,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11820,7 +11820,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeBillSummaryForOrganizationRequest(AbstractModel):
-    """DescribeBillSummaryForOrganization request structure.
+    r"""DescribeBillSummaryForOrganization request structure.
 
     """
 
@@ -11839,7 +11839,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Bill month in the format of "yyyy-mm".
+        r"""Bill month in the format of "yyyy-mm".
         :rtype: str
         """
         return self._Month
@@ -11850,7 +11850,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        """Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`.
+        r"""Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`.
         :rtype: str
         """
         return self._GroupType
@@ -11861,7 +11861,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key. Pass in it when `GroupType` is `tag`.
+        r"""Tag key. Pass in it when `GroupType` is `tag`.
         :rtype: list of str
         """
         return self._TagKey
@@ -11886,7 +11886,7 @@ class DescribeBillSummaryForOrganizationRequest(AbstractModel):
 
 
 class DescribeBillSummaryForOrganizationResponse(AbstractModel):
-    """DescribeBillSummaryForOrganization response structure.
+    r"""DescribeBillSummaryForOrganization response structure.
 
     """
 
@@ -11905,7 +11905,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. Valid values: `0` (not ready), `1` (ready). If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. Valid values: `0` (not ready), `1` (ready). If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -11916,7 +11916,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        """Bills summarized by multiple dimensions.
+        r"""Bills summarized by multiple dimensions.
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail
@@ -11927,7 +11927,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11949,7 +11949,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
 
 
 class DescribeBillSummaryRequest(AbstractModel):
-    """DescribeBillSummary request structure.
+    r"""DescribeBillSummary request structure.
 
     """
 
@@ -11968,7 +11968,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Bill month in the format of "yyyy-mm"
+        r"""Bill month in the format of "yyyy-mm"
         :rtype: str
         """
         return self._Month
@@ -11979,7 +11979,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        """Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`
+        r"""Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`
         :rtype: str
         """
         return self._GroupType
@@ -11990,7 +11990,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key, which is used when `GroupType` is `tag`.
+        r"""Tag key, which is used when `GroupType` is `tag`.
         :rtype: list of str
         """
         return self._TagKey
@@ -12015,7 +12015,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
 
 class DescribeBillSummaryResponse(AbstractModel):
-    """DescribeBillSummary response structure.
+    r"""DescribeBillSummary response structure.
 
     """
 
@@ -12034,7 +12034,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        r"""Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :rtype: int
         """
         return self._Ready
@@ -12045,7 +12045,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        """Detailed summary of costs by multiple dimensions
+        r"""Detailed summary of costs by multiple dimensions
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail
@@ -12056,7 +12056,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12078,7 +12078,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
 
 class DescribeCostDetailRequest(AbstractModel):
-    """DescribeCostDetail request structure.
+    r"""DescribeCostDetail request structure.
 
     """
 
@@ -12115,7 +12115,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of entries returned at a time. The maximum value is `100`.
+        r"""The number of entries returned at a time. The maximum value is `100`.
         :rtype: int
         """
         return self._Limit
@@ -12126,7 +12126,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -12137,7 +12137,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        r"""Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
         :rtype: str
         """
         return self._BeginTime
@@ -12148,7 +12148,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        r"""Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
         :rtype: str
         """
         return self._EndTime
@@ -12159,7 +12159,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """Whether the total number of records in the list is needed, for frontend pagination1: needed, 0: not needed
+        r"""Whether the total number of records in the list is needed, for frontend pagination1: needed, 0: not needed
         :rtype: int
         """
         return self._NeedRecordNum
@@ -12170,7 +12170,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.
+        r"""Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.
         :rtype: str
         """
         return self._Month
@@ -12181,7 +12181,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Used to query information of a specified product (currently not available)
+        r"""Used to query information of a specified product (currently not available)
         :rtype: str
         """
         return self._ProductCode
@@ -12192,7 +12192,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment mode. Options include prePay and postPay.
+        r"""Payment mode. Options include prePay and postPay.
         :rtype: str
         """
         return self._PayMode
@@ -12203,7 +12203,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Used to query information of a specified resource
+        r"""Used to query information of a specified resource
         :rtype: str
         """
         return self._ResourceId
@@ -12234,7 +12234,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
 
 class DescribeCostDetailResponse(AbstractModel):
-    """DescribeCostDetail response structure.
+    r"""DescribeCostDetail response structure.
 
     """
 
@@ -12254,7 +12254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailSet(self):
-        """Consumption details
+        r"""Consumption details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CostDetail
         """
@@ -12266,7 +12266,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Record countNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Record countNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Total
@@ -12277,7 +12277,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12299,7 +12299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeCostExplorerSummaryRequest(AbstractModel):
-    """DescribeCostExplorerSummary request structure.
+    r"""DescribeCostExplorerSummary request structure.
 
     """
 
@@ -12345,7 +12345,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def BeginTime(self):
-        """The start time of the period in the format of yyyy-mm-dd hh:ii:ss.
+        r"""The start time of the period in the format of yyyy-mm-dd hh:ii:ss.
         :rtype: str
         """
         return self._BeginTime
@@ -12356,7 +12356,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def EndTime(self):
-        """The end time of the period in the format of yyyy-mm-dd hh:ii:ss.
+        r"""The end time of the period in the format of yyyy-mm-dd hh:ii:ss.
         :rtype: str
         """
         return self._EndTime
@@ -12367,7 +12367,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def BillType(self):
-        """Bill type: 1-cost bill, 2-consumption bill
+        r"""Bill type: 1-cost bill, 2-consumption bill
         :rtype: str
         """
         return self._BillType
@@ -12378,7 +12378,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def PeriodType(self):
-        """Statistical period: day-day, month-month;
+        r"""Statistical period: day-day, month-month;
         :rtype: str
         """
         return self._PeriodType
@@ -12389,7 +12389,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def Dimensions(self):
-        """Classification dimension (data aggregation dimension). Query classification dimension. (Use classification dimension code input parameter.) Input parameter enumeration value:default = Total only
+        r"""Classification dimension (data aggregation dimension). Query classification dimension. (Use classification dimension code input parameter.) Input parameter enumeration value:default = Total only
 feeType = Fee typebillType = Bill typebusiness = Product
 product = Sub-productregion=Region
 zone = Availability zoneactionType = Transaction typepayMode = Billing modetags = Tagproject = ProjectpayerUin = Payer accountownerUin = User account
@@ -12403,7 +12403,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def FeeType(self):
-        """Fee type: cost-total cost, totalCost-original price cost
+        r"""Fee type: cost-total cost, totalCost-original price cost
         :rtype: str
         """
         return self._FeeType
@@ -12414,7 +12414,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def PageSize(self):
-        """Quantity. The maximum value per page is 100.
+        r"""Quantity. The maximum value per page is 100.
         :rtype: int
         """
         return self._PageSize
@@ -12425,7 +12425,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def PageNo(self):
-        """Starting page, where PageNo=1 indicates the first page, PageNo=2 indicates the second page, and so on.
+        r"""Starting page, where PageNo=1 indicates the first page, PageNo=2 indicates the second page, and so on.
         :rtype: int
         """
         return self._PageNo
@@ -12436,7 +12436,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def TagKeyStr(self):
-        """Cost allocation tag value
+        r"""Cost allocation tag value
         :rtype: str
         """
         return self._TagKeyStr
@@ -12447,7 +12447,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def NeedConditionValue(self):
-        """Whether the filter box is needed: 1- indicates it is needed, 0- indicates it is not needed. If it is not specified, it is not required by default.
+        r"""Whether the filter box is needed: 1- indicates it is needed, 0- indicates it is not needed. If it is not specified, it is not required by default.
         :rtype: str
         """
         return self._NeedConditionValue
@@ -12458,7 +12458,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def Conditions(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
         """
         return self._Conditions
@@ -12493,7 +12493,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
 
 class DescribeCostExplorerSummaryResponse(AbstractModel):
-    """DescribeCostExplorerSummary response structure.
+    r"""DescribeCostExplorerSummary response structure.
 
     """
 
@@ -12522,7 +12522,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Number of data entries
+        r"""Number of data entries
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12534,7 +12534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Header(self):
-        """Header informationNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Header informationNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
         """
         return self._Header
@@ -12545,7 +12545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        """Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Data detailsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalyseDetail
         """
         return self._Detail
@@ -12556,7 +12556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalDetail(self):
-        """Data amountNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Data amountNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
         """
         return self._TotalDetail
@@ -12567,7 +12567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionValue(self):
-        """Filter boxNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Filter boxNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         """
         return self._ConditionValue
@@ -12578,7 +12578,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12609,7 +12609,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeCostSummaryByProductRequest(AbstractModel):
-    """DescribeCostSummaryByProduct request structure.
+    r"""DescribeCostSummaryByProduct request structure.
 
     """
 
@@ -12637,7 +12637,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -12648,7 +12648,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -12659,7 +12659,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Data quantity per fetch. The maximum value is 100.
+        r"""Data quantity per fetch. The maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -12670,7 +12670,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which starts from 0 by default
+        r"""Offset, which starts from 0 by default
         :rtype: int
         """
         return self._Offset
@@ -12681,7 +12681,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """UIN of the user querying the bill data
+        r"""UIN of the user querying the bill data
         :rtype: str
         """
         return self._PayerUin
@@ -12692,7 +12692,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        r"""Whether to return the record count. 0 for no, 1 for yes. Default is no.
         :rtype: int
         """
         return self._NeedRecordNum
@@ -12720,7 +12720,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
 
 class DescribeCostSummaryByProductResponse(AbstractModel):
-    """DescribeCostSummaryByProduct response structure.
+    r"""DescribeCostSummaryByProduct response structure.
 
     """
 
@@ -12745,7 +12745,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Data readiness, 0 for not ready, 1 for ready
+        r"""Data readiness, 0 for not ready, 1 for ready
         :rtype: int
         """
         return self._Ready
@@ -12756,7 +12756,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Consumption details
+        r"""Consumption details
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -12767,7 +12767,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Data
@@ -12778,7 +12778,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RecordNum
@@ -12789,7 +12789,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12815,7 +12815,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
 
 
 class DescribeCostSummaryByProjectRequest(AbstractModel):
-    """DescribeCostSummaryByProject request structure.
+    r"""DescribeCostSummaryByProject request structure.
 
     """
 
@@ -12843,7 +12843,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -12854,7 +12854,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -12865,7 +12865,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Data quantity per fetch. The maximum value is `100`.
+        r"""Data quantity per fetch. The maximum value is `100`.
         :rtype: int
         """
         return self._Limit
@@ -12876,7 +12876,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which starts from 0 by default
+        r"""Offset, which starts from 0 by default
         :rtype: int
         """
         return self._Offset
@@ -12887,7 +12887,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """UIN of the user querying the bill data
+        r"""UIN of the user querying the bill data
         :rtype: str
         """
         return self._PayerUin
@@ -12898,7 +12898,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        r"""Whether to return the record count. 0 for no, 1 for yes. Default is no.
         :rtype: int
         """
         return self._NeedRecordNum
@@ -12926,7 +12926,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
 
 class DescribeCostSummaryByProjectResponse(AbstractModel):
-    """DescribeCostSummaryByProject response structure.
+    r"""DescribeCostSummaryByProject response structure.
 
     """
 
@@ -12951,7 +12951,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Data readiness, 0 for not ready, 1 for ready
+        r"""Data readiness, 0 for not ready, 1 for ready
         :rtype: int
         """
         return self._Ready
@@ -12962,7 +12962,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Consumption details
+        r"""Consumption details
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -12973,7 +12973,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Consumption details summarized by business
+        r"""Consumption details summarized by business
         :rtype: list of ConsumptionProjectSummaryDataItem
         """
         return self._Data
@@ -12984,7 +12984,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """Record count. The system returns null when NeedRecordNum is 0.
+        r"""Record count. The system returns null when NeedRecordNum is 0.
         :rtype: int
         """
         return self._RecordNum
@@ -12995,7 +12995,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13021,7 +13021,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
 
 
 class DescribeCostSummaryByRegionRequest(AbstractModel):
-    """DescribeCostSummaryByRegion request structure.
+    r"""DescribeCostSummaryByRegion request structure.
 
     """
 
@@ -13049,7 +13049,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -13060,7 +13060,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -13071,7 +13071,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Data quantity per fetch. The maximum value is `100`.
+        r"""Data quantity per fetch. The maximum value is `100`.
         :rtype: int
         """
         return self._Limit
@@ -13082,7 +13082,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which starts from 0 by default
+        r"""Offset, which starts from 0 by default
         :rtype: int
         """
         return self._Offset
@@ -13093,7 +13093,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """UIN of the user querying the bill data
+        r"""UIN of the user querying the bill data
         :rtype: str
         """
         return self._PayerUin
@@ -13104,7 +13104,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        r"""Whether to return the record count. 0 for no, 1 for yes. Default is no.
         :rtype: int
         """
         return self._NeedRecordNum
@@ -13132,7 +13132,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
 
 class DescribeCostSummaryByRegionResponse(AbstractModel):
-    """DescribeCostSummaryByRegion response structure.
+    r"""DescribeCostSummaryByRegion response structure.
 
     """
 
@@ -13157,7 +13157,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Ready(self):
-        """Data readiness, 0 for not ready, 1 for ready
+        r"""Data readiness, 0 for not ready, 1 for ready
         :rtype: int
         """
         return self._Ready
@@ -13168,7 +13168,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Consumption details
+        r"""Consumption details
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -13179,7 +13179,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Consumption details summarized by region
+        r"""Consumption details summarized by region
         :rtype: list of ConsumptionRegionSummaryDataItem
         """
         return self._Data
@@ -13190,7 +13190,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RecordNum
@@ -13201,7 +13201,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13227,7 +13227,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
 
 
 class DescribeCostSummaryByResourceRequest(AbstractModel):
-    """DescribeCostSummaryByResource request structure.
+    r"""DescribeCostSummaryByResource request structure.
 
     """
 
@@ -13261,7 +13261,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """The value must be of the same month as EndTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as EndTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._BeginTime
@@ -13272,7 +13272,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The value must be of the same month as BeginTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
+        r"""The value must be of the same month as BeginTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
         :rtype: str
         """
         return self._EndTime
@@ -13283,7 +13283,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Data quantity per fetch. The maximum value is 100.
+        r"""Data quantity per fetch. The maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -13294,7 +13294,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which starts from 0 by default
+        r"""Offset, which starts from 0 by default
         :rtype: int
         """
         return self._Offset
@@ -13305,7 +13305,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        """UIN of the user querying the bill data
+        r"""UIN of the user querying the bill data
         :rtype: str
         """
         return self._PayerUin
@@ -13316,7 +13316,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        """Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        r"""Whether to return the record count. 0 for no, 1 for yes. Default is no.
         :rtype: int
         """
         return self._NeedRecordNum
@@ -13327,7 +13327,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedConditionValue(self):
-        """Whether to return filter criteria. 0 for no, 1 for yes. Default is no.
+        r"""Whether to return filter criteria. 0 for no, 1 for yes. Default is no.
         :rtype: int
         """
         return self._NeedConditionValue
@@ -13338,7 +13338,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Conditions(self):
-        """Filter criteria. It only supports ResourceKeyword (resource keyword, which supports fuzzy query by resource ID or resource name), ProjectIds (project ID), RegionIds (region ID), PayModes (payment mode, prePay or postPay), HideFreeCost (whether to hide zero-amount transactions, 0 or 1), and OrderByCost (sorting rule by fees, desc or asc).
+        r"""Filter criteria. It only supports ResourceKeyword (resource keyword, which supports fuzzy query by resource ID or resource name), ProjectIds (project ID), RegionIds (region ID), PayModes (payment mode, prePay or postPay), HideFreeCost (whether to hide zero-amount transactions, 0 or 1), and OrderByCost (sorting rule by fees, desc or asc).
         :rtype: :class:`tencentcloud.billing.v20180709.models.Conditions`
         """
         return self._Conditions
@@ -13370,7 +13370,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
 
 class DescribeCostSummaryByResourceResponse(AbstractModel):
-    """DescribeCostSummaryByResource response structure.
+    r"""DescribeCostSummaryByResource response structure.
 
     """
 
@@ -13399,7 +13399,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ready(self):
-        """Data readiness, 0 for not ready, 1 for ready
+        r"""Data readiness, 0 for not ready, 1 for ready
         :rtype: int
         """
         return self._Ready
@@ -13410,7 +13410,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -13421,7 +13421,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionValue(self):
-        """Filter criteria
+        r"""Filter criteria
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
         """
@@ -13433,7 +13433,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordNum(self):
-        """Record countNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Record countNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RecordNum
@@ -13444,7 +13444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ConsumptionResourceSummaryDataItem
         """
         return self._Data
@@ -13455,7 +13455,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13484,7 +13484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeDealsByCondRequest(AbstractModel):
-    """DescribeDealsByCond request structure.
+    r"""DescribeDealsByCond request structure.
 
     """
 
@@ -13537,7 +13537,7 @@ Example:ins-a2bb34
 
     @property
     def StartTime(self):
-        """Start time 
+        r"""Start time 
 Example :2016-01-01 00:00:00
         :rtype: str
         """
@@ -13549,7 +13549,7 @@ Example :2016-01-01 00:00:00
 
     @property
     def EndTime(self):
-        """End time 
+        r"""End time 
 Example:2016-02-01 00:00:00. 
 It is recommended that the span does not exceed 3 months.
         :rtype: str
@@ -13562,7 +13562,7 @@ It is recommended that the span does not exceed 3 months.
 
     @property
     def Limit(self):
-        """The number of records per page. The default is 20, and the maximum is 1,000.
+        r"""The number of records per page. The default is 20, and the maximum is 1,000.
         :rtype: int
         """
         return self._Limit
@@ -13573,7 +13573,7 @@ It is recommended that the span does not exceed 3 months.
 
     @property
     def Offset(self):
-        """The page number the records start from, starting from 0. The default is 0.
+        r"""The page number the records start from, starting from 0. The default is 0.
         :rtype: int
         """
         return self._Offset
@@ -13584,7 +13584,7 @@ It is recommended that the span does not exceed 3 months.
 
     @property
     def Status(self):
-        """Order status, default is 4 (successful order)
+        r"""Order status, default is 4 (successful order)
 Status of the order
 1: unpaid
 2: paid 
@@ -13608,7 +13608,7 @@ Status of the order
 
     @property
     def OrderId(self):
-        """Sub-order number
+        r"""Sub-order number
 Example: 202202021234567
         :rtype: str
         """
@@ -13620,7 +13620,7 @@ Example: 202202021234567
 
     @property
     def BigDealId(self):
-        """Large order number.
+        r"""Large order number.
 Example: 202202021234566
         :rtype: str
         """
@@ -13632,7 +13632,7 @@ Example: 202202021234566
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
 Example:ins-a2bb34
         :rtype: str
         """
@@ -13663,7 +13663,7 @@ Example:ins-a2bb34
 
 
 class DescribeDealsByCondResponse(AbstractModel):
-    """DescribeDealsByCond response structure.
+    r"""DescribeDealsByCond response structure.
 
     """
 
@@ -13682,7 +13682,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def Deals(self):
-        """Order list
+        r"""Order list
         :rtype: list of Deal
         """
         return self._Deals
@@ -13693,7 +13693,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of orders
+        r"""Total number of orders
         :rtype: int
         """
         return self._TotalCount
@@ -13704,7 +13704,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13726,7 +13726,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
 
 class DescribeDosageCosDetailByDateRequest(AbstractModel):
-    """DescribeDosageCosDetailByDate request structure.
+    r"""DescribeDosageCosDetailByDate request structure.
 
     """
 
@@ -13745,7 +13745,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """The start date of the usage query, such as `2020-09-01`.
+        r"""The start date of the usage query, such as `2020-09-01`.
         :rtype: str
         """
         return self._StartDate
@@ -13756,7 +13756,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.
+        r"""The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.
         :rtype: str
         """
         return self._EndDate
@@ -13767,7 +13767,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).
+        r"""Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).
         :rtype: str
         """
         return self._BucketName
@@ -13792,7 +13792,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
 
 class DescribeDosageCosDetailByDateResponse(AbstractModel):
-    """DescribeDosageCosDetailByDate response structure.
+    r"""DescribeDosageCosDetailByDate response structure.
 
     """
 
@@ -13808,7 +13808,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
     @property
     def DetailSets(self):
-        """Array of usage
+        r"""Array of usage
         :rtype: list of CosDetailSets
         """
         return self._DetailSets
@@ -13819,7 +13819,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13840,7 +13840,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
 
 
 class DescribeGatherRuleDetailRequest(AbstractModel):
-    """DescribeGatherRuleDetail request structure.
+    r"""DescribeGatherRuleDetail request structure.
 
     """
 
@@ -13856,7 +13856,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Specifies the ID of the queried collection rule.
+        r"""Specifies the ID of the queried collection rule.
         :rtype: int
         """
         return self._Id
@@ -13867,7 +13867,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, the current month by default if not provided.
+        r"""Month, the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -13891,7 +13891,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
 
 class DescribeGatherRuleDetailResponse(AbstractModel):
-    """DescribeGatherRuleDetail response structure.
+    r"""DescribeGatherRuleDetail response structure.
 
     """
 
@@ -13916,7 +13916,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Specifies the collection rule ID.
+        r"""Specifies the collection rule ID.
         :rtype: int
         """
         return self._Id
@@ -13927,7 +13927,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Associated UIN of the collection rule.
+        r"""Associated UIN of the collection rule.
         :rtype: str
         """
         return self._Uin
@@ -13938,7 +13938,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Collection rule last update time.
+        r"""Collection rule last update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -13949,7 +13949,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Collection rule details.
+        r"""Collection rule details.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -13960,7 +13960,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13981,7 +13981,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
 
 class DescribeTagListRequest(AbstractModel):
-    """DescribeTagList request structure.
+    r"""DescribeTagList request structure.
 
     """
 
@@ -14006,7 +14006,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of entries returned at a time. The maximum value is `1000`.
+        r"""The number of entries returned at a time. The maximum value is `1000`.
         :rtype: int
         """
         return self._Limit
@@ -14017,7 +14017,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        r"""Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
         :rtype: int
         """
         return self._Offset
@@ -14028,7 +14028,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Cost allocation tag key, used for fuzzy search.
+        r"""Cost allocation tag key, used for fuzzy search.
         :rtype: str
         """
         return self._TagKey
@@ -14039,7 +14039,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.
+        r"""Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.
         :rtype: int
         """
         return self._Status
@@ -14050,7 +14050,7 @@ class DescribeTagListRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).
+        r"""Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).
         :rtype: str
         """
         return self._OrderType
@@ -14077,7 +14077,7 @@ class DescribeTagListRequest(AbstractModel):
 
 
 class DescribeTagListResponse(AbstractModel):
-    """DescribeTagList response structure.
+    r"""DescribeTagList response structure.
 
     """
 
@@ -14096,7 +14096,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        """Total number of records.
+        r"""Total number of records.
         :rtype: int
         """
         return self._RecordNum
@@ -14107,7 +14107,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Tag information.
+        r"""Tag information.
         :rtype: list of TagDataInfo
         """
         return self._Data
@@ -14118,7 +14118,7 @@ class DescribeTagListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14140,7 +14140,7 @@ class DescribeTagListResponse(AbstractModel):
 
 
 class DescribeVoucherInfoRequest(AbstractModel):
-    """DescribeVoucherInfo request structure.
+    r"""DescribeVoucherInfo request structure.
 
     """
 
@@ -14201,7 +14201,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of records per page. The default is 20, and the maximum is 1,000.
+        r"""The number of records per page. The default is 20, and the maximum is 1,000.
         :rtype: int
         """
         return self._Limit
@@ -14212,7 +14212,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The page number the records start from. The default is 1.
+        r"""The page number the records start from. The default is 1.
         :rtype: int
         """
         return self._Offset
@@ -14223,7 +14223,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Status(self):
-        """The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.
+        r"""The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.
         :rtype: str
         """
         return self._Status
@@ -14234,7 +14234,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        """The voucher ID.
+        r"""The voucher ID.
         :rtype: str
         """
         return self._VoucherId
@@ -14245,7 +14245,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CodeId(self):
-        """The voucher order ID.
+        r"""The voucher order ID.
         :rtype: str
         """
         return self._CodeId
@@ -14256,7 +14256,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """The product code.
+        r"""The product code.
         :rtype: str
         """
         return self._ProductCode
@@ -14267,7 +14267,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        """The campaign ID.
+        r"""The campaign ID.
         :rtype: str
         """
         return self._ActivityId
@@ -14278,7 +14278,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherName(self):
-        """The voucher name.
+        r"""The voucher name.
         :rtype: str
         """
         return self._VoucherName
@@ -14289,7 +14289,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        """The start date of the voucher issuance, such as `2021-01-01`.
+        r"""The start date of the voucher issuance, such as `2021-01-01`.
         :rtype: str
         """
         return self._TimeFrom
@@ -14300,7 +14300,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        """The end date of the voucher issuance, such as `2021-01-01`.
+        r"""The end date of the voucher issuance, such as `2021-01-01`.
         :rtype: str
         """
         return self._TimeTo
@@ -14311,7 +14311,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortField(self):
-        """The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
+        r"""The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
         :rtype: str
         """
         return self._SortField
@@ -14322,7 +14322,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        """Whether to sort the records in ascending or descending order. Valid values: desc, asc.
+        r"""Whether to sort the records in ascending or descending order. Valid values: desc, asc.
         :rtype: str
         """
         return self._SortOrder
@@ -14333,7 +14333,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.
+        r"""The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.
         :rtype: str
         """
         return self._PayMode
@@ -14344,7 +14344,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayScene(self):
-        """If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        r"""If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
         :rtype: str
         """
         return self._PayScene
@@ -14355,7 +14355,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """The operator. The default is the UIN of the current user.
+        r"""The operator. The default is the UIN of the current user.
         :rtype: str
         """
         return self._Operator
@@ -14366,7 +14366,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherMainType(self):
-        """The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.
+        r"""The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.
         :rtype: str
         """
         return self._VoucherMainType
@@ -14377,7 +14377,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherSubType(self):
-        """Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.
+        r"""Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.
         :rtype: str
         """
         return self._VoucherSubType
@@ -14416,7 +14416,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
 
 class DescribeVoucherInfoResponse(AbstractModel):
-    """DescribeVoucherInfo response structure.
+    r"""DescribeVoucherInfo response structure.
 
     """
 
@@ -14439,7 +14439,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalCount(self):
-        """The total number of vouchers.
+        r"""The total number of vouchers.
         :rtype: int
         """
         return self._TotalCount
@@ -14450,7 +14450,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalBalance(self):
-        """The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :rtype: int
         """
         return self._TotalBalance
@@ -14461,7 +14461,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VoucherInfos(self):
-        """The voucher information.
+        r"""The voucher information.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of VoucherInfos
         """
@@ -14473,7 +14473,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14496,7 +14496,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeVoucherUsageDetailsRequest(AbstractModel):
-    """DescribeVoucherUsageDetails request structure.
+    r"""DescribeVoucherUsageDetails request structure.
 
     """
 
@@ -14518,7 +14518,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of records per page. The default is 20, and the maximum is 1,000.
+        r"""The number of records per page. The default is 20, and the maximum is 1,000.
         :rtype: int
         """
         return self._Limit
@@ -14529,7 +14529,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The page number the records start from. The default is 1.
+        r"""The page number the records start from. The default is 1.
         :rtype: int
         """
         return self._Offset
@@ -14540,7 +14540,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        """The voucher ID.
+        r"""The voucher ID.
         :rtype: str
         """
         return self._VoucherId
@@ -14551,7 +14551,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
     @property
     def Operator(self):
-        """The operator. The default is the UIN of the current.
+        r"""The operator. The default is the UIN of the current.
         :rtype: str
         """
         return self._Operator
@@ -14577,7 +14577,7 @@ class DescribeVoucherUsageDetailsRequest(AbstractModel):
 
 
 class DescribeVoucherUsageDetailsResponse(AbstractModel):
-    """DescribeVoucherUsageDetails response structure.
+    r"""DescribeVoucherUsageDetails response structure.
 
     """
 
@@ -14600,7 +14600,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalCount(self):
-        """The total number of vouchers.
+        r"""The total number of vouchers.
         :rtype: int
         """
         return self._TotalCount
@@ -14611,7 +14611,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalUsedAmount(self):
-        """The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :rtype: int
         """
         return self._TotalUsedAmount
@@ -14622,7 +14622,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsageRecords(self):
-        """The usage details.
+        r"""The usage details.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of UsageRecords
         """
@@ -14634,7 +14634,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14657,7 +14657,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DistributionBillDetail(AbstractModel):
-    """Objects of reseller bill details
+    r"""Objects of reseller bill details
 
     """
 
@@ -14763,7 +14763,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCodeName(self):
-        """Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        r"""Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :rtype: str
         """
         return self._BusinessCodeName
@@ -14774,7 +14774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
+        r"""Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
         :rtype: str
         """
         return self._ProductCodeName
@@ -14785,7 +14785,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        """Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -14796,7 +14796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        r"""Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :rtype: str
         """
         return self._ProjectName
@@ -14807,7 +14807,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region: The region of a resource, e.g. South China (Guangzhou).
+        r"""Region: The region of a resource, e.g. South China (Guangzhou).
         :rtype: str
         """
         return self._RegionName
@@ -14818,7 +14818,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneName(self):
-        """Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3.
+        r"""Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3.
         :rtype: str
         """
         return self._ZoneName
@@ -14829,7 +14829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
+        r"""Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
         :rtype: str
         """
         return self._ResourceId
@@ -14840,7 +14840,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
-        """Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        r"""Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :rtype: str
         """
         return self._ResourceName
@@ -14851,7 +14851,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTypeName(self):
-        """Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
         :rtype: str
         """
         return self._ActionTypeName
@@ -14862,7 +14862,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order ID: The ID of a monthly subscription order.
+        r"""Order ID: The ID of a monthly subscription order.
         :rtype: str
         """
         return self._OrderId
@@ -14873,7 +14873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillId(self):
-        """Transaction ID: The ID of a settlement bill.
+        r"""Transaction ID: The ID of a settlement bill.
         :rtype: str
         """
         return self._BillId
@@ -14884,7 +14884,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayTime(self):
-        """Deduction time: The settlement cost deduction time.
+        r"""Deduction time: The settlement cost deduction time.
         :rtype: str
         """
         return self._PayTime
@@ -14895,7 +14895,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeBeginTime(self):
-        """Usage start time: The time at which product or service usage starts.
+        r"""Usage start time: The time at which product or service usage starts.
         :rtype: str
         """
         return self._FeeBeginTime
@@ -14906,7 +14906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeeEndTime(self):
-        """Usage end time: The time at which product or service usage ends.
+        r"""Usage end time: The time at which product or service usage ends.
         :rtype: str
         """
         return self._FeeEndTime
@@ -14917,7 +14917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentSet(self):
-        """List of components.
+        r"""List of components.
         :rtype: list of BillDetailComponent
         """
         return self._ComponentSet
@@ -14928,7 +14928,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """Owner account ID: The account ID of the actual resource user.
+        r"""Owner account ID: The account ID of the actual resource user.
         :rtype: str
         """
         return self._OwnerUin
@@ -14939,7 +14939,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        """Operator account ID: The account or role ID of the operator who purchases or activates a resource.
+        r"""Operator account ID: The account or role ID of the operator who purchases or activates a resource.
         :rtype: str
         """
         return self._OperateUin
@@ -14950,7 +14950,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information.
+        r"""Tag information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BillTagInfo
         """
@@ -14962,7 +14962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusinessCode(self):
-        """Product code.
+        r"""Product code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14974,7 +14974,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCode(self):
-        """Subproduct code.
+        r"""Subproduct code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14986,7 +14986,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        """Transaction type code.
+        r"""Transaction type code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14998,7 +14998,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID.
+        r"""Region ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15010,7 +15010,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -15021,7 +15021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceInfo(self):
-        """Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
+        r"""Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -15033,7 +15033,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedOrder(self):
-        """Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
+        r"""Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
@@ -15045,7 +15045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        """Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
+        r"""Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15057,7 +15057,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormulaUrl(self):
-        """Billing rules: Official website links for detailed billing rules of each product.
+        r"""Billing rules: Official website links for detailed billing rules of each product.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15069,7 +15069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillMonth(self):
-        """Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing monthNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillMonth
@@ -15080,7 +15080,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillDay(self):
-        """Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Billing dayNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BillDay
@@ -15143,7 +15143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ExcludedProducts(AbstractModel):
-    """The products that are not applicable.
+    r"""The products that are not applicable.
 
     """
 
@@ -15159,7 +15159,7 @@ class ExcludedProducts(AbstractModel):
 
     @property
     def GoodsName(self):
-        """The names of non-applicable products.
+        r"""The names of non-applicable products.
         :rtype: str
         """
         return self._GoodsName
@@ -15170,7 +15170,7 @@ class ExcludedProducts(AbstractModel):
 
     @property
     def PayMode(self):
-        """`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
+        r"""`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
         :rtype: str
         """
         return self._PayMode
@@ -15194,7 +15194,7 @@ class ExcludedProducts(AbstractModel):
 
 
 class GatherRuleSummary(AbstractModel):
-    """List of collection rules.
+    r"""List of collection rules.
 
     """
 
@@ -15207,7 +15207,7 @@ class GatherRuleSummary(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Cost allocation regular expression.
+        r"""Cost allocation regular expression.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -15232,7 +15232,7 @@ class GatherRuleSummary(AbstractModel):
 
 
 class ModifyAllocationRuleRequest(AbstractModel):
-    """ModifyAllocationRule request structure.
+    r"""ModifyAllocationRule request structure.
 
     """
 
@@ -15260,7 +15260,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """The edited sharing rule ID.
+        r"""The edited sharing rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -15271,7 +15271,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Edited sharing rule name.
+        r"""Edited sharing rule name.
         :rtype: str
         """
         return self._Name
@@ -15282,7 +15282,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Public sharing policy types, enumeration values are as follows: 1 - custom sharing proportion 2 - proportional allocation 3 - allocation by proportion.
+        r"""Public sharing policy types, enumeration values are as follows: 1 - custom sharing proportion 2 - proportional allocation 3 - allocation by proportion.
         :rtype: int
         """
         return self._Type
@@ -15293,7 +15293,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Edited share rules expression.
+        r"""Edited share rules expression.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -15304,7 +15304,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RatioDetail(self):
-        """Edited sharing proportion expression.
+        r"""Edited sharing proportion expression.
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -15315,7 +15315,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -15350,7 +15350,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
 
 class ModifyAllocationRuleResponse(AbstractModel):
-    """ModifyAllocationRule response structure.
+    r"""ModifyAllocationRule response structure.
 
     """
 
@@ -15363,7 +15363,7 @@ class ModifyAllocationRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15378,7 +15378,7 @@ class ModifyAllocationRuleResponse(AbstractModel):
 
 
 class ModifyAllocationUnitRequest(AbstractModel):
-    """ModifyAllocationUnit request structure.
+    r"""ModifyAllocationUnit request structure.
 
     """
 
@@ -15406,7 +15406,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        """ID of the modified cost allocation unit.
+        r"""ID of the modified cost allocation unit.
         :rtype: int
         """
         return self._Id
@@ -15417,7 +15417,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Modified cost allocation unit name.
+        r"""Modified cost allocation unit name.
         :rtype: str
         """
         return self._Name
@@ -15428,7 +15428,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        """Modified cost allocation unit source organization name.
+        r"""Modified cost allocation unit source organization name.
         :rtype: str
         """
         return self._SourceName
@@ -15439,7 +15439,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceId(self):
-        """Modified allocation unit source organization ID.
+        r"""Modified allocation unit source organization ID.
         :rtype: str
         """
         return self._SourceId
@@ -15450,7 +15450,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Cost allocation unit remark description.
+        r"""Cost allocation unit remark description.
         :rtype: str
         """
         return self._Remark
@@ -15461,7 +15461,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, the current month by default if not provided.
+        r"""Month, the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -15489,7 +15489,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
 
 class ModifyAllocationUnitResponse(AbstractModel):
-    """ModifyAllocationUnit response structure.
+    r"""ModifyAllocationUnit response structure.
 
     """
 
@@ -15502,7 +15502,7 @@ class ModifyAllocationUnitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15517,7 +15517,7 @@ class ModifyAllocationUnitResponse(AbstractModel):
 
 
 class ModifyGatherRuleRequest(AbstractModel):
-    """ModifyGatherRule request structure.
+    r"""ModifyGatherRule request structure.
 
     """
 
@@ -15536,7 +15536,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Edit collection rule ID.
+        r"""Edit collection rule ID.
         :rtype: int
         """
         return self._Id
@@ -15547,7 +15547,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        """Rule detail of the edited collection rule.
+        r"""Rule detail of the edited collection rule.
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -15558,7 +15558,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        """Month, which is the current month by default if not provided.
+        r"""Month, which is the current month by default if not provided.
         :rtype: str
         """
         return self._Month
@@ -15585,7 +15585,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
 
 class ModifyGatherRuleResponse(AbstractModel):
-    """ModifyGatherRule response structure.
+    r"""ModifyGatherRule response structure.
 
     """
 
@@ -15598,7 +15598,7 @@ class ModifyGatherRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15613,7 +15613,7 @@ class ModifyGatherRuleResponse(AbstractModel):
 
 
 class PayDealsRequest(AbstractModel):
-    """PayDeals request structure.
+    r"""PayDeals request structure.
 
     """
 
@@ -15641,7 +15641,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def OrderIds(self):
-        """Specifies one or more Sub-order No. that need to pay. must pass either this parameter or the BigDealIds field, but not both.
+        r"""Specifies one or more Sub-order No. that need to pay. must pass either this parameter or the BigDealIds field, but not both.
         :rtype: list of str
         """
         return self._OrderIds
@@ -15652,7 +15652,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use a voucher. valid values: 1 (yes), 0 (no). default: 0.
+        r"""Whether to automatically use a voucher. valid values: 1 (yes), 0 (no). default: 0.
         :rtype: int
         """
         return self._AutoVoucher
@@ -15663,7 +15663,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Voucher ID list. currently only supports specifying one voucher.
+        r"""Voucher ID list. currently only supports specifying one voucher.
         :rtype: list of str
         """
         return self._VoucherIds
@@ -15674,7 +15674,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def BigDealIds(self):
-        """Specifies one or more Order No. that need to pay. must pass either this parameter or the OrderIds field.
+        r"""Specifies one or more Order No. that need to pay. must pass either this parameter or the OrderIds field.
         :rtype: list of str
         """
         return self._BigDealIds
@@ -15685,7 +15685,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def AgentPay(self):
-        """0 self pay, 3 group agent, 4 reseller places a product-level payment order for customers. default 0.
+        r"""0 self pay, 3 group agent, 4 reseller places a product-level payment order for customers. default 0.
         :rtype: int
         """
         return self._AgentPay
@@ -15696,7 +15696,7 @@ class PayDealsRequest(AbstractModel):
 
     @property
     def CpsUin(self):
-        """Disregard it.
+        r"""Disregard it.
         :rtype: str
         """
         return self._CpsUin
@@ -15724,7 +15724,7 @@ class PayDealsRequest(AbstractModel):
 
 
 class PayDealsResponse(AbstractModel):
-    """PayDeals response structure.
+    r"""PayDeals response structure.
 
     """
 
@@ -15746,7 +15746,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def OrderIds(self):
-        """Specifies the array of Sub-order No. with payment successful.
+        r"""Specifies the array of Sub-order No. with payment successful.
         :rtype: list of str
         """
         return self._OrderIds
@@ -15757,7 +15757,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        """Specifies the Id array of resources with payment successful.
+        r"""Specifies the Id array of resources with payment successful.
         :rtype: list of str
         """
         return self._ResourceIds
@@ -15768,7 +15768,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def BigDealIds(self):
-        """Specifies the array of Order No. with payment successful.
+        r"""Specifies the array of Order No. with payment successful.
         :rtype: list of str
         """
         return self._BigDealIds
@@ -15779,7 +15779,7 @@ class PayDealsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15797,7 +15797,7 @@ class PayDealsResponse(AbstractModel):
 
 
 class PayModeSummaryOverviewItem(AbstractModel):
-    """Detailed summary of costs by billing mode
+    r"""Detailed summary of costs by billing mode
 
     """
 
@@ -15837,7 +15837,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing mode code
+        r"""Billing mode code
         :rtype: str
         """
         return self._PayMode
@@ -15848,7 +15848,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        """Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -15859,7 +15859,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """Cost ratio, to two decimal points
+        r"""Cost ratio, to two decimal points
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -15870,7 +15870,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -15881,7 +15881,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash balance
+        r"""Cash credit: The amount paid from the user’s cash balance
         :rtype: str
         """
         return self._CashPayAmount
@@ -15892,7 +15892,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -15903,7 +15903,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -15914,7 +15914,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user’s commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -15925,7 +15925,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -15936,7 +15936,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def Detail(self):
-        """Detailed summary of costs by transaction type
+        r"""Detailed summary of costs by transaction type
         :rtype: list of ActionSummaryOverviewItem
         """
         return self._Detail
@@ -15973,7 +15973,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
 
 class ProductInfo(AbstractModel):
-    """Product details
+    r"""Product details
 
     """
 
@@ -15989,7 +15989,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Product detail name identifier
+        r"""Product detail name identifier
         :rtype: str
         """
         return self._Name
@@ -16000,7 +16000,7 @@ class ProductInfo(AbstractModel):
 
     @property
     def Value(self):
-        """Product details
+        r"""Product details
         :rtype: str
         """
         return self._Value
@@ -16024,7 +16024,7 @@ class ProductInfo(AbstractModel):
 
 
 class ProjectSummaryOverviewItem(AbstractModel):
-    """Detailed summary of purchases by project
+    r"""Detailed summary of purchases by project
 
     """
 
@@ -16064,7 +16064,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -16075,7 +16075,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        """Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        r"""Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :rtype: str
         """
         return self._ProjectName
@@ -16086,7 +16086,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCostRatio(self):
-        """Cost ratio, to two decimal points
+        r"""Cost ratio, to two decimal points
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -16097,7 +16097,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -16108,7 +16108,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -16119,7 +16119,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -16130,7 +16130,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -16141,7 +16141,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user’s commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -16152,7 +16152,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def BillMonth(self):
-        """Billing month, e.g. `2019-08`
+        r"""Billing month, e.g. `2019-08`
         :rtype: str
         """
         return self._BillMonth
@@ -16163,7 +16163,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -16195,7 +16195,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
 
 
 class RegionSummaryOverviewItem(AbstractModel):
-    """Detailed summary of purchases by region
+    r"""Detailed summary of purchases by region
 
     """
 
@@ -16236,7 +16236,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16248,7 +16248,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RegionName(self):
-        """Region: The region to which a resource belongs, such as South China (Guangzhou).
+        r"""Region: The region to which a resource belongs, such as South China (Guangzhou).
         :rtype: str
         """
         return self._RegionName
@@ -16259,7 +16259,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RealTotalCostRatio(self):
-        """Cost ratio, to two decimal points
+        r"""Cost ratio, to two decimal points
         :rtype: str
         """
         return self._RealTotalCostRatio
@@ -16270,7 +16270,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -16281,7 +16281,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -16292,7 +16292,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -16303,7 +16303,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -16314,7 +16314,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user’s commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -16325,7 +16325,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def BillMonth(self):
-        """Billing month, e.g. `2019-08`
+        r"""Billing month, e.g. `2019-08`
         :rtype: str
         """
         return self._BillMonth
@@ -16336,7 +16336,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -16368,7 +16368,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class SummaryDetail(AbstractModel):
-    """Detailed summary of costs by multiple dimensions
+    r"""Detailed summary of costs by multiple dimensions
 
     """
 
@@ -16405,7 +16405,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupKey(self):
-        """Bill dimension code. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Bill dimension code. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._GroupKey
@@ -16416,7 +16416,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def GroupValue(self):
-        """Bill dimension value. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Bill dimension value. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._GroupValue
@@ -16427,7 +16427,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def TotalCost(self):
-        """Original cost in USD. This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter.
+        r"""Original cost in USD. This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter.
         :rtype: str
         """
         return self._TotalCost
@@ -16438,7 +16438,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        r"""Total amount after discount
         :rtype: str
         """
         return self._RealTotalCost
@@ -16449,7 +16449,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        r"""Cash credit: The amount paid from the user’s cash account
         :rtype: str
         """
         return self._CashPayAmount
@@ -16460,7 +16460,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user’s free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -16471,7 +16471,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The voucher deduction amount
+        r"""Voucher payment: The voucher deduction amount
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -16482,7 +16482,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -16493,7 +16493,7 @@ class SummaryDetail(AbstractModel):
 
     @property
     def Business(self):
-        """Detailed summary of products. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Detailed summary of products. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BusinessSummaryInfo
         """
         return self._Business
@@ -16529,7 +16529,7 @@ class SummaryDetail(AbstractModel):
 
 
 class SummaryTotal(AbstractModel):
-    """Total cost
+    r"""Total cost
 
     """
 
@@ -16546,7 +16546,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RealTotalCost
@@ -16557,7 +16557,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16582,7 +16582,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class TagDataInfo(AbstractModel):
-    """Tag information.
+    r"""Tag information.
 
     """
 
@@ -16602,7 +16602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
-        """Cost allocation tag key.
+        r"""Cost allocation tag key.
         :rtype: str
         """
         return self._TagKey
@@ -16613,7 +16613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Tag type. Valid values: `0` (general tags), `1` (cost allocation tags).
+        r"""Tag type. Valid values: `0` (general tags), `1` (cost allocation tags).
         :rtype: int
         """
         return self._Status
@@ -16624,7 +16624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Time to set the cost allocation tag. It will not be returned if `Status` is `0`.
+        r"""Time to set the cost allocation tag. It will not be returned if `Status` is `0`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16650,7 +16650,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TagSummaryOverviewItem(AbstractModel):
-    """Details about cost distribution over different tags.
+    r"""Details about cost distribution over different tags.
 
     """
 
@@ -16687,7 +16687,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16699,7 +16699,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCostRatio(self):
-        """Cost percentage rounded to two decimal places
+        r"""Cost percentage rounded to two decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16711,7 +16711,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Total amount after discount. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RealTotalCost
@@ -16722,7 +16722,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cash credit: The amount paid from the user’s cash account. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CashPayAmount
@@ -16733,7 +16733,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Free credit: The amount paid with the user’s free credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -16744,7 +16744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoucherPayAmount(self):
-        """Voucher payment: The amount deducted by using vouchers. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Voucher payment: The amount deducted by using vouchers. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -16755,7 +16755,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -16766,7 +16766,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCost(self):
-        """The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
+        r"""The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16797,7 +16797,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class UsageDetails(AbstractModel):
-    """The product purchased.
+    r"""The product purchased.
 
     """
 
@@ -16814,7 +16814,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ProductName(self):
-        """The name of the product.
+        r"""The name of the product.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -16826,7 +16826,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubProductName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubProductName
@@ -16850,7 +16850,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class UsageRecords(AbstractModel):
-    """The usage records.
+    r"""The usage records.
 
     """
 
@@ -16870,7 +16870,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsedAmount(self):
-        """The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :rtype: int
         """
         return self._UsedAmount
@@ -16881,7 +16881,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsedTime(self):
-        """The time when the voucher was used.
+        r"""The time when the voucher was used.
         :rtype: str
         """
         return self._UsedTime
@@ -16892,7 +16892,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UsageDetails(self):
-        """The details of the product purchased.
+        r"""The details of the product purchased.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of UsageDetails
         """
@@ -16923,7 +16923,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class VoucherInfos(AbstractModel):
-    """Voucher information.
+    r"""Voucher information.
 
     """
 
@@ -16968,7 +16968,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OwnerUin(self):
-        """The owner of the voucher.
+        r"""The owner of the voucher.
         :rtype: str
         """
         return self._OwnerUin
@@ -16979,7 +16979,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`
+        r"""The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`
         :rtype: str
         """
         return self._Status
@@ -16990,7 +16990,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NominalValue(self):
-        """The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :rtype: int
         """
         return self._NominalValue
@@ -17001,7 +17001,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Balance(self):
-        """The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.
+        r"""The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.
         :rtype: int
         """
         return self._Balance
@@ -17012,7 +17012,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VoucherId(self):
-        """The voucher ID.
+        r"""The voucher ID.
         :rtype: str
         """
         return self._VoucherId
@@ -17023,7 +17023,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PayMode(self):
-        """`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
+        r"""`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.
         :rtype: str
         """
         return self._PayMode
@@ -17034,7 +17034,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PayScene(self):
-        """If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
+        r"""If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.
         :rtype: str
         """
         return self._PayScene
@@ -17045,7 +17045,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BeginTime(self):
-        """The start time of the validity period.
+        r"""The start time of the validity period.
         :rtype: str
         """
         return self._BeginTime
@@ -17056,7 +17056,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
-        """The end time of the validity period.
+        r"""The end time of the validity period.
         :rtype: str
         """
         return self._EndTime
@@ -17067,7 +17067,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ApplicableProducts(self):
-        """The products that are applicable.
+        r"""The products that are applicable.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
         """
@@ -17079,7 +17079,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ExcludedProducts(self):
-        """The products that are not applicable.
+        r"""The products that are not applicable.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of ExcludedProducts
         """

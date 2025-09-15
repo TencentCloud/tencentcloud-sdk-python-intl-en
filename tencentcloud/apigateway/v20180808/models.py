@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APIDoc(AbstractModel):
-    """Basic information of API document
+    r"""Basic information of API document
 
     """
 
@@ -38,7 +38,7 @@ class APIDoc(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -49,7 +49,7 @@ class APIDoc(AbstractModel):
 
     @property
     def ApiDocName(self):
-        """API document name
+        r"""API document name
         :rtype: str
         """
         return self._ApiDocName
@@ -60,7 +60,7 @@ class APIDoc(AbstractModel):
 
     @property
     def ApiDocStatus(self):
-        """API document build status
+        r"""API document build status
         :rtype: str
         """
         return self._ApiDocStatus
@@ -85,7 +85,7 @@ class APIDoc(AbstractModel):
 
 
 class APIDocInfo(AbstractModel):
-    """API document details
+    r"""API document details
 
     """
 
@@ -137,7 +137,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -148,7 +148,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiDocName(self):
-        """API document name
+        r"""API document name
         :rtype: str
         """
         return self._ApiDocName
@@ -159,7 +159,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiDocStatus(self):
-        """API document build status
+        r"""API document build status
         :rtype: str
         """
         return self._ApiDocStatus
@@ -170,7 +170,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiCount(self):
-        """Number of APIs with API documents
+        r"""Number of APIs with API documents
         :rtype: int
         """
         return self._ApiCount
@@ -181,7 +181,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ViewCount(self):
-        """Number of views of API document
+        r"""Number of views of API document
         :rtype: int
         """
         return self._ViewCount
@@ -192,7 +192,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ReleaseCount(self):
-        """Number of releases of API document
+        r"""Number of releases of API document
         :rtype: int
         """
         return self._ReleaseCount
@@ -203,7 +203,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiDocUri(self):
-        """API document access URI
+        r"""API document access URI
         :rtype: str
         """
         return self._ApiDocUri
@@ -214,7 +214,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def SharePassword(self):
-        """API document password for sharing
+        r"""API document password for sharing
         :rtype: str
         """
         return self._SharePassword
@@ -225,7 +225,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        """API document update time
+        r"""API document update time
         :rtype: str
         """
         return self._UpdatedTime
@@ -236,7 +236,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -247,7 +247,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment information
+        r"""Environment information
         :rtype: str
         """
         return self._Environment
@@ -258,7 +258,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiIds(self):
-        """ID of the API for which to generate the API document
+        r"""ID of the API for which to generate the API document
         :rtype: list of str
         """
         return self._ApiIds
@@ -269,7 +269,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Service name
+        r"""Service name
         :rtype: str
         """
         return self._ServiceName
@@ -280,7 +280,7 @@ class APIDocInfo(AbstractModel):
 
     @property
     def ApiNames(self):
-        """Name of the API for which to generate the API document
+        r"""Name of the API for which to generate the API document
         :rtype: list of str
         """
         return self._ApiNames
@@ -316,7 +316,7 @@ class APIDocInfo(AbstractModel):
 
 
 class APIDocs(AbstractModel):
-    """API document list
+    r"""API document list
 
     """
 
@@ -332,7 +332,7 @@ class APIDocs(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of API documents
+        r"""Number of API documents
         :rtype: int
         """
         return self._TotalCount
@@ -343,7 +343,7 @@ class APIDocs(AbstractModel):
 
     @property
     def APIDocSet(self):
-        """Basic information of API document
+        r"""Basic information of API document
         :rtype: list of APIDoc
         """
         return self._APIDocSet
@@ -372,7 +372,7 @@ class APIDocs(AbstractModel):
 
 
 class ApiAppApiInfo(AbstractModel):
-    """Information of the API bound to the application
+    r"""Information of the API bound to the application
 
     """
 
@@ -413,7 +413,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppName(self):
-        """Application name
+        r"""Application name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -425,7 +425,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApiAppId
@@ -436,7 +436,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -448,7 +448,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name
+        r"""API name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -460,7 +460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -472,7 +472,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthorizedTime(self):
-        """Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -484,7 +484,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiRegion(self):
-        """API region
+        r"""API region
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -496,7 +496,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentName(self):
-        """Authorized binding environment
+        r"""Authorized binding environment
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -527,7 +527,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiAppApiInfos(AbstractModel):
-    """Application information set
+    r"""Application information set
 
     """
 
@@ -544,7 +544,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Quantity
+        r"""Quantity
         :rtype: int
         """
         return self._TotalCount
@@ -555,7 +555,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppApiSet(self):
-        """Information array of the API bound to the application
+        r"""Information array of the API bound to the application
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiAppApiInfo
         """
@@ -585,7 +585,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiAppInfo(AbstractModel):
-    """Application information
+    r"""Application information
 
     """
 
@@ -622,7 +622,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppName(self):
-        """Application name
+        r"""Application name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -634,7 +634,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApiAppId
@@ -645,7 +645,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppSecret(self):
-        """Application SECRET
+        r"""Application SECRET
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -657,7 +657,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppDesc(self):
-        """Application description
+        r"""Application description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -669,7 +669,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -681,7 +681,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -693,7 +693,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppKey(self):
-        """Application KEY
+        r"""Application KEY
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -723,7 +723,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiAppInfos(AbstractModel):
-    """Application information set
+    r"""Application information set
 
     """
 
@@ -740,7 +740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of applications
+        r"""Number of applications
         :rtype: int
         """
         return self._TotalCount
@@ -751,7 +751,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAppSet(self):
-        """Application information array
+        r"""Application information array
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiAppInfo
         """
@@ -781,7 +781,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiEnvironmentStrategy(AbstractModel):
-    """API environment binding policy
+    r"""API environment binding policy
 
     """
 
@@ -806,7 +806,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -817,7 +817,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     @property
     def ApiName(self):
-        """Custom API name.
+        r"""Custom API name.
         :rtype: str
         """
         return self._ApiName
@@ -828,7 +828,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     @property
     def Path(self):
-        """API path, such as `/path`.
+        r"""API path, such as `/path`.
         :rtype: str
         """
         return self._Path
@@ -839,7 +839,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     @property
     def Method(self):
-        """API method, such as `GET`.
+        r"""API method, such as `GET`.
         :rtype: str
         """
         return self._Method
@@ -850,7 +850,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     @property
     def EnvironmentStrategySet(self):
-        """Environment throttling information.
+        r"""Environment throttling information.
         :rtype: list of EnvironmentStrategy
         """
         return self._EnvironmentStrategySet
@@ -882,7 +882,7 @@ class ApiEnvironmentStrategy(AbstractModel):
 
 
 class ApiEnvironmentStrategyStatus(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -898,7 +898,7 @@ class ApiEnvironmentStrategyStatus(AbstractModel):
 
     @property
     def TotalCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._TotalCount
@@ -909,7 +909,7 @@ class ApiEnvironmentStrategyStatus(AbstractModel):
 
     @property
     def ApiEnvironmentStrategySet(self):
-        """
+        r"""
         :rtype: list of ApiEnvironmentStrategy
         """
         return self._ApiEnvironmentStrategySet
@@ -938,7 +938,7 @@ class ApiEnvironmentStrategyStatus(AbstractModel):
 
 
 class ApiIdStatus(AbstractModel):
-    """API status
+    r"""API status
 
     """
 
@@ -1014,7 +1014,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -1025,7 +1025,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -1036,7 +1036,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDesc(self):
-        """API description
+        r"""API description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1048,7 +1048,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path.
+        r"""API path.
         :rtype: str
         """
         return self._Path
@@ -1059,7 +1059,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API method.
+        r"""API method.
         :rtype: str
         """
         return self._Method
@@ -1070,7 +1070,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Service creation time.
+        r"""Service creation time.
         :rtype: str
         """
         return self._CreatedTime
@@ -1081,7 +1081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Service modification time.
+        r"""Service modification time.
         :rtype: str
         """
         return self._ModifiedTime
@@ -1092,7 +1092,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1104,7 +1104,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1116,7 +1116,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiType(self):
-        """API type.
+        r"""API type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1128,7 +1128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """API protocol.
+        r"""API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1140,7 +1140,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDebugAfterCharge(self):
-        """Whether to enable debugging after purchase.
+        r"""Whether to enable debugging after purchase.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1152,7 +1152,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthType(self):
-        """Authorization type.
+        r"""Authorization type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1164,7 +1164,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiBusinessType(self):
-        """API business type.
+        r"""API business type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1176,7 +1176,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of associated authorization API.
+        r"""Unique ID of associated authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1190,7 +1190,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def RelationBuniessApiIds(self):
         warnings.warn("parameter `RelationBuniessApiIds` is deprecated", DeprecationWarning) 
 
-        """List of business APIs associated with authorization API.
+        r"""List of business APIs associated with authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1204,7 +1204,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OauthConfig(self):
-        """OAuth configuration information.
+        r"""OAuth configuration information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
@@ -1216,7 +1216,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TokenLocation(self):
-        """Token storage position, which is an OAuth 2.0 API request.
+        r"""Token storage position, which is an OAuth 2.0 API request.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1259,7 +1259,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiInfo(AbstractModel):
-    """API information
+    r"""API information
 
     """
 
@@ -1473,7 +1473,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1485,7 +1485,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Service name of API.
+        r"""Service name of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1497,7 +1497,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDesc(self):
-        """Service description of API.
+        r"""Service description of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1509,7 +1509,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1521,7 +1521,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDesc(self):
-        """API description.
+        r"""API description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1533,7 +1533,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1545,7 +1545,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1557,7 +1557,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1569,7 +1569,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiType(self):
-        """API type. Valid values: NORMAL (general API), TSF (microservice API).
+        r"""API type. Valid values: NORMAL (general API), TSF (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1581,7 +1581,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
+        r"""API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1593,7 +1593,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthType(self):
-        """API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.
+        r"""API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1605,7 +1605,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiBusinessType(self):
-        """OAuth API type. Valid values: NORMAL (business API), OAUTH (authorization API).
+        r"""OAuth API type. Valid values: NORMAL (business API), OAUTH (authorization API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1617,7 +1617,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of the authorization API associated with OAuth business API.
+        r"""Unique ID of the authorization API associated with OAuth business API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1629,7 +1629,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OauthConfig(self):
-        """OAuth configuration.
+        r"""OAuth configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
@@ -1641,7 +1641,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDebugAfterCharge(self):
-        """Whether to enable debugging after purchase (reserved field for the marketplace).
+        r"""Whether to enable debugging after purchase (reserved field for the marketplace).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1653,7 +1653,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestConfig(self):
-        """Request frontend configuration.
+        r"""Request frontend configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
         """
@@ -1665,7 +1665,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResponseType(self):
-        """Return type.
+        r"""Return type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1677,7 +1677,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResponseSuccessExample(self):
-        """Sample response for successful custom response configuration.
+        r"""Sample response for successful custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1689,7 +1689,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResponseFailExample(self):
-        """Sample response for failed custom response configuration.
+        r"""Sample response for failed custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1701,7 +1701,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResponseErrorCodes(self):
-        """Custom error code configuration.
+        r"""Custom error code configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ErrorCodes
         """
@@ -1713,7 +1713,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestParameters(self):
-        """Frontend request parameter.
+        r"""Frontend request parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReqParameter
         """
@@ -1725,7 +1725,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceTimeout(self):
-        """API backend service timeout period in seconds.
+        r"""API backend service timeout period in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1737,7 +1737,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceType(self):
-        """API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
+        r"""API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1749,7 +1749,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceConfig(self):
-        """API backend service configuration.
+        r"""API backend service configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
         """
@@ -1761,7 +1761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceParameters(self):
-        """API backend service parameter.
+        r"""API backend service parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeApiResultServiceParametersInfo
         """
@@ -1773,7 +1773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConstantParameters(self):
-        """Constant parameter.
+        r"""Constant parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ConstantParameter
         """
@@ -1785,7 +1785,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceMockReturnMessage(self):
-        """Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        r"""Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1797,7 +1797,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceScfFunctionName(self):
-        """SCF function name, which takes effect if the backend type is `SCF`.
+        r"""SCF function name, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1809,7 +1809,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceScfFunctionNamespace(self):
-        """SCF function namespace, which takes effect if the backend type is `SCF`.
+        r"""SCF function namespace, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1821,7 +1821,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceScfFunctionQualifier(self):
-        """SCF function version, which takes effect if the backend type is `SCF`.
+        r"""SCF function version, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1833,7 +1833,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceScfIsIntegratedResponse(self):
-        """Whether integrated response is enabled.
+        r"""Whether integrated response is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1845,7 +1845,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketRegisterFunctionName(self):
-        """SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`
+        r"""SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1857,7 +1857,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketRegisterFunctionNamespace(self):
-        """SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1869,7 +1869,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketRegisterFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1881,7 +1881,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketCleanupFunctionName(self):
-        """SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1893,7 +1893,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketCleanupFunctionNamespace(self):
-        """SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1905,7 +1905,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketCleanupFunctionQualifier(self):
-        """SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1917,7 +1917,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalDomain(self):
-        """WebSocket callback address.
+        r"""WebSocket callback address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1929,7 +1929,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketTransportFunctionName(self):
-        """SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1941,7 +1941,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketTransportFunctionNamespace(self):
-        """SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1953,7 +1953,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceWebsocketTransportFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1965,7 +1965,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MicroServices(self):
-        """List of microservices bound to API.
+        r"""List of microservices bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of MicroService
         """
@@ -1977,7 +1977,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MicroServicesInfo(self):
-        """Microservice details.
+        r"""Microservice details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -1989,7 +1989,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceTsfLoadBalanceConf(self):
-        """Load balancing configuration of microservice.
+        r"""Load balancing configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
         """
@@ -2001,7 +2001,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceTsfHealthCheckConf(self):
-        """Health check configuration of microservice.
+        r"""Health check configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         """
@@ -2013,7 +2013,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableCORS(self):
-        """Whether to enable CORS.
+        r"""Whether to enable CORS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2025,7 +2025,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Information of tags bound to API.
+        r"""Information of tags bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -2037,7 +2037,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environments(self):
-        """Environment information published for API.
+        r"""Environment information published for API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2049,7 +2049,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsBase64Encoded(self):
-        """Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        r"""Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2061,7 +2061,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsBase64Trigger(self):
-        """Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+        r"""Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2073,7 +2073,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Base64EncodedTriggerRules(self):
-        """Header trigger rules. The number of rules cannot exceed 10.
+        r"""Header trigger rules. The number of rules cannot exceed 10.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of Base64EncodedTriggerRule
         """
@@ -2192,7 +2192,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class ApiInfoSummary(AbstractModel):
-    """Information of the APIs that can use this plugin
+    r"""Information of the APIs that can use this plugin
 
     """
 
@@ -2208,7 +2208,7 @@ class ApiInfoSummary(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of APIs that can use this plugin
+        r"""Total number of APIs that can use this plugin
         :rtype: int
         """
         return self._TotalCount
@@ -2219,7 +2219,7 @@ class ApiInfoSummary(AbstractModel):
 
     @property
     def ApiSet(self):
-        """Information of the APIs that can use this plugin
+        r"""Information of the APIs that can use this plugin
         :rtype: list of AvailableApiInfo
         """
         return self._ApiSet
@@ -2248,7 +2248,7 @@ class ApiInfoSummary(AbstractModel):
 
 
 class ApiKey(AbstractModel):
-    """Key details
+    r"""Key details
 
     """
 
@@ -2279,7 +2279,7 @@ class ApiKey(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """Created API key ID.
+        r"""Created API key ID.
         :rtype: str
         """
         return self._AccessKeyId
@@ -2290,7 +2290,7 @@ class ApiKey(AbstractModel):
 
     @property
     def AccessKeySecret(self):
-        """Created API key.
+        r"""Created API key.
         :rtype: str
         """
         return self._AccessKeySecret
@@ -2301,7 +2301,7 @@ class ApiKey(AbstractModel):
 
     @property
     def AccessKeyType(self):
-        """Key type. Valid values: auto, manual.
+        r"""Key type. Valid values: auto, manual.
         :rtype: str
         """
         return self._AccessKeyType
@@ -2312,7 +2312,7 @@ class ApiKey(AbstractModel):
 
     @property
     def SecretName(self):
-        """Custom key name.
+        r"""Custom key name.
         :rtype: str
         """
         return self._SecretName
@@ -2323,7 +2323,7 @@ class ApiKey(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :rtype: str
         """
         return self._ModifiedTime
@@ -2334,7 +2334,7 @@ class ApiKey(AbstractModel):
 
     @property
     def Status(self):
-        """Key status. 0: disabled. 1: enabled.
+        r"""Key status. 0: disabled. 1: enabled.
         :rtype: int
         """
         return self._Status
@@ -2345,7 +2345,7 @@ class ApiKey(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :rtype: str
         """
         return self._CreatedTime
@@ -2374,7 +2374,7 @@ class ApiKey(AbstractModel):
 
 
 class ApiKeysStatus(AbstractModel):
-    """Key list
+    r"""Key list
 
     """
 
@@ -2392,7 +2392,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of eligible API keys.
+        r"""Number of eligible API keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2404,7 +2404,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiKeySet(self):
-        """API key list.
+        r"""API key list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiKey
         """
@@ -2434,7 +2434,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiRequestConfig(AbstractModel):
-    """API request configuration
+    r"""API request configuration
 
     """
 
@@ -2450,7 +2450,7 @@ class ApiRequestConfig(AbstractModel):
 
     @property
     def Path(self):
-        """path
+        r"""path
         :rtype: str
         """
         return self._Path
@@ -2461,7 +2461,7 @@ class ApiRequestConfig(AbstractModel):
 
     @property
     def Method(self):
-        """Method
+        r"""Method
         :rtype: str
         """
         return self._Method
@@ -2485,7 +2485,7 @@ class ApiRequestConfig(AbstractModel):
 
 
 class ApiUsagePlan(AbstractModel):
-    """Details of usage plans bound to API or service
+    r"""Details of usage plans bound to API or service
 
     """
 
@@ -2555,7 +2555,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2567,7 +2567,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2579,7 +2579,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2591,7 +2591,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path.
+        r"""API path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2603,7 +2603,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API method.
+        r"""API method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2615,7 +2615,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanId(self):
-        """Unique usage plan ID.
+        r"""Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2627,7 +2627,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanName(self):
-        """Usage plan name.
+        r"""Usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2639,7 +2639,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanDesc(self):
-        """Usage plan description.
+        r"""Usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2651,7 +2651,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environment(self):
-        """Service environment bound to usage plan.
+        r"""Service environment bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2663,7 +2663,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InUseRequestNum(self):
-        """Used quota.
+        r"""Used quota.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2675,7 +2675,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNum(self):
-        """Total number of requests allowed. `-1` indicates no limit.
+        r"""Total number of requests allowed. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2687,7 +2687,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNumPreSec(self):
-        """Request QPS upper limit. `-1` indicates no limit.
+        r"""Request QPS upper limit. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2699,7 +2699,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Usage plan creation time.
+        r"""Usage plan creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2711,7 +2711,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time of usage plan.
+        r"""Last modified time of usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2723,7 +2723,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Service name.
+        r"""Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2761,7 +2761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApiUsagePlanSet(AbstractModel):
-    """List of usage plans bound to API
+    r"""List of usage plans bound to API
 
     """
 
@@ -2779,7 +2779,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of usage plans bound to API.
+        r"""Total number of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2791,7 +2791,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiUsagePlanList(self):
-        """List of usage plans bound to API.
+        r"""List of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiUsagePlan
         """
@@ -2821,13 +2821,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApigatewayTags(AbstractModel):
-    """key-value
+    r"""key-value
 
     """
 
 
 class AttachPluginRequest(AbstractModel):
-    """AttachPlugin request structure.
+    r"""AttachPlugin request structure.
 
     """
 
@@ -2849,7 +2849,7 @@ class AttachPluginRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the bound API gateway plugin.
+        r"""ID of the bound API gateway plugin.
         :rtype: str
         """
         return self._PluginId
@@ -2860,7 +2860,7 @@ class AttachPluginRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """ID of the service to be operated.
+        r"""ID of the service to be operated.
         :rtype: str
         """
         return self._ServiceId
@@ -2871,7 +2871,7 @@ class AttachPluginRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment for operating the API.
+        r"""Environment for operating the API.
         :rtype: str
         """
         return self._EnvironmentName
@@ -2882,7 +2882,7 @@ class AttachPluginRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """List of APIs to be bound.
+        r"""List of APIs to be bound.
         :rtype: list of str
         """
         return self._ApiIds
@@ -2908,7 +2908,7 @@ class AttachPluginRequest(AbstractModel):
 
 
 class AttachPluginResponse(AbstractModel):
-    """AttachPlugin response structure.
+    r"""AttachPlugin response structure.
 
     """
 
@@ -2924,7 +2924,7 @@ class AttachPluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the binding operation is successful.
+        r"""Whether the binding operation is successful.
         :rtype: bool
         """
         return self._Result
@@ -2935,7 +2935,7 @@ class AttachPluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2951,7 +2951,7 @@ class AttachPluginResponse(AbstractModel):
 
 
 class AttachedApiInfo(AbstractModel):
-    """Information of the API bound with the plugin
+    r"""Information of the API bound with the plugin
 
     """
 
@@ -2987,7 +2987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """ID of the service to which the API belongs
+        r"""ID of the service to which the API belongs
         :rtype: str
         """
         return self._ServiceId
@@ -2998,7 +2998,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Name of the service to which the API belongs
+        r"""Name of the service to which the API belongs
         :rtype: str
         """
         return self._ServiceName
@@ -3009,7 +3009,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDesc(self):
-        """Description of the service to which the API belongs
+        r"""Description of the service to which the API belongs
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3021,7 +3021,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
         :rtype: str
         """
         return self._ApiId
@@ -3032,7 +3032,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name
+        r"""API name
         :rtype: str
         """
         return self._ApiName
@@ -3043,7 +3043,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDesc(self):
-        """API description
+        r"""API description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3055,7 +3055,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environment(self):
-        """Environment of the API bound with the plugin
+        r"""Environment of the API bound with the plugin
         :rtype: str
         """
         return self._Environment
@@ -3066,7 +3066,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedTime(self):
-        """Time when the plugin was bound to the API
+        r"""Time when the plugin was bound to the API
         :rtype: str
         """
         return self._AttachedTime
@@ -3096,7 +3096,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AttachedApiSummary(AbstractModel):
-    """List of APIs bound with the plugin
+    r"""List of APIs bound with the plugin
 
     """
 
@@ -3112,7 +3112,7 @@ class AttachedApiSummary(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of APIs bound with the plugin
+        r"""Number of APIs bound with the plugin
         :rtype: int
         """
         return self._TotalCount
@@ -3123,7 +3123,7 @@ class AttachedApiSummary(AbstractModel):
 
     @property
     def AttachedApis(self):
-        """Information of the API bound with the plugin
+        r"""Information of the API bound with the plugin
         :rtype: list of AttachedApiInfo
         """
         return self._AttachedApis
@@ -3152,7 +3152,7 @@ class AttachedApiSummary(AbstractModel):
 
 
 class AttachedPluginInfo(AbstractModel):
-    """Information of bound plug-ins
+    r"""Information of bound plug-ins
 
     """
 
@@ -3183,7 +3183,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def PluginId(self):
-        """Plugin ID
+        r"""Plugin ID
         :rtype: str
         """
         return self._PluginId
@@ -3194,7 +3194,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment information
+        r"""Environment information
         :rtype: str
         """
         return self._Environment
@@ -3205,7 +3205,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def AttachedTime(self):
-        """Binding time
+        r"""Binding time
         :rtype: str
         """
         return self._AttachedTime
@@ -3216,7 +3216,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def PluginName(self):
-        """Plugin name
+        r"""Plugin name
         :rtype: str
         """
         return self._PluginName
@@ -3227,7 +3227,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def PluginType(self):
-        """Plugin type
+        r"""Plugin type
         :rtype: str
         """
         return self._PluginType
@@ -3238,7 +3238,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def Description(self):
-        """Plugin description
+        r"""Plugin description
         :rtype: str
         """
         return self._Description
@@ -3249,7 +3249,7 @@ class AttachedPluginInfo(AbstractModel):
 
     @property
     def PluginData(self):
-        """Plugin definition statement
+        r"""Plugin definition statement
         :rtype: str
         """
         return self._PluginData
@@ -3278,7 +3278,7 @@ class AttachedPluginInfo(AbstractModel):
 
 
 class AttachedPluginSummary(AbstractModel):
-    """Information of bound plug-ins
+    r"""Information of bound plug-ins
 
     """
 
@@ -3294,7 +3294,7 @@ class AttachedPluginSummary(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of bound plug-ins
+        r"""Total number of bound plug-ins
         :rtype: int
         """
         return self._TotalCount
@@ -3305,7 +3305,7 @@ class AttachedPluginSummary(AbstractModel):
 
     @property
     def PluginSummary(self):
-        """Information of bound plug-ins
+        r"""Information of bound plug-ins
         :rtype: list of AttachedPluginInfo
         """
         return self._PluginSummary
@@ -3334,7 +3334,7 @@ class AttachedPluginSummary(AbstractModel):
 
 
 class AvailableApiInfo(AbstractModel):
-    """Information of the APIs that can use this plugin
+    r"""Information of the APIs that can use this plugin
 
     """
 
@@ -3367,7 +3367,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
         :rtype: str
         """
         return self._ApiId
@@ -3378,7 +3378,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name
+        r"""API name
         :rtype: str
         """
         return self._ApiName
@@ -3389,7 +3389,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiType(self):
-        """API type
+        r"""API type
         :rtype: str
         """
         return self._ApiType
@@ -3400,7 +3400,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path
+        r"""API path
         :rtype: str
         """
         return self._Path
@@ -3411,7 +3411,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API method
+        r"""API method
         :rtype: str
         """
         return self._Method
@@ -3422,7 +3422,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedOtherPlugin(self):
-        """Whether the API is bound with another plugin
+        r"""Whether the API is bound with another plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3434,7 +3434,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAttached(self):
-        """Whether the API is bound with the current plugin
+        r"""Whether the API is bound with the current plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3464,7 +3464,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Base64EncodedTriggerRule(AbstractModel):
-    """Header trigger rule for Base64 encoding.
+    r"""Header trigger rule for Base64 encoding.
 
     """
 
@@ -3487,7 +3487,7 @@ For example, [
 
     @property
     def Name(self):
-        """Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.
+        r"""Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.
         :rtype: str
         """
         return self._Name
@@ -3498,7 +3498,7 @@ For example, [
 
     @property
     def Value(self):
-        """Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). 
+        r"""Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). 
 
 For example, [
     "application/x-vpeg005",
@@ -3529,7 +3529,7 @@ For example, [
 
 
 class BindApiAppRequest(AbstractModel):
-    """BindApiApp request structure.
+    r"""BindApiApp request structure.
 
     """
 
@@ -3551,7 +3551,7 @@ class BindApiAppRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Unique ID of the application to be bound.
+        r"""Unique ID of the application to be bound.
         :rtype: str
         """
         return self._ApiAppId
@@ -3562,7 +3562,7 @@ class BindApiAppRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment to be bound.
+        r"""Environment to be bound.
         :rtype: str
         """
         return self._Environment
@@ -3573,7 +3573,7 @@ class BindApiAppRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be bound.
+        r"""Unique ID of the service to be bound.
         :rtype: str
         """
         return self._ServiceId
@@ -3584,7 +3584,7 @@ class BindApiAppRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique ID of the API to be bound.
+        r"""Unique ID of the API to be bound.
         :rtype: str
         """
         return self._ApiId
@@ -3610,7 +3610,7 @@ class BindApiAppRequest(AbstractModel):
 
 
 class BindApiAppResponse(AbstractModel):
-    """BindApiApp response structure.
+    r"""BindApiApp response structure.
 
     """
 
@@ -3627,7 +3627,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether binding succeeded.
+        r"""Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3639,7 +3639,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3655,7 +3655,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindApiInfo(AbstractModel):
-    """Information of the API bound with the upstream
+    r"""Information of the API bound with the upstream
 
     """
 
@@ -3682,7 +3682,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -3693,7 +3693,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ServiceId(self):
-        """Unique ID of the service
+        r"""Unique ID of the service
         :rtype: str
         """
         return self._ServiceId
@@ -3704,7 +3704,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ApiName(self):
-        """API name
+        r"""API name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -3716,7 +3716,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ServiceName(self):
-        """Service name
+        r"""Service name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -3728,7 +3728,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BindTime(self):
-        """Bound At
+        r"""Bound At
         :rtype: str
         """
         return self._BindTime
@@ -3755,7 +3755,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class BindEnvironmentRequest(AbstractModel):
-    """BindEnvironment request structure.
+    r"""BindEnvironment request structure.
 
     """
 
@@ -3780,7 +3780,7 @@ class BindEnvironmentRequest(AbstractModel):
 
     @property
     def UsagePlanIds(self):
-        """List of unique IDs of the usage plans to be bound.
+        r"""List of unique IDs of the usage plans to be bound.
         :rtype: list of str
         """
         return self._UsagePlanIds
@@ -3791,7 +3791,7 @@ class BindEnvironmentRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        r"""Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :rtype: str
         """
         return self._BindType
@@ -3802,7 +3802,7 @@ class BindEnvironmentRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment to be bound.
+        r"""Environment to be bound.
         :rtype: str
         """
         return self._Environment
@@ -3813,7 +3813,7 @@ class BindEnvironmentRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be bound.
+        r"""Unique ID of the service to be bound.
         :rtype: str
         """
         return self._ServiceId
@@ -3824,7 +3824,7 @@ class BindEnvironmentRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """Unique API ID array, which is required if `bindType` is `API`.
+        r"""Unique API ID array, which is required if `bindType` is `API`.
         :rtype: list of str
         """
         return self._ApiIds
@@ -3851,7 +3851,7 @@ class BindEnvironmentRequest(AbstractModel):
 
 
 class BindEnvironmentResponse(AbstractModel):
-    """BindEnvironment response structure.
+    r"""BindEnvironment response structure.
 
     """
 
@@ -3868,7 +3868,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether binding succeeded.
+        r"""Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3880,7 +3880,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3896,7 +3896,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindIPStrategyRequest(AbstractModel):
-    """BindIPStrategy request structure.
+    r"""BindIPStrategy request structure.
 
     """
 
@@ -3918,7 +3918,7 @@ class BindIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of the IP policy to be bound.
+        r"""Unique service ID of the IP policy to be bound.
         :rtype: str
         """
         return self._ServiceId
@@ -3929,7 +3929,7 @@ class BindIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique ID of the IP policy to be bound.
+        r"""Unique ID of the IP policy to be bound.
         :rtype: str
         """
         return self._StrategyId
@@ -3940,7 +3940,7 @@ class BindIPStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment to be bound to IP policy.
+        r"""Environment to be bound to IP policy.
         :rtype: str
         """
         return self._EnvironmentName
@@ -3951,7 +3951,7 @@ class BindIPStrategyRequest(AbstractModel):
 
     @property
     def BindApiIds(self):
-        """List of APIs to be bound to IP policy.
+        r"""List of APIs to be bound to IP policy.
         :rtype: list of str
         """
         return self._BindApiIds
@@ -3977,7 +3977,7 @@ class BindIPStrategyRequest(AbstractModel):
 
 
 class BindIPStrategyResponse(AbstractModel):
-    """BindIPStrategy response structure.
+    r"""BindIPStrategy response structure.
 
     """
 
@@ -3994,7 +3994,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether binding succeeded.
+        r"""Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4006,7 +4006,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4022,7 +4022,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindSecretIdsRequest(AbstractModel):
-    """BindSecretIds request structure.
+    r"""BindSecretIds request structure.
 
     """
 
@@ -4038,7 +4038,7 @@ class BindSecretIdsRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of the usage plan to be bound.
+        r"""Unique ID of the usage plan to be bound.
         :rtype: str
         """
         return self._UsagePlanId
@@ -4049,7 +4049,7 @@ class BindSecretIdsRequest(AbstractModel):
 
     @property
     def AccessKeyIds(self):
-        """Array of IDs of the keys to be bound.
+        r"""Array of IDs of the keys to be bound.
         :rtype: list of str
         """
         return self._AccessKeyIds
@@ -4073,7 +4073,7 @@ class BindSecretIdsRequest(AbstractModel):
 
 
 class BindSecretIdsResponse(AbstractModel):
-    """BindSecretIds response structure.
+    r"""BindSecretIds response structure.
 
     """
 
@@ -4090,7 +4090,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether binding succeeded.
+        r"""Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4102,7 +4102,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4118,7 +4118,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindSubDomainRequest(AbstractModel):
-    """BindSubDomain request structure.
+    r"""BindSubDomain request structure.
 
     """
 
@@ -4155,7 +4155,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -4166,7 +4166,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Custom domain name to be bound.
+        r"""Custom domain name to be bound.
         :rtype: str
         """
         return self._SubDomain
@@ -4177,7 +4177,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol supported by service. Valid values: http, https, http&https.
+        r"""Protocol supported by service. Valid values: http, https, http&https.
         :rtype: str
         """
         return self._Protocol
@@ -4188,7 +4188,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type. Valid values: OUTER, INNER.
+        r"""Network type. Valid values: OUTER, INNER.
         :rtype: str
         """
         return self._NetType
@@ -4199,7 +4199,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def IsDefaultMapping(self):
-        """Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.
+        r"""Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.
         :rtype: bool
         """
         return self._IsDefaultMapping
@@ -4210,7 +4210,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def NetSubDomain(self):
-        """Default domain name.
+        r"""Default domain name.
         :rtype: str
         """
         return self._NetSubDomain
@@ -4221,7 +4221,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.
+        r"""Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.
         :rtype: str
         """
         return self._CertificateId
@@ -4232,7 +4232,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def PathMappingSet(self):
-        """Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
+        r"""Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
         :rtype: list of PathMapping
         """
         return self._PathMappingSet
@@ -4243,7 +4243,7 @@ class BindSubDomainRequest(AbstractModel):
 
     @property
     def IsForcedHttps(self):
-        """Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        r"""Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :rtype: bool
         """
         return self._IsForcedHttps
@@ -4279,7 +4279,7 @@ class BindSubDomainRequest(AbstractModel):
 
 
 class BindSubDomainResponse(AbstractModel):
-    """BindSubDomain response structure.
+    r"""BindSubDomain response structure.
 
     """
 
@@ -4296,7 +4296,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether binding succeeded.
+        r"""Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4308,7 +4308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4324,7 +4324,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BuildAPIDocRequest(AbstractModel):
-    """BuildAPIDoc request structure.
+    r"""BuildAPIDoc request structure.
 
     """
 
@@ -4337,7 +4337,7 @@ class BuildAPIDocRequest(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -4360,7 +4360,7 @@ class BuildAPIDocRequest(AbstractModel):
 
 
 class BuildAPIDocResponse(AbstractModel):
-    """BuildAPIDoc response structure.
+    r"""BuildAPIDoc response structure.
 
     """
 
@@ -4376,7 +4376,7 @@ class BuildAPIDocResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the operation succeeded
+        r"""Whether the operation succeeded
         :rtype: bool
         """
         return self._Result
@@ -4387,7 +4387,7 @@ class BuildAPIDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4403,7 +4403,7 @@ class BuildAPIDocResponse(AbstractModel):
 
 
 class ConstantParameter(AbstractModel):
-    """Constant parameter
+    r"""Constant parameter
 
     """
 
@@ -4429,7 +4429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Constant parameter name This is only applicable when `ServiceType` is `HTTP`.
+        r"""Constant parameter name This is only applicable when `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4441,7 +4441,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Desc(self):
-        """Constant parameter description This is only applicable when `ServiceType` is `HTTP`.
+        r"""Constant parameter description This is only applicable when `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4453,7 +4453,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Position(self):
-        """Constant paramter location This is only applicable when `ServiceType` is `HTTP`.
+        r"""Constant paramter location This is only applicable when `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4465,7 +4465,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultValue(self):
-        """Default value of the constant parameter This is only applicable when `ServiceType` is `HTTP`.
+        r"""Default value of the constant parameter This is only applicable when `ServiceType` is `HTTP`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4492,7 +4492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CosConfig(AbstractModel):
-    """COS-type API configuration
+    r"""COS-type API configuration
 
     """
 
@@ -4527,7 +4527,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Action(self):
-        """Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:
+        r"""Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:
 GET：GetObject
 PUT：PutObject
 POST：PostObject、AppendObject
@@ -4544,7 +4544,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BucketName(self):
-        """Backend COS bucket of the API
+        r"""Backend COS bucket of the API
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4556,7 +4556,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Authorization(self):
-        """Whether to enable the backend COS signature for the API. It defaults to `false`.
+        r"""Whether to enable the backend COS signature for the API. It defaults to `false`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4568,7 +4568,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PathMatchMode(self):
-        """The path matching mode of the backend COS service
+        r"""The path matching mode of the backend COS service
 `BackEndPath`: Match the backend path
 `FullPath`: Match the full path
 
@@ -4599,7 +4599,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class CreateAPIDocRequest(AbstractModel):
-    """CreateAPIDoc request structure.
+    r"""CreateAPIDoc request structure.
 
     """
 
@@ -4621,7 +4621,7 @@ class CreateAPIDocRequest(AbstractModel):
 
     @property
     def ApiDocName(self):
-        """API document name
+        r"""API document name
         :rtype: str
         """
         return self._ApiDocName
@@ -4632,7 +4632,7 @@ class CreateAPIDocRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service name
+        r"""Service name
         :rtype: str
         """
         return self._ServiceId
@@ -4643,7 +4643,7 @@ class CreateAPIDocRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._Environment
@@ -4654,7 +4654,7 @@ class CreateAPIDocRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """List of APIs for which to generate documents
+        r"""List of APIs for which to generate documents
         :rtype: list of str
         """
         return self._ApiIds
@@ -4680,7 +4680,7 @@ class CreateAPIDocRequest(AbstractModel):
 
 
 class CreateAPIDocResponse(AbstractModel):
-    """CreateAPIDoc response structure.
+    r"""CreateAPIDoc response structure.
 
     """
 
@@ -4696,7 +4696,7 @@ class CreateAPIDocResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Basic information of API document
+        r"""Basic information of API document
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
         """
         return self._Result
@@ -4707,7 +4707,7 @@ class CreateAPIDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4725,7 +4725,7 @@ class CreateAPIDocResponse(AbstractModel):
 
 
 class CreateApiAppRequest(AbstractModel):
-    """CreateApiApp request structure.
+    r"""CreateApiApp request structure.
 
     """
 
@@ -4741,7 +4741,7 @@ class CreateApiAppRequest(AbstractModel):
 
     @property
     def ApiAppName(self):
-        """Custom application name.
+        r"""Custom application name.
         :rtype: str
         """
         return self._ApiAppName
@@ -4752,7 +4752,7 @@ class CreateApiAppRequest(AbstractModel):
 
     @property
     def ApiAppDesc(self):
-        """Application description
+        r"""Application description
         :rtype: str
         """
         return self._ApiAppDesc
@@ -4776,7 +4776,7 @@ class CreateApiAppRequest(AbstractModel):
 
 
 class CreateApiAppResponse(AbstractModel):
-    """CreateApiApp response structure.
+    r"""CreateApiApp response structure.
 
     """
 
@@ -4793,7 +4793,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """New application details.
+        r"""New application details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfo`
         """
@@ -4805,7 +4805,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4823,7 +4823,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateApiKeyRequest(AbstractModel):
-    """CreateApiKey request structure.
+    r"""CreateApiKey request structure.
 
     """
 
@@ -4848,7 +4848,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def SecretName(self):
-        """Custom key name.
+        r"""Custom key name.
         :rtype: str
         """
         return self._SecretName
@@ -4859,7 +4859,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyType(self):
-        """Key type. Valid values: auto, manual (custom key). Default value: auto.
+        r"""Key type. Valid values: auto, manual (custom key). Default value: auto.
         :rtype: str
         """
         return self._AccessKeyType
@@ -4870,7 +4870,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5-50 letters, digits, and underscores.
+        r"""Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5-50 letters, digits, and underscores.
         :rtype: str
         """
         return self._AccessKeyId
@@ -4881,7 +4881,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeySecret(self):
-        """Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10-50 letters, digits, and underscores.
+        r"""Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10-50 letters, digits, and underscores.
         :rtype: str
         """
         return self._AccessKeySecret
@@ -4892,7 +4892,7 @@ class CreateApiKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """
+        r"""
         :rtype: list of Tag
         """
         return self._Tags
@@ -4924,7 +4924,7 @@ class CreateApiKeyRequest(AbstractModel):
 
 
 class CreateApiKeyResponse(AbstractModel):
-    """CreateApiKey response structure.
+    r"""CreateApiKey response structure.
 
     """
 
@@ -4941,7 +4941,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """New key details.
+        r"""New key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
         """
@@ -4953,7 +4953,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4971,7 +4971,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateApiRequest(AbstractModel):
-    """CreateApi request structure.
+    r"""CreateApi request structure.
 
     """
 
@@ -5140,7 +5140,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -5151,7 +5151,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).
+        r"""API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).
         :rtype: str
         """
         return self._ServiceType
@@ -5162,7 +5162,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceTimeout(self):
-        """API backend service timeout period in seconds.
+        r"""API backend service timeout period in seconds.
         :rtype: int
         """
         return self._ServiceTimeout
@@ -5173,7 +5173,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """API frontend request protocol. Valid values: HTTPS, WEBSOCKET.
+        r"""API frontend request protocol. Valid values: HTTPS, WEBSOCKET.
         :rtype: str
         """
         return self._Protocol
@@ -5184,7 +5184,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def RequestConfig(self):
-        """Request frontend configuration.
+        r"""Request frontend configuration.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`
         """
         return self._RequestConfig
@@ -5195,7 +5195,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ApiName(self):
-        """Custom API name.
+        r"""Custom API name.
         :rtype: str
         """
         return self._ApiName
@@ -5206,7 +5206,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ApiDesc(self):
-        """Custom API description.
+        r"""Custom API description.
         :rtype: str
         """
         return self._ApiDesc
@@ -5217,7 +5217,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ApiType(self):
-        """API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.
+        r"""API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.
         :rtype: str
         """
         return self._ApiType
@@ -5228,7 +5228,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        """API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.
+        r"""API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.
         :rtype: str
         """
         return self._AuthType
@@ -5239,7 +5239,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def EnableCORS(self):
-        """Whether to enable CORS.
+        r"""Whether to enable CORS.
         :rtype: bool
         """
         return self._EnableCORS
@@ -5250,7 +5250,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ConstantParameters(self):
-        """Constant parameter.
+        r"""Constant parameter.
         :rtype: list of ConstantParameter
         """
         return self._ConstantParameters
@@ -5261,7 +5261,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def RequestParameters(self):
-        """Frontend request parameter.
+        r"""Frontend request parameter.
         :rtype: list of RequestParameter
         """
         return self._RequestParameters
@@ -5272,7 +5272,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ApiBusinessType(self):
-        """This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
+        r"""This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :rtype: str
         """
         return self._ApiBusinessType
@@ -5283,7 +5283,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceMockReturnMessage(self):
-        """Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        r"""Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :rtype: str
         """
         return self._ServiceMockReturnMessage
@@ -5294,7 +5294,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def MicroServices(self):
-        """List of microservices bound to API.
+        r"""List of microservices bound to API.
         :rtype: list of MicroServiceReq
         """
         return self._MicroServices
@@ -5305,7 +5305,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceTsfLoadBalanceConf(self):
-        """Load balancing configuration of microservice.
+        r"""Load balancing configuration of microservice.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
         """
         return self._ServiceTsfLoadBalanceConf
@@ -5316,7 +5316,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceTsfHealthCheckConf(self):
-        """Health check configuration of microservice.
+        r"""Health check configuration of microservice.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         """
         return self._ServiceTsfHealthCheckConf
@@ -5327,7 +5327,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def TargetServices(self):
-        """`target` type backend resource information (in beta test).
+        r"""`target` type backend resource information (in beta test).
         :rtype: list of TargetServicesReq
         """
         return self._TargetServices
@@ -5338,7 +5338,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def TargetServicesLoadBalanceConf(self):
-        """`target` type load balancing configuration (in beta test).
+        r"""`target` type load balancing configuration (in beta test).
         :rtype: int
         """
         return self._TargetServicesLoadBalanceConf
@@ -5349,7 +5349,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def TargetServicesHealthCheckConf(self):
-        """`target` health check configuration (in beta test).
+        r"""`target` health check configuration (in beta test).
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         """
         return self._TargetServicesHealthCheckConf
@@ -5360,7 +5360,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionName(self):
-        """SCF function name, which takes effect if the backend type is `SCF`.
+        r"""SCF function name, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionName
@@ -5371,7 +5371,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionName(self):
-        """SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionName
@@ -5382,7 +5382,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionName(self):
-        """SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionName
@@ -5393,7 +5393,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionName(self):
-        """SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionName
@@ -5404,7 +5404,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionNamespace(self):
-        """SCF function namespace, which takes effect if the backend type is `SCF`.
+        r"""SCF function namespace, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionNamespace
@@ -5415,7 +5415,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionQualifier(self):
-        """SCF function version, which takes effect if the backend type is `SCF`.
+        r"""SCF function version, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionQualifier
@@ -5426,7 +5426,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionNamespace(self):
-        """SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionNamespace
@@ -5437,7 +5437,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionQualifier
@@ -5448,7 +5448,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionNamespace(self):
-        """SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionNamespace
@@ -5459,7 +5459,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionQualifier
@@ -5470,7 +5470,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionNamespace(self):
-        """SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionNamespace
@@ -5481,7 +5481,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionQualifier(self):
-        """SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionQualifier
@@ -5492,7 +5492,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceScfIsIntegratedResponse(self):
-        """Whether to enable response integration, which takes effect if the backend type is `SCF`.
+        r"""Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :rtype: bool
         """
         return self._ServiceScfIsIntegratedResponse
@@ -5503,7 +5503,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def IsDebugAfterCharge(self):
-        """Billing after debugging starts (reserved field for marketplace).
+        r"""Billing after debugging starts (reserved field for marketplace).
         :rtype: bool
         """
         return self._IsDebugAfterCharge
@@ -5514,7 +5514,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def IsDeleteResponseErrorCodes(self):
-        """Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        r"""Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :rtype: bool
         """
         return self._IsDeleteResponseErrorCodes
@@ -5525,7 +5525,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ResponseType(self):
-        """Return type.
+        r"""Return type.
         :rtype: str
         """
         return self._ResponseType
@@ -5536,7 +5536,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ResponseSuccessExample(self):
-        """Sample response for successful custom response configuration.
+        r"""Sample response for successful custom response configuration.
         :rtype: str
         """
         return self._ResponseSuccessExample
@@ -5547,7 +5547,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ResponseFailExample(self):
-        """Sample response for failed custom response configuration.
+        r"""Sample response for failed custom response configuration.
         :rtype: str
         """
         return self._ResponseFailExample
@@ -5558,7 +5558,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceConfig(self):
-        """API backend service configuration.
+        r"""API backend service configuration.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
         """
         return self._ServiceConfig
@@ -5569,7 +5569,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        r"""Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :rtype: str
         """
         return self._AuthRelationApiId
@@ -5580,7 +5580,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceParameters(self):
-        """API backend service parameter.
+        r"""API backend service parameter.
         :rtype: list of ServiceParameter
         """
         return self._ServiceParameters
@@ -5591,7 +5591,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def OauthConfig(self):
-        """OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
+        r"""OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
         return self._OauthConfig
@@ -5602,7 +5602,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ResponseErrorCodes(self):
-        """Custom error code configuration.
+        r"""Custom error code configuration.
         :rtype: list of ResponseErrorCodeReq
         """
         return self._ResponseErrorCodes
@@ -5613,7 +5613,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def TargetNamespaceId(self):
-        """TSF Serverless namespace ID (in beta test).
+        r"""TSF Serverless namespace ID (in beta test).
         :rtype: str
         """
         return self._TargetNamespaceId
@@ -5624,7 +5624,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def UserType(self):
-        """User type.
+        r"""User type.
         :rtype: str
         """
         return self._UserType
@@ -5635,7 +5635,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def IsBase64Encoded(self):
-        """Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        r"""Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :rtype: bool
         """
         return self._IsBase64Encoded
@@ -5646,7 +5646,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """Event bus ID.
+        r"""Event bus ID.
         :rtype: str
         """
         return self._EventBusId
@@ -5657,7 +5657,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionType(self):
-        """SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
+        r"""SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :rtype: str
         """
         return self._ServiceScfFunctionType
@@ -5668,7 +5668,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def EIAMAppType(self):
-        """EIAM application type.
+        r"""EIAM application type.
         :rtype: str
         """
         return self._EIAMAppType
@@ -5679,7 +5679,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def EIAMAuthType(self):
-        """EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        r"""EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
         :rtype: str
         """
         return self._EIAMAuthType
@@ -5690,7 +5690,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def TokenTimeout(self):
-        """Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        r"""Validity of the EIAM application token. Unit: second. Default value: `7200`.
         :rtype: int
         """
         return self._TokenTimeout
@@ -5701,7 +5701,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def EIAMAppId(self):
-        """EIAM application ID.
+        r"""EIAM application ID.
         :rtype: str
         """
         return self._EIAMAppId
@@ -5712,7 +5712,7 @@ class CreateApiRequest(AbstractModel):
 
     @property
     def Owner(self):
-        """Owner of the resource
+        r"""Owner of the resource
         :rtype: str
         """
         return self._Owner
@@ -5829,7 +5829,7 @@ class CreateApiRequest(AbstractModel):
 
 
 class CreateApiResponse(AbstractModel):
-    """CreateApi response structure.
+    r"""CreateApi response structure.
 
     """
 
@@ -5846,7 +5846,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """API information
+        r"""API information
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateApiResultInfo`
         """
@@ -5858,7 +5858,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5876,7 +5876,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateApiResultInfo(AbstractModel):
-    """Response of API creation
+    r"""Response of API creation
 
     """
 
@@ -5902,7 +5902,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5914,7 +5914,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """Path
+        r"""Path
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5926,7 +5926,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """Request method
+        r"""Request method
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5938,7 +5938,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5965,7 +5965,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateApiRsp(AbstractModel):
-    """Return of API creation
+    r"""Return of API creation
 
     """
 
@@ -6003,7 +6003,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6015,7 +6015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """Path
+        r"""Path
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6027,7 +6027,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Method(self):
-        """Request method
+        r"""Request method
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6039,7 +6039,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6051,7 +6051,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status of the import task
+        r"""Status of the import task
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6063,7 +6063,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrMsg(self):
-        """Details of the error
+        r"""Details of the error
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6075,7 +6075,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ApiName(self):
-        """API name
+        r"""API name
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6105,7 +6105,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class CreateApiRspSet(AbstractModel):
-    """Information of the APIs created
+    r"""Information of the APIs created
 
     """
 
@@ -6121,7 +6121,7 @@ class CreateApiRspSet(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of APIs
+        r"""Total number of APIs
         :rtype: int
         """
         return self._TotalCount
@@ -6132,7 +6132,7 @@ class CreateApiRspSet(AbstractModel):
 
     @property
     def ApiSet(self):
-        """Information of created APIs
+        r"""Information of created APIs
         :rtype: list of CreateApiRsp
         """
         return self._ApiSet
@@ -6161,7 +6161,7 @@ class CreateApiRspSet(AbstractModel):
 
 
 class CreateIPStrategyRequest(AbstractModel):
-    """CreateIPStrategy request structure.
+    r"""CreateIPStrategy request structure.
 
     """
 
@@ -6183,7 +6183,7 @@ class CreateIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -6194,7 +6194,7 @@ class CreateIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        """Custom policy name.
+        r"""Custom policy name.
         :rtype: str
         """
         return self._StrategyName
@@ -6205,7 +6205,7 @@ class CreateIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyType(self):
-        """Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
+        r"""Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
         :rtype: str
         """
         return self._StrategyType
@@ -6216,7 +6216,7 @@ class CreateIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyData(self):
-        """Policy details. Multiple IPs are separated with \n.
+        r"""Policy details. Multiple IPs are separated with \n.
         :rtype: str
         """
         return self._StrategyData
@@ -6242,7 +6242,7 @@ class CreateIPStrategyRequest(AbstractModel):
 
 
 class CreateIPStrategyResponse(AbstractModel):
-    """CreateIPStrategy response structure.
+    r"""CreateIPStrategy response structure.
 
     """
 
@@ -6259,7 +6259,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """New IP policy details.
+        r"""New IP policy details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
         """
@@ -6271,7 +6271,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6289,7 +6289,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreatePluginRequest(AbstractModel):
-    """CreatePlugin request structure.
+    r"""CreatePlugin request structure.
 
     """
 
@@ -6314,7 +6314,7 @@ class CreatePluginRequest(AbstractModel):
 
     @property
     def PluginName(self):
-        """Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
+        r"""Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
         :rtype: str
         """
         return self._PluginName
@@ -6325,7 +6325,7 @@ class CreatePluginRequest(AbstractModel):
 
     @property
     def PluginType(self):
-        """Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`
+        r"""Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`
         :rtype: str
         """
         return self._PluginType
@@ -6336,7 +6336,7 @@ class CreatePluginRequest(AbstractModel):
 
     @property
     def PluginData(self):
-        """Plugin definition statement in json format
+        r"""Plugin definition statement in json format
         :rtype: str
         """
         return self._PluginData
@@ -6347,7 +6347,7 @@ class CreatePluginRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Plugin description within 200 characters
+        r"""Plugin description within 200 characters
         :rtype: str
         """
         return self._Description
@@ -6358,7 +6358,7 @@ class CreatePluginRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Label
+        r"""Label
         :rtype: list of Tag
         """
         return self._Tags
@@ -6390,7 +6390,7 @@ class CreatePluginRequest(AbstractModel):
 
 
 class CreatePluginResponse(AbstractModel):
-    """CreatePlugin response structure.
+    r"""CreatePlugin response structure.
 
     """
 
@@ -6406,7 +6406,7 @@ class CreatePluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Details of the new plugin
+        r"""Details of the new plugin
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
         """
         return self._Result
@@ -6417,7 +6417,7 @@ class CreatePluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6435,7 +6435,7 @@ class CreatePluginResponse(AbstractModel):
 
 
 class CreateServiceRequest(AbstractModel):
-    """CreateService request structure.
+    r"""CreateService request structure.
 
     """
 
@@ -6475,7 +6475,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Custom service name.
+        r"""Custom service name.
         :rtype: str
         """
         return self._ServiceName
@@ -6486,7 +6486,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Service frontend request type, such as `http`, `https`, and `http&https`.
+        r"""Service frontend request type, such as `http`, `https`, and `http&https`.
         :rtype: str
         """
         return self._Protocol
@@ -6497,7 +6497,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def ServiceDesc(self):
-        """Custom service description.
+        r"""Custom service description.
         :rtype: str
         """
         return self._ServiceDesc
@@ -6508,7 +6508,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def NetTypes(self):
-        """Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
+        r"""Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :rtype: list of str
         """
         return self._NetTypes
@@ -6519,7 +6519,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def IpVersion(self):
-        """IP version number. Valid values: IPv4, IPv6. Default value: IPv4.
+        r"""IP version number. Valid values: IPv4, IPv6. Default value: IPv4.
         :rtype: str
         """
         return self._IpVersion
@@ -6530,7 +6530,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def SetServerName(self):
-        """Cluster name, which is reserved and used by the `tsf serverless` type.
+        r"""Cluster name, which is reserved and used by the `tsf serverless` type.
         :rtype: str
         """
         return self._SetServerName
@@ -6541,7 +6541,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def AppIdType(self):
-        """User type, which is reserved and can be used by `serverless` users.
+        r"""User type, which is reserved and can be used by `serverless` users.
         :rtype: str
         """
         return self._AppIdType
@@ -6552,7 +6552,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information.
+        r"""Tag information.
         :rtype: list of Tag
         """
         return self._Tags
@@ -6563,7 +6563,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Dedicated instance ID
+        r"""Dedicated instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6574,7 +6574,7 @@ class CreateServiceRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VPC attribute
+        r"""VPC attribute
         :rtype: str
         """
         return self._UniqVpcId
@@ -6611,7 +6611,7 @@ class CreateServiceRequest(AbstractModel):
 
 
 class CreateServiceResponse(AbstractModel):
-    """CreateService response structure.
+    r"""CreateService response structure.
 
     """
 
@@ -6649,7 +6649,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -6660,7 +6660,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Custom service name.
+        r"""Custom service name.
         :rtype: str
         """
         return self._ServiceName
@@ -6671,7 +6671,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDesc(self):
-        """Custom service description.
+        r"""Custom service description.
         :rtype: str
         """
         return self._ServiceDesc
@@ -6682,7 +6682,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OuterSubDomain(self):
-        """Default public domain name.
+        r"""Default public domain name.
         :rtype: str
         """
         return self._OuterSubDomain
@@ -6693,7 +6693,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerSubDomain(self):
-        """Default VPC domain name.
+        r"""Default VPC domain name.
         :rtype: str
         """
         return self._InnerSubDomain
@@ -6704,7 +6704,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
+        r"""Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
         :rtype: str
         """
         return self._CreatedTime
@@ -6715,7 +6715,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetTypes(self):
-        """Network type list. INNER: private network access; OUTER: public network access.
+        r"""Network type list. INNER: private network access; OUTER: public network access.
         :rtype: list of str
         """
         return self._NetTypes
@@ -6726,7 +6726,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpVersion(self):
-        """IP version number.
+        r"""IP version number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6738,7 +6738,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6761,7 +6761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateUpstreamRequest(AbstractModel):
-    """CreateUpstream request structure.
+    r"""CreateUpstream request structure.
 
     """
 
@@ -6807,7 +6807,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def Scheme(self):
-        """Backend protocol. Valid values: `HTTP`, `HTTPS`
+        r"""Backend protocol. Valid values: `HTTP`, `HTTPS`
         :rtype: str
         """
         return self._Scheme
@@ -6818,7 +6818,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def Algorithm(self):
-        """Load balancing algorithm. Valid value: `ROUND-ROBIN`
+        r"""Load balancing algorithm. Valid value: `ROUND-ROBIN`
         :rtype: str
         """
         return self._Algorithm
@@ -6829,7 +6829,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID
+        r"""Unique VPC ID
         :rtype: str
         """
         return self._UniqVpcId
@@ -6840,7 +6840,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamName(self):
-        """Upstream name
+        r"""Upstream name
         :rtype: str
         """
         return self._UpstreamName
@@ -6851,7 +6851,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamDescription(self):
-        """Upstream description
+        r"""Upstream description
         :rtype: str
         """
         return self._UpstreamDescription
@@ -6862,7 +6862,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamType(self):
-        """Upstream access type. Valid values: `IP_PORT`, `K8S`
+        r"""Upstream access type. Valid values: `IP_PORT`, `K8S`
         :rtype: str
         """
         return self._UpstreamType
@@ -6873,7 +6873,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def Retries(self):
-        """Retry attempts. It defaults to `3`.
+        r"""Retry attempts. It defaults to `3`.
         :rtype: int
         """
         return self._Retries
@@ -6884,7 +6884,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamHost(self):
-        """The Host request header that forwarded from the gateway to backend
+        r"""The Host request header that forwarded from the gateway to backend
         :rtype: str
         """
         return self._UpstreamHost
@@ -6895,7 +6895,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def Nodes(self):
-        """Backend nodes
+        r"""Backend nodes
         :rtype: list of UpstreamNode
         """
         return self._Nodes
@@ -6906,7 +6906,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Label
+        r"""Label
         :rtype: list of Tag
         """
         return self._Tags
@@ -6917,7 +6917,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def HealthChecker(self):
-        """Health check configuration
+        r"""Health check configuration
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
         """
         return self._HealthChecker
@@ -6928,7 +6928,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     @property
     def K8sService(self):
-        """Configuration of TKE service
+        r"""Configuration of TKE service
         :rtype: list of K8sService
         """
         return self._K8sService
@@ -6979,7 +6979,7 @@ class CreateUpstreamRequest(AbstractModel):
 
 
 class CreateUpstreamResponse(AbstractModel):
-    """CreateUpstream response structure.
+    r"""CreateUpstream response structure.
 
     """
 
@@ -6996,7 +6996,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamId(self):
-        """The unique upstream ID returned
+        r"""The unique upstream ID returned
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7008,7 +7008,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7024,7 +7024,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
 
 class CreateUsagePlanRequest(AbstractModel):
-    """CreateUsagePlan request structure.
+    r"""CreateUsagePlan request structure.
 
     """
 
@@ -7046,7 +7046,7 @@ class CreateUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanName(self):
-        """Custom usage plan name.
+        r"""Custom usage plan name.
         :rtype: str
         """
         return self._UsagePlanName
@@ -7057,7 +7057,7 @@ class CreateUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanDesc(self):
-        """Custom usage plan description.
+        r"""Custom usage plan description.
         :rtype: str
         """
         return self._UsagePlanDesc
@@ -7068,7 +7068,7 @@ class CreateUsagePlanRequest(AbstractModel):
 
     @property
     def MaxRequestNum(self):
-        """Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
+        r"""Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
         :rtype: int
         """
         return self._MaxRequestNum
@@ -7079,7 +7079,7 @@ class CreateUsagePlanRequest(AbstractModel):
 
     @property
     def MaxRequestNumPreSec(self):
-        """Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
+        r"""Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
         :rtype: int
         """
         return self._MaxRequestNumPreSec
@@ -7105,7 +7105,7 @@ class CreateUsagePlanRequest(AbstractModel):
 
 
 class CreateUsagePlanResponse(AbstractModel):
-    """CreateUsagePlan response structure.
+    r"""CreateUsagePlan response structure.
 
     """
 
@@ -7122,7 +7122,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Usage plan details.
+        r"""Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
         """
@@ -7134,7 +7134,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7152,7 +7152,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteAPIDocRequest(AbstractModel):
-    """DeleteAPIDoc request structure.
+    r"""DeleteAPIDoc request structure.
 
     """
 
@@ -7165,7 +7165,7 @@ class DeleteAPIDocRequest(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID.
+        r"""API document ID.
         :rtype: str
         """
         return self._ApiDocId
@@ -7188,7 +7188,7 @@ class DeleteAPIDocRequest(AbstractModel):
 
 
 class DeleteAPIDocResponse(AbstractModel):
-    """DeleteAPIDoc response structure.
+    r"""DeleteAPIDoc response structure.
 
     """
 
@@ -7204,7 +7204,7 @@ class DeleteAPIDocResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the operation succeeded.
+        r"""Whether the operation succeeded.
         :rtype: bool
         """
         return self._Result
@@ -7215,7 +7215,7 @@ class DeleteAPIDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7231,7 +7231,7 @@ class DeleteAPIDocResponse(AbstractModel):
 
 
 class DeleteApiAppRequest(AbstractModel):
-    """DeleteApiApp request structure.
+    r"""DeleteApiApp request structure.
 
     """
 
@@ -7244,7 +7244,7 @@ class DeleteApiAppRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Unique application ID.
+        r"""Unique application ID.
         :rtype: str
         """
         return self._ApiAppId
@@ -7267,7 +7267,7 @@ class DeleteApiAppRequest(AbstractModel):
 
 
 class DeleteApiAppResponse(AbstractModel):
-    """DeleteApiApp response structure.
+    r"""DeleteApiApp response structure.
 
     """
 
@@ -7284,7 +7284,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -7296,7 +7296,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7312,7 +7312,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteApiKeyRequest(AbstractModel):
-    """DeleteApiKey request structure.
+    r"""DeleteApiKey request structure.
 
     """
 
@@ -7325,7 +7325,7 @@ class DeleteApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the key to be deleted.
+        r"""ID of the key to be deleted.
         :rtype: str
         """
         return self._AccessKeyId
@@ -7348,7 +7348,7 @@ class DeleteApiKeyRequest(AbstractModel):
 
 
 class DeleteApiKeyResponse(AbstractModel):
-    """DeleteApiKey response structure.
+    r"""DeleteApiKey response structure.
 
     """
 
@@ -7365,7 +7365,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -7377,7 +7377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7393,7 +7393,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteApiRequest(AbstractModel):
-    """DeleteApi request structure.
+    r"""DeleteApi request structure.
 
     """
 
@@ -7409,7 +7409,7 @@ class DeleteApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -7420,7 +7420,7 @@ class DeleteApiRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -7444,7 +7444,7 @@ class DeleteApiRequest(AbstractModel):
 
 
 class DeleteApiResponse(AbstractModel):
-    """DeleteApi response structure.
+    r"""DeleteApi response structure.
 
     """
 
@@ -7461,7 +7461,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -7473,7 +7473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7489,7 +7489,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteIPStrategyRequest(AbstractModel):
-    """DeleteIPStrategy request structure.
+    r"""DeleteIPStrategy request structure.
 
     """
 
@@ -7505,7 +7505,7 @@ class DeleteIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of the IP policy to be deleted.
+        r"""Unique service ID of the IP policy to be deleted.
         :rtype: str
         """
         return self._ServiceId
@@ -7516,7 +7516,7 @@ class DeleteIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique ID of the IP policy to be deleted.
+        r"""Unique ID of the IP policy to be deleted.
         :rtype: str
         """
         return self._StrategyId
@@ -7540,7 +7540,7 @@ class DeleteIPStrategyRequest(AbstractModel):
 
 
 class DeleteIPStrategyResponse(AbstractModel):
-    """DeleteIPStrategy response structure.
+    r"""DeleteIPStrategy response structure.
 
     """
 
@@ -7557,7 +7557,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -7569,7 +7569,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7585,7 +7585,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeletePluginRequest(AbstractModel):
-    """DeletePlugin request structure.
+    r"""DeletePlugin request structure.
 
     """
 
@@ -7598,7 +7598,7 @@ class DeletePluginRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be deleted
+        r"""ID of the plugin to be deleted
         :rtype: str
         """
         return self._PluginId
@@ -7621,7 +7621,7 @@ class DeletePluginRequest(AbstractModel):
 
 
 class DeletePluginResponse(AbstractModel):
-    """DeletePlugin response structure.
+    r"""DeletePlugin response structure.
 
     """
 
@@ -7637,7 +7637,7 @@ class DeletePluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Result of the deletion action
+        r"""Result of the deletion action
         :rtype: bool
         """
         return self._Result
@@ -7648,7 +7648,7 @@ class DeletePluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7664,7 +7664,7 @@ class DeletePluginResponse(AbstractModel):
 
 
 class DeleteServiceRequest(AbstractModel):
-    """DeleteService request structure.
+    r"""DeleteService request structure.
 
     """
 
@@ -7680,7 +7680,7 @@ class DeleteServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be deleted.
+        r"""Unique ID of the service to be deleted.
         :rtype: str
         """
         return self._ServiceId
@@ -7691,7 +7691,7 @@ class DeleteServiceRequest(AbstractModel):
 
     @property
     def SkipVerification(self):
-        """A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).
+        r"""A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).
         :rtype: int
         """
         return self._SkipVerification
@@ -7715,7 +7715,7 @@ class DeleteServiceRequest(AbstractModel):
 
 
 class DeleteServiceResponse(AbstractModel):
-    """DeleteService response structure.
+    r"""DeleteService response structure.
 
     """
 
@@ -7732,7 +7732,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -7744,7 +7744,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7760,7 +7760,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteServiceSubDomainMappingRequest(AbstractModel):
-    """DeleteServiceSubDomainMapping request structure.
+    r"""DeleteServiceSubDomainMapping request structure.
 
     """
 
@@ -7779,7 +7779,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -7790,7 +7790,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Custom domain name bound to service.
+        r"""Custom domain name bound to service.
         :rtype: str
         """
         return self._SubDomain
@@ -7801,7 +7801,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        r"""Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :rtype: str
         """
         return self._Environment
@@ -7826,7 +7826,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
 
 
 class DeleteServiceSubDomainMappingResponse(AbstractModel):
-    """DeleteServiceSubDomainMapping response structure.
+    r"""DeleteServiceSubDomainMapping response structure.
 
     """
 
@@ -7842,7 +7842,7 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the path mapping of the custom domain name is successfully deleted.
+        r"""Whether the path mapping of the custom domain name is successfully deleted.
         :rtype: bool
         """
         return self._Result
@@ -7853,7 +7853,7 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7869,7 +7869,7 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
 
 class DeleteUpstreamRequest(AbstractModel):
-    """DeleteUpstream request structure.
+    r"""DeleteUpstream request structure.
 
     """
 
@@ -7882,7 +7882,7 @@ class DeleteUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamId(self):
-        """ID of the upstream to be deleted
+        r"""ID of the upstream to be deleted
         :rtype: str
         """
         return self._UpstreamId
@@ -7905,7 +7905,7 @@ class DeleteUpstreamRequest(AbstractModel):
 
 
 class DeleteUpstreamResponse(AbstractModel):
-    """DeleteUpstream response structure.
+    r"""DeleteUpstream response structure.
 
     """
 
@@ -7922,7 +7922,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamId(self):
-        """ID of the deleted upstream
+        r"""ID of the deleted upstream
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7934,7 +7934,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7950,7 +7950,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
 
 class DeleteUsagePlanRequest(AbstractModel):
-    """DeleteUsagePlan request structure.
+    r"""DeleteUsagePlan request structure.
 
     """
 
@@ -7963,7 +7963,7 @@ class DeleteUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of the usage plan to be deleted.
+        r"""Unique ID of the usage plan to be deleted.
         :rtype: str
         """
         return self._UsagePlanId
@@ -7986,7 +7986,7 @@ class DeleteUsagePlanRequest(AbstractModel):
 
 
 class DeleteUsagePlanResponse(AbstractModel):
-    """DeleteUsagePlan response structure.
+    r"""DeleteUsagePlan response structure.
 
     """
 
@@ -8003,7 +8003,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deletion succeeded.
+        r"""Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -8015,7 +8015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8031,7 +8031,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DemoteServiceUsagePlanRequest(AbstractModel):
-    """DemoteServiceUsagePlan request structure.
+    r"""DemoteServiceUsagePlan request structure.
 
     """
 
@@ -8050,7 +8050,7 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Usage plan ID.
+        r"""Usage plan ID.
         :rtype: str
         """
         return self._UsagePlanId
@@ -8061,7 +8061,7 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be demoted.
+        r"""Unique ID of the service to be demoted.
         :rtype: str
         """
         return self._ServiceId
@@ -8072,7 +8072,7 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._Environment
@@ -8097,7 +8097,7 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
 
 
 class DemoteServiceUsagePlanResponse(AbstractModel):
-    """DemoteServiceUsagePlan response structure.
+    r"""DemoteServiceUsagePlan response structure.
 
     """
 
@@ -8114,7 +8114,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether demotion succeeded.
+        r"""Whether demotion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -8126,7 +8126,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8142,7 +8142,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DesApisStatus(AbstractModel):
-    """API status details
+    r"""API status details
 
     """
 
@@ -8226,7 +8226,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -8237,7 +8237,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -8248,7 +8248,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDesc(self):
-        """Custom API description.
+        r"""Custom API description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8260,7 +8260,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8272,7 +8272,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8284,7 +8284,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8296,7 +8296,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID.
+        r"""VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8308,7 +8308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8320,7 +8320,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiType(self):
-        """API type. Valid values: NORMAL (general API), TSF (microservice API).
+        r"""API type. Valid values: NORMAL (general API), TSF (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8332,7 +8332,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """API protocol.
+        r"""API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8344,7 +8344,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDebugAfterCharge(self):
-        """Whether to enable debugging after purchase (reserved field for the marketplace)
+        r"""Whether to enable debugging after purchase (reserved field for the marketplace)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -8356,7 +8356,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthType(self):
-        """API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`
+        r"""API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8368,7 +8368,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ApiBusinessType(self):
-        """OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
+        r"""OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8380,7 +8380,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        r"""Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8392,7 +8392,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OauthConfig(self):
-        """OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.
+        r"""OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
@@ -8406,7 +8406,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def RelationBuniessApiIds(self):
         warnings.warn("parameter `RelationBuniessApiIds` is deprecated", DeprecationWarning) 
 
-        """List of business APIs associated with authorization API.
+        r"""List of business APIs associated with authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8420,7 +8420,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Information of tags associated with API.
+        r"""Information of tags associated with API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8432,7 +8432,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path, such as `/path`.
+        r"""API path, such as `/path`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8444,7 +8444,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API request method, such as `GET`.
+        r"""API request method, such as `GET`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8488,7 +8488,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAPIDocDetailRequest(AbstractModel):
-    """DescribeAPIDocDetail request structure.
+    r"""DescribeAPIDocDetail request structure.
 
     """
 
@@ -8501,7 +8501,7 @@ class DescribeAPIDocDetailRequest(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -8524,7 +8524,7 @@ class DescribeAPIDocDetailRequest(AbstractModel):
 
 
 class DescribeAPIDocDetailResponse(AbstractModel):
-    """DescribeAPIDocDetail response structure.
+    r"""DescribeAPIDocDetail response structure.
 
     """
 
@@ -8540,7 +8540,7 @@ class DescribeAPIDocDetailResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API document details
+        r"""API document details
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`
         """
         return self._Result
@@ -8551,7 +8551,7 @@ class DescribeAPIDocDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8569,7 +8569,7 @@ class DescribeAPIDocDetailResponse(AbstractModel):
 
 
 class DescribeAPIDocsRequest(AbstractModel):
-    """DescribeAPIDocs request structure.
+    r"""DescribeAPIDocs request structure.
 
     """
 
@@ -8585,7 +8585,7 @@ class DescribeAPIDocsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -8596,7 +8596,7 @@ class DescribeAPIDocsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -8620,7 +8620,7 @@ class DescribeAPIDocsRequest(AbstractModel):
 
 
 class DescribeAPIDocsResponse(AbstractModel):
-    """DescribeAPIDocs response structure.
+    r"""DescribeAPIDocs response structure.
 
     """
 
@@ -8636,7 +8636,7 @@ class DescribeAPIDocsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API document list information
+        r"""API document list information
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`
         """
         return self._Result
@@ -8647,7 +8647,7 @@ class DescribeAPIDocsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8665,7 +8665,7 @@ class DescribeAPIDocsResponse(AbstractModel):
 
 
 class DescribeAllPluginApisRequest(AbstractModel):
-    """DescribeAllPluginApis request structure.
+    r"""DescribeAllPluginApis request structure.
 
     """
 
@@ -8690,7 +8690,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """ID of the service to be queried
+        r"""ID of the service to be queried
         :rtype: str
         """
         return self._ServiceId
@@ -8701,7 +8701,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be queried
+        r"""ID of the plugin to be queried
         :rtype: str
         """
         return self._PluginId
@@ -8712,7 +8712,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment information
+        r"""Environment information
         :rtype: str
         """
         return self._EnvironmentName
@@ -8723,7 +8723,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100
+        r"""Number of returned results. Default value: 20. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -8734,7 +8734,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0
+        r"""Offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -8761,7 +8761,7 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
 
 class DescribeAllPluginApisResponse(AbstractModel):
-    """DescribeAllPluginApis response structure.
+    r"""DescribeAllPluginApis response structure.
 
     """
 
@@ -8777,7 +8777,7 @@ class DescribeAllPluginApisResponse(AbstractModel):
 
     @property
     def Result(self):
-        """List of APIs that ca use this plugin
+        r"""List of APIs that ca use this plugin
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiInfoSummary`
         """
         return self._Result
@@ -8788,7 +8788,7 @@ class DescribeAllPluginApisResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8806,7 +8806,7 @@ class DescribeAllPluginApisResponse(AbstractModel):
 
 
 class DescribeApiAppBindApisStatusRequest(AbstractModel):
-    """DescribeApiAppBindApisStatus request structure.
+    r"""DescribeApiAppBindApisStatus request structure.
 
     """
 
@@ -8828,7 +8828,7 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApiAppId
@@ -8839,7 +8839,7 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -8850,7 +8850,7 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -8861,7 +8861,7 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: ApiId, ApiName, ServiceId, Environment, KeyWord (match with `name` or ID).
+        r"""Filter. Valid values: ApiId, ApiName, ServiceId, Environment, KeyWord (match with `name` or ID).
         :rtype: list of Filter
         """
         return self._Filters
@@ -8892,7 +8892,7 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
 
 class DescribeApiAppBindApisStatusResponse(AbstractModel):
-    """DescribeApiAppBindApisStatus response structure.
+    r"""DescribeApiAppBindApisStatus response structure.
 
     """
 
@@ -8909,7 +8909,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of APIs bound to the application.
+        r"""List of APIs bound to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
         """
@@ -8921,7 +8921,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8939,7 +8939,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiAppRequest(AbstractModel):
-    """DescribeApiApp request structure.
+    r"""DescribeApiApp request structure.
 
     """
 
@@ -8952,7 +8952,7 @@ class DescribeApiAppRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._ApiAppId
@@ -8975,7 +8975,7 @@ class DescribeApiAppRequest(AbstractModel):
 
 
 class DescribeApiAppResponse(AbstractModel):
-    """DescribeApiApp response structure.
+    r"""DescribeApiApp response structure.
 
     """
 
@@ -8992,7 +8992,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Application details.
+        r"""Application details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
         """
@@ -9004,7 +9004,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9022,7 +9022,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiAppsStatusRequest(AbstractModel):
-    """DescribeApiAppsStatus request structure.
+    r"""DescribeApiAppsStatus request structure.
 
     """
 
@@ -9041,7 +9041,7 @@ class DescribeApiAppsStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -9052,7 +9052,7 @@ class DescribeApiAppsStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -9063,7 +9063,7 @@ class DescribeApiAppsStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: ApiAppId, ApiAppName, KeyWord (match with `name` or ID).
+        r"""Filter. Valid values: ApiAppId, ApiAppName, KeyWord (match with `name` or ID).
         :rtype: list of Filter
         """
         return self._Filters
@@ -9093,7 +9093,7 @@ class DescribeApiAppsStatusRequest(AbstractModel):
 
 
 class DescribeApiAppsStatusResponse(AbstractModel):
-    """DescribeApiAppsStatus response structure.
+    r"""DescribeApiAppsStatus response structure.
 
     """
 
@@ -9110,7 +9110,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Application list.
+        r"""Application list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
         """
@@ -9122,7 +9122,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9140,7 +9140,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiBindApiAppsStatusRequest(AbstractModel):
-    """DescribeApiBindApiAppsStatus request structure.
+    r"""DescribeApiBindApiAppsStatus request structure.
 
     """
 
@@ -9165,7 +9165,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -9176,7 +9176,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """Array of API IDs
+        r"""Array of API IDs
         :rtype: list of str
         """
         return self._ApiIds
@@ -9187,7 +9187,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -9198,7 +9198,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -9209,7 +9209,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: ApiAppId, Environment, KeyWord (match with `name` or ID).
+        r"""Filter. Valid values: ApiAppId, Environment, KeyWord (match with `name` or ID).
         :rtype: list of Filter
         """
         return self._Filters
@@ -9241,7 +9241,7 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
 
 class DescribeApiBindApiAppsStatusResponse(AbstractModel):
-    """DescribeApiBindApiAppsStatus response structure.
+    r"""DescribeApiBindApiAppsStatus response structure.
 
     """
 
@@ -9258,7 +9258,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of APIs bound to the application.
+        r"""List of APIs bound to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
         """
@@ -9270,7 +9270,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9288,7 +9288,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiEnvironmentStrategyRequest(AbstractModel):
-    """DescribeApiEnvironmentStrategy request structure.
+    r"""DescribeApiEnvironmentStrategy request structure.
 
     """
 
@@ -9313,7 +9313,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -9324,7 +9324,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentNames(self):
-        """Environment list.
+        r"""Environment list.
         :rtype: list of str
         """
         return self._EnvironmentNames
@@ -9335,7 +9335,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -9346,7 +9346,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -9357,7 +9357,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -9384,7 +9384,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
 
 class DescribeApiEnvironmentStrategyResponse(AbstractModel):
-    """DescribeApiEnvironmentStrategy response structure.
+    r"""DescribeApiEnvironmentStrategy response structure.
 
     """
 
@@ -9401,7 +9401,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Details of policies bound to API
+        r"""Details of policies bound to API
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStatus`
         """
@@ -9413,7 +9413,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9431,7 +9431,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiForApiAppRequest(AbstractModel):
-    """DescribeApiForApiApp request structure.
+    r"""DescribeApiForApiApp request structure.
 
     """
 
@@ -9450,7 +9450,7 @@ class DescribeApiForApiAppRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of the API
+        r"""Unique service ID of the API
         :rtype: str
         """
         return self._ServiceId
@@ -9461,7 +9461,7 @@ class DescribeApiForApiAppRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID
+        r"""Unique API ID
         :rtype: str
         """
         return self._ApiId
@@ -9472,7 +9472,7 @@ class DescribeApiForApiAppRequest(AbstractModel):
 
     @property
     def ApiRegion(self):
-        """API region
+        r"""API region
         :rtype: str
         """
         return self._ApiRegion
@@ -9497,7 +9497,7 @@ class DescribeApiForApiAppRequest(AbstractModel):
 
 
 class DescribeApiForApiAppResponse(AbstractModel):
-    """DescribeApiForApiApp response structure.
+    r"""DescribeApiForApiApp response structure.
 
     """
 
@@ -9513,7 +9513,7 @@ class DescribeApiForApiAppResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API details.
+        r"""API details.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
         """
         return self._Result
@@ -9524,7 +9524,7 @@ class DescribeApiForApiAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9542,7 +9542,7 @@ class DescribeApiForApiAppResponse(AbstractModel):
 
 
 class DescribeApiKeyRequest(AbstractModel):
-    """DescribeApiKey request structure.
+    r"""DescribeApiKey request structure.
 
     """
 
@@ -9555,7 +9555,7 @@ class DescribeApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """API key ID.
+        r"""API key ID.
         :rtype: str
         """
         return self._AccessKeyId
@@ -9578,7 +9578,7 @@ class DescribeApiKeyRequest(AbstractModel):
 
 
 class DescribeApiKeyResponse(AbstractModel):
-    """DescribeApiKey response structure.
+    r"""DescribeApiKey response structure.
 
     """
 
@@ -9595,7 +9595,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Key details.
+        r"""Key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
         """
@@ -9607,7 +9607,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9625,7 +9625,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiKeysStatusRequest(AbstractModel):
-    """DescribeApiKeysStatus request structure.
+    r"""DescribeApiKeysStatus request structure.
 
     """
 
@@ -9644,7 +9644,7 @@ class DescribeApiKeysStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -9655,7 +9655,7 @@ class DescribeApiKeysStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -9666,7 +9666,7 @@ class DescribeApiKeysStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).
+        r"""Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).
         :rtype: list of Filter
         """
         return self._Filters
@@ -9696,7 +9696,7 @@ class DescribeApiKeysStatusRequest(AbstractModel):
 
 
 class DescribeApiKeysStatusResponse(AbstractModel):
-    """DescribeApiKeysStatus response structure.
+    r"""DescribeApiKeysStatus response structure.
 
     """
 
@@ -9713,7 +9713,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Key list.
+        r"""Key list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiKeysStatus`
         """
@@ -9725,7 +9725,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9743,7 +9743,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiRequest(AbstractModel):
-    """DescribeApi request structure.
+    r"""DescribeApi request structure.
 
     """
 
@@ -9759,7 +9759,7 @@ class DescribeApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -9770,7 +9770,7 @@ class DescribeApiRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -9794,7 +9794,7 @@ class DescribeApiRequest(AbstractModel):
 
 
 class DescribeApiResponse(AbstractModel):
-    """DescribeApi response structure.
+    r"""DescribeApi response structure.
 
     """
 
@@ -9810,7 +9810,7 @@ class DescribeApiResponse(AbstractModel):
 
     @property
     def Result(self):
-        """API details.
+        r"""API details.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
         """
         return self._Result
@@ -9821,7 +9821,7 @@ class DescribeApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9839,7 +9839,7 @@ class DescribeApiResponse(AbstractModel):
 
 
 class DescribeApiResultServiceParametersInfo(AbstractModel):
-    """ServiceParameter
+    r"""ServiceParameter
 
     """
 
@@ -9873,7 +9873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """API backend service parameter name. This is only applicable when `ServiceType` is `HTTP`. Names of frontend and backend parameters can be different. 
+        r"""API backend service parameter name. This is only applicable when `ServiceType` is `HTTP`. Names of frontend and backend parameters can be different. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9885,7 +9885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Position(self):
-        """Location of the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`. Configurations of frontend and backend parameters can be different. 
+        r"""Location of the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`. Configurations of frontend and backend parameters can be different. 
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9897,7 +9897,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterPosition(self):
-        """Location of the frontend parameter corresponding to the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`.
+        r"""Location of the frontend parameter corresponding to the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9909,7 +9909,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterName(self):
-        """Name of the frontend parameter corresponding to the API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
+        r"""Name of the frontend parameter corresponding to the API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9921,7 +9921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultValue(self):
-        """Default value of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
+        r"""Default value of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9933,7 +9933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterDesc(self):
-        """Description of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
+        r"""Description of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9962,7 +9962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApiUsagePlanRequest(AbstractModel):
-    """DescribeApiUsagePlan request structure.
+    r"""DescribeApiUsagePlan request structure.
 
     """
 
@@ -9981,7 +9981,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -9992,7 +9992,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -10003,7 +10003,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -10028,7 +10028,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
 
 
 class DescribeApiUsagePlanResponse(AbstractModel):
-    """DescribeApiUsagePlan response structure.
+    r"""DescribeApiUsagePlan response structure.
 
     """
 
@@ -10045,7 +10045,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of usage plans bound to API.
+        r"""List of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiUsagePlanSet`
         """
@@ -10057,7 +10057,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10075,7 +10075,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApisStatusRequest(AbstractModel):
-    """DescribeApisStatus request structure.
+    r"""DescribeApisStatus request structure.
 
     """
 
@@ -10097,7 +10097,7 @@ class DescribeApisStatusRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -10108,7 +10108,7 @@ class DescribeApisStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -10119,7 +10119,7 @@ class DescribeApisStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -10130,7 +10130,7 @@ class DescribeApisStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.
+        r"""API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.
         :rtype: list of Filter
         """
         return self._Filters
@@ -10161,7 +10161,7 @@ class DescribeApisStatusRequest(AbstractModel):
 
 
 class DescribeApisStatusResponse(AbstractModel):
-    """DescribeApisStatus response structure.
+    r"""DescribeApisStatus response structure.
 
     """
 
@@ -10177,7 +10177,7 @@ class DescribeApisStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        """List of API details.
+        r"""List of API details.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApisStatusResultInfo`
         """
         return self._Result
@@ -10188,7 +10188,7 @@ class DescribeApisStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10206,7 +10206,7 @@ class DescribeApisStatusResponse(AbstractModel):
 
 
 class DescribeApisStatusResultApiIdStatusSetInfo(AbstractModel):
-    """API status details
+    r"""API status details
 
     """
 
@@ -10290,7 +10290,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -10301,7 +10301,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -10312,7 +10312,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDesc(self):
-        """Custom API description.
+        r"""Custom API description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10324,7 +10324,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time. u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+        r"""Creation time. u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10336,7 +10336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modification time u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+        r"""Last modification time u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
 Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10348,7 +10348,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10360,7 +10360,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10372,7 +10372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10384,7 +10384,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiType(self):
-        """API type API type. Valid values: `NORMAL` (general API), `TSF` (microservice API).
+        r"""API type API type. Valid values: `NORMAL` (general API), `TSF` (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10396,7 +10396,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """API protocol.
+        r"""API protocol.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10408,7 +10408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDebugAfterCharge(self):
-        """Whether to enable debugging after purchase. (This field is reserved for Marketplace
+        r"""Whether to enable debugging after purchase. (This field is reserved for Marketplace
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -10420,7 +10420,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthType(self):
-        """API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`.
+        r"""API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10432,7 +10432,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiBusinessType(self):
-        """OAuth API type. Valid values: u200d`NORMAL` (service API), `OAUTH` (authorization API). It is only applicable when `AuthType` is `OAUTH`. 
+        r"""OAuth API type. Valid values: u200d`NORMAL` (service API), `OAUTH` (authorization API). It is only applicable when `AuthType` is `OAUTH`. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10444,7 +10444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of associated authorization API. It is applicable when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the service API.
+        r"""Unique ID of associated authorization API. It is applicable when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the service API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10456,7 +10456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OauthConfig(self):
-        """OAUTH configuration information. It is applicable when `AuthType` is `OAUTH`.
+        r"""OAUTH configuration information. It is applicable when `AuthType` is `OAUTH`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
@@ -10470,7 +10470,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def RelationBuniessApiIds(self):
         warnings.warn("parameter `RelationBuniessApiIds` is deprecated", DeprecationWarning) 
 
-        """List of business APIs associated with authorization API.
+        r"""List of business APIs associated with authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -10484,7 +10484,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Information of tags associated with API.
+        r"""Information of tags associated with API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApigatewayTags
         """
@@ -10496,7 +10496,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path, such as `/path`.
+        r"""API path, such as `/path`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10508,7 +10508,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API request method, such as `GET`.
+        r"""API request method, such as `GET`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10557,7 +10557,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeApisStatusResultInfo(AbstractModel):
-    """API list status description
+    r"""API list status description
 
     """
 
@@ -10573,7 +10573,7 @@ class DescribeApisStatusResultInfo(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible APIs.
+        r"""Number of eligible APIs.
         :rtype: int
         """
         return self._TotalCount
@@ -10584,7 +10584,7 @@ class DescribeApisStatusResultInfo(AbstractModel):
 
     @property
     def ApiIdStatusSet(self):
-        """List of APIs
+        r"""List of APIs
         :rtype: list of DescribeApisStatusResultApiIdStatusSetInfo
         """
         return self._ApiIdStatusSet
@@ -10613,13 +10613,13 @@ class DescribeApisStatusResultInfo(AbstractModel):
 
 
 class DescribeExclusiveInstanceRegionsRequest(AbstractModel):
-    """DescribeExclusiveInstanceRegions request structure.
+    r"""DescribeExclusiveInstanceRegions request structure.
 
     """
 
 
 class DescribeExclusiveInstanceRegionsResponse(AbstractModel):
-    """DescribeExclusiveInstanceRegions response structure.
+    r"""DescribeExclusiveInstanceRegions response structure.
 
     """
 
@@ -10632,7 +10632,7 @@ class DescribeExclusiveInstanceRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10647,7 +10647,7 @@ class DescribeExclusiveInstanceRegionsResponse(AbstractModel):
 
 
 class DescribeIPStrategyApisStatusRequest(AbstractModel):
-    """DescribeIPStrategyApisStatus request structure.
+    r"""DescribeIPStrategyApisStatus request structure.
 
     """
 
@@ -10675,7 +10675,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -10686,7 +10686,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique policy ID.
+        r"""Unique policy ID.
         :rtype: str
         """
         return self._StrategyId
@@ -10697,7 +10697,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Policy environment.
+        r"""Policy environment.
         :rtype: str
         """
         return self._EnvironmentName
@@ -10708,7 +10708,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -10719,7 +10719,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -10730,7 +10730,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).
+        r"""Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).
         :rtype: list of Filter
         """
         return self._Filters
@@ -10763,7 +10763,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
 
 class DescribeIPStrategyApisStatusResponse(AbstractModel):
-    """DescribeIPStrategyApisStatus response structure.
+    r"""DescribeIPStrategyApisStatus response structure.
 
     """
 
@@ -10780,7 +10780,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of APIs bound to environment.
+        r"""List of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.IPStrategyApiStatus`
         """
@@ -10792,7 +10792,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10810,7 +10810,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeIPStrategyRequest(AbstractModel):
-    """DescribeIPStrategy request structure.
+    r"""DescribeIPStrategy request structure.
 
     """
 
@@ -10838,7 +10838,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -10849,7 +10849,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique IP policy ID.
+        r"""Unique IP policy ID.
         :rtype: str
         """
         return self._StrategyId
@@ -10860,7 +10860,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment associated with policy.
+        r"""Environment associated with policy.
         :rtype: str
         """
         return self._EnvironmentName
@@ -10871,7 +10871,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -10882,7 +10882,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -10893,7 +10893,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which is a reserved field. Filtering is not supported currently.
+        r"""Filter, which is a reserved field. Filtering is not supported currently.
         :rtype: list of Filter
         """
         return self._Filters
@@ -10926,7 +10926,7 @@ class DescribeIPStrategyRequest(AbstractModel):
 
 
 class DescribeIPStrategyResponse(AbstractModel):
-    """DescribeIPStrategy response structure.
+    r"""DescribeIPStrategy response structure.
 
     """
 
@@ -10943,7 +10943,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """IP policy details.
+        r"""IP policy details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
         """
@@ -10955,7 +10955,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10973,7 +10973,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeIPStrategysStatusRequest(AbstractModel):
-    """DescribeIPStrategysStatus request structure.
+    r"""DescribeIPStrategysStatus request structure.
 
     """
 
@@ -10989,7 +10989,7 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -11000,7 +11000,7 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: StrategyName.
+        r"""Filter. Valid values: StrategyName.
         :rtype: list of Filter
         """
         return self._Filters
@@ -11029,7 +11029,7 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
 
 
 class DescribeIPStrategysStatusResponse(AbstractModel):
-    """DescribeIPStrategysStatus response structure.
+    r"""DescribeIPStrategysStatus response structure.
 
     """
 
@@ -11046,7 +11046,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of eligible policies.
+        r"""List of eligible policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.IPStrategiesStatus`
         """
@@ -11058,7 +11058,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11076,7 +11076,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeInstancesNetworkConfigRequest(AbstractModel):
-    """DescribeInstancesNetworkConfig request structure.
+    r"""DescribeInstancesNetworkConfig request structure.
 
     """
 
@@ -11094,7 +11094,7 @@ class DescribeInstancesNetworkConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returns, with a default value of 20 and a maximum value of 100.
+        r"""Number of returns, with a default value of 20 and a maximum value of 100.
 
         :rtype: int
         """
@@ -11106,7 +11106,7 @@ class DescribeInstancesNetworkConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which is 0 by default.
+        r"""Offset, which is 0 by default.
 
         :rtype: int
         """
@@ -11131,7 +11131,7 @@ class DescribeInstancesNetworkConfigRequest(AbstractModel):
 
 
 class DescribeInstancesNetworkConfigResponse(AbstractModel):
-    """DescribeInstancesNetworkConfig response structure.
+    r"""DescribeInstancesNetworkConfig response structure.
 
     """
 
@@ -11144,7 +11144,7 @@ class DescribeInstancesNetworkConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11159,7 +11159,7 @@ class DescribeInstancesNetworkConfigResponse(AbstractModel):
 
 
 class DescribeLogSearchRequest(AbstractModel):
-    """DescribeLogSearch request structure.
+    r"""DescribeLogSearch request structure.
 
     """
 
@@ -11206,7 +11206,7 @@ Note:
 
     @property
     def StartTime(self):
-        """Log start time
+        r"""Log start time
         :rtype: str
         """
         return self._StartTime
@@ -11217,7 +11217,7 @@ Note:
 
     @property
     def EndTime(self):
-        """Log end time
+        r"""Log end time
         :rtype: str
         """
         return self._EndTime
@@ -11228,7 +11228,7 @@ Note:
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -11239,7 +11239,7 @@ Note:
 
     @property
     def Filters(self):
-        """Reserved field
+        r"""Reserved field
         :rtype: list of Filter
         """
         return self._Filters
@@ -11250,7 +11250,7 @@ Note:
 
     @property
     def Limit(self):
-        """Number of logs to be returned at a time. Maximum value: 100
+        r"""Number of logs to be returned at a time. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -11261,7 +11261,7 @@ Note:
 
     @property
     def ConText(self):
-        """Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained
+        r"""Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained
         :rtype: str
         """
         return self._ConText
@@ -11272,7 +11272,7 @@ Note:
 
     @property
     def Sort(self):
-        """Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
+        r"""Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
         :rtype: str
         """
         return self._Sort
@@ -11283,7 +11283,7 @@ Note:
 
     @property
     def Query(self):
-        """Reserved field
+        r"""Reserved field
         :rtype: str
         """
         return self._Query
@@ -11296,7 +11296,7 @@ Note:
     def LogQuerys(self):
         warnings.warn("parameter `LogQuerys` is deprecated", DeprecationWarning) 
 
-        """Search criterion. Valid values:
+        r"""Search criterion. Valid values:
 req_id: "="
 api_id: "="
 cip: "="
@@ -11349,7 +11349,7 @@ Note:
 
 
 class DescribeLogSearchResponse(AbstractModel):
-    """DescribeLogSearch response structure.
+    r"""DescribeLogSearch response structure.
 
     """
 
@@ -11398,7 +11398,7 @@ req_id: request ID.
 
     @property
     def ConText(self):
-        """Cursor for getting more search results. If the value is `""`, there will be no subsequent results
+        r"""Cursor for getting more search results. If the value is `""`, there will be no subsequent results
         :rtype: str
         """
         return self._ConText
@@ -11409,7 +11409,7 @@ req_id: request ID.
 
     @property
     def LogSet(self):
-        """The returned result contains any number of logs, which are in the following format:
+        r"""The returned result contains any number of logs, which are in the following format:
 '[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'
 '[cip:$remote_addr][uip:$upstream_addr][vip:$server_addr][rsp_len:$bytes_sent][req_len:$request_length]'
 '[req_t:$request_time][ups_rsp_t:$upstream_response_time][ups_conn_t:$upstream_connect_time][ups_head_t:$upstream_header_time]’
@@ -11447,7 +11447,7 @@ req_id: request ID.
 
     @property
     def TotalCount(self):
-        """Number of logs returned for one search (`TotalCount <= Limit`)
+        r"""Number of logs returned for one search (`TotalCount <= Limit`)
         :rtype: int
         """
         return self._TotalCount
@@ -11458,7 +11458,7 @@ req_id: request ID.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11476,7 +11476,7 @@ req_id: request ID.
 
 
 class DescribePluginApisRequest(AbstractModel):
-    """DescribePluginApis request structure.
+    r"""DescribePluginApis request structure.
 
     """
 
@@ -11495,7 +11495,7 @@ class DescribePluginApisRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be queried
+        r"""ID of the plugin to be queried
         :rtype: str
         """
         return self._PluginId
@@ -11506,7 +11506,7 @@ class DescribePluginApisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100
+        r"""Number of returned results. Default value: 20. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -11517,7 +11517,7 @@ class DescribePluginApisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0
+        r"""Offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -11542,7 +11542,7 @@ class DescribePluginApisRequest(AbstractModel):
 
 
 class DescribePluginApisResponse(AbstractModel):
-    """DescribePluginApis response structure.
+    r"""DescribePluginApis response structure.
 
     """
 
@@ -11558,7 +11558,7 @@ class DescribePluginApisResponse(AbstractModel):
 
     @property
     def Result(self):
-        """List of APIs bound with the plugin
+        r"""List of APIs bound with the plugin
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.AttachedApiSummary`
         """
         return self._Result
@@ -11569,7 +11569,7 @@ class DescribePluginApisResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11587,7 +11587,7 @@ class DescribePluginApisResponse(AbstractModel):
 
 
 class DescribePluginRequest(AbstractModel):
-    """DescribePlugin request structure.
+    r"""DescribePlugin request structure.
 
     """
 
@@ -11606,7 +11606,7 @@ class DescribePluginRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be queried
+        r"""ID of the plugin to be queried
         :rtype: str
         """
         return self._PluginId
@@ -11617,7 +11617,7 @@ class DescribePluginRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100
+        r"""Number of returned results. Default value: 20. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -11628,7 +11628,7 @@ class DescribePluginRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0
+        r"""Offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -11653,7 +11653,7 @@ class DescribePluginRequest(AbstractModel):
 
 
 class DescribePluginResponse(AbstractModel):
-    """DescribePlugin response structure.
+    r"""DescribePlugin response structure.
 
     """
 
@@ -11669,7 +11669,7 @@ class DescribePluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Plugin details
+        r"""Plugin details
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
         """
         return self._Result
@@ -11680,7 +11680,7 @@ class DescribePluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11698,7 +11698,7 @@ class DescribePluginResponse(AbstractModel):
 
 
 class DescribePluginsByApiRequest(AbstractModel):
-    """DescribePluginsByApi request structure.
+    r"""DescribePluginsByApi request structure.
 
     """
 
@@ -11723,7 +11723,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """ID of the API to query
+        r"""ID of the API to query
         :rtype: str
         """
         return self._ApiId
@@ -11734,7 +11734,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """ID of the service to query
+        r"""ID of the service to query
         :rtype: str
         """
         return self._ServiceId
@@ -11745,7 +11745,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment information
+        r"""Environment information
         :rtype: str
         """
         return self._EnvironmentName
@@ -11756,7 +11756,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100
+        r"""Number of returned results. Default value: 20. Maximum value: 100
         :rtype: int
         """
         return self._Limit
@@ -11767,7 +11767,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0
+        r"""Offset. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -11794,7 +11794,7 @@ class DescribePluginsByApiRequest(AbstractModel):
 
 
 class DescribePluginsByApiResponse(AbstractModel):
-    """DescribePluginsByApi response structure.
+    r"""DescribePluginsByApi response structure.
 
     """
 
@@ -11810,7 +11810,7 @@ class DescribePluginsByApiResponse(AbstractModel):
 
     @property
     def Result(self):
-        """List of plug-ins bound with the API
+        r"""List of plug-ins bound with the API
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.AttachedPluginSummary`
         """
         return self._Result
@@ -11821,7 +11821,7 @@ class DescribePluginsByApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11839,7 +11839,7 @@ class DescribePluginsByApiResponse(AbstractModel):
 
 
 class DescribeServiceEnvironmentListRequest(AbstractModel):
-    """DescribeServiceEnvironmentList request structure.
+    r"""DescribeServiceEnvironmentList request structure.
 
     """
 
@@ -11858,7 +11858,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -11869,7 +11869,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -11880,7 +11880,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -11905,7 +11905,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
 
 
 class DescribeServiceEnvironmentListResponse(AbstractModel):
-    """DescribeServiceEnvironmentList response structure.
+    r"""DescribeServiceEnvironmentList response structure.
 
     """
 
@@ -11922,7 +11922,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Details of environments bound to service.
+        r"""Details of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentSet`
         """
@@ -11934,7 +11934,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11952,7 +11952,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
-    """DescribeServiceEnvironmentReleaseHistory request structure.
+    r"""DescribeServiceEnvironmentReleaseHistory request structure.
 
     """
 
@@ -11974,7 +11974,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -11985,7 +11985,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._EnvironmentName
@@ -11996,7 +11996,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -12007,7 +12007,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -12033,7 +12033,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
 
 class DescribeServiceEnvironmentReleaseHistoryResponse(AbstractModel):
-    """DescribeServiceEnvironmentReleaseHistory response structure.
+    r"""DescribeServiceEnvironmentReleaseHistory response structure.
 
     """
 
@@ -12050,7 +12050,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Service release history.
+        r"""Service release history.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseHistory`
         """
@@ -12062,7 +12062,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12080,7 +12080,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
-    """DescribeServiceEnvironmentStrategy request structure.
+    r"""DescribeServiceEnvironmentStrategy request structure.
 
     """
 
@@ -12099,7 +12099,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -12110,7 +12110,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -12121,7 +12121,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -12146,7 +12146,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
 
 
 class DescribeServiceEnvironmentStrategyResponse(AbstractModel):
-    """DescribeServiceEnvironmentStrategy response structure.
+    r"""DescribeServiceEnvironmentStrategy response structure.
 
     """
 
@@ -12163,7 +12163,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Throttling policy list.
+        r"""Throttling policy list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentStrategyStatus`
         """
@@ -12175,7 +12175,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12193,7 +12193,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceForApiAppRequest(AbstractModel):
-    """DescribeServiceForApiApp request structure.
+    r"""DescribeServiceForApiApp request structure.
 
     """
 
@@ -12209,7 +12209,7 @@ class DescribeServiceForApiAppRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -12220,7 +12220,7 @@ class DescribeServiceForApiAppRequest(AbstractModel):
 
     @property
     def ApiRegion(self):
-        """Service region.
+        r"""Service region.
         :rtype: str
         """
         return self._ApiRegion
@@ -12244,7 +12244,7 @@ class DescribeServiceForApiAppRequest(AbstractModel):
 
 
 class DescribeServiceForApiAppResponse(AbstractModel):
-    """DescribeServiceForApiApp response structure.
+    r"""DescribeServiceForApiApp response structure.
 
     """
 
@@ -12330,7 +12330,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -12341,7 +12341,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AvailableEnvironments(self):
-        """Service environment list.
+        r"""Service environment list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -12353,7 +12353,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Service name.
+        r"""Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12365,7 +12365,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDesc(self):
-        """Service description.
+        r"""Service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12377,7 +12377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol supported by service. Valid values: http, https, http&https.
+        r"""Protocol supported by service. Valid values: http, https, http&https.
         :rtype: str
         """
         return self._Protocol
@@ -12388,7 +12388,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Service creation time.
+        r"""Service creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12400,7 +12400,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Service modification time.
+        r"""Service modification time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12412,7 +12412,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetTypes(self):
-        """Network type list. INNER: private network access; OUTER: public network access.
+        r"""Network type list. INNER: private network access; OUTER: public network access.
         :rtype: list of str
         """
         return self._NetTypes
@@ -12423,7 +12423,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalSubDomain(self):
-        """Subdomain name for private network access.
+        r"""Subdomain name for private network access.
         :rtype: str
         """
         return self._InternalSubDomain
@@ -12434,7 +12434,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OuterSubDomain(self):
-        """Subdomain name for public network access.
+        r"""Subdomain name for public network access.
         :rtype: str
         """
         return self._OuterSubDomain
@@ -12445,7 +12445,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerHttpPort(self):
-        """Service port number for HTTP access over private network.
+        r"""Service port number for HTTP access over private network.
         :rtype: int
         """
         return self._InnerHttpPort
@@ -12456,7 +12456,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerHttpsPort(self):
-        """Port number for HTTPS access over private network.
+        r"""Port number for HTTPS access over private network.
         :rtype: int
         """
         return self._InnerHttpsPort
@@ -12467,7 +12467,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiTotalCount(self):
-        """Total number of APIs.
+        r"""Total number of APIs.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12479,7 +12479,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiIdStatusSet(self):
-        """API list.
+        r"""API list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiIdStatus
         """
@@ -12491,7 +12491,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanTotalCount(self):
-        """Total number of usage plans.
+        r"""Total number of usage plans.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12503,7 +12503,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanList(self):
-        """Usage plan array.
+        r"""Usage plan array.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlan
         """
@@ -12515,7 +12515,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpVersion(self):
-        """IP version.
+        r"""IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12527,7 +12527,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserType(self):
-        """Service user type.
+        r"""Service user type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12539,7 +12539,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetId(self):
-        """Reserved field.
+        r"""Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12551,7 +12551,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag bound to the service.
+        r"""Tag bound to the service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -12563,7 +12563,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12613,7 +12613,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceReleaseVersionRequest(AbstractModel):
-    """DescribeServiceReleaseVersion request structure.
+    r"""DescribeServiceReleaseVersion request structure.
 
     """
 
@@ -12632,7 +12632,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -12643,7 +12643,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -12654,7 +12654,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -12679,7 +12679,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
 
 
 class DescribeServiceReleaseVersionResponse(AbstractModel):
-    """DescribeServiceReleaseVersion response structure.
+    r"""DescribeServiceReleaseVersion response structure.
 
     """
 
@@ -12696,7 +12696,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Service release version list.
+        r"""Service release version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseVersion`
         """
@@ -12708,7 +12708,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12726,7 +12726,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceReleaseVersionResultVersionListInfo(AbstractModel):
-    """Service version details
+    r"""Service version details
 
     """
 
@@ -12744,7 +12744,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionName(self):
-        """Version ID.
+        r"""Version ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12756,7 +12756,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionDesc(self):
-        """Version description. 
+        r"""Version description. 
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12781,7 +12781,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceRequest(AbstractModel):
-    """DescribeService request structure.
+    r"""DescribeService request structure.
 
     """
 
@@ -12794,7 +12794,7 @@ class DescribeServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -12817,7 +12817,7 @@ class DescribeServiceRequest(AbstractModel):
 
 
 class DescribeServiceResponse(AbstractModel):
-    """DescribeService response structure.
+    r"""DescribeService response structure.
 
     """
 
@@ -12920,7 +12920,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -12931,7 +12931,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def AvailableEnvironments(self):
-        """Service environment list.
+        r"""Service environment list.
         :rtype: list of str
         """
         return self._AvailableEnvironments
@@ -12942,7 +12942,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def ServiceName(self):
-        """Service name.
+        r"""Service name.
         :rtype: str
         """
         return self._ServiceName
@@ -12953,7 +12953,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def ServiceDesc(self):
-        """Service description.
+        r"""Service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12965,7 +12965,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol supported by service. Valid values: http, https, http&https.
+        r"""Protocol supported by service. Valid values: http, https, http&https.
         :rtype: str
         """
         return self._Protocol
@@ -12976,7 +12976,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Service creation time.
+        r"""Service creation time.
         :rtype: str
         """
         return self._CreatedTime
@@ -12987,7 +12987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Service modification time.
+        r"""Service modification time.
         :rtype: str
         """
         return self._ModifiedTime
@@ -12998,7 +12998,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetTypes(self):
-        """Network type list. INNER: private network access; OUTER: public network access.
+        r"""Network type list. INNER: private network access; OUTER: public network access.
         :rtype: list of str
         """
         return self._NetTypes
@@ -13009,7 +13009,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalSubDomain(self):
-        """Subdomain name for private network access.
+        r"""Subdomain name for private network access.
         :rtype: str
         """
         return self._InternalSubDomain
@@ -13020,7 +13020,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OuterSubDomain(self):
-        """Subdomain name for public network access.
+        r"""Subdomain name for public network access.
         :rtype: str
         """
         return self._OuterSubDomain
@@ -13031,7 +13031,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerHttpPort(self):
-        """Service port number for HTTP access over private network.
+        r"""Service port number for HTTP access over private network.
         :rtype: int
         """
         return self._InnerHttpPort
@@ -13042,7 +13042,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerHttpsPort(self):
-        """Port number for HTTPS access over private network.
+        r"""Port number for HTTPS access over private network.
         :rtype: int
         """
         return self._InnerHttpsPort
@@ -13053,7 +13053,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiTotalCount(self):
-        """Total number of APIs.
+        r"""Total number of APIs.
         :rtype: int
         """
         return self._ApiTotalCount
@@ -13064,7 +13064,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiIdStatusSet(self):
-        """API list.
+        r"""API list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiIdStatus
         """
@@ -13076,7 +13076,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanTotalCount(self):
-        """Total number of usage plans.
+        r"""Total number of usage plans.
         :rtype: int
         """
         return self._UsagePlanTotalCount
@@ -13087,7 +13087,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanList(self):
-        """Usage plan array.
+        r"""Usage plan array.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlan
         """
@@ -13099,7 +13099,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpVersion(self):
-        """IP version.
+        r"""IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13111,7 +13111,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserType(self):
-        """Service user type.
+        r"""Service user type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13123,7 +13123,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetId(self):
-        """Reserved field.
+        r"""Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13135,7 +13135,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tags bound to a service.
+        r"""Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :rtype: list of Tag
         """
@@ -13147,7 +13147,7 @@ Note: this field may return null, indicating that no valid values found.
 
     @property
     def InstanceId(self):
-        """Dedicated instance ID
+        r"""Dedicated instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13159,7 +13159,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Dedicated instance name
+        r"""Dedicated instance name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13171,7 +13171,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetType(self):
-        """Cluster type
+        r"""Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13183,7 +13183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeploymentType(self):
-        """Cluster type for service deployment
+        r"""Cluster type for service deployment
 Note: this field may return null, indicating that no valid values found.
         :rtype: str
         """
@@ -13195,7 +13195,7 @@ Note: this field may return null, indicating that no valid values found.
 
     @property
     def SpecialUse(self):
-        """Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.
+        r"""Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13207,7 +13207,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UniqVpcId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._UniqVpcId
@@ -13218,7 +13218,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13274,7 +13274,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
 
 class DescribeServiceSubDomainMappingsRequest(AbstractModel):
-    """DescribeServiceSubDomainMappings request structure.
+    r"""DescribeServiceSubDomainMappings request structure.
 
     """
 
@@ -13290,7 +13290,7 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -13301,7 +13301,7 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Custom domain name bound to service.
+        r"""Custom domain name bound to service.
         :rtype: str
         """
         return self._SubDomain
@@ -13325,7 +13325,7 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
 
 
 class DescribeServiceSubDomainMappingsResponse(AbstractModel):
-    """DescribeServiceSubDomainMappings response structure.
+    r"""DescribeServiceSubDomainMappings response structure.
 
     """
 
@@ -13341,7 +13341,7 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Custom path mapping list.
+        r"""Custom path mapping list.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceSubDomainMappings`
         """
         return self._Result
@@ -13352,7 +13352,7 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13370,7 +13370,7 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
 
 
 class DescribeServiceSubDomainsRequest(AbstractModel):
-    """DescribeServiceSubDomains request structure.
+    r"""DescribeServiceSubDomains request structure.
 
     """
 
@@ -13389,7 +13389,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -13400,7 +13400,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -13411,7 +13411,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -13436,7 +13436,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
 
 
 class DescribeServiceSubDomainsResponse(AbstractModel):
-    """DescribeServiceSubDomains response structure.
+    r"""DescribeServiceSubDomains response structure.
 
     """
 
@@ -13452,7 +13452,7 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Custom service domain name query.
+        r"""Custom service domain name query.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.DomainSets`
         """
         return self._Result
@@ -13463,7 +13463,7 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13481,7 +13481,7 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
 
 
 class DescribeServiceUsagePlanRequest(AbstractModel):
-    """DescribeServiceUsagePlan request structure.
+    r"""DescribeServiceUsagePlan request structure.
 
     """
 
@@ -13500,7 +13500,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be queried.
+        r"""Unique ID of the service to be queried.
         :rtype: str
         """
         return self._ServiceId
@@ -13511,7 +13511,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -13522,7 +13522,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -13547,7 +13547,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
 
 
 class DescribeServiceUsagePlanResponse(AbstractModel):
-    """DescribeServiceUsagePlan response structure.
+    r"""DescribeServiceUsagePlan response structure.
 
     """
 
@@ -13564,7 +13564,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of usage plans bound to service.
+        r"""List of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceUsagePlanSet`
         """
@@ -13576,7 +13576,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13594,7 +13594,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServicesStatusRequest(AbstractModel):
-    """DescribeServicesStatus request structure.
+    r"""DescribeServicesStatus request structure.
 
     """
 
@@ -13613,7 +13613,7 @@ class DescribeServicesStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -13624,7 +13624,7 @@ class DescribeServicesStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -13635,7 +13635,7 @@ class DescribeServicesStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: `ServiceId`, `ServiceName`, `NotUsagePlanId`, `Environment`, `IpVersion`, `InstanceId`, `NetType`, `EIAMAppId`.
+        r"""Filter. Valid values: `ServiceId`, `ServiceName`, `NotUsagePlanId`, `Environment`, `IpVersion`, `InstanceId`, `NetType`, `EIAMAppId`.
         :rtype: list of Filter
         """
         return self._Filters
@@ -13665,7 +13665,7 @@ class DescribeServicesStatusRequest(AbstractModel):
 
 
 class DescribeServicesStatusResponse(AbstractModel):
-    """DescribeServicesStatus response structure.
+    r"""DescribeServicesStatus response structure.
 
     """
 
@@ -13682,7 +13682,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Service list query result.
+        r"""Service list query result.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServicesStatus`
         """
@@ -13694,7 +13694,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13712,7 +13712,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUpstreamBindApis(AbstractModel):
-    """Queries APIs bound with an upstream
+    r"""Queries APIs bound with an upstream
 
     """
 
@@ -13728,7 +13728,7 @@ class DescribeUpstreamBindApis(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -13739,7 +13739,7 @@ class DescribeUpstreamBindApis(AbstractModel):
 
     @property
     def BindApiSet(self):
-        """Information of bound APIs
+        r"""Information of bound APIs
         :rtype: list of BindApiInfo
         """
         return self._BindApiSet
@@ -13768,7 +13768,7 @@ class DescribeUpstreamBindApis(AbstractModel):
 
 
 class DescribeUpstreamBindApisRequest(AbstractModel):
-    """DescribeUpstreamBindApis request structure.
+    r"""DescribeUpstreamBindApis request structure.
 
     """
 
@@ -13790,7 +13790,7 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._Limit
@@ -13801,7 +13801,7 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The starting position of paging
+        r"""The starting position of paging
         :rtype: int
         """
         return self._Offset
@@ -13812,7 +13812,7 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     @property
     def UpstreamId(self):
-        """Upstream ID
+        r"""Upstream ID
         :rtype: str
         """
         return self._UpstreamId
@@ -13823,7 +13823,7 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters the results by `ServiceId` and `ApiId`
+        r"""Filters the results by `ServiceId` and `ApiId`
         :rtype: list of Filter
         """
         return self._Filters
@@ -13854,7 +13854,7 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
 
 class DescribeUpstreamBindApisResponse(AbstractModel):
-    """DescribeUpstreamBindApis response structure.
+    r"""DescribeUpstreamBindApis response structure.
 
     """
 
@@ -13870,7 +13870,7 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Query results
+        r"""Query results
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApis`
         """
         return self._Result
@@ -13881,7 +13881,7 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13899,7 +13899,7 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
 
 class DescribeUpstreamInfo(AbstractModel):
-    """The returned result of upstream query
+    r"""The returned result of upstream query
 
     """
 
@@ -13915,7 +13915,7 @@ class DescribeUpstreamInfo(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
         :rtype: int
         """
         return self._TotalCount
@@ -13926,7 +13926,7 @@ class DescribeUpstreamInfo(AbstractModel):
 
     @property
     def UpstreamSet(self):
-        """List of query result
+        r"""List of query result
         :rtype: list of UpstreamInfo
         """
         return self._UpstreamSet
@@ -13955,7 +13955,7 @@ class DescribeUpstreamInfo(AbstractModel):
 
 
 class DescribeUpstreamsRequest(AbstractModel):
-    """DescribeUpstreams request structure.
+    r"""DescribeUpstreams request structure.
 
     """
 
@@ -13974,7 +13974,7 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._Limit
@@ -13985,7 +13985,7 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The starting position of paging
+        r"""The starting position of paging
         :rtype: int
         """
         return self._Offset
@@ -13996,7 +13996,7 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters. Valid values: `UpstreamId` and `UpstreamName`
+        r"""Filters. Valid values: `UpstreamId` and `UpstreamName`
         :rtype: list of Filter
         """
         return self._Filters
@@ -14026,7 +14026,7 @@ class DescribeUpstreamsRequest(AbstractModel):
 
 
 class DescribeUpstreamsResponse(AbstractModel):
-    """DescribeUpstreams response structure.
+    r"""DescribeUpstreams response structure.
 
     """
 
@@ -14042,7 +14042,7 @@ class DescribeUpstreamsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Query results
+        r"""Query results
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamInfo`
         """
         return self._Result
@@ -14053,7 +14053,7 @@ class DescribeUpstreamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14071,7 +14071,7 @@ class DescribeUpstreamsResponse(AbstractModel):
 
 
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
-    """DescribeUsagePlanEnvironments request structure.
+    r"""DescribeUsagePlanEnvironments request structure.
 
     """
 
@@ -14093,7 +14093,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of the usage plan to be queried.
+        r"""Unique ID of the usage plan to be queried.
         :rtype: str
         """
         return self._UsagePlanId
@@ -14104,7 +14104,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        r"""Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :rtype: str
         """
         return self._BindType
@@ -14115,7 +14115,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -14126,7 +14126,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -14152,7 +14152,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
 
 class DescribeUsagePlanEnvironmentsResponse(AbstractModel):
-    """DescribeUsagePlanEnvironments response structure.
+    r"""DescribeUsagePlanEnvironments response structure.
 
     """
 
@@ -14169,7 +14169,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Usage plan binding details.
+        r"""Usage plan binding details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanEnvironmentStatus`
         """
@@ -14181,7 +14181,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14199,7 +14199,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUsagePlanRequest(AbstractModel):
-    """DescribeUsagePlan request structure.
+    r"""DescribeUsagePlan request structure.
 
     """
 
@@ -14212,7 +14212,7 @@ class DescribeUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of the usage plan to be queried.
+        r"""Unique ID of the usage plan to be queried.
         :rtype: str
         """
         return self._UsagePlanId
@@ -14235,7 +14235,7 @@ class DescribeUsagePlanRequest(AbstractModel):
 
 
 class DescribeUsagePlanResponse(AbstractModel):
-    """DescribeUsagePlan response structure.
+    r"""DescribeUsagePlan response structure.
 
     """
 
@@ -14252,7 +14252,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Usage plan details.
+        r"""Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
         """
@@ -14264,7 +14264,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14282,7 +14282,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUsagePlanSecretIdsRequest(AbstractModel):
-    """DescribeUsagePlanSecretIds request structure.
+    r"""DescribeUsagePlanSecretIds request structure.
 
     """
 
@@ -14301,7 +14301,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of bound usage plan.
+        r"""Unique ID of bound usage plan.
         :rtype: str
         """
         return self._UsagePlanId
@@ -14312,7 +14312,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -14323,7 +14323,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -14348,7 +14348,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
 
 
 class DescribeUsagePlanSecretIdsResponse(AbstractModel):
-    """DescribeUsagePlanSecretIds response structure.
+    r"""DescribeUsagePlanSecretIds response structure.
 
     """
 
@@ -14365,7 +14365,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """List of keys bound to usage plan.
+        r"""List of keys bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanBindSecretStatus`
         """
@@ -14377,7 +14377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14395,7 +14395,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeUsagePlansStatusRequest(AbstractModel):
-    """DescribeUsagePlansStatus request structure.
+    r"""DescribeUsagePlansStatus request structure.
 
     """
 
@@ -14414,7 +14414,7 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -14425,7 +14425,7 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -14436,7 +14436,7 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.
+        r"""Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.
         :rtype: list of Filter
         """
         return self._Filters
@@ -14466,7 +14466,7 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
 
 
 class DescribeUsagePlansStatusResponse(AbstractModel):
-    """DescribeUsagePlansStatus response structure.
+    r"""DescribeUsagePlansStatus response structure.
 
     """
 
@@ -14483,7 +14483,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Usage plan list.
+        r"""Usage plan list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlansStatus`
         """
@@ -14495,7 +14495,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14513,7 +14513,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DetachPluginRequest(AbstractModel):
-    """DetachPlugin request structure.
+    r"""DetachPlugin request structure.
 
     """
 
@@ -14535,7 +14535,7 @@ class DetachPluginRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be unbound
+        r"""ID of the plugin to be unbound
         :rtype: str
         """
         return self._PluginId
@@ -14546,7 +14546,7 @@ class DetachPluginRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -14557,7 +14557,7 @@ class DetachPluginRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """API environment
+        r"""API environment
         :rtype: str
         """
         return self._EnvironmentName
@@ -14568,7 +14568,7 @@ class DetachPluginRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """ID of the API to unbind from the plugin
+        r"""ID of the API to unbind from the plugin
         :rtype: str
         """
         return self._ApiId
@@ -14594,7 +14594,7 @@ class DetachPluginRequest(AbstractModel):
 
 
 class DetachPluginResponse(AbstractModel):
-    """DetachPlugin response structure.
+    r"""DetachPlugin response structure.
 
     """
 
@@ -14610,7 +14610,7 @@ class DetachPluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether unbinding succeeded.
+        r"""Whether unbinding succeeded.
         :rtype: bool
         """
         return self._Result
@@ -14621,7 +14621,7 @@ class DetachPluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14637,7 +14637,7 @@ class DetachPluginResponse(AbstractModel):
 
 
 class DisableApiKeyRequest(AbstractModel):
-    """DisableApiKey request structure.
+    r"""DisableApiKey request structure.
 
     """
 
@@ -14650,7 +14650,7 @@ class DisableApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the key to be disabled.
+        r"""ID of the key to be disabled.
         :rtype: str
         """
         return self._AccessKeyId
@@ -14673,7 +14673,7 @@ class DisableApiKeyRequest(AbstractModel):
 
 
 class DisableApiKeyResponse(AbstractModel):
-    """DisableApiKey response structure.
+    r"""DisableApiKey response structure.
 
     """
 
@@ -14690,7 +14690,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether the key is successfully disabled.
+        r"""Whether the key is successfully disabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -14702,7 +14702,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14718,7 +14718,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DomainSetList(AbstractModel):
-    """Custom service domain name list
+    r"""Custom service domain name list
 
     """
 
@@ -14752,7 +14752,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def DomainName(self):
-        """Domain name.
+        r"""Domain name.
         :rtype: str
         """
         return self._DomainName
@@ -14763,7 +14763,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def Status(self):
-        """Domain name resolution status. `1`: normal, `0`: failed
+        r"""Domain name resolution status. `1`: normal, `0`: failed
         :rtype: int
         """
         return self._Status
@@ -14774,7 +14774,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID.
+        r"""Certificate ID.
         :rtype: str
         """
         return self._CertificateId
@@ -14785,7 +14785,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def IsDefaultMapping(self):
-        """Whether the default path mapping is used.
+        r"""Whether the default path mapping is used.
         :rtype: bool
         """
         return self._IsDefaultMapping
@@ -14796,7 +14796,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def Protocol(self):
-        """Custom domain name protocol type.
+        r"""Custom domain name protocol type.
         :rtype: str
         """
         return self._Protocol
@@ -14807,7 +14807,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type. Valid values: INNER, OUTER.
+        r"""Network type. Valid values: INNER, OUTER.
         :rtype: str
         """
         return self._NetType
@@ -14818,7 +14818,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def IsForcedHttps(self):
-        """Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        r"""Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :rtype: bool
         """
         return self._IsForcedHttps
@@ -14829,7 +14829,7 @@ class DomainSetList(AbstractModel):
 
     @property
     def RegistrationStatus(self):
-        """ICP filing status
+        r"""ICP filing status
         :rtype: bool
         """
         return self._RegistrationStatus
@@ -14859,7 +14859,7 @@ class DomainSetList(AbstractModel):
 
 
 class DomainSets(AbstractModel):
-    """Custom service domain name information
+    r"""Custom service domain name information
 
     """
 
@@ -14875,7 +14875,7 @@ class DomainSets(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of custom domain names under service
+        r"""Number of custom domain names under service
         :rtype: int
         """
         return self._TotalCount
@@ -14886,7 +14886,7 @@ class DomainSets(AbstractModel):
 
     @property
     def DomainSet(self):
-        """Custom service domain name list.
+        r"""Custom service domain name list.
         :rtype: list of DomainSetList
         """
         return self._DomainSet
@@ -14915,7 +14915,7 @@ class DomainSets(AbstractModel):
 
 
 class EnableApiKeyRequest(AbstractModel):
-    """EnableApiKey request structure.
+    r"""EnableApiKey request structure.
 
     """
 
@@ -14928,7 +14928,7 @@ class EnableApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the key to be enabled.
+        r"""ID of the key to be enabled.
         :rtype: str
         """
         return self._AccessKeyId
@@ -14951,7 +14951,7 @@ class EnableApiKeyRequest(AbstractModel):
 
 
 class EnableApiKeyResponse(AbstractModel):
-    """EnableApiKey response structure.
+    r"""EnableApiKey response structure.
 
     """
 
@@ -14968,7 +14968,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether the key is successfully enabled.
+        r"""Whether the key is successfully enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -14980,7 +14980,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14996,7 +14996,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Environment(AbstractModel):
-    """Information of service release environment.
+    r"""Information of service release environment.
 
     """
 
@@ -15018,7 +15018,7 @@ class Environment(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._EnvironmentName
@@ -15029,7 +15029,7 @@ class Environment(AbstractModel):
 
     @property
     def Url(self):
-        """Access path.
+        r"""Access path.
         :rtype: str
         """
         return self._Url
@@ -15040,7 +15040,7 @@ class Environment(AbstractModel):
 
     @property
     def Status(self):
-        """Release status. 1: published. 0: not published.
+        r"""Release status. 1: published. 0: not published.
         :rtype: int
         """
         return self._Status
@@ -15051,7 +15051,7 @@ class Environment(AbstractModel):
 
     @property
     def VersionName(self):
-        """Running version.
+        r"""Running version.
         :rtype: str
         """
         return self._VersionName
@@ -15077,7 +15077,7 @@ class Environment(AbstractModel):
 
 
 class EnvironmentStrategy(AbstractModel):
-    """Environment throttling
+    r"""Environment throttling
 
     """
 
@@ -15093,7 +15093,7 @@ class EnvironmentStrategy(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._EnvironmentName
@@ -15104,7 +15104,7 @@ class EnvironmentStrategy(AbstractModel):
 
     @property
     def Quota(self):
-        """Throttling value
+        r"""Throttling value
         :rtype: int
         """
         return self._Quota
@@ -15128,7 +15128,7 @@ class EnvironmentStrategy(AbstractModel):
 
 
 class ErrorCodes(AbstractModel):
-    """Custom error code
+    r"""Custom error code
 
     """
 
@@ -15158,7 +15158,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
-        """Custom response configuration error code.
+        r"""Custom response configuration error code.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15170,7 +15170,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Custom response configuration error message.
+        r"""Custom response configuration error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15182,7 +15182,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Desc(self):
-        """Custom response configuration error code remarks.
+        r"""Custom response configuration error code remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15194,7 +15194,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConvertedCode(self):
-        """Custom error code conversion.
+        r"""Custom error code conversion.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15206,7 +15206,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NeedConvert(self):
-        """Whether to enable error code conversion.
+        r"""Whether to enable error code conversion.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -15234,7 +15234,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Filter(AbstractModel):
-    """>Key-value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
+    r""">Key-value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
     > * If there are multiple `Filter`, the relationship among them is logical `AND`.
     > * If there are multiple `Values` in the same `Filter`, the relationship among them is logical `OR`.
     >
@@ -15253,7 +15253,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Field to be filtered.
+        r"""Field to be filtered.
         :rtype: str
         """
         return self._Name
@@ -15264,7 +15264,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filter value of field.
+        r"""Filter value of field.
         :rtype: list of str
         """
         return self._Values
@@ -15288,7 +15288,7 @@ class Filter(AbstractModel):
 
 
 class HealthCheckConf(AbstractModel):
-    """Health check configuration, including `TsfHealthCheckConf` and `TargetServicesHealthCheckConf`
+    r"""Health check configuration, including `TsfHealthCheckConf` and `TargetServicesHealthCheckConf`
 
     """
 
@@ -15314,7 +15314,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsHealthCheck(self):
-        """Whether health check is enabled.
+        r"""Whether health check is enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -15326,7 +15326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestVolumeThreshold(self):
-        """Health check threshold. 
+        r"""Health check threshold. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15338,7 +15338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SleepWindowInMilliseconds(self):
-        """Window size. 
+        r"""Window size. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15350,7 +15350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorThresholdPercentage(self):
-        """Threshold percentage.
+        r"""Threshold percentage.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15377,7 +15377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class IPStrategiesStatus(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -15393,7 +15393,7 @@ class IPStrategiesStatus(AbstractModel):
 
     @property
     def TotalCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._TotalCount
@@ -15404,7 +15404,7 @@ class IPStrategiesStatus(AbstractModel):
 
     @property
     def StrategySet(self):
-        """
+        r"""
         :rtype: list of IPStrategy
         """
         return self._StrategySet
@@ -15433,7 +15433,7 @@ class IPStrategiesStatus(AbstractModel):
 
 
 class IPStrategy(AbstractModel):
-    """IP policy
+    r"""IP policy
 
     """
 
@@ -15479,7 +15479,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyId(self):
-        """Unique policy ID.
+        r"""Unique policy ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15491,7 +15491,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyName(self):
-        """Custom policy name.
+        r"""Custom policy name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15503,7 +15503,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyType(self):
-        """Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
+        r"""Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15515,7 +15515,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyData(self):
-        """IP list.
+        r"""IP list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15527,7 +15527,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15539,7 +15539,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Modification time
+        r"""Modification time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15551,7 +15551,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15563,7 +15563,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindApiTotalCount(self):
-        """Number of APIs bound to policy.
+        r"""Number of APIs bound to policy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15575,7 +15575,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindApis(self):
-        """Bound API details.
+        r"""Bound API details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DesApisStatus
         """
@@ -15612,7 +15612,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class IPStrategyApi(AbstractModel):
-    """List of APIs bound to policy
+    r"""List of APIs bound to policy
 
     """
 
@@ -15643,7 +15643,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -15654,7 +15654,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def ApiName(self):
-        """Custom API name.
+        r"""Custom API name.
         :rtype: str
         """
         return self._ApiName
@@ -15665,7 +15665,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def ApiType(self):
-        """API type. Valid values: NORMAL (general API), TSF (microservice API).
+        r"""API type. Valid values: NORMAL (general API), TSF (microservice API).
         :rtype: str
         """
         return self._ApiType
@@ -15676,7 +15676,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def Path(self):
-        """API path, such as `/path`.
+        r"""API path, such as `/path`.
         :rtype: str
         """
         return self._Path
@@ -15687,7 +15687,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def Method(self):
-        """API request method, such as `GET`.
+        r"""API request method, such as `GET`.
         :rtype: str
         """
         return self._Method
@@ -15698,7 +15698,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def OtherIPStrategyId(self):
-        """Unique ID of another policy bound to API.
+        r"""Unique ID of another policy bound to API.
         :rtype: str
         """
         return self._OtherIPStrategyId
@@ -15709,7 +15709,7 @@ class IPStrategyApi(AbstractModel):
 
     @property
     def OtherEnvironmentName(self):
-        """Environment bound to API.
+        r"""Environment bound to API.
         :rtype: str
         """
         return self._OtherEnvironmentName
@@ -15738,7 +15738,7 @@ class IPStrategyApi(AbstractModel):
 
 
 class IPStrategyApiStatus(AbstractModel):
-    """Details of API bound to IP policy
+    r"""Details of API bound to IP policy
 
     """
 
@@ -15756,7 +15756,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of APIs bound to environment.
+        r"""Number of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15768,7 +15768,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiIdStatusSet(self):
-        """Details of APIs bound to environment.
+        r"""Details of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of IPStrategyApi
         """
@@ -15798,7 +15798,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ImportOpenApiRequest(AbstractModel):
-    """ImportOpenApi request structure.
+    r"""ImportOpenApi request structure.
 
     """
 
@@ -15820,7 +15820,7 @@ class ImportOpenApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The unique ID of the service associated with the API
+        r"""The unique ID of the service associated with the API
         :rtype: str
         """
         return self._ServiceId
@@ -15831,7 +15831,7 @@ class ImportOpenApiRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Content of the openAPI
+        r"""Content of the openAPI
         :rtype: str
         """
         return self._Content
@@ -15842,7 +15842,7 @@ class ImportOpenApiRequest(AbstractModel):
 
     @property
     def EncodeType(self):
-        """Format of the content. Values: `YAML` (default), `JSON`
+        r"""Format of the content. Values: `YAML` (default), `JSON`
         :rtype: str
         """
         return self._EncodeType
@@ -15853,7 +15853,7 @@ class ImportOpenApiRequest(AbstractModel):
 
     @property
     def ContentVersion(self):
-        """Version of the content. It can only be `openAPI` for now.
+        r"""Version of the content. It can only be `openAPI` for now.
         :rtype: str
         """
         return self._ContentVersion
@@ -15879,7 +15879,7 @@ class ImportOpenApiRequest(AbstractModel):
 
 
 class ImportOpenApiResponse(AbstractModel):
-    """ImportOpenApi response structure.
+    r"""ImportOpenApi response structure.
 
     """
 
@@ -15895,7 +15895,7 @@ class ImportOpenApiResponse(AbstractModel):
 
     @property
     def Result(self):
-        """The result of importing the OpenAPI
+        r"""The result of importing the OpenAPI
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRspSet`
         """
         return self._Result
@@ -15906,7 +15906,7 @@ class ImportOpenApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15924,7 +15924,7 @@ class ImportOpenApiResponse(AbstractModel):
 
 
 class K8sLabel(AbstractModel):
-    """K8s Label
+    r"""K8s Label
 
     """
 
@@ -15940,7 +15940,7 @@ class K8sLabel(AbstractModel):
 
     @property
     def Key(self):
-        """Key of the label
+        r"""Key of the label
         :rtype: str
         """
         return self._Key
@@ -15951,7 +15951,7 @@ class K8sLabel(AbstractModel):
 
     @property
     def Value(self):
-        """Value of the label
+        r"""Value of the label
         :rtype: str
         """
         return self._Value
@@ -15975,7 +15975,7 @@ class K8sLabel(AbstractModel):
 
 
 class K8sService(AbstractModel):
-    """Configuration of K8s service
+    r"""Configuration of K8s service
 
     """
 
@@ -16006,7 +16006,7 @@ class K8sService(AbstractModel):
 
     @property
     def Weight(self):
-        """Weight
+        r"""Weight
         :rtype: int
         """
         return self._Weight
@@ -16017,7 +16017,7 @@ class K8sService(AbstractModel):
 
     @property
     def ClusterId(self):
-        """K8s cluster ID
+        r"""K8s cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -16028,7 +16028,7 @@ class K8sService(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace of the container
+        r"""Namespace of the container
         :rtype: str
         """
         return self._Namespace
@@ -16039,7 +16039,7 @@ class K8sService(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Name of the service
+        r"""Name of the service
         :rtype: str
         """
         return self._ServiceName
@@ -16050,7 +16050,7 @@ class K8sService(AbstractModel):
 
     @property
     def Port(self):
-        """Service port
+        r"""Service port
         :rtype: int
         """
         return self._Port
@@ -16061,7 +16061,7 @@ class K8sService(AbstractModel):
 
     @property
     def ExtraLabels(self):
-        """The additional Label of the Pod
+        r"""The additional Label of the Pod
         :rtype: list of K8sLabel
         """
         return self._ExtraLabels
@@ -16072,7 +16072,7 @@ class K8sService(AbstractModel):
 
     @property
     def Name(self):
-        """(Optional) Custom name of the service
+        r"""(Optional) Custom name of the service
         :rtype: str
         """
         return self._Name
@@ -16106,7 +16106,7 @@ class K8sService(AbstractModel):
 
 
 class LogQuery(AbstractModel):
-    """Search criterion input parameter
+    r"""Search criterion input parameter
 
     """
 
@@ -16125,7 +16125,7 @@ class LogQuery(AbstractModel):
 
     @property
     def Name(self):
-        """Search field
+        r"""Search field
         :rtype: str
         """
         return self._Name
@@ -16136,7 +16136,7 @@ class LogQuery(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -16147,7 +16147,7 @@ class LogQuery(AbstractModel):
 
     @property
     def Value(self):
-        """Search value
+        r"""Search value
         :rtype: str
         """
         return self._Value
@@ -16172,7 +16172,7 @@ class LogQuery(AbstractModel):
 
 
 class MicroService(AbstractModel):
-    """Information of microservice bound to API.
+    r"""Information of microservice bound to API.
 
     """
 
@@ -16191,7 +16191,7 @@ class MicroService(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Microservice cluster ID.
+        r"""Microservice cluster ID.
         :rtype: str
         """
         return self._ClusterId
@@ -16202,7 +16202,7 @@ class MicroService(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Microservice namespace ID.
+        r"""Microservice namespace ID.
         :rtype: str
         """
         return self._NamespaceId
@@ -16213,7 +16213,7 @@ class MicroService(AbstractModel):
 
     @property
     def MicroServiceName(self):
-        """Microservice name.
+        r"""Microservice name.
         :rtype: str
         """
         return self._MicroServiceName
@@ -16238,7 +16238,7 @@ class MicroService(AbstractModel):
 
 
 class MicroServiceReq(AbstractModel):
-    """TSF type input parameters
+    r"""TSF type input parameters
 
     """
 
@@ -16257,7 +16257,7 @@ class MicroServiceReq(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Microservice cluster.
+        r"""Microservice cluster.
         :rtype: str
         """
         return self._ClusterId
@@ -16268,7 +16268,7 @@ class MicroServiceReq(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Microservice namespace.
+        r"""Microservice namespace.
         :rtype: str
         """
         return self._NamespaceId
@@ -16279,7 +16279,7 @@ class MicroServiceReq(AbstractModel):
 
     @property
     def MicroServiceName(self):
-        """Microservice name.
+        r"""Microservice name.
         :rtype: str
         """
         return self._MicroServiceName
@@ -16304,7 +16304,7 @@ class MicroServiceReq(AbstractModel):
 
 
 class ModifyAPIDocRequest(AbstractModel):
-    """ModifyAPIDoc request structure.
+    r"""ModifyAPIDoc request structure.
 
     """
 
@@ -16329,7 +16329,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
     @property
     def ApiDocName(self):
-        """API document name
+        r"""API document name
         :rtype: str
         """
         return self._ApiDocName
@@ -16340,7 +16340,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service name
+        r"""Service name
         :rtype: str
         """
         return self._ServiceId
@@ -16351,7 +16351,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._Environment
@@ -16362,7 +16362,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """List of APIs for which to generate documents
+        r"""List of APIs for which to generate documents
         :rtype: list of str
         """
         return self._ApiIds
@@ -16373,7 +16373,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -16400,7 +16400,7 @@ class ModifyAPIDocRequest(AbstractModel):
 
 
 class ModifyAPIDocResponse(AbstractModel):
-    """ModifyAPIDoc response structure.
+    r"""ModifyAPIDoc response structure.
 
     """
 
@@ -16416,7 +16416,7 @@ class ModifyAPIDocResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Basic information of API document
+        r"""Basic information of API document
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
         """
         return self._Result
@@ -16427,7 +16427,7 @@ class ModifyAPIDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16445,7 +16445,7 @@ class ModifyAPIDocResponse(AbstractModel):
 
 
 class ModifyApiAppRequest(AbstractModel):
-    """ModifyApiApp request structure.
+    r"""ModifyApiApp request structure.
 
     """
 
@@ -16464,7 +16464,7 @@ class ModifyApiAppRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Unique application ID.
+        r"""Unique application ID.
         :rtype: str
         """
         return self._ApiAppId
@@ -16475,7 +16475,7 @@ class ModifyApiAppRequest(AbstractModel):
 
     @property
     def ApiAppName(self):
-        """Modified application name
+        r"""Modified application name
         :rtype: str
         """
         return self._ApiAppName
@@ -16486,7 +16486,7 @@ class ModifyApiAppRequest(AbstractModel):
 
     @property
     def ApiAppDesc(self):
-        """Modified application description
+        r"""Modified application description
         :rtype: str
         """
         return self._ApiAppDesc
@@ -16511,7 +16511,7 @@ class ModifyApiAppRequest(AbstractModel):
 
 
 class ModifyApiAppResponse(AbstractModel):
-    """ModifyApiApp response structure.
+    r"""ModifyApiApp response structure.
 
     """
 
@@ -16528,7 +16528,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether modification succeeded.
+        r"""Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -16540,7 +16540,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16556,7 +16556,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyApiEnvironmentStrategyRequest(AbstractModel):
-    """ModifyApiEnvironmentStrategy request structure.
+    r"""ModifyApiEnvironmentStrategy request structure.
 
     """
 
@@ -16578,7 +16578,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -16589,7 +16589,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """Throttling value.
+        r"""Throttling value.
         :rtype: int
         """
         return self._Strategy
@@ -16600,7 +16600,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._EnvironmentName
@@ -16611,7 +16611,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """API list.
+        r"""API list.
         :rtype: list of str
         """
         return self._ApiIds
@@ -16637,7 +16637,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
 
 class ModifyApiEnvironmentStrategyResponse(AbstractModel):
-    """ModifyApiEnvironmentStrategy response structure.
+    r"""ModifyApiEnvironmentStrategy response structure.
 
     """
 
@@ -16654,7 +16654,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether modification succeeded.
+        r"""Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -16666,7 +16666,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16682,7 +16682,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyApiIncrementRequest(AbstractModel):
-    """ModifyApiIncrement request structure.
+    r"""ModifyApiIncrement request structure.
 
     """
 
@@ -16707,7 +16707,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -16718,7 +16718,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """API ID
+        r"""API ID
         :rtype: str
         """
         return self._ApiId
@@ -16729,7 +16729,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        """Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)
+        r"""Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)
         :rtype: str
         """
         return self._BusinessType
@@ -16740,7 +16740,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     @property
     def PublicKey(self):
-        """Public key value to be modified by OAuth API
+        r"""Public key value to be modified by OAuth API
         :rtype: str
         """
         return self._PublicKey
@@ -16751,7 +16751,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     @property
     def LoginRedirectUrl(self):
-        """OAuth API redirect address
+        r"""OAuth API redirect address
         :rtype: str
         """
         return self._LoginRedirectUrl
@@ -16778,7 +16778,7 @@ class ModifyApiIncrementRequest(AbstractModel):
 
 
 class ModifyApiIncrementResponse(AbstractModel):
-    """ModifyApiIncrement response structure.
+    r"""ModifyApiIncrement response structure.
 
     """
 
@@ -16791,7 +16791,7 @@ class ModifyApiIncrementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16806,7 +16806,7 @@ class ModifyApiIncrementResponse(AbstractModel):
 
 
 class ModifyApiRequest(AbstractModel):
-    """ModifyApi request structure.
+    r"""ModifyApi request structure.
 
     """
 
@@ -16978,7 +16978,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of API.
+        r"""Unique service ID of API.
         :rtype: str
         """
         return self._ServiceId
@@ -16989,7 +16989,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
+        r"""API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
         :rtype: str
         """
         return self._ServiceType
@@ -17000,7 +17000,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def RequestConfig(self):
-        """Request frontend configuration.
+        r"""Request frontend configuration.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
         """
         return self._RequestConfig
@@ -17011,7 +17011,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
         :rtype: str
         """
         return self._ApiId
@@ -17022,7 +17022,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ApiName(self):
-        """Custom API name.
+        r"""Custom API name.
         :rtype: str
         """
         return self._ApiName
@@ -17033,7 +17033,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ApiDesc(self):
-        """Custom API description.
+        r"""Custom API description.
         :rtype: str
         """
         return self._ApiDesc
@@ -17044,7 +17044,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ApiType(self):
-        """API type. Valid values: NORMAL, TSF. Default value: NORMAL.
+        r"""API type. Valid values: NORMAL, TSF. Default value: NORMAL.
         :rtype: str
         """
         return self._ApiType
@@ -17055,7 +17055,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        """API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.
+        r"""API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.
         :rtype: str
         """
         return self._AuthType
@@ -17066,7 +17066,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def AuthRequired(self):
-        """Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
+        r"""Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
         :rtype: bool
         """
         return self._AuthRequired
@@ -17077,7 +17077,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceTimeout(self):
-        """API backend service timeout period in seconds.
+        r"""API backend service timeout period in seconds.
         :rtype: int
         """
         return self._ServiceTimeout
@@ -17088,7 +17088,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
+        r"""API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
         :rtype: str
         """
         return self._Protocol
@@ -17099,7 +17099,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def EnableCORS(self):
-        """Whether to enable CORS. True: yes; False: no.
+        r"""Whether to enable CORS. True: yes; False: no.
         :rtype: bool
         """
         return self._EnableCORS
@@ -17110,7 +17110,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ConstantParameters(self):
-        """Constant parameter.
+        r"""Constant parameter.
         :rtype: list of ConstantParameter
         """
         return self._ConstantParameters
@@ -17121,7 +17121,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def RequestParameters(self):
-        """Frontend request parameter.
+        r"""Frontend request parameter.
         :rtype: list of ReqParameter
         """
         return self._RequestParameters
@@ -17132,7 +17132,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ApiBusinessType(self):
-        """This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
+        r"""This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :rtype: str
         """
         return self._ApiBusinessType
@@ -17143,7 +17143,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceMockReturnMessage(self):
-        """Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        r"""Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :rtype: str
         """
         return self._ServiceMockReturnMessage
@@ -17154,7 +17154,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def MicroServices(self):
-        """List of microservices bound to API.
+        r"""List of microservices bound to API.
         :rtype: list of MicroServiceReq
         """
         return self._MicroServices
@@ -17165,7 +17165,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceTsfLoadBalanceConf(self):
-        """Load balancing configuration of microservice.
+        r"""Load balancing configuration of microservice.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
         """
         return self._ServiceTsfLoadBalanceConf
@@ -17176,7 +17176,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceTsfHealthCheckConf(self):
-        """Health check configuration of microservice.
+        r"""Health check configuration of microservice.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         """
         return self._ServiceTsfHealthCheckConf
@@ -17187,7 +17187,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def TargetServicesLoadBalanceConf(self):
-        """`target` type load balancing configuration (in beta test).
+        r"""`target` type load balancing configuration (in beta test).
         :rtype: int
         """
         return self._TargetServicesLoadBalanceConf
@@ -17198,7 +17198,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def TargetServicesHealthCheckConf(self):
-        """`target` health check configuration (in beta test).
+        r"""`target` health check configuration (in beta test).
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
         """
         return self._TargetServicesHealthCheckConf
@@ -17209,7 +17209,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionName(self):
-        """SCF function name, which takes effect if the backend type is `SCF`.
+        r"""SCF function name, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionName
@@ -17220,7 +17220,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionName(self):
-        """SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionName
@@ -17231,7 +17231,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionName(self):
-        """SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionName
@@ -17242,7 +17242,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionName(self):
-        """SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionName
@@ -17253,7 +17253,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionNamespace(self):
-        """SCF function namespace, which takes effect if the backend type is `SCF`.
+        r"""SCF function namespace, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionNamespace
@@ -17264,7 +17264,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionQualifier(self):
-        """SCF function version, which takes effect if the backend type is `SCF`.
+        r"""SCF function version, which takes effect if the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceScfFunctionQualifier
@@ -17275,7 +17275,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionNamespace(self):
-        """SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionNamespace
@@ -17286,7 +17286,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketRegisterFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketRegisterFunctionQualifier
@@ -17297,7 +17297,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionNamespace(self):
-        """SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionNamespace
@@ -17308,7 +17308,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketTransportFunctionQualifier(self):
-        """SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketTransportFunctionQualifier
@@ -17319,7 +17319,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionNamespace(self):
-        """SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionNamespace
@@ -17330,7 +17330,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceWebsocketCleanupFunctionQualifier(self):
-        """SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        r"""SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :rtype: str
         """
         return self._ServiceWebsocketCleanupFunctionQualifier
@@ -17341,7 +17341,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceScfIsIntegratedResponse(self):
-        """Whether to enable response integration, which takes effect if the backend type is `SCF`.
+        r"""Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :rtype: bool
         """
         return self._ServiceScfIsIntegratedResponse
@@ -17352,7 +17352,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def IsDebugAfterCharge(self):
-        """Billing after debugging starts (reserved field for marketplace).
+        r"""Billing after debugging starts (reserved field for marketplace).
         :rtype: bool
         """
         return self._IsDebugAfterCharge
@@ -17363,7 +17363,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def TagSpecifications(self):
-        """Tag.
+        r"""Tag.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.Tag`
         """
         return self._TagSpecifications
@@ -17374,7 +17374,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def IsDeleteResponseErrorCodes(self):
-        """Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        r"""Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :rtype: bool
         """
         return self._IsDeleteResponseErrorCodes
@@ -17385,7 +17385,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ResponseType(self):
-        """Return type.
+        r"""Return type.
         :rtype: str
         """
         return self._ResponseType
@@ -17396,7 +17396,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ResponseSuccessExample(self):
-        """Sample response for successful custom response configuration.
+        r"""Sample response for successful custom response configuration.
         :rtype: str
         """
         return self._ResponseSuccessExample
@@ -17407,7 +17407,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ResponseFailExample(self):
-        """Sample response for failed custom response configuration.
+        r"""Sample response for failed custom response configuration.
         :rtype: str
         """
         return self._ResponseFailExample
@@ -17418,7 +17418,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceConfig(self):
-        """API backend service configuration.
+        r"""API backend service configuration.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
         """
         return self._ServiceConfig
@@ -17429,7 +17429,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def AuthRelationApiId(self):
-        """Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        r"""Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :rtype: str
         """
         return self._AuthRelationApiId
@@ -17440,7 +17440,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceParameters(self):
-        """API backend service parameter.
+        r"""API backend service parameter.
         :rtype: list of ServiceParameter
         """
         return self._ServiceParameters
@@ -17451,7 +17451,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def OauthConfig(self):
-        """OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
+        r"""OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         """
         return self._OauthConfig
@@ -17462,7 +17462,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ResponseErrorCodes(self):
-        """Custom error code configuration.
+        r"""Custom error code configuration.
         :rtype: list of ResponseErrorCodeReq
         """
         return self._ResponseErrorCodes
@@ -17473,7 +17473,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def IsBase64Encoded(self):
-        """Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        r"""Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :rtype: bool
         """
         return self._IsBase64Encoded
@@ -17484,7 +17484,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def IsBase64Trigger(self):
-        """Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+        r"""Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
         :rtype: bool
         """
         return self._IsBase64Trigger
@@ -17495,7 +17495,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def Base64EncodedTriggerRules(self):
-        """Header trigger rules. The number of rules cannot exceed 10.
+        r"""Header trigger rules. The number of rules cannot exceed 10.
         :rtype: list of Base64EncodedTriggerRule
         """
         return self._Base64EncodedTriggerRules
@@ -17506,7 +17506,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        """Event bus ID.
+        r"""Event bus ID.
         :rtype: str
         """
         return self._EventBusId
@@ -17517,7 +17517,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def ServiceScfFunctionType(self):
-        """SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
+        r"""SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :rtype: str
         """
         return self._ServiceScfFunctionType
@@ -17528,7 +17528,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def EIAMAppType(self):
-        """EIAM application type.
+        r"""EIAM application type.
         :rtype: str
         """
         return self._EIAMAppType
@@ -17539,7 +17539,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def EIAMAuthType(self):
-        """EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        r"""EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
         :rtype: str
         """
         return self._EIAMAuthType
@@ -17550,7 +17550,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def EIAMAppId(self):
-        """Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        r"""Validity of the EIAM application token. Unit: second. Default value: `7200`.
         :rtype: str
         """
         return self._EIAMAppId
@@ -17561,7 +17561,7 @@ class ModifyApiRequest(AbstractModel):
 
     @property
     def TokenTimeout(self):
-        """EIAM application ID.
+        r"""EIAM application ID.
         :rtype: int
         """
         return self._TokenTimeout
@@ -17681,7 +17681,7 @@ class ModifyApiRequest(AbstractModel):
 
 
 class ModifyApiResponse(AbstractModel):
-    """ModifyApi response structure.
+    r"""ModifyApi response structure.
 
     """
 
@@ -17694,7 +17694,7 @@ class ModifyApiResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17709,7 +17709,7 @@ class ModifyApiResponse(AbstractModel):
 
 
 class ModifyIPStrategyRequest(AbstractModel):
-    """ModifyIPStrategy request structure.
+    r"""ModifyIPStrategy request structure.
 
     """
 
@@ -17728,7 +17728,7 @@ class ModifyIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID of the policy to be modified.
+        r"""Unique service ID of the policy to be modified.
         :rtype: str
         """
         return self._ServiceId
@@ -17739,7 +17739,7 @@ class ModifyIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique ID of the policy to be modified.
+        r"""Unique ID of the policy to be modified.
         :rtype: str
         """
         return self._StrategyId
@@ -17750,7 +17750,7 @@ class ModifyIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyData(self):
-        """Details of the policy to be modified.
+        r"""Details of the policy to be modified.
         :rtype: str
         """
         return self._StrategyData
@@ -17775,7 +17775,7 @@ class ModifyIPStrategyRequest(AbstractModel):
 
 
 class ModifyIPStrategyResponse(AbstractModel):
-    """ModifyIPStrategy response structure.
+    r"""ModifyIPStrategy response structure.
 
     """
 
@@ -17792,7 +17792,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether modification succeeded.
+        r"""Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -17804,7 +17804,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17820,7 +17820,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyPluginRequest(AbstractModel):
-    """ModifyPlugin request structure.
+    r"""ModifyPlugin request structure.
 
     """
 
@@ -17842,7 +17842,7 @@ class ModifyPluginRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """ID of the plugin to be modified
+        r"""ID of the plugin to be modified
         :rtype: str
         """
         return self._PluginId
@@ -17853,7 +17853,7 @@ class ModifyPluginRequest(AbstractModel):
 
     @property
     def PluginName(self):
-        """Plugin name to be modified. A plugin name can contain up to 50 characters out of `a-z`, `A-Z`, `0-9`, and `_`, which must begin with a letter and end with a letter or a number.
+        r"""Plugin name to be modified. A plugin name can contain up to 50 characters out of `a-z`, `A-Z`, `0-9`, and `_`, which must begin with a letter and end with a letter or a number.
         :rtype: str
         """
         return self._PluginName
@@ -17864,7 +17864,7 @@ class ModifyPluginRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Plugin description to be modified. A description is within 200 characters.
+        r"""Plugin description to be modified. A description is within 200 characters.
         :rtype: str
         """
         return self._Description
@@ -17875,7 +17875,7 @@ class ModifyPluginRequest(AbstractModel):
 
     @property
     def PluginData(self):
-        """Plugin definition statement to be modified. The json format is supported.
+        r"""Plugin definition statement to be modified. The json format is supported.
         :rtype: str
         """
         return self._PluginData
@@ -17901,7 +17901,7 @@ class ModifyPluginRequest(AbstractModel):
 
 
 class ModifyPluginResponse(AbstractModel):
-    """ModifyPlugin response structure.
+    r"""ModifyPlugin response structure.
 
     """
 
@@ -17917,7 +17917,7 @@ class ModifyPluginResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether modification succeeded.
+        r"""Whether modification succeeded.
         :rtype: bool
         """
         return self._Result
@@ -17928,7 +17928,7 @@ class ModifyPluginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17944,7 +17944,7 @@ class ModifyPluginResponse(AbstractModel):
 
 
 class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
-    """ModifyServiceEnvironmentStrategy request structure.
+    r"""ModifyServiceEnvironmentStrategy request structure.
 
     """
 
@@ -17963,7 +17963,7 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -17974,7 +17974,7 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """Throttling value.
+        r"""Throttling value.
         :rtype: int
         """
         return self._Strategy
@@ -17985,7 +17985,7 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentNames(self):
-        """Environment list.
+        r"""Environment list.
         :rtype: list of str
         """
         return self._EnvironmentNames
@@ -18010,7 +18010,7 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
 
 
 class ModifyServiceEnvironmentStrategyResponse(AbstractModel):
-    """ModifyServiceEnvironmentStrategy response structure.
+    r"""ModifyServiceEnvironmentStrategy response structure.
 
     """
 
@@ -18027,7 +18027,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether modification succeeded.
+        r"""Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -18039,7 +18039,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18055,7 +18055,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyServiceRequest(AbstractModel):
-    """ModifyService request structure.
+    r"""ModifyService request structure.
 
     """
 
@@ -18080,7 +18080,7 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be modified.
+        r"""Unique ID of the service to be modified.
         :rtype: str
         """
         return self._ServiceId
@@ -18091,7 +18091,7 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Service name after modification.
+        r"""Service name after modification.
         :rtype: str
         """
         return self._ServiceName
@@ -18102,7 +18102,7 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def ServiceDesc(self):
-        """Service description after modification.
+        r"""Service description after modification.
         :rtype: str
         """
         return self._ServiceDesc
@@ -18113,7 +18113,7 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Service frontend request type after modification, such as `http`, `https`, and `http&https`.
+        r"""Service frontend request type after modification, such as `http`, `https`, and `http&https`.
         :rtype: str
         """
         return self._Protocol
@@ -18124,7 +18124,7 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def NetTypes(self):
-        """Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
+        r"""Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :rtype: list of str
         """
         return self._NetTypes
@@ -18151,7 +18151,7 @@ class ModifyServiceRequest(AbstractModel):
 
 
 class ModifyServiceResponse(AbstractModel):
-    """ModifyService response structure.
+    r"""ModifyService response structure.
 
     """
 
@@ -18164,7 +18164,7 @@ class ModifyServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18179,7 +18179,7 @@ class ModifyServiceResponse(AbstractModel):
 
 
 class ModifySubDomainRequest(AbstractModel):
-    """ModifySubDomain request structure.
+    r"""ModifySubDomain request structure.
 
     """
 
@@ -18213,7 +18213,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -18224,7 +18224,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Custom domain name whose path mapping is to be modified.
+        r"""Custom domain name whose path mapping is to be modified.
         :rtype: str
         """
         return self._SubDomain
@@ -18235,7 +18235,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def IsDefaultMapping(self):
-        """Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.
+        r"""Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.
         :rtype: bool
         """
         return self._IsDefaultMapping
@@ -18246,7 +18246,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID, which is required if the HTTPS protocol is included.
+        r"""Certificate ID, which is required if the HTTPS protocol is included.
         :rtype: str
         """
         return self._CertificateId
@@ -18257,7 +18257,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Custom domain name protocol type after modification. Valid values: http, https, http&https.
+        r"""Custom domain name protocol type after modification. Valid values: http, https, http&https.
         :rtype: str
         """
         return self._Protocol
@@ -18268,7 +18268,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def PathMappingSet(self):
-        """Path mapping list after modification.
+        r"""Path mapping list after modification.
         :rtype: list of PathMapping
         """
         return self._PathMappingSet
@@ -18279,7 +18279,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type. Valid values: INNER, OUTER.
+        r"""Network type. Valid values: INNER, OUTER.
         :rtype: str
         """
         return self._NetType
@@ -18290,7 +18290,7 @@ class ModifySubDomainRequest(AbstractModel):
 
     @property
     def IsForcedHttps(self):
-        """Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        r"""Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :rtype: bool
         """
         return self._IsForcedHttps
@@ -18325,7 +18325,7 @@ class ModifySubDomainRequest(AbstractModel):
 
 
 class ModifySubDomainResponse(AbstractModel):
-    """ModifySubDomain response structure.
+    r"""ModifySubDomain response structure.
 
     """
 
@@ -18341,7 +18341,7 @@ class ModifySubDomainResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the custom domain name is successfully modified.
+        r"""Whether the custom domain name is successfully modified.
         :rtype: bool
         """
         return self._Result
@@ -18352,7 +18352,7 @@ class ModifySubDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18368,7 +18368,7 @@ class ModifySubDomainResponse(AbstractModel):
 
 
 class ModifyUpstreamRequest(AbstractModel):
-    """ModifyUpstream request structure.
+    r"""ModifyUpstream request structure.
 
     """
 
@@ -18414,7 +18414,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamId(self):
-        """Unique upstream ID
+        r"""Unique upstream ID
         :rtype: str
         """
         return self._UpstreamId
@@ -18425,7 +18425,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamName(self):
-        """Upstream name
+        r"""Upstream name
         :rtype: str
         """
         return self._UpstreamName
@@ -18436,7 +18436,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamDescription(self):
-        """Upstream description
+        r"""Upstream description
         :rtype: str
         """
         return self._UpstreamDescription
@@ -18447,7 +18447,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def Scheme(self):
-        """Backend protocol. Valid values: `HTTP`, `HTTPS`
+        r"""Backend protocol. Valid values: `HTTP`, `HTTPS`
         :rtype: str
         """
         return self._Scheme
@@ -18458,7 +18458,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamType(self):
-        """Upstream access type. Valid values: `IP_PORT`, `K8S`
+        r"""Upstream access type. Valid values: `IP_PORT`, `K8S`
         :rtype: str
         """
         return self._UpstreamType
@@ -18469,7 +18469,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def Algorithm(self):
-        """Load balancing algorithm. Valid value: `ROUND_ROBIN`
+        r"""Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :rtype: str
         """
         return self._Algorithm
@@ -18480,7 +18480,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
         :rtype: str
         """
         return self._UniqVpcId
@@ -18491,7 +18491,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def Retries(self):
-        """Retry attempts. It defaults to `3`.
+        r"""Retry attempts. It defaults to `3`.
         :rtype: int
         """
         return self._Retries
@@ -18502,7 +18502,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def UpstreamHost(self):
-        """Gateway forwarding to the upstream Host request header
+        r"""Gateway forwarding to the upstream Host request header
         :rtype: str
         """
         return self._UpstreamHost
@@ -18513,7 +18513,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def Nodes(self):
-        """List of backend nodes
+        r"""List of backend nodes
         :rtype: list of UpstreamNode
         """
         return self._Nodes
@@ -18524,7 +18524,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def HealthChecker(self):
-        """Health check configuration
+        r"""Health check configuration
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
         """
         return self._HealthChecker
@@ -18535,7 +18535,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
     @property
     def K8sService(self):
-        """Configuration of TKE service
+        r"""Configuration of TKE service
         :rtype: list of K8sService
         """
         return self._K8sService
@@ -18581,7 +18581,7 @@ class ModifyUpstreamRequest(AbstractModel):
 
 
 class ModifyUpstreamResponse(AbstractModel):
-    """ModifyUpstream response structure.
+    r"""ModifyUpstream response structure.
 
     """
 
@@ -18598,7 +18598,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Result(self):
-        """Return modified upstream information
+        r"""Return modified upstream information
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamResultInfo`
         """
@@ -18610,7 +18610,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18628,7 +18628,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
 
 class ModifyUpstreamResultInfo(AbstractModel):
-    """Upstream details
+    r"""Upstream details
 
     """
 
@@ -18680,7 +18680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamId(self):
-        """Unique upstream ID
+        r"""Unique upstream ID
         :rtype: str
         """
         return self._UpstreamId
@@ -18691,7 +18691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamName(self):
-        """Upstream name
+        r"""Upstream name
         :rtype: str
         """
         return self._UpstreamName
@@ -18702,7 +18702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamDescription(self):
-        """Upstream description
+        r"""Upstream description
         :rtype: str
         """
         return self._UpstreamDescription
@@ -18713,7 +18713,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scheme(self):
-        """Backend protocol. Valid values: `HTTP`, `HTTPS`
+        r"""Backend protocol. Valid values: `HTTP`, `HTTPS`
         :rtype: str
         """
         return self._Scheme
@@ -18724,7 +18724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Algorithm(self):
-        """Load balancing algorithm. Valid value: `ROUND_ROBIN`
+        r"""Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :rtype: str
         """
         return self._Algorithm
@@ -18735,7 +18735,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID
+        r"""Unique VPC ID
         :rtype: str
         """
         return self._UniqVpcId
@@ -18746,7 +18746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Retries(self):
-        """Number of retry attempts
+        r"""Number of retry attempts
         :rtype: int
         """
         return self._Retries
@@ -18757,7 +18757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nodes(self):
-        """Backend nodes
+        r"""Backend nodes
         :rtype: list of UpstreamNode
         """
         return self._Nodes
@@ -18768,7 +18768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedTime
@@ -18779,7 +18779,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthChecker(self):
-        """Health check configuration
+        r"""Health check configuration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
         """
@@ -18791,7 +18791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamType(self):
-        """Upstream type. Valid values: `IP_PORT`, `K8S`
+        r"""Upstream type. Valid values: `IP_PORT`, `K8S`
         :rtype: str
         """
         return self._UpstreamType
@@ -18802,7 +18802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def K8sServices(self):
-        """Configuration of TKE service
+        r"""Configuration of TKE service
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of K8sService
         """
@@ -18814,7 +18814,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamHost(self):
-        """The Host header that the gateway forwards to the upstream
+        r"""The Host header that the gateway forwards to the upstream
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18862,7 +18862,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyUsagePlanRequest(AbstractModel):
-    """ModifyUsagePlan request structure.
+    r"""ModifyUsagePlan request structure.
 
     """
 
@@ -18887,7 +18887,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique usage plan ID.
+        r"""Unique usage plan ID.
         :rtype: str
         """
         return self._UsagePlanId
@@ -18898,7 +18898,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanName(self):
-        """Custom usage plan name after modification.
+        r"""Custom usage plan name after modification.
         :rtype: str
         """
         return self._UsagePlanName
@@ -18909,7 +18909,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     @property
     def UsagePlanDesc(self):
-        """Custom usage plan description after modification.
+        r"""Custom usage plan description after modification.
         :rtype: str
         """
         return self._UsagePlanDesc
@@ -18920,7 +18920,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     @property
     def MaxRequestNum(self):
-        """Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
+        r"""Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
         :rtype: int
         """
         return self._MaxRequestNum
@@ -18931,7 +18931,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     @property
     def MaxRequestNumPreSec(self):
-        """Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
+        r"""Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
         :rtype: int
         """
         return self._MaxRequestNumPreSec
@@ -18958,7 +18958,7 @@ class ModifyUsagePlanRequest(AbstractModel):
 
 
 class ModifyUsagePlanResponse(AbstractModel):
-    """ModifyUsagePlan response structure.
+    r"""ModifyUsagePlan response structure.
 
     """
 
@@ -18975,7 +18975,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Usage plan details.
+        r"""Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
         """
@@ -18987,7 +18987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19005,7 +19005,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class OauthConfig(AbstractModel):
-    """OAuth authorization configuration information
+    r"""OAuth authorization configuration information
 
     """
 
@@ -19024,7 +19024,7 @@ class OauthConfig(AbstractModel):
 
     @property
     def PublicKey(self):
-        """Public key for user token verification.
+        r"""Public key for user token verification.
         :rtype: str
         """
         return self._PublicKey
@@ -19035,7 +19035,7 @@ class OauthConfig(AbstractModel):
 
     @property
     def TokenLocation(self):
-        """Token delivery location.
+        r"""Token delivery location.
         :rtype: str
         """
         return self._TokenLocation
@@ -19046,7 +19046,7 @@ class OauthConfig(AbstractModel):
 
     @property
     def LoginRedirectUrl(self):
-        """Redirect address, which is used to guide user logins.
+        r"""Redirect address, which is used to guide user logins.
         :rtype: str
         """
         return self._LoginRedirectUrl
@@ -19071,7 +19071,7 @@ class OauthConfig(AbstractModel):
 
 
 class PathMapping(AbstractModel):
-    """Custom domain name path mapping.
+    r"""Custom domain name path mapping.
 
     """
 
@@ -19087,7 +19087,7 @@ class PathMapping(AbstractModel):
 
     @property
     def Path(self):
-        """Path.
+        r"""Path.
         :rtype: str
         """
         return self._Path
@@ -19098,7 +19098,7 @@ class PathMapping(AbstractModel):
 
     @property
     def Environment(self):
-        """Release environment. Valid values: test, prepub, release.
+        r"""Release environment. Valid values: test, prepub, release.
         :rtype: str
         """
         return self._Environment
@@ -19122,7 +19122,7 @@ class PathMapping(AbstractModel):
 
 
 class Plugin(AbstractModel):
-    """Details of the API Gateway plugin
+    r"""Details of the API Gateway plugin
 
     """
 
@@ -19162,7 +19162,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginId(self):
-        """Plugin ID
+        r"""Plugin ID
         :rtype: str
         """
         return self._PluginId
@@ -19173,7 +19173,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginName(self):
-        """Plugin name
+        r"""Plugin name
         :rtype: str
         """
         return self._PluginName
@@ -19184,7 +19184,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginType(self):
-        """Plugin type
+        r"""Plugin type
         :rtype: str
         """
         return self._PluginType
@@ -19195,7 +19195,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginData(self):
-        """Plugin definition statement
+        r"""Plugin definition statement
         :rtype: str
         """
         return self._PluginData
@@ -19206,7 +19206,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Plugin description
+        r"""Plugin description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19218,7 +19218,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Plugin creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Plugin creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :rtype: str
         """
         return self._CreatedTime
@@ -19229,7 +19229,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Plugin modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used
+        r"""Plugin modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used
         :rtype: str
         """
         return self._ModifiedTime
@@ -19240,7 +19240,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedApiTotalCount(self):
-        """Total number of APIs bound with the plugin
+        r"""Total number of APIs bound with the plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -19252,7 +19252,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedApis(self):
-        """Information of the API bound with the plugin
+        r"""Information of the API bound with the plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AttachedApiInfo
         """
@@ -19289,7 +19289,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ReleaseService(AbstractModel):
-    """Returned result of service publishing
+    r"""Returned result of service publishing
 
     """
 
@@ -19307,7 +19307,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReleaseDesc(self):
-        """Release remarks.
+        r"""Release remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19319,7 +19319,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReleaseVersion(self):
-        """Published version ID.
+        r"""Published version ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -19344,7 +19344,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ReleaseServiceRequest(AbstractModel):
-    """ReleaseService request structure.
+    r"""ReleaseService request structure.
 
     """
 
@@ -19366,7 +19366,7 @@ class ReleaseServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be published.
+        r"""Unique ID of the service to be published.
         :rtype: str
         """
         return self._ServiceId
@@ -19377,7 +19377,7 @@ class ReleaseServiceRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        r"""Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :rtype: str
         """
         return self._EnvironmentName
@@ -19388,7 +19388,7 @@ class ReleaseServiceRequest(AbstractModel):
 
     @property
     def ReleaseDesc(self):
-        """Release description.
+        r"""Release description.
         :rtype: str
         """
         return self._ReleaseDesc
@@ -19399,7 +19399,7 @@ class ReleaseServiceRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """`apiId` list, which is reserved. Full API release is used by default.
+        r"""`apiId` list, which is reserved. Full API release is used by default.
         :rtype: list of str
         """
         return self._ApiIds
@@ -19425,7 +19425,7 @@ class ReleaseServiceRequest(AbstractModel):
 
 
 class ReleaseServiceResponse(AbstractModel):
-    """ReleaseService response structure.
+    r"""ReleaseService response structure.
 
     """
 
@@ -19441,7 +19441,7 @@ class ReleaseServiceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Release information.
+        r"""Release information.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ReleaseService`
         """
         return self._Result
@@ -19452,7 +19452,7 @@ class ReleaseServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19470,7 +19470,7 @@ class ReleaseServiceResponse(AbstractModel):
 
 
 class ReqParameter(AbstractModel):
-    """Request parameter
+    r"""Request parameter
 
     """
 
@@ -19498,7 +19498,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def Name(self):
-        """API frontend parameter name.
+        r"""API frontend parameter name.
         :rtype: str
         """
         return self._Name
@@ -19509,7 +19509,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def Position(self):
-        """Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.
+        r"""Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.
         :rtype: str
         """
         return self._Position
@@ -19520,7 +19520,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def Type(self):
-        """API frontend parameter type, such as `String` and `int`.
+        r"""API frontend parameter type, such as `String` and `int`.
         :rtype: str
         """
         return self._Type
@@ -19531,7 +19531,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """Default value of API frontend parameter.
+        r"""Default value of API frontend parameter.
         :rtype: str
         """
         return self._DefaultValue
@@ -19542,7 +19542,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def Required(self):
-        """Whether the API frontend parameter is required. True: yes; False: no.
+        r"""Whether the API frontend parameter is required. True: yes; False: no.
         :rtype: bool
         """
         return self._Required
@@ -19553,7 +19553,7 @@ class ReqParameter(AbstractModel):
 
     @property
     def Desc(self):
-        """API frontend parameter remarks.
+        r"""API frontend parameter remarks.
         :rtype: str
         """
         return self._Desc
@@ -19581,7 +19581,7 @@ class ReqParameter(AbstractModel):
 
 
 class RequestConfig(AbstractModel):
-    """Frontend path configuration
+    r"""Frontend path configuration
 
     """
 
@@ -19597,7 +19597,7 @@ class RequestConfig(AbstractModel):
 
     @property
     def Path(self):
-        """API path, such as `/path`.
+        r"""API path, such as `/path`.
         :rtype: str
         """
         return self._Path
@@ -19608,7 +19608,7 @@ class RequestConfig(AbstractModel):
 
     @property
     def Method(self):
-        """API request method, such as `GET`.
+        r"""API request method, such as `GET`.
         :rtype: str
         """
         return self._Method
@@ -19632,7 +19632,7 @@ class RequestConfig(AbstractModel):
 
 
 class RequestParameter(AbstractModel):
-    """Request parameter
+    r"""Request parameter
 
     """
 
@@ -19660,7 +19660,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def Name(self):
-        """Request parameter name
+        r"""Request parameter name
         :rtype: str
         """
         return self._Name
@@ -19671,7 +19671,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def Desc(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Desc
@@ -19682,7 +19682,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def Position(self):
-        """Parameter position
+        r"""Parameter position
         :rtype: str
         """
         return self._Position
@@ -19693,7 +19693,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def Type(self):
-        """Parameter type
+        r"""Parameter type
         :rtype: str
         """
         return self._Type
@@ -19704,7 +19704,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """Default value
+        r"""Default value
         :rtype: str
         """
         return self._DefaultValue
@@ -19715,7 +19715,7 @@ class RequestParameter(AbstractModel):
 
     @property
     def Required(self):
-        """Whether it is required
+        r"""Whether it is required
         :rtype: bool
         """
         return self._Required
@@ -19743,7 +19743,7 @@ class RequestParameter(AbstractModel):
 
 
 class ResetAPIDocPasswordRequest(AbstractModel):
-    """ResetAPIDocPassword request structure.
+    r"""ResetAPIDocPassword request structure.
 
     """
 
@@ -19756,7 +19756,7 @@ class ResetAPIDocPasswordRequest(AbstractModel):
 
     @property
     def ApiDocId(self):
-        """API document ID
+        r"""API document ID
         :rtype: str
         """
         return self._ApiDocId
@@ -19779,7 +19779,7 @@ class ResetAPIDocPasswordRequest(AbstractModel):
 
 
 class ResetAPIDocPasswordResponse(AbstractModel):
-    """ResetAPIDocPassword response structure.
+    r"""ResetAPIDocPassword response structure.
 
     """
 
@@ -19795,7 +19795,7 @@ class ResetAPIDocPasswordResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Basic information of API document
+        r"""Basic information of API document
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
         """
         return self._Result
@@ -19806,7 +19806,7 @@ class ResetAPIDocPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19824,7 +19824,7 @@ class ResetAPIDocPasswordResponse(AbstractModel):
 
 
 class ResponseErrorCodeReq(AbstractModel):
-    """Error code input parameter
+    r"""Error code input parameter
 
     """
 
@@ -19849,7 +19849,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
     @property
     def Code(self):
-        """Custom response configuration error code.
+        r"""Custom response configuration error code.
         :rtype: int
         """
         return self._Code
@@ -19860,7 +19860,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
     @property
     def Msg(self):
-        """Custom response configuration error message.
+        r"""Custom response configuration error message.
         :rtype: str
         """
         return self._Msg
@@ -19871,7 +19871,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
     @property
     def Desc(self):
-        """Custom response configuration error code remarks.
+        r"""Custom response configuration error code remarks.
         :rtype: str
         """
         return self._Desc
@@ -19882,7 +19882,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
     @property
     def ConvertedCode(self):
-        """Custom error code conversion.
+        r"""Custom error code conversion.
         :rtype: int
         """
         return self._ConvertedCode
@@ -19893,7 +19893,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
     @property
     def NeedConvert(self):
-        """Whether to enable error code conversion.
+        r"""Whether to enable error code conversion.
         :rtype: bool
         """
         return self._NeedConvert
@@ -19920,7 +19920,7 @@ class ResponseErrorCodeReq(AbstractModel):
 
 
 class Service(AbstractModel):
-    """Service list display
+    r"""Service list display
 
     """
 
@@ -20006,7 +20006,7 @@ Note: this field may return null, indicating that no valid values found.
 
     @property
     def InnerHttpsPort(self):
-        """Port for HTTPS access over private network.
+        r"""Port for HTTPS access over private network.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20018,7 +20018,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDesc(self):
-        """Custom service description.
+        r"""Custom service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20030,7 +20030,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Service frontend request type, such as `http`, `https`, and `http&https`.
+        r"""Service frontend request type, such as `http`, `https`, and `http&https`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20042,7 +20042,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20054,7 +20054,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetTypes(self):
-        """Network types supported by service.
+        r"""Network types supported by service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -20066,7 +20066,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusiveSetName(self):
-        """Dedicated cluster name.
+        r"""Dedicated cluster name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20078,7 +20078,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20090,7 +20090,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpVersion(self):
-        """IP version.
+        r"""IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20102,7 +20102,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AvailableEnvironments(self):
-        """List of published environments, such as test, prepub, and release.
+        r"""List of published environments, such as test, prepub, and release.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -20114,7 +20114,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Custom service name.
+        r"""Custom service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20126,7 +20126,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OuterSubDomain(self):
-        """Public domain name assigned by the system for this service.
+        r"""Public domain name assigned by the system for this service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20138,7 +20138,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20150,7 +20150,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerHttpPort(self):
-        """Port for HTTP access over private network.
+        r"""Port for HTTP access over private network.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20162,7 +20162,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InnerSubDomain(self):
-        """Private domain name automatically assigned by the system for this service.
+        r"""Private domain name automatically assigned by the system for this service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20174,7 +20174,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeIsolateStatus(self):
-        """Billing status of service.
+        r"""Billing status of service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20186,7 +20186,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tags bound to a service.
+        r"""Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :rtype: list of Tag
         """
@@ -20198,7 +20198,7 @@ Note: this field may return null, indicating that no valid values found.
 
     @property
     def InstanceId(self):
-        """Dedicated instance
+        r"""Dedicated instance
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20210,7 +20210,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetType(self):
-        """Cluster type
+        r"""Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20222,7 +20222,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeploymentType(self):
-        """Cluster type for service deployment
+        r"""Cluster type for service deployment
 Note: this field may return null, indicating that no valid values found.
         :rtype: str
         """
@@ -20269,7 +20269,7 @@ Note: this field may return null, indicating that no valid values found.
 
 
 class ServiceConfig(AbstractModel):
-    """ServiceConfig information
+    r"""ServiceConfig information
 
     """
 
@@ -20302,7 +20302,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Product(self):
-        """The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.
+        r"""The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.
         :rtype: str
         """
         return self._Product
@@ -20313,7 +20313,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
         :rtype: str
         """
         return self._UniqVpcId
@@ -20324,7 +20324,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Url(self):
-        """API backend service URL, which is required if `ServiceType` is `HTTP`.
+        r"""API backend service URL, which is required if `ServiceType` is `HTTP`.
         :rtype: str
         """
         return self._Url
@@ -20335,7 +20335,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Path(self):
-        """API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.
+        r"""API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.
         :rtype: str
         """
         return self._Path
@@ -20346,7 +20346,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Method(self):
-        """API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
+        r"""API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
         :rtype: str
         """
         return self._Method
@@ -20357,7 +20357,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpstreamId(self):
-        """It’s required for `upstream`.
+        r"""It’s required for `upstream`.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -20369,7 +20369,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def CosConfig(self):
-        """API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
+        r"""API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
         """
@@ -20401,7 +20401,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class ServiceEnvironmentSet(AbstractModel):
-    """Details of environments bound to service
+    r"""Details of environments bound to service
 
     """
 
@@ -20419,7 +20419,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of environments bound to service.
+        r"""Total number of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20431,7 +20431,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentList(self):
-        """List of environments bound to service.
+        r"""List of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Environment
         """
@@ -20461,7 +20461,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceEnvironmentStrategy(AbstractModel):
-    """Service environment policy
+    r"""Service environment policy
 
     """
 
@@ -20491,7 +20491,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentName(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._EnvironmentName
@@ -20502,7 +20502,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Url(self):
-        """Access service environment URL.
+        r"""Access service environment URL.
         :rtype: str
         """
         return self._Url
@@ -20513,7 +20513,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Release status.
+        r"""Release status.
         :rtype: int
         """
         return self._Status
@@ -20524,7 +20524,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionName(self):
-        """Published version number.
+        r"""Published version number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20536,7 +20536,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Strategy(self):
-        """Throttling value.
+        r"""Throttling value.
         :rtype: int
         """
         return self._Strategy
@@ -20547,7 +20547,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxStrategy(self):
-        """Maximum quota value
+        r"""Maximum quota value
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20576,7 +20576,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceEnvironmentStrategyStatus(AbstractModel):
-    """List of policies bound to environment
+    r"""List of policies bound to environment
 
     """
 
@@ -20594,7 +20594,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of throttling policies.
+        r"""Number of throttling policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20606,7 +20606,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentList(self):
-        """Throttling policy list.
+        r"""Throttling policy list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ServiceEnvironmentStrategy
         """
@@ -20636,7 +20636,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceParameter(AbstractModel):
-    """ServiceParameter
+    r"""ServiceParameter
 
     """
 
@@ -20674,7 +20674,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """API backend service parameter name, which is used only if `ServiceType` is `HTTP`. The frontend and backend parameter names can be different.
+        r"""API backend service parameter name, which is used only if `ServiceType` is `HTTP`. The frontend and backend parameter names can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20686,7 +20686,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Position(self):
-        """Position of API backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`. The positions of frontend and backend parameters can be different.
+        r"""Position of API backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`. The positions of frontend and backend parameters can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20698,7 +20698,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterPosition(self):
-        """Position of the API frontend parameter corresponding to the backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`.
+        r"""Position of the API frontend parameter corresponding to the backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20710,7 +20710,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterName(self):
-        """Name of the API frontend parameter corresponding to the backend service parameter, which is used only if `ServiceType` is `HTTP`.
+        r"""Name of the API frontend parameter corresponding to the backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20722,7 +20722,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultValue(self):
-        """Default value of API backend service parameter, which is used only if `ServiceType` is `HTTP`.
+        r"""Default value of API backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20734,7 +20734,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterDesc(self):
-        """API backend service parameter remarks, which is used only if `ServiceType` is `HTTP`.
+        r"""API backend service parameter remarks, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20746,7 +20746,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelevantRequestParameterType(self):
-        """API backend service parameter type, which is used only if `ServiceType` is `HTTP`.
+        r"""API backend service parameter type, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20776,7 +20776,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceReleaseHistory(AbstractModel):
-    """Service release history
+    r"""Service release history
 
     """
 
@@ -20794,7 +20794,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of published versions.
+        r"""Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20806,7 +20806,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionList(self):
-        """Historical version list.
+        r"""Historical version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ServiceReleaseHistoryInfo
         """
@@ -20836,7 +20836,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceReleaseHistoryInfo(AbstractModel):
-    """Service release list details
+    r"""Service release list details
 
     """
 
@@ -20858,7 +20858,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionName(self):
-        """Version ID.
+        r"""Version ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20870,7 +20870,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionDesc(self):
-        """Version description.
+        r"""Version description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20882,7 +20882,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReleaseTime(self):
-        """Version release time.
+        r"""Version release time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20908,7 +20908,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceReleaseVersion(AbstractModel):
-    """Service release version
+    r"""Service release version
 
     """
 
@@ -20926,7 +20926,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of published versions.
+        r"""Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -20938,7 +20938,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionList(self):
-        """Release version list.
+        r"""Release version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeServiceReleaseVersionResultVersionListInfo
         """
@@ -20968,7 +20968,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServiceSubDomainMappings(AbstractModel):
-    """Custom service domain name path mapping
+    r"""Custom service domain name path mapping
 
     """
 
@@ -20984,7 +20984,7 @@ class ServiceSubDomainMappings(AbstractModel):
 
     @property
     def IsDefaultMapping(self):
-        """Whether the default path mapping is used. true: use the default path mapping; false: use the custom path mapping (`PathMappingSet` is required in this case).
+        r"""Whether the default path mapping is used. true: use the default path mapping; false: use the custom path mapping (`PathMappingSet` is required in this case).
         :rtype: bool
         """
         return self._IsDefaultMapping
@@ -20995,7 +20995,7 @@ class ServiceSubDomainMappings(AbstractModel):
 
     @property
     def PathMappingSet(self):
-        """Custom path mapping list.
+        r"""Custom path mapping list.
         :rtype: list of PathMapping
         """
         return self._PathMappingSet
@@ -21024,7 +21024,7 @@ class ServiceSubDomainMappings(AbstractModel):
 
 
 class ServiceUsagePlanSet(AbstractModel):
-    """List of usage plans bound to service
+    r"""List of usage plans bound to service
 
     """
 
@@ -21042,7 +21042,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of usage plans bound to service.
+        r"""Total number of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21054,7 +21054,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceUsagePlanList(self):
-        """List of usage plans bound to service.
+        r"""List of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApiUsagePlan
         """
@@ -21084,7 +21084,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ServicesStatus(AbstractModel):
-    """Service list display
+    r"""Service list display
 
     """
 
@@ -21102,7 +21102,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of services in list.
+        r"""Total number of services in list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21114,7 +21114,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceSet(self):
-        """Service list details.
+        r"""Service list details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Service
         """
@@ -21144,7 +21144,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Tag(AbstractModel):
-    """Information of tag bound to API.
+    r"""Information of tag bound to API.
 
     """
 
@@ -21160,7 +21160,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -21171,7 +21171,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._Value
@@ -21195,7 +21195,7 @@ class Tag(AbstractModel):
 
 
 class TargetServicesReq(AbstractModel):
-    """TSF Serverless input parameters
+    r"""TSF Serverless input parameters
 
     """
 
@@ -21220,7 +21220,7 @@ class TargetServicesReq(AbstractModel):
 
     @property
     def VmIp(self):
-        """VM IP
+        r"""VM IP
         :rtype: str
         """
         return self._VmIp
@@ -21231,7 +21231,7 @@ class TargetServicesReq(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -21242,7 +21242,7 @@ class TargetServicesReq(AbstractModel):
 
     @property
     def VmPort(self):
-        """VM Port
+        r"""VM Port
         :rtype: int
         """
         return self._VmPort
@@ -21253,7 +21253,7 @@ class TargetServicesReq(AbstractModel):
 
     @property
     def HostIp(self):
-        """IP of the host where the CVM instance resides
+        r"""IP of the host where the CVM instance resides
         :rtype: str
         """
         return self._HostIp
@@ -21264,7 +21264,7 @@ class TargetServicesReq(AbstractModel):
 
     @property
     def DockerIp(self):
-        """Docker IP
+        r"""Docker IP
         :rtype: str
         """
         return self._DockerIp
@@ -21291,7 +21291,7 @@ class TargetServicesReq(AbstractModel):
 
 
 class TsfLoadBalanceConfResp(AbstractModel):
-    """`TsfLoadBalanceConf` output parameter usage
+    r"""`TsfLoadBalanceConf` output parameter usage
 
     """
 
@@ -21317,7 +21317,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsLoadBalance(self):
-        """Whether load balancing is enabled.
+        r"""Whether load balancing is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21329,7 +21329,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """Load balancing method.
+        r"""Load balancing method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21341,7 +21341,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionStickRequired(self):
-        """Whether session persistence is enabled.
+        r"""Whether session persistence is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21353,7 +21353,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionStickTimeout(self):
-        """Session persistence timeout period.
+        r"""Session persistence timeout period.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21380,7 +21380,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UnBindEnvironmentRequest(AbstractModel):
-    """UnBindEnvironment request structure.
+    r"""UnBindEnvironment request structure.
 
     """
 
@@ -21405,7 +21405,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     @property
     def BindType(self):
-        """Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        r"""Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :rtype: str
         """
         return self._BindType
@@ -21416,7 +21416,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     @property
     def UsagePlanIds(self):
-        """List of unique IDs of the usage plans to be bound.
+        r"""List of unique IDs of the usage plans to be bound.
         :rtype: list of str
         """
         return self._UsagePlanIds
@@ -21427,7 +21427,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Service environment to be unbound.
+        r"""Service environment to be unbound.
         :rtype: str
         """
         return self._Environment
@@ -21438,7 +21438,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be unbound.
+        r"""Unique ID of the service to be unbound.
         :rtype: str
         """
         return self._ServiceId
@@ -21449,7 +21449,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """Unique API ID array, which is required if `BindType` is `API`.
+        r"""Unique API ID array, which is required if `BindType` is `API`.
         :rtype: list of str
         """
         return self._ApiIds
@@ -21476,7 +21476,7 @@ class UnBindEnvironmentRequest(AbstractModel):
 
 
 class UnBindEnvironmentResponse(AbstractModel):
-    """UnBindEnvironment response structure.
+    r"""UnBindEnvironment response structure.
 
     """
 
@@ -21493,7 +21493,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether unbinding succeeded.
+        r"""Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21505,7 +21505,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21521,7 +21521,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UnBindIPStrategyRequest(AbstractModel):
-    """UnBindIPStrategy request structure.
+    r"""UnBindIPStrategy request structure.
 
     """
 
@@ -21543,7 +21543,7 @@ class UnBindIPStrategyRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be unbound.
+        r"""Unique ID of the service to be unbound.
         :rtype: str
         """
         return self._ServiceId
@@ -21554,7 +21554,7 @@ class UnBindIPStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        """Unique ID of the IP policy to be unbound.
+        r"""Unique ID of the IP policy to be unbound.
         :rtype: str
         """
         return self._StrategyId
@@ -21565,7 +21565,7 @@ class UnBindIPStrategyRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Environment to be unbound.
+        r"""Environment to be unbound.
         :rtype: str
         """
         return self._EnvironmentName
@@ -21576,7 +21576,7 @@ class UnBindIPStrategyRequest(AbstractModel):
 
     @property
     def UnBindApiIds(self):
-        """List of APIs to be unbound.
+        r"""List of APIs to be unbound.
         :rtype: list of str
         """
         return self._UnBindApiIds
@@ -21602,7 +21602,7 @@ class UnBindIPStrategyRequest(AbstractModel):
 
 
 class UnBindIPStrategyResponse(AbstractModel):
-    """UnBindIPStrategy response structure.
+    r"""UnBindIPStrategy response structure.
 
     """
 
@@ -21619,7 +21619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether unbinding succeeded.
+        r"""Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21631,7 +21631,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21647,7 +21647,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UnBindSecretIdsRequest(AbstractModel):
-    """UnBindSecretIds request structure.
+    r"""UnBindSecretIds request structure.
 
     """
 
@@ -21663,7 +21663,7 @@ class UnBindSecretIdsRequest(AbstractModel):
 
     @property
     def UsagePlanId(self):
-        """Unique ID of the usage plan to be unbound.
+        r"""Unique ID of the usage plan to be unbound.
         :rtype: str
         """
         return self._UsagePlanId
@@ -21674,7 +21674,7 @@ class UnBindSecretIdsRequest(AbstractModel):
 
     @property
     def AccessKeyIds(self):
-        """Array of IDs of the keys to be unbound.
+        r"""Array of IDs of the keys to be unbound.
         :rtype: list of str
         """
         return self._AccessKeyIds
@@ -21698,7 +21698,7 @@ class UnBindSecretIdsRequest(AbstractModel):
 
 
 class UnBindSecretIdsResponse(AbstractModel):
-    """UnBindSecretIds response structure.
+    r"""UnBindSecretIds response structure.
 
     """
 
@@ -21715,7 +21715,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether unbinding succeeded.
+        r"""Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21727,7 +21727,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21743,7 +21743,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UnBindSubDomainRequest(AbstractModel):
-    """UnBindSubDomain request structure.
+    r"""UnBindSubDomain request structure.
 
     """
 
@@ -21759,7 +21759,7 @@ class UnBindSubDomainRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -21770,7 +21770,7 @@ class UnBindSubDomainRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Custom domain name to be unbound.
+        r"""Custom domain name to be unbound.
         :rtype: str
         """
         return self._SubDomain
@@ -21794,7 +21794,7 @@ class UnBindSubDomainRequest(AbstractModel):
 
 
 class UnBindSubDomainResponse(AbstractModel):
-    """UnBindSubDomain response structure.
+    r"""UnBindSubDomain response structure.
 
     """
 
@@ -21810,7 +21810,7 @@ class UnBindSubDomainResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the custom domain name is successfully unbound.
+        r"""Whether the custom domain name is successfully unbound.
         :rtype: bool
         """
         return self._Result
@@ -21821,7 +21821,7 @@ class UnBindSubDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21837,7 +21837,7 @@ class UnBindSubDomainResponse(AbstractModel):
 
 
 class UnReleaseServiceRequest(AbstractModel):
-    """UnReleaseService request structure.
+    r"""UnReleaseService request structure.
 
     """
 
@@ -21856,7 +21856,7 @@ class UnReleaseServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be deactivated.
+        r"""Unique ID of the service to be deactivated.
         :rtype: str
         """
         return self._ServiceId
@@ -21867,7 +21867,7 @@ class UnReleaseServiceRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        r"""Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :rtype: str
         """
         return self._EnvironmentName
@@ -21878,7 +21878,7 @@ class UnReleaseServiceRequest(AbstractModel):
 
     @property
     def ApiIds(self):
-        """List of APIs to be deactivated, which is a reserved field.
+        r"""List of APIs to be deactivated, which is a reserved field.
         :rtype: list of str
         """
         return self._ApiIds
@@ -21903,7 +21903,7 @@ class UnReleaseServiceRequest(AbstractModel):
 
 
 class UnReleaseServiceResponse(AbstractModel):
-    """UnReleaseService response structure.
+    r"""UnReleaseService response structure.
 
     """
 
@@ -21920,7 +21920,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether deactivation succeeded.
+        r"""Whether deactivation succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -21932,7 +21932,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21948,7 +21948,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UnbindApiAppRequest(AbstractModel):
-    """UnbindApiApp request structure.
+    r"""UnbindApiApp request structure.
 
     """
 
@@ -21970,7 +21970,7 @@ class UnbindApiAppRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Unique ID of the application to be bound.
+        r"""Unique ID of the application to be bound.
         :rtype: str
         """
         return self._ApiAppId
@@ -21981,7 +21981,7 @@ class UnbindApiAppRequest(AbstractModel):
 
     @property
     def Environment(self):
-        """Environment to be bound.
+        r"""Environment to be bound.
         :rtype: str
         """
         return self._Environment
@@ -21992,7 +21992,7 @@ class UnbindApiAppRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be bound.
+        r"""Unique ID of the service to be bound.
         :rtype: str
         """
         return self._ServiceId
@@ -22003,7 +22003,7 @@ class UnbindApiAppRequest(AbstractModel):
 
     @property
     def ApiId(self):
-        """Unique ID of the API to be bound.
+        r"""Unique ID of the API to be bound.
         :rtype: str
         """
         return self._ApiId
@@ -22029,7 +22029,7 @@ class UnbindApiAppRequest(AbstractModel):
 
 
 class UnbindApiAppResponse(AbstractModel):
-    """UnbindApiApp response structure.
+    r"""UnbindApiApp response structure.
 
     """
 
@@ -22046,7 +22046,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether unbinding succeeded.
+        r"""Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -22058,7 +22058,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22074,7 +22074,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateApiAppKeyRequest(AbstractModel):
-    """UpdateApiAppKey request structure.
+    r"""UpdateApiAppKey request structure.
 
     """
 
@@ -22093,7 +22093,7 @@ class UpdateApiAppKeyRequest(AbstractModel):
 
     @property
     def ApiAppId(self):
-        """Unique application ID.
+        r"""Unique application ID.
         :rtype: str
         """
         return self._ApiAppId
@@ -22104,7 +22104,7 @@ class UpdateApiAppKeyRequest(AbstractModel):
 
     @property
     def ApiAppKey(self):
-        """Application Key.
+        r"""Application Key.
         :rtype: str
         """
         return self._ApiAppKey
@@ -22115,7 +22115,7 @@ class UpdateApiAppKeyRequest(AbstractModel):
 
     @property
     def ApiAppSecret(self):
-        """Application Secret.
+        r"""Application Secret.
         :rtype: str
         """
         return self._ApiAppSecret
@@ -22140,7 +22140,7 @@ class UpdateApiAppKeyRequest(AbstractModel):
 
 
 class UpdateApiAppKeyResponse(AbstractModel):
-    """UpdateApiAppKey response structure.
+    r"""UpdateApiAppKey response structure.
 
     """
 
@@ -22157,7 +22157,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether update succeeded.
+        r"""Whether update succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -22169,7 +22169,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22185,7 +22185,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateApiKeyRequest(AbstractModel):
-    """UpdateApiKey request structure.
+    r"""UpdateApiKey request structure.
 
     """
 
@@ -22201,7 +22201,7 @@ class UpdateApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the key to be changed.
+        r"""ID of the key to be changed.
         :rtype: str
         """
         return self._AccessKeyId
@@ -22212,7 +22212,7 @@ class UpdateApiKeyRequest(AbstractModel):
 
     @property
     def AccessKeySecret(self):
-        """Key to be updated, which is required when a custom key is updated. It can contain 10-50 letters, digits, and underscores.
+        r"""Key to be updated, which is required when a custom key is updated. It can contain 10-50 letters, digits, and underscores.
         :rtype: str
         """
         return self._AccessKeySecret
@@ -22236,7 +22236,7 @@ class UpdateApiKeyRequest(AbstractModel):
 
 
 class UpdateApiKeyResponse(AbstractModel):
-    """UpdateApiKey response structure.
+    r"""UpdateApiKey response structure.
 
     """
 
@@ -22253,7 +22253,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Key details after change.
+        r"""Key details after change.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
         """
@@ -22265,7 +22265,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22283,7 +22283,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateServiceRequest(AbstractModel):
-    """UpdateService request structure.
+    r"""UpdateService request structure.
 
     """
 
@@ -22305,7 +22305,7 @@ class UpdateServiceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Unique ID of the service to be switch.
+        r"""Unique ID of the service to be switch.
         :rtype: str
         """
         return self._ServiceId
@@ -22316,7 +22316,7 @@ class UpdateServiceRequest(AbstractModel):
 
     @property
     def EnvironmentName(self):
-        """Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        r"""Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :rtype: str
         """
         return self._EnvironmentName
@@ -22327,7 +22327,7 @@ class UpdateServiceRequest(AbstractModel):
 
     @property
     def VersionName(self):
-        """Number of the version to be switched to.
+        r"""Number of the version to be switched to.
         :rtype: str
         """
         return self._VersionName
@@ -22338,7 +22338,7 @@ class UpdateServiceRequest(AbstractModel):
 
     @property
     def UpdateDesc(self):
-        """Switch description.
+        r"""Switch description.
         :rtype: str
         """
         return self._UpdateDesc
@@ -22364,7 +22364,7 @@ class UpdateServiceRequest(AbstractModel):
 
 
 class UpdateServiceResponse(AbstractModel):
-    """UpdateService response structure.
+    r"""UpdateService response structure.
 
     """
 
@@ -22381,7 +22381,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Whether the version is successfully switched.
+        r"""Whether the version is successfully switched.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -22393,7 +22393,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22409,7 +22409,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpstreamHealthChecker(AbstractModel):
-    """Upstream health check parameter configuration
+    r"""Upstream health check parameter configuration
 
     """
 
@@ -22455,7 +22455,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def EnableActiveCheck(self):
-        """Specifies whether to enable active health check
+        r"""Specifies whether to enable active health check
         :rtype: bool
         """
         return self._EnableActiveCheck
@@ -22466,7 +22466,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def EnablePassiveCheck(self):
-        """Specifies whether the enable passive health check
+        r"""Specifies whether the enable passive health check
         :rtype: bool
         """
         return self._EnablePassiveCheck
@@ -22477,7 +22477,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def HealthyHttpStatus(self):
-        """The HTTP status code that indicates that the upstream is healthy
+        r"""The HTTP status code that indicates that the upstream is healthy
         :rtype: str
         """
         return self._HealthyHttpStatus
@@ -22488,7 +22488,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def UnhealthyHttpStatus(self):
-        """The HTTP status code that indicates that the upstream is unhealthy
+        r"""The HTTP status code that indicates that the upstream is unhealthy
         :rtype: str
         """
         return self._UnhealthyHttpStatus
@@ -22499,7 +22499,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def TcpFailureThreshold(self):
-        """The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.
+        r"""The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.
         :rtype: int
         """
         return self._TcpFailureThreshold
@@ -22510,7 +22510,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def TimeoutThreshold(self):
-        """The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.
+        r"""The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.
         :rtype: int
         """
         return self._TimeoutThreshold
@@ -22521,7 +22521,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def HttpFailureThreshold(self):
-        """The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.
+        r"""The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.
         :rtype: int
         """
         return self._HttpFailureThreshold
@@ -22532,7 +22532,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def ActiveCheckHttpPath(self):
-        """The path for active health check. It defaults to `/`.
+        r"""The path for active health check. It defaults to `/`.
         :rtype: str
         """
         return self._ActiveCheckHttpPath
@@ -22543,7 +22543,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def ActiveCheckTimeout(self):
-        """The timeout period for active health check in seconds. Default: `5`. 
+        r"""The timeout period for active health check in seconds. Default: `5`. 
         :rtype: int
         """
         return self._ActiveCheckTimeout
@@ -22554,7 +22554,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def ActiveCheckInterval(self):
-        """The interval for active health check in seconds. Default: `5`. 
+        r"""The interval for active health check in seconds. Default: `5`. 
         :rtype: int
         """
         return self._ActiveCheckInterval
@@ -22565,7 +22565,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def ActiveRequestHeader(self):
-        """Header of the active health check request
+        r"""Header of the active health check request
         :rtype: list of UpstreamHealthCheckerReqHeaders
         """
         return self._ActiveRequestHeader
@@ -22576,7 +22576,7 @@ class UpstreamHealthChecker(AbstractModel):
 
     @property
     def UnhealthyTimeout(self):
-        """The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. 
+        r"""The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. 
         :rtype: int
         """
         return self._UnhealthyTimeout
@@ -22615,13 +22615,13 @@ class UpstreamHealthChecker(AbstractModel):
 
 
 class UpstreamHealthCheckerReqHeaders(AbstractModel):
-    """The request header configuration of active upstream health check requests
+    r"""The request header configuration of active upstream health check requests
 
     """
 
 
 class UpstreamInfo(AbstractModel):
-    """Upstream details
+    r"""Upstream details
 
     """
 
@@ -22677,7 +22677,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamId(self):
-        """Unique upstream ID
+        r"""Unique upstream ID
         :rtype: str
         """
         return self._UpstreamId
@@ -22688,7 +22688,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamName(self):
-        """Upstream name
+        r"""Upstream name
         :rtype: str
         """
         return self._UpstreamName
@@ -22699,7 +22699,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamDescription(self):
-        """Upstream description
+        r"""Upstream description
         :rtype: str
         """
         return self._UpstreamDescription
@@ -22710,7 +22710,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Scheme(self):
-        """Backend protocol. Valid values: `HTTP`, `HTTPS`
+        r"""Backend protocol. Valid values: `HTTP`, `HTTPS`
         :rtype: str
         """
         return self._Scheme
@@ -22721,7 +22721,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Algorithm(self):
-        """Load balancing algorithm. Valid value: `ROUND_ROBIN`
+        r"""Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :rtype: str
         """
         return self._Algorithm
@@ -22732,7 +22732,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UniqVpcId(self):
-        """Unique VPC ID
+        r"""Unique VPC ID
         :rtype: str
         """
         return self._UniqVpcId
@@ -22743,7 +22743,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Retries(self):
-        """Number of retry attempts
+        r"""Number of retry attempts
         :rtype: int
         """
         return self._Retries
@@ -22754,7 +22754,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Nodes(self):
-        """Backend nodes
+        r"""Backend nodes
         :rtype: list of UpstreamNode
         """
         return self._Nodes
@@ -22765,7 +22765,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def CreatedTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreatedTime
@@ -22776,7 +22776,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Tags(self):
-        """Label
+        r"""Label
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of Tag
         """
@@ -22788,7 +22788,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HealthChecker(self):
-        """Health check configuration
+        r"""Health check configuration
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
         """
@@ -22800,7 +22800,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UpstreamType(self):
-        """Upstream type. Valid values: `IP_PORT`, `K8S`
+        r"""Upstream type. Valid values: `IP_PORT`, `K8S`
         :rtype: str
         """
         return self._UpstreamType
@@ -22811,7 +22811,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def K8sServices(self):
-        """Configuration of TKE service
+        r"""Configuration of TKE service
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: list of K8sService
         """
@@ -22823,7 +22823,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UpstreamHost(self):
-        """The Host header that the gateway forwards to the upstream
+        r"""The Host header that the gateway forwards to the upstream
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -22877,7 +22877,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
 
 class UpstreamNode(AbstractModel):
-    """Upstream node metadata
+    r"""Upstream node metadata
 
     """
 
@@ -22928,7 +22928,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Host(self):
-        """IP or domain name
+        r"""IP or domain name
         :rtype: str
         """
         return self._Host
@@ -22939,7 +22939,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Port(self):
-        """The port number. Range: [0, 65535]
+        r"""The port number. Range: [0, 65535]
         :rtype: int
         """
         return self._Port
@@ -22950,7 +22950,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Weight(self):
-        """Value range: [0, 100]. `0` refers to disable it.
+        r"""Value range: [0, 100]. `0` refers to disable it.
         :rtype: int
         """
         return self._Weight
@@ -22961,7 +22961,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VmInstanceId(self):
-        """CVM Instance ID
+        r"""CVM Instance ID
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -22973,7 +22973,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -22985,7 +22985,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Healthy(self):
-        """Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.
+        r"""Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -22997,7 +22997,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def ServiceName(self):
-        """TKE container name
+        r"""TKE container name
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -23009,7 +23009,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def NameSpace(self):
-        """TKE namespace
+        r"""TKE namespace
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -23021,7 +23021,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def ClusterId(self):
-        """ID of the TKE cluster
+        r"""ID of the TKE cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -23033,7 +23033,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Source(self):
-        """Node source. Valid value: `K8S`
+        r"""Node source. Valid value: `K8S`
 Note: This field may return `NULL`, indicating that no valid value was found.
         :rtype: str
         """
@@ -23045,7 +23045,7 @@ Note: This field may return `NULL`, indicating that no valid value was found.
 
     @property
     def UniqueServiceName(self):
-        """The unique service name in API Gateway
+        r"""The unique service name in API Gateway
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -23079,7 +23079,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class UsagePlan(AbstractModel):
-    """`usagePlan` details
+    r"""`usagePlan` details
 
     """
 
@@ -23111,7 +23111,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environment(self):
-        """Environment name.
+        r"""Environment name.
         :rtype: str
         """
         return self._Environment
@@ -23122,7 +23122,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanId(self):
-        """Unique usage plan ID.
+        r"""Unique usage plan ID.
         :rtype: str
         """
         return self._UsagePlanId
@@ -23133,7 +23133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanName(self):
-        """Usage plan name.
+        r"""Usage plan name.
         :rtype: str
         """
         return self._UsagePlanName
@@ -23144,7 +23144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanDesc(self):
-        """Usage plan description. 
+        r"""Usage plan description. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23156,7 +23156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNumPreSec(self):
-        """Usage plan QPS. `-1` indicates no limit.
+        r"""Usage plan QPS. `-1` indicates no limit.
         :rtype: int
         """
         return self._MaxRequestNumPreSec
@@ -23167,7 +23167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Usage plan time.
+        r"""Usage plan time.
         :rtype: str
         """
         return self._CreatedTime
@@ -23178,7 +23178,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Usage plan modification time.
+        r"""Usage plan modification time.
         :rtype: str
         """
         return self._ModifiedTime
@@ -23207,7 +23207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanBindEnvironment(AbstractModel):
-    """Information of environment bound to usage plan
+    r"""Information of environment bound to usage plan
 
     """
 
@@ -23225,7 +23225,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentName(self):
-        """Environment name.
+        r"""Environment name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23237,7 +23237,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique service ID.
+        r"""Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23262,7 +23262,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanBindSecret(AbstractModel):
-    """Key bound to usage plan
+    r"""Key bound to usage plan
 
     """
 
@@ -23284,7 +23284,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessKeyId(self):
-        """Key ID.
+        r"""Key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23296,7 +23296,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretName(self):
-        """Key name.
+        r"""Key name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23308,7 +23308,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Key status. 0: disabled. 1: enabled.
+        r"""Key status. 0: disabled. 1: enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23334,7 +23334,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanBindSecretStatus(AbstractModel):
-    """List of keys bound to usage plan.
+    r"""List of keys bound to usage plan.
 
     """
 
@@ -23352,7 +23352,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of keys bound to usage plan.
+        r"""Number of keys bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23364,7 +23364,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessKeyList(self):
-        """List of key details.
+        r"""List of key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlanBindSecret
         """
@@ -23394,7 +23394,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanEnvironment(AbstractModel):
-    """Details of environments bound to usage plan.
+    r"""Details of environments bound to usage plan.
 
     """
 
@@ -23452,7 +23452,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
-        """Unique ID of bound service.
+        r"""Unique ID of bound service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23464,7 +23464,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiId(self):
-        """Unique API ID.
+        r"""Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23476,7 +23476,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiName(self):
-        """API name.
+        r"""API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23488,7 +23488,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """API path.
+        r"""API path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23500,7 +23500,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """API method.
+        r"""API method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23512,7 +23512,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environment(self):
-        """Name of bound environment.
+        r"""Name of bound environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23524,7 +23524,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InUseRequestNum(self):
-        """Used quota.
+        r"""Used quota.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23536,7 +23536,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNum(self):
-        """Maximum number of requests.
+        r"""Maximum number of requests.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23548,7 +23548,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNumPreSec(self):
-        """Maximum number of requests per second.
+        r"""Maximum number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23560,7 +23560,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23572,7 +23572,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23584,7 +23584,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Service name.
+        r"""Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23619,7 +23619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanEnvironmentStatus(AbstractModel):
-    """List of environments bound to usage plan.
+    r"""List of environments bound to usage plan.
 
     """
 
@@ -23637,7 +23637,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of environments of the service bound to usage plan.
+        r"""Number of environments of the service bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23649,7 +23649,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentList(self):
-        """Environment status of services bound to usage plan.
+        r"""Environment status of services bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlanEnvironment
         """
@@ -23679,7 +23679,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanInfo(AbstractModel):
-    """Usage plan details.
+    r"""Usage plan details.
 
     """
 
@@ -23741,7 +23741,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanId(self):
-        """Unique usage plan ID.
+        r"""Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23753,7 +23753,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanName(self):
-        """Usage plan name.
+        r"""Usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23765,7 +23765,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanDesc(self):
-        """Usage plan description.
+        r"""Usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23777,7 +23777,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitQuota(self):
-        """Number of initialization calls.
+        r"""Number of initialization calls.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23789,7 +23789,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNumPreSec(self):
-        """Limit of requests per second.
+        r"""Limit of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23801,7 +23801,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNum(self):
-        """Maximum number of calls.
+        r"""Maximum number of calls.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23813,7 +23813,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsHide(self):
-        """Whether to hide.
+        r"""Whether to hide.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23825,7 +23825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23837,7 +23837,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23849,7 +23849,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindSecretIdTotalCount(self):
-        """Number of bound keys.
+        r"""Number of bound keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23861,7 +23861,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindSecretIds(self):
-        """Details of bound keys.
+        r"""Details of bound keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -23873,7 +23873,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindEnvironmentTotalCount(self):
-        """Number of bound environments.
+        r"""Number of bound environments.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23885,7 +23885,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindEnvironments(self):
-        """Details of bound environments.
+        r"""Details of bound environments.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlanBindEnvironment
         """
@@ -23926,7 +23926,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlanStatusInfo(AbstractModel):
-    """Usage plan list display.
+    r"""Usage plan list display.
 
     """
 
@@ -23964,7 +23964,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanId(self):
-        """Unique usage plan ID.
+        r"""Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23976,7 +23976,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanName(self):
-        """Custom usage plan name.
+        r"""Custom usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23988,7 +23988,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanDesc(self):
-        """Custom usage plan description.
+        r"""Custom usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24000,7 +24000,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNumPreSec(self):
-        """Maximum number of requests per second.
+        r"""Maximum number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -24012,7 +24012,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxRequestNum(self):
-        """Total number of requests allowed. `-1` indicates no limit.
+        r"""Total number of requests allowed. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -24024,7 +24024,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24036,7 +24036,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifiedTime(self):
-        """Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        r"""Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24066,7 +24066,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UsagePlansStatus(AbstractModel):
-    """Usage plan list
+    r"""Usage plan list
 
     """
 
@@ -24084,7 +24084,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of eligible usage plans.
+        r"""Number of eligible usage plans.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -24096,7 +24096,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsagePlanStatusSet(self):
-        """Usage plan list.
+        r"""Usage plan list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UsagePlanStatusInfo
         """

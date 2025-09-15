@@ -27,7 +27,7 @@ class TrroClient(AbstractClient):
 
 
     def BatchDeleteDevices(self, request):
-        """This API is used to delete devices in batches.
+        r"""This API is used to delete devices in batches.
 
         :param request: Request instance for BatchDeleteDevices.
         :type request: :class:`tencentcloud.trro.v20220325.models.BatchDeleteDevicesRequest`
@@ -50,7 +50,7 @@ class TrroClient(AbstractClient):
 
 
     def BatchDeletePolicy(self, request):
-        """This API is used to batch delete and modify permission configurations.
+        r"""This API is used to batch delete and modify permission configurations.
 
         :param request: Request instance for BatchDeletePolicy.
         :type request: :class:`tencentcloud.trro.v20220325.models.BatchDeletePolicyRequest`
@@ -73,7 +73,7 @@ class TrroClient(AbstractClient):
 
 
     def CreateDevice(self, request):
-        """This API is used to create a device.
+        r"""This API is used to create a device.
 
         :param request: Request instance for CreateDevice.
         :type request: :class:`tencentcloud.trro.v20220325.models.CreateDeviceRequest`
@@ -96,7 +96,7 @@ class TrroClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """This API is used to create a project.
+        r"""This API is used to create a project.
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.CreateProjectRequest`
@@ -119,7 +119,7 @@ class TrroClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """This API is used to delete a project.
+        r"""This API is used to delete a project.
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.DeleteProjectRequest`
@@ -142,7 +142,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceInfo(self, request):
-        """This API is used to get specified device information.
+        r"""This API is used to get specified device information.
 
         :param request: Request instance for DescribeDeviceInfo.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceInfoRequest`
@@ -165,7 +165,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeDeviceSessionList(self, request):
-        """Getting the device session list
+        r"""Getting the device session list
 
         :param request: Request instance for DescribeDeviceSessionList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeDeviceSessionListRequest`
@@ -188,7 +188,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeProjectInfo(self, request):
-        """This API is used to get project information.
+        r"""This API is used to get project information.
 
         :param request: Request instance for DescribeProjectInfo.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeProjectInfoRequest`
@@ -211,7 +211,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeProjectList(self, request):
-        """This API is used to get project lists.
+        r"""This API is used to get project lists.
 
         :param request: Request instance for DescribeProjectList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeProjectListRequest`
@@ -234,7 +234,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeRecentSessionList(self, request):
-        """Get the latest device session list
+        r"""Get the latest device session list
 
         :param request: Request instance for DescribeRecentSessionList.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeRecentSessionListRequest`
@@ -257,7 +257,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeSessionStatistics(self, request):
-        """Get session statistical values
+        r"""Get session statistical values
 
         :param request: Request instance for DescribeSessionStatistics.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeSessionStatisticsRequest`
@@ -280,7 +280,7 @@ class TrroClient(AbstractClient):
 
 
     def DescribeSessionStatisticsByInterval(self, request):
-        """Getting session statistics for each time period
+        r"""Getting session statistics for each time period
 
         :param request: Request instance for DescribeSessionStatisticsByInterval.
         :type request: :class:`tencentcloud.trro.v20220325.models.DescribeSessionStatisticsByIntervalRequest`
@@ -303,7 +303,7 @@ class TrroClient(AbstractClient):
 
 
     def GetDeviceLicense(self, request):
-        """Obtain the quantity of available authorizations already bound to the device
+        r"""Obtain the quantity of available authorizations already bound to the device
 
         :param request: Request instance for GetDeviceLicense.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetDeviceLicenseRequest`
@@ -326,7 +326,7 @@ class TrroClient(AbstractClient):
 
 
     def GetDevices(self, request):
-        """Query the authorization binding status of user devices
+        r"""Query the authorization binding status of user devices
 
         :param request: Request instance for GetDevices.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetDevicesRequest`
@@ -349,7 +349,7 @@ class TrroClient(AbstractClient):
 
 
     def GetLicenseStat(self, request):
-        """Statistics of license types and quantities
+        r"""Statistics of license types and quantities
 
         :param request: Request instance for GetLicenseStat.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetLicenseStatRequest`
@@ -372,7 +372,7 @@ class TrroClient(AbstractClient):
 
 
     def GetLicenses(self, request):
-        """View the license list by authorization
+        r"""View the license list by authorization
 
         :param request: Request instance for GetLicenses.
         :type request: :class:`tencentcloud.trro.v20220325.models.GetLicensesRequest`
@@ -395,7 +395,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyDevice(self, request):
-        """This API is used to modify device information.
+        r"""This API is used to modify device information.
 
         :param request: Request instance for ModifyDevice.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyDeviceRequest`
@@ -418,7 +418,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyPolicy(self, request):
-        """This API is used to modify permission configuration.
+        r"""This API is used to modify permission configuration.
 
         :param request: Request instance for ModifyPolicy.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyPolicyRequest`
@@ -441,7 +441,7 @@ class TrroClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """This API is used to modify project information.
+        r"""This API is used to modify project information.
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.trro.v20220325.models.ModifyProjectRequest`

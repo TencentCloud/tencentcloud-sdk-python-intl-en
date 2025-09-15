@@ -27,7 +27,7 @@ class ApmClient(AbstractClient):
 
 
     def CreateApmInstance(self, request):
-        """This API is used to create a business purchase in the APM business system.
+        r"""This API is used to create a business purchase in the APM business system.
 
         :param request: Request instance for CreateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmInstanceRequest`
@@ -50,7 +50,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmAgent(self, request):
-        """Obtaining APM Access Point.
+        r"""Obtaining APM Access Point.
 
         :param request: Request instance for DescribeApmAgent.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAgentRequest`
@@ -73,7 +73,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmInstances(self, request):
-        """This API is used to obtain the list of APM business systems.
+        r"""This API is used to obtain the list of APM business systems.
 
         :param request: Request instance for DescribeApmInstances.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesRequest`
@@ -96,7 +96,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralApmApplicationConfig(self, request):
-        """This API is used to query the application configuration information.
+        r"""This API is used to query the application configuration information.
 
         :param request: Request instance for DescribeGeneralApmApplicationConfig.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralApmApplicationConfigRequest`
@@ -119,7 +119,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralMetricData(self, request):
-        """This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.
+        r"""This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.
         The API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.
 
         :param request: Request instance for DescribeGeneralMetricData.
@@ -143,7 +143,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralOTSpanList(self, request):
-        """General Query OpenTelemetry Call Chain List.
+        r"""General Query OpenTelemetry Call Chain List.
 
         :param request: Request instance for DescribeGeneralOTSpanList.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralOTSpanListRequest`
@@ -166,7 +166,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeGeneralSpanList(self, request):
-        """General Query Call Chain List.
+        r"""General Query Call Chain List.
 
         :param request: Request instance for DescribeGeneralSpanList.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralSpanListRequest`
@@ -189,7 +189,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeMetricRecords(self, request):
-        """This API is used to query metric list. To query metrics, it is recommended to use the DescribeGeneralMetricData API.
+        r"""This API is used to query metric list. To query metrics, it is recommended to use the DescribeGeneralMetricData API.
 
         :param request: Request instance for DescribeMetricRecords.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeMetricRecordsRequest`
@@ -212,7 +212,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeServiceOverview(self, request):
-        """This API is used to pull application overview data.
+        r"""This API is used to pull application overview data.
 
         :param request: Request instance for DescribeServiceOverview.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeServiceOverviewRequest`
@@ -235,7 +235,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeTagValues(self, request):
-        """This API is used to query dimensional data by dimension name and filter condition.
+        r"""This API is used to query dimensional data by dimension name and filter condition.
 
         :param request: Request instance for DescribeTagValues.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeTagValuesRequest`
@@ -258,7 +258,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyApmInstance(self, request):
-        """This API is used to modify the APM business system.
+        r"""This API is used to modify the APM business system.
 
         :param request: Request instance for ModifyApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceRequest`
@@ -281,7 +281,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyGeneralApmApplicationConfig(self, request):
-        """OpenAPI available for external use. Customers can flexibly specify the fields to be modified, and then add the list of services to be modified.
+        r"""OpenAPI available for external use. Customers can flexibly specify the fields to be modified, and then add the list of services to be modified.
 
         :param request: Request instance for ModifyGeneralApmApplicationConfig.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyGeneralApmApplicationConfigRequest`
@@ -304,7 +304,7 @@ class ApmClient(AbstractClient):
 
 
     def TerminateApmInstance(self, request):
-        """Termination of APM business system.
+        r"""Termination of APM business system.
 
         :param request: Request instance for TerminateApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.TerminateApmInstanceRequest`

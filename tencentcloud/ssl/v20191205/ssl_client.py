@@ -27,7 +27,7 @@ class SslClient(AbstractClient):
 
 
     def ApplyCertificate(self, request):
-        """This API is used to apply for a free certificate.
+        r"""This API is used to apply for a free certificate.
 
         :param request: Request instance for ApplyCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ApplyCertificateRequest`
@@ -50,7 +50,7 @@ class SslClient(AbstractClient):
 
 
     def BatchDeleteCSR(self, request):
-        """This API is used to batch delete CSRs.
+        r"""This API is used to batch delete CSRs.
 
         :param request: Request instance for BatchDeleteCSR.
         :type request: :class:`tencentcloud.ssl.v20191205.models.BatchDeleteCSRRequest`
@@ -73,7 +73,7 @@ class SslClient(AbstractClient):
 
 
     def CancelAuditCertificate(self, request):
-        """This API is used to cancel certificate review.
+        r"""This API is used to cancel certificate review.
 
         :param request: Request instance for CancelAuditCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateRequest`
@@ -96,7 +96,7 @@ class SslClient(AbstractClient):
 
 
     def CancelCertificateOrder(self, request):
-        """This API is used to cancel a certificate order.
+        r"""This API is used to cancel a certificate order.
 
         :param request: Request instance for CancelCertificateOrder.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CancelCertificateOrderRequest`
@@ -119,7 +119,7 @@ class SslClient(AbstractClient):
 
 
     def CommitCertificateInformation(self, request):
-        """Submit payment certificate orders; This API does not maintain new features, and you can use the new API to submit orders. [CertificateOrderSubmit](https://intl.cloud.tencent.com/document/product/400/116032?from_cn_redirect=1).
+        r"""Submit payment certificate orders; This API does not maintain new features, and you can use the new API to submit orders. [CertificateOrderSubmit](https://intl.cloud.tencent.com/document/product/400/116032?from_cn_redirect=1).
 
         :param request: Request instance for CommitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CommitCertificateInformationRequest`
@@ -142,7 +142,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCSR(self, request):
-        """This API is used to create a CSR.
+        r"""This API is used to create a CSR.
 
         :param request: Request instance for CreateCSR.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCSRRequest`
@@ -165,7 +165,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCertificate(self, request):
-        """This API is used to purchase a certificate.
+        r"""This API is used to purchase a certificate.
 
         :param request: Request instance for CreateCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateRequest`
@@ -188,7 +188,7 @@ class SslClient(AbstractClient):
 
 
     def CreateCertificateBindResourceSyncTask(self, request):
-        """This API is used to create an async task for querying the cloud resources associated with a certificate. If such a task already exists under the certificate ID, the ID of this task is returned as the result. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE). You can query the result of this task using the `DescribeCertificateBindResourceTaskResult` API.
+        r"""This API is used to create an async task for querying the cloud resources associated with a certificate. If such a task already exists under the certificate ID, the ID of this task is returned as the result. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE). You can query the result of this task using the `DescribeCertificateBindResourceTaskResult` API.
 
         :param request: Request instance for CreateCertificateBindResourceSyncTask.
         :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskRequest`
@@ -211,7 +211,7 @@ class SslClient(AbstractClient):
 
 
     def DeleteCertificate(self, request):
-        """This API is used to delete a certificate.
+        r"""This API is used to delete a certificate.
 
         :param request: Request instance for DeleteCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificateRequest`
@@ -234,7 +234,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCSR(self, request):
-        """This API is used to query the details of a CSR.
+        r"""This API is used to query the details of a CSR.
 
         :param request: Request instance for DescribeCSR.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRRequest`
@@ -257,7 +257,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCSRSet(self, request):
-        """This API is used to query the CSR list.
+        r"""This API is used to query the CSR list.
 
         :param request: Request instance for DescribeCSRSet.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRSetRequest`
@@ -280,7 +280,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificate(self, request):
-        """This API is used to get certificate information.
+        r"""This API is used to get certificate information.
 
         :param request: Request instance for DescribeCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateRequest`
@@ -303,7 +303,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskDetail(self, request):
-        """This API is used to query the task result of CreateCertificateBindResourceSyncTask, returning the asynchronous task result of the certificate associated with cloud resources, supporting the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos.
+        r"""This API is used to query the task result of CreateCertificateBindResourceSyncTask, returning the asynchronous task result of the certificate associated with cloud resources, supporting the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos.
 
         :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`
@@ -326,7 +326,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskResult(self, request):
-        """This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
+        r"""This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
 
         :param request: Request instance for DescribeCertificateBindResourceTaskResult.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultRequest`
@@ -349,7 +349,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateDetail(self, request):
-        """This API is used to get certificate details.
+        r"""This API is used to get certificate details.
 
         :param request: Request instance for DescribeCertificateDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateDetailRequest`
@@ -372,7 +372,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateOperateLogs(self, request):
-        """This API is used to get certificate operation logs in the current account.
+        r"""This API is used to get certificate operation logs in the current account.
 
         :param request: Request instance for DescribeCertificateOperateLogs.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateOperateLogsRequest`
@@ -395,7 +395,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificates(self, request):
-        """This API is used to get the certificate list.
+        r"""This API is used to get the certificate list.
 
         :param request: Request instance for DescribeCertificates.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificatesRequest`
@@ -418,7 +418,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostTeoInstanceList(self, request):
-        """This API is used to query the list of EdgeOne instances to which a certificate can be deployed.
+        r"""This API is used to query the list of EdgeOne instances to which a certificate can be deployed.
 
         :param request: Request instance for DescribeHostTeoInstanceList.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListRequest`
@@ -441,7 +441,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUpdateRecord(self, request):
-        """Query certificate cloud resource update record list
+        r"""Query certificate cloud resource update record list
 
         :param request: Request instance for DescribeHostUpdateRecord.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordRequest`
@@ -464,7 +464,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUpdateRecordDetail(self, request):
-        """This API is used to query the update record details of certificate cloud resources.
+        r"""This API is used to query the update record details of certificate cloud resources.
 
         :param request: Request instance for DescribeHostUpdateRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailRequest`
@@ -487,7 +487,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUploadUpdateRecord(self, request):
-        """This API is used to query the record list of cloud resource updates for certificates (certificate ID unchanged).
+        r"""This API is used to query the record list of cloud resource updates for certificates (certificate ID unchanged).
 
         :param request: Request instance for DescribeHostUploadUpdateRecord.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordRequest`
@@ -510,7 +510,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeHostUploadUpdateRecordDetail(self, request):
-        """This API is used to query the deployment record details of certificate update records (certificate ID unchanged).
+        r"""This API is used to query the deployment record details of certificate update records (certificate ID unchanged).
 
         :param request: Request instance for DescribeHostUploadUpdateRecordDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUploadUpdateRecordDetailRequest`
@@ -533,7 +533,7 @@ class SslClient(AbstractClient):
 
 
     def DownloadCertificate(self, request):
-        """This API is used to download a certificate.
+        r"""This API is used to download a certificate.
 
         :param request: Request instance for DownloadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DownloadCertificateRequest`
@@ -556,7 +556,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCSR(self, request):
-        """This API is used to modify the information of a CSR.
+        r"""This API is used to modify the information of a CSR.
 
         :param request: Request instance for ModifyCSR.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCSRRequest`
@@ -579,7 +579,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateAlias(self, request):
-        """This API is used to modify a certificate alias by passing in the certificate ID and new alias.
+        r"""This API is used to modify a certificate alias by passing in the certificate ID and new alias.
 
         :param request: Request instance for ModifyCertificateAlias.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateAliasRequest`
@@ -602,7 +602,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateProject(self, request):
-        """This API is used to modify the projects of multiple certificates.
+        r"""This API is used to modify the projects of multiple certificates.
 
         :param request: Request instance for ModifyCertificateProject.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateProjectRequest`
@@ -625,7 +625,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateResubmit(self, request):
-        """This API is used to re-submit a review application for a paid certificate whose review failed or was canceled.
+        r"""This API is used to re-submit a review application for a paid certificate whose review failed or was canceled.
 
         :param request: Request instance for ModifyCertificateResubmit.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitRequest`
@@ -648,7 +648,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificatesExpiringNotificationSwitch(self, request):
-        """Modify to ignore certificate expiration notifications. Enable or disable certificate expiration notifications.
+        r"""Modify to ignore certificate expiration notifications. Enable or disable certificate expiration notifications.
 
         :param request: Request instance for ModifyCertificatesExpiringNotificationSwitch.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificatesExpiringNotificationSwitchRequest`
@@ -671,7 +671,7 @@ class SslClient(AbstractClient):
 
 
     def ReplaceCertificate(self, request):
-        """This API is used to reissue a certificate. Note that if you have applied for a free certificate, only an RSA-2048 certificate will be reissued, and the certificate can be reissued only once.
+        r"""This API is used to reissue a certificate. Note that if you have applied for a free certificate, only an RSA-2048 certificate will be reissued, and the certificate can be reissued only once.
 
         :param request: Request instance for ReplaceCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ReplaceCertificateRequest`
@@ -694,7 +694,7 @@ class SslClient(AbstractClient):
 
 
     def SubmitCertificateInformation(self, request):
-        """Submit documentation for paid certificates; This API does not maintain new features, and you can use the new API to submit documentation. [CertificateInfoSubmit](https://intl.cloud.tencent.com/document/product/400/116033?from_cn_redirect=1).
+        r"""Submit documentation for paid certificates; This API does not maintain new features, and you can use the new API to submit documentation. [CertificateInfoSubmit](https://intl.cloud.tencent.com/document/product/400/116033?from_cn_redirect=1).
 
         :param request: Request instance for SubmitCertificateInformation.
         :type request: :class:`tencentcloud.ssl.v20191205.models.SubmitCertificateInformationRequest`
@@ -717,7 +717,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateInstance(self, request):
-        """This API is used to one-click update old certificate resources. This API is asynchronous. After calling it, if DeployRecordId is 0, it means the task is in progress. Repeat the request to this API. When the returned DeployRecordId is greater than 0, it means the task creation is successful. If it is not created successfully, an exception will be thrown.
+        r"""This API is used to one-click update old certificate resources. This API is asynchronous. After calling it, if DeployRecordId is 0, it means the task is in progress. Repeat the request to this API. When the returned DeployRecordId is greater than 0, it means the task creation is successful. If it is not created successfully, an exception will be thrown.
 
         :param request: Request instance for UpdateCertificateInstance.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceRequest`
@@ -740,7 +740,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateRecordRetry(self, request):
-        """Cloud resource update deployment retry record
+        r"""Cloud resource update deployment retry record
 
         :param request: Request instance for UpdateCertificateRecordRetry.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryRequest`
@@ -763,7 +763,7 @@ class SslClient(AbstractClient):
 
 
     def UpdateCertificateRecordRollback(self, request):
-        """Cloud resource update one-click rollback
+        r"""Cloud resource update one-click rollback
 
         :param request: Request instance for UpdateCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackRequest`
@@ -786,7 +786,7 @@ class SslClient(AbstractClient):
 
 
     def UploadCertificate(self, request):
-        """This API is used to upload a certificate.
+        r"""This API is used to upload a certificate.
 
         :param request: Request instance for UploadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadCertificateRequest`
@@ -809,7 +809,7 @@ class SslClient(AbstractClient):
 
 
     def UploadConfirmLetter(self, request):
-        """This API is used to upload the confirmation letter for a certificate.
+        r"""This API is used to upload the confirmation letter for a certificate.
 
         :param request: Request instance for UploadConfirmLetter.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterRequest`
@@ -832,7 +832,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateInstance(self, request):
-        """This API is used to update certificate content (certificate ID unchanged) and update associated Tencent Cloud resources. This is an asynchronous API. After calling, a DeployRecordId of 0 indicates that the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If the task is not successfully created, an exception will be thrown.
+        r"""This API is used to update certificate content (certificate ID unchanged) and update associated Tencent Cloud resources. This is an asynchronous API. After calling, a DeployRecordId of 0 indicates that the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If the task is not successfully created, an exception will be thrown.
 
         :param request: Request instance for UploadUpdateCertificateInstance.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateInstanceRequest`
@@ -855,7 +855,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateRecordRetry(self, request):
-        """Cloud Resource Update (Certificate ID Unchanged) Deployment Retry Record.
+        r"""Cloud Resource Update (Certificate ID Unchanged) Deployment Retry Record.
 
         :param request: Request instance for UploadUpdateCertificateRecordRetry.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRetryRequest`
@@ -878,7 +878,7 @@ class SslClient(AbstractClient):
 
 
     def UploadUpdateCertificateRecordRollback(self, request):
-        """This API is used to roll back the full task when cloud resource update succeeds with unchanged certificate ID.
+        r"""This API is used to roll back the full task when cloud resource update succeeds with unchanged certificate ID.
 
         :param request: Request instance for UploadUpdateCertificateRecordRollback.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadUpdateCertificateRecordRollbackRequest`

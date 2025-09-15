@@ -27,7 +27,7 @@ class TbaasClient(AbstractClient):
 
 
     def DescribeFabricBlock(self, request):
-        """This API is used to retrieve the detailed information of a block in Fabric.
+        r"""This API is used to retrieve the detailed information of a block in Fabric.
 
         :param request: Request instance for DescribeFabricBlock.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricBlockRequest`
@@ -50,7 +50,7 @@ class TbaasClient(AbstractClient):
 
 
     def DescribeFabricTransaction(self, request):
-        """This API is used to obtain detailed information of Fabric transactions.
+        r"""This API is used to obtain detailed information of Fabric transactions.
 
         :param request: Request instance for DescribeFabricTransaction.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricTransactionRequest`
@@ -73,7 +73,7 @@ class TbaasClient(AbstractClient):
 
 
     def InvokeFabricChaincode(self, request):
-        """This API is used to call a Fabric user contract to execute a transaction.
+        r"""This API is used to call a Fabric user contract to execute a transaction.
 
         :param request: Request instance for InvokeFabricChaincode.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeFabricChaincodeRequest`
@@ -96,7 +96,7 @@ class TbaasClient(AbstractClient):
 
 
     def QueryFabricChaincode(self, request):
-        """This API is used to make a user contract call in Fabric for querying.
+        r"""This API is used to make a user contract call in Fabric for querying.
 
         :param request: Request instance for QueryFabricChaincode.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryFabricChaincodeRequest`

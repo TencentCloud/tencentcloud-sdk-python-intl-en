@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApplicationVersion(AbstractModel):
-    """Application version
+    r"""Application version
 
     """
 
@@ -65,7 +65,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Version type
+        r"""Version type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -77,7 +77,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionId(self):
-        """Version ID
+        r"""Version ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -89,7 +89,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Release name
+        r"""Release name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -101,7 +101,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Release description
+        r"""Release description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -113,7 +113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Entrypoint(self):
-        """Entry file
+        r"""Entry file
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -125,7 +125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -137,7 +137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatorName(self):
-        """Creator name
+        r"""Creator name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -149,7 +149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatorId(self):
-        """Creator ID
+        r"""Creator ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -163,7 +163,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def GitInfo(self):
         warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
 
-        """Git information
+        r"""Git information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -197,7 +197,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CVMOption(AbstractModel):
-    """CVM configuration
+    r"""CVM configuration
 
     """
 
@@ -213,7 +213,7 @@ class CVMOption(AbstractModel):
 
     @property
     def Zone(self):
-        """CVM availability zone
+        r"""CVM availability zone
         :rtype: str
         """
         return self._Zone
@@ -224,7 +224,7 @@ class CVMOption(AbstractModel):
 
     @property
     def InstanceType(self):
-        """CVM instance specifications
+        r"""CVM instance specifications
         :rtype: str
         """
         return self._InstanceType
@@ -248,7 +248,7 @@ class CVMOption(AbstractModel):
 
 
 class CacheInfo(AbstractModel):
-    """Cache information
+    r"""Cache information
 
     """
 
@@ -270,7 +270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CacheClearDelay(self):
-        """Cache cleanup time (hours)
+        r"""Cache cleanup time (hours)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -282,7 +282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CacheClearTime(self):
-        """Cache cleanup schedule time
+        r"""Cache cleanup schedule time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -294,7 +294,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CacheCleared(self):
-        """Whether the cache has been cleaned up
+        r"""Whether the cache has been cleaned up
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -320,7 +320,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ClusterOption(AbstractModel):
-    """Computing cluster configuration
+    r"""Computing cluster configuration
 
     """
 
@@ -346,7 +346,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Zone(self):
-        """Computing cluster availability zone
+        r"""Computing cluster availability zone
         :rtype: str
         """
         return self._Zone
@@ -357,7 +357,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Type(self):
-        """Computing cluster type. Valid values:
+        r"""Computing cluster type. Valid values:
 - KUBERNETES
         :rtype: str
         """
@@ -369,7 +369,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ServiceCidr(self):
-        """Computing cluster Service CIDR. It must not overlap with the VPC IP range.
+        r"""Computing cluster Service CIDR. It must not overlap with the VPC IP range.
         :rtype: str
         """
         return self._ServiceCidr
@@ -380,7 +380,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ResourceQuota(self):
-        """Resource quota
+        r"""Resource quota
         :rtype: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
         """
         return self._ResourceQuota
@@ -391,7 +391,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def LimitRange(self):
-        """Limit scope
+        r"""Limit scope
         :rtype: :class:`tencentcloud.omics.v20221128.models.LimitRange`
         """
         return self._LimitRange
@@ -422,7 +422,7 @@ class ClusterOption(AbstractModel):
 
 
 class CreateEnvironmentRequest(AbstractModel):
-    """CreateEnvironment request structure.
+    r"""CreateEnvironment request structure.
 
     """
 
@@ -444,7 +444,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._Name
@@ -455,7 +455,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Environment configuration information
+        r"""Environment configuration information
         :rtype: :class:`tencentcloud.omics.v20221128.models.EnvironmentConfig`
         """
         return self._Config
@@ -466,7 +466,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Environment description
+        r"""Environment description
         :rtype: str
         """
         return self._Description
@@ -477,7 +477,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
     @property
     def IsDefault(self):
-        """Whether it is the default environment.
+        r"""Whether it is the default environment.
         :rtype: bool
         """
         return self._IsDefault
@@ -505,7 +505,7 @@ class CreateEnvironmentRequest(AbstractModel):
 
 
 class CreateEnvironmentResponse(AbstractModel):
-    """CreateEnvironment response structure.
+    r"""CreateEnvironment response structure.
 
     """
 
@@ -524,7 +524,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -535,7 +535,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def WorkflowUuid(self):
-        """Workflow UUID
+        r"""Workflow UUID
         :rtype: str
         """
         return self._WorkflowUuid
@@ -546,7 +546,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -563,7 +563,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
 
 class CreateVolumeRequest(AbstractModel):
-    """CreateVolume request structure.
+    r"""CreateVolume request structure.
 
     """
 
@@ -597,7 +597,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -608,7 +608,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -619,7 +619,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Volume type. Valid values:
+        r"""Volume type. Valid values:
 * SHARED: Multi-point mount shared storage
         :rtype: str
         """
@@ -631,7 +631,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Spec(self):
-        """Volume specifications. Valid values:
+        r"""Volume specifications. Valid values:
 
 - SD: standard
 - HP: high-performance
@@ -647,7 +647,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -658,7 +658,7 @@ class CreateVolumeRequest(AbstractModel):
 
     @property
     def Capacity(self):
-        """Volume size (GB), which is required to be specified for the Turbo series.
+        r"""Volume size (GB), which is required to be specified for the Turbo series.
         :rtype: int
         """
         return self._Capacity
@@ -686,7 +686,7 @@ class CreateVolumeRequest(AbstractModel):
 
 
 class CreateVolumeResponse(AbstractModel):
-    """CreateVolume response structure.
+    r"""CreateVolume response structure.
 
     """
 
@@ -703,7 +703,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VolumeId(self):
-        """Volume ID
+        r"""Volume ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -715,7 +715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -731,7 +731,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DatabaseOption(AbstractModel):
-    """Database configuration
+    r"""Database configuration
 
     """
 
@@ -744,7 +744,7 @@ class DatabaseOption(AbstractModel):
 
     @property
     def Zone(self):
-        """Database availability zone
+        r"""Database availability zone
         :rtype: str
         """
         return self._Zone
@@ -767,7 +767,7 @@ class DatabaseOption(AbstractModel):
 
 
 class DeleteEnvironmentRequest(AbstractModel):
-    """DeleteEnvironment request structure.
+    r"""DeleteEnvironment request structure.
 
     """
 
@@ -780,7 +780,7 @@ class DeleteEnvironmentRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -803,7 +803,7 @@ class DeleteEnvironmentRequest(AbstractModel):
 
 
 class DeleteEnvironmentResponse(AbstractModel):
-    """DeleteEnvironment response structure.
+    r"""DeleteEnvironment response structure.
 
     """
 
@@ -819,7 +819,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
     @property
     def WorkflowUuid(self):
-        """Workflow UUID
+        r"""Workflow UUID
         :rtype: str
         """
         return self._WorkflowUuid
@@ -830,7 +830,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -846,7 +846,7 @@ class DeleteEnvironmentResponse(AbstractModel):
 
 
 class DeleteVolumeDataRequest(AbstractModel):
-    """DeleteVolumeData request structure.
+    r"""DeleteVolumeData request structure.
 
     """
 
@@ -862,7 +862,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """Volume ID
+        r"""Volume ID
         :rtype: str
         """
         return self._VolumeId
@@ -873,7 +873,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
     @property
     def Path(self):
-        """Path to be deleted
+        r"""Path to be deleted
         :rtype: str
         """
         return self._Path
@@ -897,7 +897,7 @@ class DeleteVolumeDataRequest(AbstractModel):
 
 
 class DeleteVolumeDataResponse(AbstractModel):
-    """DeleteVolumeData response structure.
+    r"""DeleteVolumeData response structure.
 
     """
 
@@ -910,7 +910,7 @@ class DeleteVolumeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -925,7 +925,7 @@ class DeleteVolumeDataResponse(AbstractModel):
 
 
 class DeleteVolumeRequest(AbstractModel):
-    """DeleteVolume request structure.
+    r"""DeleteVolume request structure.
 
     """
 
@@ -938,7 +938,7 @@ class DeleteVolumeRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """Volume ID
+        r"""Volume ID
         :rtype: str
         """
         return self._VolumeId
@@ -961,7 +961,7 @@ class DeleteVolumeRequest(AbstractModel):
 
 
 class DeleteVolumeResponse(AbstractModel):
-    """DeleteVolume response structure.
+    r"""DeleteVolume response structure.
 
     """
 
@@ -974,7 +974,7 @@ class DeleteVolumeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -989,7 +989,7 @@ class DeleteVolumeResponse(AbstractModel):
 
 
 class DescribeEnvironmentsRequest(AbstractModel):
-    """DescribeEnvironments request structure.
+    r"""DescribeEnvironments request structure.
 
     """
 
@@ -1011,7 +1011,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which defaults to 0.
+        r"""Offset, which defaults to 0.
         :rtype: int
         """
         return self._Offset
@@ -1022,7 +1022,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 20 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 20 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1033,7 +1033,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which supports filtering fields:
+        r"""Filter, which supports filtering fields:
 - EnvironmentId: Environment ID
 - Name: Name
 - Status: Environmental status
@@ -1066,7 +1066,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
 
 class DescribeEnvironmentsResponse(AbstractModel):
-    """DescribeEnvironments response structure.
+    r"""DescribeEnvironments response structure.
 
     """
 
@@ -1085,7 +1085,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of qualified items
+        r"""Number of qualified items
         :rtype: int
         """
         return self._TotalCount
@@ -1096,7 +1096,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def Environments(self):
-        """List of Environment details
+        r"""List of Environment details
         :rtype: list of Environment
         """
         return self._Environments
@@ -1107,7 +1107,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1129,7 +1129,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
 
 class DescribeRunGroupsRequest(AbstractModel):
-    """DescribeRunGroups request structure.
+    r"""DescribeRunGroups request structure.
 
     """
 
@@ -1155,7 +1155,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -1167,7 +1167,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 10 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 10 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1178,7 +1178,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which defaults to 0.
+        r"""Offset, which defaults to 0.
         :rtype: int
         """
         return self._Offset
@@ -1189,7 +1189,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which supports filtering fields:
+        r"""Filter, which supports filtering fields:
 - Name: Run group name
 - RunGroupId: Run group ID
 - Status: Run group status
@@ -1223,7 +1223,7 @@ class DescribeRunGroupsRequest(AbstractModel):
 
 
 class DescribeRunGroupsResponse(AbstractModel):
-    """DescribeRunGroups response structure.
+    r"""DescribeRunGroups response structure.
 
     """
 
@@ -1242,7 +1242,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of qualified items
+        r"""Number of qualified items
         :rtype: int
         """
         return self._TotalCount
@@ -1253,7 +1253,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def RunGroups(self):
-        """Run group list
+        r"""Run group list
         :rtype: list of RunGroup
         """
         return self._RunGroups
@@ -1264,7 +1264,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1286,7 +1286,7 @@ class DescribeRunGroupsResponse(AbstractModel):
 
 
 class DescribeRunsRequest(AbstractModel):
-    """DescribeRuns request structure.
+    r"""DescribeRuns request structure.
 
     """
 
@@ -1313,7 +1313,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -1325,7 +1325,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 10 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 10 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1336,7 +1336,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which defaults to 0.
+        r"""Offset, which defaults to 0.
         :rtype: int
         """
         return self._Offset
@@ -1347,7 +1347,7 @@ class DescribeRunsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which supports filtering fields:
+        r"""Filter, which supports filtering fields:
 - RunGroupId: run group ID
 - Status: run status
 - RunUuid: run UUID
@@ -1382,7 +1382,7 @@ class DescribeRunsRequest(AbstractModel):
 
 
 class DescribeRunsResponse(AbstractModel):
-    """DescribeRuns response structure.
+    r"""DescribeRuns response structure.
 
     """
 
@@ -1401,7 +1401,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of qualified items
+        r"""Number of qualified items
         :rtype: int
         """
         return self._TotalCount
@@ -1412,7 +1412,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def Runs(self):
-        """Run list
+        r"""Run list
         :rtype: list of Run
         """
         return self._Runs
@@ -1423,7 +1423,7 @@ class DescribeRunsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1445,7 +1445,7 @@ class DescribeRunsResponse(AbstractModel):
 
 
 class DescribeTablesRequest(AbstractModel):
-    """DescribeTables request structure.
+    r"""DescribeTables request structure.
 
     """
 
@@ -1469,7 +1469,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -1480,7 +1480,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 10 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 10 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1491,7 +1491,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which defaults to 0
+        r"""Offset, which defaults to 0
         :rtype: int
         """
         return self._Offset
@@ -1502,7 +1502,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which supports filtering fields:
+        r"""Filter, which supports filtering fields:
 - Name: Table name
 - TableId: Table ID
         :rtype: list of Filter
@@ -1535,7 +1535,7 @@ class DescribeTablesRequest(AbstractModel):
 
 
 class DescribeTablesResponse(AbstractModel):
-    """DescribeTables response structure.
+    r"""DescribeTables response structure.
 
     """
 
@@ -1554,7 +1554,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
         :rtype: int
         """
         return self._TotalCount
@@ -1565,7 +1565,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def Tables(self):
-        """Table list
+        r"""Table list
         :rtype: list of Table
         """
         return self._Tables
@@ -1576,7 +1576,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1598,7 +1598,7 @@ class DescribeTablesResponse(AbstractModel):
 
 
 class DescribeTablesRowsRequest(AbstractModel):
-    """DescribeTablesRows request structure.
+    r"""DescribeTablesRows request structure.
 
     """
 
@@ -1625,7 +1625,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -1636,7 +1636,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def TableId(self):
-        """Table ID
+        r"""Table ID
         :rtype: str
         """
         return self._TableId
@@ -1647,7 +1647,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 10 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 10 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1658,7 +1658,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which defaults to 0.
+        r"""Offset, which defaults to 0.
         :rtype: int
         """
         return self._Offset
@@ -1669,7 +1669,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, which supports filtering fields:
+        r"""Filter, which supports filtering fields:
 - Tr: Table data, which supports fuzzy query.
 - TableRowUuid: table row UUID
         :rtype: list of Filter
@@ -1703,7 +1703,7 @@ class DescribeTablesRowsRequest(AbstractModel):
 
 
 class DescribeTablesRowsResponse(AbstractModel):
-    """DescribeTablesRows response structure.
+    r"""DescribeTablesRows response structure.
 
     """
 
@@ -1722,7 +1722,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
         :rtype: int
         """
         return self._TotalCount
@@ -1733,7 +1733,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """Table row list
+        r"""Table row list
         :rtype: list of TableRow
         """
         return self._Rows
@@ -1744,7 +1744,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1766,7 +1766,7 @@ class DescribeTablesRowsResponse(AbstractModel):
 
 
 class DescribeVolumesRequest(AbstractModel):
-    """DescribeVolumes request structure.
+    r"""DescribeVolumes request structure.
 
     """
 
@@ -1790,7 +1790,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -1801,7 +1801,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity of returns. It is 20 by default, and the maximum value is 100.
+        r"""Quantity of returns. It is 20 by default, and the maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -1812,7 +1812,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, defaults to 0
+        r"""Offset, defaults to 0
         :rtype: int
         """
         return self._Offset
@@ -1823,7 +1823,7 @@ class DescribeVolumesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter, supports filtering fields:
+        r"""Filter, supports filtering fields:
 - Name: Name
 - IsDefault: Whether it is the default.
         :rtype: list of Filter
@@ -1856,7 +1856,7 @@ class DescribeVolumesRequest(AbstractModel):
 
 
 class DescribeVolumesResponse(AbstractModel):
-    """DescribeVolumes response structure.
+    r"""DescribeVolumes response structure.
 
     """
 
@@ -1877,7 +1877,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Volumes(self):
-        """Volume
+        r"""Volume
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Volume
         """
@@ -1889,7 +1889,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of qualified items
+        r"""Number of qualified items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1901,7 +1901,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1923,7 +1923,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Environment(AbstractModel):
-    """Tencent Healthcare Omics Platform environment details
+    r"""Tencent Healthcare Omics Platform environment details
 
     """
 
@@ -1982,7 +1982,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -1993,7 +1993,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._Name
@@ -2004,7 +2004,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Environment description information
+        r"""Environment description information
         :rtype: str
         """
         return self._Description
@@ -2015,7 +2015,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Environment region
+        r"""Environment region
         :rtype: str
         """
         return self._Region
@@ -2026,7 +2026,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Environment type. Valid values:
+        r"""Environment type. Valid values:
 - KUBERNETES: Kubernetes container cluster
 - HPC:HPC HCC 
         :rtype: str
@@ -2039,7 +2039,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Environment status. Valid values:
+        r"""Environment status. Valid values:
 - INITIALIZING: Creating
 - INITIALIZATION_ERROR: Creation failed
 - RUNNING: Running
@@ -2056,7 +2056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Available(self):
-        """Whether the environment is available. The environment needs to be available before computing runs can be delivered.
+        r"""Whether the environment is available. The environment needs to be available before computing runs can be delivered.
         :rtype: bool
         """
         return self._Available
@@ -2067,7 +2067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
-        """Whether the environment is the default environment.
+        r"""Whether the environment is the default environment.
         :rtype: bool
         """
         return self._IsDefault
@@ -2078,7 +2078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsManaged(self):
-        """Whether the environment is a managed environment.
+        r"""Whether the environment is a managed environment.
         :rtype: bool
         """
         return self._IsManaged
@@ -2089,7 +2089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Environment information
+        r"""Environment information
         :rtype: str
         """
         return self._Message
@@ -2100,7 +2100,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceIds(self):
-        """Cloud resource ID
+        r"""Cloud resource ID
         :rtype: :class:`tencentcloud.omics.v20221128.models.ResourceIds`
         """
         return self._ResourceIds
@@ -2111,7 +2111,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastWorkflowUuid(self):
-        """The UUID of the previous workflow
+        r"""The UUID of the previous workflow
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2123,7 +2123,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
-        """Creation time
+        r"""Creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2161,7 +2161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class EnvironmentConfig(AbstractModel):
-    """Environment configuration
+    r"""Environment configuration
 
     """
 
@@ -2189,7 +2189,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def VPCOption(self):
-        """VPC configuration
+        r"""VPC configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.VPCOption`
         """
         return self._VPCOption
@@ -2200,7 +2200,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def ClusterOption(self):
-        """Computing cluster configuration
+        r"""Computing cluster configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.ClusterOption`
         """
         return self._ClusterOption
@@ -2211,7 +2211,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def DatabaseOption(self):
-        """Database configuration
+        r"""Database configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.DatabaseOption`
         """
         return self._DatabaseOption
@@ -2222,7 +2222,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def StorageOption(self):
-        """Storage configuration
+        r"""Storage configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.StorageOption`
         """
         return self._StorageOption
@@ -2233,7 +2233,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def CVMOption(self):
-        """CVM configuration
+        r"""CVM configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.CVMOption`
         """
         return self._CVMOption
@@ -2244,7 +2244,7 @@ class EnvironmentConfig(AbstractModel):
 
     @property
     def SecurityGroupOption(self):
-        """Security group configuration
+        r"""Security group configuration
         :rtype: :class:`tencentcloud.omics.v20221128.models.SecurityGroupOption`
         """
         return self._SecurityGroupOption
@@ -2284,7 +2284,7 @@ class EnvironmentConfig(AbstractModel):
 
 
 class ExecutionTime(AbstractModel):
-    """Execution time
+    r"""Execution time
 
     """
 
@@ -2306,7 +2306,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmitTime(self):
-        """Submission time
+        r"""Submission time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2318,7 +2318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2330,7 +2330,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2356,7 +2356,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Filter(AbstractModel):
-    """Description key-value pair filter, which is used for conditional filtering queries.
+    r"""Description key-value pair filter, which is used for conditional filtering queries.
 
     - If there are multiple Filters, the logical relationship between them is AND.
 
@@ -2376,7 +2376,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filtering fields
+        r"""Filtering fields
         :rtype: str
         """
         return self._Name
@@ -2387,7 +2387,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filtering field values
+        r"""Filtering field values
         :rtype: list of str
         """
         return self._Values
@@ -2411,7 +2411,7 @@ class Filter(AbstractModel):
 
 
 class GetRunCallsRequest(AbstractModel):
-    """GetRunCalls request structure.
+    r"""GetRunCalls request structure.
 
     """
 
@@ -2431,7 +2431,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def RunUuid(self):
-        """Run UUID
+        r"""Run UUID
         :rtype: str
         """
         return self._RunUuid
@@ -2442,7 +2442,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def Path(self):
-        """Job path
+        r"""Job path
         :rtype: str
         """
         return self._Path
@@ -2453,7 +2453,7 @@ class GetRunCallsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -2479,7 +2479,7 @@ class GetRunCallsRequest(AbstractModel):
 
 
 class GetRunCallsResponse(AbstractModel):
-    """GetRunCalls response structure.
+    r"""GetRunCalls response structure.
 
     """
 
@@ -2495,7 +2495,7 @@ class GetRunCallsResponse(AbstractModel):
 
     @property
     def Calls(self):
-        """Job details
+        r"""Job details
         :rtype: list of RunMetadata
         """
         return self._Calls
@@ -2506,7 +2506,7 @@ class GetRunCallsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2527,7 +2527,7 @@ class GetRunCallsResponse(AbstractModel):
 
 
 class GetRunMetadataFileRequest(AbstractModel):
-    """GetRunMetadataFile request structure.
+    r"""GetRunMetadataFile request structure.
 
     """
 
@@ -2568,7 +2568,7 @@ When report is specified as true in NFOption during submission, the following fi
 
     @property
     def RunUuid(self):
-        """Run UUID
+        r"""Run UUID
         :rtype: str
         """
         return self._RunUuid
@@ -2579,7 +2579,7 @@ When report is specified as true in NFOption during submission, the following fi
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -2591,7 +2591,7 @@ When report is specified as true in NFOption during submission, the following fi
 
     @property
     def Key(self):
-        """File names to be get
+        r"""File names to be get
 
 The following files are supported by default:
 - nextflow.log
@@ -2611,7 +2611,7 @@ When report is specified as true in NFOption during submission, the following fi
 
     @property
     def Keys(self):
-        """File names to be get in batch
+        r"""File names to be get in batch
 
 The following files are supported by default:
 - nextflow.log
@@ -2646,7 +2646,7 @@ When report is specified as true in NFOption during submission, the following fi
 
 
 class GetRunMetadataFileResponse(AbstractModel):
-    """GetRunMetadataFile response structure.
+    r"""GetRunMetadataFile response structure.
 
     """
 
@@ -2666,7 +2666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosSignedUrl(self):
-        """Document pre-signed link that works in a minute
+        r"""Document pre-signed link that works in a minute
         :rtype: str
         """
         return self._CosSignedUrl
@@ -2677,7 +2677,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosSignedUrls(self):
-        """Batch document pre-signed link that works in a minute
+        r"""Batch document pre-signed link that works in a minute
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2689,7 +2689,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2706,7 +2706,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GetRunStatusRequest(AbstractModel):
-    """GetRunStatus request structure.
+    r"""GetRunStatus request structure.
 
     """
 
@@ -2723,7 +2723,7 @@ class GetRunStatusRequest(AbstractModel):
 
     @property
     def RunUuid(self):
-        """Run UUID
+        r"""Run UUID
         :rtype: str
         """
         return self._RunUuid
@@ -2734,7 +2734,7 @@ class GetRunStatusRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -2759,7 +2759,7 @@ class GetRunStatusRequest(AbstractModel):
 
 
 class GetRunStatusResponse(AbstractModel):
-    """GetRunStatus response structure.
+    r"""GetRunStatus response structure.
 
     """
 
@@ -2775,7 +2775,7 @@ class GetRunStatusResponse(AbstractModel):
 
     @property
     def Metadata(self):
-        """Job details
+        r"""Job details
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunMetadata`
         """
         return self._Metadata
@@ -2786,7 +2786,7 @@ class GetRunStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2804,7 +2804,7 @@ class GetRunStatusResponse(AbstractModel):
 
 
 class GitInfo(AbstractModel):
-    """Git information
+    r"""Git information
 
     """
 
@@ -2829,7 +2829,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitHttpPath(self):
-        """Git URL
+        r"""Git URL
         :rtype: str
         """
         return self._GitHttpPath
@@ -2840,7 +2840,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitUserName(self):
-        """Git username .
+        r"""Git username .
         :rtype: str
         """
         return self._GitUserName
@@ -2851,7 +2851,7 @@ class GitInfo(AbstractModel):
 
     @property
     def GitTokenOrPassword(self):
-        """Git password or Token
+        r"""Git password or Token
         :rtype: str
         """
         return self._GitTokenOrPassword
@@ -2862,7 +2862,7 @@ class GitInfo(AbstractModel):
 
     @property
     def Branch(self):
-        """Branch
+        r"""Branch
         :rtype: str
         """
         return self._Branch
@@ -2873,7 +2873,7 @@ class GitInfo(AbstractModel):
 
     @property
     def Tag(self):
-        """Tag
+        r"""Tag
         :rtype: str
         """
         return self._Tag
@@ -2900,7 +2900,7 @@ class GitInfo(AbstractModel):
 
 
 class ImportTableFileRequest(AbstractModel):
-    """ImportTableFile request structure.
+    r"""ImportTableFile request structure.
 
     """
 
@@ -2925,7 +2925,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID associated with the table
+        r"""Project ID associated with the table
         :rtype: str
         """
         return self._ProjectId
@@ -2936,7 +2936,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Table name: Up to 200 characters in length is supported.
+        r"""Table name: Up to 200 characters in length is supported.
         :rtype: str
         """
         return self._Name
@@ -2947,7 +2947,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def CosUri(self):
-        """Table file COS object path
+        r"""Table file COS object path
         :rtype: str
         """
         return self._CosUri
@@ -2958,7 +2958,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def DataType(self):
-        """Data type of each column in the table file. Supported types include Int, Float, String, File, Boolean, Array[Int], Array[Float], Array[String], Array[File], and Array[Boolean].
+        r"""Data type of each column in the table file. Supported types include Int, Float, String, File, Boolean, Array[Int], Array[Float], Array[String], Array[File], and Array[Boolean].
         :rtype: list of str
         """
         return self._DataType
@@ -2969,7 +2969,7 @@ class ImportTableFileRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Table description: Up to 500 characters in length is supported.
+        r"""Table description: Up to 500 characters in length is supported.
         :rtype: str
         """
         return self._Description
@@ -2996,7 +2996,7 @@ class ImportTableFileRequest(AbstractModel):
 
 
 class ImportTableFileResponse(AbstractModel):
-    """ImportTableFile response structure.
+    r"""ImportTableFile response structure.
 
     """
 
@@ -3012,7 +3012,7 @@ class ImportTableFileResponse(AbstractModel):
 
     @property
     def TableId(self):
-        """Table ID
+        r"""Table ID
         :rtype: str
         """
         return self._TableId
@@ -3023,7 +3023,7 @@ class ImportTableFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3039,7 +3039,7 @@ class ImportTableFileResponse(AbstractModel):
 
 
 class LimitRange(AbstractModel):
-    """Resource limit scope
+    r"""Resource limit scope
 
     """
 
@@ -3057,7 +3057,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxCPU(self):
-        """Maximum CPU setting
+        r"""Maximum CPU setting
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3069,7 +3069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMemory(self):
-        """Maximum memory setting (unit: Mi, Gi, Ti, M, G, and T)
+        r"""Maximum memory setting (unit: Mi, Gi, Ti, M, G, and T)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3094,7 +3094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyVolumeRequest(AbstractModel):
-    """ModifyVolume request structure.
+    r"""ModifyVolume request structure.
 
     """
 
@@ -3113,7 +3113,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def VolumeId(self):
-        """Volume ID
+        r"""Volume ID
         :rtype: str
         """
         return self._VolumeId
@@ -3124,7 +3124,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -3135,7 +3135,7 @@ class ModifyVolumeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -3160,7 +3160,7 @@ class ModifyVolumeRequest(AbstractModel):
 
 
 class ModifyVolumeResponse(AbstractModel):
-    """ModifyVolume response structure.
+    r"""ModifyVolume response structure.
 
     """
 
@@ -3173,7 +3173,7 @@ class ModifyVolumeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3188,7 +3188,7 @@ class ModifyVolumeResponse(AbstractModel):
 
 
 class NFOption(AbstractModel):
-    """Nextflow option
+    r"""Nextflow option
 
     """
 
@@ -3221,7 +3221,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """Config.
+        r"""Config.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3233,7 +3233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Profile(self):
-        """Profile.
+        r"""Profile.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3245,7 +3245,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Report(self):
-        """Report.
+        r"""Report.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3257,7 +3257,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resume(self):
-        """Resume.
+        r"""Resume.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3269,7 +3269,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NFVersion(self):
-        """Nextflow engine version. Valid values:
+        r"""Nextflow engine version. Valid values:
 - 22.10.4
 - 22.10.8 
 - 23.10.1
@@ -3300,7 +3300,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ResourceIds(AbstractModel):
-    """Cloud resource ID
+    r"""Cloud resource ID
 
     """
 
@@ -3346,7 +3346,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VPCId(self):
-        """VPC ID
+        r"""VPC ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3358,7 +3358,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3370,7 +3370,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityGroupId(self):
-        """Security group ID
+        r"""Security group ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3382,7 +3382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TDSQLCId(self):
-        """TDSQL-C for MySQL database ID
+        r"""TDSQL-C for MySQL database ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3394,7 +3394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CFSId(self):
-        """ CFS ID.
+        r""" CFS ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3406,7 +3406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CFSStorageType(self):
-        """CFS type. Valid values:
+        r"""CFS type. Valid values:
 - SD: standard
 - HP: high-performance
 - TB: standard Turbo
@@ -3422,7 +3422,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CVMId(self):
-        """ Cloud Virtual Machine ID.
+        r""" Cloud Virtual Machine ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3434,7 +3434,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EKSId(self):
-        """Elastic container cluster ID
+        r"""Elastic container cluster ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3465,7 +3465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ResourceQuota(AbstractModel):
-    """Resource quota
+    r"""Resource quota
 
     """
 
@@ -3487,7 +3487,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CPULimit(self):
-        """CPU limit setting
+        r"""CPU limit setting
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3499,7 +3499,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemoryLimit(self):
-        """Memory limit setting (Unit: Mi, Gi, Ti, M, G, and T)
+        r"""Memory limit setting (Unit: Mi, Gi, Ti, M, G, and T)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3511,7 +3511,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pods(self):
-        """Pod quantity setting
+        r"""Pod quantity setting
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3537,7 +3537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RetryRunsRequest(AbstractModel):
-    """RetryRuns request structure.
+    r"""RetryRuns request structure.
 
     """
 
@@ -3562,7 +3562,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. (If you leave it blank, the default item in the specified region will be used.)
+        r"""Project ID. (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
         return self._ProjectId
@@ -3573,7 +3573,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """The run group ID that needs to be retried
+        r"""The run group ID that needs to be retried
         :rtype: str
         """
         return self._RunGroupId
@@ -3584,7 +3584,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def RunUuids(self):
-        """The run UUID that needs to be retried
+        r"""The run UUID that needs to be retried
         :rtype: list of str
         """
         return self._RunUuids
@@ -3595,7 +3595,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def WDLOption(self):
-        """WDL running option. If you leave it blank, the retried run group running option will be used.
+        r"""WDL running option. If you leave it blank, the retried run group running option will be used.
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._WDLOption
@@ -3606,7 +3606,7 @@ class RetryRunsRequest(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow running option. If you leave it blank, the retried run group running option will be used.
+        r"""Nextflow running option. If you leave it blank, the retried run group running option will be used.
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -3637,7 +3637,7 @@ class RetryRunsRequest(AbstractModel):
 
 
 class RetryRunsResponse(AbstractModel):
-    """RetryRuns response structure.
+    r"""RetryRuns response structure.
 
     """
 
@@ -3654,7 +3654,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunGroupId(self):
-        """New run group ID
+        r"""New run group ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3666,7 +3666,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3682,7 +3682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Run(AbstractModel):
-    """Run
+    r"""Run
 
     """
 
@@ -3744,7 +3744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunUuid(self):
-        """Run UUID
+        r"""Run UUID
         :rtype: str
         """
         return self._RunUuid
@@ -3755,7 +3755,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -3766,7 +3766,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -3777,7 +3777,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunGroupId(self):
-        """Run group ID
+        r"""Run group ID
         :rtype: str
         """
         return self._RunGroupId
@@ -3788,7 +3788,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -3799,7 +3799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserDefinedId(self):
-        """User-defined ID. Null for running in singleton mode.
+        r"""User-defined ID. Null for running in singleton mode.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3811,7 +3811,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableId(self):
-        """Table ID. Null for running in singleton mode.
+        r"""Table ID. Null for running in singleton mode.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3823,7 +3823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableRowUuid(self):
-        """Table row UUID. Null for running in singleton mode.
+        r"""Table row UUID. Null for running in singleton mode.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3835,7 +3835,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Run status
+        r"""Run status
         :rtype: str
         """
         return self._Status
@@ -3846,7 +3846,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
-        """Run input
+        r"""Run input
         :rtype: str
         """
         return self._Input
@@ -3859,7 +3859,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Option(self):
         warnings.warn("parameter `Option` is deprecated", DeprecationWarning) 
 
-        """Running option
+        r"""Running option
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -3872,7 +3872,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecutionTime(self):
-        """Execution time
+        r"""Execution time
         :rtype: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         """
         return self._ExecutionTime
@@ -3883,7 +3883,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cache(self):
-        """Cache information
+        r"""Cache information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.omics.v20221128.models.CacheInfo`
         """
@@ -3895,7 +3895,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMessage(self):
-        """Error message
+        r"""Error message
         :rtype: str
         """
         return self._ErrorMessage
@@ -3906,7 +3906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -3917,7 +3917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -3961,7 +3961,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RunApplicationRequest(AbstractModel):
-    """RunApplication request structure.
+    r"""RunApplication request structure.
 
     """
 
@@ -4021,7 +4021,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -4032,7 +4032,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Run group name
+        r"""Run group name
         :rtype: str
         """
         return self._Name
@@ -4043,7 +4043,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        """Delivery environment ID
+        r"""Delivery environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -4054,7 +4054,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. (If you leave it blank, the default item in the specified region will be used.)
+        r"""Project ID. (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
         return self._ProjectId
@@ -4065,7 +4065,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Run group description
+        r"""Run group description
         :rtype: str
         """
         return self._Description
@@ -4076,7 +4076,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def InputCosUri(self):
-        """Run input COS path. (Either InputBase64 or InputCosUri must be selected.)
+        r"""Run input COS path. (Either InputBase64 or InputCosUri must be selected.)
         :rtype: str
         """
         return self._InputCosUri
@@ -4087,7 +4087,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def InputBase64(self):
-        """Run input JSON. Base64 encoding is required. (Either InputBase64 or InputCosUri must be selected.)
+        r"""Run input JSON. Base64 encoding is required. (Either InputBase64 or InputCosUri must be selected.)
         :rtype: str
         """
         return self._InputBase64
@@ -4098,7 +4098,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TableId(self):
-        """Batch deliver table ID. Leaving it blank indicates delivery in singleton mode.
+        r"""Batch deliver table ID. Leaving it blank indicates delivery in singleton mode.
         :rtype: str
         """
         return self._TableId
@@ -4109,7 +4109,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def TableRowUuids(self):
-        """Batch deliver table row UUID. Leaving it blank indicates all rows of the table.
+        r"""Batch deliver table row UUID. Leaving it blank indicates all rows of the table.
         :rtype: list of str
         """
         return self._TableRowUuids
@@ -4120,7 +4120,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def CacheClearDelay(self):
-        """Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.
+        r"""Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.
         :rtype: int
         """
         return self._CacheClearDelay
@@ -4131,7 +4131,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
-        """Application version ID. Leaving it blank indicates that the latest version is used.
+        r"""Application version ID. Leaving it blank indicates that the latest version is used.
         :rtype: str
         """
         return self._ApplicationVersionId
@@ -4142,7 +4142,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def Option(self):
-        """WDL running option
+        r"""WDL running option
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -4153,7 +4153,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def NFOption(self):
-        """Nextflow running option
+        r"""Nextflow running option
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -4164,7 +4164,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def WorkDir(self):
-        """Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.
+        r"""Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.
         :rtype: str
         """
         return self._WorkDir
@@ -4175,7 +4175,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        """Access mode. Leaving it blank indicates it is private by default. Valid values:
+        r"""Access mode. Leaving it blank indicates it is private by default. Valid values:
 - PRIVATE: Private application
 - PUBLIC: Public application
         :rtype: str
@@ -4188,7 +4188,7 @@ class RunApplicationRequest(AbstractModel):
 
     @property
     def VolumeIds(self):
-        """Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.
+        r"""Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.
         :rtype: list of str
         """
         return self._VolumeIds
@@ -4230,7 +4230,7 @@ class RunApplicationRequest(AbstractModel):
 
 
 class RunApplicationResponse(AbstractModel):
-    """RunApplication response structure.
+    r"""RunApplication response structure.
 
     """
 
@@ -4246,7 +4246,7 @@ class RunApplicationResponse(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """Run group ID
+        r"""Run group ID
         :rtype: str
         """
         return self._RunGroupId
@@ -4257,7 +4257,7 @@ class RunApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4273,7 +4273,7 @@ class RunApplicationResponse(AbstractModel):
 
 
 class RunGroup(AbstractModel):
-    """Run
+    r"""Run
 
     """
 
@@ -4364,7 +4364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunGroupId(self):
-        """Run group ID
+        r"""Run group ID
         :rtype: str
         """
         return self._RunGroupId
@@ -4375,7 +4375,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: str
         """
         return self._ProjectId
@@ -4386,7 +4386,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -4397,7 +4397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -4408,7 +4408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        """Application name
+        r"""Application name
         :rtype: str
         """
         return self._ApplicationName
@@ -4419,7 +4419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationType(self):
-        """Application type
+        r"""Application type
         :rtype: str
         """
         return self._ApplicationType
@@ -4430,7 +4430,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -4441,7 +4441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentName(self):
-        """Environment name
+        r"""Environment name
         :rtype: str
         """
         return self._EnvironmentName
@@ -4452,7 +4452,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableId(self):
-        """Table ID. Null for running in singleton mode.
+        r"""Table ID. Null for running in singleton mode.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4464,7 +4464,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Run name
+        r"""Run name
         :rtype: str
         """
         return self._Name
@@ -4475,7 +4475,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Run description
+        r"""Run description
         :rtype: str
         """
         return self._Description
@@ -4486,7 +4486,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Run status
+        r"""Run status
         :rtype: str
         """
         return self._Status
@@ -4497,7 +4497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
-        """Run input
+        r"""Run input
         :rtype: str
         """
         return self._Input
@@ -4508,7 +4508,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Option(self):
-        """WDL running option
+        r"""WDL running option
         :rtype: :class:`tencentcloud.omics.v20221128.models.RunOption`
         """
         return self._Option
@@ -4519,7 +4519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NFOption(self):
-        """Nextflow running option
+        r"""Nextflow running option
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
@@ -4531,7 +4531,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalRun(self):
-        """Total number of runs
+        r"""Total number of runs
         :rtype: int
         """
         return self._TotalRun
@@ -4542,7 +4542,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunStatusCounts(self):
-        """Number of runs in various status
+        r"""Number of runs in various status
         :rtype: list of RunStatusCount
         """
         return self._RunStatusCounts
@@ -4553,7 +4553,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecutionTime(self):
-        """Execution time
+        r"""Execution time
         :rtype: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
         """
         return self._ExecutionTime
@@ -4564,7 +4564,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMessage(self):
-        """Error message
+        r"""Error message
         :rtype: str
         """
         return self._ErrorMessage
@@ -4575,7 +4575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -4586,7 +4586,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -4597,7 +4597,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        """Creator
+        r"""Creator
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4609,7 +4609,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatorId(self):
-        """Creator ID
+        r"""Creator ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4621,7 +4621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResultNotify(self):
-        """Running result notification method
+        r"""Running result notification method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4633,7 +4633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersion(self):
-        """Application version
+        r"""Application version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         """
@@ -4694,7 +4694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RunMetadata(AbstractModel):
-    """Run job details
+    r"""Run job details
 
     """
 
@@ -4788,7 +4788,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunType(self):
-        """Run type
+        r"""Run type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4800,7 +4800,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunId(self):
-        """Run ID
+        r"""Run ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4812,7 +4812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ParentId(self):
-        """Parent layer ID
+        r"""Parent layer ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4824,7 +4824,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Job ID
+        r"""Job ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4836,7 +4836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallName(self):
-        """Job name
+        r"""Job name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4848,7 +4848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScatterIndex(self):
-        """Scatter index
+        r"""Scatter index
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4860,7 +4860,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
-        """Input
+        r"""Input
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4872,7 +4872,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output
+        r"""Output
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4884,7 +4884,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4896,7 +4896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMessage(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4908,7 +4908,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4920,7 +4920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmitTime(self):
-        """Submission time
+        r"""Submission time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4932,7 +4932,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4944,7 +4944,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Command(self):
-        """Command Line
+        r"""Command Line
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4956,7 +4956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Runtime(self):
-        """Runtime
+        r"""Runtime
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4968,7 +4968,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Preprocess(self):
-        """Preprocessing
+        r"""Preprocessing
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4980,7 +4980,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PostProcess(self):
-        """Post-processing
+        r"""Post-processing
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4992,7 +4992,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallCached(self):
-        """Cache hit
+        r"""Cache hit
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -5004,7 +5004,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stdout(self):
-        """Standard output
+        r"""Standard output
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5016,7 +5016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stderr(self):
-        """Error output
+        r"""Error output
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5028,7 +5028,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Meta(self):
-        """Other information
+        r"""Other information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5072,7 +5072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RunOption(AbstractModel):
-    """Application running option
+    r"""Application running option
 
     """
 
@@ -5101,7 +5101,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailureMode(self):
-        """Operation failure mode. Valid values:
+        r"""Operation failure mode. Valid values:
 - ContinueWhilePossible
 - NoNewCalls
         :rtype: str
@@ -5114,7 +5114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseCallCache(self):
-        """Whether to use the Call-Caching feature.
+        r"""Whether to use the Call-Caching feature.
         :rtype: bool
         """
         return self._UseCallCache
@@ -5125,7 +5125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseErrorOnHold(self):
-        """Whether to use the error suspension feature.
+        r"""Whether to use the error suspension feature.
         :rtype: bool
         """
         return self._UseErrorOnHold
@@ -5136,7 +5136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinalWorkflowOutputsDir(self):
-        """Output archive COS path
+        r"""Output archive COS path
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5148,7 +5148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseRelativeOutputPaths(self):
-        """Whether to use the relative directory archive output.
+        r"""Whether to use the relative directory archive output.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -5176,7 +5176,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RunStatusCount(AbstractModel):
-    """Run running status
+    r"""Run running status
 
     """
 
@@ -5192,7 +5192,7 @@ class RunStatusCount(AbstractModel):
 
     @property
     def Status(self):
-        """Status
+        r"""Status
         :rtype: str
         """
         return self._Status
@@ -5203,7 +5203,7 @@ class RunStatusCount(AbstractModel):
 
     @property
     def Count(self):
-        """Quantity
+        r"""Quantity
         :rtype: int
         """
         return self._Count
@@ -5227,7 +5227,7 @@ class RunStatusCount(AbstractModel):
 
 
 class RunWorkflowRequest(AbstractModel):
-    """RunWorkflow request structure.
+    r"""RunWorkflow request structure.
 
     """
 
@@ -5279,7 +5279,7 @@ Supported type:
 
     @property
     def Name(self):
-        """Run group name
+        r"""Run group name
         :rtype: str
         """
         return self._Name
@@ -5290,7 +5290,7 @@ Supported type:
 
     @property
     def EnvironmentId(self):
-        """Delivery environment ID
+        r"""Delivery environment ID
         :rtype: str
         """
         return self._EnvironmentId
@@ -5301,7 +5301,7 @@ Supported type:
 
     @property
     def GitSource(self):
-        """Workflow Git repository information
+        r"""Workflow Git repository information
         :rtype: :class:`tencentcloud.omics.v20221128.models.GitInfo`
         """
         return self._GitSource
@@ -5312,7 +5312,7 @@ Supported type:
 
     @property
     def Type(self):
-        """Workflow type
+        r"""Workflow type
 
 Supported type:
 - NEXTFLOW
@@ -5326,7 +5326,7 @@ Supported type:
 
     @property
     def NFOption(self):
-        """Nextflow option
+        r"""Nextflow option
         :rtype: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         return self._NFOption
@@ -5337,7 +5337,7 @@ Supported type:
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -5349,7 +5349,7 @@ Supported type:
 
     @property
     def Description(self):
-        """Run group description
+        r"""Run group description
         :rtype: str
         """
         return self._Description
@@ -5360,7 +5360,7 @@ Supported type:
 
     @property
     def InputBase64(self):
-        """Run input JSON. Base64 encoding is required.
+        r"""Run input JSON. Base64 encoding is required.
 (Either InputBase64 or InputCosUri must be selected.)
         :rtype: str
         """
@@ -5372,7 +5372,7 @@ Supported type:
 
     @property
     def InputCosUri(self):
-        """Run input COS path
+        r"""Run input COS path
 (Either InputBase64 or InputCosUri must be selected.)
         :rtype: str
         """
@@ -5384,7 +5384,7 @@ Supported type:
 
     @property
     def CacheClearDelay(self):
-        """Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.
+        r"""Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.
         :rtype: int
         """
         return self._CacheClearDelay
@@ -5395,7 +5395,7 @@ Supported type:
 
     @property
     def WorkDir(self):
-        """Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.
+        r"""Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.
         :rtype: str
         """
         return self._WorkDir
@@ -5406,7 +5406,7 @@ Supported type:
 
     @property
     def VolumeIds(self):
-        """Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.
+        r"""Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.
         :rtype: list of str
         """
         return self._VolumeIds
@@ -5444,7 +5444,7 @@ Supported type:
 
 
 class RunWorkflowResponse(AbstractModel):
-    """RunWorkflow response structure.
+    r"""RunWorkflow response structure.
 
     """
 
@@ -5460,7 +5460,7 @@ class RunWorkflowResponse(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """Run group ID
+        r"""Run group ID
         :rtype: str
         """
         return self._RunGroupId
@@ -5471,7 +5471,7 @@ class RunWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5487,7 +5487,7 @@ class RunWorkflowResponse(AbstractModel):
 
 
 class SecurityGroupOption(AbstractModel):
-    """Security group configuration
+    r"""Security group configuration
 
     """
 
@@ -5500,7 +5500,7 @@ class SecurityGroupOption(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID
+        r"""Security group ID
         :rtype: str
         """
         return self._SecurityGroupId
@@ -5523,7 +5523,7 @@ class SecurityGroupOption(AbstractModel):
 
 
 class StorageOption(AbstractModel):
-    """CFS configuration
+    r"""CFS configuration
 
     """
 
@@ -5548,7 +5548,7 @@ class StorageOption(AbstractModel):
 
     @property
     def StorageType(self):
-        """CFS type. Valid values:
+        r"""CFS type. Valid values:
 - SD: standard
 - HP: high-performance
 - TB: standard Turbo
@@ -5563,7 +5563,7 @@ class StorageOption(AbstractModel):
 
     @property
     def Zone(self):
-        """CFS availability zone
+        r"""CFS availability zone
         :rtype: str
         """
         return self._Zone
@@ -5574,7 +5574,7 @@ class StorageOption(AbstractModel):
 
     @property
     def Capacity(self):
-        """CFS capacity in GiB, required for the Turbo series
+        r"""CFS capacity in GiB, required for the Turbo series
 - Standard Turbo has a minimum capacity of 40 TiB, or 40,960 GiB; the capacity expansion step is 20 TiB, or 20,480 GiB.
 - High-performance Turbo has a minimum capacity of 20 TiB, or 20,480 GiB; the capacity expansion step is 10 TiB, or 10,240 GiB.
         :rtype: int
@@ -5601,7 +5601,7 @@ class StorageOption(AbstractModel):
 
 
 class Table(AbstractModel):
-    """Table
+    r"""Table
 
     """
 
@@ -5639,7 +5639,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableId(self):
-        """Table ID
+        r"""Table ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5651,7 +5651,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Associated project ID
+        r"""Associated project ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5663,7 +5663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Table name
+        r"""Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5675,7 +5675,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Table description
+        r"""Table description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5687,7 +5687,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Columns(self):
-        """Table column
+        r"""Table column
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TableColumn
         """
@@ -5699,7 +5699,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5711,7 +5711,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        """Creator
+        r"""Creator
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5746,7 +5746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableColumn(AbstractModel):
-    """Table column
+    r"""Table column
 
     """
 
@@ -5764,7 +5764,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Header(self):
-        """Column name
+        r"""Column name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5776,7 +5776,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataType(self):
-        """Column data type
+        r"""Column data type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5801,7 +5801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableRow(AbstractModel):
-    """Table row
+    r"""Table row
 
     """
 
@@ -5819,7 +5819,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableRowUuid(self):
-        """Table row UUID
+        r"""Table row UUID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5831,7 +5831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """Table row content
+        r"""Table row content
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -5856,7 +5856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TerminateRunGroupRequest(AbstractModel):
-    """TerminateRunGroup request structure.
+    r"""TerminateRunGroup request structure.
 
     """
 
@@ -5873,7 +5873,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
     @property
     def RunGroupId(self):
-        """Run group ID
+        r"""Run group ID
         :rtype: str
         """
         return self._RunGroupId
@@ -5884,7 +5884,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
 (If you leave it blank, the default item in the specified region will be used.)
         :rtype: str
         """
@@ -5909,7 +5909,7 @@ class TerminateRunGroupRequest(AbstractModel):
 
 
 class TerminateRunGroupResponse(AbstractModel):
-    """TerminateRunGroup response structure.
+    r"""TerminateRunGroup response structure.
 
     """
 
@@ -5922,7 +5922,7 @@ class TerminateRunGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5937,7 +5937,7 @@ class TerminateRunGroupResponse(AbstractModel):
 
 
 class VPCOption(AbstractModel):
-    """VPC configuration
+    r"""VPC configuration
 
     """
 
@@ -5962,7 +5962,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCId(self):
-        """VPC ID (Either VPCId or VPCCIDRBlock must be selected. If VPCId is selected, the existing VPCs will be used; if VPCCIDRBlock is selected, a new VPC will be created.)
+        r"""VPC ID (Either VPCId or VPCCIDRBlock must be selected. If VPCId is selected, the existing VPCs will be used; if VPCCIDRBlock is selected, a new VPC will be created.)
         :rtype: str
         """
         return self._VPCId
@@ -5973,7 +5973,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID (Either SubnetId or SubnetZone&SubnetCIDRBlock must be selected. If SubnetId is selected, the existing subnet will be used; if SubnetZone&SubnetCIDRBlock is selected, a new subnet will be created.)
+        r"""Subnet ID (Either SubnetId or SubnetZone&SubnetCIDRBlock must be selected. If SubnetId is selected, the existing subnet will be used; if SubnetZone&SubnetCIDRBlock is selected, a new subnet will be created.)
         :rtype: str
         """
         return self._SubnetId
@@ -5984,7 +5984,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetZone(self):
-        """Subnet availability zone
+        r"""Subnet availability zone
         :rtype: str
         """
         return self._SubnetZone
@@ -5995,7 +5995,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCCIDRBlock(self):
-        """ VPC CIDR.
+        r""" VPC CIDR.
         :rtype: str
         """
         return self._VPCCIDRBlock
@@ -6006,7 +6006,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetCIDRBlock(self):
-        """Subnet CIDR
+        r"""Subnet CIDR
         :rtype: str
         """
         return self._SubnetCIDRBlock
@@ -6033,7 +6033,7 @@ class VPCOption(AbstractModel):
 
 
 class Volume(AbstractModel):
-    """Volume
+    r"""Volume
 
     """
 
@@ -6097,7 +6097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VolumeId(self):
-        """Volume ID
+        r"""Volume ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6109,7 +6109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Name
+        r"""Name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6121,7 +6121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description
+        r"""Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6133,7 +6133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnvironmentId(self):
-        """Environment ID
+        r"""Environment ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6145,7 +6145,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Volume type. Valid values:
+        r"""Volume type. Valid values:
 * SHARED: Multi-point mount shared storage
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -6158,7 +6158,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Spec(self):
-        """Volume specifications. Valid values:
+        r"""Volume specifications. Valid values:
 
 - SD: standard
 - HP: high-performance
@@ -6175,7 +6175,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Capacity(self):
-        """Volume size (GB)
+        r"""Volume size (GB)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6187,7 +6187,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Usage(self):
-        """Volume usage (Byte)
+        r"""Volume usage (Byte)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6199,7 +6199,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandwidthLimit(self):
-        """Volume throughput upper limit (MiB/s)
+        r"""Volume throughput upper limit (MiB/s)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -6211,7 +6211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultMountPath(self):
-        """Default mount path
+        r"""Default mount path
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6223,7 +6223,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
-        """Whether it is the default volume.
+        r"""Whether it is the default volume.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -6235,7 +6235,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """

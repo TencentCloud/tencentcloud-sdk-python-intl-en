@@ -27,7 +27,7 @@ class LkeapClient(AbstractClient):
 
 
     def CreateReconstructDocumentFlow(self, request):
-        """This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
+        r"""This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
         Document parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order. Please refer to the input parameter list below for specific supported file types.
         During the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.
 
@@ -52,7 +52,7 @@ class LkeapClient(AbstractClient):
 
 
     def CreateSplitDocumentFlow(self, request):
-        """This API is used to create document segmentation tasks, support various file types, possess mllm capacity, and can analyze and deeply understand the information in charts.
+        r"""This API is used to create document segmentation tasks, support various file types, possess mllm capacity, and can analyze and deeply understand the information in charts.
 
         :param request: Request instance for CreateSplitDocumentFlow.
         :type request: :class:`tencentcloud.lkeap.v20240522.models.CreateSplitDocumentFlowRequest`
@@ -75,7 +75,7 @@ class LkeapClient(AbstractClient):
 
 
     def GetReconstructDocumentResult(self, request):
-        """This is an asynchronous API for querying results, which is used to obtain the result of document parsing.
+        r"""This is an asynchronous API for querying results, which is used to obtain the result of document parsing.
 
         :param request: Request instance for GetReconstructDocumentResult.
         :type request: :class:`tencentcloud.lkeap.v20240522.models.GetReconstructDocumentResultRequest`
@@ -98,7 +98,7 @@ class LkeapClient(AbstractClient):
 
 
     def GetSplitDocumentResult(self, request):
-        """This API is used to query the results of document splitting tasks.
+        r"""This API is used to query the results of document splitting tasks.
 
         :param request: Request instance for GetSplitDocumentResult.
         :type request: :class:`tencentcloud.lkeap.v20240522.models.GetSplitDocumentResultRequest`
@@ -121,7 +121,7 @@ class LkeapClient(AbstractClient):
 
 
     def QueryRewrite(self, request):
-        """QueryRewrite is mainly used in multi-round conversations for reference resolution and ellipsis completion. Using this API, you don't need to input prompt descriptions. A more accurate user query can be generated based on the conversation history. In terms of application scenarios, this API can be applied to various scenarios such as intelligent Q&A and conversational search.
+        r"""QueryRewrite is mainly used in multi-round conversations for reference resolution and ellipsis completion. Using this API, you don't need to input prompt descriptions. A more accurate user query can be generated based on the conversation history. In terms of application scenarios, this API can be applied to various scenarios such as intelligent Q&A and conversational search.
         There is a call limit for single-account for this API. If you need to increase the concurrency limit, please contact us (https://cloud.tencent.com/act/event/Online_service).
 
         :param request: Request instance for QueryRewrite.
@@ -145,7 +145,7 @@ class LkeapClient(AbstractClient):
 
 
     def RunRerank(self, request):
-        """This API is used to reorder the results of multi-channel recall based on the rerank model of knowledge engine fine-tuning model technology, sort the segments according to the relevance between the query and the segment content from high to low score, and output the corresponding scoring results.
+        r"""This API is used to reorder the results of multi-channel recall based on the rerank model of knowledge engine fine-tuning model technology, sort the segments according to the relevance between the query and the segment content from high to low score, and output the corresponding scoring results.
 
         :param request: Request instance for RunRerank.
         :type request: :class:`tencentcloud.lkeap.v20240522.models.RunRerankRequest`

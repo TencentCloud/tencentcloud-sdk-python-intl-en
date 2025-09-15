@@ -27,7 +27,7 @@ class MspClient(AbstractClient):
 
 
     def DeregisterMigrationTask(self, request):
-        """This API is used to cancel the registered migration tasks.
+        r"""This API is used to cancel the registered migration tasks.
 
         :param request: Request instance for DeregisterMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.DeregisterMigrationTaskRequest`
@@ -50,7 +50,7 @@ class MspClient(AbstractClient):
 
 
     def DescribeMigrationTask(self, request):
-        """This API is used to obtain the specified migration task details.
+        r"""This API is used to obtain the specified migration task details.
 
         :param request: Request instance for DescribeMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.DescribeMigrationTaskRequest`
@@ -73,7 +73,7 @@ class MspClient(AbstractClient):
 
 
     def ListMigrationProject(self, request):
-        """This API is used to obtain the list of migration project names.
+        r"""This API is used to obtain the list of migration project names.
 
         :param request: Request instance for ListMigrationProject.
         :type request: :class:`tencentcloud.msp.v20180319.models.ListMigrationProjectRequest`
@@ -96,7 +96,7 @@ class MspClient(AbstractClient):
 
 
     def ListMigrationTask(self, request):
-        """This API is used to obtain migration task list.
+        r"""This API is used to obtain migration task list.
 
         :param request: Request instance for ListMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.ListMigrationTaskRequest`
@@ -119,7 +119,7 @@ class MspClient(AbstractClient):
 
 
     def ModifyMigrationTaskBelongToProject(self, request):
-        """This API is used to modify the project of a migration task.
+        r"""This API is used to modify the project of a migration task.
 
         :param request: Request instance for ModifyMigrationTaskBelongToProject.
         :type request: :class:`tencentcloud.msp.v20180319.models.ModifyMigrationTaskBelongToProjectRequest`
@@ -142,7 +142,7 @@ class MspClient(AbstractClient):
 
 
     def ModifyMigrationTaskStatus(self, request):
-        """This API is used to update the migration task status.
+        r"""This API is used to update the migration task status.
 
         :param request: Request instance for ModifyMigrationTaskStatus.
         :type request: :class:`tencentcloud.msp.v20180319.models.ModifyMigrationTaskStatusRequest`
@@ -165,7 +165,7 @@ class MspClient(AbstractClient):
 
 
     def RegisterMigrationTask(self, request):
-        """This API is used to register a migration task.
+        r"""This API is used to register a migration task.
 
         :param request: Request instance for RegisterMigrationTask.
         :type request: :class:`tencentcloud.msp.v20180319.models.RegisterMigrationTaskRequest`

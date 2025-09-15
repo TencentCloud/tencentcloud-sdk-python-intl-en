@@ -27,7 +27,7 @@ class DtsClient(AbstractClient):
 
 
     def ActivateSubscribe(self, request):
-        """This API is used to configure a data subscription, which can be called only for subscription instances in unconfigured status.
+        r"""This API is used to configure a data subscription, which can be called only for subscription instances in unconfigured status.
 
         :param request: Request instance for ActivateSubscribe.
         :type request: :class:`tencentcloud.dts.v20180330.models.ActivateSubscribeRequest`
@@ -50,7 +50,7 @@ class DtsClient(AbstractClient):
 
 
     def CompleteMigrateJob(self, request):
-        """This API (CompleteMigrateJob) is used to complete a data migration task.
+        r"""This API (CompleteMigrateJob) is used to complete a data migration task.
         For tasks in incremental migration mode, you need to call this API before migration gets ready, so as to stop migrating incremental data.
         If the task status queried through the (DescribeMigrateJobs) API is ready (status=8), you can call this API to complete the migration task.
 
@@ -75,7 +75,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrateCheckJob(self, request):
-        """This API is used to create a migration check task.
+        r"""This API is used to create a migration check task.
         Before migration, you should call this API to create a check. Migration will start only if the check succeeds. You can view the check result through the `DescribeMigrateCheckJob` API.
         After successful check, if the migration task needs to be modified, a new check task should be created and migration will begin only after the new check succeeds.
 
@@ -102,7 +102,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrateJob(self, request):
-        """This API (CreateMigrateJob) is used to create a data migration task.
+        r"""This API (CreateMigrateJob) is used to create a data migration task.
 
         For a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.
 
@@ -127,7 +127,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSubscribe(self, request):
-        """This API is used to create a data subscription instance.
+        r"""This API is used to create a data subscription instance.
 
         :param request: Request instance for CreateSubscribe.
         :type request: :class:`tencentcloud.dts.v20180330.models.CreateSubscribeRequest`
@@ -150,7 +150,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteMigrateJob(self, request):
-        """This API (DeleteMigrationJob) is used to delete a data migration task. If the task status queried through the DescribeMigrateJobs API is checking (status=3), running (status=7), ready (status=8), canceling (status=11), or completing (status=12), the task cannot be deleted.
+        r"""This API (DeleteMigrationJob) is used to delete a data migration task. If the task status queried through the DescribeMigrateJobs API is checking (status=3), running (status=7), ready (status=8), canceling (status=11), or completing (status=12), the task cannot be deleted.
 
         :param request: Request instance for DeleteMigrateJob.
         :type request: :class:`tencentcloud.dts.v20180330.models.DeleteMigrateJobRequest`
@@ -173,7 +173,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeAsyncRequestInfo(self, request):
-        """This API is used to query the execution result of a task.
+        r"""This API is used to query the execution result of a task.
 
         :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.dts.v20180330.models.DescribeAsyncRequestInfoRequest`
@@ -196,7 +196,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrateCheckJob(self, request):
-        """This API is used to get the check result and query check status and progress after a check is created.
+        r"""This API is used to get the check result and query check status and progress after a check is created.
         If the check succeeds, you can call the StartMigrateJob API to start migration.
         If the check fails, the reason can be queried. Please modify the migration configuration or adjust relevant parameters of the source/target instances through the ModifyMigrateJob API based on the error message.
 
@@ -221,7 +221,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrateJobs(self, request):
-        """This API is used to query data migration tasks.
+        r"""This API is used to query data migration tasks.
         For a finance zone linkage, please use the domain name https://dts.ap-shenzhen-fsi.tencentcloudapi.com.
 
         :param request: Request instance for DescribeMigrateJobs.
@@ -245,7 +245,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeConf(self, request):
-        """This API is used to query the subscription instance configuration.
+        r"""This API is used to query the subscription instance configuration.
 
         :param request: Request instance for DescribeSubscribeConf.
         :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribeConfRequest`
@@ -268,7 +268,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribes(self, request):
-        """This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.
+        r"""This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.
 
         :param request: Request instance for DescribeSubscribes.
         :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribesRequest`
@@ -291,7 +291,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSubscribe(self, request):
-        """This API is used to isolate an hourly billed subscription instance. After this API is called, the instance will become unavailable and billing will stop for it.
+        r"""This API is used to isolate an hourly billed subscription instance. After this API is called, the instance will become unavailable and billing will stop for it.
 
         :param request: Request instance for IsolateSubscribe.
         :type request: :class:`tencentcloud.dts.v20180330.models.IsolateSubscribeRequest`
@@ -314,7 +314,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateJob(self, request):
-        """This API (ModifyMigrateJob) is used to modify a data migration task.
+        r"""This API (ModifyMigrateJob) is used to modify a data migration task.
         If the status of a migration task is creating (status=1), check succeeded (status=4), check failed (status=5), or migration failed (status=10), this API can be called to modify the task, but the type of the source and target instances and the region of the target instance cannot be modified.
 
         For a finance zone linkage, please use the domain name dts.ap-shenzhen-fsi.tencentcloudapi.com.
@@ -340,7 +340,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeConsumeTime(self, request):
-        """This API is used to modify the consumption time point of a data subscription channel.
+        r"""This API is used to modify the consumption time point of a data subscription channel.
 
         :param request: Request instance for ModifySubscribeConsumeTime.
         :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeConsumeTimeRequest`
@@ -363,7 +363,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeName(self, request):
-        """This API is used to rename a data subscription instance.
+        r"""This API is used to rename a data subscription instance.
 
         :param request: Request instance for ModifySubscribeName.
         :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeNameRequest`
@@ -386,7 +386,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeObjects(self, request):
-        """This API is used to modify the subscription rule of a data subscription channel.
+        r"""This API is used to modify the subscription rule of a data subscription channel.
 
         :param request: Request instance for ModifySubscribeObjects.
         :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeObjectsRequest`
@@ -409,7 +409,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeVipVport(self, request):
-        """This API is used to modify the IP and port number of a data subscription instance.
+        r"""This API is used to modify the IP and port number of a data subscription instance.
 
         :param request: Request instance for ModifySubscribeVipVport.
         :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeVipVportRequest`
@@ -432,7 +432,7 @@ class DtsClient(AbstractClient):
 
 
     def OfflineIsolatedSubscribe(self, request):
-        """This API is used to deactivate an isolated data subscription instance.
+        r"""This API is used to deactivate an isolated data subscription instance.
 
         :param request: Request instance for OfflineIsolatedSubscribe.
         :type request: :class:`tencentcloud.dts.v20180330.models.OfflineIsolatedSubscribeRequest`
@@ -455,7 +455,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetSubscribe(self, request):
-        """This API is used to reset a data subscription instance. Once reset, an activated instance can be bound to other database instances through the `ActivateSubscribe` API.
+        r"""This API is used to reset a data subscription instance. Once reset, an activated instance can be bound to other database instances through the `ActivateSubscribe` API.
 
         :param request: Request instance for ResetSubscribe.
         :type request: :class:`tencentcloud.dts.v20180330.models.ResetSubscribeRequest`
@@ -478,7 +478,7 @@ class DtsClient(AbstractClient):
 
 
     def StartMigrateJob(self, request):
-        """This API (StartMigrationJob) is used to start a migration task. After the API is called, non-scheduled migration tasks will start the migration immediately, while scheduled tasks will start the countdown.
+        r"""This API (StartMigrationJob) is used to start a migration task. After the API is called, non-scheduled migration tasks will start the migration immediately, while scheduled tasks will start the countdown.
         Before calling this API, be sure to use the CreateMigrateCheckJob API to check the data migration task, which can be started only if its status queried through the DescribeMigrateJobs API is check succeeded (status=4).
 
         :param request: Request instance for StartMigrateJob.
@@ -502,7 +502,7 @@ class DtsClient(AbstractClient):
 
 
     def StopMigrateJob(self, request):
-        """This API (StopMigrateJob) is used to cancel a data migration task.
+        r"""This API (StopMigrateJob) is used to cancel a data migration task.
         During migration, this API can be used to cancel migration if the task status queried through the DescribeMigrateJobs API is running (status=7) or ready (status=8), and the migration task will fail.
 
         :param request: Request instance for StopMigrateJob.

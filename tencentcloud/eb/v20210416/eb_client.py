@@ -27,7 +27,7 @@ class EbClient(AbstractClient):
 
 
     def CheckRule(self, request):
-        """This API is used to check a rule.
+        r"""This API is used to check a rule.
 
         :param request: Request instance for CheckRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.CheckRuleRequest`
@@ -50,7 +50,7 @@ class EbClient(AbstractClient):
 
 
     def CheckTransformation(self, request):
-        """This API is used to test rules and data on the ETL configuration page.
+        r"""This API is used to test rules and data on the ETL configuration page.
 
         :param request: Request instance for CheckTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.CheckTransformationRequest`
@@ -73,7 +73,7 @@ class EbClient(AbstractClient):
 
 
     def CreateConnection(self, request):
-        """This API is used to create an event connector.
+        r"""This API is used to create an event connector.
 
         :param request: Request instance for CreateConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateConnectionRequest`
@@ -96,7 +96,7 @@ class EbClient(AbstractClient):
 
 
     def CreateEventBus(self, request):
-        """This API is used to create an event bus.
+        r"""This API is used to create an event bus.
 
         :param request: Request instance for CreateEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateEventBusRequest`
@@ -119,7 +119,7 @@ class EbClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API is used to create an event rule.
+        r"""This API is used to create an event rule.
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateRuleRequest`
@@ -142,7 +142,7 @@ class EbClient(AbstractClient):
 
 
     def CreateTarget(self, request):
-        """This API is used to create a delivery target.
+        r"""This API is used to create a delivery target.
 
         :param request: Request instance for CreateTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateTargetRequest`
@@ -165,7 +165,7 @@ class EbClient(AbstractClient):
 
 
     def CreateTransformation(self, request):
-        """This API is used to create a transformer.
+        r"""This API is used to create a transformer.
 
         :param request: Request instance for CreateTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.CreateTransformationRequest`
@@ -188,7 +188,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteConnection(self, request):
-        """This API is used to delete an event connector.
+        r"""This API is used to delete an event connector.
 
         :param request: Request instance for DeleteConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteConnectionRequest`
@@ -211,7 +211,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteEventBus(self, request):
-        """This API is used to delete an event bus.
+        r"""This API is used to delete an event bus.
 
         :param request: Request instance for DeleteEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteEventBusRequest`
@@ -234,7 +234,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """This API is used to delete an event rule.
+        r"""This API is used to delete an event rule.
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteRuleRequest`
@@ -257,7 +257,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteTarget(self, request):
-        """This API is used to delete a delivery target.
+        r"""This API is used to delete a delivery target.
 
         :param request: Request instance for DeleteTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteTargetRequest`
@@ -280,7 +280,7 @@ class EbClient(AbstractClient):
 
 
     def DeleteTransformation(self, request):
-        """This API is used to delete a transformer.
+        r"""This API is used to delete a transformer.
 
         :param request: Request instance for DeleteTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.DeleteTransformationRequest`
@@ -303,7 +303,7 @@ class EbClient(AbstractClient):
 
 
     def DescribeLogTagValue(self, request):
-        """This API is used to query log searching metric values.
+        r"""This API is used to query log searching metric values.
 
         :param request: Request instance for DescribeLogTagValue.
         :type request: :class:`tencentcloud.eb.v20210416.models.DescribeLogTagValueRequest`
@@ -326,7 +326,7 @@ class EbClient(AbstractClient):
 
 
     def GetEventBus(self, request):
-        """This API is used to get the details of an event bus.
+        r"""This API is used to get the details of an event bus.
 
         :param request: Request instance for GetEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetEventBusRequest`
@@ -349,7 +349,7 @@ class EbClient(AbstractClient):
 
 
     def GetRule(self, request):
-        """This API is used to get the details of an event rule.
+        r"""This API is used to get the details of an event rule.
 
         :param request: Request instance for GetRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetRuleRequest`
@@ -372,7 +372,7 @@ class EbClient(AbstractClient):
 
 
     def GetTransformation(self, request):
-        """This API is used to get the details of a transformer.
+        r"""This API is used to get the details of a transformer.
 
         :param request: Request instance for GetTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.GetTransformationRequest`
@@ -395,7 +395,7 @@ class EbClient(AbstractClient):
 
 
     def ListConnections(self, request):
-        """This API is used to get the list of event connectors.
+        r"""This API is used to get the list of event connectors.
 
         :param request: Request instance for ListConnections.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListConnectionsRequest`
@@ -418,7 +418,7 @@ class EbClient(AbstractClient):
 
 
     def ListEventBuses(self, request):
-        """This API is used to get the list of event buses.
+        r"""This API is used to get the list of event buses.
 
         :param request: Request instance for ListEventBuses.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListEventBusesRequest`
@@ -441,7 +441,7 @@ class EbClient(AbstractClient):
 
 
     def ListRules(self, request):
-        """This API is used to get the list of event rules.
+        r"""This API is used to get the list of event rules.
 
         :param request: Request instance for ListRules.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListRulesRequest`
@@ -464,7 +464,7 @@ class EbClient(AbstractClient):
 
 
     def ListTargets(self, request):
-        """This API is used to get the list delivery targets.
+        r"""This API is used to get the list delivery targets.
 
         :param request: Request instance for ListTargets.
         :type request: :class:`tencentcloud.eb.v20210416.models.ListTargetsRequest`
@@ -487,7 +487,7 @@ class EbClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """This API is used to query logs.
+        r"""This API is used to query logs.
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.eb.v20210416.models.SearchLogRequest`
@@ -510,7 +510,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateConnection(self, request):
-        """This API is used to update an event connector.
+        r"""This API is used to update an event connector.
 
         :param request: Request instance for UpdateConnection.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateConnectionRequest`
@@ -533,7 +533,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateEventBus(self, request):
-        """This API is used to update an event bus.
+        r"""This API is used to update an event bus.
 
         :param request: Request instance for UpdateEventBus.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateEventBusRequest`
@@ -556,7 +556,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateRule(self, request):
-        """This API is used to update an event rule.
+        r"""This API is used to update an event rule.
 
         :param request: Request instance for UpdateRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateRuleRequest`
@@ -579,7 +579,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateTarget(self, request):
-        """This API is used to update a delivery target.
+        r"""This API is used to update a delivery target.
 
         :param request: Request instance for UpdateTarget.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateTargetRequest`
@@ -602,7 +602,7 @@ class EbClient(AbstractClient):
 
 
     def UpdateTransformation(self, request):
-        """This API is used to update a transformer.
+        r"""This API is used to update a transformer.
 
         :param request: Request instance for UpdateTransformation.
         :type request: :class:`tencentcloud.eb.v20210416.models.UpdateTransformationRequest`

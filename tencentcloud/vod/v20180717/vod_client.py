@@ -27,7 +27,7 @@ class VodClient(AbstractClient):
 
 
     def ApplyUpload(self, request):
-        """* This API is used to apply for uploading a media file (and cover file) to VOD and obtain the metadata of file storage (including upload path and upload signature) for subsequent use by the uploading API.
+        r"""* This API is used to apply for uploading a media file (and cover file) to VOD and obtain the metadata of file storage (including upload path and upload signature) for subsequent use by the uploading API.
         * For the detailed upload process, please see [Overview of Upload from Client](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1).
 
         :param request: Request instance for ApplyUpload.
@@ -51,7 +51,7 @@ class VodClient(AbstractClient):
 
 
     def AttachMediaSubtitles(self, request):
-        """This API is used to associate/disassociate subtitles with/from a media file of a specific adaptive bitrate streaming template ID.
+        r"""This API is used to associate/disassociate subtitles with/from a media file of a specific adaptive bitrate streaming template ID.
 
         :param request: Request instance for AttachMediaSubtitles.
         :type request: :class:`tencentcloud.vod.v20180717.models.AttachMediaSubtitlesRequest`
@@ -74,7 +74,7 @@ class VodClient(AbstractClient):
 
 
     def CloneCDNDomain(self, request):
-        """Clone CDN Domain.
+        r"""Clone CDN Domain.
 
         :param request: Request instance for CloneCDNDomain.
         :type request: :class:`tencentcloud.vod.v20180717.models.CloneCDNDomainRequest`
@@ -97,7 +97,7 @@ class VodClient(AbstractClient):
 
 
     def CommitUpload(self, request):
-        """This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.
+        r"""This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.
 
         :param request: Request instance for CommitUpload.
         :type request: :class:`tencentcloud.vod.v20180717.models.CommitUploadRequest`
@@ -120,7 +120,7 @@ class VodClient(AbstractClient):
 
 
     def ComposeMedia(self, request):
-        """This API is used to compose a media file. You can use it to do the following:
+        r"""This API is used to compose a media file. You can use it to do the following:
 
         1. **Rotation/Flipping**: Rotate a video or image by a specific angle or flip a video or image.
         2. **Audio control**: Increase/Lower the volume of an audio/video file or mute an audio/video file.
@@ -154,7 +154,7 @@ class VodClient(AbstractClient):
 
 
     def ConfirmEvents(self, request):
-        """* After the `PullEvents` API is called to get an event, this API must be called to confirm that the message has been received;
+        r"""* After the `PullEvents` API is called to get an event, this API must be called to confirm that the message has been received;
         * After the event handler is obtained, the validity period of waiting for confirmation is 30 seconds. If the wait exceeds 30 seconds, a parameter error will be reported (4000);
         * For more information, please see the [reliable callback](https://intl.cloud.tencent.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) of event notification.
 
@@ -179,7 +179,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAIAnalysisTemplate(self, request):
-        """This API is used to create a custom video content analysis template. Up to 50 templates can be created.
+        r"""This API is used to create a custom video content analysis template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateAIAnalysisTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIAnalysisTemplateRequest`
@@ -202,7 +202,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAIRecognitionTemplate(self, request):
-        """This API is used to create a custom video content recognition template. Up to 50 templates can be created.
+        r"""This API is used to create a custom video content recognition template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateAIRecognitionTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIRecognitionTemplateRequest`
@@ -225,7 +225,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to create an adaptive bitrate streaming template. Up to 100 templates can be created.
+        r"""This API is used to create an adaptive bitrate streaming template. Up to 100 templates can be created.
 
         :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAdaptiveDynamicStreamingTemplateRequest`
@@ -248,7 +248,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAnimatedGraphicsTemplate(self, request):
-        """This API is used to create a custom animated image generating template. Up to 16 templates can be created.
+        r"""This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAnimatedGraphicsTemplateRequest`
@@ -271,7 +271,7 @@ class VodClient(AbstractClient):
 
 
     def CreateCDNDomain(self, request):
-        """This API is used for adding domain names to VOD. A user can add up to 20 domain names. 1. After the domain name is added successfully, VOD will carry out the deployment of the domain name. It takes approximately 2 minutes for the domain name to change from the deployment status to the online status.
+        r"""This API is used for adding domain names to VOD. A user can add up to 20 domain names. 1. After the domain name is added successfully, VOD will carry out the deployment of the domain name. It takes approximately 2 minutes for the domain name to change from the deployment status to the online status.
 
         :param request: Request instance for CreateCDNDomain.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateCDNDomainRequest`
@@ -294,7 +294,7 @@ class VodClient(AbstractClient):
 
 
     def CreateClass(self, request):
-        """* This API is used to categorize media assets for management;
+        r"""* This API is used to categorize media assets for management;
         * It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](https://intl.cloud.tencent.com/document/product/266/31762?from_cn_redirect=1) API.
         * There can be up to 4 levels of categories.
         * One category can have up to 500 subcategories under it.
@@ -320,7 +320,7 @@ class VodClient(AbstractClient):
 
 
     def CreateComplexAdaptiveDynamicStreamingTask(self, request):
-        """Initiate an adaptive bitrate streaming processing task, with the following features:
+        r"""Initiate an adaptive bitrate streaming processing task, with the following features:
         1. Output HLS and MPEG-DASH adaptive streams based on the specified templates;
         2. DRM options for the adaptive bitrate streaming include no encryption, Widevine, or FairPlay.
         3. The output adaptive bitrate streaming can include multiple audio streams in different languages, with each language sourced from different media files.
@@ -353,7 +353,7 @@ class VodClient(AbstractClient):
 
 
     def CreateContentReviewTemplate(self, request):
-        """We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [CreateReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84391?from_cn_redirect=1).
+        r"""We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [CreateReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84391?from_cn_redirect=1).
         This API is used to create a custom audio/video moderation template. Up to 50 templates can be created in total.
 
         :param request: Request instance for CreateContentReviewTemplate.
@@ -377,7 +377,7 @@ class VodClient(AbstractClient):
 
 
     def CreateDomainVerifyRecord(self, request):
-        """This API is used for generating a subdomain resolution, prompting the customer to add it to the domain name resolution, used for wildcard domain and domain name retrieval verification of ownership.
+        r"""This API is used for generating a subdomain resolution, prompting the customer to add it to the domain name resolution, used for wildcard domain and domain name retrieval verification of ownership.
 
         :param request: Request instance for CreateDomainVerifyRecord.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateDomainVerifyRecordRequest`
@@ -400,7 +400,7 @@ class VodClient(AbstractClient):
 
 
     def CreateEnhanceMediaTemplate(self, request):
-        """Create enhance media template.
+        r"""Create enhance media template.
 
         :param request: Request instance for CreateEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateEnhanceMediaTemplateRequest`
@@ -423,7 +423,7 @@ class VodClient(AbstractClient):
 
 
     def CreateHeadTailTemplate(self, request):
-        """Create HeadTail Template.
+        r"""Create HeadTail Template.
 
         :param request: Request instance for CreateHeadTailTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateHeadTailTemplateRequest`
@@ -446,7 +446,7 @@ class VodClient(AbstractClient):
 
 
     def CreateImageProcessingTemplate(self, request):
-        """This API is used to create a custom image processing template. A template can include at most 10 operations, for example, crop-scale-crop-blur-scale-crop-scale-crop-blur-scale. You can have up to 16 image processing templates.
+        r"""This API is used to create a custom image processing template. A template can include at most 10 operations, for example, crop-scale-crop-blur-scale-crop-scale-crop-blur-scale. You can have up to 16 image processing templates.
 
         :param request: Request instance for CreateImageProcessingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateRequest`
@@ -469,7 +469,7 @@ class VodClient(AbstractClient):
 
 
     def CreateImageSpriteTemplate(self, request):
-        """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
+        r"""This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateImageSpriteTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTemplateRequest`
@@ -492,7 +492,7 @@ class VodClient(AbstractClient):
 
 
     def CreateJustInTimeTranscodeTemplate(self, request):
-        """Create Just In Time Transcode Template.
+        r"""Create Just In Time Transcode Template.
 
         :param request: Request instance for CreateJustInTimeTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateJustInTimeTranscodeTemplateRequest`
@@ -515,7 +515,7 @@ class VodClient(AbstractClient):
 
 
     def CreatePersonSample(self, request):
-        """This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.
+        r"""This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.
 
         :param request: Request instance for CreatePersonSample.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreatePersonSampleRequest`
@@ -538,7 +538,7 @@ class VodClient(AbstractClient):
 
 
     def CreateProcedureTemplate(self, request):
-        """This API is used to create a custom task flow template. Up to 50 templates can be created.
+        r"""This API is used to create a custom task flow template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateProcedureTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateProcedureTemplateRequest`
@@ -561,7 +561,7 @@ class VodClient(AbstractClient):
 
 
     def CreateQualityInspectTemplate(self, request):
-        """Creates media quality inspection template.
+        r"""Creates media quality inspection template.
 
         :param request: Request instance for CreateQualityInspectTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateQualityInspectTemplateRequest`
@@ -584,7 +584,7 @@ class VodClient(AbstractClient):
 
 
     def CreateRebuildMediaTemplate(self, request):
-        """Create rebuild media template.
+        r"""Create rebuild media template.
 
         :param request: Request instance for CreateRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateRebuildMediaTemplateRequest`
@@ -607,7 +607,7 @@ class VodClient(AbstractClient):
 
 
     def CreateReviewTemplate(self, request):
-        """This API is used to create a custom moderation template. Up to 50 templates can be created in total.
+        r"""This API is used to create a custom moderation template. Up to 50 templates can be created in total.
         > The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
 
         :param request: Request instance for CreateReviewTemplate.
@@ -631,7 +631,7 @@ class VodClient(AbstractClient):
 
 
     def CreateRoundPlay(self, request):
-        """This API is used to create a playlist. You can create at most 100 playlists.
+        r"""This API is used to create a playlist. You can create at most 100 playlists.
         For each video on the list, you can either use the original file or a transcoding file.
         The files must be in HLS format. Preferably, they should have the same bitrate and resolution.
 
@@ -656,7 +656,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSampleSnapshotTemplate(self, request):
-        """This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
+        r"""This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSampleSnapshotTemplateRequest`
@@ -679,7 +679,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
+        r"""This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSnapshotByTimeOffsetTemplateRequest`
@@ -702,7 +702,7 @@ class VodClient(AbstractClient):
 
 
     def CreateStorageRegion(self, request):
-        """This API is used to enable storage in a region.
+        r"""This API is used to enable storage in a region.
           1. When you activate VOD, the system will enable storage for you in certain regions. If you need to store data in another region, you can use this API to enable storage in that region.
           2. You can use the `DescribeStorageRegions` API to query all supported storage regions and the regions you have storage access to currently.
 
@@ -727,7 +727,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSubAppId(self, request):
-        """This API is used to create a VOD subapplication.
+        r"""This API is used to create a VOD subapplication.
 
         :param request: Request instance for CreateSubAppId.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdRequest`
@@ -750,7 +750,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSuperPlayerConfig(self, request):
-        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        r"""We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
         This API is used to create a player configuration. Up to 100 configurations can be created.
 
         :param request: Request instance for CreateSuperPlayerConfig.
@@ -774,7 +774,7 @@ class VodClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """This API is used to create a custom transcoding template. Up to 100 templates can be created.
+        r"""This API is used to create a custom transcoding template. Up to 100 templates can be created.
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateTranscodeTemplateRequest`
@@ -797,7 +797,7 @@ class VodClient(AbstractClient):
 
 
     def CreateVodDomain(self, request):
-        """This API is used to add an acceleration domain name to VOD. One user can add up to 20 domain names.
+        r"""This API is used to add an acceleration domain name to VOD. One user can add up to 20 domain names.
         1. After a domain name is added, VOD will deploy it, and it takes about 2 minutes for the domain name status to change from `Deploying` to `Online`.
 
         :param request: Request instance for CreateVodDomain.
@@ -821,7 +821,7 @@ class VodClient(AbstractClient):
 
 
     def CreateWatermarkTemplate(self, request):
-        """This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
+        r"""This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
 
         :param request: Request instance for CreateWatermarkTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateWatermarkTemplateRequest`
@@ -844,7 +844,7 @@ class VodClient(AbstractClient):
 
 
     def CreateWordSamples(self, request):
-        """This API is used to create keyword samples in batches for using OCR and ASR technologies to perform video processing operations such as content recognition and inappropriate information recognition.
+        r"""This API is used to create keyword samples in batches for using OCR and ASR technologies to perform video processing operations such as content recognition and inappropriate information recognition.
 
         :param request: Request instance for CreateWordSamples.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateWordSamplesRequest`
@@ -867,7 +867,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteAIAnalysisTemplate(self, request):
-        """This API is used to delete a custom video content analysis template.
+        r"""This API is used to delete a custom video content analysis template.
 
         Note: templates with an ID below 10000 are preset and cannot be deleted.
 
@@ -892,7 +892,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteAIRecognitionTemplate(self, request):
-        """This API is used to delete a custom video content recognition template.
+        r"""This API is used to delete a custom video content recognition template.
 
         :param request: Request instance for DeleteAIRecognitionTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAIRecognitionTemplateRequest`
@@ -915,7 +915,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to delete an adaptive bitrate streaming template.
+        r"""This API is used to delete an adaptive bitrate streaming template.
 
         :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
@@ -938,7 +938,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteAnimatedGraphicsTemplate(self, request):
-        """This API is used to delete a custom animated image generating template.
+        r"""This API is used to delete a custom animated image generating template.
 
         :param request: Request instance for DeleteAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAnimatedGraphicsTemplateRequest`
@@ -961,7 +961,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteCDNDomain(self, request):
-        """Delete CDN Domain
+        r"""Delete CDN Domain
 
         :param request: Request instance for DeleteCDNDomain.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteCDNDomainRequest`
@@ -984,7 +984,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteClass(self, request):
-        """* A category can be deleted only if it has no subcategories and associated media files;
+        r"""* A category can be deleted only if it has no subcategories and associated media files;
         * Otherwise, [delete the media files](https://intl.cloud.tencent.com/document/product/266/31764?from_cn_redirect=1) and subcategories first before deleting the category.
 
         :param request: Request instance for DeleteClass.
@@ -1008,7 +1008,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        """We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [DeleteReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84390?from_cn_redirect=1).
+        r"""We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [DeleteReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84390?from_cn_redirect=1).
         This API is used to delete a custom audio/video moderation template.
 
         :param request: Request instance for DeleteContentReviewTemplate.
@@ -1032,7 +1032,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteEnhanceMediaTemplate(self, request):
-        """Delete Enhance Media template
+        r"""Delete Enhance Media template
 
         :param request: Request instance for DeleteEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteEnhanceMediaTemplateRequest`
@@ -1055,7 +1055,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteHeadTailTemplate(self, request):
-        """Delete HeadTail Template
+        r"""Delete HeadTail Template
 
         :param request: Request instance for DeleteHeadTailTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteHeadTailTemplateRequest`
@@ -1078,7 +1078,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteImageProcessingTemplate(self, request):
-        """This API is used to delete an image processing template.
+        r"""This API is used to delete an image processing template.
 
         :param request: Request instance for DeleteImageProcessingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteImageProcessingTemplateRequest`
@@ -1101,7 +1101,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteImageSpriteTemplate(self, request):
-        """This API is used to delete an image sprite generating template.
+        r"""This API is used to delete an image sprite generating template.
 
         :param request: Request instance for DeleteImageSpriteTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteImageSpriteTemplateRequest`
@@ -1124,7 +1124,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteJustInTimeTranscodeTemplate(self, request):
-        """Delete Just In Time Transcode Template.
+        r"""Delete Just In Time Transcode Template.
 
         :param request: Request instance for DeleteJustInTimeTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteJustInTimeTranscodeTemplateRequest`
@@ -1147,7 +1147,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteMedia(self, request):
-        """* This API is used to delete a media file and its processed files, such as the transcoded video files, image sprites, screenshots, and videos for publishing on WeChat.
+        r"""* This API is used to delete a media file and its processed files, such as the transcoded video files, image sprites, screenshots, and videos for publishing on WeChat.
         * You can delete the original files, transcoded video files, and videos for publishing on WeChat, etc. of videos with specified IDs.
         * Note: after the original file of a video is deleted, you cannot transcode the video, publish it on WeChat, or perform other operations on it.
 
@@ -1172,7 +1172,7 @@ class VodClient(AbstractClient):
 
 
     def DeletePersonSample(self, request):
-        """This API is used to delete samples according to sample IDs.
+        r"""This API is used to delete samples according to sample IDs.
 
         :param request: Request instance for DeletePersonSample.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeletePersonSampleRequest`
@@ -1195,7 +1195,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteProcedureTemplate(self, request):
-        """Delete user-created task flow templates.
+        r"""Delete user-created task flow templates.
 
         :param request: Request instance for DeleteProcedureTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteProcedureTemplateRequest`
@@ -1218,7 +1218,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteQualityInspectTemplate(self, request):
-        """Deletes media quality inspection template.
+        r"""Deletes media quality inspection template.
 
         :param request: Request instance for DeleteQualityInspectTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteQualityInspectTemplateRequest`
@@ -1241,7 +1241,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteRebuildMediaTemplate(self, request):
-        """Delete rebuild media template.
+        r"""Delete rebuild media template.
 
         :param request: Request instance for DeleteRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRebuildMediaTemplateRequest`
@@ -1264,7 +1264,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteReviewTemplate(self, request):
-        """This API is used to delete a custom moderation template.
+        r"""This API is used to delete a custom moderation template.
         > The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
 
         :param request: Request instance for DeleteReviewTemplate.
@@ -1288,7 +1288,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteRoundPlay(self, request):
-        """This API is used to delete a playlist.
+        r"""This API is used to delete a playlist.
 
         :param request: Request instance for DeleteRoundPlay.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRoundPlayRequest`
@@ -1311,7 +1311,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteSampleSnapshotTemplate(self, request):
-        """This API is used to delete a custom sampled screencapturing template.
+        r"""This API is used to delete a custom sampled screencapturing template.
 
         :param request: Request instance for DeleteSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSampleSnapshotTemplateRequest`
@@ -1334,7 +1334,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteSnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to delete a custom time point screencapturing template.
+        r"""This API is used to delete a custom time point screencapturing template.
 
         :param request: Request instance for DeleteSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSnapshotByTimeOffsetTemplateRequest`
@@ -1357,7 +1357,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteSuperPlayerConfig(self, request):
-        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        r"""We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
         This API is used to delete a player configuration.
         *Note: Preset player configurations cannot be deleted.*
 
@@ -1382,7 +1382,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteTranscodeTemplate(self, request):
-        """This API is used to delete a custom transcoding template.
+        r"""This API is used to delete a custom transcoding template.
 
         :param request: Request instance for DeleteTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteTranscodeTemplateRequest`
@@ -1405,7 +1405,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteVodDomain(self, request):
-        """This API is used to delete an acceleration domain name from VOD.
+        r"""This API is used to delete an acceleration domain name from VOD.
         1. Before deleting a domain name, disable its acceleration in all regions.
 
         :param request: Request instance for DeleteVodDomain.
@@ -1429,7 +1429,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteWatermarkTemplate(self, request):
-        """This API is used to delete a custom watermarking template.
+        r"""This API is used to delete a custom watermarking template.
 
         :param request: Request instance for DeleteWatermarkTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteWatermarkTemplateRequest`
@@ -1452,7 +1452,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteWordSamples(self, request):
-        """This API is used to delete keyword samples in batches.
+        r"""This API is used to delete keyword samples in batches.
 
         :param request: Request instance for DeleteWordSamples.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteWordSamplesRequest`
@@ -1475,7 +1475,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeAIAnalysisTemplates(self, request):
-        """This API is used to get the list of video content analysis templates based on unique template ID. The returned result includes all eligible custom and [preset video content analysis templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF).
+        r"""This API is used to get the list of video content analysis templates based on unique template ID. The returned result includes all eligible custom and [preset video content analysis templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF).
 
         :param request: Request instance for DescribeAIAnalysisTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAIAnalysisTemplatesRequest`
@@ -1498,7 +1498,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeAIRecognitionTemplates(self, request):
-        """This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF).
+        r"""This API is used to get the list of video content recognition templates based on unique template ID. The return result includes all eligible custom and [preset video content recognition templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF).
 
         :param request: Request instance for DescribeAIRecognitionTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAIRecognitionTemplatesRequest`
@@ -1521,7 +1521,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeAdaptiveDynamicStreamingTemplates(self, request):
-        """This API is used to query the list of transcoding to adaptive bitrate streaming templates and supports paged queries by filters.
+        r"""This API is used to query the list of transcoding to adaptive bitrate streaming templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeAdaptiveDynamicStreamingTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
@@ -1544,7 +1544,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeAllClass(self, request):
-        """* This API is used to get the information of all categories.
+        r"""* This API is used to get the information of all categories.
 
         :param request: Request instance for DescribeAllClass.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAllClassRequest`
@@ -1567,7 +1567,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeAnimatedGraphicsTemplates(self, request):
-        """This API is used to query the list of animated image generating templates and supports paged queries by filters.
+        r"""This API is used to query the list of animated image generating templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeAnimatedGraphicsTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesRequest`
@@ -1590,7 +1590,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCDNDomains(self, request):
-        """Describe CDN Domains
+        r"""Describe CDN Domains
 
         :param request: Request instance for DescribeCDNDomains.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCDNDomainsRequest`
@@ -1613,7 +1613,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCDNStatDetails(self, request):
-        """This API is used to query CDN bandwidth, traffic, and other data of VOD domain names.
+        r"""This API is used to query CDN bandwidth, traffic, and other data of VOD domain names.
         * The query period is up to 90 days.
         * You can query data of different service regions.
         * You can query data of Chinese mainland by region and ISP.
@@ -1639,7 +1639,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCDNUsageData(self, request):
-        """This API is used to query the CDN statistics of VOD such as traffic and bandwidth.
+        r"""This API is used to query the CDN statistics of VOD such as traffic and bandwidth.
            1. Only CDN usage data for the last 365 days can be queried.
            2. The query time range cannot be more than 90 days.
            3. The time granularity of usage data can be specified, including 5-minute, 1-hour, and 1-day.
@@ -1666,7 +1666,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCdnLogs(self, request):
-        """This API is used to query the download links of CDN access logs of a VOD domain name.
+        r"""This API is used to query the download links of CDN access logs of a VOD domain name.
             1. Only download links of CDN logs for the last 30 days can be queried.
             2. By default, CDN generates a log file every hour. If there is no CDN access for a certain hour, no log file will be generated for the hour.
             3. A CDN log download link is valid for 24 hours.
@@ -1692,7 +1692,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeClientUploadAccelerationUsageData(self, request):
-        """This interface returns client upload acceleration statistics within the query time range.
+        r"""This interface returns client upload acceleration statistics within the query time range.
          1. You can query the client upload acceleration statistics in the last 365 days.
          2. The query time span does not exceed 90 days.
          3. If the query time span exceeds 1 day, data with day granularity will be returned. Otherwise, data with 5-minute granularity will be returned.
@@ -1718,7 +1718,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [DescribeReviewTemplates](https://intl.cloud.tencent.com/document/api/266/84389?from_cn_redirect=1).
+        r"""We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [DescribeReviewTemplates](https://intl.cloud.tencent.com/document/api/266/84389?from_cn_redirect=1).
         This API is used to get the information of custom and [preset](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF) audio/video moderation templates based on template IDs.
 
         :param request: Request instance for DescribeContentReviewTemplates.
@@ -1742,7 +1742,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeCurrentPlaylist(self, request):
-        """Query current playlist of the round play.
+        r"""Query current playlist of the round play.
 
         :param request: Request instance for DescribeCurrentPlaylist.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCurrentPlaylistRequest`
@@ -1765,7 +1765,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeDailyPlayStatFileList(self, request):
-        """This API is used to query the download links of playback statistics files.
+        r"""This API is used to query the download links of playback statistics files.
         * You can query the download links of playback statistics files in the past year. The start and end dates for query cannot be more than 90 days apart.
         * Every day, VOD will analyze CDN request logs of the previous day and then generate a playback statistics file.
         * A playback statistics file includes playback times and traffic of media files.
@@ -1795,7 +1795,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeDrmKeyProviderInfo(self, request):
-        """This API is used to query DRM key information.
+        r"""This API is used to query DRM key information.
 
         :param request: Request instance for DescribeDrmKeyProviderInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDrmKeyProviderInfoRequest`
@@ -1818,7 +1818,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeEnhanceMediaTemplates(self, request):
-        """Describe Enhance Media Templates.
+        r"""Describe Enhance Media Templates.
 
         :param request: Request instance for DescribeEnhanceMediaTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeEnhanceMediaTemplatesRequest`
@@ -1841,7 +1841,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeEventConfig(self, request):
-        """Tencent Cloud VOD provides customers with services such as media upload, media management, and media processing. During or after the execution of these services, Tencent Cloud VOD also offers various corresponding event notifications to facilitate developers' awareness of the service processing status and to perform subsequent business operations. Developers can use this interface to query the current configuration of event notification reception methods, reception addresses, and which events have callback notification reception enabled.
+        r"""Tencent Cloud VOD provides customers with services such as media upload, media management, and media processing. During or after the execution of these services, Tencent Cloud VOD also offers various corresponding event notifications to facilitate developers' awareness of the service processing status and to perform subsequent business operations. Developers can use this interface to query the current configuration of event notification reception methods, reception addresses, and which events have callback notification reception enabled.
 
         :param request: Request instance for DescribeEventConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeEventConfigRequest`
@@ -1864,7 +1864,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeFileAttributes(self, request):
-        """This API is used to get file attributes asynchronously.
+        r"""This API is used to get file attributes asynchronously.
         - Currently, this API can only get the MD5 hash of a file.
         - If the file queried is in HLS or DASH format, the attributes of the index file will be returned.
 
@@ -1889,7 +1889,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeHeadTailTemplates(self, request):
-        """Describe HeadTail Templates.
+        r"""Describe HeadTail Templates.
 
         :param request: Request instance for DescribeHeadTailTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeHeadTailTemplatesRequest`
@@ -1912,7 +1912,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeImageProcessingTemplates(self, request):
-        """This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.
+        r"""This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.
 
         :param request: Request instance for DescribeImageProcessingTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageProcessingTemplatesRequest`
@@ -1935,7 +1935,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeImageReviewUsageData(self, request):
-        """This interface returns the image review usage information used every day within the query time range.
+        r"""This interface returns the image review usage information used every day within the query time range.
            1. You can query the image review statistics for the last 365 days.
            2. The query time span does not exceed 90 days.
            3. If the query time span exceeds 1 day, data with a granularity of days will be returned. Otherwise, data with a granularity of 5 minutes will be returned.
@@ -1961,7 +1961,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeImageSpriteTemplates(self, request):
-        """This API is used to query the list of image sprite generating templates and supports paged queries by filters.
+        r"""This API is used to query the list of image sprite generating templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeImageSpriteTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageSpriteTemplatesRequest`
@@ -1984,7 +1984,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeJustInTimeTranscodeTemplates(self, request):
-        """Describe Just In Time Transcode Templates.
+        r"""Describe Just In Time Transcode Templates.
 
         :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeJustInTimeTranscodeTemplatesRequest`
@@ -2007,7 +2007,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeLicenseUsageData(self, request):
-        """This interface returns information about the number of license requests per day within the query time range.
+        r"""This interface returns information about the number of license requests per day within the query time range.
            1. You can query the license request statistics in the last 365 days.
            2. The query time span does not exceed 90 days.
            3. If the query time span exceeds 1 day, data with a granularity of days will be returned. Otherwise, data with a granularity of 5 minutes will be returned.
@@ -2033,7 +2033,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeMediaInfos(self, request):
-        """1. This API is used to get the information of multiple media files. Specifically, the information returned is as follows:
+        r"""1. This API is used to get the information of multiple media files. Specifically, the information returned is as follows:
             1. `basicInfo`: Basic information including the file name, category, playback URL, and thumbnail.
             2. `metaData`: Metadata including the file size, duration, video stream information, and audio stream information.
             3. `transcodeInfo`: Transcoding information including the URLs, video stream parameters, and audio stream parameters of transcoding outputs.
@@ -2067,7 +2067,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeMediaPlayStatDetails(self, request):
-        """This API is used to query the playback statistics of a media file at the specified granularity.
+        r"""This API is used to query the playback statistics of a media file at the specified granularity.
         * You can query playback statistics in the past year.
         * If the granularity is an hour, the start and end time cannot be more than seven days apart.
         * If the granularity is a day, the start and end time cannot be more than 90 days apart.
@@ -2093,7 +2093,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeMediaProcessUsageData(self, request):
-        """This API is used to query the information of video processing usage within the specified time range.
+        r"""This API is used to query the information of video processing usage within the specified time range.
            1. Statistics on video processing for the last 365 days can be queried.
            2. The query time range cannot be more than 90 days.
 
@@ -2118,7 +2118,7 @@ class VodClient(AbstractClient):
 
 
     def DescribePersonSamples(self, request):
-        """This API is used to query the information of samples and supports paginated queries by sample ID, name, and tag.
+        r"""This API is used to query the information of samples and supports paginated queries by sample ID, name, and tag.
 
         :param request: Request instance for DescribePersonSamples.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribePersonSamplesRequest`
@@ -2141,7 +2141,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeProcedureTemplates(self, request):
-        """This API is used to get the list of task flow template details by task flow template name.
+        r"""This API is used to get the list of task flow template details by task flow template name.
 
         :param request: Request instance for DescribeProcedureTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeProcedureTemplatesRequest`
@@ -2164,7 +2164,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeQualityInspectTemplates(self, request):
-        """Get media quality inspection Template List.
+        r"""Get media quality inspection Template List.
 
         :param request: Request instance for DescribeQualityInspectTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeQualityInspectTemplatesRequest`
@@ -2187,7 +2187,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeRebuildMediaTemplates(self, request):
-        """Describe Rebuild Media Templates
+        r"""Describe Rebuild Media Templates
 
         :param request: Request instance for DescribeRebuildMediaTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeRebuildMediaTemplatesRequest`
@@ -2210,7 +2210,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeReviewDetails(self, request):
-        """<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>
+        r"""<b>This API is disused and replaced by [DescribeMediaProcessUsageData](https://intl.cloud.tencent.com/document/product/266/41464?from_cn_redirect=1).</b>
 
         This API returns the video content duration for intelligent recognition in seconds per day within the queried period.
 
@@ -2238,7 +2238,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeReviewTemplates(self, request):
-        """This API is used to get the information of moderation templates.
+        r"""This API is used to get the information of moderation templates.
         > The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
 
         :param request: Request instance for DescribeReviewTemplates.
@@ -2262,7 +2262,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeRoundPlays(self, request):
-        """This API is used to query playlists.
+        r"""This API is used to query playlists.
 
         :param request: Request instance for DescribeRoundPlays.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeRoundPlaysRequest`
@@ -2285,7 +2285,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSampleSnapshotTemplates(self, request):
-        """This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
+        r"""This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeSampleSnapshotTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSampleSnapshotTemplatesRequest`
@@ -2308,7 +2308,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSnapshotByTimeOffsetTemplates(self, request):
-        """This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
+        r"""This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeSnapshotByTimeOffsetTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSnapshotByTimeOffsetTemplatesRequest`
@@ -2331,7 +2331,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeStorageData(self, request):
-        """This API is used to query the storage capacity usage and number of files.
+        r"""This API is used to query the storage capacity usage and number of files.
 
         :param request: Request instance for DescribeStorageData.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDataRequest`
@@ -2354,7 +2354,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeStorageDetails(self, request):
-        """This API is used to query VOD storage usage in bytes within the query period.
+        r"""This API is used to query VOD storage usage in bytes within the query period.
             1. You can only query storage usage for the last 365 days.
             2. The query period is up to 90 days.
             3. The query period at minute-level granularity is up to 7 days.
@@ -2380,7 +2380,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeStorageRegions(self, request):
-        """This API is used to query the following information:
+        r"""This API is used to query the following information:
           1. All supported storage regions.
           2. The regions you have storage access to currently.
           3. The default storage region.
@@ -2406,7 +2406,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSubAppIds(self, request):
-        """This API is used to query the list of the primary application and subapplications of the current account.
+        r"""This API is used to query the list of the primary application and subapplications of the current account.
 
         :param request: Request instance for DescribeSubAppIds.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSubAppIdsRequest`
@@ -2429,7 +2429,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSuperPlayerConfigs(self, request):
-        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        r"""We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
         This API is used to query player configurations. It supports pagination.
 
         :param request: Request instance for DescribeSuperPlayerConfigs.
@@ -2453,7 +2453,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
+        r"""This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTaskDetailRequest`
@@ -2476,7 +2476,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """* This API is used to query the task list;
+        r"""* This API is used to query the task list;
         * If there are many data entries in the list, one single call of the API may not be able to pull the entire list. The `ScrollToken` parameter can be used to pull the list in batches;
         * Only tasks in the last three days (72 hours) can be queried.
 
@@ -2501,7 +2501,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeTranscodeTemplates(self, request):
-        """This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        r"""This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 
         :param request: Request instance for DescribeTranscodeTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTranscodeTemplatesRequest`
@@ -2524,7 +2524,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeVodDomains(self, request):
-        """This API is used to query the list of VOD domain names.
+        r"""This API is used to query the list of VOD domain names.
 
         :param request: Request instance for DescribeVodDomains.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVodDomainsRequest`
@@ -2547,7 +2547,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeWatermarkTemplates(self, request):
-        """This API is used to query custom watermarking templates and supports paged queries by filters.
+        r"""This API is used to query custom watermarking templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeWatermarkTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeWatermarkTemplatesRequest`
@@ -2570,7 +2570,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeWordSamples(self, request):
-        """This API is used to perform paginated queries of keyword sample information by use case, keyword, and tag.
+        r"""This API is used to perform paginated queries of keyword sample information by use case, keyword, and tag.
 
         :param request: Request instance for DescribeWordSamples.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeWordSamplesRequest`
@@ -2593,7 +2593,7 @@ class VodClient(AbstractClient):
 
 
     def EditMedia(self, request):
-        """Edit the video (cut, splice, etc.) to generate a new video. The editing functions include:
+        r"""Edit the video (cut, splice, etc.) to generate a new video. The editing functions include:
 
         1. Edit a file in the VOD video to generate a new video;
         2. Splice multiple files to generate a new video;
@@ -2630,7 +2630,7 @@ class VodClient(AbstractClient):
 
 
     def EnhanceMediaByTemplate(self, request):
-        """Enhance Media By Template.
+        r"""Enhance Media By Template.
 
         :param request: Request instance for EnhanceMediaByTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaByTemplateRequest`
@@ -2653,7 +2653,7 @@ class VodClient(AbstractClient):
 
 
     def EnhanceMediaQuality(self, request):
-        """Initiate a Remaster task for audio and video media in VOD
+        r"""Initiate a Remaster task for audio and video media in VOD
 
         :param request: Request instance for EnhanceMediaQuality.
         :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityRequest`
@@ -2676,7 +2676,7 @@ class VodClient(AbstractClient):
 
 
     def ExecuteFunction(self, request):
-        """This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.
+        r"""This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.
 
         :param request: Request instance for ExecuteFunction.
         :type request: :class:`tencentcloud.vod.v20180717.models.ExecuteFunctionRequest`
@@ -2699,7 +2699,7 @@ class VodClient(AbstractClient):
 
 
     def ExtractCopyRightWatermark(self, request):
-        """Extract CopyRight Watermark.
+        r"""Extract CopyRight Watermark.
 
         :param request: Request instance for ExtractCopyRightWatermark.
         :type request: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkRequest`
@@ -2722,7 +2722,7 @@ class VodClient(AbstractClient):
 
 
     def ExtractTraceWatermark(self, request):
-        """This API is used to extract the user ID of a user that distributed a video containing a digital watermark.
+        r"""This API is used to extract the user ID of a user that distributed a video containing a digital watermark.
 
         :param request: Request instance for ExtractTraceWatermark.
         :type request: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkRequest`
@@ -2745,7 +2745,7 @@ class VodClient(AbstractClient):
 
 
     def FastEditMedia(self, request):
-        """Implement quick concatenation and quick clipping for Tencent Cloud VOD's HLS videos to generate new media in HLS format. The video generated by quick concatenation or clipping will produce a new FileId and undergo solidification. After successful solidification, the new video file exists independently of the original input video and is not affected by deletions or other actions on the original video. <font color='red'>Note:</font> Enable the reception of persistence completed event notifications through the ModifyEvent config interface, and a PersistenceComplete type event notification will be received after successful solidification. Before receiving this event notification, operations such as deletion or cooling down of the original input video should not be performed, otherwise, abnormal playback may occur in the video generated by the concatenation and clipping.
+        r"""Implement quick concatenation and quick clipping for Tencent Cloud VOD's HLS videos to generate new media in HLS format. The video generated by quick concatenation or clipping will produce a new FileId and undergo solidification. After successful solidification, the new video file exists independently of the original input video and is not affected by deletions or other actions on the original video. <font color='red'>Note:</font> Enable the reception of persistence completed event notifications through the ModifyEvent config interface, and a PersistenceComplete type event notification will be received after successful solidification. Before receiving this event notification, operations such as deletion or cooling down of the original input video should not be performed, otherwise, abnormal playback may occur in the video generated by the concatenation and clipping.
 
         :param request: Request instance for FastEditMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.FastEditMediaRequest`
@@ -2768,7 +2768,7 @@ class VodClient(AbstractClient):
 
 
     def ForbidMediaDistribution(self, request):
-        """* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.
+        r"""* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.
           It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network.
 
         :param request: Request instance for ForbidMediaDistribution.
@@ -2792,7 +2792,7 @@ class VodClient(AbstractClient):
 
 
     def HandleCurrentPlaylist(self, request):
-        """Operate the current play list . Supported operations include:<li> Insert: Insert a playing program into the current playlist.</li><li> Delete: Remove a playing program from the playlist.</li>
+        r"""Operate the current play list . Supported operations include:<li> Insert: Insert a playing program into the current playlist.</li><li> Delete: Remove a playing program from the playlist.</li>
 
         :param request: Request instance for HandleCurrentPlaylist.
         :type request: :class:`tencentcloud.vod.v20180717.models.HandleCurrentPlaylistRequest`
@@ -2815,7 +2815,7 @@ class VodClient(AbstractClient):
 
 
     def InspectMediaQuality(self, request):
-        """Initiate media quality inspection task.
+        r"""Initiate media quality inspection task.
 
         :param request: Request instance for InspectMediaQuality.
         :type request: :class:`tencentcloud.vod.v20180717.models.InspectMediaQualityRequest`
@@ -2838,7 +2838,7 @@ class VodClient(AbstractClient):
 
 
     def LiveRealTimeClip(self, request):
-        """Live broadcast real-time editing means that during the live broadcast process (that is, before the live broadcast has ended), customers can select a section of past live broadcast content to generate a new video (HLS format) in real time. Developers can share it immediately, or permanently Save it.
+        r"""Live broadcast real-time editing means that during the live broadcast process (that is, before the live broadcast has ended), customers can select a section of past live broadcast content to generate a new video (HLS format) in real time. Developers can share it immediately, or permanently Save it.
 
         Tencent Cloud VOD supports two real-time editing modes:
         - Editing and solidification: Save the edited video as an independent video with an independent FileId; suitable for scenes where the highlight clips are saved for a long time;
@@ -2886,7 +2886,7 @@ class VodClient(AbstractClient):
 
 
     def ManageTask(self, request):
-        """This API is used to manage initiated tasks.
+        r"""This API is used to manage initiated tasks.
 
         :param request: Request instance for ManageTask.
         :type request: :class:`tencentcloud.vod.v20180717.models.ManageTaskRequest`
@@ -2909,7 +2909,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyAIAnalysisTemplate(self, request):
-        """This API is used to modify a custom video content analysis template.
+        r"""This API is used to modify a custom video content analysis template.
 
         Note: templates with an ID below 10000 are preset and cannot be modified.
 
@@ -2934,7 +2934,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyAIRecognitionTemplate(self, request):
-        """This API is used to modify a custom video content recognition template.
+        r"""This API is used to modify a custom video content recognition template.
 
         :param request: Request instance for ModifyAIRecognitionTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAIRecognitionTemplateRequest`
@@ -2957,7 +2957,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to modify an adaptive bitrate streaming template.
+        r"""This API is used to modify an adaptive bitrate streaming template.
 
         :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
@@ -2980,7 +2980,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyAnimatedGraphicsTemplate(self, request):
-        """This API is used to modify a custom animated image generating template.
+        r"""This API is used to modify a custom animated image generating template.
 
         :param request: Request instance for ModifyAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAnimatedGraphicsTemplateRequest`
@@ -3003,7 +3003,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyCDNDomainConfig(self, request):
-        """Modify CDN Domain Config.
+        r"""Modify CDN Domain Config.
 
         :param request: Request instance for ModifyCDNDomainConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyCDNDomainConfigRequest`
@@ -3026,7 +3026,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyClass(self, request):
-        """This API is used to modify the category of a media file.
+        r"""This API is used to modify the category of a media file.
 
         :param request: Request instance for ModifyClass.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyClassRequest`
@@ -3049,7 +3049,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyContentReviewTemplate(self, request):
-        """We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [ModifyReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84388?from_cn_redirect=1).
+        r"""We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [ModifyReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84388?from_cn_redirect=1).
         This API is used to modify a custom audio/video moderation template.
 
         :param request: Request instance for ModifyContentReviewTemplate.
@@ -3073,7 +3073,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyDefaultStorageRegion(self, request):
-        """This API is used to set the default storage region. A file will be stored in the default region if no region is specified for file upload.
+        r"""This API is used to set the default storage region. A file will be stored in the default region if no region is specified for file upload.
 
         :param request: Request instance for ModifyDefaultStorageRegion.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultStorageRegionRequest`
@@ -3096,7 +3096,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyEnhanceMediaTemplate(self, request):
-        """Modify enhance media template.
+        r"""Modify enhance media template.
 
         :param request: Request instance for ModifyEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyEnhanceMediaTemplateRequest`
@@ -3119,7 +3119,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyEventConfig(self, request):
-        """Tencent Cloud VOD provides customers with media upload, media management, media processing and other services. During or at the end of the execution of these services, Tencent Cloud On-Demand also provides various corresponding event notifications to facilitate developers to perceive the service processing status and Do the next business operation.
+        r"""Tencent Cloud VOD provides customers with media upload, media management, media processing and other services. During or at the end of the execution of these services, Tencent Cloud On-Demand also provides various corresponding event notifications to facilitate developers to perceive the service processing status and Do the next business operation.
 
         Developers can achieve this by calling this interface:
         - Set the type of callback notification received. Currently, there is [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33948) and [reliable notification based on message queue](https://www.tencentcloud.com/document/product/266/33948) two types.
@@ -3147,7 +3147,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyHeadTailTemplate(self, request):
-        """Modify HeadTail Template.
+        r"""Modify HeadTail Template.
 
         :param request: Request instance for ModifyHeadTailTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyHeadTailTemplateRequest`
@@ -3170,7 +3170,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyImageSpriteTemplate(self, request):
-        """This API is used to modify a custom image sprite generating template.
+        r"""This API is used to modify a custom image sprite generating template.
 
         :param request: Request instance for ModifyImageSpriteTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyImageSpriteTemplateRequest`
@@ -3193,7 +3193,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyJustInTimeTranscodeTemplate(self, request):
-        """Modify Just In Time Transcode Template.
+        r"""Modify Just In Time Transcode Template.
 
         :param request: Request instance for ModifyJustInTimeTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyJustInTimeTranscodeTemplateRequest`
@@ -3216,7 +3216,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyMediaInfo(self, request):
-        """This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, video thumbnail, and subtitle information.
+        r"""This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, video thumbnail, and subtitle information.
 
         :param request: Request instance for ModifyMediaInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaInfoRequest`
@@ -3239,7 +3239,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyMediaStorageClass(self, request):
-        """This API is used to modify the storage class of media files.
+        r"""This API is used to modify the storage class of media files.
         If the current storage class is STANDARD, it can be changed to one of the following classes:
         <li>STANDARD_IA</li>
         <li>ARCHIVE</li>
@@ -3274,7 +3274,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyPersonSample(self, request):
-        """This API is used to modify sample information according to the sample ID. You can modify the name and description, add, delete, and reset facial features or tags. Leave at least one image after deleting facial features. To leave no image, please use the reset operation.
+        r"""This API is used to modify sample information according to the sample ID. You can modify the name and description, add, delete, and reset facial features or tags. Leave at least one image after deleting facial features. To leave no image, please use the reset operation.
 
         :param request: Request instance for ModifyPersonSample.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyPersonSampleRequest`
@@ -3297,7 +3297,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyQualityInspectTemplate(self, request):
-        """Modifies media quality inspection template.
+        r"""Modifies media quality inspection template.
 
         :param request: Request instance for ModifyQualityInspectTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyQualityInspectTemplateRequest`
@@ -3320,7 +3320,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyRebuildMediaTemplate(self, request):
-        """Modify Rebuild Media Template.
+        r"""Modify Rebuild Media Template.
 
         :param request: Request instance for ModifyRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyRebuildMediaTemplateRequest`
@@ -3343,7 +3343,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyReviewTemplate(self, request):
-        """This API is used to modify a custom moderation template.
+        r"""This API is used to modify a custom moderation template.
         > The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
 
         :param request: Request instance for ModifyReviewTemplate.
@@ -3367,7 +3367,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyRoundPlay(self, request):
-        """This API is used to modify a playlist.
+        r"""This API is used to modify a playlist.
         The modification will only take effect for new playback requests. For ongoing playback, the old playlist will be playable for seven days after the modification.
 
         :param request: Request instance for ModifyRoundPlay.
@@ -3391,7 +3391,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySampleSnapshotTemplate(self, request):
-        """This API is used to modify a custom sampled screencapturing template.
+        r"""This API is used to modify a custom sampled screencapturing template.
 
         :param request: Request instance for ModifySampleSnapshotTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySampleSnapshotTemplateRequest`
@@ -3414,7 +3414,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to modify a custom time point screencapturing template.
+        r"""This API is used to modify a custom time point screencapturing template.
 
         :param request: Request instance for ModifySnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySnapshotByTimeOffsetTemplateRequest`
@@ -3437,7 +3437,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySubAppIdInfo(self, request):
-        """This API is used to modify subapplication information, but it is not allowed to modify primary application information.
+        r"""This API is used to modify subapplication information, but it is not allowed to modify primary application information.
 
         :param request: Request instance for ModifySubAppIdInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdInfoRequest`
@@ -3460,7 +3460,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySubAppIdStatus(self, request):
-        """This API is used to enable/disable a subapplication. After a subapplication is disabled, its corresponding domain name will be blocked and its access to the console will be restricted.
+        r"""This API is used to enable/disable a subapplication. After a subapplication is disabled, its corresponding domain name will be blocked and its access to the console will be restricted.
 
         :param request: Request instance for ModifySubAppIdStatus.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdStatusRequest`
@@ -3483,7 +3483,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySuperPlayerConfig(self, request):
-        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        r"""We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
         This API is used to modify a player configuration.
 
         :param request: Request instance for ModifySuperPlayerConfig.
@@ -3507,7 +3507,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyTranscodeTemplate(self, request):
-        """This API is used to modify a custom transcoding template.
+        r"""This API is used to modify a custom transcoding template.
 
         :param request: Request instance for ModifyTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyTranscodeTemplateRequest`
@@ -3530,7 +3530,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyVodDomainAccelerateConfig(self, request):
-        """This API is used to modify the acceleration region of a domain name on VOD.
+        r"""This API is used to modify the acceleration region of a domain name on VOD.
         1. You can modify acceleration regions of only domain names whose status is `Online`.
 
         :param request: Request instance for ModifyVodDomainAccelerateConfig.
@@ -3554,7 +3554,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyVodDomainConfig(self, request):
-        """This API is used to modify domain name settings, such as the hotlink protection configuration.
+        r"""This API is used to modify domain name settings, such as the hotlink protection configuration.
         1. You can modify settings of only domain names whose status is `Online`.
 
         :param request: Request instance for ModifyVodDomainConfig.
@@ -3578,7 +3578,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyWatermarkTemplate(self, request):
-        """This API is used to modify a custom watermarking template. The watermark type cannot be modified.
+        r"""This API is used to modify a custom watermarking template. The watermark type cannot be modified.
 
         :param request: Request instance for ModifyWatermarkTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyWatermarkTemplateRequest`
@@ -3601,7 +3601,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyWordSample(self, request):
-        """This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
+        r"""This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
 
         :param request: Request instance for ModifyWordSample.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyWordSampleRequest`
@@ -3624,7 +3624,7 @@ class VodClient(AbstractClient):
 
 
     def ParseStreamingManifest(self, request):
-        """This API is used to parse the index file content and return the list of segment files to be uploaded when an HLS video is uploaded. A segment file path must be a relative path of the current directory or subdirectory instead of a URL or absolute path.
+        r"""This API is used to parse the index file content and return the list of segment files to be uploaded when an HLS video is uploaded. A segment file path must be a relative path of the current directory or subdirectory instead of a URL or absolute path.
 
         :param request: Request instance for ParseStreamingManifest.
         :type request: :class:`tencentcloud.vod.v20180717.models.ParseStreamingManifestRequest`
@@ -3647,7 +3647,7 @@ class VodClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """Initiate processing tasks for media file in VOD, including:
+        r"""Initiate processing tasks for media file in VOD, including:
         1. Video transcoding (with Watermark);
         2. Video to animated image;
         3. Screencapturing the video at specified Time point;
@@ -3682,7 +3682,7 @@ class VodClient(AbstractClient):
 
 
     def ProcessMediaByMPS(self, request):
-        """This API is used to utilize the media processing capability of Media Processing Service (MPS) to initiate media processing for videos on VOD. When the task is initiated, relevant MPS parameters must be filled in the MPSProcessMediaParams parameter in JSON format. For detailed task parameter configuration, please refer to the [ProcessMedia API](https://www.tencentcloud.com/document/product/1041/33640).
+        r"""This API is used to utilize the media processing capability of Media Processing Service (MPS) to initiate media processing for videos on VOD. When the task is initiated, relevant MPS parameters must be filled in the MPSProcessMediaParams parameter in JSON format. For detailed task parameter configuration, please refer to the [ProcessMedia API](https://www.tencentcloud.com/document/product/1041/33640).
         Currently supported MPS features:
         1. [Smart Erase](https://www.tencentcloud.com/document/product/1041/58269): This function blurs, de-blurs, or removes traces of logos, subtitles, faces, and license plates in the video, facilitating content dissemination and sharing. The new media generated by this task will be stored in a new FileId within the sub-application of VOD.
         > Media processing tasks initiated in this way:
@@ -3711,7 +3711,7 @@ class VodClient(AbstractClient):
 
 
     def ProcessMediaByProcedure(self, request):
-        """This API is used to start a task flow on a video.
+        r"""This API is used to start a task flow on a video.
         There are two ways to create a task flow template:
         1. Create and modify a task flow template in the console;
         2. Create a task flow template using the `CreateProcedureTemplate` API.
@@ -3739,7 +3739,7 @@ class VodClient(AbstractClient):
 
 
     def ProcessMediaByUrl(self, request):
-        """This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, with the input parameter `InputInfo.UrlInputInfo.Url` set to a video URL.
+        r"""This API is <font color='red'>disused</font>, please use [ProcessMedia](https://intl.cloud.tencent.com/document/product/862/37578?from_cn_redirect=1) API of MPS, with the input parameter `InputInfo.UrlInputInfo.Url` set to a video URL.
 
         :param request: Request instance for ProcessMediaByUrl.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`
@@ -3762,7 +3762,7 @@ class VodClient(AbstractClient):
 
 
     def PullEvents(self, request):
-        """* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948).
+        r"""* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948).
         * The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.
         * The request can be suspended for up to 5 seconds. It's recommended to set the request timeout period to 10 seconds.
         * Event notifications not pulled will be retained for up to 4 days and may be cleared after this period.
@@ -3790,7 +3790,7 @@ class VodClient(AbstractClient):
 
 
     def PullUpload(self, request):
-        """This API is used to pull a video on the internet to the VOD platform.
+        r"""This API is used to pull a video on the internet to the VOD platform.
 
         :param request: Request instance for PullUpload.
         :type request: :class:`tencentcloud.vod.v20180717.models.PullUploadRequest`
@@ -3813,7 +3813,7 @@ class VodClient(AbstractClient):
 
 
     def PushUrlCache(self, request):
-        """1. This API is used to prefetch a list of specified URLs.
+        r"""1. This API is used to prefetch a list of specified URLs.
         2. The URL domain names must have already been registered with VOD.
         3. Up to 20 URLs can be specified in one request.
         4. By default, the maximum number of URLs that can be refreshed per day is 10,000.
@@ -3839,7 +3839,7 @@ class VodClient(AbstractClient):
 
 
     def RebuildMedia(self, request):
-        """Initiate rebuild media
+        r"""Initiate rebuild media
 
         :param request: Request instance for RebuildMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaRequest`
@@ -3862,7 +3862,7 @@ class VodClient(AbstractClient):
 
 
     def RebuildMediaByTemplate(self, request):
-        """Rebuild media by template.
+        r"""Rebuild media by template.
 
         :param request: Request instance for RebuildMediaByTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaByTemplateRequest`
@@ -3885,7 +3885,7 @@ class VodClient(AbstractClient):
 
 
     def RefreshUrlCache(self, request):
-        """1. This API is used to purge URLs.
+        r"""1. This API is used to purge URLs.
         2. The URL domain names must have already been registered with VOD.
         3. Up to 20 URLs can be specified in one request.
         4. By default, the maximum number of URLs allowed for purge per day is 100,000.
@@ -3911,7 +3911,7 @@ class VodClient(AbstractClient):
 
 
     def RemoveWatermark(self, request):
-        """This API is used to remove watermarks from a video.
+        r"""This API is used to remove watermarks from a video.
 
         :param request: Request instance for RemoveWatermark.
         :type request: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkRequest`
@@ -3934,7 +3934,7 @@ class VodClient(AbstractClient):
 
 
     def ResetProcedureTemplate(self, request):
-        """This API is used to modify a custom task flow template.
+        r"""This API is used to modify a custom task flow template.
 
         :param request: Request instance for ResetProcedureTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ResetProcedureTemplateRequest`
@@ -3957,7 +3957,7 @@ class VodClient(AbstractClient):
 
 
     def RestoreMedia(self, request):
-        """This API is used to restore files from ARCHIVE or DEEP ARCHIVE. Files stored in ARCHIVE or DEEP ARCHIVE must be restored before they can be accessed. Restored files are available for a limited period of time.
+        r"""This API is used to restore files from ARCHIVE or DEEP ARCHIVE. Files stored in ARCHIVE or DEEP ARCHIVE must be restored before they can be accessed. Restored files are available for a limited period of time.
 
         :param request: Request instance for RestoreMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.RestoreMediaRequest`
@@ -3980,7 +3980,7 @@ class VodClient(AbstractClient):
 
 
     def ReviewAudioVideo(self, request):
-        """This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, speech, and voice.
+        r"""This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, speech, and voice.
 
         If event notifications are used, the event type is [ReviewAudioVideoComplete](https://intl.cloud.tencent.com/document/product/266/81258?from_cn_redirect=1).
 
@@ -4005,7 +4005,7 @@ class VodClient(AbstractClient):
 
 
     def ReviewImage(self, request):
-        """This API is used to moderate an image stored in VOD (detect pornographic and terrorist content).><li>The image file must be smaller than 5 MB.</li> ><li>To ensure the accuracy of moderation results, the image resolution must be higher than 256 x 256 px.</li> ><li>The format must be PNG, JPG, JPEG, BMP, GIF, or WEBP.</li>
+        r"""This API is used to moderate an image stored in VOD (detect pornographic and terrorist content).><li>The image file must be smaller than 5 MB.</li> ><li>To ensure the accuracy of moderation results, the image resolution must be higher than 256 x 256 px.</li> ><li>The format must be PNG, JPG, JPEG, BMP, GIF, or WEBP.</li>
 
         :param request: Request instance for ReviewImage.
         :type request: :class:`tencentcloud.vod.v20180717.models.ReviewImageRequest`
@@ -4028,7 +4028,7 @@ class VodClient(AbstractClient):
 
 
     def SearchMedia(self, request):
-        """Search for media information, supporting multiple condition filtering, as well as sorting and filtering of returned results. This includes:
+        r"""Search for media information, supporting multiple condition filtering, as well as sorting and filtering of returned results. This includes:
         - Specify a collection of file IDs (FileIds) to return media with any ID in the collection.
         - Fuzzy search based on multiple media file names (Names) or description information (Descriptions).
         - Search based on multiple file name prefixes (NamePrefixes).
@@ -4091,7 +4091,7 @@ class VodClient(AbstractClient):
 
 
     def SetDrmKeyProviderInfo(self, request):
-        """This API is used to configure DRM key information.
+        r"""This API is used to configure DRM key information.
 
         :param request: Request instance for SetDrmKeyProviderInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.SetDrmKeyProviderInfoRequest`
@@ -4114,7 +4114,7 @@ class VodClient(AbstractClient):
 
 
     def SetVodDomainCertificate(self, request):
-        """Set Vod Domain Certificate.
+        r"""Set Vod Domain Certificate.
 
         :param request: Request instance for SetVodDomainCertificate.
         :type request: :class:`tencentcloud.vod.v20180717.models.SetVodDomainCertificateRequest`
@@ -4137,7 +4137,7 @@ class VodClient(AbstractClient):
 
 
     def SimpleHlsClip(self, request):
-        """This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.
+        r"""This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.
 
         VOD supports two types of clipping:
         - Clipping for persistent storage: The video clip is saved as an independent video file with its own `FileId`.
@@ -4184,7 +4184,7 @@ class VodClient(AbstractClient):
 
 
     def SplitMedia(self, request):
-        """Split the video into strips to generate multiple new videos.
+        r"""Split the video into strips to generate multiple new videos.
 
         :param request: Request instance for SplitMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.SplitMediaRequest`
@@ -4207,7 +4207,7 @@ class VodClient(AbstractClient):
 
 
     def StartCDNDomain(self, request):
-        """This API is used for enabling/disabling the CDN acceleration domain.
+        r"""This API is used for enabling/disabling the CDN acceleration domain.
 
         :param request: Request instance for StartCDNDomain.
         :type request: :class:`tencentcloud.vod.v20180717.models.StartCDNDomainRequest`
@@ -4230,7 +4230,7 @@ class VodClient(AbstractClient):
 
 
     def VerifyDomainRecord(self, request):
-        """This API is used to verify the domain name resolution value.
+        r"""This API is used to verify the domain name resolution value.
 
         :param request: Request instance for VerifyDomainRecord.
         :type request: :class:`tencentcloud.vod.v20180717.models.VerifyDomainRecordRequest`

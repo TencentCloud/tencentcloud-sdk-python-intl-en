@@ -27,7 +27,7 @@ class DmsClient(AbstractClient):
 
 
     def SendEmail(self, request):
-        """This API is used to send regular emails.
+        r"""This API is used to send regular emails.
 
         :param request: Request instance for SendEmail.
         :type request: :class:`tencentcloud.dms.v20200819.models.SendEmailRequest`
@@ -50,7 +50,7 @@ class DmsClient(AbstractClient):
 
 
     def SendTemplatedEmail(self, request):
-        """This API is used to send template emails.
+        r"""This API is used to send template emails.
 
         :param request: Request instance for SendTemplatedEmail.
         :type request: :class:`tencentcloud.dms.v20200819.models.SendTemplatedEmailRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AnalyzeFaceRequest(AbstractModel):
-    """AnalyzeFace request structure.
+    r"""AnalyzeFace request structure.
 
     """
 
@@ -59,7 +59,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def Mode(self):
-        """Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.
+        r"""Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.
         :rtype: int
         """
         return self._Mode
@@ -70,7 +70,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -83,7 +83,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -99,7 +99,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 
 Currently, `2.0` and `3.0` are supported.
 
@@ -118,7 +118,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -145,7 +145,7 @@ Different algorithm model versions correspond to different face recognition algo
 
 
 class AnalyzeFaceResponse(AbstractModel):
-    """AnalyzeFace response structure.
+    r"""AnalyzeFace response structure.
 
     """
 
@@ -170,7 +170,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """Width of requested image.
+        r"""Width of requested image.
         :rtype: int
         """
         return self._ImageWidth
@@ -181,7 +181,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """Height of requested image.
+        r"""Height of requested image.
         :rtype: int
         """
         return self._ImageHeight
@@ -192,7 +192,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def FaceShapeSet(self):
-        """Specific information of facial feature localization (facial keypoints).
+        r"""Specific information of facial feature localization (facial keypoints).
         :rtype: list of FaceShape
         """
         return self._FaceShapeSet
@@ -203,7 +203,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -214,7 +214,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -238,7 +238,7 @@ class AnalyzeFaceResponse(AbstractModel):
 
 
 class AttributeItem(AbstractModel):
-    """Face attribute information
+    r"""Face attribute information
 
     """
 
@@ -254,7 +254,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def Type(self):
-        """Attribute value
+        r"""Attribute value
         :rtype: int
         """
         return self._Type
@@ -265,7 +265,7 @@ class AttributeItem(AbstractModel):
 
     @property
     def Probability(self):
-        """Probability of recognizing `Type`, which indicates the probability of correct recognition. Value range: [0,1].
+        r"""Probability of recognizing `Type`, which indicates the probability of correct recognition. Value range: [0,1].
         :rtype: float
         """
         return self._Probability
@@ -289,7 +289,7 @@ class AttributeItem(AbstractModel):
 
 
 class Candidate(AbstractModel):
-    """Most matching candidate recognized
+    r"""Most matching candidate recognized
 
     """
 
@@ -326,7 +326,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonId(self):
-        """Person ID
+        r"""Person ID
         :rtype: str
         """
         return self._PersonId
@@ -337,7 +337,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceId(self):
-        """Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.
+        r"""Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.
         :rtype: str
         """
         return self._FaceId
@@ -348,7 +348,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """Match score of candidate. 
+        r"""Match score of candidate. 
 
 In a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;
 In a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;
@@ -365,7 +365,7 @@ Generally, the score of 80 is suitable for most scenarios. We recommend choosing
 
     @property
     def PersonName(self):
-        """Person name
+        r"""Person name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -377,7 +377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Gender(self):
-        """Person gender
+        r"""Person gender
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -389,7 +389,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonGroupInfos(self):
-        """List of groups containing this person and their description fields
+        r"""List of groups containing this person and their description fields
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of PersonGroupInfo
         """
@@ -423,7 +423,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CompareFaceRequest(AbstractModel):
-    """CompareFace request structure.
+    r"""CompareFace request structure.
 
     """
 
@@ -487,7 +487,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def ImageA(self):
-        """Base64-encoded data of image A, which cannot exceed 5 MB.
+        r"""Base64-encoded data of image A, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
@@ -501,7 +501,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def ImageB(self):
-        """Base64-encoded data of image B, which cannot exceed 5 MB.
+        r"""Base64-encoded data of image B, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
@@ -515,7 +515,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def UrlA(self):
-        """URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image A must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -532,7 +532,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def UrlB(self):
-        """URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` of image B must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -549,7 +549,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 
 Currently, `2.0` and `3.0` are supported.
 
@@ -568,7 +568,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -586,7 +586,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -615,7 +615,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class CompareFaceResponse(AbstractModel):
-    """CompareFace response structure.
+    r"""CompareFace response structure.
 
     """
 
@@ -638,7 +638,7 @@ If you need to verify whether the faces in the two images are the same person, w
 
     @property
     def Score(self):
-        """Face similarity score between two images.
+        r"""Face similarity score between two images.
 The returned similarity score varies by algorithm version. 
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person. 
 The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person. 
@@ -653,7 +653,7 @@ If you need to verify whether the faces in the two images are the same person, w
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -664,7 +664,7 @@ If you need to verify whether the faces in the two images are the same person, w
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -681,7 +681,7 @@ If you need to verify whether the faces in the two images are the same person, w
 
 
 class CopyPersonRequest(AbstractModel):
-    """CopyPerson request structure.
+    r"""CopyPerson request structure.
 
     """
 
@@ -697,7 +697,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -708,7 +708,7 @@ class CopyPersonRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.
         :rtype: list of str
         """
         return self._GroupIds
@@ -732,7 +732,7 @@ class CopyPersonRequest(AbstractModel):
 
 
 class CopyPersonResponse(AbstractModel):
-    """CopyPerson response structure.
+    r"""CopyPerson response structure.
 
     """
 
@@ -751,7 +751,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupNum(self):
-        """Number of groups successfully added to.
+        r"""Number of groups successfully added to.
         :rtype: int
         """
         return self._SucGroupNum
@@ -762,7 +762,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def SucGroupIds(self):
-        """List of groups successfully added to.
+        r"""List of groups successfully added to.
         :rtype: list of str
         """
         return self._SucGroupIds
@@ -773,7 +773,7 @@ class CopyPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -790,7 +790,7 @@ class CopyPersonResponse(AbstractModel):
 
 
 class CreateFaceRequest(AbstractModel):
-    """CreateFace request structure.
+    r"""CreateFace request structure.
 
     """
 
@@ -837,7 +837,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -848,7 +848,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Images(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 A person can have up to 5 face images.
 If there are multiple faces in the image, only the face with the largest size will be selected.
@@ -863,7 +863,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Urls(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -881,7 +881,7 @@ If there are multiple faces in the image, only the face with the largest size wi
 
     @property
     def FaceMatchThreshold(self):
-        """Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
+        r"""Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. 
 Default value: 60. Value range: [0,100].
         :rtype: float
         """
@@ -893,7 +893,7 @@ Default value: 60. Value range: [0,100].
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -911,7 +911,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -939,7 +939,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class CreateFaceResponse(AbstractModel):
-    """CreateFace response structure.
+    r"""CreateFace response structure.
 
     """
 
@@ -974,7 +974,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceNum(self):
-        """Number of successfully added faces
+        r"""Number of successfully added faces
         :rtype: int
         """
         return self._SucFaceNum
@@ -985,7 +985,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceIds(self):
-        """List of IDs of successfully added faces
+        r"""List of IDs of successfully added faces
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -996,7 +996,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def RetCode(self):
-        """Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
+        r"""Adding result for each face image. -1101: no face detected; -1102: image decoding failed; 
 -1601: the image quality control requirement is not met; -1604: the face similarity is not above `FaceMatchThreshold`. 
 Other non-zero values: algorithm service exception. 
 The order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.
@@ -1010,7 +1010,7 @@ The order of `RetCode` values is the same as the order of `Images` or `Urls` in 
 
     @property
     def SucIndexes(self):
-        """Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
+        r"""Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. 
 For example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].
         :rtype: list of int non-negative
         """
@@ -1022,7 +1022,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def SucFaceRects(self):
-        """Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.
+        r"""Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.
         :rtype: list of FaceRect
         """
         return self._SucFaceRects
@@ -1033,7 +1033,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1044,7 +1044,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1070,7 +1070,7 @@ For example, if there are 3 URLs in `Urls`, and the second URL fails, then the v
 
 
 class CreateGroupRequest(AbstractModel):
-    """CreateGroup request structure.
+    r"""CreateGroup request structure.
 
     """
 
@@ -1109,7 +1109,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def GroupName(self):
-        """Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.
+        r"""Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.
         :rtype: str
         """
         return self._GroupName
@@ -1120,7 +1120,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def GroupId(self):
-        """Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        r"""Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
         :rtype: str
         """
         return self._GroupId
@@ -1131,7 +1131,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def GroupExDescriptions(self):
-        """Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. 
+        r"""Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. 
 Up to 5 ones can be created. 
 Each custom description field can contain 1 to 30 characters. 
 The custom description field must be unique in the group. 
@@ -1148,7 +1148,7 @@ You can enter content in the corresponding field to register a person's student 
 
     @property
     def Tag(self):
-        """Group remarks, which can contain 0 to 40 characters.
+        r"""Group remarks, which can contain 0 to 40 characters.
         :rtype: str
         """
         return self._Tag
@@ -1159,7 +1159,7 @@ You can enter content in the corresponding field to register a person's student 
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 
 Currently, `2.0` and `3.0` are supported.
 
@@ -1194,7 +1194,7 @@ Different algorithm model versions correspond to different face recognition algo
 
 
 class CreateGroupResponse(AbstractModel):
-    """CreateGroup response structure.
+    r"""CreateGroup response structure.
 
     """
 
@@ -1210,7 +1210,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1221,7 +1221,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1237,7 +1237,7 @@ class CreateGroupResponse(AbstractModel):
 
 
 class CreatePersonRequest(AbstractModel):
-    """CreatePerson request structure.
+    r"""CreatePerson request structure.
 
     """
 
@@ -1300,7 +1300,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def GroupId(self):
-        """ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
+        r"""ID of the group to join, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -1311,7 +1311,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonName(self):
-        """Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
+        r"""Person name, which can contain 1 to 60 characters and is modifiable and repeatable.
         :rtype: str
         """
         return self._PersonName
@@ -1322,7 +1322,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonId(self):
-        """Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
+        r"""Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.
         :rtype: str
         """
         return self._PersonId
@@ -1333,7 +1333,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Gender(self):
-        """0: empty; 1: male; 2: female.
+        r"""0: empty; 1: male; 2: female.
         :rtype: int
         """
         return self._Gender
@@ -1344,7 +1344,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonExDescriptionInfos(self):
-        """Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
+        r"""Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -1355,7 +1355,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -1368,7 +1368,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -1384,7 +1384,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def UniquePersonControl(self):
-        """This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
+        r"""This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. 
 If it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. 
 Otherwise, the new person will be created. 
 0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. 
@@ -1404,7 +1404,7 @@ Note: the higher the requirement, the lower the probability of duplicate person.
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -1422,7 +1422,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -1459,7 +1459,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class CreatePersonResponse(AbstractModel):
-    """CreatePerson response structure.
+    r"""CreatePerson response structure.
 
     """
 
@@ -1486,7 +1486,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceId(self):
-        """Unique ID of face image.
+        r"""Unique ID of face image.
         :rtype: str
         """
         return self._FaceId
@@ -1497,7 +1497,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceRect(self):
-        """Position of detected face frame.
+        r"""Position of detected face frame.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
@@ -1509,7 +1509,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SimilarPersonId(self):
-        """`PersonId` of suspected duplicate person. 
+        r"""`PersonId` of suspected duplicate person. 
 This parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.
         :rtype: str
         """
@@ -1521,7 +1521,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -1532,7 +1532,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1553,7 +1553,7 @@ This parameter is meaningful only if the `UniquePersonControl` parameter is not 
 
 
 class DeleteFaceRequest(AbstractModel):
-    """DeleteFace request structure.
+    r"""DeleteFace request structure.
 
     """
 
@@ -1569,7 +1569,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -1580,7 +1580,7 @@ class DeleteFaceRequest(AbstractModel):
 
     @property
     def FaceIds(self):
-        """List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.
+        r"""List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.
         :rtype: list of str
         """
         return self._FaceIds
@@ -1604,7 +1604,7 @@ class DeleteFaceRequest(AbstractModel):
 
 
 class DeleteFaceResponse(AbstractModel):
-    """DeleteFace response structure.
+    r"""DeleteFace response structure.
 
     """
 
@@ -1623,7 +1623,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucDeletedNum(self):
-        """Number of successfully deleted faces
+        r"""Number of successfully deleted faces
         :rtype: int
         """
         return self._SucDeletedNum
@@ -1634,7 +1634,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def SucFaceIds(self):
-        """List of IDs of successfully deleted faces
+        r"""List of IDs of successfully deleted faces
         :rtype: list of str
         """
         return self._SucFaceIds
@@ -1645,7 +1645,7 @@ class DeleteFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1662,7 +1662,7 @@ class DeleteFaceResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup request structure.
+    r"""DeleteGroup request structure.
 
     """
 
@@ -1675,7 +1675,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -1698,7 +1698,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup response structure.
+    r"""DeleteGroup response structure.
 
     """
 
@@ -1711,7 +1711,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1726,7 +1726,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeletePersonFromGroupRequest(AbstractModel):
-    """DeletePersonFromGroup request structure.
+    r"""DeletePersonFromGroup request structure.
 
     """
 
@@ -1742,7 +1742,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -1753,7 +1753,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -1777,7 +1777,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
 
 class DeletePersonFromGroupResponse(AbstractModel):
-    """DeletePersonFromGroup response structure.
+    r"""DeletePersonFromGroup response structure.
 
     """
 
@@ -1790,7 +1790,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1805,7 +1805,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
 
 class DeletePersonRequest(AbstractModel):
-    """DeletePerson request structure.
+    r"""DeletePerson request structure.
 
     """
 
@@ -1818,7 +1818,7 @@ class DeletePersonRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -1841,7 +1841,7 @@ class DeletePersonRequest(AbstractModel):
 
 
 class DeletePersonResponse(AbstractModel):
-    """DeletePerson response structure.
+    r"""DeletePerson response structure.
 
     """
 
@@ -1854,7 +1854,7 @@ class DeletePersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1869,7 +1869,7 @@ class DeletePersonResponse(AbstractModel):
 
 
 class DetectFaceAttributesRequest(AbstractModel):
-    """DetectFaceAttributes request structure.
+    r"""DetectFaceAttributes request structure.
 
     """
 
@@ -1913,7 +1913,7 @@ The face attribute information of up to 5 largest faces in the image will be ret
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of processable faces. 
+        r"""Maximum number of processable faces. 
 Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
 This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
         :rtype: int
@@ -1926,7 +1926,7 @@ This parameter is used to control the number of faces in the image to be detecte
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. 
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -1939,7 +1939,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. 
+        r"""Image URL. 
 The image cannot exceed 5 MB in size after being Base64-encoded. 
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
@@ -1956,7 +1956,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def FaceAttributesType(self):
-        """Whether to return attributes such as age, gender, and emotion. 
+        r"""Whether to return attributes such as age, gender, and emotion. 
 Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
   
 `None` indicates that no attributes need to be returned, which is the default value; that is, if the `FaceAttributesType` attribute is empty, the values of all attributes will be `0`.
@@ -1973,7 +1973,7 @@ The face attribute information of up to 5 largest faces in the image will be ret
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -1984,7 +1984,7 @@ The face attribute information of up to 5 largest faces in the image will be ret
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
+        r"""Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2012,7 +2012,7 @@ The face attribute information of up to 5 largest faces in the image will be ret
 
 
 class DetectFaceAttributesResponse(AbstractModel):
-    """DetectFaceAttributes response structure.
+    r"""DetectFaceAttributes response structure.
 
     """
 
@@ -2037,7 +2037,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """Width of requested image.
+        r"""Width of requested image.
         :rtype: int
         """
         return self._ImageWidth
@@ -2048,7 +2048,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """Height of requested image.
+        r"""Height of requested image.
         :rtype: int
         """
         return self._ImageHeight
@@ -2059,7 +2059,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def FaceDetailInfos(self):
-        """Face information list.
+        r"""Face information list.
         :rtype: list of FaceDetailInfo
         """
         return self._FaceDetailInfos
@@ -2070,7 +2070,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2081,7 +2081,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2105,7 +2105,7 @@ class DetectFaceAttributesResponse(AbstractModel):
 
 
 class DetectFaceRequest(AbstractModel):
-    """DetectFace request structure.
+    r"""DetectFace request structure.
 
     """
 
@@ -2163,7 +2163,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of processable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
+        r"""Maximum number of processable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. 
 This parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.
         :rtype: int
         """
@@ -2175,7 +2175,7 @@ This parameter is used to control the number of faces in the image to be detecte
 
     @property
     def MinFaceSize(self):
-        """Minimum height and width of face in px.
+        r"""Minimum height and width of face in px.
 Default value: 34. We recommend keeping it at or above 34.
 Faces below the `MinFaceSize` value will not be detected.
         :rtype: int
@@ -2188,7 +2188,7 @@ Faces below the `MinFaceSize` value will not be detected.
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -2201,7 +2201,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -2217,7 +2217,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def NeedFaceAttributes(self):
-        """Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. 
+        r"""Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed as no need to return, and `FaceAttributesInfo` is meaningless in this case.  
 The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.  
 Extracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.
@@ -2231,7 +2231,7 @@ Extracting face attribute information is quite time-consuming. If face attribute
 
     @property
     def NeedQualityDetection(self):
-        """Whether to enable quality detection. 0: no; 1: yes. Default value: 0. 
+        r"""Whether to enable quality detection. 0: no; 1: yes. Default value: 0. 
 If the value is not 1, it will be deemed not to perform quality detection.
 The face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  
 We recommend enabling this feature for the face adding operation.
@@ -2245,7 +2245,7 @@ We recommend enabling this feature for the face adding operation.
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 
 Currently, `2.0` and `3.0` are supported.
 
@@ -2264,7 +2264,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -2294,7 +2294,7 @@ Different algorithm model versions correspond to different face recognition algo
 
 
 class DetectFaceResponse(AbstractModel):
-    """DetectFace response structure.
+    r"""DetectFace response structure.
 
     """
 
@@ -2319,7 +2319,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageWidth(self):
-        """Width of requested image.
+        r"""Width of requested image.
         :rtype: int
         """
         return self._ImageWidth
@@ -2330,7 +2330,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def ImageHeight(self):
-        """Height of requested image.
+        r"""Height of requested image.
         :rtype: int
         """
         return self._ImageHeight
@@ -2341,7 +2341,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def FaceInfos(self):
-        """Face information list, including face coordinate information, attribute information (if needed), and quality score information (if needed).
+        r"""Face information list, including face coordinate information, attribute information (if needed), and quality score information (if needed).
         :rtype: list of FaceInfo
         """
         return self._FaceInfos
@@ -2352,7 +2352,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2363,7 +2363,7 @@ class DetectFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2387,7 +2387,7 @@ class DetectFaceResponse(AbstractModel):
 
 
 class DetectFaceSimilarityRequest(AbstractModel):
-    """DetectFaceSimilarity request structure.
+    r"""DetectFaceSimilarity request structure.
 
     """
 
@@ -2434,7 +2434,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageA(self):
-        """A image base64 data.
+        r"""A image base64 data.
  - The size after base64 encoding cannot exceed 5M. 
 - The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
 - If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
@@ -2448,7 +2448,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageB(self):
-        """B image base64 data.
+        r"""B image base64 data.
  - The size after base64 encoding cannot exceed 5M. 
 - The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
 - If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
@@ -2462,7 +2462,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlA(self):
-        """A URL for the image. 
+        r"""A URL for the image. 
 - The size of the corresponding image after base64 encoding cannot exceed 5M. 
 - The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
 - A The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
@@ -2480,7 +2480,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlB(self):
-        """B The URL of the image. 
+        r"""B The URL of the image. 
 - The size of the corresponding image after base64 encoding cannot exceed 5M. 
 - The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
 - B The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
@@ -2498,7 +2498,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 - Value range: 0: No control; 1: Lower quality requirements, the image is very blurry, and the eyes, nose, and mouth cover at least one or more of them; 2: General quality requirements, the image is bright, Dark, blurry or generally blurred, eyebrows covered, cheeks covered, chin covered, at least three of them; 3: High quality requirements, the image may be brighter, darker, generally blurry, eyebrows blocked, cheeks blocked, chin blocked, one or two of them; 4: Very high quality requirements, all dimensions are the best or the most , there is a slight problem in one dimension; default is 0. 
 - If the image quality does not meet the requirements, the returned result will prompt that the image quality test does not meet the requirements.
         :rtype: int
@@ -2527,7 +2527,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
 
 class DetectFaceSimilarityResponse(AbstractModel):
-    """DetectFaceSimilarity response structure.
+    r"""DetectFaceSimilarity response structure.
 
     """
 
@@ -2543,7 +2543,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     @property
     def Score(self):
-        """The value range is [0.00, 100.00]. It is recommended that when the similarity is greater than or equal to 70, the person can be judged to be the same person, and the threshold can be adjusted according to the specific scenario (the false pass rate for a threshold of 70 is one in 1,000, and the false pass rate for a threshold of 80 is one in 10,000).
+        r"""The value range is [0.00, 100.00]. It is recommended that when the similarity is greater than or equal to 70, the person can be judged to be the same person, and the threshold can be adjusted according to the specific scenario (the false pass rate for a threshold of 70 is one in 1,000, and the false pass rate for a threshold of 80 is one in 10,000).
         :rtype: float
         """
         return self._Score
@@ -2554,7 +2554,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2570,7 +2570,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
 
 class DetectLiveFaceAccurateRequest(AbstractModel):
-    """DetectLiveFaceAccurate request structure.
+    r"""DetectLiveFaceAccurate request structure.
 
     """
 
@@ -2601,7 +2601,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Image(self):
-        """Specifies the base64 code of the image.
+        r"""Specifies the base64 code of the image.
 -base64-Encoded size cannot exceed 5M.
 -The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image cannot exceed 2000. 
 -Specifies the image aspect ratio should be close to 3:4. mobile phone shooting proportion is best.
@@ -2617,7 +2617,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Specifies the Url of the image.
+        r"""Specifies the Url of the image.
 -Specifies the maximum size of the corresponding image after base64 encoding is 5M.
 -The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image must not exceed 2000.
 -Url or Image must be provided. if both are provided, only use Url. 
@@ -2635,7 +2635,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition. Valid value: `3.0`.
+        r"""Algorithm model version used for face recognition. Valid value: `3.0`.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2660,7 +2660,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
 
 class DetectLiveFaceAccurateResponse(AbstractModel):
-    """DetectLiveFaceAccurate response structure.
+    r"""DetectLiveFaceAccurate response structure.
 
     """
 
@@ -2682,7 +2682,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def Score(self):
-        """Liveness scoring.
+        r"""Liveness scoring.
 -Value range: [0,100].
 -Determines whether it is a rephotograph based on the liveness score and threshold range.
 -Current threshold can be divided into [5,10,40,70,90]. among them, the recommended threshold is 40.
@@ -2696,7 +2696,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2707,7 +2707,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2724,7 +2724,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
 
 class DetectLiveFaceRequest(AbstractModel):
-    """DetectLiveFace request structure.
+    r"""DetectLiveFace request structure.
 
     """
 
@@ -2759,7 +2759,7 @@ Different algorithm model versions correspond to different face recognition algo
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -2772,7 +2772,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
 (The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) 
@@ -2789,7 +2789,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 
 Currently, `2.0` and `3.0` are supported.
 
@@ -2822,7 +2822,7 @@ Different algorithm model versions correspond to different face recognition algo
 
 
 class DetectLiveFaceResponse(AbstractModel):
-    """DetectLiveFace response structure.
+    r"""DetectLiveFace response structure.
 
     """
 
@@ -2846,7 +2846,7 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
 
     @property
     def Score(self):
-        """Liveness score. Value range: [0,100]. The score is generally between 80 and 100, but 0 is also a common value. As a recommendation, when the score is greater than 87, it can be judged that the person in the image is alive. You can adjust the threshold according to your specific scenario.
+        r"""Liveness score. Value range: [0,100]. The score is generally between 80 and 100, but 0 is also a common value. As a recommendation, when the score is greater than 87, it can be judged that the person in the image is alive. You can adjust the threshold according to your specific scenario.
 This field is meaningful only if `FaceModelVersion` is 2.0.
         :rtype: float
         """
@@ -2858,7 +2858,7 @@ This field is meaningful only if `FaceModelVersion` is 2.0.
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -2869,7 +2869,7 @@ This field is meaningful only if `FaceModelVersion` is 2.0.
 
     @property
     def IsLiveness(self):
-        """Whether liveness detection is passed.
+        r"""Whether liveness detection is passed.
 This field is meaningful only if `FaceModelVersion` is 3.0.
         :rtype: bool
         """
@@ -2881,7 +2881,7 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2899,7 +2899,7 @@ This field is meaningful only if `FaceModelVersion` is 3.0.
 
 
 class Eye(AbstractModel):
-    """Eye information
+    r"""Eye information
 
     """
 
@@ -2925,7 +2925,7 @@ The `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes
 
     @property
     def Glass(self):
-        """Whether glasses are worn.
+        r"""Whether glasses are worn.
 The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -2937,7 +2937,7 @@ The `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glas
 
     @property
     def EyeOpen(self):
-        """Whether the eyes are open.
+        r"""Whether the eyes are open.
 The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -2949,7 +2949,7 @@ The `Type` values of the `AttributeItem` include: 0: open; 1: closed.
 
     @property
     def EyelidType(self):
-        """Whether the person has double eyelids.
+        r"""Whether the person has double eyelids.
 The `Type` values of the `AttributeItem` include: 0: no; 1: yes.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -2961,7 +2961,7 @@ The `Type` values of the `AttributeItem` include: 0: no; 1: yes.
 
     @property
     def EyeSize(self):
-        """Eye size.
+        r"""Eye size.
 The `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes; 2: big eyes.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -2996,7 +2996,7 @@ The `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes
 
 
 class Eyebrow(AbstractModel):
-    """Eyebrow information
+    r"""Eyebrow information
 
     """
 
@@ -3018,7 +3018,7 @@ The `Type` values of the `AttributeItem` include: 0: short; 1: long.
 
     @property
     def EyebrowDensity(self):
-        """Eyebrow thickness.
+        r"""Eyebrow thickness.
 The `Type` values of the `AttributeItem` include: 0: light; 1: thick.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3030,7 +3030,7 @@ The `Type` values of the `AttributeItem` include: 0: light; 1: thick.
 
     @property
     def EyebrowCurve(self):
-        """Eyebrow curve.
+        r"""Eyebrow curve.
 The `Type` values of the `AttributeItem` include: 0: flat; 1: curved.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3042,7 +3042,7 @@ The `Type` values of the `AttributeItem` include: 0: flat; 1: curved.
 
     @property
     def EyebrowLength(self):
-        """Eyebrow length.
+        r"""Eyebrow length.
 The `Type` values of the `AttributeItem` include: 0: short; 1: long.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -3074,7 +3074,7 @@ The `Type` values of the `AttributeItem` include: 0: short; 1: long.
 
 
 class FaceAttributesInfo(AbstractModel):
-    """Face attributes, including gender, age, expression,
+    r"""Face attributes, including gender, age, expression,
     beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1. The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.
 
     """
@@ -3128,7 +3128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Gender(self):
-        """Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
         return self._Gender
@@ -3139,7 +3139,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Age(self):
-        """Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
         return self._Age
@@ -3150,7 +3150,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expression(self):
-        """Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
         return self._Expression
@@ -3161,7 +3161,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Glass(self):
-        """Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: bool
         """
         return self._Glass
@@ -3172,7 +3172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pitch(self):
-        """Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
+        r"""Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
 We recommend selecting images in the [-10,10] range for adding faces.
         :rtype: int
         """
@@ -3184,7 +3184,7 @@ We recommend selecting images in the [-10,10] range for adding faces.
 
     @property
     def Yaw(self):
-        """Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
+        r"""Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. 
 We recommend selecting images in the [-10,10] range for adding faces.
         :rtype: int
         """
@@ -3196,7 +3196,7 @@ We recommend selecting images in the [-10,10] range for adding faces.
 
     @property
     def Roll(self):
-        """Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  
+        r"""Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  
 We recommend selecting images in the [-20,20] range for adding faces.
         :rtype: int
         """
@@ -3208,7 +3208,7 @@ We recommend selecting images in the [-20,20] range for adding faces.
 
     @property
     def Beauty(self):
-        """Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
         return self._Beauty
@@ -3219,7 +3219,7 @@ We recommend selecting images in the [-20,20] range for adding faces.
 
     @property
     def Hat(self):
-        """Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3231,7 +3231,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mask(self):
-        """Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3243,7 +3243,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hair(self):
-        """Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceHairAttributesInfo`
         """
@@ -3255,7 +3255,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EyeOpen(self):
-        """Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
+        r"""Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3292,7 +3292,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceDetailAttributesInfo(AbstractModel):
-    """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty,
+    r"""Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty,
     Emotion, Eye, Eyebrow, Gender,
     Hair, Hat, Headpose, Mask, Mouth, Moustache,
     Nose, Shape, Skin, Smile, etc.
@@ -3377,7 +3377,7 @@ If `FaceAttributesType` does not include `Smile` or more than 5 faces are detect
 
     @property
     def Age(self):
-        """Age. Value range: [0,65], where 65 indicates 65 years old or above. 
+        r"""Age. Value range: [0,65], where 65 indicates 65 years old or above. 
 If `FaceAttributesType` does not include `Age` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
@@ -3389,7 +3389,7 @@ If `FaceAttributesType` does not include `Age` or more than 5 faces are detected
 
     @property
     def Beauty(self):
-        """Beauty score. Value range: [0,100]. 
+        r"""Beauty score. Value range: [0,100]. 
 If `FaceAttributesType` does not include `Beauty` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
@@ -3401,7 +3401,7 @@ If `FaceAttributesType` does not include `Beauty` or more than 5 faces are detec
 
     @property
     def Emotion(self):
-        """Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. 
+        r"""Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. 
 The `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.
 If `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3414,7 +3414,7 @@ If `FaceAttributesType` does not include `Emotion` or more than 5 faces are dete
 
     @property
     def Eye(self):
-        """Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. 
+        r"""Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. 
 If `FaceAttributesType` does not include `Eye` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.Eye`
         """
@@ -3426,7 +3426,7 @@ If `FaceAttributesType` does not include `Eye` or more than 5 faces are detected
 
     @property
     def Eyebrow(self):
-        """Eyebrow information, including whether the eyebrows are thick, curved, or long. 
+        r"""Eyebrow information, including whether the eyebrows are thick, curved, or long. 
 If `FaceAttributesType` does not include `Eyebrow` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.Eyebrow`
         """
@@ -3438,7 +3438,7 @@ If `FaceAttributesType` does not include `Eyebrow` or more than 5 faces are dete
 
     @property
     def Gender(self):
-        """Gender information. 
+        r"""Gender information. 
 The `Type` values of the `AttributeItem` include: 0: male; 1: female.	
 If `FaceAttributesType` does not include `Gender` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3451,7 +3451,7 @@ If `FaceAttributesType` does not include `Gender` or more than 5 faces are detec
 
     @property
     def Hair(self):
-        """Hair information, including length, bang, and color. 
+        r"""Hair information, including length, bang, and color. 
 If `FaceAttributesType` does not include `Hair` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.Hair`
         """
@@ -3463,7 +3463,7 @@ If `FaceAttributesType` does not include `Hair` or more than 5 faces are detecte
 
     @property
     def Hat(self):
-        """Hat information, including whether a hat is worn, hat style, and hat color. 
+        r"""Hat information, including whether a hat is worn, hat style, and hat color. 
 If `FaceAttributesType` does not include `Hat` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.Hat`
         """
@@ -3475,7 +3475,7 @@ If `FaceAttributesType` does not include `Hat` or more than 5 faces are detected
 
     @property
     def HeadPose(self):
-        """Pose information, including the face pitch, yaw, and roll. 
+        r"""Pose information, including the face pitch, yaw, and roll. 
 If `FaceAttributesType` does not include `Headpose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.HeadPose`
         """
@@ -3487,7 +3487,7 @@ If `FaceAttributesType` does not include `Headpose` or more than 5 faces are det
 
     @property
     def Mask(self):
-        """Mask information. 
+        r"""Mask information. 
 The `Type` values of the `AttributeItem` include: 0: no mask; 1: the mask is worn and does not cover the face; 2: the mask is worn and covers the chin; 3: the mask is worn and covers the mouth; 4: the mask is worn properly.
 If `FaceAttributesType` does not include `Mask` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3500,7 +3500,7 @@ If `FaceAttributesType` does not include `Mask` or more than 5 faces are detecte
 
     @property
     def Mouth(self):
-        """Mouth information, including whether the mouth is open and the lip thickness. 
+        r"""Mouth information, including whether the mouth is open and the lip thickness. 
 If `FaceAttributesType` does not include `Mouth` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.Mouth`
         """
@@ -3512,7 +3512,7 @@ If `FaceAttributesType` does not include `Mouth` or more than 5 faces are detect
 
     @property
     def Moustache(self):
-        """Beard information.
+        r"""Beard information.
 The `Type` values of the `AttributeItem` include: 0: no beard; 1: beard detected. 
 If `FaceAttributesType` does not include `Moustache` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3525,7 +3525,7 @@ If `FaceAttributesType` does not include `Moustache` or more than 5 faces are de
 
     @property
     def Nose(self):
-        """Nose information. 
+        r"""Nose information. 
 The `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.
 If `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3538,7 +3538,7 @@ If `FaceAttributesType` does not include `Nose` or more than 5 faces are detecte
 
     @property
     def Shape(self):
-        """Face shape information. 
+        r"""Face shape information. 
 The `Type` values of the `AttributeItem` include: 0: square; 1: triangular; 2: oval; 3: heart-shaped; 4: round.
 If `FaceAttributesType` does not include `Shape` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3551,7 +3551,7 @@ If `FaceAttributesType` does not include `Shape` or more than 5 faces are detect
 
     @property
     def Skin(self):
-        """Skin color information. 
+        r"""Skin color information. 
 The `Type` values of the `AttributeItem` include: 0: yellow; 1: brown; 2: black; 3: white.
 If `FaceAttributesType` does not include `Skin` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3564,7 +3564,7 @@ If `FaceAttributesType` does not include `Skin` or more than 5 faces are detecte
 
     @property
     def Smile(self):
-        """Smile level. Value range: [0,100]. 
+        r"""Smile level. Value range: [0,100]. 
 If `FaceAttributesType` does not include `Smile` or more than 5 faces are detected, this parameter will still be returned but meaningless.
         :rtype: int
         """
@@ -3629,7 +3629,7 @@ If `FaceAttributesType` does not include `Smile` or more than 5 faces are detect
 
 
 class FaceDetailInfo(AbstractModel):
-    """Face information list.
+    r"""Face information list.
 
     """
 
@@ -3649,7 +3649,7 @@ If no types are specified in `FaceAttributesType`, the detailed items returned b
 
     @property
     def FaceRect(self):
-        """Position of the detected face frame.
+        r"""Position of the detected face frame.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -3660,7 +3660,7 @@ If no types are specified in `FaceAttributesType`, the detailed items returned b
 
     @property
     def FaceDetailAttributesInfo(self):
-        """Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), 
+        r"""Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), 
 emotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), 
 hair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), 
 nose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  
@@ -3692,7 +3692,7 @@ If no types are specified in `FaceAttributesType`, the detailed items returned b
 
 
 class FaceHairAttributesInfo(AbstractModel):
-    """Hair information in face attributes.
+    r"""Hair information in face attributes.
 
     """
 
@@ -3714,7 +3714,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Length(self):
-        """0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid
+        r"""0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3726,7 +3726,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bang(self):
-        """0: with bangs, 1: no bangs
+        r"""0: with bangs, 1: no bangs
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3738,7 +3738,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Color(self):
-        """0: black, 1: golden, 2: brown, 3: gray
+        r"""0: black, 1: golden, 2: brown, 3: gray
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3764,7 +3764,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceInfo(AbstractModel):
-    """Face information list.
+    r"""Face information list.
 
     """
 
@@ -3798,7 +3798,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def X(self):
-        """Horizontal coordinate of the top-left vertex of the face frame.
+        r"""Horizontal coordinate of the top-left vertex of the face frame.
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
         :rtype: int
@@ -3811,7 +3811,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Y(self):
-        """Vertical coordinate of the top-left vertex of the face frame. 
+        r"""Vertical coordinate of the top-left vertex of the face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.
         :rtype: int
@@ -3824,7 +3824,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Width(self):
-        """Face frame width.
+        r"""Face frame width.
         :rtype: int
         """
         return self._Width
@@ -3835,7 +3835,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Height(self):
-        """Face frame height.
+        r"""Face frame height.
         :rtype: int
         """
         return self._Height
@@ -3846,7 +3846,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def FaceAttributesInfo(self):
-        """Face attributes, including gender, age, expression, 
+        r"""Face attributes, including gender, age, expression, 
 beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceAttributesInfo`
         """
@@ -3858,7 +3858,7 @@ beauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will b
 
     @property
     def FaceQualityInfo(self):
-        """Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
+        r"""Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceQualityInfo`
         """
@@ -3891,7 +3891,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceQualityCompleteness(AbstractModel):
-    """Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
+    r"""Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
 
     """
 
@@ -3931,7 +3931,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Eyebrow(self):
-        """Eyebrow completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Eyebrow completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,80], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3944,7 +3944,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Eye(self):
-        """Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,80], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3957,7 +3957,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nose(self):
-        """Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,60], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3970,7 +3970,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cheek(self):
-        """Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,70], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3983,7 +3983,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mouth(self):
-        """Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,50], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3996,7 +3996,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Chin(self):
-        """Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
+        r"""Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. 
 Reference range: [0,70], which means incomplete.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -4026,7 +4026,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceQualityInfo(AbstractModel):
-    """Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
+    r"""Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.
 
     """
 
@@ -4059,7 +4059,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. 
+        r"""Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. 
 In normal cases, you only need to use `Score` as the overall quality standard score. Specific item scores such as `Sharpness`, `Brightness`, `Completeness` are for reference only.
 Reference range: [0,40]: poor; [40,60]: fine; [60,80]: good; [80,100]: excellent. 
 We recommend selecting images with a score above 70 for adding faces.
@@ -4074,7 +4074,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sharpness(self):
-        """Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. 
+        r"""Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. 
 Reference range: [0,40]: very blurry; [40,60]: blurry; [60,80]: fine; [80,100]: sharp. 
 We recommend selecting images with a score above 80 for adding faces.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -4088,7 +4088,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Brightness(self):
-        """Brightness. Value range: [0,100]. The brighter the image, the higher the score. 
+        r"""Brightness. Value range: [0,100]. The brighter the image, the higher the score. 
 Reference range: [0,30]: dark; [30,70]: normal; [70,100]: bright. 
 We recommend selecting images in the [30,70] range for adding faces.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -4102,7 +4102,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Completeness(self):
-        """Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
+        r"""Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceQualityCompleteness`
         """
@@ -4131,7 +4131,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FaceRect(AbstractModel):
-    """Position of detected face frame
+    r"""Position of detected face frame
 
     """
 
@@ -4157,7 +4157,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def X(self):
-        """Horizontal coordinate of the top-left vertex of face frame. 
+        r"""Horizontal coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
         :rtype: int
@@ -4170,7 +4170,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Y(self):
-        """Vertical coordinate of the top-left vertex of face frame. 
+        r"""Vertical coordinate of the top-left vertex of face frame. 
 The face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. 
 If you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.
         :rtype: int
@@ -4183,7 +4183,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Width(self):
-        """Face width
+        r"""Face width
         :rtype: int
         """
         return self._Width
@@ -4194,7 +4194,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
     @property
     def Height(self):
-        """Face height
+        r"""Face height
         :rtype: int
         """
         return self._Height
@@ -4220,7 +4220,7 @@ If you want to capture a complete face, you can set the negative coordinates to 
 
 
 class FaceShape(AbstractModel):
-    """Specific information of facial feature localization (facial keypoints).
+    r"""Specific information of facial feature localization (facial keypoints).
 
     """
 
@@ -4257,7 +4257,7 @@ class FaceShape(AbstractModel):
 
     @property
     def FaceProfile(self):
-        """21 points that describe the face contour.
+        r"""21 points that describe the face contour.
         :rtype: list of Point
         """
         return self._FaceProfile
@@ -4268,7 +4268,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftEye(self):
-        """8 points that describe the left eye.
+        r"""8 points that describe the left eye.
         :rtype: list of Point
         """
         return self._LeftEye
@@ -4279,7 +4279,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightEye(self):
-        """8 points that describe the right eye.
+        r"""8 points that describe the right eye.
         :rtype: list of Point
         """
         return self._RightEye
@@ -4290,7 +4290,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftEyeBrow(self):
-        """8 points that describe the left eyebrow.
+        r"""8 points that describe the left eyebrow.
         :rtype: list of Point
         """
         return self._LeftEyeBrow
@@ -4301,7 +4301,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightEyeBrow(self):
-        """8 points that describe the right eyebrow.
+        r"""8 points that describe the right eyebrow.
         :rtype: list of Point
         """
         return self._RightEyeBrow
@@ -4312,7 +4312,7 @@ class FaceShape(AbstractModel):
 
     @property
     def Mouth(self):
-        """22 points that describe the mouth.
+        r"""22 points that describe the mouth.
         :rtype: list of Point
         """
         return self._Mouth
@@ -4323,7 +4323,7 @@ class FaceShape(AbstractModel):
 
     @property
     def Nose(self):
-        """13 points that describe the nose.
+        r"""13 points that describe the nose.
         :rtype: list of Point
         """
         return self._Nose
@@ -4334,7 +4334,7 @@ class FaceShape(AbstractModel):
 
     @property
     def LeftPupil(self):
-        """1 point that describes the left pupil.
+        r"""1 point that describes the left pupil.
         :rtype: list of Point
         """
         return self._LeftPupil
@@ -4345,7 +4345,7 @@ class FaceShape(AbstractModel):
 
     @property
     def RightPupil(self):
-        """1 point that describes the right pupil.
+        r"""1 point that describes the right pupil.
         :rtype: list of Point
         """
         return self._RightPupil
@@ -4421,7 +4421,7 @@ class FaceShape(AbstractModel):
 
 
 class GetGroupInfoRequest(AbstractModel):
-    """GetGroupInfo request structure.
+    r"""GetGroupInfo request structure.
 
     """
 
@@ -4434,7 +4434,7 @@ class GetGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -4457,7 +4457,7 @@ class GetGroupInfoRequest(AbstractModel):
 
 
 class GetGroupInfoResponse(AbstractModel):
-    """GetGroupInfo response structure.
+    r"""GetGroupInfo response structure.
 
     """
 
@@ -4488,7 +4488,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -4499,7 +4499,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: str
         """
         return self._GroupId
@@ -4510,7 +4510,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def GroupExDescriptions(self):
-        """Custom group description field
+        r"""Custom group description field
         :rtype: list of str
         """
         return self._GroupExDescriptions
@@ -4521,7 +4521,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def Tag(self):
-        """Group remarks
+        r"""Group remarks
         :rtype: str
         """
         return self._Tag
@@ -4532,7 +4532,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -4543,7 +4543,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def CreationTimestamp(self):
-        """Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time.
+        r"""Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time.
         :rtype: int
         """
         return self._CreationTimestamp
@@ -4554,7 +4554,7 @@ class GetGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4575,7 +4575,7 @@ class GetGroupInfoResponse(AbstractModel):
 
 
 class GetGroupListRequest(AbstractModel):
-    """GetGroupList request structure.
+    r"""GetGroupList request structure.
 
     """
 
@@ -4591,7 +4591,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting number. Default value: 0.
+        r"""Starting number. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -4602,7 +4602,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 10. Maximum value: 1000.
+        r"""Number of returned results. Default value: 10. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -4626,7 +4626,7 @@ class GetGroupListRequest(AbstractModel):
 
 
 class GetGroupListResponse(AbstractModel):
-    """GetGroupList response structure.
+    r"""GetGroupList response structure.
 
     """
 
@@ -4646,7 +4646,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupInfos(self):
-        """Returned group information
+        r"""Returned group information
         :rtype: list of GroupInfo
         """
         return self._GroupInfos
@@ -4657,7 +4657,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupNum(self):
-        """Total number of groups
+        r"""Total number of groups
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4669,7 +4669,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4691,7 +4691,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetPersonBaseInfoRequest(AbstractModel):
-    """GetPersonBaseInfo request structure.
+    r"""GetPersonBaseInfo request structure.
 
     """
 
@@ -4704,7 +4704,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -4727,7 +4727,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
 
 class GetPersonBaseInfoResponse(AbstractModel):
-    """GetPersonBaseInfo response structure.
+    r"""GetPersonBaseInfo response structure.
 
     """
 
@@ -4749,7 +4749,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def PersonName(self):
-        """Person name
+        r"""Person name
         :rtype: str
         """
         return self._PersonName
@@ -4760,7 +4760,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def Gender(self):
-        """Person gender. 0: empty; 1: male; 2: female.
+        r"""Person gender. 0: empty; 1: male; 2: female.
         :rtype: int
         """
         return self._Gender
@@ -4771,7 +4771,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def FaceIds(self):
-        """List of the IDs of included faces
+        r"""List of the IDs of included faces
         :rtype: list of str
         """
         return self._FaceIds
@@ -4782,7 +4782,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4800,7 +4800,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
 
 
 class GetPersonGroupInfoRequest(AbstractModel):
-    """GetPersonGroupInfo request structure.
+    r"""GetPersonGroupInfo request structure.
 
     """
 
@@ -4819,7 +4819,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -4830,7 +4830,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting number. Default value: 0.
+        r"""Starting number. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -4841,7 +4841,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 10. Maximum value: 100.
+        r"""Number of returned results. Default value: 10. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -4866,7 +4866,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
 
 class GetPersonGroupInfoResponse(AbstractModel):
-    """GetPersonGroupInfo response structure.
+    r"""GetPersonGroupInfo response structure.
 
     """
 
@@ -4890,7 +4890,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonGroupInfos(self):
-        """List of groups containing this person and their description fields
+        r"""List of groups containing this person and their description fields
         :rtype: list of PersonGroupInfo
         """
         return self._PersonGroupInfos
@@ -4901,7 +4901,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupNum(self):
-        """Total number of groups
+        r"""Total number of groups
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4913,7 +4913,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used by the Face Recognition service.
+        r"""Algorithm model version used by the Face Recognition service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4925,7 +4925,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4948,7 +4948,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetPersonListNumRequest(AbstractModel):
-    """GetPersonListNum request structure.
+    r"""GetPersonListNum request structure.
 
     """
 
@@ -4961,7 +4961,7 @@ class GetPersonListNumRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -4984,7 +4984,7 @@ class GetPersonListNumRequest(AbstractModel):
 
 
 class GetPersonListNumResponse(AbstractModel):
-    """GetPersonListNum response structure.
+    r"""GetPersonListNum response structure.
 
     """
 
@@ -5003,7 +5003,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """Number of persons
+        r"""Number of persons
         :rtype: int
         """
         return self._PersonNum
@@ -5014,7 +5014,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """Number of faces
+        r"""Number of faces
         :rtype: int
         """
         return self._FaceNum
@@ -5025,7 +5025,7 @@ class GetPersonListNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5042,7 +5042,7 @@ class GetPersonListNumResponse(AbstractModel):
 
 
 class GetPersonListRequest(AbstractModel):
-    """GetPersonList request structure.
+    r"""GetPersonList request structure.
 
     """
 
@@ -5061,7 +5061,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -5072,7 +5072,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting number. Default value: 0.
+        r"""Starting number. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -5083,7 +5083,7 @@ class GetPersonListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 10. Maximum value: 1000.
+        r"""Number of returned results. Default value: 10. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -5108,7 +5108,7 @@ class GetPersonListRequest(AbstractModel):
 
 
 class GetPersonListResponse(AbstractModel):
-    """GetPersonList response structure.
+    r"""GetPersonList response structure.
 
     """
 
@@ -5136,7 +5136,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonInfos(self):
-        """Returned person information
+        r"""Returned person information
         :rtype: list of PersonInfo
         """
         return self._PersonInfos
@@ -5147,7 +5147,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonNum(self):
-        """Number of persons in the group
+        r"""Number of persons in the group
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5159,7 +5159,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceNum(self):
-        """Number of faces in the group
+        r"""Number of faces in the group
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5171,7 +5171,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5183,7 +5183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5207,7 +5207,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GroupCandidate(AbstractModel):
-    """Recognition result items by group
+    r"""Recognition result items by group
 
     """
 
@@ -5223,7 +5223,7 @@ class GroupCandidate(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID.
+        r"""Group ID.
         :rtype: str
         """
         return self._GroupId
@@ -5234,7 +5234,7 @@ class GroupCandidate(AbstractModel):
 
     @property
     def Candidates(self):
-        """Most matching candidate recognized
+        r"""Most matching candidate recognized
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -5263,7 +5263,7 @@ class GroupCandidate(AbstractModel):
 
 
 class GroupExDescriptionInfo(AbstractModel):
-    """Custom description field of the group to be modified, which is a `key-value` pair.
+    r"""Custom description field of the group to be modified, which is a `key-value` pair.
 
     """
 
@@ -5280,7 +5280,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupExDescriptionIndex(self):
-        """Custom group description field index, whose value starts from 0.
+        r"""Custom group description field index, whose value starts from 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5292,7 +5292,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupExDescription(self):
-        """Content of the custom group description field to be updated
+        r"""Content of the custom group description field to be updated
         :rtype: str
         """
         return self._GroupExDescription
@@ -5316,7 +5316,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GroupInfo(AbstractModel):
-    """Returned group information
+    r"""Returned group information
 
     """
 
@@ -5349,7 +5349,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -5360,7 +5360,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: str
         """
         return self._GroupId
@@ -5371,7 +5371,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupExDescriptions(self):
-        """Custom group description field
+        r"""Custom group description field
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -5383,7 +5383,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tag(self):
-        """Group remarks
+        r"""Group remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5395,7 +5395,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5407,7 +5407,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTimestamp(self):
-        """Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
+        r"""Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. 
 The UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -5437,7 +5437,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Hair(AbstractModel):
-    """Hair information
+    r"""Hair information
 
     """
 
@@ -5459,7 +5459,7 @@ The `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown;
 
     @property
     def Length(self):
-        """Hair length information.
+        r"""Hair length information.
 The `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5471,7 +5471,7 @@ The `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: med
 
     @property
     def Bang(self):
-        """Bang information.
+        r"""Bang information.
 The `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5483,7 +5483,7 @@ The `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.
 
     @property
     def Color(self):
-        """Hair color information.
+        r"""Hair color information.
 The `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown; 3: gray.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5515,7 +5515,7 @@ The `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown;
 
 
 class Hat(AbstractModel):
-    """Hat information
+    r"""Hat information
 
     """
 
@@ -5533,7 +5533,7 @@ The `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 
 
     @property
     def Style(self):
-        """Hat wearing status information.
+        r"""Hat wearing status information.
 The `Type` values of the `AttributeItem` include: 0: no hat; 1: general hat; 2: helmet; 3: security guard hat.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5545,7 +5545,7 @@ The `Type` values of the `AttributeItem` include: 0: no hat; 1: general hat; 2: 
 
     @property
     def Color(self):
-        """Hat color.
+        r"""Hat color.
 The `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 3: blue; 4: black; 5: gray; 6: mixed colors.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5574,7 +5574,7 @@ The `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 
 
 
 class HeadPose(AbstractModel):
-    """Pose information.
+    r"""Pose information.
 
     """
 
@@ -5593,7 +5593,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Pitch(self):
-        """Pitch. Value range: [-30,30].
+        r"""Pitch. Value range: [-30,30].
         :rtype: int
         """
         return self._Pitch
@@ -5604,7 +5604,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Yaw(self):
-        """Yaw. Value range: [-30,30].
+        r"""Yaw. Value range: [-30,30].
         :rtype: int
         """
         return self._Yaw
@@ -5615,7 +5615,7 @@ class HeadPose(AbstractModel):
 
     @property
     def Roll(self):
-        """Roll. Value range: [-180,180].
+        r"""Roll. Value range: [-180,180].
         :rtype: int
         """
         return self._Roll
@@ -5640,7 +5640,7 @@ class HeadPose(AbstractModel):
 
 
 class ModifyGroupRequest(AbstractModel):
-    """ModifyGroup request structure.
+    r"""ModifyGroup request structure.
 
     """
 
@@ -5662,7 +5662,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -5673,7 +5673,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -5684,7 +5684,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def GroupExDescriptionInfos(self):
-        """Custom description field of the group to be modified, which is a `key-value` pair.
+        r"""Custom description field of the group to be modified, which is a `key-value` pair.
         :rtype: list of GroupExDescriptionInfo
         """
         return self._GroupExDescriptionInfos
@@ -5695,7 +5695,7 @@ class ModifyGroupRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """Group remarks
+        r"""Group remarks
         :rtype: str
         """
         return self._Tag
@@ -5726,7 +5726,7 @@ class ModifyGroupRequest(AbstractModel):
 
 
 class ModifyGroupResponse(AbstractModel):
-    """ModifyGroup response structure.
+    r"""ModifyGroup response structure.
 
     """
 
@@ -5739,7 +5739,7 @@ class ModifyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5754,7 +5754,7 @@ class ModifyGroupResponse(AbstractModel):
 
 
 class ModifyPersonGroupInfoRequest(AbstractModel):
-    """ModifyPersonGroupInfo request structure.
+    r"""ModifyPersonGroupInfo request structure.
 
     """
 
@@ -5773,7 +5773,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which is the `GroupId` in the `CreateGroup` API.
+        r"""Group ID, which is the `GroupId` in the `CreateGroup` API.
         :rtype: str
         """
         return self._GroupId
@@ -5784,7 +5784,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonId(self):
-        """Person ID, which is the `PersonId` in the `CreatePerson` API.
+        r"""Person ID, which is the `PersonId` in the `CreatePerson` API.
         :rtype: str
         """
         return self._PersonId
@@ -5795,7 +5795,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     @property
     def PersonExDescriptionInfos(self):
-        """Custom description field of the person to be modified, which is a `key-value` pair.
+        r"""Custom description field of the person to be modified, which is a `key-value` pair.
         :rtype: list of PersonExDescriptionInfo
         """
         return self._PersonExDescriptionInfos
@@ -5825,7 +5825,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
 
 class ModifyPersonGroupInfoResponse(AbstractModel):
-    """ModifyPersonGroupInfo response structure.
+    r"""ModifyPersonGroupInfo response structure.
 
     """
 
@@ -5838,7 +5838,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5853,7 +5853,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
 
 class Mouth(AbstractModel):
-    """Mouth information
+    r"""Mouth information
 
     """
 
@@ -5867,7 +5867,7 @@ The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
 
     @property
     def MouthOpen(self):
-        """Whether the mouth is open.
+        r"""Whether the mouth is open.
 The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
         :rtype: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
         """
@@ -5893,7 +5893,7 @@ The `Type` values of the `AttributeItem` include: 0: closed; 1: open.
 
 
 class PersonExDescriptionInfo(AbstractModel):
-    """Custom description field of the person to be modified, which is a `key-value` pair.
+    r"""Custom description field of the person to be modified, which is a `key-value` pair.
 
     """
 
@@ -5910,7 +5910,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonExDescriptionIndex(self):
-        """Person description field index, whose value starts from 0.
+        r"""Person description field index, whose value starts from 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5922,7 +5922,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonExDescription(self):
-        """Content of the person description field to be updated
+        r"""Content of the person description field to be updated
         :rtype: str
         """
         return self._PersonExDescription
@@ -5946,7 +5946,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PersonGroupInfo(AbstractModel):
-    """List of groups containing this person and their description fields
+    r"""List of groups containing this person and their description fields
 
     """
 
@@ -5962,7 +5962,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the group that contains this person
+        r"""ID of the group that contains this person
         :rtype: str
         """
         return self._GroupId
@@ -5973,7 +5973,7 @@ class PersonGroupInfo(AbstractModel):
 
     @property
     def PersonExDescriptions(self):
-        """Content of person description field
+        r"""Content of person description field
         :rtype: list of str
         """
         return self._PersonExDescriptions
@@ -5997,7 +5997,7 @@ class PersonGroupInfo(AbstractModel):
 
 
 class PersonInfo(AbstractModel):
-    """Returned person information
+    r"""Returned person information
 
     """
 
@@ -6026,7 +6026,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def PersonName(self):
-        """Person name
+        r"""Person name
         :rtype: str
         """
         return self._PersonName
@@ -6037,7 +6037,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def PersonId(self):
-        """Person ID
+        r"""Person ID
         :rtype: str
         """
         return self._PersonId
@@ -6048,7 +6048,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def Gender(self):
-        """Person gender
+        r"""Person gender
         :rtype: int
         """
         return self._Gender
@@ -6059,7 +6059,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def PersonExDescriptions(self):
-        """Content of person description field
+        r"""Content of person description field
         :rtype: list of str
         """
         return self._PersonExDescriptions
@@ -6070,7 +6070,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def FaceIds(self):
-        """List of contained face images
+        r"""List of contained face images
         :rtype: list of str
         """
         return self._FaceIds
@@ -6081,7 +6081,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
     @property
     def CreationTimestamp(self):
-        """Person creation time, measured in the number of milliseconds elapsed since the Unix epoch 
+        r"""Person creation time, measured in the number of milliseconds elapsed since the Unix epoch 
 The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the Unix time document.
         :rtype: int
         """
@@ -6110,7 +6110,7 @@ The Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Tim
 
 
 class Point(AbstractModel):
-    """Coordinates
+    r"""Coordinates
 
     """
 
@@ -6126,7 +6126,7 @@ class Point(AbstractModel):
 
     @property
     def X(self):
-        """X coordinate
+        r"""X coordinate
         :rtype: int
         """
         return self._X
@@ -6137,7 +6137,7 @@ class Point(AbstractModel):
 
     @property
     def Y(self):
-        """Y coordinate
+        r"""Y coordinate
         :rtype: int
         """
         return self._Y
@@ -6161,7 +6161,7 @@ class Point(AbstractModel):
 
 
 class Result(AbstractModel):
-    """Face recognition result
+    r"""Face recognition result
 
     """
 
@@ -6180,7 +6180,7 @@ class Result(AbstractModel):
 
     @property
     def Candidates(self):
-        """Most matching candidate recognized
+        r"""Most matching candidate recognized
         :rtype: list of Candidate
         """
         return self._Candidates
@@ -6191,7 +6191,7 @@ class Result(AbstractModel):
 
     @property
     def FaceRect(self):
-        """Position of detected face frame
+        r"""Position of detected face frame
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -6202,7 +6202,7 @@ class Result(AbstractModel):
 
     @property
     def RetCode(self):
-        """The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.
+        r"""The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.
         :rtype: int
         """
         return self._RetCode
@@ -6234,7 +6234,7 @@ class Result(AbstractModel):
 
 
 class ResultsReturnsByGroup(AbstractModel):
-    """Recognition result.
+    r"""Recognition result.
 
     """
 
@@ -6254,7 +6254,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def FaceRect(self):
-        """Position of detected face frame
+        r"""Position of detected face frame
         :rtype: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         """
         return self._FaceRect
@@ -6265,7 +6265,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def GroupCandidates(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: list of GroupCandidate
         """
         return self._GroupCandidates
@@ -6276,7 +6276,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
     @property
     def RetCode(self):
-        """Status return code of detected face image. 0: normal. 
+        r"""Status return code of detected face image. 0: normal. 
 -1601: the image quality control requirement is not met; in this case, `Candidate` is empty.
         :rtype: int
         """
@@ -6309,7 +6309,7 @@ class ResultsReturnsByGroup(AbstractModel):
 
 
 class SearchFacesRequest(AbstractModel):
-    """SearchFaces request structure.
+    r"""SearchFaces request structure.
 
     """
 
@@ -6368,7 +6368,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def GroupIds(self):
-        """List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
 You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
         :rtype: list of str
         """
@@ -6380,7 +6380,7 @@ You cannot search for groups using different algorithm model versions (`FaceMode
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -6393,7 +6393,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -6409,7 +6409,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
+        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. 
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. 
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :rtype: int
@@ -6422,7 +6422,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        """Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
+        r"""Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.
         :rtype: int
         """
         return self._MinFaceSize
@@ -6433,7 +6433,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNum(self):
-        """Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
+        r"""Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. 
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
 The greater the value, the longer the processing time. We recommend setting a value below 10.
         :rtype: int
@@ -6446,7 +6446,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def NeedPersonInfo(self):
-        """Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -6457,7 +6457,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -6475,7 +6475,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        """In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        r"""In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -6486,7 +6486,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -6518,7 +6518,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class SearchFacesResponse(AbstractModel):
-    """SearchFaces response structure.
+    r"""SearchFaces response structure.
 
     """
 
@@ -6540,7 +6540,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def Results(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: list of Result
         """
         return self._Results
@@ -6551,7 +6551,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """Number of faces included in searched groups.
+        r"""Number of faces included in searched groups.
         :rtype: int
         """
         return self._FaceNum
@@ -6562,7 +6562,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -6573,7 +6573,7 @@ class SearchFacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6596,7 +6596,7 @@ class SearchFacesResponse(AbstractModel):
 
 
 class SearchFacesReturnsByGroupRequest(AbstractModel):
-    """SearchFacesReturnsByGroup request structure.
+    r"""SearchFacesReturnsByGroup request structure.
 
     """
 
@@ -6656,7 +6656,7 @@ Value range: [0.0,100.0).
 
     @property
     def GroupIds(self):
-        """List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
 You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.
         :rtype: list of str
         """
@@ -6668,7 +6668,7 @@ You cannot search for groups using different algorithm model versions (`FaceMode
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -6681,7 +6681,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -6697,7 +6697,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :rtype: int
@@ -6710,7 +6710,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        """Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        r"""Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :rtype: int
         """
         return self._MinFaceSize
@@ -6721,7 +6721,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNumPerGroup(self):
-        """Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
+        r"""Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
 For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
         :rtype: int
         """
@@ -6733,7 +6733,7 @@ For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupId
 
     @property
     def NeedPersonInfo(self):
-        """Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -6744,7 +6744,7 @@ For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupId
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -6762,7 +6762,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        """In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value.
+        r"""In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value.
 Default value: 0.
 Value range: [0.0,100.0).
         :rtype: float
@@ -6775,7 +6775,7 @@ Value range: [0.0,100.0).
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -6807,7 +6807,7 @@ Value range: [0.0,100.0).
 
 
 class SearchFacesReturnsByGroupResponse(AbstractModel):
-    """SearchFacesReturnsByGroup response structure.
+    r"""SearchFacesReturnsByGroup response structure.
 
     """
 
@@ -6829,7 +6829,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceNum(self):
-        """Number of faces included in searched groups.
+        r"""Number of faces included in searched groups.
         :rtype: int
         """
         return self._FaceNum
@@ -6840,7 +6840,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def ResultsReturnsByGroup(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: list of ResultsReturnsByGroup
         """
         return self._ResultsReturnsByGroup
@@ -6851,7 +6851,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -6862,7 +6862,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6885,7 +6885,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
 
 
 class SearchPersonsRequest(AbstractModel):
-    """SearchPersons request structure.
+    r"""SearchPersons request structure.
 
     """
 
@@ -6944,7 +6944,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def GroupIds(self):
-        """List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.
         :rtype: list of str
         """
         return self._GroupIds
@@ -6955,7 +6955,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
@@ -6969,7 +6969,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -6985,7 +6985,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :rtype: int
@@ -6998,7 +6998,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        """Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        r"""Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :rtype: int
         """
         return self._MinFaceSize
@@ -7009,7 +7009,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNum(self):
-        """Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
+        r"""Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.
 For example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.
 The greater the value, the longer the processing time. We recommend setting a value below 10.
         :rtype: int
@@ -7022,7 +7022,7 @@ The greater the value, the longer the processing time. We recommend setting a va
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -7040,7 +7040,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        """In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
+        r"""In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -7051,7 +7051,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedPersonInfo(self):
-        """Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -7062,7 +7062,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -7094,7 +7094,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class SearchPersonsResponse(AbstractModel):
-    """SearchPersons response structure.
+    r"""SearchPersons response structure.
 
     """
 
@@ -7117,7 +7117,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Results(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: list of Result
         """
         return self._Results
@@ -7128,7 +7128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonNum(self):
-        """Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        r"""Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
         :rtype: int
         """
         return self._PersonNum
@@ -7139,7 +7139,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7151,7 +7151,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7174,7 +7174,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SearchPersonsReturnsByGroupRequest(AbstractModel):
-    """SearchPersonsReturnsByGroup request structure.
+    r"""SearchPersonsReturnsByGroup request structure.
 
     """
 
@@ -7231,7 +7231,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def GroupIds(self):
-        """List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
+        r"""List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.
         :rtype: list of str
         """
         return self._GroupIds
@@ -7242,7 +7242,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :rtype: str
@@ -7255,7 +7255,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
@@ -7271,7 +7271,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def MaxFaceNum(self):
-        """Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
+        r"""Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.
 `MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.
 For example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.
         :rtype: int
@@ -7284,7 +7284,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MinFaceSize(self):
-        """Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
+        r"""Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :rtype: int
         """
         return self._MinFaceSize
@@ -7295,7 +7295,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
 
     @property
     def MaxPersonNumPerGroup(self):
-        """Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
+        r"""Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
 For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
         :rtype: int
         """
@@ -7307,7 +7307,7 @@ For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupId
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -7325,7 +7325,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def FaceMatchThreshold(self):
-        """In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
+        r"""In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.
         :rtype: float
         """
         return self._FaceMatchThreshold
@@ -7336,7 +7336,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedPersonInfo(self):
-        """Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
+        r"""Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :rtype: int
         """
         return self._NeedPersonInfo
@@ -7347,7 +7347,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -7379,7 +7379,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class SearchPersonsReturnsByGroupResponse(AbstractModel):
-    """SearchPersonsReturnsByGroup response structure.
+    r"""SearchPersonsReturnsByGroup response structure.
 
     """
 
@@ -7401,7 +7401,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def PersonNum(self):
-        """Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
+        r"""Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.
         :rtype: int
         """
         return self._PersonNum
@@ -7412,7 +7412,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def ResultsReturnsByGroup(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: list of ResultsReturnsByGroup
         """
         return self._ResultsReturnsByGroup
@@ -7423,7 +7423,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition.
+        r"""Algorithm model version used for face recognition.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -7434,7 +7434,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7457,7 +7457,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
 
 
 class VerifyFaceRequest(AbstractModel):
-    """VerifyFace request structure.
+    r"""VerifyFace request structure.
 
     """
 
@@ -7498,7 +7498,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonId(self):
-        """ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
+        r"""ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
         :rtype: str
         """
         return self._PersonId
@@ -7509,7 +7509,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
+        r"""Base64-encoded image data, which cannot exceed 5 MB.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
@@ -7523,7 +7523,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -7540,7 +7540,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -7558,7 +7558,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -7585,7 +7585,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class VerifyFaceResponse(AbstractModel):
-    """VerifyFace response structure.
+    r"""VerifyFace response structure.
 
     """
 
@@ -7611,7 +7611,7 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
 
     @property
     def Score(self):
-        """Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, the score of the highest similarity will be returned.
+        r"""Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, the score of the highest similarity will be returned.
 
 The returned similarity score varies by algorithm version.
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person.
@@ -7626,7 +7626,7 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
 
     @property
     def IsMatch(self):
-        """Whether the person is the one in the image. The fixed threshold score is 60. If you want to adjust the threshold more flexibly, you can take the returned `Score` parameter value for judgment.
+        r"""Whether the person is the one in the image. The fixed threshold score is 60. If you want to adjust the threshold more flexibly, you can take the returned `Score` parameter value for judgment.
         :rtype: bool
         """
         return self._IsMatch
@@ -7637,7 +7637,7 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
+        r"""Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -7648,7 +7648,7 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7666,7 +7666,7 @@ The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90,
 
 
 class VerifyPersonRequest(AbstractModel):
-    """VerifyPerson request structure.
+    r"""VerifyPerson request structure.
 
     """
 
@@ -7707,7 +7707,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def PersonId(self):
-        """ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
+        r"""ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.
         :rtype: str
         """
         return self._PersonId
@@ -7718,7 +7718,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def Image(self):
-        """Base64-encoded data of the image.
+        r"""Base64-encoded data of the image.
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
 If there are multiple faces in the image, only the face with the largest size will be selected.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
@@ -7732,7 +7732,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def Url(self):
-        """Image URL 
+        r"""Image URL 
 The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
  Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
 We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
@@ -7749,7 +7749,7 @@ PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
 
     @property
     def QualityControl(self):
-        """Image quality control. 
+        r"""Image quality control. 
 0: no control. 
 1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. 
 2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. 
@@ -7767,7 +7767,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
     @property
     def NeedRotateDetection(self):
-        """Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
+        r"""Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
         :rtype: int
         """
         return self._NeedRotateDetection
@@ -7794,7 +7794,7 @@ If the image quality does not meet the requirement, the returned result will pro
 
 
 class VerifyPersonResponse(AbstractModel):
-    """VerifyPerson response structure.
+    r"""VerifyPerson response structure.
 
     """
 
@@ -7816,7 +7816,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def Score(self):
-        """Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, their information will be fused for verification.
+        r"""Similarity between given face image and `PersonId`. If there are multiple faces under the `PersonId`, their information will be fused for verification.
         :rtype: float
         """
         return self._Score
@@ -7827,7 +7827,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def IsMatch(self):
-        """Whether the person in the image matches the `PersonId`.
+        r"""Whether the person in the image matches the `PersonId`.
         :rtype: bool
         """
         return self._IsMatch
@@ -7838,7 +7838,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        """Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
+        r"""Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
         :rtype: str
         """
         return self._FaceModelVersion
@@ -7849,7 +7849,7 @@ class VerifyPersonResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

@@ -27,7 +27,7 @@ class DataintegrationClient(AbstractClient):
 
 
     def SendMessage(self, request):
-        """This API is used to report data to DIP via SDK.
+        r"""This API is used to report data to DIP via SDK.
 
         :param request: Request instance for SendMessage.
         :type request: :class:`tencentcloud.dataintegration.v20220613.models.SendMessageRequest`

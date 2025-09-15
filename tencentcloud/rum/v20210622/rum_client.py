@@ -27,7 +27,7 @@ class RumClient(AbstractClient):
 
 
     def CreateLogExport(self, request):
-        """API domain name: `rum.tencentcloudapi.com`.
+        r"""API domain name: `rum.tencentcloudapi.com`.
 
         This API is used to create a log download task.
 
@@ -54,7 +54,7 @@ class RumClient(AbstractClient):
 
 
     def CreateOfflineLogConfig(self, request):
-        """This API is used to create an offline log listener to report offline logs of particular users.
+        r"""This API is used to create an offline log listener to report offline logs of particular users.
 
         :param request: Request instance for CreateOfflineLogConfig.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigRequest`
@@ -77,7 +77,7 @@ class RumClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """This API is used to create a RUM application which belongs to a specific team.
+        r"""This API is used to create a RUM application which belongs to a specific team.
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
@@ -100,7 +100,7 @@ class RumClient(AbstractClient):
 
 
     def CreateReleaseFile(self, request):
-        """This API is used to create a file record for the specified project.
+        r"""This API is used to create a file record for the specified project.
 
         :param request: Request instance for CreateReleaseFile.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateReleaseFileRequest`
@@ -123,7 +123,7 @@ class RumClient(AbstractClient):
 
 
     def CreateStarProject(self, request):
-        """This API is used to add a starred project.
+        r"""This API is used to add a starred project.
 
         :param request: Request instance for CreateStarProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateStarProjectRequest`
@@ -146,7 +146,7 @@ class RumClient(AbstractClient):
 
 
     def CreateTawInstance(self, request):
-        """This API is used to create a RUM business system.
+        r"""This API is used to create a RUM business system.
 
         :param request: Request instance for CreateTawInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
@@ -169,7 +169,7 @@ class RumClient(AbstractClient):
 
 
     def CreateWhitelist(self, request):
-        """This API is used to create an allowlist.
+        r"""This API is used to create an allowlist.
 
         :param request: Request instance for CreateWhitelist.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateWhitelistRequest`
@@ -192,7 +192,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """This API is used to delete an instance. The deleted instance cannot be recovered.
+        r"""This API is used to delete an instance. The deleted instance cannot be recovered.
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteInstanceRequest`
@@ -215,7 +215,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteLogExport(self, request):
-        """API domain name: `rum.tencentcloudapi.com`.
+        r"""API domain name: `rum.tencentcloudapi.com`.
 
         This API is used to delete a log download task.
 
@@ -242,7 +242,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteOfflineLogConfig(self, request):
-        """This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.
+        r"""This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.
 
         :param request: Request instance for DeleteOfflineLogConfig.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigRequest`
@@ -265,7 +265,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteOfflineLogRecord(self, request):
-        """This API is used to delete an offline log record.
+        r"""This API is used to delete an offline log record.
 
         :param request: Request instance for DeleteOfflineLogRecord.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordRequest`
@@ -288,7 +288,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """This API is used to delete the specified RUM project.
+        r"""This API is used to delete the specified RUM project.
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteProjectRequest`
@@ -311,7 +311,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteReleaseFile(self, request):
-        """This API is used to delete the specified sourcemap file.
+        r"""This API is used to delete the specified sourcemap file.
 
         :param request: Request instance for DeleteReleaseFile.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteReleaseFileRequest`
@@ -334,7 +334,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteStarProject(self, request):
-        """This API is used to delete a starred project for the specified user.
+        r"""This API is used to delete a starred project for the specified user.
 
         :param request: Request instance for DeleteStarProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteStarProjectRequest`
@@ -357,7 +357,7 @@ class RumClient(AbstractClient):
 
 
     def DeleteWhitelist(self, request):
-        """This API is used to delete an allowlist.
+        r"""This API is used to delete an allowlist.
 
         :param request: Request instance for DeleteWhitelist.
         :type request: :class:`tencentcloud.rum.v20210622.models.DeleteWhitelistRequest`
@@ -380,7 +380,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeData(self, request):
-        """This API is used to query the forwarding monitor.
+        r"""This API is used to query the forwarding monitor.
 
         :param request: Request instance for DescribeData.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataRequest`
@@ -403,7 +403,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataCustomUrl(self, request):
-        """This API is used to get the DescribeDataCustomUrl information.
+        r"""This API is used to get the DescribeDataCustomUrl information.
 
         :param request: Request instance for DescribeDataCustomUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlRequest`
@@ -426,7 +426,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataEventUrl(self, request):
-        """This API is used to get the DescribeDataEventUrl information.
+        r"""This API is used to get the DescribeDataEventUrl information.
 
         :param request: Request instance for DescribeDataEventUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlRequest`
@@ -449,7 +449,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchProject(self, request):
-        """This API is used to get the `DescribeDataFetchProject` information and has been deprecated. Use `DescribeDataFetchUrl` instead.
+        r"""This API is used to get the `DescribeDataFetchProject` information and has been deprecated. Use `DescribeDataFetchUrl` instead.
 
         :param request: Request instance for DescribeDataFetchProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchProjectRequest`
@@ -472,7 +472,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchUrl(self, request):
-        """This API is used to get the DescribeDataFetchUrl information.
+        r"""This API is used to get the DescribeDataFetchUrl information.
 
         :param request: Request instance for DescribeDataFetchUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlRequest`
@@ -495,7 +495,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchUrlInfo(self, request):
-        """This API is used to get the DescribeDataFetchUrlInfo information.
+        r"""This API is used to get the DescribeDataFetchUrlInfo information.
 
         :param request: Request instance for DescribeDataFetchUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlInfoRequest`
@@ -518,7 +518,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataLogUrlInfo(self, request):
-        """This API is used to get the loginfo information.
+        r"""This API is used to get the loginfo information.
 
         :param request: Request instance for DescribeDataLogUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlInfoRequest`
@@ -541,7 +541,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataLogUrlStatistics(self, request):
-        """This API is used to get the LogUrlStatistics information.
+        r"""This API is used to get the LogUrlStatistics information.
 
         :param request: Request instance for DescribeDataLogUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlStatisticsRequest`
@@ -564,7 +564,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPerformancePage(self, request):
-        """This API is used to get the PerformancePage information.
+        r"""This API is used to get the PerformancePage information.
 
         :param request: Request instance for DescribeDataPerformancePage.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformancePageRequest`
@@ -587,7 +587,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPerformanceProject(self, request):
-        """This API is used to get the PerformanceProject information.
+        r"""This API is used to get the PerformanceProject information.
 
         :param request: Request instance for DescribeDataPerformanceProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectRequest`
@@ -610,7 +610,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPvUrlInfo(self, request):
-        """This API is used to get the PvUrlInfo information.
+        r"""This API is used to get the PvUrlInfo information.
 
         :param request: Request instance for DescribeDataPvUrlInfo.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlInfoRequest`
@@ -633,7 +633,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataPvUrlStatistics(self, request):
-        """This API is used to get the DescribeDataPvUrlStatistics information.
+        r"""This API is used to get the DescribeDataPvUrlStatistics information.
 
         :param request: Request instance for DescribeDataPvUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsRequest`
@@ -656,7 +656,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataReportCount(self, request):
-        """This API is used to get the number of reported data entries for a project.
+        r"""This API is used to get the number of reported data entries for a project.
 
         :param request: Request instance for DescribeDataReportCount.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountRequest`
@@ -679,7 +679,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataSetUrlStatistics(self, request):
-        """This API is used to get the DescribeDataSetUrlStatistics information.
+        r"""This API is used to get the DescribeDataSetUrlStatistics information.
 
         :param request: Request instance for DescribeDataSetUrlStatistics.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsRequest`
@@ -702,7 +702,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticProject(self, request):
-        """This API is used to get the DescribeDataStaticProject information.
+        r"""This API is used to get the DescribeDataStaticProject information.
 
         :param request: Request instance for DescribeDataStaticProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectRequest`
@@ -725,7 +725,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticResource(self, request):
-        """This API is used to get the DescribeDataStaticResource information.
+        r"""This API is used to get the DescribeDataStaticResource information.
 
         :param request: Request instance for DescribeDataStaticResource.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceRequest`
@@ -748,7 +748,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataStaticUrl(self, request):
-        """This API is used to get the DescribeDataStaticUrl information.
+        r"""This API is used to get the DescribeDataStaticUrl information.
 
         :param request: Request instance for DescribeDataStaticUrl.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlRequest`
@@ -771,7 +771,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataWebVitalsPage(self, request):
-        """This API is used to get the DescribeDataWebVitalsPage information, which is about core user activities.
+        r"""This API is used to get the DescribeDataWebVitalsPage information, which is about core user activities.
         It includes the Web Vitals metric for the page loading performance.
 
         :param request: Request instance for DescribeDataWebVitalsPage.
@@ -795,7 +795,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeError(self, request):
-        """This API is used to get the homepage error information.
+        r"""This API is used to get the homepage error information.
 
         :param request: Request instance for DescribeError.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeErrorRequest`
@@ -818,7 +818,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeLogExports(self, request):
-        """API domain name: `rum.tencentcloudapi.com`.
+        r"""API domain name: `rum.tencentcloudapi.com`.
 
         This API is used to get the list of log download tasks.
 
@@ -845,7 +845,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeLogList(self, request):
-        """This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.
+        r"""This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.
 
         :param request: Request instance for DescribeLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogListRequest`
@@ -868,7 +868,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeOfflineLogConfigs(self, request):
-        """This API is used to get the configuration of the set offline log listener and return the unique user ID.
+        r"""This API is used to get the configuration of the set offline log listener and return the unique user ID.
 
         :param request: Request instance for DescribeOfflineLogConfigs.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsRequest`
@@ -891,7 +891,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeOfflineLogRecords(self, request):
-        """This API is used to get all (up to 100) offline log records.
+        r"""This API is used to get all (up to 100) offline log records.
 
         :param request: Request instance for DescribeOfflineLogRecords.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsRequest`
@@ -914,7 +914,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeOfflineLogs(self, request):
-        """This API is used to get the specified offline log.
+        r"""This API is used to get the specified offline log.
 
         :param request: Request instance for DescribeOfflineLogs.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsRequest`
@@ -937,7 +937,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjectLimits(self, request):
-        """This API is used to get the sampling information of an application’s reporting APIs.
+        r"""This API is used to get the sampling information of an application’s reporting APIs.
 
         :param request: Request instance for DescribeProjectLimits.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsRequest`
@@ -960,7 +960,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """This API is used to get the list of projects (under teams created by an instance).
+        r"""This API is used to get the list of projects (under teams created by an instance).
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsRequest`
@@ -983,7 +983,7 @@ class RumClient(AbstractClient):
 
 
     def DescribePvList(self, request):
-        """This API is used to get the list of PVs under a project.
+        r"""This API is used to get the list of PVs under a project.
 
         :param request: Request instance for DescribePvList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribePvListRequest`
@@ -1006,7 +1006,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFileSign(self, request):
-        """This API is used to get the temporary key for uploaded file storage.
+        r"""This API is used to get the temporary key for uploaded file storage.
 
         :param request: Request instance for DescribeReleaseFileSign.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFileSignRequest`
@@ -1029,7 +1029,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFiles(self, request):
-        """This API is used to get the list of source maps of an application.
+        r"""This API is used to get the list of source maps of an application.
 
         :param request: Request instance for DescribeReleaseFiles.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesRequest`
@@ -1052,7 +1052,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumGroupLog(self, request):
-        """This API is used to get the log aggregation information under a project.
+        r"""This API is used to get the log aggregation information under a project.
 
         :param request: Request instance for DescribeRumGroupLog.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogRequest`
@@ -1075,7 +1075,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogExport(self, request):
-        """This API is used to get the list of logs in a project (created by an instance).
+        r"""This API is used to get the list of logs in a project (created by an instance).
 
         :param request: Request instance for DescribeRumLogExport.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportRequest`
@@ -1098,7 +1098,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogExports(self, request):
-        """This API is used to get the list of exported logs in a project.
+        r"""This API is used to get the list of exported logs in a project.
 
         :param request: Request instance for DescribeRumLogExports.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsRequest`
@@ -1121,7 +1121,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumLogList(self, request):
-        """This API is used to get the list of logs in a project (created by an instance).
+        r"""This API is used to get the list of logs in a project (created by an instance).
 
         :param request: Request instance for DescribeRumLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListRequest`
@@ -1144,7 +1144,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeRumStatsLogList(self, request):
-        """This API is used to get the list of logs in a project every minute.
+        r"""This API is used to get the list of logs in a project every minute.
 
         :param request: Request instance for DescribeRumStatsLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListRequest`
@@ -1167,7 +1167,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeScores(self, request):
-        """This API is used to get the list of homepage scores.
+        r"""This API is used to get the list of homepage scores.
 
         :param request: Request instance for DescribeScores.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeScoresRequest`
@@ -1190,7 +1190,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeTawAreas(self, request):
-        """This API is used to query region information.
+        r"""This API is used to query region information.
 
         :param request: Request instance for DescribeTawAreas.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawAreasRequest`
@@ -1213,7 +1213,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeUvList(self, request):
-        """This API is used to get the list of UVs under a project.
+        r"""This API is used to get the list of UVs under a project.
 
         :param request: Request instance for DescribeUvList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeUvListRequest`
@@ -1236,7 +1236,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeWhitelists(self, request):
-        """This API is used to get the list of allowlists.
+        r"""This API is used to get the list of allowlists.
 
         :param request: Request instance for DescribeWhitelists.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeWhitelistsRequest`
@@ -1259,7 +1259,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify a RUM business system.
+        r"""This API is used to modify a RUM business system.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceRequest`
@@ -1282,7 +1282,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """This API is used to modify the RUM application information.
+        r"""This API is used to modify the RUM application information.
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectRequest`
@@ -1305,7 +1305,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProjectLimit(self, request):
-        """This API is used to add or modify data reporting limit.
+        r"""This API is used to add or modify data reporting limit.
 
         :param request: Request instance for ModifyProjectLimit.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectLimitRequest`
@@ -1328,7 +1328,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeInstance(self, request):
-        """This API is used to recover a RUM business system so that you can use the application to report data normally.
+        r"""This API is used to recover a RUM business system so that you can use the application to report data normally.
 
         :param request: Request instance for ResumeInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceRequest`
@@ -1351,7 +1351,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeProject(self, request):
-        """This API is used to recover an application and resume data reporting.
+        r"""This API is used to recover an application and resume data reporting.
 
         :param request: Request instance for ResumeProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeProjectRequest`
@@ -1374,7 +1374,7 @@ class RumClient(AbstractClient):
 
 
     def StopInstance(self, request):
-        """This API is used to stop an instance.
+        r"""This API is used to stop an instance.
 
         :param request: Request instance for StopInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.StopInstanceRequest`
@@ -1397,7 +1397,7 @@ class RumClient(AbstractClient):
 
 
     def StopProject(self, request):
-        """This API is used to stop a project from reporting data.
+        r"""This API is used to stop a project from reporting data.
 
         :param request: Request instance for StopProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.StopProjectRequest`

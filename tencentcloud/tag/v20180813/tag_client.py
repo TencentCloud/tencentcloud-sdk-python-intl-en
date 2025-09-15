@@ -27,7 +27,7 @@ class TagClient(AbstractClient):
 
 
     def AddProject(self, request):
-        """Creates a project
+        r"""Creates a project
 
         :param request: Request instance for AddProject.
         :type request: :class:`tencentcloud.tag.v20180813.models.AddProjectRequest`
@@ -50,7 +50,7 @@ class TagClient(AbstractClient):
 
 
     def AddResourceTag(self, request):
-        """This API is used to associate resources with tags.
+        r"""This API is used to associate resources with tags.
 
         :param request: Request instance for AddResourceTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.AddResourceTagRequest`
@@ -73,7 +73,7 @@ class TagClient(AbstractClient):
 
 
     def AttachResourcesTag(self, request):
-        """This API is used to associate a tag with multiple resources.
+        r"""This API is used to associate a tag with multiple resources.
 
         :param request: Request instance for AttachResourcesTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.AttachResourcesTagRequest`
@@ -96,7 +96,7 @@ class TagClient(AbstractClient):
 
 
     def CreateTag(self, request):
-        """This API is used to create a tag key and tag value pair.
+        r"""This API is used to create a tag key and tag value pair.
 
         :param request: Request instance for CreateTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagRequest`
@@ -119,7 +119,7 @@ class TagClient(AbstractClient):
 
 
     def CreateTags(self, request):
-        """This API is used to create multiple tag key-value pairs.
+        r"""This API is used to create multiple tag key-value pairs.
 
         :param request: Request instance for CreateTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagsRequest`
@@ -142,7 +142,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteResourceTag(self, request):
-        """This API is used to unassociate tags and resources.
+        r"""This API is used to unassociate tags and resources.
 
         :param request: Request instance for DeleteResourceTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagRequest`
@@ -165,7 +165,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTag(self, request):
-        """This API is used to delete a tag key and tag value pair.
+        r"""This API is used to delete a tag key and tag value pair.
 
         :param request: Request instance for DeleteTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagRequest`
@@ -188,7 +188,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """This API is used to delete tag keys and tag values in batches.
+        r"""This API is used to delete tag keys and tag values in batches.
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`
@@ -211,7 +211,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeProjects(self, request):
-        """This API is used to get project lists.
+        r"""This API is used to get project lists.
 
         :param request: Request instance for DescribeProjects.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeProjectsRequest`
@@ -234,7 +234,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTags(self, request):
-        """This API is used to query the tags associated with a resource.
+        r"""This API is used to query the tags associated with a resource.
 
         :param request: Request instance for DescribeResourceTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsRequest`
@@ -257,7 +257,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByResourceIds(self, request):
-        """This API is used to query the tag key-value pairs associated with an existing resource.
+        r"""This API is used to query the tag key-value pairs associated with an existing resource.
 
         :param request: Request instance for DescribeResourceTagsByResourceIds.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsRequest`
@@ -280,7 +280,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByResourceIdsSeq(self, request):
-        """This API is used to view the tags associated with a resource in sequence.
+        r"""This API is used to view the tags associated with a resource in sequence.
 
         :param request: Request instance for DescribeResourceTagsByResourceIdsSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsSeqRequest`
@@ -303,7 +303,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByTagKeys(self, request):
-        """This API is used to get resource tags based on tag keys.
+        r"""This API is used to get resource tags based on tag keys.
 
         :param request: Request instance for DescribeResourceTagsByTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByTagKeysRequest`
@@ -326,7 +326,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTags(self, request):
-        """This API is used to query resources by tags.
+        r"""This API is used to query resources by tags.
 
         :param request: Request instance for DescribeResourcesByTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsRequest`
@@ -349,7 +349,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTagsUnion(self, request):
-        """This API is used to query resource list by tags.
+        r"""This API is used to query resource list by tags.
 
         :param request: Request instance for DescribeResourcesByTagsUnion.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsUnionRequest`
@@ -372,7 +372,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagKeys(self, request):
-        """This API is used to query tag keys in the list of created tags.
+        r"""This API is used to query tag keys in the list of created tags.
 
         :param request: Request instance for DescribeTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysRequest`
@@ -395,7 +395,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagValues(self, request):
-        """This API is used to query tag values in an existing tag list.
+        r"""This API is used to query tag values in an existing tag list.
 
         :param request: Request instance for DescribeTagValues.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesRequest`
@@ -418,7 +418,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagValuesSeq(self, request):
-        """This API is used to query tag values in a created tag list.
+        r"""This API is used to query tag values in a created tag list.
 
         :param request: Request instance for DescribeTagValuesSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesSeqRequest`
@@ -441,7 +441,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """This API is used to query the list of created tags.
+        r"""This API is used to query the list of created tags.
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
@@ -464,7 +464,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagsSeq(self, request):
-        """This API is used to query the created tag lists.
+        r"""This API is used to query the created tag lists.
 
         :param request: Request instance for DescribeTagsSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsSeqRequest`
@@ -487,7 +487,7 @@ class TagClient(AbstractClient):
 
 
     def DetachResourcesTag(self, request):
-        """This API is used to unbind a tag from multiple resources.
+        r"""This API is used to unbind a tag from multiple resources.
 
         :param request: Request instance for DetachResourcesTag.
         :type request: :class:`tencentcloud.tag.v20180813.models.DetachResourcesTagRequest`
@@ -510,7 +510,7 @@ class TagClient(AbstractClient):
 
 
     def GetResources(self, request):
-        """This API is used to query the list of resources associated with a tag.
+        r"""This API is used to query the list of resources associated with a tag.
 
         :param request: Request instance for GetResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetResourcesRequest`
@@ -533,7 +533,7 @@ class TagClient(AbstractClient):
 
 
     def GetTagKeys(self, request):
-        """This API is used to query the list of tag keys.
+        r"""This API is used to query the list of tag keys.
 
         :param request: Request instance for GetTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagKeysRequest`
@@ -556,7 +556,7 @@ class TagClient(AbstractClient):
 
 
     def GetTagValues(self, request):
-        """This API is used to query tag values in the list of created tags.
+        r"""This API is used to query tag values in the list of created tags.
 
         :param request: Request instance for GetTagValues.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagValuesRequest`
@@ -579,7 +579,7 @@ class TagClient(AbstractClient):
 
 
     def GetTags(self, request):
-        """This API is used to get the list of created tags.
+        r"""This API is used to get the list of created tags.
 
         :param request: Request instance for GetTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagsRequest`
@@ -602,7 +602,7 @@ class TagClient(AbstractClient):
 
 
     def ModifyResourceTags(self, request):
-        """This API is used to modify all tags associated with a resource.
+        r"""This API is used to modify all tags associated with a resource.
 
         :param request: Request instance for ModifyResourceTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsRequest`
@@ -625,7 +625,7 @@ class TagClient(AbstractClient):
 
 
     def ModifyResourcesTagValue(self, request):
-        """This API is used to modify the tag value corresponding to a tag key associated with multiple resources.
+        r"""This API is used to modify the tag value corresponding to a tag key associated with multiple resources.
 
         :param request: Request instance for ModifyResourcesTagValue.
         :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourcesTagValueRequest`
@@ -648,7 +648,7 @@ class TagClient(AbstractClient):
 
 
     def TagResources(self, request):
-        """This API is used to create and bind a tag uniformly to multiple specified resources of multiple Tencent Cloud services.
+        r"""This API is used to create and bind a tag uniformly to multiple specified resources of multiple Tencent Cloud services.
 
         :param request: Request instance for TagResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.TagResourcesRequest`
@@ -671,7 +671,7 @@ class TagClient(AbstractClient):
 
 
     def UnTagResources(self, request):
-        """This API is used to unbind a tag uniformly from multiple specified resources of multiple Tencent Cloud services.
+        r"""This API is used to unbind a tag uniformly from multiple specified resources of multiple Tencent Cloud services.
 
         :param request: Request instance for UnTagResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesRequest`
@@ -694,7 +694,7 @@ class TagClient(AbstractClient):
 
 
     def UpdateResourceTagValue(self, request):
-        """This API is used to modify the values of tags associated with a resource (the tag key does not change).
+        r"""This API is used to modify the values of tags associated with a resource (the tag key does not change).
 
         :param request: Request instance for UpdateResourceTagValue.
         :type request: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueRequest`

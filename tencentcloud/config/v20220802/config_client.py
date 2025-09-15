@@ -27,7 +27,7 @@ class ConfigClient(AbstractClient):
 
 
     def DescribeDiscoveredResource(self, request):
-        """Resource details.
+        r"""Resource details.
 
         :param request: Request instance for DescribeDiscoveredResource.
         :type request: :class:`tencentcloud.config.v20220802.models.DescribeDiscoveredResourceRequest`
@@ -50,7 +50,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListAggregateConfigRules(self, request):
-        """This API is used to get the account group rule list.
+        r"""This API is used to get the account group rule list.
 
         :param request: Request instance for ListAggregateConfigRules.
         :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateConfigRulesRequest`
@@ -73,7 +73,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListAggregateDiscoveredResources(self, request):
-        """Account Group access the list of resources.
+        r"""Account Group access the list of resources.
 
         :param request: Request instance for ListAggregateDiscoveredResources.
         :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesRequest`
@@ -96,7 +96,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListConfigRules(self, request):
-        """This API is used to get the rule list.
+        r"""This API is used to get the rule list.
 
         :param request: Request instance for ListConfigRules.
         :type request: :class:`tencentcloud.config.v20220802.models.ListConfigRulesRequest`
@@ -119,7 +119,7 @@ class ConfigClient(AbstractClient):
 
 
     def ListDiscoveredResources(self, request):
-        """This API is used to get the resource list.
+        r"""This API is used to get the resource list.
 
         :param request: Request instance for ListDiscoveredResources.
         :type request: :class:`tencentcloud.config.v20220802.models.ListDiscoveredResourcesRequest`
@@ -142,7 +142,7 @@ class ConfigClient(AbstractClient):
 
 
     def PutEvaluations(self, request):
-        """This API is used to report custom rule evaluation results.
+        r"""This API is used to report custom rule evaluation results.
 
         :param request: Request instance for PutEvaluations.
         :type request: :class:`tencentcloud.config.v20220802.models.PutEvaluationsRequest`

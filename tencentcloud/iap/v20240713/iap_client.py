@@ -27,7 +27,7 @@ class IapClient(AbstractClient):
 
 
     def CreateIAPUserOIDCConfig(self, request):
-        """This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.
+        r"""This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.
 
         :param request: Request instance for CreateIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.CreateIAPUserOIDCConfigRequest`
@@ -50,7 +50,7 @@ class IapClient(AbstractClient):
 
 
     def DescribeIAPLoginSessionDuration(self, request):
-        """This API is used to query login session duration.
+        r"""This API is used to query login session duration.
 
         :param request: Request instance for DescribeIAPLoginSessionDuration.
         :type request: :class:`tencentcloud.iap.v20240713.models.DescribeIAPLoginSessionDurationRequest`
@@ -73,7 +73,7 @@ class IapClient(AbstractClient):
 
 
     def DescribeIAPUserOIDCConfig(self, request):
-        """This API is used to query a user OIDC configuration.
+        r"""This API is used to query a user OIDC configuration.
 
         :param request: Request instance for DescribeIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.DescribeIAPUserOIDCConfigRequest`
@@ -96,7 +96,7 @@ class IapClient(AbstractClient):
 
 
     def DisableIAPUserSSO(self, request):
-        """This API is used to disable user SSO.
+        r"""This API is used to disable user SSO.
 
         :param request: Request instance for DisableIAPUserSSO.
         :type request: :class:`tencentcloud.iap.v20240713.models.DisableIAPUserSSORequest`
@@ -119,7 +119,7 @@ class IapClient(AbstractClient):
 
 
     def ModifyIAPLoginSessionDuration(self, request):
-        """This API is used to modify login session duration.
+        r"""This API is used to modify login session duration.
 
         :param request: Request instance for ModifyIAPLoginSessionDuration.
         :type request: :class:`tencentcloud.iap.v20240713.models.ModifyIAPLoginSessionDurationRequest`
@@ -142,7 +142,7 @@ class IapClient(AbstractClient):
 
 
     def UpdateIAPUserOIDCConfig(self, request):
-        """This API is used to modify a user OIDC configuration.
+        r"""This API is used to modify a user OIDC configuration.
 
         :param request: Request instance for UpdateIAPUserOIDCConfig.
         :type request: :class:`tencentcloud.iap.v20240713.models.UpdateIAPUserOIDCConfigRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AggregateResourceInfo(AbstractModel):
-    """Resource list information response parameters structure
+    r"""Resource list information response parameters structure
 
     """
 
@@ -78,7 +78,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceType(self):
-        """Resource type
+        r"""Resource type
         :rtype: str
         """
         return self._ResourceType
@@ -89,7 +89,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceName(self):
-        """Resource name
+        r"""Resource name
         :rtype: str
         """
         return self._ResourceName
@@ -100,7 +100,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -111,7 +111,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceRegion(self):
-        """Region
+        r"""Region
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -124,7 +124,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceStatus(self):
-        """Resource Status
+        r"""Resource Status
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -137,7 +137,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceDelete(self):
-        """Whether to delete. 1: Deleted; 0: Not deleted.
+        r"""Whether to delete. 1: Deleted; 0: Not deleted.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: int
         """
@@ -149,7 +149,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceCreateTime(self):
-        """Resource creation time
+        r"""Resource creation time
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -162,7 +162,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of Tag
@@ -175,7 +175,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceZone(self):
-        """Availability zone
+        r"""Availability zone
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -188,7 +188,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ComplianceResult(self):
-        """Compliance status
+        r"""Compliance status
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -200,7 +200,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceOwnerId(self):
-        """Resource owner uid
+        r"""Resource owner uid
         :rtype: int
         """
         return self._ResourceOwnerId
@@ -211,7 +211,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceOwnerName(self):
-        """User nickname
+        r"""User nickname
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -251,7 +251,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class Annotation(AbstractModel):
-    """Compliance details
+    r"""Compliance details
 
     """
 
@@ -275,7 +275,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Configuration(self):
-        """Current actual configuration of the resource. It can contain 0 to 256 characters, which is the non-compliant configuration of the resource.
+        r"""Current actual configuration of the resource. It can contain 0 to 256 characters, which is the non-compliant configuration of the resource.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -287,7 +287,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DesiredValue(self):
-        """Desired configuration of the resource. It can contain 0 to 256 characters, which is the compliant configuration of the resource.
+        r"""Desired configuration of the resource. It can contain 0 to 256 characters, which is the compliant configuration of the resource.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -299,7 +299,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Operator(self):
-        """Comparison operator between current and desired configuration of the resource. Length is 0-16 characters. This field may be empty when custom rule reporting evaluation result.
+        r"""Comparison operator between current and desired configuration of the resource. Length is 0-16 characters. This field may be empty when custom rule reporting evaluation result.
         :rtype: str
         """
         return self._Operator
@@ -310,7 +310,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Property(self):
-        """JSON path of current configuration in resource attribute structure. Length is 0-256 characters. This field may be empty when custom rule reporting evaluation result.
+        r"""JSON path of current configuration in resource attribute structure. Length is 0-256 characters. This field may be empty when custom rule reporting evaluation result.
         :rtype: str
         """
         return self._Property
@@ -336,7 +336,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class ConfigRule(AbstractModel):
-    """Rule details
+    r"""Rule details
 
     """
 
@@ -477,7 +477,7 @@ Triggered by configuration change
 
     @property
     def Identifier(self):
-        """Rule identifier
+        r"""Rule identifier
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -489,7 +489,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RuleName(self):
-        """Name of the rule
+        r"""Name of the rule
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -502,7 +502,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InputParameter(self):
-        """Rule parameters
+        r"""Rule parameters
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of InputParameter
         """
@@ -514,7 +514,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SourceCondition(self):
-        """Rule trigger condition.
+        r"""Rule trigger condition.
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of SourceConditionForManage
@@ -527,7 +527,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceType(self):
-        """Resource types supported by rule. The rule only applies to specified resource types.
+        r"""Resource types supported by rule. The rule only applies to specified resource types.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of str
         """
@@ -539,7 +539,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Labels(self):
-        """Rule ownership tag
+        r"""Rule ownership tag
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of str
         """
@@ -551,7 +551,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RiskLevel(self):
-        """Rule risk level
+        r"""Rule risk level
 1: Low risk
 2: Medium risk
 3: High risk
@@ -566,7 +566,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ServiceFunction(self):
-        """Function corresponding to rule
+        r"""Function corresponding to rule
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -578,7 +578,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 
 Format: YYYY-MM-DD h:i:s
 Note: This field may return null, indicating that no valid value is found.
@@ -592,7 +592,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Description(self):
-        """Rule description
+        r"""Rule description
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -605,7 +605,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Status(self):
-        """ACTIVE: Enabled
+        r"""ACTIVE: Enabled
 NO_ACTIVE: Disabled
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -618,7 +618,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ComplianceResult(self):
-        """Compliance: 'COMPLIANT'
+        r"""Compliance: 'COMPLIANT'
 'NON_COMPLIANT'
 'NOT_APPLICABLE'
 Note: This field may return null, indicating that no valid value is found.
@@ -632,7 +632,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Annotation(self):
-        """["",""]
+        r"""["",""]
 Note: This field may return null, indicating that no valid value is found.
         :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
         """
@@ -644,7 +644,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ConfigRuleInvokedTime(self):
-        """Rule evaluation time
+        r"""Rule evaluation time
 Format: YYYY-MM-DD h:i:s
 
 Note: This field may return null, indicating that no valid value is found.
@@ -658,7 +658,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ConfigRuleId(self):
-        """Rule ID
+        r"""Rule ID
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -671,7 +671,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def IdentifierType(self):
-        """CUSTOMIZE
+        r"""CUSTOMIZE
 Managed rule
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -684,7 +684,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CompliancePackId(self):
-        """Compliance package ID
+        r"""Compliance package ID
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -696,7 +696,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TriggerType(self):
-        """Trigger Type
+        r"""Trigger Type
 
 Scheduled trigger
 Triggered by configuration change
@@ -711,7 +711,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ManageInputParameter(self):
-        """Parameter details
+        r"""Parameter details
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of InputParameterForManage
@@ -724,7 +724,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CompliancePackName(self):
-        """Rule name
+        r"""Rule name
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -737,7 +737,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RegionsScope(self):
-        """Associated region
+        r"""Associated region
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of str
         """
@@ -749,7 +749,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TagsScope(self):
-        """Associate Tag
+        r"""Associate Tag
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of Tag
@@ -762,7 +762,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ExcludeResourceIdsScope(self):
-        """ The rule is invalid for the specified resource ID, meaning it does not evaluate the resource.
+        r""" The rule is invalid for the specified resource ID, meaning it does not evaluate the resource.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of str
         """
@@ -774,7 +774,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def AccountGroupId(self):
-        """Account group ID
+        r"""Account group ID
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -787,7 +787,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def AccountGroupName(self):
-        """Account group name
+        r"""Account group name
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -799,7 +799,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RuleOwnerId(self):
-        """Rule owner user ID
+        r"""Rule owner user ID
 Note: This field may return null, indicating that no valid value is found.
         :rtype: int
         """
@@ -811,7 +811,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ManageTriggerType(self):
-        """Trigger methods supported by preset rules
+        r"""Trigger methods supported by preset rules
 Scheduled trigger
 Triggered by configuration change
         :rtype: list of str
@@ -889,7 +889,7 @@ Triggered by configuration change
 
 
 class DescribeDiscoveredResourceRequest(AbstractModel):
-    """DescribeDiscoveredResource request structure.
+    r"""DescribeDiscoveredResource request structure.
 
     """
 
@@ -908,7 +908,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -919,7 +919,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Resource type
+        r"""Resource type
         :rtype: str
         """
         return self._ResourceType
@@ -930,7 +930,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        """Resource region
+        r"""Resource region
         :rtype: str
         """
         return self._ResourceRegion
@@ -955,7 +955,7 @@ class DescribeDiscoveredResourceRequest(AbstractModel):
 
 
 class DescribeDiscoveredResourceResponse(AbstractModel):
-    """DescribeDiscoveredResource response structure.
+    r"""DescribeDiscoveredResource response structure.
 
     """
 
@@ -1011,7 +1011,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1024,7 +1024,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceType(self):
-        """Resource type
+        r"""Resource type
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1037,7 +1037,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceName(self):
-        """Resource Name
+        r"""Resource Name
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1050,7 +1050,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceRegion(self):
-        """Resource region
+        r"""Resource region
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1063,7 +1063,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceZone(self):
-        """Resource availability zone
+        r"""Resource availability zone
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1075,7 +1075,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Configuration(self):
-        """Resource configuration
+        r"""Resource configuration
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1088,7 +1088,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceCreateTime(self):
-        """Resource creation time
+        r"""Resource creation time
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1101,7 +1101,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """Resource tag
+        r"""Resource tag
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of Tag
@@ -1114,7 +1114,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UpdateTime(self):
-        """Resource update time
+        r"""Resource update time
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1126,7 +1126,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1155,7 +1155,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class Evaluation(AbstractModel):
-    """Custom rule evaluation result
+    r"""Custom rule evaluation result
 
     """
 
@@ -1185,7 +1185,7 @@ NON_COMPLIANT: Non-compliant
 
     @property
     def ComplianceResourceId(self):
-        """Evaluated resource id. It can contain 0 to 256 characters.
+        r"""Evaluated resource id. It can contain 0 to 256 characters.
         :rtype: str
         """
         return self._ComplianceResourceId
@@ -1196,7 +1196,7 @@ NON_COMPLIANT: Non-compliant
 
     @property
     def ComplianceResourceType(self):
-        """Evaluated resource type.
+        r"""Evaluated resource type.
 Supported:
 QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::VPC::SecurityGroup、 QCS::CAM::User、QCS::CAM::Group、QCS::CAM::Policy、QCS::CAM::Role、QCS::COS::Bucket
         :rtype: str
@@ -1209,7 +1209,7 @@ QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::V
 
     @property
     def ComplianceRegion(self):
-        """Evaluated resource region.
+        r"""Evaluated resource region.
 It can contain 0 to 32 characters.
         :rtype: str
         """
@@ -1221,7 +1221,7 @@ It can contain 0 to 32 characters.
 
     @property
     def ComplianceType(self):
-        """Compliance type. Valid values:
+        r"""Compliance type. Valid values:
 COMPLIANT: Compliant,
 NON_COMPLIANT: Non-compliant
         :rtype: str
@@ -1234,7 +1234,7 @@ NON_COMPLIANT: Non-compliant
 
     @property
     def Annotation(self):
-        """Supplementary information for non-compliant resources.
+        r"""Supplementary information for non-compliant resources.
         :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
         """
         return self._Annotation
@@ -1263,7 +1263,7 @@ NON_COMPLIANT: Non-compliant
 
 
 class Filter(AbstractModel):
-    """Resource list filter
+    r"""Resource list filter
 
     """
 
@@ -1279,7 +1279,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Query field name Resource name: resourceName Resource ID: resourceId Resource type: resourceType Resource region: resourceRegion Deletion status: resourceDelete 0 not deleted, 1 deleted resourceregionandzone region/az
+        r"""Query field name Resource name: resourceName Resource ID: resourceId Resource type: resourceType Resource region: resourceRegion Deletion status: resourceDelete 0 not deleted, 1 deleted resourceregionandzone region/az
         :rtype: str
         """
         return self._Name
@@ -1290,7 +1290,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Value of the field to query
+        r"""Value of the field to query
         :rtype: list of str
         """
         return self._Values
@@ -1314,7 +1314,7 @@ class Filter(AbstractModel):
 
 
 class InputParameter(AbstractModel):
-    """Parameter value
+    r"""Parameter value
 
     """
 
@@ -1335,7 +1335,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ParameterKey(self):
-        """Parameter name
+        r"""Parameter name
         :rtype: str
         """
         return self._ParameterKey
@@ -1346,7 +1346,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Type(self):
-        """Parameter type. Required type: Require, optional type: Optional.
+        r"""Parameter type. Required type: Require, optional type: Optional.
         :rtype: str
         """
         return self._Type
@@ -1357,7 +1357,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Value(self):
-        """Parameter value
+        r"""Parameter value
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1384,7 +1384,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class InputParameterForManage(AbstractModel):
-    """Rule input parameters
+    r"""Rule input parameters
 
     """
 
@@ -1416,7 +1416,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ValueType(self):
-        """Value type. Integer: Integer, String: String.
+        r"""Value type. Integer: Integer, String: String.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1428,7 +1428,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ParameterKey(self):
-        """Parameter key
+        r"""Parameter key
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1440,7 +1440,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Type(self):
-        """Parameter type. Required type: Required, Optional type: Optional.
+        r"""Parameter type. Required type: Required, Optional type: Optional.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1452,7 +1452,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DefaultValue(self):
-        """Default value
+        r"""Default value
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1465,7 +1465,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Description(self):
-        """Description
+        r"""Description
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -1494,7 +1494,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class ListAggregateConfigRulesRequest(AbstractModel):
-    """ListAggregateConfigRules request structure.
+    r"""ListAggregateConfigRules request structure.
 
     """
 
@@ -1535,7 +1535,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Specifies the limit per page.
+        r"""Specifies the limit per page.
         :rtype: int
         """
         return self._Limit
@@ -1546,7 +1546,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset.
+        r"""Offset.
         :rtype: int
         """
         return self._Offset
@@ -1557,7 +1557,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID
+        r"""Account group ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -1568,7 +1568,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """Sort type, descending: desc, ascending: asc.
+        r"""Sort type, descending: desc, ascending: asc.
         :rtype: str
         """
         return self._OrderType
@@ -1579,7 +1579,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """Risk level
+        r"""Risk level
 
 1: High risk.
 2: Medium risk.
@@ -1594,7 +1594,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
-        """Rule status
+        r"""Rule status
         :rtype: str
         """
         return self._State
@@ -1605,7 +1605,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """Evaluation result
+        r"""Evaluation result
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -1616,7 +1616,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Name of the rule
+        r"""Name of the rule
         :rtype: str
         """
         return self._RuleName
@@ -1627,7 +1627,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleOwnerId(self):
-        """Rule ownership account ID
+        r"""Rule ownership account ID
         :rtype: int
         """
         return self._RuleOwnerId
@@ -1658,7 +1658,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
 
 class ListAggregateConfigRulesResponse(AbstractModel):
-    """ListAggregateConfigRules response structure.
+    r"""ListAggregateConfigRules response structure.
 
     """
 
@@ -1677,7 +1677,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -1688,7 +1688,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Details
+        r"""Details
         :rtype: list of ConfigRule
         """
         return self._Items
@@ -1699,7 +1699,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1721,7 +1721,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
 
 class ListAggregateDiscoveredResourcesRequest(AbstractModel):
-    """ListAggregateDiscoveredResources request structure.
+    r"""ListAggregateDiscoveredResources request structure.
 
     """
 
@@ -1749,7 +1749,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """Items per Page
+        r"""Items per Page
         :rtype: int
         """
         return self._MaxResults
@@ -1760,7 +1760,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        """Account group ID
+        r"""Account group ID
         :rtype: str
         """
         return self._AccountGroupId
@@ -1771,7 +1771,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """resourceName: Resource name; resourceId: Resource ID; resourceType: Resource type
+        r"""resourceName: Resource name; resourceId: Resource ID; resourceType: Resource type
         :rtype: list of Filter
         """
         return self._Filters
@@ -1782,7 +1782,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """<Tag>
+        r"""<Tag>
         :rtype: list of Tag
         """
         return self._Tags
@@ -1793,7 +1793,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """Next page token.
+        r"""Next page token.
         :rtype: str
         """
         return self._NextToken
@@ -1804,7 +1804,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """Sorting method asc, desc
+        r"""Sorting method asc, desc
         :rtype: str
         """
         return self._OrderType
@@ -1842,7 +1842,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
 
 class ListAggregateDiscoveredResourcesResponse(AbstractModel):
-    """ListAggregateDiscoveredResources response structure.
+    r"""ListAggregateDiscoveredResources response structure.
 
     """
 
@@ -1862,7 +1862,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Items(self):
-        """Details.
+        r"""Details.
         :rtype: list of AggregateResourceInfo
         """
         return self._Items
@@ -1873,7 +1873,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def NextToken(self):
-        """next page
+        r"""next page
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1885,7 +1885,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1907,7 +1907,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class ListConfigRulesRequest(AbstractModel):
-    """ListConfigRules request structure.
+    r"""ListConfigRules request structure.
 
     """
 
@@ -1942,7 +1942,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Page limit
+        r"""Page limit
         :rtype: int
         """
         return self._Limit
@@ -1953,7 +1953,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset.
+        r"""Offset.
         :rtype: int
         """
         return self._Offset
@@ -1964,7 +1964,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """Sort type. Descending: desc, Ascending: asc.
+        r"""Sort type. Descending: desc, Ascending: asc.
         :rtype: str
         """
         return self._OrderType
@@ -1975,7 +1975,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        """Risk level
+        r"""Risk level
 
 1: High risk.
 2: Medium risk.
@@ -1990,7 +1990,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
-        """Rule status
+        r"""Rule status
         :rtype: str
         """
         return self._State
@@ -2001,7 +2001,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        """Evaluation result
+        r"""Evaluation result
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -2012,7 +2012,7 @@ class ListConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Name of the rule
+        r"""Name of the rule
         :rtype: str
         """
         return self._RuleName
@@ -2041,7 +2041,7 @@ class ListConfigRulesRequest(AbstractModel):
 
 
 class ListConfigRulesResponse(AbstractModel):
-    """ListConfigRules response structure.
+    r"""ListConfigRules response structure.
 
     """
 
@@ -2060,7 +2060,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -2071,7 +2071,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Details
+        r"""Details
         :rtype: list of ConfigRule
         """
         return self._Items
@@ -2082,7 +2082,7 @@ class ListConfigRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2104,7 +2104,7 @@ class ListConfigRulesResponse(AbstractModel):
 
 
 class ListDiscoveredResourcesRequest(AbstractModel):
-    """ListDiscoveredResources request structure.
+    r"""ListDiscoveredResources request structure.
 
     """
 
@@ -2129,7 +2129,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        """Items per Page
+        r"""Items per Page
         :rtype: int
         """
         return self._MaxResults
@@ -2140,7 +2140,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """resourceName: Resource name resourceId: Resource ID
+        r"""resourceName: Resource name resourceId: Resource ID
         :rtype: list of Filter
         """
         return self._Filters
@@ -2151,7 +2151,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -2162,7 +2162,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """Next page token.
+        r"""Next page token.
         :rtype: str
         """
         return self._NextToken
@@ -2173,7 +2173,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        """Sorting method asc, desc
+        r"""Sorting method asc, desc
         :rtype: str
         """
         return self._OrderType
@@ -2210,7 +2210,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
 
 class ListDiscoveredResourcesResponse(AbstractModel):
-    """ListDiscoveredResources response structure.
+    r"""ListDiscoveredResources response structure.
 
     """
 
@@ -2230,7 +2230,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Items(self):
-        """Details
+        r"""Details
         :rtype: list of ResourceListInfo
         """
         return self._Items
@@ -2241,7 +2241,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def NextToken(self):
-        """Next page
+        r"""Next page
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -2253,7 +2253,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2275,7 +2275,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class PutEvaluationsRequest(AbstractModel):
-    """PutEvaluations request structure.
+    r"""PutEvaluations request structure.
 
     """
 
@@ -2291,7 +2291,7 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def ResultToken(self):
-        """Callback token. Obtained from the ResultToken value in the Context of the selected Serverless Cloud Function (SCF) for the custom rule.
+        r"""Callback token. Obtained from the ResultToken value in the Context of the selected Serverless Cloud Function (SCF) for the custom rule.
         :rtype: str
         """
         return self._ResultToken
@@ -2302,7 +2302,7 @@ class PutEvaluationsRequest(AbstractModel):
 
     @property
     def Evaluations(self):
-        """Custom rule evaluation result information.
+        r"""Custom rule evaluation result information.
         :rtype: list of Evaluation
         """
         return self._Evaluations
@@ -2331,7 +2331,7 @@ class PutEvaluationsRequest(AbstractModel):
 
 
 class PutEvaluationsResponse(AbstractModel):
-    """PutEvaluations response structure.
+    r"""PutEvaluations response structure.
 
     """
 
@@ -2344,7 +2344,7 @@ class PutEvaluationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2359,7 +2359,7 @@ class PutEvaluationsResponse(AbstractModel):
 
 
 class ResourceListInfo(AbstractModel):
-    """Resource list information response parameters structure
+    r"""Resource list information response parameters structure
 
     """
 
@@ -2411,7 +2411,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceType(self):
-        """Resource type
+        r"""Resource type
         :rtype: str
         """
         return self._ResourceType
@@ -2422,7 +2422,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceName(self):
-        """Resource name
+        r"""Resource name
         :rtype: str
         """
         return self._ResourceName
@@ -2433,7 +2433,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -2444,7 +2444,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceRegion(self):
-        """Region
+        r"""Region
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2457,7 +2457,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceStatus(self):
-        """Resource Status
+        r"""Resource Status
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2470,7 +2470,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceDelete(self):
-        """1: Deleted. 2: Not deleted.
+        r"""1: Deleted. 2: Not deleted.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: int
         """
@@ -2482,7 +2482,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceCreateTime(self):
-        """Resource creation time
+        r"""Resource creation time
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2495,7 +2495,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of Tag
@@ -2508,7 +2508,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ResourceZone(self):
-        """Availability zone
+        r"""Availability zone
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2521,7 +2521,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ComplianceResult(self):
-        """Compliance status.
+        r"""Compliance status.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -2559,7 +2559,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class SourceConditionForManage(AbstractModel):
-    """Managing end rule conditions
+    r"""Managing end rule conditions
 
     """
 
@@ -2591,7 +2591,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def EmptyAs(self):
-        """Condition is empty, Compliant: COMPLIANT, Non-compliant: NON_COMPLIANT, Not applicable: NOT_APPLICABLE.
+        r"""Condition is empty, Compliant: COMPLIANT, Non-compliant: NON_COMPLIANT, Not applicable: NOT_APPLICABLE.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -2603,7 +2603,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SelectPath(self):
-        """Configuration path
+        r"""Configuration path
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2616,7 +2616,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Operator(self):
-        """Operators
+        r"""Operators
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -2628,7 +2628,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Required(self):
-        """Required or not.
+        r"""Required or not.
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: bool
@@ -2641,7 +2641,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DesiredValue(self):
-        """Expected value
+        r"""Expected value
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -2669,7 +2669,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class Tag(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -2689,7 +2689,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2702,7 +2702,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
@@ -2728,7 +2728,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class TriggerType(AbstractModel):
-    """Rule supports trigger type
+    r"""Rule supports trigger type
 
     """
 
@@ -2745,7 +2745,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def MessageType(self):
-        """Trigger Type
+        r"""Trigger Type
         :rtype: str
         """
         return self._MessageType
@@ -2756,7 +2756,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def MaximumExecutionFrequency(self):
-        """Trigger time period
+        r"""Trigger time period
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """

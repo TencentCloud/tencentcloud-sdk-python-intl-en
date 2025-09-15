@@ -27,7 +27,7 @@ class CccClient(AbstractClient):
 
 
     def AbortAgentCruiseDialingCampaign(self, request):
-        """Stop Agent Cruise-style Outbound Call Task
+        r"""Stop Agent Cruise-style Outbound Call Task
 
         :param request: Request instance for AbortAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.AbortAgentCruiseDialingCampaignRequest`
@@ -50,7 +50,7 @@ class CccClient(AbstractClient):
 
 
     def AbortPredictiveDialingCampaign(self, request):
-        """This API is used to pause the predictive outbound call task.
+        r"""This API is used to pause the predictive outbound call task.
 
         :param request: Request instance for AbortPredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.AbortPredictiveDialingCampaignRequest`
@@ -73,7 +73,7 @@ class CccClient(AbstractClient):
 
 
     def BindNumberCallInInterface(self, request):
-        """This API is used to bind a number to a callback API for incoming calls.
+        r"""This API is used to bind a number to a callback API for incoming calls.
 
         :param request: Request instance for BindNumberCallInInterface.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceRequest`
@@ -96,7 +96,7 @@ class CccClient(AbstractClient):
 
 
     def BindNumberCallOutSkillGroup(self, request):
-        """This API is used to bind outbound skill group of number.
+        r"""This API is used to bind outbound skill group of number.
 
         :param request: Request instance for BindNumberCallOutSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallOutSkillGroupRequest`
@@ -119,7 +119,7 @@ class CccClient(AbstractClient):
 
 
     def BindStaffSkillGroupList(self, request):
-        """This API is used to bind the agent's skill group.
+        r"""This API is used to bind the agent's skill group.
 
         :param request: Request instance for BindStaffSkillGroupList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListRequest`
@@ -142,7 +142,7 @@ class CccClient(AbstractClient):
 
 
     def ControlAIConversation(self, request):
-        """This API is used to provide server-side robot control feature.
+        r"""This API is used to provide server-side robot control feature.
 
         :param request: Request instance for ControlAIConversation.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationRequest`
@@ -165,7 +165,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAIAgentCall(self, request):
-        """This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.
+        r"""This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.
 
         Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/70681).
 
@@ -190,7 +190,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAICall(self, request):
-        """Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.
+        r"""Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.
 
         Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/66889).
 
@@ -215,7 +215,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAdminURL(self, request):
-        """This API is used to create a management access link.
+        r"""This API is used to create a management access link.
 
         :param request: Request instance for CreateAdminURL.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAdminURLRequest`
@@ -238,7 +238,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAgentCruiseDialingCampaign(self, request):
-        """Agent Cruise-style Outbound Call.
+        r"""Agent Cruise-style Outbound Call.
 
         :param request: Request instance for CreateAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAgentCruiseDialingCampaignRequest`
@@ -261,7 +261,7 @@ class CccClient(AbstractClient):
 
 
     def CreateAutoCalloutTask(self, request):
-        """This API is used to create the automatic outbound call task.
+        r"""This API is used to create the automatic outbound call task.
 
         :param request: Request instance for CreateAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
@@ -284,7 +284,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCCCSkillGroup(self, request):
-        """This API is used to create a new skill group.
+        r"""This API is used to create a new skill group.
 
         :param request: Request instance for CreateCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCCCSkillGroupRequest`
@@ -307,7 +307,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCallOutSession(self, request):
-        """This API is used to create an outbound call session. Currently, only dual calls are supported. That is, first use the platform number to call the agent mobile phone. After the agent answers, then make an outbound call to the user. Moreover, due to ISP frequency restrictions, the agent phone number must be added to the allowlist first to avoid frequency control leading to the failure of the outbound call. Therefore, before calling this API, the following operations have been completed.
+        r"""This API is used to create an outbound call session. Currently, only dual calls are supported. That is, first use the platform number to call the agent mobile phone. After the agent answers, then make an outbound call to the user. Moreover, due to ISP frequency restrictions, the agent phone number must be added to the allowlist first to avoid frequency control leading to the failure of the outbound call. Therefore, before calling this API, the following operations have been completed.
         1. The agent specified by UserId has already bound the mobile number. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         2. The agent's bound mobile number has applied for and passed the outbound call allowlist.
         This API is used to make calls. Currently, the agent side can only call the user's mobile phone, so the IsForceMobile field must be true.
@@ -334,7 +334,7 @@ class CccClient(AbstractClient):
 
 
     def CreateExtension(self, request):
-        """This API is used to create the telephone account.
+        r"""This API is used to create the telephone account.
 
         :param request: Request instance for CreateExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateExtensionRequest`
@@ -357,7 +357,7 @@ class CccClient(AbstractClient):
 
 
     def CreateIVRSession(self, request):
-        """Create a session associated with IVR. This feature is supported only in the Advanced Version. Currently, it supports inbound and automatic outbound IVR types. Upon receiving the request, TCCC will first attempt to call the callee, then enter the IVR flow.
+        r"""Create a session associated with IVR. This feature is supported only in the Advanced Version. Currently, it supports inbound and automatic outbound IVR types. Upon receiving the request, TCCC will first attempt to call the callee, then enter the IVR flow.
 
         :param request: Request instance for CreateIVRSession.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateIVRSessionRequest`
@@ -380,7 +380,7 @@ class CccClient(AbstractClient):
 
 
     def CreateOwnNumberApply(self, request):
-        """Create customer's own number access review
+        r"""Create customer's own number access review
 
         :param request: Request instance for CreateOwnNumberApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateOwnNumberApplyRequest`
@@ -403,7 +403,7 @@ class CccClient(AbstractClient):
 
 
     def CreatePredictiveDialingCampaign(self, request):
-        """This API is used to create the predictive outbound call task.
+        r"""This API is used to create the predictive outbound call task.
 
         :param request: Request instance for CreatePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreatePredictiveDialingCampaignRequest`
@@ -426,7 +426,7 @@ class CccClient(AbstractClient):
 
 
     def CreateSDKLoginToken(self, request):
-        """This API is used to create the SDK log-in token.
+        r"""This API is used to create the SDK log-in token.
 
         :param request: Request instance for CreateSDKLoginToken.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenRequest`
@@ -449,7 +449,7 @@ class CccClient(AbstractClient):
 
 
     def CreateStaff(self, request):
-        """This API is used to create the customer service account.
+        r"""This API is used to create the customer service account.
 
         :param request: Request instance for CreateStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateStaffRequest`
@@ -472,7 +472,7 @@ class CccClient(AbstractClient):
 
 
     def CreateUserSig(self, request):
-        """This API is used to create a user data signature.
+        r"""This API is used to create a user data signature.
 
         :param request: Request instance for CreateUserSig.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigRequest`
@@ -495,7 +495,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteCCCSkillGroup(self, request):
-        """This API is used to delete a skill group.
+        r"""This API is used to delete a skill group.
 
         :param request: Request instance for DeleteCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupRequest`
@@ -518,7 +518,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteExtension(self, request):
-        """This API is used to delete telephone accounts.
+        r"""This API is used to delete telephone accounts.
 
         :param request: Request instance for DeleteExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteExtensionRequest`
@@ -541,7 +541,7 @@ class CccClient(AbstractClient):
 
 
     def DeletePredictiveDialingCampaign(self, request):
-        """This API is used to delete the predictive outbound call task.
+        r"""This API is used to delete the predictive outbound call task.
 
         :param request: Request instance for DeletePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeletePredictiveDialingCampaignRequest`
@@ -564,7 +564,7 @@ class CccClient(AbstractClient):
 
 
     def DeleteStaff(self, request):
-        """This API is used to delete the agent information.
+        r"""This API is used to delete the agent information.
 
         :param request: Request instance for DeleteStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffRequest`
@@ -587,7 +587,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAICallExtractResult(self, request):
-        """Obtain AI call content extraction result
+        r"""Obtain AI call content extraction result
 
         :param request: Request instance for DescribeAICallExtractResult.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallExtractResultRequest`
@@ -610,7 +610,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAILatency(self, request):
-        """This API is used to obtain AI latency information.
+        r"""This API is used to obtain AI latency information.
 
         :param request: Request instance for DescribeAILatency.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyRequest`
@@ -633,7 +633,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAgentCruiseDialingCampaign(self, request):
-        """Query Agent Cruise-style Outbound Call Task
+        r"""Query Agent Cruise-style Outbound Call Task
 
         :param request: Request instance for DescribeAgentCruiseDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAgentCruiseDialingCampaignRequest`
@@ -656,7 +656,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTask(self, request):
-        """This API is used to query automatic outbound call task details.
+        r"""This API is used to query automatic outbound call task details.
 
         :param request: Request instance for DescribeAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
@@ -679,7 +679,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeAutoCalloutTasks(self, request):
-        """Batch Query Automatic Outbound Call Tasks
+        r"""Batch Query Automatic Outbound Call Tasks
 
         :param request: Request instance for DescribeAutoCalloutTasks.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTasksRequest`
@@ -702,7 +702,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCCCBuyInfoList(self, request):
-        """This API is used to access the user purchasing information list.
+        r"""This API is used to access the user purchasing information list.
 
         :param request: Request instance for DescribeCCCBuyInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCCCBuyInfoListRequest`
@@ -725,7 +725,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeCallInMetrics(self, request):
-        """This API is used to access the inbound real-time data statistical metrics.
+        r"""This API is used to access the inbound real-time data statistical metrics.
 
         :param request: Request instance for DescribeCallInMetrics.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsRequest`
@@ -748,7 +748,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeExtension(self, request):
-        """This API is used to access the telephone information.
+        r"""This API is used to access the telephone information.
 
         :param request: Request instance for DescribeExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeExtensionRequest`
@@ -771,7 +771,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeExtensions(self, request):
-        """This API is used to query the telephone list information.
+        r"""This API is used to query the telephone list information.
 
         :param request: Request instance for DescribeExtensions.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeExtensionsRequest`
@@ -794,7 +794,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeIvrAudioList(self, request):
-        """Query IVR Audio File List Information
+        r"""Query IVR Audio File List Information
 
         :param request: Request instance for DescribeIvrAudioList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIvrAudioListRequest`
@@ -817,7 +817,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeNumbers(self, request):
-        """This API is used to query the number list.
+        r"""This API is used to query the number list.
 
         :param request: Request instance for DescribeNumbers.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeNumbersRequest`
@@ -840,7 +840,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePSTNActiveSessionList(self, request):
-        """This API is used to access the current calling session list.
+        r"""This API is used to access the current calling session list.
 
         :param request: Request instance for DescribePSTNActiveSessionList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListRequest`
@@ -863,7 +863,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingCampaign(self, request):
-        """This API is used to query the predictive outbound call task.
+        r"""This API is used to query the predictive outbound call task.
 
         :param request: Request instance for DescribePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingCampaignRequest`
@@ -886,7 +886,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingCampaigns(self, request):
-        """This API is used to query the predictive outbound call task list.
+        r"""This API is used to query the predictive outbound call task list.
 
         :param request: Request instance for DescribePredictiveDialingCampaigns.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingCampaignsRequest`
@@ -909,7 +909,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePredictiveDialingSessions(self, request):
-        """This API is used to query the predictive outbound call list.
+        r"""This API is used to query the predictive outbound call list.
 
         :param request: Request instance for DescribePredictiveDialingSessions.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePredictiveDialingSessionsRequest`
@@ -932,7 +932,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeProtectedTelCdr(self, request):
-        """This API is used to access protected phone service records and recordings for both inbound and outbound calls.
+        r"""This API is used to access protected phone service records and recordings for both inbound and outbound calls.
 
         :param request: Request instance for DescribeProtectedTelCdr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeProtectedTelCdrRequest`
@@ -955,7 +955,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSessionDetail(self, request):
-        """This API is used to query call detail.
+        r"""This API is used to query call detail.
 
         :param request: Request instance for DescribeSessionDetail.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`
@@ -978,7 +978,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSkillGroupInfoList(self, request):
-        """This API is used to access the skill group information list.
+        r"""This API is used to access the skill group information list.
 
         :param request: Request instance for DescribeSkillGroupInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListRequest`
@@ -1001,7 +1001,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffInfoList(self, request):
-        """This API is used to access the agent information list.
+        r"""This API is used to access the agent information list.
 
         :param request: Request instance for DescribeStaffInfoList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListRequest`
@@ -1024,7 +1024,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffStatusHistory(self, request):
-        """This API is used to query agent status history.
+        r"""This API is used to query agent status history.
 
         :param request: Request instance for DescribeStaffStatusHistory.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryRequest`
@@ -1047,7 +1047,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeStaffStatusMetrics(self, request):
-        """This API is used to access the real-time status statistics metrics of the agent.
+        r"""This API is used to access the real-time status statistics metrics of the agent.
 
         :param request: Request instance for DescribeStaffStatusMetrics.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsRequest`
@@ -1070,7 +1070,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelCallInfo(self, request):
-        """This API is used to access telephone consumption statistics by instance.
+        r"""This API is used to access telephone consumption statistics by instance.
 
         :param request: Request instance for DescribeTelCallInfo.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCallInfoRequest`
@@ -1093,7 +1093,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelCdr(self, request):
-        """This API is used to access phone service records and recordings.
+        r"""This API is used to access phone service records and recordings.
 
         :param request: Request instance for DescribeTelCdr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCdrRequest`
@@ -1116,7 +1116,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelRecordAsr(self, request):
-        """Pull conversation recording for text information
+        r"""Pull conversation recording for text information
 
         :param request: Request instance for DescribeTelRecordAsr.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelRecordAsrRequest`
@@ -1139,7 +1139,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelSession(self, request):
-        """This API is used to access the PSTN session information.
+        r"""This API is used to access the PSTN session information.
 
         :param request: Request instance for DescribeTelSession.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionRequest`
@@ -1162,7 +1162,7 @@ class CccClient(AbstractClient):
 
 
     def DisableCCCPhoneNumber(self, request):
-        """This API is used to disable numbers.
+        r"""This API is used to disable numbers.
 
         :param request: Request instance for DisableCCCPhoneNumber.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DisableCCCPhoneNumberRequest`
@@ -1185,7 +1185,7 @@ class CccClient(AbstractClient):
 
 
     def ForceMemberOffline(self, request):
-        """This API is used to force customer service to go offline.
+        r"""This API is used to force customer service to go offline.
 
         :param request: Request instance for ForceMemberOffline.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineRequest`
@@ -1208,7 +1208,7 @@ class CccClient(AbstractClient):
 
 
     def HangUpCall(self, request):
-        """This API is used to hang up the phone.
+        r"""This API is used to hang up the phone.
 
         :param request: Request instance for HangUpCall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.HangUpCallRequest`
@@ -1231,7 +1231,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyExtension(self, request):
-        """This API is used to modify telephone accounts (binding skill group, binding agent account).
+        r"""This API is used to modify telephone accounts (binding skill group, binding agent account).
 
         :param request: Request instance for ModifyExtension.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyExtensionRequest`
@@ -1254,7 +1254,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyOwnNumberApply(self, request):
-        """Modify customer's own number approval form
+        r"""Modify customer's own number approval form
 
         :param request: Request instance for ModifyOwnNumberApply.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyOwnNumberApplyRequest`
@@ -1277,7 +1277,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyStaff(self, request):
-        """This API is used to modify the customer service account.
+        r"""This API is used to modify the customer service account.
 
         :param request: Request instance for ModifyStaff.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffRequest`
@@ -1300,7 +1300,7 @@ class CccClient(AbstractClient):
 
 
     def ModifyStaffPassword(self, request):
-        """Modify Agent's Password
+        r"""Modify Agent's Password
 
         :param request: Request instance for ModifyStaffPassword.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffPasswordRequest`
@@ -1323,7 +1323,7 @@ class CccClient(AbstractClient):
 
 
     def PausePredictiveDialingCampaign(self, request):
-        """This API is used to pause the predictive outbound call task.
+        r"""This API is used to pause the predictive outbound call task.
 
         :param request: Request instance for PausePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.PausePredictiveDialingCampaignRequest`
@@ -1346,7 +1346,7 @@ class CccClient(AbstractClient):
 
 
     def ResetExtensionPassword(self, request):
-        """This API is used to reset the telephone register password.
+        r"""This API is used to reset the telephone register password.
 
         :param request: Request instance for ResetExtensionPassword.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ResetExtensionPasswordRequest`
@@ -1369,7 +1369,7 @@ class CccClient(AbstractClient):
 
 
     def RestoreMemberOnline(self, request):
-        """This API is used to restore customer service to go live.
+        r"""This API is used to restore customer service to go live.
 
         :param request: Request instance for RestoreMemberOnline.
         :type request: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineRequest`
@@ -1392,7 +1392,7 @@ class CccClient(AbstractClient):
 
 
     def ResumePredictiveDialingCampaign(self, request):
-        """This API is used to resume the predictive outbound call task.
+        r"""This API is used to resume the predictive outbound call task.
 
         :param request: Request instance for ResumePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.ResumePredictiveDialingCampaignRequest`
@@ -1415,7 +1415,7 @@ class CccClient(AbstractClient):
 
 
     def StopAutoCalloutTask(self, request):
-        """This API is used to stop the automatic outbound call task.
+        r"""This API is used to stop the automatic outbound call task.
 
         :param request: Request instance for StopAutoCalloutTask.
         :type request: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskRequest`
@@ -1438,7 +1438,7 @@ class CccClient(AbstractClient):
 
 
     def TransferToManual(self, request):
-        """This API is used to transfer a session to an agent in specific scenarios.
+        r"""This API is used to transfer a session to an agent in specific scenarios.
 
         :param request: Request instance for TransferToManual.
         :type request: :class:`tencentcloud.ccc.v20200210.models.TransferToManualRequest`
@@ -1461,7 +1461,7 @@ class CccClient(AbstractClient):
 
 
     def UnbindNumberCallOutSkillGroup(self, request):
-        """This API is used to unbind the number from the outbound call skill group.
+        r"""This API is used to unbind the number from the outbound call skill group.
 
         :param request: Request instance for UnbindNumberCallOutSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindNumberCallOutSkillGroupRequest`
@@ -1484,7 +1484,7 @@ class CccClient(AbstractClient):
 
 
     def UnbindStaffSkillGroupList(self, request):
-        """This API is used to unbind the agent's skill group.
+        r"""This API is used to unbind the agent's skill group.
 
         :param request: Request instance for UnbindStaffSkillGroupList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListRequest`
@@ -1507,7 +1507,7 @@ class CccClient(AbstractClient):
 
 
     def UpdateCCCSkillGroup(self, request):
-        """This API is used to update the skill group.
+        r"""This API is used to update the skill group.
 
         :param request: Request instance for UpdateCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UpdateCCCSkillGroupRequest`
@@ -1530,7 +1530,7 @@ class CccClient(AbstractClient):
 
 
     def UpdatePredictiveDialingCampaign(self, request):
-        """This API is used to update the predictive outbound call task before it starts.
+        r"""This API is used to update the predictive outbound call task before it starts.
 
         :param request: Request instance for UpdatePredictiveDialingCampaign.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UpdatePredictiveDialingCampaignRequest`
@@ -1553,7 +1553,7 @@ class CccClient(AbstractClient):
 
 
     def UploadIvrAudio(self, request):
-        """Upload audio files used in IVR, with a daily upload limit of 50 files. (It is recommended to use temporary links stored in Tencent Cloud Cos for the audio file URL in the parameters)
+        r"""Upload audio files used in IVR, with a daily upload limit of 50 files. (It is recommended to use temporary links stored in Tencent Cloud Cos for the audio file URL in the parameters)
 
         :param request: Request instance for UploadIvrAudio.
         :type request: :class:`tencentcloud.ccc.v20200210.models.UploadIvrAudioRequest`

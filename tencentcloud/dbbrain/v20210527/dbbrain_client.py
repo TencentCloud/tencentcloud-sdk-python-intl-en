@@ -27,7 +27,7 @@ class DbbrainClient(AbstractClient):
 
 
     def AddUserContact(self, request):
-        """This API is used to add the recipient name and email. The returned value is the ID of the successfully added recipient.
+        r"""This API is used to add the recipient name and email. The returned value is the ID of the successfully added recipient.
 
         :param request: Request instance for AddUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.AddUserContactRequest`
@@ -50,7 +50,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CloseAuditService(self, request):
-        """This API is used to disable database audit as needed.
+        r"""This API is used to disable database audit as needed.
 
         :param request: Request instance for CloseAuditService.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CloseAuditServiceRequest`
@@ -73,7 +73,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportTask(self, request):
-        """This API is used to create a health report and send it via email as configured.
+        r"""This API is used to create a health report and send it via email as configured.
 
         :param request: Request instance for CreateDBDiagReportTask.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateDBDiagReportTaskRequest`
@@ -96,7 +96,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateDBDiagReportUrl(self, request):
-        """This API is used to create a URL for a health report.
+        r"""This API is used to create a URL for a health report.
 
         :param request: Request instance for CreateDBDiagReportUrl.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateDBDiagReportUrlRequest`
@@ -119,7 +119,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateKillTask(self, request):
-        """This API is used to create a session killing task.
+        r"""This API is used to create a session killing task.
 
         :param request: Request instance for CreateKillTask.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateKillTaskRequest`
@@ -142,7 +142,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateMailProfile(self, request):
-        """This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of scheduled task health report). Always select Guangzhou for `Region`, regardless of the region where the instance resides.
+        r"""This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of scheduled task health report). Always select Guangzhou for `Region`, regardless of the region where the instance resides.
 
         :param request: Request instance for CreateMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateMailProfileRequest`
@@ -165,7 +165,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateProxySessionKillTask(self, request):
-        """This API is used to create an async task of killing all proxy node connection sessions and is currently supported only for Redis. The async task ID is the returned value, which can be passed to the API `DescribeProxySessionKillTasks` as a parameter to query the execution status of the session killing task.
+        r"""This API is used to create an async task of killing all proxy node connection sessions and is currently supported only for Redis. The async task ID is the returned value, which can be passed to the API `DescribeProxySessionKillTasks` as a parameter to query the execution status of the session killing task.
 
         :param request: Request instance for CreateProxySessionKillTask.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateProxySessionKillTaskRequest`
@@ -188,7 +188,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateRedisBigKeyAnalysisTask(self, request):
-        """This API is used to create an ad hoc big key analysis task for Redis instances. By default, there can only be up to five running ad hoc analysis tasks.
+        r"""This API is used to create an ad hoc big key analysis task for Redis instances. By default, there can only be up to five running ad hoc analysis tasks.
 
         :param request: Request instance for CreateRedisBigKeyAnalysisTask.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateRedisBigKeyAnalysisTaskRequest`
@@ -211,7 +211,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateSchedulerMailProfile(self, request):
-        """This API is used to create the regular generation time of health reports and the regular email sending configuration. Pass in the regular generation time of health reports as a parameter (Monday to Sunday) to set the regular generation time, and save the corresponding regular email sending configuration.
+        r"""This API is used to create the regular generation time of health reports and the regular email sending configuration. Pass in the regular generation time of health reports as a parameter (Monday to Sunday) to set the regular generation time, and save the corresponding regular email sending configuration.
 
         :param request: Request instance for CreateSchedulerMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateSchedulerMailProfileRequest`
@@ -234,7 +234,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateSecurityAuditLogExportTask(self, request):
-        """This API is used to create a security audit log export task.
+        r"""This API is used to create a security audit log export task.
 
         :param request: Request instance for CreateSecurityAuditLogExportTask.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateSecurityAuditLogExportTaskRequest`
@@ -257,7 +257,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DeleteDBDiagReportTasks(self, request):
-        """This API is used to delete health report generation tasks by task ID.
+        r"""This API is used to delete health report generation tasks by task ID.
 
         :param request: Request instance for DeleteDBDiagReportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteDBDiagReportTasksRequest`
@@ -280,7 +280,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DeleteSecurityAuditLogExportTasks(self, request):
-        """This API is used to delete a security audit log export task.
+        r"""This API is used to delete a security audit log export task.
 
         :param request: Request instance for DeleteSecurityAuditLogExportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteSecurityAuditLogExportTasksRequest`
@@ -303,7 +303,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserContact(self, request):
-        """This API is used to get the information of the recipient in the email.
+        r"""This API is used to get the information of the recipient in the email.
 
         :param request: Request instance for DescribeAllUserContact.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAllUserContactRequest`
@@ -326,7 +326,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAllUserGroup(self, request):
-        """This API is used to get the information of the recipient group in the email.
+        r"""This API is used to get the information of the recipient group in the email.
 
         :param request: Request instance for DescribeAllUserGroup.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAllUserGroupRequest`
@@ -349,7 +349,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeAuditInstanceList(self, request):
-        """This API is used to query the instance list.
+        r"""This API is used to query the instance list.
 
         :param request: Request instance for DescribeAuditInstanceList.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAuditInstanceListRequest`
@@ -372,7 +372,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagEvent(self, request):
-        """This API is used to get the details of an instance exception diagnosis event.
+        r"""This API is used to get the details of an instance exception diagnosis event.
 
         :param request: Request instance for DescribeDBDiagEvent.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagEventRequest`
@@ -395,7 +395,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagEvents(self, request):
-        """This API is used to obtain the diagnosis event list in a specified time period by risk level, instance ID, etc.
+        r"""This API is used to obtain the diagnosis event list in a specified time period by risk level, instance ID, etc.
 
         :param request: Request instance for DescribeDBDiagEvents.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagEventsRequest`
@@ -418,7 +418,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagHistory(self, request):
-        """This API is used to get the list of instance diagnosis events.
+        r"""This API is used to get the list of instance diagnosis events.
 
         :param request: Request instance for DescribeDBDiagHistory.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagHistoryRequest`
@@ -441,7 +441,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBDiagReportTasks(self, request):
-        """This API is used to query the list of health report generation tasks.
+        r"""This API is used to query the list of health report generation tasks.
 
         :param request: Request instance for DescribeDBDiagReportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBDiagReportTasksRequest`
@@ -464,7 +464,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDBSpaceStatus(self, request):
-        """This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.
+        r"""This API is used to query the overview of instance space usage during a specified time period, including disk usage growth (MB), available disk space (MB), total disk space (MB), and estimated number of available days.
 
         :param request: Request instance for DescribeDBSpaceStatus.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBSpaceStatusRequest`
@@ -487,7 +487,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeDiagDBInstances(self, request):
-        """This API is used to get the instance information list. Please always select Guangzhou for `Region`.
+        r"""This API is used to get the instance information list. Please always select Guangzhou for `Region`.
 
         :param request: Request instance for DescribeDiagDBInstances.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDiagDBInstancesRequest`
@@ -510,7 +510,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeHealthScore(self, request):
-        """This API is used to get the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.
+        r"""This API is used to get the health score and deduction for exceptions in the specified time period (30 minutes) based on the instance ID.
 
         :param request: Request instance for DescribeHealthScore.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeHealthScoreRequest`
@@ -533,7 +533,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMailProfile(self, request):
-        """This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports.
+        r"""This API is used to get the email sending configuration, including the email configuration for database inspection and the email sending configuration for scheduled task health reports.
 
         :param request: Request instance for DescribeMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMailProfileRequest`
@@ -556,7 +556,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeMySqlProcessList(self, request):
-        """This API is used to query the real-time thread list of a relational database.
+        r"""This API is used to query the real-time thread list of a relational database.
 
         :param request: Request instance for DescribeMySqlProcessList.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeMySqlProcessListRequest`
@@ -579,7 +579,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeProxyProcessStatistics(self, request):
-        """This API is used to get the session statistics of a single proxy under the current instance, and can only be called in particular environments.
+        r"""This API is used to get the session statistics of a single proxy under the current instance, and can only be called in particular environments.
 
         :param request: Request instance for DescribeProxyProcessStatistics.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeProxyProcessStatisticsRequest`
@@ -602,7 +602,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeProxySessionKillTasks(self, request):
-        """This API is used to query the result of the session killing task executed by the Redis proxy node. The async task ID (an input parameter) is obtained after the API `CreateProxySessionKillTask` is successfully called. Currently, the only valid value of `product` is `redis`.
+        r"""This API is used to query the result of the session killing task executed by the Redis proxy node. The async task ID (an input parameter) is obtained after the API `CreateProxySessionKillTask` is successfully called. Currently, the only valid value of `product` is `redis`.
 
         :param request: Request instance for DescribeProxySessionKillTasks.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeProxySessionKillTasksRequest`
@@ -625,7 +625,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeRedisTopKeyPrefixList(self, request):
-        """This API is used to query the list of top key prefixes for Redis instances.
+        r"""This API is used to query the list of top key prefixes for Redis instances.
 
         :param request: Request instance for DescribeRedisTopKeyPrefixList.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopKeyPrefixListRequest`
@@ -648,7 +648,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSecurityAuditLogDownloadUrls(self, request):
-        """This API is used to query the download link of a security audit log export file. Currently, log file download only provides a Tencent Cloud private network address. Download it by using a CVM instance in the Guangzhou region.
+        r"""This API is used to query the download link of a security audit log export file. Currently, log file download only provides a Tencent Cloud private network address. Download it by using a CVM instance in the Guangzhou region.
 
         :param request: Request instance for DescribeSecurityAuditLogDownloadUrls.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSecurityAuditLogDownloadUrlsRequest`
@@ -671,7 +671,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSecurityAuditLogExportTasks(self, request):
-        """This API is used to query the list of security audit log export tasks.
+        r"""This API is used to query the list of security audit log export tasks.
 
         :param request: Request instance for DescribeSecurityAuditLogExportTasks.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSecurityAuditLogExportTasksRequest`
@@ -694,7 +694,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTimeSeriesStats(self, request):
-        """This API is used to get the slow log statistics histogram.
+        r"""This API is used to get the slow log statistics histogram.
 
         :param request: Request instance for DescribeSlowLogTimeSeriesStats.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogTimeSeriesStatsRequest`
@@ -717,7 +717,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogTopSqls(self, request):
-        """This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.
+        r"""This API is used to get and sort the top slow SQL statements in a specified time period by the aggregation mode of SQL template plus schema.
 
         :param request: Request instance for DescribeSlowLogTopSqls.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogTopSqlsRequest`
@@ -740,7 +740,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogUserHostStats(self, request):
-        """This API is used to get the statistical distribution chart of slow log source addresses.
+        r"""This API is used to get the statistical distribution chart of slow log source addresses.
 
         :param request: Request instance for DescribeSlowLogUserHostStats.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogUserHostStatsRequest`
@@ -763,7 +763,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """This API is used to obtain the slow log details of a SQL template in a specified time period.
+        r"""This API is used to obtain the slow log details of a SQL template in a specified time period.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsRequest`
@@ -786,7 +786,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemaTimeSeries(self, request):
-        """This API is used to get the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.
+        r"""This API is used to get the daily space data of top databases consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceSchemaTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceSchemaTimeSeriesRequest`
@@ -809,7 +809,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceSchemas(self, request):
-        """This API is used to get the real-time space statistics of top databases of an instance. The returned results are sorted by size by default.
+        r"""This API is used to get the real-time space statistics of top databases of an instance. The returned results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceSchemas.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceSchemasRequest`
@@ -832,7 +832,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTableTimeSeries(self, request):
-        """This API is used to get the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.
+        r"""This API is used to get the daily space data of top tables consuming the most instance space. The data is daily collected by DBbrain during a specified time period. The returned results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceTableTimeSeries.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceTableTimeSeriesRequest`
@@ -855,7 +855,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeTopSpaceTables(self, request):
-        """This API is used to get the real-time space statistics of top tables of an instance. The returned results are sorted by size by default.
+        r"""This API is used to get the real-time space statistics of top tables of an instance. The returned results are sorted by size by default.
 
         :param request: Request instance for DescribeTopSpaceTables.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceTablesRequest`
@@ -878,7 +878,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeUserSqlAdvice(self, request):
-        """This API is used to get SQL statement optimization suggestions. It is free of charge for a limited time and will be charged after DBbrain is commercialized.
+        r"""This API is used to get SQL statement optimization suggestions. It is free of charge for a limited time and will be charged after DBbrain is commercialized.
 
         :param request: Request instance for DescribeUserSqlAdvice.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeUserSqlAdviceRequest`
@@ -901,7 +901,7 @@ class DbbrainClient(AbstractClient):
 
 
     def KillMySqlThreads(self, request):
-        """This API is used to interrupt the current session by session ID. It needs to be called twice to commit the session interruption task in two stages. In the pre-commit stage, the stage value is `Prepare`, and the returned value is `SqlExecId`. In the commit stage, the stage value is `Commit`, and `SqlExecId` will be passed in as a parameter. Then, the session process will be terminated.
+        r"""This API is used to interrupt the current session by session ID. It needs to be called twice to commit the session interruption task in two stages. In the pre-commit stage, the stage value is `Prepare`, and the returned value is `SqlExecId`. In the commit stage, the stage value is `Commit`, and `SqlExecId` will be passed in as a parameter. Then, the session process will be terminated.
 
         :param request: Request instance for KillMySqlThreads.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.KillMySqlThreadsRequest`
@@ -924,7 +924,7 @@ class DbbrainClient(AbstractClient):
 
 
     def ModifyAuditService(self, request):
-        """u200cThis API is used to modify audit configurations such as the frequent access storage period.
+        r"""u200cThis API is used to modify audit configurations such as the frequent access storage period.
 
         :param request: Request instance for ModifyAuditService.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAuditServiceRequest`
@@ -947,7 +947,7 @@ class DbbrainClient(AbstractClient):
 
 
     def ModifyDiagDBInstanceConf(self, request):
-        """This API is used to enable/disable instance inspection.
+        r"""This API is used to enable/disable instance inspection.
 
         :param request: Request instance for ModifyDiagDBInstanceConf.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyDiagDBInstanceConfRequest`
@@ -970,7 +970,7 @@ class DbbrainClient(AbstractClient):
 
 
     def OpenAuditService(self, request):
-        """This API is used to enable database audit.
+        r"""This API is used to enable database audit.
 
         :param request: Request instance for OpenAuditService.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.OpenAuditServiceRequest`

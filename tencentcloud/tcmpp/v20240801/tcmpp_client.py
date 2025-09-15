@@ -27,7 +27,7 @@ class TcmppClient(AbstractClient):
 
 
     def AddTeamMember(self, request):
-        """This API is used to add a team member.
+        r"""This API is used to add a team member.
 
         :param request: Request instance for AddTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.AddTeamMemberRequest`
@@ -50,7 +50,7 @@ class TcmppClient(AbstractClient):
 
 
     def CheckGlobalDomain(self, request):
-        """This API is used to query if the domain is in the allowlist or blocklist
+        r"""This API is used to query if the domain is in the allowlist or blocklist
 
         :param request: Request instance for CheckGlobalDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CheckGlobalDomainRequest`
@@ -73,7 +73,7 @@ class TcmppClient(AbstractClient):
 
 
     def ConfigureMNPPreview(self, request):
-        """This API is used to configure the preview version of a mini program.
+        r"""This API is used to configure the preview version of a mini program.
 
         :param request: Request instance for ConfigureMNPPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ConfigureMNPPreviewRequest`
@@ -96,7 +96,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """This API is used to create an application.
+        r"""This API is used to create an application.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateApplicationRequest`
@@ -119,7 +119,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateApplicationSensitiveAPI(self, request):
-        """This API is used to create a sensitive API of an application.
+        r"""This API is used to create a sensitive API of an application.
 
         :param request: Request instance for CreateApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateApplicationSensitiveAPIRequest`
@@ -142,7 +142,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateConsoleMNPVersionCompileTask(self, request):
-        """This API is used to add a new mini program version
+        r"""This API is used to add a new mini program version
 
         :param request: Request instance for CreateConsoleMNPVersionCompileTask.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateConsoleMNPVersionCompileTaskRequest`
@@ -165,7 +165,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateDomain(self, request):
-        """This API is used to create a mini program service domain
+        r"""This API is used to create a mini program service domain
 
         :param request: Request instance for CreateDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateDomainRequest`
@@ -188,7 +188,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateGlobalDomain(self, request):
-        """This API is used to add domains to allowlist or blocklist
+        r"""This API is used to add domains to allowlist or blocklist
 
         :param request: Request instance for CreateGlobalDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateGlobalDomainRequest`
@@ -211,7 +211,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateGlobalDomainACL(self, request):
-        """This API is used to create a global domain allowlist or blocklist.
+        r"""This API is used to create a global domain allowlist or blocklist.
 
         :param request: Request instance for CreateGlobalDomainACL.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateGlobalDomainACLRequest`
@@ -234,7 +234,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateMNP(self, request):
-        """This API is used to create a mini program
+        r"""This API is used to create a mini program
 
         :param request: Request instance for CreateMNP.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPRequest`
@@ -257,7 +257,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateMNPApproval(self, request):
-        """This API is used to create a mini program approval request.
+        r"""This API is used to create a mini program approval request.
 
         :param request: Request instance for CreateMNPApproval.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPApprovalRequest`
@@ -280,7 +280,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateMNPDomainACL(self, request):
-        """This API is used to add a domain name to the allowlist/blocklist of a mini program.
+        r"""This API is used to add a domain name to the allowlist/blocklist of a mini program.
 
         :param request: Request instance for CreateMNPDomainACL.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPDomainACLRequest`
@@ -303,7 +303,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateMNPSensitiveAPIPermissionApproval(self, request):
-        """This API is used to create a permission request to allow a mini program calling sensitive APIs.
+        r"""This API is used to create a permission request to allow a mini program calling sensitive APIs.
 
         :param request: Request instance for CreateMNPSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPSensitiveAPIPermissionApprovalRequest`
@@ -326,7 +326,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateMNPVersion(self, request):
-        """This API is used to create a mini program version.
+        r"""This API is used to create a mini program version.
 
         :param request: Request instance for CreateMNPVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPVersionRequest`
@@ -349,7 +349,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateOnlineApply(self, request):
-        """This API is used to release the mini program
+        r"""This API is used to release the mini program
 
         :param request: Request instance for CreateOnlineApply.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateOnlineApplyRequest`
@@ -372,7 +372,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreatePlatformAudit(self, request):
-        """This API is used to submit mini program version for approval
+        r"""This API is used to submit mini program version for approval
 
         :param request: Request instance for CreatePlatformAudit.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreatePlatformAuditRequest`
@@ -395,7 +395,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreatePresetKey(self, request):
-        """This API is used to obtain the encryption key
+        r"""This API is used to obtain the encryption key
 
         :param request: Request instance for CreatePresetKey.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreatePresetKeyRequest`
@@ -418,7 +418,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateSensitiveAPI(self, request):
-        """This API is used to add a sensitive API
+        r"""This API is used to add a sensitive API
 
         :param request: Request instance for CreateSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateSensitiveAPIRequest`
@@ -441,7 +441,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateSensitiveApiApply(self, request):
-        """This API is used to apply for sensitive API permissions
+        r"""This API is used to apply for sensitive API permissions
 
         :param request: Request instance for CreateSensitiveApiApply.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateSensitiveApiApplyRequest`
@@ -464,7 +464,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateTeam(self, request):
-        """This API is used to create a team.
+        r"""This API is used to create a team.
 
         :param request: Request instance for CreateTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateTeamRequest`
@@ -487,7 +487,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateTeamMember(self, request):
-        """This API is used to add team members
+        r"""This API is used to add team members
 
         :param request: Request instance for CreateTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateTeamMemberRequest`
@@ -510,7 +510,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to create a user
+        r"""This API is used to create a user
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateUserRequest`
@@ -533,7 +533,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        """This API is used to delete applications
+        r"""This API is used to delete applications
 
         :param request: Request instance for DeleteApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteApplicationRequest`
@@ -556,7 +556,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteApplicationSensitiveAPI(self, request):
-        """This API is used to delete a sensitive API.
+        r"""This API is used to delete a sensitive API.
 
         :param request: Request instance for DeleteApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteApplicationSensitiveAPIRequest`
@@ -579,7 +579,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteGlobalDomain(self, request):
-        """This API is used to delete domains from allowlist or blocklist
+        r"""This API is used to delete domains from allowlist or blocklist
 
         :param request: Request instance for DeleteGlobalDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteGlobalDomainRequest`
@@ -602,7 +602,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteMNP(self, request):
-        """This API is used to delete the mini program
+        r"""This API is used to delete the mini program
 
         :param request: Request instance for DeleteMNP.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteMNPRequest`
@@ -625,7 +625,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteSensitiveAPI(self, request):
-        """This API is used to delete sensitive API
+        r"""This API is used to delete sensitive API
 
         :param request: Request instance for DeleteSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteSensitiveAPIRequest`
@@ -648,7 +648,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteTeam(self, request):
-        """This API is used to delete a team
+        r"""This API is used to delete a team
 
         :param request: Request instance for DeleteTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteTeamRequest`
@@ -671,7 +671,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteTeamMember(self, request):
-        """This API is used to delete a team member
+        r"""This API is used to delete a team member
 
         :param request: Request instance for DeleteTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteTeamMemberRequest`
@@ -694,7 +694,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete a user
+        r"""This API is used to delete a user
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteUserRequest`
@@ -717,7 +717,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplication(self, request):
-        """This API is used to query details of an application.
+        r"""This API is used to query details of an application.
 
         :param request: Request instance for DescribeApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationRequest`
@@ -740,7 +740,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplicationConfig(self, request):
-        """This API is used to query application configuration information
+        r"""This API is used to query application configuration information
 
         :param request: Request instance for DescribeApplicationConfig.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationConfigRequest`
@@ -763,7 +763,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplicationConfigFile(self, request):
-        """This API is used to query the configuration files of an application.
+        r"""This API is used to query the configuration files of an application.
 
         :param request: Request instance for DescribeApplicationConfigFile.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationConfigFileRequest`
@@ -786,7 +786,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplicationList(self, request):
-        """This API is used to query the list of application.
+        r"""This API is used to query the list of application.
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationListRequest`
@@ -809,7 +809,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplicationMNPVersionAuditList(self, request):
-        """This API is used to query the approval list of the mini program versions
+        r"""This API is used to query the approval list of the mini program versions
 
         :param request: Request instance for DescribeApplicationMNPVersionAuditList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationMNPVersionAuditListRequest`
@@ -832,7 +832,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplicationSensitiveAPIList(self, request):
-        """This API is used to list sensitive APIs of an application.
+        r"""This API is used to list sensitive APIs of an application.
 
         :param request: Request instance for DescribeApplicationSensitiveAPIList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationSensitiveAPIListRequest`
@@ -855,7 +855,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeConsoleMNPVersionCompileTask(self, request):
-        """This API is used to query if the mini program version is created successfully
+        r"""This API is used to query if the mini program version is created successfully
 
         :param request: Request instance for DescribeConsoleMNPVersionCompileTask.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeConsoleMNPVersionCompileTaskRequest`
@@ -878,7 +878,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeDomainInfo(self, request):
-        """This API is used to query the domain name list configured for the mini program
+        r"""This API is used to query the domain name list configured for the mini program
 
         :param request: Request instance for DescribeDomainInfo.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeDomainInfoRequest`
@@ -901,7 +901,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeDomainTeamList(self, request):
-        """This API is used to query the list of teams with domains that obtained the ICP filing
+        r"""This API is used to query the list of teams with domains that obtained the ICP filing
 
         :param request: Request instance for DescribeDomainTeamList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeDomainTeamListRequest`
@@ -924,7 +924,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeGlobalDomainACL(self, request):
-        """This API is used to query the global domain allowlist and blocklist.
+        r"""This API is used to query the global domain allowlist and blocklist.
 
         :param request: Request instance for DescribeGlobalDomainACL.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeGlobalDomainACLRequest`
@@ -947,7 +947,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeGlobalDomainList(self, request):
-        """This API is used to query domain allowlist and blocklist
+        r"""This API is used to query domain allowlist and blocklist
 
         :param request: Request instance for DescribeGlobalDomainList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeGlobalDomainListRequest`
@@ -970,7 +970,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNP(self, request):
-        """This API is used to query details of a mini program.
+        r"""This API is used to query details of a mini program.
 
         :param request: Request instance for DescribeMNP.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPRequest`
@@ -993,7 +993,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPAllStageVersions(self, request):
-        """This API is used to query the mini program version management information
+        r"""This API is used to query the mini program version management information
 
         :param request: Request instance for DescribeMNPAllStageVersions.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPAllStageVersionsRequest`
@@ -1016,7 +1016,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPApprovalList(self, request):
-        """This API is used to list the approval requests related with a mini program version.
+        r"""This API is used to list the approval requests related with a mini program version.
 
         :param request: Request instance for DescribeMNPApprovalList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPApprovalListRequest`
@@ -1039,7 +1039,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPBoard(self, request):
-        """This API is used to query the mini program version management information
+        r"""This API is used to query the mini program version management information
 
         :param request: Request instance for DescribeMNPBoard.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPBoardRequest`
@@ -1062,7 +1062,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPCategory(self, request):
-        """This API is used to query the list of mini program types.
+        r"""This API is used to query the list of mini program types.
 
         :param request: Request instance for DescribeMNPCategory.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPCategoryRequest`
@@ -1085,7 +1085,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPDetail(self, request):
-        """This API is used to query mini program details
+        r"""This API is used to query mini program details
 
         :param request: Request instance for DescribeMNPDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPDetailRequest`
@@ -1108,7 +1108,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPDomainACL(self, request):
-        """This API is used to query the domain name allowlist / blocklist of a mini program.
+        r"""This API is used to query the domain name allowlist / blocklist of a mini program.
 
         :param request: Request instance for DescribeMNPDomainACL.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPDomainACLRequest`
@@ -1131,7 +1131,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPList(self, request):
-        """This API is used to query the list of mini programs.
+        r"""This API is used to query the list of mini programs.
 
         :param request: Request instance for DescribeMNPList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPListRequest`
@@ -1154,7 +1154,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPManagerDetail(self, request):
-        """This API is used to query mini program details in the mini program list
+        r"""This API is used to query mini program details in the mini program list
 
         :param request: Request instance for DescribeMNPManagerDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPManagerDetailRequest`
@@ -1177,7 +1177,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPManagerList(self, request):
-        """This API is used to query the mini program list
+        r"""This API is used to query the mini program list
 
         :param request: Request instance for DescribeMNPManagerList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPManagerListRequest`
@@ -1200,7 +1200,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPOfflinePackageURL(self, request):
-        """DescribeMNPOfflinePackageURL
+        r"""DescribeMNPOfflinePackageURL
 
         :param request: Request instance for DescribeMNPOfflinePackageURL.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPOfflinePackageURLRequest`
@@ -1223,7 +1223,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPPreview(self, request):
-        """This API is used to query the details of a mini program preview version.
+        r"""This API is used to query the details of a mini program preview version.
 
         :param request: Request instance for DescribeMNPPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPPreviewRequest`
@@ -1246,7 +1246,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPPrivacy(self, request):
-        """This API is used to query the details filled in the service description
+        r"""This API is used to query the details filled in the service description
 
         :param request: Request instance for DescribeMNPPrivacy.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPPrivacyRequest`
@@ -1269,7 +1269,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPReleasedVersionHistory(self, request):
-        """This API is used to list all released versions of a mini program.
+        r"""This API is used to list all released versions of a mini program.
 
         :param request: Request instance for DescribeMNPReleasedVersionHistory.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPReleasedVersionHistoryRequest`
@@ -1292,7 +1292,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPSensitiveAPIPermissionApproval(self, request):
-        """This API is used to query details of a specific permission request to call sensitive APIs.
+        r"""This API is used to query details of a specific permission request to call sensitive APIs.
 
         :param request: Request instance for DescribeMNPSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalRequest`
@@ -1315,7 +1315,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPSensitiveAPIPermissionApprovalList(self, request):
-        """This API is used to query permission requests to allow a mini program calling sensitive APIs.
+        r"""This API is used to query permission requests to allow a mini program calling sensitive APIs.
 
         :param request: Request instance for DescribeMNPSensitiveAPIPermissionApprovalList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalListRequest`
@@ -1338,7 +1338,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPSensitiveAPIPermissionList(self, request):
-        """This API is used to query the list of sensitive APIs that available to a mini program.
+        r"""This API is used to query the list of sensitive APIs that available to a mini program.
 
         :param request: Request instance for DescribeMNPSensitiveAPIPermissionList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionListRequest`
@@ -1361,7 +1361,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPType(self, request):
-        """This API is used to query the mini program type list
+        r"""This API is used to query the mini program type list
 
         :param request: Request instance for DescribeMNPType.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPTypeRequest`
@@ -1384,7 +1384,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPVersion(self, request):
-        """This API is used to query the result of the task to create a mini program version.
+        r"""This API is used to query the result of the task to create a mini program version.
 
         :param request: Request instance for DescribeMNPVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPVersionRequest`
@@ -1407,7 +1407,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeMNPVersionPreview(self, request):
-        """This API is used to query the details of the mini program preview version
+        r"""This API is used to query the details of the mini program preview version
 
         :param request: Request instance for DescribeMNPVersionPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPVersionPreviewRequest`
@@ -1430,7 +1430,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeOfflineMNPPackage(self, request):
-        """This API is used to query offline mini program packages
+        r"""This API is used to query offline mini program packages
 
         :param request: Request instance for DescribeOfflineMNPPackage.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeOfflineMNPPackageRequest`
@@ -1453,7 +1453,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeOnlineVersion(self, request):
-        """This API is used to query the release version history
+        r"""This API is used to query the release version history
 
         :param request: Request instance for DescribeOnlineVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeOnlineVersionRequest`
@@ -1476,7 +1476,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeRoleDetail(self, request):
-        """This API is used to query role permission information
+        r"""This API is used to query role permission information
 
         :param request: Request instance for DescribeRoleDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeRoleDetailRequest`
@@ -1499,7 +1499,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeRoleList(self, request):
-        """This API is used to query the list of roles.
+        r"""This API is used to query the list of roles.
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeRoleListRequest`
@@ -1522,7 +1522,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveAPIAuditList(self, request):
-        """This API is used to query sensitive API approval list
+        r"""This API is used to query sensitive API approval list
 
         :param request: Request instance for DescribeSensitiveAPIAuditList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveAPIAuditListRequest`
@@ -1545,7 +1545,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveAPIList(self, request):
-        """This API is used to query all sensitive APIs list
+        r"""This API is used to query all sensitive APIs list
 
         :param request: Request instance for DescribeSensitiveAPIList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveAPIListRequest`
@@ -1568,7 +1568,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveApiApplyDetail(self, request):
-        """This API is used to query sensitive API permission approval details
+        r"""This API is used to query sensitive API permission approval details
 
         :param request: Request instance for DescribeSensitiveApiApplyDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveApiApplyDetailRequest`
@@ -1591,7 +1591,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveApiAuthList(self, request):
-        """This API is used to query the sensitive API permission list
+        r"""This API is used to query the sensitive API permission list
 
         :param request: Request instance for DescribeSensitiveApiAuthList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveApiAuthListRequest`
@@ -1614,7 +1614,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSimpleApplicationInfoList(self, request):
-        """This API is used to query application list information
+        r"""This API is used to query application list information
 
         :param request: Request instance for DescribeSimpleApplicationInfoList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSimpleApplicationInfoListRequest`
@@ -1637,7 +1637,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSimpleTeamList(self, request):
-        """This API is used to query the team information list
+        r"""This API is used to query the team information list
 
         :param request: Request instance for DescribeSimpleTeamList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSimpleTeamListRequest`
@@ -1660,7 +1660,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeam(self, request):
-        """This API is used to query details of a team.
+        r"""This API is used to query details of a team.
 
         :param request: Request instance for DescribeTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamRequest`
@@ -1683,7 +1683,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeamDomainList(self, request):
-        """This API is used to query a specified team’s domains that obtained ICP filing
+        r"""This API is used to query a specified team’s domains that obtained ICP filing
 
         :param request: Request instance for DescribeTeamDomainList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamDomainListRequest`
@@ -1706,7 +1706,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeamList(self, request):
-        """This API is used to query the list of teams.
+        r"""This API is used to query the list of teams.
 
         :param request: Request instance for DescribeTeamList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamListRequest`
@@ -1729,7 +1729,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeamMemberList(self, request):
-        """This API is used to query team member list
+        r"""This API is used to query team member list
 
         :param request: Request instance for DescribeTeamMemberList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamMemberListRequest`
@@ -1752,7 +1752,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeamMembers(self, request):
-        """This API is used to query the member list of a specified team
+        r"""This API is used to query the member list of a specified team
 
         :param request: Request instance for DescribeTeamMembers.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamMembersRequest`
@@ -1775,7 +1775,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTempSecret4UploadFile2Cos(self, request):
-        """This API is used to obtain a temporary key for file uploads
+        r"""This API is used to obtain a temporary key for file uploads
 
         :param request: Request instance for DescribeTempSecret4UploadFile2Cos.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTempSecret4UploadFile2CosRequest`
@@ -1798,7 +1798,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """This API is used to query details of a user.
+        r"""This API is used to query details of a user.
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeUserRequest`
@@ -1821,7 +1821,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeUserDetail(self, request):
-        """This API is used to query user details
+        r"""This API is used to query user details
 
         :param request: Request instance for DescribeUserDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeUserDetailRequest`
@@ -1844,7 +1844,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeUserList(self, request):
-        """This API is used to query the user list
+        r"""This API is used to query the user list
 
         :param request: Request instance for DescribeUserList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeUserListRequest`
@@ -1867,7 +1867,7 @@ class TcmppClient(AbstractClient):
 
 
     def DisableApplicationSensitiveAPI(self, request):
-        """This API is used to set a sensitive API to Restricted.
+        r"""This API is used to set a sensitive API to Restricted.
 
         :param request: Request instance for DisableApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DisableApplicationSensitiveAPIRequest`
@@ -1890,7 +1890,7 @@ class TcmppClient(AbstractClient):
 
 
     def DisableTeamDomain(self, request):
-        """This API is used to disable the company’s domain name that obtained the ICP filing
+        r"""This API is used to disable the company’s domain name that obtained the ICP filing
 
         :param request: Request instance for DisableTeamDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DisableTeamDomainRequest`
@@ -1913,7 +1913,7 @@ class TcmppClient(AbstractClient):
 
 
     def EnableApplicationSensitiveAPI(self, request):
-        """This API is used to set an application sensitive API to public.
+        r"""This API is used to set an application sensitive API to public.
 
         :param request: Request instance for EnableApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.EnableApplicationSensitiveAPIRequest`
@@ -1936,7 +1936,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """This API is used to change application information
+        r"""This API is used to change application information
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyApplicationRequest`
@@ -1959,7 +1959,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyApplicationAppKey(self, request):
-        """This API is used to modify the application package name
+        r"""This API is used to modify the application package name
 
         :param request: Request instance for ModifyApplicationAppKey.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyApplicationAppKeyRequest`
@@ -1982,7 +1982,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyApplicationAppUrl(self, request):
-        """This API is used to change the app download address
+        r"""This API is used to change the app download address
 
         :param request: Request instance for ModifyApplicationAppUrl.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyApplicationAppUrlRequest`
@@ -2005,7 +2005,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyDomain(self, request):
-        """This API is used to edit the mini program domain information
+        r"""This API is used to edit the mini program domain information
 
         :param request: Request instance for ModifyDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyDomainRequest`
@@ -2028,7 +2028,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyGlobalDomain(self, request):
-        """This API is used to modify domain allowlist or blocklist
+        r"""This API is used to modify domain allowlist or blocklist
 
         :param request: Request instance for ModifyGlobalDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyGlobalDomainRequest`
@@ -2051,7 +2051,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyMNP(self, request):
-        """This API is used to modify mini program information
+        r"""This API is used to modify mini program information
 
         :param request: Request instance for ModifyMNP.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPRequest`
@@ -2074,7 +2074,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyMNPDomain(self, request):
-        """This API is used to edit the mini program domain information.
+        r"""This API is used to edit the mini program domain information.
 
         :param request: Request instance for ModifyMNPDomain.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPDomainRequest`
@@ -2097,7 +2097,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyMNPStatusOffline(self, request):
-        """This API is used to remove the mini program
+        r"""This API is used to remove the mini program
 
         :param request: Request instance for ModifyMNPStatusOffline.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPStatusOfflineRequest`
@@ -2120,7 +2120,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyMNPVersionPreview(self, request):
-        """This API is used to configure the mini program preview version
+        r"""This API is used to configure the mini program preview version
 
         :param request: Request instance for ModifyMNPVersionPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPVersionPreviewRequest`
@@ -2143,7 +2143,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyOnlineVersion(self, request):
-        """This API is used to rollback a mini program release version
+        r"""This API is used to rollback a mini program release version
 
         :param request: Request instance for ModifyOnlineVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyOnlineVersionRequest`
@@ -2166,7 +2166,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyPlatformAuditStatus(self, request):
-        """This API is used to approve or reject the release of the mini program version
+        r"""This API is used to approve or reject the release of the mini program version
 
         :param request: Request instance for ModifyPlatformAuditStatus.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyPlatformAuditStatusRequest`
@@ -2189,7 +2189,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifySensitiveAPIAuditStatus(self, request):
-        """This API is used to approve or reject the sensitive API permission application
+        r"""This API is used to approve or reject the sensitive API permission application
 
         :param request: Request instance for ModifySensitiveAPIAuditStatus.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifySensitiveAPIAuditStatusRequest`
@@ -2212,7 +2212,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyTeam(self, request):
-        """This API is used to change team information
+        r"""This API is used to change team information
 
         :param request: Request instance for ModifyTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyTeamRequest`
@@ -2235,7 +2235,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyTeamMember(self, request):
-        """This API is used to modify team member information.
+        r"""This API is used to modify team member information.
 
         :param request: Request instance for ModifyTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyTeamMemberRequest`
@@ -2258,7 +2258,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """This API is used to modify user information.
+        r"""This API is used to modify user information.
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyUserRequest`
@@ -2281,7 +2281,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyUserPassword(self, request):
-        """This API is used to reset user password
+        r"""This API is used to reset user password
 
         :param request: Request instance for ModifyUserPassword.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyUserPasswordRequest`
@@ -2304,7 +2304,7 @@ class TcmppClient(AbstractClient):
 
 
     def ProcessMNPApproval(self, request):
-        """This API is used to approve or reject the release of a mini program version.
+        r"""This API is used to approve or reject the release of a mini program version.
 
         :param request: Request instance for ProcessMNPApproval.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPApprovalRequest`
@@ -2327,7 +2327,7 @@ class TcmppClient(AbstractClient):
 
 
     def ProcessMNPSensitiveAPIPermissionApproval(self, request):
-        """This API is used to approve or reject the sensitive API permission application.
+        r"""This API is used to approve or reject the sensitive API permission application.
 
         :param request: Request instance for ProcessMNPSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPSensitiveAPIPermissionApprovalRequest`
@@ -2350,7 +2350,7 @@ class TcmppClient(AbstractClient):
 
 
     def ReleaseMNPVersion(self, request):
-        """This API is used to release a mini program version.
+        r"""This API is used to release a mini program version.
 
         :param request: Request instance for ReleaseMNPVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ReleaseMNPVersionRequest`
@@ -2373,7 +2373,7 @@ class TcmppClient(AbstractClient):
 
 
     def RemoveMNP(self, request):
-        """This API is used to remove a mini program.
+        r"""This API is used to remove a mini program.
 
         :param request: Request instance for RemoveMNP.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.RemoveMNPRequest`
@@ -2396,7 +2396,7 @@ class TcmppClient(AbstractClient):
 
 
     def RollbackMNPVersion(self, request):
-        """This API is used to rollback a mini program online version.
+        r"""This API is used to rollback a mini program online version.
 
         :param request: Request instance for RollbackMNPVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.RollbackMNPVersionRequest`

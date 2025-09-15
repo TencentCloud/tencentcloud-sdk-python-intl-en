@@ -27,7 +27,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosTokenV2(self, request):
-        """This API is used to generate a COS temporary key.
+        r"""This API is used to generate a COS temporary key.
 
         :param request: Request instance for CreateCosTokenV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateCosTokenV2Request`
@@ -50,7 +50,7 @@ class TemClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """This API is used to create an environment.
+        r"""This API is used to create an environment.
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateNamespaceRequest`
@@ -73,7 +73,7 @@ class TemClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """This API is used to bind a cloud resource.
+        r"""This API is used to bind a cloud resource.
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateResourceRequest`
@@ -96,7 +96,7 @@ class TemClient(AbstractClient):
 
 
     def CreateServiceV2(self, request):
-        """This API is used to create a service.
+        r"""This API is used to create a service.
 
         :param request: Request instance for CreateServiceV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateServiceV2Request`
@@ -119,7 +119,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteIngress(self, request):
-        """This API is used to delete an ingress rule.
+        r"""This API is used to delete an ingress rule.
 
         :param request: Request instance for DeleteIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.DeleteIngressRequest`
@@ -142,7 +142,7 @@ class TemClient(AbstractClient):
 
 
     def DeployServiceV2(self, request):
-        """This API is used to deploy a service.
+        r"""This API is used to deploy a service.
 
         :param request: Request instance for DeployServiceV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.DeployServiceV2Request`
@@ -165,7 +165,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngress(self, request):
-        """This API is used to query an ingress rule.
+        r"""This API is used to query an ingress rule.
 
         :param request: Request instance for DescribeIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressRequest`
@@ -188,7 +188,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngresses(self, request):
-        """This API is used to query the list of ingress rules.
+        r"""This API is used to query the list of ingress rules.
 
         :param request: Request instance for DescribeIngresses.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressesRequest`
@@ -211,7 +211,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeNamespaces(self, request):
-        """This API is used to get the list of tenant environments.
+        r"""This API is used to get the list of tenant environments.
 
         :param request: Request instance for DescribeNamespaces.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeNamespacesRequest`
@@ -234,7 +234,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeRelatedIngresses(self, request):
-        """This API is used to query the list of ingress rules associated with the service.
+        r"""This API is used to query the list of ingress rules associated with the service.
 
         :param request: Request instance for DescribeRelatedIngresses.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeRelatedIngressesRequest`
@@ -257,7 +257,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeServiceRunPodListV2(self, request):
-        """This API is used to get the list of running pods under a service.
+        r"""This API is used to get the list of running pods under a service.
 
         :param request: Request instance for DescribeServiceRunPodListV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeServiceRunPodListV2Request`
@@ -280,7 +280,7 @@ class TemClient(AbstractClient):
 
 
     def GenerateDownloadUrl(self, request):
-        """Generate the pre-signed download URL for the specified package
+        r"""Generate the pre-signed download URL for the specified package
 
         :param request: Request instance for GenerateDownloadUrl.
         :type request: :class:`tencentcloud.tem.v20201221.models.GenerateDownloadUrlRequest`
@@ -303,7 +303,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyIngress(self, request):
-        """This API is used to create or update an ingress rule.
+        r"""This API is used to create or update an ingress rule.
 
         :param request: Request instance for ModifyIngress.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyIngressRequest`
@@ -326,7 +326,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """This API is used to edit an environment.
+        r"""This API is used to edit an environment.
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyNamespaceRequest`
@@ -349,7 +349,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyServiceInfo(self, request):
-        """This API is used to modify a service’s basic information.
+        r"""This API is used to modify a service’s basic information.
 
         :param request: Request instance for ModifyServiceInfo.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyServiceInfoRequest`
@@ -372,7 +372,7 @@ class TemClient(AbstractClient):
 
 
     def RestartServiceRunPod(self, request):
-        """This API is used to restart an instance.
+        r"""This API is used to restart an instance.
 
         :param request: Request instance for RestartServiceRunPod.
         :type request: :class:`tencentcloud.tem.v20201221.models.RestartServiceRunPodRequest`

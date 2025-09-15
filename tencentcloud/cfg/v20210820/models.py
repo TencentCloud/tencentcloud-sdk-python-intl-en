@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActionFieldConfigDetail(AbstractModel):
-    """Response format of dynamic action parameters
+    r"""Response format of dynamic action parameters
 
     """
 
@@ -93,7 +93,7 @@ Obtain options by calling the API: { api: string (API URL), params: string[] (in
 
     @property
     def Type(self):
-        """Component type
+        r"""Component type
 The options are as follows:
 input: text box
 textarea: multi-line text box
@@ -112,7 +112,7 @@ time: time selection
 
     @property
     def Lable(self):
-        """Component label
+        r"""Component label
         :rtype: str
         """
         return self._Lable
@@ -123,7 +123,7 @@ time: time selection
 
     @property
     def Field(self):
-        """Unique identifier of the component, key when it is sent back to the backend
+        r"""Unique identifier of the component, key when it is sent back to the backend
         :rtype: str
         """
         return self._Field
@@ -134,7 +134,7 @@ time: time selection
 
     @property
     def DefaultValue(self):
-        """Default value
+        r"""Default value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -146,7 +146,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """The supported configuration items are as follows. You can select the configuration items as needed. If no configuration is required, set the value to {}.
+        r"""The supported configuration items are as follows. You can select the configuration items as needed. If no configuration is required, set the value to {}.
 
 {  placeholder: string (placeholder)
 
@@ -182,7 +182,7 @@ Obtain options by calling the API: { api: string (API URL), params: string[] (in
 
     @property
     def Required(self):
-        """Whether it is required (0: no; 1: yes)
+        r"""Whether it is required (0: no; 1: yes)
         :rtype: int
         """
         return self._Required
@@ -193,7 +193,7 @@ Obtain options by calling the API: { api: string (API URL), params: string[] (in
 
     @property
     def Validate(self):
-        """The compute configuration passes the verification when other fields that it depends on meet the conditions. (For example, at least one of the three form items must be filled in.)
+        r"""The compute configuration passes the verification when other fields that it depends on meet the conditions. (For example, at least one of the three form items must be filled in.)
 
 [fieldName,
 
@@ -210,7 +210,7 @@ Obtain options by calling the API: { api: string (API URL), params: string[] (in
 
     @property
     def Visible(self):
-        """Whether it is visible
+        r"""Whether it is visible
         :rtype: str
         """
         return self._Visible
@@ -240,7 +240,7 @@ Obtain options by calling the API: { api: string (API URL), params: string[] (in
 
 
 class ActionFieldConfigResult(AbstractModel):
-    """Action field configuration result
+    r"""Action field configuration result
 
     """
 
@@ -259,7 +259,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ActionId(self):
-        """Action ID
+        r"""Action ID
         :rtype: int
         """
         return self._ActionId
@@ -270,7 +270,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ActionName(self):
-        """Action name
+        r"""Action name
         :rtype: str
         """
         return self._ActionName
@@ -281,7 +281,7 @@ class ActionFieldConfigResult(AbstractModel):
 
     @property
     def ConfigDetail(self):
-        """Filed configuration details corresponding to the action
+        r"""Filed configuration details corresponding to the action
         :rtype: list of ActionFieldConfigDetail
         """
         return self._ConfigDetail
@@ -311,7 +311,7 @@ class ActionFieldConfigResult(AbstractModel):
 
 
 class ActionFilter(AbstractModel):
-    """Action library filtering field
+    r"""Action library filtering field
 
     """
 
@@ -327,7 +327,7 @@ class ActionFilter(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword
+        r"""Keyword
         :rtype: str
         """
         return self._Keyword
@@ -338,7 +338,7 @@ class ActionFilter(AbstractModel):
 
     @property
     def Values(self):
-        """Content for search
+        r"""Content for search
         :rtype: list of str
         """
         return self._Values
@@ -362,7 +362,7 @@ class ActionFilter(AbstractModel):
 
 
 class ActionLibraryListResult(AbstractModel):
-    """Action library data list
+    r"""Action library data list
 
     """
 
@@ -439,7 +439,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionName(self):
-        """Action name
+        r"""Action name
         :rtype: str
         """
         return self._ActionName
@@ -450,7 +450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Desc(self):
-        """Action description
+        r"""Action description
         :rtype: str
         """
         return self._Desc
@@ -461,7 +461,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        """Action type: ["platform" and "custom"]
+        r"""Action type: ["platform" and "custom"]
         :rtype: str
         """
         return self._ActionType
@@ -472,7 +472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -483,7 +483,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        """Creator
+        r"""Creator
         :rtype: str
         """
         return self._Creator
@@ -494,7 +494,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdateTime
@@ -505,7 +505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RiskDesc(self):
-        """Action risk description
+        r"""Action risk description
         :rtype: str
         """
         return self._RiskDesc
@@ -516,7 +516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionId(self):
-        """Action ID
+        r"""Action ID
         :rtype: int
         """
         return self._ActionId
@@ -527,7 +527,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttributeId(self):
-        """Action attribute (1: fault; 2: recovery)
+        r"""Action attribute (1: fault; 2: recovery)
         :rtype: int
         """
         return self._AttributeId
@@ -538,7 +538,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelationActionId(self):
-        """ID of the associated action
+        r"""ID of the associated action
         :rtype: int
         """
         return self._RelationActionId
@@ -549,7 +549,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionCommand(self):
-        """Operation command
+        r"""Operation command
         :rtype: str
         """
         return self._ActionCommand
@@ -560,7 +560,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionCommandType(self):
-        """Action type (0: tat; 1: cloud API)
+        r"""Action type (0: tat; 1: cloud API)
         :rtype: int
         """
         return self._ActionCommandType
@@ -571,7 +571,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionContent(self):
-        """Parameters of the custom action, in JSON string format
+        r"""Parameters of the custom action, in JSON string format
         :rtype: str
         """
         return self._ActionContent
@@ -582,7 +582,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
-        """Level-2 type
+        r"""Level-2 type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -594,7 +594,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionDetail(self):
-        """Action description
+        r"""Action description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -606,7 +606,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAllowed(self):
-        """Whether to allow usage by the current account
+        r"""Whether to allow usage by the current account
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -618,7 +618,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionBestCase(self):
-        """Link to best practices
+        r"""Link to best practices
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -630,7 +630,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectType(self):
-        """Object type
+        r"""Object type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -642,7 +642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricIdList(self):
-        """Monitoring metric ID list
+        r"""Monitoring metric ID list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int non-negative
         """
@@ -654,7 +654,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsNewAction(self):
-        """Whether the action is new
+        r"""Whether the action is new
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -697,7 +697,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ApmServiceInfo(AbstractModel):
-    """Application information on Application Performance Monitoring
+    r"""Application information on Application Performance Monitoring
 
     """
 
@@ -720,7 +720,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Business ID
+        r"""Business ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -732,7 +732,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceNameList(self):
-        """Application name
+        r"""Application name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -744,7 +744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -771,7 +771,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateTaskFromActionRequest(AbstractModel):
-    """CreateTaskFromAction request structure.
+    r"""CreateTaskFromAction request structure.
 
     """
 
@@ -802,7 +802,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionId(self):
-        """Action ID, which can be obtained by using the action list API DescribeActionLibraryList.
+        r"""Action ID, which can be obtained by using the action list API DescribeActionLibraryList.
         :rtype: int
         """
         return self._TaskActionId
@@ -813,7 +813,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskInstances(self):
-        """ID of the instance participating in the experiment.
+        r"""ID of the instance participating in the experiment.
         :rtype: list of str
         """
         return self._TaskInstances
@@ -824,7 +824,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """Experiment name. If this parameter is left blank, the action name is used by default.
+        r"""Experiment name. If this parameter is left blank, the action name is used by default.
         :rtype: str
         """
         return self._TaskTitle
@@ -835,7 +835,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """Experiment description. If this parameter is left blank, the action description is used by default.
+        r"""Experiment description. If this parameter is left blank, the action description is used by default.
         :rtype: str
         """
         return self._TaskDescription
@@ -846,7 +846,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionGeneralConfiguration(self):
-        """General action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the action details API DescribeActionFieldConfigList. If this field is left blank, the default action parameters are used by default.
+        r"""General action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the action details API DescribeActionFieldConfigList. If this field is left blank, the default action parameters are used by default.
         :rtype: str
         """
         return self._TaskActionGeneralConfiguration
@@ -857,7 +857,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskActionCustomConfiguration(self):
-        """Action custom parameters need to be passed in as json serialization. They can be obtained from the action details interface DescribeActionFieldConfigList. If not filled in, the default action parameters will be used. Note: Required parameters have no default values. Be sure to pass in valid values.
+        r"""Action custom parameters need to be passed in as json serialization. They can be obtained from the action details interface DescribeActionFieldConfigList. If not filled in, the default action parameters will be used. Note: Required parameters have no default values. Be sure to pass in valid values.
         :rtype: str
         """
         return self._TaskActionCustomConfiguration
@@ -868,7 +868,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
     @property
     def TaskPauseDuration(self):
-        """Automatic experiment pause time, in minutes. If this parameter is left blank, the default value 60 is used.
+        r"""Automatic experiment pause time, in minutes. If this parameter is left blank, the default value 60 is used.
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -897,7 +897,7 @@ class CreateTaskFromActionRequest(AbstractModel):
 
 
 class CreateTaskFromActionResponse(AbstractModel):
-    """CreateTaskFromAction response structure.
+    r"""CreateTaskFromAction response structure.
 
     """
 
@@ -913,7 +913,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the successfully created experiment
+        r"""ID of the successfully created experiment
         :rtype: int
         """
         return self._TaskId
@@ -924,7 +924,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -940,7 +940,7 @@ class CreateTaskFromActionResponse(AbstractModel):
 
 
 class CreateTaskFromTemplateRequest(AbstractModel):
-    """CreateTaskFromTemplate request structure.
+    r"""CreateTaskFromTemplate request structure.
 
     """
 
@@ -956,7 +956,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID retrieved from the template library
+        r"""Template ID retrieved from the template library
         :rtype: int
         """
         return self._TemplateId
@@ -967,7 +967,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
     @property
     def TaskConfig(self):
-        """Experiment configuration parameters
+        r"""Experiment configuration parameters
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TaskConfig`
         """
         return self._TaskConfig
@@ -993,7 +993,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
 
 class CreateTaskFromTemplateResponse(AbstractModel):
-    """CreateTaskFromTemplate response structure.
+    r"""CreateTaskFromTemplate response structure.
 
     """
 
@@ -1009,7 +1009,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the successfully created experiment
+        r"""ID of the successfully created experiment
         :rtype: int
         """
         return self._TaskId
@@ -1020,7 +1020,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1036,7 +1036,7 @@ class CreateTaskFromTemplateResponse(AbstractModel):
 
 
 class DeleteTaskRequest(AbstractModel):
-    """DeleteTask request structure.
+    r"""DeleteTask request structure.
 
     """
 
@@ -1049,7 +1049,7 @@ class DeleteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -1072,7 +1072,7 @@ class DeleteTaskRequest(AbstractModel):
 
 
 class DeleteTaskResponse(AbstractModel):
-    """DeleteTask response structure.
+    r"""DeleteTask response structure.
 
     """
 
@@ -1085,7 +1085,7 @@ class DeleteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1100,7 +1100,7 @@ class DeleteTaskResponse(AbstractModel):
 
 
 class DescribeActionFieldConfigListRequest(AbstractModel):
-    """DescribeActionFieldConfigList request structure.
+    r"""DescribeActionFieldConfigList request structure.
 
     """
 
@@ -1116,7 +1116,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
     @property
     def ActionIds(self):
-        """Action ID list
+        r"""Action ID list
         :rtype: list of int non-negative
         """
         return self._ActionIds
@@ -1127,7 +1127,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
     @property
     def ObjectTypeId(self):
-        """Object type ID
+        r"""Object type ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -1151,7 +1151,7 @@ class DescribeActionFieldConfigListRequest(AbstractModel):
 
 
 class DescribeActionFieldConfigListResponse(AbstractModel):
-    """DescribeActionFieldConfigList response structure.
+    r"""DescribeActionFieldConfigList response structure.
 
     """
 
@@ -1174,7 +1174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Common(self):
-        """List of general filed configuration parameters
+        r"""List of general filed configuration parameters
         :rtype: list of ActionFieldConfigResult
         """
         return self._Common
@@ -1185,7 +1185,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Results(self):
-        """List of action filed configuration parameters
+        r"""List of action filed configuration parameters
         :rtype: list of ActionFieldConfigResult
         """
         return self._Results
@@ -1196,7 +1196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceOffline(self):
-        """Information on the decommissioned resource
+        r"""Information on the decommissioned resource
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ResourceOffline
         """
@@ -1208,7 +1208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1241,7 +1241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeActionLibraryListRequest(AbstractModel):
-    """DescribeActionLibraryList request structure.
+    r"""DescribeActionLibraryList request structure.
 
     """
 
@@ -1269,7 +1269,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """0-100
+        r"""0-100
         :rtype: int
         """
         return self._Limit
@@ -1280,7 +1280,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Default value: 0
+        r"""Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -1291,7 +1291,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def ObjectType(self):
-        """Object type ID
+        r"""Object type ID
         :rtype: int
         """
         return self._ObjectType
@@ -1302,7 +1302,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Keyword value {"action name": "a_title", "description": "a_desc", "action type": "a_type", "creation time": "a_create_time", "level-2 type": "a_resource_type"}
+        r"""Keyword value {"action name": "a_title", "description": "a_desc", "action type": "a_type", "creation time": "a_create_time", "level-2 type": "a_resource_type"}
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -1313,7 +1313,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def Attribute(self):
-        """Action type. 1: fault action; 2: recovery action.
+        r"""Action type. 1: fault action; 2: recovery action.
         :rtype: list of int
         """
         return self._Attribute
@@ -1324,7 +1324,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
     @property
     def ActionIds(self):
-        """Filter item - action ID
+        r"""Filter item - action ID
         :rtype: list of int non-negative
         """
         return self._ActionIds
@@ -1357,7 +1357,7 @@ class DescribeActionLibraryListRequest(AbstractModel):
 
 
 class DescribeActionLibraryListResponse(AbstractModel):
-    """DescribeActionLibraryList response structure.
+    r"""DescribeActionLibraryList response structure.
 
     """
 
@@ -1376,7 +1376,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def Results(self):
-        """Query result list
+        r"""Query result list
         :rtype: list of ActionLibraryListResult
         """
         return self._Results
@@ -1387,7 +1387,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Number of matching records
+        r"""Number of matching records
         :rtype: int
         """
         return self._Total
@@ -1398,7 +1398,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1420,7 +1420,7 @@ class DescribeActionLibraryListResponse(AbstractModel):
 
 
 class DescribeObjectTypeListRequest(AbstractModel):
-    """DescribeObjectTypeList request structure.
+    r"""DescribeObjectTypeList request structure.
 
     """
 
@@ -1436,7 +1436,7 @@ class DescribeObjectTypeListRequest(AbstractModel):
 
     @property
     def SupportType(self):
-        """Supported object
+        r"""Supported object
 0: all platform products
 1: objects connected to the platform
 2: some objects supported by the application
@@ -1462,7 +1462,7 @@ class DescribeObjectTypeListRequest(AbstractModel):
 
 
 class DescribeObjectTypeListResponse(AbstractModel):
-    """DescribeObjectTypeList response structure.
+    r"""DescribeObjectTypeList response structure.
 
     """
 
@@ -1478,7 +1478,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
     @property
     def ObjectTypeList(self):
-        """Object type list
+        r"""Object type list
         :rtype: list of ObjectType
         """
         return self._ObjectTypeList
@@ -1489,7 +1489,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1510,7 +1510,7 @@ class DescribeObjectTypeListResponse(AbstractModel):
 
 
 class DescribePolicy(AbstractModel):
-    """Protection policy
+    r"""Protection policy
 
     """
 
@@ -1533,7 +1533,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPolicyIdList(self):
-        """Protection policy ID list
+        r"""Protection policy ID list
         :rtype: list of str
         """
         return self._TaskPolicyIdList
@@ -1544,7 +1544,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPolicyStatus(self):
-        """Protection policy status
+        r"""Protection policy status
         :rtype: str
         """
         return self._TaskPolicyStatus
@@ -1555,7 +1555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPolicyRule(self):
-        """Policy rule
+        r"""Policy rule
         :rtype: str
         """
         return self._TaskPolicyRule
@@ -1566,7 +1566,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPolicyDealType(self):
-        """Process method when the guardrail policy takes effect. 1: sequential execution, 2: pausing.
+        r"""Process method when the guardrail policy takes effect. 1: sequential execution, 2: pausing.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1593,7 +1593,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTaskExecuteLogsRequest(AbstractModel):
-    """DescribeTaskExecuteLogs request structure.
+    r"""DescribeTaskExecuteLogs request structure.
 
     """
 
@@ -1612,7 +1612,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -1623,7 +1623,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned content lines
+        r"""Number of returned content lines
         :rtype: int
         """
         return self._Limit
@@ -1634,7 +1634,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Log start line
+        r"""Log start line
         :rtype: int
         """
         return self._Offset
@@ -1659,7 +1659,7 @@ class DescribeTaskExecuteLogsRequest(AbstractModel):
 
 
 class DescribeTaskExecuteLogsResponse(AbstractModel):
-    """DescribeTaskExecuteLogs response structure.
+    r"""DescribeTaskExecuteLogs response structure.
 
     """
 
@@ -1675,7 +1675,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
     @property
     def LogMessage(self):
-        """Log data
+        r"""Log data
         :rtype: list of str
         """
         return self._LogMessage
@@ -1686,7 +1686,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1702,7 +1702,7 @@ class DescribeTaskExecuteLogsResponse(AbstractModel):
 
 
 class DescribeTaskListRequest(AbstractModel):
-    """DescribeTaskList request structure.
+    r"""DescribeTaskList request structure.
 
     """
 
@@ -1760,7 +1760,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit
+        r"""Pagination limit
         :rtype: int
         """
         return self._Limit
@@ -1771,7 +1771,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -1782,7 +1782,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """Experiment name
+        r"""Experiment name
         :rtype: str
         """
         return self._TaskTitle
@@ -1793,7 +1793,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskTag(self):
-        """Tag key
+        r"""Tag key
         :rtype: list of str
         """
         return self._TaskTag
@@ -1804,7 +1804,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        """Task status (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
+        r"""Task status (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :rtype: int
         """
         return self._TaskStatus
@@ -1815,7 +1815,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStartTime(self):
-        """Start time, in fixed format: %Y-%m-%d %H:%M:%S
+        r"""Start time, in fixed format: %Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskStartTime
@@ -1826,7 +1826,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskEndTime(self):
-        """End time, in fixed format: %Y-%m-%d %H:%M:%S
+        r"""End time, in fixed format: %Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskEndTime
@@ -1837,7 +1837,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskUpdateTime(self):
-        """Update time, in fixed format: %Y-%m-%d %H:%M:%S
+        r"""Update time, in fixed format: %Y-%m-%d %H:%M:%S
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -1848,7 +1848,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag pair
+        r"""Tag pair
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -1859,7 +1859,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filtering criteria
+        r"""Filtering criteria
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -1870,7 +1870,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Experiment ID
+        r"""Experiment ID
         :rtype: list of int non-negative
         """
         return self._TaskId
@@ -1881,7 +1881,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """ID of the associated application for filtering
+        r"""ID of the associated application for filtering
         :rtype: list of str
         """
         return self._ApplicationId
@@ -1892,7 +1892,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """Associated application for filtering
+        r"""Associated application for filtering
         :rtype: list of str
         """
         return self._ApplicationName
@@ -1903,7 +1903,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskStatusList(self):
-        """Task status for filtering, supporting multiple states (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
+        r"""Task status for filtering, supporting multiple states (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :rtype: list of int non-negative
         """
         return self._TaskStatusList
@@ -1914,7 +1914,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ArchId
@@ -1925,7 +1925,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ArchName
@@ -1973,7 +1973,7 @@ class DescribeTaskListRequest(AbstractModel):
 
 
 class DescribeTaskListResponse(AbstractModel):
-    """DescribeTaskList response structure.
+    r"""DescribeTaskList response structure.
 
     """
 
@@ -1992,7 +1992,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        """None
+        r"""None
         :rtype: list of TaskListItem
         """
         return self._TaskList
@@ -2003,7 +2003,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Number of tables in the list
+        r"""Number of tables in the list
         :rtype: int
         """
         return self._Total
@@ -2014,7 +2014,7 @@ class DescribeTaskListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2036,7 +2036,7 @@ class DescribeTaskListResponse(AbstractModel):
 
 
 class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
-    """DescribeTaskPolicyTriggerLog request structure.
+    r"""DescribeTaskPolicyTriggerLog request structure.
 
     """
 
@@ -2055,7 +2055,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Experiment ID
+        r"""Experiment ID
         :rtype: int
         """
         return self._TaskId
@@ -2066,7 +2066,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Page
@@ -2077,7 +2077,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._PageSize
@@ -2102,7 +2102,7 @@ class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
 
 
 class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
-    """DescribeTaskPolicyTriggerLog response structure.
+    r"""DescribeTaskPolicyTriggerLog response structure.
 
     """
 
@@ -2119,7 +2119,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerLogs(self):
-        """Triggering log
+        r"""Triggering log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PolicyTriggerLog
         """
@@ -2131,7 +2131,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2152,7 +2152,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTaskRequest(AbstractModel):
-    """DescribeTask request structure.
+    r"""DescribeTask request structure.
 
     """
 
@@ -2165,7 +2165,7 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -2188,7 +2188,7 @@ class DescribeTaskRequest(AbstractModel):
 
 
 class DescribeTaskResponse(AbstractModel):
-    """DescribeTask response structure.
+    r"""DescribeTask response structure.
 
     """
 
@@ -2208,7 +2208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Task(self):
-        """Task information
+        r"""Task information
         :rtype: :class:`tencentcloud.cfg.v20210820.models.Task`
         """
         return self._Task
@@ -2219,7 +2219,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReportInfo(self):
-        """Experiment report information corresponding to the task. The value null indicates that no report is exported.
+        r"""Experiment report information corresponding to the task. The value null indicates that no report is exported.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TaskReportInfo`
         """
@@ -2231,7 +2231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2252,7 +2252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTemplateListRequest(AbstractModel):
-    """DescribeTemplateList request structure.
+    r"""DescribeTemplateList request structure.
 
     """
 
@@ -2289,7 +2289,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit.Maximum value:100.
+        r"""Pagination limit.Maximum value:100.
         :rtype: int
         """
         return self._Limit
@@ -2300,7 +2300,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -2311,7 +2311,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Title(self):
-        """Experiment name
+        r"""Experiment name
         :rtype: str
         """
         return self._Title
@@ -2322,7 +2322,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Tag(self):
-        """Tag key
+        r"""Tag key
         :rtype: list of str
         """
         return self._Tag
@@ -2333,7 +2333,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def IsUsed(self):
-        """Status. 1: in use; 2: not in use.
+        r"""Status. 1: in use; 2: not in use.
         :rtype: int
         """
         return self._IsUsed
@@ -2344,7 +2344,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag pair
+        r"""Tag pair
         :rtype: list of TagWithDescribe
         """
         return self._Tags
@@ -2355,7 +2355,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def TemplateSource(self):
-        """Template library source. 0: self-built; 1: recommended by experts.
+        r"""Template library source. 0: self-built; 1: recommended by experts.
         :rtype: int
         """
         return self._TemplateSource
@@ -2366,7 +2366,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def TemplateIdList(self):
-        """Template ID
+        r"""Template ID
         :rtype: list of int
         """
         return self._TemplateIdList
@@ -2377,7 +2377,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: list of ActionFilter
         """
         return self._Filters
@@ -2418,7 +2418,7 @@ class DescribeTemplateListRequest(AbstractModel):
 
 
 class DescribeTemplateListResponse(AbstractModel):
-    """DescribeTemplateList response structure.
+    r"""DescribeTemplateList response structure.
 
     """
 
@@ -2437,7 +2437,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def TemplateList(self):
-        """Template library list
+        r"""Template library list
         :rtype: list of TemplateListItem
         """
         return self._TemplateList
@@ -2448,7 +2448,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Number of template libraries in the list
+        r"""Number of template libraries in the list
         :rtype: int
         """
         return self._Total
@@ -2459,7 +2459,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2481,7 +2481,7 @@ class DescribeTemplateListResponse(AbstractModel):
 
 
 class DescribeTemplateRequest(AbstractModel):
-    """DescribeTemplate request structure.
+    r"""DescribeTemplate request structure.
 
     """
 
@@ -2494,7 +2494,7 @@ class DescribeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template library ID
+        r"""Template library ID
         :rtype: int
         """
         return self._TemplateId
@@ -2517,7 +2517,7 @@ class DescribeTemplateRequest(AbstractModel):
 
 
 class DescribeTemplateResponse(AbstractModel):
-    """DescribeTemplate response structure.
+    r"""DescribeTemplate response structure.
 
     """
 
@@ -2533,7 +2533,7 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
-        """Template library details
+        r"""Template library details
         :rtype: :class:`tencentcloud.cfg.v20210820.models.Template`
         """
         return self._Template
@@ -2544,7 +2544,7 @@ class DescribeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2562,7 +2562,7 @@ class DescribeTemplateResponse(AbstractModel):
 
 
 class ExecuteTaskInstanceRequest(AbstractModel):
-    """ExecuteTaskInstance request structure.
+    r"""ExecuteTaskInstance request structure.
 
     """
 
@@ -2590,7 +2590,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -2601,7 +2601,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskActionId(self):
-        """Task action ID
+        r"""Task action ID
         :rtype: int
         """
         return self._TaskActionId
@@ -2612,7 +2612,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskInstanceIds(self):
-        """Task action instance ID
+        r"""Task action instance ID
         :rtype: list of int non-negative
         """
         return self._TaskInstanceIds
@@ -2623,7 +2623,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def IsOperateAll(self):
-        """Whether to operate on the entire task
+        r"""Whether to operate on the entire task
         :rtype: bool
         """
         return self._IsOperateAll
@@ -2634,7 +2634,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """Operation type (1: start; 2: execute; 3: skip; 5: retry)
+        r"""Operation type (1: start; 2: execute; 3: skip; 5: retry)
         :rtype: int
         """
         return self._ActionType
@@ -2645,7 +2645,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskGroupId(self):
-        """Action group ID
+        r"""Action group ID
         :rtype: int
         """
         return self._TaskGroupId
@@ -2673,7 +2673,7 @@ class ExecuteTaskInstanceRequest(AbstractModel):
 
 
 class ExecuteTaskInstanceResponse(AbstractModel):
-    """ExecuteTaskInstance response structure.
+    r"""ExecuteTaskInstance response structure.
 
     """
 
@@ -2686,7 +2686,7 @@ class ExecuteTaskInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2701,7 +2701,7 @@ class ExecuteTaskInstanceResponse(AbstractModel):
 
 
 class ExecuteTaskRequest(AbstractModel):
-    """ExecuteTask request structure.
+    r"""ExecuteTask request structure.
 
     """
 
@@ -2714,7 +2714,7 @@ class ExecuteTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the task to be executed
+        r"""ID of the task to be executed
         :rtype: int
         """
         return self._TaskId
@@ -2737,7 +2737,7 @@ class ExecuteTaskRequest(AbstractModel):
 
 
 class ExecuteTaskResponse(AbstractModel):
-    """ExecuteTask response structure.
+    r"""ExecuteTask response structure.
 
     """
 
@@ -2750,7 +2750,7 @@ class ExecuteTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2765,7 +2765,7 @@ class ExecuteTaskResponse(AbstractModel):
 
 
 class ModifyTaskRunStatusRequest(AbstractModel):
-    """ModifyTaskRunStatus request structure.
+    r"""ModifyTaskRunStatus request structure.
 
     """
 
@@ -2787,7 +2787,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -2798,7 +2798,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Task status. 1001: not started; 1002: in progress (executing); 1003: in progress (paused); 1004: execution ended.
+        r"""Task status. 1001: not started; 1002: in progress (executing); 1003: in progress (paused); 1004: execution ended.
         :rtype: int
         """
         return self._Status
@@ -2809,7 +2809,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def IsExpect(self):
-        """Whether the execution result meets expectations (This field is required when the task status is Execution Ended.)
+        r"""Whether the execution result meets expectations (This field is required when the task status is Execution Ended.)
         :rtype: bool
         """
         return self._IsExpect
@@ -2820,7 +2820,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
     @property
     def Summary(self):
-        """Experiment result (This field is required when the experiment status changes to Execution Ended.)
+        r"""Experiment result (This field is required when the experiment status changes to Execution Ended.)
         :rtype: str
         """
         return self._Summary
@@ -2846,7 +2846,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
 
 
 class ModifyTaskRunStatusResponse(AbstractModel):
-    """ModifyTaskRunStatus response structure.
+    r"""ModifyTaskRunStatus response structure.
 
     """
 
@@ -2859,7 +2859,7 @@ class ModifyTaskRunStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2874,7 +2874,7 @@ class ModifyTaskRunStatusResponse(AbstractModel):
 
 
 class ObjectType(AbstractModel):
-    """Object type
+    r"""Object type
 
     """
 
@@ -2904,7 +2904,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeId(self):
-        """Object type ID
+        r"""Object type ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -2915,7 +2915,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeTitle(self):
-        """Object type name
+        r"""Object type name
         :rtype: str
         """
         return self._ObjectTypeTitle
@@ -2926,7 +2926,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeLevelOne(self):
-        """Level-1 object type
+        r"""Level-1 object type
         :rtype: str
         """
         return self._ObjectTypeLevelOne
@@ -2937,7 +2937,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeParams(self):
-        """Object type parameters
+        r"""Object type parameters
         :rtype: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeConfig`
         """
         return self._ObjectTypeParams
@@ -2948,7 +2948,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeJsonParse(self):
-        """JSON parsing rule for TKE APIs. If the value is null, no parsing is needed.
+        r"""JSON parsing rule for TKE APIs. If the value is null, no parsing is needed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cfg.v20210820.models.ObjectTypeJsonParse`
         """
@@ -2960,7 +2960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectHasNewAction(self):
-        """Whether new action is included
+        r"""Whether new action is included
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2993,7 +2993,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ObjectTypeConfig(AbstractModel):
-    """Object type configuration
+    r"""Object type configuration
 
     """
 
@@ -3009,7 +3009,7 @@ class ObjectTypeConfig(AbstractModel):
 
     @property
     def Key(self):
-        """Primary key
+        r"""Primary key
         :rtype: str
         """
         return self._Key
@@ -3020,7 +3020,7 @@ class ObjectTypeConfig(AbstractModel):
 
     @property
     def Fields(self):
-        """List of object type configuration fields
+        r"""List of object type configuration fields
         :rtype: list of ObjectTypeConfigFields
         """
         return self._Fields
@@ -3049,7 +3049,7 @@ class ObjectTypeConfig(AbstractModel):
 
 
 class ObjectTypeConfigFields(AbstractModel):
-    """Field information on the experiment resource object
+    r"""Field information on the experiment resource object
 
     """
 
@@ -3073,7 +3073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """instanceId
+        r"""instanceId
         :rtype: str
         """
         return self._Key
@@ -3084,7 +3084,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Header(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._Header
@@ -3095,7 +3095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Transfer(self):
-        """Whether the field value needs to be translated. If not, this field returns null.
+        r"""Whether the field value needs to be translated. If not, this field returns null.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3107,7 +3107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JsonParse(self):
-        """Value returned for container Pod resources
+        r"""Value returned for container Pod resources
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3134,7 +3134,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ObjectTypeJsonParse(AbstractModel):
-    """Value returned for container Pod resources
+    r"""Value returned for container Pod resources
 
     """
 
@@ -3161,7 +3161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NameSpace(self):
-        """Namespace
+        r"""Namespace
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -3174,7 +3174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WorkloadName(self):
-        """Workload name
+        r"""Workload name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3186,7 +3186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LanIP(self):
-        """Node IP address
+        r"""Node IP address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3198,7 +3198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Node ID
+        r"""Node ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3225,7 +3225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PolicyTriggerLog(AbstractModel):
-    """Guardrail policy triggering log
+    r"""Guardrail policy triggering log
 
     """
 
@@ -3256,7 +3256,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Experiment ID
+        r"""Experiment ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3268,7 +3268,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Name
+        r"""Name
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -3281,7 +3281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerType(self):
-        """Type. 0: trigger; 1: recovery.
+        r"""Type. 0: trigger; 1: recovery.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3293,7 +3293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """Content
+        r"""Content
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3305,7 +3305,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatTime(self):
-        """Triggering time
+        r"""Triggering time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3333,7 +3333,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ResourceOffline(AbstractModel):
-    """Decommissioned resource
+    r"""Decommissioned resource
 
     """
 
@@ -3356,7 +3356,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -3369,7 +3369,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceDeleteTime(self):
-        """Resource decommissioning time
+        r"""Resource decommissioning time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3381,7 +3381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceDeleteMessage(self):
-        """Resource decommissioning reminder
+        r"""Resource decommissioning reminder
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3407,7 +3407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TagWithCreate(AbstractModel):
-    """Tag information, which is used during experiment resource creation and editing.
+    r"""Tag information, which is used during experiment resource creation and editing.
 
     """
 
@@ -3423,7 +3423,7 @@ class TagWithCreate(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -3434,7 +3434,7 @@ class TagWithCreate(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -3458,7 +3458,7 @@ class TagWithCreate(AbstractModel):
 
 
 class TagWithDescribe(AbstractModel):
-    """List of displayed tags
+    r"""List of displayed tags
 
     """
 
@@ -3474,7 +3474,7 @@ class TagWithDescribe(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -3485,7 +3485,7 @@ class TagWithDescribe(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -3509,7 +3509,7 @@ class TagWithDescribe(AbstractModel):
 
 
 class Task(AbstractModel):
-    """Task
+    r"""Task
 
     """
 
@@ -3626,7 +3626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -3637,7 +3637,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskTitle(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._TaskTitle
@@ -3648,7 +3648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskDescription(self):
-        """Task description
+        r"""Task description
         :rtype: str
         """
         return self._TaskDescription
@@ -3659,7 +3659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskTag(self):
-        """Custom tag
+        r"""Custom tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3671,7 +3671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatus(self):
-        """Task status. 1001: not started; 1002: in progress (executing); 1003: in progress (paused); 1004: execution ended.
+        r"""Task status. 1001: not started; 1002: in progress (executing); 1003: in progress (paused); 1004: execution ended.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3683,7 +3683,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatusType(self):
-        """Task end status, indicating the status of the task when it ends. 0: not ended; 1: successful; 2: failed; 3: terminated.
+        r"""Task end status, indicating the status of the task when it ends. 0: not ended; 1: successful; 2: failed; 3: terminated.
         :rtype: int
         """
         return self._TaskStatusType
@@ -3694,7 +3694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskProtectStrategy(self):
-        """Protection policy
+        r"""Protection policy
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3706,7 +3706,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskCreateTime(self):
-        """Task creation time
+        r"""Task creation time
         :rtype: str
         """
         return self._TaskCreateTime
@@ -3717,7 +3717,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskUpdateTime(self):
-        """Task update time
+        r"""Task update time
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -3728,7 +3728,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroups(self):
-        """Task action group
+        r"""Task action group
         :rtype: list of TaskGroup
         """
         return self._TaskGroups
@@ -3739,7 +3739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStartTime(self):
-        """Start time
+        r"""Start time
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -3752,7 +3752,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskEndTime(self):
-        """End time
+        r"""End time
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -3765,7 +3765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskExpect(self):
-        """Whether expectations are met. 1: expectations met; 2: expectations not met.
+        r"""Whether expectations are met. 1: expectations met; 2: expectations not met.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3777,7 +3777,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskSummary(self):
-        """Experiment record
+        r"""Experiment record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3789,7 +3789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskMode(self):
-        """Task mode. 1: manual execution; 2: automatic execution.
+        r"""Task mode. 1: manual execution; 2: automatic execution.
         :rtype: int
         """
         return self._TaskMode
@@ -3800,7 +3800,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPauseDuration(self):
-        """Automatic pause duration. Unit: minutes.
+        r"""Automatic pause duration. Unit: minutes.
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -3811,7 +3811,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskOwnerUin(self):
-        """Main account that creates the experiment
+        r"""Main account that creates the experiment
         :rtype: str
         """
         return self._TaskOwnerUin
@@ -3822,7 +3822,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskRegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._TaskRegionId
@@ -3833,7 +3833,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskMonitors(self):
-        """Monitoring metric list
+        r"""Monitoring metric list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TaskMonitor
         """
@@ -3845,7 +3845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPolicy(self):
-        """Protection policy
+        r"""Protection policy
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribePolicy`
         """
@@ -3857,7 +3857,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag list
+        r"""Tag list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagWithDescribe
         """
@@ -3869,7 +3869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPlanId(self):
-        """ID of the associated experiment plan
+        r"""ID of the associated experiment plan
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3881,7 +3881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPlanTitle(self):
-        """Name of the associated experiment plan
+        r"""Name of the associated experiment plan
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3893,7 +3893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """ID of the associated application
+        r"""ID of the associated application
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3905,7 +3905,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        """Name of the associated application
+        r"""Name of the associated application
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3917,7 +3917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmPolicy(self):
-        """Associated alarm metrics
+        r"""Associated alarm metrics
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3929,7 +3929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApmServiceList(self):
-        """Associated APM services
+        r"""Associated APM services
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApmServiceInfo
         """
@@ -3941,7 +3941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyId(self):
-        """ID of the associated threat verification item
+        r"""ID of the associated threat verification item
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3953,7 +3953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyDealType(self):
-        """Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
+        r"""Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4027,7 +4027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskConfig(AbstractModel):
-    """Task parameters that need to be configured when an experiment is created by using a template
+    r"""Task parameters that need to be configured when an experiment is created by using a template
 
     """
 
@@ -4058,7 +4058,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskGroupsConfig(self):
-        """Action group configurations. The number of configured action groups needs to be consistent with that in the template.
+        r"""Action group configurations. The number of configured action groups needs to be consistent with that in the template.
         :rtype: list of TaskGroupConfig
         """
         return self._TaskGroupsConfig
@@ -4069,7 +4069,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskTitle(self):
-        """Experiment name after change. If this parameter is left blank, the template name is used by default.
+        r"""Experiment name after change. If this parameter is left blank, the template name is used by default.
         :rtype: str
         """
         return self._TaskTitle
@@ -4080,7 +4080,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskDescription(self):
-        """Experiment description after change. If this parameter is left blank, the template description is used by default.
+        r"""Experiment description after change. If this parameter is left blank, the template description is used by default.
         :rtype: str
         """
         return self._TaskDescription
@@ -4091,7 +4091,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskMode(self):
-        """Experiment execution mode. 1: manual execution; 2: automatic execution. If this parameter is left blank, the template execution mode is used by default.
+        r"""Experiment execution mode. 1: manual execution; 2: automatic execution. If this parameter is left blank, the template execution mode is used by default.
         :rtype: int
         """
         return self._TaskMode
@@ -4102,7 +4102,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def TaskPauseDuration(self):
-        """Automatic pause time of the experiment, in minutes. If this parameter is left blank, the automatic pause time of the template is used by default.
+        r"""Automatic pause time of the experiment, in minutes. If this parameter is left blank, the automatic pause time of the template is used by default.
         :rtype: int
         """
         return self._TaskPauseDuration
@@ -4113,7 +4113,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def Tags(self):
-        """Experiment tag. If this parameter is left blank, the template tag is used by default.
+        r"""Experiment tag. If this parameter is left blank, the template tag is used by default.
         :rtype: list of TagWithCreate
         """
         return self._Tags
@@ -4124,7 +4124,7 @@ class TaskConfig(AbstractModel):
 
     @property
     def PolicyDealType(self):
-        """Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
+        r"""Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
         :rtype: int
         """
         return self._PolicyDealType
@@ -4163,7 +4163,7 @@ class TaskConfig(AbstractModel):
 
 
 class TaskGroup(AbstractModel):
-    """Task group
+    r"""Task group
 
     """
 
@@ -4215,7 +4215,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupId(self):
-        """Task action ID
+        r"""Task action ID
         :rtype: int
         """
         return self._TaskGroupId
@@ -4226,7 +4226,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupTitle(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._TaskGroupTitle
@@ -4237,7 +4237,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupDescription(self):
-        """Group description
+        r"""Group description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4249,7 +4249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupOrder(self):
-        """Task group order
+        r"""Task group order
         :rtype: int
         """
         return self._TaskGroupOrder
@@ -4260,7 +4260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeId(self):
-        """Object type ID
+        r"""Object type ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -4271,7 +4271,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupCreateTime(self):
-        """Task group creation time
+        r"""Task group creation time
         :rtype: str
         """
         return self._TaskGroupCreateTime
@@ -4282,7 +4282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupUpdateTime(self):
-        """Task group update time
+        r"""Task group update time
         :rtype: str
         """
         return self._TaskGroupUpdateTime
@@ -4293,7 +4293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActions(self):
-        """List of actions in the group
+        r"""List of actions in the group
         :rtype: list of TaskGroupAction
         """
         return self._TaskGroupActions
@@ -4304,7 +4304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceList(self):
-        """Instance list
+        r"""Instance list
         :rtype: list of str
         """
         return self._TaskGroupInstanceList
@@ -4315,7 +4315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupMode(self):
-        """Execution mode. 1: sequential execution; 2: execution by stage.
+        r"""Execution mode. 1: sequential execution; 2: execution by stage.
         :rtype: int
         """
         return self._TaskGroupMode
@@ -4326,7 +4326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupDiscardInstanceList(self):
-        """List of instances not involved in the experiment
+        r"""List of instances not involved in the experiment
         :rtype: list of str
         """
         return self._TaskGroupDiscardInstanceList
@@ -4337,7 +4337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupSelectedInstanceList(self):
-        """List of instances involved in the experiment
+        r"""List of instances involved in the experiment
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4349,7 +4349,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstancesExecuteRule(self):
-        """Machine selection rule
+        r"""Machine selection rule
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TaskGroupInstancesExecuteRules
         """
@@ -4395,7 +4395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskGroupAction(AbstractModel):
-    """Task group action
+    r"""Task group action
 
     """
 
@@ -4476,7 +4476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionId(self):
-        """Task group action ID
+        r"""Task group action ID
         :rtype: int
         """
         return self._TaskGroupActionId
@@ -4487,7 +4487,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstances(self):
-        """Action instance list of the task group
+        r"""Action instance list of the task group
         :rtype: list of TaskGroupInstance
         """
         return self._TaskGroupInstances
@@ -4498,7 +4498,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionId(self):
-        """Action ID
+        r"""Action ID
         :rtype: int
         """
         return self._ActionId
@@ -4509,7 +4509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionOrder(self):
-        """Order of actions in the group
+        r"""Order of actions in the group
         :rtype: int
         """
         return self._TaskGroupActionOrder
@@ -4520,7 +4520,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionGeneralConfiguration(self):
-        """General configurations of actions in the group
+        r"""General configurations of actions in the group
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4532,7 +4532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionCustomConfiguration(self):
-        """Custom configurations of actions in the group
+        r"""Custom configurations of actions in the group
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4544,7 +4544,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionStatus(self):
-        """Status of actions in the group
+        r"""Status of actions in the group
         :rtype: int
         """
         return self._TaskGroupActionStatus
@@ -4555,7 +4555,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionCreateTime(self):
-        """Action group creation time
+        r"""Action group creation time
         :rtype: str
         """
         return self._TaskGroupActionCreateTime
@@ -4566,7 +4566,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionUpdateTime(self):
-        """Action group update time
+        r"""Action group update time
         :rtype: str
         """
         return self._TaskGroupActionUpdateTime
@@ -4577,7 +4577,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTitle(self):
-        """Action name
+        r"""Action name
         :rtype: str
         """
         return self._ActionTitle
@@ -4588,7 +4588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionStatusType(self):
-        """Status. 0: no status; 1: successful; 2; failed; 3: terminated; 4: skipped.
+        r"""Status. 0: no status; 1: successful; 2; failed; 3: terminated; 4: skipped.
         :rtype: int
         """
         return self._TaskGroupActionStatusType
@@ -4599,7 +4599,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionRandomId(self):
-        """RandomId
+        r"""RandomId
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4611,7 +4611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionRecoverId(self):
-        """RecoverId
+        r"""RecoverId
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4623,7 +4623,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionExecuteId(self):
-        """ExecuteId
+        r"""ExecuteId
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4635,7 +4635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionApiType(self):
-        """Called API type. 0: tat; 1: cloud API.
+        r"""Called API type. 0: tat; 1: cloud API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4647,7 +4647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionAttribute(self):
-        """1: fault; 2: recovery.
+        r"""1: fault; 2: recovery.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4659,7 +4659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        """Action type: platform and custom
+        r"""Action type: platform and custom
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4671,7 +4671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsExecuteRedo(self):
-        """Whether retry is allowed
+        r"""Whether retry is allowed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4683,7 +4683,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionRisk(self):
-        """Action risk level
+        r"""Action risk level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4695,7 +4695,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupActionExecuteTime(self):
-        """Action running time
+        r"""Action running time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4743,7 +4743,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskGroupActionConfig(AbstractModel):
-    """Action parameters in the action group
+    r"""Action parameters in the action group
 
     """
 
@@ -4762,7 +4762,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionOrder(self):
-        """Order of this action in the action group. The entire order starts from 1. If this parameter is left blank or set to an invalid value, the action whose parameters need to be modified in the template cannot be matched.
+        r"""Order of this action in the action group. The entire order starts from 1. If this parameter is left blank or set to an invalid value, the action whose parameters need to be modified in the template cannot be matched.
         :rtype: int
         """
         return self._TaskGroupActionOrder
@@ -4773,7 +4773,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionGeneralConfiguration(self):
-        """General action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the template details query API. If this field is left blank, action parameters in the template are used by default.
+        r"""General action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the template details query API. If this field is left blank, action parameters in the template are used by default.
         :rtype: str
         """
         return self._TaskGroupActionGeneralConfiguration
@@ -4784,7 +4784,7 @@ class TaskGroupActionConfig(AbstractModel):
 
     @property
     def TaskGroupActionCustomConfiguration(self):
-        """Custom action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the template details query API. If this field is left blank, action parameters in the template are used by default.
+        r"""Custom action parameters, which need to be passed in after JSON serialization. The parameters can be obtained by using the template details query API. If this field is left blank, action parameters in the template are used by default.
         :rtype: str
         """
         return self._TaskGroupActionCustomConfiguration
@@ -4809,7 +4809,7 @@ class TaskGroupActionConfig(AbstractModel):
 
 
 class TaskGroupConfig(AbstractModel):
-    """Action group configuration item
+    r"""Action group configuration item
 
     """
 
@@ -4834,7 +4834,7 @@ class TaskGroupConfig(AbstractModel):
 
     @property
     def TaskGroupInstances(self):
-        """Instance object associated with the action group
+        r"""Instance object associated with the action group
         :rtype: list of str
         """
         return self._TaskGroupInstances
@@ -4845,7 +4845,7 @@ class TaskGroupConfig(AbstractModel):
 
     @property
     def TaskGroupTitle(self):
-        """Action group name. If this parameter is left blank, the action group name in the template is used by default.
+        r"""Action group name. If this parameter is left blank, the action group name in the template is used by default.
         :rtype: str
         """
         return self._TaskGroupTitle
@@ -4856,7 +4856,7 @@ class TaskGroupConfig(AbstractModel):
 
     @property
     def TaskGroupDescription(self):
-        """Action group description. If this parameter is left blank, the action group description in the template is used by default.
+        r"""Action group description. If this parameter is left blank, the action group description in the template is used by default.
         :rtype: str
         """
         return self._TaskGroupDescription
@@ -4867,7 +4867,7 @@ class TaskGroupConfig(AbstractModel):
 
     @property
     def TaskGroupMode(self):
-        """Action group execution mode. 1: sequential execution; 2: execution by stage. If this parameter is left blank, the action execution mode in the template is used by default.
+        r"""Action group execution mode. 1: sequential execution; 2: execution by stage. If this parameter is left blank, the action execution mode in the template is used by default.
         :rtype: int
         """
         return self._TaskGroupMode
@@ -4878,7 +4878,7 @@ class TaskGroupConfig(AbstractModel):
 
     @property
     def TaskGroupActionsConfig(self):
-        """Action parameters in the action group. If this field is left blank, the action parameters in the template is used by default. You only need to specify the action whose parameters are to be modified during configuration.
+        r"""Action parameters in the action group. If this field is left blank, the action parameters in the template is used by default. You only need to specify the action whose parameters are to be modified during configuration.
         :rtype: list of TaskGroupActionConfig
         """
         return self._TaskGroupActionsConfig
@@ -4910,7 +4910,7 @@ class TaskGroupConfig(AbstractModel):
 
 
 class TaskGroupInstance(AbstractModel):
-    """Task group action instance
+    r"""Task group action instance
 
     """
 
@@ -4961,7 +4961,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: int
         """
         return self._TaskGroupInstanceId
@@ -4972,7 +4972,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceObjectId(self):
-        """Instance ID
+        r"""Instance ID
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -4985,7 +4985,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceStatus(self):
-        """Instance action execution status
+        r"""Instance action execution status
 
         :rtype: int
         """
@@ -4997,7 +4997,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceCreateTime(self):
-        """Instance creation time
+        r"""Instance creation time
         :rtype: str
         """
         return self._TaskGroupInstanceCreateTime
@@ -5008,7 +5008,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceUpdateTime(self):
-        """Instance update time
+        r"""Instance update time
         :rtype: str
         """
         return self._TaskGroupInstanceUpdateTime
@@ -5019,7 +5019,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceStatusType(self):
-        """Status. 0: no status; 1: successful; 2: failed; 3: terminated; 4: skipped.
+        r"""Status. 0: no status; 1: successful; 2: failed; 3: terminated; 4: skipped.
         :rtype: int
         """
         return self._TaskGroupInstanceStatusType
@@ -5030,7 +5030,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceStartTime(self):
-        """Execution start time
+        r"""Execution start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5042,7 +5042,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceEndTime(self):
-        """Execution end time
+        r"""Execution end time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5056,7 +5056,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TaskGroupInstanceExecuteLog(self):
         warnings.warn("parameter `TaskGroupInstanceExecuteLog` is deprecated", DeprecationWarning) 
 
-        """Instance action execution log
+        r"""Instance action execution log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5070,7 +5070,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceIsRedo(self):
-        """Whether the instance can be retried
+        r"""Whether the instance can be retried
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -5082,7 +5082,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstanceExecuteTime(self):
-        """Action instance execution time
+        r"""Action instance execution time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5116,7 +5116,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskGroupInstancesExecuteRules(AbstractModel):
-    """Machine selection rule
+    r"""Machine selection rule
 
     """
 
@@ -5138,7 +5138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstancesExecuteMode(self):
-        """Instance selection mode
+        r"""Instance selection mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5150,7 +5150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstancesExecutePercent(self):
-        """Proportion of selected machines in selection by proportion mode
+        r"""Proportion of selected machines in selection by proportion mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5162,7 +5162,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskGroupInstancesExecuteNum(self):
-        """Number of selected machines in selection by quantity mode
+        r"""Number of selected machines in selection by quantity mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5188,7 +5188,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskListItem(AbstractModel):
-    """Task list information
+    r"""Task list information
 
     """
 
@@ -5248,7 +5248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._TaskId
@@ -5259,7 +5259,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskTitle(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._TaskTitle
@@ -5270,7 +5270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskDescription(self):
-        """Task description
+        r"""Task description
         :rtype: str
         """
         return self._TaskDescription
@@ -5281,7 +5281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskTag(self):
-        """Task tag
+        r"""Task tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5293,7 +5293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatus(self):
-        """Task status (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
+        r"""Task status (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :rtype: int
         """
         return self._TaskStatus
@@ -5304,7 +5304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskCreateTime(self):
-        """Task creation time
+        r"""Task creation time
         :rtype: str
         """
         return self._TaskCreateTime
@@ -5315,7 +5315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskUpdateTime(self):
-        """Task update time
+        r"""Task update time
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -5326,7 +5326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPreCheckStatus(self):
-        """0: not started; 1: in progress; 2: completed.
+        r"""0: not started; 1: in progress; 2: completed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5338,7 +5338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPreCheckSuccess(self):
-        """Whether the environmental check is passed
+        r"""Whether the environmental check is passed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -5350,7 +5350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskExpect(self):
-        """Whether the experiment result meets expectations. 1: expectations met; 2: expectations not met.
+        r"""Whether the experiment result meets expectations. 1: expectations met; 2: expectations not met.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5362,7 +5362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """ID of the associated application
+        r"""ID of the associated application
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5374,7 +5374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
-        """Name of the associated application
+        r"""Name of the associated application
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5386,7 +5386,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyId(self):
-        """Verification item ID
+        r"""Verification item ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5398,7 +5398,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatusType(self):
-        """Status. 0: no status; 1: successful; 2: failed; 3: terminated.
+        r"""Status. 0: no status; 1: successful; 2: failed; 3: terminated.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5435,7 +5435,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskMonitor(AbstractModel):
-    """Monitoring metrics
+    r"""Monitoring metrics
 
     """
 
@@ -5469,7 +5469,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskMonitorId(self):
-        """Experiment monitoring metric ID
+        r"""Experiment monitoring metric ID
         :rtype: int
         """
         return self._TaskMonitorId
@@ -5480,7 +5480,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricId(self):
-        """Monitoring metric ID
+        r"""Monitoring metric ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5492,7 +5492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskMonitorObjectTypeId(self):
-        """Object type ID of the monitoring metric
+        r"""Object type ID of the monitoring metric
         :rtype: int
         """
         return self._TaskMonitorObjectTypeId
@@ -5503,7 +5503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -5514,7 +5514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstancesIds(self):
-        """Instance ID list
+        r"""Instance ID list
         :rtype: list of str
         """
         return self._InstancesIds
@@ -5525,7 +5525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricChineseName(self):
-        """Metric in Chinese
+        r"""Metric in Chinese
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5537,7 +5537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5567,7 +5567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskReportInfo(AbstractModel):
-    """Experiment report status information
+    r"""Experiment report status information
 
     """
 
@@ -5597,7 +5597,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stage(self):
-        """0: not started; 1: exporting; 2: export successful; 3: export failed.
+        r"""0: not started; 1: exporting; 2: export successful; 3: export failed.
         :rtype: int
         """
         return self._Stage
@@ -5608,7 +5608,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -5619,7 +5619,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationTime(self):
-        """End time of the validity period
+        r"""End time of the validity period
         :rtype: str
         """
         return self._ExpirationTime
@@ -5630,7 +5630,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expired(self):
-        """Whether it is effective
+        r"""Whether it is effective
         :rtype: bool
         """
         return self._Expired
@@ -5641,7 +5641,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosUrl(self):
-        """Address of the COS experiment report file
+        r"""Address of the COS experiment report file
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5653,7 +5653,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Log(self):
-        """Experiment report export log
+        r"""Experiment report export log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5682,7 +5682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Template(AbstractModel):
-    """Template library
+    r"""Template library
 
     """
 
@@ -5756,7 +5756,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """Template library ID
+        r"""Template library ID
         :rtype: int
         """
         return self._TemplateId
@@ -5767,7 +5767,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateTitle(self):
-        """Template library name
+        r"""Template library name
         :rtype: str
         """
         return self._TemplateTitle
@@ -5778,7 +5778,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateDescription(self):
-        """Template library description
+        r"""Template library description
         :rtype: str
         """
         return self._TemplateDescription
@@ -5789,7 +5789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateTag(self):
-        """Custom tag
+        r"""Custom tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5801,7 +5801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateIsUsed(self):
-        """Usage status. 1: in use; 2: not in use.
+        r"""Usage status. 1: in use; 2: not in use.
         :rtype: int
         """
         return self._TemplateIsUsed
@@ -5812,7 +5812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateCreateTime(self):
-        """Template library creation time
+        r"""Template library creation time
         :rtype: str
         """
         return self._TemplateCreateTime
@@ -5823,7 +5823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateUpdateTime(self):
-        """Template library update time
+        r"""Template library update time
         :rtype: str
         """
         return self._TemplateUpdateTime
@@ -5834,7 +5834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateMode(self):
-        """Template library mode. 1: manual execution; 2: automatic execution.
+        r"""Template library mode. 1: manual execution; 2: automatic execution.
         :rtype: int
         """
         return self._TemplateMode
@@ -5845,7 +5845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplatePauseDuration(self):
-        """Automatic pause duration. Unit: minutes.
+        r"""Automatic pause duration. Unit: minutes.
         :rtype: int
         """
         return self._TemplatePauseDuration
@@ -5856,7 +5856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateOwnerUin(self):
-        """Main account that creates the experiment
+        r"""Main account that creates the experiment
         :rtype: str
         """
         return self._TemplateOwnerUin
@@ -5867,7 +5867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateRegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._TemplateRegionId
@@ -5878,7 +5878,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateGroups(self):
-        """Action group
+        r"""Action group
         :rtype: list of TemplateGroup
         """
         return self._TemplateGroups
@@ -5889,7 +5889,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateMonitors(self):
-        """Monitoring metrics
+        r"""Monitoring metrics
         :rtype: list of TemplateMonitor
         """
         return self._TemplateMonitors
@@ -5900,7 +5900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplatePolicy(self):
-        """Guardrail monitoring
+        r"""Guardrail monitoring
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cfg.v20210820.models.TemplatePolicy`
         """
@@ -5912,7 +5912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag list
+        r"""Tag list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagWithDescribe
         """
@@ -5924,7 +5924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateSource(self):
-        """Template library source. 0: self-built; 1: recommended by experts.
+        r"""Template library source. 0: self-built; 1: recommended by experts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5936,7 +5936,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApmServiceList(self):
-        """Application information on Application Performance Monitoring
+        r"""Application information on Application Performance Monitoring
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ApmServiceInfo
         """
@@ -5948,7 +5948,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmPolicy(self):
-        """Alarm metrics
+        r"""Alarm metrics
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -5960,7 +5960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyDealType(self):
-        """Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
+        r"""Guardrail processing method. 1: roll back sequentially; 2: pause experiment.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6024,7 +6024,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplateGroup(AbstractModel):
-    """Task group
+    r"""Task group
 
     """
 
@@ -6062,7 +6062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateGroupId(self):
-        """Template library action ID
+        r"""Template library action ID
         :rtype: int
         """
         return self._TemplateGroupId
@@ -6073,7 +6073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateGroupActions(self):
-        """List of actions in the template library action group
+        r"""List of actions in the template library action group
         :rtype: list of TemplateGroupAction
         """
         return self._TemplateGroupActions
@@ -6084,7 +6084,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Title(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._Title
@@ -6095,7 +6095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Group description
+        r"""Group description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6107,7 +6107,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Order(self):
-        """Group order
+        r"""Group order
         :rtype: int
         """
         return self._Order
@@ -6118,7 +6118,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
-        """Execution mode. 1: sequential execution; 2: execution by stage.
+        r"""Execution mode. 1: sequential execution; 2: execution by stage.
         :rtype: int
         """
         return self._Mode
@@ -6129,7 +6129,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeId(self):
-        """Object type ID
+        r"""Object type ID
         :rtype: int
         """
         return self._ObjectTypeId
@@ -6140,7 +6140,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Group creation time
+        r"""Group creation time
         :rtype: str
         """
         return self._CreateTime
@@ -6151,7 +6151,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Group update time
+        r"""Group update time
         :rtype: str
         """
         return self._UpdateTime
@@ -6187,7 +6187,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplateGroupAction(AbstractModel):
-    """Task group action
+    r"""Task group action
 
     """
 
@@ -6251,7 +6251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateGroupActionId(self):
-        """Template library group action ID
+        r"""Template library group action ID
         :rtype: int
         """
         return self._TemplateGroupActionId
@@ -6262,7 +6262,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionId(self):
-        """Action ID
+        r"""Action ID
         :rtype: int
         """
         return self._ActionId
@@ -6273,7 +6273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Order(self):
-        """Order of actions in the group
+        r"""Order of actions in the group
         :rtype: int
         """
         return self._Order
@@ -6284,7 +6284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GeneralConfiguration(self):
-        """General configurations of actions in the group
+        r"""General configurations of actions in the group
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6296,7 +6296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomConfiguration(self):
-        """Custom configurations of actions in the group
+        r"""Custom configurations of actions in the group
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6308,7 +6308,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Action group creation time
+        r"""Action group creation time
         :rtype: str
         """
         return self._CreateTime
@@ -6319,7 +6319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Action group update time
+        r"""Action group update time
         :rtype: str
         """
         return self._UpdateTime
@@ -6330,7 +6330,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTitle(self):
-        """Action name
+        r"""Action name
         :rtype: str
         """
         return self._ActionTitle
@@ -6341,7 +6341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RandomId(self):
-        """Random ID
+        r"""Random ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6353,7 +6353,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecoverId(self):
-        """Recovery action ID
+        r"""Recovery action ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6365,7 +6365,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecuteId(self):
-        """Executed action ID
+        r"""Executed action ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6377,7 +6377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionApiType(self):
-        """Called API type. 0: tat; 1: cloud API.
+        r"""Called API type. 0: tat; 1: cloud API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6389,7 +6389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionAttribute(self):
-        """1: fault; 2: recovery.
+        r"""1: fault; 2: recovery.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6401,7 +6401,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
-        """Action type: platform and custom
+        r"""Action type: platform and custom
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6413,7 +6413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionRisk(self):
-        """Action risk level. 1: low-risk; 2: medium-risk; 3: high-risk.
+        r"""Action risk level. 1: low-risk; 2: medium-risk; 3: high-risk.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6451,7 +6451,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplateListItem(AbstractModel):
-    """Template library list information
+    r"""Template library list information
 
     """
 
@@ -6490,7 +6490,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """Template library ID
+        r"""Template library ID
         :rtype: int
         """
         return self._TemplateId
@@ -6501,7 +6501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateTitle(self):
-        """Template library name
+        r"""Template library name
         :rtype: str
         """
         return self._TemplateTitle
@@ -6512,7 +6512,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateDescription(self):
-        """Template library description
+        r"""Template library description
         :rtype: str
         """
         return self._TemplateDescription
@@ -6523,7 +6523,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateTag(self):
-        """Template library tag
+        r"""Template library tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6535,7 +6535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateIsUsed(self):
-        """Template library status. 1: in use; 2: not in use.
+        r"""Template library status. 1: in use; 2: not in use.
         :rtype: int
         """
         return self._TemplateIsUsed
@@ -6546,7 +6546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateCreateTime(self):
-        """Template library creation time
+        r"""Template library creation time
         :rtype: str
         """
         return self._TemplateCreateTime
@@ -6557,7 +6557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateUpdateTime(self):
-        """Template library update time
+        r"""Template library update time
         :rtype: str
         """
         return self._TemplateUpdateTime
@@ -6568,7 +6568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateUsedNum(self):
-        """Number of tasks associated with the template library
+        r"""Number of tasks associated with the template library
         :rtype: int
         """
         return self._TemplateUsedNum
@@ -6579,7 +6579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateSource(self):
-        """Template library source. 0: self-built; 1: recommended by experts.
+        r"""Template library source. 0: self-built; 1: recommended by experts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6611,7 +6611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplateMonitor(AbstractModel):
-    """Monitoring metrics
+    r"""Monitoring metrics
 
     """
 
@@ -6638,7 +6638,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MonitorId(self):
-        """pk
+        r"""pk
         :rtype: int
         """
         return self._MonitorId
@@ -6649,7 +6649,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricId(self):
-        """Monitoring metric ID
+        r"""Monitoring metric ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6661,7 +6661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTypeId(self):
-        """Object type ID of the monitoring metric
+        r"""Object type ID of the monitoring metric
         :rtype: int
         """
         return self._ObjectTypeId
@@ -6672,7 +6672,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -6683,7 +6683,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricChineseName(self):
-        """Metric in Chinese
+        r"""Metric in Chinese
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6711,7 +6711,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplatePolicy(AbstractModel):
-    """Protection policy
+    r"""Protection policy
 
     """
 
@@ -6730,7 +6730,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyIdList(self):
-        """Protection policy ID list
+        r"""Protection policy ID list
         :rtype: list of str
         """
         return self._TemplatePolicyIdList
@@ -6741,7 +6741,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyRule(self):
-        """Policy rules
+        r"""Policy rules
         :rtype: str
         """
         return self._TemplatePolicyRule
@@ -6752,7 +6752,7 @@ class TemplatePolicy(AbstractModel):
 
     @property
     def TemplatePolicyDealType(self):
-        """Process method when the guardrail policy takes effect. 1: sequential execution, 2: pausing.
+        r"""Process method when the guardrail policy takes effect. 1: sequential execution, 2: pausing.
         :rtype: int
         """
         return self._TemplatePolicyDealType
@@ -6777,7 +6777,7 @@ class TemplatePolicy(AbstractModel):
 
 
 class TriggerPolicyRequest(AbstractModel):
-    """TriggerPolicy request structure.
+    r"""TriggerPolicy request structure.
 
     """
 
@@ -6799,7 +6799,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Chaos engineering experiment ID
+        r"""Chaos engineering experiment ID
         :rtype: int
         """
         return self._TaskId
@@ -6810,7 +6810,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -6821,7 +6821,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Triggering content
+        r"""Triggering content
         :rtype: str
         """
         return self._Content
@@ -6832,7 +6832,7 @@ class TriggerPolicyRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        """Triggering type. 0: trigger; 1: recovery.
+        r"""Triggering type. 0: trigger; 1: recovery.
         :rtype: int
         """
         return self._TriggerType
@@ -6858,7 +6858,7 @@ class TriggerPolicyRequest(AbstractModel):
 
 
 class TriggerPolicyResponse(AbstractModel):
-    """TriggerPolicy response structure.
+    r"""TriggerPolicy response structure.
 
     """
 
@@ -6877,7 +6877,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Experiment ID
+        r"""Experiment ID
         :rtype: int
         """
         return self._TaskId
@@ -6888,7 +6888,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def Success(self):
-        """Whether triggering is successful
+        r"""Whether triggering is successful
         :rtype: bool
         """
         return self._Success
@@ -6899,7 +6899,7 @@ class TriggerPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

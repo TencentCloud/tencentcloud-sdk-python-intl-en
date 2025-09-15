@@ -27,7 +27,7 @@ class CmqClient(AbstractClient):
 
 
     def DescribeQueueDetail(self, request):
-        """This API is used to enumerate queues.
+        r"""This API is used to enumerate queues.
 
         :param request: Request instance for DescribeQueueDetail.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeQueueDetailRequest`
@@ -50,7 +50,7 @@ class CmqClient(AbstractClient):
 
 
     def DescribeTopicDetail(self, request):
-        """This API is used to query topic details.
+        r"""This API is used to query topic details.
 
         :param request: Request instance for DescribeTopicDetail.
         :type request: :class:`tencentcloud.cmq.v20190304.models.DescribeTopicDetailRequest`

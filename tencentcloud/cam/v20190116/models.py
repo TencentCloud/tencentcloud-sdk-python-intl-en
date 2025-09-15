@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessKey(AbstractModel):
-    """Access key list
+    r"""Access key list
 
     """
 
@@ -38,7 +38,7 @@ class AccessKey(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """Access key ID
+        r"""Access key ID
         :rtype: str
         """
         return self._AccessKeyId
@@ -49,7 +49,7 @@ class AccessKey(AbstractModel):
 
     @property
     def Status(self):
-        """Key status. Valid values: Active (activated), Inactive (not activated)
+        r"""Key status. Valid values: Active (activated), Inactive (not activated)
         :rtype: str
         """
         return self._Status
@@ -60,7 +60,7 @@ class AccessKey(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -85,7 +85,7 @@ class AccessKey(AbstractModel):
 
 
 class AccessKeyDetail(AbstractModel):
-    """Access key
+    r"""Access key
 
     """
 
@@ -107,7 +107,7 @@ class AccessKeyDetail(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """Access key ID
+        r"""Access key ID
         :rtype: str
         """
         return self._AccessKeyId
@@ -118,7 +118,7 @@ class AccessKeyDetail(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        """Access key, which is visible only when it is created. Keep it properly.
+        r"""Access key, which is visible only when it is created. Keep it properly.
         :rtype: str
         """
         return self._SecretAccessKey
@@ -129,7 +129,7 @@ class AccessKeyDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Key status. Valid values: `Active` (activated), `Inactive` (not activated).
+        r"""Key status. Valid values: `Active` (activated), `Inactive` (not activated).
         :rtype: str
         """
         return self._Status
@@ -140,7 +140,7 @@ class AccessKeyDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -166,7 +166,7 @@ class AccessKeyDetail(AbstractModel):
 
 
 class AddUserRequest(AbstractModel):
-    """AddUser request structure.
+    r"""AddUser request structure.
 
     """
 
@@ -203,7 +203,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -214,7 +214,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Sub-user remarks
+        r"""Sub-user remarks
         :rtype: str
         """
         return self._Remark
@@ -225,7 +225,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def ConsoleLogin(self):
-        """Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
+        r"""Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
         :rtype: int
         """
         return self._ConsoleLogin
@@ -236,7 +236,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def UseApi(self):
-        """Whether or not to generate keys for sub-users. 0: No; 1: Yes.
+        r"""Whether or not to generate keys for sub-users. 0: No; 1: Yes.
         :rtype: int
         """
         return self._UseApi
@@ -247,7 +247,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
+        r"""Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
         :rtype: str
         """
         return self._Password
@@ -258,7 +258,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def NeedResetPassword(self):
-        """If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
+        r"""If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
         :rtype: int
         """
         return self._NeedResetPassword
@@ -269,7 +269,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def PhoneNum(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: str
         """
         return self._PhoneNum
@@ -280,7 +280,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def CountryCode(self):
-        """Country/Area Code
+        r"""Country/Area Code
         :rtype: str
         """
         return self._CountryCode
@@ -291,7 +291,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        """Email
+        r"""Email
         :rtype: str
         """
         return self._Email
@@ -322,7 +322,7 @@ class AddUserRequest(AbstractModel):
 
 
 class AddUserResponse(AbstractModel):
-    """AddUser response structure.
+    r"""AddUser response structure.
 
     """
 
@@ -353,7 +353,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Sub-user UIN
+        r"""Sub-user UIN
         :rtype: int
         """
         return self._Uin
@@ -364,7 +364,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -375,7 +375,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Password(self):
-        """If the combination of input parameters indicates that a random password should be generated, the generated password is returned
+        r"""If the combination of input parameters indicates that a random password should be generated, the generated password is returned
         :rtype: str
         """
         return self._Password
@@ -386,7 +386,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def SecretId(self):
-        """Sub-user's key ID
+        r"""Sub-user's key ID
         :rtype: str
         """
         return self._SecretId
@@ -397,7 +397,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Sub-user's secret key
+        r"""Sub-user's secret key
         :rtype: str
         """
         return self._SecretKey
@@ -408,7 +408,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -419,7 +419,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -440,7 +440,7 @@ class AddUserResponse(AbstractModel):
 
 
 class AddUserToGroupRequest(AbstractModel):
-    """AddUserToGroup request structure.
+    r"""AddUserToGroup request structure.
 
     """
 
@@ -453,7 +453,7 @@ class AddUserToGroupRequest(AbstractModel):
 
     @property
     def Info(self):
-        """The association between the user group ID and the sub-user UIN/UID.
+        r"""The association between the user group ID and the sub-user UIN/UID.
         :rtype: list of GroupIdOfUidInfo
         """
         return self._Info
@@ -481,7 +481,7 @@ class AddUserToGroupRequest(AbstractModel):
 
 
 class AddUserToGroupResponse(AbstractModel):
-    """AddUserToGroup response structure.
+    r"""AddUserToGroup response structure.
 
     """
 
@@ -494,7 +494,7 @@ class AddUserToGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -509,7 +509,7 @@ class AddUserToGroupResponse(AbstractModel):
 
 
 class AttachEntityOfPolicy(AbstractModel):
-    """The entity associated with the policy
+    r"""The entity associated with the policy
 
     """
 
@@ -537,7 +537,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Entity ID
+        r"""Entity ID
         :rtype: str
         """
         return self._Id
@@ -548,7 +548,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Entity Name
+        r"""Entity Name
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -560,7 +560,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Uin(self):
-        """Entity UIN
+        r"""Entity UIN
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -572,7 +572,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RelatedType(self):
-        """Type of entity association. 1: Associate by users; 2: Associate by User Groups
+        r"""Type of entity association. 1: Associate by users; 2: Associate by User Groups
         :rtype: int
         """
         return self._RelatedType
@@ -583,7 +583,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AttachmentTime(self):
-        """Policy association time
+        r"""Policy association time
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -611,7 +611,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class AttachGroupPolicyRequest(AbstractModel):
-    """AttachGroupPolicy request structure.
+    r"""AttachGroupPolicy request structure.
 
     """
 
@@ -627,7 +627,7 @@ class AttachGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -638,7 +638,7 @@ class AttachGroupPolicyRequest(AbstractModel):
 
     @property
     def AttachGroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._AttachGroupId
@@ -662,7 +662,7 @@ class AttachGroupPolicyRequest(AbstractModel):
 
 
 class AttachGroupPolicyResponse(AbstractModel):
-    """AttachGroupPolicy response structure.
+    r"""AttachGroupPolicy response structure.
 
     """
 
@@ -675,7 +675,7 @@ class AttachGroupPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -690,7 +690,7 @@ class AttachGroupPolicyResponse(AbstractModel):
 
 
 class AttachPolicyInfo(AbstractModel):
-    """Associated policy
+    r"""Associated policy
 
     """
 
@@ -740,7 +740,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -751,7 +751,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -763,7 +763,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AddTime(self):
-        """Time created
+        r"""Time created
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -775,7 +775,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CreateMode(self):
-        """How the policy was created: 1: Via console; 2: Via syntax
+        r"""How the policy was created: 1: Via console; 2: Via syntax
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -787,7 +787,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def PolicyType(self):
-        """Valid values: `user` and `QCS`
+        r"""Valid values: `user` and `QCS`
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -799,7 +799,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Remark(self):
-        """Policy remarks
+        r"""Policy remarks
         :rtype: str
         """
         return self._Remark
@@ -810,7 +810,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def OperateOwnerUin(self):
-        """Root account of the operator associating the policy
+        r"""Root account of the operator associating the policy
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -822,7 +822,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUin(self):
-        """The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID
+        r"""The ID of the account associating the policy. If `UinType` is 0, this indicates that this is a sub-account `UIN`. If `UinType` is 1, this indicates this is a role ID
         :rtype: str
         """
         return self._OperateUin
@@ -833,7 +833,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateUinType(self):
-        """If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID
+        r"""If `UinType` is 0, `OperateUin` indicates that this is a sub-account `UIN`. If `UinType` is 1, `OperateUin` indicates that this is a role ID
         :rtype: int
         """
         return self._OperateUinType
@@ -844,7 +844,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deactived(self):
-        """Queries if the policy has been deactivated
+        r"""Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -856,7 +856,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeactivedDetail(self):
-        """List of deprecated products
+        r"""List of deprecated products
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -890,7 +890,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AttachRolePolicyRequest(AbstractModel):
-    """AttachRolePolicy request structure.
+    r"""AttachRolePolicy request structure.
 
     """
 
@@ -912,7 +912,7 @@ class AttachRolePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        r"""Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :rtype: int
         """
         return self._PolicyId
@@ -923,7 +923,7 @@ class AttachRolePolicyRequest(AbstractModel):
 
     @property
     def AttachRoleId(self):
-        """Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        r"""Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :rtype: str
         """
         return self._AttachRoleId
@@ -934,7 +934,7 @@ class AttachRolePolicyRequest(AbstractModel):
 
     @property
     def AttachRoleName(self):
-        """Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        r"""Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
         :rtype: str
         """
         return self._AttachRoleName
@@ -945,7 +945,7 @@ class AttachRolePolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Policy name. Either `PolicyId` or `PolicyName` must be entered
+        r"""Policy name. Either `PolicyId` or `PolicyName` must be entered
         :rtype: str
         """
         return self._PolicyName
@@ -971,7 +971,7 @@ class AttachRolePolicyRequest(AbstractModel):
 
 
 class AttachRolePolicyResponse(AbstractModel):
-    """AttachRolePolicy response structure.
+    r"""AttachRolePolicy response structure.
 
     """
 
@@ -984,7 +984,7 @@ class AttachRolePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -999,7 +999,7 @@ class AttachRolePolicyResponse(AbstractModel):
 
 
 class AttachUserPolicyRequest(AbstractModel):
-    """AttachUserPolicy request structure.
+    r"""AttachUserPolicy request structure.
 
     """
 
@@ -1015,7 +1015,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -1026,7 +1026,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def AttachUin(self):
-        """Sub-account UIN
+        r"""Sub-account UIN
         :rtype: int
         """
         return self._AttachUin
@@ -1050,7 +1050,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
 
 class AttachUserPolicyResponse(AbstractModel):
-    """AttachUserPolicy response structure.
+    r"""AttachUserPolicy response structure.
 
     """
 
@@ -1063,7 +1063,7 @@ class AttachUserPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1078,7 +1078,7 @@ class AttachUserPolicyResponse(AbstractModel):
 
 
 class AttachedPolicyOfRole(AbstractModel):
-    """Policy associated with the role
+    r"""Policy associated with the role
 
     """
 
@@ -1116,7 +1116,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -1127,7 +1127,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
         :rtype: str
         """
         return self._PolicyName
@@ -1138,7 +1138,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
-        """Time of association
+        r"""Time of association
         :rtype: str
         """
         return self._AddTime
@@ -1149,7 +1149,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyType(self):
-        """Policy type. `User` indicates custom policy; `QCS` indicates preset policy
+        r"""Policy type. `User` indicates custom policy; `QCS` indicates preset policy
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -1161,7 +1161,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CreateMode(self):
-        """Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax
+        r"""Policy creation method. 1: indicates the policy was created based on product function or item permission; other values indicate the policy was created based on the policy syntax
         :rtype: int
         """
         return self._CreateMode
@@ -1172,7 +1172,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Deactived(self):
-        """Whether the product has been deprecated (0: no; 1: yes)
+        r"""Whether the product has been deprecated (0: no; 1: yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1184,7 +1184,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeactivedDetail(self):
-        """List of deprecated products
+        r"""List of deprecated products
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1196,7 +1196,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Policy description
+        r"""Policy description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1227,7 +1227,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AttachedUserPolicy(AbstractModel):
-    """Details of policies associated with the user
+    r"""Details of policies associated with the user
 
     """
 
@@ -1267,7 +1267,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyId(self):
-        """Policy ID.
+        r"""Policy ID.
         :rtype: str
         """
         return self._PolicyId
@@ -1278,7 +1278,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyName(self):
-        """Policy name.
+        r"""Policy name.
         :rtype: str
         """
         return self._PolicyName
@@ -1289,7 +1289,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
-        """Policy description.
+        r"""Policy description.
         :rtype: str
         """
         return self._Description
@@ -1300,7 +1300,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._AddTime
@@ -1311,7 +1311,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StrategyType(self):
-        """Policy type (`1`: custom policy; `2`: preset policy).
+        r"""Policy type (`1`: custom policy; `2`: preset policy).
         :rtype: str
         """
         return self._StrategyType
@@ -1322,7 +1322,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateMode(self):
-        """Creation mode (`1`: create by product feature or project permission; other values: create by policy syntax).
+        r"""Creation mode (`1`: create by product feature or project permission; other values: create by policy syntax).
         :rtype: str
         """
         return self._CreateMode
@@ -1333,7 +1333,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Groups(self):
-        """Information on policies inherited from the user group.
+        r"""Information on policies inherited from the user group.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of AttachedUserPolicyGroupInfo
         """
@@ -1345,7 +1345,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Deactived(self):
-        """Whether the product has been deprecated (`0`: no; `1`: yes).
+        r"""Whether the product has been deprecated (`0`: no; `1`: yes).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1357,7 +1357,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeactivedDetail(self):
-        """List of deprecated products.
+        r"""List of deprecated products.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1394,7 +1394,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AttachedUserPolicyGroupInfo(AbstractModel):
-    """Information on policies that are associated with the user and inherited from the user group
+    r"""Information on policies that are associated with the user and inherited from the user group
 
     """
 
@@ -1410,7 +1410,7 @@ class AttachedUserPolicyGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID.
+        r"""Group ID.
         :rtype: int
         """
         return self._GroupId
@@ -1421,7 +1421,7 @@ class AttachedUserPolicyGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name.
+        r"""Group name.
         :rtype: str
         """
         return self._GroupName
@@ -1445,7 +1445,7 @@ class AttachedUserPolicyGroupInfo(AbstractModel):
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):
-    """ConsumeCustomMFAToken request structure.
+    r"""ConsumeCustomMFAToken request structure.
 
     """
 
@@ -1458,7 +1458,7 @@ class ConsumeCustomMFATokenRequest(AbstractModel):
 
     @property
     def MFAToken(self):
-        """Custom multi-factor verification Token
+        r"""Custom multi-factor verification Token
         :rtype: str
         """
         return self._MFAToken
@@ -1481,7 +1481,7 @@ class ConsumeCustomMFATokenRequest(AbstractModel):
 
 
 class ConsumeCustomMFATokenResponse(AbstractModel):
-    """ConsumeCustomMFAToken response structure.
+    r"""ConsumeCustomMFAToken response structure.
 
     """
 
@@ -1494,7 +1494,7 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1509,7 +1509,7 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
 
 
 class CreateAccessKeyRequest(AbstractModel):
-    """CreateAccessKey request structure.
+    r"""CreateAccessKey request structure.
 
     """
 
@@ -1522,7 +1522,7 @@ class CreateAccessKeyRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """UIN of the specified user. If this parameter is left empty, the access key will be created for the current user by default.
+        r"""UIN of the specified user. If this parameter is left empty, the access key will be created for the current user by default.
         :rtype: int
         """
         return self._TargetUin
@@ -1545,7 +1545,7 @@ class CreateAccessKeyRequest(AbstractModel):
 
 
 class CreateAccessKeyResponse(AbstractModel):
-    """CreateAccessKey response structure.
+    r"""CreateAccessKey response structure.
 
     """
 
@@ -1562,7 +1562,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessKey(self):
-        """Access key
+        r"""Access key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cam.v20190116.models.AccessKeyDetail`
         """
@@ -1574,7 +1574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1592,7 +1592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateGroupRequest(AbstractModel):
-    """CreateGroup request structure.
+    r"""CreateGroup request structure.
 
     """
 
@@ -1608,7 +1608,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """User Group name
+        r"""User Group name
         :rtype: str
         """
         return self._GroupName
@@ -1619,7 +1619,7 @@ class CreateGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """User Group description
+        r"""User Group description
         :rtype: str
         """
         return self._Remark
@@ -1643,7 +1643,7 @@ class CreateGroupRequest(AbstractModel):
 
 
 class CreateGroupResponse(AbstractModel):
-    """CreateGroup response structure.
+    r"""CreateGroup response structure.
 
     """
 
@@ -1659,7 +1659,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -1670,7 +1670,7 @@ class CreateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1686,7 +1686,7 @@ class CreateGroupResponse(AbstractModel):
 
 
 class CreateOIDCConfigRequest(AbstractModel):
-    """CreateOIDCConfig request structure.
+    r"""CreateOIDCConfig request structure.
 
     """
 
@@ -1711,7 +1711,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """IdP URL.
+        r"""IdP URL.
         :rtype: str
         """
         return self._IdentityUrl
@@ -1722,7 +1722,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """Public key for signature, which must be Base64-encoded.
+        r"""Public key for signature, which must be Base64-encoded.
         :rtype: str
         """
         return self._IdentityKey
@@ -1733,7 +1733,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """Client ID.
+        r"""Client ID.
         :rtype: list of str
         """
         return self._ClientId
@@ -1744,7 +1744,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -1755,7 +1755,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -1782,7 +1782,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
 
 class CreateOIDCConfigResponse(AbstractModel):
-    """CreateOIDCConfig response structure.
+    r"""CreateOIDCConfig response structure.
 
     """
 
@@ -1795,7 +1795,7 @@ class CreateOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1810,7 +1810,7 @@ class CreateOIDCConfigResponse(AbstractModel):
 
 
 class CreatePolicyRequest(AbstractModel):
-    """CreatePolicy request structure.
+    r"""CreatePolicy request structure.
 
     """
 
@@ -1829,7 +1829,7 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
         :rtype: str
         """
         return self._PolicyName
@@ -1840,7 +1840,7 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API
+        r"""Policy document, such as `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the resources that the role is authorized to access. For more information on this parameter, please see the `RoleInfo` output parameter of the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1) API
         :rtype: str
         """
         return self._PolicyDocument
@@ -1851,7 +1851,7 @@ class CreatePolicyRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Policy description
+        r"""Policy description
         :rtype: str
         """
         return self._Description
@@ -1876,7 +1876,7 @@ class CreatePolicyRequest(AbstractModel):
 
 
 class CreatePolicyResponse(AbstractModel):
-    """CreatePolicy response structure.
+    r"""CreatePolicy response structure.
 
     """
 
@@ -1892,7 +1892,7 @@ class CreatePolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """ID of newly added policy
+        r"""ID of newly added policy
         :rtype: int
         """
         return self._PolicyId
@@ -1903,7 +1903,7 @@ class CreatePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1919,7 +1919,7 @@ class CreatePolicyResponse(AbstractModel):
 
 
 class CreatePolicyVersionRequest(AbstractModel):
-    """CreatePolicyVersion request structure.
+    r"""CreatePolicyVersion request structure.
 
     """
 
@@ -1938,7 +1938,7 @@ class CreatePolicyVersionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -1949,7 +1949,7 @@ class CreatePolicyVersionRequest(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """The policy document to use as the content for the new version
+        r"""The policy document to use as the content for the new version
         :rtype: str
         """
         return self._PolicyDocument
@@ -1960,7 +1960,7 @@ class CreatePolicyVersionRequest(AbstractModel):
 
     @property
     def SetAsDefault(self):
-        """Specifies whether to set this version as the default version
+        r"""Specifies whether to set this version as the default version
         :rtype: bool
         """
         return self._SetAsDefault
@@ -1985,7 +1985,7 @@ class CreatePolicyVersionRequest(AbstractModel):
 
 
 class CreatePolicyVersionResponse(AbstractModel):
-    """CreatePolicyVersion response structure.
+    r"""CreatePolicyVersion response structure.
 
     """
 
@@ -2002,7 +2002,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionId(self):
-        """Policy version ID
+        r"""Policy version ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2014,7 +2014,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2030,7 +2030,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateRoleRequest(AbstractModel):
-    """CreateRole request structure.
+    r"""CreateRole request structure.
 
     """
 
@@ -2058,7 +2058,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name
+        r"""Role name
         :rtype: str
         """
         return self._RoleName
@@ -2069,7 +2069,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """Policy document
+        r"""Policy document
         :rtype: str
         """
         return self._PolicyDocument
@@ -2080,7 +2080,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Role description
+        r"""Role description
         :rtype: str
         """
         return self._Description
@@ -2091,7 +2091,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def ConsoleLogin(self):
-        """Whether login is allowed. 1: yes, 0: no
+        r"""Whether login is allowed. 1: yes, 0: no
         :rtype: int
         """
         return self._ConsoleLogin
@@ -2102,7 +2102,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def SessionDuration(self):
-        """The maximum validity period of the temporary key for creating a role (range: 0-43200)
+        r"""The maximum validity period of the temporary key for creating a role (range: 0-43200)
         :rtype: int
         """
         return self._SessionDuration
@@ -2113,7 +2113,7 @@ class CreateRoleRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags bound to the role.
+        r"""Tags bound to the role.
         :rtype: list of RoleTags
         """
         return self._Tags
@@ -2146,7 +2146,7 @@ class CreateRoleRequest(AbstractModel):
 
 
 class CreateRoleResponse(AbstractModel):
-    """CreateRole response structure.
+    r"""CreateRole response structure.
 
     """
 
@@ -2163,7 +2163,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RoleId(self):
-        """Role ID
+        r"""Role ID
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -2175,7 +2175,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2191,7 +2191,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class CreateSAMLProviderRequest(AbstractModel):
-    """CreateSAMLProvider request structure.
+    r"""CreateSAMLProvider request structure.
 
     """
 
@@ -2210,7 +2210,7 @@ class CreateSAMLProviderRequest(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -2221,7 +2221,7 @@ class CreateSAMLProviderRequest(AbstractModel):
 
     @property
     def Description(self):
-        """SAML identity provider description
+        r"""SAML identity provider description
         :rtype: str
         """
         return self._Description
@@ -2232,7 +2232,7 @@ class CreateSAMLProviderRequest(AbstractModel):
 
     @property
     def SAMLMetadataDocument(self):
-        """SAML identity provider metadata document (Base64)
+        r"""SAML identity provider metadata document (Base64)
         :rtype: str
         """
         return self._SAMLMetadataDocument
@@ -2257,7 +2257,7 @@ class CreateSAMLProviderRequest(AbstractModel):
 
 
 class CreateSAMLProviderResponse(AbstractModel):
-    """CreateSAMLProvider response structure.
+    r"""CreateSAMLProvider response structure.
 
     """
 
@@ -2273,7 +2273,7 @@ class CreateSAMLProviderResponse(AbstractModel):
 
     @property
     def ProviderArn(self):
-        """SAML identity provider resource descriptor
+        r"""SAML identity provider resource descriptor
         :rtype: str
         """
         return self._ProviderArn
@@ -2284,7 +2284,7 @@ class CreateSAMLProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2300,7 +2300,7 @@ class CreateSAMLProviderResponse(AbstractModel):
 
 
 class CreateServiceLinkedRoleRequest(AbstractModel):
-    """CreateServiceLinkedRole request structure.
+    r"""CreateServiceLinkedRole request structure.
 
     """
 
@@ -2322,7 +2322,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
     @property
     def QCSServiceName(self):
-        """Authorized service, i.e., Tencent Cloud service entity with this role attached.
+        r"""Authorized service, i.e., Tencent Cloud service entity with this role attached.
         :rtype: list of str
         """
         return self._QCSServiceName
@@ -2333,7 +2333,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
     @property
     def CustomSuffix(self):
-        """Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.
+        r"""Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.
         :rtype: str
         """
         return self._CustomSuffix
@@ -2344,7 +2344,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Role description.
+        r"""Role description.
         :rtype: str
         """
         return self._Description
@@ -2355,7 +2355,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags bound to the role.
+        r"""Tags bound to the role.
         :rtype: list of RoleTags
         """
         return self._Tags
@@ -2386,7 +2386,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
 
 
 class CreateServiceLinkedRoleResponse(AbstractModel):
-    """CreateServiceLinkedRole response structure.
+    r"""CreateServiceLinkedRole response structure.
 
     """
 
@@ -2402,7 +2402,7 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID
+        r"""Role ID
         :rtype: str
         """
         return self._RoleId
@@ -2413,7 +2413,7 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2429,7 +2429,7 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
 
 
 class CreateUserOIDCConfigRequest(AbstractModel):
-    """CreateUserOIDCConfig request structure.
+    r"""CreateUserOIDCConfig request structure.
 
     """
 
@@ -2467,7 +2467,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def IdentityUrl(self):
-        """OpenID Connect IdP URL.
+        r"""OpenID Connect IdP URL.
 It corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.
         :rtype: str
         """
@@ -2479,7 +2479,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def IdentityKey(self):
-        """Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
+        r"""Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
         :rtype: str
         """
         return self._IdentityKey
@@ -2490,7 +2490,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ClientId(self):
-        """Client ID registered with the OpenID Connect IdP.
+        r"""Client ID registered with the OpenID Connect IdP.
         :rtype: str
         """
         return self._ClientId
@@ -2501,7 +2501,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def AuthorizationEndpoint(self):
-        """OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
+        r"""OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -2512,7 +2512,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ResponseType(self):
-        """Authorization response type, which is always `id_token`.
+        r"""Authorization response type, which is always `id_token`.
         :rtype: str
         """
         return self._ResponseType
@@ -2523,7 +2523,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ResponseMode(self):
-        """Authorization response mode. Valid values: form_post (recommended); fragment.
+        r"""Authorization response mode. Valid values: form_post (recommended); fragment.
         :rtype: str
         """
         return self._ResponseMode
@@ -2534,7 +2534,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def MappingFiled(self):
-        """Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
+        r"""Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
         :rtype: str
         """
         return self._MappingFiled
@@ -2545,7 +2545,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def Scope(self):
-        """Authorization information scope. Valid values: openid (default); email; profile.
+        r"""Authorization information scope. Valid values: openid (default); email; profile.
         :rtype: list of str
         """
         return self._Scope
@@ -2556,7 +2556,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -2587,7 +2587,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
 
 class CreateUserOIDCConfigResponse(AbstractModel):
-    """CreateUserOIDCConfig response structure.
+    r"""CreateUserOIDCConfig response structure.
 
     """
 
@@ -2600,7 +2600,7 @@ class CreateUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2615,7 +2615,7 @@ class CreateUserOIDCConfigResponse(AbstractModel):
 
 
 class CreateUserSAMLConfigRequest(AbstractModel):
-    """CreateUserSAMLConfig request structure.
+    r"""CreateUserSAMLConfig request structure.
 
     """
 
@@ -2628,7 +2628,7 @@ class CreateUserSAMLConfigRequest(AbstractModel):
 
     @property
     def SAMLMetadataDocument(self):
-        """SAML metadata document, which must be Base64 encoded.
+        r"""SAML metadata document, which must be Base64 encoded.
         :rtype: str
         """
         return self._SAMLMetadataDocument
@@ -2651,7 +2651,7 @@ class CreateUserSAMLConfigRequest(AbstractModel):
 
 
 class CreateUserSAMLConfigResponse(AbstractModel):
-    """CreateUserSAMLConfig response structure.
+    r"""CreateUserSAMLConfig response structure.
 
     """
 
@@ -2664,7 +2664,7 @@ class CreateUserSAMLConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2679,7 +2679,7 @@ class CreateUserSAMLConfigResponse(AbstractModel):
 
 
 class DeleteAccessKeyRequest(AbstractModel):
-    """DeleteAccessKey request structure.
+    r"""DeleteAccessKey request structure.
 
     """
 
@@ -2695,7 +2695,7 @@ class DeleteAccessKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the specified access key that needs to be deleted
+        r"""ID of the specified access key that needs to be deleted
         :rtype: str
         """
         return self._AccessKeyId
@@ -2706,7 +2706,7 @@ class DeleteAccessKeyRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """UIN of the specified user. If this parameter is left empty, the access key will be deleted for the current user by default.
+        r"""UIN of the specified user. If this parameter is left empty, the access key will be deleted for the current user by default.
         :rtype: int
         """
         return self._TargetUin
@@ -2730,7 +2730,7 @@ class DeleteAccessKeyRequest(AbstractModel):
 
 
 class DeleteAccessKeyResponse(AbstractModel):
-    """DeleteAccessKey response structure.
+    r"""DeleteAccessKey response structure.
 
     """
 
@@ -2743,7 +2743,7 @@ class DeleteAccessKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2758,7 +2758,7 @@ class DeleteAccessKeyResponse(AbstractModel):
 
 
 class DeleteGroupRequest(AbstractModel):
-    """DeleteGroup request structure.
+    r"""DeleteGroup request structure.
 
     """
 
@@ -2771,7 +2771,7 @@ class DeleteGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -2794,7 +2794,7 @@ class DeleteGroupRequest(AbstractModel):
 
 
 class DeleteGroupResponse(AbstractModel):
-    """DeleteGroup response structure.
+    r"""DeleteGroup response structure.
 
     """
 
@@ -2807,7 +2807,7 @@ class DeleteGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2822,7 +2822,7 @@ class DeleteGroupResponse(AbstractModel):
 
 
 class DeleteOIDCConfigRequest(AbstractModel):
-    """DeleteOIDCConfig request structure.
+    r"""DeleteOIDCConfig request structure.
 
     """
 
@@ -2835,7 +2835,7 @@ class DeleteOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        """OIDC IdP name.
+        r"""OIDC IdP name.
         :rtype: str
         """
         return self._Name
@@ -2858,7 +2858,7 @@ class DeleteOIDCConfigRequest(AbstractModel):
 
 
 class DeleteOIDCConfigResponse(AbstractModel):
-    """DeleteOIDCConfig response structure.
+    r"""DeleteOIDCConfig response structure.
 
     """
 
@@ -2871,7 +2871,7 @@ class DeleteOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2886,7 +2886,7 @@ class DeleteOIDCConfigResponse(AbstractModel):
 
 
 class DeletePolicyRequest(AbstractModel):
-    """DeletePolicy request structure.
+    r"""DeletePolicy request structure.
 
     """
 
@@ -2899,7 +2899,7 @@ class DeletePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Array. Array elements are policy IDs. Policies can be deleted in a batch
+        r"""Array. Array elements are policy IDs. Policies can be deleted in a batch
         :rtype: list of int non-negative
         """
         return self._PolicyId
@@ -2922,7 +2922,7 @@ class DeletePolicyRequest(AbstractModel):
 
 
 class DeletePolicyResponse(AbstractModel):
-    """DeletePolicy response structure.
+    r"""DeletePolicy response structure.
 
     """
 
@@ -2935,7 +2935,7 @@ class DeletePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2950,7 +2950,7 @@ class DeletePolicyResponse(AbstractModel):
 
 
 class DeletePolicyVersionRequest(AbstractModel):
-    """DeletePolicyVersion request structure.
+    r"""DeletePolicyVersion request structure.
 
     """
 
@@ -2966,7 +2966,7 @@ class DeletePolicyVersionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -2977,7 +2977,7 @@ class DeletePolicyVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        """Policy version ID
+        r"""Policy version ID
         :rtype: list of int non-negative
         """
         return self._VersionId
@@ -3001,7 +3001,7 @@ class DeletePolicyVersionRequest(AbstractModel):
 
 
 class DeletePolicyVersionResponse(AbstractModel):
-    """DeletePolicyVersion response structure.
+    r"""DeletePolicyVersion response structure.
 
     """
 
@@ -3014,7 +3014,7 @@ class DeletePolicyVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3029,7 +3029,7 @@ class DeletePolicyVersionResponse(AbstractModel):
 
 
 class DeleteRolePermissionsBoundaryRequest(AbstractModel):
-    """DeleteRolePermissionsBoundary request structure.
+    r"""DeleteRolePermissionsBoundary request structure.
 
     """
 
@@ -3045,7 +3045,7 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID (either it or the role name must be entered)
+        r"""Role ID (either it or the role name must be entered)
         :rtype: str
         """
         return self._RoleId
@@ -3056,7 +3056,7 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name (either it or the role ID must be entered)
+        r"""Role name (either it or the role ID must be entered)
         :rtype: str
         """
         return self._RoleName
@@ -3080,7 +3080,7 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
 
 
 class DeleteRolePermissionsBoundaryResponse(AbstractModel):
-    """DeleteRolePermissionsBoundary response structure.
+    r"""DeleteRolePermissionsBoundary response structure.
 
     """
 
@@ -3093,7 +3093,7 @@ class DeleteRolePermissionsBoundaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3108,7 +3108,7 @@ class DeleteRolePermissionsBoundaryResponse(AbstractModel):
 
 
 class DeleteRoleRequest(AbstractModel):
-    """DeleteRole request structure.
+    r"""DeleteRole request structure.
 
     """
 
@@ -3124,7 +3124,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role ID, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleId
@@ -3135,7 +3135,7 @@ class DeleteRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role name, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleName
@@ -3159,7 +3159,7 @@ class DeleteRoleRequest(AbstractModel):
 
 
 class DeleteRoleResponse(AbstractModel):
-    """DeleteRole response structure.
+    r"""DeleteRole response structure.
 
     """
 
@@ -3172,7 +3172,7 @@ class DeleteRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3187,7 +3187,7 @@ class DeleteRoleResponse(AbstractModel):
 
 
 class DeleteSAMLProviderRequest(AbstractModel):
-    """DeleteSAMLProvider request structure.
+    r"""DeleteSAMLProvider request structure.
 
     """
 
@@ -3200,7 +3200,7 @@ class DeleteSAMLProviderRequest(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -3223,7 +3223,7 @@ class DeleteSAMLProviderRequest(AbstractModel):
 
 
 class DeleteSAMLProviderResponse(AbstractModel):
-    """DeleteSAMLProvider response structure.
+    r"""DeleteSAMLProvider response structure.
 
     """
 
@@ -3236,7 +3236,7 @@ class DeleteSAMLProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3251,7 +3251,7 @@ class DeleteSAMLProviderResponse(AbstractModel):
 
 
 class DeleteServiceLinkedRoleRequest(AbstractModel):
-    """DeleteServiceLinkedRole request structure.
+    r"""DeleteServiceLinkedRole request structure.
 
     """
 
@@ -3264,7 +3264,7 @@ class DeleteServiceLinkedRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Name of the service-linked role to be deleted.
+        r"""Name of the service-linked role to be deleted.
         :rtype: str
         """
         return self._RoleName
@@ -3287,7 +3287,7 @@ class DeleteServiceLinkedRoleRequest(AbstractModel):
 
 
 class DeleteServiceLinkedRoleResponse(AbstractModel):
-    """DeleteServiceLinkedRole response structure.
+    r"""DeleteServiceLinkedRole response structure.
 
     """
 
@@ -3303,7 +3303,7 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
     @property
     def DeletionTaskId(self):
-        """Deletion task identifier, which can be used to check the status of a service-linked role deletion.
+        r"""Deletion task identifier, which can be used to check the status of a service-linked role deletion.
         :rtype: str
         """
         return self._DeletionTaskId
@@ -3314,7 +3314,7 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3330,7 +3330,7 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
 
 class DeleteUserPermissionsBoundaryRequest(AbstractModel):
-    """DeleteUserPermissionsBoundary request structure.
+    r"""DeleteUserPermissionsBoundary request structure.
 
     """
 
@@ -3343,7 +3343,7 @@ class DeleteUserPermissionsBoundaryRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """Sub-account `Uin`
+        r"""Sub-account `Uin`
         :rtype: int
         """
         return self._TargetUin
@@ -3366,7 +3366,7 @@ class DeleteUserPermissionsBoundaryRequest(AbstractModel):
 
 
 class DeleteUserPermissionsBoundaryResponse(AbstractModel):
-    """DeleteUserPermissionsBoundary response structure.
+    r"""DeleteUserPermissionsBoundary response structure.
 
     """
 
@@ -3379,7 +3379,7 @@ class DeleteUserPermissionsBoundaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3394,7 +3394,7 @@ class DeleteUserPermissionsBoundaryResponse(AbstractModel):
 
 
 class DeleteUserRequest(AbstractModel):
-    """DeleteUser request structure.
+    r"""DeleteUser request structure.
 
     """
 
@@ -3410,7 +3410,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -3421,7 +3421,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Force(self):
-        """Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.
+        r"""Whether to forcibly delete the sub-user. The default input parameter is `0`. `0`: do not delete the user if the user has undeleted API keys; `1`: first delete the API keys then delete the user if the user has undeleted API keys. To delete API keys, you need to have cam:DeleteApiKey permission, which enables you to delete both enabled and disabled API keys. If you do not have this permission, you will not be able to delete API keys and the user.
         :rtype: int
         """
         return self._Force
@@ -3445,7 +3445,7 @@ class DeleteUserRequest(AbstractModel):
 
 
 class DeleteUserResponse(AbstractModel):
-    """DeleteUser response structure.
+    r"""DeleteUser response structure.
 
     """
 
@@ -3458,7 +3458,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3473,7 +3473,7 @@ class DeleteUserResponse(AbstractModel):
 
 
 class DescribeOIDCConfigRequest(AbstractModel):
-    """DescribeOIDCConfig request structure.
+    r"""DescribeOIDCConfig request structure.
 
     """
 
@@ -3486,7 +3486,7 @@ class DescribeOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -3509,7 +3509,7 @@ class DescribeOIDCConfigRequest(AbstractModel):
 
 
 class DescribeOIDCConfigResponse(AbstractModel):
-    """DescribeOIDCConfig response structure.
+    r"""DescribeOIDCConfig response structure.
 
     """
 
@@ -3543,7 +3543,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def ProviderType(self):
-        """IdP type. 11: Role IdP.
+        r"""IdP type. 11: Role IdP.
         :rtype: int
         """
         return self._ProviderType
@@ -3554,7 +3554,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """IdP URL.
+        r"""IdP URL.
         :rtype: str
         """
         return self._IdentityUrl
@@ -3565,7 +3565,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """Public key for signature.
+        r"""Public key for signature.
         :rtype: str
         """
         return self._IdentityKey
@@ -3576,7 +3576,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """Client ID.
+        r"""Client ID.
         :rtype: list of str
         """
         return self._ClientId
@@ -3587,7 +3587,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 0: Not set; 2: Disabled; 11: Enabled.
+        r"""Status. 0: Not set; 2: Disabled; 11: Enabled.
         :rtype: int
         """
         return self._Status
@@ -3598,7 +3598,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -3609,7 +3609,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -3620,7 +3620,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3642,7 +3642,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
 
 class DescribeRoleListRequest(AbstractModel):
-    """DescribeRoleList request structure.
+    r"""DescribeRoleList request structure.
 
     """
 
@@ -3661,7 +3661,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number, beginning from 1
+        r"""Page number, beginning from 1
         :rtype: int
         """
         return self._Page
@@ -3672,7 +3672,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of lines per page, no greater than 200
+        r"""Number of lines per page, no greater than 200
         :rtype: int
         """
         return self._Rp
@@ -3683,7 +3683,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """A parameter used to filter the list of roles under a tag.
+        r"""A parameter used to filter the list of roles under a tag.
         :rtype: list of RoleTags
         """
         return self._Tags
@@ -3713,7 +3713,7 @@ class DescribeRoleListRequest(AbstractModel):
 
 
 class DescribeRoleListResponse(AbstractModel):
-    """DescribeRoleList response structure.
+    r"""DescribeRoleList response structure.
 
     """
 
@@ -3733,7 +3733,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def List(self):
-        """Role details list
+        r"""Role details list
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of RoleInfo
         """
@@ -3745,7 +3745,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalNum(self):
-        """Total number of roles
+        r"""Total number of roles
         :rtype: int
         """
         return self._TotalNum
@@ -3756,7 +3756,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3778,7 +3778,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeSafeAuthFlagCollRequest(AbstractModel):
-    """DescribeSafeAuthFlagColl request structure.
+    r"""DescribeSafeAuthFlagColl request structure.
 
     """
 
@@ -3791,7 +3791,7 @@ class DescribeSafeAuthFlagCollRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """Sub-account
+        r"""Sub-account
         :rtype: int
         """
         return self._SubUin
@@ -3814,7 +3814,7 @@ class DescribeSafeAuthFlagCollRequest(AbstractModel):
 
 
 class DescribeSafeAuthFlagCollResponse(AbstractModel):
-    """DescribeSafeAuthFlagColl response structure.
+    r"""DescribeSafeAuthFlagColl response structure.
 
     """
 
@@ -3836,7 +3836,7 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
     @property
     def LoginFlag(self):
-        """Login protection settings
+        r"""Login protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         """
         return self._LoginFlag
@@ -3847,7 +3847,7 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
     @property
     def ActionFlag(self):
-        """Sensitive operation protection settings
+        r"""Sensitive operation protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         """
         return self._ActionFlag
@@ -3858,7 +3858,7 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
     @property
     def OffsiteFlag(self):
-        """Suspicious login location protection settings
+        r"""Suspicious login location protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
         """
         return self._OffsiteFlag
@@ -3869,7 +3869,7 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3893,13 +3893,13 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
 
 
 class DescribeSafeAuthFlagIntlRequest(AbstractModel):
-    """DescribeSafeAuthFlagIntl request structure.
+    r"""DescribeSafeAuthFlagIntl request structure.
 
     """
 
 
 class DescribeSafeAuthFlagIntlResponse(AbstractModel):
-    """DescribeSafeAuthFlagIntl response structure.
+    r"""DescribeSafeAuthFlagIntl response structure.
 
     """
 
@@ -3921,7 +3921,7 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
     @property
     def LoginFlag(self):
-        """Login protection settings
+        r"""Login protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
         """
         return self._LoginFlag
@@ -3932,7 +3932,7 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
     @property
     def ActionFlag(self):
-        """Sensitive operation protection settings
+        r"""Sensitive operation protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
         """
         return self._ActionFlag
@@ -3943,7 +3943,7 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
     @property
     def OffsiteFlag(self):
-        """Suspicious login location protection settings
+        r"""Suspicious login location protection settings
         :rtype: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
         """
         return self._OffsiteFlag
@@ -3954,7 +3954,7 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3978,7 +3978,7 @@ class DescribeSafeAuthFlagIntlResponse(AbstractModel):
 
 
 class DescribeSubAccountsRequest(AbstractModel):
-    """DescribeSubAccounts request structure.
+    r"""DescribeSubAccounts request structure.
 
     """
 
@@ -3991,7 +3991,7 @@ class DescribeSubAccountsRequest(AbstractModel):
 
     @property
     def FilterSubAccountUin(self):
-        """List of sub-user UINs. Up to 50 UINs are supported.
+        r"""List of sub-user UINs. Up to 50 UINs are supported.
         :rtype: list of int non-negative
         """
         return self._FilterSubAccountUin
@@ -4014,7 +4014,7 @@ class DescribeSubAccountsRequest(AbstractModel):
 
 
 class DescribeSubAccountsResponse(AbstractModel):
-    """DescribeSubAccounts response structure.
+    r"""DescribeSubAccounts response structure.
 
     """
 
@@ -4030,7 +4030,7 @@ class DescribeSubAccountsResponse(AbstractModel):
 
     @property
     def SubAccounts(self):
-        """Sub-user list
+        r"""Sub-user list
         :rtype: list of SubAccountUser
         """
         return self._SubAccounts
@@ -4041,7 +4041,7 @@ class DescribeSubAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4062,13 +4062,13 @@ class DescribeSubAccountsResponse(AbstractModel):
 
 
 class DescribeUserOIDCConfigRequest(AbstractModel):
-    """DescribeUserOIDCConfig request structure.
+    r"""DescribeUserOIDCConfig request structure.
 
     """
 
 
 class DescribeUserOIDCConfigResponse(AbstractModel):
-    """DescribeUserOIDCConfig response structure.
+    r"""DescribeUserOIDCConfig response structure.
 
     """
 
@@ -4114,7 +4114,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ProviderType(self):
-        """IdP type. 12: user OIDC IdP
+        r"""IdP type. 12: user OIDC IdP
         :rtype: int
         """
         return self._ProviderType
@@ -4125,7 +4125,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """IdP URL
+        r"""IdP URL
         :rtype: str
         """
         return self._IdentityUrl
@@ -4136,7 +4136,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """Signature public key
+        r"""Signature public key
         :rtype: str
         """
         return self._IdentityKey
@@ -4147,7 +4147,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        """Client ID
+        r"""Client ID
         :rtype: str
         """
         return self._ClientId
@@ -4158,7 +4158,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 0: not set; 2: disabled; 11: enabled.
+        r"""Status. 0: not set; 2: disabled; 11: enabled.
         :rtype: int
         """
         return self._Status
@@ -4169,7 +4169,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def AuthorizationEndpoint(self):
-        """Authorization endpoint
+        r"""Authorization endpoint
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -4180,7 +4180,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Scope(self):
-        """Authorization scope
+        r"""Authorization scope
         :rtype: list of str
         """
         return self._Scope
@@ -4191,7 +4191,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ResponseType(self):
-        """Authorization response type
+        r"""Authorization response type
         :rtype: str
         """
         return self._ResponseType
@@ -4202,7 +4202,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def ResponseMode(self):
-        """Authorization response mode
+        r"""Authorization response mode
         :rtype: str
         """
         return self._ResponseMode
@@ -4213,7 +4213,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def MappingFiled(self):
-        """Mapping field name
+        r"""Mapping field name
         :rtype: str
         """
         return self._MappingFiled
@@ -4224,7 +4224,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -4235,7 +4235,7 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4261,13 +4261,13 @@ class DescribeUserOIDCConfigResponse(AbstractModel):
 
 
 class DescribeUserSAMLConfigRequest(AbstractModel):
-    """DescribeUserSAMLConfig request structure.
+    r"""DescribeUserSAMLConfig request structure.
 
     """
 
 
 class DescribeUserSAMLConfigResponse(AbstractModel):
-    """DescribeUserSAMLConfig response structure.
+    r"""DescribeUserSAMLConfig response structure.
 
     """
 
@@ -4286,7 +4286,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
     @property
     def SAMLMetadata(self):
-        """SAML metadata document.
+        r"""SAML metadata document.
         :rtype: str
         """
         return self._SAMLMetadata
@@ -4297,7 +4297,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status. `0`: not set, `1`: enabled, `2`: disabled.
+        r"""Status. `0`: not set, `1`: enabled, `2`: disabled.
         :rtype: int
         """
         return self._Status
@@ -4308,7 +4308,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4325,7 +4325,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
 
 
 class DetachGroupPolicyRequest(AbstractModel):
-    """DetachGroupPolicy request structure.
+    r"""DetachGroupPolicy request structure.
 
     """
 
@@ -4341,7 +4341,7 @@ class DetachGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -4352,7 +4352,7 @@ class DetachGroupPolicyRequest(AbstractModel):
 
     @property
     def DetachGroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._DetachGroupId
@@ -4376,7 +4376,7 @@ class DetachGroupPolicyRequest(AbstractModel):
 
 
 class DetachGroupPolicyResponse(AbstractModel):
-    """DetachGroupPolicy response structure.
+    r"""DetachGroupPolicy response structure.
 
     """
 
@@ -4389,7 +4389,7 @@ class DetachGroupPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4404,7 +4404,7 @@ class DetachGroupPolicyResponse(AbstractModel):
 
 
 class DetachRolePolicyRequest(AbstractModel):
-    """DetachRolePolicy request structure.
+    r"""DetachRolePolicy request structure.
 
     """
 
@@ -4426,7 +4426,7 @@ class DetachRolePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        r"""Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :rtype: int
         """
         return self._PolicyId
@@ -4437,7 +4437,7 @@ class DetachRolePolicyRequest(AbstractModel):
 
     @property
     def DetachRoleId(self):
-        """Role ID, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
+        r"""Role ID, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
         :rtype: str
         """
         return self._DetachRoleId
@@ -4448,7 +4448,7 @@ class DetachRolePolicyRequest(AbstractModel):
 
     @property
     def DetachRoleName(self):
-        """Role name, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
+        r"""Role name, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
         :rtype: str
         """
         return self._DetachRoleName
@@ -4459,7 +4459,7 @@ class DetachRolePolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Policy name. Either `PolicyId` or `PolicyName` must be entered
+        r"""Policy name. Either `PolicyId` or `PolicyName` must be entered
         :rtype: str
         """
         return self._PolicyName
@@ -4485,7 +4485,7 @@ class DetachRolePolicyRequest(AbstractModel):
 
 
 class DetachRolePolicyResponse(AbstractModel):
-    """DetachRolePolicy response structure.
+    r"""DetachRolePolicy response structure.
 
     """
 
@@ -4498,7 +4498,7 @@ class DetachRolePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4513,7 +4513,7 @@ class DetachRolePolicyResponse(AbstractModel):
 
 
 class DetachUserPolicyRequest(AbstractModel):
-    """DetachUserPolicy request structure.
+    r"""DetachUserPolicy request structure.
 
     """
 
@@ -4529,7 +4529,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -4540,7 +4540,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def DetachUin(self):
-        """Sub-account UIN
+        r"""Sub-account UIN
         :rtype: int
         """
         return self._DetachUin
@@ -4564,7 +4564,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
 
 class DetachUserPolicyResponse(AbstractModel):
-    """DetachUserPolicy response structure.
+    r"""DetachUserPolicy response structure.
 
     """
 
@@ -4577,7 +4577,7 @@ class DetachUserPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4592,13 +4592,13 @@ class DetachUserPolicyResponse(AbstractModel):
 
 
 class DisableUserSSORequest(AbstractModel):
-    """DisableUserSSO request structure.
+    r"""DisableUserSSO request structure.
 
     """
 
 
 class DisableUserSSOResponse(AbstractModel):
-    """DisableUserSSO response structure.
+    r"""DisableUserSSO response structure.
 
     """
 
@@ -4611,7 +4611,7 @@ class DisableUserSSOResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4626,13 +4626,13 @@ class DisableUserSSOResponse(AbstractModel):
 
 
 class GetAccountSummaryRequest(AbstractModel):
-    """GetAccountSummary request structure.
+    r"""GetAccountSummary request structure.
 
     """
 
 
 class GetAccountSummaryResponse(AbstractModel):
-    """GetAccountSummary response structure.
+    r"""GetAccountSummary response structure.
 
     """
 
@@ -4663,7 +4663,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Policies(self):
-        """Number of policies
+        r"""Number of policies
         :rtype: int
         """
         return self._Policies
@@ -4674,7 +4674,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Roles(self):
-        """Number of roles
+        r"""Number of roles
         :rtype: int
         """
         return self._Roles
@@ -4685,7 +4685,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Idps(self):
-        """Number of identity providers
+        r"""Number of identity providers
         :rtype: int
         """
         return self._Idps
@@ -4696,7 +4696,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def User(self):
-        """Number of sub-accounts
+        r"""Number of sub-accounts
         :rtype: int
         """
         return self._User
@@ -4707,7 +4707,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Group(self):
-        """Number of groups
+        r"""Number of groups
         :rtype: int
         """
         return self._Group
@@ -4718,7 +4718,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def Member(self):
-        """Total number of grouped users
+        r"""Total number of grouped users
         :rtype: int
         """
         return self._Member
@@ -4729,7 +4729,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4750,7 +4750,7 @@ class GetAccountSummaryResponse(AbstractModel):
 
 
 class GetCustomMFATokenInfoRequest(AbstractModel):
-    """GetCustomMFATokenInfo request structure.
+    r"""GetCustomMFATokenInfo request structure.
 
     """
 
@@ -4763,7 +4763,7 @@ class GetCustomMFATokenInfoRequest(AbstractModel):
 
     @property
     def MFAToken(self):
-        """Custom multi-factor verification Token
+        r"""Custom multi-factor verification Token
         :rtype: str
         """
         return self._MFAToken
@@ -4786,7 +4786,7 @@ class GetCustomMFATokenInfoRequest(AbstractModel):
 
 
 class GetCustomMFATokenInfoResponse(AbstractModel):
-    """GetCustomMFATokenInfo response structure.
+    r"""GetCustomMFATokenInfo response structure.
 
     """
 
@@ -4802,7 +4802,7 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Account ID corresponding to the custom multi-factor verification Token
+        r"""Account ID corresponding to the custom multi-factor verification Token
         :rtype: int
         """
         return self._Uin
@@ -4813,7 +4813,7 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4829,7 +4829,7 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
 
 
 class GetGroupRequest(AbstractModel):
-    """GetGroup request structure.
+    r"""GetGroup request structure.
 
     """
 
@@ -4842,7 +4842,7 @@ class GetGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -4865,7 +4865,7 @@ class GetGroupRequest(AbstractModel):
 
 
 class GetGroupResponse(AbstractModel):
-    """GetGroup response structure.
+    r"""GetGroup response structure.
 
     """
 
@@ -4896,7 +4896,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -4907,7 +4907,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def GroupName(self):
-        """User Group name
+        r"""User Group name
         :rtype: str
         """
         return self._GroupName
@@ -4918,7 +4918,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def GroupNum(self):
-        """Number of members in the User Group
+        r"""Number of members in the User Group
         :rtype: int
         """
         return self._GroupNum
@@ -4929,7 +4929,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """User Group description
+        r"""User Group description
         :rtype: str
         """
         return self._Remark
@@ -4940,7 +4940,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time User Group created
+        r"""Time User Group created
         :rtype: str
         """
         return self._CreateTime
@@ -4951,7 +4951,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """User Group member information
+        r"""User Group member information
         :rtype: list of GroupMemberInfo
         """
         return self._UserInfo
@@ -4962,7 +4962,7 @@ class GetGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4988,7 +4988,7 @@ class GetGroupResponse(AbstractModel):
 
 
 class GetPolicyRequest(AbstractModel):
-    """GetPolicy request structure.
+    r"""GetPolicy request structure.
 
     """
 
@@ -5001,7 +5001,7 @@ class GetPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -5024,7 +5024,7 @@ class GetPolicyRequest(AbstractModel):
 
 
 class GetPolicyResponse(AbstractModel):
-    """GetPolicy response structure.
+    r"""GetPolicy response structure.
 
     """
 
@@ -5069,7 +5069,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -5081,7 +5081,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Description(self):
-        """Policy description
+        r"""Policy description
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -5093,7 +5093,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """1: Custom policy; 2: Preset policy
+        r"""1: Custom policy; 2: Preset policy
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -5105,7 +5105,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AddTime(self):
-        """Time created
+        r"""Time created
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -5117,7 +5117,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Time of latest update
+        r"""Time of latest update
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -5129,7 +5129,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def PolicyDocument(self):
-        """Policy document
+        r"""Policy document
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -5141,7 +5141,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def PresetAlias(self):
-        """Remarks
+        r"""Remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5153,7 +5153,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsServiceLinkedRolePolicy(self):
-        """Whether it is a service-linked policy
+        r"""Whether it is a service-linked policy
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5165,7 +5165,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5188,7 +5188,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetPolicyVersionRequest(AbstractModel):
-    """GetPolicyVersion request structure.
+    r"""GetPolicyVersion request structure.
 
     """
 
@@ -5204,7 +5204,7 @@ class GetPolicyVersionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -5215,7 +5215,7 @@ class GetPolicyVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        """Policy version, which can be obtained through `ListPolicyVersions`.
+        r"""Policy version, which can be obtained through `ListPolicyVersions`.
         :rtype: int
         """
         return self._VersionId
@@ -5239,7 +5239,7 @@ class GetPolicyVersionRequest(AbstractModel):
 
 
 class GetPolicyVersionResponse(AbstractModel):
-    """GetPolicyVersion response structure.
+    r"""GetPolicyVersion response structure.
 
     """
 
@@ -5256,7 +5256,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyVersion(self):
-        """Policy version details
+        r"""Policy version details
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
         """
@@ -5268,7 +5268,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5286,7 +5286,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetRoleRequest(AbstractModel):
-    """GetRole request structure.
+    r"""GetRole request structure.
 
     """
 
@@ -5302,7 +5302,7 @@ class GetRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID, used to specify role. Input either `RoleId` or `RoleName`
+        r"""Role ID, used to specify role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleId
@@ -5313,7 +5313,7 @@ class GetRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name, used to specify role. Input either `RoleId` or `RoleName`
+        r"""Role name, used to specify role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleName
@@ -5337,7 +5337,7 @@ class GetRoleRequest(AbstractModel):
 
 
 class GetRoleResponse(AbstractModel):
-    """GetRole response structure.
+    r"""GetRole response structure.
 
     """
 
@@ -5353,7 +5353,7 @@ class GetRoleResponse(AbstractModel):
 
     @property
     def RoleInfo(self):
-        """Role details
+        r"""Role details
         :rtype: :class:`tencentcloud.cam.v20190116.models.RoleInfo`
         """
         return self._RoleInfo
@@ -5364,7 +5364,7 @@ class GetRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5382,7 +5382,7 @@ class GetRoleResponse(AbstractModel):
 
 
 class GetSAMLProviderRequest(AbstractModel):
-    """GetSAMLProvider request structure.
+    r"""GetSAMLProvider request structure.
 
     """
 
@@ -5395,7 +5395,7 @@ class GetSAMLProviderRequest(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -5418,7 +5418,7 @@ class GetSAMLProviderRequest(AbstractModel):
 
 
 class GetSAMLProviderResponse(AbstractModel):
-    """GetSAMLProvider response structure.
+    r"""GetSAMLProvider response structure.
 
     """
 
@@ -5446,7 +5446,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -5457,7 +5457,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def Description(self):
-        """SAML identity provider description
+        r"""SAML identity provider description
         :rtype: str
         """
         return self._Description
@@ -5468,7 +5468,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time SAML identity provider created
+        r"""Time SAML identity provider created
         :rtype: str
         """
         return self._CreateTime
@@ -5479,7 +5479,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """Time SAML identity provider last modified
+        r"""Time SAML identity provider last modified
         :rtype: str
         """
         return self._ModifyTime
@@ -5490,7 +5490,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def SAMLMetadata(self):
-        """SAML identity provider metadata document
+        r"""SAML identity provider metadata document
         :rtype: str
         """
         return self._SAMLMetadata
@@ -5501,7 +5501,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5521,7 +5521,7 @@ class GetSAMLProviderResponse(AbstractModel):
 
 
 class GetSecurityLastUsedRequest(AbstractModel):
-    """GetSecurityLastUsed request structure.
+    r"""GetSecurityLastUsed request structure.
 
     """
 
@@ -5534,7 +5534,7 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     @property
     def SecretIdList(self):
-        """Key ID list query. Up to 10 key IDs can be queried.
+        r"""Key ID list query. Up to 10 key IDs can be queried.
         :rtype: list of str
         """
         return self._SecretIdList
@@ -5557,7 +5557,7 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
 
 class GetSecurityLastUsedResponse(AbstractModel):
-    """GetSecurityLastUsed response structure.
+    r"""GetSecurityLastUsed response structure.
 
     """
 
@@ -5573,7 +5573,7 @@ class GetSecurityLastUsedResponse(AbstractModel):
 
     @property
     def SecretIdLastUsedRows(self):
-        """List of key ID’s recent usage records.
+        r"""List of key ID’s recent usage records.
         :rtype: list of SecretIdLastUsed
         """
         return self._SecretIdLastUsedRows
@@ -5584,7 +5584,7 @@ class GetSecurityLastUsedResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5605,7 +5605,7 @@ class GetSecurityLastUsedResponse(AbstractModel):
 
 
 class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
-    """GetServiceLinkedRoleDeletionStatus request structure.
+    r"""GetServiceLinkedRoleDeletionStatus request structure.
 
     """
 
@@ -5618,7 +5618,7 @@ class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
 
     @property
     def DeletionTaskId(self):
-        """Deletion task ID
+        r"""Deletion task ID
         :rtype: str
         """
         return self._DeletionTaskId
@@ -5641,7 +5641,7 @@ class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
 
 
 class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
-    """GetServiceLinkedRoleDeletionStatus response structure.
+    r"""GetServiceLinkedRoleDeletionStatus response structure.
 
     """
 
@@ -5668,7 +5668,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED
+        r"""Status: NOT_STARTED, IN_PROGRESS, SUCCEEDED, FAILED
         :rtype: str
         """
         return self._Status
@@ -5679,7 +5679,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """Reasons why the deletion failed.
+        r"""Reasons why the deletion failed.
         :rtype: str
         """
         return self._Reason
@@ -5690,7 +5690,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceType(self):
-        """Service type
+        r"""Service type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5702,7 +5702,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
-        """Service name
+        r"""Service name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5714,7 +5714,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5733,13 +5733,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetUserAppIdRequest(AbstractModel):
-    """GetUserAppId request structure.
+    r"""GetUserAppId request structure.
 
     """
 
 
 class GetUserAppIdResponse(AbstractModel):
-    """GetUserAppId response structure.
+    r"""GetUserAppId response structure.
 
     """
 
@@ -5761,7 +5761,7 @@ class GetUserAppIdResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """UIN of the current account.
+        r"""UIN of the current account.
         :rtype: str
         """
         return self._Uin
@@ -5772,7 +5772,7 @@ class GetUserAppIdResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """OwnerUin of the current account.
+        r"""OwnerUin of the current account.
         :rtype: str
         """
         return self._OwnerUin
@@ -5783,7 +5783,7 @@ class GetUserAppIdResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """AppId of the current account.
+        r"""AppId of the current account.
         :rtype: int
         """
         return self._AppId
@@ -5794,7 +5794,7 @@ class GetUserAppIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5812,7 +5812,7 @@ class GetUserAppIdResponse(AbstractModel):
 
 
 class GetUserRequest(AbstractModel):
-    """GetUser request structure.
+    r"""GetUser request structure.
 
     """
 
@@ -5825,7 +5825,7 @@ class GetUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -5848,7 +5848,7 @@ class GetUserRequest(AbstractModel):
 
 
 class GetUserResponse(AbstractModel):
-    """GetUser response structure.
+    r"""GetUser response structure.
 
     """
 
@@ -5894,7 +5894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        """Sub-user UIN
+        r"""Sub-user UIN
         :rtype: int
         """
         return self._Uin
@@ -5905,7 +5905,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -5916,7 +5916,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -5927,7 +5927,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Sub-user remarks
+        r"""Sub-user remarks
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5939,7 +5939,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConsoleLogin(self):
-        """Whether the sub-user can log in to the console. `0`: No; `1`: Yes.
+        r"""Whether the sub-user can log in to the console. `0`: No; `1`: Yes.
         :rtype: int
         """
         return self._ConsoleLogin
@@ -5950,7 +5950,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PhoneNum(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: str
         """
         return self._PhoneNum
@@ -5961,7 +5961,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CountryCode(self):
-        """Country/Area code
+        r"""Country/Area code
         :rtype: str
         """
         return self._CountryCode
@@ -5972,7 +5972,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Email(self):
-        """Email
+        r"""Email
         :rtype: str
         """
         return self._Email
@@ -5983,7 +5983,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RecentlyLoginIP(self):
-        """Last login IP
+        r"""Last login IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5995,7 +5995,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecentlyLoginTime(self):
-        """Last login time
+        r"""Last login time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6007,7 +6007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6032,7 +6032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GroupIdOfUidInfo(AbstractModel):
-    """Information on the association between a sub-user and a User Group
+    r"""Information on the association between a sub-user and a User Group
 
     """
 
@@ -6051,7 +6051,7 @@ class GroupIdOfUidInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -6062,7 +6062,7 @@ class GroupIdOfUidInfo(AbstractModel):
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -6073,7 +6073,7 @@ class GroupIdOfUidInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """Sub-user UIN. For UIN and UID, at least one of them is required.
+        r"""Sub-user UIN. For UIN and UID, at least one of them is required.
         :rtype: int
         """
         return self._Uin
@@ -6098,7 +6098,7 @@ class GroupIdOfUidInfo(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """User Group information
+    r"""User Group information
 
     """
 
@@ -6120,7 +6120,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """User group ID
+        r"""User group ID
         :rtype: int
         """
         return self._GroupId
@@ -6131,7 +6131,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """User Group name
+        r"""User Group name
         :rtype: str
         """
         return self._GroupName
@@ -6142,7 +6142,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time User Group created
+        r"""Time User Group created
         :rtype: str
         """
         return self._CreateTime
@@ -6153,7 +6153,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """User Group description
+        r"""User Group description
         :rtype: str
         """
         return self._Remark
@@ -6179,7 +6179,7 @@ class GroupInfo(AbstractModel):
 
 
 class GroupMemberInfo(AbstractModel):
-    """User Group user information
+    r"""User Group user information
 
     """
 
@@ -6222,7 +6222,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -6233,7 +6233,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """Sub-user UIN
+        r"""Sub-user UIN
         :rtype: int
         """
         return self._Uin
@@ -6244,7 +6244,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user name
+        r"""Sub-user name
         :rtype: str
         """
         return self._Name
@@ -6255,7 +6255,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def PhoneNum(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: str
         """
         return self._PhoneNum
@@ -6266,7 +6266,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def CountryCode(self):
-        """Mobile number country/area code
+        r"""Mobile number country/area code
         :rtype: str
         """
         return self._CountryCode
@@ -6277,7 +6277,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def PhoneFlag(self):
-        """Whether the mobile phone has been verified. `0`: No; `1`: Yes.
+        r"""Whether the mobile phone has been verified. `0`: No; `1`: Yes.
         :rtype: int
         """
         return self._PhoneFlag
@@ -6288,7 +6288,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def Email(self):
-        """Email address
+        r"""Email address
         :rtype: str
         """
         return self._Email
@@ -6299,7 +6299,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def EmailFlag(self):
-        """Whether the email has been verified. `0`: No; `1`: Yes.
+        r"""Whether the email has been verified. `0`: No; `1`: Yes.
         :rtype: int
         """
         return self._EmailFlag
@@ -6310,7 +6310,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def UserType(self):
-        """User type. `1`: Global collaborator; `2`: Project collaborator; `3`: Message recipient.
+        r"""User type. `1`: Global collaborator; `2`: Project collaborator; `3`: Message recipient.
         :rtype: int
         """
         return self._UserType
@@ -6321,7 +6321,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time policy created
+        r"""Time policy created
         :rtype: str
         """
         return self._CreateTime
@@ -6332,7 +6332,7 @@ class GroupMemberInfo(AbstractModel):
 
     @property
     def IsReceiverOwner(self):
-        """Whether the user is the primary message recipient. `0`: No; `1`: Yes.
+        r"""Whether the user is the primary message recipient. `0`: No; `1`: Yes.
         :rtype: int
         """
         return self._IsReceiverOwner
@@ -6365,7 +6365,7 @@ class GroupMemberInfo(AbstractModel):
 
 
 class ListAccessKeysRequest(AbstractModel):
-    """ListAccessKeys request structure.
+    r"""ListAccessKeys request structure.
 
     """
 
@@ -6378,7 +6378,7 @@ class ListAccessKeysRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """`UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default
+        r"""`UIN` of the specified user. If this parameter is left empty, access keys of the current user will be listed by default
         :rtype: int
         """
         return self._TargetUin
@@ -6401,7 +6401,7 @@ class ListAccessKeysRequest(AbstractModel):
 
 
 class ListAccessKeysResponse(AbstractModel):
-    """ListAccessKeys response structure.
+    r"""ListAccessKeys response structure.
 
     """
 
@@ -6418,7 +6418,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessKeys(self):
-        """Access key list
+        r"""Access key list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AccessKey
         """
@@ -6430,7 +6430,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6451,7 +6451,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListAttachedGroupPoliciesRequest(AbstractModel):
-    """ListAttachedGroupPolicies request structure.
+    r"""ListAttachedGroupPolicies request structure.
 
     """
 
@@ -6473,7 +6473,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        """User group ID
+        r"""User group ID
         :rtype: int
         """
         return self._TargetGroupId
@@ -6484,7 +6484,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number, which starts from 1. Default is 1
+        r"""Page number, which starts from 1. Default is 1
         :rtype: int
         """
         return self._Page
@@ -6495,7 +6495,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; 20 by default
+        r"""Number of entries per page; 20 by default
         :rtype: int
         """
         return self._Rp
@@ -6506,7 +6506,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by keyword
+        r"""Search by keyword
         :rtype: str
         """
         return self._Keyword
@@ -6532,7 +6532,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
 
 class ListAttachedGroupPoliciesResponse(AbstractModel):
-    """ListAttachedGroupPolicies response structure.
+    r"""ListAttachedGroupPolicies response structure.
 
     """
 
@@ -6551,7 +6551,7 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of policies
+        r"""Total number of policies
         :rtype: int
         """
         return self._TotalNum
@@ -6562,7 +6562,7 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
 
     @property
     def List(self):
-        """Policy list
+        r"""Policy list
         :rtype: list of AttachPolicyInfo
         """
         return self._List
@@ -6573,7 +6573,7 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6595,7 +6595,7 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
 
 
 class ListAttachedRolePoliciesRequest(AbstractModel):
-    """ListAttachedRolePolicies request structure.
+    r"""ListAttachedRolePolicies request structure.
 
     """
 
@@ -6623,7 +6623,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number, beginning from 1
+        r"""Page number, beginning from 1
         :rtype: int
         """
         return self._Page
@@ -6634,7 +6634,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of lines per page, no more than 200
+        r"""Number of lines per page, no more than 200
         :rtype: int
         """
         return self._Rp
@@ -6645,7 +6645,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role ID, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleId
@@ -6656,7 +6656,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role name, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleName
@@ -6667,7 +6667,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def PolicyType(self):
-        """Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only
+        r"""Filter according to policy type. `User` indicates querying custom policies only. `QCS` indicates querying preset policies only
         :rtype: str
         """
         return self._PolicyType
@@ -6678,7 +6678,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Search by keyword
+        r"""Search by keyword
         :rtype: str
         """
         return self._Keyword
@@ -6706,7 +6706,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
 
 
 class ListAttachedRolePoliciesResponse(AbstractModel):
-    """ListAttachedRolePolicies response structure.
+    r"""ListAttachedRolePolicies response structure.
 
     """
 
@@ -6725,7 +6725,7 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of policies associated with the role
+        r"""List of policies associated with the role
         :rtype: list of AttachedPolicyOfRole
         """
         return self._List
@@ -6736,7 +6736,7 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of policies associated with the role
+        r"""Total number of policies associated with the role
         :rtype: int
         """
         return self._TotalNum
@@ -6747,7 +6747,7 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6769,7 +6769,7 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
 
 
 class ListAttachedUserAllPoliciesRequest(AbstractModel):
-    """ListAttachedUserAllPolicies request structure.
+    r"""ListAttachedUserAllPolicies request structure.
 
     """
 
@@ -6797,7 +6797,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """Target user ID.
+        r"""Target user ID.
         :rtype: int
         """
         return self._TargetUin
@@ -6808,7 +6808,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """The number of policies displayed on each page. Value range: 1-200.
+        r"""The number of policies displayed on each page. Value range: 1-200.
         :rtype: int
         """
         return self._Rp
@@ -6819,7 +6819,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number. Value range: 1-200.
+        r"""Page number. Value range: 1-200.
         :rtype: int
         """
         return self._Page
@@ -6830,7 +6830,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def AttachType(self):
-        """`0`: return policies that are directly associated and inherited from the user group; `1`: return policies that are directly associated; `2`: return policies inherited from the user group.
+        r"""`0`: return policies that are directly associated and inherited from the user group; `1`: return policies that are directly associated; `2`: return policies inherited from the user group.
         :rtype: int
         """
         return self._AttachType
@@ -6841,7 +6841,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def StrategyType(self):
-        """Policy type.
+        r"""Policy type.
         :rtype: int
         """
         return self._StrategyType
@@ -6852,7 +6852,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword for searching.
+        r"""Keyword for searching.
         :rtype: str
         """
         return self._Keyword
@@ -6880,7 +6880,7 @@ class ListAttachedUserAllPoliciesRequest(AbstractModel):
 
 
 class ListAttachedUserAllPoliciesResponse(AbstractModel):
-    """ListAttachedUserAllPolicies response structure.
+    r"""ListAttachedUserAllPolicies response structure.
 
     """
 
@@ -6899,7 +6899,7 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
     @property
     def PolicyList(self):
-        """Policy list.
+        r"""Policy list.
         :rtype: list of AttachedUserPolicy
         """
         return self._PolicyList
@@ -6910,7 +6910,7 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of policies.
+        r"""Total number of policies.
         :rtype: int
         """
         return self._TotalNum
@@ -6921,7 +6921,7 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6943,7 +6943,7 @@ class ListAttachedUserAllPoliciesResponse(AbstractModel):
 
 
 class ListAttachedUserPoliciesRequest(AbstractModel):
-    """ListAttachedUserPolicies request structure.
+    r"""ListAttachedUserPolicies request structure.
 
     """
 
@@ -6962,7 +6962,7 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """Sub-account UIN
+        r"""Sub-account UIN
         :rtype: int
         """
         return self._TargetUin
@@ -6973,7 +6973,7 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number, which starts from 1. Default is 1
+        r"""Page number, which starts from 1. Default is 1
         :rtype: int
         """
         return self._Page
@@ -6984,7 +6984,7 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; 20 by default
+        r"""Number of entries per page; 20 by default
         :rtype: int
         """
         return self._Rp
@@ -7009,7 +7009,7 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
 
 
 class ListAttachedUserPoliciesResponse(AbstractModel):
-    """ListAttachedUserPolicies response structure.
+    r"""ListAttachedUserPolicies response structure.
 
     """
 
@@ -7028,7 +7028,7 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of policies
+        r"""Total number of policies
         :rtype: int
         """
         return self._TotalNum
@@ -7039,7 +7039,7 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
 
     @property
     def List(self):
-        """Policy list
+        r"""Policy list
         :rtype: list of AttachPolicyInfo
         """
         return self._List
@@ -7050,7 +7050,7 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7072,7 +7072,7 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
 
 
 class ListCollaboratorsRequest(AbstractModel):
-    """ListCollaborators request structure.
+    r"""ListCollaborators request structure.
 
     """
 
@@ -7088,7 +7088,7 @@ class ListCollaboratorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Default value: 20
+        r"""Number of entries per page. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -7099,7 +7099,7 @@ class ListCollaboratorsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination start value. Default value: 0
+        r"""Pagination start value. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -7123,7 +7123,7 @@ class ListCollaboratorsRequest(AbstractModel):
 
 
 class ListCollaboratorsResponse(AbstractModel):
-    """ListCollaborators response structure.
+    r"""ListCollaborators response structure.
 
     """
 
@@ -7142,7 +7142,7 @@ class ListCollaboratorsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalNum
@@ -7153,7 +7153,7 @@ class ListCollaboratorsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Collaborator information
+        r"""Collaborator information
         :rtype: list of SubAccountInfo
         """
         return self._Data
@@ -7164,7 +7164,7 @@ class ListCollaboratorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7186,7 +7186,7 @@ class ListCollaboratorsResponse(AbstractModel):
 
 
 class ListEntitiesForPolicyRequest(AbstractModel):
-    """ListEntitiesForPolicy request structure.
+    r"""ListEntitiesForPolicy request structure.
 
     """
 
@@ -7208,7 +7208,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -7219,7 +7219,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number, which starts from 1. Default is 1
+        r"""Page number, which starts from 1. Default is 1
         :rtype: int
         """
         return self._Page
@@ -7230,7 +7230,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; 20 by default
+        r"""Number of entries per page; 20 by default
         :rtype: int
         """
         return self._Rp
@@ -7241,7 +7241,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
     @property
     def EntityFilter(self):
-        """Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value.
+        r"""Valid values: `All`, `User`, `Group`, and `Role`. `All` means all entity types will be returned; `User` means only sub-accounts will be returned; `Group` means only User Groups will be returned; `Role` means only roles will be returned. `All` is the default value.
         :rtype: str
         """
         return self._EntityFilter
@@ -7267,7 +7267,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
 
 
 class ListEntitiesForPolicyResponse(AbstractModel):
-    """ListEntitiesForPolicy response structure.
+    r"""ListEntitiesForPolicy response structure.
 
     """
 
@@ -7288,7 +7288,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalNum(self):
-        """Number of entities
+        r"""Number of entities
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -7300,7 +7300,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def List(self):
-        """Entity list
+        r"""Entity list
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of AttachEntityOfPolicy
         """
@@ -7312,7 +7312,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7334,7 +7334,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class ListGroupsForUserRequest(AbstractModel):
-    """ListGroupsForUser request structure.
+    r"""ListGroupsForUser request structure.
 
     """
 
@@ -7356,7 +7356,7 @@ class ListGroupsForUserRequest(AbstractModel):
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -7367,7 +7367,7 @@ class ListGroupsForUserRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; default is 20
+        r"""Number of entries per page; default is 20
         :rtype: int
         """
         return self._Rp
@@ -7378,7 +7378,7 @@ class ListGroupsForUserRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number; default is 1
+        r"""Page number; default is 1
         :rtype: int
         """
         return self._Page
@@ -7389,7 +7389,7 @@ class ListGroupsForUserRequest(AbstractModel):
 
     @property
     def SubUin(self):
-        """Sub-account UIN
+        r"""Sub-account UIN
         :rtype: int
         """
         return self._SubUin
@@ -7415,7 +7415,7 @@ class ListGroupsForUserRequest(AbstractModel):
 
 
 class ListGroupsForUserResponse(AbstractModel):
-    """ListGroupsForUser response structure.
+    r"""ListGroupsForUser response structure.
 
     """
 
@@ -7434,7 +7434,7 @@ class ListGroupsForUserResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of User Groups to which the sub-user has been added
+        r"""Total number of User Groups to which the sub-user has been added
         :rtype: int
         """
         return self._TotalNum
@@ -7445,7 +7445,7 @@ class ListGroupsForUserResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
-        """User Group information
+        r"""User Group information
         :rtype: list of GroupInfo
         """
         return self._GroupInfo
@@ -7456,7 +7456,7 @@ class ListGroupsForUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7478,7 +7478,7 @@ class ListGroupsForUserResponse(AbstractModel):
 
 
 class ListGroupsRequest(AbstractModel):
-    """ListGroups request structure.
+    r"""ListGroups request structure.
 
     """
 
@@ -7497,7 +7497,7 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number; default is 1
+        r"""Page number; default is 1
         :rtype: int
         """
         return self._Page
@@ -7508,7 +7508,7 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; default is 20
+        r"""Number of entries per page; default is 20
         :rtype: int
         """
         return self._Rp
@@ -7519,7 +7519,7 @@ class ListGroupsRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Filter by User Group name
+        r"""Filter by User Group name
         :rtype: str
         """
         return self._Keyword
@@ -7544,7 +7544,7 @@ class ListGroupsRequest(AbstractModel):
 
 
 class ListGroupsResponse(AbstractModel):
-    """ListGroups response structure.
+    r"""ListGroups response structure.
 
     """
 
@@ -7563,7 +7563,7 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of User Groups
+        r"""Total number of User Groups
         :rtype: int
         """
         return self._TotalNum
@@ -7574,7 +7574,7 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def GroupInfo(self):
-        """User group information array
+        r"""User group information array
         :rtype: list of GroupInfo
         """
         return self._GroupInfo
@@ -7585,7 +7585,7 @@ class ListGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7607,7 +7607,7 @@ class ListGroupsResponse(AbstractModel):
 
 
 class ListPoliciesRequest(AbstractModel):
-    """ListPolicies request structure.
+    r"""ListPolicies request structure.
 
     """
 
@@ -7629,7 +7629,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page: must be greater than 0 and no greater than 200. Default is 20
+        r"""Number of entries per page: must be greater than 0 and no greater than 200. Default is 20
         :rtype: int
         """
         return self._Rp
@@ -7640,7 +7640,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number. Starts from 1 and cannot be greater than 200. Default is 1
+        r"""Page number. Starts from 1 and cannot be greater than 200. Default is 1
         :rtype: int
         """
         return self._Page
@@ -7651,7 +7651,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Scope(self):
-        """Valid values: `All`, `QCS`, and `Local`. `All` means all policies will be returned; `QCS` means only preset policies will be returned; `Local` means only custom policies will be returned. `All` is the default value
+        r"""Valid values: `All`, `QCS`, and `Local`. `All` means all policies will be returned; `QCS` means only preset policies will be returned; `Local` means only custom policies will be returned. `All` is the default value
         :rtype: str
         """
         return self._Scope
@@ -7662,7 +7662,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Filter by policy name
+        r"""Filter by policy name
         :rtype: str
         """
         return self._Keyword
@@ -7688,7 +7688,7 @@ class ListPoliciesRequest(AbstractModel):
 
 
 class ListPoliciesResponse(AbstractModel):
-    """ListPolicies response structure.
+    r"""ListPolicies response structure.
 
     """
 
@@ -7720,7 +7720,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalNum(self):
-        """Total number of policies
+        r"""Total number of policies
         :rtype: int
         """
         return self._TotalNum
@@ -7731,7 +7731,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def List(self):
-        """Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. 
+        r"""Policy array. Each array contains fields including `policyId`, `policyName`, `addTime`, `type`, `description`, and `createMode`. 
 policyId: policy ID 
 policyName: policy name
 addTime: policy creation time
@@ -7751,7 +7751,7 @@ IsAttached: this value should not be null when querying if a marked entity has b
 
     @property
     def ServiceTypeList(self):
-        """Reserved field
+        r"""Reserved field
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -7763,7 +7763,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7786,7 +7786,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class ListPolicyVersionsRequest(AbstractModel):
-    """ListPolicyVersions request structure.
+    r"""ListPolicyVersions request structure.
 
     """
 
@@ -7799,7 +7799,7 @@ class ListPolicyVersionsRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -7822,7 +7822,7 @@ class ListPolicyVersionsRequest(AbstractModel):
 
 
 class ListPolicyVersionsResponse(AbstractModel):
-    """ListPolicyVersions response structure.
+    r"""ListPolicyVersions response structure.
 
     """
 
@@ -7839,7 +7839,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Versions(self):
-        """Policy version list
+        r"""Policy version list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of PolicyVersionItem
         """
@@ -7851,7 +7851,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7872,13 +7872,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ListSAMLProvidersRequest(AbstractModel):
-    """ListSAMLProviders request structure.
+    r"""ListSAMLProviders request structure.
 
     """
 
 
 class ListSAMLProvidersResponse(AbstractModel):
-    """ListSAMLProviders response structure.
+    r"""ListSAMLProviders response structure.
 
     """
 
@@ -7897,7 +7897,7 @@ class ListSAMLProvidersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of SAML identity providers
+        r"""Total number of SAML identity providers
         :rtype: int
         """
         return self._TotalCount
@@ -7908,7 +7908,7 @@ class ListSAMLProvidersResponse(AbstractModel):
 
     @property
     def SAMLProviderSet(self):
-        """List of SAML identity providers
+        r"""List of SAML identity providers
         :rtype: list of SAMLProviderInfo
         """
         return self._SAMLProviderSet
@@ -7919,7 +7919,7 @@ class ListSAMLProvidersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7941,7 +7941,7 @@ class ListSAMLProvidersResponse(AbstractModel):
 
 
 class ListUsersForGroupRequest(AbstractModel):
-    """ListUsersForGroup request structure.
+    r"""ListUsersForGroup request structure.
 
     """
 
@@ -7960,7 +7960,7 @@ class ListUsersForGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """User group ID
+        r"""User group ID
         :rtype: int
         """
         return self._GroupId
@@ -7971,7 +7971,7 @@ class ListUsersForGroupRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number; default is 1
+        r"""Page number; default is 1
         :rtype: int
         """
         return self._Page
@@ -7982,7 +7982,7 @@ class ListUsersForGroupRequest(AbstractModel):
 
     @property
     def Rp(self):
-        """Number of entries per page; default is 20
+        r"""Number of entries per page; default is 20
         :rtype: int
         """
         return self._Rp
@@ -8007,7 +8007,7 @@ class ListUsersForGroupRequest(AbstractModel):
 
 
 class ListUsersForGroupResponse(AbstractModel):
-    """ListUsersForGroup response structure.
+    r"""ListUsersForGroup response structure.
 
     """
 
@@ -8026,7 +8026,7 @@ class ListUsersForGroupResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """Total number of users associated with the User Group
+        r"""Total number of users associated with the User Group
         :rtype: int
         """
         return self._TotalNum
@@ -8037,7 +8037,7 @@ class ListUsersForGroupResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        """Sub-user information
+        r"""Sub-user information
         :rtype: list of GroupMemberInfo
         """
         return self._UserInfo
@@ -8048,7 +8048,7 @@ class ListUsersForGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8070,13 +8070,13 @@ class ListUsersForGroupResponse(AbstractModel):
 
 
 class ListUsersRequest(AbstractModel):
-    """ListUsers request structure.
+    r"""ListUsers request structure.
 
     """
 
 
 class ListUsersResponse(AbstractModel):
-    """ListUsers response structure.
+    r"""ListUsers response structure.
 
     """
 
@@ -8092,7 +8092,7 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Sub-user information
+        r"""Sub-user information
         :rtype: list of SubAccountInfo
         """
         return self._Data
@@ -8103,7 +8103,7 @@ class ListUsersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8124,7 +8124,7 @@ class ListUsersResponse(AbstractModel):
 
 
 class LoginActionFlag(AbstractModel):
-    """Login and sensitive operation flag
+    r"""Login and sensitive operation flag
 
     """
 
@@ -8155,7 +8155,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Phone(self):
-        """Phone
+        r"""Phone
         :rtype: int
         """
         return self._Phone
@@ -8166,7 +8166,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Token(self):
-        """Hard token
+        r"""Hard token
         :rtype: int
         """
         return self._Token
@@ -8177,7 +8177,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Stoken(self):
-        """Soft token
+        r"""Soft token
         :rtype: int
         """
         return self._Stoken
@@ -8188,7 +8188,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Wechat(self):
-        """WeChat
+        r"""WeChat
         :rtype: int
         """
         return self._Wechat
@@ -8199,7 +8199,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Custom(self):
-        """Custom
+        r"""Custom
         :rtype: int
         """
         return self._Custom
@@ -8210,7 +8210,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Mail(self):
-        """Mail
+        r"""Mail
         :rtype: int
         """
         return self._Mail
@@ -8221,7 +8221,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def U2FToken(self):
-        """U2F token
+        r"""U2F token
         :rtype: int
         """
         return self._U2FToken
@@ -8250,7 +8250,7 @@ class LoginActionFlag(AbstractModel):
 
 
 class LoginActionFlagIntl(AbstractModel):
-    """Login and sensitive operation flag
+    r"""Login and sensitive operation flag
 
     """
 
@@ -8278,7 +8278,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Phone(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: int
         """
         return self._Phone
@@ -8289,7 +8289,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Token(self):
-        """Hard token
+        r"""Hard token
         :rtype: int
         """
         return self._Token
@@ -8300,7 +8300,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Stoken(self):
-        """Soft token
+        r"""Soft token
         :rtype: int
         """
         return self._Stoken
@@ -8311,7 +8311,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Wechat(self):
-        """WeChat
+        r"""WeChat
         :rtype: int
         """
         return self._Wechat
@@ -8322,7 +8322,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Custom(self):
-        """Custom
+        r"""Custom
         :rtype: int
         """
         return self._Custom
@@ -8333,7 +8333,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Mail(self):
-        """Email
+        r"""Email
         :rtype: int
         """
         return self._Mail
@@ -8361,7 +8361,7 @@ class LoginActionFlagIntl(AbstractModel):
 
 
 class LoginActionMfaFlag(AbstractModel):
-    """Login and sensitive operation flag
+    r"""Login and sensitive operation flag
 
     """
 
@@ -8380,7 +8380,7 @@ class LoginActionMfaFlag(AbstractModel):
 
     @property
     def Phone(self):
-        """Mobile phone
+        r"""Mobile phone
         :rtype: int
         """
         return self._Phone
@@ -8391,7 +8391,7 @@ class LoginActionMfaFlag(AbstractModel):
 
     @property
     def Stoken(self):
-        """Soft token
+        r"""Soft token
         :rtype: int
         """
         return self._Stoken
@@ -8402,7 +8402,7 @@ class LoginActionMfaFlag(AbstractModel):
 
     @property
     def Wechat(self):
-        """WeChat
+        r"""WeChat
         :rtype: int
         """
         return self._Wechat
@@ -8427,7 +8427,7 @@ class LoginActionMfaFlag(AbstractModel):
 
 
 class OffsiteFlag(AbstractModel):
-    """Suspicious login location settings
+    r"""Suspicious login location settings
 
     """
 
@@ -8452,7 +8452,7 @@ class OffsiteFlag(AbstractModel):
 
     @property
     def VerifyFlag(self):
-        """Verification flag
+        r"""Verification flag
         :rtype: int
         """
         return self._VerifyFlag
@@ -8463,7 +8463,7 @@ class OffsiteFlag(AbstractModel):
 
     @property
     def NotifyPhone(self):
-        """Phone notification
+        r"""Phone notification
         :rtype: int
         """
         return self._NotifyPhone
@@ -8474,7 +8474,7 @@ class OffsiteFlag(AbstractModel):
 
     @property
     def NotifyEmail(self):
-        """Email notification
+        r"""Email notification
         :rtype: int
         """
         return self._NotifyEmail
@@ -8485,7 +8485,7 @@ class OffsiteFlag(AbstractModel):
 
     @property
     def NotifyWechat(self):
-        """WeChat notification
+        r"""WeChat notification
         :rtype: int
         """
         return self._NotifyWechat
@@ -8496,7 +8496,7 @@ class OffsiteFlag(AbstractModel):
 
     @property
     def Tips(self):
-        """Alert
+        r"""Alert
         :rtype: int
         """
         return self._Tips
@@ -8523,7 +8523,7 @@ class OffsiteFlag(AbstractModel):
 
 
 class PolicyVersionDetail(AbstractModel):
-    """Policy version details
+    r"""Policy version details
 
     """
 
@@ -8549,7 +8549,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionId(self):
-        """Policy version ID
+        r"""Policy version ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8561,7 +8561,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateDate(self):
-        """Policy version creation time
+        r"""Policy version creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8573,7 +8573,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefaultVersion(self):
-        """Whether it is the operative version. 0: no, 1: yes
+        r"""Whether it is the operative version. 0: no, 1: yes
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8585,7 +8585,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Document(self):
-        """Policy syntax text
+        r"""Policy syntax text
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8612,7 +8612,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PolicyVersionItem(AbstractModel):
-    """Policy version list element structure
+    r"""Policy version list element structure
 
     """
 
@@ -8634,7 +8634,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionId(self):
-        """Policy version ID
+        r"""Policy version ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8646,7 +8646,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateDate(self):
-        """Policy version creation time
+        r"""Policy version creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8658,7 +8658,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefaultVersion(self):
-        """Whether it is the operative version. 0: no, 1: yes
+        r"""Whether it is the operative version. 0: no, 1: yes
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8684,7 +8684,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PutRolePermissionsBoundaryRequest(AbstractModel):
-    """PutRolePermissionsBoundary request structure.
+    r"""PutRolePermissionsBoundary request structure.
 
     """
 
@@ -8703,7 +8703,7 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -8714,7 +8714,7 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID (either it or the role name must be entered)
+        r"""Role ID (either it or the role name must be entered)
         :rtype: str
         """
         return self._RoleId
@@ -8725,7 +8725,7 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name (either it or the role ID must be entered)
+        r"""Role name (either it or the role ID must be entered)
         :rtype: str
         """
         return self._RoleName
@@ -8750,7 +8750,7 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
 
 
 class PutRolePermissionsBoundaryResponse(AbstractModel):
-    """PutRolePermissionsBoundary response structure.
+    r"""PutRolePermissionsBoundary response structure.
 
     """
 
@@ -8763,7 +8763,7 @@ class PutRolePermissionsBoundaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8778,7 +8778,7 @@ class PutRolePermissionsBoundaryResponse(AbstractModel):
 
 
 class PutUserPermissionsBoundaryRequest(AbstractModel):
-    """PutUserPermissionsBoundary request structure.
+    r"""PutUserPermissionsBoundary request structure.
 
     """
 
@@ -8794,7 +8794,7 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """Sub-account `Uin`
+        r"""Sub-account `Uin`
         :rtype: int
         """
         return self._TargetUin
@@ -8805,7 +8805,7 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -8829,7 +8829,7 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
 
 
 class PutUserPermissionsBoundaryResponse(AbstractModel):
-    """PutUserPermissionsBoundary response structure.
+    r"""PutUserPermissionsBoundary response structure.
 
     """
 
@@ -8842,7 +8842,7 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8857,7 +8857,7 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
-    """RemoveUserFromGroup request structure.
+    r"""RemoveUserFromGroup request structure.
 
     """
 
@@ -8870,7 +8870,7 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     @property
     def Info(self):
-        """The user’s UIN/UID to be deleted and the array corresponding to the user group ID.
+        r"""The user’s UIN/UID to be deleted and the array corresponding to the user group ID.
         :rtype: list of GroupIdOfUidInfo
         """
         return self._Info
@@ -8898,7 +8898,7 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
 
 class RemoveUserFromGroupResponse(AbstractModel):
-    """RemoveUserFromGroup response structure.
+    r"""RemoveUserFromGroup response structure.
 
     """
 
@@ -8911,7 +8911,7 @@ class RemoveUserFromGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8926,7 +8926,7 @@ class RemoveUserFromGroupResponse(AbstractModel):
 
 
 class RoleInfo(AbstractModel):
-    """Role details
+    r"""Role details
 
     """
 
@@ -8976,7 +8976,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoleId(self):
-        """Role ID
+        r"""Role ID
         :rtype: str
         """
         return self._RoleId
@@ -8987,7 +8987,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoleName(self):
-        """Role name
+        r"""Role name
         :rtype: str
         """
         return self._RoleName
@@ -8998,7 +8998,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyDocument(self):
-        """Role policy document
+        r"""Role policy document
         :rtype: str
         """
         return self._PolicyDocument
@@ -9009,7 +9009,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
-        """Role description
+        r"""Role description
         :rtype: str
         """
         return self._Description
@@ -9020,7 +9020,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
-        """Time role created
+        r"""Time role created
         :rtype: str
         """
         return self._AddTime
@@ -9031,7 +9031,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
-        """Time role last updated
+        r"""Time role last updated
         :rtype: str
         """
         return self._UpdateTime
@@ -9042,7 +9042,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConsoleLogin(self):
-        """If login is allowed for the role
+        r"""If login is allowed for the role
         :rtype: int
         """
         return self._ConsoleLogin
@@ -9053,7 +9053,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoleType(self):
-        """User role. Valid values: `user`, `system`, `service_linked`
+        r"""User role. Valid values: `user`, `system`, `service_linked`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9065,7 +9065,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionDuration(self):
-        """Valid period
+        r"""Valid period
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9077,7 +9077,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeletionTaskId(self):
-        """Task identifier for deleting a service-linked role 
+        r"""Task identifier for deleting a service-linked role 
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9089,7 +9089,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tags.
+        r"""Tags.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of RoleTags
         """
@@ -9101,7 +9101,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoleArn(self):
-        """The Role Arn 
+        r"""The Role Arn 
         :rtype: str
         """
         return self._RoleArn
@@ -9140,7 +9140,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class RoleTags(AbstractModel):
-    """Role tag type
+    r"""Role tag type
 
     """
 
@@ -9156,7 +9156,7 @@ class RoleTags(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key.
+        r"""Tag key.
         :rtype: str
         """
         return self._Key
@@ -9167,7 +9167,7 @@ class RoleTags(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value.
+        r"""Tag value.
         :rtype: str
         """
         return self._Value
@@ -9191,7 +9191,7 @@ class RoleTags(AbstractModel):
 
 
 class SAMLProviderInfo(AbstractModel):
-    """SAML identity provider
+    r"""SAML identity provider
 
     """
 
@@ -9213,7 +9213,7 @@ class SAMLProviderInfo(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -9224,7 +9224,7 @@ class SAMLProviderInfo(AbstractModel):
 
     @property
     def Description(self):
-        """SAML identity provider description
+        r"""SAML identity provider description
         :rtype: str
         """
         return self._Description
@@ -9235,7 +9235,7 @@ class SAMLProviderInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time SAML identity provider created
+        r"""Time SAML identity provider created
         :rtype: str
         """
         return self._CreateTime
@@ -9246,7 +9246,7 @@ class SAMLProviderInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """Time SAML identity provider last modified
+        r"""Time SAML identity provider last modified
         :rtype: str
         """
         return self._ModifyTime
@@ -9272,7 +9272,7 @@ class SAMLProviderInfo(AbstractModel):
 
 
 class SecretIdLastUsed(AbstractModel):
-    """The last time the key was used.
+    r"""The last time the key was used.
 
     """
 
@@ -9293,7 +9293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretId(self):
-        """Key ID.
+        r"""Key ID.
         :rtype: str
         """
         return self._SecretId
@@ -9304,7 +9304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastUsedDate(self):
-        """The date when the key ID was last used (the value is obtained one day later).
+        r"""The date when the key ID was last used (the value is obtained one day later).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -9316,7 +9316,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def LastSecretUsedDate(self):
-        """The most recent date the key was accessed
+        r"""The most recent date the key was accessed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9342,7 +9342,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SetDefaultPolicyVersionRequest(AbstractModel):
-    """SetDefaultPolicyVersion request structure.
+    r"""SetDefaultPolicyVersion request structure.
 
     """
 
@@ -9358,7 +9358,7 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -9369,7 +9369,7 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        """Policy version, which can be obtained through `ListPolicyVersions`.
+        r"""Policy version, which can be obtained through `ListPolicyVersions`.
         :rtype: int
         """
         return self._VersionId
@@ -9393,7 +9393,7 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
 
 
 class SetDefaultPolicyVersionResponse(AbstractModel):
-    """SetDefaultPolicyVersion response structure.
+    r"""SetDefaultPolicyVersion response structure.
 
     """
 
@@ -9406,7 +9406,7 @@ class SetDefaultPolicyVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9421,7 +9421,7 @@ class SetDefaultPolicyVersionResponse(AbstractModel):
 
 
 class SetMfaFlagRequest(AbstractModel):
-    """SetMfaFlag request structure.
+    r"""SetMfaFlag request structure.
 
     """
 
@@ -9440,7 +9440,7 @@ class SetMfaFlagRequest(AbstractModel):
 
     @property
     def OpUin(self):
-        """Sets user UIN
+        r"""Sets user UIN
         :rtype: int
         """
         return self._OpUin
@@ -9451,7 +9451,7 @@ class SetMfaFlagRequest(AbstractModel):
 
     @property
     def LoginFlag(self):
-        """Sets login protection
+        r"""Sets login protection
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
         """
         return self._LoginFlag
@@ -9462,7 +9462,7 @@ class SetMfaFlagRequest(AbstractModel):
 
     @property
     def ActionFlag(self):
-        """Sets operation protection
+        r"""Sets operation protection
         :rtype: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
         """
         return self._ActionFlag
@@ -9491,7 +9491,7 @@ class SetMfaFlagRequest(AbstractModel):
 
 
 class SetMfaFlagResponse(AbstractModel):
-    """SetMfaFlag response structure.
+    r"""SetMfaFlag response structure.
 
     """
 
@@ -9504,7 +9504,7 @@ class SetMfaFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9519,7 +9519,7 @@ class SetMfaFlagResponse(AbstractModel):
 
 
 class StrategyInfo(AbstractModel):
-    """Policy information
+    r"""Policy information
 
     """
 
@@ -9583,7 +9583,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: int
         """
         return self._PolicyId
@@ -9594,7 +9594,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
         :rtype: str
         """
         return self._PolicyName
@@ -9605,7 +9605,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
-        """Time policy created
+        r"""Time policy created
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -9617,7 +9617,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """Policy type. 1: Custom policy; 2: Preset policy
+        r"""Policy type. 1: Custom policy; 2: Preset policy
         :rtype: int
         """
         return self._Type
@@ -9628,7 +9628,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Description(self):
-        """Policy description
+        r"""Policy description
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -9640,7 +9640,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CreateMode(self):
-        """How the policy was created: 1: Via console; 2: Via syntax
+        r"""How the policy was created: 1: Via console; 2: Via syntax
         :rtype: int
         """
         return self._CreateMode
@@ -9651,7 +9651,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Attachments(self):
-        """Number of associated users
+        r"""Number of associated users
         :rtype: int
         """
         return self._Attachments
@@ -9662,7 +9662,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ServiceType(self):
-        """Product associated with the policy
+        r"""Product associated with the policy
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -9674,7 +9674,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsAttached(self):
-        """This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated
+        r"""This value should not be null when querying whether a marked entity has been associated with a policy. 0 indicates that no policy has been associated, while 1 indicates that a policy has been associated
         :rtype: int
         """
         return self._IsAttached
@@ -9685,7 +9685,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Deactived(self):
-        """Queries if the policy has been deactivated
+        r"""Queries if the policy has been deactivated
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9697,7 +9697,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeactivedDetail(self):
-        """List of deprecated products
+        r"""List of deprecated products
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -9709,7 +9709,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsServiceLinkedPolicy(self):
-        """The deletion task identifier used to check the deletion status of the service-linked role
+        r"""The deletion task identifier used to check the deletion status of the service-linked role
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9721,7 +9721,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachEntityCount(self):
-        """The number of entities associated with the policy.
+        r"""The number of entities associated with the policy.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9733,7 +9733,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AttachEntityBoundaryCount(self):
-        """The number of entities associated with the permission boundary.
+        r"""The number of entities associated with the permission boundary.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9745,7 +9745,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
-        """The last edited time.
+        r"""The last edited time.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9783,7 +9783,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class SubAccountInfo(AbstractModel):
-    """Sub-user information
+    r"""Sub-user information
 
     """
 
@@ -9825,7 +9825,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Uin(self):
-        """Sub-user user ID
+        r"""Sub-user user ID
         :rtype: int
         """
         return self._Uin
@@ -9836,7 +9836,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -9847,7 +9847,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Uid(self):
-        """Sub-user UID
+        r"""Sub-user UID
         :rtype: int
         """
         return self._Uid
@@ -9858,7 +9858,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Remark(self):
-        """Sub-user remarks
+        r"""Sub-user remarks
         :rtype: str
         """
         return self._Remark
@@ -9869,7 +9869,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConsoleLogin(self):
-        """If sub-user can log in to the console
+        r"""If sub-user can log in to the console
         :rtype: int
         """
         return self._ConsoleLogin
@@ -9880,7 +9880,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PhoneNum(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: str
         """
         return self._PhoneNum
@@ -9891,7 +9891,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CountryCode(self):
-        """Country/Area code
+        r"""Country/Area code
         :rtype: str
         """
         return self._CountryCode
@@ -9902,7 +9902,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Email(self):
-        """Email
+        r"""Email
         :rtype: str
         """
         return self._Email
@@ -9913,7 +9913,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9925,7 +9925,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NickName(self):
-        """Nickname.
+        r"""Nickname.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9958,7 +9958,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class SubAccountUser(AbstractModel):
-    """Sub-user information
+    r"""Sub-user information
 
     """
 
@@ -9993,7 +9993,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        """Sub-user ID
+        r"""Sub-user ID
         :rtype: int
         """
         return self._Uin
@@ -10004,7 +10004,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Sub-user name
+        r"""Sub-user name
         :rtype: str
         """
         return self._Name
@@ -10015,7 +10015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uid(self):
-        """Sub-user UID. UID is the unique identifier of a user who is a message recipient, while UIN is a unique identifier of a user.
+        r"""Sub-user UID. UID is the unique identifier of a user who is a message recipient, while UIN is a unique identifier of a user.
         :rtype: int
         """
         return self._Uid
@@ -10026,7 +10026,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Sub-user remarks
+        r"""Sub-user remarks
         :rtype: str
         """
         return self._Remark
@@ -10037,7 +10037,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10049,7 +10049,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserType(self):
-        """User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)
+        r"""User type (1: root account; 2: sub-user; 3: WeCom sub-user; 4: collaborator; 5: message recipient)
         :rtype: int
         """
         return self._UserType
@@ -10060,7 +10060,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastLoginIp(self):
-        """
+        r"""
         :rtype: str
         """
         return self._LastLoginIp
@@ -10071,7 +10071,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastLoginTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._LastLoginTime
@@ -10101,7 +10101,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TagRoleRequest(AbstractModel):
-    """TagRole request structure.
+    r"""TagRole request structure.
 
     """
 
@@ -10120,7 +10120,7 @@ class TagRoleRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag.
+        r"""Tag.
         :rtype: list of RoleTags
         """
         return self._Tags
@@ -10131,7 +10131,7 @@ class TagRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name. Specify either the role name or role ID.
+        r"""Role name. Specify either the role name or role ID.
         :rtype: str
         """
         return self._RoleName
@@ -10142,7 +10142,7 @@ class TagRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID. Specify either the role ID or role name.
+        r"""Role ID. Specify either the role ID or role name.
         :rtype: str
         """
         return self._RoleId
@@ -10172,7 +10172,7 @@ class TagRoleRequest(AbstractModel):
 
 
 class TagRoleResponse(AbstractModel):
-    """TagRole response structure.
+    r"""TagRole response structure.
 
     """
 
@@ -10185,7 +10185,7 @@ class TagRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10200,7 +10200,7 @@ class TagRoleResponse(AbstractModel):
 
 
 class UntagRoleRequest(AbstractModel):
-    """UntagRole request structure.
+    r"""UntagRole request structure.
 
     """
 
@@ -10219,7 +10219,7 @@ class UntagRoleRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """Tag key.
+        r"""Tag key.
         :rtype: list of str
         """
         return self._TagKeys
@@ -10230,7 +10230,7 @@ class UntagRoleRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name. Specify either the role name or role ID.
+        r"""Role name. Specify either the role name or role ID.
         :rtype: str
         """
         return self._RoleName
@@ -10241,7 +10241,7 @@ class UntagRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID. Specify either the role ID or role name.
+        r"""Role ID. Specify either the role ID or role name.
         :rtype: str
         """
         return self._RoleId
@@ -10266,7 +10266,7 @@ class UntagRoleRequest(AbstractModel):
 
 
 class UntagRoleResponse(AbstractModel):
-    """UntagRole response structure.
+    r"""UntagRole response structure.
 
     """
 
@@ -10279,7 +10279,7 @@ class UntagRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10294,7 +10294,7 @@ class UntagRoleResponse(AbstractModel):
 
 
 class UpdateAccessKeyRequest(AbstractModel):
-    """UpdateAccessKey request structure.
+    r"""UpdateAccessKey request structure.
 
     """
 
@@ -10313,7 +10313,7 @@ class UpdateAccessKeyRequest(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        """ID of the specified access key that needs to be updated
+        r"""ID of the specified access key that needs to be updated
         :rtype: str
         """
         return self._AccessKeyId
@@ -10324,7 +10324,7 @@ class UpdateAccessKeyRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Key status. Valid values: `Active` (activated), `Inactive` (not activated).
+        r"""Key status. Valid values: `Active` (activated), `Inactive` (not activated).
         :rtype: str
         """
         return self._Status
@@ -10335,7 +10335,7 @@ class UpdateAccessKeyRequest(AbstractModel):
 
     @property
     def TargetUin(self):
-        """UIN of the specified user. If this parameter is left empty, the access key will be updated for the current user by default.
+        r"""UIN of the specified user. If this parameter is left empty, the access key will be updated for the current user by default.
         :rtype: int
         """
         return self._TargetUin
@@ -10360,7 +10360,7 @@ class UpdateAccessKeyRequest(AbstractModel):
 
 
 class UpdateAccessKeyResponse(AbstractModel):
-    """UpdateAccessKey response structure.
+    r"""UpdateAccessKey response structure.
 
     """
 
@@ -10373,7 +10373,7 @@ class UpdateAccessKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10388,7 +10388,7 @@ class UpdateAccessKeyResponse(AbstractModel):
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):
-    """UpdateAssumeRolePolicy request structure.
+    r"""UpdateAssumeRolePolicy request structure.
 
     """
 
@@ -10407,7 +10407,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """Policy document
+        r"""Policy document
         :rtype: str
         """
         return self._PolicyDocument
@@ -10418,7 +10418,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role ID, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleId
@@ -10429,7 +10429,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role name, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleName
@@ -10454,7 +10454,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
 
 class UpdateAssumeRolePolicyResponse(AbstractModel):
-    """UpdateAssumeRolePolicy response structure.
+    r"""UpdateAssumeRolePolicy response structure.
 
     """
 
@@ -10467,7 +10467,7 @@ class UpdateAssumeRolePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10482,7 +10482,7 @@ class UpdateAssumeRolePolicyResponse(AbstractModel):
 
 
 class UpdateGroupRequest(AbstractModel):
-    """UpdateGroup request structure.
+    r"""UpdateGroup request structure.
 
     """
 
@@ -10501,7 +10501,7 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """User Group ID
+        r"""User Group ID
         :rtype: int
         """
         return self._GroupId
@@ -10512,7 +10512,7 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """User Group name
+        r"""User Group name
         :rtype: str
         """
         return self._GroupName
@@ -10523,7 +10523,7 @@ class UpdateGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """User Group description
+        r"""User Group description
         :rtype: str
         """
         return self._Remark
@@ -10548,7 +10548,7 @@ class UpdateGroupRequest(AbstractModel):
 
 
 class UpdateGroupResponse(AbstractModel):
-    """UpdateGroup response structure.
+    r"""UpdateGroup response structure.
 
     """
 
@@ -10561,7 +10561,7 @@ class UpdateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10576,7 +10576,7 @@ class UpdateGroupResponse(AbstractModel):
 
 
 class UpdateOIDCConfigRequest(AbstractModel):
-    """UpdateOIDCConfig request structure.
+    r"""UpdateOIDCConfig request structure.
 
     """
 
@@ -10601,7 +10601,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        """IdP URL.
+        r"""IdP URL.
         :rtype: str
         """
         return self._IdentityUrl
@@ -10612,7 +10612,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        """Public key for signature, which must be Base64-encoded.
+        r"""Public key for signature, which must be Base64-encoded.
         :rtype: str
         """
         return self._IdentityKey
@@ -10623,7 +10623,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        """Client ID.
+        r"""Client ID.
         :rtype: list of str
         """
         return self._ClientId
@@ -10634,7 +10634,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -10645,7 +10645,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -10672,7 +10672,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
 
 class UpdateOIDCConfigResponse(AbstractModel):
-    """UpdateOIDCConfig response structure.
+    r"""UpdateOIDCConfig response structure.
 
     """
 
@@ -10685,7 +10685,7 @@ class UpdateOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10700,7 +10700,7 @@ class UpdateOIDCConfigResponse(AbstractModel):
 
 
 class UpdatePolicyRequest(AbstractModel):
-    """UpdatePolicy request structure.
+    r"""UpdatePolicy request structure.
 
     """
 
@@ -10725,7 +10725,7 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID. Either `PolicyId` or `PolicyName` must be entered
+        r"""Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :rtype: int
         """
         return self._PolicyId
@@ -10736,7 +10736,7 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Policy name. Either `PolicyName` or `PolicyId` must be entered
+        r"""Policy name. Either `PolicyName` or `PolicyId` must be entered
         :rtype: str
         """
         return self._PolicyName
@@ -10747,7 +10747,7 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Policy description
+        r"""Policy description
         :rtype: str
         """
         return self._Description
@@ -10758,7 +10758,7 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def PolicyDocument(self):
-        """Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).
+        r"""Policy documentation, for example: `{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}`, where `principal` is used to specify the service that is authorized to use the role. For more information about this parameter, see **RoleInfo** under **Output Parameters** in the [GetRole](https://intl.cloud.tencent.com/document/product/598/36221?from_cn_redirect=1).
         :rtype: str
         """
         return self._PolicyDocument
@@ -10769,7 +10769,7 @@ class UpdatePolicyRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """Preset policy remark
+        r"""Preset policy remark
         :rtype: str
         """
         return self._Alias
@@ -10796,7 +10796,7 @@ class UpdatePolicyRequest(AbstractModel):
 
 
 class UpdatePolicyResponse(AbstractModel):
-    """UpdatePolicy response structure.
+    r"""UpdatePolicy response structure.
 
     """
 
@@ -10813,7 +10813,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Policy ID, which will be returned only if the input parameter is `PolicyName`
+        r"""Policy ID, which will be returned only if the input parameter is `PolicyName`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10825,7 +10825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10841,7 +10841,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateRoleConsoleLoginRequest(AbstractModel):
-    """UpdateRoleConsoleLogin request structure.
+    r"""UpdateRoleConsoleLogin request structure.
 
     """
 
@@ -10860,7 +10860,7 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
 
     @property
     def ConsoleLogin(self):
-        """Whether login is allowed. 1: yes, 0: no
+        r"""Whether login is allowed. 1: yes, 0: no
         :rtype: int
         """
         return self._ConsoleLogin
@@ -10871,7 +10871,7 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID. Use either `RoleId` or `RoleName` as the input parameter.
+        r"""Role ID. Use either `RoleId` or `RoleName` as the input parameter.
         :rtype: int
         """
         return self._RoleId
@@ -10882,7 +10882,7 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name. Use either `RoleId` or `RoleName` as the input parameter.
+        r"""Role name. Use either `RoleId` or `RoleName` as the input parameter.
         :rtype: str
         """
         return self._RoleName
@@ -10907,7 +10907,7 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
 
 
 class UpdateRoleConsoleLoginResponse(AbstractModel):
-    """UpdateRoleConsoleLogin response structure.
+    r"""UpdateRoleConsoleLogin response structure.
 
     """
 
@@ -10920,7 +10920,7 @@ class UpdateRoleConsoleLoginResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10935,7 +10935,7 @@ class UpdateRoleConsoleLoginResponse(AbstractModel):
 
 
 class UpdateRoleDescriptionRequest(AbstractModel):
-    """UpdateRoleDescription request structure.
+    r"""UpdateRoleDescription request structure.
 
     """
 
@@ -10954,7 +10954,7 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Role description
+        r"""Role description
         :rtype: str
         """
         return self._Description
@@ -10965,7 +10965,7 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        """Role ID, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role ID, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleId
@@ -10976,7 +10976,7 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name, used to specify a role. Input either `RoleId` or `RoleName`
+        r"""Role name, used to specify a role. Input either `RoleId` or `RoleName`
         :rtype: str
         """
         return self._RoleName
@@ -11001,7 +11001,7 @@ class UpdateRoleDescriptionRequest(AbstractModel):
 
 
 class UpdateRoleDescriptionResponse(AbstractModel):
-    """UpdateRoleDescription response structure.
+    r"""UpdateRoleDescription response structure.
 
     """
 
@@ -11014,7 +11014,7 @@ class UpdateRoleDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11029,7 +11029,7 @@ class UpdateRoleDescriptionResponse(AbstractModel):
 
 
 class UpdateSAMLProviderRequest(AbstractModel):
-    """UpdateSAMLProvider request structure.
+    r"""UpdateSAMLProvider request structure.
 
     """
 
@@ -11048,7 +11048,7 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
     @property
     def Name(self):
-        """SAML identity provider name
+        r"""SAML identity provider name
         :rtype: str
         """
         return self._Name
@@ -11059,7 +11059,7 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
     @property
     def Description(self):
-        """SAML identity provider description
+        r"""SAML identity provider description
         :rtype: str
         """
         return self._Description
@@ -11070,7 +11070,7 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
     @property
     def SAMLMetadataDocument(self):
-        """SAML identity provider metadata document (Base64)
+        r"""SAML identity provider metadata document (Base64)
         :rtype: str
         """
         return self._SAMLMetadataDocument
@@ -11095,7 +11095,7 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
 
 class UpdateSAMLProviderResponse(AbstractModel):
-    """UpdateSAMLProvider response structure.
+    r"""UpdateSAMLProvider response structure.
 
     """
 
@@ -11108,7 +11108,7 @@ class UpdateSAMLProviderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11123,7 +11123,7 @@ class UpdateSAMLProviderResponse(AbstractModel):
 
 
 class UpdateUserOIDCConfigRequest(AbstractModel):
-    """UpdateUserOIDCConfig request structure.
+    r"""UpdateUserOIDCConfig request structure.
 
     """
 
@@ -11161,7 +11161,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def IdentityUrl(self):
-        """OpenID Connect IdP URL.
+        r"""OpenID Connect IdP URL.
 It corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.
         :rtype: str
         """
@@ -11173,7 +11173,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def IdentityKey(self):
-        """Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
+        r"""Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.
         :rtype: str
         """
         return self._IdentityKey
@@ -11184,7 +11184,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ClientId(self):
-        """Client ID registered with the OpenID Connect IdP.
+        r"""Client ID registered with the OpenID Connect IdP.
         :rtype: str
         """
         return self._ClientId
@@ -11195,7 +11195,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def AuthorizationEndpoint(self):
-        """OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
+        r"""OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.
         :rtype: str
         """
         return self._AuthorizationEndpoint
@@ -11206,7 +11206,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ResponseType(self):
-        """Authorization response type, which is always `id_token`.
+        r"""Authorization response type, which is always `id_token`.
         :rtype: str
         """
         return self._ResponseType
@@ -11217,7 +11217,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def ResponseMode(self):
-        """Authorization response mode. Valid values: form_post (recommended); fragment.
+        r"""Authorization response mode. Valid values: form_post (recommended); fragment.
         :rtype: str
         """
         return self._ResponseMode
@@ -11228,7 +11228,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def MappingFiled(self):
-        """Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
+        r"""Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field
         :rtype: str
         """
         return self._MappingFiled
@@ -11239,7 +11239,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def Scope(self):
-        """Authorization information scope. Valid values: openid (default); email; profile.
+        r"""Authorization information scope. Valid values: openid (default); email; profile.
         :rtype: list of str
         """
         return self._Scope
@@ -11250,7 +11250,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -11281,7 +11281,7 @@ It corresponds to the value of the `issuer` field in the `Openid-configuration` 
 
 
 class UpdateUserOIDCConfigResponse(AbstractModel):
-    """UpdateUserOIDCConfig response structure.
+    r"""UpdateUserOIDCConfig response structure.
 
     """
 
@@ -11294,7 +11294,7 @@ class UpdateUserOIDCConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11309,7 +11309,7 @@ class UpdateUserOIDCConfigResponse(AbstractModel):
 
 
 class UpdateUserRequest(AbstractModel):
-    """UpdateUser request structure.
+    r"""UpdateUser request structure.
 
     """
 
@@ -11343,7 +11343,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Sub-user username
+        r"""Sub-user username
         :rtype: str
         """
         return self._Name
@@ -11354,7 +11354,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Sub-user remarks
+        r"""Sub-user remarks
         :rtype: str
         """
         return self._Remark
@@ -11365,7 +11365,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def ConsoleLogin(self):
-        """Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
+        r"""Whether or not the sub-user is allowed to log in to the console. 0: No; 1: Yes.
         :rtype: int
         """
         return self._ConsoleLogin
@@ -11376,7 +11376,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
+        r"""Sub-user's console login password. If no password rules have been set, the password must have a minimum of 8 characters containing uppercase letters, lowercase letters, digits, and special characters by default. This parameter will be valid only when the sub-user is allowed to log in to the console. If it is not specified and console login is allowed, the system will automatically generate a random 32-character password that contains uppercase letters, lowercase letters, digits, and special characters.
         :rtype: str
         """
         return self._Password
@@ -11387,7 +11387,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def NeedResetPassword(self):
-        """If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
+        r"""If the sub-user needs to reset their password when they next log in to the console. 0: No; 1: Yes.
         :rtype: int
         """
         return self._NeedResetPassword
@@ -11398,7 +11398,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def PhoneNum(self):
-        """Mobile number
+        r"""Mobile number
         :rtype: str
         """
         return self._PhoneNum
@@ -11409,7 +11409,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def CountryCode(self):
-        """Country/Area Code
+        r"""Country/Area Code
         :rtype: str
         """
         return self._CountryCode
@@ -11420,7 +11420,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        """Email
+        r"""Email
         :rtype: str
         """
         return self._Email
@@ -11450,7 +11450,7 @@ class UpdateUserRequest(AbstractModel):
 
 
 class UpdateUserResponse(AbstractModel):
-    """UpdateUser response structure.
+    r"""UpdateUser response structure.
 
     """
 
@@ -11463,7 +11463,7 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11478,7 +11478,7 @@ class UpdateUserResponse(AbstractModel):
 
 
 class UpdateUserSAMLConfigRequest(AbstractModel):
-    """UpdateUserSAMLConfig request structure.
+    r"""UpdateUserSAMLConfig request structure.
 
     """
 
@@ -11494,7 +11494,7 @@ class UpdateUserSAMLConfigRequest(AbstractModel):
 
     @property
     def Operate(self):
-        """Type of the modification operation. `enable`: enable, `disable`: disable, `updateSAML`: modify metadata document.
+        r"""Type of the modification operation. `enable`: enable, `disable`: disable, `updateSAML`: modify metadata document.
         :rtype: str
         """
         return self._Operate
@@ -11505,7 +11505,7 @@ class UpdateUserSAMLConfigRequest(AbstractModel):
 
     @property
     def SAMLMetadataDocument(self):
-        """Metadata document, which must be Base64 encoded. This parameter is required only when the value of `Operate` is `updateSAML`.
+        r"""Metadata document, which must be Base64 encoded. This parameter is required only when the value of `Operate` is `updateSAML`.
         :rtype: str
         """
         return self._SAMLMetadataDocument
@@ -11529,7 +11529,7 @@ class UpdateUserSAMLConfigRequest(AbstractModel):
 
 
 class UpdateUserSAMLConfigResponse(AbstractModel):
-    """UpdateUserSAMLConfig response structure.
+    r"""UpdateUserSAMLConfig response structure.
 
     """
 
@@ -11542,7 +11542,7 @@ class UpdateUserSAMLConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

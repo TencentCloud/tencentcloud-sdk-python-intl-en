@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AllocateCustomerCreditRequest(AbstractModel):
-    """AllocateCustomerCredit request structure.
+    r"""AllocateCustomerCredit request structure.
 
     """
 
@@ -35,7 +35,7 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
     @property
     def AddedCredit(self):
-        """Specific value of the credit allocated to the customer
+        r"""Specific value of the credit allocated to the customer
         :rtype: float
         """
         return self._AddedCredit
@@ -46,7 +46,7 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
     @property
     def ClientUin(self):
-        """Customer UIN
+        r"""Customer UIN
         :rtype: int
         """
         return self._ClientUin
@@ -70,7 +70,7 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
 
 class AllocateCustomerCreditResponse(AbstractModel):
-    """AllocateCustomerCredit response structure.
+    r"""AllocateCustomerCredit response structure.
 
     """
 
@@ -89,7 +89,7 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def TotalCredit(self):
-        """The updated total credit
+        r"""The updated total credit
         :rtype: float
         """
         return self._TotalCredit
@@ -100,7 +100,7 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def RemainingCredit(self):
-        """The updated available credit
+        r"""The updated available credit
         :rtype: float
         """
         return self._RemainingCredit
@@ -111,7 +111,7 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -128,7 +128,7 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
 
 class CountryCodeItem(AbstractModel):
-    """Country/region code list
+    r"""Country/region code list
 
     """
 
@@ -153,7 +153,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def EnName(self):
-        """Country/region name in English
+        r"""Country/region name in English
         :rtype: str
         """
         return self._EnName
@@ -164,7 +164,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def Name(self):
-        """Country/region name in Chinese
+        r"""Country/region name in Chinese
         :rtype: str
         """
         return self._Name
@@ -175,7 +175,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS2(self):
-        """IOS2 standard country/region code
+        r"""IOS2 standard country/region code
         :rtype: str
         """
         return self._IOS2
@@ -186,7 +186,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS3(self):
-        """IOS3 standard country/region code
+        r"""IOS3 standard country/region code
         :rtype: str
         """
         return self._IOS3
@@ -197,7 +197,7 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def Code(self):
-        """Phone code
+        r"""Phone code
         :rtype: str
         """
         return self._Code
@@ -224,7 +224,7 @@ class CountryCodeItem(AbstractModel):
 
 
 class CreateAccountRequest(AbstractModel):
-    """CreateAccount request structure.
+    r"""CreateAccount request structure.
 
     """
 
@@ -262,7 +262,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def AccountType(self):
-        """Account type of a new customer. Valid values: `personal`, `company`.
+        r"""Account type of a new customer. Valid values: `personal`, `company`.
         :rtype: str
         """
         return self._AccountType
@@ -273,7 +273,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Mail(self):
-        """Registered email address, which should be valid and correct.
+        r"""Registered email address, which should be valid and correct.
 For example, account@qq.com.
         :rtype: str
         """
@@ -285,7 +285,7 @@ For example, account@qq.com.
 
     @property
     def Password(self):
-        """Account password
+        r"""Account password
 Length limit: 8-20 characters
 A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.
         :rtype: str
@@ -298,7 +298,7 @@ A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spac
 
     @property
     def ConfirmPassword(self):
-        """Confirm the password. It must be the same as the `Password` field.
+        r"""Confirm the password. It must be the same as the `Password` field.
         :rtype: str
         """
         return self._ConfirmPassword
@@ -309,7 +309,7 @@ A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spac
 
     @property
     def PhoneNum(self):
-        """Customer mobile number, which should be valid and correct.
+        r"""Customer mobile number, which should be valid and correct.
 A global mobile number within 1-32 digits is allowed, such as 18888888888.
         :rtype: str
         """
@@ -321,7 +321,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def CountryCode(self):
-        """Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.
+        r"""Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.
         :rtype: str
         """
         return self._CountryCode
@@ -332,7 +332,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Area(self):
-        """Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        r"""Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
         :rtype: str
         """
         return self._Area
@@ -343,7 +343,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Extended(self):
-        """Expanded field, which is left empty by default.
+        r"""Expanded field, which is left empty by default.
         :rtype: str
         """
         return self._Extended
@@ -373,7 +373,7 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
 
 class CreateAccountResponse(AbstractModel):
-    """CreateAccount response structure.
+    r"""CreateAccount response structure.
 
     """
 
@@ -389,7 +389,7 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def Uin(self):
-        """Account UIN
+        r"""Account UIN
         :rtype: str
         """
         return self._Uin
@@ -400,7 +400,7 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -416,13 +416,13 @@ class CreateAccountResponse(AbstractModel):
 
 
 class GetCountryCodesRequest(AbstractModel):
-    """GetCountryCodes request structure.
+    r"""GetCountryCodes request structure.
 
     """
 
 
 class GetCountryCodesResponse(AbstractModel):
-    """GetCountryCodes response structure.
+    r"""GetCountryCodes response structure.
 
     """
 
@@ -438,7 +438,7 @@ class GetCountryCodesResponse(AbstractModel):
 
     @property
     def Data(self):
-        """List of country/region codes
+        r"""List of country/region codes
         :rtype: list of CountryCodeItem
         """
         return self._Data
@@ -449,7 +449,7 @@ class GetCountryCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -470,7 +470,7 @@ class GetCountryCodesResponse(AbstractModel):
 
 
 class QueryCreditAllocationHistoryData(AbstractModel):
-    """Returned information for querying the credit allocation records of reseller’s customer
+    r"""Returned information for querying the credit allocation records of reseller’s customer
 
     """
 
@@ -492,7 +492,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def AllocatedTime(self):
-        """Allocation time
+        r"""Allocation time
         :rtype: str
         """
         return self._AllocatedTime
@@ -503,7 +503,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -514,7 +514,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def Credit(self):
-        """Allocated credit value
+        r"""Allocated credit value
         :rtype: float
         """
         return self._Credit
@@ -525,7 +525,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def AllocatedCredit(self):
-        """The allocated total credit
+        r"""The allocated total credit
         :rtype: float
         """
         return self._AllocatedCredit
@@ -551,7 +551,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
 
 class QueryCreditAllocationHistoryRequest(AbstractModel):
-    """QueryCreditAllocationHistory request structure.
+    r"""QueryCreditAllocationHistory request structure.
 
     """
 
@@ -570,7 +570,7 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def ClientUin(self):
-        """Customer UIN
+        r"""Customer UIN
         :rtype: int
         """
         return self._ClientUin
@@ -581,7 +581,7 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Page
@@ -592,7 +592,7 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of data entries per page
+        r"""Number of data entries per page
         :rtype: int
         """
         return self._PageSize
@@ -617,7 +617,7 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
 
 class QueryCreditAllocationHistoryResponse(AbstractModel):
-    """QueryCreditAllocationHistory response structure.
+    r"""QueryCreditAllocationHistory response structure.
 
     """
 
@@ -638,7 +638,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number of records
+        r"""Total number of records
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -650,7 +650,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def History(self):
-        """List of record details
+        r"""List of record details
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of QueryCreditAllocationHistoryData
         """
@@ -662,7 +662,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -684,7 +684,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class QueryCustomersCreditData(AbstractModel):
-    """Complex type of output parameters for querying customer's credit
+    r"""Complex type of output parameters for querying customer's credit
 
     """
 
@@ -733,7 +733,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -744,7 +744,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Type(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Type
@@ -755,7 +755,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Mobile(self):
-        """Phone
+        r"""Phone
         :rtype: str
         """
         return self._Mobile
@@ -766,7 +766,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Email(self):
-        """Email
+        r"""Email
         :rtype: str
         """
         return self._Email
@@ -777,7 +777,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Arrears(self):
-        """Overdue payment flag
+        r"""Overdue payment flag
         :rtype: str
         """
         return self._Arrears
@@ -788,7 +788,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def AssociationTime(self):
-        """Binding time
+        r"""Binding time
         :rtype: str
         """
         return self._AssociationTime
@@ -799,7 +799,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def RecentExpiry(self):
-        """Expiration time
+        r"""Expiration time
         :rtype: str
         """
         return self._RecentExpiry
@@ -810,7 +810,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def ClientUin(self):
-        """The UIN of reseller’s customer
+        r"""The UIN of reseller’s customer
         :rtype: int
         """
         return self._ClientUin
@@ -821,7 +821,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Credit(self):
-        """Credit granted to reseller’s customer
+        r"""Credit granted to reseller’s customer
         :rtype: float
         """
         return self._Credit
@@ -832,7 +832,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def RemainingCredit(self):
-        """The remaining credit of reseller’s customer
+        r"""The remaining credit of reseller’s customer
         :rtype: float
         """
         return self._RemainingCredit
@@ -843,7 +843,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def IdentifyType(self):
-        """0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.
+        r"""0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.
         :rtype: int
         """
         return self._IdentifyType
@@ -854,7 +854,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Remark(self):
-        """Customer remarks
+        r"""Customer remarks
         :rtype: str
         """
         return self._Remark
@@ -865,7 +865,7 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Force(self):
-        """Forced status
+        r"""Forced status
         :rtype: int
         """
         return self._Force
@@ -900,7 +900,7 @@ class QueryCustomersCreditData(AbstractModel):
 
 
 class QueryCustomersCreditRequest(AbstractModel):
-    """QueryCustomersCredit request structure.
+    r"""QueryCustomersCredit request structure.
 
     """
 
@@ -925,7 +925,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def FilterType(self):
-        """Search condition type. You can only search by UIN, name, or remarks.
+        r"""Search condition type. You can only search by UIN, name, or remarks.
         :rtype: str
         """
         return self._FilterType
@@ -936,7 +936,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Search condition
+        r"""Search condition
         :rtype: str
         """
         return self._Filter
@@ -947,7 +947,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Page(self):
-        """A pagination parameter that specifies the current page number, with a value starting from 1.
+        r"""A pagination parameter that specifies the current page number, with a value starting from 1.
         :rtype: int
         """
         return self._Page
@@ -958,7 +958,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """A pagination parameter that specifies the number of entries per page.
+        r"""A pagination parameter that specifies the number of entries per page.
         :rtype: int
         """
         return self._PageSize
@@ -969,7 +969,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Order(self):
-        """A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
+        r"""A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
         :rtype: str
         """
         return self._Order
@@ -996,7 +996,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
 
 class QueryCustomersCreditResponse(AbstractModel):
-    """QueryCustomersCredit response structure.
+    r"""QueryCustomersCredit response structure.
 
     """
 
@@ -1016,7 +1016,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Queries the list of customers
+        r"""Queries the list of customers
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of QueryCustomersCreditData
         """
@@ -1028,7 +1028,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Number of customers
+        r"""Number of customers
         :rtype: int
         """
         return self._Total
@@ -1039,7 +1039,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1061,13 +1061,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class QueryPartnerCreditRequest(AbstractModel):
-    """QueryPartnerCredit request structure.
+    r"""QueryPartnerCredit request structure.
 
     """
 
 
 class QueryPartnerCreditResponse(AbstractModel):
-    """QueryPartnerCredit response structure.
+    r"""QueryPartnerCredit response structure.
 
     """
 
@@ -1089,7 +1089,7 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def AllocatedCredit(self):
-        """Allocated credit
+        r"""Allocated credit
         :rtype: float
         """
         return self._AllocatedCredit
@@ -1100,7 +1100,7 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def TotalCredit(self):
-        """Total credit
+        r"""Total credit
         :rtype: float
         """
         return self._TotalCredit
@@ -1111,7 +1111,7 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def RemainingCredit(self):
-        """Remaining credit
+        r"""Remaining credit
         :rtype: float
         """
         return self._RemainingCredit
@@ -1122,7 +1122,7 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

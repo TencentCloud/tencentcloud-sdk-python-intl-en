@@ -27,7 +27,7 @@ class DomainClient(AbstractClient):
 
 
     def BatchModifyIntlDomainDNS(self, request):
-        """This API is used to bulk modify DNS servers for domains.
+        r"""This API is used to bulk modify DNS servers for domains.
 
         :param request: Request instance for BatchModifyIntlDomainDNS.
         :type request: :class:`tencentcloud.domain.v20180808.models.BatchModifyIntlDomainDNSRequest`
@@ -50,7 +50,7 @@ class DomainClient(AbstractClient):
 
 
     def BatchModifyIntlDomainInfo(self, request):
-        """This API is used to bulk modify registrant information.
+        r"""This API is used to bulk modify registrant information.
 
         :param request: Request instance for BatchModifyIntlDomainInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.BatchModifyIntlDomainInfoRequest`
@@ -73,7 +73,7 @@ class DomainClient(AbstractClient):
 
 
     def CheckIntlDomainNew(self, request):
-        """This API is used to check whether a domain is available for registration.
+        r"""This API is used to check whether a domain is available for registration.
 
         :param request: Request instance for CheckIntlDomainNew.
         :type request: :class:`tencentcloud.domain.v20180808.models.CheckIntlDomainNewRequest`
@@ -96,7 +96,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateIntlDomainBatch(self, request):
-        """This API is used to bulk register domains.
+        r"""This API is used to bulk register domains.
 
         :param request: Request instance for CreateIntlDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateIntlDomainBatchRequest`
@@ -119,7 +119,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateIntlPhoneEmail(self, request):
-        """This API is used to verify a mobile number or an email address via a verification code.
+        r"""This API is used to verify a mobile number or an email address via a verification code.
 
         :param request: Request instance for CreateIntlPhoneEmail.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateIntlPhoneEmailRequest`
@@ -142,7 +142,7 @@ class DomainClient(AbstractClient):
 
 
     def CreateIntlTemplate(self, request):
-        """This API is used to add a registrant profile.
+        r"""This API is used to add a registrant profile.
 
         :param request: Request instance for CreateIntlTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateIntlTemplateRequest`
@@ -165,7 +165,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteIntlPhoneEmail(self, request):
-        """This API is used to delete a mobile number or an email address.
+        r"""This API is used to delete a mobile number or an email address.
 
         :param request: Request instance for DeleteIntlPhoneEmail.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteIntlPhoneEmailRequest`
@@ -188,7 +188,7 @@ class DomainClient(AbstractClient):
 
 
     def DeleteIntlTemplate(self, request):
-        """This API is used to delete a registrant profile.
+        r"""This API is used to delete a registrant profile.
 
         :param request: Request instance for DeleteIntlTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteIntlTemplateRequest`
@@ -211,7 +211,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlBatchDetailStatus(self, request):
-        """This API is used to query the status of a bulk task.
+        r"""This API is used to query the status of a bulk task.
 
         :param request: Request instance for DescribeIntlBatchDetailStatus.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlBatchDetailStatusRequest`
@@ -234,7 +234,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlBatchOperationLogs(self, request):
-        """This API is used to query the logs of bulk domain purchase.
+        r"""This API is used to query the logs of bulk domain purchase.
 
         :param request: Request instance for DescribeIntlBatchOperationLogs.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlBatchOperationLogsRequest`
@@ -257,7 +257,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlDomain(self, request):
-        """This API is used to query domain information.
+        r"""This API is used to query domain information.
 
         :param request: Request instance for DescribeIntlDomain.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlDomainRequest`
@@ -280,7 +280,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlDomainBatchDetails(self, request):
-        """This API is used to get the log details of bulk domain purchase.
+        r"""This API is used to get the log details of bulk domain purchase.
 
         :param request: Request instance for DescribeIntlDomainBatchDetails.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlDomainBatchDetailsRequest`
@@ -303,7 +303,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlDomainList(self, request):
-        """This API is used to query the "My domains" list.
+        r"""This API is used to query the "My domains" list.
 
         :param request: Request instance for DescribeIntlDomainList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlDomainListRequest`
@@ -326,7 +326,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlDomainPriceNewList(self, request):
-        """This API is used to get the price list by domain suffix.
+        r"""This API is used to get the price list by domain suffix.
 
         :param request: Request instance for DescribeIntlDomainPriceNewList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlDomainPriceNewListRequest`
@@ -349,7 +349,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlPhoneEmailList(self, request):
-        """This API is used to get the list of verified mobile numbers and email addresses.
+        r"""This API is used to get the list of verified mobile numbers and email addresses.
 
         :param request: Request instance for DescribeIntlPhoneEmailList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlPhoneEmailListRequest`
@@ -372,7 +372,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlTemplate(self, request):
-        """This API is used to get the details of a registrant profile.
+        r"""This API is used to get the details of a registrant profile.
 
         :param request: Request instance for DescribeIntlTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlTemplateRequest`
@@ -395,7 +395,7 @@ class DomainClient(AbstractClient):
 
 
     def DescribeIntlTemplateList(self, request):
-        """This API is used to get the list of registrant profiles.
+        r"""This API is used to get the list of registrant profiles.
 
         :param request: Request instance for DescribeIntlTemplateList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeIntlTemplateListRequest`
@@ -418,7 +418,7 @@ class DomainClient(AbstractClient):
 
 
     def ModifyOwnerIntlBatch(self, request):
-        """This API is used to bulk transfer domains to another account.
+        r"""This API is used to bulk transfer domains to another account.
 
         :param request: Request instance for ModifyOwnerIntlBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyOwnerIntlBatchRequest`
@@ -441,7 +441,7 @@ class DomainClient(AbstractClient):
 
 
     def RenewIntlDomainBatch(self, request):
-        """This API is used to bulk renew domains.
+        r"""This API is used to bulk renew domains.
 
         :param request: Request instance for RenewIntlDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.RenewIntlDomainBatchRequest`
@@ -464,7 +464,7 @@ class DomainClient(AbstractClient):
 
 
     def SendIntlPhoneEmailCode(self, request):
-        """This API is used to send a verification code to a mobile number or an email address.
+        r"""This API is used to send a verification code to a mobile number or an email address.
 
         :param request: Request instance for SendIntlPhoneEmailCode.
         :type request: :class:`tencentcloud.domain.v20180808.models.SendIntlPhoneEmailCodeRequest`
@@ -487,7 +487,7 @@ class DomainClient(AbstractClient):
 
 
     def SetIntlDomainAutoRenew(self, request):
-        """This API is used to set auto-renewal.
+        r"""This API is used to set auto-renewal.
 
         :param request: Request instance for SetIntlDomainAutoRenew.
         :type request: :class:`tencentcloud.domain.v20180808.models.SetIntlDomainAutoRenewRequest`
@@ -510,7 +510,7 @@ class DomainClient(AbstractClient):
 
 
     def TransferInIntlDomainBatch(self, request):
-        """This API is used to bulk transfer domains in.
+        r"""This API is used to bulk transfer domains in.
 
         :param request: Request instance for TransferInIntlDomainBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.TransferInIntlDomainBatchRequest`
@@ -533,7 +533,7 @@ class DomainClient(AbstractClient):
 
 
     def TransferProhibitionIntlBatch(self, request):
-        """This API is used to bulk set transfer prohibition for domains.
+        r"""This API is used to bulk set transfer prohibition for domains.
 
         :param request: Request instance for TransferProhibitionIntlBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.TransferProhibitionIntlBatchRequest`
@@ -556,7 +556,7 @@ class DomainClient(AbstractClient):
 
 
     def UpdateProhibitionIntlBatch(self, request):
-        """This API is used to bulk set update prohibition for domains.
+        r"""This API is used to bulk set update prohibition for domains.
 
         :param request: Request instance for UpdateProhibitionIntlBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.UpdateProhibitionIntlBatchRequest`

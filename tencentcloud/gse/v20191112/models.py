@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CcnInfo(AbstractModel):
-    """CCN information
+    r"""CCN information
 
     """
 
@@ -35,7 +35,7 @@ class CcnInfo(AbstractModel):
 
     @property
     def AccountId(self):
-        """Account of the CCN instance owner
+        r"""Account of the CCN instance owner
         :rtype: str
         """
         return self._AccountId
@@ -46,7 +46,7 @@ class CcnInfo(AbstractModel):
 
     @property
     def CcnId(self):
-        """CCN ID
+        r"""CCN ID
         :rtype: str
         """
         return self._CcnId
@@ -70,7 +70,7 @@ class CcnInfo(AbstractModel):
 
 
 class CopyFleetRequest(AbstractModel):
-    """CopyFleet request structure.
+    r"""CopyFleet request structure.
 
     """
 
@@ -140,7 +140,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """Server fleet ID
+        r"""Server fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -151,7 +151,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def CopyNumber(self):
-        """Replica number. It should a value between 1 to the number of the remaining quota. It can be obtained through [Obtaining User Quota](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
+        r"""Replica number. It should a value between 1 to the number of the remaining quota. It can be obtained through [Obtaining User Quota](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
         :rtype: int
         """
         return self._CopyNumber
@@ -162,7 +162,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        """Asset package ID
+        r"""Asset package ID
         :rtype: str
         """
         return self._AssetId
@@ -173,7 +173,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description. The length is 0-100 characters.
+        r"""Description. The length is 0-100 characters.
         :rtype: str
         """
         return self._Description
@@ -184,7 +184,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InboundPermissions(self):
-        """Network configuration
+        r"""Network configuration
         :rtype: list of InboundPermission
         """
         return self._InboundPermissions
@@ -195,7 +195,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Server type. It can be obtained through [Obtaining Server Instance Type List](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
+        r"""Server type. It can be obtained through [Obtaining Server Instance Type List](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceType
@@ -206,7 +206,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def FleetType(self):
-        """Server fleet type, which only supports “ON_DEMAND” type now.
+        r"""Server fleet type, which only supports “ON_DEMAND” type now.
         :rtype: str
         """
         return self._FleetType
@@ -217,7 +217,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Server fleet name. The length is 1-50 characters.
+        r"""Server fleet name. The length is 1-50 characters.
         :rtype: str
         """
         return self._Name
@@ -228,7 +228,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def NewGameServerSessionProtectionPolicy(self):
-        """Protection policy. Valid values: NoProtection·(no protection), FullProtection (full protection), TimeLimitProtection (time-limited protection)
+        r"""Protection policy. Valid values: NoProtection·(no protection), FullProtection (full protection), TimeLimitProtection (time-limited protection)
         :rtype: str
         """
         return self._NewGameServerSessionProtectionPolicy
@@ -239,7 +239,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def ResourceCreationLimitPolicy(self):
-        """Limit policy of resource creation
+        r"""Limit policy of resource creation
         :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
         """
         return self._ResourceCreationLimitPolicy
@@ -250,7 +250,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def RuntimeConfiguration(self):
-        """Progress configuration
+        r"""Progress configuration
         :rtype: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
         """
         return self._RuntimeConfiguration
@@ -261,7 +261,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
-        """Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes. This parameter is valid only when NewGameSessionProtectionPolicy is set as TimeLimitProtection.
+        r"""Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes. This parameter is valid only when NewGameSessionProtectionPolicy is set as TimeLimitProtection.
         :rtype: int
         """
         return self._GameServerSessionProtectionTimeLimit
@@ -272,7 +272,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedScalingType(self):
-        """Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.
+        r"""Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.
         :rtype: str
         """
         return self._SelectedScalingType
@@ -283,7 +283,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedCcnType(self):
-        """Whether to associate the fleet with a CCN instance: CCN_SELECTED_BEFORE_CREATE (associate before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (do not associate); CCN_UNSELECTED by default
+        r"""Whether to associate the fleet with a CCN instance: CCN_SELECTED_BEFORE_CREATE (associate before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (do not associate); CCN_UNSELECTED by default
         :rtype: str
         """
         return self._SelectedCcnType
@@ -294,7 +294,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag list. Up to 50 tags.
+        r"""Tag list. Up to 50 tags.
         :rtype: list of Tag
         """
         return self._Tags
@@ -305,7 +305,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SystemDiskInfo(self):
-        """System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
+        r"""System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
         :rtype: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
         """
         return self._SystemDiskInfo
@@ -316,7 +316,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def DataDiskInfo(self):
-        """Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
+        r"""Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
         :rtype: list of DiskInfo
         """
         return self._DataDiskInfo
@@ -327,7 +327,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def SelectedTimerType(self):
-        """Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.
+        r"""Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.
         :rtype: str
         """
         return self._SelectedTimerType
@@ -338,7 +338,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def CcnInfos(self):
-        """Information of the CCN instance, including the owner account and the instance ID.
+        r"""Information of the CCN instance, including the owner account and the instance ID.
         :rtype: list of CcnInfo
         """
         return self._CcnInfos
@@ -349,7 +349,7 @@ class CopyFleetRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        """Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
+        r"""Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -417,7 +417,7 @@ class CopyFleetRequest(AbstractModel):
 
 
 class CopyFleetResponse(AbstractModel):
-    """CopyFleet response structure.
+    r"""CopyFleet response structure.
 
     """
 
@@ -437,7 +437,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FleetAttributes(self):
-        """Server fleet attributes
+        r"""Server fleet attributes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of FleetAttributes
         """
@@ -449,7 +449,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
-        """The number of server fleets
+        r"""The number of server fleets
         :rtype: int
         """
         return self._TotalCount
@@ -460,7 +460,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -482,7 +482,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class CreateGameServerSessionRequest(AbstractModel):
-    """CreateGameServerSession request structure.
+    r"""CreateGameServerSession request structure.
 
     """
 
@@ -519,7 +519,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
-        """The maximum number of players, which cannot be less than 0.
+        r"""The maximum number of players, which cannot be less than 0.
         :rtype: int
         """
         return self._MaximumPlayerSessionCount
@@ -530,7 +530,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def AliasId(self):
-        """Alias ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
+        r"""Alias ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
         :rtype: str
         """
         return self._AliasId
@@ -541,7 +541,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def CreatorId(self):
-        """Creator ID. Up to 1024 ASCII characters are allowed.
+        r"""Creator ID. Up to 1024 ASCII characters are allowed.
         :rtype: str
         """
         return self._CreatorId
@@ -552,7 +552,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """Fleet ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
+        r"""Fleet ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.
         :rtype: str
         """
         return self._FleetId
@@ -563,7 +563,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameProperties(self):
-        """Game attributes. Up to 16 groups of attributes are allowed.
+        r"""Game attributes. Up to 16 groups of attributes are allowed.
         :rtype: list of GameProperty
         """
         return self._GameProperties
@@ -574,7 +574,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionData(self):
-        """The attribute details of game server session. Up to 4096 ASCII characters are allowed.
+        r"""The attribute details of game server session. Up to 4096 ASCII characters are allowed.
         :rtype: str
         """
         return self._GameServerSessionData
@@ -585,7 +585,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """The custom ID of game server session. Up to 4096 ASCII characters are allowed.
+        r"""The custom ID of game server session. Up to 4096 ASCII characters are allowed.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -596,7 +596,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def IdempotencyToken(self):
-        """Idempotency token. Up to 48 ASCII characters are allowed.
+        r"""Idempotency token. Up to 48 ASCII characters are allowed.
         :rtype: str
         """
         return self._IdempotencyToken
@@ -607,7 +607,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
     @property
     def Name(self):
-        """The name of game server session. Up to 1024 ASCII characters are allowed.
+        r"""The name of game server session. Up to 1024 ASCII characters are allowed.
         :rtype: str
         """
         return self._Name
@@ -643,7 +643,7 @@ class CreateGameServerSessionRequest(AbstractModel):
 
 
 class CreateGameServerSessionResponse(AbstractModel):
-    """CreateGameServerSession response structure.
+    r"""CreateGameServerSession response structure.
 
     """
 
@@ -660,7 +660,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSession(self):
-        """Game server session
+        r"""Game server session
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
         """
@@ -672,7 +672,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -690,7 +690,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Credentials(AbstractModel):
-    """Credentials required for instance access
+    r"""Credentials required for instance access
 
     """
 
@@ -706,7 +706,7 @@ class Credentials(AbstractModel):
 
     @property
     def Secret(self):
-        """SSH private key
+        r"""SSH private key
         :rtype: str
         """
         return self._Secret
@@ -717,7 +717,7 @@ class Credentials(AbstractModel):
 
     @property
     def UserName(self):
-        """Username
+        r"""Username
         :rtype: str
         """
         return self._UserName
@@ -741,7 +741,7 @@ class Credentials(AbstractModel):
 
 
 class DeleteTimerScalingPolicyRequest(AbstractModel):
-    """DeleteTimerScalingPolicy request structure.
+    r"""DeleteTimerScalingPolicy request structure.
 
     """
 
@@ -760,7 +760,7 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerId(self):
-        """Unique ID of the policy
+        r"""Unique ID of the policy
         :rtype: str
         """
         return self._TimerId
@@ -771,7 +771,7 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """ID of the fleet to be bound with the policy
+        r"""ID of the fleet to be bound with the policy
         :rtype: str
         """
         return self._FleetId
@@ -782,7 +782,7 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerName(self):
-        """Scheduled scaling policy name
+        r"""Scheduled scaling policy name
         :rtype: str
         """
         return self._TimerName
@@ -807,7 +807,7 @@ class DeleteTimerScalingPolicyRequest(AbstractModel):
 
 
 class DeleteTimerScalingPolicyResponse(AbstractModel):
-    """DeleteTimerScalingPolicy response structure.
+    r"""DeleteTimerScalingPolicy response structure.
 
     """
 
@@ -820,7 +820,7 @@ class DeleteTimerScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -835,7 +835,7 @@ class DeleteTimerScalingPolicyResponse(AbstractModel):
 
 
 class DescribeGameServerSessionDetailsRequest(AbstractModel):
-    """DescribeGameServerSessionDetails request structure.
+    r"""DescribeGameServerSessionDetails request structure.
 
     """
 
@@ -863,7 +863,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def AliasId(self):
-        """Alias ID
+        r"""Alias ID
         :rtype: str
         """
         return self._AliasId
@@ -874,7 +874,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """Fleet ID
+        r"""Fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -885,7 +885,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 48 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 48 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -896,7 +896,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of entries in a single query
+        r"""Maximum number of entries in a single query
         :rtype: int
         """
         return self._Limit
@@ -907,7 +907,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._NextToken
@@ -918,7 +918,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
-        """Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
+        r"""Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :rtype: str
         """
         return self._StatusFilter
@@ -946,7 +946,7 @@ class DescribeGameServerSessionDetailsRequest(AbstractModel):
 
 
 class DescribeGameServerSessionDetailsResponse(AbstractModel):
-    """DescribeGameServerSessionDetails response structure.
+    r"""DescribeGameServerSessionDetails response structure.
 
     """
 
@@ -967,7 +967,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessionDetails(self):
-        """List of game server session details
+        r"""List of game server session details
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of GameServerSessionDetail
         """
@@ -979,7 +979,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -991,7 +991,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1013,7 +1013,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeGameServerSessionPlacementRequest(AbstractModel):
-    """DescribeGameServerSessionPlacement request structure.
+    r"""DescribeGameServerSessionPlacement request structure.
 
     """
 
@@ -1026,7 +1026,7 @@ class DescribeGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
-        """Unique ID of game server session placement
+        r"""Unique ID of game server session placement
         :rtype: str
         """
         return self._PlacementId
@@ -1049,7 +1049,7 @@ class DescribeGameServerSessionPlacementRequest(AbstractModel):
 
 
 class DescribeGameServerSessionPlacementResponse(AbstractModel):
-    """DescribeGameServerSessionPlacement response structure.
+    r"""DescribeGameServerSessionPlacement response structure.
 
     """
 
@@ -1065,7 +1065,7 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
-        """Game server session placement
+        r"""Game server session placement
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
         """
         return self._GameServerSessionPlacement
@@ -1076,7 +1076,7 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1094,7 +1094,7 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
 
 
 class DescribeGameServerSessionsRequest(AbstractModel):
-    """DescribeGameServerSessions request structure.
+    r"""DescribeGameServerSessions request structure.
 
     """
 
@@ -1122,7 +1122,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def AliasId(self):
-        """Alias ID
+        r"""Alias ID
         :rtype: str
         """
         return self._AliasId
@@ -1133,7 +1133,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """Fleet ID
+        r"""Fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -1144,7 +1144,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 48 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 48 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -1155,7 +1155,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of entries in a single query
+        r"""Maximum number of entries in a single query
         :rtype: int
         """
         return self._Limit
@@ -1166,7 +1166,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._NextToken
@@ -1177,7 +1177,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
-        """Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
+        r"""Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :rtype: str
         """
         return self._StatusFilter
@@ -1205,7 +1205,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
 
 
 class DescribeGameServerSessionsResponse(AbstractModel):
-    """DescribeGameServerSessions response structure.
+    r"""DescribeGameServerSessions response structure.
 
     """
 
@@ -1226,7 +1226,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessions(self):
-        """Game server session list
+        r"""Game server session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of GameServerSession
         """
@@ -1238,7 +1238,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1250,7 +1250,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1272,13 +1272,13 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeInstanceTypesRequest(AbstractModel):
-    """DescribeInstanceTypes request structure.
+    r"""DescribeInstanceTypes request structure.
 
     """
 
 
 class DescribeInstanceTypesResponse(AbstractModel):
-    """DescribeInstanceTypes response structure.
+    r"""DescribeInstanceTypes response structure.
 
     """
 
@@ -1294,7 +1294,7 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
     @property
     def InstanceTypeList(self):
-        """List of server types
+        r"""List of server types
         :rtype: list of InstanceTypeInfo
         """
         return self._InstanceTypeList
@@ -1305,7 +1305,7 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1326,7 +1326,7 @@ class DescribeInstanceTypesResponse(AbstractModel):
 
 
 class DescribePlayerSessionsRequest(AbstractModel):
-    """DescribePlayerSessions request structure.
+    r"""DescribePlayerSessions request structure.
 
     """
 
@@ -1354,7 +1354,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 48 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 48 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -1365,7 +1365,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of entries in a single query
+        r"""Maximum number of entries in a single query
         :rtype: int
         """
         return self._Limit
@@ -1376,7 +1376,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._NextToken
@@ -1387,7 +1387,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerId(self):
-        """Player ID. It should contain 1 to 1024 ASCII characters.
+        r"""Player ID. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._PlayerId
@@ -1398,7 +1398,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerSessionId(self):
-        """Player session ID. It should contain 1 to 1024 ASCII characters.
+        r"""Player session ID. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._PlayerSessionId
@@ -1409,7 +1409,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
     @property
     def PlayerSessionStatusFilter(self):
-        """Player session status. Valid values: RESERVED, ACTIVE, COMPLETED, TIMEDOUT
+        r"""Player session status. Valid values: RESERVED, ACTIVE, COMPLETED, TIMEDOUT
         :rtype: str
         """
         return self._PlayerSessionStatusFilter
@@ -1437,7 +1437,7 @@ class DescribePlayerSessionsRequest(AbstractModel):
 
 
 class DescribePlayerSessionsResponse(AbstractModel):
-    """DescribePlayerSessions response structure.
+    r"""DescribePlayerSessions response structure.
 
     """
 
@@ -1458,7 +1458,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PlayerSessions(self):
-        """Player session list
+        r"""Player session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of PlayerSession
         """
@@ -1470,7 +1470,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1482,7 +1482,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1504,7 +1504,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeTimerScalingPoliciesRequest(AbstractModel):
-    """DescribeTimerScalingPolicies request structure.
+    r"""DescribeTimerScalingPolicies request structure.
 
     """
 
@@ -1532,7 +1532,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """ID of the fleet to be bound with the policy
+        r"""ID of the fleet to be bound with the policy
         :rtype: str
         """
         return self._FleetId
@@ -1543,7 +1543,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def TimerName(self):
-        """Scheduled scaling policy name
+        r"""Scheduled scaling policy name
         :rtype: str
         """
         return self._TimerName
@@ -1554,7 +1554,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time of the scheduled scaling policy
+        r"""Start time of the scheduled scaling policy
         :rtype: str
         """
         return self._BeginTime
@@ -1565,7 +1565,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the scheduled scaling policy
+        r"""End time of the scheduled scaling policy
         :rtype: str
         """
         return self._EndTime
@@ -1576,7 +1576,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -1587,7 +1587,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._Limit
@@ -1615,7 +1615,7 @@ class DescribeTimerScalingPoliciesRequest(AbstractModel):
 
 
 class DescribeTimerScalingPoliciesResponse(AbstractModel):
-    """DescribeTimerScalingPolicies response structure.
+    r"""DescribeTimerScalingPolicies response structure.
 
     """
 
@@ -1636,7 +1636,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerScalingPolicies(self):
-        """Configuration of the scheduled scaling policy
+        r"""Configuration of the scheduled scaling policy
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of TimerScalingPolicy
         """
@@ -1648,7 +1648,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
-        """Total number of scheduled scaling policies
+        r"""Total number of scheduled scaling policies
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1660,7 +1660,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1682,7 +1682,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class DesiredPlayerSession(AbstractModel):
-    """Player game session information
+    r"""Player game session information
 
     """
 
@@ -1698,7 +1698,7 @@ class DesiredPlayerSession(AbstractModel):
 
     @property
     def PlayerId(self):
-        """Unique player ID associated with player session
+        r"""Unique player ID associated with player session
         :rtype: str
         """
         return self._PlayerId
@@ -1709,7 +1709,7 @@ class DesiredPlayerSession(AbstractModel):
 
     @property
     def PlayerData(self):
-        """Developer-defined player data
+        r"""Developer-defined player data
         :rtype: str
         """
         return self._PlayerData
@@ -1733,7 +1733,7 @@ class DesiredPlayerSession(AbstractModel):
 
 
 class DiskInfo(AbstractModel):
-    """Disk storage information
+    r"""Disk storage information
 
     """
 
@@ -1749,7 +1749,7 @@ class DiskInfo(AbstractModel):
 
     @property
     def DiskType(self):
-        """Disk type: Premium Cloud Storage (CLOUD_PREMIUM) or SSD (CLOUD_SSD)
+        r"""Disk type: Premium Cloud Storage (CLOUD_PREMIUM) or SSD (CLOUD_SSD)
         :rtype: str
         """
         return self._DiskType
@@ -1760,7 +1760,7 @@ class DiskInfo(AbstractModel):
 
     @property
     def DiskSize(self):
-        """System disk: the available disk capacity is 50-500 GB. Data disk: the available disk capacity is 100-32000 GB, and the value is a multiple of 10. When the disk type is SSD (CLOUD_SSD), the minimum capacity is 100 GB.
+        r"""System disk: the available disk capacity is 50-500 GB. Data disk: the available disk capacity is 100-32000 GB, and the value is a multiple of 10. When the disk type is SSD (CLOUD_SSD), the minimum capacity is 100 GB.
         :rtype: int
         """
         return self._DiskSize
@@ -1784,7 +1784,7 @@ class DiskInfo(AbstractModel):
 
 
 class EndGameServerSessionAndProcessRequest(AbstractModel):
-    """EndGameServerSessionAndProcess request structure.
+    r"""EndGameServerSessionAndProcess request structure.
 
     """
 
@@ -1803,7 +1803,7 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. If a game server session ID is passed in, its corresponding processes, game server sessions, and player sessions will be terminated.
+        r"""Game server session ID. If a game server session ID is passed in, its corresponding processes, game server sessions, and player sessions will be terminated.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -1814,7 +1814,7 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def IpAddress(self):
-        """The public IP of the CVM. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
+        r"""The public IP of the CVM. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
         :rtype: str
         """
         return self._IpAddress
@@ -1825,7 +1825,7 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Port number. Value range: 1025 - 60000. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions (if any exists) and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
+        r"""Port number. Value range: 1025 - 60000. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions (if any exists) and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.
         :rtype: int
         """
         return self._Port
@@ -1850,7 +1850,7 @@ class EndGameServerSessionAndProcessRequest(AbstractModel):
 
 
 class EndGameServerSessionAndProcessResponse(AbstractModel):
-    """EndGameServerSessionAndProcess response structure.
+    r"""EndGameServerSessionAndProcess response structure.
 
     """
 
@@ -1863,7 +1863,7 @@ class EndGameServerSessionAndProcessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1878,7 +1878,7 @@ class EndGameServerSessionAndProcessResponse(AbstractModel):
 
 
 class FleetAttributes(AbstractModel):
-    """Service deployment attributes
+    r"""Service deployment attributes
 
     """
 
@@ -1969,7 +1969,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AssetId(self):
-        """Asset package ID
+        r"""Asset package ID
         :rtype: str
         """
         return self._AssetId
@@ -1980,7 +1980,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreationTime(self):
-        """Server fleet creation time
+        r"""Server fleet creation time
         :rtype: str
         """
         return self._CreationTime
@@ -1991,7 +1991,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
-        """Description
+        r"""Description
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2003,7 +2003,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FleetArn(self):
-        """Description of server fleet resource
+        r"""Description of server fleet resource
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2015,7 +2015,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FleetId(self):
-        """Server fleet ID
+        r"""Server fleet ID
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2027,7 +2027,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FleetType(self):
-        """Server fleet type, which only supports ON_DEMAND now.
+        r"""Server fleet type, which only supports ON_DEMAND now.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2039,7 +2039,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def InstanceType(self):
-        """Server type, such as S5.LARGE8
+        r"""Server type, such as S5.LARGE8
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2051,7 +2051,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Name(self):
-        """Server fleet name
+        r"""Server fleet name
         :rtype: str
         """
         return self._Name
@@ -2062,7 +2062,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def NewGameServerSessionProtectionPolicy(self):
-        """Game session protection policy
+        r"""Game session protection policy
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2074,7 +2074,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def OperatingSystem(self):
-        """Operating system type
+        r"""Operating system type
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2086,7 +2086,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ResourceCreationLimitPolicy(self):
-        """Limit policy of resource creation
+        r"""Limit policy of resource creation
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
         """
@@ -2098,7 +2098,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Status(self):
-        """Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.
+        r"""Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2110,7 +2110,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StoppedActions(self):
-        """The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.
+        r"""The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of str
         """
@@ -2122,7 +2122,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TerminationTime(self):
-        """Server fleet termination time
+        r"""Server fleet termination time
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2134,7 +2134,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessionProtectionTimeLimit(self):
-        """Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.
+        r"""Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -2146,7 +2146,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def BillingStatus(self):
-        """Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.
+        r"""Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2158,7 +2158,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Tags(self):
-        """Tag list. Up to 50 tags.
+        r"""Tag list. Up to 50 tags.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of Tag
         """
@@ -2170,7 +2170,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DataDiskInfo(self):
-        """Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
+        r"""Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. 
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of DiskInfo
         """
@@ -2182,7 +2182,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def SystemDiskInfo(self):
-        """System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
+        r"""System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
         """
@@ -2194,7 +2194,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RelatedCcnInfos(self):
-        """CCN instance information
+        r"""CCN instance information
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of RelatedCcnInfo
         """
@@ -2206,7 +2206,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def InternetMaxBandwidthOut(self):
-        """Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
+        r"""Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2269,7 +2269,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class GameProperty(AbstractModel):
-    """Game attribute details
+    r"""Game attribute details
 
     """
 
@@ -2285,7 +2285,7 @@ class GameProperty(AbstractModel):
 
     @property
     def Key(self):
-        """Attribute name. Up to 32 ASCII characters are allowed.
+        r"""Attribute name. Up to 32 ASCII characters are allowed.
         :rtype: str
         """
         return self._Key
@@ -2296,7 +2296,7 @@ class GameProperty(AbstractModel):
 
     @property
     def Value(self):
-        """Attribute value. Up to 96 ASCII characters are allowed.
+        r"""Attribute value. Up to 96 ASCII characters are allowed.
         :rtype: str
         """
         return self._Value
@@ -2320,7 +2320,7 @@ class GameProperty(AbstractModel):
 
 
 class GameServerSession(AbstractModel):
-    """Game session details
+    r"""Game session details
 
     """
 
@@ -2410,7 +2410,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreationTime(self):
-        """Game server session creation time
+        r"""Game server session creation time
         :rtype: str
         """
         return self._CreationTime
@@ -2421,7 +2421,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreatorId(self):
-        """Creator ID. Up to 1024 ASCII characters are allowed.
+        r"""Creator ID. Up to 1024 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2433,7 +2433,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CurrentPlayerSessionCount(self):
-        """The current number of players, which cannot be less than 0.
+        r"""The current number of players, which cannot be less than 0.
         :rtype: int
         """
         return self._CurrentPlayerSessionCount
@@ -2444,7 +2444,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DnsName(self):
-        """CVM DNS ID
+        r"""CVM DNS ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2456,7 +2456,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FleetId(self):
-        """Fleet ID
+        r"""Fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -2467,7 +2467,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameProperties(self):
-        """Game attributes. Up to 16 groups of attributes are allowed.
+        r"""Game attributes. Up to 16 groups of attributes are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of GameProperty
         """
@@ -2479,7 +2479,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessionData(self):
-        """The attribute details of game server session. Up to 4096 ASCII characters are allowed.
+        r"""The attribute details of game server session. Up to 4096 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2491,7 +2491,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 48 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 48 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -2502,7 +2502,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def IpAddress(self):
-        """CVM IP address
+        r"""CVM IP address
         :rtype: str
         """
         return self._IpAddress
@@ -2513,7 +2513,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchmakerData(self):
-        """Battle progress details. Up to 400,000 ASCII characters are allowed.
+        r"""Battle progress details. Up to 400,000 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2525,7 +2525,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MaximumPlayerSessionCount(self):
-        """The maximum number of players, which cannot be less than 0.
+        r"""The maximum number of players, which cannot be less than 0.
         :rtype: int
         """
         return self._MaximumPlayerSessionCount
@@ -2536,7 +2536,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Name(self):
-        """The name of game server session. Up to 1024 ASCII characters are allowed.
+        r"""The name of game server session. Up to 1024 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2548,7 +2548,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PlayerSessionCreationPolicy(self):
-        """Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL
+        r"""Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2560,7 +2560,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Port(self):
-        """Port number. It should be a value between 1 to 60000.
+        r"""Port number. It should be a value between 1 to 60000.
         :rtype: int
         """
         return self._Port
@@ -2571,7 +2571,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Status(self):
-        """Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
+        r"""Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR
         :rtype: str
         """
         return self._Status
@@ -2582,7 +2582,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StatusReason(self):
-        """Additional information of game server session status
+        r"""Additional information of game server session status
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2594,7 +2594,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TerminationTime(self):
-        """Termination time
+        r"""Termination time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2606,7 +2606,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance type. Up to 128 ASCII characters are allowed.
+        r"""Instance type. Up to 128 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2618,7 +2618,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CurrentCustomCount(self):
-        """Current custom count
+        r"""Current custom count
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2630,7 +2630,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxCustomCount(self):
-        """Maximum custom count
+        r"""Maximum custom count
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2642,7 +2642,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """Weight
+        r"""Weight
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2654,7 +2654,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AvailabilityStatus(self):
-        """Session availability status, i.e., whether it is blocked. Valid value: Enable, Disable
+        r"""Session availability status, i.e., whether it is blocked. Valid value: Enable, Disable
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2704,7 +2704,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class GameServerSessionDetail(AbstractModel):
-    """Game server session details (GameServerSessionDetail)
+    r"""Game server session details (GameServerSessionDetail)
 
     """
 
@@ -2721,7 +2721,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSession(self):
-        """Game server session
+        r"""Game server session
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
         """
         return self._GameServerSession
@@ -2732,7 +2732,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProtectionPolicy(self):
-        """Protection policy. Valid values: NoProtection, FullProtection
+        r"""Protection policy. Valid values: NoProtection, FullProtection
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2759,7 +2759,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GameServerSessionPlacement(AbstractModel):
-    """Game session deployment object
+    r"""Game session deployment object
 
     """
 
@@ -2832,7 +2832,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlacementId(self):
-        """Deployment ID
+        r"""Deployment ID
         :rtype: str
         """
         return self._PlacementId
@@ -2843,7 +2843,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionQueueName(self):
-        """Service deployment group name
+        r"""Service deployment group name
         :rtype: str
         """
         return self._GameServerSessionQueueName
@@ -2854,7 +2854,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayerLatencies(self):
-        """Player latency
+        r"""Player latency
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of PlayerLatency
         """
@@ -2866,7 +2866,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Service deployment status
+        r"""Service deployment status
         :rtype: str
         """
         return self._Status
@@ -2877,7 +2877,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsName(self):
-        """DNS ID assigned to the instance where the game session is running
+        r"""DNS ID assigned to the instance where the game session is running
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2889,7 +2889,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionId(self):
-        """Game session ID
+        r"""Game session ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2901,7 +2901,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionName(self):
-        """Game session name
+        r"""Game session name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2913,7 +2913,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionRegion(self):
-        """Service deployment region
+        r"""Service deployment region
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2925,7 +2925,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameProperties(self):
-        """Game attributes
+        r"""Game attributes
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of GameProperty
         """
@@ -2937,7 +2937,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaximumPlayerSessionCount(self):
-        """The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
+        r"""The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
         :rtype: int
         """
         return self._MaximumPlayerSessionCount
@@ -2948,7 +2948,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionData(self):
-        """Game session data
+        r"""Game session data
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2960,7 +2960,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpAddress(self):
-        """IP address of the instance where the game session is running
+        r"""IP address of the instance where the game session is running
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2972,7 +2972,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        """Port number of the instance where the game session is running
+        r"""Port number of the instance where the game session is running
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2984,7 +2984,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MatchmakerData(self):
-        """Game match data
+        r"""Game match data
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2996,7 +2996,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlacedPlayerSessions(self):
-        """Deployed player game data
+        r"""Deployed player game data
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of PlacedPlayerSession
         """
@@ -3008,7 +3008,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -3019,7 +3019,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3074,7 +3074,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class GetGameServerSessionLogUrlRequest(AbstractModel):
-    """GetGameServerSessionLogUrl request structure.
+    r"""GetGameServerSessionLogUrl request structure.
 
     """
 
@@ -3087,7 +3087,7 @@ class GetGameServerSessionLogUrlRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 48 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 48 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -3110,7 +3110,7 @@ class GetGameServerSessionLogUrlRequest(AbstractModel):
 
 
 class GetGameServerSessionLogUrlResponse(AbstractModel):
-    """GetGameServerSessionLogUrl response structure.
+    r"""GetGameServerSessionLogUrl response structure.
 
     """
 
@@ -3127,7 +3127,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PreSignedUrl(self):
-        """Log download URL. It should contain 1 to 1024 ASCII characters.
+        r"""Log download URL. It should contain 1 to 1024 ASCII characters.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3139,7 +3139,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3155,7 +3155,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class GetInstanceAccessRequest(AbstractModel):
-    """GetInstanceAccess request structure.
+    r"""GetInstanceAccess request structure.
 
     """
 
@@ -3171,7 +3171,7 @@ class GetInstanceAccessRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """Server fleet ID
+        r"""Server fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -3182,7 +3182,7 @@ class GetInstanceAccessRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3206,7 +3206,7 @@ class GetInstanceAccessRequest(AbstractModel):
 
 
 class GetInstanceAccessResponse(AbstractModel):
-    """GetInstanceAccess response structure.
+    r"""GetInstanceAccess response structure.
 
     """
 
@@ -3222,7 +3222,7 @@ class GetInstanceAccessResponse(AbstractModel):
 
     @property
     def InstanceAccess(self):
-        """Credentials required for instance login
+        r"""Credentials required for instance login
         :rtype: :class:`tencentcloud.gse.v20191112.models.InstanceAccess`
         """
         return self._InstanceAccess
@@ -3233,7 +3233,7 @@ class GetInstanceAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3251,7 +3251,7 @@ class GetInstanceAccessResponse(AbstractModel):
 
 
 class InboundPermission(AbstractModel):
-    """Allowed network range.
+    r"""Allowed network range.
 
     """
 
@@ -3273,7 +3273,7 @@ class InboundPermission(AbstractModel):
 
     @property
     def FromPort(self):
-        """Start port number. Minimum value: 1025.
+        r"""Start port number. Minimum value: 1025.
         :rtype: int
         """
         return self._FromPort
@@ -3284,7 +3284,7 @@ class InboundPermission(AbstractModel):
 
     @property
     def IpRange(self):
-        """IP range. Valid range of the input IPv4 addresses in CIDR format; for example, 0.0.0.0.0/0.
+        r"""IP range. Valid range of the input IPv4 addresses in CIDR format; for example, 0.0.0.0.0/0.
         :rtype: str
         """
         return self._IpRange
@@ -3295,7 +3295,7 @@ class InboundPermission(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol type: TCP or UDP.
+        r"""Protocol type: TCP or UDP.
         :rtype: str
         """
         return self._Protocol
@@ -3306,7 +3306,7 @@ class InboundPermission(AbstractModel):
 
     @property
     def ToPort(self):
-        """End port number. Maximum value: 60000.
+        r"""End port number. Maximum value: 60000.
         :rtype: int
         """
         return self._ToPort
@@ -3332,7 +3332,7 @@ class InboundPermission(AbstractModel):
 
 
 class InstanceAccess(AbstractModel):
-    """Identity credentials for instance access
+    r"""Identity credentials for instance access
 
     """
 
@@ -3357,7 +3357,7 @@ class InstanceAccess(AbstractModel):
 
     @property
     def Credentials(self):
-        """Credentials required for instance access
+        r"""Credentials required for instance access
         :rtype: :class:`tencentcloud.gse.v20191112.models.Credentials`
         """
         return self._Credentials
@@ -3368,7 +3368,7 @@ class InstanceAccess(AbstractModel):
 
     @property
     def FleetId(self):
-        """Service deployment ID
+        r"""Service deployment ID
         :rtype: str
         """
         return self._FleetId
@@ -3379,7 +3379,7 @@ class InstanceAccess(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3390,7 +3390,7 @@ class InstanceAccess(AbstractModel):
 
     @property
     def IpAddress(self):
-        """Public IP of instance
+        r"""Public IP of instance
         :rtype: str
         """
         return self._IpAddress
@@ -3401,7 +3401,7 @@ class InstanceAccess(AbstractModel):
 
     @property
     def OperatingSystem(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._OperatingSystem
@@ -3430,7 +3430,7 @@ class InstanceAccess(AbstractModel):
 
 
 class InstanceTypeInfo(AbstractModel):
-    """The server instance type information
+    r"""The server instance type information
 
     """
 
@@ -3455,7 +3455,7 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def TypeName(self):
-        """Name of the server type, such as `Standard SA1`
+        r"""Name of the server type, such as `Standard SA1`
         :rtype: str
         """
         return self._TypeName
@@ -3466,7 +3466,7 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Specification of the server type, such as `SA1.SMALL1`
+        r"""Specification of the server type, such as `SA1.SMALL1`
         :rtype: str
         """
         return self._InstanceType
@@ -3477,7 +3477,7 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        """CPU, in core
+        r"""CPU, in core
         :rtype: int
         """
         return self._Cpu
@@ -3488,7 +3488,7 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory, in GB
+        r"""Memory, in GB
         :rtype: int
         """
         return self._Memory
@@ -3499,7 +3499,7 @@ class InstanceTypeInfo(AbstractModel):
 
     @property
     def NetworkCard(self):
-        """The packet sending and receiving capability, in 10k PPS. 
+        r"""The packet sending and receiving capability, in 10k PPS. 
         :rtype: int
         """
         return self._NetworkCard
@@ -3526,7 +3526,7 @@ class InstanceTypeInfo(AbstractModel):
 
 
 class JoinGameServerSessionBatchRequest(AbstractModel):
-    """JoinGameServerSessionBatch request structure.
+    r"""JoinGameServerSessionBatch request structure.
 
     """
 
@@ -3545,7 +3545,7 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 256 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 256 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -3556,7 +3556,7 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def PlayerIds(self):
-        """Player ID list. At least 1 ID and up to 25 IDs.
+        r"""Player ID list. At least 1 ID and up to 25 IDs.
         :rtype: list of str
         """
         return self._PlayerIds
@@ -3567,7 +3567,7 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
     @property
     def PlayerDataMap(self):
-        """Player custom data
+        r"""Player custom data
         :rtype: :class:`tencentcloud.gse.v20191112.models.PlayerDataMap`
         """
         return self._PlayerDataMap
@@ -3594,7 +3594,7 @@ class JoinGameServerSessionBatchRequest(AbstractModel):
 
 
 class JoinGameServerSessionBatchResponse(AbstractModel):
-    """JoinGameServerSessionBatch response structure.
+    r"""JoinGameServerSessionBatch response structure.
 
     """
 
@@ -3611,7 +3611,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PlayerSessions(self):
-        """Player session list. Up to 25 sessions.
+        r"""Player session list. Up to 25 sessions.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of PlayerSession
         """
@@ -3623,7 +3623,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3644,7 +3644,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class JoinGameServerSessionRequest(AbstractModel):
-    """JoinGameServerSession request structure.
+    r"""JoinGameServerSession request structure.
 
     """
 
@@ -3663,7 +3663,7 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 256 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 256 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -3674,7 +3674,7 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerId(self):
-        """Player ID. Up to 1024 ASCII characters are allowed.
+        r"""Player ID. Up to 1024 ASCII characters are allowed.
         :rtype: str
         """
         return self._PlayerId
@@ -3685,7 +3685,7 @@ class JoinGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerData(self):
-        """Player custom data. Up to 2048 ASCII characters are allowed.
+        r"""Player custom data. Up to 2048 ASCII characters are allowed.
         :rtype: str
         """
         return self._PlayerData
@@ -3710,7 +3710,7 @@ class JoinGameServerSessionRequest(AbstractModel):
 
 
 class JoinGameServerSessionResponse(AbstractModel):
-    """JoinGameServerSession response structure.
+    r"""JoinGameServerSession response structure.
 
     """
 
@@ -3727,7 +3727,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayerSession(self):
-        """Player session
+        r"""Player session
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.PlayerSession`
         """
@@ -3739,7 +3739,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3757,7 +3757,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PlacedPlayerSession(AbstractModel):
-    """Deployed player game session
+    r"""Deployed player game session
 
     """
 
@@ -3773,7 +3773,7 @@ class PlacedPlayerSession(AbstractModel):
 
     @property
     def PlayerId(self):
-        """Player ID
+        r"""Player ID
         :rtype: str
         """
         return self._PlayerId
@@ -3784,7 +3784,7 @@ class PlacedPlayerSession(AbstractModel):
 
     @property
     def PlayerSessionId(self):
-        """Player session ID
+        r"""Player session ID
         :rtype: str
         """
         return self._PlayerSessionId
@@ -3808,7 +3808,7 @@ class PlacedPlayerSession(AbstractModel):
 
 
 class PlayerDataMap(AbstractModel):
-    """Player custom data
+    r"""Player custom data
 
     """
 
@@ -3824,7 +3824,7 @@ class PlayerDataMap(AbstractModel):
 
     @property
     def Key(self):
-        """The key of player custom data. It should contain 1 to 1024 ASCII characters.
+        r"""The key of player custom data. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._Key
@@ -3835,7 +3835,7 @@ class PlayerDataMap(AbstractModel):
 
     @property
     def Value(self):
-        """The value of player custom data. It should contain 1 to 2048 ASCII characters.
+        r"""The value of player custom data. It should contain 1 to 2048 ASCII characters.
         :rtype: str
         """
         return self._Value
@@ -3859,7 +3859,7 @@ class PlayerDataMap(AbstractModel):
 
 
 class PlayerLatency(AbstractModel):
-    """Player latency information
+    r"""Player latency information
 
     """
 
@@ -3880,7 +3880,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayerId(self):
-        """Player ID
+        r"""Player ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3892,7 +3892,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionIdentifier(self):
-        """Name of region corresponding to latency
+        r"""Name of region corresponding to latency
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3904,7 +3904,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatencyInMilliseconds(self):
-        """Latency in milliseconds
+        r"""Latency in milliseconds
         :rtype: int
         """
         return self._LatencyInMilliseconds
@@ -3929,7 +3929,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PlayerSession(AbstractModel):
-    """Player session details
+    r"""Player session details
 
     """
 
@@ -3976,7 +3976,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
-        """Player session creation time
+        r"""Player session creation time
         :rtype: str
         """
         return self._CreationTime
@@ -3987,7 +3987,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsName(self):
-        """ID of the DNS where the game server session is running
+        r"""ID of the DNS where the game server session is running
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3999,7 +3999,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FleetId(self):
-        """Fleet ID
+        r"""Fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -4010,7 +4010,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 256 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 256 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -4021,7 +4021,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpAddress(self):
-        """Address of the CVM instance where the game server session is running
+        r"""Address of the CVM instance where the game server session is running
         :rtype: str
         """
         return self._IpAddress
@@ -4032,7 +4032,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayerData(self):
-        """Player custom data. Up to 2048 ASCII characters are allowed.
+        r"""Player custom data. Up to 2048 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4044,7 +4044,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PlayerId(self):
-        """Player ID. Up to 1024 ASCII characters are allowed.
+        r"""Player ID. Up to 1024 ASCII characters are allowed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4056,7 +4056,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PlayerSessionId(self):
-        """Player session ID
+        r"""Player session ID
         :rtype: str
         """
         return self._PlayerSessionId
@@ -4067,7 +4067,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Port(self):
-        """Port number. It should be a value between 1 to 60000.
+        r"""Port number. It should be a value between 1 to 60000.
         :rtype: int
         """
         return self._Port
@@ -4078,7 +4078,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Status(self):
-        """Player session status. Valid values: RESERVED = 1, ACTIVE = 2, COMPLETED =3, TIMEDOUT = 4
+        r"""Player session status. Valid values: RESERVED = 1, ACTIVE = 2, COMPLETED =3, TIMEDOUT = 4
         :rtype: str
         """
         return self._Status
@@ -4089,7 +4089,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TerminationTime(self):
-        """Player session termination time
+        r"""Player session termination time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4123,7 +4123,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PutTimerScalingPolicyRequest(AbstractModel):
-    """PutTimerScalingPolicy request structure.
+    r"""PutTimerScalingPolicy request structure.
 
     """
 
@@ -4136,7 +4136,7 @@ class PutTimerScalingPolicyRequest(AbstractModel):
 
     @property
     def TimerScalingPolicy(self):
-        """Configuration of the scheduled scaling policy
+        r"""Configuration of the scheduled scaling policy
         :rtype: :class:`tencentcloud.gse.v20191112.models.TimerScalingPolicy`
         """
         return self._TimerScalingPolicy
@@ -4161,7 +4161,7 @@ class PutTimerScalingPolicyRequest(AbstractModel):
 
 
 class PutTimerScalingPolicyResponse(AbstractModel):
-    """PutTimerScalingPolicy response structure.
+    r"""PutTimerScalingPolicy response structure.
 
     """
 
@@ -4174,7 +4174,7 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4189,7 +4189,7 @@ class PutTimerScalingPolicyResponse(AbstractModel):
 
 
 class RelatedCcnInfo(AbstractModel):
-    """Information of the associated CCN instance
+    r"""Information of the associated CCN instance
 
     """
 
@@ -4208,7 +4208,7 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def AccountId(self):
-        """Account of the CCN instance owner
+        r"""Account of the CCN instance owner
         :rtype: str
         """
         return self._AccountId
@@ -4219,7 +4219,7 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def CcnId(self):
-        """CCN instance ID
+        r"""CCN instance ID
         :rtype: str
         """
         return self._CcnId
@@ -4230,7 +4230,7 @@ class RelatedCcnInfo(AbstractModel):
 
     @property
     def AttachType(self):
-        """Status of associated CCN instance
+        r"""Status of associated CCN instance
         :rtype: str
         """
         return self._AttachType
@@ -4255,7 +4255,7 @@ class RelatedCcnInfo(AbstractModel):
 
 
 class ResourceCreationLimitPolicy(AbstractModel):
-    """Resource creation policy
+    r"""Resource creation policy
 
     """
 
@@ -4271,7 +4271,7 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
     @property
     def NewGameServerSessionsPerCreator(self):
-        """Creation quantity. Minimum value: 1. Default value: 2.
+        r"""Creation quantity. Minimum value: 1. Default value: 2.
         :rtype: int
         """
         return self._NewGameServerSessionsPerCreator
@@ -4282,7 +4282,7 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
     @property
     def PolicyPeriodInMinutes(self):
-        """Unit time. Minimum value: 1. Default value: 3. Unit: minute.
+        r"""Unit time. Minimum value: 1. Default value: 3. Unit: minute.
         :rtype: int
         """
         return self._PolicyPeriodInMinutes
@@ -4306,7 +4306,7 @@ class ResourceCreationLimitPolicy(AbstractModel):
 
 
 class RuntimeConfiguration(AbstractModel):
-    """Runtime configuration
+    r"""Runtime configuration
 
     """
 
@@ -4325,7 +4325,7 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def GameServerSessionActivationTimeoutSeconds(self):
-        """Game session timeout. Value range: 1-600. Unit: second.
+        r"""Game session timeout. Value range: 1-600. Unit: second.
         :rtype: int
         """
         return self._GameServerSessionActivationTimeoutSeconds
@@ -4336,7 +4336,7 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def MaxConcurrentGameServerSessionActivations(self):
-        """Maximum number of game sessions. Value range: 1-2,147,483,647.
+        r"""Maximum number of game sessions. Value range: 1-2,147,483,647.
         :rtype: int
         """
         return self._MaxConcurrentGameServerSessionActivations
@@ -4347,7 +4347,7 @@ class RuntimeConfiguration(AbstractModel):
 
     @property
     def ServerProcesses(self):
-        """Service process configuration. There must be at least one service configuration.
+        r"""Service process configuration. There must be at least one service configuration.
         :rtype: list of ServerProcesse
         """
         return self._ServerProcesses
@@ -4377,7 +4377,7 @@ class RuntimeConfiguration(AbstractModel):
 
 
 class SearchGameServerSessionsRequest(AbstractModel):
-    """SearchGameServerSessions request structure.
+    r"""SearchGameServerSessions request structure.
 
     """
 
@@ -4447,7 +4447,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
     @property
     def AliasId(self):
-        """Alias ID
+        r"""Alias ID
         :rtype: str
         """
         return self._AliasId
@@ -4458,7 +4458,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
     @property
     def FleetId(self):
-        """Fleet ID
+        r"""Fleet ID
         :rtype: str
         """
         return self._FleetId
@@ -4469,7 +4469,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
     @property
     def Limit(self):
-        """Maximum number of entries in a single query
+        r"""Maximum number of entries in a single query
         :rtype: int
         """
         return self._Limit
@@ -4480,7 +4480,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._NextToken
@@ -4491,7 +4491,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
     @property
     def FilterExpression(self):
-        """Search filter expression. Valid values:
+        r"""Search filter expression. Valid values:
 gameServerSessionName: game session name in `String` type
 gameServerSessionId: game session ID in `String` type
 maximumSessions: maximum number of player sessions in `Number` type
@@ -4538,7 +4538,7 @@ searching for game sessions that meets the following game server session attribu
 
     @property
     def SortExpression(self):
-        """Sorting keyword
+        r"""Sorting keyword
 Valid values:
 gameServerSessionName: game session name in `String` type
 gameServerSessionId: game session ID in `String` type
@@ -4572,7 +4572,7 @@ playerSessionCount: current number of player sessions in `Number` type
 
 
 class SearchGameServerSessionsResponse(AbstractModel):
-    """SearchGameServerSessions response structure.
+    r"""SearchGameServerSessions response structure.
 
     """
 
@@ -4593,7 +4593,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameServerSessions(self):
-        """Game server session list
+        r"""Game server session list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of GameServerSession
         """
@@ -4605,7 +4605,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
-        """Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
+        r"""Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4617,7 +4617,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4639,7 +4639,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class ServerProcesse(AbstractModel):
-    """Game service process
+    r"""Game service process
 
     """
 
@@ -4658,7 +4658,7 @@ class ServerProcesse(AbstractModel):
 
     @property
     def ConcurrentExecutions(self):
-        """Number of concurrent processes. Value range of total concurrent processes: 1-50.
+        r"""Number of concurrent processes. Value range of total concurrent processes: 1-50.
         :rtype: int
         """
         return self._ConcurrentExecutions
@@ -4669,7 +4669,7 @@ class ServerProcesse(AbstractModel):
 
     @property
     def LaunchPath(self):
-        """Launch Path. Linux: /local/game/ or Windows: C:\game\. The path length is 1-1024.
+        r"""Launch Path. Linux: /local/game/ or Windows: C:\game\. The path length is 1-1024.
         :rtype: str
         """
         return self._LaunchPath
@@ -4680,7 +4680,7 @@ class ServerProcesse(AbstractModel):
 
     @property
     def Parameters(self):
-        """Launch parameter. The length is 0-1024.
+        r"""Launch parameter. The length is 0-1024.
         :rtype: str
         """
         return self._Parameters
@@ -4705,7 +4705,7 @@ class ServerProcesse(AbstractModel):
 
 
 class SetServerReservedRequest(AbstractModel):
-    """SetServerReserved request structure.
+    r"""SetServerReserved request structure.
 
     """
 
@@ -4724,7 +4724,7 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def FleetId(self):
-        """ID of the fleet to be bound with the policy
+        r"""ID of the fleet to be bound with the policy
         :rtype: str
         """
         return self._FleetId
@@ -4735,7 +4735,7 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -4746,7 +4746,7 @@ class SetServerReservedRequest(AbstractModel):
 
     @property
     def ReserveValue(self):
-        """Whether the instance is retained. Valid values: 1 (retained), 0 (not retained). Default value: 0.
+        r"""Whether the instance is retained. Valid values: 1 (retained), 0 (not retained). Default value: 0.
         :rtype: int
         """
         return self._ReserveValue
@@ -4771,7 +4771,7 @@ class SetServerReservedRequest(AbstractModel):
 
 
 class SetServerReservedResponse(AbstractModel):
-    """SetServerReserved response structure.
+    r"""SetServerReserved response structure.
 
     """
 
@@ -4784,7 +4784,7 @@ class SetServerReservedResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4799,7 +4799,7 @@ class SetServerReservedResponse(AbstractModel):
 
 
 class StartGameServerSessionPlacementRequest(AbstractModel):
-    """StartGameServerSessionPlacement request structure.
+    r"""StartGameServerSessionPlacement request structure.
 
     """
 
@@ -4833,7 +4833,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
-        """The unique ID of the game server session placement. It should contain up to 48 ASCII characters, supporting [a-zA-Z0-9-]+.
+        r"""The unique ID of the game server session placement. It should contain up to 48 ASCII characters, supporting [a-zA-Z0-9-]+.
         :rtype: str
         """
         return self._PlacementId
@@ -4844,7 +4844,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionQueueName(self):
-        """Game server session queue name
+        r"""Game server session queue name
         :rtype: str
         """
         return self._GameServerSessionQueueName
@@ -4855,7 +4855,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
-        """The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
+        r"""The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.
         :rtype: int
         """
         return self._MaximumPlayerSessionCount
@@ -4866,7 +4866,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def DesiredPlayerSessions(self):
-        """Player game session information
+        r"""Player game session information
         :rtype: list of DesiredPlayerSession
         """
         return self._DesiredPlayerSessions
@@ -4877,7 +4877,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameProperties(self):
-        """Player game session attributes
+        r"""Player game session attributes
         :rtype: list of GameProperty
         """
         return self._GameProperties
@@ -4888,7 +4888,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionData(self):
-        """Data of game server sessions. Up to 4096 ASCII characters are allowed.
+        r"""Data of game server sessions. Up to 4096 ASCII characters are allowed.
         :rtype: str
         """
         return self._GameServerSessionData
@@ -4899,7 +4899,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def GameServerSessionName(self):
-        """Name of game server sessions. Up to 4096 ASCII characters are allowed.
+        r"""Name of game server sessions. Up to 4096 ASCII characters are allowed.
         :rtype: str
         """
         return self._GameServerSessionName
@@ -4910,7 +4910,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlayerLatencies(self):
-        """Player latency
+        r"""Player latency
         :rtype: list of PlayerLatency
         """
         return self._PlayerLatencies
@@ -4955,7 +4955,7 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
 
 class StartGameServerSessionPlacementResponse(AbstractModel):
-    """StartGameServerSessionPlacement response structure.
+    r"""StartGameServerSessionPlacement response structure.
 
     """
 
@@ -4971,7 +4971,7 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
-        """Game server session placement
+        r"""Game server session placement
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
         """
         return self._GameServerSessionPlacement
@@ -4982,7 +4982,7 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5000,7 +5000,7 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
 
 
 class StopGameServerSessionPlacementRequest(AbstractModel):
-    """StopGameServerSessionPlacement request structure.
+    r"""StopGameServerSessionPlacement request structure.
 
     """
 
@@ -5013,7 +5013,7 @@ class StopGameServerSessionPlacementRequest(AbstractModel):
 
     @property
     def PlacementId(self):
-        """Unique ID of game server session placement
+        r"""Unique ID of game server session placement
         :rtype: str
         """
         return self._PlacementId
@@ -5036,7 +5036,7 @@ class StopGameServerSessionPlacementRequest(AbstractModel):
 
 
 class StopGameServerSessionPlacementResponse(AbstractModel):
-    """StopGameServerSessionPlacement response structure.
+    r"""StopGameServerSessionPlacement response structure.
 
     """
 
@@ -5052,7 +5052,7 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def GameServerSessionPlacement(self):
-        """Game server session placement
+        r"""Game server session placement
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
         """
         return self._GameServerSessionPlacement
@@ -5063,7 +5063,7 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5081,7 +5081,7 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Tag structure
+    r"""Tag structure
 
     """
 
@@ -5097,7 +5097,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key. Up to 127 bytes are allowed.
+        r"""Tag key. Up to 127 bytes are allowed.
         :rtype: str
         """
         return self._Key
@@ -5108,7 +5108,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value. Up to 255 bytes are allowed.
+        r"""Tag value. Up to 255 bytes are allowed.
         :rtype: str
         """
         return self._Value
@@ -5132,7 +5132,7 @@ class Tag(AbstractModel):
 
 
 class TargetConfiguration(AbstractModel):
-    """Configuration of target tracking scaling
+    r"""Configuration of target tracking scaling
 
     """
 
@@ -5146,7 +5146,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TargetValue(self):
-        """Ratio of reserved server session resource 
+        r"""Ratio of reserved server session resource 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5170,7 +5170,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class TimerConfiguration(AbstractModel):
-    """The recurrence pattern of auto-scaling
+    r"""The recurrence pattern of auto-scaling
 
     """
 
@@ -5196,7 +5196,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerType(self):
-        """The recurrence pattern of auto-scaling. `0`: undefined, `1`: once, `2`: daily, `3`: monthly, `4`: weekly
+        r"""The recurrence pattern of auto-scaling. `0`: undefined, `1`: once, `2`: daily, `3`: monthly, `4`: weekly
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5208,7 +5208,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerValue(self):
-        """Details of the recurrence pattern of auto-scaling
+        r"""Details of the recurrence pattern of auto-scaling
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.TimerValue`
         """
@@ -5220,7 +5220,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BeginTime(self):
-        """Start time of the scheduled scaling policy
+        r"""Start time of the scheduled scaling policy
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5232,7 +5232,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndTime(self):
-        """End time of the scheduled scaling policy
+        r"""End time of the scheduled scaling policy
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5261,7 +5261,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class TimerFleetCapacity(AbstractModel):
-    """The capacity configurations of the scheduled scaling policy
+    r"""The capacity configurations of the scheduled scaling policy
 
     """
 
@@ -5299,7 +5299,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FleetId(self):
-        """ID of the fleet to be bound with the policy
+        r"""ID of the fleet to be bound with the policy
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5311,7 +5311,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DesiredInstances(self):
-        """Desired number of instances
+        r"""Desired number of instances
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5323,7 +5323,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MinSize(self):
-        """Minimum number of instances
+        r"""Minimum number of instances
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5335,7 +5335,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxSize(self):
-        """Maximum number of instances
+        r"""Maximum number of instances
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5347,7 +5347,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScalingInterval(self):
-        """Scaling cooldown period, in minutes
+        r"""Scaling cooldown period, in minutes
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5359,7 +5359,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScalingType(self):
-        """Scaling type. `1`: manual, `2`: automatic, `0`: undefined
+        r"""Scaling type. `1`: manual, `2`: automatic, `0`: undefined
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5371,7 +5371,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TargetConfiguration(self):
-        """Configuration of target tracking scaling
+        r"""Configuration of target tracking scaling
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
         """
@@ -5403,7 +5403,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class TimerScalingPolicy(AbstractModel):
-    """Configurations of a scheduled scaling policy
+    r"""Configurations of a scheduled scaling policy
 
     """
 
@@ -5433,7 +5433,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerId(self):
-        """Unique ID of the policy. When it’s filled in, the policy will be updated.
+        r"""Unique ID of the policy. When it’s filled in, the policy will be updated.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5445,7 +5445,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerName(self):
-        """Scheduled scaling policy name
+        r"""Scheduled scaling policy name
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5457,7 +5457,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerStatus(self):
-        """Scheduled scaling policy status. `0`: Undefined, `1`: Not started, 2: Activated, `3`: Stopped, `4`: Expired
+        r"""Scheduled scaling policy status. `0`: Undefined, `1`: Not started, 2: Activated, `3`: Stopped, `4`: Expired
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5469,7 +5469,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerFleetCapacity(self):
-        """The capacity configurations of the scheduled scaling policy
+        r"""The capacity configurations of the scheduled scaling policy
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.TimerFleetCapacity`
         """
@@ -5481,7 +5481,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimerConfiguration(self):
-        """The recurrence pattern of auto-scaling
+        r"""The recurrence pattern of auto-scaling
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gse.v20191112.models.TimerConfiguration`
         """
@@ -5513,7 +5513,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class TimerValue(AbstractModel):
-    """Details of the recurrence pattern of the scheduled scaling policy
+    r"""Details of the recurrence pattern of the scheduled scaling policy
 
     """
 
@@ -5539,7 +5539,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Day(self):
-        """Execute once every X day(s)
+        r"""Execute once every X day(s)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5551,7 +5551,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FromDay(self):
-        """Specify the first day to execute the scaling action in a month (execute once per day)
+        r"""Specify the first day to execute the scaling action in a month (execute once per day)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5563,7 +5563,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ToDay(self):
-        """Specify the last day to execute the scaling action in a month
+        r"""Specify the last day to execute the scaling action in a month
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5575,7 +5575,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WeekDays(self):
-        """Specify the week days to repeat the scaling action. Multiple values are supported. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday). 
+        r"""Specify the week days to repeat the scaling action. Multiple values are supported. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday). 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -5602,7 +5602,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class UpdateBucketAccelerateOptRequest(AbstractModel):
-    """UpdateBucketAccelerateOpt request structure.
+    r"""UpdateBucketAccelerateOpt request structure.
 
     """
 
@@ -5615,7 +5615,7 @@ class UpdateBucketAccelerateOptRequest(AbstractModel):
 
     @property
     def Allowed(self):
-        """`true`: enable global acceleration; `false`: disable global acceleration
+        r"""`true`: enable global acceleration; `false`: disable global acceleration
         :rtype: bool
         """
         return self._Allowed
@@ -5638,7 +5638,7 @@ class UpdateBucketAccelerateOptRequest(AbstractModel):
 
 
 class UpdateBucketAccelerateOptResponse(AbstractModel):
-    """UpdateBucketAccelerateOpt response structure.
+    r"""UpdateBucketAccelerateOpt response structure.
 
     """
 
@@ -5651,7 +5651,7 @@ class UpdateBucketAccelerateOptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5666,7 +5666,7 @@ class UpdateBucketAccelerateOptResponse(AbstractModel):
 
 
 class UpdateBucketCORSOptRequest(AbstractModel):
-    """UpdateBucketCORSOpt request structure.
+    r"""UpdateBucketCORSOpt request structure.
 
     """
 
@@ -5691,7 +5691,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedOrigins(self):
-        """Allowed access source. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        r"""Allowed access source. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._AllowedOrigins
@@ -5702,7 +5702,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedMethods(self):
-        """Allowed HTTP method(s). Multiple methods are allowed, including PUT, GET, POST, and HEAD. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        r"""Allowed HTTP method(s). Multiple methods are allowed, including PUT, GET, POST, and HEAD. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._AllowedMethods
@@ -5713,7 +5713,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def AllowedHeaders(self):
-        """Specifies the custom HTTP request headers that the browser is allowed to include in a CORS request. Wildcard (*) is supported, indicating allowing all headers (recommended). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        r"""Specifies the custom HTTP request headers that the browser is allowed to include in a CORS request. Wildcard (*) is supported, indicating allowing all headers (recommended). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._AllowedHeaders
@@ -5724,7 +5724,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def MaxAgeSeconds(self):
-        """Sets the validity duration for the CORS configuration (in second). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        r"""Sets the validity duration for the CORS configuration (in second). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
         :rtype: int
         """
         return self._MaxAgeSeconds
@@ -5735,7 +5735,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
     @property
     def ExposeHeaders(self):
-        """CORS response header(s) that can be exposed to the browser, case-insensitive. If this parameter is not specified, the browser can access only simple response headers Cache-Control, Content-Type, Expires, and Last-Modified by default. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
+        r"""CORS response header(s) that can be exposed to the browser, case-insensitive. If this parameter is not specified, the browser can access only simple response headers Cache-Control, Content-Type, Expires, and Last-Modified by default. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._ExposeHeaders
@@ -5762,7 +5762,7 @@ class UpdateBucketCORSOptRequest(AbstractModel):
 
 
 class UpdateBucketCORSOptResponse(AbstractModel):
-    """UpdateBucketCORSOpt response structure.
+    r"""UpdateBucketCORSOpt response structure.
 
     """
 
@@ -5775,7 +5775,7 @@ class UpdateBucketCORSOptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5790,7 +5790,7 @@ class UpdateBucketCORSOptResponse(AbstractModel):
 
 
 class UpdateGameServerSessionRequest(AbstractModel):
-    """UpdateGameServerSession request structure.
+    r"""UpdateGameServerSession request structure.
 
     """
 
@@ -5815,7 +5815,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 256 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 256 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -5826,7 +5826,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def MaximumPlayerSessionCount(self):
-        """The maximum number of players, which cannot be less than 0.
+        r"""The maximum number of players, which cannot be less than 0.
         :rtype: int
         """
         return self._MaximumPlayerSessionCount
@@ -5837,7 +5837,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the game server session. It should contain 1 to 1024 ASCII characters.
+        r"""Name of the game server session. It should contain 1 to 1024 ASCII characters.
         :rtype: str
         """
         return self._Name
@@ -5848,7 +5848,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def PlayerSessionCreationPolicy(self):
-        """Player session creation policy, which includes `ACCEPT_ALL` (allow all players) and `DENY_ALL` (reject all players).
+        r"""Player session creation policy, which includes `ACCEPT_ALL` (allow all players) and `DENY_ALL` (reject all players).
         :rtype: str
         """
         return self._PlayerSessionCreationPolicy
@@ -5859,7 +5859,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
     @property
     def ProtectionPolicy(self):
-        """Protection policy, which includes `NoProtection`·(no protection), `TimeLimitProtection` (time-limited protection) and `FullProtection` (full protection)
+        r"""Protection policy, which includes `NoProtection`·(no protection), `TimeLimitProtection` (time-limited protection) and `FullProtection` (full protection)
         :rtype: str
         """
         return self._ProtectionPolicy
@@ -5886,7 +5886,7 @@ class UpdateGameServerSessionRequest(AbstractModel):
 
 
 class UpdateGameServerSessionResponse(AbstractModel):
-    """UpdateGameServerSession response structure.
+    r"""UpdateGameServerSession response structure.
 
     """
 
@@ -5902,7 +5902,7 @@ class UpdateGameServerSessionResponse(AbstractModel):
 
     @property
     def GameServerSession(self):
-        """Updated game session
+        r"""Updated game session
         :rtype: :class:`tencentcloud.gse.v20191112.models.GameServerSession`
         """
         return self._GameServerSession
@@ -5913,7 +5913,7 @@ class UpdateGameServerSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

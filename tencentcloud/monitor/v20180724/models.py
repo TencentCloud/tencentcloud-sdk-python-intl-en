@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AlarmEvent(AbstractModel):
-    """Alarm event
+    r"""Alarm event
 
     """
 
@@ -38,7 +38,7 @@ class AlarmEvent(AbstractModel):
 
     @property
     def EventName(self):
-        """Event name
+        r"""Event name
         :rtype: str
         """
         return self._EventName
@@ -49,7 +49,7 @@ class AlarmEvent(AbstractModel):
 
     @property
     def Description(self):
-        """Event display name
+        r"""Event display name
         :rtype: str
         """
         return self._Description
@@ -60,7 +60,7 @@ class AlarmEvent(AbstractModel):
 
     @property
     def Namespace(self):
-        """Alarm policy type
+        r"""Alarm policy type
         :rtype: str
         """
         return self._Namespace
@@ -85,7 +85,7 @@ class AlarmEvent(AbstractModel):
 
 
 class AlarmHierarchicalNotice(AbstractModel):
-    """Notification template ID and the list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
+    r"""Notification template ID and the list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
 
     """
 
@@ -103,7 +103,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoticeId(self):
-        """Notification template ID
+        r"""Notification template ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -115,7 +115,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Classification(self):
-        """The list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
+        r"""The list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -140,7 +140,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmHierarchicalValue(AbstractModel):
-    """The configuration of alarm level threshold
+    r"""The configuration of alarm level threshold
 
     """
 
@@ -162,7 +162,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remind(self):
-        """Threshold for the `Remind` level
+        r"""Threshold for the `Remind` level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -174,7 +174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warn(self):
-        """Threshold for the `Warn` level
+        r"""Threshold for the `Warn` level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -186,7 +186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Serious(self):
-        """Threshold for the `Serious` level
+        r"""Threshold for the `Serious` level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -212,7 +212,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmHistory(AbstractModel):
-    """Alarm record data
+    r"""Alarm record data
 
     """
 
@@ -296,7 +296,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmId(self):
-        """Alarm record ID
+        r"""Alarm record ID
         :rtype: str
         """
         return self._AlarmId
@@ -307,7 +307,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MonitorType(self):
-        """Monitor type
+        r"""Monitor type
         :rtype: str
         """
         return self._MonitorType
@@ -318,7 +318,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Namespace(self):
-        """Policy type
+        r"""Policy type
         :rtype: str
         """
         return self._Namespace
@@ -329,7 +329,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmObject(self):
-        """Alarm object
+        r"""Alarm object
         :rtype: str
         """
         return self._AlarmObject
@@ -340,7 +340,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Content(self):
-        """Alarm content
+        r"""Alarm content
         :rtype: str
         """
         return self._Content
@@ -351,7 +351,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FirstOccurTime(self):
-        """Timestamp of the first occurrence
+        r"""Timestamp of the first occurrence
         :rtype: int
         """
         return self._FirstOccurTime
@@ -362,7 +362,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastOccurTime(self):
-        """Timestamp of the last occurrence
+        r"""Timestamp of the last occurrence
         :rtype: int
         """
         return self._LastOccurTime
@@ -373,7 +373,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmStatus(self):
-        """Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data)
+        r"""Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data)
         :rtype: str
         """
         return self._AlarmStatus
@@ -384,7 +384,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -395,7 +395,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyName(self):
-        """Policy name
+        r"""Policy name
         :rtype: str
         """
         return self._PolicyName
@@ -406,7 +406,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VPC(self):
-        """VPC of alarm object for basic product alarm
+        r"""VPC of alarm object for basic product alarm
         :rtype: str
         """
         return self._VPC
@@ -417,7 +417,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -428,7 +428,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._ProjectName
@@ -439,7 +439,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceGroup(self):
-        """Instance group of alarm object
+        r"""Instance group of alarm object
         :rtype: list of InstanceGroups
         """
         return self._InstanceGroup
@@ -450,7 +450,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverUids(self):
-        """Recipient list
+        r"""Recipient list
         :rtype: list of int
         """
         return self._ReceiverUids
@@ -461,7 +461,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverGroups(self):
-        """Recipient group list
+        r"""Recipient group list
         :rtype: list of int
         """
         return self._ReceiverGroups
@@ -472,7 +472,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NoticeWays(self):
-        """Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)
+        r"""Alarm channel list. Valid values: SMS (SMS), EMAIL (email), CALL (phone), WECHAT (WeChat)
         :rtype: list of str
         """
         return self._NoticeWays
@@ -483,7 +483,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginId(self):
-        """Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
+        r"""Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
         :rtype: str
         """
         return self._OriginId
@@ -494,7 +494,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmType(self):
-        """Alarm type
+        r"""Alarm type
         :rtype: str
         """
         return self._AlarmType
@@ -505,7 +505,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventId(self):
-        """Event ID
+        r"""Event ID
         :rtype: int
         """
         return self._EventId
@@ -516,7 +516,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -527,7 +527,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyExists(self):
-        """Whether the policy exists. Valid values: 0 (no), 1 (yes)
+        r"""Whether the policy exists. Valid values: 0 (no), 1 (yes)
         :rtype: int
         """
         return self._PolicyExists
@@ -538,7 +538,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricsInfo(self):
-        """Metric information
+        r"""Metric information
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of AlarmHistoryMetric
         """
@@ -550,7 +550,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Dimensions(self):
-        """Dimension information of an instance that triggered alarms.
+        r"""Dimension information of an instance that triggered alarms.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -607,7 +607,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AlarmHistoryMetric(AbstractModel):
-    """Metric information of alarm records
+    r"""Metric information of alarm records
 
     """
 
@@ -632,7 +632,7 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def QceNamespace(self):
-        """Namespace used to query data by Tencent Cloud service monitoring type
+        r"""Namespace used to query data by Tencent Cloud service monitoring type
         :rtype: str
         """
         return self._QceNamespace
@@ -643,7 +643,7 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -654,7 +654,7 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Period(self):
-        """Statistical period
+        r"""Statistical period
         :rtype: int
         """
         return self._Period
@@ -665,7 +665,7 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Value(self):
-        """Value triggering alarm
+        r"""Value triggering alarm
         :rtype: str
         """
         return self._Value
@@ -676,7 +676,7 @@ class AlarmHistoryMetric(AbstractModel):
 
     @property
     def Description(self):
-        """Metric display name
+        r"""Metric display name
         :rtype: str
         """
         return self._Description
@@ -703,7 +703,7 @@ class AlarmHistoryMetric(AbstractModel):
 
 
 class AlarmNotice(AbstractModel):
-    """Alarm notification template details
+    r"""Alarm notification template details
 
     """
 
@@ -765,7 +765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Alarm notification template ID
+        r"""Alarm notification template ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -777,7 +777,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Alarm notification template name
+        r"""Alarm notification template name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -789,7 +789,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Last modified time
+        r"""Last modified time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -801,7 +801,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedBy(self):
-        """Last modified by
+        r"""Last modified by
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -813,7 +813,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoticeType(self):
-        """Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+        r"""Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -825,7 +825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserNotices(self):
-        """User notification list
+        r"""User notification list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserNotice
         """
@@ -837,7 +837,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def URLNotices(self):
-        """Callback notification list
+        r"""Callback notification list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of URLNotice
         """
@@ -849,7 +849,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPreset(self):
-        """Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)
+        r"""Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -861,7 +861,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoticeLanguage(self):
-        """Notification language. Valid values: zh-CN (Chinese), en-US (English)
+        r"""Notification language. Valid values: zh-CN (Chinese), en-US (English)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -873,7 +873,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyIds(self):
-        """List of IDs of the alarm policies bound to alarm notification template
+        r"""List of IDs of the alarm policies bound to alarm notification template
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -885,7 +885,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AMPConsumerId(self):
-        """Backend AMP consumer ID.
+        r"""Backend AMP consumer ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -897,7 +897,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CLSNotices(self):
-        """Channel to push alarm notifications to CLS.
+        r"""Channel to push alarm notifications to CLS.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of CLSNotice
         """
@@ -909,7 +909,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
-        """Tags bound to a notification template
+        r"""Tags bound to a notification template
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -965,7 +965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicy(AbstractModel):
-    """Alarm policy details
+    r"""Alarm policy details
 
     """
 
@@ -1118,7 +1118,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1130,7 +1130,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
-        """Alarm policy name
+        r"""Alarm policy name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1142,7 +1142,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1154,7 +1154,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MonitorType(self):
-        """Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        r"""Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1166,7 +1166,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enable(self):
-        """Status. Valid values: 0 (disabled), 1 (enabled)
+        r"""Status. Valid values: 0 (disabled), 1 (enabled)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1178,7 +1178,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseSum(self):
-        """Number of instances bound to policy group
+        r"""Number of instances bound to policy group
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1190,7 +1190,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID. Valid values: -1 (no project), 0 (default project)
+        r"""Project ID. Valid values: -1 (no project), 0 (default project)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1202,7 +1202,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
-        """Project name
+        r"""Project name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1214,7 +1214,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
-        """Alarm policy type
+        r"""Alarm policy type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1226,7 +1226,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionTemplateId(self):
-        """Trigger condition template ID
+        r"""Trigger condition template ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1238,7 +1238,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Condition(self):
-        """Metric trigger condition
+        r"""Metric trigger condition
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         """
@@ -1250,7 +1250,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventCondition(self):
-        """Event trigger condition
+        r"""Event trigger condition
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
         """
@@ -1262,7 +1262,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoticeIds(self):
-        """Notification rule ID list
+        r"""Notification rule ID list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1274,7 +1274,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Notices(self):
-        """Notification rule list
+        r"""Notification rule list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AlarmNotice
         """
@@ -1286,7 +1286,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerTasks(self):
-        """Triggered task list
+        r"""Triggered task list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AlarmPolicyTriggerTask
         """
@@ -1298,7 +1298,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionsTemp(self):
-        """Template policy group
+        r"""Template policy group
 Note: this field may return null, indicating that no valid values can be obtained.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`
@@ -1311,7 +1311,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastEditUin(self):
-        """`Uin` of the last modifying user
+        r"""`Uin` of the last modifying user
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1323,7 +1323,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Update time
+        r"""Update time
 Note: this field may return null, indicating that no valid values can be obtained.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -1336,7 +1336,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InsertTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -1349,7 +1349,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region
+        r"""Region
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1361,7 +1361,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NamespaceShowName(self):
-        """Namespace display name
+        r"""Namespace display name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1373,7 +1373,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
-        """Whether it is the default policy. Valid values: 1 (yes), 0 (no)
+        r"""Whether it is the default policy. Valid values: 1 (yes), 0 (no)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1385,7 +1385,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CanSetDefault(self):
-        """Whether the default policy can be set. Valid values: 1 (yes), 0 (no)
+        r"""Whether the default policy can be set. Valid values: 1 (yes), 0 (no)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1397,7 +1397,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID
+        r"""Instance group ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1409,7 +1409,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceSum(self):
-        """Total number of instances in instance group
+        r"""Total number of instances in instance group
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1421,7 +1421,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceGroupName(self):
-        """Instance group name
+        r"""Instance group name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1433,7 +1433,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleType(self):
-        """Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)
+        r"""Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1445,7 +1445,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginId(self):
-        """Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
+        r"""Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1457,7 +1457,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagInstances(self):
-        """Tag
+        r"""Tag
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of TagInstance
         """
@@ -1469,7 +1469,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FilterDimensionsParam(self):
-        """Information on the filter dimension associated with a policy.
+        r"""Information on the filter dimension associated with a policy.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1481,7 +1481,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsOneClick(self):
-        """Whether it is a quick alarm policy.
+        r"""Whether it is a quick alarm policy.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1493,7 +1493,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OneClickStatus(self):
-        """Whether the quick alarm policy is enabled.
+        r"""Whether the quick alarm policy is enabled.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1505,7 +1505,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AdvancedMetricNumber(self):
-        """The number of advanced metrics.
+        r"""The number of advanced metrics.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1517,7 +1517,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsBindAll(self):
-        """Whether the policy is associated with all objects
+        r"""Whether the policy is associated with all objects
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1529,7 +1529,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Policy tag
+        r"""Policy tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -1613,7 +1613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicyCondition(AbstractModel):
-    """Metric trigger condition of alarm policy
+    r"""Metric trigger condition of alarm policy
 
     """
 
@@ -1635,7 +1635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsUnionRule(self):
-        """Judgment condition of an alarm trigger condition (`0`: Any; `1`: All; `2`: Composite). When the value is set to `2` (i.e., composite trigger conditions), this parameter should be used together with `ComplexExpression`.
+        r"""Judgment condition of an alarm trigger condition (`0`: Any; `1`: All; `2`: Composite). When the value is set to `2` (i.e., composite trigger conditions), this parameter should be used together with `ComplexExpression`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1647,7 +1647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """Alarm trigger condition list
+        r"""Alarm trigger condition list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AlarmPolicyRule
         """
@@ -1659,7 +1659,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComplexExpression(self):
-        """The judgment expression of composite alarm trigger conditions, which is valid when the value of `IsUnionRule` is `2`. This parameter is used to determine that an alarm condition is met only when the expression values are `True` for multiple trigger conditions.
+        r"""The judgment expression of composite alarm trigger conditions, which is valid when the value of `IsUnionRule` is `2`. This parameter is used to determine that an alarm condition is met only when the expression values are `True` for multiple trigger conditions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1690,7 +1690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicyEventCondition(AbstractModel):
-    """Event trigger condition of alarm policy
+    r"""Event trigger condition of alarm policy
 
     """
 
@@ -1704,7 +1704,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """Alarm trigger condition list
+        r"""Alarm trigger condition list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of AlarmPolicyRule
         """
@@ -1733,7 +1733,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicyFilter(AbstractModel):
-    """Filter condition of alarm policy
+    r"""Filter condition of alarm policy
 
     """
 
@@ -1751,7 +1751,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)
+        r"""Filter condition type. Valid values: DIMENSION (uses dimensions for filtering)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1763,7 +1763,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Dimensions(self):
-        """JSON string generated by serializing the `AlarmPolicyDimension` two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationship
+        r"""JSON string generated by serializing the `AlarmPolicyDimension` two-dimensional array. The one-dimensional arrays are in OR relationship, and the elements in a one-dimensional array are in AND relationship
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1788,7 +1788,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicyRule(AbstractModel):
-    """Trigger condition of alarm policy
+    r"""Trigger condition of alarm policy
 
     """
 
@@ -1884,7 +1884,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric name or event name. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1) and the supported events via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
+        r"""Metric name or event name. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1) and the supported events via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1896,7 +1896,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Period(self):
-        """Statistical period in seconds. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+        r"""Statistical period in seconds. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1908,7 +1908,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
 intelligent = intelligent detection without threshold
 eq = equal to
 ge = greater than or equal to
@@ -1938,7 +1938,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Value(self):
-        """Threshold. The valid value range can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+        r"""Threshold. The valid value range can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1950,7 +1950,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ContinuePeriod(self):
-        """Number of periods. `1`: continue for one period; `2`: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+        r"""Number of periods. `1`: continue for one period; `2`: continue for two periods; and so on. The valid values can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1962,7 +1962,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def NoticeFrequency(self):
-        """Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)
+        r"""Alarm interval in seconds. Valid values: 0 (do not repeat), 300 (alarm once every 5 minutes), 600 (alarm once every 10 minutes), 900 (alarm once every 15 minutes), 1800 (alarm once every 30 minutes), 3600 (alarm once every hour), 7200 (alarm once every 2 hours), 10800 (alarm once every 3 hours), 21600 (alarm once every 6 hours),  43200 (alarm once every 12 hours), 86400 (alarm once every day)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1974,7 +1974,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPowerNotice(self):
-        """Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)
+        r"""Whether the alarm frequency increases exponentially. Valid values: 0 (no), 1 (yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1986,7 +1986,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Filter(self):
-        """Filter condition for one single trigger rule
+        r"""Filter condition for one single trigger rule
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         """
@@ -1998,7 +1998,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Metric display name, which is used in the output parameter
+        r"""Metric display name, which is used in the output parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2010,7 +2010,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        """Unit, which is used in the output parameter
+        r"""Unit, which is used in the output parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2022,7 +2022,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleType(self):
-        """Trigger condition type. `STATIC`: static threshold; `dynamic`: dynamic threshold. If you do not specify this parameter when creating or editing a policy, `STATIC` is used by default.
+        r"""Trigger condition type. `STATIC`: static threshold; `dynamic`: dynamic threshold. If you do not specify this parameter when creating or editing a policy, `STATIC` is used by default.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2034,7 +2034,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def IsAdvanced(self):
-        """Whether it is an advanced metric. 0: No; 1: Yes.
+        r"""Whether it is an advanced metric. 0: No; 1: Yes.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2046,7 +2046,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsOpen(self):
-        """Whether the advanced metric feature is enabled. 0: No; 1: Yes.
+        r"""Whether the advanced metric feature is enabled. 0: No; 1: Yes.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2058,7 +2058,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProductId(self):
-        """Integration center product ID.
+        r"""Integration center product ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2070,7 +2070,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ValueMax(self):
-        """Maximum value
+        r"""Maximum value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -2082,7 +2082,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValueMin(self):
-        """Minimum value
+        r"""Minimum value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -2094,7 +2094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HierarchicalValue(self):
-        """The configuration of alarm level threshold
+        r"""The configuration of alarm level threshold
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
         """
@@ -2138,7 +2138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AlarmPolicyTriggerTask(AbstractModel):
-    """Task triggered by alarm policy
+    r"""Task triggered by alarm policy
 
     """
 
@@ -2156,7 +2156,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Triggered task type. Valid value: AS (auto scaling)
+        r"""Triggered task type. Valid value: AS (auto scaling)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2168,7 +2168,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskConfig(self):
-        """Configuration information in JSON format, such as {"Key1":"Value1","Key2":"Value2"}
+        r"""Configuration information in JSON format, such as {"Key1":"Value1","Key2":"Value2"}
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2193,7 +2193,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class BindPrometheusManagedGrafanaRequest(AbstractModel):
-    """BindPrometheusManagedGrafana request structure.
+    r"""BindPrometheusManagedGrafana request structure.
 
     """
 
@@ -2209,7 +2209,7 @@ class BindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -2220,7 +2220,7 @@ class BindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def GrafanaId(self):
-        """Grafana instance ID
+        r"""Grafana instance ID
         :rtype: str
         """
         return self._GrafanaId
@@ -2244,7 +2244,7 @@ class BindPrometheusManagedGrafanaRequest(AbstractModel):
 
 
 class BindPrometheusManagedGrafanaResponse(AbstractModel):
-    """BindPrometheusManagedGrafana response structure.
+    r"""BindPrometheusManagedGrafana response structure.
 
     """
 
@@ -2257,7 +2257,7 @@ class BindPrometheusManagedGrafanaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2272,7 +2272,7 @@ class BindPrometheusManagedGrafanaResponse(AbstractModel):
 
 
 class BindingPolicyObjectDimension(AbstractModel):
-    """Dimensions of instances bound to a policy
+    r"""Dimensions of instances bound to a policy
 
     """
 
@@ -2296,7 +2296,7 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def Region(self):
-        """Region name.
+        r"""Region name.
         :rtype: str
         """
         return self._Region
@@ -2307,7 +2307,7 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID.
+        r"""Region ID.
         :rtype: int
         """
         return self._RegionId
@@ -2318,7 +2318,7 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Instance dimension information in the following format:
+        r"""Instance dimension information in the following format:
 {"unInstanceId":"ins-00jvv9mo"}. The dimension information varies by Tencent Cloud services. For more information, please see:
 [Dimension List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :rtype: str
@@ -2331,7 +2331,7 @@ class BindingPolicyObjectDimension(AbstractModel):
 
     @property
     def EventDimensions(self):
-        """Event dimensions.
+        r"""Event dimensions.
         :rtype: str
         """
         return self._EventDimensions
@@ -2357,7 +2357,7 @@ class BindingPolicyObjectDimension(AbstractModel):
 
 
 class BindingPolicyObjectRequest(AbstractModel):
-    """BindingPolicyObject request structure.
+    r"""BindingPolicyObject request structure.
 
     """
 
@@ -2388,7 +2388,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Required. The value is fixed to monitor.
+        r"""Required. The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -2399,7 +2399,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID, such as `4739573`. This parameter will be disused soon. Another parameter `PolicyId` is recommended.
+        r"""Policy group ID, such as `4739573`. This parameter will be disused soon. Another parameter `PolicyId` is recommended.
         :rtype: int
         """
         return self._GroupId
@@ -2410,7 +2410,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID, such as `policy-gh892hg0`. At least one of the two parameters, `PolicyId` and `GroupId`, must be specified; otherwise, an error will be reported. `PolicyId` is preferred over `GroupId` when both of them are specified.
+        r"""Alarm policy ID, such as `policy-gh892hg0`. At least one of the two parameters, `PolicyId` and `GroupId`, must be specified; otherwise, an error will be reported. `PolicyId` is preferred over `GroupId` when both of them are specified.
         :rtype: str
         """
         return self._PolicyId
@@ -2421,7 +2421,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID.
+        r"""Instance group ID.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -2432,7 +2432,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Dimensions of an object to be bound.
+        r"""Dimensions of an object to be bound.
         :rtype: list of BindingPolicyObjectDimension
         """
         return self._Dimensions
@@ -2443,7 +2443,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        """The alert configured for an event
+        r"""The alert configured for an event
         :rtype: str
         """
         return self._EbSubject
@@ -2454,7 +2454,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
-        """Whether the event alert has been configured
+        r"""Whether the event alert has been configured
         :rtype: int
         """
         return self._EbEventFlag
@@ -2488,7 +2488,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
 
 class BindingPolicyObjectResponse(AbstractModel):
-    """BindingPolicyObject response structure.
+    r"""BindingPolicyObject response structure.
 
     """
 
@@ -2501,7 +2501,7 @@ class BindingPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2516,7 +2516,7 @@ class BindingPolicyObjectResponse(AbstractModel):
 
 
 class CLSNotice(AbstractModel):
-    """The operation of pushing alarm notifications to CLS
+    r"""The operation of pushing alarm notifications to CLS
 
     """
 
@@ -2538,7 +2538,7 @@ class CLSNotice(AbstractModel):
 
     @property
     def Region(self):
-        """Region.
+        r"""Region.
         :rtype: str
         """
         return self._Region
@@ -2549,7 +2549,7 @@ class CLSNotice(AbstractModel):
 
     @property
     def LogSetId(self):
-        """Logset ID.
+        r"""Logset ID.
         :rtype: str
         """
         return self._LogSetId
@@ -2560,7 +2560,7 @@ class CLSNotice(AbstractModel):
 
     @property
     def TopicId(self):
-        """Topic ID.
+        r"""Topic ID.
         :rtype: str
         """
         return self._TopicId
@@ -2571,7 +2571,7 @@ class CLSNotice(AbstractModel):
 
     @property
     def Enable(self):
-        """Status. Valid values: `0` (disabled), `1` (enabled). Default value: `1` (enabled). This parameter can be left empty.
+        r"""Status. Valid values: `0` (disabled), `1` (enabled). Default value: `1` (enabled). This parameter can be left empty.
         :rtype: int
         """
         return self._Enable
@@ -2597,13 +2597,13 @@ class CLSNotice(AbstractModel):
 
 
 class CheckIsPrometheusNewUserRequest(AbstractModel):
-    """CheckIsPrometheusNewUser request structure.
+    r"""CheckIsPrometheusNewUser request structure.
 
     """
 
 
 class CheckIsPrometheusNewUserResponse(AbstractModel):
-    """CheckIsPrometheusNewUser response structure.
+    r"""CheckIsPrometheusNewUser response structure.
 
     """
 
@@ -2616,7 +2616,7 @@ class CheckIsPrometheusNewUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2631,7 +2631,7 @@ class CheckIsPrometheusNewUserResponse(AbstractModel):
 
 
 class CleanGrafanaInstanceRequest(AbstractModel):
-    """CleanGrafanaInstance request structure.
+    r"""CleanGrafanaInstance request structure.
 
     """
 
@@ -2644,7 +2644,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -2667,7 +2667,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
 
 class CleanGrafanaInstanceResponse(AbstractModel):
-    """CleanGrafanaInstance response structure.
+    r"""CleanGrafanaInstance response structure.
 
     """
 
@@ -2680,7 +2680,7 @@ class CleanGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2695,7 +2695,7 @@ class CleanGrafanaInstanceResponse(AbstractModel):
 
 
 class CommonNamespace(AbstractModel):
-    """Unified namespace information
+    r"""Unified namespace information
 
     """
 
@@ -2729,7 +2729,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Id(self):
-        """Namespace ID
+        r"""Namespace ID
         :rtype: str
         """
         return self._Id
@@ -2740,7 +2740,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Name(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Name
@@ -2751,7 +2751,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Value(self):
-        """Namespace value
+        r"""Namespace value
         :rtype: str
         """
         return self._Value
@@ -2762,7 +2762,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def ProductName(self):
-        """Product name
+        r"""Product name
         :rtype: str
         """
         return self._ProductName
@@ -2773,7 +2773,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def Config(self):
-        """Configuration information
+        r"""Configuration information
         :rtype: str
         """
         return self._Config
@@ -2784,7 +2784,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def AvailableRegions(self):
-        """List of supported regions
+        r"""List of supported regions
         :rtype: list of str
         """
         return self._AvailableRegions
@@ -2795,7 +2795,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def SortId(self):
-        """Sort ID
+        r"""Sort ID
         :rtype: int
         """
         return self._SortId
@@ -2806,7 +2806,7 @@ class CommonNamespace(AbstractModel):
 
     @property
     def DashboardId(self):
-        """Unique ID in Dashboard
+        r"""Unique ID in Dashboard
         :rtype: str
         """
         return self._DashboardId
@@ -2836,7 +2836,7 @@ class CommonNamespace(AbstractModel):
 
 
 class CommonNamespaceNew(AbstractModel):
-    """Policy type information
+    r"""Policy type information
 
     """
 
@@ -2858,7 +2858,7 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Id(self):
-        """Namespace ID
+        r"""Namespace ID
         :rtype: str
         """
         return self._Id
@@ -2869,7 +2869,7 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Name(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._Name
@@ -2880,7 +2880,7 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def MonitorType(self):
-        """Monitoring type
+        r"""Monitoring type
         :rtype: str
         """
         return self._MonitorType
@@ -2891,7 +2891,7 @@ class CommonNamespaceNew(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Dimension information
+        r"""Dimension information
         :rtype: list of DimensionNew
         """
         return self._Dimensions
@@ -2922,7 +2922,7 @@ class CommonNamespaceNew(AbstractModel):
 
 
 class Condition(AbstractModel):
-    """Alarm condition
+    r"""Alarm condition
 
     """
 
@@ -2975,7 +2975,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm notification frequency.
+        r"""Alarm notification frequency.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -2986,7 +2986,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmNotifyType(self):
-        """Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm.
+        r"""Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -2997,7 +2997,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CalcType(self):
-        """Detection method.
+        r"""Detection method.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3009,7 +3009,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CalcValue(self):
-        """Detection value.
+        r"""Detection value.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3021,7 +3021,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ContinueTime(self):
-        """Duration in seconds.
+        r"""Duration in seconds.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3033,7 +3033,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricID(self):
-        """Metric ID.
+        r"""Metric ID.
         :rtype: int
         """
         return self._MetricID
@@ -3044,7 +3044,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricDisplayName(self):
-        """Displayed metric name.
+        r"""Displayed metric name.
         :rtype: str
         """
         return self._MetricDisplayName
@@ -3055,7 +3055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
-        """Statistical period.
+        r"""Statistical period.
         :rtype: int
         """
         return self._Period
@@ -3066,7 +3066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleID(self):
-        """Rule ID.
+        r"""Rule ID.
         :rtype: int
         """
         return self._RuleID
@@ -3077,7 +3077,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        """Metric unit.
+        r"""Metric unit.
         :rtype: str
         """
         return self._Unit
@@ -3088,7 +3088,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAdvanced(self):
-        """Whether it is an advanced metric. Valid values: `0` (no), `1` (yes).
+        r"""Whether it is an advanced metric. Valid values: `0` (no), `1` (yes).
         :rtype: int
         """
         return self._IsAdvanced
@@ -3099,7 +3099,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsOpen(self):
-        """Whether the advance metric feature is enabled. Valid values: `0` (no), `1` (yes).
+        r"""Whether the advance metric feature is enabled. Valid values: `0` (no), `1` (yes).
         :rtype: int
         """
         return self._IsOpen
@@ -3110,7 +3110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductId(self):
-        """Product ID.
+        r"""Product ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3146,7 +3146,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConditionsTemp(AbstractModel):
-    """Alarm trigger condition template
+    r"""Alarm trigger condition template
 
     """
 
@@ -3168,7 +3168,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateName(self):
-        """Template name
+        r"""Template name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3180,7 +3180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Condition(self):
-        """Metric trigger condition
+        r"""Metric trigger condition
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         """
@@ -3192,7 +3192,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventCondition(self):
-        """Event trigger condition
+        r"""Event trigger condition
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
         """
@@ -3222,7 +3222,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateAlarmNoticeRequest(AbstractModel):
-    """CreateAlarmNotice request structure.
+    r"""CreateAlarmNotice request structure.
 
     """
 
@@ -3256,7 +3256,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -3267,7 +3267,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Notification template name, which can contain up to 60 characters
+        r"""Notification template name, which can contain up to 60 characters
         :rtype: str
         """
         return self._Name
@@ -3278,7 +3278,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
-        """Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+        r"""Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
         :rtype: str
         """
         return self._NoticeType
@@ -3289,7 +3289,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
-        """Notification language. Valid values: zh-CN (Chinese), en-US (English)
+        r"""Notification language. Valid values: zh-CN (Chinese), en-US (English)
         :rtype: str
         """
         return self._NoticeLanguage
@@ -3300,7 +3300,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
-        """User notifications (up to 5)
+        r"""User notifications (up to 5)
         :rtype: list of UserNotice
         """
         return self._UserNotices
@@ -3311,7 +3311,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
-        """Callback notifications (up to 3)
+        r"""Callback notifications (up to 3)
         :rtype: list of URLNotice
         """
         return self._URLNotices
@@ -3322,7 +3322,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
-        """The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
+        r"""The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
         :rtype: list of CLSNotice
         """
         return self._CLSNotices
@@ -3333,7 +3333,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags bound to a template
+        r"""Tags bound to a template
         :rtype: list of Tag
         """
         return self._Tags
@@ -3383,7 +3383,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
 
 class CreateAlarmNoticeResponse(AbstractModel):
-    """CreateAlarmNotice response structure.
+    r"""CreateAlarmNotice response structure.
 
     """
 
@@ -3399,7 +3399,7 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def NoticeId(self):
-        """Alarm notification template ID
+        r"""Alarm notification template ID
         :rtype: str
         """
         return self._NoticeId
@@ -3410,7 +3410,7 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3426,7 +3426,7 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
 
 class CreateAlarmPolicyRequest(AbstractModel):
-    """CreateAlarmPolicy request structure.
+    r"""CreateAlarmPolicy request structure.
 
     """
 
@@ -3493,7 +3493,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -3504,7 +3504,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Policy name, which can contain up to 20 characters
+        r"""Policy name, which can contain up to 20 characters
         :rtype: str
         """
         return self._PolicyName
@@ -3515,7 +3515,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        """Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        r"""Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :rtype: str
         """
         return self._MonitorType
@@ -3526,7 +3526,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
+        r"""Type of alarm policy, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
         :rtype: str
         """
         return self._Namespace
@@ -3537,7 +3537,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks with up to 100 letters, digits, underscores, and hyphens
+        r"""Remarks with up to 100 letters, digits, underscores, and hyphens
         :rtype: str
         """
         return self._Remark
@@ -3548,7 +3548,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty
+        r"""Whether to enable. Valid values: 0 (no), 1 (yes). Default value: 1. This parameter can be left empty
         :rtype: int
         """
         return self._Enable
@@ -3559,7 +3559,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. For products with different projects, a value other than `-1` must be passed in. `-1`: no project; `0`: default project. If no value is passed in, `-1` will be used. The supported project IDs can be viewed on the [**Account Center** > **Project Management**](https://console.cloud.tencent.com/project) page of the console.
+        r"""Project ID. For products with different projects, a value other than `-1` must be passed in. `-1`: no project; `0`: default project. If no value is passed in, `-1` will be used. The supported project IDs can be viewed on the [**Account Center** > **Project Management**](https://console.cloud.tencent.com/project) page of the console.
         :rtype: int
         """
         return self._ProjectId
@@ -3570,7 +3570,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
-        """Trigger condition template ID. Pass in this parameter if the policy is associated with the trigger condition template; otherwise, pass in the `Condition` parameter. The trigger condition template ID can be obtained via [`DescribeConditionsTemplateList`](https://intl.cloud.tencent.com/document/api/248/70250?from_cn_redirect=1).
+        r"""Trigger condition template ID. Pass in this parameter if the policy is associated with the trigger condition template; otherwise, pass in the `Condition` parameter. The trigger condition template ID can be obtained via [`DescribeConditionsTemplateList`](https://intl.cloud.tencent.com/document/api/248/70250?from_cn_redirect=1).
         :rtype: int
         """
         return self._ConditionTemplateId
@@ -3581,7 +3581,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """Metric trigger condition. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
+        r"""Metric trigger condition. The supported metrics can be queried via [DescribeAlarmMetrics](https://intl.cloud.tencent.com/document/product/248/51283?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         """
         return self._Condition
@@ -3592,7 +3592,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EventCondition(self):
-        """Event trigger condition. The supported events can be queried via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
+        r"""Event trigger condition. The supported events can be queried via [DescribeAlarmEvents](https://intl.cloud.tencent.com/document/product/248/51284?from_cn_redirect=1).
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
         """
         return self._EventCondition
@@ -3603,7 +3603,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        """List of notification rule IDs, which can be obtained via [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)
+        r"""List of notification rule IDs, which can be obtained via [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1)
         :rtype: list of str
         """
         return self._NoticeIds
@@ -3614,7 +3614,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
-        """Triggered task list
+        r"""Triggered task list
         :rtype: list of AlarmPolicyTriggerTask
         """
         return self._TriggerTasks
@@ -3625,7 +3625,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Global filter.
+        r"""Global filter.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         """
         return self._Filter
@@ -3636,7 +3636,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        """Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
+        r"""Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
         :rtype: list of str
         """
         return self._GroupBy
@@ -3647,7 +3647,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags bound to a template
+        r"""Tags bound to a template
         :rtype: list of Tag
         """
         return self._Tags
@@ -3658,7 +3658,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def LogAlarmReqInfo(self):
-        """Log alarm information
+        r"""Log alarm information
         :rtype: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         return self._LogAlarmReqInfo
@@ -3669,7 +3669,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def HierarchicalNotices(self):
-        """Notification rules for different alarm levels
+        r"""Notification rules for different alarm levels
         :rtype: list of AlarmHierarchicalNotice
         """
         return self._HierarchicalNotices
@@ -3680,7 +3680,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MigrateFlag(self):
-        """A dedicated field for migration policies. 0: Implement authentication logic; 1: Skip authentication logic.
+        r"""A dedicated field for migration policies. 0: Implement authentication logic; 1: Skip authentication logic.
         :rtype: int
         """
         return self._MigrateFlag
@@ -3691,7 +3691,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        """The alert configured for an event
+        r"""The alert configured for an event
         :rtype: str
         """
         return self._EbSubject
@@ -3755,7 +3755,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
 
 class CreateAlarmPolicyResponse(AbstractModel):
-    """CreateAlarmPolicy response structure.
+    r"""CreateAlarmPolicy response structure.
 
     """
 
@@ -3774,7 +3774,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -3785,7 +3785,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        """Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
+        r"""Alarm policy ID, which can be used when you call APIs ([BindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40421?from_cn_redirect=1), [UnBindingAllPolicyObject](https://intl.cloud.tencent.com/document/product/248/40568?from_cn_redirect=1), [UnBindingPolicyObject](https://intl.cloud.tencent.com/document/product/248/40567?from_cn_redirect=1)) to bind/unbind instances or instance groups to/from an alarm policy
         :rtype: str
         """
         return self._OriginId
@@ -3796,7 +3796,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3813,7 +3813,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
 
 class CreateAlertRuleRequest(AbstractModel):
-    """CreateAlertRule request structure.
+    r"""CreateAlertRule request structure.
 
     """
 
@@ -3854,7 +3854,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def InstanceId(self):
-        """TMP instance ID, such as “prom-abcd1234”.
+        r"""TMP instance ID, such as “prom-abcd1234”.
         :rtype: str
         """
         return self._InstanceId
@@ -3865,7 +3865,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def RuleName(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._RuleName
@@ -3876,7 +3876,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Expr(self):
-        """Alerting rule expression. For more information, see <a href="https://www.tencentcloud.com/document/product/1116/43192?lang=en&pg=">Alerting Rule Description</a>
+        r"""Alerting rule expression. For more information, see <a href="https://www.tencentcloud.com/document/product/1116/43192?lang=en&pg=">Alerting Rule Description</a>
         :rtype: str
         """
         return self._Expr
@@ -3887,7 +3887,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Receivers(self):
-        """List of alert notification template IDs
+        r"""List of alert notification template IDs
         :rtype: list of str
         """
         return self._Receivers
@@ -3898,7 +3898,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
         :rtype: int
@@ -3911,7 +3911,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Duration(self):
-        """Rule alert duration
+        r"""Rule alert duration
         :rtype: str
         """
         return self._Duration
@@ -3922,7 +3922,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Labels(self):
-        """List of tags
+        r"""List of tags
         :rtype: list of PrometheusRuleKV
         """
         return self._Labels
@@ -3933,7 +3933,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Annotations(self):
-        """List of annotations.
+        r"""List of annotations.
 
 Alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.
         :rtype: list of PrometheusRuleKV
@@ -3946,7 +3946,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Type(self):
-        """Alerting rule template category
+        r"""Alerting rule template category
         :rtype: str
         """
         return self._Type
@@ -3987,7 +3987,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
 
 class CreateAlertRuleResponse(AbstractModel):
-    """CreateAlertRule response structure.
+    r"""CreateAlertRule response structure.
 
     """
 
@@ -4004,7 +4004,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4016,7 +4016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4032,7 +4032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateExporterIntegrationRequest(AbstractModel):
-    """CreateExporterIntegration request structure.
+    r"""CreateExporterIntegration request structure.
 
     """
 
@@ -4060,7 +4060,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -4071,7 +4071,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -4082,7 +4082,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Integrated configuration
+        r"""Integrated configuration
         :rtype: str
         """
         return self._Content
@@ -4093,7 +4093,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type. Valid values:
+        r"""Kubernetes cluster type. Valid values:
 <li> 1 = TKE </li>
 <li> 2 = EKS </li>
 <li> 3 = MEKS </li>
@@ -4107,7 +4107,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -4134,7 +4134,7 @@ class CreateExporterIntegrationRequest(AbstractModel):
 
 
 class CreateExporterIntegrationResponse(AbstractModel):
-    """CreateExporterIntegration response structure.
+    r"""CreateExporterIntegration response structure.
 
     """
 
@@ -4150,7 +4150,7 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     @property
     def Names(self):
-        """The list of successfully created integrations.
+        r"""The list of successfully created integrations.
         :rtype: list of str
         """
         return self._Names
@@ -4161,7 +4161,7 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4177,7 +4177,7 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
 
 class CreateGrafanaInstanceRequest(AbstractModel):
-    """CreateGrafanaInstance request structure.
+    r"""CreateGrafanaInstance request structure.
 
     """
 
@@ -4205,7 +4205,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -4216,7 +4216,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -4227,7 +4227,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """Array of subnet IDs
+        r"""Array of subnet IDs
         :rtype: list of str
         """
         return self._SubnetIds
@@ -4238,7 +4238,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def GrafanaInitPassword(self):
-        """Initial Grafana password
+        r"""Initial Grafana password
         :rtype: str
         """
         return self._GrafanaInitPassword
@@ -4249,7 +4249,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def EnableInternet(self):
-        """Whether to enable public network access
+        r"""Whether to enable public network access
         :rtype: bool
         """
         return self._EnableInternet
@@ -4260,7 +4260,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """Tag
+        r"""Tag
         :rtype: list of PrometheusTag
         """
         return self._TagSpecification
@@ -4293,7 +4293,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
 
 class CreateGrafanaInstanceResponse(AbstractModel):
-    """CreateGrafanaInstance response structure.
+    r"""CreateGrafanaInstance response structure.
 
     """
 
@@ -4309,7 +4309,7 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceId
@@ -4320,7 +4320,7 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4336,7 +4336,7 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
 
 class CreateGrafanaIntegrationRequest(AbstractModel):
-    """CreateGrafanaIntegration request structure.
+    r"""CreateGrafanaIntegration request structure.
 
     """
 
@@ -4355,7 +4355,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -4366,7 +4366,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
+        r"""Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :rtype: str
         """
         return self._Kind
@@ -4377,7 +4377,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Integration configuration
+        r"""Integration configuration
         :rtype: str
         """
         return self._Content
@@ -4402,7 +4402,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
 
 class CreateGrafanaIntegrationResponse(AbstractModel):
-    """CreateGrafanaIntegration response structure.
+    r"""CreateGrafanaIntegration response structure.
 
     """
 
@@ -4419,7 +4419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntegrationId(self):
-        """Integration ID
+        r"""Integration ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4431,7 +4431,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4447,7 +4447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateGrafanaNotificationChannelRequest(AbstractModel):
-    """CreateGrafanaNotificationChannel request structure.
+    r"""CreateGrafanaNotificationChannel request structure.
 
     """
 
@@ -4475,7 +4475,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -4486,7 +4486,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        """Alert channel name, such as “test”.
+        r"""Alert channel name, such as “test”.
         :rtype: str
         """
         return self._ChannelName
@@ -4497,7 +4497,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrgId(self):
-        """Default value: `1`. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""Default value: `1`. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :rtype: int
         """
         return self._OrgId
@@ -4508,7 +4508,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def Receivers(self):
-        """Array of notification channel IDs
+        r"""Array of notification channel IDs
         :rtype: list of str
         """
         return self._Receivers
@@ -4519,7 +4519,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
-        """Array of extra organization IDs. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""Array of extra organization IDs. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :rtype: list of str
         """
         return self._ExtraOrgIds
@@ -4530,7 +4530,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrganizationIds(self):
-        """Array of all valid organization IDs. Default value: `1`.
+        r"""Array of all valid organization IDs. Default value: `1`.
         :rtype: list of str
         """
         return self._OrganizationIds
@@ -4558,7 +4558,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
 
 class CreateGrafanaNotificationChannelResponse(AbstractModel):
-    """CreateGrafanaNotificationChannel response structure.
+    r"""CreateGrafanaNotificationChannel response structure.
 
     """
 
@@ -4575,7 +4575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelId(self):
-        """Channel ID.
+        r"""Channel ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4587,7 +4587,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4603,7 +4603,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreatePolicyGroupCondition(AbstractModel):
-    """Alarm threshold condition passed in when a policy is created.
+    r"""Alarm threshold condition passed in when a policy is created.
 
     """
 
@@ -4637,7 +4637,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def MetricId(self):
-        """Metric ID.
+        r"""Metric ID.
         :rtype: int
         """
         return self._MetricId
@@ -4648,7 +4648,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -4659,7 +4659,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
+        r"""Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -4670,7 +4670,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcType(self):
-        """Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. This parameter is optional if a default comparative type is configured for the metric.
+        r"""Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. This parameter is optional if a default comparative type is configured for the metric.
         :rtype: int
         """
         return self._CalcType
@@ -4681,7 +4681,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcValue(self):
-        """Comparative value. This parameter is optional if the metric has no requirement.
+        r"""Comparative value. This parameter is optional if the metric has no requirement.
         :rtype: float
         """
         return self._CalcValue
@@ -4692,7 +4692,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def CalcPeriod(self):
-        """Data aggregation period in seconds. This parameter is optional if the metric has a default value.
+        r"""Data aggregation period in seconds. This parameter is optional if the metric has a default value.
         :rtype: int
         """
         return self._CalcPeriod
@@ -4703,7 +4703,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def ContinuePeriod(self):
-        """Number of consecutive periods after which an alarm will be triggered.
+        r"""Number of consecutive periods after which an alarm will be triggered.
         :rtype: int
         """
         return self._ContinuePeriod
@@ -4714,7 +4714,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
+        r"""If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
         :rtype: int
         """
         return self._RuleId
@@ -4744,7 +4744,7 @@ class CreatePolicyGroupCondition(AbstractModel):
 
 
 class CreatePolicyGroupEventCondition(AbstractModel):
-    """Event alarm condition passed in when a policy is created.
+    r"""Event alarm condition passed in when a policy is created.
 
     """
 
@@ -4766,7 +4766,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def EventId(self):
-        """Alarm event ID.
+        r"""Alarm event ID.
         :rtype: int
         """
         return self._EventId
@@ -4777,7 +4777,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -4788,7 +4788,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
+        r"""Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -4799,7 +4799,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
+        r"""If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
         :rtype: int
         """
         return self._RuleId
@@ -4825,7 +4825,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
 
 
 class CreatePolicyGroupRequest(AbstractModel):
-    """CreatePolicyGroup request structure.
+    r"""CreatePolicyGroup request structure.
 
     """
 
@@ -4871,7 +4871,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -4882,7 +4882,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -4893,7 +4893,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ViewName(self):
-        """Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter is optional.
+        r"""Name of the view to which the policy group belongs. If the policy group is created based on a template, this parameter is optional.
         :rtype: str
         """
         return self._ViewName
@@ -4904,7 +4904,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """ID of the project to which the policy group belongs, which will be used for authentication.
+        r"""ID of the project to which the policy group belongs, which will be used for authentication.
         :rtype: int
         """
         return self._ProjectId
@@ -4915,7 +4915,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
-        """ID of a template-based policy group. This parameter is required only when the policy group is created based on a template.
+        r"""ID of a template-based policy group. This parameter is required only when the policy group is created based on a template.
         :rtype: int
         """
         return self._ConditionTempGroupId
@@ -4926,7 +4926,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def IsShielded(self):
-        """Whether the policy group is shielded. The value 0 indicates that the policy group is not shielded. The value 1 indicates that the policy group is shielded. The default value is 0.
+        r"""Whether the policy group is shielded. The value 0 indicates that the policy group is not shielded. The value 1 indicates that the policy group is shielded. The default value is 0.
         :rtype: int
         """
         return self._IsShielded
@@ -4937,7 +4937,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks of the policy group.
+        r"""Remarks of the policy group.
         :rtype: str
         """
         return self._Remark
@@ -4948,7 +4948,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def InsertTime(self):
-        """Insertion time in the format of Unix timestamp. If this parameter is not configured, the backend processing time is used.
+        r"""Insertion time in the format of Unix timestamp. If this parameter is not configured, the backend processing time is used.
         :rtype: int
         """
         return self._InsertTime
@@ -4959,7 +4959,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def Conditions(self):
-        """Alarm threshold rules in the policy group.
+        r"""Alarm threshold rules in the policy group.
         :rtype: list of CreatePolicyGroupCondition
         """
         return self._Conditions
@@ -4970,7 +4970,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def EventConditions(self):
-        """Event alarm rules in the policy group.
+        r"""Event alarm rules in the policy group.
         :rtype: list of CreatePolicyGroupEventCondition
         """
         return self._EventConditions
@@ -4981,7 +4981,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def BackEndCall(self):
-        """Whether it is a backend call. Rules pulled from the policy template will be used to fill in the `Conditions` and `EventConditions` fields only when the value of this parameter is `1`.
+        r"""Whether it is a backend call. Rules pulled from the policy template will be used to fill in the `Conditions` and `EventConditions` fields only when the value of this parameter is `1`.
         :rtype: int
         """
         return self._BackEndCall
@@ -4992,7 +4992,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
     @property
     def IsUnionRule(self):
-        """The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met.
+        r"""The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met.
         :rtype: int
         """
         return self._IsUnionRule
@@ -5036,7 +5036,7 @@ class CreatePolicyGroupRequest(AbstractModel):
 
 
 class CreatePolicyGroupResponse(AbstractModel):
-    """CreatePolicyGroup response structure.
+    r"""CreatePolicyGroup response structure.
 
     """
 
@@ -5052,7 +5052,7 @@ class CreatePolicyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the created policy group.
+        r"""ID of the created policy group.
         :rtype: int
         """
         return self._GroupId
@@ -5063,7 +5063,7 @@ class CreatePolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5079,7 +5079,7 @@ class CreatePolicyGroupResponse(AbstractModel):
 
 
 class CreatePrometheusAgentRequest(AbstractModel):
-    """CreatePrometheusAgent request structure.
+    r"""CreatePrometheusAgent request structure.
 
     """
 
@@ -5095,7 +5095,7 @@ class CreatePrometheusAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5106,7 +5106,7 @@ class CreatePrometheusAgentRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Agent name
+        r"""Agent name
         :rtype: str
         """
         return self._Name
@@ -5130,7 +5130,7 @@ class CreatePrometheusAgentRequest(AbstractModel):
 
 
 class CreatePrometheusAgentResponse(AbstractModel):
-    """CreatePrometheusAgent response structure.
+    r"""CreatePrometheusAgent response structure.
 
     """
 
@@ -5146,7 +5146,7 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     @property
     def AgentId(self):
-        """ID of a successfully created agent.
+        r"""ID of a successfully created agent.
         :rtype: str
         """
         return self._AgentId
@@ -5157,7 +5157,7 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5173,7 +5173,7 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
 
 class CreatePrometheusAlertPolicyRequest(AbstractModel):
-    """CreatePrometheusAlertPolicy request structure.
+    r"""CreatePrometheusAlertPolicy request structure.
 
     """
 
@@ -5189,7 +5189,7 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5200,7 +5200,7 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertRule(self):
-        """Alert configuration
+        r"""Alert configuration
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
         """
         return self._AlertRule
@@ -5226,7 +5226,7 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
 
 class CreatePrometheusAlertPolicyResponse(AbstractModel):
-    """CreatePrometheusAlertPolicy response structure.
+    r"""CreatePrometheusAlertPolicy response structure.
 
     """
 
@@ -5242,7 +5242,7 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Alerting rule ID
+        r"""Alerting rule ID
         :rtype: str
         """
         return self._Id
@@ -5253,7 +5253,7 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5269,7 +5269,7 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
 
 class CreatePrometheusClusterAgentRequest(AbstractModel):
-    """CreatePrometheusClusterAgent request structure.
+    r"""CreatePrometheusClusterAgent request structure.
 
     """
 
@@ -5285,7 +5285,7 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5296,7 +5296,7 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def Agents(self):
-        """Agent list
+        r"""Agent list
         :rtype: list of PrometheusClusterAgentBasic
         """
         return self._Agents
@@ -5325,7 +5325,7 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
 
 class CreatePrometheusClusterAgentResponse(AbstractModel):
-    """CreatePrometheusClusterAgent response structure.
+    r"""CreatePrometheusClusterAgent response structure.
 
     """
 
@@ -5338,7 +5338,7 @@ class CreatePrometheusClusterAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5353,7 +5353,7 @@ class CreatePrometheusClusterAgentResponse(AbstractModel):
 
 
 class CreatePrometheusConfigRequest(AbstractModel):
-    """CreatePrometheusConfig request structure.
+    r"""CreatePrometheusConfig request structure.
 
     """
 
@@ -5381,7 +5381,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5392,7 +5392,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -5403,7 +5403,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -5414,7 +5414,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
-        """Configuration of service monitors
+        r"""Configuration of service monitors
         :rtype: list of PrometheusConfigItem
         """
         return self._ServiceMonitors
@@ -5425,7 +5425,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
-        """Configuration of pod monitors
+        r"""Configuration of pod monitors
         :rtype: list of PrometheusConfigItem
         """
         return self._PodMonitors
@@ -5436,7 +5436,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
-        """Configuration of Prometheus raw job
+        r"""Configuration of Prometheus raw job
         :rtype: list of PrometheusConfigItem
         """
         return self._RawJobs
@@ -5479,7 +5479,7 @@ class CreatePrometheusConfigRequest(AbstractModel):
 
 
 class CreatePrometheusConfigResponse(AbstractModel):
-    """CreatePrometheusConfig response structure.
+    r"""CreatePrometheusConfig response structure.
 
     """
 
@@ -5492,7 +5492,7 @@ class CreatePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5507,7 +5507,7 @@ class CreatePrometheusConfigResponse(AbstractModel):
 
 
 class CreatePrometheusGlobalNotificationRequest(AbstractModel):
-    """CreatePrometheusGlobalNotification request structure.
+    r"""CreatePrometheusGlobalNotification request structure.
 
     """
 
@@ -5523,7 +5523,7 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5534,7 +5534,7 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def Notification(self):
-        """Alert notification channel
+        r"""Alert notification channel
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
         """
         return self._Notification
@@ -5560,7 +5560,7 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
 
 class CreatePrometheusGlobalNotificationResponse(AbstractModel):
-    """CreatePrometheusGlobalNotification response structure.
+    r"""CreatePrometheusGlobalNotification response structure.
 
     """
 
@@ -5577,7 +5577,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """ID of the global alert notification channel
+        r"""ID of the global alert notification channel
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5589,7 +5589,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5605,7 +5605,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
-    """CreatePrometheusMultiTenantInstancePostPayMode request structure.
+    r"""CreatePrometheusMultiTenantInstancePostPayMode request structure.
 
     """
 
@@ -5636,7 +5636,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -5647,7 +5647,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -5658,7 +5658,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -5669,7 +5669,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        """Data retention period in days. Valid values: 15, 30, 45.
+        r"""Data retention period in days. Valid values: 15, 30, 45.
         :rtype: int
         """
         return self._DataRetentionTime
@@ -5680,7 +5680,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ
+        r"""AZ
         :rtype: str
         """
         return self._Zone
@@ -5691,7 +5691,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """Instance tag
+        r"""Instance tag
         :rtype: list of PrometheusTag
         """
         return self._TagSpecification
@@ -5702,7 +5702,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def GrafanaInstanceId(self):
-        """The Grafana instance to be associated
+        r"""The Grafana instance to be associated
         :rtype: str
         """
         return self._GrafanaInstanceId
@@ -5736,7 +5736,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
 
 class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
-    """CreatePrometheusMultiTenantInstancePostPayMode response structure.
+    r"""CreatePrometheusMultiTenantInstancePostPayMode response structure.
 
     """
 
@@ -5752,7 +5752,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5763,7 +5763,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5779,7 +5779,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
 
 class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
-    """CreatePrometheusRecordRuleYaml request structure.
+    r"""CreatePrometheusRecordRuleYaml request structure.
 
     """
 
@@ -5798,7 +5798,7 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5809,7 +5809,7 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Content(self):
-        """YAML content
+        r"""YAML content
         :rtype: str
         """
         return self._Content
@@ -5820,7 +5820,7 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._Name
@@ -5845,7 +5845,7 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
 
 
 class CreatePrometheusRecordRuleYamlResponse(AbstractModel):
-    """CreatePrometheusRecordRuleYaml response structure.
+    r"""CreatePrometheusRecordRuleYaml response structure.
 
     """
 
@@ -5858,7 +5858,7 @@ class CreatePrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5873,7 +5873,7 @@ class CreatePrometheusRecordRuleYamlResponse(AbstractModel):
 
 
 class CreatePrometheusScrapeJobRequest(AbstractModel):
-    """CreatePrometheusScrapeJob request structure.
+    r"""CreatePrometheusScrapeJob request structure.
 
     """
 
@@ -5892,7 +5892,7 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TMP instance ID, such as “prom-abcd1234”.
+        r"""TMP instance ID, such as “prom-abcd1234”.
         :rtype: str
         """
         return self._InstanceId
@@ -5903,7 +5903,7 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """Agent ID, such as “agent-abcd1234”. It can be obtained on the **Agent Management** page in the console.
+        r"""Agent ID, such as “agent-abcd1234”. It can be obtained on the **Agent Management** page in the console.
         :rtype: str
         """
         return self._AgentId
@@ -5914,7 +5914,7 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Scrape task ID in the format of “job_name:xx”
+        r"""Scrape task ID in the format of “job_name:xx”
         :rtype: str
         """
         return self._Config
@@ -5939,7 +5939,7 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
 
 class CreatePrometheusScrapeJobResponse(AbstractModel):
-    """CreatePrometheusScrapeJob response structure.
+    r"""CreatePrometheusScrapeJob response structure.
 
     """
 
@@ -5955,7 +5955,7 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """ID of a successfully created scrape task.
+        r"""ID of a successfully created scrape task.
         :rtype: str
         """
         return self._JobId
@@ -5966,7 +5966,7 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5982,7 +5982,7 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
 
 class CreatePrometheusTempRequest(AbstractModel):
-    """CreatePrometheusTemp request structure.
+    r"""CreatePrometheusTemp request structure.
 
     """
 
@@ -5995,7 +5995,7 @@ class CreatePrometheusTempRequest(AbstractModel):
 
     @property
     def Template(self):
-        """Template settings
+        r"""Template settings
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusTemp`
         """
         return self._Template
@@ -6020,7 +6020,7 @@ class CreatePrometheusTempRequest(AbstractModel):
 
 
 class CreatePrometheusTempResponse(AbstractModel):
-    """CreatePrometheusTemp response structure.
+    r"""CreatePrometheusTemp response structure.
 
     """
 
@@ -6036,7 +6036,7 @@ class CreatePrometheusTempResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID
+        r"""Template ID
         :rtype: str
         """
         return self._TemplateId
@@ -6047,7 +6047,7 @@ class CreatePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6063,7 +6063,7 @@ class CreatePrometheusTempResponse(AbstractModel):
 
 
 class CreateRecordingRuleRequest(AbstractModel):
-    """CreateRecordingRule request structure.
+    r"""CreateRecordingRule request structure.
 
     """
 
@@ -6089,7 +6089,7 @@ Default value: 2 (enabled).
 
     @property
     def Name(self):
-        """Recording rule name
+        r"""Recording rule name
         :rtype: str
         """
         return self._Name
@@ -6100,7 +6100,7 @@ Default value: 2 (enabled).
 
     @property
     def Group(self):
-        """Recording rule group content in YAML format
+        r"""Recording rule group content in YAML format
         :rtype: str
         """
         return self._Group
@@ -6111,7 +6111,7 @@ Default value: 2 (enabled).
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6122,7 +6122,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>1=RuleDeleted</li>
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
@@ -6152,7 +6152,7 @@ Default value: 2 (enabled).
 
 
 class CreateRecordingRuleResponse(AbstractModel):
-    """CreateRecordingRule response structure.
+    r"""CreateRecordingRule response structure.
 
     """
 
@@ -6169,7 +6169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6181,7 +6181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6197,7 +6197,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateSSOAccountRequest(AbstractModel):
-    """CreateSSOAccount request structure.
+    r"""CreateSSOAccount request structure.
 
     """
 
@@ -6219,7 +6219,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -6230,7 +6230,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User account ID, such as “10000000”.
+        r"""User account ID, such as “10000000”.
         :rtype: str
         """
         return self._UserId
@@ -6241,7 +6241,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Role(self):
-        """Permission
+        r"""Permission
         :rtype: list of GrafanaAccountRole
         """
         return self._Role
@@ -6252,7 +6252,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Notes(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Notes
@@ -6283,7 +6283,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
 
 class CreateSSOAccountResponse(AbstractModel):
-    """CreateSSOAccount response structure.
+    r"""CreateSSOAccount response structure.
 
     """
 
@@ -6299,7 +6299,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def UserId(self):
-        """The added user UIN
+        r"""The added user UIN
         :rtype: str
         """
         return self._UserId
@@ -6310,7 +6310,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6326,7 +6326,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
 
 class CreateServiceDiscoveryRequest(AbstractModel):
-    """CreateServiceDiscovery request structure.
+    r"""CreateServiceDiscovery request structure.
 
     """
 
@@ -6355,7 +6355,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6366,7 +6366,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
-        """<li>TKE: ID of the integrated TKE cluster</li>
+        r"""<li>TKE: ID of the integrated TKE cluster</li>
         :rtype: str
         """
         return self._KubeClusterId
@@ -6377,7 +6377,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type:
+        r"""Kubernetes cluster type:
 <li> 1 = TKE </li>
         :rtype: int
         """
@@ -6389,7 +6389,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Scrape configuration type. Valid values:
+        r"""Scrape configuration type. Valid values:
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
 <li> 3 = JobMonitor</li>
@@ -6403,7 +6403,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
     @property
     def Yaml(self):
-        """Scrape configuration information
+        r"""Scrape configuration information
         :rtype: str
         """
         return self._Yaml
@@ -6430,7 +6430,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
 
 
 class CreateServiceDiscoveryResponse(AbstractModel):
-    """CreateServiceDiscovery response structure.
+    r"""CreateServiceDiscovery response structure.
 
     """
 
@@ -6446,7 +6446,7 @@ class CreateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def ServiceDiscovery(self):
-        """The scrape configuration information returned after successful creation
+        r"""The scrape configuration information returned after successful creation
         :rtype: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
         """
         return self._ServiceDiscovery
@@ -6457,7 +6457,7 @@ class CreateServiceDiscoveryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6475,7 +6475,7 @@ class CreateServiceDiscoveryResponse(AbstractModel):
 
 
 class DataPoint(AbstractModel):
-    """Monitoring data point
+    r"""Monitoring data point
 
     """
 
@@ -6494,7 +6494,7 @@ class DataPoint(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Combination of instance object dimensions
+        r"""Combination of instance object dimensions
         :rtype: list of Dimension
         """
         return self._Dimensions
@@ -6505,7 +6505,7 @@ class DataPoint(AbstractModel):
 
     @property
     def Timestamps(self):
-        """The array of timestamps indicating at which points in time there is data. Missing timestamps have no data points (i.e., missed)
+        r"""The array of timestamps indicating at which points in time there is data. Missing timestamps have no data points (i.e., missed)
         :rtype: list of float
         """
         return self._Timestamps
@@ -6516,7 +6516,7 @@ class DataPoint(AbstractModel):
 
     @property
     def Values(self):
-        """The array of monitoring values, which is in one-to-one correspondence to Timestamps
+        r"""The array of monitoring values, which is in one-to-one correspondence to Timestamps
         :rtype: list of float
         """
         return self._Values
@@ -6546,7 +6546,7 @@ class DataPoint(AbstractModel):
 
 
 class DeleteAlarmNoticesRequest(AbstractModel):
-    """DeleteAlarmNotices request structure.
+    r"""DeleteAlarmNotices request structure.
 
     """
 
@@ -6565,7 +6565,7 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -6576,7 +6576,7 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        """Alarm notification template ID list
+        r"""Alarm notification template ID list
         :rtype: list of str
         """
         return self._NoticeIds
@@ -6587,7 +6587,7 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeBindPolicys(self):
-        """Binding between a notification template and a policy
+        r"""Binding between a notification template and a policy
         :rtype: list of NoticeBindPolicys
         """
         return self._NoticeBindPolicys
@@ -6617,7 +6617,7 @@ class DeleteAlarmNoticesRequest(AbstractModel):
 
 
 class DeleteAlarmNoticesResponse(AbstractModel):
-    """DeleteAlarmNotices response structure.
+    r"""DeleteAlarmNotices response structure.
 
     """
 
@@ -6630,7 +6630,7 @@ class DeleteAlarmNoticesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6645,7 +6645,7 @@ class DeleteAlarmNoticesResponse(AbstractModel):
 
 
 class DeleteAlarmPolicyRequest(AbstractModel):
-    """DeleteAlarmPolicy request structure.
+    r"""DeleteAlarmPolicy request structure.
 
     """
 
@@ -6661,7 +6661,7 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -6672,7 +6672,7 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Alarm policy ID list
+        r"""Alarm policy ID list
         :rtype: list of str
         """
         return self._PolicyIds
@@ -6696,7 +6696,7 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
 
 class DeleteAlarmPolicyResponse(AbstractModel):
-    """DeleteAlarmPolicy response structure.
+    r"""DeleteAlarmPolicy response structure.
 
     """
 
@@ -6709,7 +6709,7 @@ class DeleteAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6724,7 +6724,7 @@ class DeleteAlarmPolicyResponse(AbstractModel):
 
 
 class DeleteAlertRulesRequest(AbstractModel):
-    """DeleteAlertRules request structure.
+    r"""DeleteAlertRules request structure.
 
     """
 
@@ -6740,7 +6740,7 @@ class DeleteAlertRulesRequest(AbstractModel):
 
     @property
     def RuleIds(self):
-        """List of rule IDs
+        r"""List of rule IDs
         :rtype: list of str
         """
         return self._RuleIds
@@ -6751,7 +6751,7 @@ class DeleteAlertRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6775,7 +6775,7 @@ class DeleteAlertRulesRequest(AbstractModel):
 
 
 class DeleteAlertRulesResponse(AbstractModel):
-    """DeleteAlertRules response structure.
+    r"""DeleteAlertRules response structure.
 
     """
 
@@ -6788,7 +6788,7 @@ class DeleteAlertRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6803,7 +6803,7 @@ class DeleteAlertRulesResponse(AbstractModel):
 
 
 class DeleteExporterIntegrationRequest(AbstractModel):
-    """DeleteExporterIntegration request structure.
+    r"""DeleteExporterIntegration request structure.
 
     """
 
@@ -6831,7 +6831,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6842,7 +6842,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type. Valid values:
+        r"""Kubernetes cluster type. Valid values:
 <li> 1 = TKE </li>
 <li> 2 = EKS </li>
 <li> 3 = MEKS </li>
@@ -6856,7 +6856,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -6867,7 +6867,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -6878,7 +6878,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -6905,7 +6905,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
 
 class DeleteExporterIntegrationResponse(AbstractModel):
-    """DeleteExporterIntegration response structure.
+    r"""DeleteExporterIntegration response structure.
 
     """
 
@@ -6918,7 +6918,7 @@ class DeleteExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6933,7 +6933,7 @@ class DeleteExporterIntegrationResponse(AbstractModel):
 
 
 class DeleteGrafanaInstanceRequest(AbstractModel):
-    """DeleteGrafanaInstance request structure.
+    r"""DeleteGrafanaInstance request structure.
 
     """
 
@@ -6946,7 +6946,7 @@ class DeleteGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceIDs(self):
-        """Array of instance names
+        r"""Array of instance names
         :rtype: list of str
         """
         return self._InstanceIDs
@@ -6969,7 +6969,7 @@ class DeleteGrafanaInstanceRequest(AbstractModel):
 
 
 class DeleteGrafanaInstanceResponse(AbstractModel):
-    """DeleteGrafanaInstance response structure.
+    r"""DeleteGrafanaInstance response structure.
 
     """
 
@@ -6982,7 +6982,7 @@ class DeleteGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6997,7 +6997,7 @@ class DeleteGrafanaInstanceResponse(AbstractModel):
 
 
 class DeleteGrafanaIntegrationRequest(AbstractModel):
-    """DeleteGrafanaIntegration request structure.
+    r"""DeleteGrafanaIntegration request structure.
 
     """
 
@@ -7013,7 +7013,7 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -7024,7 +7024,7 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
-        """Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
+        r"""Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :rtype: str
         """
         return self._IntegrationId
@@ -7048,7 +7048,7 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
 
 class DeleteGrafanaIntegrationResponse(AbstractModel):
-    """DeleteGrafanaIntegration response structure.
+    r"""DeleteGrafanaIntegration response structure.
 
     """
 
@@ -7061,7 +7061,7 @@ class DeleteGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7076,7 +7076,7 @@ class DeleteGrafanaIntegrationResponse(AbstractModel):
 
 
 class DeleteGrafanaNotificationChannelRequest(AbstractModel):
-    """DeleteGrafanaNotificationChannel request structure.
+    r"""DeleteGrafanaNotificationChannel request structure.
 
     """
 
@@ -7092,7 +7092,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
-        """Array of channel IDs, such as “nchannel-abcd1234”.
+        r"""Array of channel IDs, such as “nchannel-abcd1234”.
         :rtype: list of str
         """
         return self._ChannelIDs
@@ -7103,7 +7103,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -7127,7 +7127,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
 
 class DeleteGrafanaNotificationChannelResponse(AbstractModel):
-    """DeleteGrafanaNotificationChannel response structure.
+    r"""DeleteGrafanaNotificationChannel response structure.
 
     """
 
@@ -7140,7 +7140,7 @@ class DeleteGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7155,7 +7155,7 @@ class DeleteGrafanaNotificationChannelResponse(AbstractModel):
 
 
 class DeletePolicyGroupRequest(AbstractModel):
-    """DeletePolicyGroup request structure.
+    r"""DeletePolicyGroup request structure.
 
     """
 
@@ -7171,7 +7171,7 @@ class DeletePolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -7182,7 +7182,7 @@ class DeletePolicyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: list of int
         """
         return self._GroupId
@@ -7206,7 +7206,7 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 
 class DeletePolicyGroupResponse(AbstractModel):
-    """DeletePolicyGroup response structure.
+    r"""DeletePolicyGroup response structure.
 
     """
 
@@ -7219,7 +7219,7 @@ class DeletePolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7234,7 +7234,7 @@ class DeletePolicyGroupResponse(AbstractModel):
 
 
 class DeletePrometheusAlertPolicyRequest(AbstractModel):
-    """DeletePrometheusAlertPolicy request structure.
+    r"""DeletePrometheusAlertPolicy request structure.
 
     """
 
@@ -7253,7 +7253,7 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7264,7 +7264,7 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertIds(self):
-        """List of alerting rule IDs
+        r"""List of alerting rule IDs
         :rtype: list of str
         """
         return self._AlertIds
@@ -7275,7 +7275,7 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def Names(self):
-        """Alerting rule name
+        r"""Alerting rule name
         :rtype: list of str
         """
         return self._Names
@@ -7300,7 +7300,7 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
 
 class DeletePrometheusAlertPolicyResponse(AbstractModel):
-    """DeletePrometheusAlertPolicy response structure.
+    r"""DeletePrometheusAlertPolicy response structure.
 
     """
 
@@ -7313,7 +7313,7 @@ class DeletePrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7328,7 +7328,7 @@ class DeletePrometheusAlertPolicyResponse(AbstractModel):
 
 
 class DeletePrometheusClusterAgentRequest(AbstractModel):
-    """DeletePrometheusClusterAgent request structure.
+    r"""DeletePrometheusClusterAgent request structure.
 
     """
 
@@ -7344,7 +7344,7 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def Agents(self):
-        """Agent list
+        r"""Agent list
         :rtype: list of PrometheusAgentInfo
         """
         return self._Agents
@@ -7355,7 +7355,7 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7384,7 +7384,7 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
 
 class DeletePrometheusClusterAgentResponse(AbstractModel):
-    """DeletePrometheusClusterAgent response structure.
+    r"""DeletePrometheusClusterAgent response structure.
 
     """
 
@@ -7397,7 +7397,7 @@ class DeletePrometheusClusterAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7412,7 +7412,7 @@ class DeletePrometheusClusterAgentResponse(AbstractModel):
 
 
 class DeletePrometheusConfigRequest(AbstractModel):
-    """DeletePrometheusConfig request structure.
+    r"""DeletePrometheusConfig request structure.
 
     """
 
@@ -7440,7 +7440,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7451,7 +7451,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -7462,7 +7462,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -7473,7 +7473,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
-        """List of names of the service monitors to be deleted
+        r"""List of names of the service monitors to be deleted
         :rtype: list of str
         """
         return self._ServiceMonitors
@@ -7484,7 +7484,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
-        """List of names of the pod monitors to be deleted
+        r"""List of names of the pod monitors to be deleted
         :rtype: list of str
         """
         return self._PodMonitors
@@ -7495,7 +7495,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
-        """List of names of the raw jobs to be deleted
+        r"""List of names of the raw jobs to be deleted
         :rtype: list of str
         """
         return self._RawJobs
@@ -7523,7 +7523,7 @@ class DeletePrometheusConfigRequest(AbstractModel):
 
 
 class DeletePrometheusConfigResponse(AbstractModel):
-    """DeletePrometheusConfig response structure.
+    r"""DeletePrometheusConfig response structure.
 
     """
 
@@ -7536,7 +7536,7 @@ class DeletePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7551,7 +7551,7 @@ class DeletePrometheusConfigResponse(AbstractModel):
 
 
 class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
-    """DeletePrometheusRecordRuleYaml request structure.
+    r"""DeletePrometheusRecordRuleYaml request structure.
 
     """
 
@@ -7567,7 +7567,7 @@ class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7578,7 +7578,7 @@ class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Names(self):
-        """List of recording rules
+        r"""List of recording rules
         :rtype: list of str
         """
         return self._Names
@@ -7602,7 +7602,7 @@ class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
 
 
 class DeletePrometheusRecordRuleYamlResponse(AbstractModel):
-    """DeletePrometheusRecordRuleYaml response structure.
+    r"""DeletePrometheusRecordRuleYaml response structure.
 
     """
 
@@ -7615,7 +7615,7 @@ class DeletePrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7630,7 +7630,7 @@ class DeletePrometheusRecordRuleYamlResponse(AbstractModel):
 
 
 class DeletePrometheusScrapeJobsRequest(AbstractModel):
-    """DeletePrometheusScrapeJobs request structure.
+    r"""DeletePrometheusScrapeJobs request structure.
 
     """
 
@@ -7649,7 +7649,7 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7660,7 +7660,7 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """Agent ID
+        r"""Agent ID
         :rtype: str
         """
         return self._AgentId
@@ -7671,7 +7671,7 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        """List of task IDs
+        r"""List of task IDs
         :rtype: list of str
         """
         return self._JobIds
@@ -7696,7 +7696,7 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
 
 class DeletePrometheusScrapeJobsResponse(AbstractModel):
-    """DeletePrometheusScrapeJobs response structure.
+    r"""DeletePrometheusScrapeJobs response structure.
 
     """
 
@@ -7709,7 +7709,7 @@ class DeletePrometheusScrapeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7724,7 +7724,7 @@ class DeletePrometheusScrapeJobsResponse(AbstractModel):
 
 
 class DeletePrometheusTempRequest(AbstractModel):
-    """DeletePrometheusTemp request structure.
+    r"""DeletePrometheusTemp request structure.
 
     """
 
@@ -7737,7 +7737,7 @@ class DeletePrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID
+        r"""Template ID
         :rtype: str
         """
         return self._TemplateId
@@ -7760,7 +7760,7 @@ class DeletePrometheusTempRequest(AbstractModel):
 
 
 class DeletePrometheusTempResponse(AbstractModel):
-    """DeletePrometheusTemp response structure.
+    r"""DeletePrometheusTemp response structure.
 
     """
 
@@ -7773,7 +7773,7 @@ class DeletePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7788,7 +7788,7 @@ class DeletePrometheusTempResponse(AbstractModel):
 
 
 class DeletePrometheusTempSyncRequest(AbstractModel):
-    """DeletePrometheusTempSync request structure.
+    r"""DeletePrometheusTempSync request structure.
 
     """
 
@@ -7804,7 +7804,7 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID
+        r"""Template ID
         :rtype: str
         """
         return self._TemplateId
@@ -7815,7 +7815,7 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def Targets(self):
-        """List of unsynced objects
+        r"""List of unsynced objects
         :rtype: list of PrometheusTemplateSyncTarget
         """
         return self._Targets
@@ -7844,7 +7844,7 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
 
 
 class DeletePrometheusTempSyncResponse(AbstractModel):
-    """DeletePrometheusTempSync response structure.
+    r"""DeletePrometheusTempSync response structure.
 
     """
 
@@ -7857,7 +7857,7 @@ class DeletePrometheusTempSyncResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7872,7 +7872,7 @@ class DeletePrometheusTempSyncResponse(AbstractModel):
 
 
 class DeleteRecordingRulesRequest(AbstractModel):
-    """DeleteRecordingRules request structure.
+    r"""DeleteRecordingRules request structure.
 
     """
 
@@ -7888,7 +7888,7 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleIds(self):
-        """List of rule IDs
+        r"""List of rule IDs
         :rtype: list of str
         """
         return self._RuleIds
@@ -7899,7 +7899,7 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -7923,7 +7923,7 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
 
 class DeleteRecordingRulesResponse(AbstractModel):
-    """DeleteRecordingRules response structure.
+    r"""DeleteRecordingRules response structure.
 
     """
 
@@ -7936,7 +7936,7 @@ class DeleteRecordingRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7951,7 +7951,7 @@ class DeleteRecordingRulesResponse(AbstractModel):
 
 
 class DeleteSSOAccountRequest(AbstractModel):
-    """DeleteSSOAccount request structure.
+    r"""DeleteSSOAccount request structure.
 
     """
 
@@ -7967,7 +7967,7 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -7978,7 +7978,7 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User account ID, such as “10000000”.
+        r"""User account ID, such as “10000000”.
         :rtype: str
         """
         return self._UserId
@@ -8002,7 +8002,7 @@ class DeleteSSOAccountRequest(AbstractModel):
 
 
 class DeleteSSOAccountResponse(AbstractModel):
-    """DeleteSSOAccount response structure.
+    r"""DeleteSSOAccount response structure.
 
     """
 
@@ -8015,7 +8015,7 @@ class DeleteSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8030,7 +8030,7 @@ class DeleteSSOAccountResponse(AbstractModel):
 
 
 class DescribeAccidentEventListAlarms(AbstractModel):
-    """Output parameter type of the DescribeAccidentEventList API
+    r"""Output parameter type of the DescribeAccidentEventList API
 
     """
 
@@ -8072,7 +8072,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def BusinessTypeDesc(self):
-        """Event type.
+        r"""Event type.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8084,7 +8084,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AccidentTypeDesc(self):
-        """Event type.
+        r"""Event type.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8096,7 +8096,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def BusinessID(self):
-        """ID of the event type. The value 1 indicates service issues. The value 2 indicates other subscriptions.
+        r"""ID of the event type. The value 1 indicates service issues. The value 2 indicates other subscriptions.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -8108,7 +8108,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventStatus(self):
-        """Event status ID. The value 0 indicates that the event has been recovered. The value 1 indicates that the event has not been recovered.
+        r"""Event status ID. The value 0 indicates that the event has been recovered. The value 1 indicates that the event has not been recovered.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -8120,7 +8120,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AffectResource(self):
-        """Affected object.
+        r"""Affected object.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8132,7 +8132,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Region where the event occurs.
+        r"""Region where the event occurs.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8144,7 +8144,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def OccurTime(self):
-        """Time when the event occurs.
+        r"""Time when the event occurs.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8156,7 +8156,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -8187,7 +8187,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeAccidentEventListRequest(AbstractModel):
-    """DescribeAccidentEventList request structure.
+    r"""DescribeAccidentEventList request structure.
 
     """
 
@@ -8233,7 +8233,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """API component name. The value for the current API is monitor.
+        r"""API component name. The value for the current API is monitor.
         :rtype: str
         """
         return self._Module
@@ -8244,7 +8244,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time, which is the timestamp one day prior by default.
+        r"""Start time, which is the timestamp one day prior by default.
         :rtype: int
         """
         return self._StartTime
@@ -8255,7 +8255,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, which is the current timestamp by default.
+        r"""End time, which is the current timestamp by default.
         :rtype: int
         """
         return self._EndTime
@@ -8266,7 +8266,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of parameters that can be returned on each page. Value range: 1 - 100. Default value: 20.
+        r"""Number of parameters that can be returned on each page. Value range: 1 - 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -8277,7 +8277,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Parameter offset on each page. The value starts from 0 and the default value is 0.
+        r"""Parameter offset on each page. The value starts from 0 and the default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -8288,7 +8288,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
-        """Sorting rule by UpdateTime. Valid values: asc and desc.
+        r"""Sorting rule by UpdateTime. Valid values: asc and desc.
         :rtype: str
         """
         return self._UpdateTimeOrder
@@ -8299,7 +8299,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def OccurTimeOrder(self):
-        """Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes priority.
+        r"""Sorting rule by OccurTime. Valid values: asc or desc. Sorting by UpdateTimeOrder takes priority.
         :rtype: str
         """
         return self._OccurTimeOrder
@@ -8310,7 +8310,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentType(self):
-        """Filter by event type. The value 1 indicates service issues. The value 2 indicates other subscriptions.
+        r"""Filter by event type. The value 1 indicates service issues. The value 2 indicates other subscriptions.
         :rtype: list of int
         """
         return self._AccidentType
@@ -8321,7 +8321,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentEvent(self):
-        """Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM has an exception. The value 202 indicates that an ISP network jitter occurs.
+        r"""Filter by event. The value 1 indicates CVM storage issues. The value 2 indicates CVM network connection issues. The value 3 indicates that the CVM has an exception. The value 202 indicates that an ISP network jitter occurs.
         :rtype: list of int
         """
         return self._AccidentEvent
@@ -8332,7 +8332,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentStatus(self):
-        """Filter by event status. The value 0 indicates that the event has been recovered. The value 1 indicates that the event has not been recovered.
+        r"""Filter by event status. The value 0 indicates that the event has been recovered. The value 1 indicates that the event has not been recovered.
         :rtype: list of int
         """
         return self._AccidentStatus
@@ -8343,7 +8343,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AccidentRegion(self):
-        """Filter by region where the event occurs. The value gz indicates Guangzhou. The value sh indicates Shanghai.
+        r"""Filter by region where the event occurs. The value gz indicates Guangzhou. The value sh indicates Shanghai.
         :rtype: list of str
         """
         return self._AccidentRegion
@@ -8354,7 +8354,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     @property
     def AffectResource(self):
-        """Filter by affected resource, such as ins-19a06bka.
+        r"""Filter by affected resource, such as ins-19a06bka.
         :rtype: str
         """
         return self._AffectResource
@@ -8388,7 +8388,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
 
 class DescribeAccidentEventListResponse(AbstractModel):
-    """DescribeAccidentEventList response structure.
+    r"""DescribeAccidentEventList response structure.
 
     """
 
@@ -8409,7 +8409,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Alarms(self):
-        """Platform event list.
+        r"""Platform event list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeAccidentEventListAlarms
         """
@@ -8421,7 +8421,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number of platform events.
+        r"""Total number of platform events.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -8433,7 +8433,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8455,7 +8455,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeAlarmEventsRequest(AbstractModel):
-    """DescribeAlarmEvents request structure.
+    r"""DescribeAlarmEvents request structure.
 
     """
 
@@ -8474,7 +8474,7 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -8485,7 +8485,7 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        r"""Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
         :rtype: str
         """
         return self._Namespace
@@ -8496,7 +8496,7 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        """Monitoring type, such as `MT_QCE`, which is set to default.
+        r"""Monitoring type, such as `MT_QCE`, which is set to default.
         :rtype: str
         """
         return self._MonitorType
@@ -8521,7 +8521,7 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
 
 class DescribeAlarmEventsResponse(AbstractModel):
-    """DescribeAlarmEvents response structure.
+    r"""DescribeAlarmEvents response structure.
 
     """
 
@@ -8537,7 +8537,7 @@ class DescribeAlarmEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        """Alarm event list
+        r"""Alarm event list
         :rtype: list of AlarmEvent
         """
         return self._Events
@@ -8548,7 +8548,7 @@ class DescribeAlarmEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8569,7 +8569,7 @@ class DescribeAlarmEventsResponse(AbstractModel):
 
 
 class DescribeAlarmHistoriesRequest(AbstractModel):
-    """DescribeAlarmHistories request structure.
+    r"""DescribeAlarmHistories request structure.
 
     """
 
@@ -8633,7 +8633,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -8644,7 +8644,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 1. Default value: 1
+        r"""Page number starting from 1. Default value: 1
         :rtype: int
         """
         return self._PageNumber
@@ -8655,7 +8655,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of entries per page. Value range: 1–100. Default value: 20
+        r"""Number of entries per page. Value range: 1–100. Default value: 20
         :rtype: int
         """
         return self._PageSize
@@ -8666,7 +8666,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)
+        r"""Sort by the first occurrence time in descending order by default. Valid values: ASC (ascending), DESC (descending)
         :rtype: str
         """
         return self._Order
@@ -8677,7 +8677,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time, which is the timestamp one day ago by default and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is later than the `StartTime`.
+        r"""Start time, which is the timestamp one day ago by default and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is later than the `StartTime`.
         :rtype: int
         """
         return self._StartTime
@@ -8688,7 +8688,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, which is the current timestamp and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is earlier than the `EndTime`.
+        r"""End time, which is the current timestamp and the time when the alarm `FirstOccurTime` first occurs. An alarm record can be searched only if its `FirstOccurTime` is earlier than the `EndTime`.
         :rtype: int
         """
         return self._EndTime
@@ -8699,7 +8699,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def MonitorTypes(self):
-        """Filter by monitor type. Valid values: "MT_QCE" (Tencent Cloud service monitoring), "MT_TAW" (application performance monitoring), "MT_RUM" (frontend performance monitoring), "MT_PROBE" (cloud automated testing). If this parameter is left empty, all types will be queried by default.
+        r"""Filter by monitor type. Valid values: "MT_QCE" (Tencent Cloud service monitoring), "MT_TAW" (application performance monitoring), "MT_RUM" (frontend performance monitoring), "MT_PROBE" (cloud automated testing). If this parameter is left empty, all types will be queried by default.
         :rtype: list of str
         """
         return self._MonitorTypes
@@ -8710,7 +8710,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def AlarmObject(self):
-        """Filter by alarm object. Fuzzy search with string is supported
+        r"""Filter by alarm object. Fuzzy search with string is supported
         :rtype: str
         """
         return self._AlarmObject
@@ -8721,7 +8721,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def AlarmStatus(self):
-        """Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default
+        r"""Filter by alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_CONF (expired), NO_DATA (insufficient data). If this parameter is left empty, all will be queried by default
         :rtype: list of str
         """
         return self._AlarmStatus
@@ -8732,7 +8732,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """Filter by project ID. Valid values: `-1` (no project), `0` (default project)
+        r"""Filter by project ID. Valid values: `-1` (no project), `0` (default project)
         :rtype: list of int
         """
         return self._ProjectIds
@@ -8743,7 +8743,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def InstanceGroupIds(self):
-        """Filter by instance group ID
+        r"""Filter by instance group ID
         :rtype: list of int
         """
         return self._InstanceGroupIds
@@ -8754,7 +8754,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Namespaces(self):
-        """Filter by policy type. Monitoring type and policy type are first-level and second-level filters respectively and both need to be passed in. For example, `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
+        r"""Filter by policy type. Monitoring type and policy type are first-level and second-level filters respectively and both need to be passed in. For example, `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
         :rtype: list of MonitorTypeNamespace
         """
         return self._Namespaces
@@ -8765,7 +8765,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Filter by metric name
+        r"""Filter by metric name
         :rtype: list of str
         """
         return self._MetricNames
@@ -8776,7 +8776,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Fuzzy search by policy name
+        r"""Fuzzy search by policy name
         :rtype: str
         """
         return self._PolicyName
@@ -8787,7 +8787,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Fuzzy search by alarm content
+        r"""Fuzzy search by alarm content
         :rtype: str
         """
         return self._Content
@@ -8798,7 +8798,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ReceiverUids(self):
-        """Search by recipient
+        r"""Search by recipient
         :rtype: list of int
         """
         return self._ReceiverUids
@@ -8809,7 +8809,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def ReceiverGroups(self):
-        """Search by recipient group
+        r"""Search by recipient group
         :rtype: list of int
         """
         return self._ReceiverGroups
@@ -8820,7 +8820,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Search by alarm policy ID list
+        r"""Search by alarm policy ID list
         :rtype: list of str
         """
         return self._PolicyIds
@@ -8865,7 +8865,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
 
 
 class DescribeAlarmHistoriesResponse(AbstractModel):
-    """DescribeAlarmHistories response structure.
+    r"""DescribeAlarmHistories response structure.
 
     """
 
@@ -8884,7 +8884,7 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -8895,7 +8895,7 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def Histories(self):
-        """Alarm record list
+        r"""Alarm record list
         :rtype: list of AlarmHistory
         """
         return self._Histories
@@ -8906,7 +8906,7 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8928,7 +8928,7 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
 
 
 class DescribeAlarmMetricsRequest(AbstractModel):
-    """DescribeAlarmMetrics request structure.
+    r"""DescribeAlarmMetrics request structure.
 
     """
 
@@ -8947,7 +8947,7 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -8958,7 +8958,7 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        """Monitor type filter. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        r"""Monitor type filter. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :rtype: str
         """
         return self._MonitorType
@@ -8969,7 +8969,7 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
+        r"""Alarm policy type such as cvm_device, which is obtained through the `DescribeAllNamespaces` API
         :rtype: str
         """
         return self._Namespace
@@ -8994,7 +8994,7 @@ class DescribeAlarmMetricsRequest(AbstractModel):
 
 
 class DescribeAlarmMetricsResponse(AbstractModel):
-    """DescribeAlarmMetrics response structure.
+    r"""DescribeAlarmMetrics response structure.
 
     """
 
@@ -9010,7 +9010,7 @@ class DescribeAlarmMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
-        """Alarm metric list
+        r"""Alarm metric list
         :rtype: list of Metric
         """
         return self._Metrics
@@ -9021,7 +9021,7 @@ class DescribeAlarmMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9042,7 +9042,7 @@ class DescribeAlarmMetricsResponse(AbstractModel):
 
 
 class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
-    """DescribeAlarmNoticeCallbacks request structure.
+    r"""DescribeAlarmNoticeCallbacks request structure.
 
     """
 
@@ -9055,7 +9055,7 @@ class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -9078,7 +9078,7 @@ class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
 
 
 class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
-    """DescribeAlarmNoticeCallbacks response structure.
+    r"""DescribeAlarmNoticeCallbacks response structure.
 
     """
 
@@ -9095,7 +9095,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def URLNotices(self):
-        """Alarm callback notification
+        r"""Alarm callback notification
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of URLNotice
         """
@@ -9107,7 +9107,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9128,7 +9128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAlarmNoticeRequest(AbstractModel):
-    """DescribeAlarmNotice request structure.
+    r"""DescribeAlarmNotice request structure.
 
     """
 
@@ -9144,7 +9144,7 @@ class DescribeAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -9155,7 +9155,7 @@ class DescribeAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeId(self):
-        """Alarm notification template ID
+        r"""Alarm notification template ID
         :rtype: str
         """
         return self._NoticeId
@@ -9179,7 +9179,7 @@ class DescribeAlarmNoticeRequest(AbstractModel):
 
 
 class DescribeAlarmNoticeResponse(AbstractModel):
-    """DescribeAlarmNotice response structure.
+    r"""DescribeAlarmNotice response structure.
 
     """
 
@@ -9195,7 +9195,7 @@ class DescribeAlarmNoticeResponse(AbstractModel):
 
     @property
     def Notice(self):
-        """Alarm notification template details
+        r"""Alarm notification template details
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`
         """
         return self._Notice
@@ -9206,7 +9206,7 @@ class DescribeAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9224,7 +9224,7 @@ class DescribeAlarmNoticeResponse(AbstractModel):
 
 
 class DescribeAlarmNoticesRequest(AbstractModel):
-    """DescribeAlarmNotices request structure.
+    r"""DescribeAlarmNotices request structure.
 
     """
 
@@ -9270,7 +9270,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -9281,7 +9281,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number. Minimum value: 1
+        r"""Page number. Minimum value: 1
         :rtype: int
         """
         return self._PageNumber
@@ -9292,7 +9292,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of entries per page. Value range: 1–200
+        r"""Number of entries per page. Value range: 1–200
         :rtype: int
         """
         return self._PageSize
@@ -9303,7 +9303,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sort by update time. Valid values: ASC (ascending), DESC (descending)
+        r"""Sort by update time. Valid values: ASC (ascending), DESC (descending)
         :rtype: str
         """
         return self._Order
@@ -9314,7 +9314,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def OwnerUid(self):
-        """Root account `uid`, which is used to create preset notifications
+        r"""Root account `uid`, which is used to create preset notifications
         :rtype: int
         """
         return self._OwnerUid
@@ -9325,7 +9325,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alarm notification template name, which is used for fuzzy search
+        r"""Alarm notification template name, which is used for fuzzy search
         :rtype: str
         """
         return self._Name
@@ -9336,7 +9336,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def ReceiverType(self):
-        """Filter by recipient. The type of notified users should be selected for the alarm notification template. Valid values: USER (user), GROUP (user group). If this parameter is left empty, no filter by recipient will be performed
+        r"""Filter by recipient. The type of notified users should be selected for the alarm notification template. Valid values: USER (user), GROUP (user group). If this parameter is left empty, no filter by recipient will be performed
         :rtype: str
         """
         return self._ReceiverType
@@ -9347,7 +9347,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        """Recipient object list
+        r"""Recipient object list
         :rtype: list of int
         """
         return self._UserIds
@@ -9358,7 +9358,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """Recipient group list
+        r"""Recipient group list
         :rtype: list of int
         """
         return self._GroupIds
@@ -9369,7 +9369,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        """Filter by notification template ID. If an empty array is passed in or if this parameter is left empty, the filter operation will not be performed.
+        r"""Filter by notification template ID. If an empty array is passed in or if this parameter is left empty, the filter operation will not be performed.
         :rtype: list of str
         """
         return self._NoticeIds
@@ -9380,7 +9380,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Filter templates by tag
+        r"""Filter templates by tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -9391,7 +9391,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     @property
     def OnCallFormIDs(self):
-        """Schedule list
+        r"""Schedule list
         :rtype: list of str
         """
         return self._OnCallFormIDs
@@ -9430,7 +9430,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
 
 class DescribeAlarmNoticesResponse(AbstractModel):
-    """DescribeAlarmNotices response structure.
+    r"""DescribeAlarmNotices response structure.
 
     """
 
@@ -9449,7 +9449,7 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of alarm notification templates
+        r"""Total number of alarm notification templates
         :rtype: int
         """
         return self._TotalCount
@@ -9460,7 +9460,7 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def Notices(self):
-        """Alarm notification template list
+        r"""Alarm notification template list
         :rtype: list of AlarmNotice
         """
         return self._Notices
@@ -9471,7 +9471,7 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9493,7 +9493,7 @@ class DescribeAlarmNoticesResponse(AbstractModel):
 
 
 class DescribeAlarmPoliciesRequest(AbstractModel):
-    """DescribeAlarmPolicies request structure.
+    r"""DescribeAlarmPolicies request structure.
 
     """
 
@@ -9590,7 +9590,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -9601,7 +9601,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def PageNumber(self):
-        """Page number starting from 1. Default value: 1
+        r"""Page number starting from 1. Default value: 1
         :rtype: int
         """
         return self._PageNumber
@@ -9612,7 +9612,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def PageSize(self):
-        """Number of entries per page. Value range: 1–100. Default value: 20
+        r"""Number of entries per page. Value range: 1–100. Default value: 20
         :rtype: int
         """
         return self._PageSize
@@ -9623,7 +9623,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def PolicyName(self):
-        """Fuzzy search by policy name
+        r"""Fuzzy search by policy name
         :rtype: str
         """
         return self._PolicyName
@@ -9634,7 +9634,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def MonitorTypes(self):
-        """Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        r"""Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
         :rtype: list of str
         """
         return self._MonitorTypes
@@ -9645,7 +9645,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def Namespaces(self):
-        """Filter by namespace. For the values of different policy types, please see:
+        r"""Filter by namespace. For the values of different policy types, please see:
 [Policy Type List](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1)
         :rtype: list of str
         """
@@ -9657,7 +9657,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def Dimensions(self):
-        """The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:
+        r"""The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:
 `[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
 You can also refer to the “Example 2” below.
 
@@ -9674,7 +9674,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def ReceiverUids(self):
-        """Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
+        r"""Search by recipient. You can get the user list with the API [ListUsers](https://intl.cloud.tencent.com/document/product/598/34587?from_cn_redirect=1) in “Cloud Access Management” or query the sub-user information with the API [GetUser](https://intl.cloud.tencent.com/document/product/598/34590?from_cn_redirect=1). The `Uid` field in the returned result should be entered here.
         :rtype: list of int
         """
         return self._ReceiverUids
@@ -9685,7 +9685,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def ReceiverGroups(self):
-        """Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.
+        r"""Search by recipient group. You can get the user group list with the API [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) in “Cloud Access Management” or query the user group list where a sub-user is in with the API [ListGroupsForUser](https://intl.cloud.tencent.com/document/product/598/34588?from_cn_redirect=1). The `GroupId` field in the returned result should be entered here.
         :rtype: list of int
         """
         return self._ReceiverGroups
@@ -9696,7 +9696,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def PolicyType(self):
-        """Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed
+        r"""Filter by default policy. Valid values: DEFAULT (display default policy), NOT_DEFAULT (display non-default policies). If this parameter is left empty, all policies will be displayed
         :rtype: list of str
         """
         return self._PolicyType
@@ -9707,7 +9707,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def Field(self):
-        """Sort by field. For example, to sort by the last modification time, use Field: "UpdateTime".
+        r"""Sort by field. For example, to sort by the last modification time, use Field: "UpdateTime".
         :rtype: str
         """
         return self._Field
@@ -9718,7 +9718,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def Order(self):
-        """Sort order. Valid values: ASC (ascending), DESC (descending)
+        r"""Sort order. Valid values: ASC (ascending), DESC (descending)
         :rtype: str
         """
         return self._Order
@@ -9729,7 +9729,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def ProjectIds(self):
-        """ID array of the policy project, which can be viewed on the following page:
+        r"""ID array of the policy project, which can be viewed on the following page:
 [Project Management](https://console.cloud.tencent.com/project)
         :rtype: list of int
         """
@@ -9741,7 +9741,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
 
     @property
     def NoticeIds(self):
-        """List of the notification template IDs, which can be obtained by querying the notification template list.
+        r"""List of the notification template IDs, which can be obtained by querying the notification template list.
 It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1).
         :rtype: list of str
         """
@@ -9753,7 +9753,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def RuleTypes(self):
-        """Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
+        r"""Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
         :rtype: list of str
         """
         return self._RuleTypes
@@ -9764,7 +9764,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def Enable(self):
-        """Filter by alarm status. Valid values: [1]: enabled; [0]: disabled; [0, 1]: all
+        r"""Filter by alarm status. Valid values: [1]: enabled; [0]: disabled; [0, 1]: all
         :rtype: list of int
         """
         return self._Enable
@@ -9775,7 +9775,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def NotBindingNoticeRule(self):
-        """If `1` is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.
+        r"""If `1` is passed in, alarm policies with no notification rules configured are queried. If it is left empty or other values are passed in, all alarm policies are queried.
         :rtype: int
         """
         return self._NotBindingNoticeRule
@@ -9786,7 +9786,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID.
+        r"""Instance group ID.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -9797,7 +9797,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def NeedCorrespondence(self):
-        """Whether the relationship between a policy and the input parameter filter dimension is required. `1`: Yes. `0`: No. Default value: `0`.
+        r"""Whether the relationship between a policy and the input parameter filter dimension is required. `1`: Yes. `0`: No. Default value: `0`.
         :rtype: int
         """
         return self._NeedCorrespondence
@@ -9808,7 +9808,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def TriggerTasks(self):
-        """Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.
+        r"""Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.
         :rtype: list of AlarmPolicyTriggerTask
         """
         return self._TriggerTasks
@@ -9819,7 +9819,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def OneClickPolicyType(self):
-        """Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. `ONECLICK`: Display quick alarm policies; `NOT_ONECLICK`: Display non-quick alarm policies.
+        r"""Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. `ONECLICK`: Display quick alarm policies; `NOT_ONECLICK`: Display non-quick alarm policies.
         :rtype: list of str
         """
         return self._OneClickPolicyType
@@ -9830,7 +9830,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def NotBindAll(self):
-        """Whether the returned result needs to filter policies associated with all objects. Valid values: `1` (Yes), `0` (No).
+        r"""Whether the returned result needs to filter policies associated with all objects. Valid values: `1` (Yes), `0` (No).
         :rtype: int
         """
         return self._NotBindAll
@@ -9841,7 +9841,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def NotInstanceGroup(self):
-        """Whether the returned result needs to filter policies associated with instance groups. Valid values: `1` (Yes), `0` (No).
+        r"""Whether the returned result needs to filter policies associated with instance groups. Valid values: `1` (Yes), `0` (No).
         :rtype: int
         """
         return self._NotInstanceGroup
@@ -9852,7 +9852,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def Tags(self):
-        """Filter policies by tag
+        r"""Filter policies by tag
         :rtype: list of Tag
         """
         return self._Tags
@@ -9863,7 +9863,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def PromInsId(self):
-        """ID of the TencentCloud Managed Service for Prometheus instance, which is used for customizing a metric policy.
+        r"""ID of the TencentCloud Managed Service for Prometheus instance, which is used for customizing a metric policy.
         :rtype: str
         """
         return self._PromInsId
@@ -9874,7 +9874,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
     @property
     def ReceiverOnCallFormIDs(self):
-        """Search by schedule
+        r"""Search by schedule
         :rtype: list of str
         """
         return self._ReceiverOnCallFormIDs
@@ -9932,7 +9932,7 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
 
 
 class DescribeAlarmPoliciesResponse(AbstractModel):
-    """DescribeAlarmPolicies response structure.
+    r"""DescribeAlarmPolicies response structure.
 
     """
 
@@ -9951,7 +9951,7 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of policies
+        r"""Total number of policies
         :rtype: int
         """
         return self._TotalCount
@@ -9962,7 +9962,7 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def Policies(self):
-        """Policy array
+        r"""Policy array
         :rtype: list of AlarmPolicy
         """
         return self._Policies
@@ -9973,7 +9973,7 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9995,7 +9995,7 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
 
 
 class DescribeAlarmPolicyRequest(AbstractModel):
-    """DescribeAlarmPolicy request structure.
+    r"""DescribeAlarmPolicy request structure.
 
     """
 
@@ -10011,7 +10011,7 @@ class DescribeAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -10022,7 +10022,7 @@ class DescribeAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -10046,7 +10046,7 @@ class DescribeAlarmPolicyRequest(AbstractModel):
 
 
 class DescribeAlarmPolicyResponse(AbstractModel):
-    """DescribeAlarmPolicy response structure.
+    r"""DescribeAlarmPolicy response structure.
 
     """
 
@@ -10062,7 +10062,7 @@ class DescribeAlarmPolicyResponse(AbstractModel):
 
     @property
     def Policy(self):
-        """Policy details
+        r"""Policy details
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`
         """
         return self._Policy
@@ -10073,7 +10073,7 @@ class DescribeAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10091,7 +10091,7 @@ class DescribeAlarmPolicyResponse(AbstractModel):
 
 
 class DescribeAlertRulesRequest(AbstractModel):
-    """DescribeAlertRules request structure.
+    r"""DescribeAlertRules request structure.
 
     """
 
@@ -10124,7 +10124,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -10135,7 +10135,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -10146,7 +10146,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -10157,7 +10157,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -10168,7 +10168,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
         :rtype: int
@@ -10181,7 +10181,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._RuleName
@@ -10192,7 +10192,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Alerting rule template category
+        r"""Alerting rule template category
         :rtype: str
         """
         return self._Type
@@ -10221,7 +10221,7 @@ class DescribeAlertRulesRequest(AbstractModel):
 
 
 class DescribeAlertRulesResponse(AbstractModel):
-    """DescribeAlertRules response structure.
+    r"""DescribeAlertRules response structure.
 
     """
 
@@ -10241,7 +10241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of alerting rules
+        r"""Number of alerting rules
         :rtype: int
         """
         return self._TotalCount
@@ -10252,7 +10252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertRuleSet(self):
-        """Alerting rule details
+        r"""Alerting rule details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusRuleSet
         """
@@ -10264,7 +10264,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10286,7 +10286,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeAllNamespacesRequest(AbstractModel):
-    """DescribeAllNamespaces request structure.
+    r"""DescribeAllNamespaces request structure.
 
     """
 
@@ -10308,7 +10308,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        """Filter by use case. Currently, the only valid value is `ST_ALARM` (alarm type).
+        r"""Filter by use case. Currently, the only valid value is `ST_ALARM` (alarm type).
         :rtype: str
         """
         return self._SceneType
@@ -10319,7 +10319,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Value fixed at "monitor"
+        r"""Value fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -10330,7 +10330,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def MonitorTypes(self):
-        """Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
+        r"""Filter by monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring). If this parameter is left empty, all will be queried by default
         :rtype: list of str
         """
         return self._MonitorTypes
@@ -10341,7 +10341,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     @property
     def Ids(self):
-        """Filter by namespace ID. If this parameter is left empty, all will be queried
+        r"""Filter by namespace ID. If this parameter is left empty, all will be queried
         :rtype: list of str
         """
         return self._Ids
@@ -10367,7 +10367,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
 
 class DescribeAllNamespacesResponse(AbstractModel):
-    """DescribeAllNamespaces response structure.
+    r"""DescribeAllNamespaces response structure.
 
     """
 
@@ -10396,7 +10396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QceNamespaces(self):
-        """Alarm policy type of Tencent Cloud service (disused)
+        r"""Alarm policy type of Tencent Cloud service (disused)
         :rtype: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
         """
         return self._QceNamespaces
@@ -10407,7 +10407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomNamespaces(self):
-        """Other alarm policy type (disused)
+        r"""Other alarm policy type (disused)
         :rtype: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
         """
         return self._CustomNamespaces
@@ -10418,7 +10418,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QceNamespacesNew(self):
-        """Alarm policy type of Tencent Cloud service
+        r"""Alarm policy type of Tencent Cloud service
         :rtype: list of CommonNamespace
         """
         return self._QceNamespacesNew
@@ -10429,7 +10429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomNamespacesNew(self):
-        """Other alarm policy type (not supported currently)
+        r"""Other alarm policy type (not supported currently)
         :rtype: list of CommonNamespace
         """
         return self._CustomNamespacesNew
@@ -10440,7 +10440,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommonNamespaces(self):
-        """General alarm policy type, including TAPM, RUM, and CAT.
+        r"""General alarm policy type, including TAPM, RUM, and CAT.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CommonNamespaceNew
         """
@@ -10452,7 +10452,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10491,7 +10491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeBaseMetricsRequest(AbstractModel):
-    """DescribeBaseMetrics request structure.
+    r"""DescribeBaseMetrics request structure.
 
     """
 
@@ -10510,7 +10510,7 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Service namespace. Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the namespace of CVM
+        r"""Service namespace. Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the namespace of CVM
         :rtype: str
         """
         return self._Namespace
@@ -10521,7 +10521,7 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM
+        r"""Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM
         :rtype: str
         """
         return self._MetricName
@@ -10532,7 +10532,7 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Filter by dimension. This parameter is optional.
+        r"""Filter by dimension. This parameter is optional.
         :rtype: list of str
         """
         return self._Dimensions
@@ -10557,7 +10557,7 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
 
 class DescribeBaseMetricsResponse(AbstractModel):
-    """DescribeBaseMetrics response structure.
+    r"""DescribeBaseMetrics response structure.
 
     """
 
@@ -10573,7 +10573,7 @@ class DescribeBaseMetricsResponse(AbstractModel):
 
     @property
     def MetricSet(self):
-        """Listed of queried metric descriptions
+        r"""Listed of queried metric descriptions
         :rtype: list of MetricSet
         """
         return self._MetricSet
@@ -10584,7 +10584,7 @@ class DescribeBaseMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10605,7 +10605,7 @@ class DescribeBaseMetricsResponse(AbstractModel):
 
 
 class DescribeBasicAlarmListAlarms(AbstractModel):
-    """Alarms returned by DescribeBasicAlarmList
+    r"""Alarms returned by DescribeBasicAlarmList
 
     """
 
@@ -10702,7 +10702,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Alarm ID.
+        r"""Alarm ID.
         :rtype: int
         """
         return self._Id
@@ -10713,7 +10713,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -10725,7 +10725,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectName(self):
-        """Project name.
+        r"""Project name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10737,7 +10737,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Alarm status ID. Valid values: 0 (not resolved), 1 (resolved), 2/3/5 (insufficient data), 4 (expired)
+        r"""Alarm status ID. Valid values: 0 (not resolved), 1 (resolved), 2/3/5 (insufficient data), 4 (expired)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10749,7 +10749,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmStatus(self):
-        """Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_DATA (insufficient data), NO_CONF (expired)
+        r"""Alarm status. Valid values: ALARM (not resolved), OK (resolved), NO_DATA (insufficient data), NO_CONF (expired)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10761,7 +10761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -10773,7 +10773,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10785,7 +10785,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def FirstOccurTime(self):
-        """Occurrence time.
+        r"""Occurrence time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10797,7 +10797,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Duration(self):
-        """Duration in seconds.
+        r"""Duration in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -10809,7 +10809,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LastOccurTime(self):
-        """End time.
+        r"""End time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10821,7 +10821,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Content(self):
-        """Alarm content.
+        r"""Alarm content.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10833,7 +10833,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ObjName(self):
-        """Alarm object.
+        r"""Alarm object.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10845,7 +10845,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ObjId(self):
-        """Alarm object ID.
+        r"""Alarm object ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10857,7 +10857,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Policy type.
+        r"""Policy type.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10869,7 +10869,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Vpc(self):
-        """VPC, which is unique to CVM.
+        r"""VPC, which is unique to CVM.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10881,7 +10881,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def MetricId(self):
-        """Metric ID.
+        r"""Metric ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -10893,7 +10893,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def MetricName(self):
-        """Metric name.
+        r"""Metric name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10905,7 +10905,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AlarmType(self):
-        """Alarm type. The value 0 indicates metric alarms. The value 2 indicates product event alarms. The value 3 indicates platform event alarms.
+        r"""Alarm type. The value 0 indicates metric alarms. The value 2 indicates product event alarms. The value 3 indicates platform event alarms.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -10917,7 +10917,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Region.
+        r"""Region.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10929,7 +10929,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Dimensions(self):
-        """Dimensions of an alarm object.
+        r"""Dimensions of an alarm object.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10941,7 +10941,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def NotifyWay(self):
-        """Notification method.
+        r"""Notification method.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -10953,7 +10953,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroup(self):
-        """Instance group information.
+        r"""Instance group information.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of InstanceGroup
         """
@@ -11003,7 +11003,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBasicAlarmListRequest(AbstractModel):
-    """DescribeBasicAlarmList request structure.
+    r"""DescribeBasicAlarmList request structure.
 
     """
 
@@ -11049,7 +11049,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """API component name. The value for the current API is monitor.
+        r"""API component name. The value for the current API is monitor.
         :rtype: str
         """
         return self._Module
@@ -11060,7 +11060,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time, which is the timestamp one day prior by default.
+        r"""Start time, which is the timestamp one day prior by default.
         :rtype: int
         """
         return self._StartTime
@@ -11071,7 +11071,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, which is the current timestamp by default.
+        r"""End time, which is the current timestamp by default.
         :rtype: int
         """
         return self._EndTime
@@ -11082,7 +11082,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of parameters that can be returned on each page. Value range: 1 - 100. Default value: 20.
+        r"""Number of parameters that can be returned on each page. Value range: 1 - 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -11093,7 +11093,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Parameter offset on each page. The value starts from 0 and the default value is 0.
+        r"""Parameter offset on each page. The value starts from 0 and the default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -11104,7 +11104,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def OccurTimeOrder(self):
-        """Sorting by occurrence time. Valid values: asc and desc.
+        r"""Sorting by occurrence time. Valid values: asc and desc.
         :rtype: str
         """
         return self._OccurTimeOrder
@@ -11115,7 +11115,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """Filter by project ID.
+        r"""Filter by project ID.
         :rtype: list of int
         """
         return self._ProjectIds
@@ -11126,7 +11126,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ViewNames(self):
-        """Filter by policy type.
+        r"""Filter by policy type.
         :rtype: list of str
         """
         return self._ViewNames
@@ -11137,7 +11137,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def AlarmStatus(self):
-        """Filter by alarm status.
+        r"""Filter by alarm status.
         :rtype: list of int
         """
         return self._AlarmStatus
@@ -11148,7 +11148,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def ObjLike(self):
-        """Filter by alarm object.
+        r"""Filter by alarm object.
         :rtype: str
         """
         return self._ObjLike
@@ -11159,7 +11159,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def InstanceGroupIds(self):
-        """Filter by instance group ID.
+        r"""Filter by instance group ID.
         :rtype: list of int
         """
         return self._InstanceGroupIds
@@ -11170,7 +11170,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Filtering by metric names
+        r"""Filtering by metric names
         :rtype: list of str
         """
         return self._MetricNames
@@ -11204,7 +11204,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
 
 
 class DescribeBasicAlarmListResponse(AbstractModel):
-    """DescribeBasicAlarmList response structure.
+    r"""DescribeBasicAlarmList response structure.
 
     """
 
@@ -11229,7 +11229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alarms(self):
-        """Alarm list.
+        r"""Alarm list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeBasicAlarmListAlarms
         """
@@ -11241,7 +11241,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -11253,7 +11253,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Warning(self):
-        """Remarks
+        r"""Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11265,7 +11265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11288,7 +11288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeBindingPolicyObjectListDimension(AbstractModel):
-    """Dimensions of the DescribeBindingPolicyObjectList API
+    r"""Dimensions of the DescribeBindingPolicyObjectList API
 
     """
 
@@ -11310,7 +11310,7 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID.
+        r"""Region ID.
         :rtype: int
         """
         return self._RegionId
@@ -11321,7 +11321,7 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def Region(self):
-        """Region abbreviation.
+        r"""Region abbreviation.
         :rtype: str
         """
         return self._Region
@@ -11332,7 +11332,7 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Combined JSON string of dimensions.
+        r"""Combined JSON string of dimensions.
         :rtype: str
         """
         return self._Dimensions
@@ -11343,7 +11343,7 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
     @property
     def EventDimensions(self):
-        """Combined JSON string of event dimensions.
+        r"""Combined JSON string of event dimensions.
         :rtype: str
         """
         return self._EventDimensions
@@ -11369,7 +11369,7 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
 
 
 class DescribeBindingPolicyObjectListInstance(AbstractModel):
-    """Object instance information returned by the DescribeBindingPolicyObjectListInstance API.
+    r"""Object instance information returned by the DescribeBindingPolicyObjectListInstance API.
 
     """
 
@@ -11391,7 +11391,7 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def UniqueId(self):
-        """Unique ID of the object.
+        r"""Unique ID of the object.
         :rtype: str
         """
         return self._UniqueId
@@ -11402,7 +11402,7 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Dimension set of an object instance, which is a jsonObj string.
+        r"""Dimension set of an object instance, which is a jsonObj string.
         :rtype: str
         """
         return self._Dimensions
@@ -11413,7 +11413,7 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def IsShielded(self):
-        """Whether the object is shielded. The value 0 indicates that the object is not shielded. The value 1 indicates that the object is shielded.
+        r"""Whether the object is shielded. The value 0 indicates that the object is not shielded. The value 1 indicates that the object is shielded.
         :rtype: int
         """
         return self._IsShielded
@@ -11424,7 +11424,7 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
     @property
     def Region(self):
-        """Region where the object resides.
+        r"""Region where the object resides.
         :rtype: str
         """
         return self._Region
@@ -11450,7 +11450,7 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
 
 
 class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
-    """Instance group information returned by the DescribeBindingPolicyObjectList API
+    r"""Instance group information returned by the DescribeBindingPolicyObjectList API
 
     """
 
@@ -11485,7 +11485,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID.
+        r"""Instance group ID.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -11496,7 +11496,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Alarm policy type name.
+        r"""Alarm policy type name.
         :rtype: str
         """
         return self._ViewName
@@ -11507,7 +11507,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LastEditUin(self):
-        """Uin that was last edited.
+        r"""Uin that was last edited.
         :rtype: str
         """
         return self._LastEditUin
@@ -11518,7 +11518,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Instance group name.
+        r"""Instance group name.
         :rtype: str
         """
         return self._GroupName
@@ -11529,7 +11529,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceSum(self):
-        """Number of instances.
+        r"""Number of instances.
         :rtype: int
         """
         return self._InstanceSum
@@ -11540,7 +11540,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: int
         """
         return self._UpdateTime
@@ -11551,7 +11551,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._InsertTime
@@ -11562,7 +11562,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Regions(self):
-        """Regions where the instances reside.
+        r"""Regions where the instances reside.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -11593,7 +11593,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeBindingPolicyObjectListRequest(AbstractModel):
-    """DescribeBindingPolicyObjectList request structure.
+    r"""DescribeBindingPolicyObjectList request structure.
 
     """
 
@@ -11621,7 +11621,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -11632,7 +11632,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID. If the ID is in the format of “policy-xxxx”, please enter it in the `PolicyId` field. Enter 0 in this field.
+        r"""Policy group ID. If the ID is in the format of “policy-xxxx”, please enter it in the `PolicyId` field. Enter 0 in this field.
         :rtype: int
         """
         return self._GroupId
@@ -11643,7 +11643,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID in the format of “policy-xxxx”. If a value has been entered in this field, you can enter 0 in the `GroupId` field.
+        r"""Alarm policy ID in the format of “policy-xxxx”. If a value has been entered in this field, you can enter 0 in the `GroupId` field.
         :rtype: str
         """
         return self._PolicyId
@@ -11654,7 +11654,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of alarm objects returned each time. Value range: 1-100. Default value: 20.
+        r"""The number of alarm objects returned each time. Value range: 1-100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -11665,7 +11665,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which starts from 0 and is set to 0 by default. For example, the parameter `Offset=0&Limit=20` returns the zeroth to 19th alarm objects, and `Offset=20&Limit=20` returns the 20th to 39th alarm objects, and so on.
+        r"""Offset, which starts from 0 and is set to 0 by default. For example, the parameter `Offset=0&Limit=20` returns the zeroth to 19th alarm objects, and `Offset=20&Limit=20` returns the 20th to 39th alarm objects, and so on.
         :rtype: int
         """
         return self._Offset
@@ -11676,7 +11676,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Dimensions of filtering objects.
+        r"""Dimensions of filtering objects.
         :rtype: list of DescribeBindingPolicyObjectListDimension
         """
         return self._Dimensions
@@ -11709,7 +11709,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
 
 
 class DescribeBindingPolicyObjectListResponse(AbstractModel):
-    """DescribeBindingPolicyObjectList response structure.
+    r"""DescribeBindingPolicyObjectList response structure.
 
     """
 
@@ -11736,7 +11736,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def List(self):
-        """List of bound object instances.
+        r"""List of bound object instances.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeBindingPolicyObjectListInstance
         """
@@ -11748,7 +11748,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number of bound object instances.
+        r"""Total number of bound object instances.
         :rtype: int
         """
         return self._Total
@@ -11759,7 +11759,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def NoShieldedSum(self):
-        """Number of object instances that are not shielded.
+        r"""Number of object instances that are not shielded.
         :rtype: int
         """
         return self._NoShieldedSum
@@ -11770,7 +11770,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroup(self):
-        """Bound instance group information. This parameter is not configured if no instance group is bound.
+        r"""Bound instance group information. This parameter is not configured if no instance group is bound.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`
         """
@@ -11782,7 +11782,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11808,13 +11808,13 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeClusterAgentCreatingProgressRequest(AbstractModel):
-    """DescribeClusterAgentCreatingProgress request structure.
+    r"""DescribeClusterAgentCreatingProgress request structure.
 
     """
 
 
 class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
-    """DescribeClusterAgentCreatingProgress response structure.
+    r"""DescribeClusterAgentCreatingProgress response structure.
 
     """
 
@@ -11827,7 +11827,7 @@ class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11842,7 +11842,7 @@ class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
 
 
 class DescribeConditionsTemplateListRequest(AbstractModel):
-    """DescribeConditionsTemplateList request structure.
+    r"""DescribeConditionsTemplateList request structure.
 
     """
 
@@ -11876,7 +11876,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to `monitor`.
+        r"""The value is fixed to `monitor`.
         :rtype: str
         """
         return self._Module
@@ -11887,7 +11887,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def ViewName(self):
-        """View name, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
+        r"""View name, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.
         :rtype: str
         """
         return self._ViewName
@@ -11898,7 +11898,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Filter by trigger condition template name.
+        r"""Filter by trigger condition template name.
         :rtype: str
         """
         return self._GroupName
@@ -11909,7 +11909,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def GroupID(self):
-        """Filter by trigger condition template ID.
+        r"""Filter by trigger condition template ID.
         :rtype: str
         """
         return self._GroupID
@@ -11920,7 +11920,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination parameter, which specifies the number of returned results per page. Value range: 1-100. Default value: 20.
+        r"""Pagination parameter, which specifies the number of returned results per page. Value range: 1-100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -11931,7 +11931,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset starting from 0. Default value: 0.
+        r"""Pagination offset starting from 0. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -11942,7 +11942,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
-        """Sorting method by update time. `asc`: Ascending order; `desc`: Descending order.
+        r"""Sorting method by update time. `asc`: Ascending order; `desc`: Descending order.
         :rtype: str
         """
         return self._UpdateTimeOrder
@@ -11953,7 +11953,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
     @property
     def PolicyCountOrder(self):
-        """Sorting order based on the number of associated policies. Valid values: `asc` (ascending order), `desc` (descending order).
+        r"""Sorting order based on the number of associated policies. Valid values: `asc` (ascending order), `desc` (descending order).
         :rtype: str
         """
         return self._PolicyCountOrder
@@ -11983,7 +11983,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
 
 
 class DescribeConditionsTemplateListResponse(AbstractModel):
-    """DescribeConditionsTemplateList response structure.
+    r"""DescribeConditionsTemplateList response structure.
 
     """
 
@@ -12003,7 +12003,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Total(self):
-        """Total number of templates.
+        r"""Total number of templates.
         :rtype: int
         """
         return self._Total
@@ -12014,7 +12014,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TemplateGroupList(self):
-        """Template list.
+        r"""Template list.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of TemplateGroup
         """
@@ -12026,7 +12026,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12048,7 +12048,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeDNSConfigRequest(AbstractModel):
-    """DescribeDNSConfig request structure.
+    r"""DescribeDNSConfig request structure.
 
     """
 
@@ -12061,7 +12061,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -12084,7 +12084,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
 
 class DescribeDNSConfigResponse(AbstractModel):
-    """DescribeDNSConfig response structure.
+    r"""DescribeDNSConfig response structure.
 
     """
 
@@ -12100,7 +12100,7 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     @property
     def NameServers(self):
-        """Array of DNS servers
+        r"""Array of DNS servers
         :rtype: list of str
         """
         return self._NameServers
@@ -12111,7 +12111,7 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12127,7 +12127,7 @@ class DescribeDNSConfigResponse(AbstractModel):
 
 
 class DescribeExporterIntegrationsRequest(AbstractModel):
-    """DescribeExporterIntegrations request structure.
+    r"""DescribeExporterIntegrations request structure.
 
     """
 
@@ -12155,7 +12155,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -12166,7 +12166,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type. Valid values:
+        r"""Kubernetes cluster type. Valid values:
 <li> 1 = TKE </li>
 <li> 2 = EKS </li>
 <li> 3 = MEKS </li>
@@ -12180,7 +12180,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -12191,7 +12191,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -12202,7 +12202,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -12229,7 +12229,7 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
 
 
 class DescribeExporterIntegrationsResponse(AbstractModel):
-    """DescribeExporterIntegrations response structure.
+    r"""DescribeExporterIntegrations response structure.
 
     """
 
@@ -12245,7 +12245,7 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
 
     @property
     def IntegrationSet(self):
-        """List of integration configurations
+        r"""List of integration configurations
         :rtype: list of IntegrationConfiguration
         """
         return self._IntegrationSet
@@ -12256,7 +12256,7 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12277,7 +12277,7 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
 
 
 class DescribeGrafanaChannelsRequest(AbstractModel):
-    """DescribeGrafanaChannels request structure.
+    r"""DescribeGrafanaChannels request structure.
 
     """
 
@@ -12305,7 +12305,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -12316,7 +12316,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset.
+        r"""Offset.
         :rtype: int
         """
         return self._Offset
@@ -12327,7 +12327,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items to be queried
+        r"""Number of items to be queried
         :rtype: int
         """
         return self._Limit
@@ -12338,7 +12338,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        """Alert channel name, such as “test”.
+        r"""Alert channel name, such as “test”.
         :rtype: str
         """
         return self._ChannelName
@@ -12349,7 +12349,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelIds(self):
-        """Alert channel ID, such as “nchannel-abcd1234”.
+        r"""Alert channel ID, such as “nchannel-abcd1234”.
         :rtype: list of str
         """
         return self._ChannelIds
@@ -12360,7 +12360,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
-        """Alert channel status
+        r"""Alert channel status
         :rtype: int
         """
         return self._ChannelState
@@ -12388,7 +12388,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
 
 class DescribeGrafanaChannelsResponse(AbstractModel):
-    """DescribeGrafanaChannels response structure.
+    r"""DescribeGrafanaChannels response structure.
 
     """
 
@@ -12404,7 +12404,7 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
-        """Array of alert channels
+        r"""Array of alert channels
         :rtype: list of GrafanaChannel
         """
         return self._NotificationChannelSet
@@ -12415,7 +12415,7 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12436,7 +12436,7 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
 
 class DescribeGrafanaConfigRequest(AbstractModel):
-    """DescribeGrafanaConfig request structure.
+    r"""DescribeGrafanaConfig request structure.
 
     """
 
@@ -12449,7 +12449,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -12472,7 +12472,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
 
 class DescribeGrafanaConfigResponse(AbstractModel):
-    """DescribeGrafanaConfig response structure.
+    r"""DescribeGrafanaConfig response structure.
 
     """
 
@@ -12488,7 +12488,7 @@ class DescribeGrafanaConfigResponse(AbstractModel):
 
     @property
     def Config(self):
-        """JSON-encoded string
+        r"""JSON-encoded string
         :rtype: str
         """
         return self._Config
@@ -12499,7 +12499,7 @@ class DescribeGrafanaConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12515,7 +12515,7 @@ class DescribeGrafanaConfigResponse(AbstractModel):
 
 
 class DescribeGrafanaEnvironmentsRequest(AbstractModel):
-    """DescribeGrafanaEnvironments request structure.
+    r"""DescribeGrafanaEnvironments request structure.
 
     """
 
@@ -12528,7 +12528,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of a TencentCloud Managed Service for Grafana instance, such as “grafana-abcdefgh”.
+        r"""ID of a TencentCloud Managed Service for Grafana instance, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -12551,7 +12551,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
 
 class DescribeGrafanaEnvironmentsResponse(AbstractModel):
-    """DescribeGrafanaEnvironments response structure.
+    r"""DescribeGrafanaEnvironments response structure.
 
     """
 
@@ -12567,7 +12567,7 @@ class DescribeGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def Envs(self):
-        """Environment variable string
+        r"""Environment variable string
         :rtype: str
         """
         return self._Envs
@@ -12578,7 +12578,7 @@ class DescribeGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12594,7 +12594,7 @@ class DescribeGrafanaEnvironmentsResponse(AbstractModel):
 
 
 class DescribeGrafanaInstancesRequest(AbstractModel):
-    """DescribeGrafanaInstances request structure.
+    r"""DescribeGrafanaInstances request structure.
 
     """
 
@@ -12622,7 +12622,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset for query
+        r"""Offset for query
         :rtype: int
         """
         return self._Offset
@@ -12633,7 +12633,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items to be queried
+        r"""Number of items to be queried
         :rtype: int
         """
         return self._Limit
@@ -12644,7 +12644,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Array of TCMG instance IDs
+        r"""Array of TCMG instance IDs
         :rtype: list of str
         """
         return self._InstanceIds
@@ -12655,7 +12655,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """TCMG instance name, which can be fuzzily matched by prefix.
+        r"""TCMG instance name, which can be fuzzily matched by prefix.
         :rtype: str
         """
         return self._InstanceName
@@ -12666,7 +12666,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """Query status
+        r"""Query status
         :rtype: list of int
         """
         return self._InstanceStatus
@@ -12677,7 +12677,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """Array of tag filters
+        r"""Array of tag filters
         :rtype: list of PrometheusTag
         """
         return self._TagFilters
@@ -12710,7 +12710,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
 
 class DescribeGrafanaInstancesResponse(AbstractModel):
-    """DescribeGrafanaInstances response structure.
+    r"""DescribeGrafanaInstances response structure.
 
     """
 
@@ -12732,7 +12732,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """This parameter has been disused. Use `Instances` instead.
+        r"""This parameter has been disused. Use `Instances` instead.
         :rtype: list of GrafanaInstanceInfo
         """
         return self._InstanceSet
@@ -12743,7 +12743,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible instances
+        r"""Number of eligible instances
         :rtype: int
         """
         return self._TotalCount
@@ -12754,7 +12754,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """List of instances
+        r"""List of instances
         :rtype: list of GrafanaInstanceInfo
         """
         return self._Instances
@@ -12765,7 +12765,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12793,7 +12793,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
 
 class DescribeGrafanaIntegrationsRequest(AbstractModel):
-    """DescribeGrafanaIntegrations request structure.
+    r"""DescribeGrafanaIntegrations request structure.
 
     """
 
@@ -12812,7 +12812,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -12823,7 +12823,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
-        """Integration ID
+        r"""Integration ID
         :rtype: str
         """
         return self._IntegrationId
@@ -12834,7 +12834,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -12859,7 +12859,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
 
 class DescribeGrafanaIntegrationsResponse(AbstractModel):
-    """DescribeGrafanaIntegrations response structure.
+    r"""DescribeGrafanaIntegrations response structure.
 
     """
 
@@ -12875,7 +12875,7 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     @property
     def IntegrationSet(self):
-        """Array of integrations
+        r"""Array of integrations
         :rtype: list of GrafanaIntegrationConfig
         """
         return self._IntegrationSet
@@ -12886,7 +12886,7 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12907,7 +12907,7 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
 
 class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
-    """DescribeGrafanaNotificationChannels request structure.
+    r"""DescribeGrafanaNotificationChannels request structure.
 
     """
 
@@ -12935,7 +12935,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -12946,7 +12946,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -12957,7 +12957,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items to be queried
+        r"""Number of items to be queried
         :rtype: int
         """
         return self._Limit
@@ -12968,7 +12968,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        """Alert channel name, such as “test”.
+        r"""Alert channel name, such as “test”.
         :rtype: str
         """
         return self._ChannelName
@@ -12979,7 +12979,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
-        """Alert channel ID, such as “nchannel-abcd1234”.
+        r"""Alert channel ID, such as “nchannel-abcd1234”.
         :rtype: list of str
         """
         return self._ChannelIDs
@@ -12990,7 +12990,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
-        """Alert channel status
+        r"""Alert channel status
         :rtype: int
         """
         return self._ChannelState
@@ -13018,7 +13018,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
 
 class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
-    """DescribeGrafanaNotificationChannels response structure.
+    r"""DescribeGrafanaNotificationChannels response structure.
 
     """
 
@@ -13034,7 +13034,7 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
-        """Array of notification channels
+        r"""Array of notification channels
         :rtype: list of GrafanaNotificationChannel
         """
         return self._NotificationChannelSet
@@ -13045,7 +13045,7 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13066,7 +13066,7 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
 
 class DescribeGrafanaWhiteListRequest(AbstractModel):
-    """DescribeGrafanaWhiteList request structure.
+    r"""DescribeGrafanaWhiteList request structure.
 
     """
 
@@ -13079,7 +13079,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -13102,7 +13102,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
 
 class DescribeGrafanaWhiteListResponse(AbstractModel):
-    """DescribeGrafanaWhiteList response structure.
+    r"""DescribeGrafanaWhiteList response structure.
 
     """
 
@@ -13118,7 +13118,7 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def WhiteList(self):
-        """Array
+        r"""Array
         :rtype: list of str
         """
         return self._WhiteList
@@ -13129,7 +13129,7 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13145,7 +13145,7 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
 
 class DescribeInstalledPluginsRequest(AbstractModel):
-    """DescribeInstalledPlugins request structure.
+    r"""DescribeInstalledPlugins request structure.
 
     """
 
@@ -13161,7 +13161,7 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-kleu3gt0”.
+        r"""TCMG instance ID, such as “grafana-kleu3gt0”.
         :rtype: str
         """
         return self._InstanceId
@@ -13172,7 +13172,7 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     @property
     def PluginId(self):
-        """Filter by plugin ID such as “grafana-piechart-panel”. You can view the IDs of installed plugins through the `DescribeInstalledPlugins` API.
+        r"""Filter by plugin ID such as “grafana-piechart-panel”. You can view the IDs of installed plugins through the `DescribeInstalledPlugins` API.
         :rtype: str
         """
         return self._PluginId
@@ -13196,7 +13196,7 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
 
 class DescribeInstalledPluginsResponse(AbstractModel):
-    """DescribeInstalledPlugins response structure.
+    r"""DescribeInstalledPlugins response structure.
 
     """
 
@@ -13212,7 +13212,7 @@ class DescribeInstalledPluginsResponse(AbstractModel):
 
     @property
     def PluginSet(self):
-        """List of plugins
+        r"""List of plugins
         :rtype: list of GrafanaPlugin
         """
         return self._PluginSet
@@ -13223,7 +13223,7 @@ class DescribeInstalledPluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13244,7 +13244,7 @@ class DescribeInstalledPluginsResponse(AbstractModel):
 
 
 class DescribeMonitorTypesRequest(AbstractModel):
-    """DescribeMonitorTypes request structure.
+    r"""DescribeMonitorTypes request structure.
 
     """
 
@@ -13257,7 +13257,7 @@ class DescribeMonitorTypesRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -13280,7 +13280,7 @@ class DescribeMonitorTypesRequest(AbstractModel):
 
 
 class DescribeMonitorTypesResponse(AbstractModel):
-    """DescribeMonitorTypes response structure.
+    r"""DescribeMonitorTypes response structure.
 
     """
 
@@ -13299,7 +13299,7 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def MonitorTypes(self):
-        """Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
+        r"""Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)
         :rtype: list of str
         """
         return self._MonitorTypes
@@ -13310,7 +13310,7 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def MonitorTypeInfos(self):
-        """Monitoring type details
+        r"""Monitoring type details
         :rtype: list of MonitorTypeInfo
         """
         return self._MonitorTypeInfos
@@ -13321,7 +13321,7 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13343,7 +13343,7 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
 
 class DescribePolicyConditionListCondition(AbstractModel):
-    """Policy conditions returned by the DescribePolicyConditionList API
+    r"""Policy conditions returned by the DescribePolicyConditionList API
 
     """
 
@@ -13384,7 +13384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyViewName(self):
-        """Policy view name.
+        r"""Policy view name.
         :rtype: str
         """
         return self._PolicyViewName
@@ -13395,7 +13395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMetrics(self):
-        """Event alarm conditions.
+        r"""Event alarm conditions.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyConditionListEventMetric
         """
@@ -13407,7 +13407,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsSupportMultiRegion(self):
-        """Whether to support multiple regions.
+        r"""Whether to support multiple regions.
         :rtype: bool
         """
         return self._IsSupportMultiRegion
@@ -13418,7 +13418,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Metrics(self):
-        """Metric alarm conditions.
+        r"""Metric alarm conditions.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyConditionListMetric
         """
@@ -13430,7 +13430,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Policy type name.
+        r"""Policy type name.
         :rtype: str
         """
         return self._Name
@@ -13441,7 +13441,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SortId(self):
-        """Sorting ID.
+        r"""Sorting ID.
         :rtype: int
         """
         return self._SortId
@@ -13452,7 +13452,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SupportDefault(self):
-        """Whether to support default policies.
+        r"""Whether to support default policies.
         :rtype: bool
         """
         return self._SupportDefault
@@ -13463,7 +13463,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SupportRegions(self):
-        """List of regions that support this policy type.
+        r"""List of regions that support this policy type.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -13475,7 +13475,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def DeprecatingInfo(self):
-        """Deprecated information
+        r"""Deprecated information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponseDeprecatingInfo`
         """
@@ -13519,7 +13519,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePolicyConditionListConfigManual(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual
+    r"""DescribePolicyConditionList.ConfigManual
 
     """
 
@@ -13553,7 +13553,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CalcType(self):
-        """Check method.
+        r"""Check method.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`
         """
@@ -13565,7 +13565,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CalcValue(self):
-        """Threshold.
+        r"""Threshold.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`
         """
@@ -13577,7 +13577,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ContinueTime(self):
-        """Duration.
+        r"""Duration.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`
         """
@@ -13589,7 +13589,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Period(self):
-        """Data period.
+        r"""Data period.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`
         """
@@ -13601,7 +13601,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def PeriodNum(self):
-        """Number of periods.
+        r"""Number of periods.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`
         """
@@ -13613,7 +13613,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def StatType(self):
-        """Statistics method.
+        r"""Statistics method.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualStatType`
         """
@@ -13654,7 +13654,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualCalcType(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.CalcType
+    r"""DescribePolicyConditionList.ConfigManual.CalcType
 
     """
 
@@ -13671,7 +13671,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Keys(self):
-        """Value of CalcType.
+        r"""Value of CalcType.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of int
         """
@@ -13683,7 +13683,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Need(self):
-        """Required or not.
+        r"""Required or not.
         :rtype: bool
         """
         return self._Need
@@ -13707,7 +13707,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.CalcValue
+    r"""DescribePolicyConditionList.ConfigManual.CalcValue
 
     """
 
@@ -13736,7 +13736,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Default(self):
-        """Default value.
+        r"""Default value.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -13748,7 +13748,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Fixed(self):
-        """Fixed value.
+        r"""Fixed value.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -13760,7 +13760,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Max(self):
-        """Maximum value.
+        r"""Maximum value.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -13772,7 +13772,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Min(self):
-        """Minimum value.
+        r"""Minimum value.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -13784,7 +13784,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Need(self):
-        """Required or not.
+        r"""Required or not.
         :rtype: bool
         """
         return self._Need
@@ -13811,7 +13811,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.ContinueTime
+    r"""DescribePolicyConditionList.ConfigManual.ContinueTime
 
     """
 
@@ -13832,7 +13832,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Default(self):
-        """Default duration in seconds.
+        r"""Default duration in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -13844,7 +13844,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Keys(self):
-        """Custom durations in seconds.
+        r"""Custom durations in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of int
         """
@@ -13856,7 +13856,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Need(self):
-        """Required or not.
+        r"""Required or not.
         :rtype: bool
         """
         return self._Need
@@ -13881,7 +13881,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.Period
+    r"""DescribePolicyConditionList.ConfigManual.Period
 
     """
 
@@ -13902,7 +13902,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Default(self):
-        """Default period in seconds.
+        r"""Default period in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -13914,7 +13914,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Keys(self):
-        """Custom periods in seconds.
+        r"""Custom periods in seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of int
         """
@@ -13926,7 +13926,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Need(self):
-        """Required or not.
+        r"""Required or not.
         :rtype: bool
         """
         return self._Need
@@ -13951,7 +13951,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.PeriodNum
+    r"""DescribePolicyConditionList.ConfigManual.PeriodNum
 
     """
 
@@ -13972,7 +13972,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Default(self):
-        """Number of default periods.
+        r"""Number of default periods.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -13984,7 +13984,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Keys(self):
-        """Number of custom periods.
+        r"""Number of custom periods.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of int
         """
@@ -13996,7 +13996,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Need(self):
-        """Required or not.
+        r"""Required or not.
         :rtype: bool
         """
         return self._Need
@@ -14021,7 +14021,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListConfigManualStatType(AbstractModel):
-    """DescribePolicyConditionList.ConfigManual.StatType
+    r"""DescribePolicyConditionList.ConfigManual.StatType
 
     """
 
@@ -14063,7 +14063,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P5(self):
-        """Data aggregation method in a period of 5 seconds.
+        r"""Data aggregation method in a period of 5 seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14075,7 +14075,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P10(self):
-        """Data aggregation method in a period of 10 seconds.
+        r"""Data aggregation method in a period of 10 seconds.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14087,7 +14087,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P60(self):
-        """Data aggregation method in a period of 1 minute.
+        r"""Data aggregation method in a period of 1 minute.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14099,7 +14099,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P300(self):
-        """Data aggregation method in a period of 5 minutes.
+        r"""Data aggregation method in a period of 5 minutes.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14111,7 +14111,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P600(self):
-        """Data aggregation method in a period of 10 minutes.
+        r"""Data aggregation method in a period of 10 minutes.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14123,7 +14123,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P1800(self):
-        """Data aggregation method in a period of 30 minutes.
+        r"""Data aggregation method in a period of 30 minutes.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14135,7 +14135,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P3600(self):
-        """Data aggregation method in a period of 1 hour.
+        r"""Data aggregation method in a period of 1 hour.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14147,7 +14147,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def P86400(self):
-        """Data aggregation method in a period of 1 day.
+        r"""Data aggregation method in a period of 1 day.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -14178,7 +14178,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListEventMetric(AbstractModel):
-    """DescribePolicyConditionList.EventMetric
+    r"""DescribePolicyConditionList.EventMetric
 
     """
 
@@ -14200,7 +14200,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def EventId(self):
-        """Event ID.
+        r"""Event ID.
         :rtype: int
         """
         return self._EventId
@@ -14211,7 +14211,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def EventShowName(self):
-        """Event name.
+        r"""Event name.
         :rtype: str
         """
         return self._EventShowName
@@ -14222,7 +14222,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def NeedRecovered(self):
-        """Whether to recover.
+        r"""Whether to recover.
         :rtype: bool
         """
         return self._NeedRecovered
@@ -14233,7 +14233,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
     @property
     def Type(self):
-        """Event type, which is a reserved field. Currently, it is fixed to 2.
+        r"""Event type, which is a reserved field. Currently, it is fixed to 2.
         :rtype: int
         """
         return self._Type
@@ -14259,7 +14259,7 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
 
 
 class DescribePolicyConditionListMetric(AbstractModel):
-    """Metric alarm configuration.
+    r"""Metric alarm configuration.
 
     """
 
@@ -14282,7 +14282,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ConfigManual(self):
-        """Metric configuration.
+        r"""Metric configuration.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`
         """
@@ -14294,7 +14294,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def MetricId(self):
-        """Metric ID.
+        r"""Metric ID.
         :rtype: int
         """
         return self._MetricId
@@ -14305,7 +14305,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def MetricShowName(self):
-        """Metric name.
+        r"""Metric name.
         :rtype: str
         """
         return self._MetricShowName
@@ -14316,7 +14316,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def MetricUnit(self):
-        """Metric unit.
+        r"""Metric unit.
         :rtype: str
         """
         return self._MetricUnit
@@ -14344,7 +14344,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyConditionListRequest(AbstractModel):
-    """DescribePolicyConditionList request structure.
+    r"""DescribePolicyConditionList request structure.
 
     """
 
@@ -14357,7 +14357,7 @@ class DescribePolicyConditionListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -14380,7 +14380,7 @@ class DescribePolicyConditionListRequest(AbstractModel):
 
 
 class DescribePolicyConditionListResponse(AbstractModel):
-    """DescribePolicyConditionList response structure.
+    r"""DescribePolicyConditionList response structure.
 
     """
 
@@ -14396,7 +14396,7 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
     @property
     def Conditions(self):
-        """List of alarm policy conditions.
+        r"""List of alarm policy conditions.
         :rtype: list of DescribePolicyConditionListCondition
         """
         return self._Conditions
@@ -14407,7 +14407,7 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14428,7 +14428,7 @@ class DescribePolicyConditionListResponse(AbstractModel):
 
 
 class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
-    """DescribePolicyConditionListResponseDeprecatingInfo
+    r"""DescribePolicyConditionListResponseDeprecatingInfo
 
     """
 
@@ -14450,7 +14450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hidden(self):
-        """Whether to hide
+        r"""Whether to hide
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -14462,7 +14462,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewNames(self):
-        """Names of new views
+        r"""Names of new views
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -14474,7 +14474,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description
+        r"""Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14500,7 +14500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePolicyGroupInfoCallback(AbstractModel):
-    """User callback information output by the policy query
+    r"""User callback information output by the policy query
 
     """
 
@@ -14519,7 +14519,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        """URL of the user callback API.
+        r"""URL of the user callback API.
         :rtype: str
         """
         return self._CallbackUrl
@@ -14530,7 +14530,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def ValidFlag(self):
-        """Status of the user callback API. The value 0 indicates that the API is not verified. The value 1 indicates that the API is verified. The value 2 indicates that a URL exists but the API fails to be verified.
+        r"""Status of the user callback API. The value 0 indicates that the API is not verified. The value 1 indicates that the API is verified. The value 2 indicates that a URL exists but the API fails to be verified.
         :rtype: int
         """
         return self._ValidFlag
@@ -14541,7 +14541,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """Verification code of the user callback API.
+        r"""Verification code of the user callback API.
         :rtype: str
         """
         return self._VerifyCode
@@ -14566,7 +14566,7 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
 
 
 class DescribePolicyGroupInfoCondition(AbstractModel):
-    """Alarm threshold conditions output by the policy query.
+    r"""Alarm threshold conditions output by the policy query.
 
     """
 
@@ -14609,7 +14609,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricShowName(self):
-        """Metric name.
+        r"""Metric name.
         :rtype: str
         """
         return self._MetricShowName
@@ -14620,7 +14620,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def Period(self):
-        """Data aggregation period in seconds.
+        r"""Data aggregation period in seconds.
         :rtype: int
         """
         return self._Period
@@ -14631,7 +14631,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricId(self):
-        """Metric ID.
+        r"""Metric ID.
         :rtype: int
         """
         return self._MetricId
@@ -14642,7 +14642,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """Threshold rule ID.
+        r"""Threshold rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -14653,7 +14653,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def Unit(self):
-        """Metric unit.
+        r"""Metric unit.
         :rtype: str
         """
         return self._Unit
@@ -14664,7 +14664,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -14675,7 +14675,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of `triggerTime`.
+        r"""Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of `triggerTime`.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -14686,7 +14686,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def CalcType(self):
-        """Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. The value 7 indicates day-on-day increase. The value 8 indicates day-on-day decrease. The value 9 indicates week-on-week increase. The value 10 indicates week-on-week decrease. The value 11 indicates periodical increase. The value 12 indicates periodical decrease.
+        r"""Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to. The value 7 indicates day-on-day increase. The value 8 indicates day-on-day decrease. The value 9 indicates week-on-week increase. The value 10 indicates week-on-week decrease. The value 11 indicates periodical increase. The value 12 indicates periodical decrease.
         :rtype: int
         """
         return self._CalcType
@@ -14697,7 +14697,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def CalcValue(self):
-        """Threshold.
+        r"""Threshold.
         :rtype: str
         """
         return self._CalcValue
@@ -14708,7 +14708,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def ContinueTime(self):
-        """Duration at which an alarm will be triggered in seconds.
+        r"""Duration at which an alarm will be triggered in seconds.
         :rtype: int
         """
         return self._ContinueTime
@@ -14719,7 +14719,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
     @property
     def MetricName(self):
-        """Alarm metric name.
+        r"""Alarm metric name.
         :rtype: str
         """
         return self._MetricName
@@ -14752,7 +14752,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
 
 
 class DescribePolicyGroupInfoConditionTpl(AbstractModel):
-    """Template-based policy group information output by the policy query
+    r"""Template-based policy group information output by the policy query
 
     """
 
@@ -14789,7 +14789,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: int
         """
         return self._GroupId
@@ -14800,7 +14800,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -14811,7 +14811,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Policy type.
+        r"""Policy type.
         :rtype: str
         """
         return self._ViewName
@@ -14822,7 +14822,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Remark(self):
-        """Policy group remarks.
+        r"""Policy group remarks.
         :rtype: str
         """
         return self._Remark
@@ -14833,7 +14833,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LastEditUin(self):
-        """Uin that was last edited.
+        r"""Uin that was last edited.
         :rtype: str
         """
         return self._LastEditUin
@@ -14844,7 +14844,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -14856,7 +14856,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -14868,7 +14868,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsUnionRule(self):
-        """Whether the 'AND' rule is used.
+        r"""Whether the 'AND' rule is used.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -14899,7 +14899,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupInfoEventCondition(AbstractModel):
-    """Event alarm conditions output by the policy query
+    r"""Event alarm conditions output by the policy query
 
     """
 
@@ -14924,7 +14924,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def EventId(self):
-        """Event ID.
+        r"""Event ID.
         :rtype: int
         """
         return self._EventId
@@ -14935,7 +14935,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """Event alarm rule ID.
+        r"""Event alarm rule ID.
         :rtype: int
         """
         return self._RuleId
@@ -14946,7 +14946,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def EventShowName(self):
-        """Event name.
+        r"""Event name.
         :rtype: str
         """
         return self._EventShowName
@@ -14957,7 +14957,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
+        r"""Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -14968,7 +14968,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and converging type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -14995,7 +14995,7 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
 
 
 class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
-    """Alarm recipient information output by the policy query
+    r"""Alarm recipient information output by the policy query
 
     """
 
@@ -15049,7 +15049,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiverGroupList(self):
-        """List of alarm recipient group IDs.
+        r"""List of alarm recipient group IDs.
         :rtype: list of int
         """
         return self._ReceiverGroupList
@@ -15060,7 +15060,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiverUserList(self):
-        """List of alarm recipient IDs.
+        r"""List of alarm recipient IDs.
         :rtype: list of int
         """
         return self._ReceiverUserList
@@ -15071,7 +15071,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def StartTime(self):
-        """Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
+        r"""Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
         :rtype: int
         """
         return self._StartTime
@@ -15082,7 +15082,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EndTime(self):
-        """End time of the alarm period. The meaning is the same as that of StartTime.
+        r"""End time of the alarm period. The meaning is the same as that of StartTime.
         :rtype: int
         """
         return self._EndTime
@@ -15093,7 +15093,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiverType(self):
-        """Recipient type. Valid values: group and user.
+        r"""Recipient type. Valid values: group and user.
         :rtype: str
         """
         return self._ReceiverType
@@ -15104,7 +15104,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def NotifyWay(self):
-        """Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
+        r"""Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
         :rtype: list of str
         """
         return self._NotifyWay
@@ -15115,7 +15115,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UidList(self):
-        """Uid of the alarm call recipient.
+        r"""Uid of the alarm call recipient.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of int
         """
@@ -15127,7 +15127,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RoundNumber(self):
-        """Number of alarm call rounds.
+        r"""Number of alarm call rounds.
         :rtype: int
         """
         return self._RoundNumber
@@ -15138,7 +15138,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RoundInterval(self):
-        """Intervals of alarm call rounds in seconds.
+        r"""Intervals of alarm call rounds in seconds.
         :rtype: int
         """
         return self._RoundInterval
@@ -15149,7 +15149,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def PersonInterval(self):
-        """Alarm call intervals for individuals in seconds.
+        r"""Alarm call intervals for individuals in seconds.
         :rtype: int
         """
         return self._PersonInterval
@@ -15160,7 +15160,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def NeedSendNotice(self):
-        """Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
+        r"""Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
         :rtype: int
         """
         return self._NeedSendNotice
@@ -15171,7 +15171,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SendFor(self):
-        """Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
+        r"""Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
         :rtype: list of str
         """
         return self._SendFor
@@ -15182,7 +15182,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RecoverNotify(self):
-        """Notification method when an alarm is recovered. Valid value: SMS.
+        r"""Notification method when an alarm is recovered. Valid value: SMS.
         :rtype: list of str
         """
         return self._RecoverNotify
@@ -15193,7 +15193,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiveLanguage(self):
-        """Alarm language.
+        r"""Alarm language.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -15230,7 +15230,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupInfoRequest(AbstractModel):
-    """DescribePolicyGroupInfo request structure.
+    r"""DescribePolicyGroupInfo request structure.
 
     """
 
@@ -15246,7 +15246,7 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -15257,7 +15257,7 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: int
         """
         return self._GroupId
@@ -15281,7 +15281,7 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
 
 
 class DescribePolicyGroupInfoResponse(AbstractModel):
-    """DescribePolicyGroupInfo response structure.
+    r"""DescribePolicyGroupInfo response structure.
 
     """
 
@@ -15351,7 +15351,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -15362,7 +15362,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectId(self):
-        """ID of the project to which the policy group belongs.
+        r"""ID of the project to which the policy group belongs.
         :rtype: int
         """
         return self._ProjectId
@@ -15373,7 +15373,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsDefault(self):
-        """Whether it is the default policy. The value 0 indicates that it is not the default policy. The value 1 indicates that it is the default policy.
+        r"""Whether it is the default policy. The value 0 indicates that it is not the default policy. The value 1 indicates that it is the default policy.
         :rtype: int
         """
         return self._IsDefault
@@ -15384,7 +15384,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Policy type.
+        r"""Policy type.
         :rtype: str
         """
         return self._ViewName
@@ -15395,7 +15395,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Remark(self):
-        """Policy description
+        r"""Policy description
         :rtype: str
         """
         return self._Remark
@@ -15406,7 +15406,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ShowName(self):
-        """Policy type name.
+        r"""Policy type name.
         :rtype: str
         """
         return self._ShowName
@@ -15417,7 +15417,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LastEditUin(self):
-        """Uin that was last edited.
+        r"""Uin that was last edited.
         :rtype: str
         """
         return self._LastEditUin
@@ -15428,7 +15428,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Last edited time.
+        r"""Last edited time.
         :rtype: str
         """
         return self._UpdateTime
@@ -15439,7 +15439,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Regions supported by this policy.
+        r"""Regions supported by this policy.
         :rtype: list of str
         """
         return self._Region
@@ -15450,7 +15450,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def DimensionGroup(self):
-        """List of policy type dimensions.
+        r"""List of policy type dimensions.
         :rtype: list of str
         """
         return self._DimensionGroup
@@ -15461,7 +15461,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ConditionsConfig(self):
-        """Threshold rule list.
+        r"""Threshold rule list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoCondition
         """
@@ -15473,7 +15473,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventConfig(self):
-        """Product event rule list.
+        r"""Product event rule list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoEventCondition
         """
@@ -15485,7 +15485,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiverInfos(self):
-        """Recipient list.
+        r"""Recipient list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoReceiverInfo
         """
@@ -15497,7 +15497,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Callback(self):
-        """User callback information.
+        r"""User callback information.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoCallback`
         """
@@ -15509,7 +15509,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ConditionsTemp(self):
-        """Template-based policy group.
+        r"""Template-based policy group.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
         """
@@ -15521,7 +15521,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CanSetDefault(self):
-        """Whether the policy can be configured as the default policy.
+        r"""Whether the policy can be configured as the default policy.
         :rtype: bool
         """
         return self._CanSetDefault
@@ -15532,7 +15532,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsUnionRule(self):
-        """Whether the 'AND' rule is used.
+        r"""Whether the 'AND' rule is used.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -15544,7 +15544,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15595,7 +15595,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupListGroup(AbstractModel):
-    """DescribePolicyGroupList.Group
+    r"""DescribePolicyGroupList.Group
 
     """
 
@@ -15671,7 +15671,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: int
         """
         return self._GroupId
@@ -15682,7 +15682,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -15693,7 +15693,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsOpen(self):
-        """Whether it is enabled.
+        r"""Whether it is enabled.
         :rtype: bool
         """
         return self._IsOpen
@@ -15704,7 +15704,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Policy view name.
+        r"""Policy view name.
         :rtype: str
         """
         return self._ViewName
@@ -15715,7 +15715,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def LastEditUin(self):
-        """Uin that was last edited.
+        r"""Uin that was last edited.
         :rtype: str
         """
         return self._LastEditUin
@@ -15726,7 +15726,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Last modified time.
+        r"""Last modified time.
         :rtype: int
         """
         return self._UpdateTime
@@ -15737,7 +15737,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._InsertTime
@@ -15748,7 +15748,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UseSum(self):
-        """Number of instances that are bound to the policy group.
+        r"""Number of instances that are bound to the policy group.
         :rtype: int
         """
         return self._UseSum
@@ -15759,7 +15759,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def NoShieldedSum(self):
-        """Number of unshielded instances that are bound to the policy group.
+        r"""Number of unshielded instances that are bound to the policy group.
         :rtype: int
         """
         return self._NoShieldedSum
@@ -15770,7 +15770,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsDefault(self):
-        """Whether it is the default policy. The value 0 indicates that it is not the default policy. The value 1 indicates that it is the default policy.
+        r"""Whether it is the default policy. The value 0 indicates that it is not the default policy. The value 1 indicates that it is the default policy.
         :rtype: int
         """
         return self._IsDefault
@@ -15781,7 +15781,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CanSetDefault(self):
-        """Whether the policy can be configured as the default policy.
+        r"""Whether the policy can be configured as the default policy.
         :rtype: bool
         """
         return self._CanSetDefault
@@ -15792,7 +15792,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ParentGroupId(self):
-        """Parent policy group ID.
+        r"""Parent policy group ID.
         :rtype: int
         """
         return self._ParentGroupId
@@ -15803,7 +15803,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Remark(self):
-        """Remarks of the policy group.
+        r"""Remarks of the policy group.
         :rtype: str
         """
         return self._Remark
@@ -15814,7 +15814,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectId(self):
-        """ID of the project to which the policy group belongs.
+        r"""ID of the project to which the policy group belongs.
         :rtype: int
         """
         return self._ProjectId
@@ -15825,7 +15825,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Conditions(self):
-        """Threshold rule list.
+        r"""Threshold rule list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoCondition
         """
@@ -15837,7 +15837,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventConditions(self):
-        """Product event rule list.
+        r"""Product event rule list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoEventCondition
         """
@@ -15849,7 +15849,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ReceiverInfos(self):
-        """Recipient list.
+        r"""Recipient list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupInfoReceiverInfo
         """
@@ -15861,7 +15861,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ConditionsTemp(self):
-        """Template-based policy group.
+        r"""Template-based policy group.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
         """
@@ -15873,7 +15873,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroup(self):
-        """Instance group that is bound to the policy group.
+        r"""Instance group that is bound to the policy group.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
         """
@@ -15885,7 +15885,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsUnionRule(self):
-        """The 'AND' or 'OR' rule. The value 0 indicates the 'OR' rule (indicating that an alarm will be triggered if any rule meets the threshold condition). The value 1 indicates the 'AND' rule (indicating that an alarm will be triggered when all rules meet the threshold conditions).
+        r"""The 'AND' or 'OR' rule. The value 0 indicates the 'OR' rule (indicating that an alarm will be triggered if any rule meets the threshold condition). The value 1 indicates the 'AND' rule (indicating that an alarm will be triggered when all rules meet the threshold conditions).
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -15947,7 +15947,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
-    """Instance group that is bound to a policy group of the DescribePolicyGroupList API
+    r"""Instance group that is bound to a policy group of the DescribePolicyGroupList API
 
     """
 
@@ -15978,7 +15978,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        """Instance group name ID.
+        r"""Instance group name ID.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -15989,7 +15989,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def ViewName(self):
-        """Policy type view name.
+        r"""Policy type view name.
         :rtype: str
         """
         return self._ViewName
@@ -16000,7 +16000,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def LastEditUin(self):
-        """Uin that was last edited.
+        r"""Uin that was last edited.
         :rtype: str
         """
         return self._LastEditUin
@@ -16011,7 +16011,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def GroupName(self):
-        """Instance group name.
+        r"""Instance group name.
         :rtype: str
         """
         return self._GroupName
@@ -16022,7 +16022,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InstanceSum(self):
-        """Number of instances.
+        r"""Number of instances.
         :rtype: int
         """
         return self._InstanceSum
@@ -16033,7 +16033,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: int
         """
         return self._UpdateTime
@@ -16044,7 +16044,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._InsertTime
@@ -16073,7 +16073,7 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
 
 
 class DescribePolicyGroupListRequest(AbstractModel):
-    """DescribePolicyGroupList request structure.
+    r"""DescribePolicyGroupList request structure.
 
     """
 
@@ -16128,7 +16128,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -16139,7 +16139,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of parameters that can be returned on each page. Value range: 1 - 100.
+        r"""Number of parameters that can be returned on each page. Value range: 1 - 100.
         :rtype: int
         """
         return self._Limit
@@ -16150,7 +16150,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Parameter offset on each page. The value starts from 0.
+        r"""Parameter offset on each page. The value starts from 0.
         :rtype: int
         """
         return self._Offset
@@ -16161,7 +16161,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Like(self):
-        """Search by policy name.
+        r"""Search by policy name.
         :rtype: str
         """
         return self._Like
@@ -16172,7 +16172,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID.
+        r"""Instance group ID.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -16183,7 +16183,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def UpdateTimeOrder(self):
-        """Sort by update time. Valid values: asc and desc.
+        r"""Sort by update time. Valid values: asc and desc.
         :rtype: str
         """
         return self._UpdateTimeOrder
@@ -16194,7 +16194,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        """Project ID list.
+        r"""Project ID list.
         :rtype: list of int
         """
         return self._ProjectIds
@@ -16205,7 +16205,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ViewNames(self):
-        """List of alarm policy types.
+        r"""List of alarm policy types.
         :rtype: list of str
         """
         return self._ViewNames
@@ -16216,7 +16216,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def FilterUnuseReceiver(self):
-        """Whether to filter policy groups without recipients. The value 1 indicates that policy groups without recipients will be filtered. The value 0 indicates that policy groups without recipients will not be filtered.
+        r"""Whether to filter policy groups without recipients. The value 1 indicates that policy groups without recipients will be filtered. The value 0 indicates that policy groups without recipients will not be filtered.
         :rtype: int
         """
         return self._FilterUnuseReceiver
@@ -16227,7 +16227,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Receivers(self):
-        """Filter by recipient group.
+        r"""Filter by recipient group.
         :rtype: list of str
         """
         return self._Receivers
@@ -16238,7 +16238,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ReceiverUserList(self):
-        """Filter by recipient.
+        r"""Filter by recipient.
         :rtype: list of str
         """
         return self._ReceiverUserList
@@ -16249,7 +16249,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Dimension set field (json string), for example, [[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]].
+        r"""Dimension set field (json string), for example, [[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]].
         :rtype: str
         """
         return self._Dimensions
@@ -16260,7 +16260,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
-        """Template-based policy group IDs, which are separated by commas.
+        r"""Template-based policy group IDs, which are separated by commas.
         :rtype: str
         """
         return self._ConditionTempGroupId
@@ -16271,7 +16271,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def ReceiverType(self):
-        """Filter by recipient or recipient group. The value 'user' indicates by recipient. The value 'group' indicates by recipient group.
+        r"""Filter by recipient or recipient group. The value 'user' indicates by recipient. The value 'group' indicates by recipient group.
         :rtype: str
         """
         return self._ReceiverType
@@ -16282,7 +16282,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
     @property
     def IsOpen(self):
-        """Filter conditions. Whether the alarm policy has been enabled or disabled
+        r"""Filter conditions. Whether the alarm policy has been enabled or disabled
         :rtype: bool
         """
         return self._IsOpen
@@ -16319,7 +16319,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
 
 
 class DescribePolicyGroupListResponse(AbstractModel):
-    """DescribePolicyGroupList response structure.
+    r"""DescribePolicyGroupList response structure.
 
     """
 
@@ -16343,7 +16343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupList(self):
-        """Policy group list.
+        r"""Policy group list.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribePolicyGroupListGroup
         """
@@ -16355,7 +16355,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number of policy groups.
+        r"""Total number of policy groups.
         :rtype: int
         """
         return self._Total
@@ -16366,7 +16366,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Warning(self):
-        """Remarks
+        r"""Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16378,7 +16378,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16401,7 +16401,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeProductEventListDimensions(AbstractModel):
-    """Input parameter Dimensions of the DescribeProductEventList API
+    r"""Input parameter Dimensions of the DescribeProductEventList API
 
     """
 
@@ -16417,7 +16417,7 @@ class DescribeProductEventListDimensions(AbstractModel):
 
     @property
     def Name(self):
-        """Dimension name.
+        r"""Dimension name.
         :rtype: str
         """
         return self._Name
@@ -16428,7 +16428,7 @@ class DescribeProductEventListDimensions(AbstractModel):
 
     @property
     def Value(self):
-        """Dimension value.
+        r"""Dimension value.
         :rtype: str
         """
         return self._Value
@@ -16452,7 +16452,7 @@ class DescribeProductEventListDimensions(AbstractModel):
 
 
 class DescribeProductEventListEvents(AbstractModel):
-    """Events returned by the DescribeProductEventList API
+    r"""Events returned by the DescribeProductEventList API
 
     """
 
@@ -16546,7 +16546,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventId(self):
-        """Event ID.
+        r"""Event ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16558,7 +16558,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventCName(self):
-        """Event name in Chinese.
+        r"""Event name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16570,7 +16570,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventEName(self):
-        """Event name in English.
+        r"""Event name in English.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16582,7 +16582,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def EventName(self):
-        """Event name abbreviation.
+        r"""Event name abbreviation.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16594,7 +16594,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProductCName(self):
-        """Product name in Chinese.
+        r"""Product name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16606,7 +16606,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProductEName(self):
-        """Product name in English.
+        r"""Product name in English.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16618,7 +16618,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProductName(self):
-        """Product name abbreviation.
+        r"""Product name abbreviation.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16630,7 +16630,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16642,7 +16642,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name.
+        r"""Instance name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16654,7 +16654,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16666,7 +16666,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Region.
+        r"""Region.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16678,7 +16678,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16690,7 +16690,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def SupportAlarm(self):
-        """Whether to support alarms.
+        r"""Whether to support alarms.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16702,7 +16702,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """Event type.
+        r"""Event type.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16714,7 +16714,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16726,7 +16726,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16738,7 +16738,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Dimensions(self):
-        """Instance object information.
+        r"""Instance object information.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeProductEventListEventsDimensions
         """
@@ -16750,7 +16750,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AdditionMsg(self):
-        """Additional information of the instance object.
+        r"""Additional information of the instance object.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeProductEventListEventsDimensions
         """
@@ -16762,7 +16762,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def IsAlarmConfig(self):
-        """Whether to configure alarms.
+        r"""Whether to configure alarms.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16774,7 +16774,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupInfo(self):
-        """Policy information.
+        r"""Policy information.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeProductEventListEventsGroupInfo
         """
@@ -16786,7 +16786,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ViewName(self):
-        """Display name
+        r"""Display name
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16845,7 +16845,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeProductEventListEventsDimensions(AbstractModel):
-    """Dimensions of events returned by the DescribeProductEventList API
+    r"""Dimensions of events returned by the DescribeProductEventList API
 
     """
 
@@ -16867,7 +16867,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Key(self):
-        """Dimension name in English.
+        r"""Dimension name in English.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16879,7 +16879,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Dimension name in Chinese.
+        r"""Dimension name in Chinese.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16891,7 +16891,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Value(self):
-        """Dimension value.
+        r"""Dimension value.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16917,7 +16917,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeProductEventListEventsGroupInfo(AbstractModel):
-    """GroupInfo in Events returned by the DescribeProductEventList API
+    r"""GroupInfo in Events returned by the DescribeProductEventList API
 
     """
 
@@ -16935,7 +16935,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupId(self):
-        """Policy ID.
+        r"""Policy ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -16947,7 +16947,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def GroupName(self):
-        """Policy name.
+        r"""Policy name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -16972,7 +16972,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeProductEventListOverView(AbstractModel):
-    """OverView object returned by the DescribeProductEventList API
+    r"""OverView object returned by the DescribeProductEventList API
 
     """
 
@@ -16998,7 +16998,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def StatusChangeAmount(self):
-        """Number of events whose statuses have changed.
+        r"""Number of events whose statuses have changed.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -17010,7 +17010,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UnConfigAlarmAmount(self):
-        """Number of events whose alarm statuses are not configured.
+        r"""Number of events whose alarm statuses are not configured.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -17022,7 +17022,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UnNormalEventAmount(self):
-        """Number of events with exceptions.
+        r"""Number of events with exceptions.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -17034,7 +17034,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def UnRecoverAmount(self):
-        """Number of events that have not been recovered.
+        r"""Number of events that have not been recovered.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -17061,7 +17061,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribeProductEventListRequest(AbstractModel):
-    """DescribeProductEventList request structure.
+    r"""DescribeProductEventList request structure.
 
     """
 
@@ -17116,7 +17116,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Module(self):
-        """API component name. It is fixed to monitor.
+        r"""API component name. It is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -17127,7 +17127,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        """Filter by product type. For example, "cvm" indicates Cloud Virtual Machine.
+        r"""Filter by product type. For example, "cvm" indicates Cloud Virtual Machine.
         :rtype: list of str
         """
         return self._ProductName
@@ -17138,7 +17138,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def EventName(self):
-        """Filter by event name. For example, "guest_reboot" indicates instance restart.
+        r"""Filter by event name. For example, "guest_reboot" indicates instance restart.
         :rtype: list of str
         """
         return self._EventName
@@ -17149,7 +17149,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Affected object, such as "ins-19708ino".
+        r"""Affected object, such as "ins-19708ino".
         :rtype: list of str
         """
         return self._InstanceId
@@ -17160,7 +17160,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Filter by dimension, such as by public IP: 10.0.0.1.
+        r"""Filter by dimension, such as by public IP: 10.0.0.1.
         :rtype: list of DescribeProductEventListDimensions
         """
         return self._Dimensions
@@ -17171,7 +17171,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def RegionList(self):
-        """Region filter parameter for service events.
+        r"""Region filter parameter for service events.
         :rtype: list of str
         """
         return self._RegionList
@@ -17182,7 +17182,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and events with exceptions respectively.
+        r"""Filter by event type. Valid values: ["status_change","abnormal"], which indicate events whose statuses have changed and events with exceptions respectively.
         :rtype: list of str
         """
         return self._Type
@@ -17193,7 +17193,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Filter by event status. Valid values: ["recover","alarm","-"], which indicate that an event has been recovered, has not been recovered, and has no status respectively.
+        r"""Filter by event status. Valid values: ["recover","alarm","-"], which indicate that an event has been recovered, has not been recovered, and has no status respectively.
         :rtype: list of str
         """
         return self._Status
@@ -17204,7 +17204,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Project(self):
-        """Filter by project ID.
+        r"""Filter by project ID.
         :rtype: list of str
         """
         return self._Project
@@ -17215,7 +17215,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def IsAlarmConfig(self):
-        """Filter by alarm status configuration. The value 1 indicates that the alarm status has been configured. The value 0 indicates that the alarm status has not been configured.
+        r"""Filter by alarm status configuration. The value 1 indicates that the alarm status has been configured. The value 0 indicates that the alarm status has not been configured.
         :rtype: int
         """
         return self._IsAlarmConfig
@@ -17226,7 +17226,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def TimeOrder(self):
-        """Sorting by update time. The value ASC indicates the ascending order. The value DESC indicates the descending order. The default value is DESC.
+        r"""Sorting by update time. The value ASC indicates the ascending order. The value DESC indicates the descending order. The default value is DESC.
         :rtype: str
         """
         return self._TimeOrder
@@ -17237,7 +17237,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time, which is the timestamp one day prior by default.
+        r"""Start time, which is the timestamp one day prior by default.
         :rtype: int
         """
         return self._StartTime
@@ -17248,7 +17248,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, which is the current timestamp by default.
+        r"""End time, which is the current timestamp by default.
         :rtype: int
         """
         return self._EndTime
@@ -17259,7 +17259,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset. The default value is 0.
+        r"""Page offset. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -17270,7 +17270,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of parameters that can be returned on each page. The default value is 20.
+        r"""The number of parameters that can be returned on each page. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -17312,7 +17312,7 @@ class DescribeProductEventListRequest(AbstractModel):
 
 
 class DescribeProductEventListResponse(AbstractModel):
-    """DescribeProductEventList response structure.
+    r"""DescribeProductEventList response structure.
 
     """
 
@@ -17336,7 +17336,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Events(self):
-        """Event list
+        r"""Event list
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of DescribeProductEventListEvents
         """
@@ -17348,7 +17348,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def OverView(self):
-        """Event statistics.
+        r"""Event statistics.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListOverView`
         """
         return self._OverView
@@ -17359,7 +17359,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number of events.
+        r"""Total number of events.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -17371,7 +17371,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17396,7 +17396,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class DescribePrometheusAgentInstancesRequest(AbstractModel):
-    """DescribePrometheusAgentInstances request structure.
+    r"""DescribePrometheusAgentInstances request structure.
 
     """
 
@@ -17410,7 +17410,7 @@ It can be the ID of a TKE, EKS, or edge cluster.
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
 It can be the ID of a TKE, EKS, or edge cluster.
         :rtype: str
         """
@@ -17434,7 +17434,7 @@ It can be the ID of a TKE, EKS, or edge cluster.
 
 
 class DescribePrometheusAgentInstancesResponse(AbstractModel):
-    """DescribePrometheusAgentInstances response structure.
+    r"""DescribePrometheusAgentInstances response structure.
 
     """
 
@@ -17451,7 +17451,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Instances(self):
-        """List of instances associated with the cluster
+        r"""List of instances associated with the cluster
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -17463,7 +17463,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17479,7 +17479,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusAgentsRequest(AbstractModel):
-    """DescribePrometheusAgents request structure.
+    r"""DescribePrometheusAgents request structure.
 
     """
 
@@ -17504,7 +17504,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17515,7 +17515,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Agent name
+        r"""Agent name
         :rtype: str
         """
         return self._Name
@@ -17526,7 +17526,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def AgentIds(self):
-        """List of agent IDs
+        r"""List of agent IDs
         :rtype: list of str
         """
         return self._AgentIds
@@ -17537,7 +17537,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -17548,7 +17548,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -17575,7 +17575,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
 
 class DescribePrometheusAgentsResponse(AbstractModel):
-    """DescribePrometheusAgents response structure.
+    r"""DescribePrometheusAgents response structure.
 
     """
 
@@ -17595,7 +17595,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentSet(self):
-        """List of agents
+        r"""List of agents
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusAgent
         """
@@ -17607,7 +17607,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of agents
+        r"""Total number of agents
         :rtype: int
         """
         return self._TotalCount
@@ -17618,7 +17618,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17640,7 +17640,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusAlertPolicyRequest(AbstractModel):
-    """DescribePrometheusAlertPolicy request structure.
+    r"""DescribePrometheusAlertPolicy request structure.
 
     """
 
@@ -17663,7 +17663,7 @@ Valid values: `ID`, `Name`.
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17674,7 +17674,7 @@ Valid values: `ID`, `Name`.
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -17685,7 +17685,7 @@ Valid values: `ID`, `Name`.
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -17696,7 +17696,7 @@ Valid values: `ID`, `Name`.
 
     @property
     def Filters(self):
-        """Filter
+        r"""Filter
 Valid values: `ID`, `Name`.
         :rtype: list of Filter
         """
@@ -17728,7 +17728,7 @@ Valid values: `ID`, `Name`.
 
 
 class DescribePrometheusAlertPolicyResponse(AbstractModel):
-    """DescribePrometheusAlertPolicy response structure.
+    r"""DescribePrometheusAlertPolicy response structure.
 
     """
 
@@ -17748,7 +17748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertRules(self):
-        """Alert details
+        r"""Alert details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusAlertPolicyItem
         """
@@ -17760,7 +17760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -17771,7 +17771,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17793,7 +17793,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusClusterAgentsRequest(AbstractModel):
-    """DescribePrometheusClusterAgents request structure.
+    r"""DescribePrometheusClusterAgents request structure.
 
     """
 
@@ -17812,7 +17812,7 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17823,7 +17823,7 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -17834,7 +17834,7 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Page limit
+        r"""Page limit
         :rtype: int
         """
         return self._Limit
@@ -17859,7 +17859,7 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
 
 class DescribePrometheusClusterAgentsResponse(AbstractModel):
-    """DescribePrometheusClusterAgents response structure.
+    r"""DescribePrometheusClusterAgents response structure.
 
     """
 
@@ -17881,7 +17881,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def Agents(self):
-        """Information of the associated cluster
+        r"""Information of the associated cluster
         :rtype: list of PrometheusAgentOverview
         """
         return self._Agents
@@ -17892,7 +17892,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def Total(self):
-        """The total number of the associated clusters
+        r"""The total number of the associated clusters
         :rtype: int
         """
         return self._Total
@@ -17903,7 +17903,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def IsFirstBind(self):
-        """Whether the TMP instance is associated with the cluster for the first time. If so, you need to configure recording rules for it. This also applies if it has no default recording rule.
+        r"""Whether the TMP instance is associated with the cluster for the first time. If so, you need to configure recording rules for it. This also applies if it has no default recording rule.
         :rtype: bool
         """
         return self._IsFirstBind
@@ -17914,7 +17914,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17937,7 +17937,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
 
 class DescribePrometheusConfigRequest(AbstractModel):
-    """DescribePrometheusConfig request structure.
+    r"""DescribePrometheusConfig request structure.
 
     """
 
@@ -17956,7 +17956,7 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17967,7 +17967,7 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -17978,7 +17978,7 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -18003,7 +18003,7 @@ class DescribePrometheusConfigRequest(AbstractModel):
 
 
 class DescribePrometheusConfigResponse(AbstractModel):
-    """DescribePrometheusConfig response structure.
+    r"""DescribePrometheusConfig response structure.
 
     """
 
@@ -18031,7 +18031,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def Config(self):
-        """Global configuration
+        r"""Global configuration
         :rtype: str
         """
         return self._Config
@@ -18042,7 +18042,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def ServiceMonitors(self):
-        """ServiceMonitor configuration
+        r"""ServiceMonitor configuration
         :rtype: list of PrometheusConfigItem
         """
         return self._ServiceMonitors
@@ -18053,7 +18053,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def PodMonitors(self):
-        """PodMonitor configuration
+        r"""PodMonitor configuration
         :rtype: list of PrometheusConfigItem
         """
         return self._PodMonitors
@@ -18064,7 +18064,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def RawJobs(self):
-        """Raw jobs
+        r"""Raw jobs
         :rtype: list of PrometheusConfigItem
         """
         return self._RawJobs
@@ -18075,7 +18075,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def Probes(self):
-        """Probes
+        r"""Probes
         :rtype: list of PrometheusConfigItem
         """
         return self._Probes
@@ -18086,7 +18086,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18126,7 +18126,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
 
 class DescribePrometheusGlobalConfigRequest(AbstractModel):
-    """DescribePrometheusGlobalConfig request structure.
+    r"""DescribePrometheusGlobalConfig request structure.
 
     """
 
@@ -18142,7 +18142,7 @@ class DescribePrometheusGlobalConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance-level scrape configuration
+        r"""Instance-level scrape configuration
         :rtype: str
         """
         return self._InstanceId
@@ -18153,7 +18153,7 @@ class DescribePrometheusGlobalConfigRequest(AbstractModel):
 
     @property
     def DisableStatistics(self):
-        """Whether to disable statistics
+        r"""Whether to disable statistics
         :rtype: bool
         """
         return self._DisableStatistics
@@ -18177,7 +18177,7 @@ class DescribePrometheusGlobalConfigRequest(AbstractModel):
 
 
 class DescribePrometheusGlobalConfigResponse(AbstractModel):
-    """DescribePrometheusGlobalConfig response structure.
+    r"""DescribePrometheusGlobalConfig response structure.
 
     """
 
@@ -18209,7 +18209,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """Configuration content
+        r"""Configuration content
         :rtype: str
         """
         return self._Config
@@ -18220,7 +18220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceMonitors(self):
-        """List of service monitors and the corresponding targets information
+        r"""List of service monitors and the corresponding targets information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
         """
@@ -18232,7 +18232,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodMonitors(self):
-        """List of pod monitors and the corresponding targets information
+        r"""List of pod monitors and the corresponding targets information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
         """
@@ -18244,7 +18244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RawJobs(self):
-        """List of raw jobs and the corresponding targets information
+        r"""List of raw jobs and the corresponding targets information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
         """
@@ -18256,7 +18256,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Probes(self):
-        """List of probes and the corresponding targets information
+        r"""List of probes and the corresponding targets information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
         """
@@ -18268,7 +18268,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18308,7 +18308,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusGlobalNotificationRequest(AbstractModel):
-    """DescribePrometheusGlobalNotification request structure.
+    r"""DescribePrometheusGlobalNotification request structure.
 
     """
 
@@ -18321,7 +18321,7 @@ class DescribePrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -18344,7 +18344,7 @@ class DescribePrometheusGlobalNotificationRequest(AbstractModel):
 
 
 class DescribePrometheusGlobalNotificationResponse(AbstractModel):
-    """DescribePrometheusGlobalNotification response structure.
+    r"""DescribePrometheusGlobalNotification response structure.
 
     """
 
@@ -18361,7 +18361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Notification(self):
-        """Global alert notification channel
+        r"""Global alert notification channel
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
         """
@@ -18373,7 +18373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18391,7 +18391,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusInstanceDetailRequest(AbstractModel):
-    """DescribePrometheusInstanceDetail request structure.
+    r"""DescribePrometheusInstanceDetail request structure.
 
     """
 
@@ -18404,7 +18404,7 @@ class DescribePrometheusInstanceDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -18427,7 +18427,7 @@ class DescribePrometheusInstanceDetailRequest(AbstractModel):
 
 
 class DescribePrometheusInstanceDetailResponse(AbstractModel):
-    """DescribePrometheusInstanceDetail response structure.
+    r"""DescribePrometheusInstanceDetail response structure.
 
     """
 
@@ -18510,7 +18510,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -18521,7 +18521,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -18532,7 +18532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -18543,7 +18543,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -18554,7 +18554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """Instance status. Valid values:
+        r"""Instance status. Valid values:
 
 `1`: Creating
 `2`: Running
@@ -18574,7 +18574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeStatus(self):
-        """Billing status
+        r"""Billing status
 
 `1`: Normal
 `2`: Expired
@@ -18592,7 +18592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableGrafana(self):
-        """Whether Grafana is enabled
+        r"""Whether Grafana is enabled
 `0`: Disabled
 `1`: Enabled
         :rtype: int
@@ -18605,7 +18605,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaURL(self):
-        """Grafana dashboard URL
+        r"""Grafana dashboard URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18617,7 +18617,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        """Instance billing mode. Valid values:
+        r"""Instance billing mode. Valid values:
 
 `2`: Monthly subscription
 `3`: Pay-as-you-go
@@ -18631,7 +18631,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecName(self):
-        """Specification name
+        r"""Specification name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18643,7 +18643,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataRetentionTime(self):
-        """Storage period
+        r"""Storage period
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -18655,7 +18655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time of the purchased instance
+        r"""Expiration time of the purchased instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18667,7 +18667,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag
+        r"""Auto-renewal flag
 
 `0`: Auto-renewal not enabled
 `1`: Auto-renewal enabled
@@ -18684,7 +18684,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18712,7 +18712,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
-    """DescribePrometheusInstanceInitStatus request structure.
+    r"""DescribePrometheusInstanceInitStatus request structure.
 
     """
 
@@ -18725,7 +18725,7 @@ class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -18748,7 +18748,7 @@ class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
 
 
 class DescribePrometheusInstanceInitStatusResponse(AbstractModel):
-    """DescribePrometheusInstanceInitStatus response structure.
+    r"""DescribePrometheusInstanceInitStatus response structure.
 
     """
 
@@ -18776,7 +18776,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Instance initialization status. Valid values:
+        r"""Instance initialization status. Valid values:
 `uninitialized` 
 `initializing`
 `running`
@@ -18791,7 +18791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Steps(self):
-        """Initialize task steps
+        r"""Initialize task steps
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TaskStepInfo
         """
@@ -18803,7 +18803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EksClusterId(self):
-        """EKS cluster ID of the instance
+        r"""EKS cluster ID of the instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18815,7 +18815,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18838,7 +18838,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusInstanceUsageRequest(AbstractModel):
-    """DescribePrometheusInstanceUsage request structure.
+    r"""DescribePrometheusInstanceUsage request structure.
 
     """
 
@@ -18857,7 +18857,7 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Query by one or more instance IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
+        r"""Query by one or more instance IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -18868,7 +18868,7 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def StartCalcDate(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartCalcDate
@@ -18879,7 +18879,7 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
     @property
     def EndCalcDate(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndCalcDate
@@ -18904,7 +18904,7 @@ class DescribePrometheusInstanceUsageRequest(AbstractModel):
 
 
 class DescribePrometheusInstanceUsageResponse(AbstractModel):
-    """DescribePrometheusInstanceUsage response structure.
+    r"""DescribePrometheusInstanceUsage response structure.
 
     """
 
@@ -18921,7 +18921,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsageSet(self):
-        """Usage list
+        r"""Usage list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusInstanceTenantUsage
         """
@@ -18933,7 +18933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18954,7 +18954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusInstancesOverviewRequest(AbstractModel):
-    """DescribePrometheusInstancesOverview request structure.
+    r"""DescribePrometheusInstancesOverview request structure.
 
     """
 
@@ -18975,7 +18975,7 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -18986,7 +18986,7 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -18997,7 +18997,7 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Instance filter. Valid values:
+        r"""Instance filter. Valid values:
 `ID`: Filter by instance ID 
 `Name`: Filter by instance name
         :rtype: list of Filter
@@ -19029,7 +19029,7 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
 
 class DescribePrometheusInstancesOverviewResponse(AbstractModel):
-    """DescribePrometheusInstancesOverview response structure.
+    r"""DescribePrometheusInstancesOverview response structure.
 
     """
 
@@ -19049,7 +19049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Instances(self):
-        """List of instances
+        r"""List of instances
         :rtype: list of PrometheusInstancesOverview
         """
         return self._Instances
@@ -19060,7 +19060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number of instances
+        r"""Total number of instances
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -19072,7 +19072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19094,7 +19094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusInstancesRequest(AbstractModel):
-    """DescribePrometheusInstances request structure.
+    r"""DescribePrometheusInstances request structure.
 
     """
 
@@ -19143,7 +19143,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Queries by instance ID or IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
+        r"""Queries by instance ID or IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -19154,7 +19154,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        """Filter by instance status
+        r"""Filter by instance status
 <ul>
 <li>1: Creating</li>
 <li>2: Running</li>
@@ -19175,7 +19175,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Filter by instance name
+        r"""Filter by instance name
         :rtype: str
         """
         return self._InstanceName
@@ -19186,7 +19186,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Zones(self):
-        """Filter by AZ in the format of `ap-guangzhou-1`
+        r"""Filter by AZ in the format of `ap-guangzhou-1`
         :rtype: list of str
         """
         return self._Zones
@@ -19197,7 +19197,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key.
+        r"""Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key.
         :rtype: list of PrometheusTag
         """
         return self._TagFilters
@@ -19208,7 +19208,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def IPv4Address(self):
-        """Filter by instance IPv4 address
+        r"""Filter by instance IPv4 address
         :rtype: list of str
         """
         return self._IPv4Address
@@ -19219,7 +19219,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -19230,7 +19230,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -19241,7 +19241,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Filter by billing mode
+        r"""Filter by billing mode
 <li>2: Monthly subscription</li>
 <li>3: Pay-as-you-go</li>
         :rtype: int
@@ -19279,7 +19279,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
 
 
 class DescribePrometheusInstancesResponse(AbstractModel):
-    """DescribePrometheusInstances response structure.
+    r"""DescribePrometheusInstances response structure.
 
     """
 
@@ -19299,7 +19299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceSet(self):
-        """List of instance details.
+        r"""List of instance details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusInstancesItem
         """
@@ -19311,7 +19311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of eligible instances.
+        r"""Number of eligible instances.
         :rtype: int
         """
         return self._TotalCount
@@ -19322,7 +19322,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19344,7 +19344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
-    """DescribePrometheusRecordRuleYaml request structure.
+    r"""DescribePrometheusRecordRuleYaml request structure.
 
     """
 
@@ -19368,7 +19368,7 @@ class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19379,7 +19379,7 @@ class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -19390,7 +19390,7 @@ class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -19401,7 +19401,7 @@ class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values:
+        r"""Filter. Valid values:
 `Name`: Name
 `Values`: List of target names
         :rtype: list of Filter
@@ -19434,7 +19434,7 @@ class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
 
 
 class DescribePrometheusRecordRuleYamlResponse(AbstractModel):
-    """DescribePrometheusRecordRuleYaml response structure.
+    r"""DescribePrometheusRecordRuleYaml response structure.
 
     """
 
@@ -19447,7 +19447,7 @@ class DescribePrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19462,7 +19462,7 @@ class DescribePrometheusRecordRuleYamlResponse(AbstractModel):
 
 
 class DescribePrometheusRecordRulesRequest(AbstractModel):
-    """DescribePrometheusRecordRules request structure.
+    r"""DescribePrometheusRecordRules request structure.
 
     """
 
@@ -19484,7 +19484,7 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19495,7 +19495,7 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -19506,7 +19506,7 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -19517,7 +19517,7 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter
+        r"""Filter
         :rtype: list of Filter
         """
         return self._Filters
@@ -19548,7 +19548,7 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
 
 class DescribePrometheusRecordRulesResponse(AbstractModel):
-    """DescribePrometheusRecordRules response structure.
+    r"""DescribePrometheusRecordRules response structure.
 
     """
 
@@ -19567,7 +19567,7 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def Records(self):
-        """Recording rule
+        r"""Recording rule
         :rtype: list of PrometheusRecordRuleYamlItem
         """
         return self._Records
@@ -19578,7 +19578,7 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -19589,7 +19589,7 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19611,7 +19611,7 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
 
 class DescribePrometheusScrapeJobsRequest(AbstractModel):
-    """DescribePrometheusScrapeJobs request structure.
+    r"""DescribePrometheusScrapeJobs request structure.
 
     """
 
@@ -19639,7 +19639,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19650,7 +19650,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """Agent ID
+        r"""Agent ID
         :rtype: str
         """
         return self._AgentId
@@ -19661,7 +19661,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._Name
@@ -19672,7 +19672,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        """List of task IDs
+        r"""List of task IDs
         :rtype: list of str
         """
         return self._JobIds
@@ -19683,7 +19683,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -19694,7 +19694,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -19722,7 +19722,7 @@ class DescribePrometheusScrapeJobsRequest(AbstractModel):
 
 
 class DescribePrometheusScrapeJobsResponse(AbstractModel):
-    """DescribePrometheusScrapeJobs response structure.
+    r"""DescribePrometheusScrapeJobs response structure.
 
     """
 
@@ -19742,7 +19742,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScrapeJobSet(self):
-        """List of tasks
+        r"""List of tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusScrapeJob
         """
@@ -19754,7 +19754,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of tasks
+        r"""Total number of tasks
         :rtype: int
         """
         return self._TotalCount
@@ -19765,7 +19765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19787,7 +19787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusTargetsTMPRequest(AbstractModel):
-    """DescribePrometheusTargetsTMP request structure.
+    r"""DescribePrometheusTargetsTMP request structure.
 
     """
 
@@ -19811,7 +19811,7 @@ You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19822,7 +19822,7 @@ You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -19833,7 +19833,7 @@ You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -19844,7 +19844,7 @@ You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 
     @property
     def Filters(self):
-        """Filters.
+        r"""Filters.
 You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 `Health` contains three values: `up`, `down`, `unknown`.
         :rtype: list of Filter
@@ -19877,7 +19877,7 @@ You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
 
 
 class DescribePrometheusTargetsTMPResponse(AbstractModel):
-    """DescribePrometheusTargetsTMP response structure.
+    r"""DescribePrometheusTargetsTMP response structure.
 
     """
 
@@ -19893,7 +19893,7 @@ class DescribePrometheusTargetsTMPResponse(AbstractModel):
 
     @property
     def Jobs(self):
-        """Targets information of all jobs
+        r"""Targets information of all jobs
         :rtype: list of PrometheusJobTargets
         """
         return self._Jobs
@@ -19904,7 +19904,7 @@ class DescribePrometheusTargetsTMPResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19925,7 +19925,7 @@ class DescribePrometheusTargetsTMPResponse(AbstractModel):
 
 
 class DescribePrometheusTempRequest(AbstractModel):
-    """DescribePrometheusTemp request structure.
+    r"""DescribePrometheusTemp request structure.
 
     """
 
@@ -19948,7 +19948,7 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Fuzzy filter. Valid values:
+        r"""Fuzzy filter. Valid values:
 `Level`: Filter by template level
 `Name`: Filter by name
 `Describe`: Filter by description
@@ -19963,7 +19963,7 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -19974,7 +19974,7 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -20004,7 +20004,7 @@ class DescribePrometheusTempRequest(AbstractModel):
 
 
 class DescribePrometheusTempResponse(AbstractModel):
-    """DescribePrometheusTemp response structure.
+    r"""DescribePrometheusTemp response structure.
 
     """
 
@@ -20023,7 +20023,7 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def Templates(self):
-        """List of templates
+        r"""List of templates
         :rtype: list of PrometheusTemp
         """
         return self._Templates
@@ -20034,7 +20034,7 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -20045,7 +20045,7 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20067,7 +20067,7 @@ class DescribePrometheusTempResponse(AbstractModel):
 
 
 class DescribePrometheusTempSyncRequest(AbstractModel):
-    """DescribePrometheusTempSync request structure.
+    r"""DescribePrometheusTempSync request structure.
 
     """
 
@@ -20080,7 +20080,7 @@ class DescribePrometheusTempSyncRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID
+        r"""Template ID
         :rtype: str
         """
         return self._TemplateId
@@ -20103,7 +20103,7 @@ class DescribePrometheusTempSyncRequest(AbstractModel):
 
 
 class DescribePrometheusTempSyncResponse(AbstractModel):
-    """DescribePrometheusTempSync response structure.
+    r"""DescribePrometheusTempSync response structure.
 
     """
 
@@ -20120,7 +20120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Targets(self):
-        """Details of the sync target
+        r"""Details of the sync target
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusTemplateSyncTarget
         """
@@ -20132,7 +20132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20153,7 +20153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribePrometheusZonesRequest(AbstractModel):
-    """DescribePrometheusZones request structure.
+    r"""DescribePrometheusZones request structure.
 
     """
 
@@ -20169,7 +20169,7 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID. You only need to specify the value of either `RegionId` or `RegionName`.
+        r"""Region ID. You only need to specify the value of either `RegionId` or `RegionName`.
         :rtype: int
         """
         return self._RegionId
@@ -20180,7 +20180,7 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region name. You only need to specify the value of either `RegionId` or `RegionName`.
+        r"""Region name. You only need to specify the value of either `RegionId` or `RegionName`.
         :rtype: str
         """
         return self._RegionName
@@ -20204,7 +20204,7 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
 
 class DescribePrometheusZonesResponse(AbstractModel):
-    """DescribePrometheusZones response structure.
+    r"""DescribePrometheusZones response structure.
 
     """
 
@@ -20221,7 +20221,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneSet(self):
-        """Region list
+        r"""Region list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusZoneItem
         """
@@ -20233,7 +20233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20254,7 +20254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeRecordingRulesRequest(AbstractModel):
-    """DescribeRecordingRules request structure.
+    r"""DescribeRecordingRules request structure.
 
     """
 
@@ -20285,7 +20285,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -20296,7 +20296,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -20307,7 +20307,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -20318,7 +20318,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -20329,7 +20329,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>1=RuleDeleted</li>
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
@@ -20343,7 +20343,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._Name
@@ -20371,7 +20371,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
 
 class DescribeRecordingRulesResponse(AbstractModel):
-    """DescribeRecordingRules response structure.
+    r"""DescribeRecordingRules response structure.
 
     """
 
@@ -20391,7 +20391,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of rule groups
+        r"""Number of rule groups
         :rtype: int
         """
         return self._TotalCount
@@ -20402,7 +20402,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordingRuleSet(self):
-        """Rule group details
+        r"""Rule group details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RecordingRuleSet
         """
@@ -20414,7 +20414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20436,7 +20436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeSSOAccountRequest(AbstractModel):
-    """DescribeSSOAccount request structure.
+    r"""DescribeSSOAccount request structure.
 
     """
 
@@ -20452,7 +20452,7 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -20463,7 +20463,7 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Filter by account ID such as “10000”
+        r"""Filter by account ID such as “10000”
         :rtype: str
         """
         return self._UserId
@@ -20487,7 +20487,7 @@ class DescribeSSOAccountRequest(AbstractModel):
 
 
 class DescribeSSOAccountResponse(AbstractModel):
-    """DescribeSSOAccount response structure.
+    r"""DescribeSSOAccount response structure.
 
     """
 
@@ -20504,7 +20504,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountSet(self):
-        """List of authorized accounts
+        r"""List of authorized accounts
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of GrafanaAccountInfo
         """
@@ -20516,7 +20516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20537,7 +20537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeServiceDiscoveryRequest(AbstractModel):
-    """DescribeServiceDiscovery request structure.
+    r"""DescribeServiceDiscovery request structure.
 
     """
 
@@ -20557,7 +20557,7 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -20568,7 +20568,7 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeClusterId(self):
-        """<li>TKE: ID of the integrated TKE cluster</li>
+        r"""<li>TKE: ID of the integrated TKE cluster</li>
         :rtype: str
         """
         return self._KubeClusterId
@@ -20579,7 +20579,7 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type:
+        r"""Kubernetes cluster type:
 <li> 1 = TKE </li>
         :rtype: int
         """
@@ -20605,7 +20605,7 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
 
 
 class DescribeServiceDiscoveryResponse(AbstractModel):
-    """DescribeServiceDiscovery response structure.
+    r"""DescribeServiceDiscovery response structure.
 
     """
 
@@ -20622,7 +20622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceDiscoverySet(self):
-        """List of returned scrape configurations
+        r"""List of returned scrape configurations
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ServiceDiscoveryItem
         """
@@ -20634,7 +20634,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20655,7 +20655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeStatisticDataRequest(AbstractModel):
-    """DescribeStatisticData request structure.
+    r"""DescribeStatisticData request structure.
 
     """
 
@@ -20694,7 +20694,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def Module(self):
-        """Module, whose value is fixed at `monitor`
+        r"""Module, whose value is fixed at `monitor`
         :rtype: str
         """
         return self._Module
@@ -20705,7 +20705,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def Namespace(self):
-        """Namespace. Valid values: `QCE`, `TKE2`.
+        r"""Namespace. Valid values: `QCE`, `TKE2`.
         :rtype: str
         """
         return self._Namespace
@@ -20716,7 +20716,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def MetricNames(self):
-        """Metric name list
+        r"""Metric name list
         :rtype: list of str
         """
         return self._MetricNames
@@ -20727,7 +20727,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def Conditions(self):
-        """Dimension condition. The `=` and `in` operators are supported
+        r"""Dimension condition. The `=` and `in` operators are supported
         :rtype: list of MidQueryCondition
         """
         return self._Conditions
@@ -20738,7 +20738,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def Period(self):
-        """Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.
+        r"""Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.
 Due to the storage period limit, the statistical period is subject to the time range of statistics:
 60s: The time range is less than 12 hours, and the timespan between `StartTime` and the current time cannot exceed 15 days.
 300s: The time range is less than three days, and the timespan between `StartTime` and the current time cannot exceed 31 days.
@@ -20754,7 +20754,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def StartTime(self):
-        """Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
+        r"""Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
         :rtype: str
         """
         return self._StartTime
@@ -20765,7 +20765,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def EndTime(self):
-        """End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
+        r"""End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00
         :rtype: str
         """
         return self._EndTime
@@ -20776,7 +20776,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
     @property
     def GroupBys(self):
-        """`groupBy` by the specified dimension
+        r"""`groupBy` by the specified dimension
         :rtype: list of str
         """
         return self._GroupBys
@@ -20811,7 +20811,7 @@ Due to the storage period limit, the statistical period is subject to the time r
 
 
 class DescribeStatisticDataResponse(AbstractModel):
-    """DescribeStatisticData response structure.
+    r"""DescribeStatisticData response structure.
 
     """
 
@@ -20836,7 +20836,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def Period(self):
-        """Statistical period
+        r"""Statistical period
         :rtype: int
         """
         return self._Period
@@ -20847,7 +20847,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -20858,7 +20858,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -20869,7 +20869,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Monitoring data
+        r"""Monitoring data
         :rtype: list of MetricData
         """
         return self._Data
@@ -20880,7 +20880,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20904,7 +20904,7 @@ class DescribeStatisticDataResponse(AbstractModel):
 
 
 class DestroyPrometheusInstanceRequest(AbstractModel):
-    """DestroyPrometheusInstance request structure.
+    r"""DestroyPrometheusInstance request structure.
 
     """
 
@@ -20917,7 +20917,7 @@ class DestroyPrometheusInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. The instance must be terminated first.
+        r"""Instance ID. The instance must be terminated first.
         :rtype: str
         """
         return self._InstanceId
@@ -20940,7 +20940,7 @@ class DestroyPrometheusInstanceRequest(AbstractModel):
 
 
 class DestroyPrometheusInstanceResponse(AbstractModel):
-    """DestroyPrometheusInstance response structure.
+    r"""DestroyPrometheusInstance response structure.
 
     """
 
@@ -20953,7 +20953,7 @@ class DestroyPrometheusInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -20968,7 +20968,7 @@ class DestroyPrometheusInstanceResponse(AbstractModel):
 
 
 class Dimension(AbstractModel):
-    """Combination of instance object dimensions
+    r"""Combination of instance object dimensions
 
     """
 
@@ -20984,7 +20984,7 @@ class Dimension(AbstractModel):
 
     @property
     def Name(self):
-        """Instance dimension name
+        r"""Instance dimension name
         :rtype: str
         """
         return self._Name
@@ -20995,7 +20995,7 @@ class Dimension(AbstractModel):
 
     @property
     def Value(self):
-        """Instance dimension value
+        r"""Instance dimension value
         :rtype: str
         """
         return self._Value
@@ -21019,7 +21019,7 @@ class Dimension(AbstractModel):
 
 
 class DimensionNew(AbstractModel):
-    """Dimension information of the policy type
+    r"""Dimension information of the policy type
 
     """
 
@@ -21066,7 +21066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Dimension key ID displayed on the backend
+        r"""Dimension key ID displayed on the backend
         :rtype: str
         """
         return self._Key
@@ -21077,7 +21077,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Dimension key name displayed on the frontend
+        r"""Dimension key name displayed on the frontend
         :rtype: str
         """
         return self._Name
@@ -21088,7 +21088,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsRequired(self):
-        """Whether it is required
+        r"""Whether it is required
         :rtype: bool
         """
         return self._IsRequired
@@ -21099,7 +21099,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operators(self):
-        """List of supported operators
+        r"""List of supported operators
         :rtype: list of Operator
         """
         return self._Operators
@@ -21110,7 +21110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMultiple(self):
-        """Whether multiple items can be selected
+        r"""Whether multiple items can be selected
         :rtype: bool
         """
         return self._IsMultiple
@@ -21121,7 +21121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMutable(self):
-        """Whether it can be modified after creation
+        r"""Whether it can be modified after creation
         :rtype: bool
         """
         return self._IsMutable
@@ -21132,7 +21132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVisible(self):
-        """Whether it is displayed to users
+        r"""Whether it is displayed to users
         :rtype: bool
         """
         return self._IsVisible
@@ -21143,7 +21143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CanFilterPolicy(self):
-        """Whether it can be used to filter policies
+        r"""Whether it can be used to filter policies
         :rtype: bool
         """
         return self._CanFilterPolicy
@@ -21154,7 +21154,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CanFilterHistory(self):
-        """Whether it can be used to filter historical alarms
+        r"""Whether it can be used to filter historical alarms
         :rtype: bool
         """
         return self._CanFilterHistory
@@ -21165,7 +21165,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CanGroupBy(self):
-        """Whether it can be used as an aggregate dimension
+        r"""Whether it can be used as an aggregate dimension
         :rtype: bool
         """
         return self._CanGroupBy
@@ -21176,7 +21176,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MustGroupBy(self):
-        """Whether it must be used as an aggregate dimension
+        r"""Whether it must be used as an aggregate dimension
         :rtype: bool
         """
         return self._MustGroupBy
@@ -21187,7 +21187,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShowValueReplace(self):
-        """The key to be replaced on the frontend
+        r"""The key to be replaced on the frontend
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21227,7 +21227,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DimensionsDesc(AbstractModel):
-    """Dimension information
+    r"""Dimension information
 
     """
 
@@ -21240,7 +21240,7 @@ class DimensionsDesc(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Array of dimension names
+        r"""Array of dimension names
         :rtype: list of str
         """
         return self._Dimensions
@@ -21263,7 +21263,7 @@ class DimensionsDesc(AbstractModel):
 
 
 class EnableGrafanaInternetRequest(AbstractModel):
-    """EnableGrafanaInternet request structure.
+    r"""EnableGrafanaInternet request structure.
 
     """
 
@@ -21279,7 +21279,7 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """TCMG instance ID, such as “grafana-kleu3gt0”.
+        r"""TCMG instance ID, such as “grafana-kleu3gt0”.
         :rtype: str
         """
         return self._InstanceID
@@ -21290,7 +21290,7 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     @property
     def EnableInternet(self):
-        """Whether to enable public network access (`true`: Yes; `false`: No)
+        r"""Whether to enable public network access (`true`: Yes; `false`: No)
         :rtype: bool
         """
         return self._EnableInternet
@@ -21314,7 +21314,7 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
 
 class EnableGrafanaInternetResponse(AbstractModel):
-    """EnableGrafanaInternet response structure.
+    r"""EnableGrafanaInternet response structure.
 
     """
 
@@ -21327,7 +21327,7 @@ class EnableGrafanaInternetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21342,7 +21342,7 @@ class EnableGrafanaInternetResponse(AbstractModel):
 
 
 class EnableGrafanaSSORequest(AbstractModel):
-    """EnableGrafanaSSO request structure.
+    r"""EnableGrafanaSSO request structure.
 
     """
 
@@ -21358,7 +21358,7 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     @property
     def EnableSSO(self):
-        """Whether to enable SSO (`true`: Yes; `false`: No)
+        r"""Whether to enable SSO (`true`: Yes; `false`: No)
         :rtype: bool
         """
         return self._EnableSSO
@@ -21369,7 +21369,7 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -21393,7 +21393,7 @@ class EnableGrafanaSSORequest(AbstractModel):
 
 
 class EnableGrafanaSSOResponse(AbstractModel):
-    """EnableGrafanaSSO response structure.
+    r"""EnableGrafanaSSO response structure.
 
     """
 
@@ -21406,7 +21406,7 @@ class EnableGrafanaSSOResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21421,7 +21421,7 @@ class EnableGrafanaSSOResponse(AbstractModel):
 
 
 class EnableSSOCamCheckRequest(AbstractModel):
-    """EnableSSOCamCheck request structure.
+    r"""EnableSSOCamCheck request structure.
 
     """
 
@@ -21437,7 +21437,7 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -21448,7 +21448,7 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     @property
     def EnableSSOCamCheck(self):
-        """Whether to enable CAM authentication (`true`: Yes; `false`: No)
+        r"""Whether to enable CAM authentication (`true`: Yes; `false`: No)
         :rtype: bool
         """
         return self._EnableSSOCamCheck
@@ -21472,7 +21472,7 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
 
 class EnableSSOCamCheckResponse(AbstractModel):
-    """EnableSSOCamCheck response structure.
+    r"""EnableSSOCamCheck response structure.
 
     """
 
@@ -21485,7 +21485,7 @@ class EnableSSOCamCheckResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21500,7 +21500,7 @@ class EnableSSOCamCheckResponse(AbstractModel):
 
 
 class EventCondition(AbstractModel):
-    """Event alarm conditions
+    r"""Event alarm conditions
 
     """
 
@@ -21527,7 +21527,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm notification frequency.
+        r"""Alarm notification frequency.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21539,7 +21539,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AlarmNotifyType(self):
-        """Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm
+        r"""Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21551,7 +21551,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventID(self):
-        """Event ID.
+        r"""Event ID.
         :rtype: str
         """
         return self._EventID
@@ -21562,7 +21562,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventDisplayName(self):
-        """Displayed event name.
+        r"""Displayed event name.
         :rtype: str
         """
         return self._EventDisplayName
@@ -21573,7 +21573,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RuleID(self):
-        """Rule ID.
+        r"""Rule ID.
         :rtype: str
         """
         return self._RuleID
@@ -21600,7 +21600,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class Filter(AbstractModel):
-    """Query filter
+    r"""Query filter
 
     """
 
@@ -21625,7 +21625,7 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
-        """Filter method. Valid values: `=`, `!=`, `in`.
+        r"""Filter method. Valid values: `=`, `!=`, `in`.
         :rtype: str
         """
         return self._Type
@@ -21636,7 +21636,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        """Filter dimension name
+        r"""Filter dimension name
         :rtype: str
         """
         return self._Key
@@ -21647,7 +21647,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        """Filter value. For the `in` filter method, separate multiple values by comma.
+        r"""Filter value. For the `in` filter method, separate multiple values by comma.
         :rtype: str
         """
         return self._Value
@@ -21658,7 +21658,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter name
+        r"""Filter name
         :rtype: str
         """
         return self._Name
@@ -21669,7 +21669,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filter value range
+        r"""Filter value range
         :rtype: list of str
         """
         return self._Values
@@ -21696,7 +21696,7 @@ class Filter(AbstractModel):
 
 
 class GetMonitorDataRequest(AbstractModel):
-    """GetMonitorData request structure.
+    r"""GetMonitorData request structure.
 
     """
 
@@ -21724,7 +21724,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        """Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)
+        r"""Namespace, such as QCE/CVM. For more information on the namespaces of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1)
         :rtype: str
         """
         return self._Namespace
@@ -21735,7 +21735,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name, such as `CPUUsage`. Only one monitoring metric can be pulled at a time. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is `MetricName`.
+        r"""Metric name, such as `CPUUsage`. Only one monitoring metric can be pulled at a time. For more information on the metrics of each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The corresponding metric name is `MetricName`.
         :rtype: str
         """
         return self._MetricName
@@ -21746,7 +21746,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Instances(self):
-        """The dimension combination for instance objects, which is in the form of a set of key-value pairs. The dimension fields for instances of different Tencent Cloud services are completely different. For example, the field is [{"Name":"InstanceId","Value":"ins-j0hk02zo"}] for CVM instances, [{"Name":"instanceId","Value":"ckafka-l49k54dd"}] for CKafka instances, and [{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}] for COS instances. For more information on the dimensions of various Tencent Cloud services, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). In each document, the dimension column displays a dimension combination’s key, which has a corresponding value. A single request can get the data of up to 10 instances.
+        r"""The dimension combination for instance objects, which is in the form of a set of key-value pairs. The dimension fields for instances of different Tencent Cloud services are completely different. For example, the field is [{"Name":"InstanceId","Value":"ins-j0hk02zo"}] for CVM instances, [{"Name":"instanceId","Value":"ckafka-l49k54dd"}] for CKafka instances, and [{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}] for COS instances. For more information on the dimensions of various Tencent Cloud services, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). In each document, the dimension column displays a dimension combination’s key, which has a corresponding value. A single request can get the data of up to 10 instances.
         :rtype: list of Instance
         """
         return self._Instances
@@ -21757,7 +21757,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods. A single request can get up to 1,440 data points.
+        r"""Monitoring statistical period in seconds, such as 60. Default value: 300. The statistical period varies by metric. For more information on the statistical periods supported by each Tencent Cloud service, please see [Tencent Cloud Service Metrics](https://intl.cloud.tencent.com/document/product/248/6140?from_cn_redirect=1). The values in the statistical period column are the supported statistical periods. A single request can get up to 1,440 data points.
         :rtype: int
         """
         return self._Period
@@ -21768,7 +21768,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time such as 2018-09-22T19:51:23+08:00
+        r"""Start time such as 2018-09-22T19:51:23+08:00
         :rtype: str
         """
         return self._StartTime
@@ -21779,7 +21779,7 @@ class GetMonitorDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time, which is the current time by default, such as 2018-09-22T20:51:23+08:00. `EndTime` cannot be earlier than `StartTime`
+        r"""End time, which is the current time by default, such as 2018-09-22T20:51:23+08:00. `EndTime` cannot be earlier than `StartTime`
         :rtype: str
         """
         return self._EndTime
@@ -21812,7 +21812,7 @@ class GetMonitorDataRequest(AbstractModel):
 
 
 class GetMonitorDataResponse(AbstractModel):
-    """GetMonitorData response structure.
+    r"""GetMonitorData response structure.
 
     """
 
@@ -21843,7 +21843,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def Period(self):
-        """Statistical period
+        r"""Statistical period
         :rtype: int
         """
         return self._Period
@@ -21854,7 +21854,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -21865,7 +21865,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def DataPoints(self):
-        """Array of data points
+        r"""Array of data points
         :rtype: list of DataPoint
         """
         return self._DataPoints
@@ -21876,7 +21876,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -21887,7 +21887,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -21898,7 +21898,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
         :rtype: str
         """
         return self._Msg
@@ -21909,7 +21909,7 @@ class GetMonitorDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21935,7 +21935,7 @@ class GetMonitorDataResponse(AbstractModel):
 
 
 class GetPrometheusAgentManagementCommandRequest(AbstractModel):
-    """GetPrometheusAgentManagementCommand request structure.
+    r"""GetPrometheusAgentManagementCommand request structure.
 
     """
 
@@ -21951,7 +21951,7 @@ class GetPrometheusAgentManagementCommandRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -21962,7 +21962,7 @@ class GetPrometheusAgentManagementCommandRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """Prometheus Agent ID
+        r"""Prometheus Agent ID
         :rtype: str
         """
         return self._AgentId
@@ -21986,7 +21986,7 @@ class GetPrometheusAgentManagementCommandRequest(AbstractModel):
 
 
 class GetPrometheusAgentManagementCommandResponse(AbstractModel):
-    """GetPrometheusAgentManagementCommand response structure.
+    r"""GetPrometheusAgentManagementCommand response structure.
 
     """
 
@@ -22002,7 +22002,7 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
 
     @property
     def Command(self):
-        """Agent management command
+        r"""Agent management command
         :rtype: :class:`tencentcloud.monitor.v20180724.models.ManagementCommand`
         """
         return self._Command
@@ -22013,7 +22013,7 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22031,7 +22031,7 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
 
 
 class GrafanaAccountInfo(AbstractModel):
-    """TCMG authorized account information
+    r"""TCMG authorized account information
 
     """
 
@@ -22060,7 +22060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """User account ID
+        r"""User account ID
         :rtype: str
         """
         return self._UserId
@@ -22071,7 +22071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
-        """User permission
+        r"""User permission
         :rtype: list of GrafanaAccountRole
         """
         return self._Role
@@ -22082,7 +22082,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Notes(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Notes
@@ -22093,7 +22093,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateAt
@@ -22104,7 +22104,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22116,7 +22116,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        """User’s root account UIN
+        r"""User’s root account UIN
         :rtype: str
         """
         return self._Uin
@@ -22149,7 +22149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GrafanaAccountRole(AbstractModel):
-    """TCMG account permission
+    r"""TCMG account permission
 
     """
 
@@ -22165,7 +22165,7 @@ class GrafanaAccountRole(AbstractModel):
 
     @property
     def Organization(self):
-        """Organization
+        r"""Organization
         :rtype: str
         """
         return self._Organization
@@ -22176,7 +22176,7 @@ class GrafanaAccountRole(AbstractModel):
 
     @property
     def Role(self):
-        """Permission
+        r"""Permission
         :rtype: str
         """
         return self._Role
@@ -22200,7 +22200,7 @@ class GrafanaAccountRole(AbstractModel):
 
 
 class GrafanaChannel(AbstractModel):
-    """Grafana alert channel
+    r"""Grafana alert channel
 
     """
 
@@ -22229,7 +22229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -22240,7 +22240,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelName(self):
-        """Channel name
+        r"""Channel name
         :rtype: str
         """
         return self._ChannelName
@@ -22251,7 +22251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Receivers(self):
-        """Array of alert channel template IDs
+        r"""Array of alert channel template IDs
         :rtype: list of str
         """
         return self._Receivers
@@ -22262,7 +22262,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -22273,7 +22273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdatedAt
@@ -22284,7 +22284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationIds(self):
-        """All valid organizations in an alert channel
+        r"""All valid organizations in an alert channel
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -22313,7 +22313,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GrafanaInstanceInfo(AbstractModel):
-    """Instance type when the Grafana instance is queried
+    r"""Instance type when the Grafana instance is queried
 
     """
 
@@ -22381,7 +22381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -22392,7 +22392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -22403,7 +22403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -22414,7 +22414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -22425,7 +22425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetIds(self):
-        """Array of subnet IDs
+        r"""Array of subnet IDs
         :rtype: list of str
         """
         return self._SubnetIds
@@ -22436,7 +22436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetUrl(self):
-        """Grafana private network address
+        r"""Grafana private network address
         :rtype: str
         """
         return self._InternetUrl
@@ -22447,7 +22447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalUrl(self):
-        """Grafana public network address
+        r"""Grafana public network address
         :rtype: str
         """
         return self._InternalUrl
@@ -22458,7 +22458,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -22469,7 +22469,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """Status. Valid values: `1` (creating), `2` (running), `3` (abnormal), `4` (restarting), `5` (stopping), `6` (stopped), `7` (deleted).
+        r"""Status. Valid values: `1` (creating), `2` (running), `3` (abnormal), `4` (restarting), `5` (stopping), `6` (stopped), `7` (deleted).
         :rtype: int
         """
         return self._InstanceStatus
@@ -22480,7 +22480,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSpecification(self):
-        """Instance tag
+        r"""Instance tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusTag
         """
@@ -22492,7 +22492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
-        """Instance AZ
+        r"""Instance AZ
         :rtype: str
         """
         return self._Zone
@@ -22503,7 +22503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid value: `1` (monthly subscription).
+        r"""Billing mode. Valid value: `1` (monthly subscription).
         :rtype: int
         """
         return self._InstanceChargeType
@@ -22514,7 +22514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcName(self):
-        """VPC name
+        r"""VPC name
         :rtype: str
         """
         return self._VpcName
@@ -22525,7 +22525,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetName(self):
-        """Subnet name
+        r"""Subnet name
         :rtype: str
         """
         return self._SubnetName
@@ -22536,7 +22536,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -22547,7 +22547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootUrl(self):
-        """The full URL used to access this instance
+        r"""The full URL used to access this instance
         :rtype: str
         """
         return self._RootUrl
@@ -22558,7 +22558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableSSO(self):
-        """Whether to enable SSO
+        r"""Whether to enable SSO
         :rtype: bool
         """
         return self._EnableSSO
@@ -22569,7 +22569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Version number
+        r"""Version number
         :rtype: str
         """
         return self._Version
@@ -22580,7 +22580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableSSOCamCheck(self):
-        """Whether to enable CAM authentication during SSO
+        r"""Whether to enable CAM authentication during SSO
         :rtype: bool
         """
         return self._EnableSSOCamCheck
@@ -22626,7 +22626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GrafanaIntegrationConfig(AbstractModel):
-    """Grafana instance configuration
+    r"""Grafana instance configuration
 
     """
 
@@ -22652,7 +22652,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntegrationId(self):
-        """Integration ID
+        r"""Integration ID
         :rtype: str
         """
         return self._IntegrationId
@@ -22663,7 +22663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Kind(self):
-        """Integration type
+        r"""Integration type
         :rtype: str
         """
         return self._Kind
@@ -22674,7 +22674,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """Integration content
+        r"""Integration content
         :rtype: str
         """
         return self._Content
@@ -22685,7 +22685,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Integration description
+        r"""Integration description
         :rtype: str
         """
         return self._Description
@@ -22696,7 +22696,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaURL(self):
-        """Grafana redirection address
+        r"""Grafana redirection address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22724,7 +22724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GrafanaNotificationChannel(AbstractModel):
-    """Grafana notification channel
+    r"""Grafana notification channel
 
     """
 
@@ -22764,7 +22764,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -22775,7 +22775,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelName(self):
-        """Channel name
+        r"""Channel name
         :rtype: str
         """
         return self._ChannelName
@@ -22786,7 +22786,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Receivers(self):
-        """Array of notification channel template IDs
+        r"""Array of notification channel template IDs
         :rtype: list of str
         """
         return self._Receivers
@@ -22797,7 +22797,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -22808,7 +22808,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdatedAt
@@ -22819,7 +22819,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgId(self):
-        """Default valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""Default valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :rtype: str
         """
         return self._OrgId
@@ -22830,7 +22830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraOrgIds(self):
-        """Extra valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""Extra valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -22842,7 +22842,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrgIds(self):
-        """Valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""Valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22854,7 +22854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationIds(self):
-        """All valid organizations in an alert channel
+        r"""All valid organizations in an alert channel
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22886,7 +22886,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GrafanaPlugin(AbstractModel):
-    """Grafana plugin
+    r"""Grafana plugin
 
     """
 
@@ -22903,7 +22903,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginId(self):
-        """Grafana plugin ID
+        r"""Grafana plugin ID
         :rtype: str
         """
         return self._PluginId
@@ -22914,7 +22914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Grafana plugin version
+        r"""Grafana plugin version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22939,7 +22939,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class InstallPluginsRequest(AbstractModel):
-    """InstallPlugins request structure.
+    r"""InstallPlugins request structure.
 
     """
 
@@ -22955,7 +22955,7 @@ class InstallPluginsRequest(AbstractModel):
 
     @property
     def Plugins(self):
-        """Plugin information
+        r"""Plugin information
         :rtype: list of GrafanaPlugin
         """
         return self._Plugins
@@ -22966,7 +22966,7 @@ class InstallPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -22995,7 +22995,7 @@ class InstallPluginsRequest(AbstractModel):
 
 
 class InstallPluginsResponse(AbstractModel):
-    """InstallPlugins response structure.
+    r"""InstallPlugins response structure.
 
     """
 
@@ -23012,7 +23012,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PluginIds(self):
-        """ID of the installed plugin
+        r"""ID of the installed plugin
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -23024,7 +23024,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23040,7 +23040,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Instance(AbstractModel):
-    """Array of instance dimension combinations
+    r"""Array of instance dimension combinations
 
     """
 
@@ -23053,7 +23053,7 @@ class Instance(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Combination of instance dimensions
+        r"""Combination of instance dimensions
         :rtype: list of Dimension
         """
         return self._Dimensions
@@ -23081,7 +23081,7 @@ class Instance(AbstractModel):
 
 
 class InstanceGroup(AbstractModel):
-    """InstanceGroup in Alarms returned by the DescribeBasicAlarmList API
+    r"""InstanceGroup in Alarms returned by the DescribeBasicAlarmList API
 
     """
 
@@ -23099,7 +23099,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID.
+        r"""Instance group ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: int
         """
@@ -23111,7 +23111,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def InstanceGroupName(self):
-        """Instance group name.
+        r"""Instance group name.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -23136,7 +23136,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class InstanceGroups(AbstractModel):
-    """Instance group of alarm object
+    r"""Instance group of alarm object
 
     """
 
@@ -23152,7 +23152,7 @@ class InstanceGroups(AbstractModel):
 
     @property
     def Id(self):
-        """Instance group ID
+        r"""Instance group ID
         :rtype: int
         """
         return self._Id
@@ -23163,7 +23163,7 @@ class InstanceGroups(AbstractModel):
 
     @property
     def Name(self):
-        """Instance group name
+        r"""Instance group name
         :rtype: str
         """
         return self._Name
@@ -23187,7 +23187,7 @@ class InstanceGroups(AbstractModel):
 
 
 class IntegrationConfiguration(AbstractModel):
-    """Export integration configuration
+    r"""Export integration configuration
 
     """
 
@@ -23218,7 +23218,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -23229,7 +23229,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -23240,7 +23240,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Content(self):
-        """Content
+        r"""Content
         :rtype: str
         """
         return self._Content
@@ -23251,7 +23251,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Status(self):
-        """Status
+        r"""Status
         :rtype: int
         """
         return self._Status
@@ -23262,7 +23262,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def Category(self):
-        """Instance type
+        r"""Instance type
         :rtype: str
         """
         return self._Category
@@ -23273,7 +23273,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def InstanceDesc(self):
-        """Instance description
+        r"""Instance description
         :rtype: str
         """
         return self._InstanceDesc
@@ -23284,7 +23284,7 @@ class IntegrationConfiguration(AbstractModel):
 
     @property
     def GrafanaDashboardURL(self):
-        """Dashboard URL
+        r"""Dashboard URL
         :rtype: str
         """
         return self._GrafanaDashboardURL
@@ -23313,7 +23313,7 @@ class IntegrationConfiguration(AbstractModel):
 
 
 class Label(AbstractModel):
-    """Tags in K8s, which generally exist in the form of an array.
+    r"""Tags in K8s, which generally exist in the form of an array.
 
     """
 
@@ -23329,7 +23329,7 @@ class Label(AbstractModel):
 
     @property
     def Name(self):
-        """Label name
+        r"""Label name
         :rtype: str
         """
         return self._Name
@@ -23340,7 +23340,7 @@ class Label(AbstractModel):
 
     @property
     def Value(self):
-        """Label value
+        r"""Label value
         :rtype: str
         """
         return self._Value
@@ -23364,7 +23364,7 @@ class Label(AbstractModel):
 
 
 class LogAlarmReq(AbstractModel):
-    """Log alarm request information
+    r"""Log alarm request information
 
     """
 
@@ -23386,7 +23386,7 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def InstanceId(self):
-        """APM instance ID
+        r"""APM instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23397,7 +23397,7 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def Filter(self):
-        """Search condition
+        r"""Search condition
         :rtype: list of LogFilterInfo
         """
         return self._Filter
@@ -23408,7 +23408,7 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def AlarmMerge(self):
-        """The switch to enable/disable alarm merging
+        r"""The switch to enable/disable alarm merging
         :rtype: str
         """
         return self._AlarmMerge
@@ -23419,7 +23419,7 @@ class LogAlarmReq(AbstractModel):
 
     @property
     def AlarmMergeTime(self):
-        """Alarm merging time
+        r"""Alarm merging time
         :rtype: str
         """
         return self._AlarmMergeTime
@@ -23450,7 +23450,7 @@ class LogAlarmReq(AbstractModel):
 
 
 class LogFilterInfo(AbstractModel):
-    """Log alarm search condition structure
+    r"""Log alarm search condition structure
 
     """
 
@@ -23469,7 +23469,7 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Key(self):
-        """Field name
+        r"""Field name
         :rtype: str
         """
         return self._Key
@@ -23480,7 +23480,7 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Operator(self):
-        """Comparison operator
+        r"""Comparison operator
         :rtype: str
         """
         return self._Operator
@@ -23491,7 +23491,7 @@ class LogFilterInfo(AbstractModel):
 
     @property
     def Value(self):
-        """Field value
+        r"""Field value
         :rtype: str
         """
         return self._Value
@@ -23516,7 +23516,7 @@ class LogFilterInfo(AbstractModel):
 
 
 class ManagementCommand(AbstractModel):
-    """Prometheus agent management command line
+    r"""Prometheus agent management command line
 
     """
 
@@ -23546,7 +23546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Install(self):
-        """Agent installation command
+        r"""Agent installation command
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23558,7 +23558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Restart(self):
-        """Agent restart command
+        r"""Agent restart command
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23570,7 +23570,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stop(self):
-        """Agent stop command
+        r"""Agent stop command
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23582,7 +23582,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusCheck(self):
-        """Agent status detection command
+        r"""Agent status detection command
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23594,7 +23594,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogCheck(self):
-        """Agent log detection command
+        r"""Agent log detection command
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -23622,7 +23622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Metric(AbstractModel):
-    """Metric, which can be used to set alarms and query data
+    r"""Metric, which can be used to set alarms and query data
 
     """
 
@@ -23680,7 +23680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
-        """Alarm policy type
+        r"""Alarm policy type
         :rtype: str
         """
         return self._Namespace
@@ -23691,7 +23691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -23702,7 +23702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Metric display name
+        r"""Metric display name
         :rtype: str
         """
         return self._Description
@@ -23713,7 +23713,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Min(self):
-        """Minimum value
+        r"""Minimum value
         :rtype: float
         """
         return self._Min
@@ -23724,7 +23724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Max(self):
-        """Maximum value
+        r"""Maximum value
         :rtype: float
         """
         return self._Max
@@ -23735,7 +23735,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Dimensions(self):
-        """Dimension list
+        r"""Dimension list
         :rtype: list of str
         """
         return self._Dimensions
@@ -23746,7 +23746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        """Unit
+        r"""Unit
         :rtype: str
         """
         return self._Unit
@@ -23757,7 +23757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricConfig(self):
-        """Metric configuration
+        r"""Metric configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
         """
@@ -23769,7 +23769,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAdvanced(self):
-        """Whether it is an advanced metric. 1: Yes; 0: No.
+        r"""Whether it is an advanced metric. 1: Yes; 0: No.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23781,7 +23781,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsOpen(self):
-        """Whether the advanced metric feature is enabled. 1: Yes; 0: No.
+        r"""Whether the advanced metric feature is enabled. 1: Yes; 0: No.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23793,7 +23793,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProductId(self):
-        """Integration center product ID.
+        r"""Integration center product ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -23805,7 +23805,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Operators(self):
-        """Matching operator
+        r"""Matching operator
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Operator
         """
@@ -23817,7 +23817,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Periods(self):
-        """Metric monitoring granularity
+        r"""Metric monitoring granularity
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -23829,7 +23829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsLatenessMetric(self):
-        """
+        r"""
         :rtype: int
         """
         return self._IsLatenessMetric
@@ -23872,7 +23872,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MetricConfig(AbstractModel):
-    """Metric configuration
+    r"""Metric configuration
 
     """
 
@@ -23891,7 +23891,7 @@ class MetricConfig(AbstractModel):
 
     @property
     def Operator(self):
-        """Allowed operator
+        r"""Allowed operator
         :rtype: list of str
         """
         return self._Operator
@@ -23902,7 +23902,7 @@ class MetricConfig(AbstractModel):
 
     @property
     def Period(self):
-        """Allowed data cycle in seconds
+        r"""Allowed data cycle in seconds
         :rtype: list of int
         """
         return self._Period
@@ -23913,7 +23913,7 @@ class MetricConfig(AbstractModel):
 
     @property
     def ContinuePeriod(self):
-        """Allowed number of continuous cycles
+        r"""Allowed number of continuous cycles
         :rtype: list of int
         """
         return self._ContinuePeriod
@@ -23938,7 +23938,7 @@ class MetricConfig(AbstractModel):
 
 
 class MetricData(AbstractModel):
-    """`DescribeMetricData` output parameters
+    r"""`DescribeMetricData` output parameters
 
     """
 
@@ -23954,7 +23954,7 @@ class MetricData(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -23965,7 +23965,7 @@ class MetricData(AbstractModel):
 
     @property
     def Points(self):
-        """Monitoring data point
+        r"""Monitoring data point
         :rtype: list of MetricDataPoint
         """
         return self._Points
@@ -23994,7 +23994,7 @@ class MetricData(AbstractModel):
 
 
 class MetricDataPoint(AbstractModel):
-    """`DescribeMetricData` output parameters
+    r"""`DescribeMetricData` output parameters
 
     """
 
@@ -24010,7 +24010,7 @@ class MetricDataPoint(AbstractModel):
 
     @property
     def Dimensions(self):
-        """Combination of instance object dimensions
+        r"""Combination of instance object dimensions
         :rtype: list of Dimension
         """
         return self._Dimensions
@@ -24021,7 +24021,7 @@ class MetricDataPoint(AbstractModel):
 
     @property
     def Values(self):
-        """Data point list
+        r"""Data point list
         :rtype: list of Point
         """
         return self._Values
@@ -24055,7 +24055,7 @@ class MetricDataPoint(AbstractModel):
 
 
 class MetricObjectMeaning(AbstractModel):
-    """Meaning of metric data
+    r"""Meaning of metric data
 
     """
 
@@ -24071,7 +24071,7 @@ class MetricObjectMeaning(AbstractModel):
 
     @property
     def En(self):
-        """Meaning of the metric in English
+        r"""Meaning of the metric in English
         :rtype: str
         """
         return self._En
@@ -24082,7 +24082,7 @@ class MetricObjectMeaning(AbstractModel):
 
     @property
     def Zh(self):
-        """Meaning of the metric in Chinese
+        r"""Meaning of the metric in Chinese
         :rtype: str
         """
         return self._Zh
@@ -24106,7 +24106,7 @@ class MetricObjectMeaning(AbstractModel):
 
 
 class MetricSet(AbstractModel):
-    """Description of the unit and supported statistical period of the business metric
+    r"""Description of the unit and supported statistical period of the business metric
 
     """
 
@@ -24148,7 +24148,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Namespace(self):
-        """Namespace. Each Tencent Cloud product has a namespace
+        r"""Namespace. Each Tencent Cloud product has a namespace
         :rtype: str
         """
         return self._Namespace
@@ -24159,7 +24159,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricName(self):
-        """Metric Name
+        r"""Metric Name
         :rtype: str
         """
         return self._MetricName
@@ -24170,7 +24170,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Unit(self):
-        """Unit used by the metric
+        r"""Unit used by the metric
         :rtype: str
         """
         return self._Unit
@@ -24181,7 +24181,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitCname(self):
-        """Unit used by the metric
+        r"""Unit used by the metric
         :rtype: str
         """
         return self._UnitCname
@@ -24192,7 +24192,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Period(self):
-        """Statistical period in seconds supported by the metric, such as 60 and 300
+        r"""Statistical period in seconds supported by the metric, such as 60 and 300
         :rtype: list of int
         """
         return self._Period
@@ -24203,7 +24203,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Periods(self):
-        """Metric method during the statistical period
+        r"""Metric method during the statistical period
         :rtype: list of PeriodsSt
         """
         return self._Periods
@@ -24214,7 +24214,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Meaning(self):
-        """Meaning of the statistical metric
+        r"""Meaning of the statistical metric
         :rtype: :class:`tencentcloud.monitor.v20180724.models.MetricObjectMeaning`
         """
         return self._Meaning
@@ -24225,7 +24225,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Dimensions(self):
-        """Dimension description
+        r"""Dimension description
         :rtype: list of DimensionsDesc
         """
         return self._Dimensions
@@ -24236,7 +24236,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricCName(self):
-        """Metric name (in Chinese).
+        r"""Metric name (in Chinese).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24248,7 +24248,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricEName(self):
-        """Metric name (in English).
+        r"""Metric name (in English).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -24293,7 +24293,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class MidQueryCondition(AbstractModel):
-    """`DescribeMidDimensionValueList` query conditions
+    r"""`DescribeMidDimensionValueList` query conditions
 
     """
 
@@ -24312,7 +24312,7 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Key(self):
-        """Dimension
+        r"""Dimension
         :rtype: str
         """
         return self._Key
@@ -24323,7 +24323,7 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator. Valid values: eq (equal to), ne (not equal to), in
+        r"""Operator. Valid values: eq (equal to), ne (not equal to), in
         :rtype: str
         """
         return self._Operator
@@ -24334,7 +24334,7 @@ class MidQueryCondition(AbstractModel):
 
     @property
     def Value(self):
-        """Dimension value. If `Operator` is `eq` or `ne`, only the first element will be used
+        r"""Dimension value. If `Operator` is `eq` or `ne`, only the first element will be used
         :rtype: list of str
         """
         return self._Value
@@ -24359,7 +24359,7 @@ class MidQueryCondition(AbstractModel):
 
 
 class ModifyAlarmNoticeRequest(AbstractModel):
-    """ModifyAlarmNotice request structure.
+    r"""ModifyAlarmNotice request structure.
 
     """
 
@@ -24396,7 +24396,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -24407,7 +24407,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Alarm notification rule name, which can contain up to 60 characters
+        r"""Alarm notification rule name, which can contain up to 60 characters
         :rtype: str
         """
         return self._Name
@@ -24418,7 +24418,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
-        """Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
+        r"""Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)
         :rtype: str
         """
         return self._NoticeType
@@ -24429,7 +24429,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
-        """Notification language. Valid values: zh-CN (Chinese), en-US (English)
+        r"""Notification language. Valid values: zh-CN (Chinese), en-US (English)
         :rtype: str
         """
         return self._NoticeLanguage
@@ -24440,7 +24440,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeId(self):
-        """Alarm notification template ID
+        r"""Alarm notification template ID
         :rtype: str
         """
         return self._NoticeId
@@ -24451,7 +24451,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
-        """User notifications (up to 5)
+        r"""User notifications (up to 5)
         :rtype: list of UserNotice
         """
         return self._UserNotices
@@ -24462,7 +24462,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
-        """Callback notifications (up to 3)
+        r"""Callback notifications (up to 3)
         :rtype: list of URLNotice
         """
         return self._URLNotices
@@ -24473,7 +24473,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
-        """The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
+        r"""The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
         :rtype: list of CLSNotice
         """
         return self._CLSNotices
@@ -24484,7 +24484,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """List of IDs of the alerting rules bound to an alarm notification template
+        r"""List of IDs of the alerting rules bound to an alarm notification template
         :rtype: list of str
         """
         return self._PolicyIds
@@ -24530,7 +24530,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
 
 class ModifyAlarmNoticeResponse(AbstractModel):
-    """ModifyAlarmNotice response structure.
+    r"""ModifyAlarmNotice response structure.
 
     """
 
@@ -24543,7 +24543,7 @@ class ModifyAlarmNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24558,7 +24558,7 @@ class ModifyAlarmNoticeResponse(AbstractModel):
 
 
 class ModifyAlarmPolicyConditionRequest(AbstractModel):
-    """ModifyAlarmPolicyCondition request structure.
+    r"""ModifyAlarmPolicyCondition request structure.
 
     """
 
@@ -24604,7 +24604,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -24615,7 +24615,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -24626,7 +24626,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
-        """ID of trigger condition template. This parameter can be left empty.
+        r"""ID of trigger condition template. This parameter can be left empty.
         :rtype: int
         """
         return self._ConditionTemplateId
@@ -24637,7 +24637,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Condition(self):
-        """Metric trigger condition
+        r"""Metric trigger condition
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         """
         return self._Condition
@@ -24648,7 +24648,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def EventCondition(self):
-        """Event trigger condition
+        r"""Event trigger condition
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
         """
         return self._EventCondition
@@ -24659,7 +24659,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Global filter.
+        r"""Global filter.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         """
         return self._Filter
@@ -24670,7 +24670,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        """Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
+        r"""Aggregation dimension list, which is used to specify which dimension keys data is grouped by.
         :rtype: list of str
         """
         return self._GroupBy
@@ -24681,7 +24681,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def LogAlarmReqInfo(self):
-        """Log alarm creation request parameters
+        r"""Log alarm creation request parameters
         :rtype: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         return self._LogAlarmReqInfo
@@ -24692,7 +24692,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        """Template ID, which is dedicated to TencentCloud Managed Service for Prometheus.
+        r"""Template ID, which is dedicated to TencentCloud Managed Service for Prometheus.
         :rtype: list of str
         """
         return self._NoticeIds
@@ -24703,7 +24703,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Status (`0`: Disabled; `1`: Enabled)
+        r"""Status (`0`: Disabled; `1`: Enabled)
         :rtype: int
         """
         return self._Enable
@@ -24714,7 +24714,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        """Name of the policy dedicated to TMP
+        r"""Name of the policy dedicated to TMP
         :rtype: str
         """
         return self._PolicyName
@@ -24725,7 +24725,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        """The alert configured for an event
+        r"""The alert configured for an event
         :rtype: str
         """
         return self._EbSubject
@@ -24767,7 +24767,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
 
 
 class ModifyAlarmPolicyConditionResponse(AbstractModel):
-    """ModifyAlarmPolicyCondition response structure.
+    r"""ModifyAlarmPolicyCondition response structure.
 
     """
 
@@ -24780,7 +24780,7 @@ class ModifyAlarmPolicyConditionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24795,7 +24795,7 @@ class ModifyAlarmPolicyConditionResponse(AbstractModel):
 
 
 class ModifyAlarmPolicyInfoRequest(AbstractModel):
-    """ModifyAlarmPolicyInfo request structure.
+    r"""ModifyAlarmPolicyInfo request structure.
 
     """
 
@@ -24817,7 +24817,7 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -24828,7 +24828,7 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -24839,7 +24839,7 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Key(self):
-        """Field to be modified. Valid values: NAME (policy name), REMARK (policy remarks)
+        r"""Field to be modified. Valid values: NAME (policy name), REMARK (policy remarks)
         :rtype: str
         """
         return self._Key
@@ -24850,7 +24850,7 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
     @property
     def Value(self):
-        """Value after modification
+        r"""Value after modification
         :rtype: str
         """
         return self._Value
@@ -24876,7 +24876,7 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
 
 
 class ModifyAlarmPolicyInfoResponse(AbstractModel):
-    """ModifyAlarmPolicyInfo response structure.
+    r"""ModifyAlarmPolicyInfo response structure.
 
     """
 
@@ -24889,7 +24889,7 @@ class ModifyAlarmPolicyInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24904,7 +24904,7 @@ class ModifyAlarmPolicyInfoResponse(AbstractModel):
 
 
 class ModifyAlarmPolicyNoticeRequest(AbstractModel):
-    """ModifyAlarmPolicyNotice request structure.
+    r"""ModifyAlarmPolicyNotice request structure.
 
     """
 
@@ -24929,7 +24929,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is specified as `monitor`.
+        r"""Module name, which is specified as `monitor`.
         :rtype: str
         """
         return self._Module
@@ -24940,7 +24940,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID. If both `PolicyIds` and this parameter are returned, only `PolicyIds` takes effect.
+        r"""Alarm policy ID. If both `PolicyIds` and this parameter are returned, only `PolicyIds` takes effect.
         :rtype: str
         """
         return self._PolicyId
@@ -24951,7 +24951,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        """List of alarm notification template IDs.
+        r"""List of alarm notification template IDs.
         :rtype: list of str
         """
         return self._NoticeIds
@@ -24962,7 +24962,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.
+        r"""Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.
         :rtype: list of str
         """
         return self._PolicyIds
@@ -24973,7 +24973,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     @property
     def HierarchicalNotices(self):
-        """Notification rules for different alarm levels
+        r"""Notification rules for different alarm levels
         :rtype: list of AlarmHierarchicalNotice
         """
         return self._HierarchicalNotices
@@ -25005,7 +25005,7 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
 
 class ModifyAlarmPolicyNoticeResponse(AbstractModel):
-    """ModifyAlarmPolicyNotice response structure.
+    r"""ModifyAlarmPolicyNotice response structure.
 
     """
 
@@ -25018,7 +25018,7 @@ class ModifyAlarmPolicyNoticeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25033,7 +25033,7 @@ class ModifyAlarmPolicyNoticeResponse(AbstractModel):
 
 
 class ModifyAlarmPolicyStatusRequest(AbstractModel):
-    """ModifyAlarmPolicyStatus request structure.
+    r"""ModifyAlarmPolicyStatus request structure.
 
     """
 
@@ -25052,7 +25052,7 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -25063,7 +25063,7 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -25074,7 +25074,7 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Status. Valid values: 0 (disabled), 1 (enabled)
+        r"""Status. Valid values: 0 (disabled), 1 (enabled)
         :rtype: int
         """
         return self._Enable
@@ -25099,7 +25099,7 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
 
 
 class ModifyAlarmPolicyStatusResponse(AbstractModel):
-    """ModifyAlarmPolicyStatus response structure.
+    r"""ModifyAlarmPolicyStatus response structure.
 
     """
 
@@ -25112,7 +25112,7 @@ class ModifyAlarmPolicyStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25127,7 +25127,7 @@ class ModifyAlarmPolicyStatusResponse(AbstractModel):
 
 
 class ModifyAlarmPolicyTasksRequest(AbstractModel):
-    """ModifyAlarmPolicyTasks request structure.
+    r"""ModifyAlarmPolicyTasks request structure.
 
     """
 
@@ -25146,7 +25146,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name. Enter "monitor" here
+        r"""Module name. Enter "monitor" here
         :rtype: str
         """
         return self._Module
@@ -25157,7 +25157,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -25168,7 +25168,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
-        """List of tasks triggered by alarm policy. If this parameter is left empty, it indicates to unbind all tasks
+        r"""List of tasks triggered by alarm policy. If this parameter is left empty, it indicates to unbind all tasks
         :rtype: list of AlarmPolicyTriggerTask
         """
         return self._TriggerTasks
@@ -25198,7 +25198,7 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
 
 
 class ModifyAlarmPolicyTasksResponse(AbstractModel):
-    """ModifyAlarmPolicyTasks response structure.
+    r"""ModifyAlarmPolicyTasks response structure.
 
     """
 
@@ -25211,7 +25211,7 @@ class ModifyAlarmPolicyTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25226,7 +25226,7 @@ class ModifyAlarmPolicyTasksResponse(AbstractModel):
 
 
 class ModifyAlarmReceiversRequest(AbstractModel):
-    """ModifyAlarmReceivers request structure.
+    r"""ModifyAlarmReceivers request structure.
 
     """
 
@@ -25245,7 +25245,7 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of a policy group whose recipient needs to be modified.
+        r"""ID of a policy group whose recipient needs to be modified.
         :rtype: int
         """
         return self._GroupId
@@ -25256,7 +25256,7 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Required. The value is fixed to monitor.
+        r"""Required. The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -25267,7 +25267,7 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
     @property
     def ReceiverInfos(self):
-        """New recipient information. If this parameter is not configured, all recipients will be deleted.
+        r"""New recipient information. If this parameter is not configured, all recipients will be deleted.
         :rtype: list of ReceiverInfo
         """
         return self._ReceiverInfos
@@ -25297,7 +25297,7 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
 
 class ModifyAlarmReceiversResponse(AbstractModel):
-    """ModifyAlarmReceivers response structure.
+    r"""ModifyAlarmReceivers response structure.
 
     """
 
@@ -25310,7 +25310,7 @@ class ModifyAlarmReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25325,7 +25325,7 @@ class ModifyAlarmReceiversResponse(AbstractModel):
 
 
 class ModifyGrafanaInstanceRequest(AbstractModel):
-    """ModifyGrafanaInstance request structure.
+    r"""ModifyGrafanaInstance request structure.
 
     """
 
@@ -25341,7 +25341,7 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -25352,7 +25352,7 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """TCMG instance name, such as “test”.
+        r"""TCMG instance name, such as “test”.
         :rtype: str
         """
         return self._InstanceName
@@ -25376,7 +25376,7 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
 
 class ModifyGrafanaInstanceResponse(AbstractModel):
-    """ModifyGrafanaInstance response structure.
+    r"""ModifyGrafanaInstance response structure.
 
     """
 
@@ -25389,7 +25389,7 @@ class ModifyGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25404,7 +25404,7 @@ class ModifyGrafanaInstanceResponse(AbstractModel):
 
 
 class ModifyPolicyGroupCondition(AbstractModel):
-    """Modification of the metric threshold condition passed in by the alarm policy group.
+    r"""Modification of the metric threshold condition passed in by the alarm policy group.
 
     """
 
@@ -25438,7 +25438,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def MetricId(self):
-        """Metric ID.
+        r"""Metric ID.
         :rtype: int
         """
         return self._MetricId
@@ -25449,7 +25449,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcType(self):
-        """Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to.
+        r"""Comparative type. The value 1 indicates greater than. The value 2 indicates greater than or equal to. The value 3 indicates smaller than. The value 4 indicates smaller than or equal to. The value 5 indicates equal to. The value 6 indicates not equal to.
         :rtype: int
         """
         return self._CalcType
@@ -25460,7 +25460,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcValue(self):
-        """Threshold.
+        r"""Threshold.
         :rtype: str
         """
         return self._CalcValue
@@ -25471,7 +25471,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def CalcPeriod(self):
-        """Data period of the detected metric.
+        r"""Data period of the detected metric.
         :rtype: int
         """
         return self._CalcPeriod
@@ -25482,7 +25482,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def ContinuePeriod(self):
-        """Number of consecutive periods.
+        r"""Number of consecutive periods.
         :rtype: int
         """
         return self._ContinuePeriod
@@ -25493,7 +25493,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -25504,7 +25504,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
+        r"""Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -25515,7 +25515,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
+        r"""Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
         :rtype: int
         """
         return self._RuleId
@@ -25545,7 +25545,7 @@ class ModifyPolicyGroupCondition(AbstractModel):
 
 
 class ModifyPolicyGroupEventCondition(AbstractModel):
-    """Modification of the event alarm condition passed in by the alarm policy group.
+    r"""Modification of the event alarm condition passed in by the alarm policy group.
 
     """
 
@@ -25567,7 +25567,7 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def EventId(self):
-        """Event ID.
+        r"""Event ID.
         :rtype: int
         """
         return self._EventId
@@ -25578,7 +25578,7 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyType(self):
-        """Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
+        r"""Alarm sending and convergence type. The value 0 indicates that alarms are sent consecutively. The value 1 indicates that alarms are sent exponentially.
         :rtype: int
         """
         return self._AlarmNotifyType
@@ -25589,7 +25589,7 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def AlarmNotifyPeriod(self):
-        """Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
+        r"""Alarm sending period in seconds. If the value is less than 0, no alarm will be triggered. If the value is 0, an alarm will be triggered only once. If the value is greater than 0, an alarm will be triggered at the interval of triggerTime.
         :rtype: int
         """
         return self._AlarmNotifyPeriod
@@ -25600,7 +25600,7 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
+        r"""Rule ID. No filling means new addition while filling in ruleId means to modify existing rules.
         :rtype: int
         """
         return self._RuleId
@@ -25626,7 +25626,7 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
 
 
 class ModifyPolicyGroupRequest(AbstractModel):
-    """ModifyPolicyGroup request structure.
+    r"""ModifyPolicyGroup request structure.
 
     """
 
@@ -25660,7 +25660,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -25671,7 +25671,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: int
         """
         return self._GroupId
@@ -25682,7 +25682,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def ViewName(self):
-        """Alarm type.
+        r"""Alarm type.
         :rtype: str
         """
         return self._ViewName
@@ -25693,7 +25693,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Policy group name.
+        r"""Policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -25704,7 +25704,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def IsUnionRule(self):
-        """The 'AND' and 'OR' rules for metric alarms. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met.
+        r"""The 'AND' and 'OR' rules for metric alarms. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met.
         :rtype: int
         """
         return self._IsUnionRule
@@ -25715,7 +25715,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def Conditions(self):
-        """Metric alarm condition rules. No filling indicates that all existing metric alarm condition rules will be deleted.
+        r"""Metric alarm condition rules. No filling indicates that all existing metric alarm condition rules will be deleted.
         :rtype: list of ModifyPolicyGroupCondition
         """
         return self._Conditions
@@ -25726,7 +25726,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def EventConditions(self):
-        """Event alarm conditions. No filling indicates that all existing event alarm conditions will be deleted.
+        r"""Event alarm conditions. No filling indicates that all existing event alarm conditions will be deleted.
         :rtype: list of ModifyPolicyGroupEventCondition
         """
         return self._EventConditions
@@ -25737,7 +25737,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
     @property
     def ConditionTempGroupId(self):
-        """Template-based policy group ID.
+        r"""Template-based policy group ID.
         :rtype: int
         """
         return self._ConditionTempGroupId
@@ -25777,7 +25777,7 @@ class ModifyPolicyGroupRequest(AbstractModel):
 
 
 class ModifyPolicyGroupResponse(AbstractModel):
-    """ModifyPolicyGroup response structure.
+    r"""ModifyPolicyGroup response structure.
 
     """
 
@@ -25793,7 +25793,7 @@ class ModifyPolicyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID.
+        r"""Policy group ID.
         :rtype: int
         """
         return self._GroupId
@@ -25804,7 +25804,7 @@ class ModifyPolicyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25820,7 +25820,7 @@ class ModifyPolicyGroupResponse(AbstractModel):
 
 
 class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
-    """ModifyPrometheusAgentExternalLabels request structure.
+    r"""ModifyPrometheusAgentExternalLabels request structure.
 
     """
 
@@ -25839,7 +25839,7 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -25850,7 +25850,7 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -25861,7 +25861,7 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
     @property
     def ExternalLabels(self):
-        """New external labels
+        r"""New external labels
         :rtype: list of Label
         """
         return self._ExternalLabels
@@ -25891,7 +25891,7 @@ class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
 
 
 class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
-    """ModifyPrometheusAgentExternalLabels response structure.
+    r"""ModifyPrometheusAgentExternalLabels response structure.
 
     """
 
@@ -25904,7 +25904,7 @@ class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25919,7 +25919,7 @@ class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
 
 
 class ModifyPrometheusAlertPolicyRequest(AbstractModel):
-    """ModifyPrometheusAlertPolicy request structure.
+    r"""ModifyPrometheusAlertPolicy request structure.
 
     """
 
@@ -25935,7 +25935,7 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -25946,7 +25946,7 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     @property
     def AlertRule(self):
-        """Alert configuration
+        r"""Alert configuration
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
         """
         return self._AlertRule
@@ -25972,7 +25972,7 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
 
 class ModifyPrometheusAlertPolicyResponse(AbstractModel):
-    """ModifyPrometheusAlertPolicy response structure.
+    r"""ModifyPrometheusAlertPolicy response structure.
 
     """
 
@@ -25985,7 +25985,7 @@ class ModifyPrometheusAlertPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26000,7 +26000,7 @@ class ModifyPrometheusAlertPolicyResponse(AbstractModel):
 
 
 class ModifyPrometheusConfigRequest(AbstractModel):
-    """ModifyPrometheusConfig request structure.
+    r"""ModifyPrometheusConfig request structure.
 
     """
 
@@ -26028,7 +26028,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -26039,7 +26039,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -26050,7 +26050,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -26061,7 +26061,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
-        """Configuration of service monitors
+        r"""Configuration of service monitors
         :rtype: list of PrometheusConfigItem
         """
         return self._ServiceMonitors
@@ -26072,7 +26072,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
-        """Configuration of pod monitors
+        r"""Configuration of pod monitors
         :rtype: list of PrometheusConfigItem
         """
         return self._PodMonitors
@@ -26083,7 +26083,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
-        """Configuration of Prometheus raw jobs
+        r"""Configuration of Prometheus raw jobs
         :rtype: list of PrometheusConfigItem
         """
         return self._RawJobs
@@ -26126,7 +26126,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
 
 class ModifyPrometheusConfigResponse(AbstractModel):
-    """ModifyPrometheusConfig response structure.
+    r"""ModifyPrometheusConfig response structure.
 
     """
 
@@ -26139,7 +26139,7 @@ class ModifyPrometheusConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26154,7 +26154,7 @@ class ModifyPrometheusConfigResponse(AbstractModel):
 
 
 class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
-    """ModifyPrometheusGlobalNotification request structure.
+    r"""ModifyPrometheusGlobalNotification request structure.
 
     """
 
@@ -26170,7 +26170,7 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -26181,7 +26181,7 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
     @property
     def Notification(self):
-        """Alert notification channel
+        r"""Alert notification channel
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
         """
         return self._Notification
@@ -26207,7 +26207,7 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
 
 class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
-    """ModifyPrometheusGlobalNotification response structure.
+    r"""ModifyPrometheusGlobalNotification response structure.
 
     """
 
@@ -26220,7 +26220,7 @@ class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26235,7 +26235,7 @@ class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
 
 
 class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
-    """ModifyPrometheusInstanceAttributes request structure.
+    r"""ModifyPrometheusInstanceAttributes request structure.
 
     """
 
@@ -26254,7 +26254,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -26265,7 +26265,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -26276,7 +26276,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        """Storage period. Valid values: 15, 30, 45. This parameter is not applicable to monthly subscribed instances.
+        r"""Storage period. Valid values: 15, 30, 45. This parameter is not applicable to monthly subscribed instances.
         :rtype: int
         """
         return self._DataRetentionTime
@@ -26301,7 +26301,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
 
 class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
-    """ModifyPrometheusInstanceAttributes response structure.
+    r"""ModifyPrometheusInstanceAttributes response structure.
 
     """
 
@@ -26314,7 +26314,7 @@ class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26329,7 +26329,7 @@ class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
 
 
 class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
-    """ModifyPrometheusRecordRuleYaml request structure.
+    r"""ModifyPrometheusRecordRuleYaml request structure.
 
     """
 
@@ -26348,7 +26348,7 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -26359,7 +26359,7 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Recording instance name
+        r"""Recording instance name
         :rtype: str
         """
         return self._Name
@@ -26370,7 +26370,7 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
     @property
     def Content(self):
-        """New content
+        r"""New content
         :rtype: str
         """
         return self._Content
@@ -26395,7 +26395,7 @@ class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
 
 
 class ModifyPrometheusRecordRuleYamlResponse(AbstractModel):
-    """ModifyPrometheusRecordRuleYaml response structure.
+    r"""ModifyPrometheusRecordRuleYaml response structure.
 
     """
 
@@ -26408,7 +26408,7 @@ class ModifyPrometheusRecordRuleYamlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26423,7 +26423,7 @@ class ModifyPrometheusRecordRuleYamlResponse(AbstractModel):
 
 
 class ModifyPrometheusTempRequest(AbstractModel):
-    """ModifyPrometheusTemp request structure.
+    r"""ModifyPrometheusTemp request structure.
 
     """
 
@@ -26439,7 +26439,7 @@ class ModifyPrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Template ID
+        r"""Template ID
         :rtype: str
         """
         return self._TemplateId
@@ -26450,7 +26450,7 @@ class ModifyPrometheusTempRequest(AbstractModel):
 
     @property
     def Template(self):
-        """Modified content
+        r"""Modified content
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusTempModify`
         """
         return self._Template
@@ -26476,7 +26476,7 @@ class ModifyPrometheusTempRequest(AbstractModel):
 
 
 class ModifyPrometheusTempResponse(AbstractModel):
-    """ModifyPrometheusTemp response structure.
+    r"""ModifyPrometheusTemp response structure.
 
     """
 
@@ -26489,7 +26489,7 @@ class ModifyPrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26504,7 +26504,7 @@ class ModifyPrometheusTempResponse(AbstractModel):
 
 
 class MonitorTypeInfo(AbstractModel):
-    """Monitoring type details
+    r"""Monitoring type details
 
     """
 
@@ -26523,7 +26523,7 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Monitoring type ID
+        r"""Monitoring type ID
         :rtype: str
         """
         return self._Id
@@ -26534,7 +26534,7 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Monitoring type
+        r"""Monitoring type
         :rtype: str
         """
         return self._Name
@@ -26545,7 +26545,7 @@ class MonitorTypeInfo(AbstractModel):
 
     @property
     def SortId(self):
-        """Sort order
+        r"""Sort order
         :rtype: int
         """
         return self._SortId
@@ -26570,7 +26570,7 @@ class MonitorTypeInfo(AbstractModel):
 
 
 class MonitorTypeNamespace(AbstractModel):
-    """Policy type
+    r"""Policy type
 
     """
 
@@ -26586,7 +26586,7 @@ class MonitorTypeNamespace(AbstractModel):
 
     @property
     def MonitorType(self):
-        """Monitor type
+        r"""Monitor type
         :rtype: str
         """
         return self._MonitorType
@@ -26597,7 +26597,7 @@ class MonitorTypeNamespace(AbstractModel):
 
     @property
     def Namespace(self):
-        """Policy type value
+        r"""Policy type value
         :rtype: str
         """
         return self._Namespace
@@ -26621,7 +26621,7 @@ class MonitorTypeNamespace(AbstractModel):
 
 
 class NoticeBindPolicys(AbstractModel):
-    """Binding between a notification template and a policy
+    r"""Binding between a notification template and a policy
 
     """
 
@@ -26637,7 +26637,7 @@ class NoticeBindPolicys(AbstractModel):
 
     @property
     def NoticeId(self):
-        """Alert notification template ID
+        r"""Alert notification template ID
         :rtype: str
         """
         return self._NoticeId
@@ -26648,7 +26648,7 @@ class NoticeBindPolicys(AbstractModel):
 
     @property
     def PolicyIds(self):
-        """List of IDs of the alerting rules bound to an alarm notification template
+        r"""List of IDs of the alerting rules bound to an alarm notification template
         :rtype: list of str
         """
         return self._PolicyIds
@@ -26672,7 +26672,7 @@ class NoticeBindPolicys(AbstractModel):
 
 
 class Operator(AbstractModel):
-    """Operators supported by the instance
+    r"""Operators supported by the instance
 
     """
 
@@ -26688,7 +26688,7 @@ class Operator(AbstractModel):
 
     @property
     def Id(self):
-        """Operator ID
+        r"""Operator ID
         :rtype: str
         """
         return self._Id
@@ -26699,7 +26699,7 @@ class Operator(AbstractModel):
 
     @property
     def Name(self):
-        """Operator name
+        r"""Operator name
         :rtype: str
         """
         return self._Name
@@ -26723,7 +26723,7 @@ class Operator(AbstractModel):
 
 
 class PeriodsSt(AbstractModel):
-    """Statistical method during the period
+    r"""Statistical method during the period
 
     """
 
@@ -26739,7 +26739,7 @@ class PeriodsSt(AbstractModel):
 
     @property
     def Period(self):
-        """Period
+        r"""Period
         :rtype: str
         """
         return self._Period
@@ -26750,7 +26750,7 @@ class PeriodsSt(AbstractModel):
 
     @property
     def StatType(self):
-        """Statistical method
+        r"""Statistical method
         :rtype: list of str
         """
         return self._StatType
@@ -26774,7 +26774,7 @@ class PeriodsSt(AbstractModel):
 
 
 class Point(AbstractModel):
-    """Monitoring data point
+    r"""Monitoring data point
 
     """
 
@@ -26791,7 +26791,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        """Time point when this monitoring data point is generated
+        r"""Time point when this monitoring data point is generated
         :rtype: int
         """
         return self._Timestamp
@@ -26802,7 +26802,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Monitoring data point value
+        r"""Monitoring data point value
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -26827,7 +26827,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PolicyGroup(AbstractModel):
-    """Policy group information
+    r"""Policy group information
 
     """
 
@@ -26886,7 +26886,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CanSetDefault(self):
-        """Whether the alarm policy can be set to default.
+        r"""Whether the alarm policy can be set to default.
         :rtype: bool
         """
         return self._CanSetDefault
@@ -26897,7 +26897,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupID(self):
-        """Alarm policy group ID.
+        r"""Alarm policy group ID.
         :rtype: int
         """
         return self._GroupID
@@ -26908,7 +26908,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupName(self):
-        """Alarm policy group name.
+        r"""Alarm policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -26919,7 +26919,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._InsertTime
@@ -26930,7 +26930,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsDefault(self):
-        """Whether the alarm policy is set to default.
+        r"""Whether the alarm policy is set to default.
         :rtype: int
         """
         return self._IsDefault
@@ -26941,7 +26941,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enable(self):
-        """Whether the alarm policy is enabled.
+        r"""Whether the alarm policy is enabled.
         :rtype: bool
         """
         return self._Enable
@@ -26952,7 +26952,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastEditUin(self):
-        """UIN of the last modifier.
+        r"""UIN of the last modifier.
         :rtype: int
         """
         return self._LastEditUin
@@ -26963,7 +26963,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NoShieldedInstanceCount(self):
-        """Number of unshielded instances.
+        r"""Number of unshielded instances.
         :rtype: int
         """
         return self._NoShieldedInstanceCount
@@ -26974,7 +26974,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ParentGroupID(self):
-        """Parent policy group ID.
+        r"""Parent policy group ID.
         :rtype: int
         """
         return self._ParentGroupID
@@ -26985,7 +26985,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProjectID(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectID
@@ -26996,7 +26996,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverInfos(self):
-        """Alarm recipient information.
+        r"""Alarm recipient information.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of PolicyGroupReceiverInfo
         """
@@ -27008,7 +27008,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -27019,7 +27019,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
-        """Modification time.
+        r"""Modification time.
         :rtype: int
         """
         return self._UpdateTime
@@ -27030,7 +27030,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalInstanceCount(self):
-        """The total number of associated instances.
+        r"""The total number of associated instances.
         :rtype: int
         """
         return self._TotalInstanceCount
@@ -27041,7 +27041,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ViewName(self):
-        """View.
+        r"""View.
         :rtype: str
         """
         return self._ViewName
@@ -27052,7 +27052,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsUnionRule(self):
-        """Whether the logical relationship between rules is AND.
+        r"""Whether the logical relationship between rules is AND.
         :rtype: int
         """
         return self._IsUnionRule
@@ -27095,7 +27095,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class PolicyGroupReceiverInfo(AbstractModel):
-    """Information on recipients in the policy template list (API v2018)
+    r"""Information on recipients in the policy template list (API v2018)
 
     """
 
@@ -27150,7 +27150,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndTime(self):
-        """End time of a valid time period.
+        r"""End time of a valid time period.
         :rtype: int
         """
         return self._EndTime
@@ -27161,7 +27161,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NeedSendNotice(self):
-        """Whether it is required to send notifications.
+        r"""Whether it is required to send notifications.
         :rtype: int
         """
         return self._NeedSendNotice
@@ -27172,7 +27172,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NotifyWay(self):
-        """Alarm receiving channel.
+        r"""Alarm receiving channel.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -27184,7 +27184,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PersonInterval(self):
-        """Alarm call intervals for individuals in seconds.
+        r"""Alarm call intervals for individuals in seconds.
         :rtype: int
         """
         return self._PersonInterval
@@ -27195,7 +27195,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverGroupList(self):
-        """Message recipient group list.
+        r"""Message recipient group list.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -27207,7 +27207,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverType(self):
-        """Recipient type.
+        r"""Recipient type.
         :rtype: str
         """
         return self._ReceiverType
@@ -27218,7 +27218,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReceiverUserList(self):
-        """Recipient list. The list of recipient IDs that is queried by a platform API.
+        r"""Recipient list. The list of recipient IDs that is queried by a platform API.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -27230,7 +27230,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RecoverNotify(self):
-        """Alarm resolution notification method.
+        r"""Alarm resolution notification method.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -27242,7 +27242,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoundInterval(self):
-        """Alarm call interval per round in seconds.
+        r"""Alarm call interval per round in seconds.
         :rtype: int
         """
         return self._RoundInterval
@@ -27253,7 +27253,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoundNumber(self):
-        """Number of alarm call rounds.
+        r"""Number of alarm call rounds.
         :rtype: int
         """
         return self._RoundNumber
@@ -27264,7 +27264,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SendFor(self):
-        """Alarm call notification time. Valid values: `OCCUR` (indicating that a notification is sent when the alarm is triggered) and `RECOVER` (indicating that a notification is sent when the alarm is resolved).
+        r"""Alarm call notification time. Valid values: `OCCUR` (indicating that a notification is sent when the alarm is triggered) and `RECOVER` (indicating that a notification is sent when the alarm is resolved).
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -27276,7 +27276,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StartTime(self):
-        """Start time of a valid time period.
+        r"""Start time of a valid time period.
         :rtype: int
         """
         return self._StartTime
@@ -27287,7 +27287,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UIDList(self):
-        """UID of the alarm call recipient.
+        r"""UID of the alarm call recipient.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -27323,7 +27323,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class PrometheusAgent(AbstractModel):
-    """prometheus agent
+    r"""prometheus agent
 
     """
 
@@ -27362,7 +27362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Agent name
+        r"""Agent name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27374,7 +27374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentId(self):
-        """Agent ID
+        r"""Agent ID
         :rtype: str
         """
         return self._AgentId
@@ -27385,7 +27385,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -27396,7 +27396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ipv4(self):
-        """Agent IP
+        r"""Agent IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27408,7 +27408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeartbeatTime(self):
-        """Heartbeat time
+        r"""Heartbeat time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27420,7 +27420,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastError(self):
-        """Last error
+        r"""Last error
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27432,7 +27432,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentVersion(self):
-        """Agent version
+        r"""Agent version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27444,7 +27444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Agent status
+        r"""Agent status
         :rtype: int
         """
         return self._Status
@@ -27474,7 +27474,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusAgentInfo(AbstractModel):
-    """Information of managed Prometheus agent
+    r"""Information of managed Prometheus agent
 
     """
 
@@ -27493,7 +27493,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -27504,7 +27504,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -27515,7 +27515,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def Describe(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Describe
@@ -27540,7 +27540,7 @@ class PrometheusAgentInfo(AbstractModel):
 
 
 class PrometheusAgentOverview(AbstractModel):
-    """Overview of managed Prometheus agent
+    r"""Overview of managed Prometheus agent
 
     """
 
@@ -27585,7 +27585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -27596,7 +27596,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -27607,7 +27607,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Agent status. Valid values: 
+        r"""Agent status. Valid values: 
 `normal`
 `abnormal`
         :rtype: str
@@ -27620,7 +27620,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        """Cluster name
+        r"""Cluster name
         :rtype: str
         """
         return self._ClusterName
@@ -27631,7 +27631,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExternalLabels(self):
-        """External labels
+        r"""External labels
 External labels, which will be attached to all metrics in this cluster
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Label
@@ -27644,7 +27644,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Cluster region
+        r"""Cluster region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27656,7 +27656,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """ID of the VPC where the cluster resides
+        r"""ID of the VPC where the cluster resides
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27668,7 +27668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedReason(self):
-        """Recorded information of failed operations, such as association.
+        r"""Recorded information of failed operations, such as association.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27680,7 +27680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Agent name
+        r"""Agent name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27717,7 +27717,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusAlertManagerConfig(AbstractModel):
-    """Self-built AlertManager configuration used by the alert channel
+    r"""Self-built AlertManager configuration used by the alert channel
 
     """
 
@@ -27738,7 +27738,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Url(self):
-        """AlertManager URL
+        r"""AlertManager URL
         :rtype: str
         """
         return self._Url
@@ -27749,7 +27749,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
-        """Type of the cluster where AlertManager is deployed
+        r"""Type of the cluster where AlertManager is deployed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27761,7 +27761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """ID of the cluster where AlertManager is deployed
+        r"""ID of the cluster where AlertManager is deployed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27787,7 +27787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusAlertPolicyItem(AbstractModel):
-    """TMP alerting rule instance
+    r"""TMP alerting rule instance
 
     """
 
@@ -27823,7 +27823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._Name
@@ -27834,7 +27834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """List of rules
+        r"""List of rules
         :rtype: list of PrometheusAlertRule
         """
         return self._Rules
@@ -27845,7 +27845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Alerting rule ID
+        r"""Alerting rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27857,7 +27857,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """If the alert comes from a template, `TemplateId` is the template ID.
+        r"""If the alert comes from a template, `TemplateId` is the template ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27869,7 +27869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Notification(self):
-        """Alert channel, which may be returned as null if used in a template.
+        r"""Alert channel, which may be returned as null if used in a template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
         """
@@ -27881,7 +27881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Last modification time
+        r"""Last modification time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27893,7 +27893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """If the alerting rule comes from the user cluster CRD resource definition, `ClusterId` is the cluster ID.
+        r"""If the alerting rule comes from the user cluster CRD resource definition, `ClusterId` is the cluster ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -27930,7 +27930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusAlertRule(AbstractModel):
-    """Prometheus alerting rule
+    r"""Prometheus alerting rule
 
     """
 
@@ -27967,7 +27967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._Name
@@ -27978,7 +27978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rule(self):
-        """Prometheus statement
+        r"""Prometheus statement
         :rtype: str
         """
         return self._Rule
@@ -27989,7 +27989,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Labels(self):
-        """Additional tags
+        r"""Additional tags
         :rtype: list of Label
         """
         return self._Labels
@@ -28000,7 +28000,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Template(self):
-        """Alert sending template
+        r"""Alert sending template
         :rtype: str
         """
         return self._Template
@@ -28011,7 +28011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def For(self):
-        """Duration
+        r"""Duration
         :rtype: str
         """
         return self._For
@@ -28022,7 +28022,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Describe(self):
-        """Rule description
+        r"""Rule description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28034,7 +28034,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Annotations(self):
-        """See `annotations` in the Prometheus rule
+        r"""See `annotations` in the Prometheus rule
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Label
         """
@@ -28046,7 +28046,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleState(self):
-        """Alerting rule status
+        r"""Alerting rule status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -28087,7 +28087,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusClusterAgentBasic(AbstractModel):
-    """Basic information of the cluster associated with a Tencent Cloud Observability Platform (TCOP)-integrated TMP instance.
+    r"""Basic information of the cluster associated with a Tencent Cloud Observability Platform (TCOP)-integrated TMP instance.
 
     """
 
@@ -28124,7 +28124,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def Region(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._Region
@@ -28135,7 +28135,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type
+        r"""Cluster type
         :rtype: str
         """
         return self._ClusterType
@@ -28146,7 +28146,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -28157,7 +28157,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def EnableExternal(self):
-        """Whether to enable public network CLB
+        r"""Whether to enable public network CLB
         :rtype: bool
         """
         return self._EnableExternal
@@ -28168,7 +28168,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def InClusterPodConfig(self):
-        """Pod configurations of components deployed in the cluster
+        r"""Pod configurations of components deployed in the cluster
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
         """
         return self._InClusterPodConfig
@@ -28179,7 +28179,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ExternalLabels(self):
-        """External labels, which will be attached to all metrics collected by this cluster
+        r"""External labels, which will be attached to all metrics collected by this cluster
         :rtype: list of Label
         """
         return self._ExternalLabels
@@ -28190,7 +28190,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotInstallBasicScrape(self):
-        """Whether to install the default collection configuration.
+        r"""Whether to install the default collection configuration.
         :rtype: bool
         """
         return self._NotInstallBasicScrape
@@ -28201,7 +28201,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotScrape(self):
-        """Whether to collect metrics (`true`: Drop all metrics; `false`: Collect default metrics)
+        r"""Whether to collect metrics (`true`: Drop all metrics; `false`: Collect default metrics)
         :rtype: bool
         """
         return self._NotScrape
@@ -28212,7 +28212,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def OpenDefaultRecord(self):
-        """Whether to enable the default recording rule
+        r"""Whether to enable the default recording rule
         :rtype: bool
         """
         return self._OpenDefaultRecord
@@ -28250,7 +28250,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
 
 class PrometheusClusterAgentPodConfig(AbstractModel):
-    """Additional pod configurations of the components deployed in the cluster when a cluster is associated
+    r"""Additional pod configurations of the components deployed in the cluster when a cluster is associated
 
     """
 
@@ -28269,7 +28269,7 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def HostNet(self):
-        """Whether to use HostNetWork
+        r"""Whether to use HostNetWork
         :rtype: bool
         """
         return self._HostNet
@@ -28280,7 +28280,7 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def NodeSelector(self):
-        """A parameter used to specify the running nodes for a pod
+        r"""A parameter used to specify the running nodes for a pod
         :rtype: list of Label
         """
         return self._NodeSelector
@@ -28291,7 +28291,7 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
     @property
     def Tolerations(self):
-        """Tolerable taints
+        r"""Tolerable taints
         :rtype: list of Toleration
         """
         return self._Tolerations
@@ -28326,7 +28326,7 @@ class PrometheusClusterAgentPodConfig(AbstractModel):
 
 
 class PrometheusConfigItem(AbstractModel):
-    """Prometheus configuration
+    r"""Prometheus configuration
 
     """
 
@@ -28350,7 +28350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -28361,7 +28361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """Configuration content
+        r"""Configuration content
         :rtype: str
         """
         return self._Config
@@ -28372,7 +28372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """If the configuration comes from a template, this parameter is the template ID, which is used as an output parameter.
+        r"""If the configuration comes from a template, this parameter is the template ID, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28384,7 +28384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Targets(self):
-        """Number of targets
+        r"""Number of targets
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.Targets`
         """
@@ -28413,7 +28413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusInstanceGrantInfo(AbstractModel):
-    """Instance authorization information
+    r"""Instance authorization information
 
     """
 
@@ -28441,7 +28441,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasChargeOperation(self):
-        """Whether there is permission to operate on the billing information. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to operate on the billing information. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasChargeOperation
@@ -28452,7 +28452,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasVpcDisplay(self):
-        """Whether there is permission to display the VPC information. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to display the VPC information. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasVpcDisplay
@@ -28463,7 +28463,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasGrafanaStatusChange(self):
-        """Whether there is permission to change the Grafana status. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to change the Grafana status. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasGrafanaStatusChange
@@ -28474,7 +28474,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasAgentManage(self):
-        """Whether there is permission to manage agents. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to manage agents. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasAgentManage
@@ -28485,7 +28485,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasTkeManage(self):
-        """Whether there is permission to manage TKE integrations. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to manage TKE integrations. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasTkeManage
@@ -28496,7 +28496,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
     @property
     def HasApiOperation(self):
-        """Whether there is permission to display the API information. Valid values: 1 (yes), 2 (no).
+        r"""Whether there is permission to display the API information. Valid values: 1 (yes), 2 (no).
         :rtype: int
         """
         return self._HasApiOperation
@@ -28524,7 +28524,7 @@ class PrometheusInstanceGrantInfo(AbstractModel):
 
 
 class PrometheusInstanceTenantUsage(AbstractModel):
-    """TMP usage information
+    r"""TMP usage information
 
     """
 
@@ -28554,7 +28554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28566,7 +28566,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CalcDate(self):
-        """Billing cycle
+        r"""Billing cycle
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28578,7 +28578,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total usage
+        r"""Total usage
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -28590,7 +28590,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Basic(self):
-        """Usage of basic (free) metrics
+        r"""Usage of basic (free) metrics
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -28602,7 +28602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fee(self):
-        """Usage of paid metrics
+        r"""Usage of paid metrics
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -28630,7 +28630,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusInstancesItem(AbstractModel):
-    """Prometheus service response body
+    r"""Prometheus service response body
 
     """
 
@@ -28792,7 +28792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -28803,7 +28803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name.
+        r"""Instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -28814,7 +28814,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        """Instance billing mode. Valid values:
+        r"""Instance billing mode. Valid values:
 <ul>
 <li>2: Monthly subscription</li>
 <li>3: Pay-as-you-go</li>
@@ -28829,7 +28829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -28840,7 +28840,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
-        """AZ
+        r"""AZ
         :rtype: str
         """
         return self._Zone
@@ -28851,7 +28851,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -28862,7 +28862,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -28873,7 +28873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataRetentionTime(self):
-        """Storage period
+        r"""Storage period
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -28885,7 +28885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """Instance status. Valid values:
+        r"""Instance status. Valid values:
 <ul>
 <li>1: Creating</li>
 <li>2: Running</li>
@@ -28906,7 +28906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaURL(self):
-        """Grafana dashboard URL
+        r"""Grafana dashboard URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28918,7 +28918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -28929,7 +28929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableGrafana(self):
-        """Whether Grafana is enabled
+        r"""Whether Grafana is enabled
 <li>0: Disabled</li>
 <li>1: Enabled</li>
         :rtype: int
@@ -28942,7 +28942,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IPv4Address(self):
-        """Instance IPv4 address
+        r"""Instance IPv4 address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28954,7 +28954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSpecification(self):
-        """List of tags associated with the instance.
+        r"""List of tags associated with the instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusTag
         """
@@ -28966,7 +28966,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time of the purchased instance
+        r"""Expiration time of the purchased instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -28978,7 +28978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeStatus(self):
-        """Billing status
+        r"""Billing status
 <ul>
 <li>1: Normal</li>
 <li>2: Expired</li>
@@ -28997,7 +28997,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecName(self):
-        """Specification name
+        r"""Specification name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29009,7 +29009,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag
+        r"""Auto-renewal flag
 <ul>
 <li>0: Auto-renewal not enabled</li>
 <li>1: Auto-renewal enabled</li>
@@ -29027,7 +29027,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsNearExpire(self):
-        """Expiring soon
+        r"""Expiring soon
 <ul>
 <li>0: No</li>
 <li>1: Yes</li>
@@ -29043,7 +29043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthToken(self):
-        """The token required for data writing
+        r"""The token required for data writing
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29055,7 +29055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoteWrite(self):
-        """Prometheus remote write address
+        r"""Prometheus remote write address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29067,7 +29067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiRootPath(self):
-        """Prometheus HTTP API root address
+        r"""Prometheus HTTP API root address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29079,7 +29079,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyAddress(self):
-        """Proxy address
+        r"""Proxy address
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29091,7 +29091,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaStatus(self):
-        """Grafana status
+        r"""Grafana status
 <ul>
 <li>1: Creating</li>
 <li>2: Running</li>
@@ -29112,7 +29112,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaIpWhiteList(self):
-        """Grafana IP allowlist, where IPs are separated by comma.
+        r"""Grafana IP allowlist, where IPs are separated by comma.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29124,7 +29124,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Grant(self):
-        """Instance authorization information
+        r"""Instance authorization information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
         """
@@ -29136,7 +29136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaInstanceId(self):
-        """ID of the bound Grafana instance
+        r"""ID of the bound Grafana instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29148,7 +29148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertRuleLimit(self):
-        """The alert rule limit
+        r"""The alert rule limit
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29160,7 +29160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordingRuleLimit(self):
-        """The recording rule limit
+        r"""The recording rule limit
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29172,7 +29172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrationType(self):
-        """Migration status. 0: Not migrating; 1: Migrating from source instance; 2: Migrating to target instance.
+        r"""Migration status. 0: Not migrating; 1: Migrating from source instance; 2: Migrating to target instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29232,7 +29232,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusInstancesOverview(AbstractModel):
-    """TMP v2 instance overview
+    r"""TMP v2 instance overview
 
     """
 
@@ -29301,7 +29301,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -29312,7 +29312,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -29323,7 +29323,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -29334,7 +29334,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -29345,7 +29345,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """Running status. Valid values: `1` (creating); `2` (running); `3` (abnormal); `4` (restarting); `5` (terminating); `6` (stopped); `7` (deleted).
+        r"""Running status. Valid values: `1` (creating); `2` (running); `3` (abnormal); `4` (restarting); `5` (terminating); `6` (stopped); `7` (deleted).
         :rtype: int
         """
         return self._InstanceStatus
@@ -29356,7 +29356,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeStatus(self):
-        """Billing status. Valid values: `1` (normal); `2` (expired); `3` (terminated); `4` (assigning); `5` (failed to assign)
+        r"""Billing status. Valid values: `1` (normal); `2` (expired); `3` (terminated); `4` (assigning); `5` (failed to assign)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29368,7 +29368,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableGrafana(self):
-        """Whether Grafana is enabled. Valid values: `0` (no); `1` (yes).
+        r"""Whether Grafana is enabled. Valid values: `0` (no); `1` (yes).
         :rtype: int
         """
         return self._EnableGrafana
@@ -29379,7 +29379,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GrafanaURL(self):
-        """Grafana dashboard URL
+        r"""Grafana dashboard URL
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29391,7 +29391,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        """Instance payment type. Valid values: `1` (trial edition); `2` (prepaid)
+        r"""Instance payment type. Valid values: `1` (trial edition); `2` (prepaid)
         :rtype: int
         """
         return self._InstanceChargeType
@@ -29402,7 +29402,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecName(self):
-        """Specification name
+        r"""Specification name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29414,7 +29414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataRetentionTime(self):
-        """Storage period
+        r"""Storage period
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29426,7 +29426,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time of the purchased instance
+        r"""Expiration time of the purchased instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29438,7 +29438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. Valid values: `0` (auto-renewal not enabled); `1` (auto-renewal enabled); `2` (auto-renewal prohibited); `-1` (invalid).
+        r"""Auto-renewal flag. Valid values: `0` (auto-renewal not enabled); `1` (auto-renewal enabled); `2` (auto-renewal prohibited); `-1` (invalid).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29450,7 +29450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BoundTotal(self):
-        """Total number of bound clusters
+        r"""Total number of bound clusters
         :rtype: int
         """
         return self._BoundTotal
@@ -29461,7 +29461,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BoundNormal(self):
-        """Total number of bound clusters in the normal status
+        r"""Total number of bound clusters in the normal status
         :rtype: int
         """
         return self._BoundNormal
@@ -29472,7 +29472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourcePackageStatus(self):
-        """Resource pack status (`0`: Unavailable; `1`: Available)
+        r"""Resource pack status (`0`: Unavailable; `1`: Available)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29484,7 +29484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourcePackageSpecName(self):
-        """Resource pack specification name
+        r"""Resource pack specification name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29524,13 +29524,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusJobTargets(AbstractModel):
-    """Targets of a Prometheus job
+    r"""Targets of a Prometheus job
 
     """
 
 
 class PrometheusNotificationItem(AbstractModel):
-    """Alert notification channel configuration
+    r"""Alert notification channel configuration
 
     """
 
@@ -29599,7 +29599,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
-        """Whether it is enabled
+        r"""Whether it is enabled
         :rtype: bool
         """
         return self._Enabled
@@ -29610,7 +29610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Channel type. Default value: `amp`. Valid values:
+        r"""Channel type. Default value: `amp`. Valid values:
 `amp`
 `webhook`
 `alertmanager`
@@ -29624,7 +29624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WebHook(self):
-        """If `Type` is `webhook`, this field is required.
+        r"""If `Type` is `webhook`, this field is required.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29636,7 +29636,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertManager(self):
-        """If `Type` is `alertmanager`, this field is required.
+        r"""If `Type` is `alertmanager`, this field is required.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertManagerConfig`
         """
@@ -29648,7 +29648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RepeatInterval(self):
-        """Convergence time
+        r"""Convergence time
         :rtype: str
         """
         return self._RepeatInterval
@@ -29659,7 +29659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeRangeStart(self):
-        """Effect start time
+        r"""Effect start time
         :rtype: str
         """
         return self._TimeRangeStart
@@ -29670,7 +29670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeRangeEnd(self):
-        """Effect end time
+        r"""Effect end time
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -29681,7 +29681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyWay(self):
-        """Alert notification channel. Valid values: `SMS`, `EMAIL`, `CALL`, `WECHAT`.
+        r"""Alert notification channel. Valid values: `SMS`, `EMAIL`, `CALL`, `WECHAT`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -29693,7 +29693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReceiverGroups(self):
-        """Alert recipient group (user group)
+        r"""Alert recipient group (user group)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -29705,7 +29705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneNotifyOrder(self):
-        """Alert call sequence.
+        r"""Alert call sequence.
 Note: If `NotifyWay` is `CALL`, this parameter will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int non-negative
@@ -29718,7 +29718,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneCircleTimes(self):
-        """Number of alert calls.
+        r"""Number of alert calls.
 Note: If `NotifyWay` is `CALL`, this parameter will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -29731,7 +29731,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneInnerInterval(self):
-        """Alert call interval within a cycle in seconds.
+        r"""Alert call interval within a cycle in seconds.
 Note: If `NotifyWay` is `CALL`, this parameter will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -29744,7 +29744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneCircleInterval(self):
-        """Alert call cycle interval in seconds.
+        r"""Alert call cycle interval in seconds.
 Note: If `NotifyWay` is `CALL`, this parameter will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -29757,7 +29757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneArriveNotice(self):
-        """Alert call receipt notification
+        r"""Alert call receipt notification
 Note: If `NotifyWay` is `CALL`, this parameter will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
@@ -29797,7 +29797,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusRecordRuleYamlItem(AbstractModel):
-    """Details of the Prometheus recording rule instance, including the cluster ID.
+    r"""Details of the Prometheus recording rule instance, including the cluster ID.
 
     """
 
@@ -29836,7 +29836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._Name
@@ -29847,7 +29847,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Last update time
+        r"""Last update time
         :rtype: str
         """
         return self._UpdateTime
@@ -29858,7 +29858,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """YAML content
+        r"""YAML content
         :rtype: str
         """
         return self._TemplateId
@@ -29869,7 +29869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """If the recording rule comes from a template, `TemplateId` is the template ID.
+        r"""If the recording rule comes from a template, `TemplateId` is the template ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29881,7 +29881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """If the recording rule comes from the user cluster CRD resource definition, `ClusterId` is the cluster ID.
+        r"""If the recording rule comes from the user cluster CRD resource definition, `ClusterId` is the cluster ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29893,7 +29893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29905,7 +29905,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """id
+        r"""id
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -29917,7 +29917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
-        """Number of rules
+        r"""Number of rules
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -29948,7 +29948,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusRuleKV(AbstractModel):
-    """KV parameter of the Prometheus alerting rule
+    r"""KV parameter of the Prometheus alerting rule
 
     """
 
@@ -29964,7 +29964,7 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Key(self):
-        """Key
+        r"""Key
         :rtype: str
         """
         return self._Key
@@ -29975,7 +29975,7 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Value(self):
-        """Value
+        r"""Value
         :rtype: str
         """
         return self._Value
@@ -29999,7 +29999,7 @@ class PrometheusRuleKV(AbstractModel):
 
 
 class PrometheusRuleSet(AbstractModel):
-    """Set of Prometheus alerting rules
+    r"""Set of Prometheus alerting rules
 
     """
 
@@ -30057,7 +30057,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -30068,7 +30068,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleName(self):
-        """Rule name
+        r"""Rule name
         :rtype: str
         """
         return self._RuleName
@@ -30079,7 +30079,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleState(self):
-        """Rule status code
+        r"""Rule status code
         :rtype: int
         """
         return self._RuleState
@@ -30090,7 +30090,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Rule category
+        r"""Rule category
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30102,7 +30102,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Labels(self):
-        """List of rule tags
+        r"""List of rule tags
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusRuleKV
         """
@@ -30114,7 +30114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Annotations(self):
-        """List of rule annotations
+        r"""List of rule annotations
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusRuleKV
         """
@@ -30126,7 +30126,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expr(self):
-        """Rule expression
+        r"""Rule expression
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30138,7 +30138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
-        """Rule alert duration
+        r"""Rule alert duration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30150,7 +30150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Receivers(self):
-        """List of alert recipient groups
+        r"""List of alert recipient groups
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -30162,7 +30162,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Health(self):
-        """Rule status. Valid values:
+        r"""Rule status. Valid values:
 <li>unknown: Unknown</li>
 <li>pending: Loading</li>
 <li>ok: Running</li>
@@ -30177,7 +30177,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Rule creation time
+        r"""Rule creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30189,7 +30189,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Rule update time
+        r"""Rule update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30234,7 +30234,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusScrapeJob(AbstractModel):
-    """Prometheus scrape task
+    r"""Prometheus scrape task
 
     """
 
@@ -30258,7 +30258,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task name
+        r"""Task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30270,7 +30270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgentId(self):
-        """Agent ID
+        r"""Agent ID
         :rtype: str
         """
         return self._AgentId
@@ -30281,7 +30281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -30292,7 +30292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """Configuration
+        r"""Configuration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30319,7 +30319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusTag(AbstractModel):
-    """TMP tag
+    r"""TMP tag
 
     """
 
@@ -30336,7 +30336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -30347,7 +30347,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30372,7 +30372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusTemp(AbstractModel):
-    """Template instance
+    r"""Template instance
 
     """
 
@@ -30439,7 +30439,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Template name
+        r"""Template name
         :rtype: str
         """
         return self._Name
@@ -30450,7 +30450,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Level(self):
-        """Template dimension. Valid values:
+        r"""Template dimension. Valid values:
 `instance`
 `cluster`
         :rtype: str
@@ -30463,7 +30463,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Describe(self):
-        """Template description
+        r"""Template description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30475,7 +30475,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordRules(self):
-        """This parameter is valid if `Level` is `instance`.
+        r"""This parameter is valid if `Level` is `instance`.
 List of recording rules in the template
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30488,7 +30488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceMonitors(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of ServiceMonitor rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30501,7 +30501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodMonitors(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of PodMonitor rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30514,7 +30514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RawJobs(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of RawJob rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30527,7 +30527,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
-        """Template ID, which is used as an output parameter.
+        r"""Template ID, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30539,7 +30539,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Last update time, which is used as an output parameter.
+        r"""Last update time, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30551,7 +30551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """The current version, which is used as an output parameter.
+        r"""The current version, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30563,7 +30563,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
-        """Whether it is the default template provided by the system, which is used as an output parameter.
+        r"""Whether it is the default template provided by the system, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -30575,7 +30575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertDetailRules(self):
-        """This parameter is valid if `Level` is `instance`.
+        r"""This parameter is valid if `Level` is `instance`.
 List of alert configurations in the template
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusAlertPolicyItem
@@ -30588,7 +30588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetsTotal(self):
-        """Number of associated instances
+        r"""Number of associated instances
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -30649,7 +30649,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusTempModify(AbstractModel):
-    """Modifiable items in the TMP template
+    r"""Modifiable items in the TMP template
 
     """
 
@@ -30690,7 +30690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Name
+        r"""Name
         :rtype: str
         """
         return self._Name
@@ -30701,7 +30701,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Describe(self):
-        """Description
+        r"""Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30713,7 +30713,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceMonitors(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of ServiceMonitor rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30726,7 +30726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodMonitors(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of PodMonitor rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30739,7 +30739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RawJobs(self):
-        """This parameter is valid if `Level` is `cluster`.
+        r"""This parameter is valid if `Level` is `cluster`.
 List of RawJob rules in the template.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30752,7 +30752,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordRules(self):
-        """This parameter is valid if `Level` is `instance`.
+        r"""This parameter is valid if `Level` is `instance`.
 List of recording rules in the template
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusConfigItem
@@ -30765,7 +30765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlertDetailRules(self):
-        """Modification content, which is valid only if template type is `Alert`.
+        r"""Modification content, which is valid only if template type is `Alert`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PrometheusAlertPolicyItem
         """
@@ -30820,7 +30820,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusTemplateSyncTarget(AbstractModel):
-    """Sync target of the TMP template
+    r"""Sync target of the TMP template
 
     """
 
@@ -30860,7 +30860,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Target region
+        r"""Target region
         :rtype: str
         """
         return self._Region
@@ -30871,7 +30871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Target instance
+        r"""Target instance
         :rtype: str
         """
         return self._InstanceId
@@ -30882,7 +30882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """Cluster ID, which is required only if the `Level` of the collection template is `cluster`.
+        r"""Cluster ID, which is required only if the `Level` of the collection template is `cluster`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30894,7 +30894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SyncTime(self):
-        """Last sync time, which is used as an output parameter.
+        r"""Last sync time, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30906,7 +30906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """The currently used template version, which is used as an output parameter.
+        r"""The currently used template version, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30918,7 +30918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
-        """Cluster type, which is required only if the `Level` of the collection template is `cluster`.
+        r"""Cluster type, which is required only if the `Level` of the collection template is `cluster`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30930,7 +30930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name, which is used as an output parameter.
+        r"""Instance name, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30942,7 +30942,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        """Cluster name, which is used as an output parameter.
+        r"""Cluster name, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -30973,7 +30973,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusZoneItem(AbstractModel):
-    """Region information returned by `PrometheusZoneItem`
+    r"""Region information returned by `PrometheusZoneItem`
 
     """
 
@@ -30998,7 +30998,7 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ
+        r"""AZ
         :rtype: str
         """
         return self._Zone
@@ -31009,7 +31009,7 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneId(self):
-        """AZ ID
+        r"""AZ ID
         :rtype: int
         """
         return self._ZoneId
@@ -31020,7 +31020,7 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneState(self):
-        """AZ status. Valid values: `0`(Unavailable), `1` (Available).
+        r"""AZ status. Valid values: `0`(Unavailable), `1` (Available).
         :rtype: int
         """
         return self._ZoneState
@@ -31031,7 +31031,7 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -31042,7 +31042,7 @@ class PrometheusZoneItem(AbstractModel):
 
     @property
     def ZoneName(self):
-        """AZ name
+        r"""AZ name
         :rtype: str
         """
         return self._ZoneName
@@ -31069,7 +31069,7 @@ class PrometheusZoneItem(AbstractModel):
 
 
 class ReceiverInfo(AbstractModel):
-    """Recipient information.
+    r"""Recipient information.
 
     """
 
@@ -31124,7 +31124,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
+        r"""Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.
         :rtype: int
         """
         return self._StartTime
@@ -31135,7 +31135,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the alarm period. The meaning is the same as that of StartTime.
+        r"""End time of the alarm period. The meaning is the same as that of StartTime.
         :rtype: int
         """
         return self._EndTime
@@ -31146,7 +31146,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def NotifyWay(self):
-        """Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
+        r"""Alarm notification method. Valid values: "SMS", "SITE", "EMAIL", "CALL", and "WECHAT".
         :rtype: list of str
         """
         return self._NotifyWay
@@ -31157,7 +31157,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverType(self):
-        """Recipient type. Valid values: group and user.
+        r"""Recipient type. Valid values: group and user.
         :rtype: str
         """
         return self._ReceiverType
@@ -31168,7 +31168,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def Id(self):
-        """ReceiverId
+        r"""ReceiverId
         :rtype: int
         """
         return self._Id
@@ -31179,7 +31179,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def SendFor(self):
-        """Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
+        r"""Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).
         :rtype: list of str
         """
         return self._SendFor
@@ -31190,7 +31190,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def UidList(self):
-        """UID of the phone call alarm.
+        r"""UID of the phone call alarm.
         :rtype: list of int
         """
         return self._UidList
@@ -31201,7 +31201,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RoundNumber(self):
-        """Number of alarm call rounds.
+        r"""Number of alarm call rounds.
         :rtype: int
         """
         return self._RoundNumber
@@ -31212,7 +31212,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def PersonInterval(self):
-        """Alarm call intervals for individuals in seconds.
+        r"""Alarm call intervals for individuals in seconds.
         :rtype: int
         """
         return self._PersonInterval
@@ -31223,7 +31223,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RoundInterval(self):
-        """Intervals of alarm call rounds in seconds.
+        r"""Intervals of alarm call rounds in seconds.
         :rtype: int
         """
         return self._RoundInterval
@@ -31234,7 +31234,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def RecoverNotify(self):
-        """Notification method when an alarm is recovered. Valid value: SMS.
+        r"""Notification method when an alarm is recovered. Valid value: SMS.
         :rtype: list of str
         """
         return self._RecoverNotify
@@ -31245,7 +31245,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def NeedSendNotice(self):
-        """Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
+        r"""Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.
         :rtype: int
         """
         return self._NeedSendNotice
@@ -31256,7 +31256,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverGroupList(self):
-        """Recipient group list. The list of recipient group IDs that is queried by API.
+        r"""Recipient group list. The list of recipient group IDs that is queried by API.
         :rtype: list of int
         """
         return self._ReceiverGroupList
@@ -31267,7 +31267,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiverUserList(self):
-        """Recipient list. The list of recipient IDs that is queried by API.
+        r"""Recipient list. The list of recipient IDs that is queried by API.
         :rtype: list of int
         """
         return self._ReceiverUserList
@@ -31278,7 +31278,7 @@ class ReceiverInfo(AbstractModel):
 
     @property
     def ReceiveLanguage(self):
-        """Language of received alarms. Enumerated values: zh-CN and en-US.
+        r"""Language of received alarms. Enumerated values: zh-CN and en-US.
         :rtype: str
         """
         return self._ReceiveLanguage
@@ -31315,7 +31315,7 @@ class ReceiverInfo(AbstractModel):
 
 
 class RecordingRuleSet(AbstractModel):
-    """Response structure information of the Prometheus recording rule
+    r"""Response structure information of the Prometheus recording rule
 
     """
 
@@ -31350,7 +31350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -31361,7 +31361,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleState(self):
-        """Rule status code
+        r"""Rule status code
         :rtype: int
         """
         return self._RuleState
@@ -31372,7 +31372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._Name
@@ -31383,7 +31383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Group(self):
-        """Rule group
+        r"""Rule group
         :rtype: str
         """
         return self._Group
@@ -31394,7 +31394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Number of rules
+        r"""Number of rules
         :rtype: int
         """
         return self._Total
@@ -31405,7 +31405,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Rule creation time
+        r"""Rule creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -31416,7 +31416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedAt(self):
-        """Rule update time
+        r"""Rule update time
         :rtype: str
         """
         return self._UpdatedAt
@@ -31427,7 +31427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleName(self):
-        """Rule name
+        r"""Rule name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -31458,7 +31458,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ResumeGrafanaInstanceRequest(AbstractModel):
-    """ResumeGrafanaInstance request structure.
+    r"""ResumeGrafanaInstance request structure.
 
     """
 
@@ -31471,7 +31471,7 @@ class ResumeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -31494,7 +31494,7 @@ class ResumeGrafanaInstanceRequest(AbstractModel):
 
 
 class ResumeGrafanaInstanceResponse(AbstractModel):
-    """ResumeGrafanaInstance response structure.
+    r"""ResumeGrafanaInstance response structure.
 
     """
 
@@ -31507,7 +31507,7 @@ class ResumeGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -31522,7 +31522,7 @@ class ResumeGrafanaInstanceResponse(AbstractModel):
 
 
 class RunPrometheusInstanceRequest(AbstractModel):
-    """RunPrometheusInstance request structure.
+    r"""RunPrometheusInstance request structure.
 
     """
 
@@ -31538,7 +31538,7 @@ class RunPrometheusInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -31549,7 +31549,7 @@ class RunPrometheusInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID. Initialization is performed with the subnet used by the instance by default and can also be performed with the subnet passed in by this parameter.
+        r"""Subnet ID. Initialization is performed with the subnet used by the instance by default and can also be performed with the subnet passed in by this parameter.
         :rtype: str
         """
         return self._SubnetId
@@ -31573,7 +31573,7 @@ class RunPrometheusInstanceRequest(AbstractModel):
 
 
 class RunPrometheusInstanceResponse(AbstractModel):
-    """RunPrometheusInstance response structure.
+    r"""RunPrometheusInstance response structure.
 
     """
 
@@ -31586,7 +31586,7 @@ class RunPrometheusInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -31601,7 +31601,7 @@ class RunPrometheusInstanceResponse(AbstractModel):
 
 
 class SendCustomAlarmMsgRequest(AbstractModel):
-    """SendCustomAlarmMsg request structure.
+    r"""SendCustomAlarmMsg request structure.
 
     """
 
@@ -31620,7 +31620,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
 
     @property
     def Module(self):
-        """API component name. The value for the current API is monitor.
+        r"""API component name. The value for the current API is monitor.
         :rtype: str
         """
         return self._Module
@@ -31631,7 +31631,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Message policy ID, which is configured on the custom message page.
+        r"""Message policy ID, which is configured on the custom message page.
         :rtype: str
         """
         return self._PolicyId
@@ -31642,7 +31642,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
 
     @property
     def Msg(self):
-        """Custom message content that a user wants to send.
+        r"""Custom message content that a user wants to send.
         :rtype: str
         """
         return self._Msg
@@ -31667,7 +31667,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
 
 
 class SendCustomAlarmMsgResponse(AbstractModel):
-    """SendCustomAlarmMsg response structure.
+    r"""SendCustomAlarmMsg response structure.
 
     """
 
@@ -31680,7 +31680,7 @@ class SendCustomAlarmMsgResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -31695,7 +31695,7 @@ class SendCustomAlarmMsgResponse(AbstractModel):
 
 
 class ServiceDiscoveryItem(AbstractModel):
-    """Prometheus scrape configuration information
+    r"""Prometheus scrape configuration information
 
     """
 
@@ -31729,7 +31729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Scrape configuration name
+        r"""Scrape configuration name
         :rtype: str
         """
         return self._Name
@@ -31740,7 +31740,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
-        """Namespace of the scrape configuration
+        r"""Namespace of the scrape configuration
         :rtype: str
         """
         return self._Namespace
@@ -31751,7 +31751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Kind(self):
-        """Scrape configuration type: ServiceMonitor/PodMonitor
+        r"""Scrape configuration type: ServiceMonitor/PodMonitor
         :rtype: str
         """
         return self._Kind
@@ -31762,7 +31762,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NamespaceSelector(self):
-        """Namespace selection method
+        r"""Namespace selection method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -31774,7 +31774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Selector(self):
-        """Label selection method
+        r"""Label selection method
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -31786,7 +31786,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Endpoints(self):
-        """`Endpoints` information (PodMonitor does not have this parameter)
+        r"""`Endpoints` information (PodMonitor does not have this parameter)
         :rtype: str
         """
         return self._Endpoints
@@ -31797,7 +31797,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Yaml(self):
-        """Scrape configuration information
+        r"""Scrape configuration information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -31827,7 +31827,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SetDefaultAlarmPolicyRequest(AbstractModel):
-    """SetDefaultAlarmPolicy request structure.
+    r"""SetDefaultAlarmPolicy request structure.
 
     """
 
@@ -31843,7 +31843,7 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
-        """Module name, which is fixed at "monitor"
+        r"""Module name, which is fixed at "monitor"
         :rtype: str
         """
         return self._Module
@@ -31854,7 +31854,7 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID
+        r"""Alarm policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -31878,7 +31878,7 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
 
 
 class SetDefaultAlarmPolicyResponse(AbstractModel):
-    """SetDefaultAlarmPolicy response structure.
+    r"""SetDefaultAlarmPolicy response structure.
 
     """
 
@@ -31891,7 +31891,7 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -31906,7 +31906,7 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
 
 class SyncPrometheusTempRequest(AbstractModel):
-    """SyncPrometheusTemp request structure.
+    r"""SyncPrometheusTemp request structure.
 
     """
 
@@ -31922,7 +31922,7 @@ class SyncPrometheusTempRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._TemplateId
@@ -31933,7 +31933,7 @@ class SyncPrometheusTempRequest(AbstractModel):
 
     @property
     def Targets(self):
-        """Sync target
+        r"""Sync target
         :rtype: list of PrometheusTemplateSyncTarget
         """
         return self._Targets
@@ -31962,7 +31962,7 @@ class SyncPrometheusTempRequest(AbstractModel):
 
 
 class SyncPrometheusTempResponse(AbstractModel):
-    """SyncPrometheusTemp response structure.
+    r"""SyncPrometheusTemp response structure.
 
     """
 
@@ -31975,7 +31975,7 @@ class SyncPrometheusTempResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -31990,7 +31990,7 @@ class SyncPrometheusTempResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -32006,7 +32006,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -32017,7 +32017,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._Value
@@ -32041,7 +32041,7 @@ class Tag(AbstractModel):
 
 
 class TagInstance(AbstractModel):
-    """Instance tag information of the alarm policy
+    r"""Instance tag information of the alarm policy
 
     """
 
@@ -32079,7 +32079,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32091,7 +32091,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32103,7 +32103,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceSum(self):
-        """Number of instances
+        r"""Number of instances
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32115,7 +32115,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceType(self):
-        """Service type, for example, CVM
+        r"""Service type, for example, CVM
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32127,7 +32127,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32139,7 +32139,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BindingStatus(self):
-        """Binding status. 2: bound; 1: binding
+        r"""Binding status. 2: bound; 1: binding
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32151,7 +32151,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagStatus(self):
-        """Tag status. 2: existent; 1: nonexistent
+        r"""Tag status. 2: existent; 1: nonexistent
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32181,7 +32181,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class Targets(AbstractModel):
-    """Number of scrape targets
+    r"""Number of scrape targets
 
     """
 
@@ -32207,7 +32207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """The total count
+        r"""The total count
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32219,7 +32219,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Up(self):
-        """Number of online targets
+        r"""Number of online targets
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32231,7 +32231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Down(self):
-        """Number of offline targets
+        r"""Number of offline targets
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32243,7 +32243,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unknown(self):
-        """Number of unknown status
+        r"""Number of unknown status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32270,7 +32270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaskStepInfo(AbstractModel):
-    """Task step information
+    r"""Task step information
 
     """
 
@@ -32302,7 +32302,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Step(self):
-        """Step name
+        r"""Step name
         :rtype: str
         """
         return self._Step
@@ -32313,7 +32313,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifeState(self):
-        """Lifecycle
+        r"""Lifecycle
 `pending`
 `running`
 `success`
@@ -32328,7 +32328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartAt(self):
-        """Step start time
+        r"""Step start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32340,7 +32340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndAt(self):
-        """Step end time
+        r"""Step end time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32352,7 +32352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedMsg(self):
-        """If `LifeState` is `failed`, this field displays the error message.
+        r"""If `LifeState` is `failed`, this field displays the error message.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32380,7 +32380,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TemplateGroup(AbstractModel):
-    """Template list
+    r"""Template list
 
     """
 
@@ -32426,7 +32426,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Conditions(self):
-        """Metric alarm rules.
+        r"""Metric alarm rules.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of Condition
         """
@@ -32438,7 +32438,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventConditions(self):
-        """Event alarm rules.
+        r"""Event alarm rules.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of EventCondition
         """
@@ -32450,7 +32450,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PolicyGroups(self):
-        """The associated alarm policy groups.
+        r"""The associated alarm policy groups.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of PolicyGroup
         """
@@ -32462,7 +32462,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupID(self):
-        """Template-based policy group ID.
+        r"""Template-based policy group ID.
         :rtype: int
         """
         return self._GroupID
@@ -32473,7 +32473,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupName(self):
-        """Template-based policy group name.
+        r"""Template-based policy group name.
         :rtype: str
         """
         return self._GroupName
@@ -32484,7 +32484,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InsertTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: int
         """
         return self._InsertTime
@@ -32495,7 +32495,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastEditUin(self):
-        """UIN of the last modifier.
+        r"""UIN of the last modifier.
         :rtype: int
         """
         return self._LastEditUin
@@ -32506,7 +32506,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -32517,7 +32517,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: int
         """
         return self._UpdateTime
@@ -32528,7 +32528,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ViewName(self):
-        """View.
+        r"""View.
         :rtype: str
         """
         return self._ViewName
@@ -32539,7 +32539,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsUnionRule(self):
-        """Whether the logical relationship between rules is AND.
+        r"""Whether the logical relationship between rules is AND.
         :rtype: int
         """
         return self._IsUnionRule
@@ -32587,7 +32587,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class TerminatePrometheusInstancesRequest(AbstractModel):
-    """TerminatePrometheusInstances request structure.
+    r"""TerminatePrometheusInstances request structure.
 
     """
 
@@ -32600,7 +32600,7 @@ class TerminatePrometheusInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of instance IDs
+        r"""List of instance IDs
         :rtype: list of str
         """
         return self._InstanceIds
@@ -32623,7 +32623,7 @@ class TerminatePrometheusInstancesRequest(AbstractModel):
 
 
 class TerminatePrometheusInstancesResponse(AbstractModel):
-    """TerminatePrometheusInstances response structure.
+    r"""TerminatePrometheusInstances response structure.
 
     """
 
@@ -32636,7 +32636,7 @@ class TerminatePrometheusInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -32651,7 +32651,7 @@ class TerminatePrometheusInstancesResponse(AbstractModel):
 
 
 class Toleration(AbstractModel):
-    """Kubernetes taint
+    r"""Kubernetes taint
 
     """
 
@@ -32670,7 +32670,7 @@ class Toleration(AbstractModel):
 
     @property
     def Key(self):
-        """Key of the taint to which the toleration is applied
+        r"""Key of the taint to which the toleration is applied
         :rtype: str
         """
         return self._Key
@@ -32681,7 +32681,7 @@ class Toleration(AbstractModel):
 
     @property
     def Operator(self):
-        """The key-value relationship
+        r"""The key-value relationship
         :rtype: str
         """
         return self._Operator
@@ -32692,7 +32692,7 @@ class Toleration(AbstractModel):
 
     @property
     def Effect(self):
-        """The taint effect to be matched
+        r"""The taint effect to be matched
         :rtype: str
         """
         return self._Effect
@@ -32717,7 +32717,7 @@ class Toleration(AbstractModel):
 
 
 class URLNotice(AbstractModel):
-    """Alarm notification template – callback notification details
+    r"""Alarm notification template – callback notification details
 
     """
 
@@ -32751,7 +32751,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def URL(self):
-        """Callback URL, which can contain up to 256 characters
+        r"""Callback URL, which can contain up to 256 characters
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32763,7 +32763,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsValid(self):
-        """Whether verification is passed. Valid values: 0 (no), 1 (yes)
+        r"""Whether verification is passed. Valid values: 0 (no), 1 (yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32775,7 +32775,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValidationCode(self):
-        """Verification code
+        r"""Verification code
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -32787,7 +32787,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time of the notification in seconds, which is calculated from 00:00:00.
+        r"""Start time of the notification in seconds, which is calculated from 00:00:00.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32799,7 +32799,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndTime(self):
-        """End time of the notification in seconds, which is calculated from 00:00:00.
+        r"""End time of the notification in seconds, which is calculated from 00:00:00.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -32811,7 +32811,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Weekday(self):
-        """Notification cycle. The values 1-7 indicate Monday to Sunday.
+        r"""Notification cycle. The values 1-7 indicate Monday to Sunday.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -32840,7 +32840,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class UnBindingAllPolicyObjectRequest(AbstractModel):
-    """UnBindingAllPolicyObject request structure.
+    r"""UnBindingAllPolicyObject request structure.
 
     """
 
@@ -32865,7 +32865,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -32876,7 +32876,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
+        r"""Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
         :rtype: int
         """
         return self._GroupId
@@ -32887,7 +32887,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
+        r"""Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :rtype: str
         """
         return self._PolicyId
@@ -32898,7 +32898,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        """The alert configured for an event
+        r"""The alert configured for an event
         :rtype: str
         """
         return self._EbSubject
@@ -32909,7 +32909,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
-        """Whether the event alert has been configured
+        r"""Whether the event alert has been configured
         :rtype: int
         """
         return self._EbEventFlag
@@ -32936,7 +32936,7 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
 
 
 class UnBindingAllPolicyObjectResponse(AbstractModel):
-    """UnBindingAllPolicyObject response structure.
+    r"""UnBindingAllPolicyObject response structure.
 
     """
 
@@ -32949,7 +32949,7 @@ class UnBindingAllPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -32964,7 +32964,7 @@ class UnBindingAllPolicyObjectResponse(AbstractModel):
 
 
 class UnBindingPolicyObjectRequest(AbstractModel):
-    """UnBindingPolicyObject request structure.
+    r"""UnBindingPolicyObject request structure.
 
     """
 
@@ -32995,7 +32995,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
-        """The value is fixed to monitor.
+        r"""The value is fixed to monitor.
         :rtype: str
         """
         return self._Module
@@ -33006,7 +33006,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
+        r"""Policy group ID. If `PolicyId` is used, this parameter will be ignored, and any value, e.g., `0`, can be passed in.
         :rtype: int
         """
         return self._GroupId
@@ -33017,7 +33017,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def UniqueId(self):
-        """List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API
+        r"""List of unique IDs of the object instances to be deleted. `UniqueId` can be obtained from the output parameter `List` of the [DescribeBindingPolicyObjectList](https://intl.cloud.tencent.com/document/api/248/40570?from_cn_redirect=1) API
         :rtype: list of str
         """
         return self._UniqueId
@@ -33028,7 +33028,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        """Instance group ID. The `UniqueId` parameter is invalid if object instances are deleted by instance group.
+        r"""Instance group ID. The `UniqueId` parameter is invalid if object instances are deleted by instance group.
         :rtype: int
         """
         return self._InstanceGroupId
@@ -33039,7 +33039,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
+        r"""Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :rtype: str
         """
         return self._PolicyId
@@ -33050,7 +33050,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        """The alert configured for an event
+        r"""The alert configured for an event
         :rtype: str
         """
         return self._EbSubject
@@ -33061,7 +33061,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
-        """Whether the event alert has been configured
+        r"""Whether the event alert has been configured
         :rtype: int
         """
         return self._EbEventFlag
@@ -33090,7 +33090,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
 
 class UnBindingPolicyObjectResponse(AbstractModel):
-    """UnBindingPolicyObject response structure.
+    r"""UnBindingPolicyObject response structure.
 
     """
 
@@ -33103,7 +33103,7 @@ class UnBindingPolicyObjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33118,7 +33118,7 @@ class UnBindingPolicyObjectResponse(AbstractModel):
 
 
 class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
-    """UnbindPrometheusManagedGrafana request structure.
+    r"""UnbindPrometheusManagedGrafana request structure.
 
     """
 
@@ -33134,7 +33134,7 @@ class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -33145,7 +33145,7 @@ class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
 
     @property
     def GrafanaId(self):
-        """Grafana instance ID
+        r"""Grafana instance ID
         :rtype: str
         """
         return self._GrafanaId
@@ -33169,7 +33169,7 @@ class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
 
 
 class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
-    """UnbindPrometheusManagedGrafana response structure.
+    r"""UnbindPrometheusManagedGrafana response structure.
 
     """
 
@@ -33182,7 +33182,7 @@ class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33197,7 +33197,7 @@ class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
 
 
 class UninstallGrafanaDashboardRequest(AbstractModel):
-    """UninstallGrafanaDashboard request structure.
+    r"""UninstallGrafanaDashboard request structure.
 
     """
 
@@ -33230,7 +33230,7 @@ class UninstallGrafanaDashboardRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -33241,7 +33241,7 @@ class UninstallGrafanaDashboardRequest(AbstractModel):
 
     @property
     def IntegrationCodes(self):
-        """Prometheus integration code, indicating to delete the corresponding dashboard. Valid values:
+        r"""Prometheus integration code, indicating to delete the corresponding dashboard. Valid values:
 <li>spring_mvc</li>
 <li>mysql</li>
 <li>go</li>
@@ -33282,7 +33282,7 @@ class UninstallGrafanaDashboardRequest(AbstractModel):
 
 
 class UninstallGrafanaDashboardResponse(AbstractModel):
-    """UninstallGrafanaDashboard response structure.
+    r"""UninstallGrafanaDashboard response structure.
 
     """
 
@@ -33295,7 +33295,7 @@ class UninstallGrafanaDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33310,7 +33310,7 @@ class UninstallGrafanaDashboardResponse(AbstractModel):
 
 
 class UninstallGrafanaPluginsRequest(AbstractModel):
-    """UninstallGrafanaPlugins request structure.
+    r"""UninstallGrafanaPlugins request structure.
 
     """
 
@@ -33326,7 +33326,7 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     @property
     def PluginIds(self):
-        """Array of plugin IDs, such as "PluginIds": [ "grafana-clock-panel" ]. The plugin ID can be obtained through the `DescribePluginOverviews` API.
+        r"""Array of plugin IDs, such as "PluginIds": [ "grafana-clock-panel" ]. The plugin ID can be obtained through the `DescribePluginOverviews` API.
         :rtype: list of str
         """
         return self._PluginIds
@@ -33337,7 +33337,7 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefg”.
+        r"""TCMG instance ID, such as “grafana-abcdefg”.
         :rtype: str
         """
         return self._InstanceId
@@ -33361,7 +33361,7 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
 
 class UninstallGrafanaPluginsResponse(AbstractModel):
-    """UninstallGrafanaPlugins response structure.
+    r"""UninstallGrafanaPlugins response structure.
 
     """
 
@@ -33374,7 +33374,7 @@ class UninstallGrafanaPluginsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33389,7 +33389,7 @@ class UninstallGrafanaPluginsResponse(AbstractModel):
 
 
 class UpdateAlertRuleRequest(AbstractModel):
-    """UpdateAlertRule request structure.
+    r"""UpdateAlertRule request structure.
 
     """
 
@@ -33435,7 +33435,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def RuleId(self):
-        """Prometheus alerting rule ID
+        r"""Prometheus alerting rule ID
         :rtype: str
         """
         return self._RuleId
@@ -33446,7 +33446,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -33457,7 +33457,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>1=RuleDeleted</li>
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
@@ -33472,7 +33472,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleName(self):
-        """Alerting rule name
+        r"""Alerting rule name
         :rtype: str
         """
         return self._RuleName
@@ -33483,7 +33483,7 @@ Default value: 2 (enabled).
 
     @property
     def Expr(self):
-        """Alerting rule expression
+        r"""Alerting rule expression
         :rtype: str
         """
         return self._Expr
@@ -33494,7 +33494,7 @@ Default value: 2 (enabled).
 
     @property
     def Duration(self):
-        """Alerting rule duration
+        r"""Alerting rule duration
         :rtype: str
         """
         return self._Duration
@@ -33505,7 +33505,7 @@ Default value: 2 (enabled).
 
     @property
     def Receivers(self):
-        """List of alerting rule recipient groups
+        r"""List of alerting rule recipient groups
         :rtype: list of str
         """
         return self._Receivers
@@ -33516,7 +33516,7 @@ Default value: 2 (enabled).
 
     @property
     def Labels(self):
-        """List of alerting rule tags
+        r"""List of alerting rule tags
         :rtype: list of PrometheusRuleKV
         """
         return self._Labels
@@ -33527,7 +33527,7 @@ Default value: 2 (enabled).
 
     @property
     def Annotations(self):
-        """List of alerting rule annotations.
+        r"""List of alerting rule annotations.
 
 Alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.
         :rtype: list of PrometheusRuleKV
@@ -33540,7 +33540,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
     @property
     def Type(self):
-        """Alerting rule template category
+        r"""Alerting rule template category
         :rtype: str
         """
         return self._Type
@@ -33582,7 +33582,7 @@ Alert object and alert message are special fields of Prometheus Rule Annotations
 
 
 class UpdateAlertRuleResponse(AbstractModel):
-    """UpdateAlertRule response structure.
+    r"""UpdateAlertRule response structure.
 
     """
 
@@ -33598,7 +33598,7 @@ class UpdateAlertRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -33609,7 +33609,7 @@ class UpdateAlertRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33625,7 +33625,7 @@ class UpdateAlertRuleResponse(AbstractModel):
 
 
 class UpdateAlertRuleStateRequest(AbstractModel):
-    """UpdateAlertRuleState request structure.
+    r"""UpdateAlertRuleState request structure.
 
     """
 
@@ -33647,7 +33647,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleIds(self):
-        """List of rule IDs
+        r"""List of rule IDs
         :rtype: list of str
         """
         return self._RuleIds
@@ -33658,7 +33658,7 @@ Default value: 2 (enabled).
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -33669,7 +33669,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
 Default value: 2 (enabled).
@@ -33697,7 +33697,7 @@ Default value: 2 (enabled).
 
 
 class UpdateAlertRuleStateResponse(AbstractModel):
-    """UpdateAlertRuleState response structure.
+    r"""UpdateAlertRuleState response structure.
 
     """
 
@@ -33710,7 +33710,7 @@ class UpdateAlertRuleStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33725,7 +33725,7 @@ class UpdateAlertRuleStateResponse(AbstractModel):
 
 
 class UpdateDNSConfigRequest(AbstractModel):
-    """UpdateDNSConfig request structure.
+    r"""UpdateDNSConfig request structure.
 
     """
 
@@ -33741,7 +33741,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -33752,7 +33752,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     @property
     def NameServers(self):
-        """Array of DNS servers
+        r"""Array of DNS servers
         :rtype: list of str
         """
         return self._NameServers
@@ -33776,7 +33776,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
 
 class UpdateDNSConfigResponse(AbstractModel):
-    """UpdateDNSConfig response structure.
+    r"""UpdateDNSConfig response structure.
 
     """
 
@@ -33789,7 +33789,7 @@ class UpdateDNSConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33804,7 +33804,7 @@ class UpdateDNSConfigResponse(AbstractModel):
 
 
 class UpdateExporterIntegrationRequest(AbstractModel):
-    """UpdateExporterIntegration request structure.
+    r"""UpdateExporterIntegration request structure.
 
     """
 
@@ -33832,7 +33832,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -33843,7 +33843,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        """Kubernetes cluster type. Valid values:
+        r"""Kubernetes cluster type. Valid values:
 <li> 1 = TKE </li>
 <li> 2 = EKS </li>
 <li> 3 = MEKS </li>
@@ -33857,7 +33857,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -33868,7 +33868,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Kind
@@ -33879,7 +33879,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Configuration content
+        r"""Configuration content
         :rtype: str
         """
         return self._Content
@@ -33906,7 +33906,7 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
 
 class UpdateExporterIntegrationResponse(AbstractModel):
-    """UpdateExporterIntegration response structure.
+    r"""UpdateExporterIntegration response structure.
 
     """
 
@@ -33919,7 +33919,7 @@ class UpdateExporterIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -33934,7 +33934,7 @@ class UpdateExporterIntegrationResponse(AbstractModel):
 
 
 class UpdateGrafanaConfigRequest(AbstractModel):
-    """UpdateGrafanaConfig request structure.
+    r"""UpdateGrafanaConfig request structure.
 
     """
 
@@ -33950,7 +33950,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -33961,7 +33961,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def Config(self):
-        """JSON-encoded string
+        r"""JSON-encoded string
         :rtype: str
         """
         return self._Config
@@ -33985,7 +33985,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
 
 class UpdateGrafanaConfigResponse(AbstractModel):
-    """UpdateGrafanaConfig response structure.
+    r"""UpdateGrafanaConfig response structure.
 
     """
 
@@ -33998,7 +33998,7 @@ class UpdateGrafanaConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34013,7 +34013,7 @@ class UpdateGrafanaConfigResponse(AbstractModel):
 
 
 class UpdateGrafanaEnvironmentsRequest(AbstractModel):
-    """UpdateGrafanaEnvironments request structure.
+    r"""UpdateGrafanaEnvironments request structure.
 
     """
 
@@ -34029,7 +34029,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -34040,7 +34040,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     @property
     def Envs(self):
-        """Environment variable string
+        r"""Environment variable string
         :rtype: str
         """
         return self._Envs
@@ -34064,7 +34064,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
 
 class UpdateGrafanaEnvironmentsResponse(AbstractModel):
-    """UpdateGrafanaEnvironments response structure.
+    r"""UpdateGrafanaEnvironments response structure.
 
     """
 
@@ -34077,7 +34077,7 @@ class UpdateGrafanaEnvironmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34092,7 +34092,7 @@ class UpdateGrafanaEnvironmentsResponse(AbstractModel):
 
 
 class UpdateGrafanaIntegrationRequest(AbstractModel):
-    """UpdateGrafanaIntegration request structure.
+    r"""UpdateGrafanaIntegration request structure.
 
     """
 
@@ -34114,7 +34114,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
-        """Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
+        r"""Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :rtype: str
         """
         return self._IntegrationId
@@ -34125,7 +34125,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -34136,7 +34136,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        """Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
+        r"""Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :rtype: str
         """
         return self._Kind
@@ -34147,7 +34147,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """Integration content
+        r"""Integration content
         :rtype: str
         """
         return self._Content
@@ -34173,7 +34173,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
 
 class UpdateGrafanaIntegrationResponse(AbstractModel):
-    """UpdateGrafanaIntegration response structure.
+    r"""UpdateGrafanaIntegration response structure.
 
     """
 
@@ -34186,7 +34186,7 @@ class UpdateGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34201,7 +34201,7 @@ class UpdateGrafanaIntegrationResponse(AbstractModel):
 
 
 class UpdateGrafanaNotificationChannelRequest(AbstractModel):
-    """UpdateGrafanaNotificationChannel request structure.
+    r"""UpdateGrafanaNotificationChannel request structure.
 
     """
 
@@ -34229,7 +34229,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """Channel ID, such as “nchannel-abcd1234”.
+        r"""Channel ID, such as “nchannel-abcd1234”.
         :rtype: str
         """
         return self._ChannelId
@@ -34240,7 +34240,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -34251,7 +34251,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        """Alert channel name, such as “test”.
+        r"""Alert channel name, such as “test”.
         :rtype: str
         """
         return self._ChannelName
@@ -34262,7 +34262,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def Receivers(self):
-        """Array of notification channel IDs
+        r"""Array of notification channel IDs
         :rtype: list of str
         """
         return self._Receivers
@@ -34273,7 +34273,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
-        """This parameter has been deprecated. Please use `OrganizationIds` instead.
+        r"""This parameter has been deprecated. Please use `OrganizationIds` instead.
         :rtype: list of str
         """
         return self._ExtraOrgIds
@@ -34284,7 +34284,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrganizationIds(self):
-        """Array of valid organization IDs
+        r"""Array of valid organization IDs
         :rtype: list of str
         """
         return self._OrganizationIds
@@ -34312,7 +34312,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
 
 class UpdateGrafanaNotificationChannelResponse(AbstractModel):
-    """UpdateGrafanaNotificationChannel response structure.
+    r"""UpdateGrafanaNotificationChannel response structure.
 
     """
 
@@ -34325,7 +34325,7 @@ class UpdateGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34340,7 +34340,7 @@ class UpdateGrafanaNotificationChannelResponse(AbstractModel):
 
 
 class UpdateGrafanaWhiteListRequest(AbstractModel):
-    """UpdateGrafanaWhiteList request structure.
+    r"""UpdateGrafanaWhiteList request structure.
 
     """
 
@@ -34356,7 +34356,7 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -34367,7 +34367,7 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     @property
     def Whitelist(self):
-        """Array of public IPs (such as “127.0.0.1”) in the allowlist, which can be viewed through the `DescribeGrafanaWhiteList` API.
+        r"""Array of public IPs (such as “127.0.0.1”) in the allowlist, which can be viewed through the `DescribeGrafanaWhiteList` API.
         :rtype: list of str
         """
         return self._Whitelist
@@ -34391,7 +34391,7 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
 
 class UpdateGrafanaWhiteListResponse(AbstractModel):
-    """UpdateGrafanaWhiteList response structure.
+    r"""UpdateGrafanaWhiteList response structure.
 
     """
 
@@ -34404,7 +34404,7 @@ class UpdateGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34419,7 +34419,7 @@ class UpdateGrafanaWhiteListResponse(AbstractModel):
 
 
 class UpdatePrometheusAgentStatusRequest(AbstractModel):
-    """UpdatePrometheusAgentStatus request structure.
+    r"""UpdatePrometheusAgentStatus request structure.
 
     """
 
@@ -34440,7 +34440,7 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TMP instance ID, such as “prom-abcd1234”.
+        r"""TMP instance ID, such as “prom-abcd1234”.
         :rtype: str
         """
         return self._InstanceId
@@ -34451,7 +34451,7 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def AgentIds(self):
-        """List of agent IDs such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console.
+        r"""List of agent IDs such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console.
         :rtype: list of str
         """
         return self._AgentIds
@@ -34462,7 +34462,7 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status to update
+        r"""Status to update
 <li> 1 = enabled </li>
 <li> 2 = disabled </li>
         :rtype: int
@@ -34489,7 +34489,7 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
 
 class UpdatePrometheusAgentStatusResponse(AbstractModel):
-    """UpdatePrometheusAgentStatus response structure.
+    r"""UpdatePrometheusAgentStatus response structure.
 
     """
 
@@ -34502,7 +34502,7 @@ class UpdatePrometheusAgentStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34517,7 +34517,7 @@ class UpdatePrometheusAgentStatusResponse(AbstractModel):
 
 
 class UpdatePrometheusScrapeJobRequest(AbstractModel):
-    """UpdatePrometheusScrapeJob request structure.
+    r"""UpdatePrometheusScrapeJob request structure.
 
     """
 
@@ -34539,7 +34539,7 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TMP instance ID, such as “prom-abcd1234”.
+        r"""TMP instance ID, such as “prom-abcd1234”.
         :rtype: str
         """
         return self._InstanceId
@@ -34550,7 +34550,7 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        """Agent ID such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console
+        r"""Agent ID such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console
         :rtype: str
         """
         return self._AgentId
@@ -34561,7 +34561,7 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Scrape task ID such as “job-abcd1234”. You can go to the **Agent Management** page and obtain the ID in the pop-up **Create Scrape Task** window.
+        r"""Scrape task ID such as “job-abcd1234”. You can go to the **Agent Management** page and obtain the ID in the pop-up **Create Scrape Task** window.
         :rtype: str
         """
         return self._JobId
@@ -34572,7 +34572,7 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Scrape task ID in the format of “job_name:xx”
+        r"""Scrape task ID in the format of “job_name:xx”
         :rtype: str
         """
         return self._Config
@@ -34598,7 +34598,7 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
 
 class UpdatePrometheusScrapeJobResponse(AbstractModel):
-    """UpdatePrometheusScrapeJob response structure.
+    r"""UpdatePrometheusScrapeJob response structure.
 
     """
 
@@ -34611,7 +34611,7 @@ class UpdatePrometheusScrapeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34626,7 +34626,7 @@ class UpdatePrometheusScrapeJobResponse(AbstractModel):
 
 
 class UpdateRecordingRuleRequest(AbstractModel):
-    """UpdateRecordingRule request structure.
+    r"""UpdateRecordingRule request structure.
 
     """
 
@@ -34655,7 +34655,7 @@ Default value: 2 (enabled).
 
     @property
     def Name(self):
-        """Recording rule name
+        r"""Recording rule name
         :rtype: str
         """
         return self._Name
@@ -34666,7 +34666,7 @@ Default value: 2 (enabled).
 
     @property
     def Group(self):
-        """Recording rule group content, which is in YAML format and is Base64-encoded.
+        r"""Recording rule group content, which is in YAML format and is Base64-encoded.
         :rtype: str
         """
         return self._Group
@@ -34677,7 +34677,7 @@ Default value: 2 (enabled).
 
     @property
     def InstanceId(self):
-        """Prometheus instance ID
+        r"""Prometheus instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -34688,7 +34688,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleId(self):
-        """Prometheus recording rule ID
+        r"""Prometheus recording rule ID
         :rtype: str
         """
         return self._RuleId
@@ -34699,7 +34699,7 @@ Default value: 2 (enabled).
 
     @property
     def RuleState(self):
-        """Rule status code. Valid values:
+        r"""Rule status code. Valid values:
 <li>1=RuleDeleted</li>
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
@@ -34730,7 +34730,7 @@ Default value: 2 (enabled).
 
 
 class UpdateRecordingRuleResponse(AbstractModel):
-    """UpdateRecordingRule response structure.
+    r"""UpdateRecordingRule response structure.
 
     """
 
@@ -34747,7 +34747,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -34759,7 +34759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34775,7 +34775,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class UpdateSSOAccountRequest(AbstractModel):
-    """UpdateSSOAccount request structure.
+    r"""UpdateSSOAccount request structure.
 
     """
 
@@ -34797,7 +34797,7 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-abcdefgh”.
+        r"""TCMG instance ID, such as “grafana-abcdefgh”.
         :rtype: str
         """
         return self._InstanceId
@@ -34808,7 +34808,7 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """User account ID, such as “10000000”.
+        r"""User account ID, such as “10000000”.
         :rtype: str
         """
         return self._UserId
@@ -34819,7 +34819,7 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def Role(self):
-        """Permission
+        r"""Permission
         :rtype: list of GrafanaAccountRole
         """
         return self._Role
@@ -34830,7 +34830,7 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     @property
     def Notes(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Notes
@@ -34861,7 +34861,7 @@ class UpdateSSOAccountRequest(AbstractModel):
 
 
 class UpdateSSOAccountResponse(AbstractModel):
-    """UpdateSSOAccount response structure.
+    r"""UpdateSSOAccount response structure.
 
     """
 
@@ -34874,7 +34874,7 @@ class UpdateSSOAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -34889,7 +34889,7 @@ class UpdateSSOAccountResponse(AbstractModel):
 
 
 class UpgradeGrafanaDashboardRequest(AbstractModel):
-    """UpgradeGrafanaDashboard request structure.
+    r"""UpgradeGrafanaDashboard request structure.
 
     """
 
@@ -34922,7 +34922,7 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -34933,7 +34933,7 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
     @property
     def IntegrationCodes(self):
-        """Prometheus integration code, indicating to upgrade to the corresponding dashboard. Valid values:
+        r"""Prometheus integration code, indicating to upgrade to the corresponding dashboard. Valid values:
 <li>spring_mvc</li>
 <li>mysql</li>
 <li>go</li>
@@ -34974,7 +34974,7 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
 
 class UpgradeGrafanaDashboardResponse(AbstractModel):
-    """UpgradeGrafanaDashboard response structure.
+    r"""UpgradeGrafanaDashboard response structure.
 
     """
 
@@ -34987,7 +34987,7 @@ class UpgradeGrafanaDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -35002,7 +35002,7 @@ class UpgradeGrafanaDashboardResponse(AbstractModel):
 
 
 class UpgradeGrafanaInstanceRequest(AbstractModel):
-    """UpgradeGrafanaInstance request structure.
+    r"""UpgradeGrafanaInstance request structure.
 
     """
 
@@ -35018,7 +35018,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """TCMG instance ID, such as “grafana-12345678”.
+        r"""TCMG instance ID, such as “grafana-12345678”.
         :rtype: str
         """
         return self._InstanceId
@@ -35029,7 +35029,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """Version alias, such as v7.4.2.
+        r"""Version alias, such as v7.4.2.
         :rtype: str
         """
         return self._Alias
@@ -35053,7 +35053,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
 
 class UpgradeGrafanaInstanceResponse(AbstractModel):
-    """UpgradeGrafanaInstance response structure.
+    r"""UpgradeGrafanaInstance response structure.
 
     """
 
@@ -35066,7 +35066,7 @@ class UpgradeGrafanaInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -35081,7 +35081,7 @@ class UpgradeGrafanaInstanceResponse(AbstractModel):
 
 
 class UserNotice(AbstractModel):
-    """Alarm notification template - user notification details
+    r"""Alarm notification template - user notification details
 
     """
 
@@ -35147,7 +35147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReceiverType(self):
-        """Recipient type. Valid values: USER (user), GROUP (user group)
+        r"""Recipient type. Valid values: USER (user), GROUP (user group)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -35159,7 +35159,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399
+        r"""Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35171,7 +35171,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399
+        r"""Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0-86399
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35183,7 +35183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoticeWay(self):
-        """Notification channel list. Valid values: `EMAIL` (email), `SMS` (SMS), `CALL` (phone), `WECHAT` (WeChat), `RTX` (WeCom)
+        r"""Notification channel list. Valid values: `EMAIL` (email), `SMS` (SMS), `CALL` (phone), `WECHAT` (WeChat), `RTX` (WeCom)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -35195,7 +35195,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UserIds(self):
-        """User `uid` list
+        r"""User `uid` list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -35207,7 +35207,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupIds(self):
-        """User group ID list
+        r"""User group ID list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -35219,7 +35219,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneOrder(self):
-        """Phone polling list
+        r"""Phone polling list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -35231,7 +35231,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneCircleTimes(self):
-        """Number of phone pollings. Value range: 1-5
+        r"""Number of phone pollings. Value range: 1-5
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35243,7 +35243,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneInnerInterval(self):
-        """Call interval in seconds within one polling. Value range: 60-900
+        r"""Call interval in seconds within one polling. Value range: 60-900
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35255,7 +35255,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneCircleInterval(self):
-        """Polling interval in seconds. Value range: 60-900
+        r"""Polling interval in seconds. Value range: 60-900
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35267,7 +35267,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NeedPhoneArriveNotice(self):
-        """Whether receipt notification is required. Valid values: 0 (no), 1 (yes)
+        r"""Whether receipt notification is required. Valid values: 0 (no), 1 (yes)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -35279,7 +35279,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneCallType(self):
-        """Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.
+        r"""Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -35291,7 +35291,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Weekday(self):
-        """Notification cycle. The values 1-7 indicate Monday to Sunday.
+        r"""Notification cycle. The values 1-7 indicate Monday to Sunday.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -35303,7 +35303,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OnCallFormIDs(self):
-        """List of schedule IDs
+        r"""List of schedule IDs
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """

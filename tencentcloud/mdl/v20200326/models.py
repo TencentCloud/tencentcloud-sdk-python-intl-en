@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AVTemplate(AbstractModel):
-    """Audio/Video transcoding template
+    r"""Audio/Video transcoding template
 
     """
 
@@ -141,7 +141,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Name(self):
-        """Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits
+        r"""Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits
         :rtype: str
         """
         return self._Name
@@ -152,7 +152,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def NeedVideo(self):
-        """Whether video is needed. `0`: not needed; `1`: needed
+        r"""Whether video is needed. `0`: not needed; `1`: needed
         :rtype: int
         """
         return self._NeedVideo
@@ -163,7 +163,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Vcodec(self):
-        """Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.
+        r"""Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.
         :rtype: str
         """
         return self._Vcodec
@@ -174,7 +174,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Width(self):
-        """Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
+        r"""Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
         :rtype: int
         """
         return self._Width
@@ -185,7 +185,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Height(self):
-        """Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
+        r"""Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
         :rtype: int
         """
         return self._Height
@@ -196,7 +196,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Fps(self):
-        """Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
+        r"""Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
         :rtype: int
         """
         return self._Fps
@@ -207,7 +207,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def TopSpeed(self):
-        """Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
+        r"""Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
         :rtype: str
         """
         return self._TopSpeed
@@ -218,7 +218,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def BitrateCompressionRatio(self):
-        """Compression ratio for top speed codec transcoding. Value range: [0, 50]. The lower the compression ratio, the higher the image quality.
+        r"""Compression ratio for top speed codec transcoding. Value range: [0, 50]. The lower the compression ratio, the higher the image quality.
         :rtype: int
         """
         return self._BitrateCompressionRatio
@@ -229,7 +229,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def NeedAudio(self):
-        """Whether audio is needed. `0`: not needed; `1`: needed
+        r"""Whether audio is needed. `0`: not needed; `1`: needed
         :rtype: int
         """
         return self._NeedAudio
@@ -240,7 +240,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Acodec(self):
-        """Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :rtype: str
         """
         return self._Acodec
@@ -251,7 +251,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioBitrate(self):
-        """Audio bitrate. If this parameter is left empty, the original bitrate will be used.
+        r"""Audio bitrate. If this parameter is left empty, the original bitrate will be used.
 Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`
         :rtype: int
         """
@@ -263,7 +263,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoBitrate(self):
-        """Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.
+        r"""Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.
         :rtype: int
         """
         return self._VideoBitrate
@@ -274,7 +274,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def RateControlMode(self):
-        """Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        r"""Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
         :rtype: str
         """
         return self._RateControlMode
@@ -285,7 +285,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def WatermarkId(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._WatermarkId
@@ -296,7 +296,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def SmartSubtitles(self):
-        """Whether to convert audio to text. `0` (default): No; `1`: Yes.
+        r"""Whether to convert audio to text. `0` (default): No; `1`: Yes.
         :rtype: int
         """
         return self._SmartSubtitles
@@ -307,7 +307,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def SubtitleConfiguration(self):
-        """The subtitle settings. Currently, the following subtitles are supported:
+        r"""The subtitle settings. Currently, the following subtitles are supported:
 `eng2eng`: English speech to English text.
 `eng2chs`: English speech to Chinese text. 
 `eng2chseng`: English speech to English and Chinese text. 
@@ -324,7 +324,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FaceBlurringEnabled(self):
-        """Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
+        r"""Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
         :rtype: int
         """
         return self._FaceBlurringEnabled
@@ -335,7 +335,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioSelectorName(self):
-        """Only AttachedInputs.AudioSelectors.Name can be selected. The following types need to be filled in: 'RTP_PUSH', 'SRT_PUSH', 'UDP_PUSH', 'RTP-FEC_PUSH'.
+        r"""Only AttachedInputs.AudioSelectors.Name can be selected. The following types need to be filled in: 'RTP_PUSH', 'SRT_PUSH', 'UDP_PUSH', 'RTP-FEC_PUSH'.
         :rtype: str
         """
         return self._AudioSelectorName
@@ -346,7 +346,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioNormalization(self):
-        """Audio transcoding special configuration information.
+        r"""Audio transcoding special configuration information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
         """
         return self._AudioNormalization
@@ -357,7 +357,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioSampleRate(self):
-        """Audio sampling rate, unit HZ.
+        r"""Audio sampling rate, unit HZ.
         :rtype: int
         """
         return self._AudioSampleRate
@@ -368,7 +368,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateType(self):
-        """This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        r"""This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
         :rtype: str
         """
         return self._FrameRateType
@@ -379,7 +379,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateNumerator(self):
-        """Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
         :rtype: int
         """
         return self._FrameRateNumerator
@@ -390,7 +390,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateDenominator(self):
-        """Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
         :rtype: int
         """
         return self._FrameRateDenominator
@@ -401,7 +401,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def BFramesNum(self):
-        """The number of B frames can be selected from 1 to 3.
+        r"""The number of B frames can be selected from 1 to 3.
         :rtype: int
         """
         return self._BFramesNum
@@ -412,7 +412,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def RefFramesNum(self):
-        """The number of reference frames can be selected from 1 to 16.
+        r"""The number of reference frames can be selected from 1 to 16.
         :rtype: int
         """
         return self._RefFramesNum
@@ -423,7 +423,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AdditionalRateSettings(self):
-        """Additional video bitrate configuration.
+        r"""Additional video bitrate configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
         """
         return self._AdditionalRateSettings
@@ -434,7 +434,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoCodecDetails(self):
-        """Video encoding configuration.
+        r"""Video encoding configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
         """
         return self._VideoCodecDetails
@@ -445,7 +445,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioCodecDetails(self):
-        """Audio encoding configuration.
+        r"""Audio encoding configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         return self._AudioCodecDetails
@@ -456,7 +456,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def MultiAudioTrackEnabled(self):
-        """Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.
+        r"""Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.
         :rtype: int
         """
         return self._MultiAudioTrackEnabled
@@ -467,7 +467,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioTracks(self):
-        """Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
+        r"""Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
         :rtype: list of AudioTrackInfo
         """
         return self._AudioTracks
@@ -478,7 +478,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoEnhanceEnabled(self):
-        """
+        r"""
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -489,7 +489,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoEnhanceSettings(self):
-        """
+        r"""
         :rtype: list of VideoEnhanceSetting
         """
         return self._VideoEnhanceSettings
@@ -500,7 +500,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def GopSize(self):
-        """Key frame interval, 300-10000, optional.
+        r"""Key frame interval, 300-10000, optional.
         :rtype: int
         """
         return self._GopSize
@@ -511,7 +511,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def GopSizeUnits(self):
-        """Keyframe units, only support MILLISECONDS (milliseconds).
+        r"""Keyframe units, only support MILLISECONDS (milliseconds).
         :rtype: str
         """
         return self._GopSizeUnits
@@ -522,7 +522,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def ColorSpaceSettings(self):
-        """Color space setting.
+        r"""Color space setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         return self._ColorSpaceSettings
@@ -599,7 +599,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
 
 class AdditionalRateSetting(AbstractModel):
-    """additional bit rate configuration.
+    r"""additional bit rate configuration.
 
     """
 
@@ -618,7 +618,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def VideoMaxBitrate(self):
-        """The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.
+        r"""The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.
         :rtype: int
         """
         return self._VideoMaxBitrate
@@ -629,7 +629,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def BufferSize(self):
-        """Cache configuration supports configuring a Max Bitrate value of 1-4 times.
+        r"""Cache configuration supports configuring a Max Bitrate value of 1-4 times.
         :rtype: int
         """
         return self._BufferSize
@@ -640,7 +640,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def QualityLevel(self):
-        """VBR scene is valid, video quality level, only supports user input numbers between 1-51.
+        r"""VBR scene is valid, video quality level, only supports user input numbers between 1-51.
         :rtype: int
         """
         return self._QualityLevel
@@ -665,7 +665,7 @@ class AdditionalRateSetting(AbstractModel):
 
 
 class AmazonS3Settings(AbstractModel):
-    """Amazon S3 destination setting.
+    r"""Amazon S3 destination setting.
 
     """
 
@@ -699,7 +699,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        """Access key ID of the S3 sub-account.
+        r"""Access key ID of the S3 sub-account.
         :rtype: str
         """
         return self._AccessKeyID
@@ -710,7 +710,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        """Secret access key of the S3 sub-account.
+        r"""Secret access key of the S3 sub-account.
         :rtype: str
         """
         return self._SecretAccessKey
@@ -721,7 +721,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def Region(self):
-        """Region of S3.
+        r"""Region of S3.
         :rtype: str
         """
         return self._Region
@@ -732,7 +732,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def Bucket(self):
-        """Bucket name of S3.
+        r"""Bucket name of S3.
         :rtype: str
         """
         return self._Bucket
@@ -743,7 +743,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FilePath(self):
-        """File output path, which can be empty. If it is not empty, it starts with / and ends with /.
+        r"""File output path, which can be empty. If it is not empty, it starts with / and ends with /.
         :rtype: str
         """
         return self._FilePath
@@ -754,7 +754,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FileName(self):
-        """User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        r"""User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
         :rtype: str
         """
         return self._FileName
@@ -765,7 +765,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FileExt(self):
-        """File suffix, only supports `jpg`.
+        r"""File suffix, only supports `jpg`.
         :rtype: str
         """
         return self._FileExt
@@ -776,7 +776,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """Support `unix` or `utc0`, default unix.
+        r"""Support `unix` or `utc0`, default unix.
         :rtype: str
         """
         return self._TimeFormat
@@ -806,7 +806,7 @@ class AmazonS3Settings(AbstractModel):
 
 
 class AttachedInput(AbstractModel):
-    """Channel-associated input
+    r"""Channel-associated input
 
     """
 
@@ -834,7 +834,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Input ID
+        r"""Input ID
         :rtype: str
         """
         return self._Id
@@ -845,7 +845,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AudioSelectors(self):
-        """Audio selector for the input. There can be 0 to 20 audio selectors.
+        r"""Audio selector for the input. There can be 0 to 20 audio selectors.
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of AudioSelectorInfo
         """
@@ -857,7 +857,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def PullBehavior(self):
-        """Pull mode. If the input type is `HLS_PULL` or `MP4_PULL`, you can set this parameter to `LOOP` or `ONCE`. `LOOP` is the default value.
+        r"""Pull mode. If the input type is `HLS_PULL` or `MP4_PULL`, you can set this parameter to `LOOP` or `ONCE`. `LOOP` is the default value.
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -869,7 +869,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FailOverSettings(self):
-        """Input failover configuration
+        r"""Input failover configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.FailOverSettings`
         """
@@ -881,7 +881,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionSelectors(self):
-        """Caption selector for the input. There can be 0 to 1 audio selectors.
+        r"""Caption selector for the input. There can be 0 to 1 audio selectors.
         :rtype: list of CaptionSelector
         """
         return self._CaptionSelectors
@@ -920,7 +920,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class AudioCodecDetail(AbstractModel):
-    """Audio codec configuration.
+    r"""Audio codec configuration.
 
     """
 
@@ -936,7 +936,7 @@ class AudioCodecDetail(AbstractModel):
 
     @property
     def ChannelMode(self):
-        """Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).
+        r"""Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).
         :rtype: str
         """
         return self._ChannelMode
@@ -947,7 +947,7 @@ class AudioCodecDetail(AbstractModel):
 
     @property
     def Profile(self):
-        """Level in aac case, optional values: "LC" "HE-AAC" "HE-AACV2".
+        r"""Level in aac case, optional values: "LC" "HE-AAC" "HE-AACV2".
         :rtype: str
         """
         return self._Profile
@@ -971,7 +971,7 @@ class AudioCodecDetail(AbstractModel):
 
 
 class AudioNormalizationSettings(AbstractModel):
-    """Special configuration information for audio transcoding.
+    r"""Special configuration information for audio transcoding.
 
     """
 
@@ -987,7 +987,7 @@ class AudioNormalizationSettings(AbstractModel):
 
     @property
     def AudioNormalizationEnabled(self):
-        """Whether to enable special configuration for audio transcoding: 1: Enable 0: Disable, the default value is 0.
+        r"""Whether to enable special configuration for audio transcoding: 1: Enable 0: Disable, the default value is 0.
         :rtype: int
         """
         return self._AudioNormalizationEnabled
@@ -998,7 +998,7 @@ class AudioNormalizationSettings(AbstractModel):
 
     @property
     def TargetLUFS(self):
-        """Loudness value, floating-point number, rounded to one decimal place, range -5 to -70.
+        r"""Loudness value, floating-point number, rounded to one decimal place, range -5 to -70.
         :rtype: float
         """
         return self._TargetLUFS
@@ -1022,7 +1022,7 @@ class AudioNormalizationSettings(AbstractModel):
 
 
 class AudioPidSelectionInfo(AbstractModel):
-    """Audio `Pid` selection.
+    r"""Audio `Pid` selection.
 
     """
 
@@ -1035,7 +1035,7 @@ class AudioPidSelectionInfo(AbstractModel):
 
     @property
     def Pid(self):
-        """Audio `Pid`. Default value: 0.
+        r"""Audio `Pid`. Default value: 0.
         :rtype: int
         """
         return self._Pid
@@ -1058,7 +1058,7 @@ class AudioPidSelectionInfo(AbstractModel):
 
 
 class AudioPipelineInputStatistics(AbstractModel):
-    """Pipeline input audio statistics.
+    r"""Pipeline input audio statistics.
 
     """
 
@@ -1077,7 +1077,7 @@ class AudioPipelineInputStatistics(AbstractModel):
 
     @property
     def Fps(self):
-        """Audio FPS.
+        r"""Audio FPS.
         :rtype: int
         """
         return self._Fps
@@ -1088,7 +1088,7 @@ class AudioPipelineInputStatistics(AbstractModel):
 
     @property
     def Rate(self):
-        """Audio bitrate in bps.
+        r"""Audio bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -1099,7 +1099,7 @@ class AudioPipelineInputStatistics(AbstractModel):
 
     @property
     def Pid(self):
-        """Audio `Pid`, which is available only if the input is `rtp/udp`.
+        r"""Audio `Pid`, which is available only if the input is `rtp/udp`.
         :rtype: int
         """
         return self._Pid
@@ -1124,7 +1124,7 @@ class AudioPipelineInputStatistics(AbstractModel):
 
 
 class AudioSelectorInfo(AbstractModel):
-    """Audio selector.
+    r"""Audio selector.
 
     """
 
@@ -1146,7 +1146,7 @@ class AudioSelectorInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Audio name, which can contain 1-32 letters, digits, and underscores.
+        r"""Audio name, which can contain 1-32 letters, digits, and underscores.
         :rtype: str
         """
         return self._Name
@@ -1157,7 +1157,7 @@ class AudioSelectorInfo(AbstractModel):
 
     @property
     def AudioPidSelection(self):
-        """Audio `Pid` selection.
+        r"""Audio `Pid` selection.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioPidSelectionInfo`
         """
         return self._AudioPidSelection
@@ -1168,7 +1168,7 @@ class AudioSelectorInfo(AbstractModel):
 
     @property
     def AudioSelectorType(self):
-        """Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.
+        r"""Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.
         :rtype: str
         """
         return self._AudioSelectorType
@@ -1179,7 +1179,7 @@ class AudioSelectorInfo(AbstractModel):
 
     @property
     def AudioTrackSelection(self):
-        """AudioTrack configuration.
+        r"""AudioTrack configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputTracks`
         """
         return self._AudioTrackSelection
@@ -1209,7 +1209,7 @@ class AudioSelectorInfo(AbstractModel):
 
 
 class AudioTemplateInfo(AbstractModel):
-    """Audio transcoding template.
+    r"""Audio transcoding template.
 
     """
 
@@ -1247,7 +1247,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def AudioSelectorName(self):
-        """Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.
+        r"""Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.
         :rtype: str
         """
         return self._AudioSelectorName
@@ -1258,7 +1258,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def Name(self):
-        """Audio transcoding template name, which can contain 1-20 letters and digits.
+        r"""Audio transcoding template name, which can contain 1-20 letters and digits.
         :rtype: str
         """
         return self._Name
@@ -1269,7 +1269,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def Acodec(self):
-        """Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :rtype: str
         """
         return self._Acodec
@@ -1280,7 +1280,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def AudioBitrate(self):
-        """Audio bitrate. If this parameter is left empty, the original value will be used.
+        r"""Audio bitrate. If this parameter is left empty, the original value will be used.
 Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000
         :rtype: int
         """
@@ -1292,7 +1292,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def LanguageCode(self):
-        """Audio language code, which length is between 2 and 20.
+        r"""Audio language code, which length is between 2 and 20.
         :rtype: str
         """
         return self._LanguageCode
@@ -1303,7 +1303,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def AudioNormalization(self):
-        """Audio transcoding special configuration information.
+        r"""Audio transcoding special configuration information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
         """
         return self._AudioNormalization
@@ -1314,7 +1314,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def AudioSampleRate(self):
-        """Audio sampling rate, unit HZ.
+        r"""Audio sampling rate, unit HZ.
         :rtype: int
         """
         return self._AudioSampleRate
@@ -1325,7 +1325,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def AudioCodecDetails(self):
-        """Audio encoding parameters.
+        r"""Audio encoding parameters.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         return self._AudioCodecDetails
@@ -1336,7 +1336,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def LanguageDescription(self):
-        """Audio language description, which maximum length is 100.
+        r"""Audio language description, which maximum length is 100.
         :rtype: str
         """
         return self._LanguageDescription
@@ -1371,7 +1371,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
 
 class AudioTrackInfo(AbstractModel):
-    """Audio track configuration.
+    r"""Audio track configuration.
 
     """
 
@@ -1402,7 +1402,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def TrackName(self):
-        """User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
+        r"""User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
         :rtype: str
         """
         return self._TrackName
@@ -1413,7 +1413,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioCodec(self):
-        """Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :rtype: str
         """
         return self._AudioCodec
@@ -1424,7 +1424,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioBitrate(self):
-        """Audio bitrate.
+        r"""Audio bitrate.
         :rtype: int
         """
         return self._AudioBitrate
@@ -1435,7 +1435,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioSampleRate(self):
-        """Audio sample rate.
+        r"""Audio sample rate.
         :rtype: int
         """
         return self._AudioSampleRate
@@ -1446,7 +1446,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioSelectorName(self):
-        """Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.
+        r"""Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.
         :rtype: str
         """
         return self._AudioSelectorName
@@ -1457,7 +1457,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioNormalization(self):
-        """Audio loudness configuration.
+        r"""Audio loudness configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
         """
         return self._AudioNormalization
@@ -1468,7 +1468,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioCodecDetails(self):
-        """Audio encoding configuration.
+        r"""Audio encoding configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         return self._AudioCodecDetails
@@ -1501,7 +1501,7 @@ class AudioTrackInfo(AbstractModel):
 
 
 class CaptionSelector(AbstractModel):
-    """Caption selector.
+    r"""Caption selector.
 
     """
 
@@ -1517,7 +1517,7 @@ class CaptionSelector(AbstractModel):
 
     @property
     def Name(self):
-        """Caption selector name, which can contain 1-32 letters, digits, and underscores.
+        r"""Caption selector name, which can contain 1-32 letters, digits, and underscores.
         :rtype: str
         """
         return self._Name
@@ -1528,7 +1528,7 @@ class CaptionSelector(AbstractModel):
 
     @property
     def CaptionSourceType(self):
-        """Caption source type, only support `SCTE-128`.
+        r"""Caption source type, only support `SCTE-128`.
         :rtype: str
         """
         return self._CaptionSourceType
@@ -1552,7 +1552,7 @@ class CaptionSelector(AbstractModel):
 
 
 class ChannelAlertInfos(AbstractModel):
-    """Channel alarm information.
+    r"""Channel alarm information.
 
     """
 
@@ -1568,7 +1568,7 @@ class ChannelAlertInfos(AbstractModel):
 
     @property
     def Pipeline0(self):
-        """Alarm details of pipeline 0 under this channel.
+        r"""Alarm details of pipeline 0 under this channel.
         :rtype: list of ChannelPipelineAlerts
         """
         return self._Pipeline0
@@ -1579,7 +1579,7 @@ class ChannelAlertInfos(AbstractModel):
 
     @property
     def Pipeline1(self):
-        """Alarm details of pipeline 1 under this channel.
+        r"""Alarm details of pipeline 1 under this channel.
         :rtype: list of ChannelPipelineAlerts
         """
         return self._Pipeline1
@@ -1613,7 +1613,7 @@ class ChannelAlertInfos(AbstractModel):
 
 
 class ChannelInputStatistics(AbstractModel):
-    """Channel output statistics.
+    r"""Channel output statistics.
 
     """
 
@@ -1629,7 +1629,7 @@ class ChannelInputStatistics(AbstractModel):
 
     @property
     def InputId(self):
-        """Input ID.
+        r"""Input ID.
         :rtype: str
         """
         return self._InputId
@@ -1640,7 +1640,7 @@ class ChannelInputStatistics(AbstractModel):
 
     @property
     def Statistics(self):
-        """Input statistics.
+        r"""Input statistics.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputStatistics`
         """
         return self._Statistics
@@ -1666,7 +1666,7 @@ class ChannelInputStatistics(AbstractModel):
 
 
 class ChannelOutputsStatistics(AbstractModel):
-    """Channel output information.
+    r"""Channel output information.
 
     """
 
@@ -1682,7 +1682,7 @@ class ChannelOutputsStatistics(AbstractModel):
 
     @property
     def OutputGroupName(self):
-        """Output group name.
+        r"""Output group name.
         :rtype: str
         """
         return self._OutputGroupName
@@ -1693,7 +1693,7 @@ class ChannelOutputsStatistics(AbstractModel):
 
     @property
     def Statistics(self):
-        """Output group statistics.
+        r"""Output group statistics.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.OutputsStatistics`
         """
         return self._Statistics
@@ -1719,7 +1719,7 @@ class ChannelOutputsStatistics(AbstractModel):
 
 
 class ChannelPipelineAlerts(AbstractModel):
-    """Channel alarm details.
+    r"""Channel alarm details.
 
     """
 
@@ -1742,7 +1742,7 @@ This time is available only after the alarm ends.
 
     @property
     def SetTime(self):
-        """Alarm start time in UTC time.
+        r"""Alarm start time in UTC time.
         :rtype: str
         """
         return self._SetTime
@@ -1753,7 +1753,7 @@ This time is available only after the alarm ends.
 
     @property
     def ClearTime(self):
-        """Alarm end time in UTC time.
+        r"""Alarm end time in UTC time.
 This time is available only after the alarm ends.
         :rtype: str
         """
@@ -1765,7 +1765,7 @@ This time is available only after the alarm ends.
 
     @property
     def Type(self):
-        """Alarm type.
+        r"""Alarm type.
         :rtype: str
         """
         return self._Type
@@ -1776,7 +1776,7 @@ This time is available only after the alarm ends.
 
     @property
     def Message(self):
-        """Alarm details.
+        r"""Alarm details.
         :rtype: str
         """
         return self._Message
@@ -1802,7 +1802,7 @@ This time is available only after the alarm ends.
 
 
 class ColorSpaceSetting(AbstractModel):
-    """Color space setting.
+    r"""Color space setting.
 
     """
 
@@ -1815,7 +1815,7 @@ class ColorSpaceSetting(AbstractModel):
 
     @property
     def ColorSpace(self):
-        """Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
+        r"""Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
         :rtype: str
         """
         return self._ColorSpace
@@ -1838,7 +1838,7 @@ class ColorSpaceSetting(AbstractModel):
 
 
 class CosSettings(AbstractModel):
-    """Cos destination setting.
+    r"""Cos destination setting.
 
     """
 
@@ -1866,7 +1866,7 @@ class CosSettings(AbstractModel):
 
     @property
     def Region(self):
-        """Region of COS.
+        r"""Region of COS.
         :rtype: str
         """
         return self._Region
@@ -1877,7 +1877,7 @@ class CosSettings(AbstractModel):
 
     @property
     def Bucket(self):
-        """Bucket name of COS.
+        r"""Bucket name of COS.
         :rtype: str
         """
         return self._Bucket
@@ -1888,7 +1888,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FilePath(self):
-        """File output path, which can be empty. If it is not empty, it  ends with /.
+        r"""File output path, which can be empty. If it is not empty, it  ends with /.
         :rtype: str
         """
         return self._FilePath
@@ -1899,7 +1899,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FileName(self):
-        """User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        r"""User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
         :rtype: str
         """
         return self._FileName
@@ -1910,7 +1910,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FileExt(self):
-        """File suffix, only supports `jpg`.
+        r"""File suffix, only supports `jpg`.
         :rtype: str
         """
         return self._FileExt
@@ -1921,7 +1921,7 @@ class CosSettings(AbstractModel):
 
     @property
     def TimeFormat(self):
-        """Support `unix` or `utc0`, default unix.
+        r"""Support `unix` or `utc0`, default unix.
         :rtype: str
         """
         return self._TimeFormat
@@ -1949,7 +1949,7 @@ class CosSettings(AbstractModel):
 
 
 class CreateImageSettings(AbstractModel):
-    """Watermark image settings
+    r"""Watermark image settings
 
     """
 
@@ -1984,7 +1984,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def ImageType(self):
-        """Image file format. Valid values: png, jpg.
+        r"""Image file format. Valid values: png, jpg.
         :rtype: str
         """
         return self._ImageType
@@ -1995,7 +1995,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def ImageContent(self):
-        """Base64 encoded image content
+        r"""Base64 encoded image content
         :rtype: str
         """
         return self._ImageContent
@@ -2006,7 +2006,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def Location(self):
-        """Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
+        r"""Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
         :rtype: str
         """
         return self._Location
@@ -2017,7 +2017,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def XPos(self):
-        """The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._XPos
@@ -2028,7 +2028,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def YPos(self):
-        """The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._YPos
@@ -2039,7 +2039,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def Width(self):
-        """The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.
 `0` means to scale the width proportionally to the height.
 You cannot set both `Width` and `Height` to `0`.
         :rtype: int
@@ -2052,7 +2052,7 @@ You cannot set both `Width` and `Height` to `0`.
 
     @property
     def Height(self):
-        """The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.
 `0` means to scale the height proportionally to the width.
 You cannot set both `Width` and `Height` to `0`.
         :rtype: int
@@ -2083,7 +2083,7 @@ You cannot set both `Width` and `Height` to `0`.
 
 
 class CreateStreamLiveChannelRequest(AbstractModel):
-    """CreateStreamLiveChannel request structure.
+    r"""CreateStreamLiveChannel request structure.
 
     """
 
@@ -2138,7 +2138,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -2149,7 +2149,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AttachedInputs(self):
-        """Inputs to attach. You can attach 1 to 5 inputs.
+        r"""Inputs to attach. You can attach 1 to 5 inputs.
         :rtype: list of AttachedInput
         """
         return self._AttachedInputs
@@ -2160,7 +2160,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def OutputGroups(self):
-        """Configuration information of the channel's output groups. Quantity: [1, 10]
+        r"""Configuration information of the channel's output groups. Quantity: [1, 10]
         :rtype: list of StreamLiveOutputGroupsInfo
         """
         return self._OutputGroups
@@ -2171,7 +2171,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AudioTemplates(self):
-        """Audio transcoding templates. Quantity: [1, 20]
+        r"""Audio transcoding templates. Quantity: [1, 20]
         :rtype: list of AudioTemplateInfo
         """
         return self._AudioTemplates
@@ -2182,7 +2182,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def VideoTemplates(self):
-        """Video transcoding templates. Quantity: [1, 10]
+        r"""Video transcoding templates. Quantity: [1, 10]
         :rtype: list of VideoTemplateInfo
         """
         return self._VideoTemplates
@@ -2193,7 +2193,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AVTemplates(self):
-        """Audio/Video transcoding templates. Quantity: [1, 10]
+        r"""Audio/Video transcoding templates. Quantity: [1, 10]
         :rtype: list of AVTemplate
         """
         return self._AVTemplates
@@ -2204,7 +2204,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def CaptionTemplates(self):
-        """Subtitle template configuration, only AVTemplates are valid.
+        r"""Subtitle template configuration, only AVTemplates are valid.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -2215,7 +2215,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def PlanSettings(self):
-        """Event settings
+        r"""Event settings
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         return self._PlanSettings
@@ -2226,7 +2226,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def EventNotifySettings(self):
-        """The callback settings.
+        r"""The callback settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         return self._EventNotifySettings
@@ -2237,7 +2237,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def InputLossBehavior(self):
-        """Complement the last video frame settings.
+        r"""Complement the last video frame settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         return self._InputLossBehavior
@@ -2248,7 +2248,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def PipelineInputSettings(self):
-        """Pipeline configuration.
+        r"""Pipeline configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         return self._PipelineInputSettings
@@ -2259,7 +2259,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def InputAnalysisSettings(self):
-        """Recognition configuration for input content.
+        r"""Recognition configuration for input content.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         """
         return self._InputAnalysisSettings
@@ -2270,7 +2270,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Console tag list.
+        r"""Console tag list.
         :rtype: list of Tag
         """
         return self._Tags
@@ -2281,7 +2281,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def FrameCaptureTemplates(self):
-        """Frame capture templates.
+        r"""Frame capture templates.
         :rtype: list of FrameCaptureTemplate
         """
         return self._FrameCaptureTemplates
@@ -2292,7 +2292,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def GeneralSettings(self):
-        """General settings.
+        r"""General settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         return self._GeneralSettings
@@ -2381,7 +2381,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
 
 class CreateStreamLiveChannelResponse(AbstractModel):
-    """CreateStreamLiveChannel response structure.
+    r"""CreateStreamLiveChannel response structure.
 
     """
 
@@ -2400,7 +2400,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -2411,7 +2411,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        """Tag prompt information, this information will be attached when the tag operation fails.
+        r"""Tag prompt information, this information will be attached when the tag operation fails.
         :rtype: str
         """
         return self._TagMsg
@@ -2422,7 +2422,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2439,7 +2439,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
 
 class CreateStreamLiveInputRequest(AbstractModel):
-    """CreateStreamLiveInput request structure.
+    r"""CreateStreamLiveInput request structure.
 
     """
 
@@ -2467,7 +2467,7 @@ For the type:
 
     @property
     def Name(self):
-        """Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -2478,7 +2478,7 @@ For the type:
 
     @property
     def Type(self):
-        """Input type
+        r"""Input type
 Valid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`,`RTP-FEC_PUSH`,`RTSP_PULL`,`SRT_PUSH `,`SRT_PULL `
         :rtype: str
         """
@@ -2490,7 +2490,7 @@ Valid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4
 
     @property
     def SecurityGroupIds(self):
-        """ID of the input security group to attach
+        r"""ID of the input security group to attach
 You can attach only one security group to an input.
         :rtype: list of str
         """
@@ -2502,7 +2502,7 @@ You can attach only one security group to an input.
 
     @property
     def InputSettings(self):
-        """Input settings. 
+        r"""Input settings. 
 For the type:
 `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
 For the type:
@@ -2537,7 +2537,7 @@ For the type:
 
 
 class CreateStreamLiveInputResponse(AbstractModel):
-    """CreateStreamLiveInput response structure.
+    r"""CreateStreamLiveInput response structure.
 
     """
 
@@ -2553,7 +2553,7 @@ class CreateStreamLiveInputResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Input ID
+        r"""Input ID
         :rtype: str
         """
         return self._Id
@@ -2564,7 +2564,7 @@ class CreateStreamLiveInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2580,7 +2580,7 @@ class CreateStreamLiveInputResponse(AbstractModel):
 
 
 class CreateStreamLiveInputSecurityGroupRequest(AbstractModel):
-    """CreateStreamLiveInputSecurityGroup request structure.
+    r"""CreateStreamLiveInputSecurityGroup request structure.
 
     """
 
@@ -2596,7 +2596,7 @@ class CreateStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Input security group name, which can contain case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Input security group name, which can contain case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -2607,7 +2607,7 @@ class CreateStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Whitelist(self):
-        """Allowlist entries. Quantity: [1, 10]
+        r"""Allowlist entries. Quantity: [1, 10]
         :rtype: list of str
         """
         return self._Whitelist
@@ -2631,7 +2631,7 @@ class CreateStreamLiveInputSecurityGroupRequest(AbstractModel):
 
 
 class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
-    """CreateStreamLiveInputSecurityGroup response structure.
+    r"""CreateStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -2647,7 +2647,7 @@ class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Security group ID
+        r"""Security group ID
         :rtype: str
         """
         return self._Id
@@ -2658,7 +2658,7 @@ class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2674,7 +2674,7 @@ class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
 
 
 class CreateStreamLivePlanRequest(AbstractModel):
-    """CreateStreamLivePlan request structure.
+    r"""CreateStreamLivePlan request structure.
 
     """
 
@@ -2690,7 +2690,7 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """ID of the channel for which you want to configure an event
+        r"""ID of the channel for which you want to configure an event
         :rtype: str
         """
         return self._ChannelId
@@ -2701,7 +2701,7 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
     @property
     def Plan(self):
-        """Event configuration
+        r"""Event configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanReq`
         """
         return self._Plan
@@ -2727,7 +2727,7 @@ class CreateStreamLivePlanRequest(AbstractModel):
 
 
 class CreateStreamLivePlanResponse(AbstractModel):
-    """CreateStreamLivePlan response structure.
+    r"""CreateStreamLivePlan response structure.
 
     """
 
@@ -2740,7 +2740,7 @@ class CreateStreamLivePlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2755,7 +2755,7 @@ class CreateStreamLivePlanResponse(AbstractModel):
 
 
 class CreateStreamLiveWatermarkRequest(AbstractModel):
-    """CreateStreamLiveWatermark request structure.
+    r"""CreateStreamLiveWatermark request structure.
 
     """
 
@@ -2777,7 +2777,7 @@ class CreateStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Watermark name
+        r"""Watermark name
         :rtype: str
         """
         return self._Name
@@ -2788,7 +2788,7 @@ class CreateStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Watermark type. Valid values: STATIC_IMAGE, TEXT.
+        r"""Watermark type. Valid values: STATIC_IMAGE, TEXT.
         :rtype: str
         """
         return self._Type
@@ -2799,7 +2799,7 @@ class CreateStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def ImageSettings(self):
-        """Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+        r"""Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
         """
         return self._ImageSettings
@@ -2810,7 +2810,7 @@ class CreateStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def TextSettings(self):
-        """Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+        r"""Watermark text settings. This parameter is valid if `Type` is `TEXT`.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
         """
         return self._TextSettings
@@ -2840,7 +2840,7 @@ class CreateStreamLiveWatermarkRequest(AbstractModel):
 
 
 class CreateStreamLiveWatermarkResponse(AbstractModel):
-    """CreateStreamLiveWatermark response structure.
+    r"""CreateStreamLiveWatermark response structure.
 
     """
 
@@ -2856,7 +2856,7 @@ class CreateStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._Id
@@ -2867,7 +2867,7 @@ class CreateStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2883,7 +2883,7 @@ class CreateStreamLiveWatermarkResponse(AbstractModel):
 
 
 class CreateTextSettings(AbstractModel):
-    """Watermark text settings
+    r"""Watermark text settings
 
     """
 
@@ -2911,7 +2911,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def Text(self):
-        """Text
+        r"""Text
         :rtype: str
         """
         return self._Text
@@ -2922,7 +2922,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def Location(self):
-        """Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
+        r"""Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.
         :rtype: str
         """
         return self._Location
@@ -2933,7 +2933,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def XPos(self):
-        """The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
+        r"""The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._XPos
@@ -2944,7 +2944,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def YPos(self):
-        """The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
+        r"""The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.
         :rtype: int
         """
         return self._YPos
@@ -2955,7 +2955,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def FontSize(self):
-        """Font size. Value range: 25-50.
+        r"""Font size. Value range: 25-50.
         :rtype: int
         """
         return self._FontSize
@@ -2966,7 +2966,7 @@ class CreateTextSettings(AbstractModel):
 
     @property
     def FontColor(self):
-        """Font color, which is an RGB color value. Default value: 0x000000.
+        r"""Font color, which is an RGB color value. Default value: 0x000000.
         :rtype: str
         """
         return self._FontColor
@@ -2994,7 +2994,7 @@ class CreateTextSettings(AbstractModel):
 
 
 class DashRemuxSettingsInfo(AbstractModel):
-    """DASH configuration information.
+    r"""DASH configuration information.
 
     """
 
@@ -3016,7 +3016,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
     @property
     def SegmentDuration(self):
-        """Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        r"""Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
         :rtype: int
         """
         return self._SegmentDuration
@@ -3027,7 +3027,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
     @property
     def SegmentNumber(self):
-        """Number of segments. Value range: [1,30]. Default value: 5.
+        r"""Number of segments. Value range: [1,30]. Default value: 5.
         :rtype: int
         """
         return self._SegmentNumber
@@ -3038,7 +3038,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
     @property
     def PeriodTriggers(self):
-        """Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        r"""Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
         :rtype: str
         """
         return self._PeriodTriggers
@@ -3049,7 +3049,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
     @property
     def H265PackageType(self):
-        """The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        r"""The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
         :rtype: str
         """
         return self._H265PackageType
@@ -3075,7 +3075,7 @@ class DashRemuxSettingsInfo(AbstractModel):
 
 
 class DeleteStreamLiveChannelRequest(AbstractModel):
-    """DeleteStreamLiveChannel request structure.
+    r"""DeleteStreamLiveChannel request structure.
 
     """
 
@@ -3088,7 +3088,7 @@ class DeleteStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -3111,7 +3111,7 @@ class DeleteStreamLiveChannelRequest(AbstractModel):
 
 
 class DeleteStreamLiveChannelResponse(AbstractModel):
-    """DeleteStreamLiveChannel response structure.
+    r"""DeleteStreamLiveChannel response structure.
 
     """
 
@@ -3124,7 +3124,7 @@ class DeleteStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3139,7 +3139,7 @@ class DeleteStreamLiveChannelResponse(AbstractModel):
 
 
 class DeleteStreamLiveInputRequest(AbstractModel):
-    """DeleteStreamLiveInput request structure.
+    r"""DeleteStreamLiveInput request structure.
 
     """
 
@@ -3152,7 +3152,7 @@ class DeleteStreamLiveInputRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Input ID
+        r"""Input ID
         :rtype: str
         """
         return self._Id
@@ -3175,7 +3175,7 @@ class DeleteStreamLiveInputRequest(AbstractModel):
 
 
 class DeleteStreamLiveInputResponse(AbstractModel):
-    """DeleteStreamLiveInput response structure.
+    r"""DeleteStreamLiveInput response structure.
 
     """
 
@@ -3188,7 +3188,7 @@ class DeleteStreamLiveInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3203,7 +3203,7 @@ class DeleteStreamLiveInputResponse(AbstractModel):
 
 
 class DeleteStreamLiveInputSecurityGroupRequest(AbstractModel):
-    """DeleteStreamLiveInputSecurityGroup request structure.
+    r"""DeleteStreamLiveInputSecurityGroup request structure.
 
     """
 
@@ -3216,7 +3216,7 @@ class DeleteStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Input security group ID
+        r"""Input security group ID
         :rtype: str
         """
         return self._Id
@@ -3239,7 +3239,7 @@ class DeleteStreamLiveInputSecurityGroupRequest(AbstractModel):
 
 
 class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
-    """DeleteStreamLiveInputSecurityGroup response structure.
+    r"""DeleteStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -3252,7 +3252,7 @@ class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3267,7 +3267,7 @@ class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
 
 
 class DeleteStreamLivePlanRequest(AbstractModel):
-    """DeleteStreamLivePlan request structure.
+    r"""DeleteStreamLivePlan request structure.
 
     """
 
@@ -3283,7 +3283,7 @@ class DeleteStreamLivePlanRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """ID of the channel whose event is to be deleted
+        r"""ID of the channel whose event is to be deleted
         :rtype: str
         """
         return self._ChannelId
@@ -3294,7 +3294,7 @@ class DeleteStreamLivePlanRequest(AbstractModel):
 
     @property
     def EventName(self):
-        """Name of the event to delete
+        r"""Name of the event to delete
         :rtype: str
         """
         return self._EventName
@@ -3318,7 +3318,7 @@ class DeleteStreamLivePlanRequest(AbstractModel):
 
 
 class DeleteStreamLivePlanResponse(AbstractModel):
-    """DeleteStreamLivePlan response structure.
+    r"""DeleteStreamLivePlan response structure.
 
     """
 
@@ -3331,7 +3331,7 @@ class DeleteStreamLivePlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3346,7 +3346,7 @@ class DeleteStreamLivePlanResponse(AbstractModel):
 
 
 class DeleteStreamLiveWatermarkRequest(AbstractModel):
-    """DeleteStreamLiveWatermark request structure.
+    r"""DeleteStreamLiveWatermark request structure.
 
     """
 
@@ -3359,7 +3359,7 @@ class DeleteStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._Id
@@ -3382,7 +3382,7 @@ class DeleteStreamLiveWatermarkRequest(AbstractModel):
 
 
 class DeleteStreamLiveWatermarkResponse(AbstractModel):
-    """DeleteStreamLiveWatermark response structure.
+    r"""DeleteStreamLiveWatermark response structure.
 
     """
 
@@ -3395,7 +3395,7 @@ class DeleteStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3410,7 +3410,7 @@ class DeleteStreamLiveWatermarkResponse(AbstractModel):
 
 
 class DeliveryRestrictionsInfo(AbstractModel):
-    """Distribution configuration information.
+    r"""Distribution configuration information.
 
     """
 
@@ -3432,7 +3432,7 @@ class DeliveryRestrictionsInfo(AbstractModel):
 
     @property
     def WebDeliveryAllowed(self):
-        """Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
+        r"""Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
         :rtype: str
         """
         return self._WebDeliveryAllowed
@@ -3443,7 +3443,7 @@ class DeliveryRestrictionsInfo(AbstractModel):
 
     @property
     def NoRegionalBlackout(self):
-        """Corresponds to SCTE-35 no_regional_blackout_flag parameter.
+        r"""Corresponds to SCTE-35 no_regional_blackout_flag parameter.
         :rtype: str
         """
         return self._NoRegionalBlackout
@@ -3454,7 +3454,7 @@ class DeliveryRestrictionsInfo(AbstractModel):
 
     @property
     def ArchiveAllowed(self):
-        """Corresponds to SCTE-35 archive_allowed_flag.
+        r"""Corresponds to SCTE-35 archive_allowed_flag.
         :rtype: str
         """
         return self._ArchiveAllowed
@@ -3465,7 +3465,7 @@ class DeliveryRestrictionsInfo(AbstractModel):
 
     @property
     def DeviceRestrictions(self):
-        """Corresponds to SCTE-35 device_restrictions parameter.
+        r"""Corresponds to SCTE-35 device_restrictions parameter.
         :rtype: str
         """
         return self._DeviceRestrictions
@@ -3491,7 +3491,7 @@ class DeliveryRestrictionsInfo(AbstractModel):
 
 
 class DescribeImageSettings(AbstractModel):
-    """Watermark image settings
+    r"""Watermark image settings
 
     """
 
@@ -3516,7 +3516,7 @@ class DescribeImageSettings(AbstractModel):
 
     @property
     def Location(self):
-        """Origin
+        r"""Origin
         :rtype: str
         """
         return self._Location
@@ -3527,7 +3527,7 @@ class DescribeImageSettings(AbstractModel):
 
     @property
     def XPos(self):
-        """The watermark image’s horizontal distance from the origin as a percentage of the video width
+        r"""The watermark image’s horizontal distance from the origin as a percentage of the video width
         :rtype: int
         """
         return self._XPos
@@ -3538,7 +3538,7 @@ class DescribeImageSettings(AbstractModel):
 
     @property
     def YPos(self):
-        """The watermark image’s vertical distance from the origin as a percentage of the video height
+        r"""The watermark image’s vertical distance from the origin as a percentage of the video height
         :rtype: int
         """
         return self._YPos
@@ -3549,7 +3549,7 @@ class DescribeImageSettings(AbstractModel):
 
     @property
     def Width(self):
-        """The watermark image’s width as a percentage of the video width
+        r"""The watermark image’s width as a percentage of the video width
         :rtype: int
         """
         return self._Width
@@ -3560,7 +3560,7 @@ class DescribeImageSettings(AbstractModel):
 
     @property
     def Height(self):
-        """The watermark image’s height as a percentage of the video height
+        r"""The watermark image’s height as a percentage of the video height
         :rtype: int
         """
         return self._Height
@@ -3587,7 +3587,7 @@ class DescribeImageSettings(AbstractModel):
 
 
 class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
-    """DescribeStreamLiveChannelAlerts request structure.
+    r"""DescribeStreamLiveChannelAlerts request structure.
 
     """
 
@@ -3600,7 +3600,7 @@ class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -3623,7 +3623,7 @@ class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
 
 
 class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
-    """DescribeStreamLiveChannelAlerts response structure.
+    r"""DescribeStreamLiveChannelAlerts response structure.
 
     """
 
@@ -3639,7 +3639,7 @@ class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """Alarm information of the channel’s two pipelines
+        r"""Alarm information of the channel’s two pipelines
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`
         """
         return self._Infos
@@ -3650,7 +3650,7 @@ class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3668,7 +3668,7 @@ class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
 
 
 class DescribeStreamLiveChannelInputStatisticsRequest(AbstractModel):
-    """DescribeStreamLiveChannelInputStatistics request structure.
+    r"""DescribeStreamLiveChannelInputStatistics request structure.
 
     """
 
@@ -3692,7 +3692,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -3703,7 +3703,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def StartTime(self):
-        """Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        r"""Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3715,7 +3715,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def EndTime(self):
-        """End time for query, which is 1 hour after `StartTime` by default
+        r"""End time for query, which is 1 hour after `StartTime` by default
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3727,7 +3727,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def Period(self):
-        """Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
+        r"""Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
         :rtype: str
         """
         return self._Period
@@ -3753,7 +3753,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
 
 class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
-    """DescribeStreamLiveChannelInputStatistics response structure.
+    r"""DescribeStreamLiveChannelInputStatistics response structure.
 
     """
 
@@ -3769,7 +3769,7 @@ class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """Channel input statistics
+        r"""Channel input statistics
         :rtype: list of ChannelInputStatistics
         """
         return self._Infos
@@ -3780,7 +3780,7 @@ class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3801,7 +3801,7 @@ class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
 
 
 class DescribeStreamLiveChannelLogsRequest(AbstractModel):
-    """DescribeStreamLiveChannelLogs request structure.
+    r"""DescribeStreamLiveChannelLogs request structure.
 
     """
 
@@ -3822,7 +3822,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -3833,7 +3833,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def StartTime(self):
-        """Start time for query, which is 1 hour ago by default. You can query logs in the last 7 days.
+        r"""Start time for query, which is 1 hour ago by default. You can query logs in the last 7 days.
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3845,7 +3845,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def EndTime(self):
-        """End time for query, which is 1 hour after `StartTime` by default
+        r"""End time for query, which is 1 hour after `StartTime` by default
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3871,7 +3871,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
 
 class DescribeStreamLiveChannelLogsResponse(AbstractModel):
-    """DescribeStreamLiveChannelLogs response structure.
+    r"""DescribeStreamLiveChannelLogs response structure.
 
     """
 
@@ -3887,7 +3887,7 @@ class DescribeStreamLiveChannelLogsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """Pipeline push information
+        r"""Pipeline push information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PipelineLogInfo`
         """
         return self._Infos
@@ -3898,7 +3898,7 @@ class DescribeStreamLiveChannelLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3916,7 +3916,7 @@ class DescribeStreamLiveChannelLogsResponse(AbstractModel):
 
 
 class DescribeStreamLiveChannelOutputStatisticsRequest(AbstractModel):
-    """DescribeStreamLiveChannelOutputStatistics request structure.
+    r"""DescribeStreamLiveChannelOutputStatistics request structure.
 
     """
 
@@ -3940,7 +3940,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def ChannelId(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._ChannelId
@@ -3951,7 +3951,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def StartTime(self):
-        """Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        r"""Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3963,7 +3963,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def EndTime(self):
-        """End time for query, which is 1 hour after `StartTime` by default
+        r"""End time for query, which is 1 hour after `StartTime` by default
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -3975,7 +3975,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def Period(self):
-        """Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
+        r"""Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`
         :rtype: str
         """
         return self._Period
@@ -4001,7 +4001,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
 
 class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
-    """DescribeStreamLiveChannelOutputStatistics response structure.
+    r"""DescribeStreamLiveChannelOutputStatistics response structure.
 
     """
 
@@ -4017,7 +4017,7 @@ class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """Channel output information
+        r"""Channel output information
         :rtype: list of ChannelOutputsStatistics
         """
         return self._Infos
@@ -4028,7 +4028,7 @@ class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4049,7 +4049,7 @@ class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
 
 
 class DescribeStreamLiveChannelRequest(AbstractModel):
-    """DescribeStreamLiveChannel request structure.
+    r"""DescribeStreamLiveChannel request structure.
 
     """
 
@@ -4062,7 +4062,7 @@ class DescribeStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -4085,7 +4085,7 @@ class DescribeStreamLiveChannelRequest(AbstractModel):
 
 
 class DescribeStreamLiveChannelResponse(AbstractModel):
-    """DescribeStreamLiveChannel response structure.
+    r"""DescribeStreamLiveChannel response structure.
 
     """
 
@@ -4101,7 +4101,7 @@ class DescribeStreamLiveChannelResponse(AbstractModel):
 
     @property
     def Info(self):
-        """Channel information
+        r"""Channel information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StreamLiveChannelInfo`
         """
         return self._Info
@@ -4112,7 +4112,7 @@ class DescribeStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4130,13 +4130,13 @@ class DescribeStreamLiveChannelResponse(AbstractModel):
 
 
 class DescribeStreamLiveChannelsRequest(AbstractModel):
-    """DescribeStreamLiveChannels request structure.
+    r"""DescribeStreamLiveChannels request structure.
 
     """
 
 
 class DescribeStreamLiveChannelsResponse(AbstractModel):
-    """DescribeStreamLiveChannels response structure.
+    r"""DescribeStreamLiveChannels response structure.
 
     """
 
@@ -4153,7 +4153,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Infos(self):
-        """List of channel information
+        r"""List of channel information
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of StreamLiveChannelInfo
         """
@@ -4165,7 +4165,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4186,7 +4186,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeStreamLiveInputRequest(AbstractModel):
-    """DescribeStreamLiveInput request structure.
+    r"""DescribeStreamLiveInput request structure.
 
     """
 
@@ -4199,7 +4199,7 @@ class DescribeStreamLiveInputRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Input ID
+        r"""Input ID
         :rtype: str
         """
         return self._Id
@@ -4222,7 +4222,7 @@ class DescribeStreamLiveInputRequest(AbstractModel):
 
 
 class DescribeStreamLiveInputResponse(AbstractModel):
-    """DescribeStreamLiveInput response structure.
+    r"""DescribeStreamLiveInput response structure.
 
     """
 
@@ -4238,7 +4238,7 @@ class DescribeStreamLiveInputResponse(AbstractModel):
 
     @property
     def Info(self):
-        """Input information
+        r"""Input information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputInfo`
         """
         return self._Info
@@ -4249,7 +4249,7 @@ class DescribeStreamLiveInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4267,7 +4267,7 @@ class DescribeStreamLiveInputResponse(AbstractModel):
 
 
 class DescribeStreamLiveInputSecurityGroupRequest(AbstractModel):
-    """DescribeStreamLiveInputSecurityGroup request structure.
+    r"""DescribeStreamLiveInputSecurityGroup request structure.
 
     """
 
@@ -4280,7 +4280,7 @@ class DescribeStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Input security group ID
+        r"""Input security group ID
         :rtype: str
         """
         return self._Id
@@ -4303,7 +4303,7 @@ class DescribeStreamLiveInputSecurityGroupRequest(AbstractModel):
 
 
 class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
-    """DescribeStreamLiveInputSecurityGroup response structure.
+    r"""DescribeStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -4319,7 +4319,7 @@ class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def Info(self):
-        """Input security group information
+        r"""Input security group information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputSecurityGroupInfo`
         """
         return self._Info
@@ -4330,7 +4330,7 @@ class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4348,13 +4348,13 @@ class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
 
 
 class DescribeStreamLiveInputSecurityGroupsRequest(AbstractModel):
-    """DescribeStreamLiveInputSecurityGroups request structure.
+    r"""DescribeStreamLiveInputSecurityGroups request structure.
 
     """
 
 
 class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
-    """DescribeStreamLiveInputSecurityGroups response structure.
+    r"""DescribeStreamLiveInputSecurityGroups response structure.
 
     """
 
@@ -4370,7 +4370,7 @@ class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """List of input security group information
+        r"""List of input security group information
         :rtype: list of InputSecurityGroupInfo
         """
         return self._Infos
@@ -4381,7 +4381,7 @@ class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4402,13 +4402,13 @@ class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
 
 
 class DescribeStreamLiveInputsRequest(AbstractModel):
-    """DescribeStreamLiveInputs request structure.
+    r"""DescribeStreamLiveInputs request structure.
 
     """
 
 
 class DescribeStreamLiveInputsResponse(AbstractModel):
-    """DescribeStreamLiveInputs response structure.
+    r"""DescribeStreamLiveInputs response structure.
 
     """
 
@@ -4425,7 +4425,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Infos(self):
-        """List of input information
+        r"""List of input information
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of InputInfo
         """
@@ -4437,7 +4437,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4458,7 +4458,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeStreamLivePlansRequest(AbstractModel):
-    """DescribeStreamLivePlans request structure.
+    r"""DescribeStreamLivePlans request structure.
 
     """
 
@@ -4471,7 +4471,7 @@ class DescribeStreamLivePlansRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        """ID of the channel whose events you want to query
+        r"""ID of the channel whose events you want to query
         :rtype: str
         """
         return self._ChannelId
@@ -4494,7 +4494,7 @@ class DescribeStreamLivePlansRequest(AbstractModel):
 
 
 class DescribeStreamLivePlansResponse(AbstractModel):
-    """DescribeStreamLivePlans response structure.
+    r"""DescribeStreamLivePlans response structure.
 
     """
 
@@ -4511,7 +4511,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Infos(self):
-        """List of event information
+        r"""List of event information
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of PlanResp
         """
@@ -4523,7 +4523,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4544,13 +4544,13 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeStreamLiveRegionsRequest(AbstractModel):
-    """DescribeStreamLiveRegions request structure.
+    r"""DescribeStreamLiveRegions request structure.
 
     """
 
 
 class DescribeStreamLiveRegionsResponse(AbstractModel):
-    """DescribeStreamLiveRegions response structure.
+    r"""DescribeStreamLiveRegions response structure.
 
     """
 
@@ -4566,7 +4566,7 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
 
     @property
     def Info(self):
-        """StreamLive region information
+        r"""StreamLive region information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StreamLiveRegionInfo`
         """
         return self._Info
@@ -4577,7 +4577,7 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4595,7 +4595,7 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
 
 
 class DescribeStreamLiveTranscodeDetailRequest(AbstractModel):
-    """DescribeStreamLiveTranscodeDetail request structure.
+    r"""DescribeStreamLiveTranscodeDetail request structure.
 
     """
 
@@ -4624,7 +4624,7 @@ Value range: 1-1000.
 
     @property
     def StartDayTime(self):
-        """The query start time (UTC+8) in the format of yyyy-MM-dd.
+        r"""The query start time (UTC+8) in the format of yyyy-MM-dd.
 You can only query data in the last month (not including the current day).
         :rtype: str
         """
@@ -4636,7 +4636,7 @@ You can only query data in the last month (not including the current day).
 
     @property
     def EndDayTime(self):
-        """The query end time (UTC+8) in the format of yyyy-MM-dd.
+        r"""The query end time (UTC+8) in the format of yyyy-MM-dd.
 You can only query data in the last month (not including the current day).
         :rtype: str
         """
@@ -4648,7 +4648,7 @@ You can only query data in the last month (not including the current day).
 
     @property
     def ChannelId(self):
-        """The channel ID (optional).
+        r"""The channel ID (optional).
         :rtype: str
         """
         return self._ChannelId
@@ -4659,7 +4659,7 @@ You can only query data in the last month (not including the current day).
 
     @property
     def PageNum(self):
-        """The number of pages. Default value: 1.
+        r"""The number of pages. Default value: 1.
 The value cannot exceed 100.
         :rtype: int
         """
@@ -4671,7 +4671,7 @@ The value cannot exceed 100.
 
     @property
     def PageSize(self):
-        """The number of records per page. Default value: 10.
+        r"""The number of records per page. Default value: 10.
 Value range: 1-1000.
         :rtype: int
         """
@@ -4699,7 +4699,7 @@ Value range: 1-1000.
 
 
 class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
-    """DescribeStreamLiveTranscodeDetail response structure.
+    r"""DescribeStreamLiveTranscodeDetail response structure.
 
     """
 
@@ -4727,7 +4727,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """A list of the transcoding information.
+        r"""A list of the transcoding information.
         :rtype: list of DescribeTranscodeDetailInfo
         """
         return self._Infos
@@ -4738,7 +4738,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        """The number of the current page.
+        r"""The number of the current page.
         :rtype: int
         """
         return self._PageNum
@@ -4749,7 +4749,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """The number of records per page.
+        r"""The number of records per page.
         :rtype: int
         """
         return self._PageSize
@@ -4760,7 +4760,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        """The total number of records.
+        r"""The total number of records.
         :rtype: int
         """
         return self._TotalNum
@@ -4771,7 +4771,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        """The total number of pages.
+        r"""The total number of pages.
         :rtype: int
         """
         return self._TotalPage
@@ -4782,7 +4782,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4807,7 +4807,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
 
 
 class DescribeStreamLiveWatermarkRequest(AbstractModel):
-    """DescribeStreamLiveWatermark request structure.
+    r"""DescribeStreamLiveWatermark request structure.
 
     """
 
@@ -4820,7 +4820,7 @@ class DescribeStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._Id
@@ -4843,7 +4843,7 @@ class DescribeStreamLiveWatermarkRequest(AbstractModel):
 
 
 class DescribeStreamLiveWatermarkResponse(AbstractModel):
-    """DescribeStreamLiveWatermark response structure.
+    r"""DescribeStreamLiveWatermark response structure.
 
     """
 
@@ -4859,7 +4859,7 @@ class DescribeStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def Info(self):
-        """Watermark information
+        r"""Watermark information
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkInfo`
         """
         return self._Info
@@ -4870,7 +4870,7 @@ class DescribeStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4888,13 +4888,13 @@ class DescribeStreamLiveWatermarkResponse(AbstractModel):
 
 
 class DescribeStreamLiveWatermarksRequest(AbstractModel):
-    """DescribeStreamLiveWatermarks request structure.
+    r"""DescribeStreamLiveWatermarks request structure.
 
     """
 
 
 class DescribeStreamLiveWatermarksResponse(AbstractModel):
-    """DescribeStreamLiveWatermarks response structure.
+    r"""DescribeStreamLiveWatermarks response structure.
 
     """
 
@@ -4910,7 +4910,7 @@ class DescribeStreamLiveWatermarksResponse(AbstractModel):
 
     @property
     def Infos(self):
-        """List of watermark information
+        r"""List of watermark information
         :rtype: list of DescribeWatermarkInfo
         """
         return self._Infos
@@ -4921,7 +4921,7 @@ class DescribeStreamLiveWatermarksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4942,7 +4942,7 @@ class DescribeStreamLiveWatermarksResponse(AbstractModel):
 
 
 class DescribeTextSettings(AbstractModel):
-    """Watermark text settings
+    r"""Watermark text settings
 
     """
 
@@ -4970,7 +4970,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def Text(self):
-        """Text
+        r"""Text
         :rtype: str
         """
         return self._Text
@@ -4981,7 +4981,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def Location(self):
-        """Origin
+        r"""Origin
         :rtype: str
         """
         return self._Location
@@ -4992,7 +4992,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def XPos(self):
-        """The watermark image’s horizontal distance from the origin as a percentage of the video width
+        r"""The watermark image’s horizontal distance from the origin as a percentage of the video width
         :rtype: int
         """
         return self._XPos
@@ -5003,7 +5003,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def YPos(self):
-        """The watermark image’s vertical distance from the origin as a percentage of the video height
+        r"""The watermark image’s vertical distance from the origin as a percentage of the video height
         :rtype: int
         """
         return self._YPos
@@ -5014,7 +5014,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def FontSize(self):
-        """Font size
+        r"""Font size
         :rtype: int
         """
         return self._FontSize
@@ -5025,7 +5025,7 @@ class DescribeTextSettings(AbstractModel):
 
     @property
     def FontColor(self):
-        """Font color
+        r"""Font color
         :rtype: str
         """
         return self._FontColor
@@ -5053,7 +5053,7 @@ class DescribeTextSettings(AbstractModel):
 
 
 class DescribeTranscodeDetailInfo(AbstractModel):
-    """Transcoding details.
+    r"""Transcoding details.
 
     """
 
@@ -5095,7 +5095,7 @@ Examples:
 
     @property
     def ChannelId(self):
-        """The channel ID.
+        r"""The channel ID.
         :rtype: str
         """
         return self._ChannelId
@@ -5106,7 +5106,7 @@ Examples:
 
     @property
     def StartTime(self):
-        """The start time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
+        r"""The start time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
         :rtype: str
         """
         return self._StartTime
@@ -5117,7 +5117,7 @@ Examples:
 
     @property
     def EndTime(self):
-        """The end time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
+        r"""The end time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.
         :rtype: str
         """
         return self._EndTime
@@ -5128,7 +5128,7 @@ Examples:
 
     @property
     def Duration(self):
-        """The duration (s) of transcoding.
+        r"""The duration (s) of transcoding.
         :rtype: int
         """
         return self._Duration
@@ -5139,7 +5139,7 @@ Examples:
 
     @property
     def ModuleCodec(self):
-        """The encoding method.
+        r"""The encoding method.
 Examples:
 `liveprocessor_H264`: Live transcoding-H264
 `liveprocessor_H265`: Live transcoding-H265
@@ -5155,7 +5155,7 @@ Examples:
 
     @property
     def Bitrate(self):
-        """The target bitrate (Kbps).
+        r"""The target bitrate (Kbps).
         :rtype: int
         """
         return self._Bitrate
@@ -5166,7 +5166,7 @@ Examples:
 
     @property
     def Type(self):
-        """The transcoding type.
+        r"""The transcoding type.
         :rtype: str
         """
         return self._Type
@@ -5177,7 +5177,7 @@ Examples:
 
     @property
     def PushDomain(self):
-        """The push domain name.
+        r"""The push domain name.
         :rtype: str
         """
         return self._PushDomain
@@ -5188,7 +5188,7 @@ Examples:
 
     @property
     def Resolution(self):
-        """The target resolution.
+        r"""The target resolution.
         :rtype: str
         """
         return self._Resolution
@@ -5219,7 +5219,7 @@ Examples:
 
 
 class DescribeWatermarkInfo(AbstractModel):
-    """Watermark information
+    r"""Watermark information
 
     """
 
@@ -5254,7 +5254,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._Id
@@ -5265,7 +5265,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Watermark name
+        r"""Watermark name
         :rtype: str
         """
         return self._Name
@@ -5276,7 +5276,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """Watermark type. Valid values: STATIC_IMAGE, TEXT.
+        r"""Watermark type. Valid values: STATIC_IMAGE, TEXT.
         :rtype: str
         """
         return self._Type
@@ -5287,7 +5287,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageSettings(self):
-        """Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+        r"""Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeImageSettings`
         """
@@ -5299,7 +5299,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TextSettings(self):
-        """Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+        r"""Watermark text settings. This parameter is valid if `Type` is `TEXT`.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeTextSettings`
         """
@@ -5311,7 +5311,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UpdateTime(self):
-        """Last modified time (UTC+0) of the watermark, in the format of `2020-01-01T12:00:00Z`
+        r"""Last modified time (UTC+0) of the watermark, in the format of `2020-01-01T12:00:00Z`
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -5323,7 +5323,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AttachedChannels(self):
-        """List of channel IDs the watermark is bound to
+        r"""List of channel IDs the watermark is bound to
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -5357,7 +5357,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DestinationInfo(AbstractModel):
-    """Relay destination address.
+    r"""Relay destination address.
 
     """
 
@@ -5391,7 +5391,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputUrl(self):
-        """Relay destination address. Length limit: [1,512].
+        r"""Relay destination address. Length limit: [1,512].
         :rtype: str
         """
         return self._OutputUrl
@@ -5402,7 +5402,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthKey(self):
-        """Authentication key. Length limit: [1,128].
+        r"""Authentication key. Length limit: [1,128].
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5414,7 +5414,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Username(self):
-        """Authentication username. Length limit: [1,128].
+        r"""Authentication username. Length limit: [1,128].
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5426,7 +5426,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        """Authentication password. Length limit: [1,128].
+        r"""Authentication password. Length limit: [1,128].
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5438,7 +5438,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationType(self):
-        """The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.
+        r"""The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.
         :rtype: str
         """
         return self._DestinationType
@@ -5449,7 +5449,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AmazonS3Settings(self):
-        """Aws S3 destination setting.
+        r"""Aws S3 destination setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AmazonS3Settings`
         """
         return self._AmazonS3Settings
@@ -5460,7 +5460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosSettings(self):
-        """Cos destination setting.
+        r"""Cos destination setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CosSettings`
         """
         return self._CosSettings
@@ -5493,7 +5493,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DrmKey(AbstractModel):
-    """Custom DRM key.
+    r"""Custom DRM key.
 
     """
 
@@ -5528,7 +5528,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Key(self):
-        """DRM key, which is a 32-bit hexadecimal string.
+        r"""DRM key, which is a 32-bit hexadecimal string.
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
         :rtype: str
         """
@@ -5540,7 +5540,7 @@ Note: uppercase letters in the string will be automatically converted to lowerca
 
     @property
     def Track(self):
-        """Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
+        r"""Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
 ALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -5553,7 +5553,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
-        """Required for Widevine encryption. It is a 32-bit hexadecimal string.
+        r"""Required for Widevine encryption. It is a 32-bit hexadecimal string.
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -5566,7 +5566,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Iv(self):
-        """Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
+        r"""Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
 For more information about this parameter, please see: 
 https://tools.ietf.org/html/rfc3826
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
@@ -5581,7 +5581,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyUri(self):
-        """The URI of the license server when AES-128 is used. This parameter may be empty.
+        r"""The URI of the license server when AES-128 is used. This parameter may be empty.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5609,7 +5609,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DrmSettingsInfo(AbstractModel):
-    """DRM configuration information, which takes effect only for HLS and DASH.
+    r"""DRM configuration information, which takes effect only for HLS and DASH.
 
     """
 
@@ -5650,7 +5650,7 @@ DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDE
 
     @property
     def State(self):
-        """Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
+        r"""Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
 DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.
         :rtype: str
         """
@@ -5662,7 +5662,7 @@ DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_M
 
     @property
     def Scheme(self):
-        """Valid values: `CustomDRMKeys` (default value), `SDMCDRM`
+        r"""Valid values: `CustomDRMKeys` (default value), `SDMCDRM`
 `CustomDRMKeys` means encryption keys customized by users.
 `SDMCDRM` means the DRM key management system of SDMC.
         :rtype: str
@@ -5675,7 +5675,7 @@ DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_M
 
     @property
     def ContentId(self):
-        """If `Scheme` is set to `CustomDRMKeys`, this parameter is required.
+        r"""If `Scheme` is set to `CustomDRMKeys`, this parameter is required.
 If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.
         :rtype: str
         """
@@ -5687,7 +5687,7 @@ If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits,
 
     @property
     def Keys(self):
-        """The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
+        r"""The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DrmKey
         """
@@ -5699,7 +5699,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SDMCSettings(self):
-        """SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
+        r"""SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
         """
@@ -5711,7 +5711,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DrmType(self):
-        """Optional Types:
+        r"""Optional Types:
 `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`
 
 HLS-TS supports `FAIRPLAY` and `AES128`.
@@ -5753,7 +5753,7 @@ DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDE
 
 
 class EventNotifySetting(AbstractModel):
-    """The callback settings.
+    r"""The callback settings.
 
     """
 
@@ -5766,7 +5766,7 @@ class EventNotifySetting(AbstractModel):
 
     @property
     def PushEventSettings(self):
-        """The callback configuration for push events.
+        r"""The callback configuration for push events.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PushEventSetting`
         """
         return self._PushEventSettings
@@ -5791,7 +5791,7 @@ class EventNotifySetting(AbstractModel):
 
 
 class EventSettingsDestinationReq(AbstractModel):
-    """Destination address information in event settings
+    r"""Destination address information in event settings
 
     """
 
@@ -5804,7 +5804,7 @@ class EventSettingsDestinationReq(AbstractModel):
 
     @property
     def Url(self):
-        """URL of the COS bucket to save recording files
+        r"""URL of the COS bucket to save recording files
         :rtype: str
         """
         return self._Url
@@ -5827,7 +5827,7 @@ class EventSettingsDestinationReq(AbstractModel):
 
 
 class EventSettingsDestinationResp(AbstractModel):
-    """Destination address information in event settings
+    r"""Destination address information in event settings
 
     """
 
@@ -5840,7 +5840,7 @@ class EventSettingsDestinationResp(AbstractModel):
 
     @property
     def Url(self):
-        """URL of the COS bucket where recording files are saved
+        r"""URL of the COS bucket where recording files are saved
         :rtype: str
         """
         return self._Url
@@ -5863,7 +5863,7 @@ class EventSettingsDestinationResp(AbstractModel):
 
 
 class EventSettingsReq(AbstractModel):
-    """Configuration information of an event in the plan
+    r"""Configuration information of an event in the plan
 
     """
 
@@ -5906,7 +5906,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def EventType(self):
-        """Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`,`TIMED_METADATA `,`STATIC_IMAGE_ACTIVATE `,`STATIC_IMAGE_DEACTIVATE `. If it is not specified, `INPUT_SWITCH` will be used.
+        r"""Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`,`TIMED_METADATA `,`STATIC_IMAGE_ACTIVATE `,`STATIC_IMAGE_DEACTIVATE `. If it is not specified, `INPUT_SWITCH` will be used.
         :rtype: str
         """
         return self._EventType
@@ -5917,7 +5917,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def InputAttachment(self):
-        """ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
+        r"""ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
         :rtype: str
         """
         return self._InputAttachment
@@ -5928,7 +5928,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def OutputGroupName(self):
-        """Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.
+        r"""Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.
         :rtype: str
         """
         return self._OutputGroupName
@@ -5939,7 +5939,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def ManifestName(self):
-        """Name of the manifest file for timed recording, which must end with `.m3u8` for HLS and `.mpd` for DASH. This parameter is required if `EventType` is `TIMED_RECORD`.
+        r"""Name of the manifest file for timed recording, which must end with `.m3u8` for HLS and `.mpd` for DASH. This parameter is required if `EventType` is `TIMED_RECORD`.
         :rtype: str
         """
         return self._ManifestName
@@ -5950,7 +5950,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def Destinations(self):
-        """URL of the COS bucket to save recording files. This parameter is required if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
+        r"""URL of the COS bucket to save recording files. This parameter is required if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
         :rtype: list of EventSettingsDestinationReq
         """
         return self._Destinations
@@ -5961,7 +5961,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def SCTE35SegmentationDescriptor(self):
-        """SCTE-35 configuration information.
+        r"""SCTE-35 configuration information.
         :rtype: list of SegmentationDescriptorInfo
         """
         return self._SCTE35SegmentationDescriptor
@@ -5972,7 +5972,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def SpliceEventID(self):
-        """A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        r"""A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
         :rtype: int
         """
         return self._SpliceEventID
@@ -5983,7 +5983,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def SpliceDuration(self):
-        """The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
+        r"""The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
         :rtype: int
         """
         return self._SpliceDuration
@@ -5994,7 +5994,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def TimedMetadataSetting(self):
-        """Meta information plan configuration.
+        r"""Meta information plan configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
         """
         return self._TimedMetadataSetting
@@ -6005,7 +6005,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def StaticImageActivateSetting(self):
-        """Static image activate setting.
+        r"""Static image activate setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
         """
         return self._StaticImageActivateSetting
@@ -6016,7 +6016,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def StaticImageDeactivateSetting(self):
-        """Static image deactivate setting.
+        r"""Static image deactivate setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         """
         return self._StaticImageDeactivateSetting
@@ -6065,7 +6065,7 @@ class EventSettingsReq(AbstractModel):
 
 
 class EventSettingsResp(AbstractModel):
-    """Configuration information of an event in the plan
+    r"""Configuration information of an event in the plan
 
     """
 
@@ -6108,7 +6108,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def EventType(self):
-        """Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`, `STATIC_IMAGE_ACTIVATE`, `STATIC_IMAGE_DEACTIVATE`.
+        r"""Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`, `STATIC_IMAGE_ACTIVATE`, `STATIC_IMAGE_DEACTIVATE`.
         :rtype: str
         """
         return self._EventType
@@ -6119,7 +6119,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def InputAttachment(self):
-        """ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
+        r"""ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
         :rtype: str
         """
         return self._InputAttachment
@@ -6130,7 +6130,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def OutputGroupName(self):
-        """Name of the output group attached. This parameter is not empty if `EventType` is `TIMED_RECORD`.
+        r"""Name of the output group attached. This parameter is not empty if `EventType` is `TIMED_RECORD`.
         :rtype: str
         """
         return self._OutputGroupName
@@ -6141,7 +6141,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def ManifestName(self):
-        """Name of the manifest file for timed recording, which ends with `.m3u8` for HLS and `.mpd` for DASH. This parameter is not empty if `EventType` is `TIMED_RECORD`.
+        r"""Name of the manifest file for timed recording, which ends with `.m3u8` for HLS and `.mpd` for DASH. This parameter is not empty if `EventType` is `TIMED_RECORD`.
         :rtype: str
         """
         return self._ManifestName
@@ -6152,7 +6152,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def Destinations(self):
-        """URL of the COS bucket where recording files are saved. This parameter is not empty if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
+        r"""URL of the COS bucket where recording files are saved. This parameter is not empty if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
         :rtype: list of EventSettingsDestinationResp
         """
         return self._Destinations
@@ -6163,7 +6163,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def SCTE35SegmentationDescriptor(self):
-        """SCTE-35 configuration information.
+        r"""SCTE-35 configuration information.
         :rtype: list of SegmentationDescriptorRespInfo
         """
         return self._SCTE35SegmentationDescriptor
@@ -6174,7 +6174,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def SpliceEventID(self):
-        """A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        r"""A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
         :rtype: int
         """
         return self._SpliceEventID
@@ -6185,7 +6185,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def SpliceDuration(self):
-        """The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
+        r"""The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
         :rtype: str
         """
         return self._SpliceDuration
@@ -6196,7 +6196,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def TimedMetadataSetting(self):
-        """Meta information plan configuration.
+        r"""Meta information plan configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
         """
         return self._TimedMetadataSetting
@@ -6207,7 +6207,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def StaticImageActivateSetting(self):
-        """Static image activate setting.
+        r"""Static image activate setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
         """
         return self._StaticImageActivateSetting
@@ -6218,7 +6218,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def StaticImageDeactivateSetting(self):
-        """Static image deactivate setting.
+        r"""Static image deactivate setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         """
         return self._StaticImageDeactivateSetting
@@ -6267,7 +6267,7 @@ class EventSettingsResp(AbstractModel):
 
 
 class FailOverSettings(AbstractModel):
-    """Input failover settings
+    r"""Input failover settings
 
     """
 
@@ -6287,7 +6287,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SecondaryInputId(self):
-        """ID of the backup input
+        r"""ID of the backup input
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -6299,7 +6299,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def LossThreshold(self):
-        """The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`
+        r"""The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`
         :rtype: int
         """
         return self._LossThreshold
@@ -6310,7 +6310,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RecoverBehavior(self):
-        """Failover policy. Valid values: `CURRENT_PREFERRED` (default), `PRIMARY_PREFERRED`
+        r"""Failover policy. Valid values: `CURRENT_PREFERRED` (default), `PRIMARY_PREFERRED`
         :rtype: str
         """
         return self._RecoverBehavior
@@ -6335,7 +6335,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class FrameCaptureTemplate(AbstractModel):
-    """Frame capture template.
+    r"""Frame capture template.
 
     """
 
@@ -6366,7 +6366,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Name(self):
-        """Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.
+        r"""Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.
         :rtype: str
         """
         return self._Name
@@ -6377,7 +6377,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Width(self):
-        """Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        r"""Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
         :rtype: int
         """
         return self._Width
@@ -6388,7 +6388,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Height(self):
-        """Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        r"""Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
         :rtype: int
         """
         return self._Height
@@ -6399,7 +6399,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def CaptureInterval(self):
-        """Interval of frame capture, an integer between 1 and 3600.
+        r"""Interval of frame capture, an integer between 1 and 3600.
         :rtype: int
         """
         return self._CaptureInterval
@@ -6410,7 +6410,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def CaptureIntervalUnits(self):
-        """Interval units of frame capture, only supports SECONDS.
+        r"""Interval units of frame capture, only supports SECONDS.
         :rtype: str
         """
         return self._CaptureIntervalUnits
@@ -6421,7 +6421,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def ScalingBehavior(self):
-        """Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.
+        r"""Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.
         :rtype: str
         """
         return self._ScalingBehavior
@@ -6432,7 +6432,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Sharpness(self):
-        """Sharpness, an integer between 0 and 100.
+        r"""Sharpness, an integer between 0 and 100.
         :rtype: int
         """
         return self._Sharpness
@@ -6461,7 +6461,7 @@ class FrameCaptureTemplate(AbstractModel):
 
 
 class GeneralSetting(AbstractModel):
-    """General setting.
+    r"""General setting.
 
     """
 
@@ -6474,7 +6474,7 @@ class GeneralSetting(AbstractModel):
 
     @property
     def StaticImageSettings(self):
-        """Static graphic overlay configuration.
+        r"""Static graphic overlay configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
         """
         return self._StaticImageSettings
@@ -6499,7 +6499,7 @@ class GeneralSetting(AbstractModel):
 
 
 class GetAbWatermarkPlayUrlRequest(AbstractModel):
-    """GetAbWatermarkPlayUrl request structure.
+    r"""GetAbWatermarkPlayUrl request structure.
 
     """
 
@@ -6518,7 +6518,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
     @property
     def Uuid(self):
-        """Client UUID, 32-bit unsigned integer, [0, 4294967295].
+        r"""Client UUID, 32-bit unsigned integer, [0, 4294967295].
         :rtype: int
         """
         return self._Uuid
@@ -6529,7 +6529,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
     @property
     def StreamPackageChannelId(self):
-        """Channel ID of Stream Package.
+        r"""Channel ID of Stream Package.
         :rtype: str
         """
         return self._StreamPackageChannelId
@@ -6540,7 +6540,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Original play URL.
+        r"""Original play URL.
         :rtype: str
         """
         return self._Url
@@ -6565,7 +6565,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
 
 class GetAbWatermarkPlayUrlResponse(AbstractModel):
-    """GetAbWatermarkPlayUrl response structure.
+    r"""GetAbWatermarkPlayUrl response structure.
 
     """
 
@@ -6581,7 +6581,7 @@ class GetAbWatermarkPlayUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        """The play URL after adding token.
+        r"""The play URL after adding token.
         :rtype: str
         """
         return self._Url
@@ -6592,7 +6592,7 @@ class GetAbWatermarkPlayUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6608,7 +6608,7 @@ class GetAbWatermarkPlayUrlResponse(AbstractModel):
 
 
 class HighlightInfo(AbstractModel):
-    """Collection configuration.
+    r"""Collection configuration.
 
     """
 
@@ -6642,7 +6642,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def HighlightEnabled(self):
-        """Whether to enable input recognition 0: Disable 1 Enable Default value 0 Disable.
+        r"""Whether to enable input recognition 0: Disable 1 Enable Default value 0 Disable.
         :rtype: int
         """
         return self._HighlightEnabled
@@ -6653,7 +6653,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Type(self):
-        """The product where the results are saved, optional: COS. Currently, only Tencent Cloud COS is supported. In the future, it will be connected to AWS S3 and COS will be used by default.
+        r"""The product where the results are saved, optional: COS. Currently, only Tencent Cloud COS is supported. In the future, it will be connected to AWS S3 and COS will be used by default.
         :rtype: str
         """
         return self._Type
@@ -6664,7 +6664,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Valid when Type is COS, the region where COS is stored.
+        r"""Valid when Type is COS, the region where COS is stored.
         :rtype: str
         """
         return self._Region
@@ -6675,7 +6675,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        """Valid when Type is COS, the bucket name stored in COS.
+        r"""Valid when Type is COS, the bucket name stored in COS.
         :rtype: str
         """
         return self._Bucket
@@ -6686,7 +6686,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Path(self):
-        """Valid when Type is COS, the path where cos is stored.
+        r"""Valid when Type is COS, the path where cos is stored.
         :rtype: str
         """
         return self._Path
@@ -6697,7 +6697,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Filename(self):
-        """Valid when Type is COS, the file name stored in cos.
+        r"""Valid when Type is COS, the file name stored in cos.
         :rtype: str
         """
         return self._Filename
@@ -6708,7 +6708,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def TimestampFormat(self):
-        """Valid when Type is COS, the file name suffix stored in COS is automatically generated in the time format, optional values: unix, utc. Unix is the second-level timestamp and UTC is the year, month and day represented by the zero time zone.
+        r"""Valid when Type is COS, the file name suffix stored in COS is automatically generated in the time format, optional values: unix, utc. Unix is the second-level timestamp and UTC is the year, month and day represented by the zero time zone.
         :rtype: str
         """
         return self._TimestampFormat
@@ -6719,7 +6719,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def AudioSelectorNames(self):
-        """Audio selector list is optional and can be empty. If not filled in, an audio will be used as the output of the recognition result by default.
+        r"""Audio selector list is optional and can be empty. If not filled in, an audio will be used as the output of the recognition result by default.
         :rtype: list of str
         """
         return self._AudioSelectorNames
@@ -6749,7 +6749,7 @@ class HighlightInfo(AbstractModel):
 
 
 class HlsRemuxSettingsInfo(AbstractModel):
-    """HLS protocol configuration.
+    r"""HLS protocol configuration.
 
     """
 
@@ -6802,7 +6802,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentDuration(self):
-        """Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        r"""Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
         :rtype: int
         """
         return self._SegmentDuration
@@ -6813,7 +6813,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentNumber(self):
-        """Number of segments. Value range: [3,30]. Default value: 5.
+        r"""Number of segments. Value range: [3,30]. Default value: 5.
         :rtype: int
         """
         return self._SegmentNumber
@@ -6824,7 +6824,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PdtInsertion(self):
-        """Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        r"""Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
         :rtype: str
         """
         return self._PdtInsertion
@@ -6835,7 +6835,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PdtDuration(self):
-        """PDT duration in seconds. Value range: (0,3000]. Default value: 600.
+        r"""PDT duration in seconds. Value range: (0,3000]. Default value: 600.
         :rtype: int
         """
         return self._PdtDuration
@@ -6846,7 +6846,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def Scheme(self):
-        """Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.
+        r"""Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.
         :rtype: str
         """
         return self._Scheme
@@ -6857,7 +6857,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentType(self):
-        """The segment type. Valid values: `ts` (default), `fmp4`.
+        r"""The segment type. Valid values: `ts` (default), `fmp4`.
 Currently, fMP4 segments do not support DRM or time shifting.
         :rtype: str
         """
@@ -6869,7 +6869,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def H265PackageType(self):
-        """The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        r"""The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
         :rtype: str
         """
         return self._H265PackageType
@@ -6880,7 +6880,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def LowLatency(self):
-        """Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.
+        r"""Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.
         :rtype: int
         """
         return self._LowLatency
@@ -6891,7 +6891,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PartialSegmentDuration(self):
-        """Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.
+        r"""Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.
         :rtype: int
         """
         return self._PartialSegmentDuration
@@ -6902,7 +6902,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PartialSegmentPlaySite(self):
-        """Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.
+        r"""Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.
         :rtype: int
         """
         return self._PartialSegmentPlaySite
@@ -6913,7 +6913,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def StreamOrder(self):
-        """Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.
+        r"""Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.
         :rtype: int
         """
         return self._StreamOrder
@@ -6924,7 +6924,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def VideoResolution(self):
-        """Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
+        r"""Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
         :rtype: int
         """
         return self._VideoResolution
@@ -6935,7 +6935,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def EndListTag(self):
-        """Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
+        r"""Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
         :rtype: int
         """
         return self._EndListTag
@@ -6946,7 +6946,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def AdMarkupType(self):
-        """Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
+        r"""Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
         :rtype: str
         """
         return self._AdMarkupType
@@ -6982,7 +6982,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
 
 class InputAnalysisInfo(AbstractModel):
-    """Recognition configuration for input content.
+    r"""Recognition configuration for input content.
 
     """
 
@@ -6995,7 +6995,7 @@ class InputAnalysisInfo(AbstractModel):
 
     @property
     def HighlightSetting(self):
-        """Highlight configuration.
+        r"""Highlight configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.HighlightInfo`
         """
         return self._HighlightSetting
@@ -7020,7 +7020,7 @@ class InputAnalysisInfo(AbstractModel):
 
 
 class InputInfo(AbstractModel):
-    """Input information.
+    r"""Input information.
 
     """
 
@@ -7052,7 +7052,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Input region.
+        r"""Input region.
         :rtype: str
         """
         return self._Region
@@ -7063,7 +7063,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Input ID.
+        r"""Input ID.
         :rtype: str
         """
         return self._Id
@@ -7074,7 +7074,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Input name.
+        r"""Input name.
         :rtype: str
         """
         return self._Name
@@ -7085,7 +7085,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Input type.
+        r"""Input type.
         :rtype: str
         """
         return self._Type
@@ -7096,7 +7096,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityGroupIds(self):
-        """Array of security groups associated with input.
+        r"""Array of security groups associated with input.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -7107,7 +7107,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedChannels(self):
-        """Array of channels associated with input.
+        r"""Array of channels associated with input.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -7119,7 +7119,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InputSettings(self):
-        """Input configuration array.
+        r"""Input configuration array.
         :rtype: list of InputSettingInfo
         """
         return self._InputSettings
@@ -7153,7 +7153,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class InputLossBehaviorInfo(AbstractModel):
-    """Complement the last video frame related settings.
+    r"""Complement the last video frame related settings.
 
     """
 
@@ -7175,7 +7175,7 @@ class InputLossBehaviorInfo(AbstractModel):
 
     @property
     def RepeatLastFrameMs(self):
-        """The time to fill in the last video frame, unit ms, range 0-1000000, 1000000 means always inserting, default 0 means filling in black screen frame.
+        r"""The time to fill in the last video frame, unit ms, range 0-1000000, 1000000 means always inserting, default 0 means filling in black screen frame.
         :rtype: int
         """
         return self._RepeatLastFrameMs
@@ -7186,7 +7186,7 @@ class InputLossBehaviorInfo(AbstractModel):
 
     @property
     def InputLossImageType(self):
-        """Fill frame type, COLOR means solid color filling, IMAGE means picture filling, the default is COLOR.
+        r"""Fill frame type, COLOR means solid color filling, IMAGE means picture filling, the default is COLOR.
         :rtype: str
         """
         return self._InputLossImageType
@@ -7197,7 +7197,7 @@ class InputLossBehaviorInfo(AbstractModel):
 
     @property
     def ColorRGB(self):
-        """When the type is COLOR, the corresponding rgb value
+        r"""When the type is COLOR, the corresponding rgb value
         :rtype: str
         """
         return self._ColorRGB
@@ -7208,7 +7208,7 @@ class InputLossBehaviorInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """When the type is IMAGE, the corresponding image url value
+        r"""When the type is IMAGE, the corresponding image url value
         :rtype: str
         """
         return self._ImageUrl
@@ -7234,7 +7234,7 @@ class InputLossBehaviorInfo(AbstractModel):
 
 
 class InputSecurityGroupInfo(AbstractModel):
-    """Input security group information.
+    r"""Input security group information.
 
     """
 
@@ -7260,7 +7260,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Input security group ID.
+        r"""Input security group ID.
         :rtype: str
         """
         return self._Id
@@ -7271,7 +7271,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Input security group name.
+        r"""Input security group name.
         :rtype: str
         """
         return self._Name
@@ -7282,7 +7282,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Whitelist(self):
-        """List of allowlist entries.
+        r"""List of allowlist entries.
         :rtype: list of str
         """
         return self._Whitelist
@@ -7293,7 +7293,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OccupiedInputs(self):
-        """List of bound input streams.
+        r"""List of bound input streams.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -7305,7 +7305,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Input security group address.
+        r"""Input security group address.
         :rtype: str
         """
         return self._Region
@@ -7332,7 +7332,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class InputSettingInfo(AbstractModel):
-    """The input settings.
+    r"""The input settings.
     The format of an RTMP_PUSH/RTMPS_PUSH address is ${InputAddress}/${AppName}/${StreamName}.
     The format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.
 
@@ -7384,7 +7384,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AppName(self):
-        """Application name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
+        r"""Application name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7396,7 +7396,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamName(self):
-        """Stream name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
+        r"""Stream name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7408,7 +7408,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceUrl(self):
-        """Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`,  `MP4_PULL`, `RTSP_PULL` or `SRT_PULL`, and can contain 1-512 characters
+        r"""Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`,  `MP4_PULL`, `RTSP_PULL` or `SRT_PULL`, and can contain 1-512 characters
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7420,7 +7420,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputAddress(self):
-        """RTP/UDP input address, which does not need to be entered for the input parameter.
+        r"""RTP/UDP input address, which does not need to be entered for the input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7432,7 +7432,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceType(self):
-        """Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.
+        r"""Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7444,7 +7444,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DelayTime(self):
-        """Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`.
+        r"""Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`.
 Value range: 0 (default) or 10000-600000.
 The value must be a multiple of 1,000.
 Note: This field may return `null`, indicating that no valid value was found.
@@ -7458,7 +7458,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputDomain(self):
-        """The domain name of the SRT_PUSH push address. No need to fill in the input parameter.
+        r"""The domain name of the SRT_PUSH push address. No need to fill in the input parameter.
         :rtype: str
         """
         return self._InputDomain
@@ -7469,7 +7469,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def UserName(self):
-        """The username, which is used for authentication.
+        r"""The username, which is used for authentication.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7481,7 +7481,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Password(self):
-        """The password, which is used for authentication.
+        r"""The password, which is used for authentication.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7493,7 +7493,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ContentType(self):
-        """This parameter is valid when the input source is HLS_PULL and MP4_PULL. It indicates the type of file the source is. The optional values are: LIVE, VOD. Please note that if you do not enter this parameter, the system will take the default input value VOD.
+        r"""This parameter is valid when the input source is HLS_PULL and MP4_PULL. It indicates the type of file the source is. The optional values are: LIVE, VOD. Please note that if you do not enter this parameter, the system will take the default input value VOD.
         :rtype: str
         """
         return self._ContentType
@@ -7525,7 +7525,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class InputStatistics(AbstractModel):
-    """Input statistics.
+    r"""Input statistics.
 
     """
 
@@ -7541,7 +7541,7 @@ class InputStatistics(AbstractModel):
 
     @property
     def Pipeline0(self):
-        """Input statistics of pipeline 0.
+        r"""Input statistics of pipeline 0.
         :rtype: list of PipelineInputStatistics
         """
         return self._Pipeline0
@@ -7552,7 +7552,7 @@ class InputStatistics(AbstractModel):
 
     @property
     def Pipeline1(self):
-        """Input statistics of pipeline 1.
+        r"""Input statistics of pipeline 1.
         :rtype: list of PipelineInputStatistics
         """
         return self._Pipeline1
@@ -7586,7 +7586,7 @@ class InputStatistics(AbstractModel):
 
 
 class InputStreamInfo(AbstractModel):
-    """The input stream information.
+    r"""The input stream information.
 
     """
 
@@ -7608,7 +7608,7 @@ class InputStreamInfo(AbstractModel):
 
     @property
     def InputAddress(self):
-        """The input stream address.
+        r"""The input stream address.
         :rtype: str
         """
         return self._InputAddress
@@ -7619,7 +7619,7 @@ class InputStreamInfo(AbstractModel):
 
     @property
     def AppName(self):
-        """The input stream path.
+        r"""The input stream path.
         :rtype: str
         """
         return self._AppName
@@ -7630,7 +7630,7 @@ class InputStreamInfo(AbstractModel):
 
     @property
     def StreamName(self):
-        """The input stream name.
+        r"""The input stream name.
         :rtype: str
         """
         return self._StreamName
@@ -7641,7 +7641,7 @@ class InputStreamInfo(AbstractModel):
 
     @property
     def Status(self):
-        """The input stream status. `1` indicates the stream is active.
+        r"""The input stream status. `1` indicates the stream is active.
         :rtype: int
         """
         return self._Status
@@ -7667,7 +7667,7 @@ class InputStreamInfo(AbstractModel):
 
 
 class InputTrack(AbstractModel):
-    """Audio track configuration.
+    r"""Audio track configuration.
 
     """
 
@@ -7680,7 +7680,7 @@ class InputTrack(AbstractModel):
 
     @property
     def TrackIndex(self):
-        """Audio track index 1-based index mapping to the specified audio track integer starting from 1.
+        r"""Audio track index 1-based index mapping to the specified audio track integer starting from 1.
         :rtype: int
         """
         return self._TrackIndex
@@ -7703,7 +7703,7 @@ class InputTrack(AbstractModel):
 
 
 class InputTracks(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -7716,7 +7716,7 @@ class InputTracks(AbstractModel):
 
     @property
     def Tracks(self):
-        """Audio track configuration information.
+        r"""Audio track configuration information.
         :rtype: list of InputTrack
         """
         return self._Tracks
@@ -7744,7 +7744,7 @@ class InputTracks(AbstractModel):
 
 
 class LogInfo(AbstractModel):
-    """Log information.
+    r"""Log information.
 
     """
 
@@ -7764,7 +7764,7 @@ It contains the value of `StreamStart` which refers to the push information.
 
     @property
     def Type(self):
-        """Log type.
+        r"""Log type.
 It contains the value of `StreamStart` which refers to the push information.
         :rtype: str
         """
@@ -7776,7 +7776,7 @@ It contains the value of `StreamStart` which refers to the push information.
 
     @property
     def Time(self):
-        """Time when the log is printed.
+        r"""Time when the log is printed.
         :rtype: str
         """
         return self._Time
@@ -7787,7 +7787,7 @@ It contains the value of `StreamStart` which refers to the push information.
 
     @property
     def Message(self):
-        """Log details.
+        r"""Log details.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.LogMessageInfo`
         """
         return self._Message
@@ -7814,7 +7814,7 @@ It contains the value of `StreamStart` which refers to the push information.
 
 
 class LogMessageInfo(AbstractModel):
-    """Log details.
+    r"""Log details.
 
     """
 
@@ -7828,7 +7828,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamInfo(self):
-        """Push information.
+        r"""Push information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StreamInfo`
         """
@@ -7854,7 +7854,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyStreamLiveChannelRequest(AbstractModel):
-    """ModifyStreamLiveChannel request structure.
+    r"""ModifyStreamLiveChannel request structure.
 
     """
 
@@ -7912,7 +7912,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -7923,7 +7923,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -7934,7 +7934,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AttachedInputs(self):
-        """Inputs to attach. You can attach 1 to 5 inputs.
+        r"""Inputs to attach. You can attach 1 to 5 inputs.
         :rtype: list of AttachedInput
         """
         return self._AttachedInputs
@@ -7945,7 +7945,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def OutputGroups(self):
-        """Configuration information of the channel's output groups. Quantity: [1, 10]
+        r"""Configuration information of the channel's output groups. Quantity: [1, 10]
         :rtype: list of StreamLiveOutputGroupsInfo
         """
         return self._OutputGroups
@@ -7956,7 +7956,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AudioTemplates(self):
-        """Audio transcoding templates. Quantity: [1, 20]
+        r"""Audio transcoding templates. Quantity: [1, 20]
         :rtype: list of AudioTemplateInfo
         """
         return self._AudioTemplates
@@ -7967,7 +7967,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def VideoTemplates(self):
-        """Video transcoding templates. Quantity: [1, 10]
+        r"""Video transcoding templates. Quantity: [1, 10]
         :rtype: list of VideoTemplateInfo
         """
         return self._VideoTemplates
@@ -7978,7 +7978,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AVTemplates(self):
-        """Audio/Video transcoding templates. Quantity: [1, 10]
+        r"""Audio/Video transcoding templates. Quantity: [1, 10]
         :rtype: list of AVTemplate
         """
         return self._AVTemplates
@@ -7989,7 +7989,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def CaptionTemplates(self):
-        """Subtitle template configuration, only AVTemplates are valid.
+        r"""Subtitle template configuration, only AVTemplates are valid.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -8000,7 +8000,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def PlanSettings(self):
-        """Event settings
+        r"""Event settings
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         return self._PlanSettings
@@ -8011,7 +8011,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def EventNotifySettings(self):
-        """The callback settings.
+        r"""The callback settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         return self._EventNotifySettings
@@ -8022,7 +8022,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def InputLossBehavior(self):
-        """Complement the last video frame settings.
+        r"""Complement the last video frame settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         return self._InputLossBehavior
@@ -8033,7 +8033,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def PipelineInputSettings(self):
-        """Pipeline configuration.
+        r"""Pipeline configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         return self._PipelineInputSettings
@@ -8044,7 +8044,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def InputAnalysisSettings(self):
-        """Recognition configuration for input content.
+        r"""Recognition configuration for input content.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         """
         return self._InputAnalysisSettings
@@ -8055,7 +8055,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Console tag list.
+        r"""Console tag list.
         :rtype: list of Tag
         """
         return self._Tags
@@ -8066,7 +8066,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def FrameCaptureTemplates(self):
-        """Frame capture templates.
+        r"""Frame capture templates.
         :rtype: list of FrameCaptureTemplate
         """
         return self._FrameCaptureTemplates
@@ -8077,7 +8077,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
     @property
     def GeneralSettings(self):
-        """General settings.
+        r"""General settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         return self._GeneralSettings
@@ -8167,7 +8167,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
 
 
 class ModifyStreamLiveChannelResponse(AbstractModel):
-    """ModifyStreamLiveChannel response structure.
+    r"""ModifyStreamLiveChannel response structure.
 
     """
 
@@ -8183,7 +8183,7 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        """Tag prompt information, this information will be attached when the tag operation fails.
+        r"""Tag prompt information, this information will be attached when the tag operation fails.
         :rtype: str
         """
         return self._TagMsg
@@ -8194,7 +8194,7 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8210,7 +8210,7 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
 
 class ModifyStreamLiveInputRequest(AbstractModel):
-    """ModifyStreamLiveInput request structure.
+    r"""ModifyStreamLiveInput request structure.
 
     """
 
@@ -8239,7 +8239,7 @@ Note: If this parameter is not specified or empty, the original input settings w
 
     @property
     def Id(self):
-        """Input ID
+        r"""Input ID
         :rtype: str
         """
         return self._Id
@@ -8250,7 +8250,7 @@ Note: If this parameter is not specified or empty, the original input settings w
 
     @property
     def Name(self):
-        """Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -8261,7 +8261,7 @@ Note: If this parameter is not specified or empty, the original input settings w
 
     @property
     def SecurityGroupIds(self):
-        """List of the IDs of the security groups to attach
+        r"""List of the IDs of the security groups to attach
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8272,7 +8272,7 @@ Note: If this parameter is not specified or empty, the original input settings w
 
     @property
     def InputSettings(self):
-        """Input settings. 
+        r"""Input settings. 
 For the type:
 `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
 For the type:
@@ -8310,7 +8310,7 @@ Note: If this parameter is not specified or empty, the original input settings w
 
 
 class ModifyStreamLiveInputResponse(AbstractModel):
-    """ModifyStreamLiveInput response structure.
+    r"""ModifyStreamLiveInput response structure.
 
     """
 
@@ -8323,7 +8323,7 @@ class ModifyStreamLiveInputResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8338,7 +8338,7 @@ class ModifyStreamLiveInputResponse(AbstractModel):
 
 
 class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
-    """ModifyStreamLiveInputSecurityGroup request structure.
+    r"""ModifyStreamLiveInputSecurityGroup request structure.
 
     """
 
@@ -8357,7 +8357,7 @@ class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Input security group ID
+        r"""Input security group ID
         :rtype: str
         """
         return self._Id
@@ -8368,7 +8368,7 @@ class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Input security group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Input security group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :rtype: str
         """
         return self._Name
@@ -8379,7 +8379,7 @@ class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
 
     @property
     def Whitelist(self):
-        """Allowlist entries (max: 10)
+        r"""Allowlist entries (max: 10)
         :rtype: list of str
         """
         return self._Whitelist
@@ -8404,7 +8404,7 @@ class ModifyStreamLiveInputSecurityGroupRequest(AbstractModel):
 
 
 class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
-    """ModifyStreamLiveInputSecurityGroup response structure.
+    r"""ModifyStreamLiveInputSecurityGroup response structure.
 
     """
 
@@ -8417,7 +8417,7 @@ class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8432,7 +8432,7 @@ class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
 
 
 class ModifyStreamLiveWatermarkRequest(AbstractModel):
-    """ModifyStreamLiveWatermark request structure.
+    r"""ModifyStreamLiveWatermark request structure.
 
     """
 
@@ -8454,7 +8454,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Watermark ID
+        r"""Watermark ID
         :rtype: str
         """
         return self._Id
@@ -8465,7 +8465,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Watermark name
+        r"""Watermark name
         :rtype: str
         """
         return self._Name
@@ -8476,7 +8476,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def ImageSettings(self):
-        """Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
+        r"""Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
         """
         return self._ImageSettings
@@ -8487,7 +8487,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def TextSettings(self):
-        """Watermark text settings. This parameter is valid if `Type` is `TEXT`.
+        r"""Watermark text settings. This parameter is valid if `Type` is `TEXT`.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
         """
         return self._TextSettings
@@ -8517,7 +8517,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
 
 class ModifyStreamLiveWatermarkResponse(AbstractModel):
-    """ModifyStreamLiveWatermark response structure.
+    r"""ModifyStreamLiveWatermark response structure.
 
     """
 
@@ -8530,7 +8530,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8545,7 +8545,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
 
 class OutputInfo(AbstractModel):
-    """Output information.
+    r"""Output information.
 
     """
 
@@ -8583,7 +8583,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Output name.
+        r"""Output name.
         :rtype: str
         """
         return self._Name
@@ -8594,7 +8594,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AudioTemplateNames(self):
-        """Audio transcoding template name array.
+        r"""Audio transcoding template name array.
 Quantity limit: [0,1] for RTMP; [0,20] for others.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
@@ -8607,7 +8607,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoTemplateNames(self):
-        """Video transcoding template name array. Quantity limit: [0,1].
+        r"""Video transcoding template name array. Quantity limit: [0,1].
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8619,7 +8619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scte35Settings(self):
-        """SCTE-35 information configuration.
+        r"""SCTE-35 information configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
         """
         return self._Scte35Settings
@@ -8630,7 +8630,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AVTemplateNames(self):
-        """Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
+        r"""Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -8642,7 +8642,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionTemplateNames(self):
-        """For the subtitle template used, only the AVTemplateNames is valid.
+        r"""For the subtitle template used, only the AVTemplateNames is valid.
         :rtype: list of str
         """
         return self._CaptionTemplateNames
@@ -8653,7 +8653,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TimedMetadataSettings(self):
-        """Meta information controls configuration.
+        r"""Meta information controls configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
         """
         return self._TimedMetadataSettings
@@ -8664,7 +8664,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameCaptureTemplateNames(self):
-        """Frame capture template name array. Quantity limit: [0,1].
+        r"""Frame capture template name array. Quantity limit: [0,1].
         :rtype: list of str
         """
         return self._FrameCaptureTemplateNames
@@ -8698,7 +8698,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class OutputsStatistics(AbstractModel):
-    """Channel output statistics.
+    r"""Channel output statistics.
 
     """
 
@@ -8714,7 +8714,7 @@ class OutputsStatistics(AbstractModel):
 
     @property
     def Pipeline0(self):
-        """Output information of pipeline 0.
+        r"""Output information of pipeline 0.
         :rtype: list of PipelineOutputStatistics
         """
         return self._Pipeline0
@@ -8725,7 +8725,7 @@ class OutputsStatistics(AbstractModel):
 
     @property
     def Pipeline1(self):
-        """Output information of pipeline 1.
+        r"""Output information of pipeline 1.
         :rtype: list of PipelineOutputStatistics
         """
         return self._Pipeline1
@@ -8759,7 +8759,7 @@ class OutputsStatistics(AbstractModel):
 
 
 class PipelineInputSettingsInfo(AbstractModel):
-    """Pipeline failover information.
+    r"""Pipeline failover information.
 
     """
 
@@ -8772,7 +8772,7 @@ class PipelineInputSettingsInfo(AbstractModel):
 
     @property
     def FaultBehavior(self):
-        """Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.
+        r"""Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.
         :rtype: str
         """
         return self._FaultBehavior
@@ -8795,7 +8795,7 @@ class PipelineInputSettingsInfo(AbstractModel):
 
 
 class PipelineInputStatistics(AbstractModel):
-    """Pipeline input statistics.
+    r"""Pipeline input statistics.
 
     """
 
@@ -8821,7 +8821,7 @@ For other inputs, the quantity is 1.
 
     @property
     def Timestamp(self):
-        """Data timestamp in seconds.
+        r"""Data timestamp in seconds.
         :rtype: int
         """
         return self._Timestamp
@@ -8832,7 +8832,7 @@ For other inputs, the quantity is 1.
 
     @property
     def NetworkIn(self):
-        """Input bandwidth in bps.
+        r"""Input bandwidth in bps.
         :rtype: int
         """
         return self._NetworkIn
@@ -8843,7 +8843,7 @@ For other inputs, the quantity is 1.
 
     @property
     def Video(self):
-        """Video information array.
+        r"""Video information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input video.
 For other inputs, the quantity is 1.
         :rtype: list of VideoPipelineInputStatistics
@@ -8856,7 +8856,7 @@ For other inputs, the quantity is 1.
 
     @property
     def Audio(self):
-        """Audio information array.
+        r"""Audio information array.
 For `rtp/udp` input, the quantity is the number of `Pid` of the input audio.
 For other inputs, the quantity is 1.
         :rtype: list of AudioPipelineInputStatistics
@@ -8894,7 +8894,7 @@ For other inputs, the quantity is 1.
 
 
 class PipelineLogInfo(AbstractModel):
-    """Pipeline log information.
+    r"""Pipeline log information.
 
     """
 
@@ -8912,7 +8912,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pipeline0(self):
-        """Log information of pipeline 0.
+        r"""Log information of pipeline 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LogInfo
         """
@@ -8924,7 +8924,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pipeline1(self):
-        """Log information of pipeline 1.
+        r"""Log information of pipeline 1.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of LogInfo
         """
@@ -8959,7 +8959,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PipelineOutputStatistics(AbstractModel):
-    """Channel output statistics.
+    r"""Channel output statistics.
 
     """
 
@@ -8976,7 +8976,7 @@ In seconds, indicating data time.
 
     @property
     def Timestamp(self):
-        """Timestamp.
+        r"""Timestamp.
 In seconds, indicating data time.
         :rtype: int
         """
@@ -8988,7 +8988,7 @@ In seconds, indicating data time.
 
     @property
     def NetworkOut(self):
-        """Output bandwidth in bps.
+        r"""Output bandwidth in bps.
         :rtype: int
         """
         return self._NetworkOut
@@ -9012,7 +9012,7 @@ In seconds, indicating data time.
 
 
 class PlanReq(AbstractModel):
-    """Event configuration information
+    r"""Event configuration information
 
     """
 
@@ -9031,7 +9031,7 @@ class PlanReq(AbstractModel):
 
     @property
     def EventName(self):
-        """Event name
+        r"""Event name
         :rtype: str
         """
         return self._EventName
@@ -9042,7 +9042,7 @@ class PlanReq(AbstractModel):
 
     @property
     def TimingSettings(self):
-        """Event trigger time settings
+        r"""Event trigger time settings
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimingSettingsReq`
         """
         return self._TimingSettings
@@ -9053,7 +9053,7 @@ class PlanReq(AbstractModel):
 
     @property
     def EventSettings(self):
-        """Event configuration
+        r"""Event configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventSettingsReq`
         """
         return self._EventSettings
@@ -9082,7 +9082,7 @@ class PlanReq(AbstractModel):
 
 
 class PlanResp(AbstractModel):
-    """Event configuration information
+    r"""Event configuration information
 
     """
 
@@ -9101,7 +9101,7 @@ class PlanResp(AbstractModel):
 
     @property
     def EventName(self):
-        """Event name
+        r"""Event name
         :rtype: str
         """
         return self._EventName
@@ -9112,7 +9112,7 @@ class PlanResp(AbstractModel):
 
     @property
     def TimingSettings(self):
-        """Event trigger time settings
+        r"""Event trigger time settings
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimingSettingsResp`
         """
         return self._TimingSettings
@@ -9123,7 +9123,7 @@ class PlanResp(AbstractModel):
 
     @property
     def EventSettings(self):
-        """Event configuration
+        r"""Event configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventSettingsResp`
         """
         return self._EventSettings
@@ -9152,7 +9152,7 @@ class PlanResp(AbstractModel):
 
 
 class PlanSettings(AbstractModel):
-    """Event settings
+    r"""Event settings
 
     """
 
@@ -9166,7 +9166,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TimedRecordSettings(self):
-        """Timed recording settings
+        r"""Timed recording settings
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedRecordSettings`
         """
@@ -9192,7 +9192,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class PushEventSetting(AbstractModel):
-    """The callback configuration for push events.
+    r"""The callback configuration for push events.
 
     """
 
@@ -9208,7 +9208,7 @@ class PushEventSetting(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        """The callback URL (required).
+        r"""The callback URL (required).
         :rtype: str
         """
         return self._NotifyUrl
@@ -9219,7 +9219,7 @@ class PushEventSetting(AbstractModel):
 
     @property
     def NotifyKey(self):
-        """The callback key (optional).
+        r"""The callback key (optional).
         :rtype: str
         """
         return self._NotifyKey
@@ -9243,7 +9243,7 @@ class PushEventSetting(AbstractModel):
 
 
 class QueryDispatchInputInfo(AbstractModel):
-    """The stream status of the queried input.
+    r"""The stream status of the queried input.
 
     """
 
@@ -9265,7 +9265,7 @@ class QueryDispatchInputInfo(AbstractModel):
 
     @property
     def InputID(self):
-        """The input ID.
+        r"""The input ID.
         :rtype: str
         """
         return self._InputID
@@ -9276,7 +9276,7 @@ class QueryDispatchInputInfo(AbstractModel):
 
     @property
     def InputName(self):
-        """The input name.
+        r"""The input name.
         :rtype: str
         """
         return self._InputName
@@ -9287,7 +9287,7 @@ class QueryDispatchInputInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """The input protocol.
+        r"""The input protocol.
         :rtype: str
         """
         return self._Protocol
@@ -9298,7 +9298,7 @@ class QueryDispatchInputInfo(AbstractModel):
 
     @property
     def InputStreamInfoList(self):
-        """The stream status of the input.
+        r"""The stream status of the input.
         :rtype: list of InputStreamInfo
         """
         return self._InputStreamInfoList
@@ -9329,7 +9329,7 @@ class QueryDispatchInputInfo(AbstractModel):
 
 
 class QueryInputStreamStateRequest(AbstractModel):
-    """QueryInputStreamState request structure.
+    r"""QueryInputStreamState request structure.
 
     """
 
@@ -9342,7 +9342,7 @@ class QueryInputStreamStateRequest(AbstractModel):
 
     @property
     def Id(self):
-        """The StreamLive input ID.
+        r"""The StreamLive input ID.
         :rtype: str
         """
         return self._Id
@@ -9365,7 +9365,7 @@ class QueryInputStreamStateRequest(AbstractModel):
 
 
 class QueryInputStreamStateResponse(AbstractModel):
-    """QueryInputStreamState response structure.
+    r"""QueryInputStreamState response structure.
 
     """
 
@@ -9381,7 +9381,7 @@ class QueryInputStreamStateResponse(AbstractModel):
 
     @property
     def Info(self):
-        """The information of the StreamLive input queried.
+        r"""The information of the StreamLive input queried.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.QueryDispatchInputInfo`
         """
         return self._Info
@@ -9392,7 +9392,7 @@ class QueryInputStreamStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9410,7 +9410,7 @@ class QueryInputStreamStateResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """Region information
+    r"""Region information
 
     """
 
@@ -9423,7 +9423,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._Name
@@ -9446,7 +9446,7 @@ class RegionInfo(AbstractModel):
 
 
 class SDMCSettingsInfo(AbstractModel):
-    """SDMC DRM configuration information. This parameter is valid only when `Scheme` is set to `SDMCDRM`.
+    r"""SDMC DRM configuration information. This parameter is valid only when `Scheme` is set to `SDMCDRM`.
 
     """
 
@@ -9481,7 +9481,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def Uid(self):
-        """User ID in the SDMC DRM system
+        r"""User ID in the SDMC DRM system
         :rtype: str
         """
         return self._Uid
@@ -9492,7 +9492,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def Tracks(self):
-        """Tracks of the SDMC DRM system. This parameter is valid for DASH output groups.
+        r"""Tracks of the SDMC DRM system. This parameter is valid for DASH output groups.
 `1`: audio
 `2`: SD
 `4`: HD
@@ -9510,7 +9510,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def SecretId(self):
-        """Key ID in the SDMC DRM system; required
+        r"""Key ID in the SDMC DRM system; required
         :rtype: str
         """
         return self._SecretId
@@ -9521,7 +9521,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def SecretKey(self):
-        """Key in the SDMC DRM system; required
+        r"""Key in the SDMC DRM system; required
         :rtype: str
         """
         return self._SecretKey
@@ -9532,7 +9532,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def Url(self):
-        """Key request URL of the SDMC DRM system, which is `https://uat.multidrm.tv/cpix/2.2/getcontentkey` by default
+        r"""Key request URL of the SDMC DRM system, which is `https://uat.multidrm.tv/cpix/2.2/getcontentkey` by default
         :rtype: str
         """
         return self._Url
@@ -9543,7 +9543,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
     @property
     def TokenName(self):
-        """Token name in an SDMC key request URL, which is `token` by default
+        r"""Token name in an SDMC key request URL, which is `token` by default
         :rtype: str
         """
         return self._TokenName
@@ -9571,7 +9571,7 @@ Default value: `31` (audio + SD + HD + UHD1 + UHD2)
 
 
 class Scte35SettingsInfo(AbstractModel):
-    """SCTE-35 configuration information.
+    r"""SCTE-35 configuration information.
 
     """
 
@@ -9584,7 +9584,7 @@ class Scte35SettingsInfo(AbstractModel):
 
     @property
     def Behavior(self):
-        """Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.
+        r"""Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.
         :rtype: str
         """
         return self._Behavior
@@ -9607,7 +9607,7 @@ class Scte35SettingsInfo(AbstractModel):
 
 
 class SegmentationDescriptorInfo(AbstractModel):
-    """SCTE-35 configuration information.
+    r"""SCTE-35 configuration information.
 
     """
 
@@ -9650,7 +9650,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def EventID(self):
-        """A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        r"""A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
         :rtype: int
         """
         return self._EventID
@@ -9661,7 +9661,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def EventCancelIndicator(self):
-        """Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
+        r"""Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
         :rtype: int
         """
         return self._EventCancelIndicator
@@ -9672,7 +9672,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def DeliveryRestrictions(self):
-        """Distribution configuration.
+        r"""Distribution configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DeliveryRestrictionsInfo`
         """
         return self._DeliveryRestrictions
@@ -9683,7 +9683,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
+        r"""The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
         :rtype: int
         """
         return self._Duration
@@ -9694,7 +9694,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def UPIDType(self):
-        """Corresponds to SCTE-35 segmentation_upid_type parameter.
+        r"""Corresponds to SCTE-35 segmentation_upid_type parameter.
         :rtype: int
         """
         return self._UPIDType
@@ -9705,7 +9705,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def UPID(self):
-        """Corresponds to SCTE-35 segmentation_upid. 
+        r"""Corresponds to SCTE-35 segmentation_upid. 
         :rtype: str
         """
         return self._UPID
@@ -9716,7 +9716,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def TypeID(self):
-        """Corresponds to SCTE-35 segmentation_type_id.
+        r"""Corresponds to SCTE-35 segmentation_type_id.
         :rtype: int
         """
         return self._TypeID
@@ -9727,7 +9727,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def Num(self):
-        """Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        r"""Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
         :rtype: int
         """
         return self._Num
@@ -9738,7 +9738,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def Expected(self):
-        """Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
+        r"""Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
         :rtype: int
         """
         return self._Expected
@@ -9749,7 +9749,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def SubSegmentNum(self):
-        """Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
+        r"""Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
         :rtype: int
         """
         return self._SubSegmentNum
@@ -9760,7 +9760,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
     @property
     def SubSegmentsExpected(self):
-        """Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
+        r"""Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
         :rtype: int
         """
         return self._SubSegmentsExpected
@@ -9795,7 +9795,7 @@ class SegmentationDescriptorInfo(AbstractModel):
 
 
 class SegmentationDescriptorRespInfo(AbstractModel):
-    """SCTE-35 configuration information.
+    r"""SCTE-35 configuration information.
 
     """
 
@@ -9838,7 +9838,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def EventID(self):
-        """A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        r"""A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
         :rtype: int
         """
         return self._EventID
@@ -9849,7 +9849,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def EventCancelIndicator(self):
-        """Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
+        r"""Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
         :rtype: int
         """
         return self._EventCancelIndicator
@@ -9860,7 +9860,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def DeliveryRestrictions(self):
-        """Distribution configuration.
+        r"""Distribution configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DeliveryRestrictionsInfo`
         """
         return self._DeliveryRestrictions
@@ -9871,7 +9871,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def Duration(self):
-        """The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
+        r"""The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
         :rtype: str
         """
         return self._Duration
@@ -9882,7 +9882,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def UPIDType(self):
-        """Corresponds to SCTE-35 segmentation_upid_type parameter.
+        r"""Corresponds to SCTE-35 segmentation_upid_type parameter.
         :rtype: int
         """
         return self._UPIDType
@@ -9893,7 +9893,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def UPID(self):
-        """Corresponds to SCTE-35 segmentation_upid. 
+        r"""Corresponds to SCTE-35 segmentation_upid. 
         :rtype: str
         """
         return self._UPID
@@ -9904,7 +9904,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def TypeID(self):
-        """Corresponds to SCTE-35 segmentation_type_id.
+        r"""Corresponds to SCTE-35 segmentation_type_id.
         :rtype: int
         """
         return self._TypeID
@@ -9915,7 +9915,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def Num(self):
-        """Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        r"""Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
         :rtype: int
         """
         return self._Num
@@ -9926,7 +9926,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def Expected(self):
-        """Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
+        r"""Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
         :rtype: int
         """
         return self._Expected
@@ -9937,7 +9937,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def SubSegmentNum(self):
-        """Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
+        r"""Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
         :rtype: int
         """
         return self._SubSegmentNum
@@ -9948,7 +9948,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
     @property
     def SubSegmentsExpected(self):
-        """Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
+        r"""Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
         :rtype: int
         """
         return self._SubSegmentsExpected
@@ -9983,7 +9983,7 @@ class SegmentationDescriptorRespInfo(AbstractModel):
 
 
 class StartStreamLiveChannelRequest(AbstractModel):
-    """StartStreamLiveChannel request structure.
+    r"""StartStreamLiveChannel request structure.
 
     """
 
@@ -9996,7 +9996,7 @@ class StartStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -10019,7 +10019,7 @@ class StartStreamLiveChannelRequest(AbstractModel):
 
 
 class StartStreamLiveChannelResponse(AbstractModel):
-    """StartStreamLiveChannel response structure.
+    r"""StartStreamLiveChannel response structure.
 
     """
 
@@ -10032,7 +10032,7 @@ class StartStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10047,7 +10047,7 @@ class StartStreamLiveChannelResponse(AbstractModel):
 
 
 class StaticImageActivateSetting(AbstractModel):
-    """Static image activate setting.
+    r"""Static image activate setting.
 
     """
 
@@ -10087,7 +10087,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def ImageUrl(self):
-        """The address of the image to be inserted, starting with http or https and ending with .png .PNG .bmp .BMP .tga .TGA.
+        r"""The address of the image to be inserted, starting with http or https and ending with .png .PNG .bmp .BMP .tga .TGA.
         :rtype: str
         """
         return self._ImageUrl
@@ -10098,7 +10098,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def Layer(self):
-        """The layer of the superimposed image, 0-7; the default value is 0, and a higher layer means it is on the top.
+        r"""The layer of the superimposed image, 0-7; the default value is 0, and a higher layer means it is on the top.
         :rtype: int
         """
         return self._Layer
@@ -10109,7 +10109,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def Opacity(self):
-        """Opacity, range 0-100; the default value is 100, which means completely opaque.
+        r"""Opacity, range 0-100; the default value is 100, which means completely opaque.
         :rtype: int
         """
         return self._Opacity
@@ -10120,7 +10120,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def ImageX(self):
-        """The distance from the left edge in pixels; the default value is 0 and the maximum value is 4096.
+        r"""The distance from the left edge in pixels; the default value is 0 and the maximum value is 4096.
         :rtype: int
         """
         return self._ImageX
@@ -10131,7 +10131,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def ImageY(self):
-        """The distance from the top edge in pixels; the default value is 0 and the maximum value is 2160.
+        r"""The distance from the top edge in pixels; the default value is 0 and the maximum value is 2160.
         :rtype: int
         """
         return self._ImageY
@@ -10142,7 +10142,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def Width(self):
-        """The width of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means using the original image size. The minimum value is 1 and the maximum value is 4096.
+        r"""The width of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means using the original image size. The minimum value is 1 and the maximum value is 4096.
         :rtype: int
         """
         return self._Width
@@ -10153,7 +10153,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def Height(self):
-        """The height of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means the original image size is used. The minimum value is 1 and the maximum value is 2160.
+        r"""The height of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means the original image size is used. The minimum value is 1 and the maximum value is 2160.
         :rtype: int
         """
         return self._Height
@@ -10164,7 +10164,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def Duration(self):
-        """Overlay duration, in milliseconds, range 0-86400000; default value 0, 0 means continuous.
+        r"""Overlay duration, in milliseconds, range 0-86400000; default value 0, 0 means continuous.
         :rtype: int
         """
         return self._Duration
@@ -10175,7 +10175,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def FadeIn(self):
-        """Fade-in duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-in effect.
+        r"""Fade-in duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-in effect.
         :rtype: int
         """
         return self._FadeIn
@@ -10186,7 +10186,7 @@ class StaticImageActivateSetting(AbstractModel):
 
     @property
     def FadeOut(self):
-        """Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        r"""Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
         :rtype: int
         """
         return self._FadeOut
@@ -10218,7 +10218,7 @@ class StaticImageActivateSetting(AbstractModel):
 
 
 class StaticImageDeactivateSetting(AbstractModel):
-    """Static image deactivate setting.
+    r"""Static image deactivate setting.
 
     """
 
@@ -10234,7 +10234,7 @@ class StaticImageDeactivateSetting(AbstractModel):
 
     @property
     def Layer(self):
-        """The overlay level to be canceled, range 0-7, default value 0.
+        r"""The overlay level to be canceled, range 0-7, default value 0.
         :rtype: int
         """
         return self._Layer
@@ -10245,7 +10245,7 @@ class StaticImageDeactivateSetting(AbstractModel):
 
     @property
     def FadeOut(self):
-        """Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        r"""Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
         :rtype: int
         """
         return self._FadeOut
@@ -10269,7 +10269,7 @@ class StaticImageDeactivateSetting(AbstractModel):
 
 
 class StaticImageSettings(AbstractModel):
-    """Static graphic overlay configuration.
+    r"""Static graphic overlay configuration.
 
     """
 
@@ -10282,7 +10282,7 @@ class StaticImageSettings(AbstractModel):
 
     @property
     def GlobalImageOverlayEnabled(self):
-        """Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
+        r"""Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
         :rtype: int
         """
         return self._GlobalImageOverlayEnabled
@@ -10305,7 +10305,7 @@ class StaticImageSettings(AbstractModel):
 
 
 class StopStreamLiveChannelRequest(AbstractModel):
-    """StopStreamLiveChannel request structure.
+    r"""StopStreamLiveChannel request structure.
 
     """
 
@@ -10318,7 +10318,7 @@ class StopStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -10341,7 +10341,7 @@ class StopStreamLiveChannelRequest(AbstractModel):
 
 
 class StopStreamLiveChannelResponse(AbstractModel):
-    """StopStreamLiveChannel response structure.
+    r"""StopStreamLiveChannel response structure.
 
     """
 
@@ -10354,7 +10354,7 @@ class StopStreamLiveChannelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10369,7 +10369,7 @@ class StopStreamLiveChannelResponse(AbstractModel):
 
 
 class StreamAudioInfo(AbstractModel):
-    """Audio information.
+    r"""Audio information.
 
     """
 
@@ -10399,7 +10399,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
-        """Audio `Pid`.
+        r"""Audio `Pid`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10411,7 +10411,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
-        """Audio codec.
+        r"""Audio codec.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10423,7 +10423,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fps(self):
-        """Audio frame rate.
+        r"""Audio frame rate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10435,7 +10435,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rate(self):
-        """Audio bitrate.
+        r"""Audio bitrate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10447,7 +10447,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        """Audio sample rate.
+        r"""Audio sample rate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10475,7 +10475,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class StreamInfo(AbstractModel):
-    """Push information.
+    r"""Push information.
 
     """
 
@@ -10497,7 +10497,7 @@ class StreamInfo(AbstractModel):
 
     @property
     def ClientIp(self):
-        """Client IP.
+        r"""Client IP.
         :rtype: str
         """
         return self._ClientIp
@@ -10508,7 +10508,7 @@ class StreamInfo(AbstractModel):
 
     @property
     def Video(self):
-        """Video information of pushed streams.
+        r"""Video information of pushed streams.
         :rtype: list of StreamVideoInfo
         """
         return self._Video
@@ -10519,7 +10519,7 @@ class StreamInfo(AbstractModel):
 
     @property
     def Audio(self):
-        """Audio information of pushed streams.
+        r"""Audio information of pushed streams.
         :rtype: list of StreamAudioInfo
         """
         return self._Audio
@@ -10530,7 +10530,7 @@ class StreamInfo(AbstractModel):
 
     @property
     def Scte35(self):
-        """SCTE-35 information of pushed streams.
+        r"""SCTE-35 information of pushed streams.
         :rtype: list of StreamScte35Info
         """
         return self._Scte35
@@ -10571,7 +10571,7 @@ class StreamInfo(AbstractModel):
 
 
 class StreamLiveChannelInfo(AbstractModel):
-    """Channel information
+    r"""Channel information
 
     """
 
@@ -10637,7 +10637,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Channel ID
+        r"""Channel ID
         :rtype: str
         """
         return self._Id
@@ -10648,7 +10648,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def State(self):
-        """Channel status
+        r"""Channel status
         :rtype: str
         """
         return self._State
@@ -10659,7 +10659,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AttachedInputs(self):
-        """Information of attached inputs
+        r"""Information of attached inputs
         :rtype: list of AttachedInput
         """
         return self._AttachedInputs
@@ -10670,7 +10670,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputGroups(self):
-        """Information of output groups
+        r"""Information of output groups
         :rtype: list of StreamLiveOutputGroupsInfo
         """
         return self._OutputGroups
@@ -10681,7 +10681,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Channel name
+        r"""Channel name
         :rtype: str
         """
         return self._Name
@@ -10692,7 +10692,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AudioTemplates(self):
-        """Audio transcoding templates
+        r"""Audio transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of AudioTemplateInfo
         """
@@ -10704,7 +10704,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoTemplates(self):
-        """Video transcoding templates
+        r"""Video transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of VideoTemplateInfo
         """
@@ -10716,7 +10716,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AVTemplates(self):
-        """Audio/Video transcoding templates
+        r"""Audio/Video transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: list of AVTemplate
         """
@@ -10728,7 +10728,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionTemplates(self):
-        """Caption templates.
+        r"""Caption templates.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -10739,7 +10739,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def PlanSettings(self):
-        """Event settings
+        r"""Event settings
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
@@ -10751,7 +10751,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EventNotifySettings(self):
-        """The callback settings.
+        r"""The callback settings.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
@@ -10763,7 +10763,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputLossBehavior(self):
-        """Supplement the last video frame configuration settings.
+        r"""Supplement the last video frame configuration settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         return self._InputLossBehavior
@@ -10774,7 +10774,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PipelineInputSettings(self):
-        """Pipeline configuration.
+        r"""Pipeline configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         return self._PipelineInputSettings
@@ -10785,7 +10785,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputAnalysisSettings(self):
-        """Recognition configuration for input content.
+        r"""Recognition configuration for input content.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         """
         return self._InputAnalysisSettings
@@ -10796,7 +10796,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
-        """Console tag list.
+        r"""Console tag list.
         :rtype: list of Tag
         """
         return self._Tags
@@ -10807,7 +10807,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameCaptureTemplates(self):
-        """Frame capture templates.
+        r"""Frame capture templates.
         :rtype: list of FrameCaptureTemplate
         """
         return self._FrameCaptureTemplates
@@ -10818,7 +10818,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def GeneralSettings(self):
-        """General settings.
+        r"""General settings.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         return self._GeneralSettings
@@ -10909,7 +10909,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class StreamLiveOutputGroupsInfo(AbstractModel):
-    """Channel output group information
+    r"""Channel output group information
 
     """
 
@@ -10956,7 +10956,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
+        r"""Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
         :rtype: str
         """
         return self._Name
@@ -10967,7 +10967,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """Output protocol
+        r"""Output protocol
 Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, 
  `DASH_ARCHIVE`, `HLS_STREAM_PACKAGE`, 
  `DASH_STREAM_PACKAGE`, 
@@ -10982,7 +10982,7 @@ Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`,
 
     @property
     def Outputs(self):
-        """Output information
+        r"""Output information
 If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
         :rtype: list of OutputInfo
         """
@@ -10994,7 +10994,7 @@ If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is 
 
     @property
     def Destinations(self):
-        """Relay destinations. Quantity: [1, 2]
+        r"""Relay destinations. Quantity: [1, 2]
         :rtype: list of DestinationInfo
         """
         return self._Destinations
@@ -11005,7 +11005,7 @@ If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is 
 
     @property
     def HlsRemuxSettings(self):
-        """HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.
+        r"""HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
         """
@@ -11017,7 +11017,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DrmSettings(self):
-        """DRM configuration information
+        r"""DRM configuration information
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
         """
@@ -11029,7 +11029,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DashRemuxSettings(self):
-        """DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs
+        r"""DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
         """
@@ -11041,7 +11041,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamPackageSettings(self):
-        """StreamPackage configuration information, which is required if the output type is StreamPackage
+        r"""StreamPackage configuration information, which is required if the output type is StreamPackage
 Note: this field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StreamPackageSettingsInfo`
         """
@@ -11053,7 +11053,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TimeShiftSettings(self):
-        """Time-shift configuration information
+        r"""Time-shift configuration information
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimeShiftSettingsInfo`
         """
@@ -11105,7 +11105,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class StreamLiveRegionInfo(AbstractModel):
-    """StreamLive region information
+    r"""StreamLive region information
 
     """
 
@@ -11118,7 +11118,7 @@ class StreamLiveRegionInfo(AbstractModel):
 
     @property
     def Regions(self):
-        """List of StreamLive regions
+        r"""List of StreamLive regions
         :rtype: list of RegionInfo
         """
         return self._Regions
@@ -11146,7 +11146,7 @@ class StreamLiveRegionInfo(AbstractModel):
 
 
 class StreamPackageSettingsInfo(AbstractModel):
-    """StreamPackage settings when the output type is StreamPackage
+    r"""StreamPackage settings when the output type is StreamPackage
 
     """
 
@@ -11159,7 +11159,7 @@ class StreamPackageSettingsInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID in StreamPackage
+        r"""Channel ID in StreamPackage
         :rtype: str
         """
         return self._Id
@@ -11182,7 +11182,7 @@ class StreamPackageSettingsInfo(AbstractModel):
 
 
 class StreamScte35Info(AbstractModel):
-    """SCTE-35 information.
+    r"""SCTE-35 information.
 
     """
 
@@ -11196,7 +11196,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
-        """SCTE-35 `Pid`.
+        r"""SCTE-35 `Pid`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11220,7 +11220,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class StreamVideoInfo(AbstractModel):
-    """Video information of pushed streams.
+    r"""Video information of pushed streams.
 
     """
 
@@ -11254,7 +11254,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
-        """Video `Pid`.
+        r"""Video `Pid`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11266,7 +11266,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
-        """Video codec.
+        r"""Video codec.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11278,7 +11278,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fps(self):
-        """Video frame rate.
+        r"""Video frame rate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11290,7 +11290,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rate(self):
-        """Video bitrate.
+        r"""Video bitrate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11302,7 +11302,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
-        """Video width.
+        r"""Video width.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11314,7 +11314,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        """Video height.
+        r"""Video height.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11343,7 +11343,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SubtitleConf(AbstractModel):
-    """Subtitle template configuration.
+    r"""Subtitle template configuration.
 
     """
 
@@ -11385,7 +11385,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def Name(self):
-        """Template name.
+        r"""Template name.
         :rtype: str
         """
         return self._Name
@@ -11396,7 +11396,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def CaptionSelectorName(self):
-        """Name of caption selector. Required when CaptionSource selects `INPUT`.
+        r"""Name of caption selector. Required when CaptionSource selects `INPUT`.
         :rtype: str
         """
         return self._CaptionSelectorName
@@ -11407,7 +11407,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def CaptionSource(self):
-        """Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
+        r"""Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
         :rtype: str
         """
         return self._CaptionSource
@@ -11418,7 +11418,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def ContentType(self):
-        """Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.
+        r"""Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.
         :rtype: int
         """
         return self._ContentType
@@ -11429,7 +11429,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def TargetType(self):
-        """Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.
+        r"""Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.
         :rtype: int
         """
         return self._TargetType
@@ -11440,7 +11440,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def SourceLanguage(self):
-        """Original phonetic language.
+        r"""Original phonetic language.
 Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
         :rtype: str
         """
@@ -11452,7 +11452,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def TargetLanguage(self):
-        """Target language.
+        r"""Target language.
 Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
         :rtype: str
         """
@@ -11464,7 +11464,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def FontStyle(self):
-        """Font style configuration. Required when CaptionSource selects `ANALYSIS `.
+        r"""Font style configuration. Required when CaptionSource selects `ANALYSIS `.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
         """
         return self._FontStyle
@@ -11475,7 +11475,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def StateEffectMode(self):
-        """There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.
+        r"""There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.
         :rtype: str
         """
         return self._StateEffectMode
@@ -11486,7 +11486,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def SteadyStateDelayedTime(self):
-        """Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
+        r"""Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
         :rtype: int
         """
         return self._SteadyStateDelayedTime
@@ -11520,7 +11520,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
 
 class SubtitleFontConf(AbstractModel):
-    """Subtitle style configuration.
+    r"""Subtitle style configuration.
 
     """
 
@@ -11566,7 +11566,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def LineSpacing(self):
-        """Line spacing.
+        r"""Line spacing.
         :rtype: int
         """
         return self._LineSpacing
@@ -11577,7 +11577,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def Margins(self):
-        """Margins.
+        r"""Margins.
         :rtype: int
         """
         return self._Margins
@@ -11588,7 +11588,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def Lines(self):
-        """Rows.
+        r"""Rows.
         :rtype: int
         """
         return self._Lines
@@ -11599,7 +11599,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def CharactersPerLine(self):
-        """Number of characters per line.
+        r"""Number of characters per line.
         :rtype: int
         """
         return self._CharactersPerLine
@@ -11610,7 +11610,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def SourceTextFont(self):
-        """Original font Helvetica: simhei.ttf Song Dynasty: simsun.ttc Dynacw Diamond Black: hkjgh.ttf Helvetica font: helvetica.ttf; Need to be set in Source or Source+Target mode
+        r"""Original font Helvetica: simhei.ttf Song Dynasty: simsun.ttc Dynacw Diamond Black: hkjgh.ttf Helvetica font: helvetica.ttf; Need to be set in Source or Source+Target mode
         :rtype: str
         """
         return self._SourceTextFont
@@ -11621,7 +11621,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def TextColor(self):
-        """Font color is represented by 6 RGB hexadecimal characters.
+        r"""Font color is represented by 6 RGB hexadecimal characters.
         :rtype: str
         """
         return self._TextColor
@@ -11632,7 +11632,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        """The background color is represented by 6 RGB hexadecimal characters.
+        r"""The background color is represented by 6 RGB hexadecimal characters.
         :rtype: str
         """
         return self._BackgroundColor
@@ -11643,7 +11643,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def BackgroundAlpha(self):
-        """Background transparency, a number from 0-100.
+        r"""Background transparency, a number from 0-100.
         :rtype: int
         """
         return self._BackgroundAlpha
@@ -11654,7 +11654,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def PreviewContent(self):
-        """Preview copy.
+        r"""Preview copy.
         :rtype: str
         """
         return self._PreviewContent
@@ -11665,7 +11665,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def PreviewWindowHeight(self):
-        """Preview window height.
+        r"""Preview window height.
         :rtype: int
         """
         return self._PreviewWindowHeight
@@ -11676,7 +11676,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def PreviewWindowWidth(self):
-        """Preview window width.
+        r"""Preview window width.
         :rtype: int
         """
         return self._PreviewWindowWidth
@@ -11687,7 +11687,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def TranslatedTextFont(self):
-        """Translation language font, the enumeration value is the same as Font, the fonts supported by the language need to be distinguished; TextColor needs to be set in Target or Source+Target mode
+        r"""Translation language font, the enumeration value is the same as Font, the fonts supported by the language need to be distinguished; TextColor needs to be set in Target or Source+Target mode
         :rtype: str
         """
         return self._TranslatedTextFont
@@ -11721,7 +11721,7 @@ class SubtitleFontConf(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Console Tag, for documentation please refer to: https://www.tencentcloud.com/document/product/651.
+    r"""Console Tag, for documentation please refer to: https://www.tencentcloud.com/document/product/651.
 
     """
 
@@ -11740,7 +11740,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        r"""Tag key, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
         :rtype: str
         """
         return self._TagKey
@@ -11751,7 +11751,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        r"""Tag value, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
         :rtype: str
         """
         return self._TagValue
@@ -11762,7 +11762,7 @@ class Tag(AbstractModel):
 
     @property
     def Category(self):
-        """Tag type, optional; for documentation please refer to: https://www.tencentcloud.com/document/product/651/33023#tag.
+        r"""Tag type, optional; for documentation please refer to: https://www.tencentcloud.com/document/product/651/33023#tag.
         :rtype: str
         """
         return self._Category
@@ -11787,7 +11787,7 @@ class Tag(AbstractModel):
 
 
 class TimeShiftSettingsInfo(AbstractModel):
-    """Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.
+    r"""Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.
 
     """
 
@@ -11808,7 +11808,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def State(self):
-        """Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`
+        r"""Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -11820,7 +11820,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PlayDomain(self):
-        """Domain name bound for time shifting
+        r"""Domain name bound for time shifting
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -11832,7 +11832,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StartoverWindow(self):
-        """Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.
+        r"""Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
         return self._StartoverWindow
@@ -11857,7 +11857,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class TimedMetadataInfo(AbstractModel):
-    """Transparent transmission of meta information plan configuration.
+    r"""Transparent transmission of meta information plan configuration.
 
     """
 
@@ -11870,7 +11870,7 @@ class TimedMetadataInfo(AbstractModel):
 
     @property
     def ID3(self):
-        """Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.
+        r"""Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.
         :rtype: str
         """
         return self._ID3
@@ -11893,7 +11893,7 @@ class TimedMetadataInfo(AbstractModel):
 
 
 class TimedMetadataSettingInfo(AbstractModel):
-    """Transparent transmission of ID3 information configuration.
+    r"""Transparent transmission of ID3 information configuration.
 
     """
 
@@ -11906,7 +11906,7 @@ class TimedMetadataSettingInfo(AbstractModel):
 
     @property
     def Behavior(self):
-        """Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
+        r"""Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
         :rtype: int
         """
         return self._Behavior
@@ -11929,7 +11929,7 @@ class TimedMetadataSettingInfo(AbstractModel):
 
 
 class TimedRecordSettings(AbstractModel):
-    """Timed recording settings
+    r"""Timed recording settings
 
     """
 
@@ -11944,7 +11944,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AutoClear(self):
-        """Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.
+        r"""Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.
 If it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
@@ -11969,7 +11969,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class TimingSettingsReq(AbstractModel):
-    """Event trigger time settings
+    r"""Event trigger time settings
 
     """
 
@@ -11994,7 +11994,7 @@ It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`)
 
     @property
     def StartType(self):
-        """Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.
+        r"""Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.
         :rtype: str
         """
         return self._StartType
@@ -12005,7 +12005,7 @@ It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`)
 
     @property
     def Time(self):
-        """This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.
+        r"""This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.
 It must be in UTC format, e.g., `2020-01-01T12:00:00Z`.
         :rtype: str
         """
@@ -12017,7 +12017,7 @@ It must be in UTC format, e.g., `2020-01-01T12:00:00Z`.
 
     @property
     def StartTime(self):
-        """This parameter is required if `EventType` is `TIMED_RECORD`.
+        r"""This parameter is required if `EventType` is `TIMED_RECORD`.
 It specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.
         :rtype: str
         """
@@ -12029,7 +12029,7 @@ It specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z
 
     @property
     def EndTime(self):
-        """This parameter is required if `EventType` is `TIMED_RECORD`.
+        r"""This parameter is required if `EventType` is `TIMED_RECORD`.
 It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the recording start time.
         :rtype: str
         """
@@ -12056,7 +12056,7 @@ It specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`)
 
 
 class TimingSettingsResp(AbstractModel):
-    """Event trigger time settings
+    r"""Event trigger time settings
 
     """
 
@@ -12081,7 +12081,7 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
 
     @property
     def StartType(self):
-        """Event trigger type
+        r"""Event trigger type
         :rtype: str
         """
         return self._StartType
@@ -12092,7 +12092,7 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
 
     @property
     def Time(self):
-        """Not empty if `StartType` is `FIXED_TIME`
+        r"""Not empty if `StartType` is `FIXED_TIME`
 UTC time, such as `2020-01-01T12:00:00Z`
         :rtype: str
         """
@@ -12104,7 +12104,7 @@ UTC time, such as `2020-01-01T12:00:00Z`
 
     @property
     def StartTime(self):
-        """This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
+        r"""This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
 It indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.
         :rtype: str
         """
@@ -12116,7 +12116,7 @@ It indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00
 
     @property
     def EndTime(self):
-        """This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
+        r"""This parameter cannot be empty if `EventType` is `TIMED_RECORD`.
 It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the start time for recording.
         :rtype: str
         """
@@ -12143,7 +12143,7 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
 
 
 class VideoCodecDetail(AbstractModel):
-    """Video codec additional configuration.
+    r"""Video codec additional configuration.
 
     """
 
@@ -12168,7 +12168,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def Profile(self):
-        """The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.
+        r"""The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.
         :rtype: str
         """
         return self._Profile
@@ -12179,7 +12179,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def Level(self):
-        """Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
+        r"""Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
         :rtype: str
         """
         return self._Level
@@ -12190,7 +12190,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def EntropyEncoding(self):
-        """Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .
+        r"""Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .
         :rtype: str
         """
         return self._EntropyEncoding
@@ -12201,7 +12201,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def AdaptiveQuantization(self):
-        """Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .
+        r"""Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .
         :rtype: str
         """
         return self._AdaptiveQuantization
@@ -12212,7 +12212,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def LookAheadRateControl(self):
-        """Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .
+        r"""Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .
         :rtype: str
         """
         return self._LookAheadRateControl
@@ -12239,7 +12239,7 @@ class VideoCodecDetail(AbstractModel):
 
 
 class VideoEnhanceSetting(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -12255,7 +12255,7 @@ class VideoEnhanceSetting(AbstractModel):
 
     @property
     def Type(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Type
@@ -12266,7 +12266,7 @@ class VideoEnhanceSetting(AbstractModel):
 
     @property
     def Strength(self):
-        """
+        r"""
         :rtype: float
         """
         return self._Strength
@@ -12290,7 +12290,7 @@ class VideoEnhanceSetting(AbstractModel):
 
 
 class VideoPipelineInputStatistics(AbstractModel):
-    """Pipeline input video statistics.
+    r"""Pipeline input video statistics.
 
     """
 
@@ -12309,7 +12309,7 @@ class VideoPipelineInputStatistics(AbstractModel):
 
     @property
     def Fps(self):
-        """Video FPS.
+        r"""Video FPS.
         :rtype: int
         """
         return self._Fps
@@ -12320,7 +12320,7 @@ class VideoPipelineInputStatistics(AbstractModel):
 
     @property
     def Rate(self):
-        """Video bitrate in bps.
+        r"""Video bitrate in bps.
         :rtype: int
         """
         return self._Rate
@@ -12331,7 +12331,7 @@ class VideoPipelineInputStatistics(AbstractModel):
 
     @property
     def Pid(self):
-        """Video `Pid`, which is available only if the input is `rtp/udp`.
+        r"""Video `Pid`, which is available only if the input is `rtp/udp`.
         :rtype: int
         """
         return self._Pid
@@ -12356,7 +12356,7 @@ class VideoPipelineInputStatistics(AbstractModel):
 
 
 class VideoTemplateInfo(AbstractModel):
-    """Video transcoding template.
+    r"""Video transcoding template.
 
     """
 
@@ -12430,7 +12430,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Name(self):
-        """Video transcoding template name, which can contain 1-20 letters and digits.
+        r"""Video transcoding template name, which can contain 1-20 letters and digits.
         :rtype: str
         """
         return self._Name
@@ -12441,7 +12441,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Vcodec(self):
-        """Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.
+        r"""Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.
         :rtype: str
         """
         return self._Vcodec
@@ -12452,7 +12452,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoBitrate(self):
-        """Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.
+        r"""Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._VideoBitrate
@@ -12463,7 +12463,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Width(self):
-        """Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        r"""Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._Width
@@ -12474,7 +12474,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Height(self):
-        """Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        r"""Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._Height
@@ -12485,7 +12485,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Fps(self):
-        """Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
+        r"""Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._Fps
@@ -12496,7 +12496,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TopSpeed(self):
-        """Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.
+        r"""Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.
         :rtype: str
         """
         return self._TopSpeed
@@ -12507,7 +12507,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BitrateCompressionRatio(self):
-        """Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
+        r"""Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
         :rtype: int
         """
         return self._BitrateCompressionRatio
@@ -12518,7 +12518,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RateControlMode(self):
-        """Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        r"""Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
         :rtype: str
         """
         return self._RateControlMode
@@ -12529,7 +12529,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WatermarkId(self):
-        """Watermark ID
+        r"""Watermark ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12541,7 +12541,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FaceBlurringEnabled(self):
-        """Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
+        r"""Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
         :rtype: int
         """
         return self._FaceBlurringEnabled
@@ -12552,7 +12552,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateType(self):
-        """This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        r"""This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
         :rtype: str
         """
         return self._FrameRateType
@@ -12563,7 +12563,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateNumerator(self):
-        """Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
         :rtype: int
         """
         return self._FrameRateNumerator
@@ -12574,7 +12574,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateDenominator(self):
-        """Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
         :rtype: int
         """
         return self._FrameRateDenominator
@@ -12585,7 +12585,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BFramesNum(self):
-        """The number of B frames can be selected from 1 to 3.
+        r"""The number of B frames can be selected from 1 to 3.
         :rtype: int
         """
         return self._BFramesNum
@@ -12596,7 +12596,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RefFramesNum(self):
-        """The number of reference frames can be selected from 1 to 16.
+        r"""The number of reference frames can be selected from 1 to 16.
         :rtype: int
         """
         return self._RefFramesNum
@@ -12607,7 +12607,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AdditionalRateSettings(self):
-        """Additional video bitrate configuration.
+        r"""Additional video bitrate configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
         """
         return self._AdditionalRateSettings
@@ -12618,7 +12618,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoCodecDetails(self):
-        """Video encoding configuration.
+        r"""Video encoding configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
         """
         return self._VideoCodecDetails
@@ -12629,7 +12629,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceEnabled(self):
-        """
+        r"""
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -12640,7 +12640,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceSettings(self):
-        """
+        r"""
         :rtype: list of VideoEnhanceSetting
         """
         return self._VideoEnhanceSettings
@@ -12651,7 +12651,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColorSpaceSettings(self):
-        """Color space setting.
+        r"""Color space setting.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         return self._ColorSpaceSettings

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccessConfiguration(AbstractModel):
-    """List of acceleration regions in a connection group, including acceleration regions and their bandwidth and concurrence configuration.
+    r"""List of acceleration regions in a connection group, including acceleration regions and their bandwidth and concurrence configuration.
 
     """
 
@@ -41,7 +41,7 @@ class AccessConfiguration(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """Acceleration region.
+        r"""Acceleration region.
         :rtype: str
         """
         return self._AccessRegion
@@ -52,7 +52,7 @@ class AccessConfiguration(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """Connection bandwidth cap. Unit: Mbps.
+        r"""Connection bandwidth cap. Unit: Mbps.
         :rtype: int
         """
         return self._Bandwidth
@@ -63,7 +63,7 @@ class AccessConfiguration(AbstractModel):
 
     @property
     def Concurrent(self):
-        """Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
+        r"""Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
         :rtype: int
         """
         return self._Concurrent
@@ -74,7 +74,7 @@ class AccessConfiguration(AbstractModel):
 
     @property
     def NetworkType(self):
-        """Network type. Valid values: `normal` (default), `cn2`
+        r"""Network type. Valid values: `normal` (default), `cn2`
         :rtype: str
         """
         return self._NetworkType
@@ -100,7 +100,7 @@ class AccessConfiguration(AbstractModel):
 
 
 class AccessRegionDetial(AbstractModel):
-    """Query the available acceleration region information, the corresponding bandwidth options, and the concurrence based on origin servers.
+    r"""Query the available acceleration region information, the corresponding bandwidth options, and the concurrence based on origin servers.
 
     """
 
@@ -145,7 +145,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -156,7 +156,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionName(self):
-        """Region name in Chinese or English
+        r"""Region name in Chinese or English
         :rtype: str
         """
         return self._RegionName
@@ -167,7 +167,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConcurrentList(self):
-        """Value array of the available concurrence
+        r"""Value array of the available concurrence
         :rtype: list of int
         """
         return self._ConcurrentList
@@ -178,7 +178,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BandwidthList(self):
-        """Value array of the available bandwidth
+        r"""Value array of the available bandwidth
         :rtype: list of int
         """
         return self._BandwidthList
@@ -189,7 +189,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionArea(self):
-        """Region where the data center locates
+        r"""Region where the data center locates
         :rtype: str
         """
         return self._RegionArea
@@ -200,7 +200,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionAreaName(self):
-        """Name of the region where the data center locates
+        r"""Name of the region where the data center locates
         :rtype: str
         """
         return self._RegionAreaName
@@ -211,7 +211,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IDCType(self):
-        """Data center type. `dc`: data center; `ec`: edge server.
+        r"""Data center type. `dc`: data center; `ec`: edge server.
         :rtype: str
         """
         return self._IDCType
@@ -222,7 +222,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FeatureBitmap(self):
-        """Feature bitmap. Valid values:
+        r"""Feature bitmap. Valid values:
 `0`: disable the feature;
 `1`: enable the feature.
 Each bit in the bitmap represents a feature:
@@ -263,7 +263,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AccessRegionDomainConf(AbstractModel):
-    """Domain name nearest access configuration
+    r"""Domain name nearest access configuration
 
     """
 
@@ -279,7 +279,7 @@ class AccessRegionDomainConf(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID.
+        r"""Region ID.
         :rtype: str
         """
         return self._RegionId
@@ -290,7 +290,7 @@ class AccessRegionDomainConf(AbstractModel):
 
     @property
     def NationCountryInnerList(self):
-        """Region/country code for the nearest access, which can be obtained via the DescribeCountryAreaMapping API.
+        r"""Region/country code for the nearest access, which can be obtained via the DescribeCountryAreaMapping API.
         :rtype: list of str
         """
         return self._NationCountryInnerList
@@ -314,7 +314,7 @@ class AccessRegionDomainConf(AbstractModel):
 
 
 class AddRealServersRequest(AbstractModel):
-    """AddRealServers request structure.
+    r"""AddRealServers request structure.
 
     """
 
@@ -336,7 +336,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID corresponding to origin server
+        r"""Project ID corresponding to origin server
         :rtype: int
         """
         return self._ProjectId
@@ -347,7 +347,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def RealServerIP(self):
-        """IP or domain name corresponding to origin server
+        r"""IP or domain name corresponding to origin server
         :rtype: list of str
         """
         return self._RealServerIP
@@ -358,7 +358,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def RealServerName(self):
-        """Name of the origin server
+        r"""Name of the origin server
         :rtype: str
         """
         return self._RealServerName
@@ -369,7 +369,7 @@ class AddRealServersRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        """List of tags
+        r"""List of tags
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -400,7 +400,7 @@ class AddRealServersRequest(AbstractModel):
 
 
 class AddRealServersResponse(AbstractModel):
-    """AddRealServers response structure.
+    r"""AddRealServers response structure.
 
     """
 
@@ -416,7 +416,7 @@ class AddRealServersResponse(AbstractModel):
 
     @property
     def RealServerSet(self):
-        """An information list of origin server
+        r"""An information list of origin server
         :rtype: list of NewRealServer
         """
         return self._RealServerSet
@@ -427,7 +427,7 @@ class AddRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -448,7 +448,7 @@ class AddRealServersResponse(AbstractModel):
 
 
 class BandwidthPriceGradient(AbstractModel):
-    """Bandwidth price gradient
+    r"""Bandwidth price gradient
 
     """
 
@@ -467,7 +467,7 @@ class BandwidthPriceGradient(AbstractModel):
 
     @property
     def BandwidthRange(self):
-        """Bandwidth range.
+        r"""Bandwidth range.
         :rtype: list of int
         """
         return self._BandwidthRange
@@ -478,7 +478,7 @@ class BandwidthPriceGradient(AbstractModel):
 
     @property
     def BandwidthUnitPrice(self):
-        """Bandwidth unit price within the bandwidth range. Unit: CNY/Mbps/day.
+        r"""Bandwidth unit price within the bandwidth range. Unit: CNY/Mbps/day.
         :rtype: float
         """
         return self._BandwidthUnitPrice
@@ -489,7 +489,7 @@ class BandwidthPriceGradient(AbstractModel):
 
     @property
     def DiscountBandwidthUnitPrice(self):
-        """Discounted bandwidth price in CNY/Mbps/day.
+        r"""Discounted bandwidth price in CNY/Mbps/day.
         :rtype: float
         """
         return self._DiscountBandwidthUnitPrice
@@ -514,7 +514,7 @@ class BandwidthPriceGradient(AbstractModel):
 
 
 class BindListenerRealServersRequest(AbstractModel):
-    """BindListenerRealServers request structure.
+    r"""BindListenerRealServers request structure.
 
     """
 
@@ -530,7 +530,7 @@ class BindListenerRealServersRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -541,7 +541,7 @@ class BindListenerRealServersRequest(AbstractModel):
 
     @property
     def RealServerBindSet(self):
-        """List of origin servers to be bound. If the origin server scheduling policy type of this listener is weighted round robin, you need to enter the `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.
+        r"""List of origin servers to be bound. If the origin server scheduling policy type of this listener is weighted round robin, you need to enter the `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.
         :rtype: list of RealServerBindSetReq
         """
         return self._RealServerBindSet
@@ -570,7 +570,7 @@ class BindListenerRealServersRequest(AbstractModel):
 
 
 class BindListenerRealServersResponse(AbstractModel):
-    """BindListenerRealServers response structure.
+    r"""BindListenerRealServers response structure.
 
     """
 
@@ -583,7 +583,7 @@ class BindListenerRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -598,7 +598,7 @@ class BindListenerRealServersResponse(AbstractModel):
 
 
 class BindRealServer(AbstractModel):
-    """Bound origin server information
+    r"""Bound origin server information
 
     """
 
@@ -634,7 +634,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -645,7 +645,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerIP(self):
-        """Origin server IP or domain name
+        r"""Origin server IP or domain name
         :rtype: str
         """
         return self._RealServerIP
@@ -656,7 +656,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerWeight(self):
-        """Origin server weight
+        r"""Origin server weight
         :rtype: int
         """
         return self._RealServerWeight
@@ -667,7 +667,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerStatus(self):
-        """Origin server health check status. Valid values:
+        r"""Origin server health check status. Valid values:
 0: normal;
 1: exceptional.
 If health check is not enabled, this status will always be normal.
@@ -682,7 +682,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerPort(self):
-        """Origin server port number
+        r"""Origin server port number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -694,7 +694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DownIPList(self):
-        """If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.
+        r"""If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.
         :rtype: list of str
         """
         return self._DownIPList
@@ -705,7 +705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerFailoverRole(self):
-        """Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
+        r"""Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
         :rtype: str
         """
         return self._RealServerFailoverRole
@@ -734,7 +734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BindRealServerInfo(AbstractModel):
-    """The returned value of the added origin server information
+    r"""The returned value of the added origin server information
 
     """
 
@@ -760,7 +760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerIP(self):
-        """Origin server IP or domain name
+        r"""Origin server IP or domain name
         :rtype: str
         """
         return self._RealServerIP
@@ -771,7 +771,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -782,7 +782,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerName(self):
-        """Origin server name
+        r"""Origin server name
         :rtype: str
         """
         return self._RealServerName
@@ -793,7 +793,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -804,7 +804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
-        """Tag list.
+        r"""Tag list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagPair
         """
@@ -837,7 +837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BindRuleRealServersRequest(AbstractModel):
-    """BindRuleRealServers request structure.
+    r"""BindRuleRealServers request structure.
 
     """
 
@@ -856,7 +856,7 @@ If the origin server scheduling policy type of this rule is weighted round robin
 
     @property
     def RuleId(self):
-        """Forwarding rule ID
+        r"""Forwarding rule ID
         :rtype: str
         """
         return self._RuleId
@@ -867,7 +867,7 @@ If the origin server scheduling policy type of this rule is weighted round robin
 
     @property
     def RealServerBindSet(self):
-        """An information list of the origin servers to bind.
+        r"""An information list of the origin servers to bind.
 If there are origin servers bound already, they will be replaced by this new origin server list.
 If this field is empty, it indicates unbinding all origin servers of this rule.
 If the origin server scheduling policy type of this rule is weighted round robin, you need to enter `RealServerWeight`, i.e., the origin server weight. If this field is left empty or for other scheduling types, the default origin server weight is 1.
@@ -899,7 +899,7 @@ If the origin server scheduling policy type of this rule is weighted round robin
 
 
 class BindRuleRealServersResponse(AbstractModel):
-    """BindRuleRealServers response structure.
+    r"""BindRuleRealServers response structure.
 
     """
 
@@ -912,7 +912,7 @@ class BindRuleRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -927,7 +927,7 @@ class BindRuleRealServersResponse(AbstractModel):
 
 
 class Certificate(AbstractModel):
-    """Server Certificate
+    r"""Server Certificate
 
     """
 
@@ -969,7 +969,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        r"""Certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -980,7 +980,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateName(self):
-        """Certificate name; It's an old parameter, please switch to CertificateAlias.
+        r"""Certificate name; It's an old parameter, please switch to CertificateAlias.
         :rtype: str
         """
         return self._CertificateName
@@ -991,7 +991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateType(self):
-        """Certificate type.
+        r"""Certificate type.
         :rtype: int
         """
         return self._CertificateType
@@ -1002,7 +1002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateAlias(self):
-        """Certificate name.
+        r"""Certificate name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1014,7 +1014,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Certificate creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        r"""Certificate creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
         :rtype: int
         """
         return self._CreateTime
@@ -1025,7 +1025,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginTime(self):
-        """Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        r"""Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1037,7 +1037,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        r"""Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1049,7 +1049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuerCN(self):
-        """Common name of the certificate issuer.
+        r"""Common name of the certificate issuer.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1061,7 +1061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectCN(self):
-        """Common name of the certificate subject.
+        r"""Common name of the certificate subject.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1093,7 +1093,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CertificateAliasInfo(AbstractModel):
-    """Certificate alias information.
+    r"""Certificate alias information.
 
     """
 
@@ -1109,7 +1109,7 @@ class CertificateAliasInfo(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID.
+        r"""Certificate ID.
         :rtype: str
         """
         return self._CertificateId
@@ -1120,7 +1120,7 @@ class CertificateAliasInfo(AbstractModel):
 
     @property
     def CertificateAlias(self):
-        """Certificate alias.
+        r"""Certificate alias.
         :rtype: str
         """
         return self._CertificateAlias
@@ -1144,7 +1144,7 @@ class CertificateAliasInfo(AbstractModel):
 
 
 class CertificateDetail(AbstractModel):
-    """Certificate details, including the certificate ID, name, type, content, and key content.
+    r"""Certificate details, including the certificate ID, name, type, content, and key content.
 
     """
 
@@ -1191,7 +1191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        r"""Certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -1202,7 +1202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateType(self):
-        """Certificate type.
+        r"""Certificate type.
         :rtype: int
         """
         return self._CertificateType
@@ -1213,7 +1213,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateAlias(self):
-        """Certificate name.
+        r"""Certificate name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1225,7 +1225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateContent(self):
-        """Certificate content.
+        r"""Certificate content.
         :rtype: str
         """
         return self._CertificateContent
@@ -1236,7 +1236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateKey(self):
-        """Key content. This field will be returned if the certificate type is the SSL certificate.
+        r"""Key content. This field will be returned if the certificate type is the SSL certificate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1248,7 +1248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        r"""Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1260,7 +1260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginTime(self):
-        """Time that the certificate takes effect. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        r"""Time that the certificate takes effect. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1272,7 +1272,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Certificate expiration time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
+        r"""Certificate expiration time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1284,7 +1284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuerCN(self):
-        """Common name of the certificate’s issuer.
+        r"""Common name of the certificate’s issuer.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1296,7 +1296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectCN(self):
-        """Common name of the certificate subject.
+        r"""Common name of the certificate subject.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1329,7 +1329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CheckProxyCreateRequest(AbstractModel):
-    """CheckProxyCreate request structure.
+    r"""CheckProxyCreate request structure.
 
     """
 
@@ -1366,7 +1366,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """Access (acceleration) region of the connection. The value can be obtained via the DescribeAccessRegionsByDestRegion API.
+        r"""Access (acceleration) region of the connection. The value can be obtained via the DescribeAccessRegionsByDestRegion API.
         :rtype: str
         """
         return self._AccessRegion
@@ -1377,7 +1377,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def RealServerRegion(self):
-        """Origin server region of the connection. The value can be obtained via the DescribeDestRegions API.
+        r"""Origin server region of the connection. The value can be obtained via the DescribeDestRegions API.
         :rtype: str
         """
         return self._RealServerRegion
@@ -1388,7 +1388,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """Connection bandwidth cap. Unit: Mbps.
+        r"""Connection bandwidth cap. Unit: Mbps.
         :rtype: int
         """
         return self._Bandwidth
@@ -1399,7 +1399,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Concurrent(self):
-        """Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
+        r"""Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
         :rtype: int
         """
         return self._Concurrent
@@ -1410,7 +1410,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID that needs to be entered when a connection is created in a connection group
+        r"""Connection group ID that needs to be entered when a connection is created in a connection group
         :rtype: str
         """
         return self._GroupId
@@ -1421,7 +1421,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -1432,7 +1432,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def NetworkType(self):
-        """Network type. Valid values: `normal` (default), `cn2`
+        r"""Network type. Valid values: `normal` (default), `cn2`
         :rtype: str
         """
         return self._NetworkType
@@ -1443,7 +1443,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).
+        r"""Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).
         :rtype: str
         """
         return self._PackageType
@@ -1454,7 +1454,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        """(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
+        r"""(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :rtype: int
         """
         return self._Http3Supported
@@ -1485,7 +1485,7 @@ class CheckProxyCreateRequest(AbstractModel):
 
 
 class CheckProxyCreateResponse(AbstractModel):
-    """CheckProxyCreate response structure.
+    r"""CheckProxyCreate response structure.
 
     """
 
@@ -1501,7 +1501,7 @@ class CheckProxyCreateResponse(AbstractModel):
 
     @property
     def CheckFlag(self):
-        """Queries whether a connection with the specified configuration can be created. 1: yes; 0: no.
+        r"""Queries whether a connection with the specified configuration can be created. 1: yes; 0: no.
         :rtype: int
         """
         return self._CheckFlag
@@ -1512,7 +1512,7 @@ class CheckProxyCreateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1528,7 +1528,7 @@ class CheckProxyCreateResponse(AbstractModel):
 
 
 class CloseProxiesRequest(AbstractModel):
-    """CloseProxies request structure.
+    r"""CloseProxies request structure.
 
     """
 
@@ -1548,7 +1548,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def InstanceIds(self):
-        """Connection instance ID; It’s an old parameter, please switch to ProxyIds.
+        r"""Connection instance ID; It’s an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1559,7 +1559,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -1571,7 +1571,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyIds(self):
-        """Connection instance ID; It’s a new parameter.
+        r"""Connection instance ID; It’s a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -1596,7 +1596,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class CloseProxiesResponse(AbstractModel):
-    """CloseProxies response structure.
+    r"""CloseProxies response structure.
 
     """
 
@@ -1615,7 +1615,7 @@ class CloseProxiesResponse(AbstractModel):
 
     @property
     def InvalidStatusInstanceSet(self):
-        """Only the running connection instance ID lists can be enabled.
+        r"""Only the running connection instance ID lists can be enabled.
         :rtype: list of str
         """
         return self._InvalidStatusInstanceSet
@@ -1626,7 +1626,7 @@ class CloseProxiesResponse(AbstractModel):
 
     @property
     def OperationFailedInstanceSet(self):
-        """ID list of connection instances failed to be enabled.
+        r"""ID list of connection instances failed to be enabled.
         :rtype: list of str
         """
         return self._OperationFailedInstanceSet
@@ -1637,7 +1637,7 @@ class CloseProxiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1654,7 +1654,7 @@ class CloseProxiesResponse(AbstractModel):
 
 
 class CloseProxyGroupRequest(AbstractModel):
-    """CloseProxyGroup request structure.
+    r"""CloseProxyGroup request structure.
 
     """
 
@@ -1667,7 +1667,7 @@ class CloseProxyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group instance ID.
+        r"""Connection group instance ID.
         :rtype: str
         """
         return self._GroupId
@@ -1690,7 +1690,7 @@ class CloseProxyGroupRequest(AbstractModel):
 
 
 class CloseProxyGroupResponse(AbstractModel):
-    """CloseProxyGroup response structure.
+    r"""CloseProxyGroup response structure.
 
     """
 
@@ -1709,7 +1709,7 @@ class CloseProxyGroupResponse(AbstractModel):
 
     @property
     def InvalidStatusInstanceSet(self):
-        """List of IDs of the connection instances that are not running, which cannot be enabled.
+        r"""List of IDs of the connection instances that are not running, which cannot be enabled.
         :rtype: list of str
         """
         return self._InvalidStatusInstanceSet
@@ -1720,7 +1720,7 @@ class CloseProxyGroupResponse(AbstractModel):
 
     @property
     def OperationFailedInstanceSet(self):
-        """List of IDs of the connection instances failed to be enabled.
+        r"""List of IDs of the connection instances failed to be enabled.
         :rtype: list of str
         """
         return self._OperationFailedInstanceSet
@@ -1731,7 +1731,7 @@ class CloseProxyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1748,7 +1748,7 @@ class CloseProxyGroupResponse(AbstractModel):
 
 
 class CloseSecurityPolicyRequest(AbstractModel):
-    """CloseSecurityPolicy request structure.
+    r"""CloseSecurityPolicy request structure.
 
     """
 
@@ -1764,7 +1764,7 @@ class CloseSecurityPolicyRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -1775,7 +1775,7 @@ class CloseSecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security group policy ID
+        r"""Security group policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -1799,7 +1799,7 @@ class CloseSecurityPolicyRequest(AbstractModel):
 
 
 class CloseSecurityPolicyResponse(AbstractModel):
-    """CloseSecurityPolicy response structure.
+    r"""CloseSecurityPolicy response structure.
 
     """
 
@@ -1815,7 +1815,7 @@ class CloseSecurityPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
+        r"""Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
         :rtype: str
         """
         return self._TaskId
@@ -1826,7 +1826,7 @@ class CloseSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1842,7 +1842,7 @@ class CloseSecurityPolicyResponse(AbstractModel):
 
 
 class CountryAreaMap(AbstractModel):
-    """Country/region code mapping (name and code)
+    r"""Country/region code mapping (name and code)
 
     """
 
@@ -1874,7 +1874,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NationCountryName(self):
-        """Country name.
+        r"""Country name.
         :rtype: str
         """
         return self._NationCountryName
@@ -1885,7 +1885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NationCountryInnerCode(self):
-        """Country code.
+        r"""Country code.
         :rtype: str
         """
         return self._NationCountryInnerCode
@@ -1896,7 +1896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GeographicalZoneName(self):
-        """Region name.
+        r"""Region name.
         :rtype: str
         """
         return self._GeographicalZoneName
@@ -1907,7 +1907,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GeographicalZoneInnerCode(self):
-        """Region code.
+        r"""Region code.
         :rtype: str
         """
         return self._GeographicalZoneInnerCode
@@ -1918,7 +1918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContinentName(self):
-        """Continent name.
+        r"""Continent name.
         :rtype: str
         """
         return self._ContinentName
@@ -1929,7 +1929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContinentInnerCode(self):
-        """Continent code.
+        r"""Continent code.
         :rtype: str
         """
         return self._ContinentInnerCode
@@ -1940,7 +1940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Remark information
+        r"""Remark information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1970,7 +1970,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateCertificateRequest(AbstractModel):
-    """CreateCertificate request structure.
+    r"""CreateCertificate request structure.
 
     """
 
@@ -1999,7 +1999,7 @@ When the certificate type is CA/SSL certificate, enter the certificate content f
 
     @property
     def CertificateType(self):
-        """Certificate type. Where:
+        r"""Certificate type. Where:
 `0`: Basic authentication configuration;
 `1`: Client CA certificate;
 `2`: Server SSL certificate;
@@ -2015,7 +2015,7 @@ When the certificate type is CA/SSL certificate, enter the certificate content f
 
     @property
     def CertificateContent(self):
-        """Certificate content. URL encoding. Where:
+        r"""Certificate content. URL encoding. Where:
 If the certificate type is basic authentication, enter username/password pair for this parameter. Format: “username:password”, for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.
 When the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of ‘pem’.
         :rtype: str
@@ -2028,7 +2028,7 @@ When the certificate type is CA/SSL certificate, enter the certificate content f
 
     @property
     def CertificateAlias(self):
-        """Certificate name
+        r"""Certificate name
         :rtype: str
         """
         return self._CertificateAlias
@@ -2039,7 +2039,7 @@ When the certificate type is CA/SSL certificate, enter the certificate content f
 
     @property
     def CertificateKey(self):
-        """URL-encoded key content. This parameter is required only when the certificate type is SSL certificate. Its format is `PEM`.
+        r"""URL-encoded key content. This parameter is required only when the certificate type is SSL certificate. Its format is `PEM`.
         :rtype: str
         """
         return self._CertificateKey
@@ -2065,7 +2065,7 @@ When the certificate type is CA/SSL certificate, enter the certificate content f
 
 
 class CreateCertificateResponse(AbstractModel):
-    """CreateCertificate response structure.
+    r"""CreateCertificate response structure.
 
     """
 
@@ -2081,7 +2081,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        r"""Certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -2092,7 +2092,7 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2108,7 +2108,7 @@ class CreateCertificateResponse(AbstractModel):
 
 
 class CreateCustomHeaderRequest(AbstractModel):
-    """CreateCustomHeader request structure.
+    r"""CreateCustomHeader request structure.
 
     """
 
@@ -2124,7 +2124,7 @@ class CreateCustomHeaderRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -2135,7 +2135,7 @@ class CreateCustomHeaderRequest(AbstractModel):
 
     @property
     def Headers(self):
-        """Custom header name and content list. `‘’$remote_addr‘’` will be resolved and replaced with the client IP. Other values will be directly passed to the origin server.
+        r"""Custom header name and content list. `‘’$remote_addr‘’` will be resolved and replaced with the client IP. Other values will be directly passed to the origin server.
         :rtype: list of HttpHeaderParam
         """
         return self._Headers
@@ -2164,7 +2164,7 @@ class CreateCustomHeaderRequest(AbstractModel):
 
 
 class CreateCustomHeaderResponse(AbstractModel):
-    """CreateCustomHeader response structure.
+    r"""CreateCustomHeader response structure.
 
     """
 
@@ -2177,7 +2177,7 @@ class CreateCustomHeaderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2192,7 +2192,7 @@ class CreateCustomHeaderResponse(AbstractModel):
 
 
 class CreateDomainErrorPageInfoRequest(AbstractModel):
-    """CreateDomainErrorPageInfo request structure.
+    r"""CreateDomainErrorPageInfo request structure.
 
     """
 
@@ -2223,7 +2223,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -2234,7 +2234,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain name
+        r"""Domain name
         :rtype: str
         """
         return self._Domain
@@ -2245,7 +2245,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ErrorNos(self):
-        """Original error code
+        r"""Original error code
         :rtype: list of int
         """
         return self._ErrorNos
@@ -2256,7 +2256,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def Body(self):
-        """New response packet
+        r"""New response packet
         :rtype: str
         """
         return self._Body
@@ -2267,7 +2267,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def NewErrorNo(self):
-        """New error code
+        r"""New error code
         :rtype: int
         """
         return self._NewErrorNo
@@ -2278,7 +2278,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ClearHeaders(self):
-        """Response header to be deleted
+        r"""Response header to be deleted
         :rtype: list of str
         """
         return self._ClearHeaders
@@ -2289,7 +2289,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def SetHeaders(self):
-        """Response header to be set
+        r"""Response header to be set
         :rtype: list of HttpHeaderParam
         """
         return self._SetHeaders
@@ -2323,7 +2323,7 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
 
 
 class CreateDomainErrorPageInfoResponse(AbstractModel):
-    """CreateDomainErrorPageInfo response structure.
+    r"""CreateDomainErrorPageInfo response structure.
 
     """
 
@@ -2339,7 +2339,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
     @property
     def ErrorPageId(self):
-        """Configuration ID of a custom error response
+        r"""Configuration ID of a custom error response
         :rtype: str
         """
         return self._ErrorPageId
@@ -2350,7 +2350,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2366,7 +2366,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
 
 
 class CreateDomainRequest(AbstractModel):
-    """CreateDomain request structure.
+    r"""CreateDomain request structure.
 
     """
 
@@ -2399,7 +2399,7 @@ HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp
 
     @property
     def ListenerId(self):
-        """Listener ID.
+        r"""Listener ID.
         :rtype: str
         """
         return self._ListenerId
@@ -2410,7 +2410,7 @@ HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp
 
     @property
     def Domain(self):
-        """Domain name to be created. Each listener supports up to 100 domain names.
+        r"""Domain name to be created. Each listener supports up to 100 domain names.
         :rtype: str
         """
         return self._Domain
@@ -2421,7 +2421,7 @@ HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp
 
     @property
     def CertificateId(self):
-        """Server certificate, which is used for the HTTPS interaction between client and GAAP.
+        r"""Server certificate, which is used for the HTTPS interaction between client and GAAP.
         :rtype: str
         """
         return self._CertificateId
@@ -2432,7 +2432,7 @@ HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp
 
     @property
     def ClientCertificateId(self):
-        """Client CA certificate, which is used for the HTTPS interaction between client and GAAP.
+        r"""Client CA certificate, which is used for the HTTPS interaction between client and GAAP.
 This field is required only when the mutual authentication method is adopted.
         :rtype: str
         """
@@ -2444,7 +2444,7 @@ This field is required only when the mutual authentication method is adopted.
 
     @property
     def PolyClientCertificateIds(self):
-        """Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.
+        r"""Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.
 This field or the `ClientCertificateId` field is required for mutual authentication only.
         :rtype: list of str
         """
@@ -2456,7 +2456,7 @@ This field or the `ClientCertificateId` field is required for mutual authenticat
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: disable HTTP3;
 `1`: enable HTTP3.
 HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp3.
@@ -2487,7 +2487,7 @@ HTTP3 is not enabled by default. You can enable it with this field SetDomainHttp
 
 
 class CreateDomainResponse(AbstractModel):
-    """CreateDomain response structure.
+    r"""CreateDomain response structure.
 
     """
 
@@ -2500,7 +2500,7 @@ class CreateDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2515,7 +2515,7 @@ class CreateDomainResponse(AbstractModel):
 
 
 class CreateHTTPListenerRequest(AbstractModel):
-    """CreateHTTPListener request structure.
+    r"""CreateHTTPListener request structure.
 
     """
 
@@ -2537,7 +2537,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -2548,7 +2548,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
+        r"""Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
         :rtype: int
         """
         return self._Port
@@ -2559,7 +2559,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
+        r"""Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
         :rtype: str
         """
         return self._ProxyId
@@ -2570,7 +2570,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
+        r"""Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
         :rtype: str
         """
         return self._GroupId
@@ -2596,7 +2596,7 @@ class CreateHTTPListenerRequest(AbstractModel):
 
 
 class CreateHTTPListenerResponse(AbstractModel):
-    """CreateHTTPListener response structure.
+    r"""CreateHTTPListener response structure.
 
     """
 
@@ -2612,7 +2612,7 @@ class CreateHTTPListenerResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Created listener ID
+        r"""Created listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -2623,7 +2623,7 @@ class CreateHTTPListenerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2639,7 +2639,7 @@ class CreateHTTPListenerResponse(AbstractModel):
 
 
 class CreateHTTPSListenerRequest(AbstractModel):
-    """CreateHTTPSListener request structure.
+    r"""CreateHTTPSListener request structure.
 
     """
 
@@ -2686,7 +2686,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -2697,7 +2697,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def Port(self):
-        """Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
+        r"""Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.
         :rtype: int
         """
         return self._Port
@@ -2708,7 +2708,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def CertificateId(self):
-        """Server certificate ID
+        r"""Server certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -2719,7 +2719,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ForwardProtocol(self):
-        """Protocol types of the forwarding from acceleration connection to origin server: HTTP | HTTPS
+        r"""Protocol types of the forwarding from acceleration connection to origin server: HTTP | HTTPS
         :rtype: str
         """
         return self._ForwardProtocol
@@ -2730,7 +2730,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ProxyId(self):
-        """Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
+        r"""Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.
         :rtype: str
         """
         return self._ProxyId
@@ -2741,7 +2741,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def AuthType(self):
-        """Authentication type, where:
+        r"""Authentication type, where:
 0: one-way authentication;
 1: mutual authentication.
 The one-way authentication is used by default.
@@ -2755,7 +2755,7 @@ The one-way authentication is used by default.
 
     @property
     def ClientCertificateId(self):
-        """Client CA certificate ID, which is required only when the mutual authentication is adopted.
+        r"""Client CA certificate ID, which is required only when the mutual authentication is adopted.
         :rtype: str
         """
         return self._ClientCertificateId
@@ -2766,7 +2766,7 @@ The one-way authentication is used by default.
 
     @property
     def PolyClientCertificateIds(self):
-        """IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only.
+        r"""IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only.
         :rtype: list of str
         """
         return self._PolyClientCertificateIds
@@ -2777,7 +2777,7 @@ The one-way authentication is used by default.
 
     @property
     def GroupId(self):
-        """Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
+        r"""Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.
         :rtype: str
         """
         return self._GroupId
@@ -2788,7 +2788,7 @@ The one-way authentication is used by default.
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: disable HTTP3;
 `1`: enable HTTP3.
 Note: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
@@ -2824,7 +2824,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
 
 class CreateHTTPSListenerResponse(AbstractModel):
-    """CreateHTTPSListener response structure.
+    r"""CreateHTTPSListener response structure.
 
     """
 
@@ -2840,7 +2840,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Created listener ID
+        r"""Created listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -2851,7 +2851,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2867,7 +2867,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
 
 
 class CreateProxyGroupDomainRequest(AbstractModel):
-    """CreateProxyGroupDomain request structure.
+    r"""CreateProxyGroupDomain request structure.
 
     """
 
@@ -2880,7 +2880,7 @@ class CreateProxyGroupDomainRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID of the domain name to be enabled.
+        r"""Connection group ID of the domain name to be enabled.
         :rtype: str
         """
         return self._GroupId
@@ -2903,7 +2903,7 @@ class CreateProxyGroupDomainRequest(AbstractModel):
 
 
 class CreateProxyGroupDomainResponse(AbstractModel):
-    """CreateProxyGroupDomain response structure.
+    r"""CreateProxyGroupDomain response structure.
 
     """
 
@@ -2919,7 +2919,7 @@ class CreateProxyGroupDomainResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID.
+        r"""Connection group ID.
         :rtype: str
         """
         return self._GroupId
@@ -2930,7 +2930,7 @@ class CreateProxyGroupDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2946,7 +2946,7 @@ class CreateProxyGroupDomainResponse(AbstractModel):
 
 
 class CreateProxyGroupRequest(AbstractModel):
-    """CreateProxyGroup request structure.
+    r"""CreateProxyGroup request structure.
 
     """
 
@@ -2980,7 +2980,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID of connection group
+        r"""Project ID of connection group
         :rtype: int
         """
         return self._ProjectId
@@ -2991,7 +2991,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Alias of connection group
+        r"""Alias of connection group
         :rtype: str
         """
         return self._GroupName
@@ -3002,7 +3002,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def RealServerRegion(self):
-        """Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.
+        r"""Origin server region; Reference API: DescribeDestRegions; It returnes the `RegionId` of the parameter `RegionDetail`.
         :rtype: str
         """
         return self._RealServerRegion
@@ -3013,7 +3013,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        """List of tags
+        r"""List of tags
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -3024,7 +3024,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def AccessRegionSet(self):
-        """List of acceleration regions, including their names, bandwidth, and concurrence configuration.
+        r"""List of acceleration regions, including their names, bandwidth, and concurrence configuration.
         :rtype: list of AccessConfiguration
         """
         return self._AccessRegionSet
@@ -3035,7 +3035,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -3046,7 +3046,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Package type of connection group. Valid values: `Thunder` (default) and `Accelerator`.
+        r"""Package type of connection group. Valid values: `Thunder` (default) and `Accelerator`.
         :rtype: str
         """
         return self._PackageType
@@ -3057,7 +3057,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        """(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
+        r"""(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :rtype: int
         """
         return self._Http3Supported
@@ -3097,7 +3097,7 @@ class CreateProxyGroupRequest(AbstractModel):
 
 
 class CreateProxyGroupResponse(AbstractModel):
-    """CreateProxyGroup response structure.
+    r"""CreateProxyGroup response structure.
 
     """
 
@@ -3113,7 +3113,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the connection group
+        r"""ID of the connection group
         :rtype: str
         """
         return self._GroupId
@@ -3124,7 +3124,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3140,7 +3140,7 @@ class CreateProxyGroupResponse(AbstractModel):
 
 
 class CreateProxyRequest(AbstractModel):
-    """CreateProxy request structure.
+    r"""CreateProxy request structure.
 
     """
 
@@ -3197,7 +3197,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def ProjectId(self):
-        """Project ID of connection.
+        r"""Project ID of connection.
         :rtype: int
         """
         return self._ProjectId
@@ -3208,7 +3208,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def ProxyName(self):
-        """Name of the connection
+        r"""Name of the connection
         :rtype: str
         """
         return self._ProxyName
@@ -3219,7 +3219,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def AccessRegion(self):
-        """Access region.
+        r"""Access region.
         :rtype: str
         """
         return self._AccessRegion
@@ -3230,7 +3230,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def Bandwidth(self):
-        """Connection bandwidth cap. Unit: Mbps.
+        r"""Connection bandwidth cap. Unit: Mbps.
         :rtype: int
         """
         return self._Bandwidth
@@ -3241,7 +3241,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def Concurrent(self):
-        """Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
+        r"""Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.
         :rtype: int
         """
         return self._Concurrent
@@ -3252,7 +3252,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def RealServerRegion(self):
-        """Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.
+        r"""Origin server region. If GroupId exists, the origin server region is the one of connection group, and this field is not required. If GroupId does not exist, this field is reuqired.
         :rtype: str
         """
         return self._RealServerRegion
@@ -3263,7 +3263,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -3275,7 +3275,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def GroupId(self):
-        """Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.
+        r"""Connection group ID. This parameter is required when the connection is created in the connection group. Otherwise, this field is ignored.
         :rtype: str
         """
         return self._GroupId
@@ -3286,7 +3286,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def TagSet(self):
-        """List of tags to be added for connection.
+        r"""List of tags to be added for connection.
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -3297,7 +3297,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ClonedProxyId(self):
-        """ID of the replicated connection. Only a running connection can be replicated.
+        r"""ID of the replicated connection. Only a running connection can be replicated.
 The connection is to be replicated if this parameter is set.
         :rtype: str
         """
@@ -3309,7 +3309,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def BillingType(self):
-        """Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        r"""Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
         :rtype: int
         """
         return self._BillingType
@@ -3320,7 +3320,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -3331,7 +3331,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def NetworkType(self):
-        """Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
+        r"""Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).
         :rtype: str
         """
         return self._NetworkType
@@ -3342,7 +3342,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
+        r"""Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :rtype: str
         """
         return self._PackageType
@@ -3353,7 +3353,7 @@ The connection is to be replicated if this parameter is set.
 
     @property
     def Http3Supported(self):
-        """(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
+        r"""(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :rtype: int
         """
         return self._Http3Supported
@@ -3395,7 +3395,7 @@ The connection is to be replicated if this parameter is set.
 
 
 class CreateProxyResponse(AbstractModel):
-    """CreateProxy response structure.
+    r"""CreateProxy response structure.
 
     """
 
@@ -3411,7 +3411,7 @@ class CreateProxyResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID of connection.
+        r"""Instance ID of connection.
         :rtype: str
         """
         return self._InstanceId
@@ -3422,7 +3422,7 @@ class CreateProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3438,7 +3438,7 @@ class CreateProxyResponse(AbstractModel):
 
 
 class CreateRuleRequest(AbstractModel):
-    """CreateRule request structure.
+    r"""CreateRule request structure.
 
     """
 
@@ -3485,7 +3485,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ListenerId(self):
-        """Layer-7 listener ID
+        r"""Layer-7 listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -3496,7 +3496,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def Domain(self):
-        """Domain name of the forwarding rule
+        r"""Domain name of the forwarding rule
         :rtype: str
         """
         return self._Domain
@@ -3507,7 +3507,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def Path(self):
-        """Path of the forwarding rule
+        r"""Path of the forwarding rule
         :rtype: str
         """
         return self._Path
@@ -3518,7 +3518,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def RealServerType(self):
-        """The origin server type of the forwarding rule, which supports IP and DOMAIN types.
+        r"""The origin server type of the forwarding rule, which supports IP and DOMAIN types.
         :rtype: str
         """
         return self._RealServerType
@@ -3529,7 +3529,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -3540,7 +3540,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def HealthCheck(self):
-        """Whether the health check is enabled for rules. 1: enabled; 0: disabled.
+        r"""Whether the health check is enabled for rules. 1: enabled; 0: disabled.
         :rtype: int
         """
         return self._HealthCheck
@@ -3551,7 +3551,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def CheckParams(self):
-        """Parameters related to origin server health check
+        r"""Parameters related to origin server health check
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         """
         return self._CheckParams
@@ -3562,7 +3562,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ForwardProtocol(self):
-        """Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
+        r"""Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.
 If this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.
         :rtype: str
         """
@@ -3574,7 +3574,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ForwardHost(self):
-        """The host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
+        r"""The host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
         :rtype: str
         """
         return self._ForwardHost
@@ -3585,7 +3585,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ServerNameIndicationSwitch(self):
-        """Whether to enable SNI. Values: `on` (enable), `off` (disable). For creation of HTTP listener forwarding rules, SNI is disabled by default.
+        r"""Whether to enable SNI. Values: `on` (enable), `off` (disable). For creation of HTTP listener forwarding rules, SNI is disabled by default.
         :rtype: str
         """
         return self._ServerNameIndicationSwitch
@@ -3596,7 +3596,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ServerNameIndication(self):
-        """Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+        r"""Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
         :rtype: str
         """
         return self._ServerNameIndication
@@ -3607,7 +3607,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
     @property
     def ForcedRedirect(self):
-        """Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
+        r"""Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
         :rtype: str
         """
         return self._ForcedRedirect
@@ -3643,7 +3643,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
 
 
 class CreateRuleResponse(AbstractModel):
-    """CreateRule response structure.
+    r"""CreateRule response structure.
 
     """
 
@@ -3659,7 +3659,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """The ID of the successfully created forwarding rule
+        r"""The ID of the successfully created forwarding rule
         :rtype: str
         """
         return self._RuleId
@@ -3670,7 +3670,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3686,7 +3686,7 @@ class CreateRuleResponse(AbstractModel):
 
 
 class CreateSecurityPolicyRequest(AbstractModel):
-    """CreateSecurityPolicy request structure.
+    r"""CreateSecurityPolicy request structure.
 
     """
 
@@ -3705,7 +3705,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def DefaultAction(self):
-        """Default policy: ACCEPT or DROP
+        r"""Default policy: ACCEPT or DROP
         :rtype: str
         """
         return self._DefaultAction
@@ -3716,7 +3716,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Acceleration connection ID
+        r"""Acceleration connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -3727,7 +3727,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -3752,7 +3752,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
 
 class CreateSecurityPolicyResponse(AbstractModel):
-    """CreateSecurityPolicy response structure.
+    r"""CreateSecurityPolicy response structure.
 
     """
 
@@ -3768,7 +3768,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -3779,7 +3779,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3795,7 +3795,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
 
 class CreateSecurityRulesRequest(AbstractModel):
-    """CreateSecurityRules request structure.
+    r"""CreateSecurityRules request structure.
 
     """
 
@@ -3811,7 +3811,7 @@ class CreateSecurityRulesRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -3822,7 +3822,7 @@ class CreateSecurityRulesRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        """List of access rules
+        r"""List of access rules
         :rtype: list of SecurityPolicyRuleIn
         """
         return self._RuleList
@@ -3851,7 +3851,7 @@ class CreateSecurityRulesRequest(AbstractModel):
 
 
 class CreateSecurityRulesResponse(AbstractModel):
-    """CreateSecurityRules response structure.
+    r"""CreateSecurityRules response structure.
 
     """
 
@@ -3867,7 +3867,7 @@ class CreateSecurityRulesResponse(AbstractModel):
 
     @property
     def RuleIdList(self):
-        """List of rule IDs
+        r"""List of rule IDs
         :rtype: list of str
         """
         return self._RuleIdList
@@ -3878,7 +3878,7 @@ class CreateSecurityRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3894,7 +3894,7 @@ class CreateSecurityRulesResponse(AbstractModel):
 
 
 class CreateTCPListenersRequest(AbstractModel):
-    """CreateTCPListeners request structure.
+    r"""CreateTCPListeners request structure.
 
     """
 
@@ -3946,7 +3946,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name.
+        r"""Listener name.
         :rtype: str
         """
         return self._ListenerName
@@ -3957,7 +3957,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def Ports(self):
-        """List of listener ports.
+        r"""List of listener ports.
         :rtype: list of int non-negative
         """
         return self._Ports
@@ -3968,7 +3968,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -3979,7 +3979,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.
+        r"""Whether origin server has the health check enabled. 1: enabled; 0: disabled. UDP listeners do not support health check.
         :rtype: int
         """
         return self._HealthCheck
@@ -3990,7 +3990,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def RealServerType(self):
-        """The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
+        r"""The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
         :rtype: str
         """
         return self._RealServerType
@@ -4001,7 +4001,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._ProxyId
@@ -4012,7 +4012,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._GroupId
@@ -4023,7 +4023,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        r"""Time interval of origin server health check (unit: seconds). Value range: [5, 300].
         :rtype: int
         """
         return self._DelayLoop
@@ -4034,7 +4034,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        r"""Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
         :rtype: int
         """
         return self._ConnectTimeout
@@ -4045,7 +4045,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def RealServerPorts(self):
-        """List of origin server ports, which only supports the listeners of version 1.0 and connection group.
+        r"""List of origin server ports, which only supports the listeners of version 1.0 and connection group.
         :rtype: list of int non-negative
         """
         return self._RealServerPorts
@@ -4056,7 +4056,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def ClientIPMethod(self):
-        """Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.
+        r"""Listener methods of getting client IPs. 0: TOA; 1: Proxy Protocol.
         :rtype: int
         """
         return self._ClientIPMethod
@@ -4067,7 +4067,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
+        r"""Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
         :rtype: int
         """
         return self._FailoverSwitch
@@ -4078,7 +4078,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._HealthyThreshold
@@ -4089,7 +4089,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -4125,7 +4125,7 @@ class CreateTCPListenersRequest(AbstractModel):
 
 
 class CreateTCPListenersResponse(AbstractModel):
-    """CreateTCPListeners response structure.
+    r"""CreateTCPListeners response structure.
 
     """
 
@@ -4141,7 +4141,7 @@ class CreateTCPListenersResponse(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """Returns the listener ID
+        r"""Returns the listener ID
         :rtype: list of str
         """
         return self._ListenerIds
@@ -4152,7 +4152,7 @@ class CreateTCPListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4168,7 +4168,7 @@ class CreateTCPListenersResponse(AbstractModel):
 
 
 class CreateUDPListenersRequest(AbstractModel):
-    """CreateUDPListeners request structure.
+    r"""CreateUDPListeners request structure.
 
     """
 
@@ -4232,7 +4232,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -4243,7 +4243,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def Ports(self):
-        """List of listener ports
+        r"""List of listener ports
         :rtype: list of int non-negative
         """
         return self._Ports
@@ -4254,7 +4254,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -4265,7 +4265,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def RealServerType(self):
-        """The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
+        r"""The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).
         :rtype: str
         """
         return self._RealServerType
@@ -4276,7 +4276,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._ProxyId
@@ -4287,7 +4287,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._GroupId
@@ -4298,7 +4298,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def RealServerPorts(self):
-        """List of origin server ports, which only supports the listeners of version 1.0 and connection group.
+        r"""List of origin server ports, which only supports the listeners of version 1.0 and connection group.
         :rtype: list of int non-negative
         """
         return self._RealServerPorts
@@ -4309,7 +4309,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        r"""Time interval of origin server health check (unit: seconds). Value range: [5, 300].
         :rtype: int
         """
         return self._DelayLoop
@@ -4320,7 +4320,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        r"""Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
         :rtype: int
         """
         return self._ConnectTimeout
@@ -4331,7 +4331,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._HealthyThreshold
@@ -4342,7 +4342,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -4353,7 +4353,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        r"""Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
         :rtype: int
         """
         return self._FailoverSwitch
@@ -4364,7 +4364,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+        r"""Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
         :rtype: int
         """
         return self._HealthCheck
@@ -4375,7 +4375,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def CheckType(self):
-        """The health check type. Values: `PORT` (port); `PING` (ping).
+        r"""The health check type. Values: `PORT` (port); `PING` (ping).
         :rtype: str
         """
         return self._CheckType
@@ -4386,7 +4386,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def CheckPort(self):
-        """The health probe port.
+        r"""The health probe port.
         :rtype: int
         """
         return self._CheckPort
@@ -4397,7 +4397,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def ContextType(self):
-        """The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._ContextType
@@ -4408,7 +4408,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def SendContext(self):
-        """The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._SendContext
@@ -4419,7 +4419,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
     @property
     def RecvContext(self):
-        """The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._RecvContext
@@ -4459,7 +4459,7 @@ class CreateUDPListenersRequest(AbstractModel):
 
 
 class CreateUDPListenersResponse(AbstractModel):
-    """CreateUDPListeners response structure.
+    r"""CreateUDPListeners response structure.
 
     """
 
@@ -4475,7 +4475,7 @@ class CreateUDPListenersResponse(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """Returns the listener ID
+        r"""Returns the listener ID
         :rtype: list of str
         """
         return self._ListenerIds
@@ -4486,7 +4486,7 @@ class CreateUDPListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4502,7 +4502,7 @@ class CreateUDPListenersResponse(AbstractModel):
 
 
 class DeleteCertificateRequest(AbstractModel):
-    """DeleteCertificate request structure.
+    r"""DeleteCertificate request structure.
 
     """
 
@@ -4515,7 +4515,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """ID of the certificate to be deleted.
+        r"""ID of the certificate to be deleted.
         :rtype: str
         """
         return self._CertificateId
@@ -4538,7 +4538,7 @@ class DeleteCertificateRequest(AbstractModel):
 
 
 class DeleteCertificateResponse(AbstractModel):
-    """DeleteCertificate response structure.
+    r"""DeleteCertificate response structure.
 
     """
 
@@ -4551,7 +4551,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4566,7 +4566,7 @@ class DeleteCertificateResponse(AbstractModel):
 
 
 class DeleteDomainErrorPageInfoRequest(AbstractModel):
-    """DeleteDomainErrorPageInfo request structure.
+    r"""DeleteDomainErrorPageInfo request structure.
 
     """
 
@@ -4579,7 +4579,7 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ErrorPageId(self):
-        """Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.
+        r"""Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.
         :rtype: str
         """
         return self._ErrorPageId
@@ -4602,7 +4602,7 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
 
 
 class DeleteDomainErrorPageInfoResponse(AbstractModel):
-    """DeleteDomainErrorPageInfo response structure.
+    r"""DeleteDomainErrorPageInfo response structure.
 
     """
 
@@ -4615,7 +4615,7 @@ class DeleteDomainErrorPageInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4630,7 +4630,7 @@ class DeleteDomainErrorPageInfoResponse(AbstractModel):
 
 
 class DeleteDomainRequest(AbstractModel):
-    """DeleteDomain request structure.
+    r"""DeleteDomain request structure.
 
     """
 
@@ -4650,7 +4650,7 @@ When not making a forced deletion, if there are rules bound to origin servers, t
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -4661,7 +4661,7 @@ When not making a forced deletion, if there are rules bound to origin servers, t
 
     @property
     def Domain(self):
-        """Domain name to be deleted
+        r"""Domain name to be deleted
         :rtype: str
         """
         return self._Domain
@@ -4672,7 +4672,7 @@ When not making a forced deletion, if there are rules bound to origin servers, t
 
     @property
     def Force(self):
-        """Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
+        r"""Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
 When not making a forced deletion, if there are rules bound to origin servers, they will not be deleted.
         :rtype: int
         """
@@ -4698,7 +4698,7 @@ When not making a forced deletion, if there are rules bound to origin servers, t
 
 
 class DeleteDomainResponse(AbstractModel):
-    """DeleteDomain response structure.
+    r"""DeleteDomain response structure.
 
     """
 
@@ -4711,7 +4711,7 @@ class DeleteDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4726,7 +4726,7 @@ class DeleteDomainResponse(AbstractModel):
 
 
 class DeleteListenersRequest(AbstractModel):
-    """DeleteListeners request structure.
+    r"""DeleteListeners request structure.
 
     """
 
@@ -4748,7 +4748,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        """ID list of listeners to be deleted
+        r"""ID list of listeners to be deleted
         :rtype: list of str
         """
         return self._ListenerIds
@@ -4759,7 +4759,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def Force(self):
-        """Whether to allow a forced deletion of listeners that have been bound to origin servers. 1: allowed; 0: not allow.
+        r"""Whether to allow a forced deletion of listeners that have been bound to origin servers. 1: allowed; 0: not allow.
         :rtype: int
         """
         return self._Force
@@ -4770,7 +4770,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID; Either this parameter or `GroupId` must be set, but you cannot set both.
+        r"""Connection group ID; Either this parameter or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._GroupId
@@ -4781,7 +4781,7 @@ class DeleteListenersRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID; Either this parameter or `GroupId` must be set, but you cannot set both.
+        r"""Connection ID; Either this parameter or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._ProxyId
@@ -4807,7 +4807,7 @@ class DeleteListenersRequest(AbstractModel):
 
 
 class DeleteListenersResponse(AbstractModel):
-    """DeleteListeners response structure.
+    r"""DeleteListeners response structure.
 
     """
 
@@ -4829,7 +4829,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def OperationFailedListenerSet(self):
-        """ID list of listeners failed to be deleted
+        r"""ID list of listeners failed to be deleted
         :rtype: list of str
         """
         return self._OperationFailedListenerSet
@@ -4840,7 +4840,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def OperationSucceedListenerSet(self):
-        """ID list of listeners deleted successfully
+        r"""ID list of listeners deleted successfully
         :rtype: list of str
         """
         return self._OperationSucceedListenerSet
@@ -4851,7 +4851,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def InvalidStatusListenerSet(self):
-        """ID list of invalid listeners. For example: the listener does not exist, or the instance corresponding to the listener does not match.
+        r"""ID list of invalid listeners. For example: the listener does not exist, or the instance corresponding to the listener does not match.
         :rtype: list of str
         """
         return self._InvalidStatusListenerSet
@@ -4862,7 +4862,7 @@ class DeleteListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4880,7 +4880,7 @@ class DeleteListenersResponse(AbstractModel):
 
 
 class DeleteProxyGroupRequest(AbstractModel):
-    """DeleteProxyGroup request structure.
+    r"""DeleteProxyGroup request structure.
 
     """
 
@@ -4899,7 +4899,7 @@ Default value: 0. If there is a connection or listener/rule bound to an origin s
 
     @property
     def GroupId(self):
-        """ID of the connection group to be deleted.
+        r"""ID of the connection group to be deleted.
         :rtype: str
         """
         return self._GroupId
@@ -4910,7 +4910,7 @@ Default value: 0. If there is a connection or listener/rule bound to an origin s
 
     @property
     def Force(self):
-        """Whether to enable forced deletion. Valid values:
+        r"""Whether to enable forced deletion. Valid values:
 `0`: No;
 `1`: Yes.
 Default value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.
@@ -4937,7 +4937,7 @@ Default value: 0. If there is a connection or listener/rule bound to an origin s
 
 
 class DeleteProxyGroupResponse(AbstractModel):
-    """DeleteProxyGroup response structure.
+    r"""DeleteProxyGroup response structure.
 
     """
 
@@ -4950,7 +4950,7 @@ class DeleteProxyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4965,7 +4965,7 @@ class DeleteProxyGroupResponse(AbstractModel):
 
 
 class DeleteRuleRequest(AbstractModel):
-    """DeleteRule request structure.
+    r"""DeleteRule request structure.
 
     """
 
@@ -4984,7 +4984,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Layer-7 listener ID
+        r"""Layer-7 listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -4995,7 +4995,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Forwarding rule ID
+        r"""Forwarding rule ID
         :rtype: str
         """
         return self._RuleId
@@ -5006,7 +5006,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Force(self):
-        """Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
+        r"""Whether to make a forced deletion of forwarding rules that have been bound to origin servers. 0: no; 1: yes.
         :rtype: int
         """
         return self._Force
@@ -5031,7 +5031,7 @@ class DeleteRuleRequest(AbstractModel):
 
 
 class DeleteRuleResponse(AbstractModel):
-    """DeleteRule response structure.
+    r"""DeleteRule response structure.
 
     """
 
@@ -5044,7 +5044,7 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5059,7 +5059,7 @@ class DeleteRuleResponse(AbstractModel):
 
 
 class DeleteSecurityPolicyRequest(AbstractModel):
-    """DeleteSecurityPolicy request structure.
+    r"""DeleteSecurityPolicy request structure.
 
     """
 
@@ -5072,7 +5072,7 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -5095,7 +5095,7 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
 
 class DeleteSecurityPolicyResponse(AbstractModel):
-    """DeleteSecurityPolicy response structure.
+    r"""DeleteSecurityPolicy response structure.
 
     """
 
@@ -5108,7 +5108,7 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5123,7 +5123,7 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
 
 class DeleteSecurityRulesRequest(AbstractModel):
-    """DeleteSecurityRules request structure.
+    r"""DeleteSecurityRules request structure.
 
     """
 
@@ -5139,7 +5139,7 @@ class DeleteSecurityRulesRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -5150,7 +5150,7 @@ class DeleteSecurityRulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
-        """List of access rule IDs
+        r"""List of access rule IDs
         :rtype: list of str
         """
         return self._RuleIdList
@@ -5174,7 +5174,7 @@ class DeleteSecurityRulesRequest(AbstractModel):
 
 
 class DeleteSecurityRulesResponse(AbstractModel):
-    """DeleteSecurityRules response structure.
+    r"""DeleteSecurityRules response structure.
 
     """
 
@@ -5187,7 +5187,7 @@ class DeleteSecurityRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5202,7 +5202,7 @@ class DeleteSecurityRulesResponse(AbstractModel):
 
 
 class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
-    """DescribeAccessRegionsByDestRegion request structure.
+    r"""DescribeAccessRegionsByDestRegion request structure.
 
     """
 
@@ -5221,7 +5221,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
 
     @property
     def DestRegion(self):
-        """Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.
+        r"""Origin server region: the DescribeDestRegions API returns the value of `RegionId` field of `DestRegionSet`.
         :rtype: str
         """
         return self._DestRegion
@@ -5232,7 +5232,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -5243,7 +5243,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
+        r"""Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :rtype: str
         """
         return self._PackageType
@@ -5268,7 +5268,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
 
 
 class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
-    """DescribeAccessRegionsByDestRegion response structure.
+    r"""DescribeAccessRegionsByDestRegion response structure.
 
     """
 
@@ -5287,7 +5287,7 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of available acceleration regions
+        r"""The number of available acceleration regions
         :rtype: int
         """
         return self._TotalCount
@@ -5298,7 +5298,7 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
 
     @property
     def AccessRegionSet(self):
-        """List of available acceleration region information
+        r"""List of available acceleration region information
         :rtype: list of AccessRegionDetial
         """
         return self._AccessRegionSet
@@ -5309,7 +5309,7 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5331,13 +5331,13 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
 
 
 class DescribeAccessRegionsRequest(AbstractModel):
-    """DescribeAccessRegions request structure.
+    r"""DescribeAccessRegions request structure.
 
     """
 
 
 class DescribeAccessRegionsResponse(AbstractModel):
-    """DescribeAccessRegions response structure.
+    r"""DescribeAccessRegions response structure.
 
     """
 
@@ -5356,7 +5356,7 @@ class DescribeAccessRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity of acceleration regions
+        r"""Total quantity of acceleration regions
         :rtype: int
         """
         return self._TotalCount
@@ -5367,7 +5367,7 @@ class DescribeAccessRegionsResponse(AbstractModel):
 
     @property
     def AccessRegionSet(self):
-        """Acceleration region details list
+        r"""Acceleration region details list
         :rtype: list of RegionDetail
         """
         return self._AccessRegionSet
@@ -5378,7 +5378,7 @@ class DescribeAccessRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5400,13 +5400,13 @@ class DescribeAccessRegionsResponse(AbstractModel):
 
 
 class DescribeAuthSignatureRequest(AbstractModel):
-    """DescribeAuthSignature request structure.
+    r"""DescribeAuthSignature request structure.
 
     """
 
 
 class DescribeAuthSignatureResponse(AbstractModel):
-    """DescribeAuthSignature response structure.
+    r"""DescribeAuthSignature response structure.
 
     """
 
@@ -5419,7 +5419,7 @@ class DescribeAuthSignatureResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5434,13 +5434,13 @@ class DescribeAuthSignatureResponse(AbstractModel):
 
 
 class DescribeBlackHeaderRequest(AbstractModel):
-    """DescribeBlackHeader request structure.
+    r"""DescribeBlackHeader request structure.
 
     """
 
 
 class DescribeBlackHeaderResponse(AbstractModel):
-    """DescribeBlackHeader response structure.
+    r"""DescribeBlackHeader response structure.
 
     """
 
@@ -5457,7 +5457,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlackHeaders(self):
-        """List of blocked custom headers
+        r"""List of blocked custom headers
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -5469,7 +5469,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5485,7 +5485,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeCertificateDetailRequest(AbstractModel):
-    """DescribeCertificateDetail request structure.
+    r"""DescribeCertificateDetail request structure.
 
     """
 
@@ -5498,7 +5498,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        r"""Certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -5521,7 +5521,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
 
 class DescribeCertificateDetailResponse(AbstractModel):
-    """DescribeCertificateDetail response structure.
+    r"""DescribeCertificateDetail response structure.
 
     """
 
@@ -5537,7 +5537,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def CertificateDetail(self):
-        """Certificate Details.
+        r"""Certificate Details.
         :rtype: :class:`tencentcloud.gaap.v20180529.models.CertificateDetail`
         """
         return self._CertificateDetail
@@ -5548,7 +5548,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5566,7 +5566,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
 
 class DescribeCertificatesRequest(AbstractModel):
-    """DescribeCertificates request structure.
+    r"""DescribeCertificates request structure.
 
     """
 
@@ -5592,7 +5592,7 @@ The default value is -1.
 
     @property
     def CertificateType(self):
-        """Certificate type. Where:
+        r"""Certificate type. Where:
 0: basic authentication configuration;
 1: client CA certificate;
 2: server SSL certificate;
@@ -5610,7 +5610,7 @@ The default value is -1.
 
     @property
     def Offset(self):
-        """Offset. The default value is 0.
+        r"""Offset. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -5621,7 +5621,7 @@ The default value is -1.
 
     @property
     def Limit(self):
-        """Quantity limit. The default value is 20.
+        r"""Quantity limit. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -5646,7 +5646,7 @@ The default value is -1.
 
 
 class DescribeCertificatesResponse(AbstractModel):
-    """DescribeCertificates response structure.
+    r"""DescribeCertificates response structure.
 
     """
 
@@ -5665,7 +5665,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def CertificateSet(self):
-        """Server certificate list, which includes certificate ID and certificate name.
+        r"""Server certificate list, which includes certificate ID and certificate name.
         :rtype: list of Certificate
         """
         return self._CertificateSet
@@ -5676,7 +5676,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity of server certificates that match the query conditions.
+        r"""Total quantity of server certificates that match the query conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -5687,7 +5687,7 @@ class DescribeCertificatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5709,13 +5709,13 @@ class DescribeCertificatesResponse(AbstractModel):
 
 
 class DescribeCountryAreaMappingRequest(AbstractModel):
-    """DescribeCountryAreaMapping request structure.
+    r"""DescribeCountryAreaMapping request structure.
 
     """
 
 
 class DescribeCountryAreaMappingResponse(AbstractModel):
-    """DescribeCountryAreaMapping response structure.
+    r"""DescribeCountryAreaMapping response structure.
 
     """
 
@@ -5731,7 +5731,7 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
 
     @property
     def CountryAreaMappingList(self):
-        """Country/region code mapping table
+        r"""Country/region code mapping table
         :rtype: list of CountryAreaMap
         """
         return self._CountryAreaMappingList
@@ -5742,7 +5742,7 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5763,13 +5763,13 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
 
 
 class DescribeCustomHeaderRequest(AbstractModel):
-    """DescribeCustomHeader request structure.
+    r"""DescribeCustomHeader request structure.
 
     """
 
 
 class DescribeCustomHeaderResponse(AbstractModel):
-    """DescribeCustomHeader response structure.
+    r"""DescribeCustomHeader response structure.
 
     """
 
@@ -5790,7 +5790,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5802,7 +5802,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Headers(self):
-        """List of custom headers
+        r"""List of custom headers
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of HttpHeaderParam
         """
@@ -5814,7 +5814,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5836,13 +5836,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeDestRegionsRequest(AbstractModel):
-    """DescribeDestRegions request structure.
+    r"""DescribeDestRegions request structure.
 
     """
 
 
 class DescribeDestRegionsResponse(AbstractModel):
-    """DescribeDestRegions response structure.
+    r"""DescribeDestRegions response structure.
 
     """
 
@@ -5861,7 +5861,7 @@ class DescribeDestRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of origin server regions
+        r"""Total number of origin server regions
         :rtype: int
         """
         return self._TotalCount
@@ -5872,7 +5872,7 @@ class DescribeDestRegionsResponse(AbstractModel):
 
     @property
     def DestRegionSet(self):
-        """List of origin server region details
+        r"""List of origin server region details
         :rtype: list of RegionDetail
         """
         return self._DestRegionSet
@@ -5883,7 +5883,7 @@ class DescribeDestRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5905,7 +5905,7 @@ class DescribeDestRegionsResponse(AbstractModel):
 
 
 class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
-    """DescribeDomainErrorPageInfoByIds request structure.
+    r"""DescribeDomainErrorPageInfoByIds request structure.
 
     """
 
@@ -5918,7 +5918,7 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
 
     @property
     def ErrorPageIds(self):
-        """List of custom error IDs. Up to 10 IDs are supported
+        r"""List of custom error IDs. Up to 10 IDs are supported
         :rtype: list of str
         """
         return self._ErrorPageIds
@@ -5941,7 +5941,7 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
 
 
 class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
-    """DescribeDomainErrorPageInfoByIds response structure.
+    r"""DescribeDomainErrorPageInfoByIds response structure.
 
     """
 
@@ -5958,7 +5958,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorPageSet(self):
-        """Configuration set of custom error responses
+        r"""Configuration set of custom error responses
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DomainErrorPageInfo
         """
@@ -5970,7 +5970,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5991,7 +5991,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeDomainErrorPageInfoRequest(AbstractModel):
-    """DescribeDomainErrorPageInfo request structure.
+    r"""DescribeDomainErrorPageInfo request structure.
 
     """
 
@@ -6007,7 +6007,7 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -6018,7 +6018,7 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain name
+        r"""Domain name
         :rtype: str
         """
         return self._Domain
@@ -6042,7 +6042,7 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
 
 
 class DescribeDomainErrorPageInfoResponse(AbstractModel):
-    """DescribeDomainErrorPageInfo response structure.
+    r"""DescribeDomainErrorPageInfo response structure.
 
     """
 
@@ -6059,7 +6059,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorPageSet(self):
-        """Configuration set of a custom error response
+        r"""Configuration set of a custom error response
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DomainErrorPageInfo
         """
@@ -6071,7 +6071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6092,7 +6092,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
-    """DescribeGroupAndStatisticsProxy request structure.
+    r"""DescribeGroupAndStatisticsProxy request structure.
 
     """
 
@@ -6105,7 +6105,7 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -6128,7 +6128,7 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
 
 
 class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
-    """DescribeGroupAndStatisticsProxy response structure.
+    r"""DescribeGroupAndStatisticsProxy response structure.
 
     """
 
@@ -6147,7 +6147,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     @property
     def GroupSet(self):
-        """Information of connection groups that the statistics can be derived from
+        r"""Information of connection groups that the statistics can be derived from
         :rtype: list of GroupStatisticsInfo
         """
         return self._GroupSet
@@ -6158,7 +6158,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Connection group quantity
+        r"""Connection group quantity
         :rtype: int
         """
         return self._TotalCount
@@ -6169,7 +6169,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6191,7 +6191,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
 
 
 class DescribeGroupDomainConfigRequest(AbstractModel):
-    """DescribeGroupDomainConfig request structure.
+    r"""DescribeGroupDomainConfig request structure.
 
     """
 
@@ -6204,7 +6204,7 @@ class DescribeGroupDomainConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID.
+        r"""Connection group ID.
         :rtype: str
         """
         return self._GroupId
@@ -6227,7 +6227,7 @@ class DescribeGroupDomainConfigRequest(AbstractModel):
 
 
 class DescribeGroupDomainConfigResponse(AbstractModel):
-    """DescribeGroupDomainConfig response structure.
+    r"""DescribeGroupDomainConfig response structure.
 
     """
 
@@ -6252,7 +6252,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
     @property
     def AccessRegionList(self):
-        """Nearest access configuration list of domain name resolution.
+        r"""Nearest access configuration list of domain name resolution.
         :rtype: list of DomainAccessRegionDict
         """
         return self._AccessRegionList
@@ -6263,7 +6263,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
     @property
     def DefaultDnsIp(self):
-        """Default accesses Ip.
+        r"""Default accesses Ip.
         :rtype: str
         """
         return self._DefaultDnsIp
@@ -6274,7 +6274,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID.
+        r"""Connection group ID.
         :rtype: str
         """
         return self._GroupId
@@ -6285,7 +6285,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
     @property
     def AccessRegionCount(self):
-        """Total number of configuration of access regions.
+        r"""Total number of configuration of access regions.
         :rtype: int
         """
         return self._AccessRegionCount
@@ -6296,7 +6296,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6320,7 +6320,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
 
 
 class DescribeHTTPListenersRequest(AbstractModel):
-    """DescribeHTTPListeners request structure.
+    r"""DescribeHTTPListeners request structure.
 
     """
 
@@ -6354,7 +6354,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -6365,7 +6365,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Filter condition. Exact query by listener IDs.
+        r"""Filter condition. Exact query by listener IDs.
         :rtype: str
         """
         return self._ListenerId
@@ -6376,7 +6376,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Filter condition. Exact query by listener names.
+        r"""Filter condition. Exact query by listener names.
         :rtype: str
         """
         return self._ListenerName
@@ -6387,7 +6387,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Port(self):
-        """Filter condition. Exact query by listener ports.
+        r"""Filter condition. Exact query by listener ports.
         :rtype: int
         """
         return self._Port
@@ -6398,7 +6398,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. The default value is 0.
+        r"""Offset. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -6409,7 +6409,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Quantity limit. The default value is 20.
+        r"""Quantity limit. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -6420,7 +6420,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
+        r"""Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
         :rtype: str
         """
         return self._SearchValue
@@ -6431,7 +6431,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -6461,7 +6461,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
 
 
 class DescribeHTTPListenersResponse(AbstractModel):
-    """DescribeHTTPListeners response structure.
+    r"""DescribeHTTPListeners response structure.
 
     """
 
@@ -6480,7 +6480,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of listeners
+        r"""Quantity of listeners
         :rtype: int
         """
         return self._TotalCount
@@ -6491,7 +6491,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """HTTP listener list
+        r"""HTTP listener list
         :rtype: list of HTTPListener
         """
         return self._ListenerSet
@@ -6502,7 +6502,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6524,7 +6524,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
 
 
 class DescribeHTTPSListenersRequest(AbstractModel):
-    """DescribeHTTPSListeners request structure.
+    r"""DescribeHTTPSListeners request structure.
 
     """
 
@@ -6565,7 +6565,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ProxyId(self):
-        """Filter condition. Connection ID.
+        r"""Filter condition. Connection ID.
         :rtype: str
         """
         return self._ProxyId
@@ -6576,7 +6576,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ListenerId(self):
-        """Filter condition. Exact query by listener IDs.
+        r"""Filter condition. Exact query by listener IDs.
         :rtype: str
         """
         return self._ListenerId
@@ -6587,7 +6587,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def ListenerName(self):
-        """Filter condition. Exact query by listener names.
+        r"""Filter condition. Exact query by listener names.
         :rtype: str
         """
         return self._ListenerName
@@ -6598,7 +6598,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def Port(self):
-        """Filter condition. Exact query by listener ports.
+        r"""Filter condition. Exact query by listener ports.
         :rtype: int
         """
         return self._Port
@@ -6609,7 +6609,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def Offset(self):
-        """Offset. The default value is 0
+        r"""Offset. The default value is 0
         :rtype: int
         """
         return self._Offset
@@ -6620,7 +6620,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def Limit(self):
-        """Quantity limit. The default value is 20.
+        r"""Quantity limit. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -6631,7 +6631,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def SearchValue(self):
-        """Filter condition. It supports fuzzy query by ports or listener names.
+        r"""Filter condition. It supports fuzzy query by ports or listener names.
         :rtype: str
         """
         return self._SearchValue
@@ -6642,7 +6642,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def GroupId(self):
-        """Connection group ID as a filter
+        r"""Connection group ID as a filter
         :rtype: str
         """
         return self._GroupId
@@ -6653,7 +6653,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: disable HTTP3;
 `1`: enable HTTP3.
 Note: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
@@ -6688,7 +6688,7 @@ After the connection is created, you cannot change your HTTP3 setting.
 
 
 class DescribeHTTPSListenersResponse(AbstractModel):
-    """DescribeHTTPSListeners response structure.
+    r"""DescribeHTTPSListeners response structure.
 
     """
 
@@ -6707,7 +6707,7 @@ class DescribeHTTPSListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of listeners
+        r"""Quantity of listeners
         :rtype: int
         """
         return self._TotalCount
@@ -6718,7 +6718,7 @@ class DescribeHTTPSListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """HTTPS listener list
+        r"""HTTPS listener list
         :rtype: list of HTTPSListener
         """
         return self._ListenerSet
@@ -6729,7 +6729,7 @@ class DescribeHTTPSListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6751,7 +6751,7 @@ class DescribeHTTPSListenersResponse(AbstractModel):
 
 
 class DescribeListenerRealServersRequest(AbstractModel):
-    """DescribeListenerRealServers request structure.
+    r"""DescribeListenerRealServers request structure.
 
     """
 
@@ -6764,7 +6764,7 @@ class DescribeListenerRealServersRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -6787,7 +6787,7 @@ class DescribeListenerRealServersRequest(AbstractModel):
 
 
 class DescribeListenerRealServersResponse(AbstractModel):
-    """DescribeListenerRealServers response structure.
+    r"""DescribeListenerRealServers response structure.
 
     """
 
@@ -6812,7 +6812,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of origin servers that can be bound
+        r"""Number of origin servers that can be bound
         :rtype: int
         """
         return self._TotalCount
@@ -6823,7 +6823,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
     @property
     def RealServerSet(self):
-        """An information list of origin servers
+        r"""An information list of origin servers
         :rtype: list of RealServer
         """
         return self._RealServerSet
@@ -6834,7 +6834,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
     @property
     def BindRealServerTotalCount(self):
-        """Number of bound origin servers
+        r"""Number of bound origin servers
         :rtype: int
         """
         return self._BindRealServerTotalCount
@@ -6845,7 +6845,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
     @property
     def BindRealServerSet(self):
-        """Information list of bound origin servers
+        r"""Information list of bound origin servers
         :rtype: list of BindRealServer
         """
         return self._BindRealServerSet
@@ -6856,7 +6856,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6885,7 +6885,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
 
 
 class DescribeListenerStatisticsRequest(AbstractModel):
-    """DescribeListenerStatistics request structure.
+    r"""DescribeListenerStatistics request structure.
 
     """
 
@@ -6913,7 +6913,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -6924,7 +6924,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -6935,7 +6935,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -6946,7 +6946,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
     @property
     def MetricNames(self):
-        """Statistical metric name list. It supports:["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
+        r"""Statistical metric name list. It supports:["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
         :rtype: list of str
         """
         return self._MetricNames
@@ -6957,7 +6957,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
     @property
     def Granularity(self):
-        """Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
+        r"""Monitoring granularity. It currently supports: 300, 3,600, and 86,400. Unit: seconds.
 Time range: <= 1 day, supported minimum granularity: 300 seconds;
 Time range: <= 7 days, supported minimum granularity:3,600 seconds;
 Time range: > 7 days, supported minimum granularity:86,400 seconds;
@@ -6987,7 +6987,7 @@ Time range: > 7 days, supported minimum granularity:86,400 seconds;
 
 
 class DescribeListenerStatisticsResponse(AbstractModel):
-    """DescribeListenerStatistics response structure.
+    r"""DescribeListenerStatistics response structure.
 
     """
 
@@ -7003,7 +7003,7 @@ class DescribeListenerStatisticsResponse(AbstractModel):
 
     @property
     def StatisticsData(self):
-        """Connection group statistics
+        r"""Connection group statistics
         :rtype: list of MetricStatisticsInfo
         """
         return self._StatisticsData
@@ -7014,7 +7014,7 @@ class DescribeListenerStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7035,7 +7035,7 @@ class DescribeListenerStatisticsResponse(AbstractModel):
 
 
 class DescribeProxiesRequest(AbstractModel):
-    """DescribeProxies request structure.
+    r"""DescribeProxies request structure.
 
     """
 
@@ -7090,7 +7090,7 @@ Default: `create_time`
 
     @property
     def InstanceIds(self):
-        """Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s an old parameter, please switch to ProxyIds.
+        r"""Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7101,7 +7101,7 @@ Default: `create_time`
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -7112,7 +7112,7 @@ Default: `create_time`
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 100.
+        r"""Number of returned results. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -7123,7 +7123,7 @@ Default: `create_time`
 
     @property
     def Filters(self):
-        """Filters   
+        r"""Filters   
 The upper limit on Filters for each request is 10, and the upper limit on Filter.Values is 5. This parameter does not support specifying InstanceIds and Filters at the same time. 
 ProjectId - String - Required: No - Filter by a project ID.   
 AccessRegion - String - Required: No - Filter by an access region.    
@@ -7141,7 +7141,7 @@ PackageType - String - Required: No - Filter by package type of connection group
 
     @property
     def ProxyIds(self):
-        """Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s a new parameter, and replaces InstanceIds.
+        r"""Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s a new parameter, and replaces InstanceIds.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -7152,7 +7152,7 @@ PackageType - String - Required: No - Filter by package type of connection group
 
     @property
     def TagSet(self):
-        """Tag list. If this field exists, the list of the resources with the tag will be pulled.
+        r"""Tag list. If this field exists, the list of the resources with the tag will be pulled.
 It supports up to 5 tags. If there are two or more tags, the connections tagged any of them will be pulled.
         :rtype: list of TagPair
         """
@@ -7164,7 +7164,7 @@ It supports up to 5 tags. If there are two or more tags, the connections tagged 
 
     @property
     def Independent(self):
-        """When this field is 1, only not-grouped connections are pulled.
+        r"""When this field is 1, only not-grouped connections are pulled.
 When this field is 0, only grouped connections are pulled.
 When this field does not exist, all connections are pulled, including both not-grouped and grouped connections.
         :rtype: int
@@ -7177,7 +7177,7 @@ When this field does not exist, all connections are pulled, including both not-g
 
     @property
     def Order(self):
-        """Specifies how connections are listed. Valid values:
+        r"""Specifies how connections are listed. Valid values:
 `asc`: Ascending order
 `desc`: Descending order
 Default: `desc`
@@ -7191,7 +7191,7 @@ Default: `desc`
 
     @property
     def OrderField(self):
-        """Sorting field. Valid values:
+        r"""Sorting field. Valid values:
 `create_time`: Sort by creation time
 `proxy_id`: Sort by connection ID
 `bandwidth`:Sort by bandwidth limit
@@ -7237,7 +7237,7 @@ Default: `create_time`
 
 
 class DescribeProxiesResponse(AbstractModel):
-    """DescribeProxies response structure.
+    r"""DescribeProxies response structure.
 
     """
 
@@ -7259,7 +7259,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of connections.
+        r"""Number of connections.
         :rtype: int
         """
         return self._TotalCount
@@ -7270,7 +7270,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """Connection instance information list; It’s an old parameter, please switch to ProxySet.
+        r"""Connection instance information list; It’s an old parameter, please switch to ProxySet.
         :rtype: list of ProxyInfo
         """
         return self._InstanceSet
@@ -7281,7 +7281,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def ProxySet(self):
-        """Connection instance information list; It’s a new parameter.
+        r"""Connection instance information list; It’s a new parameter.
         :rtype: list of ProxyInfo
         """
         return self._ProxySet
@@ -7292,7 +7292,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7320,7 +7320,7 @@ class DescribeProxiesResponse(AbstractModel):
 
 
 class DescribeProxiesStatusRequest(AbstractModel):
-    """DescribeProxiesStatus request structure.
+    r"""DescribeProxiesStatus request structure.
 
     """
 
@@ -7336,7 +7336,7 @@ class DescribeProxiesStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Connection ID list; It’s an old parameter, please switch to ProxyIds.
+        r"""Connection ID list; It’s an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7347,7 +7347,7 @@ class DescribeProxiesStatusRequest(AbstractModel):
 
     @property
     def ProxyIds(self):
-        """Connection ID list; It’s a new parameter.
+        r"""Connection ID list; It’s a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -7371,7 +7371,7 @@ class DescribeProxiesStatusRequest(AbstractModel):
 
 
 class DescribeProxiesStatusResponse(AbstractModel):
-    """DescribeProxiesStatus response structure.
+    r"""DescribeProxiesStatus response structure.
 
     """
 
@@ -7387,7 +7387,7 @@ class DescribeProxiesStatusResponse(AbstractModel):
 
     @property
     def InstanceStatusSet(self):
-        """Connection status list.
+        r"""Connection status list.
         :rtype: list of ProxyStatus
         """
         return self._InstanceStatusSet
@@ -7398,7 +7398,7 @@ class DescribeProxiesStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7419,7 +7419,7 @@ class DescribeProxiesStatusResponse(AbstractModel):
 
 
 class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
-    """DescribeProxyAndStatisticsListeners request structure.
+    r"""DescribeProxyAndStatisticsListeners request structure.
 
     """
 
@@ -7432,7 +7432,7 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -7455,7 +7455,7 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
 
 
 class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
-    """DescribeProxyAndStatisticsListeners response structure.
+    r"""DescribeProxyAndStatisticsListeners response structure.
 
     """
 
@@ -7474,7 +7474,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     @property
     def ProxySet(self):
-        """Information of connections that the statistics can be derived from
+        r"""Information of connections that the statistics can be derived from
         :rtype: list of ProxySimpleInfo
         """
         return self._ProxySet
@@ -7485,7 +7485,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of connections
+        r"""Quantity of connections
         :rtype: int
         """
         return self._TotalCount
@@ -7496,7 +7496,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7518,7 +7518,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
 
 
 class DescribeProxyDetailRequest(AbstractModel):
-    """DescribeProxyDetail request structure.
+    r"""DescribeProxyDetail request structure.
 
     """
 
@@ -7531,7 +7531,7 @@ class DescribeProxyDetailRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID to be queried.
+        r"""Connection ID to be queried.
         :rtype: str
         """
         return self._ProxyId
@@ -7554,7 +7554,7 @@ class DescribeProxyDetailRequest(AbstractModel):
 
 
 class DescribeProxyDetailResponse(AbstractModel):
-    """DescribeProxyDetail response structure.
+    r"""DescribeProxyDetail response structure.
 
     """
 
@@ -7570,7 +7570,7 @@ class DescribeProxyDetailResponse(AbstractModel):
 
     @property
     def ProxyDetail(self):
-        """Connection details
+        r"""Connection details
         :rtype: :class:`tencentcloud.gaap.v20180529.models.ProxyInfo`
         """
         return self._ProxyDetail
@@ -7581,7 +7581,7 @@ class DescribeProxyDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7599,7 +7599,7 @@ class DescribeProxyDetailResponse(AbstractModel):
 
 
 class DescribeProxyGroupDetailsRequest(AbstractModel):
-    """DescribeProxyGroupDetails request structure.
+    r"""DescribeProxyGroupDetails request structure.
 
     """
 
@@ -7612,7 +7612,7 @@ class DescribeProxyGroupDetailsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID.
+        r"""Connection group ID.
         :rtype: str
         """
         return self._GroupId
@@ -7635,7 +7635,7 @@ class DescribeProxyGroupDetailsRequest(AbstractModel):
 
 
 class DescribeProxyGroupDetailsResponse(AbstractModel):
-    """DescribeProxyGroupDetails response structure.
+    r"""DescribeProxyGroupDetails response structure.
 
     """
 
@@ -7651,7 +7651,7 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
 
     @property
     def ProxyGroupDetail(self):
-        """Connection group details
+        r"""Connection group details
         :rtype: :class:`tencentcloud.gaap.v20180529.models.ProxyGroupDetail`
         """
         return self._ProxyGroupDetail
@@ -7662,7 +7662,7 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7680,7 +7680,7 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
 
 
 class DescribeProxyGroupListRequest(AbstractModel):
-    """DescribeProxyGroupList request structure.
+    r"""DescribeProxyGroupList request structure.
 
     """
 
@@ -7712,7 +7712,7 @@ It supports up to 5 tags. If there are two or more tags, the connection groups t
 
     @property
     def Offset(self):
-        """Offset. The default value is 0.
+        r"""Offset. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -7723,7 +7723,7 @@ It supports up to 5 tags. If there are two or more tags, the connection groups t
 
     @property
     def Limit(self):
-        """Number of returned results. The default value is 20. The maximum value is 100.
+        r"""Number of returned results. The default value is 20. The maximum value is 100.
         :rtype: int
         """
         return self._Limit
@@ -7734,7 +7734,7 @@ It supports up to 5 tags. If there are two or more tags, the connection groups t
 
     @property
     def ProjectId(self):
-        """Project ID. Value range:
+        r"""Project ID. Value range:
 -1: all projects of this user
 0: default project
 Other values: specified project
@@ -7748,7 +7748,7 @@ Other values: specified project
 
     @property
     def Filters(self):
-        """Filter condition   
+        r"""Filter condition   
 Each request can have a maximum of 5 filter conditions for `Filter.Values`.
 `RealServerRegion` - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.
 `PackageType` - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (silver connection group).
@@ -7762,7 +7762,7 @@ Each request can have a maximum of 5 filter conditions for `Filter.Values`.
 
     @property
     def TagSet(self):
-        """Tag list. If this field exists, the list of the resources with the tag will be pulled.
+        r"""Tag list. If this field exists, the list of the resources with the tag will be pulled.
 It supports up to 5 tags. If there are two or more tags, the connection groups tagged any of them will be pulled.
         :rtype: list of TagPair
         """
@@ -7800,7 +7800,7 @@ It supports up to 5 tags. If there are two or more tags, the connection groups t
 
 
 class DescribeProxyGroupListResponse(AbstractModel):
-    """DescribeProxyGroupList response structure.
+    r"""DescribeProxyGroupList response structure.
 
     """
 
@@ -7820,7 +7820,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of connection groups.
+        r"""Total number of connection groups.
         :rtype: int
         """
         return self._TotalCount
@@ -7831,7 +7831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyGroupList(self):
-        """List of connection groups.
+        r"""List of connection groups.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ProxyGroupInfo
         """
@@ -7843,7 +7843,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7865,7 +7865,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeProxyGroupStatisticsRequest(AbstractModel):
-    """DescribeProxyGroupStatistics request structure.
+    r"""DescribeProxyGroupStatistics request structure.
 
     """
 
@@ -7893,7 +7893,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -7904,7 +7904,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -7915,7 +7915,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -7926,7 +7926,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
     @property
     def MetricNames(self):
-        """Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets).
+        r"""Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets).
         :rtype: list of str
         """
         return self._MetricNames
@@ -7937,7 +7937,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
     @property
     def Granularity(self):
-        """Monitoring granularity (in seconds). Valid values: 60s, 300s, 3,600s, 86,400s.
+        r"""Monitoring granularity (in seconds). Valid values: 60s, 300s, 3,600s, 86,400s.
 Time range: ≤ 1 day. Supported minimum granularity: 60 seconds;
 Time range: ≤ 7 days. Supported minimum granularity: 3,600 seconds;
 Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
@@ -7967,7 +7967,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;
 
 
 class DescribeProxyGroupStatisticsResponse(AbstractModel):
-    """DescribeProxyGroupStatistics response structure.
+    r"""DescribeProxyGroupStatistics response structure.
 
     """
 
@@ -7983,7 +7983,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
 
     @property
     def StatisticsData(self):
-        """Connection group statistics
+        r"""Connection group statistics
         :rtype: list of MetricStatisticsInfo
         """
         return self._StatisticsData
@@ -7994,7 +7994,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8015,7 +8015,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
 
 
 class DescribeProxyStatisticsRequest(AbstractModel):
-    """DescribeProxyStatistics request structure.
+    r"""DescribeProxyStatistics request structure.
 
     """
 
@@ -8046,7 +8046,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -8057,7 +8057,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def StartTime(self):
-        """Start time (2019-03-25 12:00:00)
+        r"""Start time (2019-03-25 12:00:00)
         :rtype: str
         """
         return self._StartTime
@@ -8068,7 +8068,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def EndTime(self):
-        """End time (2019-03-25 12:00:00)
+        r"""End time (2019-03-25 12:00:00)
         :rtype: str
         """
         return self._EndTime
@@ -8079,7 +8079,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def MetricNames(self):
-        """Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).
+        r"""Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).
         :rtype: list of str
         """
         return self._MetricNames
@@ -8090,7 +8090,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def Granularity(self):
-        """Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.
+        r"""Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.
 Time range: ≤ 3 day. Supported minimum granularity: 60 seconds;
 Time range: ≤ 7 day. Supported minimum granularity: 300 seconds;
 Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
@@ -8104,7 +8104,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
     @property
     def Isp(self):
-        """Specifies the ISP. Valid values: `CMCC`, `CUCC`, and `CTCC`. If it is not specified, all ISP data will be returned. Note that this field is valid only when a non-BGP connection is used.
+        r"""Specifies the ISP. Valid values: `CMCC`, `CUCC`, and `CTCC`. If it is not specified, all ISP data will be returned. Note that this field is valid only when a non-BGP connection is used.
         :rtype: str
         """
         return self._Isp
@@ -8132,7 +8132,7 @@ Time range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;
 
 
 class DescribeProxyStatisticsResponse(AbstractModel):
-    """DescribeProxyStatistics response structure.
+    r"""DescribeProxyStatistics response structure.
 
     """
 
@@ -8148,7 +8148,7 @@ class DescribeProxyStatisticsResponse(AbstractModel):
 
     @property
     def StatisticsData(self):
-        """Connection statistics
+        r"""Connection statistics
         :rtype: list of MetricStatisticsInfo
         """
         return self._StatisticsData
@@ -8159,7 +8159,7 @@ class DescribeProxyStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8180,7 +8180,7 @@ class DescribeProxyStatisticsResponse(AbstractModel):
 
 
 class DescribeRealServerStatisticsRequest(AbstractModel):
-    """DescribeRealServerStatistics request structure.
+    r"""DescribeRealServerStatistics request structure.
 
     """
 
@@ -8211,7 +8211,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -8222,7 +8222,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -8233,7 +8233,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Layer-7 rule ID
+        r"""Layer-7 rule ID
         :rtype: str
         """
         return self._RuleId
@@ -8244,7 +8244,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def WithinTime(self):
-        """Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.
+        r"""Statistics duration. Unit: hours. It only supports querying statistics for the past 1, 3, 6, 12, and 24 hours.
         :rtype: int
         """
         return self._WithinTime
@@ -8255,7 +8255,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Statistics start time, such as `2020-08-19 00:00:00`
+        r"""Statistics start time, such as `2020-08-19 00:00:00`
         :rtype: str
         """
         return self._StartTime
@@ -8266,7 +8266,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Statistics end time, such as `2020-08-19 23:59:59`
+        r"""Statistics end time, such as `2020-08-19 23:59:59`
         :rtype: str
         """
         return self._EndTime
@@ -8277,7 +8277,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
     @property
     def Granularity(self):
-        """Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.
+        r"""Statistics granularity in seconds. Only 1-minute (60-second) and 5-minute (300-second) granularities are supported.
         :rtype: int
         """
         return self._Granularity
@@ -8306,7 +8306,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
 
 
 class DescribeRealServerStatisticsResponse(AbstractModel):
-    """DescribeRealServerStatistics response structure.
+    r"""DescribeRealServerStatistics response structure.
 
     """
 
@@ -8325,7 +8325,7 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
     @property
     def StatisticsData(self):
-        """Origin server status statistics of specified listener
+        r"""Origin server status statistics of specified listener
         :rtype: list of StatisticsDataInfo
         """
         return self._StatisticsData
@@ -8336,7 +8336,7 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
     @property
     def RsStatisticsData(self):
-        """Status statistics of multiple origin servers
+        r"""Status statistics of multiple origin servers
         :rtype: list of MetricStatisticsInfo
         """
         return self._RsStatisticsData
@@ -8347,7 +8347,7 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8374,7 +8374,7 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
 
 class DescribeRealServersRequest(AbstractModel):
-    """DescribeRealServers request structure.
+    r"""DescribeRealServers request structure.
 
     """
 
@@ -8403,7 +8403,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def ProjectId(self):
-        """Queries the project ID to which the origin server belongs. -1: all projects.
+        r"""Queries the project ID to which the origin server belongs. -1: all projects.
         :rtype: int
         """
         return self._ProjectId
@@ -8414,7 +8414,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def SearchValue(self):
-        """Origin server IP or domain name to be queried. The fuzzy match is supported.
+        r"""Origin server IP or domain name to be queried. The fuzzy match is supported.
         :rtype: str
         """
         return self._SearchValue
@@ -8425,7 +8425,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def Offset(self):
-        """Offset, which is 0 by default.
+        r"""Offset, which is 0 by default.
         :rtype: int
         """
         return self._Offset
@@ -8436,7 +8436,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def Limit(self):
-        """Quantity of values to return. The default value is 20 and the maximum value is 50.
+        r"""Quantity of values to return. The default value is 20 and the maximum value is 50.
         :rtype: int
         """
         return self._Limit
@@ -8447,7 +8447,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def TagSet(self):
-        """Tag list. If this field exists, the list of the resources with the tag will be pulled.
+        r"""Tag list. If this field exists, the list of the resources with the tag will be pulled.
 It supports up to 5 tags. If there are two or more tags, the origin servers tagged any of them will be pulled.
         :rtype: list of TagPair
         """
@@ -8459,7 +8459,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
     @property
     def Filters(self):
-        """Filter conditions. The value of the `name` of the `filter` (RealServerName, RealServerIP)
+        r"""Filter conditions. The value of the `name` of the `filter` (RealServerName, RealServerIP)
         :rtype: list of Filter
         """
         return self._Filters
@@ -8497,7 +8497,7 @@ It supports up to 5 tags. If there are two or more tags, the origin servers tagg
 
 
 class DescribeRealServersResponse(AbstractModel):
-    """DescribeRealServers response structure.
+    r"""DescribeRealServers response structure.
 
     """
 
@@ -8516,7 +8516,7 @@ class DescribeRealServersResponse(AbstractModel):
 
     @property
     def RealServerSet(self):
-        """An information list of origin server
+        r"""An information list of origin server
         :rtype: list of BindRealServerInfo
         """
         return self._RealServerSet
@@ -8527,7 +8527,7 @@ class DescribeRealServersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The quantity of origin servers
+        r"""The quantity of origin servers
         :rtype: int
         """
         return self._TotalCount
@@ -8538,7 +8538,7 @@ class DescribeRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8560,7 +8560,7 @@ class DescribeRealServersResponse(AbstractModel):
 
 
 class DescribeRealServersStatusRequest(AbstractModel):
-    """DescribeRealServersStatus request structure.
+    r"""DescribeRealServersStatus request structure.
 
     """
 
@@ -8573,7 +8573,7 @@ class DescribeRealServersStatusRequest(AbstractModel):
 
     @property
     def RealServerIds(self):
-        """List of origin server IDs
+        r"""List of origin server IDs
         :rtype: list of str
         """
         return self._RealServerIds
@@ -8596,7 +8596,7 @@ class DescribeRealServersStatusRequest(AbstractModel):
 
 
 class DescribeRealServersStatusResponse(AbstractModel):
-    """DescribeRealServersStatus response structure.
+    r"""DescribeRealServersStatus response structure.
 
     """
 
@@ -8615,7 +8615,7 @@ class DescribeRealServersStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of origin server query results returned
+        r"""Quantity of origin server query results returned
         :rtype: int
         """
         return self._TotalCount
@@ -8626,7 +8626,7 @@ class DescribeRealServersStatusResponse(AbstractModel):
 
     @property
     def RealServerStatusSet(self):
-        """Binding status list of origin servers
+        r"""Binding status list of origin servers
         :rtype: list of RealServerStatus
         """
         return self._RealServerStatusSet
@@ -8637,7 +8637,7 @@ class DescribeRealServersStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8659,7 +8659,7 @@ class DescribeRealServersStatusResponse(AbstractModel):
 
 
 class DescribeRegionAndPriceRequest(AbstractModel):
-    """DescribeRegionAndPrice request structure.
+    r"""DescribeRegionAndPrice request structure.
 
     """
 
@@ -8675,7 +8675,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -8686,7 +8686,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
+        r"""Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :rtype: str
         """
         return self._PackageType
@@ -8710,7 +8710,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
 
 
 class DescribeRegionAndPriceResponse(AbstractModel):
-    """DescribeRegionAndPrice response structure.
+    r"""DescribeRegionAndPrice response structure.
 
     """
 
@@ -8737,7 +8737,7 @@ USD (United States Dollar)
 
     @property
     def TotalCount(self):
-        """Total number of origin server regions
+        r"""Total number of origin server regions
         :rtype: int
         """
         return self._TotalCount
@@ -8748,7 +8748,7 @@ USD (United States Dollar)
 
     @property
     def DestRegionSet(self):
-        """List of origin server region details
+        r"""List of origin server region details
         :rtype: list of RegionDetail
         """
         return self._DestRegionSet
@@ -8759,7 +8759,7 @@ USD (United States Dollar)
 
     @property
     def BandwidthUnitPrice(self):
-        """Connection bandwidth price gradient
+        r"""Connection bandwidth price gradient
         :rtype: list of BandwidthPriceGradient
         """
         return self._BandwidthUnitPrice
@@ -8770,7 +8770,7 @@ USD (United States Dollar)
 
     @property
     def Currency(self):
-        """Currency type of bandwidth price:
+        r"""Currency type of bandwidth price:
 CNY (Chinese Yuan)
 USD (United States Dollar)
         :rtype: str
@@ -8783,7 +8783,7 @@ USD (United States Dollar)
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8812,7 +8812,7 @@ USD (United States Dollar)
 
 
 class DescribeResourcesByTagRequest(AbstractModel):
-    """DescribeResourcesByTag request structure.
+    r"""DescribeResourcesByTag request structure.
 
     """
 
@@ -8835,7 +8835,7 @@ If this field is not specified, all resources with the tag will be queried.
 
     @property
     def TagKey(self):
-        """Tag key.
+        r"""Tag key.
         :rtype: str
         """
         return self._TagKey
@@ -8846,7 +8846,7 @@ If this field is not specified, all resources with the tag will be queried.
 
     @property
     def TagValue(self):
-        """Tag value.
+        r"""Tag value.
         :rtype: str
         """
         return self._TagValue
@@ -8857,7 +8857,7 @@ If this field is not specified, all resources with the tag will be queried.
 
     @property
     def ResourceType(self):
-        """Resource types:
+        r"""Resource types:
 Proxy (connection);
 ProxyGroup (connection group);
 RealServer (origin server).
@@ -8886,7 +8886,7 @@ If this field is not specified, all resources with the tag will be queried.
 
 
 class DescribeResourcesByTagResponse(AbstractModel):
-    """DescribeResourcesByTag response structure.
+    r"""DescribeResourcesByTag response structure.
 
     """
 
@@ -8905,7 +8905,7 @@ class DescribeResourcesByTagResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total resources
+        r"""Total resources
         :rtype: int
         """
         return self._TotalCount
@@ -8916,7 +8916,7 @@ class DescribeResourcesByTagResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
-        """Resource list corresponding to the tag
+        r"""Resource list corresponding to the tag
         :rtype: list of TagResourceInfo
         """
         return self._ResourceSet
@@ -8927,7 +8927,7 @@ class DescribeResourcesByTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8949,7 +8949,7 @@ class DescribeResourcesByTagResponse(AbstractModel):
 
 
 class DescribeRuleRealServersRequest(AbstractModel):
-    """DescribeRuleRealServers request structure.
+    r"""DescribeRuleRealServers request structure.
 
     """
 
@@ -8968,7 +8968,7 @@ class DescribeRuleRealServersRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Forwarding rule ID
+        r"""Forwarding rule ID
         :rtype: str
         """
         return self._RuleId
@@ -8979,7 +8979,7 @@ class DescribeRuleRealServersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -8990,7 +8990,7 @@ class DescribeRuleRealServersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results. Default value: 20. Maximum value: 1000.
+        r"""Number of returned results. Default value: 20. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -9015,7 +9015,7 @@ class DescribeRuleRealServersRequest(AbstractModel):
 
 
 class DescribeRuleRealServersResponse(AbstractModel):
-    """DescribeRuleRealServers response structure.
+    r"""DescribeRuleRealServers response structure.
 
     """
 
@@ -9040,7 +9040,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of origin servers that can be bound
+        r"""Quantity of origin servers that can be bound
         :rtype: int
         """
         return self._TotalCount
@@ -9051,7 +9051,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
     @property
     def RealServerSet(self):
-        """Information list of origin servers that can be bound
+        r"""Information list of origin servers that can be bound
         :rtype: list of RealServer
         """
         return self._RealServerSet
@@ -9062,7 +9062,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
     @property
     def BindRealServerTotalCount(self):
-        """Quantity of bound origin servers
+        r"""Quantity of bound origin servers
         :rtype: int
         """
         return self._BindRealServerTotalCount
@@ -9073,7 +9073,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
     @property
     def BindRealServerSet(self):
-        """Bound origin server information list
+        r"""Bound origin server information list
         :rtype: list of BindRealServer
         """
         return self._BindRealServerSet
@@ -9084,7 +9084,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9113,7 +9113,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
 
 
 class DescribeRulesByRuleIdsRequest(AbstractModel):
-    """DescribeRulesByRuleIds request structure.
+    r"""DescribeRulesByRuleIds request structure.
 
     """
 
@@ -9126,7 +9126,7 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
 
     @property
     def RuleIds(self):
-        """List of rule IDs. Up to 10 rules are supported.
+        r"""List of rule IDs. Up to 10 rules are supported.
         :rtype: list of str
         """
         return self._RuleIds
@@ -9149,7 +9149,7 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
 
 
 class DescribeRulesByRuleIdsResponse(AbstractModel):
-    """DescribeRulesByRuleIds response structure.
+    r"""DescribeRulesByRuleIds response structure.
 
     """
 
@@ -9168,7 +9168,7 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of returned rules.
+        r"""The number of returned rules.
         :rtype: int
         """
         return self._TotalCount
@@ -9179,7 +9179,7 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
 
     @property
     def RuleSet(self):
-        """List of returned rules.
+        r"""List of returned rules.
         :rtype: list of RuleInfo
         """
         return self._RuleSet
@@ -9190,7 +9190,7 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9212,7 +9212,7 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
 
 
 class DescribeRulesRequest(AbstractModel):
-    """DescribeRules request structure.
+    r"""DescribeRules request structure.
 
     """
 
@@ -9225,7 +9225,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Layer-7 listener ID.
+        r"""Layer-7 listener ID.
         :rtype: str
         """
         return self._ListenerId
@@ -9248,7 +9248,7 @@ class DescribeRulesRequest(AbstractModel):
 
 
 class DescribeRulesResponse(AbstractModel):
-    """DescribeRules response structure.
+    r"""DescribeRules response structure.
 
     """
 
@@ -9267,7 +9267,7 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def DomainRuleSet(self):
-        """Rule information list classified by domain name type
+        r"""Rule information list classified by domain name type
         :rtype: list of DomainRuleSet
         """
         return self._DomainRuleSet
@@ -9278,7 +9278,7 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity of domain names under this listener
+        r"""Total quantity of domain names under this listener
         :rtype: int
         """
         return self._TotalCount
@@ -9289,7 +9289,7 @@ class DescribeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9311,7 +9311,7 @@ class DescribeRulesResponse(AbstractModel):
 
 
 class DescribeSecurityPolicyDetailRequest(AbstractModel):
-    """DescribeSecurityPolicyDetail request structure.
+    r"""DescribeSecurityPolicyDetail request structure.
 
     """
 
@@ -9324,7 +9324,7 @@ class DescribeSecurityPolicyDetailRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -9347,7 +9347,7 @@ class DescribeSecurityPolicyDetailRequest(AbstractModel):
 
 
 class DescribeSecurityPolicyDetailResponse(AbstractModel):
-    """DescribeSecurityPolicyDetail response structure.
+    r"""DescribeSecurityPolicyDetail response structure.
 
     """
 
@@ -9380,7 +9380,7 @@ UNBINDING (disabling security policies)
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9392,7 +9392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Security policy status:
+        r"""Security policy status:
 BOUND (security policies enabled)
 UNBIND (security policies disabled)
 BINDING (enabling security policies)
@@ -9407,7 +9407,7 @@ UNBINDING (disabling security policies)
 
     @property
     def DefaultAction(self):
-        """Default policy: ACCEPT or DROP.
+        r"""Default policy: ACCEPT or DROP.
         :rtype: str
         """
         return self._DefaultAction
@@ -9418,7 +9418,7 @@ UNBINDING (disabling security policies)
 
     @property
     def PolicyId(self):
-        """Policy ID
+        r"""Policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -9429,7 +9429,7 @@ UNBINDING (disabling security policies)
 
     @property
     def RuleList(self):
-        """List of rules
+        r"""List of rules
         :rtype: list of SecurityPolicyRuleOut
         """
         return self._RuleList
@@ -9440,7 +9440,7 @@ UNBINDING (disabling security policies)
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9465,7 +9465,7 @@ UNBINDING (disabling security policies)
 
 
 class DescribeSecurityRulesRequest(AbstractModel):
-    """DescribeSecurityRules request structure.
+    r"""DescribeSecurityRules request structure.
 
     """
 
@@ -9478,7 +9478,7 @@ class DescribeSecurityRulesRequest(AbstractModel):
 
     @property
     def SecurityRuleIds(self):
-        """List of security rule IDs. Up to 20 security rules are supported.
+        r"""List of security rule IDs. Up to 20 security rules are supported.
         :rtype: list of str
         """
         return self._SecurityRuleIds
@@ -9501,7 +9501,7 @@ class DescribeSecurityRulesRequest(AbstractModel):
 
 
 class DescribeSecurityRulesResponse(AbstractModel):
-    """DescribeSecurityRules response structure.
+    r"""DescribeSecurityRules response structure.
 
     """
 
@@ -9520,7 +9520,7 @@ class DescribeSecurityRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of returned security rules.
+        r"""The number of returned security rules.
         :rtype: int
         """
         return self._TotalCount
@@ -9531,7 +9531,7 @@ class DescribeSecurityRulesResponse(AbstractModel):
 
     @property
     def SecurityRuleSet(self):
-        """List of returned security rules.
+        r"""List of returned security rules.
         :rtype: list of SecurityPolicyRuleOut
         """
         return self._SecurityRuleSet
@@ -9542,7 +9542,7 @@ class DescribeSecurityRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9564,7 +9564,7 @@ class DescribeSecurityRulesResponse(AbstractModel):
 
 
 class DescribeTCPListenersRequest(AbstractModel):
-    """DescribeTCPListeners request structure.
+    r"""DescribeTCPListeners request structure.
 
     """
 
@@ -9600,7 +9600,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ProxyId(self):
-        """Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
+        r"""Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
         :rtype: str
         """
         return self._ProxyId
@@ -9611,7 +9611,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ListenerId(self):
-        """Filter condition. Exact query by listener ID.
+        r"""Filter condition. Exact query by listener ID.
 When ProxyId is specified, the listener will be checked whether it belongs to the connection.
 When GroupId is specified, the listener will be checked whether it belongs to the connection group.
         :rtype: str
@@ -9624,7 +9624,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ListenerName(self):
-        """Filter condition. Exact query by listener name.
+        r"""Filter condition. Exact query by listener name.
         :rtype: str
         """
         return self._ListenerName
@@ -9635,7 +9635,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Port(self):
-        """Filter condition. Exact query by listener port.
+        r"""Filter condition. Exact query by listener port.
         :rtype: int
         """
         return self._Port
@@ -9646,7 +9646,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Offset(self):
-        """Offset. Default value: 0.
+        r"""Offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -9657,7 +9657,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Limit(self):
-        """Quantity limit. The default value is 20.
+        r"""Quantity limit. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -9668,7 +9668,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def GroupId(self):
-        """Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
+        r"""Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
         :rtype: str
         """
         return self._GroupId
@@ -9679,7 +9679,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def SearchValue(self):
-        """Filter condition. It supports fuzzy query by port or listener name. This parameter cannot be used with `ListenerName` or `Port`.
+        r"""Filter condition. It supports fuzzy query by port or listener name. This parameter cannot be used with `ListenerName` or `Port`.
         :rtype: str
         """
         return self._SearchValue
@@ -9709,7 +9709,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
 
 class DescribeTCPListenersResponse(AbstractModel):
-    """DescribeTCPListeners response structure.
+    r"""DescribeTCPListeners response structure.
 
     """
 
@@ -9728,7 +9728,7 @@ class DescribeTCPListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity of listeners that matches the conditions
+        r"""Total quantity of listeners that matches the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -9739,7 +9739,7 @@ class DescribeTCPListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """TCP listener list
+        r"""TCP listener list
         :rtype: list of TCPListener
         """
         return self._ListenerSet
@@ -9750,7 +9750,7 @@ class DescribeTCPListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9772,7 +9772,7 @@ class DescribeTCPListenersResponse(AbstractModel):
 
 
 class DescribeUDPListenersRequest(AbstractModel):
-    """DescribeUDPListeners request structure.
+    r"""DescribeUDPListeners request structure.
 
     """
 
@@ -9808,7 +9808,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ProxyId(self):
-        """Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
+        r"""Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
         :rtype: str
         """
         return self._ProxyId
@@ -9819,7 +9819,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ListenerId(self):
-        """Filter condition. Exact query by listener IDs.
+        r"""Filter condition. Exact query by listener IDs.
 When ProxyId is specified, the listener will be checked whether it belongs to the connection.
 When GroupId is specified, the listener will be checked whether it belongs to the connection group.
         :rtype: str
@@ -9832,7 +9832,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def ListenerName(self):
-        """Filter condition. Exact query by listener names.
+        r"""Filter condition. Exact query by listener names.
         :rtype: str
         """
         return self._ListenerName
@@ -9843,7 +9843,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Port(self):
-        """Filter condition. Exact query by listener ports.
+        r"""Filter condition. Exact query by listener ports.
         :rtype: int
         """
         return self._Port
@@ -9854,7 +9854,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Offset(self):
-        """Offset. The default value is 0.
+        r"""Offset. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -9865,7 +9865,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def Limit(self):
-        """Quantity limit. The default value is 20.
+        r"""Quantity limit. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -9876,7 +9876,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def GroupId(self):
-        """Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
+        r"""Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.
         :rtype: str
         """
         return self._GroupId
@@ -9887,7 +9887,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
     @property
     def SearchValue(self):
-        """Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
+        r"""Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.
         :rtype: str
         """
         return self._SearchValue
@@ -9917,7 +9917,7 @@ When GroupId is specified, the listener will be checked whether it belongs to th
 
 
 class DescribeUDPListenersResponse(AbstractModel):
-    """DescribeUDPListeners response structure.
+    r"""DescribeUDPListeners response structure.
 
     """
 
@@ -9936,7 +9936,7 @@ class DescribeUDPListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Quantity of listeners
+        r"""Quantity of listeners
         :rtype: int
         """
         return self._TotalCount
@@ -9947,7 +9947,7 @@ class DescribeUDPListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        """UDP listener list
+        r"""UDP listener list
         :rtype: list of UDPListener
         """
         return self._ListenerSet
@@ -9958,7 +9958,7 @@ class DescribeUDPListenersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9980,7 +9980,7 @@ class DescribeUDPListenersResponse(AbstractModel):
 
 
 class DestroyProxiesRequest(AbstractModel):
-    """DestroyProxies request structure.
+    r"""DestroyProxies request structure.
 
     """
 
@@ -10006,7 +10006,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def Force(self):
-        """The identifier for forced deletion
+        r"""The identifier for forced deletion
 1: this connection list is deleted forcibly regardless of whether the origin server has been bound.
 0: this connection list cannot be deleted if the origin server has been bound.
 If this identifier is 0, the deletion can be performed only when all the connections have not been bound to any origin servers.
@@ -10020,7 +10020,7 @@ If this identifier is 0, the deletion can be performed only when all the connect
 
     @property
     def InstanceIds(self):
-        """List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
+        r"""List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -10031,7 +10031,7 @@ If this identifier is 0, the deletion can be performed only when all the connect
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -10043,7 +10043,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyIds(self):
-        """List of connection instance IDs; It's a new parameter.
+        r"""List of connection instance IDs; It's a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -10069,7 +10069,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class DestroyProxiesResponse(AbstractModel):
-    """DestroyProxies response structure.
+    r"""DestroyProxies response structure.
 
     """
 
@@ -10088,7 +10088,7 @@ class DestroyProxiesResponse(AbstractModel):
 
     @property
     def InvalidStatusInstanceSet(self):
-        """ID list of connection instances that cannot be terminated.
+        r"""ID list of connection instances that cannot be terminated.
         :rtype: list of str
         """
         return self._InvalidStatusInstanceSet
@@ -10099,7 +10099,7 @@ class DestroyProxiesResponse(AbstractModel):
 
     @property
     def OperationFailedInstanceSet(self):
-        """ID list of connection instances that failed to be terminated.
+        r"""ID list of connection instances that failed to be terminated.
         :rtype: list of str
         """
         return self._OperationFailedInstanceSet
@@ -10110,7 +10110,7 @@ class DestroyProxiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10127,7 +10127,7 @@ class DestroyProxiesResponse(AbstractModel):
 
 
 class DomainAccessRegionDict(AbstractModel):
-    """Nearest access configuration details of domain name resolution
+    r"""Nearest access configuration details of domain name resolution
 
     """
 
@@ -10155,7 +10155,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def NationCountryInnerList(self):
-        """Nearest access region
+        r"""Nearest access region
         :rtype: list of NationCountryInnerInfo
         """
         return self._NationCountryInnerList
@@ -10166,7 +10166,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def ProxyList(self):
-        """Acceleration region connection list
+        r"""Acceleration region connection list
         :rtype: list of ProxyIdDict
         """
         return self._ProxyList
@@ -10177,7 +10177,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def RegionId(self):
-        """Acceleration region ID
+        r"""Acceleration region ID
         :rtype: str
         """
         return self._RegionId
@@ -10188,7 +10188,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def GeographicalZoneInnerCode(self):
-        """Acceleration region internal code
+        r"""Acceleration region internal code
         :rtype: str
         """
         return self._GeographicalZoneInnerCode
@@ -10199,7 +10199,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def ContinentInnerCode(self):
-        """Internal code of the continent to which the acceleration region belongs
+        r"""Internal code of the continent to which the acceleration region belongs
         :rtype: str
         """
         return self._ContinentInnerCode
@@ -10210,7 +10210,7 @@ class DomainAccessRegionDict(AbstractModel):
 
     @property
     def RegionName(self):
-        """Acceleration region alias
+        r"""Acceleration region alias
         :rtype: str
         """
         return self._RegionName
@@ -10248,7 +10248,7 @@ class DomainAccessRegionDict(AbstractModel):
 
 
 class DomainErrorPageInfo(AbstractModel):
-    """Custom error response configuration of a domain name
+    r"""Custom error response configuration of a domain name
 
     """
 
@@ -10290,7 +10290,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def ErrorPageId(self):
-        """Configuration ID of a custom error response
+        r"""Configuration ID of a custom error response
         :rtype: str
         """
         return self._ErrorPageId
@@ -10301,7 +10301,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -10312,7 +10312,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Domain(self):
-        """Domain name
+        r"""Domain name
         :rtype: str
         """
         return self._Domain
@@ -10323,7 +10323,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def ErrorNos(self):
-        """Original error code
+        r"""Original error code
         :rtype: list of int
         """
         return self._ErrorNos
@@ -10334,7 +10334,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def NewErrorNo(self):
-        """New error code
+        r"""New error code
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10346,7 +10346,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClearHeaders(self):
-        """Response header to be cleared
+        r"""Response header to be cleared
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -10358,7 +10358,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetHeaders(self):
-        """Response header to be set
+        r"""Response header to be set
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of HttpHeaderParam
         """
@@ -10370,7 +10370,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Body(self):
-        """Configured response body (excluding HTTP header)
+        r"""Configured response body (excluding HTTP header)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10382,7 +10382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Rule status. 0: success
+        r"""Rule status. 0: success
 Note: this field may return null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -10419,7 +10419,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
 
 class DomainRuleSet(AbstractModel):
-    """Forwarding rule information of Layer-7 listeners classified by domain name
+    r"""Forwarding rule information of Layer-7 listeners classified by domain name
 
     """
 
@@ -10522,7 +10522,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Domain(self):
-        """Forwarding rule domain name.
+        r"""Forwarding rule domain name.
         :rtype: str
         """
         return self._Domain
@@ -10533,7 +10533,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RuleSet(self):
-        """Forwarding rule list of the domain name.
+        r"""Forwarding rule list of the domain name.
         :rtype: list of RuleInfo
         """
         return self._RuleSet
@@ -10544,7 +10544,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertificateId(self):
-        """Server certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
+        r"""Server certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10556,7 +10556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateAlias(self):
-        """Server certificate name of the domain name.
+        r"""Server certificate name of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10568,7 +10568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientCertificateId(self):
-        """Client certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
+        r"""Client certificate ID of the domain. When it is `default`, it indicates that the default certificate will be used (i.e., the certificate configured for the listener).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10580,7 +10580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientCertificateAlias(self):
-        """Client certificate name of the domain name.
+        r"""Client certificate name of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10592,7 +10592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BasicAuthConfId(self):
-        """Basic authentication configuration ID of the domain name.
+        r"""Basic authentication configuration ID of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10604,7 +10604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BasicAuth(self):
-        """Basic authentication status:
+        r"""Basic authentication status:
 0: disabled;
 1: enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10618,7 +10618,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BasicAuthConfAlias(self):
-        """Basic authentication configuration name of the domain name.
+        r"""Basic authentication configuration name of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10630,7 +10630,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerCertificateId(self):
-        """Origin server authentication certificate ID of the domain name.
+        r"""Origin server authentication certificate ID of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10642,7 +10642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerAuth(self):
-        """Origin server authentication status:
+        r"""Origin server authentication status:
 0: disabled;
 1: enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10656,7 +10656,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerCertificateAlias(self):
-        """Origin server authentication certificate name of the domain name.
+        r"""Origin server authentication certificate name of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10668,7 +10668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GaapCertificateId(self):
-        """Connection authentication certificate ID of the domain name.
+        r"""Connection authentication certificate ID of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10680,7 +10680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GaapAuth(self):
-        """Connection authentication status:
+        r"""Connection authentication status:
 0: disabled;
 1: enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10694,7 +10694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GaapCertificateAlias(self):
-        """Connection authentication certificate name of the domain name.
+        r"""Connection authentication certificate name of the domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10706,7 +10706,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerCertificateDomain(self):
-        """Origin server authentication domain name.
+        r"""Origin server authentication domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10718,7 +10718,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolyClientCertificateAliasInfo(self):
-        """Returns IDs and aliases of multiple certificates when there are multiple client certificates.
+        r"""Returns IDs and aliases of multiple certificates when there are multiple client certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CertificateAliasInfo
         """
@@ -10730,7 +10730,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolyRealServerCertificateAliasInfo(self):
-        """Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
+        r"""Returns IDs and aliases of multiple certificates when there are multiple origin certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CertificateAliasInfo
         """
@@ -10742,7 +10742,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainStatus(self):
-        """Domain name status.
+        r"""Domain name status.
 0: running;
 1: changing;
 2: deleting.
@@ -10757,7 +10757,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BanStatus(self):
-        """Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
+        r"""Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10769,7 +10769,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: disable HTTP3;
 `1`: enable HTTP3.
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -10830,7 +10830,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class Filter(AbstractModel):
-    """Filter conditions
+    r"""Filter conditions
 
     """
 
@@ -10846,7 +10846,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter conditions
+        r"""Filter conditions
         :rtype: str
         """
         return self._Name
@@ -10857,7 +10857,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filter values
+        r"""Filter values
         :rtype: list of str
         """
         return self._Values
@@ -10881,7 +10881,7 @@ class Filter(AbstractModel):
 
 
 class GroupStatisticsInfo(AbstractModel):
-    """The connection groups from which the statistics can be derived, and the connection information.
+    r"""The connection groups from which the statistics can be derived, and the connection information.
 
     """
 
@@ -10900,7 +10900,7 @@ class GroupStatisticsInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -10911,7 +10911,7 @@ class GroupStatisticsInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """Connection group name
+        r"""Connection group name
         :rtype: str
         """
         return self._GroupName
@@ -10922,7 +10922,7 @@ class GroupStatisticsInfo(AbstractModel):
 
     @property
     def ProxySet(self):
-        """List of connections of a connection group
+        r"""List of connections of a connection group
         :rtype: list of ProxySimpleInfo
         """
         return self._ProxySet
@@ -10952,7 +10952,7 @@ class GroupStatisticsInfo(AbstractModel):
 
 
 class HTTPListener(AbstractModel):
-    """HTTP listener information
+    r"""HTTP listener information
 
     """
 
@@ -10993,7 +10993,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -11004,7 +11004,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -11015,7 +11015,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Port(self):
-        """Listener port
+        r"""Listener port
         :rtype: int
         """
         return self._Port
@@ -11026,7 +11026,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
-        """Listener creation time; using UNIX timestamp.
+        r"""Listener creation time; using UNIX timestamp.
         :rtype: int
         """
         return self._CreateTime
@@ -11037,7 +11037,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Protocol(self):
-        """Listener protocol. Valid values: HTTP, HTTPS. The value `HTTP` is used for this structure
+        r"""Listener protocol. Valid values: HTTP, HTTPS. The value `HTTP` is used for this structure
         :rtype: str
         """
         return self._Protocol
@@ -11048,7 +11048,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerStatus(self):
-        """Listener status:
+        r"""Listener status:
 0: running;
 1: creating;
 2: terminating;
@@ -11064,7 +11064,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ProxyId(self):
-        """Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+        r"""Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11076,7 +11076,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def GroupId(self):
-        """Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+        r"""Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11107,7 +11107,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class HTTPSListener(AbstractModel):
-    """HTTPS listener information
+    r"""HTTPS listener information
 
     """
 
@@ -11183,7 +11183,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -11194,7 +11194,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -11205,7 +11205,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Port(self):
-        """Listener port
+        r"""Listener port
         :rtype: int
         """
         return self._Port
@@ -11216,7 +11216,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Protocol(self):
-        """Listener protocol. Valid values: HTTP, HTTPS. The value `HTTPS` is used for this structure
+        r"""Listener protocol. Valid values: HTTP, HTTPS. The value `HTTPS` is used for this structure
         :rtype: str
         """
         return self._Protocol
@@ -11227,7 +11227,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerStatus(self):
-        """Listener status:
+        r"""Listener status:
 0: running;
 1: creating;
 2: terminating;
@@ -11243,7 +11243,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertificateId(self):
-        """Server SSL certificate ID of the listener
+        r"""Server SSL certificate ID of the listener
         :rtype: str
         """
         return self._CertificateId
@@ -11254,7 +11254,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ForwardProtocol(self):
-        """Protocol used in the forwarding from connections to origin servers
+        r"""Protocol used in the forwarding from connections to origin servers
         :rtype: str
         """
         return self._ForwardProtocol
@@ -11265,7 +11265,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
-        """Listener creation time; using UNIX timestamp.
+        r"""Listener creation time; using UNIX timestamp.
         :rtype: int
         """
         return self._CreateTime
@@ -11276,7 +11276,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertificateAlias(self):
-        """Server SSL certificate alias
+        r"""Server SSL certificate alias
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11288,7 +11288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientCertificateId(self):
-        """Client CA certificate ID of the listener
+        r"""Client CA certificate ID of the listener
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11300,7 +11300,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthType(self):
-        """Listener authentication mode. Valid values:
+        r"""Listener authentication mode. Valid values:
 0: one-way authentication;
 1: mutual authentication.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -11314,7 +11314,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientCertificateAlias(self):
-        """Client CA certificate alias
+        r"""Client CA certificate alias
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11326,7 +11326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolyClientCertificateAliasInfo(self):
-        """Alias information of multiple client CA certificates.
+        r"""Alias information of multiple client CA certificates.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CertificateAliasInfo
         """
@@ -11338,7 +11338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Http3Supported(self):
-        """Whether to support HTTP3. Values:
+        r"""Whether to support HTTP3. Values:
 `0`: Do not support HTTP3 access;
 `1`: Support HTTP3 access.
 If HTTP3 is supported for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
@@ -11353,7 +11353,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+        r"""Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11365,7 +11365,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+        r"""Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11409,7 +11409,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class HttpHeaderParam(AbstractModel):
-    """Parameter describing an HTTP packet header
+    r"""Parameter describing an HTTP packet header
 
     """
 
@@ -11425,7 +11425,7 @@ class HttpHeaderParam(AbstractModel):
 
     @property
     def HeaderName(self):
-        """HTTP header name
+        r"""HTTP header name
         :rtype: str
         """
         return self._HeaderName
@@ -11436,7 +11436,7 @@ class HttpHeaderParam(AbstractModel):
 
     @property
     def HeaderValue(self):
-        """HTTP header value
+        r"""HTTP header value
         :rtype: str
         """
         return self._HeaderValue
@@ -11460,7 +11460,7 @@ class HttpHeaderParam(AbstractModel):
 
 
 class IPDetail(AbstractModel):
-    """IP details
+    r"""IP details
 
     """
 
@@ -11479,7 +11479,7 @@ class IPDetail(AbstractModel):
 
     @property
     def IP(self):
-        """IP string
+        r"""IP string
         :rtype: str
         """
         return self._IP
@@ -11490,7 +11490,7 @@ class IPDetail(AbstractModel):
 
     @property
     def Provider(self):
-        """Network provider. `BGP`: Tencent Cloud BGP (default); `CMCC`: China Mobile; `CUCC`: China Unicom; `CTCC`: China Telecom.
+        r"""Network provider. `BGP`: Tencent Cloud BGP (default); `CMCC`: China Mobile; `CUCC`: China Unicom; `CTCC`: China Telecom.
         :rtype: str
         """
         return self._Provider
@@ -11501,7 +11501,7 @@ class IPDetail(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """Max bandwidth
+        r"""Max bandwidth
         :rtype: int
         """
         return self._Bandwidth
@@ -11526,7 +11526,7 @@ class IPDetail(AbstractModel):
 
 
 class InquiryPriceCreateProxyRequest(AbstractModel):
-    """InquiryPriceCreateProxy request structure.
+    r"""InquiryPriceCreateProxy request structure.
 
     """
 
@@ -11569,7 +11569,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        """Acceleration region name.
+        r"""Acceleration region name.
         :rtype: str
         """
         return self._AccessRegion
@@ -11580,7 +11580,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        """Connection bandwidth cap. Unit: Mbps.
+        r"""Connection bandwidth cap. Unit: Mbps.
         :rtype: int
         """
         return self._Bandwidth
@@ -11591,7 +11591,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def DestRegion(self):
-        """Origin server region name. It's an old parameter, please switch to RealServerRegion.
+        r"""Origin server region name. It's an old parameter, please switch to RealServerRegion.
         :rtype: str
         """
         return self._DestRegion
@@ -11602,7 +11602,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def Concurrency(self):
-        """Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent.
+        r"""Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's an old parameter, please switch to Concurrent.
         :rtype: int
         """
         return self._Concurrency
@@ -11613,7 +11613,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def RealServerRegion(self):
-        """Origin server region name; It's a new parameter.
+        r"""Origin server region name; It's a new parameter.
         :rtype: str
         """
         return self._RealServerRegion
@@ -11624,7 +11624,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def Concurrent(self):
-        """Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter.
+        r"""Upper limit of connection concurrence, which indicates a number of simultaneous online connections. Unit: 10,000 connections. It's a new parameter.
         :rtype: int
         """
         return self._Concurrent
@@ -11635,7 +11635,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def BillingType(self):
-        """Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.
+        r"""Billing mode. Valid values: 0: bill-by-bandwidth (default value); 1: bill-by-traffic.
         :rtype: int
         """
         return self._BillingType
@@ -11646,7 +11646,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
         :rtype: str
         """
         return self._IPAddressVersion
@@ -11657,7 +11657,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def NetworkType(self):
-        """Network type. Valid values: `normal` (default), `cn2`
+        r"""Network type. Valid values: `normal` (default), `cn2`
         :rtype: str
         """
         return self._NetworkType
@@ -11668,7 +11668,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
+        r"""Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).
         :rtype: str
         """
         return self._PackageType
@@ -11679,7 +11679,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     @property
     def Http3Supported(self):
-        """(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
+        r"""(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.
         :rtype: int
         """
         return self._Http3Supported
@@ -11712,7 +11712,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
 
 class InquiryPriceCreateProxyResponse(AbstractModel):
-    """InquiryPriceCreateProxy response structure.
+    r"""InquiryPriceCreateProxy response structure.
 
     """
 
@@ -11754,7 +11754,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ProxyDailyPrice(self):
-        """Basic price of connection in USD/day.
+        r"""Basic price of connection in USD/day.
         :rtype: float
         """
         return self._ProxyDailyPrice
@@ -11765,7 +11765,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BandwidthUnitPrice(self):
-        """Tiered price of connection bandwidth.
+        r"""Tiered price of connection bandwidth.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of BandwidthPriceGradient
         """
@@ -11777,7 +11777,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountProxyDailyPrice(self):
-        """Discounted basic price of connection in USD/day.
+        r"""Discounted basic price of connection in USD/day.
         :rtype: float
         """
         return self._DiscountProxyDailyPrice
@@ -11788,7 +11788,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
-        """Currency, which supports CNY, USD, etc.
+        r"""Currency, which supports CNY, USD, etc.
         :rtype: str
         """
         return self._Currency
@@ -11799,7 +11799,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowUnitPrice(self):
-        """Connection traffic price in USD/GB.
+        r"""Connection traffic price in USD/GB.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -11811,7 +11811,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountFlowUnitPrice(self):
-        """Discounted connection traffic price in USD/GB.
+        r"""Discounted connection traffic price in USD/GB.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -11823,7 +11823,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cn2BandwidthPrice(self):
-        """Dedicated BGP bandwidth price. Unit: USD/Mbps/day
+        r"""Dedicated BGP bandwidth price. Unit: USD/Mbps/day
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: float
         """
@@ -11835,7 +11835,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cn2BandwidthPriceWithDiscount(self):
-        """Dedicated BGP bandwidth discount price. Unit: USD/Mbps/day
+        r"""Dedicated BGP bandwidth discount price. Unit: USD/Mbps/day
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: float
         """
@@ -11847,7 +11847,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11875,7 +11875,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class ListenerInfo(AbstractModel):
-    """Used by internal APIs. It returns the information of listeners whose statistics can be queried.
+    r"""Used by internal APIs. It returns the information of listeners whose statistics can be queried.
 
     """
 
@@ -11897,7 +11897,7 @@ class ListenerInfo(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -11908,7 +11908,7 @@ class ListenerInfo(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -11919,7 +11919,7 @@ class ListenerInfo(AbstractModel):
 
     @property
     def Port(self):
-        """Listening port
+        r"""Listening port
         :rtype: int
         """
         return self._Port
@@ -11930,7 +11930,7 @@ class ListenerInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        """Listener protocol type
+        r"""Listener protocol type
         :rtype: str
         """
         return self._Protocol
@@ -11956,7 +11956,7 @@ class ListenerInfo(AbstractModel):
 
 
 class MetricStatisticsInfo(AbstractModel):
-    """One-metric statistics
+    r"""One-metric statistics
 
     """
 
@@ -11972,7 +11972,7 @@ class MetricStatisticsInfo(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name
+        r"""Metric name
         :rtype: str
         """
         return self._MetricName
@@ -11983,7 +11983,7 @@ class MetricStatisticsInfo(AbstractModel):
 
     @property
     def MetricData(self):
-        """Metric statistics
+        r"""Metric statistics
         :rtype: list of StatisticsDataInfo
         """
         return self._MetricData
@@ -12012,7 +12012,7 @@ class MetricStatisticsInfo(AbstractModel):
 
 
 class ModifyCertificateAttributesRequest(AbstractModel):
-    """ModifyCertificateAttributes request structure.
+    r"""ModifyCertificateAttributes request structure.
 
     """
 
@@ -12028,7 +12028,7 @@ class ModifyCertificateAttributesRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID.
+        r"""Certificate ID.
         :rtype: str
         """
         return self._CertificateId
@@ -12039,7 +12039,7 @@ class ModifyCertificateAttributesRequest(AbstractModel):
 
     @property
     def CertificateAlias(self):
-        """Certificate name. Up to 50 characters.
+        r"""Certificate name. Up to 50 characters.
         :rtype: str
         """
         return self._CertificateAlias
@@ -12063,7 +12063,7 @@ class ModifyCertificateAttributesRequest(AbstractModel):
 
 
 class ModifyCertificateAttributesResponse(AbstractModel):
-    """ModifyCertificateAttributes response structure.
+    r"""ModifyCertificateAttributes response structure.
 
     """
 
@@ -12076,7 +12076,7 @@ class ModifyCertificateAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12091,7 +12091,7 @@ class ModifyCertificateAttributesResponse(AbstractModel):
 
 
 class ModifyCertificateRequest(AbstractModel):
-    """ModifyCertificate request structure.
+    r"""ModifyCertificate request structure.
 
     """
 
@@ -12120,7 +12120,7 @@ This parameter or the `ClientCertificateId` parameter is required for mutual aut
 
     @property
     def ListenerId(self):
-        """Listener instance ID
+        r"""Listener instance ID
         :rtype: str
         """
         return self._ListenerId
@@ -12131,7 +12131,7 @@ This parameter or the `ClientCertificateId` parameter is required for mutual aut
 
     @property
     def Domain(self):
-        """Domain name whose certificate needs to be modified
+        r"""Domain name whose certificate needs to be modified
         :rtype: str
         """
         return self._Domain
@@ -12142,7 +12142,7 @@ This parameter or the `ClientCertificateId` parameter is required for mutual aut
 
     @property
     def CertificateId(self):
-        """New server certificate ID:
+        r"""New server certificate ID:
 If CertificateId=default, using the listener certificate.
         :rtype: str
         """
@@ -12154,7 +12154,7 @@ If CertificateId=default, using the listener certificate.
 
     @property
     def ClientCertificateId(self):
-        """New client certificate ID:
+        r"""New client certificate ID:
 If ClientCertificateId=default, using the listener certificate.
 This parameter is required only when the mutual authentication is adopted.
         :rtype: str
@@ -12167,7 +12167,7 @@ This parameter is required only when the mutual authentication is adopted.
 
     @property
     def PolyClientCertificateIds(self):
-        """List of new IDs of multiple client certificates, where:
+        r"""List of new IDs of multiple client certificates, where:
 This parameter or the `ClientCertificateId` parameter is required for mutual authentication only.
         :rtype: list of str
         """
@@ -12195,7 +12195,7 @@ This parameter or the `ClientCertificateId` parameter is required for mutual aut
 
 
 class ModifyCertificateResponse(AbstractModel):
-    """ModifyCertificate response structure.
+    r"""ModifyCertificate response structure.
 
     """
 
@@ -12208,7 +12208,7 @@ class ModifyCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12223,7 +12223,7 @@ class ModifyCertificateResponse(AbstractModel):
 
 
 class ModifyDomainRequest(AbstractModel):
-    """ModifyDomain request structure.
+    r"""ModifyDomain request structure.
 
     """
 
@@ -12260,7 +12260,7 @@ In other cases, the certificate specified by `ClientCertificateId` or `PolyClien
 
     @property
     def ListenerId(self):
-        """Layer-7 listener ID
+        r"""Layer-7 listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -12271,7 +12271,7 @@ In other cases, the certificate specified by `ClientCertificateId` or `PolyClien
 
     @property
     def OldDomain(self):
-        """Original domain name information
+        r"""Original domain name information
         :rtype: str
         """
         return self._OldDomain
@@ -12282,7 +12282,7 @@ In other cases, the certificate specified by `ClientCertificateId` or `PolyClien
 
     @property
     def NewDomain(self):
-        """New domain name information
+        r"""New domain name information
         :rtype: str
         """
         return self._NewDomain
@@ -12293,7 +12293,7 @@ In other cases, the certificate specified by `ClientCertificateId` or `PolyClien
 
     @property
     def CertificateId(self):
-        """Server SSL certificate ID. It's only applicable to the connections of version 3.0:
+        r"""Server SSL certificate ID. It's only applicable to the connections of version 3.0:
 If this field is not passed in, the original certificate will be used;
 If this field is passed in, and CertificateId=default, the listener certificate will be used;
 For other cases, the certificate specified by CertificateId will be used.
@@ -12307,7 +12307,7 @@ For other cases, the certificate specified by CertificateId will be used.
 
     @property
     def ClientCertificateId(self):
-        """Client CA certificate ID. It's only applicable to the connections of version 3.0:
+        r"""Client CA certificate ID. It's only applicable to the connections of version 3.0:
 If this field is not passed in, the original certificate will be used;
 If this field is passed in, and ClientCertificateId=default, the listener certificate will be used;
 For other cases, the certificate specified by ClientCertificateId will be used.
@@ -12321,7 +12321,7 @@ For other cases, the certificate specified by ClientCertificateId will be used.
 
     @property
     def PolyClientCertificateIds(self):
-        """Client CA certificate ID. It is only applicable to connections on version 3.0, where:
+        r"""Client CA certificate ID. It is only applicable to connections on version 3.0, where:
 If this field and `ClientCertificateId` are not included, the original certificate will be used;
 If this field is included, and ClientCertificateId=default, then the listener certificate will be used;
 In other cases, the certificate specified by `ClientCertificateId` or `PolyClientCertificateIds` will be used.
@@ -12352,7 +12352,7 @@ In other cases, the certificate specified by `ClientCertificateId` or `PolyClien
 
 
 class ModifyDomainResponse(AbstractModel):
-    """ModifyDomain response structure.
+    r"""ModifyDomain response structure.
 
     """
 
@@ -12365,7 +12365,7 @@ class ModifyDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12380,7 +12380,7 @@ class ModifyDomainResponse(AbstractModel):
 
 
 class ModifyGroupDomainConfigRequest(AbstractModel):
-    """ModifyGroupDomainConfig request structure.
+    r"""ModifyGroupDomainConfig request structure.
 
     """
 
@@ -12399,7 +12399,7 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID.
+        r"""Connection group ID.
         :rtype: str
         """
         return self._GroupId
@@ -12410,7 +12410,7 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
 
     @property
     def DefaultDnsIp(self):
-        """Default access IP or domain name of domain name resolution
+        r"""Default access IP or domain name of domain name resolution
         :rtype: str
         """
         return self._DefaultDnsIp
@@ -12421,7 +12421,7 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
 
     @property
     def AccessRegionList(self):
-        """Nearest access region configuration.
+        r"""Nearest access region configuration.
         :rtype: list of AccessRegionDomainConf
         """
         return self._AccessRegionList
@@ -12451,7 +12451,7 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
 
 
 class ModifyGroupDomainConfigResponse(AbstractModel):
-    """ModifyGroupDomainConfig response structure.
+    r"""ModifyGroupDomainConfig response structure.
 
     """
 
@@ -12464,7 +12464,7 @@ class ModifyGroupDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12479,7 +12479,7 @@ class ModifyGroupDomainConfigResponse(AbstractModel):
 
 
 class ModifyHTTPListenerAttributeRequest(AbstractModel):
-    """ModifyHTTPListenerAttribute request structure.
+    r"""ModifyHTTPListenerAttribute request structure.
 
     """
 
@@ -12498,7 +12498,7 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID to be modified
+        r"""Listener ID to be modified
         :rtype: str
         """
         return self._ListenerId
@@ -12509,7 +12509,7 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """New listener name
+        r"""New listener name
         :rtype: str
         """
         return self._ListenerName
@@ -12520,7 +12520,7 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -12545,7 +12545,7 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
 
 
 class ModifyHTTPListenerAttributeResponse(AbstractModel):
-    """ModifyHTTPListenerAttribute response structure.
+    r"""ModifyHTTPListenerAttribute response structure.
 
     """
 
@@ -12558,7 +12558,7 @@ class ModifyHTTPListenerAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12573,7 +12573,7 @@ class ModifyHTTPListenerAttributeResponse(AbstractModel):
 
 
 class ModifyHTTPSListenerAttributeRequest(AbstractModel):
-    """ModifyHTTPSListenerAttribute request structure.
+    r"""ModifyHTTPSListenerAttribute request structure.
 
     """
 
@@ -12604,7 +12604,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -12615,7 +12615,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID. This field is required if using a single connection listener.
+        r"""Connection ID. This field is required if using a single connection listener.
         :rtype: str
         """
         return self._ProxyId
@@ -12626,7 +12626,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """New listener name
+        r"""New listener name
         :rtype: str
         """
         return self._ListenerName
@@ -12637,7 +12637,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        """Type of the protocol used in the forwarding from connections to origin servers
+        r"""Type of the protocol used in the forwarding from connections to origin servers
         :rtype: str
         """
         return self._ForwardProtocol
@@ -12648,7 +12648,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """New listener server certificate ID
+        r"""New listener server certificate ID
         :rtype: str
         """
         return self._CertificateId
@@ -12659,7 +12659,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def ClientCertificateId(self):
-        """New listener client certificate ID
+        r"""New listener client certificate ID
         :rtype: str
         """
         return self._ClientCertificateId
@@ -12670,7 +12670,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
     @property
     def PolyClientCertificateIds(self):
-        """Client certificate ID of the listener after modification, which is a new field.
+        r"""Client certificate ID of the listener after modification, which is a new field.
         :rtype: list of str
         """
         return self._PolyClientCertificateIds
@@ -12699,7 +12699,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
 
 
 class ModifyHTTPSListenerAttributeResponse(AbstractModel):
-    """ModifyHTTPSListenerAttribute response structure.
+    r"""ModifyHTTPSListenerAttribute response structure.
 
     """
 
@@ -12712,7 +12712,7 @@ class ModifyHTTPSListenerAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12727,7 +12727,7 @@ class ModifyHTTPSListenerAttributeResponse(AbstractModel):
 
 
 class ModifyProxiesAttributeRequest(AbstractModel):
-    """ModifyProxiesAttribute request structure.
+    r"""ModifyProxiesAttribute request structure.
 
     """
 
@@ -12750,7 +12750,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def InstanceIds(self):
-        """ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.
+        r"""ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -12761,7 +12761,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyName(self):
-        """Connection name. Up to 30 characters.
+        r"""Connection name. Up to 30 characters.
         :rtype: str
         """
         return self._ProxyName
@@ -12772,7 +12772,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -12784,7 +12784,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyIds(self):
-        """ID of one or multiple connections to be operated; It's a new parameter.
+        r"""ID of one or multiple connections to be operated; It's a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -12810,7 +12810,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class ModifyProxiesAttributeResponse(AbstractModel):
-    """ModifyProxiesAttribute response structure.
+    r"""ModifyProxiesAttribute response structure.
 
     """
 
@@ -12823,7 +12823,7 @@ class ModifyProxiesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12838,7 +12838,7 @@ class ModifyProxiesAttributeResponse(AbstractModel):
 
 
 class ModifyProxiesProjectRequest(AbstractModel):
-    """ModifyProxiesProject request structure.
+    r"""ModifyProxiesProject request structure.
 
     """
 
@@ -12861,7 +12861,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProjectId(self):
-        """The target project ID.
+        r"""The target project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -12872,7 +12872,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def InstanceIds(self):
-        """ID of one or multiple connections to be operated; It’s an old parameter, please switch to ProxyIds.
+        r"""ID of one or multiple connections to be operated; It’s an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -12883,7 +12883,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -12895,7 +12895,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyIds(self):
-        """ID of one or multiple connections to be operated; It’s a new parameter.
+        r"""ID of one or multiple connections to be operated; It’s a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -12921,7 +12921,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class ModifyProxiesProjectResponse(AbstractModel):
-    """ModifyProxiesProject response structure.
+    r"""ModifyProxiesProject response structure.
 
     """
 
@@ -12934,7 +12934,7 @@ class ModifyProxiesProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12949,7 +12949,7 @@ class ModifyProxiesProjectResponse(AbstractModel):
 
 
 class ModifyProxyConfigurationRequest(AbstractModel):
-    """ModifyProxyConfiguration request structure.
+    r"""ModifyProxyConfiguration request structure.
 
     """
 
@@ -12980,7 +12980,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def InstanceId(self):
-        """Connection instance ID; It's an old parameter, please switch to ProxyId.
+        r"""Connection instance ID; It's an old parameter, please switch to ProxyId.
         :rtype: str
         """
         return self._InstanceId
@@ -12991,7 +12991,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def Bandwidth(self):
-        """Target bandwidth. Unit: Mbps.
+        r"""Target bandwidth. Unit: Mbps.
 Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.
         :rtype: int
         """
@@ -13003,7 +13003,7 @@ Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion A
 
     @property
     def Concurrent(self):
-        """Target concurrence value. Unit: 10,000 connections.
+        r"""Target concurrence value. Unit: 10,000 connections.
 Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion API to obtain the value range.
         :rtype: int
         """
@@ -13015,7 +13015,7 @@ Bandwidth or Concurrent must be set. Use the DescribeAccessRegionsByDestRegion A
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -13027,7 +13027,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyId(self):
-        """Connection instance ID; It's a new parameter.
+        r"""Connection instance ID; It's a new parameter.
         :rtype: str
         """
         return self._ProxyId
@@ -13038,7 +13038,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def BillingType(self):
-        """Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
+        r"""Billing mode (0: bill-by-bandwidth, 1: bill-by-traffic. Default value: bill-by-bandwidth)
         :rtype: int
         """
         return self._BillingType
@@ -13066,7 +13066,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class ModifyProxyConfigurationResponse(AbstractModel):
-    """ModifyProxyConfiguration response structure.
+    r"""ModifyProxyConfiguration response structure.
 
     """
 
@@ -13079,7 +13079,7 @@ class ModifyProxyConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13094,7 +13094,7 @@ class ModifyProxyConfigurationResponse(AbstractModel):
 
 
 class ModifyProxyGroupAttributeRequest(AbstractModel):
-    """ModifyProxyGroupAttribute request structure.
+    r"""ModifyProxyGroupAttribute request structure.
 
     """
 
@@ -13113,7 +13113,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the connection group to be modified.
+        r"""ID of the connection group to be modified.
         :rtype: str
         """
         return self._GroupId
@@ -13124,7 +13124,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """New connection group name. Up to 30 characters. The extra characters will be truncated.
+        r"""New connection group name. Up to 30 characters. The extra characters will be truncated.
         :rtype: str
         """
         return self._GroupName
@@ -13135,7 +13135,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -13160,7 +13160,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
 
 
 class ModifyProxyGroupAttributeResponse(AbstractModel):
-    """ModifyProxyGroupAttribute response structure.
+    r"""ModifyProxyGroupAttribute response structure.
 
     """
 
@@ -13173,7 +13173,7 @@ class ModifyProxyGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13188,7 +13188,7 @@ class ModifyProxyGroupAttributeResponse(AbstractModel):
 
 
 class ModifyRealServerNameRequest(AbstractModel):
-    """ModifyRealServerName request structure.
+    r"""ModifyRealServerName request structure.
 
     """
 
@@ -13204,7 +13204,7 @@ class ModifyRealServerNameRequest(AbstractModel):
 
     @property
     def RealServerName(self):
-        """Origin server name
+        r"""Origin server name
         :rtype: str
         """
         return self._RealServerName
@@ -13215,7 +13215,7 @@ class ModifyRealServerNameRequest(AbstractModel):
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -13239,7 +13239,7 @@ class ModifyRealServerNameRequest(AbstractModel):
 
 
 class ModifyRealServerNameResponse(AbstractModel):
-    """ModifyRealServerName response structure.
+    r"""ModifyRealServerName response structure.
 
     """
 
@@ -13252,7 +13252,7 @@ class ModifyRealServerNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13267,7 +13267,7 @@ class ModifyRealServerNameResponse(AbstractModel):
 
 
 class ModifyRuleAttributeRequest(AbstractModel):
-    """ModifyRuleAttribute request structure.
+    r"""ModifyRuleAttribute request structure.
 
     """
 
@@ -13314,7 +13314,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -13325,7 +13325,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def RuleId(self):
-        """Forwarding rule ID
+        r"""Forwarding rule ID
         :rtype: str
         """
         return self._RuleId
@@ -13336,7 +13336,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -13347,7 +13347,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def HealthCheck(self):
-        """Whether to enable the origin server health check:
+        r"""Whether to enable the origin server health check:
 1: enable;
 0: disable.
         :rtype: int
@@ -13360,7 +13360,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def CheckParams(self):
-        """Health check configuration parameters
+        r"""Health check configuration parameters
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         """
         return self._CheckParams
@@ -13371,7 +13371,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def Path(self):
-        """Forwarding rule path
+        r"""Forwarding rule path
         :rtype: str
         """
         return self._Path
@@ -13382,7 +13382,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def ForwardProtocol(self):
-        """Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.
+        r"""Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.
 If `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used.
         :rtype: str
         """
@@ -13394,7 +13394,7 @@ If `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used
 
     @property
     def ForwardHost(self):
-        """The forwarding host, which is carried in the request forwarded from the acceleration connection to the origin server.
+        r"""The forwarding host, which is carried in the request forwarded from the acceleration connection to the origin server.
 If `ForwardHost=default`, the domain name configured with the forwarding rule will be used. For other cases, the value set in this field will be used.
         :rtype: str
         """
@@ -13406,7 +13406,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def ServerNameIndicationSwitch(self):
-        """Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+        r"""Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
         :rtype: str
         """
         return self._ServerNameIndicationSwitch
@@ -13417,7 +13417,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def ServerNameIndication(self):
-        """Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+        r"""Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
         :rtype: str
         """
         return self._ServerNameIndication
@@ -13428,7 +13428,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
     @property
     def ForcedRedirect(self):
-        """Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
+        r"""Enables HTTP-to-HTTPS force redirect for a forwarding rule. Enter a hostname and path of the current forwarding rule.
         :rtype: str
         """
         return self._ForcedRedirect
@@ -13463,7 +13463,7 @@ If `ForwardHost=default`, the domain name configured with the forwarding rule wi
 
 
 class ModifyRuleAttributeResponse(AbstractModel):
-    """ModifyRuleAttribute response structure.
+    r"""ModifyRuleAttribute response structure.
 
     """
 
@@ -13476,7 +13476,7 @@ class ModifyRuleAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13491,7 +13491,7 @@ class ModifyRuleAttributeResponse(AbstractModel):
 
 
 class ModifySecurityRuleRequest(AbstractModel):
-    """ModifySecurityRule request structure.
+    r"""ModifySecurityRule request structure.
 
     """
 
@@ -13526,7 +13526,7 @@ All ports: ALL
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -13537,7 +13537,7 @@ All ports: ALL
 
     @property
     def AliasName(self):
-        """Rule name: up to 30 characters. The extra characters will be truncated.
+        r"""Rule name: up to 30 characters. The extra characters will be truncated.
         :rtype: str
         """
         return self._AliasName
@@ -13548,7 +13548,7 @@ All ports: ALL
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -13559,7 +13559,7 @@ All ports: ALL
 
     @property
     def RuleAction(self):
-        """Security rule action
+        r"""Security rule action
         :rtype: str
         """
         return self._RuleAction
@@ -13570,7 +13570,7 @@ All ports: ALL
 
     @property
     def SourceCidr(self):
-        """A CIDR IP address associated with the rule
+        r"""A CIDR IP address associated with the rule
         :rtype: str
         """
         return self._SourceCidr
@@ -13581,7 +13581,7 @@ All ports: ALL
 
     @property
     def Protocol(self):
-        """Protocol type
+        r"""Protocol type
         :rtype: str
         """
         return self._Protocol
@@ -13592,7 +13592,7 @@ All ports: ALL
 
     @property
     def DestPortRange(self):
-        """Port range. Valid values:
+        r"""Port range. Valid values:
 A single port: 80
 Multiple ports: 80 and 443
 Consecutive ports: 3306-20000
@@ -13625,7 +13625,7 @@ All ports: ALL
 
 
 class ModifySecurityRuleResponse(AbstractModel):
-    """ModifySecurityRule response structure.
+    r"""ModifySecurityRule response structure.
 
     """
 
@@ -13638,7 +13638,7 @@ class ModifySecurityRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13653,7 +13653,7 @@ class ModifySecurityRuleResponse(AbstractModel):
 
 
 class ModifyTCPListenerAttributeRequest(AbstractModel):
-    """ModifyTCPListenerAttribute request structure.
+    r"""ModifyTCPListenerAttribute request structure.
 
     """
 
@@ -13696,7 +13696,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -13707,7 +13707,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._GroupId
@@ -13718,7 +13718,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._ProxyId
@@ -13729,7 +13729,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -13740,7 +13740,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -13751,7 +13751,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        r"""Time interval of origin server health check (unit: seconds). Value range: [5, 300].
         :rtype: int
         """
         return self._DelayLoop
@@ -13762,7 +13762,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        r"""Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
         :rtype: int
         """
         return self._ConnectTimeout
@@ -13773,7 +13773,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """Whether to enable health check. 1: enable; 0: disable.
+        r"""Whether to enable health check. 1: enable; 0: disable.
         :rtype: int
         """
         return self._HealthCheck
@@ -13784,7 +13784,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
+        r"""Whether to enable the primary/secondary origin server mode. Valid values: 1 (enable) and 0 (disable). It cannot be enabled for domain name origin servers.
         :rtype: int
         """
         return self._FailoverSwitch
@@ -13795,7 +13795,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._HealthyThreshold
@@ -13806,7 +13806,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 -10.
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -13839,7 +13839,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
 
 
 class ModifyTCPListenerAttributeResponse(AbstractModel):
-    """ModifyTCPListenerAttribute response structure.
+    r"""ModifyTCPListenerAttribute response structure.
 
     """
 
@@ -13852,7 +13852,7 @@ class ModifyTCPListenerAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13867,7 +13867,7 @@ class ModifyTCPListenerAttributeResponse(AbstractModel):
 
 
 class ModifyUDPListenerAttributeRequest(AbstractModel):
-    """ModifyUDPListenerAttribute request structure.
+    r"""ModifyUDPListenerAttribute request structure.
 
     """
 
@@ -13925,7 +13925,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -13936,7 +13936,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._GroupId
@@ -13947,7 +13947,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
+        r"""Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.
         :rtype: str
         """
         return self._ProxyId
@@ -13958,7 +13958,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -13969,7 +13969,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -13980,7 +13980,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        r"""Time interval of origin server health check (unit: seconds). Value range: [5, 300].
         :rtype: int
         """
         return self._DelayLoop
@@ -13991,7 +13991,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        r"""Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
         :rtype: int
         """
         return self._ConnectTimeout
@@ -14002,7 +14002,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._HealthyThreshold
@@ -14013,7 +14013,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -14024,7 +14024,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        r"""Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
         :rtype: int
         """
         return self._FailoverSwitch
@@ -14035,7 +14035,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        """Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+        r"""Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
         :rtype: int
         """
         return self._HealthCheck
@@ -14046,7 +14046,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def CheckType(self):
-        """The health check type. Values: `PORT` (port); `PING` (ping).
+        r"""The health check type. Values: `PORT` (port); `PING` (ping).
         :rtype: str
         """
         return self._CheckType
@@ -14057,7 +14057,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def CheckPort(self):
-        """The health probe port.
+        r"""The health probe port.
         :rtype: int
         """
         return self._CheckPort
@@ -14068,7 +14068,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def ContextType(self):
-        """The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._ContextType
@@ -14079,7 +14079,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def SendContext(self):
-        """The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._SendContext
@@ -14090,7 +14090,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
     @property
     def RecvContext(self):
-        """The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
         :rtype: str
         """
         return self._RecvContext
@@ -14128,7 +14128,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
 
 
 class ModifyUDPListenerAttributeResponse(AbstractModel):
-    """ModifyUDPListenerAttribute response structure.
+    r"""ModifyUDPListenerAttribute response structure.
 
     """
 
@@ -14141,7 +14141,7 @@ class ModifyUDPListenerAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14156,7 +14156,7 @@ class ModifyUDPListenerAttributeResponse(AbstractModel):
 
 
 class NationCountryInnerInfo(AbstractModel):
-    """Nearest access country/region details
+    r"""Nearest access country/region details
 
     """
 
@@ -14172,7 +14172,7 @@ class NationCountryInnerInfo(AbstractModel):
 
     @property
     def NationCountryName(self):
-        """Country name
+        r"""Country name
         :rtype: str
         """
         return self._NationCountryName
@@ -14183,7 +14183,7 @@ class NationCountryInnerInfo(AbstractModel):
 
     @property
     def NationCountryInnerCode(self):
-        """Country internal code
+        r"""Country internal code
         :rtype: str
         """
         return self._NationCountryInnerCode
@@ -14207,7 +14207,7 @@ class NationCountryInnerInfo(AbstractModel):
 
 
 class NewRealServer(AbstractModel):
-    """Add new origin server information
+    r"""Add new origin server information
 
     """
 
@@ -14223,7 +14223,7 @@ class NewRealServer(AbstractModel):
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -14234,7 +14234,7 @@ class NewRealServer(AbstractModel):
 
     @property
     def RealServerIP(self):
-        """Origin server IP or domain name
+        r"""Origin server IP or domain name
         :rtype: str
         """
         return self._RealServerIP
@@ -14258,7 +14258,7 @@ class NewRealServer(AbstractModel):
 
 
 class OpenProxiesRequest(AbstractModel):
-    """OpenProxies request structure.
+    r"""OpenProxies request structure.
 
     """
 
@@ -14278,7 +14278,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def InstanceIds(self):
-        """List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
+        r"""List of connection instance IDs; It's an old parameter, please switch to ProxyIds.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14289,7 +14289,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
 For more information, please see How to Ensure Idempotence.
         :rtype: str
         """
@@ -14301,7 +14301,7 @@ For more information, please see How to Ensure Idempotence.
 
     @property
     def ProxyIds(self):
-        """List of connection instance IDs; It's a new parameter.
+        r"""List of connection instance IDs; It's a new parameter.
         :rtype: list of str
         """
         return self._ProxyIds
@@ -14326,7 +14326,7 @@ For more information, please see How to Ensure Idempotence.
 
 
 class OpenProxiesResponse(AbstractModel):
-    """OpenProxies response structure.
+    r"""OpenProxies response structure.
 
     """
 
@@ -14345,7 +14345,7 @@ class OpenProxiesResponse(AbstractModel):
 
     @property
     def InvalidStatusInstanceSet(self):
-        """The connection instance ID list cannot be enabled if it's not disabled.
+        r"""The connection instance ID list cannot be enabled if it's not disabled.
         :rtype: list of str
         """
         return self._InvalidStatusInstanceSet
@@ -14356,7 +14356,7 @@ class OpenProxiesResponse(AbstractModel):
 
     @property
     def OperationFailedInstanceSet(self):
-        """ID list of connection instances failed to be enabled.
+        r"""ID list of connection instances failed to be enabled.
         :rtype: list of str
         """
         return self._OperationFailedInstanceSet
@@ -14367,7 +14367,7 @@ class OpenProxiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14384,7 +14384,7 @@ class OpenProxiesResponse(AbstractModel):
 
 
 class OpenProxyGroupRequest(AbstractModel):
-    """OpenProxyGroup request structure.
+    r"""OpenProxyGroup request structure.
 
     """
 
@@ -14397,7 +14397,7 @@ class OpenProxyGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Connection group instance ID
+        r"""Connection group instance ID
         :rtype: str
         """
         return self._GroupId
@@ -14420,7 +14420,7 @@ class OpenProxyGroupRequest(AbstractModel):
 
 
 class OpenProxyGroupResponse(AbstractModel):
-    """OpenProxyGroup response structure.
+    r"""OpenProxyGroup response structure.
 
     """
 
@@ -14439,7 +14439,7 @@ class OpenProxyGroupResponse(AbstractModel):
 
     @property
     def InvalidStatusInstanceSet(self):
-        """The connection instance ID list cannot be enabled if it’s not disabled.
+        r"""The connection instance ID list cannot be enabled if it’s not disabled.
         :rtype: list of str
         """
         return self._InvalidStatusInstanceSet
@@ -14450,7 +14450,7 @@ class OpenProxyGroupResponse(AbstractModel):
 
     @property
     def OperationFailedInstanceSet(self):
-        """ID list of connection instances failed to be enabled.
+        r"""ID list of connection instances failed to be enabled.
         :rtype: list of str
         """
         return self._OperationFailedInstanceSet
@@ -14461,7 +14461,7 @@ class OpenProxyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14478,7 +14478,7 @@ class OpenProxyGroupResponse(AbstractModel):
 
 
 class OpenSecurityPolicyRequest(AbstractModel):
-    """OpenSecurityPolicy request structure.
+    r"""OpenSecurityPolicy request structure.
 
     """
 
@@ -14494,7 +14494,7 @@ class OpenSecurityPolicyRequest(AbstractModel):
 
     @property
     def ProxyId(self):
-        """ID of the connections requiring enabled security policies.
+        r"""ID of the connections requiring enabled security policies.
         :rtype: str
         """
         return self._ProxyId
@@ -14505,7 +14505,7 @@ class OpenSecurityPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
         :rtype: str
         """
         return self._PolicyId
@@ -14529,7 +14529,7 @@ class OpenSecurityPolicyRequest(AbstractModel):
 
 
 class OpenSecurityPolicyResponse(AbstractModel):
-    """OpenSecurityPolicy response structure.
+    r"""OpenSecurityPolicy response structure.
 
     """
 
@@ -14545,7 +14545,7 @@ class OpenSecurityPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
+        r"""Async Process ID. Using DescribeAsyncTaskStatus to query process and status.
         :rtype: str
         """
         return self._TaskId
@@ -14556,7 +14556,7 @@ class OpenSecurityPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14572,7 +14572,7 @@ class OpenSecurityPolicyResponse(AbstractModel):
 
 
 class ProxyGroupDetail(AbstractModel):
-    """Connection group details
+    r"""Connection group details
 
     """
 
@@ -14669,7 +14669,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: int
         """
         return self._CreateTime
@@ -14680,7 +14680,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -14691,7 +14691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyNum(self):
-        """Number of connections in connection group
+        r"""Number of connections in connection group
         :rtype: int
         """
         return self._ProxyNum
@@ -14702,7 +14702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Connection group status:
+        r"""Connection group status:
 `0`: Running normally
 `1`: Creating
 `4`: Terminating
@@ -14718,7 +14718,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """Owner UIN
+        r"""Owner UIN
         :rtype: str
         """
         return self._OwnerUin
@@ -14729,7 +14729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
-        """Creation UIN
+        r"""Creation UIN
         :rtype: str
         """
         return self._CreateUin
@@ -14740,7 +14740,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupName(self):
-        """Connection name
+        r"""Connection name
         :rtype: str
         """
         return self._GroupName
@@ -14751,7 +14751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsDefaultIp(self):
-        """Default IP of domain name resolution for connection groups
+        r"""Default IP of domain name resolution for connection groups
         :rtype: str
         """
         return self._DnsDefaultIp
@@ -14762,7 +14762,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Connection group domain name
+        r"""Connection group domain name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14774,7 +14774,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerRegionInfo(self):
-        """Target region
+        r"""Target region
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
         return self._RealServerRegionInfo
@@ -14785,7 +14785,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsOldGroup(self):
-        """Whether it is an old connection group, i.e., those created before August 3, 2018.
+        r"""Whether it is an old connection group, i.e., those created before August 3, 2018.
         :rtype: bool
         """
         return self._IsOldGroup
@@ -14796,7 +14796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -14807,7 +14807,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
-        """Tag list
+        r"""Tag list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagPair
         """
@@ -14819,7 +14819,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Security policy ID. This field exists if security policies are set.
+        r"""Security policy ID. This field exists if security policies are set.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14831,7 +14831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Connection group version
+        r"""Connection group version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14843,7 +14843,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientIPMethod(self):
-        """Describes how the connection obtains client IPs. `0`: TOA; `1`: Proxy Protocol.
+        r"""Describes how the connection obtains client IPs. `0`: TOA; `1`: Proxy Protocol.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -14855,7 +14855,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4` (default), `IPv6`.
+        r"""IP version. Valid values: `IPv4` (default), `IPv6`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14867,7 +14867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
-        """Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).
+        r"""Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14879,7 +14879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: Disable
 `1`: Enable
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -14893,7 +14893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeatureBitmap(self):
-        """Feature bitmap. Valid values:
+        r"""Feature bitmap. Valid values:
 `0`: Feature not supported
 `1`: Feature supported
 Each bit in the bitmap represents a feature:
@@ -14954,7 +14954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ProxyGroupInfo(AbstractModel):
-    """Connection group details list
+    r"""Connection group details list
 
     """
 
@@ -15026,7 +15026,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupId(self):
-        """Connection group ID
+        r"""Connection group ID
         :rtype: str
         """
         return self._GroupId
@@ -15037,7 +15037,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Domain(self):
-        """Connection group domain name
+        r"""Connection group domain name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15049,7 +15049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupName(self):
-        """Connection group name
+        r"""Connection group name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15061,7 +15061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -15072,7 +15072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerRegionInfo(self):
-        """Target region
+        r"""Target region
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
         return self._RealServerRegionInfo
@@ -15083,7 +15083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Connection group status.
+        r"""Connection group status.
 Where:
 `RUNNING`: Running
 `CREATING`: Creating
@@ -15100,7 +15100,7 @@ Where:
 
     @property
     def TagSet(self):
-        """Tag list.
+        r"""Tag list.
         :rtype: list of TagPair
         """
         return self._TagSet
@@ -15111,7 +15111,7 @@ Where:
 
     @property
     def Version(self):
-        """Connection group version
+        r"""Connection group version
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15123,7 +15123,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15135,7 +15135,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyType(self):
-        """Whether the connection group contains a Microsoft connection
+        r"""Whether the connection group contains a Microsoft connection
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15147,7 +15147,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: Disable
 `1`: Enable
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -15161,7 +15161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeatureBitmap(self):
-        """Feature bitmap. Valid values:
+        r"""Feature bitmap. Valid values:
 `0`: Feature not supported
 `1`: Feature supported
 Each bit in the bitmap represents a feature:
@@ -15214,7 +15214,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class ProxyIdDict(AbstractModel):
-    """Connection ID
+    r"""Connection ID
 
     """
 
@@ -15227,7 +15227,7 @@ class ProxyIdDict(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -15250,7 +15250,7 @@ class ProxyIdDict(AbstractModel):
 
 
 class ProxyInfo(AbstractModel):
-    """Connection information
+    r"""Connection information
 
     """
 
@@ -15411,7 +15411,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def InstanceId(self):
-        """Connection instance ID; It's an old parameter, please switch to ProxyId.
+        r"""Connection instance ID; It's an old parameter, please switch to ProxyId.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15423,7 +15423,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
+        r"""Creation time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).
         :rtype: int
         """
         return self._CreateTime
@@ -15434,7 +15434,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -15445,7 +15445,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyName(self):
-        """Connection name.
+        r"""Connection name.
         :rtype: str
         """
         return self._ProxyName
@@ -15456,7 +15456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessRegion(self):
-        """Access region.
+        r"""Access region.
         :rtype: str
         """
         return self._AccessRegion
@@ -15467,7 +15467,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerRegion(self):
-        """Origin server region.
+        r"""Origin server region.
         :rtype: str
         """
         return self._RealServerRegion
@@ -15478,7 +15478,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bandwidth(self):
-        """Bandwidth. Unit: Mbps.
+        r"""Bandwidth. Unit: Mbps.
         :rtype: int
         """
         return self._Bandwidth
@@ -15489,7 +15489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Concurrent(self):
-        """Concurrence. Unit: 10K requests/second.
+        r"""Concurrence. Unit: 10K requests/second.
         :rtype: int
         """
         return self._Concurrent
@@ -15500,7 +15500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Connection status. Valid values:
+        r"""Connection status. Valid values:
 `RUNNING`: Running
 `CREATING`: Creating
 `DESTROYING`: Terminating
@@ -15523,7 +15523,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Accessed domain name.
+        r"""Accessed domain name.
         :rtype: str
         """
         return self._Domain
@@ -15534,7 +15534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IP(self):
-        """Accessed IP.
+        r"""Accessed IP.
         :rtype: str
         """
         return self._IP
@@ -15545,7 +15545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Connection versions: 1.0, 2.0, 3.0.
+        r"""Connection versions: 1.0, 2.0, 3.0.
         :rtype: str
         """
         return self._Version
@@ -15556,7 +15556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """Connection instance ID; It's a new parameter.
+        r"""Connection instance ID; It's a new parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15568,7 +15568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scalarable(self):
-        """1: this connection is expandable; 0: this connection is not expandable.
+        r"""1: this connection is expandable; 0: this connection is not expandable.
         :rtype: int
         """
         return self._Scalarable
@@ -15579,7 +15579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SupportProtocols(self):
-        """Supported protocol types.
+        r"""Supported protocol types.
         :rtype: list of str
         """
         return self._SupportProtocols
@@ -15590,7 +15590,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Connection group ID. This field exists if a connection belongs to a connection group.
+        r"""Connection group ID. This field exists if a connection belongs to a connection group.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15602,7 +15602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Security policy ID. This field exists if security policies are configured.
+        r"""Security policy ID. This field exists if security policies are configured.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15614,7 +15614,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessRegionInfo(self):
-        """Access region details, including region ID and region name.
+        r"""Access region details, including region ID and region name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
@@ -15626,7 +15626,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerRegionInfo(self):
-        """Origin server region details, including region ID and region name.
+        r"""Origin server region details, including region ID and region name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         """
@@ -15638,7 +15638,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardIP(self):
-        """Forwarding IP of the connection
+        r"""Forwarding IP of the connection
         :rtype: str
         """
         return self._ForwardIP
@@ -15649,7 +15649,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
-        """Tag list. This field is an empty list if no tags exist.
+        r"""Tag list. This field is an empty list if no tags exist.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagPair
         """
@@ -15661,7 +15661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SupportSecurity(self):
-        """Whether security groups are supported.
+        r"""Whether security groups are supported.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15673,7 +15673,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillingType(self):
-        """Billing mode. 0: bill-by-bandwidth; 1: bill-by-traffic.
+        r"""Billing mode. 0: bill-by-bandwidth; 1: bill-by-traffic.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15685,7 +15685,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelatedGlobalDomains(self):
-        """List of domain names associated with resolution record
+        r"""List of domain names associated with resolution record
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -15697,7 +15697,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifyConfigTime(self):
-        """Configuration change time
+        r"""Configuration change time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15709,7 +15709,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyType(self):
-        """Connection type. `100`: THUNDER connection; `103`: Microsoft connection.
+        r"""Connection type. `100`: THUNDER connection; `103`: Microsoft connection.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -15721,7 +15721,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClientIPMethod(self):
-        """Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
+        r"""Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -15733,7 +15733,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IPAddressVersion(self):
-        """IP version. Valid values: `IPv4`, `IPv6`.
+        r"""IP version. Valid values: `IPv4`, `IPv6`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15745,7 +15745,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkType(self):
-        """Network type. `normal`: general BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIP.
+        r"""Network type. `normal`: general BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIP.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -15757,7 +15757,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PackageType(self):
-        """Package type of connections. Valid values: `Thunder` (general connection), `Accelerator` (silver connection), 
+        r"""Package type of connections. Valid values: `Thunder` (general connection), `Accelerator` (silver connection), 
 and `CrossBorder` (cross-MLC-border connection).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
@@ -15770,7 +15770,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BanStatus(self):
-        """Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
+        r"""Blocking-related status of the domain name. `BANNED`: the domain name is blocked; `RECOVER`: the domain name is unblocked or normal; `BANNING`: the domain name is being blocked; `RECOVERING`: the domain name is being unblocked; `BAN_FAILED`: the blocking fails; RECOVER_FAILED: the unblocking fails.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -15782,7 +15782,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IPList(self):
-        """
+        r"""
         :rtype: list of IPDetail
         """
         return self._IPList
@@ -15793,7 +15793,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Http3Supported(self):
-        """Specifies whether to enable HTTP3. Valid values:
+        r"""Specifies whether to enable HTTP3. Valid values:
 `0`: disable HTTP3;
 `1`: enable HTTP3.
 Note: this field may return `null`, indicating that no valid value can be obtained.
@@ -15807,7 +15807,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def InBanBlacklist(self):
-        """Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
+        r"""Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -15819,7 +15819,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FeatureBitmap(self):
-        """Feature bitmap. Valid values:
+        r"""Feature bitmap. Valid values:
 `0`: Feature not supported
 `1`: Feature supported
 Each bit in the bitmap represents a feature:
@@ -15902,7 +15902,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ProxySimpleInfo(AbstractModel):
-    """Used by internal APIs. It returns connections from which the statistics can be derived, and the listener information.
+    r"""Used by internal APIs. It returns connections from which the statistics can be derived, and the listener information.
 
     """
 
@@ -15921,7 +15921,7 @@ class ProxySimpleInfo(AbstractModel):
 
     @property
     def ProxyId(self):
-        """Connection ID
+        r"""Connection ID
         :rtype: str
         """
         return self._ProxyId
@@ -15932,7 +15932,7 @@ class ProxySimpleInfo(AbstractModel):
 
     @property
     def ProxyName(self):
-        """Connection name
+        r"""Connection name
         :rtype: str
         """
         return self._ProxyName
@@ -15943,7 +15943,7 @@ class ProxySimpleInfo(AbstractModel):
 
     @property
     def ListenerList(self):
-        """Listener list
+        r"""Listener list
         :rtype: list of ListenerInfo
         """
         return self._ListenerList
@@ -15973,7 +15973,7 @@ class ProxySimpleInfo(AbstractModel):
 
 
 class ProxyStatus(AbstractModel):
-    """Connection status information
+    r"""Connection status information
 
     """
 
@@ -16000,7 +16000,7 @@ Where:
 
     @property
     def InstanceId(self):
-        """Connection instance ID.
+        r"""Connection instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -16011,7 +16011,7 @@ Where:
 
     @property
     def Status(self):
-        """Connection status.
+        r"""Connection status.
 Where:
 `RUNNING`: Running
 `CREATING`: Creating
@@ -16046,7 +16046,7 @@ Where:
 
 
 class RealServer(AbstractModel):
-    """Query listeners or rules-related origin server information, excluding `tag` information.
+    r"""Query listeners or rules-related origin server information, excluding `tag` information.
 
     """
 
@@ -16071,7 +16071,7 @@ class RealServer(AbstractModel):
 
     @property
     def RealServerIP(self):
-        """Origin server IP or domain name
+        r"""Origin server IP or domain name
         :rtype: str
         """
         return self._RealServerIP
@@ -16082,7 +16082,7 @@ class RealServer(AbstractModel):
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -16093,7 +16093,7 @@ class RealServer(AbstractModel):
 
     @property
     def RealServerName(self):
-        """Origin server name
+        r"""Origin server name
         :rtype: str
         """
         return self._RealServerName
@@ -16104,7 +16104,7 @@ class RealServer(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -16115,7 +16115,7 @@ class RealServer(AbstractModel):
 
     @property
     def InBanBlacklist(self):
-        """Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
+        r"""Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).
         :rtype: int
         """
         return self._InBanBlacklist
@@ -16142,7 +16142,7 @@ class RealServer(AbstractModel):
 
 
 class RealServerBindSetReq(AbstractModel):
-    """Information of the bound origin server
+    r"""Information of the bound origin server
 
     """
 
@@ -16167,7 +16167,7 @@ class RealServerBindSetReq(AbstractModel):
 
     @property
     def RealServerId(self):
-        """Origin server ID
+        r"""Origin server ID
         :rtype: str
         """
         return self._RealServerId
@@ -16178,7 +16178,7 @@ class RealServerBindSetReq(AbstractModel):
 
     @property
     def RealServerPort(self):
-        """Origin server port
+        r"""Origin server port
         :rtype: int
         """
         return self._RealServerPort
@@ -16189,7 +16189,7 @@ class RealServerBindSetReq(AbstractModel):
 
     @property
     def RealServerIP(self):
-        """Origin server IP
+        r"""Origin server IP
         :rtype: str
         """
         return self._RealServerIP
@@ -16200,7 +16200,7 @@ class RealServerBindSetReq(AbstractModel):
 
     @property
     def RealServerWeight(self):
-        """Origin server weight
+        r"""Origin server weight
         :rtype: int
         """
         return self._RealServerWeight
@@ -16211,7 +16211,7 @@ class RealServerBindSetReq(AbstractModel):
 
     @property
     def RealServerFailoverRole(self):
-        """Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
+        r"""Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.
         :rtype: str
         """
         return self._RealServerFailoverRole
@@ -16238,7 +16238,7 @@ class RealServerBindSetReq(AbstractModel):
 
 
 class RealServerStatus(AbstractModel):
-    """Query the binding status of origin servers. BindStatus: 0 (not bound), 1(bound to rules or listeners).
+    r"""Query the binding status of origin servers. BindStatus: 0 (not bound), 1(bound to rules or listeners).
 
     """
 
@@ -16261,7 +16261,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerId(self):
-        """Origin server ID.
+        r"""Origin server ID.
         :rtype: str
         """
         return self._RealServerId
@@ -16272,7 +16272,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindStatus(self):
-        """`0`: Not bound; `1`: Bound to rule or listener.
+        r"""`0`: Not bound; `1`: Bound to rule or listener.
         :rtype: int
         """
         return self._BindStatus
@@ -16283,7 +16283,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """ID of the connection bound to this origin server. This string is empty if they are not bound.
+        r"""ID of the connection bound to this origin server. This string is empty if they are not bound.
         :rtype: str
         """
         return self._ProxyId
@@ -16294,7 +16294,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """ID of the connection group bound to this origin server. This string is null if no connection groups are bound.
+        r"""ID of the connection group bound to this origin server. This string is null if no connection groups are bound.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16321,7 +16321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RegionDetail(AbstractModel):
-    """Region details
+    r"""Region details
 
     """
 
@@ -16364,7 +16364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: str
         """
         return self._RegionId
@@ -16375,7 +16375,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
-        """Region name in Chinese or English
+        r"""Region name in Chinese or English
         :rtype: str
         """
         return self._RegionName
@@ -16386,7 +16386,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionArea(self):
-        """Region where the data center locates
+        r"""Region where the data center locates
         :rtype: str
         """
         return self._RegionArea
@@ -16397,7 +16397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionAreaName(self):
-        """Name of the region where the data center locates
+        r"""Name of the region where the data center locates
         :rtype: str
         """
         return self._RegionAreaName
@@ -16408,7 +16408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IDCType(self):
-        """Data center type. `dc`: data center; `ec`: edge server.
+        r"""Data center type. `dc`: data center; `ec`: edge server.
         :rtype: str
         """
         return self._IDCType
@@ -16419,7 +16419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FeatureBitmap(self):
-        """Feature bitmap. Valid values:
+        r"""Feature bitmap. Valid values:
 `0`: the feature is not supported;
 `1`: the feature is supported.
 Each bit in the bitmap represents a feature:
@@ -16441,7 +16441,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SupportFeature(self):
-        """Network support 
+        r"""Network support 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gaap.v20180529.models.SupportFeature`
         """
@@ -16473,7 +16473,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RemoveRealServersRequest(AbstractModel):
-    """RemoveRealServers request structure.
+    r"""RemoveRealServers request structure.
 
     """
 
@@ -16486,7 +16486,7 @@ class RemoveRealServersRequest(AbstractModel):
 
     @property
     def RealServerIds(self):
-        """List of origin server IDs
+        r"""List of origin server IDs
         :rtype: list of str
         """
         return self._RealServerIds
@@ -16509,7 +16509,7 @@ class RemoveRealServersRequest(AbstractModel):
 
 
 class RemoveRealServersResponse(AbstractModel):
-    """RemoveRealServers response structure.
+    r"""RemoveRealServers response structure.
 
     """
 
@@ -16522,7 +16522,7 @@ class RemoveRealServersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16537,7 +16537,7 @@ class RemoveRealServersResponse(AbstractModel):
 
 
 class RuleCheckParams(AbstractModel):
-    """Health check parameters of the layer-7 listeners' forwarding rules
+    r"""Health check parameters of the layer-7 listeners' forwarding rules
 
     """
 
@@ -16578,7 +16578,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DelayLoop(self):
-        """Time interval of health check
+        r"""Time interval of health check
         :rtype: int
         """
         return self._DelayLoop
@@ -16589,7 +16589,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of health check
+        r"""Response timeout of health check
         :rtype: int
         """
         return self._ConnectTimeout
@@ -16600,7 +16600,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Path(self):
-        """Check path of health check
+        r"""Check path of health check
         :rtype: str
         """
         return self._Path
@@ -16611,7 +16611,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Method(self):
-        """Health check method: GET/HEAD
+        r"""Health check method: GET/HEAD
         :rtype: str
         """
         return self._Method
@@ -16622,7 +16622,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StatusCode(self):
-        """Return code indicting normal origin servers. Value range: [100, 200, 300, 400, 500]
+        r"""Return code indicting normal origin servers. Value range: [100, 200, 300, 400, 500]
         :rtype: list of int non-negative
         """
         return self._StatusCode
@@ -16633,7 +16633,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Domain(self):
-        """Domain name to be performed health check
+        r"""Domain name to be performed health check
 You cannot modify this parameter when calling ModifyRuleAttribute API.
         :rtype: str
         """
@@ -16645,7 +16645,7 @@ You cannot modify this parameter when calling ModifyRuleAttribute API.
 
     @property
     def FailedCountInter(self):
-        """Origin server failure check frequency
+        r"""Origin server failure check frequency
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16657,7 +16657,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FailedThreshold(self):
-        """Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.
+        r"""Origin server health check threshold. All requests to the origin server will be blocked once the threshold is exceeded.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16669,7 +16669,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlockInter(self):
-        """Duration to block requests targeting the origin server after a failed health check
+        r"""Duration to block requests targeting the origin server after a failed health check
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16701,7 +16701,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class RuleInfo(AbstractModel):
-    """Forwarding rule of layer-7 listeners
+    r"""Forwarding rule of layer-7 listeners
 
     """
 
@@ -16764,7 +16764,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule information
+        r"""Rule information
         :rtype: str
         """
         return self._RuleId
@@ -16775,7 +16775,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerId(self):
-        """Listener information
+        r"""Listener information
         :rtype: str
         """
         return self._ListenerId
@@ -16786,7 +16786,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Rule domain name
+        r"""Rule domain name
         :rtype: str
         """
         return self._Domain
@@ -16797,7 +16797,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        """Rule path
+        r"""Rule path
         :rtype: str
         """
         return self._Path
@@ -16808,7 +16808,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerType(self):
-        """Origin server type
+        r"""Origin server type
         :rtype: str
         """
         return self._RealServerType
@@ -16819,7 +16819,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -16830,7 +16830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheck(self):
-        """Whether health check is enabled. 1: enabled, 0: disabled
+        r"""Whether health check is enabled. 1: enabled, 0: disabled
         :rtype: int
         """
         return self._HealthCheck
@@ -16841,7 +16841,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleStatus(self):
-        """Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration
+        r"""Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration
         :rtype: int
         """
         return self._RuleStatus
@@ -16852,7 +16852,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckParams(self):
-        """Health check parameters
+        r"""Health check parameters
         :rtype: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         """
         return self._CheckParams
@@ -16863,7 +16863,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerSet(self):
-        """Bound origin server information
+        r"""Bound origin server information
         :rtype: list of BindRealServer
         """
         return self._RealServerSet
@@ -16874,7 +16874,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindStatus(self):
-        """Origin server service status. 0: exceptional, 1: normal
+        r"""Origin server service status. 0: exceptional, 1: normal
 If health check is not enabled, this status will always be normal.
 As long as one origin server is exceptional, this status will be exceptional. Please view `RealServerSet` for the status of specific origin servers.
         :rtype: int
@@ -16887,7 +16887,7 @@ As long as one origin server is exceptional, this status will be exceptional. Pl
 
     @property
     def ForwardHost(self):
-        """The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.
+        r"""The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16899,7 +16899,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServerNameIndicationSwitch(self):
-        """Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+        r"""Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
 Note: This field may return `null`, indicating that no valid value can be obtained.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
@@ -16912,7 +16912,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ServerNameIndication(self):
-        """Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
+        r"""Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
@@ -16925,7 +16925,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ForcedRedirect(self):
-        """Forces requests to redirect to HTTPS. When `https:` is passed in, all requests are redirected to HTTPS.
+        r"""Forces requests to redirect to HTTPS. When `https:` is passed in, all requests are redirected to HTTPS.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16970,7 +16970,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SecurityPolicyRuleIn(AbstractModel):
-    """Security policy rule (input parameter)
+    r"""Security policy rule (input parameter)
 
     """
 
@@ -16999,7 +16999,7 @@ All ports: ALL
 
     @property
     def SourceCidr(self):
-        """Source IP or IP range of the request.
+        r"""Source IP or IP range of the request.
         :rtype: str
         """
         return self._SourceCidr
@@ -17010,7 +17010,7 @@ All ports: ALL
 
     @property
     def Action(self):
-        """Policy: Allow (ACCEPT) or reject (DROP).
+        r"""Policy: Allow (ACCEPT) or reject (DROP).
         :rtype: str
         """
         return self._Action
@@ -17021,7 +17021,7 @@ All ports: ALL
 
     @property
     def AliasName(self):
-        """Rule alias
+        r"""Rule alias
         :rtype: str
         """
         return self._AliasName
@@ -17032,7 +17032,7 @@ All ports: ALL
 
     @property
     def Protocol(self):
-        """Protocol: TCP or UDP. ALL indicates all protocols.
+        r"""Protocol: TCP or UDP. ALL indicates all protocols.
         :rtype: str
         """
         return self._Protocol
@@ -17043,7 +17043,7 @@ All ports: ALL
 
     @property
     def DestPortRange(self):
-        """Target port. Formatting examples:
+        r"""Target port. Formatting examples:
 Single port: 80
 Multiple ports: 80, 443
 Consecutive ports: 3306-20000
@@ -17074,7 +17074,7 @@ All ports: ALL
 
 
 class SecurityPolicyRuleOut(AbstractModel):
-    """Security policy rule (output parameter)
+    r"""Security policy rule (output parameter)
 
     """
 
@@ -17108,7 +17108,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Policy: Allow (ACCEPT) or reject (DROP).
+        r"""Policy: Allow (ACCEPT) or reject (DROP).
         :rtype: str
         """
         return self._Action
@@ -17119,7 +17119,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceCidr(self):
-        """Source IP or IP range of the request.
+        r"""Source IP or IP range of the request.
         :rtype: str
         """
         return self._SourceCidr
@@ -17130,7 +17130,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AliasName(self):
-        """Rule alias
+        r"""Rule alias
         :rtype: str
         """
         return self._AliasName
@@ -17141,7 +17141,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestPortRange(self):
-        """Target port range
+        r"""Target port range
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17153,7 +17153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -17164,7 +17164,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol type to be matched (TCP/UDP)
+        r"""Protocol type to be matched (TCP/UDP)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17176,7 +17176,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
-        """Security policy ID
+        r"""Security policy ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17206,7 +17206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SetAuthenticationRequest(AbstractModel):
-    """SetAuthentication request structure.
+    r"""SetAuthentication request structure.
 
     """
 
@@ -17255,7 +17255,7 @@ The default value is 0.
 
     @property
     def ListenerId(self):
-        """Listener ID.
+        r"""Listener ID.
         :rtype: str
         """
         return self._ListenerId
@@ -17266,7 +17266,7 @@ The default value is 0.
 
     @property
     def Domain(self):
-        """The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules.
+        r"""The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules.
         :rtype: str
         """
         return self._Domain
@@ -17277,7 +17277,7 @@ The default value is 0.
 
     @property
     def BasicAuth(self):
-        """Whether to enable the basic authentication:
+        r"""Whether to enable the basic authentication:
 0: disable basic authentication;
 1: enable basic authentication.
 The default value is 0.
@@ -17291,7 +17291,7 @@ The default value is 0.
 
     @property
     def GaapAuth(self):
-        """Whether to enable the connection authentication, which is for the origin server to authenticate GAAP.
+        r"""Whether to enable the connection authentication, which is for the origin server to authenticate GAAP.
 0: disable;
 1: enable.
 The default value is 0.
@@ -17305,7 +17305,7 @@ The default value is 0.
 
     @property
     def RealServerAuth(self):
-        """Whether to enable the origin server authentication, which is for GAAP to authenticate the server.
+        r"""Whether to enable the origin server authentication, which is for GAAP to authenticate the server.
 0: disable;
 1: enable.
 The default value is 0.
@@ -17319,7 +17319,7 @@ The default value is 0.
 
     @property
     def BasicAuthConfId(self):
-        """Basic authentication configuration ID, which is obtained from the certificate management page.
+        r"""Basic authentication configuration ID, which is obtained from the certificate management page.
         :rtype: str
         """
         return self._BasicAuthConfId
@@ -17330,7 +17330,7 @@ The default value is 0.
 
     @property
     def GaapCertificateId(self):
-        """Connection SSL certificate ID, which is obtained from the certificate management page.
+        r"""Connection SSL certificate ID, which is obtained from the certificate management page.
         :rtype: str
         """
         return self._GaapCertificateId
@@ -17341,7 +17341,7 @@ The default value is 0.
 
     @property
     def RealServerCertificateId(self):
-        """CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.
+        r"""CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.
         :rtype: str
         """
         return self._RealServerCertificateId
@@ -17352,7 +17352,7 @@ The default value is 0.
 
     @property
     def RealServerCertificateDomain(self):
-        """This field has been disused. Use ServerNameIndication instead.
+        r"""This field has been disused. Use ServerNameIndication instead.
         :rtype: str
         """
         return self._RealServerCertificateDomain
@@ -17363,7 +17363,7 @@ The default value is 0.
 
     @property
     def PolyRealServerCertificateIds(self):
-        """CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.
+        r"""CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.
         :rtype: list of str
         """
         return self._PolyRealServerCertificateIds
@@ -17395,7 +17395,7 @@ The default value is 0.
 
 
 class SetAuthenticationResponse(AbstractModel):
-    """SetAuthentication response structure.
+    r"""SetAuthentication response structure.
 
     """
 
@@ -17408,7 +17408,7 @@ class SetAuthenticationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17423,7 +17423,7 @@ class SetAuthenticationResponse(AbstractModel):
 
 
 class StatisticsDataInfo(AbstractModel):
-    """Statistics information
+    r"""Statistics information
 
     """
 
@@ -17440,7 +17440,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
-        """Corresponding time point
+        r"""Corresponding time point
         :rtype: int
         """
         return self._Time
@@ -17451,7 +17451,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """Statistics value
+        r"""Statistics value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -17476,7 +17476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SupportFeature(AbstractModel):
-    """Network support
+    r"""Network support
 
     """
 
@@ -17489,7 +17489,7 @@ class SupportFeature(AbstractModel):
 
     @property
     def NetworkType(self):
-        """Supported network types. `normal`: General BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIPs.
+        r"""Supported network types. `normal`: General BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIPs.
         :rtype: list of str
         """
         return self._NetworkType
@@ -17512,7 +17512,7 @@ class SupportFeature(AbstractModel):
 
 
 class TCPListener(AbstractModel):
-    """TCP listener information
+    r"""TCP listener information
 
     """
 
@@ -17603,7 +17603,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -17614,7 +17614,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -17625,7 +17625,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Port(self):
-        """Listener port
+        r"""Listener port
         :rtype: int
         """
         return self._Port
@@ -17636,7 +17636,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RealServerPort(self):
-        """Origin server port, which is only valid for the connections of version 1.0.
+        r"""Origin server port, which is only valid for the connections of version 1.0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17648,7 +17648,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerType(self):
-        """Type of the origin server bound to listeners
+        r"""Type of the origin server bound to listeners
         :rtype: str
         """
         return self._RealServerType
@@ -17659,7 +17659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Listener protocol: TCP.
+        r"""Listener protocol: TCP.
         :rtype: str
         """
         return self._Protocol
@@ -17670,7 +17670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerStatus(self):
-        """Listener status:
+        r"""Listener status:
 `0`: Running
 `1`: Creating
 `2`: Terminating
@@ -17686,7 +17686,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -17697,7 +17697,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds).
+        r"""Response timeout of origin server health check (unit: seconds).
         :rtype: int
         """
         return self._ConnectTimeout
@@ -17708,7 +17708,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds).
+        r"""Time interval of origin server health check (unit: seconds).
         :rtype: int
         """
         return self._DelayLoop
@@ -17719,7 +17719,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheck(self):
-        """Whether to enable the listener health check:
+        r"""Whether to enable the listener health check:
 `0`: Disable
 `1`: Enable
         :rtype: int
@@ -17732,7 +17732,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindStatus(self):
-        """Status of the origin server bound to listeners:
+        r"""Status of the origin server bound to listeners:
 `0`: Abnormal
 `1`: Normal
         :rtype: int
@@ -17745,7 +17745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerSet(self):
-        """Information of the origin server bound to listeners
+        r"""Information of the origin server bound to listeners
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BindRealServer
         """
@@ -17757,7 +17757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Listener creation time in the format of UNIX timestamp
+        r"""Listener creation time in the format of UNIX timestamp
         :rtype: int
         """
         return self._CreateTime
@@ -17768,7 +17768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientIPMethod(self):
-        """Describes how the listener obtains client IPs. `0`: TOA; `1`: Proxy Protocol.
+        r"""Describes how the listener obtains client IPs. `0`: TOA; `1`: Proxy Protocol.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17780,7 +17780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17792,7 +17792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17804,7 +17804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        r"""Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17816,7 +17816,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionPersist(self):
-        """Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
+        r"""Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17828,7 +17828,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+        r"""Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -17840,7 +17840,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def GroupId(self):
-        """Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+        r"""Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -17889,7 +17889,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class TagPair(AbstractModel):
-    """Tag key-value pair
+    r"""Tag key-value pair
 
     """
 
@@ -17905,7 +17905,7 @@ class TagPair(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -17916,7 +17916,7 @@ class TagPair(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -17940,7 +17940,7 @@ class TagPair(AbstractModel):
 
 
 class TagResourceInfo(AbstractModel):
-    """Resource information of the tag
+    r"""Resource information of the tag
 
     """
 
@@ -17959,7 +17959,7 @@ class TagResourceInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Resource types:
+        r"""Resource types:
 `Proxy`: Connection
 `ProxyGroup`: Connection group
 `RealServer`: Origin server
@@ -17973,7 +17973,7 @@ class TagResourceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._ResourceId
@@ -17997,7 +17997,7 @@ class TagResourceInfo(AbstractModel):
 
 
 class UDPListener(AbstractModel):
-    """UDP listener information
+    r"""UDP listener information
 
     """
 
@@ -18102,7 +18102,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerId(self):
-        """Listener ID
+        r"""Listener ID
         :rtype: str
         """
         return self._ListenerId
@@ -18113,7 +18113,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ListenerName(self):
-        """Listener name
+        r"""Listener name
         :rtype: str
         """
         return self._ListenerName
@@ -18124,7 +18124,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Port(self):
-        """Listener port
+        r"""Listener port
         :rtype: int
         """
         return self._Port
@@ -18135,7 +18135,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RealServerPort(self):
-        """Origin server port, which is only valid for the connections or connection groups of version 1.0.
+        r"""Origin server port, which is only valid for the connections or connection groups of version 1.0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -18147,7 +18147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerType(self):
-        """Type of the origin server bound to listeners
+        r"""Type of the origin server bound to listeners
         :rtype: str
         """
         return self._RealServerType
@@ -18158,7 +18158,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Listener protocol: UDP.
+        r"""Listener protocol: UDP.
         :rtype: str
         """
         return self._Protocol
@@ -18169,7 +18169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerStatus(self):
-        """Listener status:
+        r"""Listener status:
 `0`: Running
 `1`: Creating
 `2`: Terminating
@@ -18185,7 +18185,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scheduler(self):
-        """The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        r"""The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
         :rtype: str
         """
         return self._Scheduler
@@ -18196,7 +18196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindStatus(self):
-        """Origin server binding status of listeners. `0`: Normal; `1`: IP exception; `2`: Domain name resolution exception.
+        r"""Origin server binding status of listeners. `0`: Normal; `1`: IP exception; `2`: Domain name resolution exception.
         :rtype: int
         """
         return self._BindStatus
@@ -18207,7 +18207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealServerSet(self):
-        """Information of the origin server bound to listeners
+        r"""Information of the origin server bound to listeners
         :rtype: list of BindRealServer
         """
         return self._RealServerSet
@@ -18218,7 +18218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Listener creation time in the format of UNIX timestamp
+        r"""Listener creation time in the format of UNIX timestamp
         :rtype: int
         """
         return self._CreateTime
@@ -18229,7 +18229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionPersist(self):
-        """Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
+        r"""Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -18241,7 +18241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayLoop(self):
-        """Time interval of origin server health check (unit: seconds). Value range: [5, 300].
+        r"""Time interval of origin server health check (unit: seconds). Value range: [5, 300].
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18253,7 +18253,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ConnectTimeout(self):
-        """Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
+        r"""Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18265,7 +18265,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HealthyThreshold(self):
-        """Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
+        r"""Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -18277,7 +18277,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnhealthyThreshold(self):
-        """Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
+        r"""Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18289,7 +18289,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FailoverSwitch(self):
-        """Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
+        r"""Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18301,7 +18301,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HealthCheck(self):
-        """Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
+        r"""Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18313,7 +18313,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CheckType(self):
-        """The health check type. Values: `PORT` (port); `PING` (ping).
+        r"""The health check type. Values: `PORT` (port); `PING` (ping).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18325,7 +18325,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CheckPort(self):
-        """The health probe port.
+        r"""The health probe port.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -18337,7 +18337,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ContextType(self):
-        """The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18349,7 +18349,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SendContext(self):
-        """The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -18361,7 +18361,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RecvContext(self):
-        """The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
+        r"""The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18373,7 +18373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyId(self):
-        """Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+        r"""Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18385,7 +18385,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupId(self):
-        """Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+        r"""Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """

@@ -27,7 +27,7 @@ class ChdfsClient(AbstractClient):
 
 
     def AssociateAccessGroups(self, request):
-        """This API is used to bind multiple permission groups to a mount point.
+        r"""This API is used to bind multiple permission groups to a mount point.
 
         :param request: Request instance for AssociateAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.AssociateAccessGroupsRequest`
@@ -50,7 +50,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessGroup(self, request):
-        """This API is used to create a permission group.
+        r"""This API is used to create a permission group.
 
         :param request: Request instance for CreateAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateAccessGroupRequest`
@@ -73,7 +73,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateAccessRules(self, request):
-        """This API is used to batch create permission rules. You don't need to enter the permission rule IDs and creation time.
+        r"""This API is used to batch create permission rules. You don't need to enter the permission rule IDs and creation time.
 
         :param request: Request instance for CreateAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateAccessRulesRequest`
@@ -96,7 +96,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateFileSystem(self, request):
-        """This API is used to create a file system (asynchronously).
+        r"""This API is used to create a file system (asynchronously).
 
         :param request: Request instance for CreateFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateFileSystemRequest`
@@ -119,7 +119,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateLifeCycleRules(self, request):
-        """This API is used to batch create lifecycle rules. You don't need to enter the lifecycle rule IDs and creation time.
+        r"""This API is used to batch create lifecycle rules. You don't need to enter the lifecycle rule IDs and creation time.
 
         :param request: Request instance for CreateLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateLifeCycleRulesRequest`
@@ -142,7 +142,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateMountPoint(self, request):
-        """This API is used to create a mount point for a successfully created file system.
+        r"""This API is used to create a mount point for a successfully created file system.
 
         :param request: Request instance for CreateMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateMountPointRequest`
@@ -165,7 +165,7 @@ class ChdfsClient(AbstractClient):
 
 
     def CreateRestoreTasks(self, request):
-        """This API is used to batch create restoration tasks. You don't need to enter the restoration task IDs, status, and creation time.
+        r"""This API is used to batch create restoration tasks. You don't need to enter the restoration task IDs, status, and creation time.
 
         :param request: Request instance for CreateRestoreTasks.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateRestoreTasksRequest`
@@ -188,7 +188,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessGroup(self, request):
-        """This API is used to delete a permission group.
+        r"""This API is used to delete a permission group.
 
         :param request: Request instance for DeleteAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteAccessGroupRequest`
@@ -211,7 +211,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteAccessRules(self, request):
-        """This API is used to batch delete permission rules.
+        r"""This API is used to batch delete permission rules.
 
         :param request: Request instance for DeleteAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteAccessRulesRequest`
@@ -234,7 +234,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteFileSystem(self, request):
-        """This API is used to delete a file system. Non-empty file systems cannot be deleted.
+        r"""This API is used to delete a file system. Non-empty file systems cannot be deleted.
 
         :param request: Request instance for DeleteFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteFileSystemRequest`
@@ -257,7 +257,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteLifeCycleRules(self, request):
-        """This API is used to batch delete lifecycle rules.
+        r"""This API is used to batch delete lifecycle rules.
 
         :param request: Request instance for DeleteLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteLifeCycleRulesRequest`
@@ -280,7 +280,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DeleteMountPoint(self, request):
-        """This API is used to delete a mount point.
+        r"""This API is used to delete a mount point.
 
         :param request: Request instance for DeleteMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteMountPointRequest`
@@ -303,7 +303,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessGroup(self, request):
-        """This API is used to view the details of a permission group.
+        r"""This API is used to view the details of a permission group.
 
         :param request: Request instance for DescribeAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessGroupRequest`
@@ -326,7 +326,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessGroups(self, request):
-        """This API is used to view the list of permission groups.
+        r"""This API is used to view the list of permission groups.
 
         :param request: Request instance for DescribeAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessGroupsRequest`
@@ -349,7 +349,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeAccessRules(self, request):
-        """This API is used to view the list of permission rules by permission group ID.
+        r"""This API is used to view the list of permission rules by permission group ID.
 
         :param request: Request instance for DescribeAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeAccessRulesRequest`
@@ -372,7 +372,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystem(self, request):
-        """This API is used to view the details of a file system.
+        r"""This API is used to view the details of a file system.
 
         :param request: Request instance for DescribeFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeFileSystemRequest`
@@ -395,7 +395,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeFileSystems(self, request):
-        """This API is used to view the list of file systems.
+        r"""This API is used to view the list of file systems.
 
         :param request: Request instance for DescribeFileSystems.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeFileSystemsRequest`
@@ -418,7 +418,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeLifeCycleRules(self, request):
-        """This API is used to view the list of lifecycle rules by file system ID.
+        r"""This API is used to view the list of lifecycle rules by file system ID.
 
         :param request: Request instance for DescribeLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeLifeCycleRulesRequest`
@@ -441,7 +441,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoint(self, request):
-        """This API is used to view the details of a mount point.
+        r"""This API is used to view the details of a mount point.
 
         :param request: Request instance for DescribeMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeMountPointRequest`
@@ -464,7 +464,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeMountPoints(self, request):
-        """This API is used to view the list of mount points.
+        r"""This API is used to view the list of mount points.
 
         :param request: Request instance for DescribeMountPoints.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeMountPointsRequest`
@@ -487,7 +487,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeResourceTags(self, request):
-        """This API is used to view the list of resource tags by file system ID.
+        r"""This API is used to view the list of resource tags by file system ID.
 
         :param request: Request instance for DescribeResourceTags.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeResourceTagsRequest`
@@ -510,7 +510,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DescribeRestoreTasks(self, request):
-        """This API is used to view the list of restoration tasks by file system ID.
+        r"""This API is used to view the list of restoration tasks by file system ID.
 
         :param request: Request instance for DescribeRestoreTasks.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeRestoreTasksRequest`
@@ -533,7 +533,7 @@ class ChdfsClient(AbstractClient):
 
 
     def DisassociateAccessGroups(self, request):
-        """This API is used to unbind multiple permission groups from a mount point.
+        r"""This API is used to unbind multiple permission groups from a mount point.
 
         :param request: Request instance for DisassociateAccessGroups.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.DisassociateAccessGroupsRequest`
@@ -556,7 +556,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessGroup(self, request):
-        """This API is used to modify the attributes of a permission group.
+        r"""This API is used to modify the attributes of a permission group.
 
         :param request: Request instance for ModifyAccessGroup.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyAccessGroupRequest`
@@ -579,7 +579,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessRules(self, request):
-        """This API is used to batch modify the attributes of permission rules, such as address, access mode, and priority. You must specify the permission rule IDs.
+        r"""This API is used to batch modify the attributes of permission rules, such as address, access mode, and priority. You must specify the permission rule IDs.
 
         :param request: Request instance for ModifyAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyAccessRulesRequest`
@@ -602,7 +602,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyFileSystem(self, request):
-        """This API is used to modify the attributes of a successfully created file system.
+        r"""This API is used to modify the attributes of a successfully created file system.
 
         :param request: Request instance for ModifyFileSystem.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyFileSystemRequest`
@@ -625,7 +625,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyLifeCycleRules(self, request):
-        """This API is used to batch modify the attributes of lifecycle rules, such as name, path, transition list, and status. You must specify the lifecycle rule IDs.
+        r"""This API is used to batch modify the attributes of lifecycle rules, such as name, path, transition list, and status. You must specify the lifecycle rule IDs.
 
         :param request: Request instance for ModifyLifeCycleRules.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyLifeCycleRulesRequest`
@@ -648,7 +648,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyMountPoint(self, request):
-        """This API is used to modify the attributes of a mount point.
+        r"""This API is used to modify the attributes of a mount point.
 
         :param request: Request instance for ModifyMountPoint.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyMountPointRequest`
@@ -671,7 +671,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyResourceTags(self, request):
-        """This API is used to modify the list of resource tags by overwriting them all.
+        r"""This API is used to modify the list of resource tags by overwriting them all.
 
         :param request: Request instance for ModifyResourceTags.
         :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyResourceTagsRequest`

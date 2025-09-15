@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountVpcInfo(AbstractModel):
-    """VPC information of a Private DNS account
+    r"""VPC information of a Private DNS account
 
     """
 
@@ -44,7 +44,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpcId(self):
-        """VpcId: vpc-xadsafsdasd
+        r"""VpcId: vpc-xadsafsdasd
         :rtype: str
         """
         return self._UniqVpcId
@@ -55,7 +55,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
-        """VPC region: ap-guangzhou, ap-shanghai
+        r"""VPC region: ap-guangzhou, ap-shanghai
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -67,7 +67,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Uin(self):
-        """VPC account: 123456789
+        r"""VPC account: 123456789
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -79,7 +79,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcName(self):
-        """VPC name: testname
+        r"""VPC name: testname
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -106,7 +106,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class AccountVpcInfoOut(AbstractModel):
-    """Output parameters of the associated VPC
+    r"""Output parameters of the associated VPC
 
     """
 
@@ -128,7 +128,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcId: vpc-xadsafsdasd
+        r"""VpcId: vpc-xadsafsdasd
         :rtype: str
         """
         return self._VpcId
@@ -139,7 +139,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Region(self):
-        """Region: ap-guangzhou, ap-shanghai
+        r"""Region: ap-guangzhou, ap-shanghai
         :rtype: str
         """
         return self._Region
@@ -150,7 +150,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def Uin(self):
-        """VPC ID: 123456789
+        r"""VPC ID: 123456789
         :rtype: str
         """
         return self._Uin
@@ -161,7 +161,7 @@ class AccountVpcInfoOut(AbstractModel):
 
     @property
     def VpcName(self):
-        """VPC name: testname
+        r"""VPC name: testname
         :rtype: str
         """
         return self._VpcName
@@ -187,7 +187,7 @@ class AccountVpcInfoOut(AbstractModel):
 
 
 class AccountVpcInfoOutput(AbstractModel):
-    """Output parameters of the associated VPC
+    r"""Output parameters of the associated VPC
 
     """
 
@@ -206,7 +206,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Uin(self):
-        """UIN of the VPC account
+        r"""UIN of the VPC account
         :rtype: str
         """
         return self._Uin
@@ -217,7 +217,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._UniqVpcId
@@ -228,7 +228,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -253,7 +253,7 @@ class AccountVpcInfoOutput(AbstractModel):
 
 
 class AuditLog(AbstractModel):
-    """Operation log
+    r"""Operation log
 
     """
 
@@ -275,7 +275,7 @@ class AuditLog(AbstractModel):
 
     @property
     def Resource(self):
-        """Log type
+        r"""Log type
         :rtype: str
         """
         return self._Resource
@@ -286,7 +286,7 @@ class AuditLog(AbstractModel):
 
     @property
     def Metric(self):
-        """Log table name
+        r"""Log table name
         :rtype: str
         """
         return self._Metric
@@ -297,7 +297,7 @@ class AuditLog(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of logs
+        r"""Total number of logs
         :rtype: int
         """
         return self._TotalCount
@@ -308,7 +308,7 @@ class AuditLog(AbstractModel):
 
     @property
     def DataSet(self):
-        """List of logs
+        r"""List of logs
         :rtype: list of AuditLogInfo
         """
         return self._DataSet
@@ -339,7 +339,7 @@ class AuditLog(AbstractModel):
 
 
 class AuditLogInfo(AbstractModel):
-    """Log details
+    r"""Log details
 
     """
 
@@ -358,7 +358,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Date(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Date
@@ -369,7 +369,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def OperatorUin(self):
-        """Operator UIN
+        r"""Operator UIN
         :rtype: str
         """
         return self._OperatorUin
@@ -380,7 +380,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def Content(self):
-        """Log content
+        r"""Log content
         :rtype: str
         """
         return self._Content
@@ -405,7 +405,7 @@ class AuditLogInfo(AbstractModel):
 
 
 class CreateEndPointAndEndPointServiceRequest(AbstractModel):
-    """CreateEndPointAndEndPointService request structure.
+    r"""CreateEndPointAndEndPointService request structure.
 
     """
 
@@ -439,7 +439,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC instance ID.
+        r"""VPC instance ID.
         :rtype: str
         """
         return self._VpcId
@@ -450,7 +450,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def AutoAcceptFlag(self):
-        """Whether automatic forwarding is supported.
+        r"""Whether automatic forwarding is supported.
         :rtype: bool
         """
         return self._AutoAcceptFlag
@@ -461,7 +461,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def ServiceInstanceId(self):
-        """Backend service ID.
+        r"""Backend service ID.
         :rtype: str
         """
         return self._ServiceInstanceId
@@ -472,7 +472,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -483,7 +483,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointRegion(self):
-        """Endpoint region, which should be consistent with the region of the endpoint service.
+        r"""Endpoint region, which should be consistent with the region of the endpoint service.
         :rtype: str
         """
         return self._EndPointRegion
@@ -494,7 +494,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointServiceName(self):
-        """Endpoint service name.
+        r"""Endpoint service name.
         :rtype: str
         """
         return self._EndPointServiceName
@@ -505,7 +505,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        """Mounted PaaS service type. Valid values: CLB, CDB, and CRS.
+        r"""Mounted PaaS service type. Valid values: CLB, CDB, and CRS.
         :rtype: str
         """
         return self._ServiceType
@@ -516,7 +516,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
     @property
     def IpNum(self):
-        """Number of endpoint IP addresses.
+        r"""Number of endpoint IP addresses.
         :rtype: int
         """
         return self._IpNum
@@ -546,7 +546,7 @@ class CreateEndPointAndEndPointServiceRequest(AbstractModel):
 
 
 class CreateEndPointAndEndPointServiceResponse(AbstractModel):
-    """CreateEndPointAndEndPointService response structure.
+    r"""CreateEndPointAndEndPointService response structure.
 
     """
 
@@ -571,7 +571,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -582,7 +582,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -593,7 +593,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """Endpoint service ID.
+        r"""Endpoint service ID.
         :rtype: str
         """
         return self._EndPointServiceId
@@ -604,7 +604,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointVipSet(self):
-        """IP address list of the endpoint.
+        r"""IP address list of the endpoint.
         :rtype: list of str
         """
         return self._EndPointVipSet
@@ -615,7 +615,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -634,7 +634,7 @@ class CreateEndPointAndEndPointServiceResponse(AbstractModel):
 
 
 class CreateEndPointRequest(AbstractModel):
-    """CreateEndPoint request structure.
+    r"""CreateEndPoint request structure.
 
     """
 
@@ -656,7 +656,7 @@ class CreateEndPointRequest(AbstractModel):
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -667,7 +667,7 @@ class CreateEndPointRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """Endpoint service ID (namely, VPC endpoint service ID).
+        r"""Endpoint service ID (namely, VPC endpoint service ID).
         :rtype: str
         """
         return self._EndPointServiceId
@@ -678,7 +678,7 @@ class CreateEndPointRequest(AbstractModel):
 
     @property
     def EndPointRegion(self):
-        """Endpoint region, which should be consistent with the region of the endpoint service.
+        r"""Endpoint region, which should be consistent with the region of the endpoint service.
         :rtype: str
         """
         return self._EndPointRegion
@@ -689,7 +689,7 @@ class CreateEndPointRequest(AbstractModel):
 
     @property
     def IpNum(self):
-        """Number of endpoint IP addresses.
+        r"""Number of endpoint IP addresses.
         :rtype: int
         """
         return self._IpNum
@@ -715,7 +715,7 @@ class CreateEndPointRequest(AbstractModel):
 
 
 class CreateEndPointResponse(AbstractModel):
-    """CreateEndPoint response structure.
+    r"""CreateEndPoint response structure.
 
     """
 
@@ -740,7 +740,7 @@ class CreateEndPointResponse(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -751,7 +751,7 @@ class CreateEndPointResponse(AbstractModel):
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -762,7 +762,7 @@ class CreateEndPointResponse(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        """Endpoint service ID.
+        r"""Endpoint service ID.
         :rtype: str
         """
         return self._EndPointServiceId
@@ -773,7 +773,7 @@ class CreateEndPointResponse(AbstractModel):
 
     @property
     def EndPointVipSet(self):
-        """IP address list of the endpoint.
+        r"""IP address list of the endpoint.
         :rtype: list of str
         """
         return self._EndPointVipSet
@@ -784,7 +784,7 @@ class CreateEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -803,7 +803,7 @@ class CreateEndPointResponse(AbstractModel):
 
 
 class CreateExtendEndpointRequest(AbstractModel):
-    """CreateExtendEndpoint request structure.
+    r"""CreateExtendEndpoint request structure.
 
     """
 
@@ -822,7 +822,7 @@ class CreateExtendEndpointRequest(AbstractModel):
 
     @property
     def EndpointName(self):
-        """Outbound endpoint name.
+        r"""Outbound endpoint name.
         :rtype: str
         """
         return self._EndpointName
@@ -833,7 +833,7 @@ class CreateExtendEndpointRequest(AbstractModel):
 
     @property
     def EndpointRegion(self):
-        """The region of the outbound endpoint must be consistent with the region of the forwarding target VIP.
+        r"""The region of the outbound endpoint must be consistent with the region of the forwarding target VIP.
         :rtype: str
         """
         return self._EndpointRegion
@@ -844,7 +844,7 @@ class CreateExtendEndpointRequest(AbstractModel):
 
     @property
     def ForwardIp(self):
-        """Forwarding target.
+        r"""Forwarding target.
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.ForwardIp`
         """
         return self._ForwardIp
@@ -871,7 +871,7 @@ class CreateExtendEndpointRequest(AbstractModel):
 
 
 class CreateExtendEndpointResponse(AbstractModel):
-    """CreateExtendEndpoint response structure.
+    r"""CreateExtendEndpoint response structure.
 
     """
 
@@ -890,7 +890,7 @@ class CreateExtendEndpointResponse(AbstractModel):
 
     @property
     def EndpointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndpointId
@@ -901,7 +901,7 @@ class CreateExtendEndpointResponse(AbstractModel):
 
     @property
     def EndpointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndpointName
@@ -912,7 +912,7 @@ class CreateExtendEndpointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -929,7 +929,7 @@ class CreateExtendEndpointResponse(AbstractModel):
 
 
 class CreateForwardRuleRequest(AbstractModel):
-    """CreateForwardRule request structure.
+    r"""CreateForwardRule request structure.
 
     """
 
@@ -951,7 +951,7 @@ class CreateForwardRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Forwarding rule name.
+        r"""Forwarding rule name.
         :rtype: str
         """
         return self._RuleName
@@ -962,7 +962,7 @@ class CreateForwardRuleRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        """Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.
+        r"""Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.
         :rtype: str
         """
         return self._RuleType
@@ -973,7 +973,7 @@ class CreateForwardRuleRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID, which can be viewed on the private domain list page.
+        r"""Private domain ID, which can be viewed on the private domain list page.
         :rtype: str
         """
         return self._ZoneId
@@ -984,7 +984,7 @@ class CreateForwardRuleRequest(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -1010,7 +1010,7 @@ class CreateForwardRuleRequest(AbstractModel):
 
 
 class CreateForwardRuleResponse(AbstractModel):
-    """CreateForwardRule response structure.
+    r"""CreateForwardRule response structure.
 
     """
 
@@ -1038,7 +1038,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        """Forwarding rule ID.
+        r"""Forwarding rule ID.
         :rtype: str
         """
         return self._RuleId
@@ -1049,7 +1049,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def RuleName(self):
-        """Forwarding rule name.
+        r"""Forwarding rule name.
         :rtype: str
         """
         return self._RuleName
@@ -1060,7 +1060,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def RuleType(self):
-        """Forwarding rule type.
+        r"""Forwarding rule type.
         :rtype: str
         """
         return self._RuleType
@@ -1071,7 +1071,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID.
+        r"""Private domain ID.
         :rtype: str
         """
         return self._ZoneId
@@ -1082,7 +1082,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -1093,7 +1093,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1113,7 +1113,7 @@ class CreateForwardRuleResponse(AbstractModel):
 
 
 class CreatePrivateDNSAccountRequest(AbstractModel):
-    """CreatePrivateDNSAccount request structure.
+    r"""CreatePrivateDNSAccount request structure.
 
     """
 
@@ -1126,7 +1126,7 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
     @property
     def Account(self):
-        """Private DNS account
+        r"""Private DNS account
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
         """
         return self._Account
@@ -1151,7 +1151,7 @@ class CreatePrivateDNSAccountRequest(AbstractModel):
 
 
 class CreatePrivateDNSAccountResponse(AbstractModel):
-    """CreatePrivateDNSAccount response structure.
+    r"""CreatePrivateDNSAccount response structure.
 
     """
 
@@ -1164,7 +1164,7 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1179,7 +1179,7 @@ class CreatePrivateDNSAccountResponse(AbstractModel):
 
 
 class CreatePrivateZoneRecordRequest(AbstractModel):
-    """CreatePrivateZoneRecord request structure.
+    r"""CreatePrivateZoneRecord request structure.
 
     """
 
@@ -1210,7 +1210,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID
+        r"""Private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -1221,7 +1221,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -1232,7 +1232,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Subdomain, such as "www", "m", and "@"
+        r"""Subdomain, such as "www", "m", and "@"
         :rtype: str
         """
         return self._SubDomain
@@ -1243,7 +1243,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
-        """Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.
+        r"""Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.
         :rtype: str
         """
         return self._RecordValue
@@ -1254,7 +1254,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """Record weight. Value range: 1–100
+        r"""Record weight. Value range: 1–100
         :rtype: int
         """
         return self._Weight
@@ -1265,7 +1265,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
+        r"""MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
         :rtype: int
         """
         return self._MX
@@ -1276,7 +1276,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
+        r"""Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
         :rtype: int
         """
         return self._TTL
@@ -1305,7 +1305,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
 
 
 class CreatePrivateZoneRecordResponse(AbstractModel):
-    """CreatePrivateZoneRecord response structure.
+    r"""CreatePrivateZoneRecord response structure.
 
     """
 
@@ -1321,7 +1321,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -1332,7 +1332,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1348,7 +1348,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
 
 
 class CreatePrivateZoneRequest(AbstractModel):
-    """CreatePrivateZone request structure.
+    r"""CreatePrivateZone request structure.
 
     """
 
@@ -1382,7 +1382,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain name, which must be in the format of standard TLD
+        r"""Domain name, which must be in the format of standard TLD
         :rtype: str
         """
         return self._Domain
@@ -1393,7 +1393,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        """Tags the private domain when it is created
+        r"""Tags the private domain when it is created
         :rtype: list of TagInfo
         """
         return self._TagSet
@@ -1404,7 +1404,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """Associates the private domain to a VPC when it is created
+        r"""Associates the private domain to a VPC when it is created
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -1415,7 +1415,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -1426,7 +1426,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
-        """Whether to enable subdomain recursive DNS. Valid values: `ENABLED` (default) and `DISABLED`.
+        r"""Whether to enable subdomain recursive DNS. Valid values: `ENABLED` (default) and `DISABLED`.
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -1439,7 +1439,7 @@ class CreatePrivateZoneRequest(AbstractModel):
     def Vpcs(self):
         warnings.warn("parameter `Vpcs` is deprecated", DeprecationWarning) 
 
-        """Associates the private domain to a VPC when it is created
+        r"""Associates the private domain to a VPC when it is created
         :rtype: list of VpcInfo
         """
         return self._Vpcs
@@ -1452,7 +1452,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """List of authorized accounts' VPCs to associate with the private domain
+        r"""List of authorized accounts' VPCs to associate with the private domain
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -1463,7 +1463,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
-        """Whether to enable CNAME flattening. Valid values: `ENABLED` (default) and `DISABLED`.
+        r"""Whether to enable CNAME flattening. Valid values: `ENABLED` (default) and `DISABLED`.
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -1513,7 +1513,7 @@ class CreatePrivateZoneRequest(AbstractModel):
 
 
 class CreatePrivateZoneResponse(AbstractModel):
-    """CreatePrivateZone response structure.
+    r"""CreatePrivateZone response structure.
 
     """
 
@@ -1532,7 +1532,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID, such as zone-xxxxxx
+        r"""Private domain ID, such as zone-xxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -1543,7 +1543,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def Domain(self):
-        """Private domain
+        r"""Private domain
         :rtype: str
         """
         return self._Domain
@@ -1554,7 +1554,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1571,7 +1571,7 @@ class CreatePrivateZoneResponse(AbstractModel):
 
 
 class DatePoint(AbstractModel):
-    """Time statistics
+    r"""Time statistics
 
     """
 
@@ -1587,7 +1587,7 @@ class DatePoint(AbstractModel):
 
     @property
     def Date(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._Date
@@ -1598,7 +1598,7 @@ class DatePoint(AbstractModel):
 
     @property
     def Value(self):
-        """Value
+        r"""Value
         :rtype: int
         """
         return self._Value
@@ -1622,7 +1622,7 @@ class DatePoint(AbstractModel):
 
 
 class DeleteEndPointRequest(AbstractModel):
-    """DeleteEndPoint request structure.
+    r"""DeleteEndPoint request structure.
 
     """
 
@@ -1635,7 +1635,7 @@ class DeleteEndPointRequest(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -1658,7 +1658,7 @@ class DeleteEndPointRequest(AbstractModel):
 
 
 class DeleteEndPointResponse(AbstractModel):
-    """DeleteEndPoint response structure.
+    r"""DeleteEndPoint response structure.
 
     """
 
@@ -1671,7 +1671,7 @@ class DeleteEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1686,7 +1686,7 @@ class DeleteEndPointResponse(AbstractModel):
 
 
 class DeleteForwardRuleRequest(AbstractModel):
-    """DeleteForwardRule request structure.
+    r"""DeleteForwardRule request structure.
 
     """
 
@@ -1699,7 +1699,7 @@ class DeleteForwardRuleRequest(AbstractModel):
 
     @property
     def RuleIdSet(self):
-        """Array of forwarding rule IDs.
+        r"""Array of forwarding rule IDs.
         :rtype: list of str
         """
         return self._RuleIdSet
@@ -1722,7 +1722,7 @@ class DeleteForwardRuleRequest(AbstractModel):
 
 
 class DeleteForwardRuleResponse(AbstractModel):
-    """DeleteForwardRule response structure.
+    r"""DeleteForwardRule response structure.
 
     """
 
@@ -1735,7 +1735,7 @@ class DeleteForwardRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1750,7 +1750,7 @@ class DeleteForwardRuleResponse(AbstractModel):
 
 
 class DeletePrivateZoneRecordRequest(AbstractModel):
-    """DeletePrivateZoneRecord request structure.
+    r"""DeletePrivateZoneRecord request structure.
 
     """
 
@@ -1769,7 +1769,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID
+        r"""Private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -1780,7 +1780,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -1791,7 +1791,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordIdSet(self):
-        """Array of record IDs. `RecordId` takes precedence.
+        r"""Array of record IDs. `RecordId` takes precedence.
         :rtype: list of str
         """
         return self._RecordIdSet
@@ -1816,7 +1816,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
 
 
 class DeletePrivateZoneRecordResponse(AbstractModel):
-    """DeletePrivateZoneRecord response structure.
+    r"""DeletePrivateZoneRecord response structure.
 
     """
 
@@ -1829,7 +1829,7 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1844,7 +1844,7 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
 
 class DescribeAccountVpcListRequest(AbstractModel):
-    """DescribeAccountVpcList request structure.
+    r"""DescribeAccountVpcList request structure.
 
     """
 
@@ -1866,7 +1866,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def AccountUin(self):
-        """UIN of account
+        r"""UIN of account
         :rtype: str
         """
         return self._AccountUin
@@ -1877,7 +1877,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0
+        r"""Pagination offset, starting from 0
         :rtype: int
         """
         return self._Offset
@@ -1888,7 +1888,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Maximum value: `100`. Default value: `20`
+        r"""Number of entries per page. Maximum value: `100`. Default value: `20`
         :rtype: int
         """
         return self._Limit
@@ -1899,7 +1899,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: list of Filter
         """
         return self._Filters
@@ -1930,7 +1930,7 @@ class DescribeAccountVpcListRequest(AbstractModel):
 
 
 class DescribeAccountVpcListResponse(AbstractModel):
-    """DescribeAccountVpcList response structure.
+    r"""DescribeAccountVpcList response structure.
 
     """
 
@@ -1949,7 +1949,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of VPCs
+        r"""Number of VPCs
         :rtype: int
         """
         return self._TotalCount
@@ -1960,7 +1960,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """VPC list
+        r"""VPC list
         :rtype: list of AccountVpcInfoOut
         """
         return self._VpcSet
@@ -1971,7 +1971,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1993,7 +1993,7 @@ class DescribeAccountVpcListResponse(AbstractModel):
 
 
 class DescribeAuditLogRequest(AbstractModel):
-    """DescribeAuditLog request structure.
+    r"""DescribeAuditLog request structure.
 
     """
 
@@ -2018,7 +2018,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
-        """Request volume statistics start time
+        r"""Request volume statistics start time
         :rtype: str
         """
         return self._TimeRangeBegin
@@ -2029,7 +2029,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameter. Valid values: ZoneId (private domain ID), Domain (private domain), OperatorUin (operator account ID)
+        r"""Filter parameter. Valid values: ZoneId (private domain ID), Domain (private domain), OperatorUin (operator account ID)
         :rtype: list of Filter
         """
         return self._Filters
@@ -2040,7 +2040,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
-        """Request volume statistics end time
+        r"""Request volume statistics end time
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -2051,7 +2051,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0
+        r"""Pagination offset, starting from 0
         :rtype: int
         """
         return self._Offset
@@ -2062,7 +2062,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Maximum value: 100. Default value: 20
+        r"""Number of entries per page. Maximum value: 100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -2094,7 +2094,7 @@ class DescribeAuditLogRequest(AbstractModel):
 
 
 class DescribeAuditLogResponse(AbstractModel):
-    """DescribeAuditLog response structure.
+    r"""DescribeAuditLog response structure.
 
     """
 
@@ -2110,7 +2110,7 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        """List of operation logs
+        r"""List of operation logs
         :rtype: list of AuditLog
         """
         return self._Data
@@ -2121,7 +2121,7 @@ class DescribeAuditLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2142,13 +2142,13 @@ class DescribeAuditLogResponse(AbstractModel):
 
 
 class DescribeDashboardRequest(AbstractModel):
-    """DescribeDashboard request structure.
+    r"""DescribeDashboard request structure.
 
     """
 
 
 class DescribeDashboardResponse(AbstractModel):
-    """DescribeDashboard response structure.
+    r"""DescribeDashboard response structure.
 
     """
 
@@ -2173,7 +2173,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneTotal(self):
-        """Total number of private domain DNS records
+        r"""Total number of private domain DNS records
         :rtype: int
         """
         return self._ZoneTotal
@@ -2184,7 +2184,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def ZoneVpcCount(self):
-        """Number of VPCs associated with private domain
+        r"""Number of VPCs associated with private domain
         :rtype: int
         """
         return self._ZoneVpcCount
@@ -2195,7 +2195,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestTotalCount(self):
-        """Total number of historical requests
+        r"""Total number of historical requests
         :rtype: int
         """
         return self._RequestTotalCount
@@ -2206,7 +2206,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def FlowUsage(self):
-        """Traffic package usage
+        r"""Traffic package usage
         :rtype: list of FlowUsage
         """
         return self._FlowUsage
@@ -2217,7 +2217,7 @@ class DescribeDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2241,7 +2241,7 @@ class DescribeDashboardResponse(AbstractModel):
 
 
 class DescribeEndPointListRequest(AbstractModel):
-    """DescribeEndPointList request structure.
+    r"""DescribeEndPointList request structure.
 
     """
 
@@ -2260,7 +2260,7 @@ class DescribeEndPointListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0.
+        r"""Pagination offset, starting from 0.
         :rtype: int
         """
         return self._Offset
@@ -2271,7 +2271,7 @@ class DescribeEndPointListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit. Maximum value: 100. Default value: 20.
+        r"""Pagination limit. Maximum value: 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -2282,7 +2282,7 @@ class DescribeEndPointListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters. Valid values: EndPointName, EndPointId, EndPointServiceId, and EndPointVip.
+        r"""Filter parameters. Valid values: EndPointName, EndPointId, EndPointServiceId, and EndPointVip.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2312,7 +2312,7 @@ class DescribeEndPointListRequest(AbstractModel):
 
 
 class DescribeEndPointListResponse(AbstractModel):
-    """DescribeEndPointList response structure.
+    r"""DescribeEndPointList response structure.
 
     """
 
@@ -2332,7 +2332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of endpoints.
+        r"""Total number of endpoints.
         :rtype: int
         """
         return self._TotalCount
@@ -2343,7 +2343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointSet(self):
-        """Endpoint list.
+        r"""Endpoint list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of EndPointInfo
         """
@@ -2355,7 +2355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2377,13 +2377,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeEndPointRegionRequest(AbstractModel):
-    """DescribeEndPointRegion request structure.
+    r"""DescribeEndPointRegion request structure.
 
     """
 
 
 class DescribeEndPointRegionResponse(AbstractModel):
-    """DescribeEndPointRegion response structure.
+    r"""DescribeEndPointRegion response structure.
 
     """
 
@@ -2399,7 +2399,7 @@ class DescribeEndPointRegionResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """Region array.
+        r"""Region array.
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -2410,7 +2410,7 @@ class DescribeEndPointRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2431,7 +2431,7 @@ class DescribeEndPointRegionResponse(AbstractModel):
 
 
 class DescribeExtendEndpointListRequest(AbstractModel):
-    """DescribeExtendEndpointList request structure.
+    r"""DescribeExtendEndpointList request structure.
 
     """
 
@@ -2450,7 +2450,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0.
+        r"""Pagination offset, starting from 0.
         :rtype: int
         """
         return self._Offset
@@ -2461,7 +2461,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit. Maximum value: 100. Default value: 20.
+        r"""Pagination limit. Maximum value: 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -2472,7 +2472,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters. Valid values: EndpointName, EndpointId.
+        r"""Filter parameters. Valid values: EndpointName, EndpointId.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2502,7 +2502,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
 
 class DescribeExtendEndpointListResponse(AbstractModel):
-    """DescribeExtendEndpointList response structure.
+    r"""DescribeExtendEndpointList response structure.
 
     """
 
@@ -2521,7 +2521,7 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of endpoints.
+        r"""Total number of endpoints.
         :rtype: int
         """
         return self._TotalCount
@@ -2532,7 +2532,7 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
     @property
     def OutboundEndpointSet(self):
-        """Endpoint list.
+        r"""Endpoint list.
         :rtype: list of OutboundEndpoint
         """
         return self._OutboundEndpointSet
@@ -2543,7 +2543,7 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2565,7 +2565,7 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
 
 class DescribeForwardRuleListRequest(AbstractModel):
-    """DescribeForwardRuleList request structure.
+    r"""DescribeForwardRuleList request structure.
 
     """
 
@@ -2584,7 +2584,7 @@ class DescribeForwardRuleListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0.
+        r"""Pagination offset, starting from 0.
         :rtype: int
         """
         return self._Offset
@@ -2595,7 +2595,7 @@ class DescribeForwardRuleListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit. Maximum value: 100. Default value: 20.
+        r"""Pagination limit. Maximum value: 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -2606,7 +2606,7 @@ class DescribeForwardRuleListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters.
+        r"""Filter parameters.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2636,7 +2636,7 @@ class DescribeForwardRuleListRequest(AbstractModel):
 
 
 class DescribeForwardRuleListResponse(AbstractModel):
-    """DescribeForwardRuleList response structure.
+    r"""DescribeForwardRuleList response structure.
 
     """
 
@@ -2655,7 +2655,7 @@ class DescribeForwardRuleListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of private domains.
+        r"""Number of private domains.
         :rtype: int
         """
         return self._TotalCount
@@ -2666,7 +2666,7 @@ class DescribeForwardRuleListResponse(AbstractModel):
 
     @property
     def ForwardRuleSet(self):
-        """Private domain list.
+        r"""Private domain list.
         :rtype: list of ForwardRule
         """
         return self._ForwardRuleSet
@@ -2677,7 +2677,7 @@ class DescribeForwardRuleListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2699,7 +2699,7 @@ class DescribeForwardRuleListResponse(AbstractModel):
 
 
 class DescribeForwardRuleRequest(AbstractModel):
-    """DescribeForwardRule request structure.
+    r"""DescribeForwardRule request structure.
 
     """
 
@@ -2712,7 +2712,7 @@ class DescribeForwardRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Forwarding rule ID.
+        r"""Forwarding rule ID.
         :rtype: str
         """
         return self._RuleId
@@ -2735,7 +2735,7 @@ class DescribeForwardRuleRequest(AbstractModel):
 
 
 class DescribeForwardRuleResponse(AbstractModel):
-    """DescribeForwardRule response structure.
+    r"""DescribeForwardRule response structure.
 
     """
 
@@ -2751,7 +2751,7 @@ class DescribeForwardRuleResponse(AbstractModel):
 
     @property
     def ForwardRule(self):
-        """Forwarding rule details.
+        r"""Forwarding rule details.
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.ForwardRule`
         """
         return self._ForwardRule
@@ -2762,7 +2762,7 @@ class DescribeForwardRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2780,7 +2780,7 @@ class DescribeForwardRuleResponse(AbstractModel):
 
 
 class DescribePrivateDNSAccountListRequest(AbstractModel):
-    """DescribePrivateDNSAccountList request structure.
+    r"""DescribePrivateDNSAccountList request structure.
 
     """
 
@@ -2799,7 +2799,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from `0`
+        r"""Pagination offset, starting from `0`
         :rtype: int
         """
         return self._Offset
@@ -2810,7 +2810,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Maximum value: `100`. Default value: `20`
+        r"""Number of entries per page. Maximum value: `100`. Default value: `20`
         :rtype: int
         """
         return self._Limit
@@ -2821,7 +2821,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters
+        r"""Filter parameters
         :rtype: list of Filter
         """
         return self._Filters
@@ -2851,7 +2851,7 @@ class DescribePrivateDNSAccountListRequest(AbstractModel):
 
 
 class DescribePrivateDNSAccountListResponse(AbstractModel):
-    """DescribePrivateDNSAccountList response structure.
+    r"""DescribePrivateDNSAccountList response structure.
 
     """
 
@@ -2870,7 +2870,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of Private DNS accounts
+        r"""Number of Private DNS accounts
         :rtype: int
         """
         return self._TotalCount
@@ -2881,7 +2881,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def AccountSet(self):
-        """List of Private DNS accounts
+        r"""List of Private DNS accounts
         :rtype: list of PrivateDNSAccount
         """
         return self._AccountSet
@@ -2892,7 +2892,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2914,7 +2914,7 @@ class DescribePrivateDNSAccountListResponse(AbstractModel):
 
 
 class DescribePrivateZoneListRequest(AbstractModel):
-    """DescribePrivateZoneList request structure.
+    r"""DescribePrivateZoneList request structure.
 
     """
 
@@ -2933,7 +2933,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0.
+        r"""Pagination offset, starting from 0.
         :rtype: int
         """
         return self._Offset
@@ -2944,7 +2944,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit. Maximum value: 100. Default value: 20.
+        r"""Pagination limit. Maximum value: 100. Default value: 20.
         :rtype: int
         """
         return self._Limit
@@ -2955,7 +2955,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameters.
+        r"""Filter parameters.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2985,7 +2985,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
 
 
 class DescribePrivateZoneListResponse(AbstractModel):
-    """DescribePrivateZoneList response structure.
+    r"""DescribePrivateZoneList response structure.
 
     """
 
@@ -3004,7 +3004,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of private domains.
+        r"""Number of private domains.
         :rtype: int
         """
         return self._TotalCount
@@ -3015,7 +3015,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def PrivateZoneSet(self):
-        """Private domain list.
+        r"""Private domain list.
         :rtype: list of PrivateZone
         """
         return self._PrivateZoneSet
@@ -3026,7 +3026,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3048,7 +3048,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
 
 
 class DescribePrivateZoneRecordListRequest(AbstractModel):
-    """DescribePrivateZoneRecordList request structure.
+    r"""DescribePrivateZoneRecordList request structure.
 
     """
 
@@ -3070,7 +3070,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID: zone-xxxxxx
+        r"""Private domain ID: zone-xxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -3081,7 +3081,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameter
+        r"""Filter parameter
         :rtype: list of Filter
         """
         return self._Filters
@@ -3092,7 +3092,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0
+        r"""Pagination offset, starting from 0
         :rtype: int
         """
         return self._Offset
@@ -3103,7 +3103,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Maximum value: 100. Default value: 20
+        r"""Number of entries per page. Maximum value: 100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -3134,7 +3134,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
 
 
 class DescribePrivateZoneRecordListResponse(AbstractModel):
-    """DescribePrivateZoneRecordList response structure.
+    r"""DescribePrivateZoneRecordList response structure.
 
     """
 
@@ -3153,7 +3153,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of DNS records
+        r"""Number of DNS records
         :rtype: int
         """
         return self._TotalCount
@@ -3164,7 +3164,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RecordSet(self):
-        """List of DNS records
+        r"""List of DNS records
         :rtype: list of PrivateZoneRecord
         """
         return self._RecordSet
@@ -3175,7 +3175,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3197,13 +3197,13 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
 
 
 class DescribePrivateZoneServiceRequest(AbstractModel):
-    """DescribePrivateZoneService request structure.
+    r"""DescribePrivateZoneService request structure.
 
     """
 
 
 class DescribePrivateZoneServiceResponse(AbstractModel):
-    """DescribePrivateZoneService response structure.
+    r"""DescribePrivateZoneService response structure.
 
     """
 
@@ -3219,7 +3219,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        """Private DNS service activation status. Valid values: ENABLED, DISABLED
+        r"""Private DNS service activation status. Valid values: ENABLED, DISABLED
         :rtype: str
         """
         return self._ServiceStatus
@@ -3230,7 +3230,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3246,13 +3246,13 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
 
 class DescribeQuotaUsageRequest(AbstractModel):
-    """DescribeQuotaUsage request structure.
+    r"""DescribeQuotaUsage request structure.
 
     """
 
 
 class DescribeQuotaUsageResponse(AbstractModel):
-    """DescribeQuotaUsage response structure.
+    r"""DescribeQuotaUsage response structure.
 
     """
 
@@ -3268,7 +3268,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def TldQuota(self):
-        """TLD quota usage
+        r"""TLD quota usage
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
         """
         return self._TldQuota
@@ -3279,7 +3279,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3297,7 +3297,7 @@ class DescribeQuotaUsageResponse(AbstractModel):
 
 
 class DescribeRecordRequest(AbstractModel):
-    """DescribeRecord request structure.
+    r"""DescribeRecord request structure.
 
     """
 
@@ -3313,7 +3313,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID.
+        r"""Private domain ID.
         :rtype: str
         """
         return self._ZoneId
@@ -3324,7 +3324,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -3348,7 +3348,7 @@ class DescribeRecordRequest(AbstractModel):
 
 
 class DescribeRecordResponse(AbstractModel):
-    """DescribeRecord response structure.
+    r"""DescribeRecord response structure.
 
     """
 
@@ -3364,7 +3364,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RecordInfo(self):
-        """Record information.
+        r"""Record information.
         :rtype: :class:`tencentcloud.privatedns.v20201028.models.RecordInfo`
         """
         return self._RecordInfo
@@ -3375,7 +3375,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3393,7 +3393,7 @@ class DescribeRecordResponse(AbstractModel):
 
 
 class DescribeRequestDataRequest(AbstractModel):
-    """DescribeRequestData request structure.
+    r"""DescribeRequestData request structure.
 
     """
 
@@ -3412,7 +3412,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeBegin(self):
-        """Request volume statistics start time in the format of 2020-11-22 00:00:00
+        r"""Request volume statistics start time in the format of 2020-11-22 00:00:00
         :rtype: str
         """
         return self._TimeRangeBegin
@@ -3423,7 +3423,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameter:
+        r"""Filter parameter:
         :rtype: list of Filter
         """
         return self._Filters
@@ -3434,7 +3434,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
     @property
     def TimeRangeEnd(self):
-        """Request volume statistics end time in the format of 2020-11-22 23:59:59
+        r"""Request volume statistics end time in the format of 2020-11-22 23:59:59
         :rtype: str
         """
         return self._TimeRangeEnd
@@ -3464,7 +3464,7 @@ class DescribeRequestDataRequest(AbstractModel):
 
 
 class DescribeRequestDataResponse(AbstractModel):
-    """DescribeRequestData response structure.
+    r"""DescribeRequestData response structure.
 
     """
 
@@ -3483,7 +3483,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Request volume statistics table
+        r"""Request volume statistics table
         :rtype: list of MetricData
         """
         return self._Data
@@ -3494,7 +3494,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def Interval(self):
-        """Request volume unit time. Valid values: Day, Hour
+        r"""Request volume unit time. Valid values: Day, Hour
         :rtype: str
         """
         return self._Interval
@@ -3505,7 +3505,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3527,7 +3527,7 @@ class DescribeRequestDataResponse(AbstractModel):
 
 
 class EndPointInfo(AbstractModel):
-    """Endpoint information.
+    r"""Endpoint information.
 
     """
 
@@ -3557,7 +3557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -3568,7 +3568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -3579,7 +3579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointServiceId(self):
-        """Endpoint service ID.
+        r"""Endpoint service ID.
         :rtype: str
         """
         return self._EndPointServiceId
@@ -3590,7 +3590,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointVipSet(self):
-        """VIP list of the endpoint.
+        r"""VIP list of the endpoint.
         :rtype: list of str
         """
         return self._EndPointVipSet
@@ -3601,7 +3601,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionCode(self):
-        """ap-guangzhou
+        r"""ap-guangzhou
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3613,7 +3613,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag key-value pair collection.
+        r"""Tag key-value pair collection.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagInfo
         """
@@ -3647,7 +3647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class EndpointService(AbstractModel):
-    """PrivateDNS outbound endpoint forwarding IP
+    r"""PrivateDNS outbound endpoint forwarding IP
 
     """
 
@@ -3697,7 +3697,7 @@ Required if the access type is CCN.
 
     @property
     def AccessType(self):
-        """Specifies the forwarding target IP network access type.
+        r"""Specifies the forwarding target IP network access type.
 CLB: Specifies that the forwarding IP is the private CLB VIP.
 CCN: Specifies forwarding IP through CCN routing.
         :rtype: str
@@ -3710,7 +3710,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def Pip(self):
-        """Specifies the forwarding target IP address.
+        r"""Specifies the forwarding target IP address.
         :rtype: str
         """
         return self._Pip
@@ -3721,7 +3721,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def Pport(self):
-        """Specifies the forwarding IP port number.
+        r"""Specifies the forwarding IP port number.
         :rtype: int
         """
         return self._Pport
@@ -3732,7 +3732,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def VpcId(self):
-        """Specifies the unique VPC ID.
+        r"""Specifies the unique VPC ID.
         :rtype: str
         """
         return self._VpcId
@@ -3743,7 +3743,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def Vip(self):
-        """Specifies the forwarding target IP proxy IP.
+        r"""Specifies the forwarding target IP proxy IP.
         :rtype: str
         """
         return self._Vip
@@ -3754,7 +3754,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def Vport(self):
-        """Specifies the forwarding target IP proxy port.
+        r"""Specifies the forwarding target IP proxy port.
         :rtype: int
         """
         return self._Vport
@@ -3765,7 +3765,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def Proto(self):
-        """Specifies the forwarding target IP protocol.
+        r"""Specifies the forwarding target IP protocol.
         :rtype: str
         """
         return self._Proto
@@ -3776,7 +3776,7 @@ CCN: Specifies forwarding IP through CCN routing.
 
     @property
     def SubnetId(self):
-        """Specifies the unique subnet ID.
+        r"""Specifies the unique subnet ID.
 Required if the access type is CCN.
         :rtype: str
         """
@@ -3788,7 +3788,7 @@ Required if the access type is CCN.
 
     @property
     def AccessGatewayId(self):
-        """ccn id
+        r"""ccn id
 Required if the access type is CCN.
         :rtype: str
         """
@@ -3800,7 +3800,7 @@ Required if the access type is CCN.
 
     @property
     def SnatVipCidr(self):
-        """The SNAT CIDR block of the outbound endpoint.
+        r"""The SNAT CIDR block of the outbound endpoint.
         :rtype: str
         """
         return self._SnatVipCidr
@@ -3811,7 +3811,7 @@ Required if the access type is CCN.
 
     @property
     def SnatVipSet(self):
-        """The SNAT IP list of the outbound endpoint.
+        r"""The SNAT IP list of the outbound endpoint.
         :rtype: str
         """
         return self._SnatVipSet
@@ -3822,7 +3822,7 @@ Required if the access type is CCN.
 
     @property
     def Region(self):
-        """The region of the outbound endpoint service.
+        r"""The region of the outbound endpoint service.
         :rtype: str
         """
         return self._Region
@@ -3856,7 +3856,7 @@ Required if the access type is CCN.
 
 
 class Filter(AbstractModel):
-    """Filter parameter
+    r"""Filter parameter
 
     """
 
@@ -3872,7 +3872,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Parameter name
+        r"""Parameter name
         :rtype: str
         """
         return self._Name
@@ -3883,7 +3883,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Array of parameter values
+        r"""Array of parameter values
         :rtype: list of str
         """
         return self._Values
@@ -3907,7 +3907,7 @@ class Filter(AbstractModel):
 
 
 class FlowUsage(AbstractModel):
-    """Traffic package usage
+    r"""Traffic package usage
 
     """
 
@@ -3926,7 +3926,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def FlowType(self):
-        """Traffic package type, Valid values: ZONE (private domain); TRAFFIC (DNS traffic package)
+        r"""Traffic package type, Valid values: ZONE (private domain); TRAFFIC (DNS traffic package)
         :rtype: str
         """
         return self._FlowType
@@ -3937,7 +3937,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def TotalQuantity(self):
-        """Traffic package quota
+        r"""Traffic package quota
         :rtype: int
         """
         return self._TotalQuantity
@@ -3948,7 +3948,7 @@ class FlowUsage(AbstractModel):
 
     @property
     def AvailableQuantity(self):
-        """Available quota of traffic package
+        r"""Available quota of traffic package
         :rtype: int
         """
         return self._AvailableQuantity
@@ -3973,7 +3973,7 @@ class FlowUsage(AbstractModel):
 
 
 class ForwardIp(AbstractModel):
-    """PrivateDNS outbound endpoint forwarding IP
+    r"""PrivateDNS outbound endpoint forwarding IP
 
     """
 
@@ -4009,7 +4009,7 @@ Required when the access type is CCN.
 
     @property
     def AccessType(self):
-        """Forwarding target IP network access type.
+        r"""Forwarding target IP network access type.
 CLB: The forwarding IP is the internal CLB VIP.
 CCN: Forwarding IP through CCN routing.
         :rtype: str
@@ -4022,7 +4022,7 @@ CCN: Forwarding IP through CCN routing.
 
     @property
     def Host(self):
-        """Forwarding target IP address.
+        r"""Forwarding target IP address.
         :rtype: str
         """
         return self._Host
@@ -4033,7 +4033,7 @@ CCN: Forwarding IP through CCN routing.
 
     @property
     def Port(self):
-        """Specifies the forwarding IP port number.
+        r"""Specifies the forwarding IP port number.
         :rtype: int
         """
         return self._Port
@@ -4044,7 +4044,7 @@ CCN: Forwarding IP through CCN routing.
 
     @property
     def IpNum(self):
-        """Specifies the number of outbound endpoints.
+        r"""Specifies the number of outbound endpoints.
 Minimum 1, maximum 6.
         :rtype: int
         """
@@ -4056,7 +4056,7 @@ Minimum 1, maximum 6.
 
     @property
     def VpcId(self):
-        """Unique VPC ID.
+        r"""Unique VPC ID.
         :rtype: str
         """
         return self._VpcId
@@ -4067,7 +4067,7 @@ Minimum 1, maximum 6.
 
     @property
     def SubnetId(self):
-        """Unique subnet ID.
+        r"""Unique subnet ID.
 Required when the access type is CCN.
         :rtype: str
         """
@@ -4079,7 +4079,7 @@ Required when the access type is CCN.
 
     @property
     def AccessGatewayId(self):
-        """ccn id
+        r"""ccn id
 Required when the access type is CCN.
         :rtype: str
         """
@@ -4109,7 +4109,7 @@ Required when the access type is CCN.
 
 
 class ForwardRule(AbstractModel):
-    """Forwarding rule details.
+    r"""Forwarding rule details.
 
     """
 
@@ -4155,7 +4155,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def Domain(self):
-        """Private domain name.
+        r"""Private domain name.
         :rtype: str
         """
         return self._Domain
@@ -4166,7 +4166,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def RuleName(self):
-        """Forwarding rule name.
+        r"""Forwarding rule name.
         :rtype: str
         """
         return self._RuleName
@@ -4177,7 +4177,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def RuleId(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: str
         """
         return self._RuleId
@@ -4188,7 +4188,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def RuleType(self):
-        """Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.
+        r"""Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.
         :rtype: str
         """
         return self._RuleType
@@ -4199,7 +4199,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedAt
@@ -4210,7 +4210,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """Update time
+        r"""Update time
         :rtype: str
         """
         return self._UpdatedAt
@@ -4221,7 +4221,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
         :rtype: str
         """
         return self._EndPointName
@@ -4232,7 +4232,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -4243,7 +4243,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def ForwardAddress(self):
-        """Forwarding address.
+        r"""Forwarding address.
         :rtype: list of str
         """
         return self._ForwardAddress
@@ -4254,7 +4254,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def VpcSet(self):
-        """List of VPCs bound to the private domain.
+        r"""List of VPCs bound to the private domain.
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -4265,7 +4265,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def ZoneId(self):
-        """ID of the bound private domain.
+        r"""ID of the bound private domain.
         :rtype: str
         """
         return self._ZoneId
@@ -4276,7 +4276,7 @@ class ForwardRule(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -4320,7 +4320,7 @@ class ForwardRule(AbstractModel):
 
 
 class MetricData(AbstractModel):
-    """Statistics table
+    r"""Statistics table
 
     """
 
@@ -4343,7 +4343,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Resource(self):
-        """Resource description
+        r"""Resource description
         :rtype: str
         """
         return self._Resource
@@ -4354,7 +4354,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Metric(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._Metric
@@ -4365,7 +4365,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DataSet(self):
-        """Table data
+        r"""Table data
         :rtype: list of DatePoint
         """
         return self._DataSet
@@ -4376,7 +4376,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MetricCount(self):
-        """The total number of requests within the query scope.
+        r"""The total number of requests within the query scope.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -4408,7 +4408,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class ModifyForwardRuleRequest(AbstractModel):
-    """ModifyForwardRule request structure.
+    r"""ModifyForwardRule request structure.
 
     """
 
@@ -4427,7 +4427,7 @@ class ModifyForwardRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        """Forwarding rule ID.
+        r"""Forwarding rule ID.
         :rtype: str
         """
         return self._RuleId
@@ -4438,7 +4438,7 @@ class ModifyForwardRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Forwarding rule name.
+        r"""Forwarding rule name.
         :rtype: str
         """
         return self._RuleName
@@ -4449,7 +4449,7 @@ class ModifyForwardRuleRequest(AbstractModel):
 
     @property
     def EndPointId(self):
-        """Endpoint ID.
+        r"""Endpoint ID.
         :rtype: str
         """
         return self._EndPointId
@@ -4474,7 +4474,7 @@ class ModifyForwardRuleRequest(AbstractModel):
 
 
 class ModifyForwardRuleResponse(AbstractModel):
-    """ModifyForwardRule response structure.
+    r"""ModifyForwardRule response structure.
 
     """
 
@@ -4487,7 +4487,7 @@ class ModifyForwardRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4502,7 +4502,7 @@ class ModifyForwardRuleResponse(AbstractModel):
 
 
 class ModifyPrivateZoneRecordRequest(AbstractModel):
-    """ModifyPrivateZoneRecord request structure.
+    r"""ModifyPrivateZoneRecord request structure.
 
     """
 
@@ -4536,7 +4536,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID
+        r"""Private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -4547,7 +4547,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -4558,7 +4558,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -4569,7 +4569,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Subdomain, such as "www", "m", and "@"
+        r"""Subdomain, such as "www", "m", and "@"
         :rtype: str
         """
         return self._SubDomain
@@ -4580,7 +4580,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def RecordValue(self):
-        """Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.
+        r"""Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.
         :rtype: str
         """
         return self._RecordValue
@@ -4591,7 +4591,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """Record weight. Value range: 1–100
+        r"""Record weight. Value range: 1–100
         :rtype: int
         """
         return self._Weight
@@ -4602,7 +4602,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
+        r"""MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
         :rtype: int
         """
         return self._MX
@@ -4613,7 +4613,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
+        r"""Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
         :rtype: int
         """
         return self._TTL
@@ -4643,7 +4643,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
 
 
 class ModifyPrivateZoneRecordResponse(AbstractModel):
-    """ModifyPrivateZoneRecord response structure.
+    r"""ModifyPrivateZoneRecord response structure.
 
     """
 
@@ -4656,7 +4656,7 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4671,7 +4671,7 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
 
 class ModifyPrivateZoneRequest(AbstractModel):
-    """ModifyPrivateZone request structure.
+    r"""ModifyPrivateZone request structure.
 
     """
 
@@ -4693,7 +4693,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID
+        r"""Private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -4704,7 +4704,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -4715,7 +4715,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def DnsForwardStatus(self):
-        """Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED
+        r"""Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -4726,7 +4726,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     @property
     def CnameSpeedupStatus(self):
-        """Whether to enable CNAME flattening. Valid values: `ENABLED` and `DISABLED`.
+        r"""Whether to enable CNAME flattening. Valid values: `ENABLED` and `DISABLED`.
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -4752,7 +4752,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
 
 class ModifyPrivateZoneResponse(AbstractModel):
-    """ModifyPrivateZone response structure.
+    r"""ModifyPrivateZone response structure.
 
     """
 
@@ -4765,7 +4765,7 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4780,7 +4780,7 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
 
 class ModifyPrivateZoneVpcRequest(AbstractModel):
-    """ModifyPrivateZoneVpc request structure.
+    r"""ModifyPrivateZoneVpc request structure.
 
     """
 
@@ -4799,7 +4799,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID
+        r"""Private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -4810,7 +4810,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def VpcSet(self):
-        """List of all VPCs associated with private domain
+        r"""List of all VPCs associated with private domain
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -4821,7 +4821,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """List of authorized accounts' VPCs to associate with the private domain
+        r"""List of authorized accounts' VPCs to associate with the private domain
         :rtype: list of AccountVpcInfo
         """
         return self._AccountVpcSet
@@ -4856,7 +4856,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
 
 
 class ModifyPrivateZoneVpcResponse(AbstractModel):
-    """ModifyPrivateZoneVpc response structure.
+    r"""ModifyPrivateZoneVpc response structure.
 
     """
 
@@ -4878,7 +4878,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID, such as zone-xxxxxx
+        r"""Private domain ID, such as zone-xxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -4889,7 +4889,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        """List of VPCs associated with domain
+        r"""List of VPCs associated with domain
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -4900,7 +4900,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def AccountVpcSet(self):
-        """List of authorized accounts' VPCs associated with the private domain
+        r"""List of authorized accounts' VPCs associated with the private domain
         :rtype: list of AccountVpcInfoOutput
         """
         return self._AccountVpcSet
@@ -4911,7 +4911,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4939,7 +4939,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
 
 
 class ModifyRecordsStatusRequest(AbstractModel):
-    """ModifyRecordsStatus request structure.
+    r"""ModifyRecordsStatus request structure.
 
     """
 
@@ -4958,7 +4958,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """The private domain ID
+        r"""The private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -4969,7 +4969,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def RecordIds(self):
-        """The DNS record IDs.
+        r"""The DNS record IDs.
         :rtype: list of int
         """
         return self._RecordIds
@@ -4980,7 +4980,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """`enabled`: Enable; `disabled`: Disable.
+        r"""`enabled`: Enable; `disabled`: Disable.
         :rtype: str
         """
         return self._Status
@@ -5005,7 +5005,7 @@ class ModifyRecordsStatusRequest(AbstractModel):
 
 
 class ModifyRecordsStatusResponse(AbstractModel):
-    """ModifyRecordsStatus response structure.
+    r"""ModifyRecordsStatus response structure.
 
     """
 
@@ -5027,7 +5027,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """The private domain ID
+        r"""The private domain ID
         :rtype: str
         """
         return self._ZoneId
@@ -5038,7 +5038,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RecordIds(self):
-        """The DNS record IDs.
+        r"""The DNS record IDs.
         :rtype: list of int
         """
         return self._RecordIds
@@ -5049,7 +5049,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """`enabled`: Enabled; `disabled`: Disabled.
+        r"""`enabled`: Enabled; `disabled`: Disabled.
         :rtype: str
         """
         return self._Status
@@ -5060,7 +5060,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5078,7 +5078,7 @@ class ModifyRecordsStatusResponse(AbstractModel):
 
 
 class OutboundEndpoint(AbstractModel):
-    """Outbound endpoint.
+    r"""Outbound endpoint.
 
     """
 
@@ -5120,7 +5120,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def EndpointId(self):
-        """Outbound endpoint ID.
+        r"""Outbound endpoint ID.
         :rtype: str
         """
         return self._EndpointId
@@ -5131,7 +5131,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def EndpointName(self):
-        """Outbound endpoint name.
+        r"""Outbound endpoint name.
         :rtype: str
         """
         return self._EndpointName
@@ -5142,7 +5142,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def Region(self):
-        """The region of the outbound endpoint.
+        r"""The region of the outbound endpoint.
         :rtype: str
         """
         return self._Region
@@ -5153,7 +5153,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -5164,7 +5164,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def EndpointServiceSet(self):
-        """Outbound endpoint information.
+        r"""Outbound endpoint information.
 Returned only when the forwarding architecture is V2R.
         :rtype: list of EndpointService
         """
@@ -5176,7 +5176,7 @@ Returned only when the forwarding architecture is V2R.
 
     @property
     def ForwardLinkArch(self):
-        """Forwarding link architecture.
+        r"""Forwarding link architecture.
 V2V: privatelink
 V2R: jnsgw
         :rtype: str
@@ -5189,7 +5189,7 @@ V2R: jnsgw
 
     @property
     def EndPointServiceId(self):
-        """Endpoint service ID.
+        r"""Endpoint service ID.
 
 Returned only when the forwarding architecture is V2V.
 
@@ -5203,7 +5203,7 @@ Returned only when the forwarding architecture is V2V.
 
     @property
     def EndPointVipSet(self):
-        """VIP list of the endpoint.
+        r"""VIP list of the endpoint.
 
 Returned only when the forwarding architecture is V2V.
         :rtype: list of str
@@ -5245,7 +5245,7 @@ Returned only when the forwarding architecture is V2V.
 
 
 class PrivateDNSAccount(AbstractModel):
-    """Private DNS account
+    r"""Private DNS account
 
     """
 
@@ -5264,7 +5264,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Uin(self):
-        """Root account UIN
+        r"""Root account UIN
         :rtype: str
         """
         return self._Uin
@@ -5275,7 +5275,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Account(self):
-        """Root account name
+        r"""Root account name
         :rtype: str
         """
         return self._Account
@@ -5286,7 +5286,7 @@ class PrivateDNSAccount(AbstractModel):
 
     @property
     def Nickname(self):
-        """Account name
+        r"""Account name
         :rtype: str
         """
         return self._Nickname
@@ -5311,7 +5311,7 @@ class PrivateDNSAccount(AbstractModel):
 
 
 class PrivateZone(AbstractModel):
-    """Private domain information.
+    r"""Private domain information.
 
     """
 
@@ -5387,7 +5387,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """Private domain ID, which is in zone-xxxxxxxx format.
+        r"""Private domain ID, which is in zone-xxxxxxxx format.
         :rtype: str
         """
         return self._ZoneId
@@ -5398,7 +5398,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
-        """UIN of the domain name owner.
+        r"""UIN of the domain name owner.
         :rtype: int
         """
         return self._OwnerUin
@@ -5409,7 +5409,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Private domain name.
+        r"""Private domain name.
         :rtype: str
         """
         return self._Domain
@@ -5420,7 +5420,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedOn(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -5431,7 +5431,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._UpdatedOn
@@ -5442,7 +5442,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordCount(self):
-        """Number of records.
+        r"""Number of records.
         :rtype: int
         """
         return self._RecordCount
@@ -5453,7 +5453,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5465,7 +5465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcSet(self):
-        """List of bound VPCs.
+        r"""List of bound VPCs.
         :rtype: list of VpcInfo
         """
         return self._VpcSet
@@ -5476,7 +5476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status of the VPC bound with the private domain. SUSPEND: The VPC is not associated; ENABLED: the VPC has been associated.
+        r"""Status of the VPC bound with the private domain. SUSPEND: The VPC is not associated; ENABLED: the VPC has been associated.
 , FAILED: the VPC fails to be associated.
         :rtype: str
         """
@@ -5488,7 +5488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsForwardStatus(self):
-        """Recursive resolution status of the domain name. ENABLED: enabled; DISABLED: disabled.
+        r"""Recursive resolution status of the domain name. ENABLED: enabled; DISABLED: disabled.
         :rtype: str
         """
         return self._DnsForwardStatus
@@ -5499,7 +5499,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag key-value pair collection.
+        r"""Tag key-value pair collection.
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -5510,7 +5510,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountVpcSet(self):
-        """List of bound VPCs of the associated account.
+        r"""List of bound VPCs of the associated account.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AccountVpcInfoOutput
         """
@@ -5522,7 +5522,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsCustomTld(self):
-        """Whether the TLD is a custom one.
+        r"""Whether the TLD is a custom one.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -5534,7 +5534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnameSpeedupStatus(self):
-        """CNAME acceleration status. ENABLED: enabled; DISABLED: disabled.
+        r"""CNAME acceleration status. ENABLED: enabled; DISABLED: disabled.
         :rtype: str
         """
         return self._CnameSpeedupStatus
@@ -5545,7 +5545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardRuleName(self):
-        """Forwarding rule name.
+        r"""Forwarding rule name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5557,7 +5557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardRuleType(self):
-        """Forwarding rule type. DOWN: from cloud to off-cloud; UP: from off-cloud to cloud. Currently, only DOWN is supported.
+        r"""Forwarding rule type. DOWN: from cloud to off-cloud; UP: from off-cloud to cloud. Currently, only DOWN is supported.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5569,7 +5569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardAddress(self):
-        """Forwarding address.
+        r"""Forwarding address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5581,7 +5581,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPointName(self):
-        """Endpoint name.
+        r"""Endpoint name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5593,7 +5593,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeletedVpcSet(self):
-        """Deleted VPC.
+        r"""Deleted VPC.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of VpcInfo
         """
@@ -5655,7 +5655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrivateZoneRecord(AbstractModel):
-    """Private domain information
+    r"""Private domain information
 
     """
 
@@ -5704,7 +5704,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._RecordId
@@ -5715,7 +5715,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """Private domain ID: zone-xxxxxxxx
+        r"""Private domain ID: zone-xxxxxxxx
         :rtype: str
         """
         return self._ZoneId
@@ -5726,7 +5726,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubDomain(self):
-        """Subdomain
+        r"""Subdomain
         :rtype: str
         """
         return self._SubDomain
@@ -5737,7 +5737,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordType(self):
-        """Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+        r"""Record type. Valid values: "A", "AAAA", "CNAME", "MX", "TXT", "PTR"
         :rtype: str
         """
         return self._RecordType
@@ -5748,7 +5748,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordValue(self):
-        """Record value
+        r"""Record value
         :rtype: str
         """
         return self._RecordValue
@@ -5759,7 +5759,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
+        r"""Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600
         :rtype: int
         """
         return self._TTL
@@ -5770,7 +5770,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MX(self):
-        """MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
+        r"""MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5782,7 +5782,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Record status: ENABLED
+        r"""Record status: ENABLED
         :rtype: str
         """
         return self._Status
@@ -5793,7 +5793,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """Record weight. Value range: 1–100
+        r"""Record weight. Value range: 1–100
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5805,7 +5805,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedOn(self):
-        """Record creation time
+        r"""Record creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -5816,7 +5816,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """Record update time
+        r"""Record update time
         :rtype: str
         """
         return self._UpdatedOn
@@ -5827,7 +5827,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extra(self):
-        """Additional information
+        r"""Additional information
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5862,7 +5862,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class RecordInfo(AbstractModel):
-    """Private domain information.
+    r"""Private domain information.
 
     """
 
@@ -5908,7 +5908,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID.
+        r"""Record ID.
         :rtype: str
         """
         return self._RecordId
@@ -5919,7 +5919,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Private domain ID, which is in zone-xxxxxxxx format.
+        r"""Private domain ID, which is in zone-xxxxxxxx format.
         :rtype: str
         """
         return self._ZoneId
@@ -5930,7 +5930,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Subdomain name.
+        r"""Subdomain name.
         :rtype: str
         """
         return self._SubDomain
@@ -5941,7 +5941,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type. Valid values: A, AAAA, CNAME, MX, TXT, and PTR.
+        r"""Record type. Valid values: A, AAAA, CNAME, MX, TXT, and PTR.
         :rtype: str
         """
         return self._RecordType
@@ -5952,7 +5952,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordValue(self):
-        """Record value.
+        r"""Record value.
         :rtype: str
         """
         return self._RecordValue
@@ -5963,7 +5963,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def TTL(self):
-        """Record cache time. The smaller the value, the faster the record will take effect. Value range: 1-86,400s. Default value: 600.
+        r"""Record cache time. The smaller the value, the faster the record will take effect. Value range: 1-86,400s. Default value: 600.
         :rtype: int
         """
         return self._TTL
@@ -5974,7 +5974,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def MX(self):
-        """MX priority, which is required when the record type is mx. valid values: 5, 10, 15, 20, 30, 40, and 50.
+        r"""MX priority, which is required when the record type is mx. valid values: 5, 10, 15, 20, 30, 40, and 50.
         :rtype: int
         """
         return self._MX
@@ -5985,7 +5985,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Weight(self):
-        """Record weight. valid values: 1–100.
+        r"""Record weight. valid values: 1–100.
         :rtype: int
         """
         return self._Weight
@@ -5996,7 +5996,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """Record creation time.
+        r"""Record creation time.
         :rtype: str
         """
         return self._CreatedOn
@@ -6007,7 +6007,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """Record update time.
+        r"""Record update time.
         :rtype: str
         """
         return self._UpdatedOn
@@ -6018,7 +6018,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Enabled(self):
-        """0 suspend 1 enable.
+        r"""0 suspend 1 enable.
         :rtype: int
         """
         return self._Enabled
@@ -6029,7 +6029,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -6063,7 +6063,7 @@ class RecordInfo(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """Region information
+    r"""Region information
 
     """
 
@@ -6094,7 +6094,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionCode(self):
-        """Region encoding
+        r"""Region encoding
         :rtype: str
         """
         return self._RegionCode
@@ -6105,7 +6105,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnName(self):
-        """Region name
+        r"""Region name
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -6118,7 +6118,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnName(self):
-        """English name of the region
+        r"""English name of the region
         :rtype: str
         """
         return self._EnName
@@ -6129,7 +6129,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -6142,7 +6142,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AvailableZoneNum(self):
-        """Number of AZs
+        r"""Number of AZs
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -6171,13 +6171,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubscribePrivateZoneServiceRequest(AbstractModel):
-    """SubscribePrivateZoneService request structure.
+    r"""SubscribePrivateZoneService request structure.
 
     """
 
 
 class SubscribePrivateZoneServiceResponse(AbstractModel):
-    """SubscribePrivateZoneService response structure.
+    r"""SubscribePrivateZoneService response structure.
 
     """
 
@@ -6193,7 +6193,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        """Private DNS service activation status
+        r"""Private DNS service activation status
         :rtype: str
         """
         return self._ServiceStatus
@@ -6204,7 +6204,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6220,7 +6220,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
 
 
 class TagInfo(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -6236,7 +6236,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -6247,7 +6247,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -6271,7 +6271,7 @@ class TagInfo(AbstractModel):
 
 
 class TldQuota(AbstractModel):
-    """TLD quota
+    r"""TLD quota
 
     """
 
@@ -6293,7 +6293,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Total(self):
-        """Total quota
+        r"""Total quota
         :rtype: int
         """
         return self._Total
@@ -6304,7 +6304,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Used(self):
-        """Used quota
+        r"""Used quota
         :rtype: int
         """
         return self._Used
@@ -6315,7 +6315,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Stock(self):
-        """Available quota
+        r"""Available quota
         :rtype: int
         """
         return self._Stock
@@ -6326,7 +6326,7 @@ class TldQuota(AbstractModel):
 
     @property
     def Quota(self):
-        """User’s quota
+        r"""User’s quota
         :rtype: int
         """
         return self._Quota
@@ -6352,7 +6352,7 @@ class TldQuota(AbstractModel):
 
 
 class VpcInfo(AbstractModel):
-    """VPC information
+    r"""VPC information
 
     """
 
@@ -6368,7 +6368,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VpcId: vpc-xadsafsdasd
+        r"""VpcId: vpc-xadsafsdasd
         :rtype: str
         """
         return self._UniqVpcId
@@ -6379,7 +6379,7 @@ class VpcInfo(AbstractModel):
 
     @property
     def Region(self):
-        """VPC region: ap-guangzhou, ap-shanghai
+        r"""VPC region: ap-guangzhou, ap-shanghai
         :rtype: str
         """
         return self._Region

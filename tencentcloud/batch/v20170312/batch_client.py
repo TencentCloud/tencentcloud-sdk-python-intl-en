@@ -27,7 +27,7 @@ class BatchClient(AbstractClient):
 
 
     def AttachInstances(self, request):
-        """This API is used to add existing instances to the compute environment.
+        r"""This API is used to add existing instances to the compute environment.
         Requirements: <br/>
         1. The instance is not in the batch compute system.<br/>
         2. The instance is in “Running” status.<br/>
@@ -56,7 +56,7 @@ class BatchClient(AbstractClient):
 
 
     def CreateComputeEnv(self, request):
-        """This API is used to create a compute environment.
+        r"""This API is used to create a compute environment.
 
         :param request: Request instance for CreateComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.CreateComputeEnvRequest`
@@ -79,7 +79,7 @@ class BatchClient(AbstractClient):
 
 
     def CreateTaskTemplate(self, request):
-        """This API is used to create a task template.
+        r"""This API is used to create a task template.
 
         :param request: Request instance for CreateTaskTemplate.
         :type request: :class:`tencentcloud.batch.v20170312.models.CreateTaskTemplateRequest`
@@ -102,7 +102,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteComputeEnv(self, request):
-        """This API is used to delete a compute environment.
+        r"""This API is used to delete a compute environment.
 
         :param request: Request instance for DeleteComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.DeleteComputeEnvRequest`
@@ -125,7 +125,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteJob(self, request):
-        """This API is used to delete a job.
+        r"""This API is used to delete a job.
         When a job is deleted, all related information is deleted and the job cannot be queried.
         To delete a job, the job and all its task instances must be in SUCCEED or FAILED status.
 
@@ -150,7 +150,7 @@ class BatchClient(AbstractClient):
 
 
     def DeleteTaskTemplates(self, request):
-        """This API is used to delete task template information.
+        r"""This API is used to delete task template information.
 
         :param request: Request instance for DeleteTaskTemplates.
         :type request: :class:`tencentcloud.batch.v20170312.models.DeleteTaskTemplatesRequest`
@@ -173,7 +173,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeAvailableCvmInstanceTypes(self, request):
-        """This API is used to view the information of available CVM model configurations.
+        r"""This API is used to view the information of available CVM model configurations.
 
         :param request: Request instance for DescribeAvailableCvmInstanceTypes.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeAvailableCvmInstanceTypesRequest`
@@ -196,7 +196,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnv(self, request):
-        """This API is used to query compute environment details.
+        r"""This API is used to query compute environment details.
 
         :param request: Request instance for DescribeComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvRequest`
@@ -219,7 +219,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvActivities(self, request):
-        """This API is used to query the information of activities in the compute environment.
+        r"""This API is used to query the information of activities in the compute environment.
 
         :param request: Request instance for DescribeComputeEnvActivities.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvActivitiesRequest`
@@ -242,7 +242,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvCreateInfo(self, request):
-        """This API is used to query the compute environment creation information.
+        r"""This API is used to query the compute environment creation information.
 
         :param request: Request instance for DescribeComputeEnvCreateInfo.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvCreateInfoRequest`
@@ -265,7 +265,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvCreateInfos(self, request):
-        """This API is used to view the list of information of compute environment creation, including name, description, type, environment parameters, notifications, and number of desired nodes.
+        r"""This API is used to view the list of information of compute environment creation, including name, description, type, environment parameters, notifications, and number of desired nodes.
 
         :param request: Request instance for DescribeComputeEnvCreateInfos.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvCreateInfosRequest`
@@ -288,7 +288,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeComputeEnvs(self, request):
-        """This API is used to get the list of compute environments.
+        r"""This API is used to get the list of compute environments.
 
         :param request: Request instance for DescribeComputeEnvs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeComputeEnvsRequest`
@@ -311,7 +311,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeCvmZoneInstanceConfigInfos(self, request):
-        """This API is used to get the model configuration information of the availability zone of BatchCompute.
+        r"""This API is used to get the model configuration information of the availability zone of BatchCompute.
 
         :param request: Request instance for DescribeCvmZoneInstanceConfigInfos.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeCvmZoneInstanceConfigInfosRequest`
@@ -334,7 +334,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeInstanceCategories(self, request):
-        """Currently, CVM instance families are classified into different category, and each category contains several instance families. This API is used to query the instance category information.
+        r"""Currently, CVM instance families are classified into different category, and each category contains several instance families. This API is used to query the instance category information.
 
         :param request: Request instance for DescribeInstanceCategories.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeInstanceCategoriesRequest`
@@ -357,7 +357,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJob(self, request):
-        """This API is used to query the details of a job, including internal task (`Task`) and dependency (`Dependence`) information.
+        r"""This API is used to query the details of a job, including internal task (`Task`) and dependency (`Dependence`) information.
 
         :param request: Request instance for DescribeJob.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobRequest`
@@ -380,7 +380,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJobSubmitInfo(self, request):
-        """This API is used to query the submission information of the specified job, with the return including the job submission information used as input parameters in the JobId and SubmitJob APIs.
+        r"""This API is used to query the submission information of the specified job, with the return including the job submission information used as input parameters in the JobId and SubmitJob APIs.
 
         :param request: Request instance for DescribeJobSubmitInfo.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobSubmitInfoRequest`
@@ -403,7 +403,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """This API is used to query the overview information of several jobs.
+        r"""This API is used to query the overview information of several jobs.
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobsRequest`
@@ -426,7 +426,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """This API is used to query the details of a specified task, including information of the task instances inside the task.
+        r"""This API is used to query the details of a specified task, including information of the task instances inside the task.
 
         :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskRequest`
@@ -449,7 +449,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTaskLogs(self, request):
-        """This API is used to get the standard outputs and standard error logs of multiple task instances.
+        r"""This API is used to get the standard outputs and standard error logs of multiple task instances.
 
         :param request: Request instance for DescribeTaskLogs.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskLogsRequest`
@@ -472,7 +472,7 @@ class BatchClient(AbstractClient):
 
 
     def DescribeTaskTemplates(self, request):
-        """This API is used to query the information of task templates.
+        r"""This API is used to query the information of task templates.
 
         :param request: Request instance for DescribeTaskTemplates.
         :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskTemplatesRequest`
@@ -495,7 +495,7 @@ class BatchClient(AbstractClient):
 
 
     def DetachInstances(self, request):
-        """This API is used to remove instances that from compute environment.
+        r"""This API is used to remove instances that from compute environment.
 
         :param request: Request instance for DetachInstances.
         :type request: :class:`tencentcloud.batch.v20170312.models.DetachInstancesRequest`
@@ -518,7 +518,7 @@ class BatchClient(AbstractClient):
 
 
     def ModifyComputeEnv(self, request):
-        """This API is used to modify the attributes of a compute environment.
+        r"""This API is used to modify the attributes of a compute environment.
 
         :param request: Request instance for ModifyComputeEnv.
         :type request: :class:`tencentcloud.batch.v20170312.models.ModifyComputeEnvRequest`
@@ -541,7 +541,7 @@ class BatchClient(AbstractClient):
 
 
     def ModifyTaskTemplate(self, request):
-        """This API is used to modify a task template.
+        r"""This API is used to modify a task template.
 
         :param request: Request instance for ModifyTaskTemplate.
         :type request: :class:`tencentcloud.batch.v20170312.models.ModifyTaskTemplateRequest`
@@ -564,7 +564,7 @@ class BatchClient(AbstractClient):
 
 
     def RetryJobs(self, request):
-        """This API is used to retry the failed task instances in a job.
+        r"""This API is used to retry the failed task instances in a job.
         Job retry is supported only if a job is in the "FAILED" state. After the retry operation succeeds, the job will retry the failing task instances in each task in turn according to the task dependencies specified in the "DAG". The history information of the task instances will be reset, the instances will participate in subsequent scheduling and execution as if they are run for the first time.
 
         :param request: Request instance for RetryJobs.
@@ -588,7 +588,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateComputeNode(self, request):
-        """This API is used to terminate a compute node.
+        r"""This API is used to terminate a compute node.
         Termination is allowed for nodes in the CREATED, CREATION_FAILED, RUNNING or ABNORMAL state.
 
         :param request: Request instance for TerminateComputeNode.
@@ -612,7 +612,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateComputeNodes(self, request):
-        """This API is used to terminate compute nodes in batches. It is not allowed to repeatedly terminate the same node.
+        r"""This API is used to terminate compute nodes in batches. It is not allowed to repeatedly terminate the same node.
 
         :param request: Request instance for TerminateComputeNodes.
         :type request: :class:`tencentcloud.batch.v20170312.models.TerminateComputeNodesRequest`
@@ -635,7 +635,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateJob(self, request):
-        """This API is used to terminate a job.
+        r"""This API is used to terminate a job.
         Termination is prohibited if a job is in the `SUBMITTED` state and does not take effect if it is in the `SUCCEED` state.
         Job termination is an asynchronous process, and the time it takes to complete the entire process is directly proportional to the total number of tasks. The effect of terminating a job is equivalent to performing the TerminateTaskInstance operation on all the task instances contained in the job. For more information on the specific effect and usage, see TerminateTaskInstance.
 
@@ -660,7 +660,7 @@ class BatchClient(AbstractClient):
 
 
     def TerminateTaskInstance(self, request):
-        """This API is used to terminate a task instance.
+        r"""This API is used to terminate a task instance.
         `SUCCEED` and `FAILED` task instances: No action
         `SUBMITTED`, `PENDING`, and `RUNNABLE` task instances: Change status to `FAILED`.
         `STARTING`, `RUNNING` and `FAILED_INTERRUPTED` task instances: If `EnvId` is not specified, the CVM instance is terminated, and then the task status goes to `FAILED`. If `EnvId` is specified, the task instance changes to `FAILED`, then the related CVM instance is restarted.

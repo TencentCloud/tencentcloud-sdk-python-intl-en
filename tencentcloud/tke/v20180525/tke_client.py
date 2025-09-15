@@ -27,7 +27,7 @@ class TkeClient(AbstractClient):
 
 
     def AcquireClusterAdminRole(self, request):
-        """This API can be called to acquire the ClusterRole tke:admin. By setting a CAM policy, you can grant permission of this API to a sub-account that has higher permission in CAM. In this way, this sub-account can call this API directly to acquire the admin role of a Kubernetes cluster.
+        r"""This API can be called to acquire the ClusterRole tke:admin. By setting a CAM policy, you can grant permission of this API to a sub-account that has higher permission in CAM. In this way, this sub-account can call this API directly to acquire the admin role of a Kubernetes cluster.
 
         :param request: Request instance for AcquireClusterAdminRole.
         :type request: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleRequest`
@@ -50,7 +50,7 @@ class TkeClient(AbstractClient):
 
 
     def AddExistedInstances(self, request):
-        """This API is used to add one or more existing instances to a cluster.
+        r"""This API is used to add one or more existing instances to a cluster.
 
         :param request: Request instance for AddExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesRequest`
@@ -73,7 +73,7 @@ class TkeClient(AbstractClient):
 
 
     def AddNodeToNodePool(self, request):
-        """This API is used to move nodes in a cluster to a node pool.
+        r"""This API is used to move nodes in a cluster to a node pool.
 
         :param request: Request instance for AddNodeToNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddNodeToNodePoolRequest`
@@ -96,7 +96,7 @@ class TkeClient(AbstractClient):
 
 
     def AddVpcCniSubnets(self, request):
-        """This API is used to add subnets in the container network for a VPC-CNI cluster.
+        r"""This API is used to add subnets in the container network for a VPC-CNI cluster.
 
         :param request: Request instance for AddVpcCniSubnets.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddVpcCniSubnetsRequest`
@@ -119,7 +119,7 @@ class TkeClient(AbstractClient):
 
 
     def CheckEdgeClusterCIDR(self, request):
-        """This API is used to check if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks.
+        r"""This API is used to check if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks.
 
         :param request: Request instance for CheckEdgeClusterCIDR.
         :type request: :class:`tencentcloud.tke.v20180525.models.CheckEdgeClusterCIDRRequest`
@@ -142,7 +142,7 @@ class TkeClient(AbstractClient):
 
 
     def CheckInstancesUpgradeAble(self, request):
-        """This API is used to query nodes eligible for an upgrade in the given node list.
+        r"""This API is used to query nodes eligible for an upgrade in the given node list.
 
         :param request: Request instance for CheckInstancesUpgradeAble.
         :type request: :class:`tencentcloud.tke.v20180525.models.CheckInstancesUpgradeAbleRequest`
@@ -165,7 +165,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateBackupStorageLocation(self, request):
-        """This API is used to create a backup repository. You can specify the storage type (such as COS), the bucket region and the name. Up to 100 repositories can be created. Note that the settings of this API apply globally. You only need to create one backup repository, and back up TKE clusters in different regions in it.
+        r"""This API is used to create a backup repository. You can specify the storage type (such as COS), the bucket region and the name. Up to 100 repositories can be created. Note that the settings of this API apply globally. You only need to create one backup repository, and back up TKE clusters in different regions in it.
 
         :param request: Request instance for CreateBackupStorageLocation.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationRequest`
@@ -188,7 +188,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateCLSLogConfig(self, request):
-        """This API is used to create log collection configuration.
+        r"""This API is used to create log collection configuration.
 
         :param request: Request instance for CreateCLSLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigRequest`
@@ -211,7 +211,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateCluster(self, request):
-        """This API is used to create a cluster.
+        r"""This API is used to create a cluster.
 
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRequest`
@@ -234,7 +234,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpoint(self, request):
-        """This API is used to create a cluster access endpoint.
+        r"""This API is used to create a cluster access endpoint.
 
         :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
@@ -257,7 +257,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpointVip(self, request):
-        """This API is used to create a public network access port for a managed cluster. Note: This API will be disused soon. Please call `CreateClusterEndpoint` instead.
+        r"""This API is used to create a public network access port for a managed cluster. Note: This API will be disused soon. Please call `CreateClusterEndpoint` instead.
 
         :param request: Request instance for CreateClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
@@ -280,7 +280,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterInstances(self, request):
-        """This API is used to create one or more nodes in a cluster.
+        r"""This API is used to create one or more nodes in a cluster.
 
         :param request: Request instance for CreateClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesRequest`
@@ -303,7 +303,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterNodePool(self, request):
-        """This API is used to create a node pool.
+        r"""This API is used to create a node pool.
 
         :param request: Request instance for CreateClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolRequest`
@@ -326,7 +326,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterRouteTable(self, request):
-        """This API is used to create a cluster route table.
+        r"""This API is used to create a cluster route table.
 
         :param request: Request instance for CreateClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableRequest`
@@ -349,7 +349,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNode(self, request):
-        """This API is used to create the Pay-as-you-go Super Node.
+        r"""This API is used to create the Pay-as-you-go Super Node.
 
         :param request: Request instance for CreateClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodeRequest`
@@ -372,7 +372,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNodePool(self, request):
-        """This API is used to create the Super Node Pool.
+        r"""This API is used to create the Super Node Pool.
 
         :param request: Request instance for CreateClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodePoolRequest`
@@ -395,7 +395,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateECMInstances(self, request):
-        """This API is used to create an ECM instance.
+        r"""This API is used to create an ECM instance.
 
         :param request: Request instance for CreateECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateECMInstancesRequest`
@@ -418,7 +418,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEdgeCVMInstances(self, request):
-        """This API is used to create CVM instances in the specified TKE edge cluster.
+        r"""This API is used to create CVM instances in the specified TKE edge cluster.
 
         :param request: Request instance for CreateEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesRequest`
@@ -441,7 +441,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEdgeLogConfig(self, request):
-        """This API is used to create log collection configuration for a TKE Edge cluster.
+        r"""This API is used to create log collection configuration for a TKE Edge cluster.
 
         :param request: Request instance for CreateEdgeLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigRequest`
@@ -464,7 +464,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateEksLogConfig(self, request):
-        """This API is used to create Log Collection Configuration for Elastic Cluster.
+        r"""This API is used to create Log Collection Configuration for Elastic Cluster.
 
         :param request: Request instance for CreateEksLogConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigRequest`
@@ -487,7 +487,7 @@ class TkeClient(AbstractClient):
 
 
     def CreatePrometheusAlertRule(self, request):
-        """This API is used to create an alarm rule.
+        r"""This API is used to create an alarm rule.
 
         :param request: Request instance for CreatePrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusAlertRuleRequest`
@@ -510,7 +510,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateTKEEdgeCluster(self, request):
-        """This API is used to create a TKE Edge cluster.
+        r"""This API is used to create a TKE Edge cluster.
 
         :param request: Request instance for CreateTKEEdgeCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateTKEEdgeClusterRequest`
@@ -533,7 +533,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteAddon(self, request):
-        """This API is used to delete an add-on.
+        r"""This API is used to delete an add-on.
 
         :param request: Request instance for DeleteAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteAddonRequest`
@@ -556,7 +556,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteBackupStorageLocation(self, request):
-        """This API is used to delete a backup repository.
+        r"""This API is used to delete a backup repository.
 
         :param request: Request instance for DeleteBackupStorageLocation.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationRequest`
@@ -579,7 +579,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteCluster(self, request):
-        """This API is used to delete a cluster. (Cloud API v3).
+        r"""This API is used to delete a cluster. (Cloud API v3).
 
         :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRequest`
@@ -602,7 +602,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterAsGroups(self, request):
-        """Delete a cluster scaling group
+        r"""Delete a cluster scaling group
 
         :param request: Request instance for DeleteClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsRequest`
@@ -625,7 +625,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpoint(self, request):
-        """This API is used to delete a cluster access endpoint.
+        r"""This API is used to delete a cluster access endpoint.
 
         :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
@@ -648,7 +648,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpointVip(self, request):
-        """Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)
+        r"""Delete the external network access port of the managed cluster (the old way, only the external network port of the managed cluster is supported)
 
         :param request: Request instance for DeleteClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipRequest`
@@ -671,7 +671,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterInstances(self, request):
-        """This API is used to delete one or more nodes from a cluster.
+        r"""This API is used to delete one or more nodes from a cluster.
 
         :param request: Request instance for DeleteClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesRequest`
@@ -694,7 +694,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterNodePool(self, request):
-        """This API is used to delete a node pool.
+        r"""This API is used to delete a node pool.
 
         :param request: Request instance for DeleteClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterNodePoolRequest`
@@ -717,7 +717,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterRoute(self, request):
-        """This API is used to delete a cluster route.
+        r"""This API is used to delete a cluster route.
 
         :param request: Request instance for DeleteClusterRoute.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteRequest`
@@ -740,7 +740,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterRouteTable(self, request):
-        """This API is used to delete cluster a route table.
+        r"""This API is used to delete cluster a route table.
 
         :param request: Request instance for DeleteClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableRequest`
@@ -763,7 +763,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNode(self, request):
-        """This API is used to delete the super node.
+        r"""This API is used to delete the super node.
 
         :param request: Request instance for DeleteClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodeRequest`
@@ -786,7 +786,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNodePool(self, request):
-        """This API is used to delete the Super Node Pool.
+        r"""This API is used to delete the Super Node Pool.
 
         :param request: Request instance for DeleteClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodePoolRequest`
@@ -809,7 +809,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteECMInstances(self, request):
-        """This API is used to delete one or more ECM instances.
+        r"""This API is used to delete one or more ECM instances.
 
         :param request: Request instance for DeleteECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteECMInstancesRequest`
@@ -832,7 +832,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEdgeCVMInstances(self, request):
-        """This API is used to delete one or more edge CVM instances.
+        r"""This API is used to delete one or more edge CVM instances.
 
         :param request: Request instance for DeleteEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeCVMInstancesRequest`
@@ -855,7 +855,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteEdgeClusterInstances(self, request):
-        """This API is used to delete one or more edge compute instances.
+        r"""This API is used to delete one or more edge compute instances.
 
         :param request: Request instance for DeleteEdgeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEdgeClusterInstancesRequest`
@@ -878,7 +878,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteLogConfigs(self, request):
-        """This API is used to delete collection rules within the cluster.
+        r"""This API is used to delete collection rules within the cluster.
 
         :param request: Request instance for DeleteLogConfigs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsRequest`
@@ -901,7 +901,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusAlertRule(self, request):
-        """This API is used to delete an alarm rule.
+        r"""This API is used to delete an alarm rule.
 
         :param request: Request instance for DeletePrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusAlertRuleRequest`
@@ -924,7 +924,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteTKEEdgeCluster(self, request):
-        """This API is used to delete a TKE Edge cluster.
+        r"""This API is used to delete a TKE Edge cluster.
 
         :param request: Request instance for DeleteTKEEdgeCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteTKEEdgeClusterRequest`
@@ -947,7 +947,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAddon(self, request):
-        """This API is used to query the list of add-ons.
+        r"""This API is used to query the list of add-ons.
 
         :param request: Request instance for DescribeAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonRequest`
@@ -970,7 +970,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAddonValues(self, request):
-        """This API is used to query parameters of an add-on.
+        r"""This API is used to query parameters of an add-on.
 
         :param request: Request instance for DescribeAddonValues.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonValuesRequest`
@@ -993,7 +993,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableClusterVersion(self, request):
-        """This API is used to obtain all versions that the cluster can upgrade to.
+        r"""This API is used to obtain all versions that the cluster can upgrade to.
 
         :param request: Request instance for DescribeAvailableClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableClusterVersionRequest`
@@ -1016,7 +1016,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableTKEEdgeVersion(self, request):
-        """This API is used to check the edge component versions and K8s versions supported by TKE Edge.
+        r"""This API is used to check the edge component versions and K8s versions supported by TKE Edge.
 
         :param request: Request instance for DescribeAvailableTKEEdgeVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`
@@ -1039,7 +1039,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeBackupStorageLocations(self, request):
-        """This API is used to query backup repositories.
+        r"""This API is used to query backup repositories.
 
         :param request: Request instance for DescribeBackupStorageLocations.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsRequest`
@@ -1062,7 +1062,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeBatchModifyTagsStatus(self, request):
-        """This API is used to query batch modification Tag status.
+        r"""This API is used to query batch modification Tag status.
 
         :param request: Request instance for DescribeBatchModifyTagsStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusRequest`
@@ -1085,7 +1085,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAsGroupOption(self, request):
-        """Cluster auto scaling configuration
+        r"""Cluster auto scaling configuration
 
         :param request: Request instance for DescribeClusterAsGroupOption.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionRequest`
@@ -1108,7 +1108,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAsGroups(self, request):
-        """Cluster-associated scaling group list
+        r"""Cluster-associated scaling group list
 
         :param request: Request instance for DescribeClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsRequest`
@@ -1131,7 +1131,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterAuthenticationOptions(self, request):
-        """This API is used to query cluster authentication configuration.
+        r"""This API is used to query cluster authentication configuration.
 
         :param request: Request instance for DescribeClusterAuthenticationOptions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAuthenticationOptionsRequest`
@@ -1154,7 +1154,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterCommonNames(self, request):
-        """This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode.
+        r"""This API is used to obtain the CommonName from the kube-apiserver client certificate that corresponding to the sub-account in RBAC authorization mode.
 
         :param request: Request instance for DescribeClusterCommonNames.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesRequest`
@@ -1177,7 +1177,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointStatus(self, request):
-        """Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
+        r"""Query cluster access port status (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)
 
         :param request: Request instance for DescribeClusterEndpointStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusRequest`
@@ -1200,7 +1200,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpointVipStatus(self, request):
-        """Query cluster open port process status (only supports external ports of the managed cluster)
+        r"""Query cluster open port process status (only supports external ports of the managed cluster)
 
         :param request: Request instance for DescribeClusterEndpointVipStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusRequest`
@@ -1223,7 +1223,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterEndpoints(self, request):
-        """This API is used to query cluster access addresses, including private network address, public network address, public network domain name, and security policy for public network access.
+        r"""This API is used to query cluster access addresses, including private network address, public network address, public network domain name, and security policy for public network access.
 
         :param request: Request instance for DescribeClusterEndpoints.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsRequest`
@@ -1246,7 +1246,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterExtraArgs(self, request):
-        """This API is used to query custom parameters of a cluster.
+        r"""This API is used to query custom parameters of a cluster.
 
         :param request: Request instance for DescribeClusterExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsRequest`
@@ -1269,7 +1269,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """This API is used to query information of node instances in a cluster.
+        r"""This API is used to query information of node instances in a cluster.
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesRequest`
@@ -1292,7 +1292,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterKubeconfig(self, request):
-        """This API is used to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.
+        r"""This API is used to obtain the cluster kubeconfig file. Different sub-accounts have their own kubeconfig files. The kubeconfig file contains the kube-apiserver client certificate of the corresponding sub-account. By default, the client certificate is created when this API is called for the first time, and the certificate is valid for 20 years with no permissions granted. For the cluster owner or primary account, the cluster-admin permission is granted by default.
 
         :param request: Request instance for DescribeClusterKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigRequest`
@@ -1315,7 +1315,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterLevelAttribute(self, request):
-        """This API is used to obtain the cluster model.
+        r"""This API is used to obtain the cluster model.
 
         :param request: Request instance for DescribeClusterLevelAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelAttributeRequest`
@@ -1338,7 +1338,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterLevelChangeRecords(self, request):
-        """This API is used to query the cluster model adjustment history.
+        r"""This API is used to query the cluster model adjustment history.
 
         :param request: Request instance for DescribeClusterLevelChangeRecords.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelChangeRecordsRequest`
@@ -1361,7 +1361,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterNodePoolDetail(self, request):
-        """This API is used to query detailed information of a node pool.
+        r"""This API is used to query detailed information of a node pool.
 
         :param request: Request instance for DescribeClusterNodePoolDetail.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolDetailRequest`
@@ -1384,7 +1384,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterNodePools(self, request):
-        """This API is used to query the node pool list
+        r"""This API is used to query the node pool list
 
         :param request: Request instance for DescribeClusterNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolsRequest`
@@ -1407,7 +1407,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterRouteTables(self, request):
-        """This API is used to query one or more cluster route tables.
+        r"""This API is used to query one or more cluster route tables.
 
         :param request: Request instance for DescribeClusterRouteTables.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesRequest`
@@ -1430,7 +1430,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterRoutes(self, request):
-        """This API is used to query cluster routes.
+        r"""This API is used to query cluster routes.
 
         :param request: Request instance for DescribeClusterRoutes.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesRequest`
@@ -1453,7 +1453,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterSecurity(self, request):
-        """This API is used to query the key information of a cluster.
+        r"""This API is used to query the key information of a cluster.
 
         :param request: Request instance for DescribeClusterSecurity.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityRequest`
@@ -1476,7 +1476,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterStatus(self, request):
-        """This API is used to query the information of clusters under the current account.
+        r"""This API is used to query the information of clusters under the current account.
 
         :param request: Request instance for DescribeClusterStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusRequest`
@@ -1499,7 +1499,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNode(self, request):
-        """This API is used to view the Super Node list.
+        r"""This API is used to view the Super Node list.
 
         :param request: Request instance for DescribeClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodeRequest`
@@ -1522,7 +1522,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNodePools(self, request):
-        """This API is used to view the Super Node Pool list.
+        r"""This API is used to view the Super Node Pool list.
 
         :param request: Request instance for DescribeClusterVirtualNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodePoolsRequest`
@@ -1545,7 +1545,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """This API is used to query clusters list.
+        r"""This API is used to query clusters list.
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClustersRequest`
@@ -1568,7 +1568,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeECMInstances(self, request):
-        """This API is used to obtain the ECM instance information.
+        r"""This API is used to obtain the ECM instance information.
 
         :param request: Request instance for DescribeECMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeECMInstancesRequest`
@@ -1591,7 +1591,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeAvailableExtraArgs(self, request):
-        """This API is used to query the custom parameters available for an edge cluster.
+        r"""This API is used to query the custom parameters available for an edge cluster.
 
         :param request: Request instance for DescribeEdgeAvailableExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeAvailableExtraArgsRequest`
@@ -1614,7 +1614,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeCVMInstances(self, request):
-        """This API is used to obtain the edge CVM instance information.
+        r"""This API is used to obtain the edge CVM instance information.
 
         :param request: Request instance for DescribeEdgeCVMInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeCVMInstancesRequest`
@@ -1637,7 +1637,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterExtraArgs(self, request):
-        """This API is used to query custom parameters of an edge cluster.
+        r"""This API is used to query custom parameters of an edge cluster.
 
         :param request: Request instance for DescribeEdgeClusterExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterExtraArgsRequest`
@@ -1660,7 +1660,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterInstances(self, request):
-        """This API is used to query the TKE Edge cluster node information.
+        r"""This API is used to query the TKE Edge cluster node information.
 
         :param request: Request instance for DescribeEdgeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterInstancesRequest`
@@ -1683,7 +1683,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeClusterUpgradeInfo(self, request):
-        """This API is used to query the upgrade information of an edge cluster, including the upgradeable components, the current upgrade status, and errors occur during the upgrade.
+        r"""This API is used to query the upgrade information of an edge cluster, including the upgradeable components, the current upgrade status, and errors occur during the upgrade.
 
         :param request: Request instance for DescribeEdgeClusterUpgradeInfo.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoRequest`
@@ -1706,7 +1706,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeLogSwitches(self, request):
-        """This API is used to query the status of event storage, cluster auditing and logging.
+        r"""This API is used to query the status of event storage, cluster auditing and logging.
 
         :param request: Request instance for DescribeEdgeLogSwitches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeLogSwitchesRequest`
@@ -1729,7 +1729,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEnableVpcCniProgress(self, request):
-        """This API is used to query the task progress of enabling VPC-CNI mode.
+        r"""This API is used to query the task progress of enabling VPC-CNI mode.
 
         :param request: Request instance for DescribeEnableVpcCniProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressRequest`
@@ -1752,7 +1752,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEncryptionStatus(self, request):
-        """This API is used to query the encryption status of etcd data.
+        r"""This API is used to query the encryption status of etcd data.
 
         :param request: Request instance for DescribeEncryptionStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusRequest`
@@ -1775,7 +1775,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExistedInstances(self, request):
-        """This API is used to query one or more existing node and determine whether they can be added to a cluster.
+        r"""This API is used to query one or more existing node and determine whether they can be added to a cluster.
 
         :param request: Request instance for DescribeExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesRequest`
@@ -1798,7 +1798,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNodeSupportConfig(self, request):
-        """This API is used to view third-party node pool configuration information.
+        r"""This API is used to view third-party node pool configuration information.
 
         :param request: Request instance for DescribeExternalNodeSupportConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigRequest`
@@ -1821,7 +1821,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeIPAMD(self, request):
-        """This API is used to obtain eniipamd component information.
+        r"""This API is used to obtain eniipamd component information.
 
         :param request: Request instance for DescribeIPAMD.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDRequest`
@@ -1844,7 +1844,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """This API is used to get image information.
+        r"""This API is used to get image information.
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImagesRequest`
@@ -1867,7 +1867,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeLogConfigs(self, request):
-        """This API is used to query the log collection rules.
+        r"""This API is used to query the log collection rules.
 
         :param request: Request instance for DescribeLogConfigs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsRequest`
@@ -1890,7 +1890,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeLogSwitches(self, request):
-        """This API is used to query Cluster Log (Auditing, Event, Common Log) Switch List.
+        r"""This API is used to query Cluster Log (Auditing, Event, Common Log) Switch List.
 
         :param request: Request instance for DescribeLogSwitches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesRequest`
@@ -1913,7 +1913,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePodChargeInfo(self, request):
-        """This API is used to query the billing information of running Pods. You can query a specific Pod by Namespace and Name or batch query by Pod Uid.
+        r"""This API is used to query the billing information of running Pods. You can query a specific Pod by Namespace and Name or batch query by Pod Uid.
 
         :param request: Request instance for DescribePodChargeInfo.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoRequest`
@@ -1936,7 +1936,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusInstance(self, request):
-        """This API is used to obtain the instance details.
+        r"""This API is used to obtain the instance details.
 
         :param request: Request instance for DescribePrometheusInstance.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusInstanceRequest`
@@ -1959,7 +1959,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to obtain all regions supported by TKE.
+        r"""This API is used to obtain all regions supported by TKE.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsRequest`
@@ -1982,7 +1982,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeReservedInstanceUtilizationRate(self, request):
-        """This API is used to query the usage rate of various types of Reserved Coupons.
+        r"""This API is used to query the usage rate of various types of Reserved Coupons.
 
         :param request: Request instance for DescribeReservedInstanceUtilizationRate.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateRequest`
@@ -2005,7 +2005,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeResourceUsage(self, request):
-        """This API is used to query the cluster resource usage.
+        r"""This API is used to query the cluster resource usage.
 
         :param request: Request instance for DescribeResourceUsage.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeResourceUsageRequest`
@@ -2028,7 +2028,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeRouteTableConflicts(self, request):
-        """This API is used to query the list of route table conflicts.
+        r"""This API is used to query the list of route table conflicts.
 
         :param request: Request instance for DescribeRouteTableConflicts.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsRequest`
@@ -2051,7 +2051,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeSupportedRuntime(self, request):
-        """This API is used to retrieve optional runtime versions based on K8S version.
+        r"""This API is used to retrieve optional runtime versions based on K8S version.
 
         :param request: Request instance for DescribeSupportedRuntime.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeRequest`
@@ -2074,7 +2074,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusterCredential(self, request):
-        """This API is used to obtain the authentication information of a TKE Edge cluster.
+        r"""This API is used to obtain the authentication information of a TKE Edge cluster.
 
         :param request: Request instance for DescribeTKEEdgeClusterCredential.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterCredentialRequest`
@@ -2097,7 +2097,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusterStatus(self, request):
-        """This API is used to query the current status and process information of a TKE Edge cluster.
+        r"""This API is used to query the current status and process information of a TKE Edge cluster.
 
         :param request: Request instance for DescribeTKEEdgeClusterStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClusterStatusRequest`
@@ -2120,7 +2120,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeClusters(self, request):
-        """This API is used to query the list of TKE Edge clusters.
+        r"""This API is used to query the list of TKE Edge clusters.
 
         :param request: Request instance for DescribeTKEEdgeClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeClustersRequest`
@@ -2143,7 +2143,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeExternalKubeconfig(self, request):
-        """This API is used to obtain the kubeconfig for access to a TKE Edge cluster through the public network.
+        r"""This API is used to obtain the kubeconfig for access to a TKE Edge cluster through the public network.
 
         :param request: Request instance for DescribeTKEEdgeExternalKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeExternalKubeconfigRequest`
@@ -2166,7 +2166,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeScript(self, request):
-        """This API is used to query the URL of TKE edge script. You can add external nodes to a TKE Edge cluster by downloading the URL.
+        r"""This API is used to query the URL of TKE edge script. You can add external nodes to a TKE Edge cluster by downloading the URL.
 
         :param request: Request instance for DescribeTKEEdgeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
@@ -2189,7 +2189,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeVersions(self, request):
-        """This API is used to query cluster version information.
+        r"""This API is used to query cluster version information.
 
         :param request: Request instance for DescribeVersions.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsRequest`
@@ -2212,7 +2212,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeVpcCniPodLimits(self, request):
-        """This API is used to query the maximum number of Pods in the VPC-CNI network mode supported by the models in the specified availability zone of the current user and region.
+        r"""This API is used to query the maximum number of Pods in the VPC-CNI network mode supported by the models in the specified availability zone of the current user and region.
 
         :param request: Request instance for DescribeVpcCniPodLimits.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVpcCniPodLimitsRequest`
@@ -2235,7 +2235,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableClusterDeletionProtection(self, request):
-        """This API is used to disable cluster deletion protection.
+        r"""This API is used to disable cluster deletion protection.
 
         :param request: Request instance for DisableClusterDeletionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionRequest`
@@ -2258,7 +2258,7 @@ class TkeClient(AbstractClient):
 
 
     def DisableEncryptionProtection(self, request):
-        """This API is used to disable encryption protection.
+        r"""This API is used to disable encryption protection.
 
         :param request: Request instance for DisableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionRequest`
@@ -2281,7 +2281,7 @@ class TkeClient(AbstractClient):
 
 
     def DrainClusterVirtualNode(self, request):
-        """This API is used to evict the Super Node.
+        r"""This API is used to evict the Super Node.
 
         :param request: Request instance for DrainClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DrainClusterVirtualNodeRequest`
@@ -2304,7 +2304,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableClusterDeletionProtection(self, request):
-        """This API is used to enable cluster deletion protection.
+        r"""This API is used to enable cluster deletion protection.
 
         :param request: Request instance for EnableClusterDeletionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionRequest`
@@ -2327,7 +2327,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableEncryptionProtection(self, request):
-        """This API is used to enable Encrypted Data Protection, which requires enabling KMS capability and completing KMS authorization.
+        r"""This API is used to enable Encrypted Data Protection, which requires enabling KMS capability and completing KMS authorization.
 
         :param request: Request instance for EnableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
@@ -2350,7 +2350,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableVpcCniNetworkType(self, request):
-        """This API is used to enable the VPC-CNI network mode for GR clusters.
+        r"""This API is used to enable the VPC-CNI network mode for GR clusters.
 
         :param request: Request instance for EnableVpcCniNetworkType.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeRequest`
@@ -2373,7 +2373,7 @@ class TkeClient(AbstractClient):
 
 
     def ForwardTKEEdgeApplicationRequestV3(self, request):
-        """This API is used to work with the add-ons of a TKE Edge cluster.
+        r"""This API is used to work with the add-ons of a TKE Edge cluster.
 
         :param request: Request instance for ForwardTKEEdgeApplicationRequestV3.
         :type request: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Request`
@@ -2396,7 +2396,7 @@ class TkeClient(AbstractClient):
 
 
     def GetClusterLevelPrice(self, request):
-        """Obtaining the price of specified cluster model
+        r"""Obtaining the price of specified cluster model
 
         :param request: Request instance for GetClusterLevelPrice.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetClusterLevelPriceRequest`
@@ -2419,7 +2419,7 @@ class TkeClient(AbstractClient):
 
 
     def GetTkeAppChartList(self, request):
-        """This API is used to retrieve the App List supported by TKE.
+        r"""This API is used to retrieve the App List supported by TKE.
 
         :param request: Request instance for GetTkeAppChartList.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListRequest`
@@ -2442,7 +2442,7 @@ class TkeClient(AbstractClient):
 
 
     def GetUpgradeInstanceProgress(self, request):
-        """This API is used to obtain the current progress of node upgrade. If the cluster is not in node upgrade status, the API will report an error: Task not found.
+        r"""This API is used to obtain the current progress of node upgrade. If the cluster is not in node upgrade status, the API will report an error: Task not found.
 
         :param request: Request instance for GetUpgradeInstanceProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetUpgradeInstanceProgressRequest`
@@ -2465,7 +2465,7 @@ class TkeClient(AbstractClient):
 
 
     def InstallAddon(self, request):
-        """This API is used to install an add-on on the target cluster.
+        r"""This API is used to install an add-on on the target cluster.
 
         :param request: Request instance for InstallAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.InstallAddonRequest`
@@ -2488,7 +2488,7 @@ class TkeClient(AbstractClient):
 
 
     def InstallEdgeLogAgent(self, request):
-        """This API is used to install the log collection add-on on TKE Edge cluster nodes.
+        r"""This API is used to install the log collection add-on on TKE Edge cluster nodes.
 
         :param request: Request instance for InstallEdgeLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentRequest`
@@ -2511,7 +2511,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAsGroupAttribute(self, request):
-        """Modify cluster scaling group attributes
+        r"""Modify cluster scaling group attributes
 
         :param request: Request instance for ModifyClusterAsGroupAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeRequest`
@@ -2534,7 +2534,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAsGroupOptionAttribute(self, request):
-        """This API is used to modify cluster auto scaling attributes.
+        r"""This API is used to modify cluster auto scaling attributes.
 
         :param request: Request instance for ModifyClusterAsGroupOptionAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupOptionAttributeRequest`
@@ -2557,7 +2557,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAttribute(self, request):
-        """This API is used to modify cluster attributes.
+        r"""This API is used to modify cluster attributes.
 
         :param request: Request instance for ModifyClusterAttribute.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeRequest`
@@ -2580,7 +2580,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterAuthenticationOptions(self, request):
-        """This API is used to modify cluster authentication configuration.
+        r"""This API is used to modify cluster authentication configuration.
 
         :param request: Request instance for ModifyClusterAuthenticationOptions.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAuthenticationOptionsRequest`
@@ -2603,7 +2603,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterEndpointSP(self, request):
-        """Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)
+        r"""Modify the security policy of the external port of the managed cluster (the old way, only the external port of the managed cluster is supported)
 
         :param request: Request instance for ModifyClusterEndpointSP.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPRequest`
@@ -2626,7 +2626,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterImage(self, request):
-        """This API is used to modify the cluster image.
+        r"""This API is used to modify the cluster image.
 
         :param request: Request instance for ModifyClusterImage.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageRequest`
@@ -2649,7 +2649,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterNodePool(self, request):
-        """This API is used to edit a node pool.
+        r"""This API is used to edit a node pool.
 
         :param request: Request instance for ModifyClusterNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterNodePoolRequest`
@@ -2672,7 +2672,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterRuntimeConfig(self, request):
-        """This API is used to modify the latitude runtime configuration of clusters and node pools.
+        r"""This API is used to modify the latitude runtime configuration of clusters and node pools.
 
         :param request: Request instance for ModifyClusterRuntimeConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigRequest`
@@ -2695,7 +2695,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterTags(self, request):
-        """This API is used to modify cluster tags.
+        r"""This API is used to modify cluster tags.
 
         :param request: Request instance for ModifyClusterTags.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsRequest`
@@ -2718,7 +2718,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyClusterVirtualNodePool(self, request):
-        """This API is used to modify the Super Node Pool.
+        r"""This API is used to modify the Super Node Pool.
 
         :param request: Request instance for ModifyClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterVirtualNodePoolRequest`
@@ -2741,7 +2741,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyNodePoolInstanceTypes(self, request):
-        """This API is used to modify the model of instances in a node pool.
+        r"""This API is used to modify the model of instances in a node pool.
 
         :param request: Request instance for ModifyNodePoolInstanceTypes.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolInstanceTypesRequest`
@@ -2764,7 +2764,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusAlertRule(self, request):
-        """This API is used to modify an alert rule.
+        r"""This API is used to modify an alert rule.
 
         :param request: Request instance for ModifyPrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertRuleRequest`
@@ -2787,7 +2787,7 @@ class TkeClient(AbstractClient):
 
 
     def RemoveNodeFromNodePool(self, request):
-        """This API is used to remove a node from a node pool but retain it in the cluster.
+        r"""This API is used to remove a node from a node pool but retain it in the cluster.
 
         :param request: Request instance for RemoveNodeFromNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.RemoveNodeFromNodePoolRequest`
@@ -2810,7 +2810,7 @@ class TkeClient(AbstractClient):
 
 
     def SetNodePoolNodeProtection(self, request):
-        """This API is used to enable removal protection for the nodes automatically created by the scaling group in a node pool.
+        r"""This API is used to enable removal protection for the nodes automatically created by the scaling group in a node pool.
 
         :param request: Request instance for SetNodePoolNodeProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.SetNodePoolNodeProtectionRequest`
@@ -2833,7 +2833,7 @@ class TkeClient(AbstractClient):
 
 
     def UninstallEdgeLogAgent(self, request):
-        """This API is used to uninstall the log collection add-on from TKE Edge cluster nodes.
+        r"""This API is used to uninstall the log collection add-on from TKE Edge cluster nodes.
 
         :param request: Request instance for UninstallEdgeLogAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentRequest`
@@ -2856,7 +2856,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateAddon(self, request):
-        """This API is used to update parameters and version of an add-on.
+        r"""This API is used to update parameters and version of an add-on.
 
         :param request: Request instance for UpdateAddon.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateAddonRequest`
@@ -2879,7 +2879,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateClusterKubeconfig(self, request):
-        """This API is used to update the Kubeconfig information of a cluster.
+        r"""This API is used to update the Kubeconfig information of a cluster.
 
         :param request: Request instance for UpdateClusterKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigRequest`
@@ -2902,7 +2902,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateClusterVersion(self, request):
-        """This API is used to upgrade the master component of the cluster to the specified version.
+        r"""This API is used to upgrade the master component of the cluster to the specified version.
 
         :param request: Request instance for UpdateClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterVersionRequest`
@@ -2925,7 +2925,7 @@ class TkeClient(AbstractClient):
 
 
     def UpdateEdgeClusterVersion(self, request):
-        """This API is used to upgrade an edge cluster component to a TKE Edge version.
+        r"""This API is used to upgrade an edge cluster component to a TKE Edge version.
 
         :param request: Request instance for UpdateEdgeClusterVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionRequest`
@@ -2948,7 +2948,7 @@ class TkeClient(AbstractClient):
 
 
     def UpgradeClusterInstances(self, request):
-        """This API is used to upgrade work nodes in a cluster.
+        r"""This API is used to upgrade work nodes in a cluster.
 
         :param request: Request instance for UpgradeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterInstancesRequest`

@@ -27,7 +27,7 @@ class PostgresClient(AbstractClient):
 
 
     def AddDBInstanceToReadOnlyGroup(self, request):
-        """This API is used to add a read-only replica to an RO group.
+        r"""This API is used to add a read-only replica to an RO group.
 
         :param request: Request instance for AddDBInstanceToReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.AddDBInstanceToReadOnlyGroupRequest`
@@ -50,7 +50,7 @@ class PostgresClient(AbstractClient):
 
 
     def CloneDBInstance(self, request):
-        """This API is used to clone an instance by specifying a backup set or a point in time.
+        r"""This API is used to clone an instance by specifying a backup set or a point in time.
 
         :param request: Request instance for CloneDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceRequest`
@@ -73,7 +73,7 @@ class PostgresClient(AbstractClient):
 
 
     def CloseDBExtranetAccess(self, request):
-        """This API is used to disable the public network address of an instance.
+        r"""This API is used to disable the public network address of an instance.
 
         :param request: Request instance for CloseDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloseDBExtranetAccessRequest`
@@ -96,7 +96,7 @@ class PostgresClient(AbstractClient):
 
 
     def CloseServerlessDBExtranetAccess(self, request):
-        """This API is used to disable the public network address of a PostgreSQL for Serverless instance.
+        r"""This API is used to disable the public network address of a PostgreSQL for Serverless instance.
 
         :param request: Request instance for CloseServerlessDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
@@ -119,7 +119,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateBaseBackup(self, request):
-        """This API is used to create a data backup of an instance.
+        r"""This API is used to create a data backup of an instance.
 
         :param request: Request instance for CreateBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateBaseBackupRequest`
@@ -142,7 +142,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstanceNetworkAccess(self, request):
-        """This API is used to create a network for an instance.
+        r"""This API is used to create a network for an instance.
 
         :param request: Request instance for CreateDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstanceNetworkAccessRequest`
@@ -165,7 +165,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
+        r"""This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
@@ -188,7 +188,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create one or more PostgreSQL instances. Instances created through this interface do not need to be initialized and can be used directly.
+        r"""This API is used to create one or more PostgreSQL instances. Instances created through this interface do not need to be initialized and can be used directly.
         <li>After an instance is successfully created, it will automatically start up, and its status changes to "Running".</li>
         <li>For prepaid instances, the required amount for the instance purchase will be deducted in advance. For post-paid hourly instances, the amount required for the purchase within the first hour will be temporarily frozen. Please ensure that your account balance is sufficient before calling this interface.</li>
 
@@ -213,7 +213,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateParameterTemplate(self, request):
-        """This API is used to create a parameter template.
+        r"""This API is used to create a parameter template.
 
         :param request: Request instance for CreateParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateParameterTemplateRequest`
@@ -236,7 +236,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyDBInstance(self, request):
-        """This API is used to create read-only replicas.
+        r"""This API is used to create read-only replicas.
 
         :param request: Request instance for CreateReadOnlyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyDBInstanceRequest`
@@ -259,7 +259,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroup(self, request):
-        """This API is used to create an RO group.
+        r"""This API is used to create an RO group.
 
         :param request: Request instance for CreateReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupRequest`
@@ -282,7 +282,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateReadOnlyGroupNetworkAccess(self, request):
-        """This API is used to create a network for an RO group.
+        r"""This API is used to create a network for an RO group.
 
         :param request: Request instance for CreateReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateReadOnlyGroupNetworkAccessRequest`
@@ -305,7 +305,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateServerlessDBInstance(self, request):
-        """This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.
+        r"""This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.
 
         :param request: Request instance for CreateServerlessDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
@@ -328,7 +328,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteBaseBackup(self, request):
-        """This API is used to delete a specified data backup for an instance.
+        r"""This API is used to delete a specified data backup for an instance.
 
         :param request: Request instance for DeleteBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteBaseBackupRequest`
@@ -351,7 +351,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteDBInstanceNetworkAccess(self, request):
-        """This API is used to delete a network of an instance.
+        r"""This API is used to delete a network of an instance.
 
         :param request: Request instance for DeleteDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDBInstanceNetworkAccessRequest`
@@ -374,7 +374,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteLogBackup(self, request):
-        """This API is used to delete the specified log backup of an instance.
+        r"""This API is used to delete the specified log backup of an instance.
 
         :param request: Request instance for DeleteLogBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteLogBackupRequest`
@@ -397,7 +397,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteParameterTemplate(self, request):
-        """This API is used to delete a parameter template.
+        r"""This API is used to delete a parameter template.
 
         :param request: Request instance for DeleteParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteParameterTemplateRequest`
@@ -420,7 +420,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroup(self, request):
-        """This API is used to delete an RO group.
+        r"""This API is used to delete an RO group.
 
         :param request: Request instance for DeleteReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupRequest`
@@ -443,7 +443,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroupNetworkAccess(self, request):
-        """This API is used to delete a network of an RO group.
+        r"""This API is used to delete a network of an RO group.
 
         :param request: Request instance for DeleteReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupNetworkAccessRequest`
@@ -466,7 +466,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteServerlessDBInstance(self, request):
-        """This API is used to delete a PostgreSQL for Serverless instance.
+        r"""This API is used to delete a PostgreSQL for Serverless instance.
 
         :param request: Request instance for DeleteServerlessDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
@@ -489,7 +489,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to query the list of the database accounts for an instance.
+        r"""This API is used to query the list of the database accounts for an instance.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAccountsRequest`
@@ -512,7 +512,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeAvailableRecoveryTime(self, request):
-        """This API is used to query the available restoration time of an instance.
+        r"""This API is used to query the available restoration time of an instance.
 
         :param request: Request instance for DescribeAvailableRecoveryTime.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeRequest`
@@ -535,7 +535,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupDownloadRestriction(self, request):
-        """This API is used to query the backup download restrictions.
+        r"""This API is used to query the backup download restrictions.
 
         :param request: Request instance for DescribeBackupDownloadRestriction.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadRestrictionRequest`
@@ -558,7 +558,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupDownloadURL(self, request):
-        """u200cThis API is used to query the download address of a specified backup set, including full backup sets and incremental log backup sets.
+        r"""u200cThis API is used to query the download address of a specified backup set, including full backup sets and incremental log backup sets.
 
         :param request: Request instance for DescribeBackupDownloadURL.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadURLRequest`
@@ -581,7 +581,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupOverview(self, request):
-        """This API is used to query the backup overview. It will return the current number and size of backups, free backup space size, and paid backup space size (all size values are in bytes).
+        r"""This API is used to query the backup overview. It will return the current number and size of backups, free backup space size, and paid backup space size (all size values are in bytes).
 
         :param request: Request instance for DescribeBackupOverview.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupOverviewRequest`
@@ -604,7 +604,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupPlans(self, request):
-        """This API is used to query all backup plans of an instance.
+        r"""This API is used to query all backup plans of an instance.
 
         :param request: Request instance for DescribeBackupPlans.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansRequest`
@@ -627,7 +627,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBackupSummaries(self, request):
-        """This API is used to query the backup statistics of an instance. It will return the number and size (bytes) of backups of the instance.
+        r"""This API is used to query the backup statistics of an instance. It will return the number and size (bytes) of backups of the instance.
 
         :param request: Request instance for DescribeBackupSummaries.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupSummariesRequest`
@@ -650,7 +650,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBaseBackups(self, request):
-        """This API is used to query the list of data backups.
+        r"""This API is used to query the list of data backups.
 
         :param request: Request instance for DescribeBaseBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBaseBackupsRequest`
@@ -673,7 +673,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeClasses(self, request):
-        """This API is used to query purchasable instance specifications.
+        r"""This API is used to query purchasable instance specifications.
 
         :param request: Request instance for DescribeClasses.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeClassesRequest`
@@ -696,7 +696,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeCloneDBInstanceSpec(self, request):
-        """This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.
+        r"""This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.
 
         :param request: Request instance for DescribeCloneDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecRequest`
@@ -719,7 +719,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBBackups(self, request):
-        """This API is used to query the backup list of an instance. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.
+        r"""This API is used to query the backup list of an instance. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBBackupsRequest`
@@ -742,7 +742,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBErrlogs(self, request):
-        """This API is used to query an error log.
+        r"""This API is used to query an error log.
 
         :param request: Request instance for DescribeDBErrlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBErrlogsRequest`
@@ -765,7 +765,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceAttribute(self, request):
-        """This API is used to query the details of one instance.
+        r"""This API is used to query the details of one instance.
 
         :param request: Request instance for DescribeDBInstanceAttribute.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceAttributeRequest`
@@ -788,7 +788,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceHAConfig(self, request):
-        """This API is used to query the HA configuration of an instance, which includes:
+        r"""This API is used to query the HA configuration of an instance, which includes:
         <li>Allow a standby node to promote to a primary node.
         <li>Allow a semi-sync instance to adopt sync or async replication.
 
@@ -813,7 +813,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceParameters(self, request):
-        """This API is used to query the parameters of an instance.
+        r"""This API is used to query the parameters of an instance.
 
         :param request: Request instance for DescribeDBInstanceParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersRequest`
@@ -836,7 +836,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceSecurityGroups(self, request):
-        """This API is used to query the security group of an instance.
+        r"""This API is used to query the security group of an instance.
 
         :param request: Request instance for DescribeDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSecurityGroupsRequest`
@@ -859,7 +859,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """This API is used to query the details of one or more instances.
+        r"""This API is used to query the details of one or more instances.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesRequest`
@@ -882,7 +882,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBSlowlogs(self, request):
-        """This API is used to get a slow query log. Since it was deprecated on September 1, 2021, it has no longer returned data. You need to use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.
+        r"""This API is used to get a slow query log. Since it was deprecated on September 1, 2021, it has no longer returned data. You need to use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.
 
         :param request: Request instance for DescribeDBSlowlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsRequest`
@@ -905,7 +905,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBVersions(self, request):
-        """This API is used to query the list of supported database versions.
+        r"""This API is used to query the list of supported database versions.
 
         :param request: Request instance for DescribeDBVersions.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBVersionsRequest`
@@ -928,7 +928,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBXlogs(self, request):
-        """This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://www.tencentcloud.com/zh/document/product/409/54343) API.
+        r"""This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://www.tencentcloud.com/zh/document/product/409/54343) API.
 
         :param request: Request instance for DescribeDBXlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBXlogsRequest`
@@ -951,7 +951,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API is used to query the database list of an instance.
+        r"""This API is used to query the database list of an instance.
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesRequest`
@@ -974,7 +974,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDefaultParameters(self, request):
-        """This API is used to query all parameters supported by a database version and engine.
+        r"""This API is used to query all parameters supported by a database version and engine.
 
         :param request: Request instance for DescribeDefaultParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDefaultParametersRequest`
@@ -997,7 +997,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeEncryptionKeys(self, request):
-        """This API is used to query the instance key list.
+        r"""This API is used to query the instance key list.
 
         :param request: Request instance for DescribeEncryptionKeys.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysRequest`
@@ -1020,7 +1020,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeLogBackups(self, request):
-        """This API is used to query the list of log backups.
+        r"""This API is used to query the list of log backups.
 
         :param request: Request instance for DescribeLogBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeLogBackupsRequest`
@@ -1043,7 +1043,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """This API is used to query the order information.
+        r"""This API is used to query the order information.
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeOrdersRequest`
@@ -1066,7 +1066,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParameterTemplateAttributes(self, request):
-        """This API is used to query the details of a parameter template, including basic information and parameter information.
+        r"""This API is used to query the details of a parameter template, including basic information and parameter information.
 
         :param request: Request instance for DescribeParameterTemplateAttributes.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplateAttributesRequest`
@@ -1089,7 +1089,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParameterTemplates(self, request):
-        """This API is used to query the list of parameter templates.
+        r"""This API is used to query the list of parameter templates.
 
         :param request: Request instance for DescribeParameterTemplates.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplatesRequest`
@@ -1112,7 +1112,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeParamsEvent(self, request):
-        """This API is used to query the parameter modification event.
+        r"""This API is used to query the parameter modification event.
 
         :param request: Request instance for DescribeParamsEvent.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventRequest`
@@ -1135,7 +1135,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeProductConfig(self, request):
-        """This API is used to query the purchasable specification configuration. u200cThis API is disused and replaced by the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        r"""This API is used to query the purchasable specification configuration. u200cThis API is disused and replaced by the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
 
         :param request: Request instance for DescribeProductConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeProductConfigRequest`
@@ -1158,7 +1158,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeReadOnlyGroups(self, request):
-        """This API is used to query the list of RO groups.
+        r"""This API is used to query the list of RO groups.
 
         :param request: Request instance for DescribeReadOnlyGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeReadOnlyGroupsRequest`
@@ -1181,7 +1181,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query the purchasable regions.
+        r"""This API is used to query the purchasable regions.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeRegionsRequest`
@@ -1204,7 +1204,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeServerlessDBInstances(self, request):
-        """This API is used to query the details of one or more PostgreSQL for Serverless instances.
+        r"""This API is used to query the details of one or more PostgreSQL for Serverless instances.
 
         :param request: Request instance for DescribeServerlessDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
@@ -1227,7 +1227,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryAnalysis(self, request):
-        """This API is used to count and analyze slow query statements during the specified period of time and return aggregated statistical analysis results which are classified by statement with abstract parameter values.
+        r"""This API is used to count and analyze slow query statements during the specified period of time and return aggregated statistical analysis results which are classified by statement with abstract parameter values.
 
         :param request: Request instance for DescribeSlowQueryAnalysis.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryAnalysisRequest`
@@ -1250,7 +1250,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeSlowQueryList(self, request):
-        """This API is used to get the slow queries during the specified period of time.
+        r"""This API is used to get the slow queries during the specified period of time.
 
         :param request: Request instance for DescribeSlowQueryList.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeSlowQueryListRequest`
@@ -1273,7 +1273,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query the supported AZs.
+        r"""This API is used to query the supported AZs.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeZonesRequest`
@@ -1296,7 +1296,7 @@ class PostgresClient(AbstractClient):
 
 
     def DestroyDBInstance(self, request):
-        """This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of a terminated instance will be deleted and cannot be recovered. Be cautious with this API calling. Only the instance in isolation can be terminated.
+        r"""This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of a terminated instance will be deleted and cannot be recovered. Be cautious with this API calling. Only the instance in isolation can be terminated.
 
         :param request: Request instance for DestroyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
@@ -1319,7 +1319,7 @@ class PostgresClient(AbstractClient):
 
 
     def DisIsolateDBInstances(self, request):
-        """This API is used to remove one or more instances from isolation.
+        r"""This API is used to remove one or more instances from isolation.
 
         :param request: Request instance for DisIsolateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DisIsolateDBInstancesRequest`
@@ -1342,7 +1342,7 @@ class PostgresClient(AbstractClient):
 
 
     def InitDBInstances(self, request):
-        """This API is used to initialize a TencentDB for PostgreSQL instance. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
+        r"""This API is used to initialize a TencentDB for PostgreSQL instance. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
 
         :param request: Request instance for InitDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InitDBInstancesRequest`
@@ -1365,7 +1365,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceCreateDBInstances(self, request):
-        """This API is used to query the purchase price of an instance.
+        r"""This API is used to query the purchase price of an instance.
 
         :param request: Request instance for InquiryPriceCreateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceCreateDBInstancesRequest`
@@ -1388,7 +1388,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceRenewDBInstance(self, request):
-        """This API is used to query the renewal price of an instance.
+        r"""This API is used to query the renewal price of an instance.
 
         :param request: Request instance for InquiryPriceRenewDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceRenewDBInstanceRequest`
@@ -1411,7 +1411,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """This API is used to query the fees of upgrading a specified database instance. Only pay-as-you-go instance is supported.
+        r"""This API is used to query the fees of upgrading a specified database instance. Only pay-as-you-go instance is supported.
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceUpgradeDBInstanceRequest`
@@ -1434,7 +1434,7 @@ class PostgresClient(AbstractClient):
 
 
     def IsolateDBInstances(self, request):
-        """This API is used to isolate an instance.
+        r"""This API is used to isolate an instance.
 
         :param request: Request instance for IsolateDBInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.IsolateDBInstancesRequest`
@@ -1457,7 +1457,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyAccountRemark(self, request):
-        """This API is used to modify account remarks.
+        r"""This API is used to modify account remarks.
 
         :param request: Request instance for ModifyAccountRemark.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAccountRemarkRequest`
@@ -1480,7 +1480,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBackupDownloadRestriction(self, request):
-        """This API is used to modify the backup download restrictions.
+        r"""This API is used to modify the backup download restrictions.
 
         :param request: Request instance for ModifyBackupDownloadRestriction.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupDownloadRestrictionRequest`
@@ -1503,7 +1503,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBackupPlan(self, request):
-        """This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.
+        r"""This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.
 
         :param request: Request instance for ModifyBackupPlan.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanRequest`
@@ -1526,7 +1526,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBaseBackupExpireTime(self, request):
-        """This API is used to modify the expiration time of a specified data backup for an instance.
+        r"""This API is used to modify the expiration time of a specified data backup for an instance.
 
         :param request: Request instance for ModifyBaseBackupExpireTime.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBaseBackupExpireTimeRequest`
@@ -1549,7 +1549,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceChargeType(self, request):
-        """This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.
+        r"""This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.
 
         :param request: Request instance for ModifyDBInstanceChargeType.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceChargeTypeRequest`
@@ -1572,7 +1572,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceDeployment(self, request):
-        """This API is used to modify the AZs where the nodes of a source instance reside.
+        r"""This API is used to modify the AZs where the nodes of a source instance reside.
 
         :param request: Request instance for ModifyDBInstanceDeployment.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentRequest`
@@ -1595,7 +1595,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceHAConfig(self, request):
-        """This API is used to modify the HA configuration of an instance. which includes:
+        r"""This API is used to modify the HA configuration of an instance. which includes:
         <li>Allow the standby node to promote to the primary node.
         <li>Allow a semi-sync instance to adopt sync or async replication.
 
@@ -1620,7 +1620,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """This API is used to rename a TencentDB for PostgreSQL instance.
+        r"""This API is used to rename a TencentDB for PostgreSQL instance.
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceNameRequest`
@@ -1643,7 +1643,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceParameters(self, request):
-        """This API is used to modify instance parameters.
+        r"""This API is used to modify instance parameters.
 
         :param request: Request instance for ModifyDBInstanceParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersRequest`
@@ -1666,7 +1666,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceReadOnlyGroup(self, request):
-        """This API is used to modify the RO group of an instance.
+        r"""This API is used to modify the RO group of an instance.
 
         :param request: Request instance for ModifyDBInstanceReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceReadOnlyGroupRequest`
@@ -1689,7 +1689,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify the security group of an instance.
+        r"""This API is used to modify the security group of an instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1712,7 +1712,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """This API is used to modify instance specifications, including memory and disk size.
+        r"""This API is used to modify instance specifications, including memory and disk size.
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSpecRequest`
@@ -1735,7 +1735,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstancesProject(self, request):
-        """This API is used to modify the project of an instance.
+        r"""This API is used to modify the project of an instance.
 
         :param request: Request instance for ModifyDBInstancesProject.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstancesProjectRequest`
@@ -1758,7 +1758,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyParameterTemplate(self, request):
-        """This API is used to modify the configurations, such as parameter template name and description. It can also be used to manage the parameter list in the parameter template.
+        r"""This API is used to modify the configurations, such as parameter template name and description. It can also be used to manage the parameter list in the parameter template.
 
         :param request: Request instance for ModifyParameterTemplate.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyParameterTemplateRequest`
@@ -1781,7 +1781,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyReadOnlyGroupConfig(self, request):
-        """This API is used to modify RO group configuration.
+        r"""This API is used to modify RO group configuration.
 
         :param request: Request instance for ModifyReadOnlyGroupConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyReadOnlyGroupConfigRequest`
@@ -1804,7 +1804,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifySwitchTimePeriod(self, request):
-        """This API is used to perform a primary-standby switch for an instance waiting for the switch after it is upgraded.
+        r"""This API is used to perform a primary-standby switch for an instance waiting for the switch after it is upgraded.
 
         :param request: Request instance for ModifySwitchTimePeriod.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodRequest`
@@ -1827,7 +1827,7 @@ class PostgresClient(AbstractClient):
 
 
     def OpenDBExtranetAccess(self, request):
-        """This API is used to enable the public network access of an instance.
+        r"""This API is used to enable the public network access of an instance.
 
         :param request: Request instance for OpenDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.OpenDBExtranetAccessRequest`
@@ -1850,7 +1850,7 @@ class PostgresClient(AbstractClient):
 
 
     def OpenServerlessDBExtranetAccess(self, request):
-        """This API is used to enable the public network address of a PostgreSQL for Serverless instance.
+        r"""This API is used to enable the public network address of a PostgreSQL for Serverless instance.
 
         :param request: Request instance for OpenServerlessDBExtranetAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessRequest`
@@ -1873,7 +1873,7 @@ class PostgresClient(AbstractClient):
 
 
     def RebalanceReadOnlyGroup(self, request):
-        """This API is used to rebalance the loads of read-only replicas in an RO group. Please note that connections to those read-only replicas will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
+        r"""This API is used to rebalance the loads of read-only replicas in an RO group. Please note that connections to those read-only replicas will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
 
         :param request: Request instance for RebalanceReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RebalanceReadOnlyGroupRequest`
@@ -1896,7 +1896,7 @@ class PostgresClient(AbstractClient):
 
 
     def RemoveDBInstanceFromReadOnlyGroup(self, request):
-        """This API is used to remove a read-only replica from an RO group.
+        r"""This API is used to remove a read-only replica from an RO group.
 
         :param request: Request instance for RemoveDBInstanceFromReadOnlyGroup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RemoveDBInstanceFromReadOnlyGroupRequest`
@@ -1919,7 +1919,7 @@ class PostgresClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """This API is used to renew an instance.
+        r"""This API is used to renew an instance.
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RenewInstanceRequest`
@@ -1942,7 +1942,7 @@ class PostgresClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """This API is used to reset the account password of an instance.
+        r"""This API is used to reset the account password of an instance.
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ResetAccountPasswordRequest`
@@ -1965,7 +1965,7 @@ class PostgresClient(AbstractClient):
 
 
     def RestartDBInstance(self, request):
-        """This API is used to restart an instance.
+        r"""This API is used to restart an instance.
 
         :param request: Request instance for RestartDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RestartDBInstanceRequest`
@@ -1988,7 +1988,7 @@ class PostgresClient(AbstractClient):
 
 
     def RestoreDBInstanceObjects(self, request):
-        """This API is used to recover database-related objects such as databases and tables on the original instance based on the backup set or recovery target time.
+        r"""This API is used to recover database-related objects such as databases and tables on the original instance based on the backup set or recovery target time.
 
         :param request: Request instance for RestoreDBInstanceObjects.
         :type request: :class:`tencentcloud.postgres.v20170312.models.RestoreDBInstanceObjectsRequest`
@@ -2011,7 +2011,7 @@ class PostgresClient(AbstractClient):
 
 
     def SetAutoRenewFlag(self, request):
-        """This API is used to set auto-renewal.
+        r"""This API is used to set auto-renewal.
 
         :param request: Request instance for SetAutoRenewFlag.
         :type request: :class:`tencentcloud.postgres.v20170312.models.SetAutoRenewFlagRequest`
@@ -2034,7 +2034,7 @@ class PostgresClient(AbstractClient):
 
 
     def SwitchDBInstancePrimary(self, request):
-        """This API is used to enable the primary-standby switch of an instance.
+        r"""This API is used to enable the primary-standby switch of an instance.
         <li>By initiating a switch, you can verify whether the primary-standby switch is performed correctly.
         <li>By using forced switch, you can forcibly initiate the primary-standby switch when the delay of replica node failed to meet the switch requirement.
         <li>This operation can only be performed for the primary instance.
@@ -2060,7 +2060,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.
+        r"""This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`
@@ -2083,7 +2083,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstanceKernelVersion(self, request):
-        """This API is used to upgrade the kernel version of an instance.
+        r"""This API is used to upgrade the kernel version of an instance.
 
         :param request: Request instance for UpgradeDBInstanceKernelVersion.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceKernelVersionRequest`
@@ -2106,7 +2106,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstanceMajorVersion(self, request):
-        """This API is used to upgrade the major kernel version of an instance, for example, from PostgreSQL 12 to PostgreSQL 15.
+        r"""This API is used to upgrade the major kernel version of an instance, for example, from PostgreSQL 12 to PostgreSQL 15.
 
         :param request: Request instance for UpgradeDBInstanceMajorVersion.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class BatchContent(AbstractModel):
-    """A batch of messages
+    r"""A batch of messages
 
     """
 
@@ -35,7 +35,7 @@ class BatchContent(AbstractModel):
 
     @property
     def Body(self):
-        """Message body
+        r"""Message body
         :rtype: str
         """
         return self._Body
@@ -46,7 +46,7 @@ class BatchContent(AbstractModel):
 
     @property
     def Key(self):
-        """Key of a message
+        r"""Key of a message
         :rtype: str
         """
         return self._Key
@@ -70,7 +70,7 @@ class BatchContent(AbstractModel):
 
 
 class SendMessageRequest(AbstractModel):
-    """SendMessage request structure.
+    r"""SendMessage request structure.
 
     """
 
@@ -86,7 +86,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def DataHubId(self):
-        """ID of the integrated resource
+        r"""ID of the integrated resource
         :rtype: str
         """
         return self._DataHubId
@@ -97,7 +97,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def Message(self):
-        """A batch of messages
+        r"""A batch of messages
         :rtype: list of BatchContent
         """
         return self._Message
@@ -126,7 +126,7 @@ class SendMessageRequest(AbstractModel):
 
 
 class SendMessageResponse(AbstractModel):
-    """SendMessage response structure.
+    r"""SendMessage response structure.
 
     """
 
@@ -142,7 +142,7 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        """Message ID
+        r"""Message ID
         :rtype: list of str
         """
         return self._MessageId
@@ -153,7 +153,7 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

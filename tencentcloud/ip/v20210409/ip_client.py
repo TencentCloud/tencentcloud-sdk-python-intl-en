@@ -27,7 +27,7 @@ class IpClient(AbstractClient):
 
 
     def AllocateCustomerCredit(self, request):
-        """This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
+        r"""This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
         1. The credit is valid permanently and will not be zeroed regularly.
         2. The customer's service will be suspended when its available credit sets to 0, so caution should be exercised with this operation.
         3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.
@@ -54,7 +54,7 @@ class IpClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.
+        r"""This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.
 
         Notes:<br>
         1. To create the Tencent Cloud account, the partner should enter and verify the customer’s email address and mobile number.<br>
@@ -81,7 +81,7 @@ class IpClient(AbstractClient):
 
 
     def GetCountryCodes(self, request):
-        """This API is used to obtain country and region codes.
+        r"""This API is used to obtain country and region codes.
 
         :param request: Request instance for GetCountryCodes.
         :type request: :class:`tencentcloud.ip.v20210409.models.GetCountryCodesRequest`
@@ -104,7 +104,7 @@ class IpClient(AbstractClient):
 
 
     def QueryCreditAllocationHistory(self, request):
-        """This API is used to query all the credit allocation records of a single customer.
+        r"""This API is used to query all the credit allocation records of a single customer.
 
         :param request: Request instance for QueryCreditAllocationHistory.
         :type request: :class:`tencentcloud.ip.v20210409.models.QueryCreditAllocationHistoryRequest`
@@ -127,7 +127,7 @@ class IpClient(AbstractClient):
 
 
     def QueryCustomersCredit(self, request):
-        """This API is used for a partner to query a customer's credit and basic information.
+        r"""This API is used for a partner to query a customer's credit and basic information.
 
         :param request: Request instance for QueryCustomersCredit.
         :type request: :class:`tencentcloud.ip.v20210409.models.QueryCustomersCreditRequest`
@@ -150,7 +150,7 @@ class IpClient(AbstractClient):
 
 
     def QueryPartnerCredit(self, request):
-        """This API is used for a partner to query its own total credit, available credit, and used credit in USD.
+        r"""This API is used for a partner to query its own total credit, available credit, and used credit in USD.
 
         :param request: Request instance for QueryPartnerCredit.
         :type request: :class:`tencentcloud.ip.v20210409.models.QueryPartnerCreditRequest`

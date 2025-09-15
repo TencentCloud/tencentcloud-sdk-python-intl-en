@@ -27,7 +27,7 @@ class SesClient(AbstractClient):
 
 
     def BatchSendEmail(self, request):
-        """This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
+        r"""This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.
 
         :param request: Request instance for BatchSendEmail.
         :type request: :class:`tencentcloud.ses.v20201002.models.BatchSendEmailRequest`
@@ -50,7 +50,7 @@ class SesClient(AbstractClient):
 
 
     def CreateAddressUnsubscribeConfig(self, request):
-        """This API is used to create an address-level unsubscribe configuration.
+        r"""This API is used to create an address-level unsubscribe configuration.
 
         :param request: Request instance for CreateAddressUnsubscribeConfig.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateAddressUnsubscribeConfigRequest`
@@ -73,7 +73,7 @@ class SesClient(AbstractClient):
 
 
     def CreateEmailAddress(self, request):
-        """After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
+        r"""After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
 
         :param request: Request instance for CreateEmailAddress.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailAddressRequest`
@@ -96,7 +96,7 @@ class SesClient(AbstractClient):
 
 
     def CreateEmailIdentity(self, request):
-        """This API is used to create a sender domain. Before you can send an email using Tencent Cloud SES, you must create a sender domain as your identity. It can be the domain of your website or mobile app. You must verify the domain to prove that you own it and authorize Tencent Cloud SES to use it to send emails.
+        r"""This API is used to create a sender domain. Before you can send an email using Tencent Cloud SES, you must create a sender domain as your identity. It can be the domain of your website or mobile app. You must verify the domain to prove that you own it and authorize Tencent Cloud SES to use it to send emails.
 
         :param request: Request instance for CreateEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailIdentityRequest`
@@ -119,7 +119,7 @@ class SesClient(AbstractClient):
 
 
     def CreateEmailTemplate(self, request):
-        """This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.
+        r"""This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.
         Note: Only an approved template can be used to send emails.
 
         :param request: Request instance for CreateEmailTemplate.
@@ -143,7 +143,7 @@ class SesClient(AbstractClient):
 
 
     def CreateReceiver(self, request):
-        """This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.
+        r"""This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.
 
         :param request: Request instance for CreateReceiver.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverRequest`
@@ -166,7 +166,7 @@ class SesClient(AbstractClient):
 
 
     def CreateReceiverDetail(self, request):
-        """This API is used to add recipient email addresses (up to 20,000 at a time) to a recipient group. This will be processed asynchronously. If the data volume is large, it may take some time to upload. You can check the recipient group for the upload status and upload quantity. This API has basically the same feature as that of `CreateReceiverDetailWithData` except that it doesn't support uploading template parameters for email sending. You need to first call the `CreateReceiver` API to create a recipient group, then call this API to pass in recipient addresses, and finally call the `BatchSendEmail` API to batch send emails. This API supports adding more recipient addresses during upload but not address deduplication, so you need to make sure that the recipient addresses are not duplicate by yourself. This API can request up to 20,000 recipient addresses at a time, but the recipient group can contain up to 50,000 addresses currently.
+        r"""This API is used to add recipient email addresses (up to 20,000 at a time) to a recipient group. This will be processed asynchronously. If the data volume is large, it may take some time to upload. You can check the recipient group for the upload status and upload quantity. This API has basically the same feature as that of `CreateReceiverDetailWithData` except that it doesn't support uploading template parameters for email sending. You need to first call the `CreateReceiver` API to create a recipient group, then call this API to pass in recipient addresses, and finally call the `BatchSendEmail` API to batch send emails. This API supports adding more recipient addresses during upload but not address deduplication, so you need to make sure that the recipient addresses are not duplicate by yourself. This API can request up to 20,000 recipient addresses at a time, but the recipient group can contain up to 50,000 addresses currently.
 
         :param request: Request instance for CreateReceiverDetail.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailRequest`
@@ -189,7 +189,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteAddressUnsubscribeConfig(self, request):
-        """Remove address-level unsubscribe configuration.
+        r"""Remove address-level unsubscribe configuration.
 
         :param request: Request instance for DeleteAddressUnsubscribeConfig.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteAddressUnsubscribeConfigRequest`
@@ -212,7 +212,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteBlackList(self, request):
-        """This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.
+        r"""This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.
 
         :param request: Request instance for DeleteBlackList.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteBlackListRequest`
@@ -235,7 +235,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailAddress(self, request):
-        """This API is used to delete a sender address.
+        r"""This API is used to delete a sender address.
 
         :param request: Request instance for DeleteEmailAddress.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailAddressRequest`
@@ -258,7 +258,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailIdentity(self, request):
-        """This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.
+        r"""This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.
 
         :param request: Request instance for DeleteEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailIdentityRequest`
@@ -281,7 +281,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailTemplate(self, request):
-        """This API is used to delete an email template.
+        r"""This API is used to delete an email template.
 
         :param request: Request instance for DeleteEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailTemplateRequest`
@@ -304,7 +304,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteReceiver(self, request):
-        """This API is used to delete a recipient group and all recipient email addresses in the group based on the recipient group ID.
+        r"""This API is used to delete a recipient group and all recipient email addresses in the group based on the recipient group ID.
 
         :param request: Request instance for DeleteReceiver.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverRequest`
@@ -327,7 +327,7 @@ class SesClient(AbstractClient):
 
 
     def GetEmailIdentity(self, request):
-        """This API is used to get the configuration details of a sender domain.
+        r"""This API is used to get the configuration details of a sender domain.
 
         :param request: Request instance for GetEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetEmailIdentityRequest`
@@ -350,7 +350,7 @@ class SesClient(AbstractClient):
 
 
     def GetEmailTemplate(self, request):
-        """This API is used to get the details of a template.
+        r"""This API is used to get the details of a template.
 
         :param request: Request instance for GetEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetEmailTemplateRequest`
@@ -373,7 +373,7 @@ class SesClient(AbstractClient):
 
 
     def GetSendEmailStatus(self, request):
-        """This API is used to get email sending status. Only data within 30 days can be queried.
+        r"""This API is used to get email sending status. Only data within 30 days can be queried.
         Default API request rate limit: 1 request/sec.
 
         :param request: Request instance for GetSendEmailStatus.
@@ -397,7 +397,7 @@ class SesClient(AbstractClient):
 
 
     def GetStatisticsReport(self, request):
-        """This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.
+        r"""This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.
 
         :param request: Request instance for GetStatisticsReport.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetStatisticsReportRequest`
@@ -420,7 +420,7 @@ class SesClient(AbstractClient):
 
 
     def ListAddressUnsubscribeConfig(self, request):
-        """This API is used to get the address and unsubscribe configuration list.
+        r"""This API is used to get the address and unsubscribe configuration list.
 
         :param request: Request instance for ListAddressUnsubscribeConfig.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListAddressUnsubscribeConfigRequest`
@@ -443,7 +443,7 @@ class SesClient(AbstractClient):
 
 
     def ListBlackEmailAddress(self, request):
-        """The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.
+        r"""The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.
 
         :param request: Request instance for ListBlackEmailAddress.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListBlackEmailAddressRequest`
@@ -466,7 +466,7 @@ class SesClient(AbstractClient):
 
 
     def ListEmailAddress(self, request):
-        """This API is used to get the list of sender addresses.
+        r"""This API is used to get the list of sender addresses.
 
         :param request: Request instance for ListEmailAddress.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListEmailAddressRequest`
@@ -489,7 +489,7 @@ class SesClient(AbstractClient):
 
 
     def ListEmailIdentities(self, request):
-        """This API is used to get the list of sender domains, including verified and unverified domains.
+        r"""This API is used to get the list of sender domains, including verified and unverified domains.
 
         :param request: Request instance for ListEmailIdentities.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListEmailIdentitiesRequest`
@@ -512,7 +512,7 @@ class SesClient(AbstractClient):
 
 
     def ListEmailTemplates(self, request):
-        """This API is used to get the list of email templates.
+        r"""This API is used to get the list of email templates.
 
         :param request: Request instance for ListEmailTemplates.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListEmailTemplatesRequest`
@@ -535,7 +535,7 @@ class SesClient(AbstractClient):
 
 
     def ListReceivers(self, request):
-        """This API is used to query recipient groups. It supports pagination, fuzzy query, and query by status.
+        r"""This API is used to query recipient groups. It supports pagination, fuzzy query, and query by status.
 
         :param request: Request instance for ListReceivers.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListReceiversRequest`
@@ -558,7 +558,7 @@ class SesClient(AbstractClient):
 
 
     def ListSendTasks(self, request):
-        """This API is used to query batch email sending tasks (including immediate, scheduled, and recurring tasks) by page. You can query task data including the number of emails requested to be sent, the number of sent emails, the number of cached emails, and task status.
+        r"""This API is used to query batch email sending tasks (including immediate, scheduled, and recurring tasks) by page. You can query task data including the number of emails requested to be sent, the number of sent emails, the number of cached emails, and task status.
 
         :param request: Request instance for ListSendTasks.
         :type request: :class:`tencentcloud.ses.v20201002.models.ListSendTasksRequest`
@@ -581,7 +581,7 @@ class SesClient(AbstractClient):
 
 
     def SendEmail(self, request):
-        """This API is used to send an HTML or TEXT email triggered for authentication or transaction. By default, you can send emails using a template only.
+        r"""This API is used to send an HTML or TEXT email triggered for authentication or transaction. By default, you can send emails using a template only.
 
         :param request: Request instance for SendEmail.
         :type request: :class:`tencentcloud.ses.v20201002.models.SendEmailRequest`
@@ -604,7 +604,7 @@ class SesClient(AbstractClient):
 
 
     def UpdateAddressUnsubscribeConfig(self, request):
-        """This API is used to update address-level unsubscribe configurations.
+        r"""This API is used to update address-level unsubscribe configurations.
 
         :param request: Request instance for UpdateAddressUnsubscribeConfig.
         :type request: :class:`tencentcloud.ses.v20201002.models.UpdateAddressUnsubscribeConfigRequest`
@@ -627,7 +627,7 @@ class SesClient(AbstractClient):
 
 
     def UpdateEmailIdentity(self, request):
-        """This API is used to verify whether your DNS configuration is correct.
+        r"""This API is used to verify whether your DNS configuration is correct.
 
         :param request: Request instance for UpdateEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.UpdateEmailIdentityRequest`
@@ -650,7 +650,7 @@ class SesClient(AbstractClient):
 
 
     def UpdateEmailSmtpPassWord(self, request):
-        """This API is used to set the SMTP password. Initially, no SMTP password is set for your email address, so emails cannot be sent over SMTP. To send emails over SMTP, you must set the SMTP password. The set password can be changed subsequently.
+        r"""This API is used to set the SMTP password. Initially, no SMTP password is set for your email address, so emails cannot be sent over SMTP. To send emails over SMTP, you must set the SMTP password. The set password can be changed subsequently.
 
         :param request: Request instance for UpdateEmailSmtpPassWord.
         :type request: :class:`tencentcloud.ses.v20201002.models.UpdateEmailSmtpPassWordRequest`
@@ -673,7 +673,7 @@ class SesClient(AbstractClient):
 
 
     def UpdateEmailTemplate(self, request):
-        """This API is used to update an email template. An updated template must be approved again before it can be used.
+        r"""This API is used to update an email template. An updated template must be approved again before it can be used.
 
         :param request: Request instance for UpdateEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.UpdateEmailTemplateRequest`

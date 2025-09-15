@@ -27,7 +27,7 @@ class CwpClient(AbstractClient):
 
 
     def AddLoginWhiteLists(self, request):
-        """This API is used to add cross-region log-in allowlists in batches.
+        r"""This API is used to add cross-region log-in allowlists in batches.
 
         :param request: Request instance for AddLoginWhiteLists.
         :type request: :class:`tencentcloud.cwp.v20180228.models.AddLoginWhiteListsRequest`
@@ -50,7 +50,7 @@ class CwpClient(AbstractClient):
 
 
     def CancelIgnoreVul(self, request):
-        """This API is used to unignore the vulnerabilities.
+        r"""This API is used to unignore the vulnerabilities.
 
         :param request: Request instance for CancelIgnoreVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulRequest`
@@ -73,7 +73,7 @@ class CwpClient(AbstractClient):
 
 
     def ChangeRuleEventsIgnoreStatus(self, request):
-        """This API is used to ignore events or cancel ignoring in batches based on check item ID or event ID.
+        r"""This API is used to ignore events or cancel ignoring in batches based on check item ID or event ID.
 
         :param request: Request instance for ChangeRuleEventsIgnoreStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ChangeRuleEventsIgnoreStatusRequest`
@@ -96,7 +96,7 @@ class CwpClient(AbstractClient):
 
 
     def ChangeStrategyEnableStatus(self, request):
-        """This API is used to change the policy availability status by policy ID.
+        r"""This API is used to change the policy availability status by policy ID.
 
         :param request: Request instance for ChangeStrategyEnableStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ChangeStrategyEnableStatusRequest`
@@ -119,7 +119,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckBashPolicyParams(self, request):
-        """This API is used to verify parameters entered for adding and editing high-risk command user rules.
+        r"""This API is used to verify parameters entered for adding and editing high-risk command user rules.
 
         :param request: Request instance for CheckBashPolicyParams.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckBashPolicyParamsRequest`
@@ -142,7 +142,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckBashRuleParams(self, request):
-        """This API is used to verify parameters entered for adding and editing high-risk command user rules.
+        r"""This API is used to verify parameters entered for adding and editing high-risk command user rules.
 
         :param request: Request instance for CheckBashRuleParams.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckBashRuleParamsRequest`
@@ -165,7 +165,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckFileTamperRule(self, request):
-        """This API is used to check the rule parameters entered at the core file monitoring frontend.
+        r"""This API is used to check the rule parameters entered at the core file monitoring frontend.
 
         :param request: Request instance for CheckFileTamperRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckFileTamperRuleRequest`
@@ -188,7 +188,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckFirstScanBaseline(self, request):
-        """This API is used to query whether the baseline is detected for the first time.
+        r"""This API is used to query whether the baseline is detected for the first time.
 
         :param request: Request instance for CheckFirstScanBaseline.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckFirstScanBaselineRequest`
@@ -211,7 +211,7 @@ class CwpClient(AbstractClient):
 
 
     def CheckLogKafkaConnectionState(self, request):
-        """This API is used to check the connectivity for log shipping from Kafka.
+        r"""This API is used to check the connectivity for log shipping from Kafka.
 
         :param request: Request instance for CheckLogKafkaConnectionState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CheckLogKafkaConnectionStateRequest`
@@ -234,7 +234,7 @@ class CwpClient(AbstractClient):
 
 
     def ClearLocalStorage(self, request):
-        """This API is used to clean up the locally stored data.
+        r"""This API is used to clean up the locally stored data.
 
         :param request: Request instance for ClearLocalStorage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ClearLocalStorageRequest`
@@ -257,7 +257,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBanWhiteList(self, request):
-        """This API is used to add the list of block allowlists.
+        r"""This API is used to add the list of block allowlists.
 
         :param request: Request instance for CreateBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBanWhiteListRequest`
@@ -280,7 +280,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBaselineStrategy(self, request):
-        """This API is used to create a baseline policy based on the policy information.
+        r"""This API is used to create a baseline policy based on the policy information.
 
         :param request: Request instance for CreateBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBaselineStrategyRequest`
@@ -303,7 +303,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateBuyBindTask(self, request):
-        """This API is used to create an automatic binding task for newly purchased authorizations.
+        r"""This API is used to create an automatic binding task for newly purchased authorizations.
 
         :param request: Request instance for CreateBuyBindTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBuyBindTaskRequest`
@@ -326,7 +326,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateEmergencyVulScan(self, request):
-        """This API is used to create emergency vulnerability scan tasks.
+        r"""This API is used to create emergency vulnerability scan tasks.
 
         :param request: Request instance for CreateEmergencyVulScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateEmergencyVulScanRequest`
@@ -349,7 +349,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateIncidentBacktracking(self, request):
-        """This API is used to trigger event investigation and alarm backtracking for Ultimate Edition machines.
+        r"""This API is used to trigger event investigation and alarm backtracking for Ultimate Edition machines.
 
         :param request: Request instance for CreateIncidentBacktracking.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateIncidentBacktrackingRequest`
@@ -372,7 +372,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateLicenseOrder(self, request):
-        """This API is used to create Professional/Flagship edition orders
+        r"""This API is used to create Professional/Flagship edition orders
         .This API is used to support creating orders through prepaid and pay-as-you-go.
         This API is used to directly create postpaid orders.
         This API is used to call the billing payment API for payment since prepaid orders are only placed but not paid.
@@ -398,7 +398,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateLogExport(self, request):
-        """This API is used to create log download tasks.
+        r"""This API is used to create log download tasks.
 
         :param request: Request instance for CreateLogExport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateLogExportRequest`
@@ -421,7 +421,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateMaliciousRequestWhiteList(self, request):
-        """This API is used to add malicious request allowlists.
+        r"""This API is used to add malicious request allowlists.
 
         :param request: Request instance for CreateMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateMaliciousRequestWhiteListRequest`
@@ -444,7 +444,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateMalwareWhiteList(self, request):
-        """This API is used to create the Trojan allowlist.
+        r"""This API is used to create the Trojan allowlist.
 
         :param request: Request instance for CreateMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateMalwareWhiteListRequest`
@@ -467,7 +467,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateNetAttackWhiteList(self, request):
-        """This API is used to create a network attack allowlist.
+        r"""This API is used to create a network attack allowlist.
 
         :param request: Request instance for CreateNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateNetAttackWhiteListRequest`
@@ -490,7 +490,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateRansomDefenseStrategy(self, request):
-        """This API is used to create or modify anti-ransomware policies.
+        r"""This API is used to create or modify anti-ransomware policies.
 
         :param request: Request instance for CreateRansomDefenseStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateRansomDefenseStrategyRequest`
@@ -513,7 +513,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateScanMalwareSetting(self, request):
-        """This API is used to detect the intrusion and virus scanning.
+        r"""This API is used to detect the intrusion and virus scanning.
 
         :param request: Request instance for CreateScanMalwareSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateScanMalwareSettingRequest`
@@ -536,7 +536,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateSearchLog(self, request):
-        """This API is used to add history search records.
+        r"""This API is used to add history search records.
 
         :param request: Request instance for CreateSearchLog.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateSearchLogRequest`
@@ -559,7 +559,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateSearchTemplate(self, request):
-        """This API is used to add the	retrieval template.
+        r"""This API is used to add the	retrieval template.
 
         :param request: Request instance for CreateSearchTemplate.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateSearchTemplateRequest`
@@ -582,7 +582,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateVulFix(self, request):
-        """This API is used to submit the vulnerabilities and fix them.
+        r"""This API is used to submit the vulnerabilities and fix them.
 
         :param request: Request instance for CreateVulFix.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateVulFixRequest`
@@ -605,7 +605,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateWhiteListOrder(self, request):
-        """This API is used to create allowlist orders.
+        r"""This API is used to create allowlist orders.
 
         :param request: Request instance for CreateWhiteListOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateWhiteListOrderRequest`
@@ -628,7 +628,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteAllJavaMemShells(self, request):
-        """This API is used to delete all Java webshell events.
+        r"""This API is used to delete all Java webshell events.
 
         :param request: Request instance for DeleteAllJavaMemShells.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteAllJavaMemShellsRequest`
@@ -651,7 +651,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBanWhiteList(self, request):
-        """This API is used to delete the list of blocking allowlists.
+        r"""This API is used to delete the list of blocking allowlists.
 
         :param request: Request instance for DeleteBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBanWhiteListRequest`
@@ -674,7 +674,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselinePolicy(self, request):
-        """This API is used to delete the baseline policy configuration.
+        r"""This API is used to delete the baseline policy configuration.
 
         :param request: Request instance for DeleteBaselinePolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselinePolicyRequest`
@@ -697,7 +697,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBaselineStrategy(self, request):
-        """This API is used to delete the policy by baseline policy ID.
+        r"""This API is used to delete the policy by baseline policy ID.
 
         :param request: Request instance for DeleteBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselineStrategyRequest`
@@ -720,7 +720,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashEvents(self, request):
-        """This API is used to delete high-risk command events based on IDs.
+        r"""This API is used to delete high-risk command events based on IDs.
 
         :param request: Request instance for DeleteBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashEventsRequest`
@@ -743,7 +743,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashPolicies(self, request):
-        """This API is used to delete high-risk command policies.
+        r"""This API is used to delete high-risk command policies.
 
         :param request: Request instance for DeleteBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashPoliciesRequest`
@@ -766,7 +766,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBashRules(self, request):
-        """This API is used to delete high-risk command rules.
+        r"""This API is used to delete high-risk command rules.
 
         :param request: Request instance for DeleteBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashRulesRequest`
@@ -789,7 +789,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteBruteAttacks(self, request):
-        """This API is used to delete brute force attack records.
+        r"""This API is used to delete brute force attack records.
 
         :param request: Request instance for DeleteBruteAttacks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBruteAttacksRequest`
@@ -812,7 +812,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLicenseRecord(self, request):
-        """This API is used to delete expired orders in Authorization Management - Order List. (Deleted orders are not counted in statistics.)
+        r"""This API is used to delete expired orders in Authorization Management - Order List. (Deleted orders are not counted in statistics.)
 
         :param request: Request instance for DeleteLicenseRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLicenseRecordRequest`
@@ -835,7 +835,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLicenseRecordAll(self, request):
-        """This API is used to delete all authorization records.
+        r"""This API is used to delete all authorization records.
 
         :param request: Request instance for DeleteLicenseRecordAll.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLicenseRecordAllRequest`
@@ -858,7 +858,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLogExport(self, request):
-        """This API is used to delete log download tasks.
+        r"""This API is used to delete log download tasks.
 
         :param request: Request instance for DeleteLogExport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLogExportRequest`
@@ -881,7 +881,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLoginWhiteList(self, request):
-        """This API is used to delete the cross-region log-in allowlist rules.
+        r"""This API is used to delete the cross-region log-in allowlist rules.
 
         :param request: Request instance for DeleteLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLoginWhiteListRequest`
@@ -904,7 +904,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """This API is used to uninstall the CWPP client.
+        r"""This API is used to uninstall the CWPP client.
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineRequest`
@@ -927,7 +927,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachineClearHistory(self, request):
-        """This API is used to delete clearing records of a machine.
+        r"""This API is used to delete clearing records of a machine.
 
         :param request: Request instance for DeleteMachineClearHistory.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineClearHistoryRequest`
@@ -950,7 +950,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachineTag(self, request):
-        """This API is used to delete tags associated with the server.
+        r"""This API is used to delete tags associated with the server.
 
         :param request: Request instance for DeleteMachineTag.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineTagRequest`
@@ -973,7 +973,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMaliciousRequestWhiteList(self, request):
-        """This API is used to delete the malicious request allowlist.
+        r"""This API is used to delete the malicious request allowlist.
 
         :param request: Request instance for DeleteMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestWhiteListRequest`
@@ -996,7 +996,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMaliciousRequests(self, request):
-        """This API is used to delete malicious request records.
+        r"""This API is used to delete malicious request records.
 
         :param request: Request instance for DeleteMaliciousRequests.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestsRequest`
@@ -1019,7 +1019,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwareScanTask(self, request):
-        """This API is used to terminate the scan tasks.
+        r"""This API is used to terminate the scan tasks.
 
         :param request: Request instance for DeleteMalwareScanTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwareScanTaskRequest`
@@ -1042,7 +1042,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwareWhiteList(self, request):
-        """This API is used to delete the Trojan whitelist.
+        r"""This API is used to delete the Trojan whitelist.
 
         :param request: Request instance for DeleteMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwareWhiteListRequest`
@@ -1065,7 +1065,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMalwares(self, request):
-        """This API is used to delete Trojan records.
+        r"""This API is used to delete Trojan records.
 
         :param request: Request instance for DeleteMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwaresRequest`
@@ -1088,7 +1088,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteNetAttackWhiteList(self, request):
-        """This API is used to delete the network attack allowlist.
+        r"""This API is used to delete the network attack allowlist.
 
         :param request: Request instance for DeleteNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteNetAttackWhiteListRequest`
@@ -1111,7 +1111,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteNonlocalLoginPlaces(self, request):
-        """This API is used to delete cross-region log-in records.
+        r"""This API is used to delete cross-region log-in records.
 
         :param request: Request instance for DeleteNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteNonlocalLoginPlacesRequest`
@@ -1134,7 +1134,7 @@ class CwpClient(AbstractClient):
 
 
     def DeletePrivilegeEvents(self, request):
-        """This API is used to delete local privilege escalation based on IDs.
+        r"""This API is used to delete local privilege escalation based on IDs.
 
         :param request: Request instance for DeletePrivilegeEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeEventsRequest`
@@ -1157,7 +1157,7 @@ class CwpClient(AbstractClient):
 
 
     def DeletePrivilegeRules(self, request):
-        """This API is used to delete local privilege elevation rules.
+        r"""This API is used to delete local privilege elevation rules.
 
         :param request: Request instance for DeletePrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeRulesRequest`
@@ -1180,7 +1180,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteReverseShellEvents(self, request):
-        """This API is used to delete Reverse Shell events based on IDs.
+        r"""This API is used to delete Reverse Shell events based on IDs.
 
         :param request: Request instance for DeleteReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellEventsRequest`
@@ -1203,7 +1203,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteReverseShellRules(self, request):
-        """This API is used to delete Reverse Shell rules.
+        r"""This API is used to delete Reverse Shell rules.
 
         :param request: Request instance for DeleteReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellRulesRequest`
@@ -1226,7 +1226,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteRiskDnsEvent(self, request):
-        """This API is used to delete malicious request events.
+        r"""This API is used to delete malicious request events.
 
         :param request: Request instance for DeleteRiskDnsEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRiskDnsEventRequest`
@@ -1249,7 +1249,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteRiskDnsPolicy(self, request):
-        """This API is used to delete malicious request policies.
+        r"""This API is used to delete malicious request policies.
 
         :param request: Request instance for DeleteRiskDnsPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRiskDnsPolicyRequest`
@@ -1272,7 +1272,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteScanTask(self, request):
-        """This API is used to stop scan tasks of a specified type.
+        r"""This API is used to stop scan tasks of a specified type.
 
         :param request: Request instance for DeleteScanTask.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteScanTaskRequest`
@@ -1295,7 +1295,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteSearchTemplate(self, request):
-        """This API is used to delete the retrieval template.
+        r"""This API is used to delete the retrieval template.
 
         :param request: Request instance for DeleteSearchTemplate.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteSearchTemplateRequest`
@@ -1318,7 +1318,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """This API is used to delete tags.
+        r"""This API is used to delete tags.
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteTagsRequest`
@@ -1341,7 +1341,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookPolicy(self, request):
-        """This API is used to delete alarm policies.
+        r"""This API is used to delete alarm policies.
 
         :param request: Request instance for DeleteWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookPolicyRequest`
@@ -1364,7 +1364,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookReceiver(self, request):
-        """This API is used to delete the alert recipient.
+        r"""This API is used to delete the alert recipient.
 
         :param request: Request instance for DeleteWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookReceiverRequest`
@@ -1387,7 +1387,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteWebHookRule(self, request):
-        """This API is used to delete the rules of WeCom chatbots.
+        r"""This API is used to delete the rules of WeCom chatbots.
 
         :param request: Request instance for DeleteWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebHookRuleRequest`
@@ -1410,7 +1410,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeABTestConfig(self, request):
-        """This API is used to obtain the current grayscale configuration of the user.
+        r"""This API is used to obtain the current grayscale configuration of the user.
 
         :param request: Request instance for DescribeABTestConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeABTestConfigRequest`
@@ -1433,7 +1433,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAESKey(self, request):
-        """This API is used to obtain the configured aeskey and aesiv.
+        r"""This API is used to obtain the configured aeskey and aesiv.
 
         :param request: Request instance for DescribeAESKey.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAESKeyRequest`
@@ -1456,7 +1456,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAccountStatistics(self, request):
-        """This API is used to obtain the account statistics data.
+        r"""This API is used to obtain the account statistics data.
 
         :param request: Request instance for DescribeAccountStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountStatisticsRequest`
@@ -1479,7 +1479,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAgentInstallCommand(self, request):
-        """This API is used to obtain the agent installation command.
+        r"""This API is used to obtain the agent installation command.
 
         :param request: Request instance for DescribeAgentInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallCommandRequest`
@@ -1502,7 +1502,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAgentInstallationToken(self, request):
-        """This API is used to obtain the token for installing the agent in a hybrid cloud environment.
+        r"""This API is used to obtain the token for installing the agent in a hybrid cloud environment.
 
         :param request: Request instance for DescribeAgentInstallationToken.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallationTokenRequest`
@@ -1525,7 +1525,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAlarmIncidentNodes(self, request):
-        """This API is used to obtain all node information on the event corresponding to an alarm.
+        r"""This API is used to obtain all node information on the event corresponding to an alarm.
 
         :param request: Request instance for DescribeAlarmIncidentNodes.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmIncidentNodesRequest`
@@ -1548,7 +1548,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAlarmVertexId(self, request):
-        """This API is used to query the list of alarm IDs.
+        r"""This API is used to query the list of alarm IDs.
 
         :param request: Request instance for DescribeAlarmVertexId.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmVertexIdRequest`
@@ -1571,7 +1571,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppCount(self, request):
-        """This API is used to obtain the number of all software applications.
+        r"""This API is used to obtain the number of all software applications.
 
         :param request: Request instance for DescribeAssetAppCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppCountRequest`
@@ -1594,7 +1594,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppList(self, request):
-        """This API is used to query the application list.
+        r"""This API is used to query the application list.
 
         :param request: Request instance for DescribeAssetAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppListRequest`
@@ -1617,7 +1617,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetAppProcessList(self, request):
-        """This API is used to obtain the list of software's associated processes.
+        r"""This API is used to obtain the list of software's associated processes.
 
         :param request: Request instance for DescribeAssetAppProcessList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppProcessListRequest`
@@ -1640,7 +1640,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetCoreModuleInfo(self, request):
-        """This API is used to obtain the kernel module details.
+        r"""This API is used to obtain the kernel module details.
 
         :param request: Request instance for DescribeAssetCoreModuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleInfoRequest`
@@ -1663,7 +1663,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetCoreModuleList(self, request):
-        """This API is used to query the list of asset management kernel modules.
+        r"""This API is used to query the list of asset management kernel modules.
 
         :param request: Request instance for DescribeAssetCoreModuleList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleListRequest`
@@ -1686,7 +1686,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseCount(self, request):
-        """This API is used to obtain the number of all databases.
+        r"""This API is used to obtain the number of all databases.
 
         :param request: Request instance for DescribeAssetDatabaseCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseCountRequest`
@@ -1709,7 +1709,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseInfo(self, request):
-        """This API is used to obtain the asset management database details.
+        r"""This API is used to obtain the asset management database details.
 
         :param request: Request instance for DescribeAssetDatabaseInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseInfoRequest`
@@ -1732,7 +1732,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDatabaseList(self, request):
-        """This API is used to query the list of asset management databases.
+        r"""This API is used to query the list of asset management databases.
 
         :param request: Request instance for DescribeAssetDatabaseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseListRequest`
@@ -1755,7 +1755,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetDiskList(self, request):
-        """This API is used to obtain the host disk partition list.
+        r"""This API is used to obtain the host disk partition list.
 
         :param request: Request instance for DescribeAssetDiskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDiskListRequest`
@@ -1778,7 +1778,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetEnvList(self, request):
-        """This API is used to query the list of asset management environment variables.
+        r"""This API is used to query the list of asset management environment variables.
 
         :param request: Request instance for DescribeAssetEnvList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetEnvListRequest`
@@ -1801,7 +1801,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetHostTotalCount(self, request):
-        """This API is used to obtain the total number of resources of the host.
+        r"""This API is used to obtain the total number of resources of the host.
 
         :param request: Request instance for DescribeAssetHostTotalCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetHostTotalCountRequest`
@@ -1824,7 +1824,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetInfo(self, request):
-        """This API is used to obtain the number of assets, including hosts, accounts, ports, processes, software, databases, web applications, web frameworks, web services, and web sites.
+        r"""This API is used to obtain the number of assets, including hosts, accounts, ports, processes, software, databases, web applications, web frameworks, web services, and web sites.
 
         :param request: Request instance for DescribeAssetInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInfoRequest`
@@ -1847,7 +1847,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetInitServiceList(self, request):
-        """This API is used to query the list of asset management start services.
+        r"""This API is used to query the list of asset management start services.
 
         :param request: Request instance for DescribeAssetInitServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInitServiceListRequest`
@@ -1870,7 +1870,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetJarInfo(self, request):
-        """This API is used to obtain Jar package details.
+        r"""This API is used to obtain Jar package details.
 
         :param request: Request instance for DescribeAssetJarInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarInfoRequest`
@@ -1893,7 +1893,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetJarList(self, request):
-        """This API is used to query the list of Jar packages.
+        r"""This API is used to query the list of Jar packages.
 
         :param request: Request instance for DescribeAssetJarList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarListRequest`
@@ -1916,7 +1916,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetLoadInfo(self, request):
-        """This API is used to obtain the utilization of the system load, memory, and hard disk.
+        r"""This API is used to obtain the utilization of the system load, memory, and hard disk.
 
         :param request: Request instance for DescribeAssetLoadInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetLoadInfoRequest`
@@ -1939,7 +1939,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineDetail(self, request):
-        """This API is used to obtain asset management host resource details.
+        r"""This API is used to obtain asset management host resource details.
 
         :param request: Request instance for DescribeAssetMachineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineDetailRequest`
@@ -1962,7 +1962,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineList(self, request):
-        """This API is used to obtain the resource monitoring list of the asset fingerprint page.
+        r"""This API is used to obtain the resource monitoring list of the asset fingerprint page.
 
         :param request: Request instance for DescribeAssetMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineListRequest`
@@ -1985,7 +1985,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetMachineTagTop(self, request):
-        """This API is used to obtain top 5 host tags.
+        r"""This API is used to obtain top 5 host tags.
 
         :param request: Request instance for DescribeAssetMachineTagTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineTagTopRequest`
@@ -2008,7 +2008,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPlanTaskList(self, request):
-        """This API is used to query the list of asset management plan tasks.
+        r"""This API is used to query the list of asset management plan tasks.
 
         :param request: Request instance for DescribeAssetPlanTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPlanTaskListRequest`
@@ -2031,7 +2031,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPortCount(self, request):
-        """This API is used to obtain the total number of ports.
+        r"""This API is used to obtain the total number of ports.
 
         :param request: Request instance for DescribeAssetPortCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortCountRequest`
@@ -2054,7 +2054,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetPortInfoList(self, request):
-        """This API is used to obtain the list of asset management ports.
+        r"""This API is used to obtain the list of asset management ports.
 
         :param request: Request instance for DescribeAssetPortInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortInfoListRequest`
@@ -2077,7 +2077,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetProcessCount(self, request):
-        """This API is used to obtain the total number of processes.
+        r"""This API is used to obtain the total number of processes.
 
         :param request: Request instance for DescribeAssetProcessCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessCountRequest`
@@ -2100,7 +2100,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetProcessInfoList(self, request):
-        """This API is used to obtain the list of asset management processes.
+        r"""This API is used to obtain the list of asset management processes.
 
         :param request: Request instance for DescribeAssetProcessInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessInfoListRequest`
@@ -2123,7 +2123,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetRecentMachineInfo(self, request):
-        """This API is used to obtain the latest trend of hosts.
+        r"""This API is used to obtain the latest trend of hosts.
 
         :param request: Request instance for DescribeAssetRecentMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetRecentMachineInfoRequest`
@@ -2146,7 +2146,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetSystemPackageList(self, request):
-        """This API is used to obtain the list of system installation packages for asset management.
+        r"""This API is used to obtain the list of system installation packages for asset management.
 
         :param request: Request instance for DescribeAssetSystemPackageList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetSystemPackageListRequest`
@@ -2169,7 +2169,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTotalCount(self, request):
-        """This API is used to obtain the number of resources, including hosts, accounts, ports, processes, software, databases, web applications, web frameworks, web services, and web sites.
+        r"""This API is used to obtain the number of resources, including hosts, accounts, ports, processes, software, databases, web applications, web frameworks, web services, and web sites.
 
         :param request: Request instance for DescribeAssetTotalCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTotalCountRequest`
@@ -2192,7 +2192,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTypeTop(self, request):
-        """This API is used to obtain Top5 resources of various types.
+        r"""This API is used to obtain Top5 resources of various types.
 
         :param request: Request instance for DescribeAssetTypeTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTypeTopRequest`
@@ -2215,7 +2215,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetTypes(self, request):
-        """This API is used to obtain the asset fingerprint type list.
+        r"""This API is used to obtain the asset fingerprint type list.
 
         :param request: Request instance for DescribeAssetTypes.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetTypesRequest`
@@ -2238,7 +2238,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserCount(self, request):
-        """This API is used to obtain the total number of accounts.
+        r"""This API is used to obtain the total number of accounts.
 
         :param request: Request instance for DescribeAssetUserCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserCountRequest`
@@ -2261,7 +2261,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserInfo(self, request):
-        """This API is used to obtain host account details.
+        r"""This API is used to obtain host account details.
 
         :param request: Request instance for DescribeAssetUserInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserInfoRequest`
@@ -2284,7 +2284,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserKeyList(self, request):
-        """This API is used to obtain the list of host account Keys.
+        r"""This API is used to obtain the list of host account Keys.
 
         :param request: Request instance for DescribeAssetUserKeyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserKeyListRequest`
@@ -2307,7 +2307,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetUserList(self, request):
-        """This API is used to obtain the list of accounts.
+        r"""This API is used to obtain the list of accounts.
 
         :param request: Request instance for DescribeAssetUserList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserListRequest`
@@ -2330,7 +2330,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppCount(self, request):
-        """This API is used to obtain the number of all web applications.
+        r"""This API is used to obtain the number of all web applications.
 
         :param request: Request instance for DescribeAssetWebAppCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppCountRequest`
@@ -2353,7 +2353,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppList(self, request):
-        """This API is used to obtain the list of asset management web applications.
+        r"""This API is used to obtain the list of asset management web applications.
 
         :param request: Request instance for DescribeAssetWebAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppListRequest`
@@ -2376,7 +2376,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebAppPluginList(self, request):
-        """This API is used to obtain the list of asset management Web application plugins.
+        r"""This API is used to obtain the list of asset management Web application plugins.
 
         :param request: Request instance for DescribeAssetWebAppPluginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppPluginListRequest`
@@ -2399,7 +2399,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebFrameCount(self, request):
-        """This API is used to obtain the number of all Web frameworks.
+        r"""This API is used to obtain the number of all Web frameworks.
 
         :param request: Request instance for DescribeAssetWebFrameCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameCountRequest`
@@ -2422,7 +2422,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebFrameList(self, request):
-        """This API is used to obtain the list of asset management Web frameworks.
+        r"""This API is used to obtain the list of asset management Web frameworks.
 
         :param request: Request instance for DescribeAssetWebFrameList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameListRequest`
@@ -2445,7 +2445,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationCount(self, request):
-        """This API is used to obtain the total number of Web sites.
+        r"""This API is used to obtain the total number of Web sites.
 
         :param request: Request instance for DescribeAssetWebLocationCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationCountRequest`
@@ -2468,7 +2468,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationInfo(self, request):
-        """This API is used to obtain the Web site details.
+        r"""This API is used to obtain the Web site details.
 
         :param request: Request instance for DescribeAssetWebLocationInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationInfoRequest`
@@ -2491,7 +2491,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationList(self, request):
-        """This API is used to obtain the list of Web sites.
+        r"""This API is used to obtain the list of Web sites.
 
         :param request: Request instance for DescribeAssetWebLocationList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationListRequest`
@@ -2514,7 +2514,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebLocationPathList(self, request):
-        """This API is used to obtain the list of Web sites' virtual directories.
+        r"""This API is used to obtain the list of Web sites' virtual directories.
 
         :param request: Request instance for DescribeAssetWebLocationPathList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationPathListRequest`
@@ -2537,7 +2537,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceCount(self, request):
-        """This API is used to obtain the number of all web services.
+        r"""This API is used to obtain the number of all web services.
 
         :param request: Request instance for DescribeAssetWebServiceCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceCountRequest`
@@ -2560,7 +2560,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceInfoList(self, request):
-        """This API is used to query the list of asset management Web services.
+        r"""This API is used to query the list of asset management Web services.
 
         :param request: Request instance for DescribeAssetWebServiceInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceInfoListRequest`
@@ -2583,7 +2583,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAssetWebServiceProcessList(self, request):
-        """This API is used to obtain the list of processes associated with Web services.
+        r"""This API is used to obtain the list of processes associated with Web services.
 
         :param request: Request instance for DescribeAssetWebServiceProcessList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceProcessListRequest`
@@ -2606,7 +2606,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackEventInfo(self, request):
-        """This API is used to obtain network attack details.
+        r"""This API is used to obtain network attack details.
 
         :param request: Request instance for DescribeAttackEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackEventInfoRequest`
@@ -2629,7 +2629,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackEvents(self, request):
-        """This API is used to display the list of network attack detection events in pagination.
+        r"""This API is used to display the list of network attack detection events in pagination.
 
         :param request: Request instance for DescribeAttackEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackEventsRequest`
@@ -2652,7 +2652,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackLogs(self, request):
-        """DescribeAttackEvents 代替
+        r"""DescribeAttackEvents 代替
 
         This API is used to display the list of network attack logs in pagination.
 
@@ -2677,7 +2677,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSource(self, request):
-        """已废弃
+        r"""已废弃
 
         This API is used to backtrack attacks.
 
@@ -2702,7 +2702,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSourceEvents(self, request):
-        """已废弃
+        r"""已废弃
 
         This API is used to query attack backtracking events.
 
@@ -2727,7 +2727,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackStatistics(self, request):
-        """This API is used to obtain the statistics of network attack data.
+        r"""This API is used to obtain the statistics of network attack data.
 
         :param request: Request instance for DescribeAttackStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackStatisticsRequest`
@@ -2750,7 +2750,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackTop(self, request):
-        """This API is used to obtain the list of Top 5 network attacks.
+        r"""This API is used to obtain the list of Top 5 network attacks.
 
         :param request: Request instance for DescribeAttackTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTopRequest`
@@ -2773,7 +2773,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackTrends(self, request):
-        """This API is used to obtain the network attack trend data.
+        r"""This API is used to obtain the network attack trend data.
 
         :param request: Request instance for DescribeAttackTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTrendsRequest`
@@ -2796,7 +2796,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackVulTypeList(self, request):
-        """This API is used to obtain the list of network attack threat types.
+        r"""This API is used to obtain the list of network attack threat types.
 
         :param request: Request instance for DescribeAttackVulTypeList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackVulTypeListRequest`
@@ -2819,7 +2819,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAvailableExpertServiceDetail(self, request):
-        """This API is used to obtain available order details.
+        r"""This API is used to obtain available order details.
 
         :param request: Request instance for DescribeAvailableExpertServiceDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailRequest`
@@ -2842,7 +2842,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanMode(self, request):
-        """This API is used to obtain the brute-force blocking mode.
+        r"""This API is used to obtain the brute-force blocking mode.
 
         :param request: Request instance for DescribeBanMode.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanModeRequest`
@@ -2865,7 +2865,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanRegions(self, request):
-        """This API is used to obtain the block region.
+        r"""This API is used to obtain the block region.
 
         :param request: Request instance for DescribeBanRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanRegionsRequest`
@@ -2888,7 +2888,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanStatus(self, request):
-        """This API is used to obtain the block button status.
+        r"""This API is used to obtain the block button status.
 
         :param request: Request instance for DescribeBanStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanStatusRequest`
@@ -2911,7 +2911,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBanWhiteList(self, request):
-        """This API is used to obtain the blocking allowlist list.
+        r"""This API is used to obtain the blocking allowlist list.
 
         :param request: Request instance for DescribeBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanWhiteListRequest`
@@ -2934,7 +2934,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineBasicInfo(self, request):
-        """This API is used to query the list of baseline basic information.
+        r"""This API is used to query the list of baseline basic information.
 
         :param request: Request instance for DescribeBaselineBasicInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineBasicInfoRequest`
@@ -2957,7 +2957,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDefaultStrategyList(self, request):
-        """This API is used to query the list information of default policies of the baseline.
+        r"""This API is used to query the list information of default policies of the baseline.
 
         :param request: Request instance for DescribeBaselineDefaultStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDefaultStrategyListRequest`
@@ -2980,7 +2980,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineDetail(self, request):
-        """This API is used to query baseline details by baseline ID.
+        r"""This API is used to query baseline details by baseline ID.
 
         :param request: Request instance for DescribeBaselineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineDetailRequest`
@@ -3003,7 +3003,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineEffectHostList(self, request):
-        """This API is used to query the list of hosts affected by a baseline based on baseline ID.
+        r"""This API is used to query the list of hosts affected by a baseline based on baseline ID.
 
         :param request: Request instance for DescribeBaselineEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineEffectHostListRequest`
@@ -3026,7 +3026,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostDetectList(self, request):
-        """This API is used to obtain the list of hosts for baseline detection.
+        r"""This API is used to obtain the list of hosts for baseline detection.
 
         :param request: Request instance for DescribeBaselineHostDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostDetectListRequest`
@@ -3049,7 +3049,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineHostTop(self, request):
-        """This API is used to return Top N risky servers.
+        r"""This API is used to return Top N risky servers.
 
         :param request: Request instance for DescribeBaselineHostTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostTopRequest`
@@ -3072,7 +3072,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemDetectList(self, request):
-        """This API is used to obtain the list of baseline detection items.
+        r"""This API is used to obtain the list of baseline detection items.
 
         :param request: Request instance for DescribeBaselineItemDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemDetectListRequest`
@@ -3095,7 +3095,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineItemList(self, request):
-        """This API is used to obtain the list of check results on baseline check items.
+        r"""This API is used to obtain the list of check results on baseline check items.
 
         :param request: Request instance for DescribeBaselineItemList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineItemListRequest`
@@ -3118,7 +3118,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineList(self, request):
-        """This API is used to query the information of the baseline list.
+        r"""This API is used to query the information of the baseline list.
 
         :param request: Request instance for DescribeBaselineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineListRequest`
@@ -3141,7 +3141,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselinePolicyList(self, request):
-        """This API is used to obtain the list of baseline policies.
+        r"""This API is used to obtain the list of baseline policies.
 
         :param request: Request instance for DescribeBaselinePolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselinePolicyListRequest`
@@ -3164,7 +3164,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineRule(self, request):
-        """This API is used to query the information on corresponding check items based on baseline ID.
+        r"""This API is used to query the information on corresponding check items based on baseline ID.
 
         :param request: Request instance for DescribeBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineRuleRequest`
@@ -3187,7 +3187,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineScanSchedule(self, request):
-        """This API is used to query the baseline detection progress by task ID.
+        r"""This API is used to query the baseline detection progress by task ID.
 
         :param request: Request instance for DescribeBaselineScanSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineScanScheduleRequest`
@@ -3210,7 +3210,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineStrategyDetail(self, request):
-        """This API is used to query policy details by baseline policy ID.
+        r"""This API is used to query policy details by baseline policy ID.
 
         :param request: Request instance for DescribeBaselineStrategyDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyDetailRequest`
@@ -3233,7 +3233,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineStrategyList(self, request):
-        """This API is used to query the information of baseline policies under the same user.
+        r"""This API is used to query the information of baseline policies under the same user.
 
         :param request: Request instance for DescribeBaselineStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyListRequest`
@@ -3256,7 +3256,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineTop(self, request):
-        """This API is used to query TOP baseline detection items based on policy IDs.
+        r"""This API is used to query TOP baseline detection items based on policy IDs.
 
         :param request: Request instance for DescribeBaselineTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineTopRequest`
@@ -3279,7 +3279,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBaselineWeakPasswordList(self, request):
-        """This API is used to obtain the list of baseline weak passwords.
+        r"""This API is used to obtain the list of baseline weak passwords.
 
         :param request: Request instance for DescribeBaselineWeakPasswordList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineWeakPasswordListRequest`
@@ -3302,7 +3302,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEvents(self, request):
-        """This API is used to obtain the high-risk command list.
+        r"""This API is used to obtain the high-risk command list.
 
         :param request: Request instance for DescribeBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsRequest`
@@ -3325,7 +3325,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsInfo(self, request):
-        """This API is used to query high-risk command event details.
+        r"""This API is used to query high-risk command event details.
 
         :param request: Request instance for DescribeBashEventsInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsInfoRequest`
@@ -3348,7 +3348,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsInfoNew(self, request):
-        """This API is used to query high-risk command event details (new).
+        r"""This API is used to query high-risk command event details (new).
 
         :param request: Request instance for DescribeBashEventsInfoNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsInfoNewRequest`
@@ -3371,7 +3371,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashEventsNew(self, request):
-        """This API is used to obtain the list of high-risk commands (new).
+        r"""This API is used to obtain the list of high-risk commands (new).
 
         :param request: Request instance for DescribeBashEventsNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsNewRequest`
@@ -3394,7 +3394,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashPolicies(self, request):
-        """This API is used to obtain the list of high-risk command policies.
+        r"""This API is used to obtain the list of high-risk command policies.
 
         :param request: Request instance for DescribeBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashPoliciesRequest`
@@ -3417,7 +3417,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBashRules(self, request):
-        """This API is used to obtain the list of high-risk command rules.
+        r"""This API is used to obtain the list of high-risk command rules.
 
         :param request: Request instance for DescribeBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashRulesRequest`
@@ -3440,7 +3440,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBruteAttackList(self, request):
-        """This API is used to obtain the list of password cracking.
+        r"""This API is used to obtain the list of password cracking.
 
         :param request: Request instance for DescribeBruteAttackList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackListRequest`
@@ -3463,7 +3463,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeBruteAttackRules(self, request):
-        """This API is used to obtain brute force cracking rules.
+        r"""This API is used to obtain brute force cracking rules.
 
         :param request: Request instance for DescribeBruteAttackRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackRulesRequest`
@@ -3486,7 +3486,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeCanFixVulMachine(self, request):
-        """This API is used to query the fixable host information.
+        r"""This API is used to query the fixable host information.
 
         :param request: Request instance for DescribeCanFixVulMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCanFixVulMachineRequest`
@@ -3509,7 +3509,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeCanNotSeparateMachine(self, request):
-        """This API is used to obtain hosts where Trojans cannot be isolated.
+        r"""This API is used to obtain hosts where Trojans cannot be isolated.
 
         :param request: Request instance for DescribeCanNotSeparateMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCanNotSeparateMachineRequest`
@@ -3532,7 +3532,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeClientException(self, request):
-        """This API is used to obtain client exception events.
+        r"""This API is used to obtain client exception events.
 
         :param request: Request instance for DescribeClientException.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeClientExceptionRequest`
@@ -3555,7 +3555,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeComponentStatistics(self, request):
-        """接口已无效
+        r"""接口已无效
 
         This API is used to obtain the data of the component statistics list.
 
@@ -3580,7 +3580,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeDefenceEventDetail(self, request):
-        """This API is used to obtain vulnerability defense event details.
+        r"""This API is used to obtain vulnerability defense event details.
 
         :param request: Request instance for DescribeDefenceEventDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeDefenceEventDetailRequest`
@@ -3603,7 +3603,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeDirectConnectInstallCommand(self, request):
-        """This API is used to obtain DC agent installation command, including the token.
+        r"""This API is used to obtain DC agent installation command, including the token.
 
         :param request: Request instance for DescribeDirectConnectInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeDirectConnectInstallCommandRequest`
@@ -3626,7 +3626,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeESAggregations(self, request):
-        """This API is used to obtain the aggregation result of the ES field.
+        r"""This API is used to obtain the aggregation result of the ES field.
 
         :param request: Request instance for DescribeESAggregations.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeESAggregationsRequest`
@@ -3649,7 +3649,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEmergencyResponseList(self, request):
-        """This API is used to obtain the emergency response list.
+        r"""This API is used to obtain the emergency response list.
 
         :param request: Request instance for DescribeEmergencyResponseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListRequest`
@@ -3672,7 +3672,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEmergencyVulList(self, request):
-        """This API is used to obtain the list of emergency vulnerabilities.
+        r"""This API is used to obtain the list of emergency vulnerabilities.
 
         :param request: Request instance for DescribeEmergencyVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyVulListRequest`
@@ -3695,7 +3695,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeEventByTable(self, request):
-        """This API is used to query alarm event details based on event table names and IDs.
+        r"""This API is used to query alarm event details based on event table names and IDs.
 
         :param request: Request instance for DescribeEventByTable.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEventByTableRequest`
@@ -3718,7 +3718,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExpertServiceList(self, request):
-        """This API is used to obtain the security manager list.
+        r"""This API is used to obtain the security manager list.
 
         :param request: Request instance for DescribeExpertServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListRequest`
@@ -3741,7 +3741,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExpertServiceOrderList(self, request):
-        """This API is used to obtain the expert service order list.
+        r"""This API is used to obtain the expert service order list.
 
         :param request: Request instance for DescribeExpertServiceOrderList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListRequest`
@@ -3764,7 +3764,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeExportMachines(self, request):
-        """This API is used to export the list of hosts in a specific region.
+        r"""This API is used to export the list of hosts in a specific region.
 
         :param request: Request instance for DescribeExportMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExportMachinesRequest`
@@ -3787,7 +3787,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFastAnalysis(self, request):
-        """This API is used to quickly analyze and count logs.
+        r"""This API is used to quickly analyze and count logs.
 
         :param request: Request instance for DescribeFastAnalysis.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFastAnalysisRequest`
@@ -3810,7 +3810,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperEventRuleInfo(self, request):
-        """This API is used to view the rule details API when an event occurs.
+        r"""This API is used to view the rule details API when an event occurs.
 
         :param request: Request instance for DescribeFileTamperEventRuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventRuleInfoRequest`
@@ -3833,7 +3833,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperEvents(self, request):
-        """This API is used to obtain the list of core file monitoring events.
+        r"""This API is used to obtain the list of core file monitoring events.
 
         :param request: Request instance for DescribeFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventsRequest`
@@ -3856,7 +3856,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRuleCount(self, request):
-        """This API is used to query the number of rules for monitoring files associated with a host.
+        r"""This API is used to query the number of rules for monitoring files associated with a host.
 
         :param request: Request instance for DescribeFileTamperRuleCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRuleCountRequest`
@@ -3879,7 +3879,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRuleInfo(self, request):
-        """This API is used to query details of a monitoring rule.
+        r"""This API is used to query details of a monitoring rule.
 
         :param request: Request instance for DescribeFileTamperRuleInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRuleInfoRequest`
@@ -3902,7 +3902,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeFileTamperRules(self, request):
-        """This API is used to obtain the list of core file monitoring rules.
+        r"""This API is used to obtain the list of core file monitoring rules.
 
         :param request: Request instance for DescribeFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperRulesRequest`
@@ -3925,7 +3925,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeGeneralStat(self, request):
-        """This API is used to obtain the statistics data of hosts.
+        r"""This API is used to obtain the statistics data of hosts.
 
         :param request: Request instance for DescribeGeneralStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeGeneralStatRequest`
@@ -3948,7 +3948,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHistoryAccounts(self, request):
-        """This API is used to obtain the data of the account change history list.
+        r"""This API is used to obtain the data of the account change history list.
 
         :param request: Request instance for DescribeHistoryAccounts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryAccountsRequest`
@@ -3971,7 +3971,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHistoryService(self, request):
-        """This API is used to query the log retrieval service information.
+        r"""This API is used to query the log retrieval service information.
 
         :param request: Request instance for DescribeHistoryService.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryServiceRequest`
@@ -3994,7 +3994,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostInfo(self, request):
-        """This API is used to query the host and tag information.
+        r"""This API is used to query the host and tag information.
 
         :param request: Request instance for DescribeHostInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostInfoRequest`
@@ -4017,7 +4017,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostLoginList(self, request):
-        """This API is used to retrieve the log-in audit list.
+        r"""This API is used to retrieve the log-in audit list.
 
         :param request: Request instance for DescribeHostLoginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostLoginListRequest`
@@ -4040,7 +4040,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHotVulTop(self, request):
-        """This API is used to obtain hot spot vulnerabilities across the entire network.
+        r"""This API is used to obtain hot spot vulnerabilities across the entire network.
 
         :param request: Request instance for DescribeHotVulTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHotVulTopRequest`
@@ -4063,7 +4063,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreBaselineRule(self, request):
-        """This API is used to query the information of ignored inspection items.
+        r"""This API is used to query the information of ignored inspection items.
 
         :param request: Request instance for DescribeIgnoreBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreBaselineRuleRequest`
@@ -4086,7 +4086,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreHostAndItemConfig(self, request):
-        """This API is used to obtain the information of affected inspection items and hosts ignored with one click.
+        r"""This API is used to obtain the information of affected inspection items and hosts ignored with one click.
 
         :param request: Request instance for DescribeIgnoreHostAndItemConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreHostAndItemConfigRequest`
@@ -4109,7 +4109,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIgnoreRuleEffectHostList(self, request):
-        """This API is used to query the information on the list of hosts affected by ignored detection items based on detection item IDs and filter criteria.
+        r"""This API is used to query the information on the list of hosts affected by ignored detection items based on detection item IDs and filter criteria.
 
         :param request: Request instance for DescribeIgnoreRuleEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreRuleEffectHostListRequest`
@@ -4132,7 +4132,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to obtain the index list.
 
@@ -4157,7 +4157,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellInfo(self, request):
-        """This API is used to query Java webshell event details.
+        r"""This API is used to query Java webshell event details.
 
         :param request: Request instance for DescribeJavaMemShellInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellInfoRequest`
@@ -4180,7 +4180,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellList(self, request):
-        """This API is used to query the list of Java webshell events.
+        r"""This API is used to query the list of Java webshell events.
 
         :param request: Request instance for DescribeJavaMemShellList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellListRequest`
@@ -4203,7 +4203,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellPluginInfo(self, request):
-        """This API is used to query the Java webshell plugin information of the given host.
+        r"""This API is used to query the Java webshell plugin information of the given host.
 
         :param request: Request instance for DescribeJavaMemShellPluginInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellPluginInfoRequest`
@@ -4226,7 +4226,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeJavaMemShellPluginList(self, request):
-        """This API is used to query the Java webshell plugin list.
+        r"""This API is used to query the Java webshell plugin list.
 
         :param request: Request instance for DescribeJavaMemShellPluginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellPluginListRequest`
@@ -4249,7 +4249,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicense(self, request):
-        """This API is used to query the authorization information.
+        r"""This API is used to query the authorization information.
 
         :param request: Request instance for DescribeLicense.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseRequest`
@@ -4272,7 +4272,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseBindList(self, request):
-        """This API is used to obtain the list of authorized machines bound to an authorization under the Settings Center-Authorization Management.
+        r"""This API is used to obtain the list of authorized machines bound to an authorization under the Settings Center-Authorization Management.
 
         :param request: Request instance for DescribeLicenseBindList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseBindListRequest`
@@ -4295,7 +4295,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseBindSchedule(self, request):
-        """This API is used to query the binding task progress of the authorization.
+        r"""This API is used to query the binding task progress of the authorization.
 
         :param request: Request instance for DescribeLicenseBindSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseBindScheduleRequest`
@@ -4318,7 +4318,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseGeneral(self, request):
-        """This API is used to obtain the authorization overview information.
+        r"""This API is used to obtain the authorization overview information.
 
         :param request: Request instance for DescribeLicenseGeneral.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseGeneralRequest`
@@ -4341,7 +4341,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseList(self, request):
-        """This API is used to obtain all authorization orders of a user.
+        r"""This API is used to obtain all authorization orders of a user.
 
         :param request: Request instance for DescribeLicenseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseListRequest`
@@ -4364,7 +4364,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLicenseWhiteConfig(self, request):
-        """This API is used to query the available configurations for authorization allowlists.
+        r"""This API is used to query the available configurations for authorization allowlists.
 
         :param request: Request instance for DescribeLicenseWhiteConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLicenseWhiteConfigRequest`
@@ -4387,7 +4387,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogDeliveryKafkaOptions(self, request):
-        """This API is used to query the list of logs available for shipping to Kafka.
+        r"""This API is used to query the list of logs available for shipping to Kafka.
 
         :param request: Request instance for DescribeLogDeliveryKafkaOptions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogDeliveryKafkaOptionsRequest`
@@ -4410,7 +4410,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogExports(self, request):
-        """This API is used to obtain the list of log download tasks.
+        r"""This API is used to obtain the list of log download tasks.
 
         :param request: Request instance for DescribeLogExports.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogExportsRequest`
@@ -4433,7 +4433,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """This API is used to obtain the log histogram information.
+        r"""This API is used to obtain the log histogram information.
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogHistogramRequest`
@@ -4456,7 +4456,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogIndex(self, request):
-        """This API is used to query the index.
+        r"""This API is used to query the index.
 
         :param request: Request instance for DescribeLogIndex.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogIndexRequest`
@@ -4479,7 +4479,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogKafkaDeliverInfo(self, request):
-        """This API is used to obtain the information of Kafka shipping.
+        r"""This API is used to obtain the information of Kafka shipping.
 
         :param request: Request instance for DescribeLogKafkaDeliverInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogKafkaDeliverInfoRequest`
@@ -4502,7 +4502,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageConfig(self, request):
-        """This API is used to obtain the log storage configuration.
+        r"""This API is used to obtain the log storage configuration.
 
         :param request: Request instance for DescribeLogStorageConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageConfigRequest`
@@ -4525,7 +4525,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageRecord(self, request):
-        """This API is used to obtain the record of stored log size.
+        r"""This API is used to obtain the record of stored log size.
 
         :param request: Request instance for DescribeLogStorageRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageRecordRequest`
@@ -4548,7 +4548,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogStorageStatistic(self, request):
-        """This API is used to obtain the statistics of the used log retrieval capacity.
+        r"""This API is used to obtain the statistics of the used log retrieval capacity.
 
         :param request: Request instance for DescribeLogStorageStatistic.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageStatisticRequest`
@@ -4571,7 +4571,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLogType(self, request):
-        """This API is used to obtain log types, and the returned result of this API indicates temporarily filterable log types.
+        r"""This API is used to obtain log types, and the returned result of this API indicates temporarily filterable log types.
 
         :param request: Request instance for DescribeLogType.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogTypeRequest`
@@ -4594,7 +4594,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteCombinedList(self, request):
-        """This API is used to obtain the list of cross-region log-in allowlists after merge.
+        r"""This API is used to obtain the list of cross-region log-in allowlists after merge.
 
         :param request: Request instance for DescribeLoginWhiteCombinedList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteCombinedListRequest`
@@ -4617,7 +4617,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteHostList(self, request):
-        """This API is used to query the list of allowlisted machines after merge.
+        r"""This API is used to query the list of allowlisted machines after merge.
 
         :param request: Request instance for DescribeLoginWhiteHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteHostListRequest`
@@ -4640,7 +4640,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginWhiteList(self, request):
-        """This API is used to obtain the cross-region log-in allowlist list.
+        r"""This API is used to obtain the cross-region log-in allowlist list.
 
         :param request: Request instance for DescribeLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteListRequest`
@@ -4663,7 +4663,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineClearHistory(self, request):
-        """This API is used to query the clearing history records of a machine.
+        r"""This API is used to query the clearing history records of a machine.
 
         :param request: Request instance for DescribeMachineClearHistory.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineClearHistoryRequest`
@@ -4686,7 +4686,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineDefenseCnt(self, request):
-        """This API is used to query the statistics of advanced defense events for hosts.
+        r"""This API is used to query the statistics of advanced defense events for hosts.
 
         :param request: Request instance for DescribeMachineDefenseCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineDefenseCntRequest`
@@ -4709,7 +4709,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineFileTamperRules(self, request):
-        """This API is used to query the list of host-related core file monitoring rules.
+        r"""This API is used to query the list of host-related core file monitoring rules.
 
         :param request: Request instance for DescribeMachineFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineFileTamperRulesRequest`
@@ -4732,7 +4732,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineGeneral(self, request):
-        """This API is used to query the information of the host overview.
+        r"""This API is used to query the information of the host overview.
 
         :param request: Request instance for DescribeMachineGeneral.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineGeneralRequest`
@@ -4755,7 +4755,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineLicenseDetail(self, request):
-        """This API is used to query the machine authorization information.
+        r"""This API is used to query the machine authorization information.
 
         :param request: Request instance for DescribeMachineLicenseDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineLicenseDetailRequest`
@@ -4778,7 +4778,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineOsList(self, request):
-        """This API is used to query the machine operating system list.
+        r"""This API is used to query the machine operating system list.
 
         :param request: Request instance for DescribeMachineOsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineOsListRequest`
@@ -4801,7 +4801,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRegionList(self, request):
-        """This API is used to query the list of host regions.
+        r"""This API is used to query the list of host regions.
 
         :param request: Request instance for DescribeMachineRegionList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionListRequest`
@@ -4824,7 +4824,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRegions(self, request):
-        """This API is used to obtain the list of machine regions.
+        r"""This API is used to obtain the list of machine regions.
 
         :param request: Request instance for DescribeMachineRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionsRequest`
@@ -4847,7 +4847,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineRiskCnt(self, request):
-        """This API is used to query the statistics of host intrusion detection events.
+        r"""This API is used to query the statistics of host intrusion detection events.
 
         :param request: Request instance for DescribeMachineRiskCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRiskCntRequest`
@@ -4870,7 +4870,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachineSnapshot(self, request):
-        """This API is used to query snapshots created by the host.
+        r"""This API is used to query snapshots created by the host.
 
         :param request: Request instance for DescribeMachineSnapshot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineSnapshotRequest`
@@ -4893,7 +4893,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """This API is used to obtain the list of hosts in a specific region.
+        r"""This API is used to obtain the list of hosts in a specific region.
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesRequest`
@@ -4916,7 +4916,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMachinesSimple(self, request):
-        """This API is used to obtain the list of hosts.
+        r"""This API is used to obtain the list of hosts.
 
         :param request: Request instance for DescribeMachinesSimple.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesSimpleRequest`
@@ -4939,7 +4939,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalWareList(self, request):
-        """This API is used to obtain the Trojan list.
+        r"""This API is used to obtain the Trojan list.
 
         :param request: Request instance for DescribeMalWareList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalWareListRequest`
@@ -4962,7 +4962,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMaliciousRequestWhiteList(self, request):
-        """This API is used to query the list of malicious request allowlists.
+        r"""This API is used to query the list of malicious request allowlists.
 
         :param request: Request instance for DescribeMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestWhiteListRequest`
@@ -4985,7 +4985,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareFile(self, request):
-        """This API is used to obtain Trojan file download addresses.
+        r"""This API is used to obtain Trojan file download addresses.
 
         :param request: Request instance for DescribeMalwareFile.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareFileRequest`
@@ -5008,7 +5008,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareInfo(self, request):
-        """This API is used to view malicious file details.
+        r"""This API is used to view malicious file details.
 
         :param request: Request instance for DescribeMalwareInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareInfoRequest`
@@ -5031,7 +5031,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareRiskOverview(self, request):
-        """This API is used to obtain the information of virus scanning overview.
+        r"""This API is used to obtain the information of virus scanning overview.
 
         :param request: Request instance for DescribeMalwareRiskOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareRiskOverviewRequest`
@@ -5054,7 +5054,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareRiskWarning(self, request):
-        """This API is used to open Intrusion Detection - Virus Scanning, and the risk warning content pops up.
+        r"""This API is used to open Intrusion Detection - Virus Scanning, and the risk warning content pops up.
 
         :param request: Request instance for DescribeMalwareRiskWarning.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareRiskWarningRequest`
@@ -5077,7 +5077,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareTimingScanSetting(self, request):
-        """This API is used to query the scheduled scan configuration.
+        r"""This API is used to query the scheduled scan configuration.
 
         :param request: Request instance for DescribeMalwareTimingScanSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareTimingScanSettingRequest`
@@ -5100,7 +5100,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareWhiteList(self, request):
-        """This API is used to obtain the list of Trojan allowlists.
+        r"""This API is used to obtain the list of Trojan allowlists.
 
         :param request: Request instance for DescribeMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareWhiteListRequest`
@@ -5123,7 +5123,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMalwareWhiteListAffectList(self, request):
-        """This API is used to obtain the list of affected Trojan allowlists.
+        r"""This API is used to obtain the list of affected Trojan allowlists.
 
         :param request: Request instance for DescribeMalwareWhiteListAffectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareWhiteListAffectListRequest`
@@ -5146,7 +5146,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeMonthInspectionReport(self, request):
-        """This API is used to download the monthly inspection report of the security manager.
+        r"""This API is used to download the monthly inspection report of the security manager.
 
         :param request: Request instance for DescribeMonthInspectionReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportRequest`
@@ -5169,7 +5169,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeNetAttackSetting(self, request):
-        """This API is used to query network attack settings.
+        r"""This API is used to query network attack settings.
 
         :param request: Request instance for DescribeNetAttackSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeNetAttackSettingRequest`
@@ -5192,7 +5192,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeNetAttackWhiteList(self, request):
-        """This API is used to obtain the network attack allowlist list.
+        r"""This API is used to obtain the network attack allowlist list.
 
         :param request: Request instance for DescribeNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeNetAttackWhiteListRequest`
@@ -5215,7 +5215,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeOpenPortStatistics(self, request):
-        """This API is used to obtain the list of port statistics.
+        r"""This API is used to obtain the list of port statistics.
 
         :param request: Request instance for DescribeOpenPortStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortStatisticsRequest`
@@ -5238,7 +5238,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeOverviewStatistics(self, request):
-        """This API is used to obtain the overview statistics.
+        r"""This API is used to obtain the overview statistics.
 
         :param request: Request instance for DescribeOverviewStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOverviewStatisticsRequest`
@@ -5261,7 +5261,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePrivilegeEventInfo(self, request):
-        """This API is used to obtain local privilege escalation information details.
+        r"""This API is used to obtain local privilege escalation information details.
 
         :param request: Request instance for DescribePrivilegeEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventInfoRequest`
@@ -5284,7 +5284,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePrivilegeRules(self, request):
-        """This API is used to obtain the list of local privilege escalation rules.
+        r"""This API is used to obtain the list of local privilege escalation rules.
 
         :param request: Request instance for DescribePrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeRulesRequest`
@@ -5307,7 +5307,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProVersionInfo(self, request):
-        """This API is used to obtain the overview information of the Professional edition.
+        r"""This API is used to obtain the overview information of the Professional edition.
 
         :param request: Request instance for DescribeProVersionInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionInfoRequest`
@@ -5330,7 +5330,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProVersionStatus(self, request):
-        """This API is used to check whether a single host or all hosts enable the professional version.
+        r"""This API is used to check whether a single host or all hosts enable the professional version.
 
         :param request: Request instance for DescribeProVersionStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionStatusRequest`
@@ -5353,7 +5353,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProcessStatistics(self, request):
-        """This API is used to obtain the process statistics data.
+        r"""This API is used to obtain the process statistics data.
 
         :param request: Request instance for DescribeProcessStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessStatisticsRequest`
@@ -5376,7 +5376,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProductStatus(self, request):
-        """This API is used to query the product trial status.
+        r"""This API is used to query the product trial status.
 
         :param request: Request instance for DescribeProductStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProductStatusRequest`
@@ -5399,7 +5399,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribePublicProxyInstallCommand(self, request):
-        """This API is used to obtain the installation command of the public network access proxy.
+        r"""This API is used to obtain the installation command of the public network access proxy.
 
         :param request: Request instance for DescribePublicProxyInstallCommand.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePublicProxyInstallCommandRequest`
@@ -5422,7 +5422,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseBackupList(self, request):
-        """This API is used to query the list of host snapshot backups.
+        r"""This API is used to query the list of host snapshot backups.
 
         :param request: Request instance for DescribeRansomDefenseBackupList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseBackupListRequest`
@@ -5445,7 +5445,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseEventsList(self, request):
-        """This API is used to query the anti-ransomware event list.
+        r"""This API is used to query the anti-ransomware event list.
 
         :param request: Request instance for DescribeRansomDefenseEventsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseEventsListRequest`
@@ -5468,7 +5468,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseMachineList(self, request):
-        """This API is used to query the list of backup details.
+        r"""This API is used to query the list of backup details.
 
         :param request: Request instance for DescribeRansomDefenseMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseMachineListRequest`
@@ -5491,7 +5491,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseMachineStrategyInfo(self, request):
-        """This API is used to obtain the list of policies bound to a host.
+        r"""This API is used to obtain the list of policies bound to a host.
 
         :param request: Request instance for DescribeRansomDefenseMachineStrategyInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseMachineStrategyInfoRequest`
@@ -5514,7 +5514,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseRollBackTaskList(self, request):
-        """This API is used to query the rollback task list.
+        r"""This API is used to query the rollback task list.
 
         :param request: Request instance for DescribeRansomDefenseRollBackTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseRollBackTaskListRequest`
@@ -5537,7 +5537,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseState(self, request):
-        """This API is used to obtain user anti-ransomware trends.
+        r"""This API is used to obtain user anti-ransomware trends.
 
         :param request: Request instance for DescribeRansomDefenseState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStateRequest`
@@ -5560,7 +5560,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyDetail(self, request):
-        """This API is used to obtain the policy details.
+        r"""This API is used to obtain the policy details.
 
         :param request: Request instance for DescribeRansomDefenseStrategyDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyDetailRequest`
@@ -5583,7 +5583,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyList(self, request):
-        """This API is used to query the list of anti-ransomware policies.
+        r"""This API is used to query the list of anti-ransomware policies.
 
         :param request: Request instance for DescribeRansomDefenseStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyListRequest`
@@ -5606,7 +5606,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseStrategyMachines(self, request):
-        """This API is used to query the list of machines bound to an anti-ransomware policy.
+        r"""This API is used to query the list of machines bound to an anti-ransomware policy.
 
         :param request: Request instance for DescribeRansomDefenseStrategyMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseStrategyMachinesRequest`
@@ -5629,7 +5629,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRansomDefenseTrend(self, request):
-        """This API is used to obtain the ransomware situation across the entire network.
+        r"""This API is used to obtain the ransomware situation across the entire network.
 
         :param request: Request instance for DescribeRansomDefenseTrend.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRansomDefenseTrendRequest`
@@ -5652,7 +5652,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRecommendedProtectCpu(self, request):
-        """This API is used to query the recommended number of protection cores for purchase.
+        r"""This API is used to query the recommended number of protection cores for purchase.
 
         :param request: Request instance for DescribeRecommendedProtectCpu.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRecommendedProtectCpuRequest`
@@ -5675,7 +5675,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellEventInfo(self, request):
-        """This API is used to query reverse shell details.
+        r"""This API is used to query reverse shell details.
 
         :param request: Request instance for DescribeReverseShellEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventInfoRequest`
@@ -5698,7 +5698,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellEvents(self, request):
-        """This API is used to obtain the list of Reverse Shell.
+        r"""This API is used to obtain the list of Reverse Shell.
 
         :param request: Request instance for DescribeReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventsRequest`
@@ -5721,7 +5721,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeReverseShellRules(self, request):
-        """This API is used to obtain the list of Reverse Shell rules.
+        r"""This API is used to obtain the list of Reverse Shell rules.
 
         :param request: Request instance for DescribeReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesRequest`
@@ -5744,7 +5744,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskBatchStatus(self, request):
-        """This API is used to query if the intrusion detection event update task is completed.
+        r"""This API is used to query if the intrusion detection event update task is completed.
 
         :param request: Request instance for DescribeRiskBatchStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskBatchStatusRequest`
@@ -5767,7 +5767,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsEventInfo(self, request):
-        """This API is used to query malicious request event details.
+        r"""This API is used to query malicious request event details.
 
         :param request: Request instance for DescribeRiskDnsEventInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventInfoRequest`
@@ -5790,7 +5790,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsEventList(self, request):
-        """This API is used to obtain the list of malicious request events.
+        r"""This API is used to obtain the list of malicious request events.
 
         :param request: Request instance for DescribeRiskDnsEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventListRequest`
@@ -5813,7 +5813,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsInfo(self, request):
-        """This API is used to query malicious request details.
+        r"""This API is used to query malicious request details.
 
         :param request: Request instance for DescribeRiskDnsInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsInfoRequest`
@@ -5836,7 +5836,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsList(self, request):
-        """This API is used to obtain the malicious request list.
+        r"""This API is used to obtain the malicious request list.
 
         :param request: Request instance for DescribeRiskDnsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsListRequest`
@@ -5859,7 +5859,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskDnsPolicyList(self, request):
-        """This API is used to obtain the list of malicious request policies.
+        r"""This API is used to obtain the list of malicious request policies.
 
         :param request: Request instance for DescribeRiskDnsPolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsPolicyListRequest`
@@ -5882,7 +5882,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeRiskProcessEvents(self, request):
-        """This API is used to obtain the list of abnormal processes.
+        r"""This API is used to obtain the list of abnormal processes.
 
         :param request: Request instance for DescribeRiskProcessEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskProcessEventsRequest`
@@ -5905,7 +5905,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSafeInfo(self, request):
-        """This API is used to query the .security notification information.
+        r"""This API is used to query the .security notification information.
 
         :param request: Request instance for DescribeSafeInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSafeInfoRequest`
@@ -5928,7 +5928,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanMalwareSchedule(self, request):
-        """This API is used to query the Trojan scan progress.
+        r"""This API is used to query the Trojan scan progress.
 
         :param request: Request instance for DescribeScanMalwareSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanMalwareScheduleRequest`
@@ -5951,7 +5951,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanSchedule(self, request):
-        """This API is used to query the detection progress by taskid.
+        r"""This API is used to query the detection progress by taskid.
 
         :param request: Request instance for DescribeScanSchedule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanScheduleRequest`
@@ -5974,7 +5974,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanState(self, request):
-        """This API is used to query the status of recent scan tasks of the corresponding module.
+        r"""This API is used to query the status of recent scan tasks of the corresponding module.
 
         :param request: Request instance for DescribeScanState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanStateRequest`
@@ -5997,7 +5997,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanTaskDetails(self, request):
-        """This API is used to query the scan task details and scan progress information/exceptions.
+        r"""This API is used to query the scan task details and scan progress information/exceptions.
 
         :param request: Request instance for DescribeScanTaskDetails.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskDetailsRequest`
@@ -6020,7 +6020,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanTaskStatus(self, request):
-        """This API is used to query the list of machine scan statuses for filtering.
+        r"""This API is used to query the list of machine scan statuses for filtering.
 
         :param request: Request instance for DescribeScanTaskStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskStatusRequest`
@@ -6043,7 +6043,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScanVulSetting(self, request):
-        """This API is used to query the configuration for regular detection.
+        r"""This API is used to query the configuration for regular detection.
 
         :param request: Request instance for DescribeScanVulSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanVulSettingRequest`
@@ -6066,7 +6066,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenAttackHotspot(self, request):
-        """This API is used to visually obtain the attacked hot spots across the entire network on the large screen.
+        r"""This API is used to visually obtain the attacked hot spots across the entire network on the large screen.
 
         :param request: Request instance for DescribeScreenAttackHotspot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenAttackHotspotRequest`
@@ -6089,7 +6089,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenBroadcasts(self, request):
-        """This API is used to obtain the security report on the large screen.
+        r"""This API is used to obtain the security report on the large screen.
 
         :param request: Request instance for DescribeScreenBroadcasts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenBroadcastsRequest`
@@ -6112,7 +6112,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenDefenseTrends(self, request):
-        """This API is used to obtain the visualized attack and defense trends on the large screen.
+        r"""This API is used to obtain the visualized attack and defense trends on the large screen.
 
         :param request: Request instance for DescribeScreenDefenseTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenDefenseTrendsRequest`
@@ -6135,7 +6135,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenEmergentMsg(self, request):
-        """This API is used to obtain the visualized emergency notification on the large screen.
+        r"""This API is used to obtain the visualized emergency notification on the large screen.
 
         :param request: Request instance for DescribeScreenEmergentMsg.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenEmergentMsgRequest`
@@ -6158,7 +6158,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenEventsCnt(self, request):
-        """This API is used to obtain the statistics data of events on the security overview page.
+        r"""This API is used to obtain the statistics data of events on the security overview page.
 
         :param request: Request instance for DescribeScreenEventsCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenEventsCntRequest`
@@ -6181,7 +6181,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenGeneralStat(self, request):
-        """This API is used to obtain the visualized statistics data of hosts on the screen.
+        r"""This API is used to obtain the visualized statistics data of hosts on the screen.
 
         :param request: Request instance for DescribeScreenGeneralStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenGeneralStatRequest`
@@ -6204,7 +6204,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenHostInvasion(self, request):
-        """This API is used to obtain the visualized host intrusion details on the large screen.
+        r"""This API is used to obtain the visualized host intrusion details on the large screen.
 
         :param request: Request instance for DescribeScreenHostInvasion.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenHostInvasionRequest`
@@ -6227,7 +6227,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenMachineRegions(self, request):
-        """This API is used to obtain the list of available visualized host regions on the large screen.
+        r"""This API is used to obtain the list of available visualized host regions on the large screen.
 
         :param request: Request instance for DescribeScreenMachineRegions.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenMachineRegionsRequest`
@@ -6250,7 +6250,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenMachines(self, request):
-        """This API is used to obtain the visualized list of host regions on the large screen.
+        r"""This API is used to obtain the visualized list of host regions on the large screen.
 
         :param request: Request instance for DescribeScreenMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenMachinesRequest`
@@ -6273,7 +6273,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenProtectionCnt(self, request):
-        """This API is used to obtain the visualized introduction of CWPP engine on the large screen.
+        r"""This API is used to obtain the visualized introduction of CWPP engine on the large screen.
 
         :param request: Request instance for DescribeScreenProtectionCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenProtectionCntRequest`
@@ -6296,7 +6296,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenProtectionStat(self, request):
-        """This API is used to obtain the security protection status on the large screen.
+        r"""This API is used to obtain the security protection status on the large screen.
 
         :param request: Request instance for DescribeScreenProtectionStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenProtectionStatRequest`
@@ -6319,7 +6319,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeScreenRiskAssetsTop(self, request):
-        """This API is used to count today's risky assets.
+        r"""This API is used to count today's risky assets.
 
         :param request: Request instance for DescribeScreenRiskAssetsTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScreenRiskAssetsTopRequest`
@@ -6342,7 +6342,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSearchLogs(self, request):
-        """This API is used to obtain historical search records.
+        r"""This API is used to obtain historical search records.
 
         :param request: Request instance for DescribeSearchLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchLogsRequest`
@@ -6365,7 +6365,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSearchTemplates(self, request):
-        """This API is used to obtain the list of quick retrievals.
+        r"""This API is used to obtain the list of quick retrievals.
 
         :param request: Request instance for DescribeSearchTemplates.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchTemplatesRequest`
@@ -6388,7 +6388,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityBroadcastInfo(self, request):
-        """This API is used to query the information of security report articles.
+        r"""This API is used to query the information of security report articles.
 
         :param request: Request instance for DescribeSecurityBroadcastInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityBroadcastInfoRequest`
@@ -6411,7 +6411,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityBroadcasts(self, request):
-        """This API is used to obtain the security report list page.
+        r"""This API is used to obtain the security report list page.
 
         :param request: Request instance for DescribeSecurityBroadcasts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityBroadcastsRequest`
@@ -6434,7 +6434,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityDynamics(self, request):
-        """This API is used to obtain the dynamic message data of security events.
+        r"""This API is used to obtain the dynamic message data of security events.
 
         :param request: Request instance for DescribeSecurityDynamics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityDynamicsRequest`
@@ -6457,7 +6457,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityEventStat(self, request):
-        """This API is used to obtain the statistics of security events.
+        r"""This API is used to obtain the statistics of security events.
 
         :param request: Request instance for DescribeSecurityEventStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventStatRequest`
@@ -6480,7 +6480,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityEventsCnt(self, request):
-        """This API is used to obtain the statistics data of security overview-related events.
+        r"""This API is used to obtain the statistics data of security overview-related events.
 
         :param request: Request instance for DescribeSecurityEventsCnt.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventsCntRequest`
@@ -6503,7 +6503,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityProtectionStat(self, request):
-        """接口已无效
+        r"""接口已无效
 
         This API is used to obtain the summary of security protection statuses.
 
@@ -6528,7 +6528,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityTrends(self, request):
-        """This API is used to obtain the security event statistics data.
+        r"""This API is used to obtain the security event statistics data.
 
         :param request: Request instance for DescribeSecurityTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityTrendsRequest`
@@ -6551,7 +6551,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeServersAndRiskAndFirstInfo(self, request):
-        """This API is used to obtain the number of risky files pending to be processed + the number of affected servers + whether to try to detect + last detection time.
+        r"""This API is used to obtain the number of risky files pending to be processed + the number of affected servers + whether to try to detect + last detection time.
 
         :param request: Request instance for DescribeServersAndRiskAndFirstInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeServersAndRiskAndFirstInfoRequest`
@@ -6574,7 +6574,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeStrategyExist(self, request):
-        """This API is used to query whether a policy exists by policy name.
+        r"""This API is used to query whether a policy exists by policy name.
 
         :param request: Request instance for DescribeStrategyExist.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeStrategyExistRequest`
@@ -6597,7 +6597,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTagMachines(self, request):
-        """This API is used to obtain the server information associated with the specified tag.
+        r"""This API is used to obtain the server information associated with the specified tag.
 
         :param request: Request instance for DescribeTagMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagMachinesRequest`
@@ -6620,7 +6620,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """This API is used to obtain all host tags.
+        r"""This API is used to obtain all host tags.
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagsRequest`
@@ -6643,7 +6643,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeTrialReport(self, request):
-        """This API is used to query the CWPP authorized trial report (only available for console applications).
+        r"""This API is used to query the CWPP authorized trial report (only available for console applications).
 
         :param request: Request instance for DescribeTrialReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTrialReportRequest`
@@ -6666,7 +6666,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUndoVulCounts(self, request):
-        """This API is used to obtain the number of pending vulnerabilities of a specified category and the number of hosts in the vulnerability management module.
+        r"""This API is used to obtain the number of pending vulnerabilities of a specified category and the number of hosts in the vulnerability management module.
 
         :param request: Request instance for DescribeUndoVulCounts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUndoVulCountsRequest`
@@ -6689,7 +6689,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUsersConfig(self, request):
-        """This API is used to query the user's custom configurations.
+        r"""This API is used to query the user's custom configurations.
 
         :param request: Request instance for DescribeUsersConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUsersConfigRequest`
@@ -6712,7 +6712,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeUsualLoginPlaces(self, request):
-        """This API is used to query common log-in locations.
+        r"""This API is used to query common log-in locations.
 
         :param request: Request instance for DescribeUsualLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUsualLoginPlacesRequest`
@@ -6735,7 +6735,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVdbAndPocInfo(self, request):
-        """This API is used to obtain virus database and POC updates.
+        r"""This API is used to obtain virus database and POC updates.
 
         :param request: Request instance for DescribeVdbAndPocInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVdbAndPocInfoRequest`
@@ -6758,7 +6758,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVersionCompareChart(self, request):
-        """This API is used to obtain the version comparison information.
+        r"""This API is used to obtain the version comparison information.
 
         :param request: Request instance for DescribeVersionCompareChart.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVersionCompareChartRequest`
@@ -6781,7 +6781,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVersionStatistics(self, request):
-        """This API is used to count the number of machines of Professional and Basic editions.
+        r"""This API is used to count the number of machines of Professional and Basic editions.
 
         :param request: Request instance for DescribeVersionStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVersionStatisticsRequest`
@@ -6804,7 +6804,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVertexDetail(self, request):
-        """This API is used to obtain the attribute information of the specified point.
+        r"""This API is used to obtain the attribute information of the specified point.
 
         :param request: Request instance for DescribeVertexDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVertexDetailRequest`
@@ -6827,7 +6827,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulCountByDates(self, request):
-        """This API is used to obtain the number of vulnerabilities of specified types in recent days and the number of hosts.
+        r"""This API is used to obtain the number of vulnerabilities of specified types in recent days and the number of hosts.
 
         :param request: Request instance for DescribeVulCountByDates.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulCountByDatesRequest`
@@ -6850,7 +6850,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulCveIdInfo(self, request):
-        """This API is used to query vulnerability details by CveId.
+        r"""This API is used to query vulnerability details by CveId.
 
         :param request: Request instance for DescribeVulCveIdInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulCveIdInfoRequest`
@@ -6873,7 +6873,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceEvent(self, request):
-        """This API is used to obtain the list of vulnerability defense events.
+        r"""This API is used to obtain the list of vulnerability defense events.
 
         :param request: Request instance for DescribeVulDefenceEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceEventRequest`
@@ -6896,7 +6896,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceList(self, request):
-        """This API is used to query the vulnerability defense list.
+        r"""This API is used to query the vulnerability defense list.
 
         :param request: Request instance for DescribeVulDefenceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceListRequest`
@@ -6919,7 +6919,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceOverview(self, request):
-        """This API is used to obtain the vulnerability defense overview information, including event trend and plugin enabling status.
+        r"""This API is used to obtain the vulnerability defense overview information, including event trend and plugin enabling status.
 
         :param request: Request instance for DescribeVulDefenceOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceOverviewRequest`
@@ -6942,7 +6942,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginDetail(self, request):
-        """This API is used to obtain the vulnerability defense plugin information on a single host.
+        r"""This API is used to obtain the vulnerability defense plugin information on a single host.
 
         :param request: Request instance for DescribeVulDefencePluginDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginDetailRequest`
@@ -6965,7 +6965,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginExceptionCount(self, request):
-        """This API is used to obtain the current number of abnormal plugins.
+        r"""This API is used to obtain the current number of abnormal plugins.
 
         :param request: Request instance for DescribeVulDefencePluginExceptionCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginExceptionCountRequest`
@@ -6988,7 +6988,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefencePluginStatus(self, request):
-        """This API is used to obtain the vulnerability defense plugin status of each host.
+        r"""This API is used to obtain the vulnerability defense plugin status of each host.
 
         :param request: Request instance for DescribeVulDefencePluginStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefencePluginStatusRequest`
@@ -7011,7 +7011,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulDefenceSetting(self, request):
-        """This API is used to obtain the current vulnerability defense plugin settings.
+        r"""This API is used to obtain the current vulnerability defense plugin settings.
 
         :param request: Request instance for DescribeVulDefenceSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceSettingRequest`
@@ -7034,7 +7034,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEffectHostList(self, request):
-        """This API is used to obtain the list of hosts affected by vulnerabilities.
+        r"""This API is used to obtain the list of hosts affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectHostListRequest`
@@ -7057,7 +7057,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEffectModules(self, request):
-        """This API is used to obtain the list of components affected by vulnerabilities.
+        r"""This API is used to obtain the list of components affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulEffectModules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectModulesRequest`
@@ -7080,7 +7080,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulEmergentMsg(self, request):
-        """This API is used to obtain vulnerability emergency notifications.
+        r"""This API is used to obtain vulnerability emergency notifications.
 
         :param request: Request instance for DescribeVulEmergentMsg.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEmergentMsgRequest`
@@ -7103,7 +7103,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulFixStatus(self, request):
-        """This API is used to check the host vulnerability fixing progress.
+        r"""This API is used to check the host vulnerability fixing progress.
 
         :param request: Request instance for DescribeVulFixStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulFixStatusRequest`
@@ -7126,7 +7126,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulHostCountScanTime(self, request):
-        """This API is used to obtain the number of vulnerabilities pending to be processed and affected hosts.
+        r"""This API is used to obtain the number of vulnerabilities pending to be processed and affected hosts.
 
         :param request: Request instance for DescribeVulHostCountScanTime.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostCountScanTimeRequest`
@@ -7149,7 +7149,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulHostTop(self, request):
-        """This API is used to obtain the list of top server risks.
+        r"""This API is used to obtain the list of top server risks.
 
         :param request: Request instance for DescribeVulHostTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostTopRequest`
@@ -7172,7 +7172,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulInfoCvss(self, request):
-        """This API is used to obtain vulnerability details with the CVSS version.
+        r"""This API is used to obtain vulnerability details with the CVSS version.
 
         :param request: Request instance for DescribeVulInfoCvss.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulInfoCvssRequest`
@@ -7195,7 +7195,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulLabels(self, request):
-        """This API is used to obtain the list of all user vulnerability tags.
+        r"""This API is used to obtain the list of all user vulnerability tags.
 
         :param request: Request instance for DescribeVulLabels.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulLabelsRequest`
@@ -7218,7 +7218,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulLevelCount(self, request):
-        """This API is used to obtain the statistics of vulnerability quantity and level distribution.
+        r"""This API is used to obtain the statistics of vulnerability quantity and level distribution.
 
         :param request: Request instance for DescribeVulLevelCount.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulLevelCountRequest`
@@ -7241,7 +7241,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulList(self, request):
-        """This API is used to obtain the data of the vulnerability list.
+        r"""This API is used to obtain the data of the vulnerability list.
 
         :param request: Request instance for DescribeVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulListRequest`
@@ -7264,7 +7264,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulOverview(self, request):
-        """This API is used to obtain the data for the vulnerability overview.
+        r"""This API is used to obtain the data for the vulnerability overview.
 
         :param request: Request instance for DescribeVulOverview.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulOverviewRequest`
@@ -7287,7 +7287,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulStoreList(self, request):
-        """This API is used to obtain the vulnerability database list.
+        r"""This API is used to obtain the vulnerability database list.
 
         :param request: Request instance for DescribeVulStoreList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulStoreListRequest`
@@ -7310,7 +7310,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulTop(self, request):
-        """This API is used to count top vulnerabilities.
+        r"""This API is used to count top vulnerabilities.
 
         :param request: Request instance for DescribeVulTop.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulTopRequest`
@@ -7333,7 +7333,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeVulTrend(self, request):
-        """This API is used to obtain information of the vulnerability situation.
+        r"""This API is used to obtain information of the vulnerability situation.
 
         :param request: Request instance for DescribeVulTrend.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulTrendRequest`
@@ -7356,7 +7356,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWarningHostConfig(self, request):
-        """This API is used to query the alarming machine scope settings.
+        r"""This API is used to query the alarming machine scope settings.
 
         :param request: Request instance for DescribeWarningHostConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWarningHostConfigRequest`
@@ -7379,7 +7379,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWarningList(self, request):
-        """This API is used to obtain the list of the current user's alarms.
+        r"""This API is used to obtain the list of the current user's alarms.
 
         :param request: Request instance for DescribeWarningList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWarningListRequest`
@@ -7402,7 +7402,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookPolicy(self, request):
-        """This API is used to query alarm policies.
+        r"""This API is used to query alarm policies.
 
         :param request: Request instance for DescribeWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookPolicyRequest`
@@ -7425,7 +7425,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookReceiver(self, request):
-        """This API is used to query the list of alarm recipients.
+        r"""This API is used to query the list of alarm recipients.
 
         :param request: Request instance for DescribeWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookReceiverRequest`
@@ -7448,7 +7448,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookReceiverUsage(self, request):
-        """This API is used to query the usage of policies associated with the specified alarm recipient.
+        r"""This API is used to query the usage of policies associated with the specified alarm recipient.
 
         :param request: Request instance for DescribeWebHookReceiverUsage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookReceiverUsageRequest`
@@ -7471,7 +7471,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookRule(self, request):
-        """This API is used to obtain the details of the WeCom chatbot rules.
+        r"""This API is used to obtain the details of the WeCom chatbot rules.
 
         :param request: Request instance for DescribeWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookRuleRequest`
@@ -7494,7 +7494,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeWebHookRules(self, request):
-        """This API is used to obtain the list of WeCom chatbot rules.
+        r"""This API is used to obtain the list of WeCom chatbot rules.
 
         :param request: Request instance for DescribeWebHookRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebHookRulesRequest`
@@ -7517,7 +7517,7 @@ class CwpClient(AbstractClient):
 
 
     def DestroyOrder(self, request):
-        """This API is used to terminate resources.
+        r"""This API is used to terminate resources.
 
         :param request: Request instance for DestroyOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DestroyOrderRequest`
@@ -7540,7 +7540,7 @@ class CwpClient(AbstractClient):
 
 
     def EditBashRules(self, request):
-        """This API is used to add or modify high-risk command rules.
+        r"""This API is used to add or modify high-risk command rules.
 
         :param request: Request instance for EditBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditBashRulesRequest`
@@ -7563,7 +7563,7 @@ class CwpClient(AbstractClient):
 
 
     def EditPrivilegeRules(self, request):
-        """This API is used to add or modify local privilege escalation rules (multiple servers supported).
+        r"""This API is used to add or modify local privilege escalation rules (multiple servers supported).
 
         :param request: Request instance for EditPrivilegeRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditPrivilegeRulesRequest`
@@ -7586,7 +7586,7 @@ class CwpClient(AbstractClient):
 
 
     def EditReverseShellRules(self, request):
-        """This API is used to edit reverse shell rules (multiple servers supported).
+        r"""This API is used to edit reverse shell rules (multiple servers supported).
 
         :param request: Request instance for EditReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditReverseShellRulesRequest`
@@ -7609,7 +7609,7 @@ class CwpClient(AbstractClient):
 
 
     def EditTags(self, request):
-        """This API is used to add or edit tags.
+        r"""This API is used to add or edit tags.
 
         :param request: Request instance for EditTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditTagsRequest`
@@ -7632,7 +7632,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetAppList(self, request):
-        """This API is used to export the list of asset management applications.
+        r"""This API is used to export the list of asset management applications.
 
         :param request: Request instance for ExportAssetAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetAppListRequest`
@@ -7655,7 +7655,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetCoreModuleList(self, request):
-        """This API is used to export the list of asset management kernel modules.
+        r"""This API is used to export the list of asset management kernel modules.
 
         :param request: Request instance for ExportAssetCoreModuleList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetCoreModuleListRequest`
@@ -7678,7 +7678,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetDatabaseList(self, request):
-        """This API is used to export the list of asset management databases.
+        r"""This API is used to export the list of asset management databases.
 
         :param request: Request instance for ExportAssetDatabaseList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetDatabaseListRequest`
@@ -7701,7 +7701,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetEnvList(self, request):
-        """This API is used to export the list of asset management environment variables.
+        r"""This API is used to export the list of asset management environment variables.
 
         :param request: Request instance for ExportAssetEnvList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetEnvListRequest`
@@ -7724,7 +7724,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetInitServiceList(self, request):
-        """This API is used to export the list of asset management startup services.
+        r"""This API is used to export the list of asset management startup services.
 
         :param request: Request instance for ExportAssetInitServiceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetInitServiceListRequest`
@@ -7747,7 +7747,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetJarList(self, request):
-        """This API is used to export the list of Jar packages.
+        r"""This API is used to export the list of Jar packages.
 
         :param request: Request instance for ExportAssetJarList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetJarListRequest`
@@ -7770,7 +7770,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetMachineDetail(self, request):
-        """This API is used to export asset management host resource details.
+        r"""This API is used to export asset management host resource details.
 
         :param request: Request instance for ExportAssetMachineDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetMachineDetailRequest`
@@ -7793,7 +7793,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetMachineList(self, request):
-        """This API is used to export the list of resource monitoring.
+        r"""This API is used to export the list of resource monitoring.
 
         :param request: Request instance for ExportAssetMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetMachineListRequest`
@@ -7816,7 +7816,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetPlanTaskList(self, request):
-        """This API is used to export the list of scheduled asset management tasks.
+        r"""This API is used to export the list of scheduled asset management tasks.
 
         :param request: Request instance for ExportAssetPlanTaskList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetPlanTaskListRequest`
@@ -7839,7 +7839,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetPortInfoList(self, request):
-        """This API is used to export the list of asset management ports.
+        r"""This API is used to export the list of asset management ports.
 
         :param request: Request instance for ExportAssetPortInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetPortInfoListRequest`
@@ -7862,7 +7862,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetProcessInfoList(self, request):
-        """This API is used to export the asset management process list.
+        r"""This API is used to export the asset management process list.
 
         :param request: Request instance for ExportAssetProcessInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetProcessInfoListRequest`
@@ -7885,7 +7885,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetRecentMachineInfo(self, request):
-        """This API is used to export host trends of recent days (up to last 90 days).
+        r"""This API is used to export host trends of recent days (up to last 90 days).
 
         :param request: Request instance for ExportAssetRecentMachineInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetRecentMachineInfoRequest`
@@ -7908,7 +7908,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetSystemPackageList(self, request):
-        """This API is used to export the list of system installation packages for asset management.
+        r"""This API is used to export the list of system installation packages for asset management.
 
         :param request: Request instance for ExportAssetSystemPackageList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetSystemPackageListRequest`
@@ -7931,7 +7931,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetUserList(self, request):
-        """This API is used to export the account list.
+        r"""This API is used to export the account list.
 
         :param request: Request instance for ExportAssetUserList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetUserListRequest`
@@ -7954,7 +7954,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebAppList(self, request):
-        """This API is used to export the list of asset management Web applications.
+        r"""This API is used to export the list of asset management Web applications.
 
         :param request: Request instance for ExportAssetWebAppList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebAppListRequest`
@@ -7977,7 +7977,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebFrameList(self, request):
-        """This API is used to export the list of asset management Web frameworks.
+        r"""This API is used to export the list of asset management Web frameworks.
 
         :param request: Request instance for ExportAssetWebFrameList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebFrameListRequest`
@@ -8000,7 +8000,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebLocationList(self, request):
-        """This API is used to export the list of Web sites.
+        r"""This API is used to export the list of Web sites.
 
         :param request: Request instance for ExportAssetWebLocationList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebLocationListRequest`
@@ -8023,7 +8023,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAssetWebServiceInfoList(self, request):
-        """This API is used to export the list of asset management Web services.
+        r"""This API is used to export the list of asset management Web services.
 
         :param request: Request instance for ExportAssetWebServiceInfoList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetWebServiceInfoListRequest`
@@ -8046,7 +8046,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportAttackEvents(self, request):
-        """This API is used to export network attack events.
+        r"""This API is used to export network attack events.
 
         :param request: Request instance for ExportAttackEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAttackEventsRequest`
@@ -8069,7 +8069,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineEffectHostList(self, request):
-        """This API is used to export the list of hosts affected by baseline.
+        r"""This API is used to export the list of hosts affected by baseline.
 
         :param request: Request instance for ExportBaselineEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineEffectHostListRequest`
@@ -8092,7 +8092,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineFixList(self, request):
-        """This API is used to export the list of fixing baselines.
+        r"""This API is used to export the list of fixing baselines.
 
         :param request: Request instance for ExportBaselineFixList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineFixListRequest`
@@ -8115,7 +8115,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineHostDetectList(self, request):
-        """This API is used to export the baseline for host detection.
+        r"""This API is used to export the baseline for host detection.
 
         :param request: Request instance for ExportBaselineHostDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineHostDetectListRequest`
@@ -8138,7 +8138,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineItemDetectList(self, request):
-        """This API is used to export baseline check items.
+        r"""This API is used to export baseline check items.
 
         :param request: Request instance for ExportBaselineItemDetectList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineItemDetectListRequest`
@@ -8161,7 +8161,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBaselineList(self, request):
-        """This API is used to export the list of baselines.
+        r"""This API is used to export the list of baselines.
 
         :param request: Request instance for ExportBaselineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBaselineListRequest`
@@ -8184,7 +8184,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashEvents(self, request):
-        """This API is used to export high-risk command events.
+        r"""This API is used to export high-risk command events.
 
         :param request: Request instance for ExportBashEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsRequest`
@@ -8207,7 +8207,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashEventsNew(self, request):
-        """This API is used to export high-risk command events (new).
+        r"""This API is used to export high-risk command events (new).
 
         :param request: Request instance for ExportBashEventsNew.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsNewRequest`
@@ -8230,7 +8230,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBashPolicies(self, request):
-        """This API is used to export the high-risk command policy.
+        r"""This API is used to export the high-risk command policy.
 
         :param request: Request instance for ExportBashPolicies.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashPoliciesRequest`
@@ -8253,7 +8253,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportBruteAttacks(self, request):
-        """This API is used to export password cracking records to a CSV file.
+        r"""This API is used to export password cracking records to a CSV file.
 
         :param request: Request instance for ExportBruteAttacks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBruteAttacksRequest`
@@ -8276,7 +8276,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportFileTamperEvents(self, request):
-        """This API is used to export core file events.
+        r"""This API is used to export core file events.
 
         :param request: Request instance for ExportFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportFileTamperEventsRequest`
@@ -8299,7 +8299,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportFileTamperRules(self, request):
-        """This API is used to export core file monitoring rules.
+        r"""This API is used to export core file monitoring rules.
 
         :param request: Request instance for ExportFileTamperRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportFileTamperRulesRequest`
@@ -8322,7 +8322,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportIgnoreBaselineRule(self, request):
-        """This API is used to export information of ignored baseline detection items.
+        r"""This API is used to export information of ignored baseline detection items.
 
         :param request: Request instance for ExportIgnoreBaselineRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportIgnoreBaselineRuleRequest`
@@ -8345,7 +8345,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportIgnoreRuleEffectHostList(self, request):
-        """This API is used to export the list of hosts affected by ignored detection items based on detection item IDs.
+        r"""This API is used to export the list of hosts affected by ignored detection items based on detection item IDs.
 
         :param request: Request instance for ExportIgnoreRuleEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportIgnoreRuleEffectHostListRequest`
@@ -8368,7 +8368,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportJavaMemShellPlugins(self, request):
-        """This API is used to export the Java webshell plugin information.
+        r"""This API is used to export the Java webshell plugin information.
 
         :param request: Request instance for ExportJavaMemShellPlugins.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportJavaMemShellPluginsRequest`
@@ -8391,7 +8391,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportJavaMemShells(self, request):
-        """This API is used to export the list of Java webshell events.
+        r"""This API is used to export the list of Java webshell events.
 
         :param request: Request instance for ExportJavaMemShells.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportJavaMemShellsRequest`
@@ -8414,7 +8414,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportLicenseDetail(self, request):
-        """This API is used to export authorization details.
+        r"""This API is used to export authorization details.
 
         :param request: Request instance for ExportLicenseDetail.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportLicenseDetailRequest`
@@ -8437,7 +8437,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportMaliciousRequests(self, request):
-        """This API is used to export the downloaded malicious request files.
+        r"""This API is used to export the downloaded malicious request files.
 
         :param request: Request instance for ExportMaliciousRequests.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMaliciousRequestsRequest`
@@ -8460,7 +8460,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportMalwares(self, request):
-        """This API is used to export Trojan records to a CSV file.
+        r"""This API is used to export Trojan records to a CSV file.
 
         :param request: Request instance for ExportMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMalwaresRequest`
@@ -8483,7 +8483,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportNonlocalLoginPlaces(self, request):
-        """This API is used to export cross-region log-in event records in CSV format.
+        r"""This API is used to export cross-region log-in event records in CSV format.
 
         :param request: Request instance for ExportNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportNonlocalLoginPlacesRequest`
@@ -8506,7 +8506,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportPrivilegeEvents(self, request):
-        """This API is used to export local privilege escalation events.
+        r"""This API is used to export local privilege escalation events.
 
         :param request: Request instance for ExportPrivilegeEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportPrivilegeEventsRequest`
@@ -8529,7 +8529,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseBackupList(self, request):
-        """This API is used to export the list of host snapshot backups.
+        r"""This API is used to export the list of host snapshot backups.
 
         :param request: Request instance for ExportRansomDefenseBackupList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseBackupListRequest`
@@ -8552,7 +8552,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseEventsList(self, request):
-        """This API is used to export the list of anti-ransomware events.
+        r"""This API is used to export the list of anti-ransomware events.
 
         :param request: Request instance for ExportRansomDefenseEventsList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseEventsListRequest`
@@ -8575,7 +8575,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseMachineList(self, request):
-        """This API is used to export the backup details list.
+        r"""This API is used to export the backup details list.
 
         :param request: Request instance for ExportRansomDefenseMachineList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseMachineListRequest`
@@ -8598,7 +8598,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseStrategyList(self, request):
-        """This API is used to export the anti-ransomware policy list.
+        r"""This API is used to export the anti-ransomware policy list.
 
         :param request: Request instance for ExportRansomDefenseStrategyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseStrategyListRequest`
@@ -8621,7 +8621,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRansomDefenseStrategyMachines(self, request):
-        """This API is used to export the list of machines bound to ransomware defense policies.
+        r"""This API is used to export the list of machines bound to ransomware defense policies.
 
         :param request: Request instance for ExportRansomDefenseStrategyMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRansomDefenseStrategyMachinesRequest`
@@ -8644,7 +8644,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportReverseShellEvents(self, request):
-        """This API is used to export reverse shell events.
+        r"""This API is used to export reverse shell events.
 
         :param request: Request instance for ExportReverseShellEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportReverseShellEventsRequest`
@@ -8667,7 +8667,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskDnsEventList(self, request):
-        """This API is used to export the malicious request event list.
+        r"""This API is used to export the malicious request event list.
 
         :param request: Request instance for ExportRiskDnsEventList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskDnsEventListRequest`
@@ -8690,7 +8690,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskDnsPolicyList(self, request):
-        """This API is used to export the malicious request policy list.
+        r"""This API is used to export the malicious request policy list.
 
         :param request: Request instance for ExportRiskDnsPolicyList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskDnsPolicyListRequest`
@@ -8713,7 +8713,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportRiskProcessEvents(self, request):
-        """This API is used to export abnormal process events.
+        r"""This API is used to export abnormal process events.
 
         :param request: Request instance for ExportRiskProcessEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportRiskProcessEventsRequest`
@@ -8736,7 +8736,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportScanTaskDetails(self, request):
-        """This API is used to export the specified scan task details by task ID.
+        r"""This API is used to export the specified scan task details by task ID.
 
         :param request: Request instance for ExportScanTaskDetails.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportScanTaskDetailsRequest`
@@ -8759,7 +8759,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportSecurityTrends(self, request):
-        """This API is used to export risk trends.
+        r"""This API is used to export risk trends.
 
         :param request: Request instance for ExportSecurityTrends.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportSecurityTrendsRequest`
@@ -8782,7 +8782,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportTasks(self, request):
-        """This API is used to export log files with large data volumes asynchronously.
+        r"""This API is used to export log files with large data volumes asynchronously.
 
         :param request: Request instance for ExportTasks.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportTasksRequest`
@@ -8805,7 +8805,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefenceEvent(self, request):
-        """This API is used to export vulnerability defense events.
+        r"""This API is used to export vulnerability defense events.
 
         :param request: Request instance for ExportVulDefenceEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefenceEventRequest`
@@ -8828,7 +8828,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefenceList(self, request):
-        """This API is used to export the list of vulnerability defenses.
+        r"""This API is used to export the list of vulnerability defenses.
 
         :param request: Request instance for ExportVulDefenceList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefenceListRequest`
@@ -8851,7 +8851,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDefencePluginEvent(self, request):
-        """This API is used to export vulnerability defense plugin events.
+        r"""This API is used to export vulnerability defense plugin events.
 
         :param request: Request instance for ExportVulDefencePluginEvent.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDefencePluginEventRequest`
@@ -8874,7 +8874,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDetectionExcel(self, request):
-        """This API is used to export the vulnerability detection Excel document.
+        r"""This API is used to export the vulnerability detection Excel document.
 
         :param request: Request instance for ExportVulDetectionExcel.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionExcelRequest`
@@ -8897,7 +8897,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulDetectionReport(self, request):
-        """This API is used to export the vulnerability detection report.
+        r"""This API is used to export the vulnerability detection report.
 
         :param request: Request instance for ExportVulDetectionReport.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionReportRequest`
@@ -8920,7 +8920,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulEffectHostList(self, request):
-        """This API is used to export the list of hosts affected by vulnerabilities.
+        r"""This API is used to export the list of hosts affected by vulnerabilities.
 
         :param request: Request instance for ExportVulEffectHostList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulEffectHostListRequest`
@@ -8943,7 +8943,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulInfo(self, request):
-        """This API is used to export the vulnerability information, including the list of affected hosts and component information.
+        r"""This API is used to export the vulnerability information, including the list of affected hosts and component information.
 
         :param request: Request instance for ExportVulInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulInfoRequest`
@@ -8966,7 +8966,7 @@ class CwpClient(AbstractClient):
 
 
     def ExportVulList(self, request):
-        """This API is used to export the vulnerability list.
+        r"""This API is used to export the vulnerability list.
 
         :param request: Request instance for ExportVulList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulListRequest`
@@ -8989,7 +8989,7 @@ class CwpClient(AbstractClient):
 
 
     def GetLocalStorageItem(self, request):
-        """This API is used to obtain the locally stored data.
+        r"""This API is used to obtain the locally stored data.
 
         :param request: Request instance for GetLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.GetLocalStorageItemRequest`
@@ -9012,7 +9012,7 @@ class CwpClient(AbstractClient):
 
 
     def IgnoreImpactedHosts(self, request):
-        """This API is used to ignore vulnerabilities.
+        r"""This API is used to ignore vulnerabilities.
 
         :param request: Request instance for IgnoreImpactedHosts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsRequest`
@@ -9035,7 +9035,7 @@ class CwpClient(AbstractClient):
 
 
     def KeysLocalStorage(self, request):
-        """This API is used to obtain the list of locally stored key values.
+        r"""This API is used to obtain the list of locally stored key values.
 
         :param request: Request instance for KeysLocalStorage.
         :type request: :class:`tencentcloud.cwp.v20180228.models.KeysLocalStorageRequest`
@@ -9058,7 +9058,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyAutoOpenProVersionConfig(self, request):
-        """This API is used to enable the configuration of automatically enabling the professional protection configuration for newly added hosts.
+        r"""This API is used to enable the configuration of automatically enabling the professional protection configuration for newly added hosts.
 
         :param request: Request instance for ModifyAutoOpenProVersionConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyAutoOpenProVersionConfigRequest`
@@ -9081,7 +9081,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanMode(self, request):
-        """This API is used to modify the brute-force blocking mode.
+        r"""This API is used to modify the brute-force blocking mode.
 
         :param request: Request instance for ModifyBanMode.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanModeRequest`
@@ -9104,7 +9104,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanStatus(self, request):
-        """This API is used to set the block switch status.
+        r"""This API is used to set the block switch status.
 
         :param request: Request instance for ModifyBanStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanStatusRequest`
@@ -9127,7 +9127,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBanWhiteList(self, request):
-        """This API is used to modify the blocking allowlist.
+        r"""This API is used to modify the blocking allowlist.
 
         :param request: Request instance for ModifyBanWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBanWhiteListRequest`
@@ -9150,7 +9150,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBaselinePolicy(self, request):
-        """This API is used to change the baseline policy settings.
+        r"""This API is used to change the baseline policy settings.
 
         :param request: Request instance for ModifyBaselinePolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselinePolicyRequest`
@@ -9173,7 +9173,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBashPolicy(self, request):
-        """This API is used to add or modify high-risk command policies.
+        r"""This API is used to add or modify high-risk command policies.
 
         :param request: Request instance for ModifyBashPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBashPolicyRequest`
@@ -9196,7 +9196,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBashPolicyStatus(self, request):
-        """This API is used to switch the statuses of high-risk command policies.
+        r"""This API is used to switch the statuses of high-risk command policies.
 
         :param request: Request instance for ModifyBashPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBashPolicyStatusRequest`
@@ -9219,7 +9219,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyBruteAttackRules(self, request):
-        """This API is used to modify brute force cracking rules.
+        r"""This API is used to modify brute force cracking rules.
 
         :param request: Request instance for ModifyBruteAttackRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBruteAttackRulesRequest`
@@ -9242,7 +9242,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyEventAttackStatus(self, request):
-        """This API is used to modify the status of network attack events.
+        r"""This API is used to modify the status of network attack events.
 
         :param request: Request instance for ModifyEventAttackStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyEventAttackStatusRequest`
@@ -9265,7 +9265,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperEvents(self, request):
-        """This API is used to update the core file events.
+        r"""This API is used to update the core file events.
 
         :param request: Request instance for ModifyFileTamperEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperEventsRequest`
@@ -9288,7 +9288,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperRule(self, request):
-        """This API is used to edit and add core file monitoring rules.
+        r"""This API is used to edit and add core file monitoring rules.
 
         :param request: Request instance for ModifyFileTamperRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperRuleRequest`
@@ -9311,7 +9311,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyFileTamperRuleStatus(self, request):
-        """This API is used to update the core file rule status (batch deletion and disabling supported).
+        r"""This API is used to update the core file rule status (batch deletion and disabling supported).
 
         :param request: Request instance for ModifyFileTamperRuleStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyFileTamperRuleStatusRequest`
@@ -9334,7 +9334,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyJavaMemShellPluginSwitch(self, request):
-        """This API is used to enable and disable Java webshell plugins.
+        r"""This API is used to enable and disable Java webshell plugins.
 
         :param request: Request instance for ModifyJavaMemShellPluginSwitch.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyJavaMemShellPluginSwitchRequest`
@@ -9357,7 +9357,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyJavaMemShellsStatus(self, request):
-        """This API is used to modify the Java webshell event status.
+        r"""This API is used to modify the Java webshell event status.
 
         :param request: Request instance for ModifyJavaMemShellsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyJavaMemShellsStatusRequest`
@@ -9380,7 +9380,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLicenseBinds(self, request):
-        """This API is used to bind machines to an authorization in batches.
+        r"""This API is used to bind machines to an authorization in batches.
 
         :param request: Request instance for ModifyLicenseBinds.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLicenseBindsRequest`
@@ -9403,7 +9403,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLicenseOrder(self, request):
-        """This API is used to edit CWPP - pay-as-you-go authorization orders.
+        r"""This API is used to edit CWPP - pay-as-you-go authorization orders.
 
         :param request: Request instance for ModifyLicenseOrder.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLicenseOrderRequest`
@@ -9426,7 +9426,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaAccess(self, request):
-        """This API is used to add or modify the access configuration of logs shipped to Kafka.
+        r"""This API is used to add or modify the access configuration of logs shipped to Kafka.
 
         :param request: Request instance for ModifyLogKafkaAccess.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaAccessRequest`
@@ -9449,7 +9449,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaDeliverType(self, request):
-        """This API is used to modify the shipping configuration and switch of the specified log category.
+        r"""This API is used to modify the shipping configuration and switch of the specified log category.
 
         :param request: Request instance for ModifyLogKafkaDeliverType.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaDeliverTypeRequest`
@@ -9472,7 +9472,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogKafkaState(self, request):
-        """This API is used to modify the information of log shipping statuses.
+        r"""This API is used to modify the information of log shipping statuses.
 
         :param request: Request instance for ModifyLogKafkaState.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogKafkaStateRequest`
@@ -9495,7 +9495,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLogStorageConfig(self, request):
-        """This API is used to modify the log storage configuration.
+        r"""This API is used to modify the log storage configuration.
 
         :param request: Request instance for ModifyLogStorageConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogStorageConfigRequest`
@@ -9518,7 +9518,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLoginWhiteInfo(self, request):
-        """This API is used to update the log-in audit allowlist information.
+        r"""This API is used to update the log-in audit allowlist information.
 
         :param request: Request instance for ModifyLoginWhiteInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteInfoRequest`
@@ -9541,7 +9541,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLoginWhiteRecord(self, request):
-        """This API is used to update the log-in audit allowlist information. (The number of server lists needs to be less than 1,000.)
+        r"""This API is used to update the log-in audit allowlist information. (The number of server lists needs to be less than 1,000.)
 
         :param request: Request instance for ModifyLoginWhiteRecord.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteRecordRequest`
@@ -9564,7 +9564,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMachineAutoClearConfig(self, request):
-        """This API is used to modify the cleanup configuration of the machine.
+        r"""This API is used to modify the cleanup configuration of the machine.
 
         :param request: Request instance for ModifyMachineAutoClearConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMachineAutoClearConfigRequest`
@@ -9587,7 +9587,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMaliciousRequestWhiteList(self, request):
-        """This API is used to update the malicious request allowlist.
+        r"""This API is used to update the malicious request allowlist.
 
         :param request: Request instance for ModifyMaliciousRequestWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMaliciousRequestWhiteListRequest`
@@ -9610,7 +9610,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMalwareTimingScanSettings(self, request):
-        """This API is used to set scheduled scan.
+        r"""This API is used to set scheduled scan.
 
         :param request: Request instance for ModifyMalwareTimingScanSettings.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareTimingScanSettingsRequest`
@@ -9633,7 +9633,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyMalwareWhiteList(self, request):
-        """This API is used to edit the Trojan allowlist.
+        r"""This API is used to edit the Trojan allowlist.
 
         :param request: Request instance for ModifyMalwareWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareWhiteListRequest`
@@ -9656,7 +9656,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyNetAttackSetting(self, request):
-        """This API is used to modify network attack settings.
+        r"""This API is used to modify network attack settings.
 
         :param request: Request instance for ModifyNetAttackSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyNetAttackSettingRequest`
@@ -9679,7 +9679,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyNetAttackWhiteList(self, request):
-        """This API is used to edit the network attack whitelist.
+        r"""This API is used to edit the network attack whitelist.
 
         :param request: Request instance for ModifyNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyNetAttackWhiteListRequest`
@@ -9702,7 +9702,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRansomDefenseEventsStatus(self, request):
-        """This API is used to modify the status of anti-ransomware events.
+        r"""This API is used to modify the status of anti-ransomware events.
 
         :param request: Request instance for ModifyRansomDefenseEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRansomDefenseEventsStatusRequest`
@@ -9725,7 +9725,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRansomDefenseStrategyStatus(self, request):
-        """This API is used to modify the anti-ransomware policy status in batches.
+        r"""This API is used to modify the anti-ransomware policy status in batches.
 
         :param request: Request instance for ModifyRansomDefenseStrategyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRansomDefenseStrategyStatusRequest`
@@ -9748,7 +9748,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskDnsPolicy(self, request):
-        """This API is used to modify malicious request policies.
+        r"""This API is used to modify malicious request policies.
 
         :param request: Request instance for ModifyRiskDnsPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskDnsPolicyRequest`
@@ -9771,7 +9771,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskDnsPolicyStatus(self, request):
-        """This API is used to modify the status of malicious request policies.
+        r"""This API is used to modify the status of malicious request policies.
 
         :param request: Request instance for ModifyRiskDnsPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskDnsPolicyStatusRequest`
@@ -9794,7 +9794,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyRiskEventsStatus(self, request):
-        """This API is used to change the status of intrusion detection events, including virus scanning, abnormal log-ins, password cracking, high-risk commands, reverse shells, and local privilege escalations.
+        r"""This API is used to change the status of intrusion detection events, including virus scanning, abnormal log-ins, password cracking, high-risk commands, reverse shells, and local privilege escalations.
 
         :param request: Request instance for ModifyRiskEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRiskEventsStatusRequest`
@@ -9817,7 +9817,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyUsersConfig(self, request):
-        """This API is used to create or modify user custom settings.
+        r"""This API is used to create or modify user custom settings.
 
         :param request: Request instance for ModifyUsersConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyUsersConfigRequest`
@@ -9840,7 +9840,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyVulDefenceEventStatus(self, request):
-        """This API is used to change the vulnerability defense event status. (Vulnerability fixing is carried out using another API.)
+        r"""This API is used to change the vulnerability defense event status. (Vulnerability fixing is carried out using another API.)
 
         :param request: Request instance for ModifyVulDefenceEventStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyVulDefenceEventStatusRequest`
@@ -9863,7 +9863,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyVulDefenceSetting(self, request):
-        """This API is used to modify vulnerability defense plugin settings.
+        r"""This API is used to modify vulnerability defense plugin settings.
         1) The new settings apply to new hosts automatically. scope is set to 1, and quuids is left blank.
         2) The new settings do not apply to Ultimate Edition hosts. scope is set to 0, and the current QUUID list is specified as the value of quuids.
         3) For a given QUUID list, when scope is set to 0, QUUID selected by the user is specified as the value of quuids.
@@ -9889,7 +9889,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWarningHostConfig(self, request):
-        """This API is used to modify the alarming machine scope settings.
+        r"""This API is used to modify the alarming machine scope settings.
 
         :param request: Request instance for ModifyWarningHostConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningHostConfigRequest`
@@ -9912,7 +9912,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWarningSetting(self, request):
-        """This API is used to modify alarm settings.
+        r"""This API is used to modify alarm settings.
 
         :param request: Request instance for ModifyWarningSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningSettingRequest`
@@ -9935,7 +9935,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookPolicy(self, request):
-        """This API is used to add or modify alarm policies.
+        r"""This API is used to add or modify alarm policies.
 
         :param request: Request instance for ModifyWebHookPolicy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookPolicyRequest`
@@ -9958,7 +9958,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookPolicyStatus(self, request):
-        """This API is used to modify the alarm policy switch.
+        r"""This API is used to modify the alarm policy switch.
 
         :param request: Request instance for ModifyWebHookPolicyStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookPolicyStatusRequest`
@@ -9981,7 +9981,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookReceiver(self, request):
-        """This API is used to add or update the alarm recipient.
+        r"""This API is used to add or update the alarm recipient.
 
         :param request: Request instance for ModifyWebHookReceiver.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookReceiverRequest`
@@ -10004,7 +10004,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookRule(self, request):
-        """This API is used to add or modify the rules of WeCom chatbots.
+        r"""This API is used to add or modify the rules of WeCom chatbots.
 
         :param request: Request instance for ModifyWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookRuleRequest`
@@ -10027,7 +10027,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebHookRuleStatus(self, request):
-        """This API is used to modify the rules of WeCom chatbots.
+        r"""This API is used to modify the rules of WeCom chatbots.
 
         :param request: Request instance for ModifyWebHookRuleStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebHookRuleStatusRequest`
@@ -10050,7 +10050,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyWebPageProtectSwitch(self, request):
-        """This API is used to enable or disable website anti-tampering protection.
+        r"""This API is used to enable or disable website anti-tampering protection.
 
         :param request: Request instance for ModifyWebPageProtectSwitch.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectSwitchRequest`
@@ -10073,7 +10073,7 @@ class CwpClient(AbstractClient):
 
 
     def RansomDefenseRollback(self, request):
-        """This API is used to roll back anti-ransomware snapshots.
+        r"""This API is used to roll back anti-ransomware snapshots.
 
         :param request: Request instance for RansomDefenseRollback.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RansomDefenseRollbackRequest`
@@ -10096,7 +10096,7 @@ class CwpClient(AbstractClient):
 
 
     def RecoverMalwares(self, request):
-        """This API is used to batch recover quarantined Trojan files.
+        r"""This API is used to batch recover quarantined Trojan files.
 
         :param request: Request instance for RecoverMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RecoverMalwaresRequest`
@@ -10119,7 +10119,7 @@ class CwpClient(AbstractClient):
 
 
     def RemoveLocalStorageItem(self, request):
-        """This API is used to delete the locally stored data.
+        r"""This API is used to delete the locally stored data.
 
         :param request: Request instance for RemoveLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RemoveLocalStorageItemRequest`
@@ -10142,7 +10142,7 @@ class CwpClient(AbstractClient):
 
 
     def RemoveMachine(self, request):
-        """This API is used to delete all records of the host. Currently, it only supports non-Tencent Cloud hosts, and the host needs to be offline.
+        r"""This API is used to delete all records of the host. Currently, it only supports non-Tencent Cloud hosts, and the host needs to be offline.
 
         :param request: Request instance for RemoveMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RemoveMachineRequest`
@@ -10165,7 +10165,7 @@ class CwpClient(AbstractClient):
 
 
     def RetryCreateSnapshot(self, request):
-        """This API is used to retry to create snapshots and automatically fix vulnerabilities when the creation fails.
+        r"""This API is used to retry to create snapshots and automatically fix vulnerabilities when the creation fails.
 
         :param request: Request instance for RetryCreateSnapshot.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RetryCreateSnapshotRequest`
@@ -10188,7 +10188,7 @@ class CwpClient(AbstractClient):
 
 
     def RetryVulFix(self, request):
-        """This API is used to fix vulnerabilities on a single host when the fix fails.
+        r"""This API is used to fix vulnerabilities on a single host when the fix fails.
 
         :param request: Request instance for RetryVulFix.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RetryVulFixRequest`
@@ -10211,7 +10211,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanBaseline(self, request):
-        """This API is used to obtain baseline detection and re-detection APIs.
+        r"""This API is used to obtain baseline detection and re-detection APIs.
 
         :param request: Request instance for ScanBaseline.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanBaselineRequest`
@@ -10234,7 +10234,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanTaskAgain(self, request):
-        """This API is used to restart the scan task. Specifying the machine is supported.
+        r"""This API is used to restart the scan task. Specifying the machine is supported.
 
         :param request: Request instance for ScanTaskAgain.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanTaskAgainRequest`
@@ -10257,7 +10257,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVul(self, request):
-        """This API is used to perform one-click vulnerability scans.
+        r"""This API is used to perform one-click vulnerability scans.
 
         :param request: Request instance for ScanVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulRequest`
@@ -10280,7 +10280,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVulAgain(self, request):
-        """This API is used to redetect the API.
+        r"""This API is used to redetect the API.
 
         :param request: Request instance for ScanVulAgain.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulAgainRequest`
@@ -10303,7 +10303,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVulSetting(self, request):
-        """This API is used to complete regular vulnerability scan settings.
+        r"""This API is used to complete regular vulnerability scan settings.
 
         :param request: Request instance for ScanVulSetting.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulSettingRequest`
@@ -10326,7 +10326,7 @@ class CwpClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """This API is used to query logs.
+        r"""This API is used to query logs.
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SearchLogRequest`
@@ -10349,7 +10349,7 @@ class CwpClient(AbstractClient):
 
 
     def SeparateMalwares(self, request):
-        """This API is used to isolate Trojans.
+        r"""This API is used to isolate Trojans.
 
         :param request: Request instance for SeparateMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SeparateMalwaresRequest`
@@ -10372,7 +10372,7 @@ class CwpClient(AbstractClient):
 
 
     def SetBashEventsStatus(self, request):
-        """This API is used to set the high-risk command event status.
+        r"""This API is used to set the high-risk command event status.
 
         :param request: Request instance for SetBashEventsStatus.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetBashEventsStatusRequest`
@@ -10395,7 +10395,7 @@ class CwpClient(AbstractClient):
 
 
     def SetLocalStorageExpire(self, request):
-        """This API is used to set the expiration time of the locally stored data.
+        r"""This API is used to set the expiration time of the locally stored data.
 
         :param request: Request instance for SetLocalStorageExpire.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetLocalStorageExpireRequest`
@@ -10418,7 +10418,7 @@ class CwpClient(AbstractClient):
 
 
     def SetLocalStorageItem(self, request):
-        """This API is used to set the locally stored data.
+        r"""This API is used to set the locally stored data.
 
         :param request: Request instance for SetLocalStorageItem.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SetLocalStorageItemRequest`
@@ -10441,7 +10441,7 @@ class CwpClient(AbstractClient):
 
 
     def StartBaselineDetect(self, request):
-        """This API is used to perform baseline checks.
+        r"""This API is used to perform baseline checks.
 
         :param request: Request instance for StartBaselineDetect.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StartBaselineDetectRequest`
@@ -10464,7 +10464,7 @@ class CwpClient(AbstractClient):
 
 
     def StopAssetScan(self, request):
-        """This API is used to stop the asset scan task.
+        r"""This API is used to stop the asset scan task.
 
         :param request: Request instance for StopAssetScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopAssetScanRequest`
@@ -10487,7 +10487,7 @@ class CwpClient(AbstractClient):
 
 
     def StopBaselineDetect(self, request):
-        """This API is used to stop baseline check.
+        r"""This API is used to stop baseline check.
 
         :param request: Request instance for StopBaselineDetect.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopBaselineDetectRequest`
@@ -10510,7 +10510,7 @@ class CwpClient(AbstractClient):
 
 
     def StopNoticeBanTips(self, request):
-        """This API is used to stop displaying pop-up prompts about brute force cracking blocking.
+        r"""This API is used to stop displaying pop-up prompts about brute force cracking blocking.
 
         :param request: Request instance for StopNoticeBanTips.
         :type request: :class:`tencentcloud.cwp.v20180228.models.StopNoticeBanTipsRequest`
@@ -10533,7 +10533,7 @@ class CwpClient(AbstractClient):
 
 
     def SwitchBashRules(self, request):
-        """This API is used to switch the statuses of high-risk command rules.
+        r"""This API is used to switch the statuses of high-risk command rules.
 
         :param request: Request instance for SwitchBashRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SwitchBashRulesRequest`
@@ -10556,7 +10556,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncAssetScan(self, request):
-        """This API is used to synchronize the asset scan information.
+        r"""This API is used to synchronize the asset scan information.
 
         :param request: Request instance for SyncAssetScan.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncAssetScanRequest`
@@ -10579,7 +10579,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncBaselineDetectSummary(self, request):
-        """This API is used to sync the summary of baseline detection progress.
+        r"""This API is used to sync the summary of baseline detection progress.
 
         :param request: Request instance for SyncBaselineDetectSummary.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncBaselineDetectSummaryRequest`
@@ -10602,7 +10602,7 @@ class CwpClient(AbstractClient):
 
 
     def SyncMachines(self, request):
-        """This API is used to sync the machine information.
+        r"""This API is used to sync the machine information.
 
         :param request: Request instance for SyncMachines.
         :type request: :class:`tencentcloud.cwp.v20180228.models.SyncMachinesRequest`
@@ -10625,7 +10625,7 @@ class CwpClient(AbstractClient):
 
 
     def TestWebHookRule(self, request):
-        """This API is used to test the rules of WeCom chatbots.
+        r"""This API is used to test the rules of WeCom chatbots.
 
         :param request: Request instance for TestWebHookRule.
         :type request: :class:`tencentcloud.cwp.v20180228.models.TestWebHookRuleRequest`
@@ -10648,7 +10648,7 @@ class CwpClient(AbstractClient):
 
 
     def TrustMalwares(self, request):
-        """This API is used to mark identified Trojan files as Trusted.
+        r"""This API is used to mark identified Trojan files as Trusted.
 
         :param request: Request instance for TrustMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.TrustMalwaresRequest`
@@ -10671,7 +10671,7 @@ class CwpClient(AbstractClient):
 
 
     def UntrustMalwares(self, request):
-        """This API is used to untrust Trojan files.
+        r"""This API is used to untrust Trojan files.
 
         :param request: Request instance for UntrustMalwares.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UntrustMalwaresRequest`
@@ -10694,7 +10694,7 @@ class CwpClient(AbstractClient):
 
 
     def UpdateBaselineStrategy(self, request):
-        """This API is used to update the policy information based on baseline policy IDs.
+        r"""This API is used to update the policy information based on baseline policy IDs.
 
         :param request: Request instance for UpdateBaselineStrategy.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UpdateBaselineStrategyRequest`
@@ -10717,7 +10717,7 @@ class CwpClient(AbstractClient):
 
 
     def UpdateMachineTags(self, request):
-        """This API is used to obtain the list of tags associated with machines.
+        r"""This API is used to obtain the list of tags associated with machines.
 
         :param request: Request instance for UpdateMachineTags.
         :type request: :class:`tencentcloud.cwp.v20180228.models.UpdateMachineTagsRequest`

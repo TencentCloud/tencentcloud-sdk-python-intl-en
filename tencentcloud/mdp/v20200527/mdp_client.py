@@ -27,7 +27,7 @@ class MdpClient(AbstractClient):
 
 
     def BindLinearAssemblyCDNDomainWithChannel(self, request):
-        """Linear Assembly channel is bound to CDN playback domain name.
+        r"""Linear Assembly channel is bound to CDN playback domain name.
 
         :param request: Request instance for BindLinearAssemblyCDNDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.BindLinearAssemblyCDNDomainWithChannelRequest`
@@ -50,7 +50,7 @@ class MdpClient(AbstractClient):
 
 
     def BindNewLVBDomainWithChannel(self, request):
-        """This API is used to bind an LVB domain name to a channel.
+        r"""This API is used to bind an LVB domain name to a channel.
 
         :param request: Request instance for BindNewLVBDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.BindNewLVBDomainWithChannelRequest`
@@ -73,7 +73,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageChannel(self, request):
-        """This API is used to create a StreamPackage channel.
+        r"""This API is used to create a StreamPackage channel.
 
         :param request: Request instance for CreateStreamPackageChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelRequest`
@@ -96,7 +96,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageChannelEndpoint(self, request):
-        """This API is used to create an endpoint on a StreamPackage channel.
+        r"""This API is used to create an endpoint on a StreamPackage channel.
 
         :param request: Request instance for CreateStreamPackageChannelEndpoint.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageChannelEndpointRequest`
@@ -119,7 +119,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageHarvestJob(self, request):
-        """Create HarvestJob.
+        r"""Create HarvestJob.
 
         :param request: Request instance for CreateStreamPackageHarvestJob.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageHarvestJobRequest`
@@ -142,7 +142,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageLinearAssemblyChannel(self, request):
-        """Create a linear assembly channel.
+        r"""Create a linear assembly channel.
 
         :param request: Request instance for CreateStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyChannelRequest`
@@ -165,7 +165,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageLinearAssemblyProgram(self, request):
-        """Create a linear assembly program.
+        r"""Create a linear assembly program.
 
         :param request: Request instance for CreateStreamPackageLinearAssemblyProgram.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyProgramRequest`
@@ -188,7 +188,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageSSAIChannel(self, request):
-        """CreateStreamPackageSSAIChannel
+        r"""CreateStreamPackageSSAIChannel
 
         :param request: Request instance for CreateStreamPackageSSAIChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSSAIChannelRequest`
@@ -211,7 +211,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageSource(self, request):
-        """Create channel linear assembly Source.
+        r"""Create channel linear assembly Source.
 
         :param request: Request instance for CreateStreamPackageSource.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceRequest`
@@ -234,7 +234,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageSourceLocation(self, request):
-        """Create Linear Assembly SourceLocation.
+        r"""Create Linear Assembly SourceLocation.
 
         :param request: Request instance for CreateStreamPackageSourceLocation.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceLocationRequest`
@@ -257,7 +257,7 @@ class MdpClient(AbstractClient):
 
 
     def CreateStreamPackageVodRemuxTask(self, request):
-        """Create VodRemuxTask
+        r"""Create VodRemuxTask
 
         :param request: Request instance for CreateStreamPackageVodRemuxTask.
         :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageVodRemuxTaskRequest`
@@ -280,7 +280,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageChannelEndpoints(self, request):
-        """This API is used to delete endpoints from a StreamPackage channel in batches.
+        r"""This API is used to delete endpoints from a StreamPackage channel in batches.
 
         :param request: Request instance for DeleteStreamPackageChannelEndpoints.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelEndpointsRequest`
@@ -303,7 +303,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageChannels(self, request):
-        """This API is used to delete StreamPackage channels in batches.
+        r"""This API is used to delete StreamPackage channels in batches.
 
         :param request: Request instance for DeleteStreamPackageChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageChannelsRequest`
@@ -326,7 +326,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageHarvestJob(self, request):
-        """Delete HarvestJob.
+        r"""Delete HarvestJob.
 
         :param request: Request instance for DeleteStreamPackageHarvestJob.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobRequest`
@@ -349,7 +349,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageHarvestJobs(self, request):
-        """Deleting HarvestJobs in Batch.
+        r"""Deleting HarvestJobs in Batch.
 
         :param request: Request instance for DeleteStreamPackageHarvestJobs.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobsRequest`
@@ -372,7 +372,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageLinearAssemblyChannel(self, request):
-        """Delete channel linear assemblyChannel.
+        r"""Delete channel linear assemblyChannel.
 
         :param request: Request instance for DeleteStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelRequest`
@@ -395,7 +395,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageLinearAssemblyChannels(self, request):
-        """Delete channels in batches and linearly assemble channels.
+        r"""Delete channels in batches and linearly assemble channels.
 
         :param request: Request instance for DeleteStreamPackageLinearAssemblyChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelsRequest`
@@ -418,7 +418,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageLinearAssemblyProgram(self, request):
-        """Delete Channel Linear Assembly Program.
+        r"""Delete Channel Linear Assembly Program.
 
         :param request: Request instance for DeleteStreamPackageLinearAssemblyProgram.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramRequest`
@@ -441,7 +441,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageLinearAssemblyPrograms(self, request):
-        """Batch deletion of channels linear assembly program.
+        r"""Batch deletion of channels linear assembly program.
 
         :param request: Request instance for DeleteStreamPackageLinearAssemblyPrograms.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramsRequest`
@@ -464,7 +464,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageSSAIChannel(self, request):
-        """DeleteStreamPackageSSAIChannel
+        r"""DeleteStreamPackageSSAIChannel
 
         :param request: Request instance for DeleteStreamPackageSSAIChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSSAIChannelRequest`
@@ -487,7 +487,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageSource(self, request):
-        """Delete channel linear assembly Source.
+        r"""Delete channel linear assembly Source.
 
         :param request: Request instance for DeleteStreamPackageSource.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceRequest`
@@ -510,7 +510,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageSourceLocation(self, request):
-        """Batch delete media packaging SourceLocation.
+        r"""Batch delete media packaging SourceLocation.
 
         :param request: Request instance for DeleteStreamPackageSourceLocation.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceLocationRequest`
@@ -533,7 +533,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageVodRemuxTask(self, request):
-        """Delete Vod remux task.
+        r"""Delete Vod remux task.
 
         :param request: Request instance for DeleteStreamPackageVodRemuxTask.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTaskRequest`
@@ -556,7 +556,7 @@ class MdpClient(AbstractClient):
 
 
     def DeleteStreamPackageVodRemuxTasks(self, request):
-        """Delete VOD remux tasks in batches.
+        r"""Delete VOD remux tasks in batches.
 
         :param request: Request instance for DeleteStreamPackageVodRemuxTasks.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTasksRequest`
@@ -579,7 +579,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeLinearAssemblyCDNDomainWithChannel(self, request):
-        """Query the CDN domain name associated with the LinearAssembly channel.
+        r"""Query the CDN domain name associated with the LinearAssembly channel.
 
         :param request: Request instance for DescribeLinearAssemblyCDNDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelRequest`
@@ -602,7 +602,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeLinearAssemblyCDNDomainWithChannels(self, request):
-        """Query the CDN domain names associated with all LinearAssembly channels.
+        r"""Query the CDN domain names associated with all LinearAssembly channels.
 
         :param request: Request instance for DescribeLinearAssemblyCDNDomainWithChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelsRequest`
@@ -625,7 +625,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageChannel(self, request):
-        """This API is used to query the information of a StreamPackage channel.
+        r"""This API is used to query the information of a StreamPackage channel.
 
         :param request: Request instance for DescribeStreamPackageChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelRequest`
@@ -648,7 +648,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageChannels(self, request):
-        """This API is used to query the information of multiple StreamPackage channels.
+        r"""This API is used to query the information of multiple StreamPackage channels.
 
         :param request: Request instance for DescribeStreamPackageChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageChannelsRequest`
@@ -671,7 +671,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageHarvestJob(self, request):
-        """Query HarvestJob.
+        r"""Query HarvestJob.
 
         :param request: Request instance for DescribeStreamPackageHarvestJob.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobRequest`
@@ -694,7 +694,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageHarvestJobs(self, request):
-        """Batch query HarvestJob.
+        r"""Batch query HarvestJob.
 
         :param request: Request instance for DescribeStreamPackageHarvestJobs.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobsRequest`
@@ -717,7 +717,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyChannel(self, request):
-        """Query channel linear assembly Channel information.
+        r"""Query channel linear assembly Channel information.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelRequest`
@@ -740,7 +740,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyChannelAlerts(self, request):
-        """Query linear assembly channel alarm information.
+        r"""Query linear assembly channel alarm information.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyChannelAlerts.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelAlertsRequest`
@@ -763,7 +763,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyChannels(self, request):
-        """Query channel linear assembly Channel information list.
+        r"""Query channel linear assembly Channel information list.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelsRequest`
@@ -786,7 +786,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyProgram(self, request):
-        """Query channel linear assembly program information.
+        r"""Query channel linear assembly program information.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyProgram.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramRequest`
@@ -809,7 +809,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyProgramSchedules(self, request):
-        """Query channel linear assembly Programl assembly scheduling information list.
+        r"""Query channel linear assembly Programl assembly scheduling information list.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyProgramSchedules.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramSchedulesRequest`
@@ -832,7 +832,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageLinearAssemblyPrograms(self, request):
-        """Query channel linear assembly Programl information list.
+        r"""Query channel linear assembly Programl information list.
 
         :param request: Request instance for DescribeStreamPackageLinearAssemblyPrograms.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramsRequest`
@@ -855,7 +855,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSSAIChannel(self, request):
-        """DescribeStreamPackageSSAIChannel
+        r"""DescribeStreamPackageSSAIChannel
 
         :param request: Request instance for DescribeStreamPackageSSAIChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelRequest`
@@ -878,7 +878,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSSAIChannels(self, request):
-        """DescribeStreamPackageSSAIChannels
+        r"""DescribeStreamPackageSSAIChannels
 
         :param request: Request instance for DescribeStreamPackageSSAIChannels.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelsRequest`
@@ -901,7 +901,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSSAIUsage(self, request):
-        """This API is used to query SSAI ad replacement usage.
+        r"""This API is used to query SSAI ad replacement usage.
 
         :param request: Request instance for DescribeStreamPackageSSAIUsage.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIUsageRequest`
@@ -924,7 +924,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSource(self, request):
-        """Query channel linear assembly Source information.
+        r"""Query channel linear assembly Source information.
 
         :param request: Request instance for DescribeStreamPackageSource.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceRequest`
@@ -947,7 +947,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSourceAlerts(self, request):
-        """Query channel linear assembly Source alarm information.
+        r"""Query channel linear assembly Source alarm information.
 
         :param request: Request instance for DescribeStreamPackageSourceAlerts.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceAlertsRequest`
@@ -970,7 +970,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSourceLocation(self, request):
-        """Query channel linear assembly sourceLocation information.
+        r"""Query channel linear assembly sourceLocation information.
 
         :param request: Request instance for DescribeStreamPackageSourceLocation.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationRequest`
@@ -993,7 +993,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSourceLocationAlerts(self, request):
-        """Query channel linear assembly Location alarm information.
+        r"""Query channel linear assembly Location alarm information.
 
         :param request: Request instance for DescribeStreamPackageSourceLocationAlerts.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationAlertsRequest`
@@ -1016,7 +1016,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSourceLocations(self, request):
-        """Query channel linear assembly SourceLocation information list.
+        r"""Query channel linear assembly SourceLocation information list.
 
         :param request: Request instance for DescribeStreamPackageSourceLocations.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationsRequest`
@@ -1039,7 +1039,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageSources(self, request):
-        """Query channel linear assembly Source information list.
+        r"""Query channel linear assembly Source information list.
 
         :param request: Request instance for DescribeStreamPackageSources.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourcesRequest`
@@ -1062,7 +1062,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageVodRemuxTask(self, request):
-        """Query VOD remux task information.
+        r"""Query VOD remux task information.
 
         :param request: Request instance for DescribeStreamPackageVodRemuxTask.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTaskRequest`
@@ -1085,7 +1085,7 @@ class MdpClient(AbstractClient):
 
 
     def DescribeStreamPackageVodRemuxTasks(self, request):
-        """Query VOD remux tasks informations.
+        r"""Query VOD remux tasks informations.
 
         :param request: Request instance for DescribeStreamPackageVodRemuxTasks.
         :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTasksRequest`
@@ -1108,7 +1108,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageChannel(self, request):
-        """This API is used to modify a StreamPackage channel.
+        r"""This API is used to modify a StreamPackage channel.
 
         :param request: Request instance for ModifyStreamPackageChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelRequest`
@@ -1131,7 +1131,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageChannelEndpoint(self, request):
-        """This API is used to modify an endpoint of a StreamPackage channel.
+        r"""This API is used to modify an endpoint of a StreamPackage channel.
 
         :param request: Request instance for ModifyStreamPackageChannelEndpoint.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelEndpointRequest`
@@ -1154,7 +1154,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageChannelInputAuthInfo(self, request):
-        """This API is used to modify the input authentication information of a StreamPackage channel.
+        r"""This API is used to modify the input authentication information of a StreamPackage channel.
 
         :param request: Request instance for ModifyStreamPackageChannelInputAuthInfo.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageChannelInputAuthInfoRequest`
@@ -1177,7 +1177,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageLinearAssemblyChannel(self, request):
-        """Modify channel linear assembly Channel configuration.
+        r"""Modify channel linear assembly Channel configuration.
 
         :param request: Request instance for ModifyStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyChannelRequest`
@@ -1200,7 +1200,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageLinearAssemblyProgram(self, request):
-        """Modify channel linear assembly Program configuration.
+        r"""Modify channel linear assembly Program configuration.
 
         :param request: Request instance for ModifyStreamPackageLinearAssemblyProgram.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyProgramRequest`
@@ -1223,7 +1223,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageSSAIChannel(self, request):
-        """ModifyStreamPackageSSAIChannel
+        r"""ModifyStreamPackageSSAIChannel
 
         :param request: Request instance for ModifyStreamPackageSSAIChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSSAIChannelRequest`
@@ -1246,7 +1246,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageSource(self, request):
-        """Modify channel linear assembly Source configuration.
+        r"""Modify channel linear assembly Source configuration.
 
         :param request: Request instance for ModifyStreamPackageSource.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceRequest`
@@ -1269,7 +1269,7 @@ class MdpClient(AbstractClient):
 
 
     def ModifyStreamPackageSourceLocation(self, request):
-        """Modify channel linear assembly SourceLocation configuration
+        r"""Modify channel linear assembly SourceLocation configuration
 
         :param request: Request instance for ModifyStreamPackageSourceLocation.
         :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceLocationRequest`
@@ -1292,7 +1292,7 @@ class MdpClient(AbstractClient):
 
 
     def StartStreamPackageLinearAssemblyChannel(self, request):
-        """Start Linear Assembly Channel.
+        r"""Start Linear Assembly Channel.
 
         :param request: Request instance for StartStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageLinearAssemblyChannelRequest`
@@ -1315,7 +1315,7 @@ class MdpClient(AbstractClient):
 
 
     def StartStreamPackageVodRemuxTask(self, request):
-        """Start VOD remux task.
+        r"""Start VOD remux task.
 
         :param request: Request instance for StartStreamPackageVodRemuxTask.
         :type request: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageVodRemuxTaskRequest`
@@ -1338,7 +1338,7 @@ class MdpClient(AbstractClient):
 
 
     def StopStreamPackageLinearAssemblyChannel(self, request):
-        """Stop linear assembly channel.
+        r"""Stop linear assembly channel.
 
         :param request: Request instance for StopStreamPackageLinearAssemblyChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.StopStreamPackageLinearAssemblyChannelRequest`
@@ -1361,7 +1361,7 @@ class MdpClient(AbstractClient):
 
 
     def UnbindCdnDomainWithChannel(self, request):
-        """This API is used to unbind a CDN playback domain name from a channel.
+        r"""This API is used to unbind a CDN playback domain name from a channel.
 
         :param request: Request instance for UnbindCdnDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindCdnDomainWithChannelRequest`
@@ -1384,7 +1384,7 @@ class MdpClient(AbstractClient):
 
 
     def UnbindLinearAssemblyCDNDomainWithChannel(self, request):
-        """Unbind LinearAssembly channel with CDN domain name.
+        r"""Unbind LinearAssembly channel with CDN domain name.
 
         :param request: Request instance for UnbindLinearAssemblyCDNDomainWithChannel.
         :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindLinearAssemblyCDNDomainWithChannelRequest`

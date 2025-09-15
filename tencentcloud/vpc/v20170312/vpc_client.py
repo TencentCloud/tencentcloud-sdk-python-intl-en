@@ -27,7 +27,7 @@ class VpcClient(AbstractClient):
 
 
     def AcceptAttachCcnInstances(self, request):
-        """This API (AcceptAttachCcnInstances) is used to associate instances across accounts. Cloud Connect Network (CCN) owners accept and agree to the operations.
+        r"""This API (AcceptAttachCcnInstances) is used to associate instances across accounts. Cloud Connect Network (CCN) owners accept and agree to the operations.
 
         :param request: Request instance for AcceptAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AcceptAttachCcnInstancesRequest`
@@ -50,7 +50,7 @@ class VpcClient(AbstractClient):
 
 
     def AddBandwidthPackageResources(self, request):
-        """This API is used to add resources to a bandwidth package, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.
+        r"""This API is used to add resources to a bandwidth package, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.
 
         :param request: Request instance for AddBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesRequest`
@@ -73,7 +73,7 @@ class VpcClient(AbstractClient):
 
 
     def AddTemplateMember(self, request):
-        """This API is used to add a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+        r"""This API is used to add a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
 
         :param request: Request instance for AddTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberRequest`
@@ -96,7 +96,7 @@ class VpcClient(AbstractClient):
 
 
     def AdjustPublicAddress(self, request):
-        """This API is used to change the public IP of a CVM or the EIP of the associated bandwidth package.
+        r"""This API is used to change the public IP of a CVM or the EIP of the associated bandwidth package.
 
         :param request: Request instance for AdjustPublicAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AdjustPublicAddressRequest`
@@ -119,7 +119,7 @@ class VpcClient(AbstractClient):
 
 
     def AllocateAddresses(self, request):
-        """This API is used to apply for one or more [Elastic IP Addresses](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIPs for short).
+        r"""This API is used to apply for one or more [Elastic IP Addresses](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIPs for short).
         * An EIP is a static IP address that is dedicated for dynamic cloud computing. You can quickly re-map an EIP to another instance under your account to protect against instance failures.
         * Your EIP is associated with your Tencent Cloud account rather than an instance. It remains associated with your Tencent Cloud account until you choose to explicitly release it or your account is in arrears for more than 24 hours.
         * The maximum number of EIPs that can be applied for a Tencent Cloud account in each region is restricted. For more information, see [EIP Product Introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). You can get the quota information through the DescribeAddressQuota API.
@@ -145,7 +145,7 @@ class VpcClient(AbstractClient):
 
 
     def AllocateIPv6Addresses(self, request):
-        """This API is used to apply for one or more Elastic IPv6 (EIPv6) instances.
+        r"""This API is used to apply for one or more Elastic IPv6 (EIPv6) instances.
 
         - EIPv6 is a fixed public IPv6 address that can be independently applied for and held in a Tencent Cloud region, providing a consistent product experience with Elastic IPv4.
         - You can quickly bind an EIPv6 instance to the private IPv6 address of a cloud resource, so as to quickly enable IPv6 public bandwidth for the cloud resource.
@@ -172,7 +172,7 @@ class VpcClient(AbstractClient):
 
 
     def AllocateIp6AddressesBandwidth(self, request):
-        """This API is used to allocate IPv6 public network bandwidth for classic elastic public IPv6 addresses.
+        r"""This API is used to allocate IPv6 public network bandwidth for classic elastic public IPv6 addresses.
 
         - Classic elastic public IPv6 addresses only have the private network communication capability by default. They can have the IPv6 public network communication capability and be displayed in the list of Classic Elastic Public IPv6 only after IPv6 public network bandwidth is allocated in the console or by calling this API.
         - You can allocate public network bandwidth for one or multiple Classic elastic public IPv6 addresses each time.
@@ -198,7 +198,7 @@ class VpcClient(AbstractClient):
 
 
     def AssignIpv6Addresses(self, request):
-        """This API is used to apply for an IPv6 address for the ENI. <br />
+        r"""This API is used to apply for an IPv6 address for the ENI. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
         * The number of IPs bound with an ENI is limited. For more information, see <a href="/document/product/576/18527">ENI Use Limits</a>.
         * You can apply for a specified IPv6 address. Currently, the IPv6 address can only be used as a secondary IP, instead of the primary IP.
@@ -226,7 +226,7 @@ class VpcClient(AbstractClient):
 
 
     def AssignIpv6CidrBlock(self, request):
-        """This API is used to assign IPv6 ranges.
+        r"""This API is used to assign IPv6 ranges.
         * To use this API, you must already have a VPC instance. If you do not have a VPC instance yet, use the <a href="https://intl.cloud.tencent.com/document/api/215/15774?from_cn_redirect=1" title="CreateVpc" target="_blank">CreateVpc</a> API to create one.
         * Each VPC can apply for only one IPv6 range.
 
@@ -251,7 +251,7 @@ class VpcClient(AbstractClient):
 
 
     def AssignIpv6SubnetCidrBlock(self, request):
-        """This API (AssignIpv6SubnetCidrBlock) is used to assign IPv6 subnet IP ranges.
+        r"""This API (AssignIpv6SubnetCidrBlock) is used to assign IPv6 subnet IP ranges.
         * To assign an `IPv6` IP range to a subnet, the `VPC` that the subnet belongs to should have obtained the `IPv6` IP range. If this has not been assigned, use the `AssignIpv6CidrBlock` API to assign an `IPv6` IP range to the `VPC` to which the subnet belongs. Otherwise, the `IPv6` subnet IP range cannot be assigned.
         * Each subnet can only be assigned one IPv6 IP range.
 
@@ -276,7 +276,7 @@ class VpcClient(AbstractClient):
 
 
     def AssignPrivateIpAddresses(self, request):
-        """This API is used to apply for private IPs for an ENI.
+        r"""This API is used to apply for private IPs for an ENI.
         * An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href="/document/product/576/18527">ENI Use Limits</a>.
         * You can apply for a specified private IP. It cannot be a primary IP because the primary IP already exists and cannot be modified. The private IP address must be an idle IP in the subnet to which the ENI belongs.
         * You can apply for more than one secondary private IP on the ENI. The API will return the specified number of secondary private IPs in the subnet IP range.
@@ -304,7 +304,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateAddress(self, request):
-        """This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.
+        r"""This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.
         * Binding an EIP to a CVM instance is actually binding the EIP to the primary private IP of the primary ENI on the CVM instance.
         * When an EIP is bound, the public IP previously bound to the CVM instance will be unbound and released automatically.
         * To bind another EIP to the private IP of the specified ENI, you must first unbind the EIP.
@@ -333,7 +333,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateDirectConnectGatewayNatGateway(self, request):
-        """This API is used to bind a direct connect gateway with a NAT gateway,  and direct its default route to the NAT Gateway.
+        r"""This API is used to bind a direct connect gateway with a NAT gateway,  and direct its default route to the NAT Gateway.
 
         :param request: Request instance for AssociateDirectConnectGatewayNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateDirectConnectGatewayNatGatewayRequest`
@@ -356,7 +356,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateIPv6Address(self, request):
-        """This API is used to bind an EIPv6 instance to the private IPv6 address configured on the CVM or ENI.
+        r"""This API is used to bind an EIPv6 instance to the private IPv6 address configured on the CVM or ENI.
 
         - Binding an EIPv6 to the CVM essentially indicates binding the EIPv6 to the private IPv6 address configured on the ENI of the CVM.
         - Before binding an EIPv6 to the private IPv6 of a specified ENI, ensure that the private IPv6 address is unbound before the binding operation is performed.
@@ -382,7 +382,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateNatGatewayAddress(self, request):
-        """This API is used to bind an EIP to a NAT gateway.
+        r"""This API is used to bind an EIP to a NAT gateway.
 
         :param request: Request instance for AssociateNatGatewayAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressRequest`
@@ -405,7 +405,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateNetworkAclSubnets(self, request):
-        """This API is used to associate a network ACL with subnets in a VPC instance.
+        r"""This API is used to associate a network ACL with subnets in a VPC instance.
 
         :param request: Request instance for AssociateNetworkAclSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsRequest`
@@ -428,7 +428,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateNetworkInterfaceSecurityGroups(self, request):
-        """This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.
+        r"""This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.
 
         :param request: Request instance for AssociateNetworkInterfaceSecurityGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkInterfaceSecurityGroupsRequest`
@@ -451,7 +451,7 @@ class VpcClient(AbstractClient):
 
 
     def AttachCcnInstances(self, request):
-        """This API is used to add a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways. <br />
+        r"""This API is used to add a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways. <br />
         The number of network instances that each CCN can be associated with is limited. For more information, see the product documentation. If you need to associate more instances, please submit a ticket.
 
         :param request: Request instance for AttachCcnInstances.
@@ -475,7 +475,7 @@ class VpcClient(AbstractClient):
 
 
     def AttachClassicLinkVpc(self, request):
-        """This API is used to create a Classiclink between a VPC instance and a classic network device.
+        r"""This API is used to create a Classiclink between a VPC instance and a classic network device.
         * The VPC instance and the classic network device must be in the same region.
         * For differences between VPC and the classic network, see <a href="https://intl.cloud.tencent.com/document/product/215/30720?from_cn_redirect=1">VPC and Classic Network</a>.
         >?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.
@@ -502,7 +502,7 @@ class VpcClient(AbstractClient):
 
 
     def AttachNetworkInterface(self, request):
-        """This API is used to bind an ENI to a CVM.
+        r"""This API is used to bind an ENI to a CVM.
         * An ENI must be bound with one security group at least. To bind it, see <a href="https://intl.cloud.tencent.com/document/product/215/43132?from_cn_redirect=1">AssociateNetworkInterfaceSecurityGroups</a>.
         * One CVM can be bound with multiple ENIs, but only one can be the primary ENI. For more information about the limits, see <a href="https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1">ENI Use Limits</a>.
         * An ENI can only be bound to one CVM.
@@ -532,7 +532,7 @@ class VpcClient(AbstractClient):
 
 
     def AttachSnapshotInstances(self, request):
-        """This API is used to associate a snapshot policy with specified instances.
+        r"""This API is used to associate a snapshot policy with specified instances.
 
         :param request: Request instance for AttachSnapshotInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachSnapshotInstancesRequest`
@@ -555,7 +555,7 @@ class VpcClient(AbstractClient):
 
 
     def AuditCrossBorderCompliance(self, request):
-        """This API is used by the service provider to perform a compliance audit.
+        r"""This API is used by the service provider to perform a compliance audit.
         * This API is only provided for service providers to audit compliance review requests received. Tencent Cloud will verify the identity of the service provider by the `APPID`.
         * The status of the review request can be changed between `APPROVED` and `DENY`.
 
@@ -580,7 +580,7 @@ class VpcClient(AbstractClient):
 
 
     def CheckAssistantCidr(self, request):
-        """This API is used to check whether the secondary CIDR block conflicts with existing routes, peering connections (peer VPC CIDR blocks), and other resources.
+        r"""This API is used to check whether the secondary CIDR block conflicts with existing routes, peering connections (peer VPC CIDR blocks), and other resources.
         * Check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the current VPC.
         * Check whether the secondary CIDR block overlaps with the routing destination of the current VPC.
         * If the current VPC is used in a peering connection, check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the peer VPC.
@@ -606,7 +606,7 @@ class VpcClient(AbstractClient):
 
 
     def CheckNetDetectState(self, request):
-        """This API is used to verify the network detection status.
+        r"""This API is used to verify the network detection status.
 
         :param request: Request instance for CheckNetDetectState.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CheckNetDetectStateRequest`
@@ -629,7 +629,7 @@ class VpcClient(AbstractClient):
 
 
     def CloneSecurityGroup(self, request):
-        """This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.
+        r"""This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.
 
         :param request: Request instance for CloneSecurityGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CloneSecurityGroupRequest`
@@ -652,7 +652,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplate(self, request):
-        """This API is used to create an IP address template.
+        r"""This API is used to create an IP address template.
 
         :param request: Request instance for CreateAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateRequest`
@@ -675,7 +675,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplateGroup(self, request):
-        """This API is used to create an IP address template group.
+        r"""This API is used to create an IP address template group.
 
         :param request: Request instance for CreateAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`
@@ -698,7 +698,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAndAttachNetworkInterface(self, request):
-        """This API is used to create an ENI and bind it to a CVM.
+        r"""This API is used to create an ENI and bind it to a CVM.
         * You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be idle and in the same subnet as the ENI.
         * When creating an ENI, you can specify the number of private IPs that you want to apply for. The system will randomly generate private IP addresses.
         * The number of IPs bound with an ENI is limited. For more information, see <a href="/document/product/576/18527">ENI Use Limits</a>.
@@ -728,7 +728,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAssistantCidr(self, request):
-        """This API is used to batch create secondary CIDR blocks.
+        r"""This API is used to batch create secondary CIDR blocks.
 
         :param request: Request instance for CreateAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrRequest`
@@ -751,7 +751,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateBandwidthPackage(self, request):
-        """This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).
+        r"""This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).
 
         :param request: Request instance for CreateBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
@@ -774,7 +774,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateCcn(self, request):
-        """This API is used to create a CCN instance.
+        r"""This API is used to create a CCN instance.
         * You can add tags to a CCN instance upon the creation. The tags are added successfully if they are listed in the response.
         * There is a quota of CCN instances for each account. For more information, see product documentation. To increase the quota, please submit a ticket.
 
@@ -799,7 +799,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateCustomerGateway(self, request):
-        """This API (CreateCustomerGateway) is used to create customer gateways.
+        r"""This API (CreateCustomerGateway) is used to create customer gateways.
 
         :param request: Request instance for CreateCustomerGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCustomerGatewayRequest`
@@ -822,7 +822,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateDefaultVpc(self, request):
-        """This API is used to create a VPC with default settings.
+        r"""This API is used to create a VPC with default settings.
 
         To create a VPC with custom settings, such as VPC name, IP range, subnet IP range, and subnet availability zone, use `CreateVpc` instead.
 
@@ -853,7 +853,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateDirectConnectGateway(self, request):
-        """This API is used to create a direct connect gateway.
+        r"""This API is used to create a direct connect gateway.
 
         :param request: Request instance for CreateDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayRequest`
@@ -876,7 +876,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateDirectConnectGatewayCcnRoutes(self, request):
-        """This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway.
+        r"""This API (CreateDirectConnectGatewayCcnRoutes) is used to create the CCN route (IDC IP range) of a Direct Connect gateway.
 
         :param request: Request instance for CreateDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayCcnRoutesRequest`
@@ -899,7 +899,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateFlowLog(self, request):
-        """This API is used to create a flow log.
+        r"""This API is used to create a flow log.
 
         :param request: Request instance for CreateFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`
@@ -922,7 +922,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateHaVip(self, request):
-        """This API is used to create a highly available virtual IP (HAVIP).
+        r"""This API is used to create a highly available virtual IP (HAVIP).
 
         :param request: Request instance for CreateHaVip.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipRequest`
@@ -945,7 +945,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateLocalGateway(self, request):
-        """This API is used to create a local gateway for a CDC instance.
+        r"""This API is used to create a local gateway for a CDC instance.
 
         :param request: Request instance for CreateLocalGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateLocalGatewayRequest`
@@ -968,7 +968,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNatGateway(self, request):
-        """This API is used to create a NAT Gateway.
+        r"""This API is used to create a NAT Gateway.
         Before taking actions on a NAT gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.
 
         :param request: Request instance for CreateNatGateway.
@@ -992,7 +992,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNatGatewayDestinationIpPortTranslationNatRule(self, request):
-        """This API is used to create the port forwarding rules of a NAT gateway.
+        r"""This API is used to create the port forwarding rules of a NAT gateway.
 
         :param request: Request instance for CreateNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayDestinationIpPortTranslationNatRuleRequest`
@@ -1015,7 +1015,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNatGatewaySourceIpTranslationNatRule(self, request):
-        """This API is used to create SNAT rules for a NAT gateway.
+        r"""This API is used to create SNAT rules for a NAT gateway.
 
         :param request: Request instance for CreateNatGatewaySourceIpTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewaySourceIpTranslationNatRuleRequest`
@@ -1038,7 +1038,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNetDetect(self, request):
-        """This API is used to create a network probe.
+        r"""This API is used to create a network probe.
 
         :param request: Request instance for CreateNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectRequest`
@@ -1061,7 +1061,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNetworkAcl(self, request):
-        """This API is used to create a <a href="https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1">network ACL</a>.
+        r"""This API is used to create a <a href="https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1">network ACL</a>.
         * The inbound and outbound rules for a new network ACL are "Deny All" by default. You need to call `ModifyNetworkAclEntries` to set rules for the new network ACL as needed.
 
         :param request: Request instance for CreateNetworkAcl.
@@ -1085,7 +1085,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNetworkAclQuintupleEntries(self, request):
-        """This API is used to add one or more in/outbound rules of the network ACL quintuple.
+        r"""This API is used to add one or more in/outbound rules of the network ACL quintuple.
 
         :param request: Request instance for CreateNetworkAclQuintupleEntries.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclQuintupleEntriesRequest`
@@ -1108,7 +1108,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNetworkInterface(self, request):
-        """This API is used to create an ENI.
+        r"""This API is used to create an ENI.
         * You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.
         * When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.
         * An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href="/document/product/576/18527">ENI Use Limits</a>.
@@ -1138,7 +1138,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateReserveIpAddresses(self, request):
-        """This API is used to create a reserved private IP address.
+        r"""This API is used to create a reserved private IP address.
 
         :param request: Request instance for CreateReserveIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateReserveIpAddressesRequest`
@@ -1161,7 +1161,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateRouteTable(self, request):
-        """This API is used to create a route table.
+        r"""This API is used to create a route table.
         * After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.
         * You can bind a tag when creating a route table. The tag list in the response indicates the tags that have been successfully added.
 
@@ -1186,7 +1186,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateRoutes(self, request):
-        """This API is used to create routes.
+        r"""This API is used to create routes.
         * You can batch add routes to a specified route table.
 
         :param request: Request instance for CreateRoutes.
@@ -1210,7 +1210,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroup(self, request):
-        """This API is used to create a security group (SecurityGroup).
+        r"""This API is used to create a security group (SecurityGroup).
         * Note the <a href="https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1">maximum number of security groups</a> per project in each region under each account.
         * Both the inbound and outbound rules for a newly created security group are "Deny All" by default. You need to call CreateSecurityGroupPolicies to set security group rules based on your needs.
         * You can bind a tag when creating a security group. The tag list in the response indicates the tags that have been successfully added.
@@ -1236,7 +1236,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroupPolicies(self, request):
-        """This API is used to create security group policies (`SecurityGroupPolicy`).
+        r"""This API is used to create security group policies (`SecurityGroupPolicy`).
 
         For parameters of `SecurityGroupPolicySet`,
         <ul>
@@ -1273,7 +1273,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroupWithPolicies(self, request):
-        """This API is used to create a security group, and add security group policies.
+        r"""This API is used to create a security group, and add security group policies.
         * For the the upper limit of security groups per project in each region under each account, <a href="https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1">see here</a>
         * For newly created security groups, the inbound and outbound policies are set to `Deny All` by default. You need to call <a href="https://intl.cloud.tencent.com/document/product/215/15807?from_cn_redirect=1">CreateSecurityGroupPolicies</a>
         to change it.
@@ -1310,7 +1310,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateServiceTemplate(self, request):
-        """This API (CreateServiceTemplate) is used to create a protocol port template.
+        r"""This API (CreateServiceTemplate) is used to create a protocol port template.
 
         :param request: Request instance for CreateServiceTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateRequest`
@@ -1333,7 +1333,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateServiceTemplateGroup(self, request):
-        """This API (CreateServiceTemplateGroup) is used to create a protocol port template group.
+        r"""This API (CreateServiceTemplateGroup) is used to create a protocol port template group.
 
         :param request: Request instance for CreateServiceTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateGroupRequest`
@@ -1356,7 +1356,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSnapshotPolicies(self, request):
-        """This API is used to create snapshot policies.
+        r"""This API is used to create snapshot policies.
 
         :param request: Request instance for CreateSnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSnapshotPoliciesRequest`
@@ -1379,7 +1379,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSubnet(self, request):
-        """This API is used to create a subnet.
+        r"""This API is used to create a subnet.
         * You must create a VPC instance before creating a subnet.
         * After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC instance has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.
         * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).
@@ -1408,7 +1408,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateSubnets(self, request):
-        """This API is used to create subnets in batches.
+        r"""This API is used to create subnets in batches.
         * You must create a VPC instance before creating a subnet.
         * After the subnet is successfully created, its IP address range cannot be modified. The subnet IP address range must fall within the VPC IP address range. They can be the same if the VPC has only one subnet. We recommend that you keep the subnet IP address range within the VPC IP address range to reserve IP address ranges for other subnets.
         * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses).
@@ -1437,7 +1437,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpc(self, request):
-        """This API is used to create a VPC instance.
+        r"""This API is used to create a VPC instance.
         * The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), that of the largest IP address ranges 10.0.0.0/12 and 172.16.0.0/12 is 12 (1,048,576 IP addresses), and that of the largest IP address range 192.168.0.0/16 is 16 (65,536 IP addresses). For more information on how to plan VPC IP ranges, see [Network Planning](https://intl.cloud.tencent.com/document/product/215/30313?from_cn_redirect=1).
         * The number of VPC instances that can be created in a region is limited. For more information, see <a href="https://intl.cloud.tencent.com/doc/product/215/537?from_cn_redirect=1" title="VPC Use Limits">VPC Use Limits</a>. To request more resources, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         * You can bind tags when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.
@@ -1463,7 +1463,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpcEndPoint(self, request):
-        """This API is used to create an endpoint.
+        r"""This API is used to create an endpoint.
 
         :param request: Request instance for CreateVpcEndPoint.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointRequest`
@@ -1486,7 +1486,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpcEndPointService(self, request):
-        """This API is used to create an endpoint service.
+        r"""This API is used to create an endpoint service.
 
         :param request: Request instance for CreateVpcEndPointService.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceRequest`
@@ -1509,7 +1509,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpcEndPointServiceWhiteList(self, request):
-        """This API is used to create the endpoint service allowlist.
+        r"""This API is used to create the endpoint service allowlist.
 
         :param request: Request instance for CreateVpcEndPointServiceWhiteList.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceWhiteListRequest`
@@ -1532,7 +1532,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpnConnection(self, request):
-        """This API is used to create a VPN tunnel.
+        r"""This API is used to create a VPN tunnel.
         >?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.
         >
 
@@ -1557,7 +1557,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpnGateway(self, request):
-        """This API (CreateVpnGateway) is used to create a VPN gateway.
+        r"""This API (CreateVpnGateway) is used to create a VPN gateway.
 
         :param request: Request instance for CreateVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayRequest`
@@ -1580,7 +1580,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpnGatewayRoutes(self, request):
-        """This API is used to create destination routes of a route-based VPN gateway.
+        r"""This API is used to create destination routes of a route-based VPN gateway.
 
         :param request: Request instance for CreateVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayRoutesRequest`
@@ -1603,7 +1603,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteAddressTemplate(self, request):
-        """This API (DeleteAddressTemplate) is used to delete an IP address template.
+        r"""This API (DeleteAddressTemplate) is used to delete an IP address template.
 
         :param request: Request instance for DeleteAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateRequest`
@@ -1626,7 +1626,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteAddressTemplateGroup(self, request):
-        """This API (DeleteAddressTemplateGroup) is used to delete an IP address template group.
+        r"""This API (DeleteAddressTemplateGroup) is used to delete an IP address template group.
 
         :param request: Request instance for DeleteAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateGroupRequest`
@@ -1649,7 +1649,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteAssistantCidr(self, request):
-        """This API is used to delete a secondary CIDR block.
+        r"""This API is used to delete a secondary CIDR block.
 
         :param request: Request instance for DeleteAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrRequest`
@@ -1672,7 +1672,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteBandwidthPackage(self, request):
-        """This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
+        r"""This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).
 
         :param request: Request instance for DeleteBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageRequest`
@@ -1695,7 +1695,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteCcn(self, request):
-        """This API (DeleteCcn) is used to delete CCNs.
+        r"""This API (DeleteCcn) is used to delete CCNs.
         * After deletion, the routes between all instances associated with the CCN will be deleted, and the network will be interrupted. Please confirm this operation in advance.
         * CCN deletion is an irreversible operation. Please proceed with caution.
 
@@ -1720,7 +1720,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteCustomerGateway(self, request):
-        """This API (DeleteCustomerGateway) is used to delete customer gateways.
+        r"""This API (DeleteCustomerGateway) is used to delete customer gateways.
 
         :param request: Request instance for DeleteCustomerGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCustomerGatewayRequest`
@@ -1743,7 +1743,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteDirectConnectGateway(self, request):
-        """This API is used to delete a direct connect gateway.
+        r"""This API is used to delete a direct connect gateway.
         <li>For a NAT gateway, NAT and ACL rules will be cleared upon the deletion of a direct connect gateway.
         <li>After the deletion of a direct connect gateway, the routing policy associated with the gateway in the route table will also be deleted.
         This API is completed asynchronously. If you need to query the async job execution results, please use the `RequestId` returned by this API to poll the `QueryTask` API.
@@ -1769,7 +1769,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteDirectConnectGatewayCcnRoutes(self, request):
-        """This API (DeleteDirectConnectGatewayCcnRoutes) is used to delete the CCN routes (IDC IP range) of a Direct Connect gateway.
+        r"""This API (DeleteDirectConnectGatewayCcnRoutes) is used to delete the CCN routes (IDC IP range) of a Direct Connect gateway.
 
         :param request: Request instance for DeleteDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayCcnRoutesRequest`
@@ -1792,7 +1792,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteFlowLog(self, request):
-        """This API is used to delete a flow log.
+        r"""This API is used to delete a flow log.
 
         :param request: Request instance for DeleteFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
@@ -1815,7 +1815,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteHaVip(self, request):
-        """This API is used to delete an HAVIP. <br />
+        r"""This API is used to delete an HAVIP. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for DeleteHaVip.
@@ -1839,7 +1839,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteLocalGateway(self, request):
-        """This API is used to delete the local gateway of a CDC instance.
+        r"""This API is used to delete the local gateway of a CDC instance.
 
         :param request: Request instance for DeleteLocalGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteLocalGatewayRequest`
@@ -1862,7 +1862,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNatGateway(self, request):
-        """This API is used to delete a NAT gateway.
+        r"""This API is used to delete a NAT gateway.
         When a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and the elastic IP is unbound.
 
         :param request: Request instance for DeleteNatGateway.
@@ -1886,7 +1886,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNatGatewayDestinationIpPortTranslationNatRule(self, request):
-        """This API is used to delete the port forwarding rule of a NAT gateway.
+        r"""This API is used to delete the port forwarding rule of a NAT gateway.
 
         :param request: Request instance for DeleteNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest`
@@ -1909,7 +1909,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNatGatewaySourceIpTranslationNatRule(self, request):
-        """This API is used to delete a SNAT forwarding rule of a NAT gateway.
+        r"""This API is used to delete a SNAT forwarding rule of a NAT gateway.
 
         :param request: Request instance for DeleteNatGatewaySourceIpTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewaySourceIpTranslationNatRuleRequest`
@@ -1932,7 +1932,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetDetect(self, request):
-        """This API is used to delete a network probe.
+        r"""This API is used to delete a network probe.
 
         :param request: Request instance for DeleteNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectRequest`
@@ -1955,7 +1955,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetworkAcl(self, request):
-        """This API is used to delete a network ACL.
+        r"""This API is used to delete a network ACL.
 
         :param request: Request instance for DeleteNetworkAcl.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclRequest`
@@ -1978,7 +1978,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetworkAclQuintupleEntries(self, request):
-        """This API is used to delete specified in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
+        r"""This API is used to delete specified in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
 
         :param request: Request instance for DeleteNetworkAclQuintupleEntries.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclQuintupleEntriesRequest`
@@ -2001,7 +2001,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetworkInterface(self, request):
-        """This API is used to delete an ENI.
+        r"""This API is used to delete an ENI.
         * An ENI cannot be deleted when it’s bound to a CVM.
          * After the deletion, all of its private IP addresses will be released.
 
@@ -2028,7 +2028,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteReserveIpAddresses(self, request):
-        """This API is used to delete a reserved private IP address.
+        r"""This API is used to delete a reserved private IP address.
 
         :param request: Request instance for DeleteReserveIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteReserveIpAddressesRequest`
@@ -2051,7 +2051,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteRouteTable(self, request):
-        """This API is used to delete a route table.
+        r"""This API is used to delete a route table.
 
         :param request: Request instance for DeleteRouteTable.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRouteTableRequest`
@@ -2074,7 +2074,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteRoutes(self, request):
-        """This API (DeleteRoutes) is used to delete routing policies in batches from a route table.
+        r"""This API (DeleteRoutes) is used to delete routing policies in batches from a route table.
 
         :param request: Request instance for DeleteRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutesRequest`
@@ -2097,7 +2097,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSecurityGroup(self, request):
-        """This API (DeleteSecurityGroup) is used to delete security groups (SecurityGroup).
+        r"""This API (DeleteSecurityGroup) is used to delete security groups (SecurityGroup).
         * Only security groups under the current account can be deleted.
         * A security group cannot be deleted directly if its instance ID is used in the policy of another security group. You need to modify the policy first and then delete the security group.
         * A security group cannot be recovered after deletion, please proceed with caution.
@@ -2123,7 +2123,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSecurityGroupPolicies(self, request):
-        """This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).
+        r"""This API (DeleteSecurityGroupPolicies) is used to delete security group policies (SecurityGroupPolicy).
         * SecurityGroupPolicySet.Version is used to specify the version of the security group you are operating. If the specified Version number differs from the latest version of the current security group, a failure will be returned. If Version is not specified, the policy of the specified PolicyIndex will be deleted directly.
 
         :param request: Request instance for DeleteSecurityGroupPolicies.
@@ -2147,7 +2147,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteServiceTemplate(self, request):
-        """This API (DeleteServiceTemplate) is used to delete a protocol port template.
+        r"""This API (DeleteServiceTemplate) is used to delete a protocol port template.
 
         :param request: Request instance for DeleteServiceTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateRequest`
@@ -2170,7 +2170,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteServiceTemplateGroup(self, request):
-        """This API (DeleteServiceTemplateGroup) is used to delete a protocol port template group.
+        r"""This API (DeleteServiceTemplateGroup) is used to delete a protocol port template group.
 
         :param request: Request instance for DeleteServiceTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateGroupRequest`
@@ -2193,7 +2193,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSnapshotPolicies(self, request):
-        """This API is used to delete snapshot policies.
+        r"""This API is used to delete snapshot policies.
 
         :param request: Request instance for DeleteSnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSnapshotPoliciesRequest`
@@ -2216,7 +2216,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSubnet(self, request):
-        """This API is used to delete a subnet.
+        r"""This API is used to delete a subnet.
         * Remove all resources in the subnet before deleting it
 
         :param request: Request instance for DeleteSubnet.
@@ -2240,7 +2240,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteTemplateMember(self, request):
-        """This API is used to delete a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+        r"""This API is used to delete a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
 
         :param request: Request instance for DeleteTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberRequest`
@@ -2263,7 +2263,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteTrafficPackages(self, request):
-        """This API is used to delete traffic packages. Note that only non-valid traffic packages can be deleted.
+        r"""This API is used to delete traffic packages. Note that only non-valid traffic packages can be deleted.
 
         :param request: Request instance for DeleteTrafficPackages.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficPackagesRequest`
@@ -2286,7 +2286,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpc(self, request):
-        """This API (DeleteVpc) is used to delete VPCs.
+        r"""This API (DeleteVpc) is used to delete VPCs.
         * Before deleting a VPC, ensure that the VPC contains no resources, including CVMs, cloud databases, NoSQL databases, VPN gateways, direct connect gateways, load balancers, peering connections, and basic network devices that are linked to the VPC.
         * The deletion of VPCs is irreversible. Proceed with caution.
 
@@ -2311,7 +2311,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpcEndPoint(self, request):
-        """This API is used to delete an endpoint.
+        r"""This API is used to delete an endpoint.
 
         :param request: Request instance for DeleteVpcEndPoint.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointRequest`
@@ -2334,7 +2334,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpcEndPointService(self, request):
-        """This API is used to delete an endpoint service.
+        r"""This API is used to delete an endpoint service.
 
 
         :param request: Request instance for DeleteVpcEndPointService.
@@ -2358,7 +2358,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpcEndPointServiceWhiteList(self, request):
-        """This API is used to delete the endpoint service allowlist.
+        r"""This API is used to delete the endpoint service allowlist.
 
         :param request: Request instance for DeleteVpcEndPointServiceWhiteList.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcEndPointServiceWhiteListRequest`
@@ -2381,7 +2381,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnConnection(self, request):
-        """This API is used to delete a VPN tunnel.
+        r"""This API is used to delete a VPN tunnel.
 
         :param request: Request instance for DeleteVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionRequest`
@@ -2404,7 +2404,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnGateway(self, request):
-        """This API (DeleteVpnGateway) is used to delete a VPN gateway. Currently, only deletion of pay-as-you-go IPSEC gateway instances in running status is supported.
+        r"""This API (DeleteVpnGateway) is used to delete a VPN gateway. Currently, only deletion of pay-as-you-go IPSEC gateway instances in running status is supported.
 
         :param request: Request instance for DeleteVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRequest`
@@ -2427,7 +2427,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnGatewayRoutes(self, request):
-        """This API is used to delete routes of a VPN gateway.
+        r"""This API is used to delete routes of a VPN gateway.
 
         :param request: Request instance for DeleteVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRoutesRequest`
@@ -2450,7 +2450,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAccountAttributes(self, request):
-        """This API (DescribeAccountAttributes) is used to query your account attributes.
+        r"""This API (DescribeAccountAttributes) is used to query your account attributes.
 
         :param request: Request instance for DescribeAccountAttributes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesRequest`
@@ -2473,7 +2473,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAddressQuota(self, request):
-        """This API (DescribeAddressQuota) is used to query the quota information of your [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP) in the current region. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1).
+        r"""This API (DescribeAddressQuota) is used to query the quota information of your [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP) in the current region. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1).
 
         :param request: Request instance for DescribeAddressQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressQuotaRequest`
@@ -2496,7 +2496,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAddressTemplateGroups(self, request):
-        """This API (DescribeAddressTemplateGroups) is used to query an IP address template group.
+        r"""This API (DescribeAddressTemplateGroups) is used to query an IP address template group.
 
         :param request: Request instance for DescribeAddressTemplateGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupsRequest`
@@ -2519,7 +2519,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAddressTemplates(self, request):
-        """This API (DescribeAddressTemplates) is used to query an IP address template.
+        r"""This API (DescribeAddressTemplates) is used to query an IP address template.
 
         :param request: Request instance for DescribeAddressTemplates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplatesRequest`
@@ -2542,7 +2542,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAddresses(self, request):
-        """This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
+        r"""This API (DescribeAddresses) is used to query the information of one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
         * If the parameter is empty, a number (as specified by the `Limit`, the default value is 20) of EIPs will be returned.
 
         :param request: Request instance for DescribeAddresses.
@@ -2566,7 +2566,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAssistantCidr(self, request):
-        """This API is used to query the list of secondary CIDR blocks.
+        r"""This API is used to query the list of secondary CIDR blocks.
 
         :param request: Request instance for DescribeAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAssistantCidrRequest`
@@ -2589,7 +2589,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackageBillUsage(self, request):
-        """This API is used to query the current billable usage of a pay-as-you-go bandwidth package.
+        r"""This API is used to query the current billable usage of a pay-as-you-go bandwidth package.
 
         :param request: Request instance for DescribeBandwidthPackageBillUsage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageBillUsageRequest`
@@ -2612,7 +2612,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackageQuota(self, request):
-        """This API is used to query the maximum and used number of bandwidth packages under the account in the current region.
+        r"""This API is used to query the maximum and used number of bandwidth packages under the account in the current region.
 
         :param request: Request instance for DescribeBandwidthPackageQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaRequest`
@@ -2635,7 +2635,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackageResources(self, request):
-        """This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.
+        r"""This API is used to query resources in a bandwidth package based on the unique package ID. You can filter the result by specifying conditions and paginate the query results.
 
         :param request: Request instance for DescribeBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageResourcesRequest`
@@ -2658,7 +2658,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeBandwidthPackages(self, request):
-        """This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.
+        r"""This API is used to query bandwidth package information, including the unique ID of the bandwidth package, the type, the billing mode, the name, and the resource information.
 
         :param request: Request instance for DescribeBandwidthPackages.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesRequest`
@@ -2681,7 +2681,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCcnAttachedInstances(self, request):
-        """This API (DescribeCcnAttachedInstances) is used to query the network instances associated with the CCN instance.
+        r"""This API (DescribeCcnAttachedInstances) is used to query the network instances associated with the CCN instance.
 
         :param request: Request instance for DescribeCcnAttachedInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnAttachedInstancesRequest`
@@ -2704,7 +2704,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCcnRegionBandwidthLimits(self, request):
-        """This API is used to query the outbound bandwidth caps of all regions connected with a CCN instance. The API only returns regions included in the associated network instances.
+        r"""This API is used to query the outbound bandwidth caps of all regions connected with a CCN instance. The API only returns regions included in the associated network instances.
 
         :param request: Request instance for DescribeCcnRegionBandwidthLimits.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRegionBandwidthLimitsRequest`
@@ -2727,7 +2727,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCcnRoutes(self, request):
-        """This API (DescribeCcnRoutes) is used to query routes that have been added to a CCN.
+        r"""This API (DescribeCcnRoutes) is used to query routes that have been added to a CCN.
 
         :param request: Request instance for DescribeCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRoutesRequest`
@@ -2750,7 +2750,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCcns(self, request):
-        """This API (DescribeCcns) is used to query the CCN list.
+        r"""This API (DescribeCcns) is used to query the CCN list.
 
         :param request: Request instance for DescribeCcns.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnsRequest`
@@ -2773,7 +2773,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeClassicLinkInstances(self, request):
-        """This API (DescribeClassicLinkInstances) is used to query the Classiclink instances list.
+        r"""This API (DescribeClassicLinkInstances) is used to query the Classiclink instances list.
 
         :param request: Request instance for DescribeClassicLinkInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeClassicLinkInstancesRequest`
@@ -2796,7 +2796,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCrossBorderCompliance(self, request):
-        """This API is used to query the compliance review requests created by the user.
+        r"""This API is used to query the compliance review requests created by the user.
         A service provider can query all review requests created by any `APPID` under its account. Other users can only query their own review requests.
 
         :param request: Request instance for DescribeCrossBorderCompliance.
@@ -2820,7 +2820,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCustomerGatewayVendors(self, request):
-        """This API (DescribeCustomerGatewayVendors) is used to query the information of supported customer gateway vendors.
+        r"""This API (DescribeCustomerGatewayVendors) is used to query the information of supported customer gateway vendors.
 
         :param request: Request instance for DescribeCustomerGatewayVendors.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewayVendorsRequest`
@@ -2843,7 +2843,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeCustomerGateways(self, request):
-        """This API (DescribeCustomerGateways) is used to query the customer gateway list.
+        r"""This API (DescribeCustomerGateways) is used to query the customer gateway list.
 
         :param request: Request instance for DescribeCustomerGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewaysRequest`
@@ -2866,7 +2866,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeDirectConnectGatewayCcnRoutes(self, request):
-        """This API (DescribeDirectConnectGatewayCcnRoutes) is used to query the CCN routes (IDC IP range) of the Direct Connect gateway.
+        r"""This API (DescribeDirectConnectGatewayCcnRoutes) is used to query the CCN routes (IDC IP range) of the Direct Connect gateway.
 
         :param request: Request instance for DescribeDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewayCcnRoutesRequest`
@@ -2889,7 +2889,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeDirectConnectGateways(self, request):
-        """This API is used to query direct connect gateways.
+        r"""This API is used to query direct connect gateways.
 
         :param request: Request instance for DescribeDirectConnectGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysRequest`
@@ -2912,7 +2912,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLog(self, request):
-        """This API is used to query the information of a flow log.
+        r"""This API is used to query the information of a flow log.
 
         :param request: Request instance for DescribeFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
@@ -2935,7 +2935,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLogs(self, request):
-        """This API is used to query all the flow logs of the current account.
+        r"""This API is used to query all the flow logs of the current account.
 
         :param request: Request instance for DescribeFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
@@ -2958,7 +2958,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeGatewayFlowMonitorDetail(self, request):
-        """This API is used to query the traffic monitoring details of the gateway.
+        r"""This API is used to query the traffic monitoring details of the gateway.
         * You can only use this API to query a single gateway instance, which means you must pass in only one of `VpnId`, `DirectConnectGatewayId`, `PeeringConnectionId`, or `NatId`.
         * If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring has been enabled in the corresponding gateway details page in the console.
 
@@ -2983,7 +2983,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeGatewayFlowQos(self, request):
-        """This API is used to query the inbound IP bandwidth limit of a gateway.
+        r"""This API is used to query the inbound IP bandwidth limit of a gateway.
 
         :param request: Request instance for DescribeGatewayFlowQos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosRequest`
@@ -3006,7 +3006,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeHaVips(self, request):
-        """This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).
+        r"""This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).
 
         :param request: Request instance for DescribeHaVips.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeHaVipsRequest`
@@ -3029,7 +3029,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIPv6Addresses(self, request):
-        """This API is used to query detailed information of one or more EIPv6 instances.
+        r"""This API is used to query detailed information of one or more EIPv6 instances.
 
         - You can query EIPv6 and traditional EIPv6 instance information in a specified region.
         - The system returns a certain number (as specified by the Limit, the default value is 20) of EIPv6 instances of the current user if the parameter is empty.
@@ -3055,7 +3055,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeInstanceJumbo(self, request):
-        """This API is used to check whether Cloud Virtual Machines support jumbo frames.
+        r"""This API is used to check whether Cloud Virtual Machines support jumbo frames.
         Usage limits.
         This API is used to perform operations that require CAM policy authorization and read access to the corresponding instance. The API accesses CVM instances, so it verifies whether there are CAM permissions for the instance. For example: CAM action allows vpc:DescribeInstanceJumbo; resource allows qcs::cvm:ap-guangzhou:uin/2126195383:instance/*.
         This API is used to check the jumbo frame status before and after instance migration. The status returned by this API may be inconsistent before and after migration. You need to check whether the host machines of the instance before and after migration both support jumbo frames. One possible reason is that the instance has been migrated to a host machine that does not support jumbo frames.
@@ -3081,7 +3081,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIp6Addresses(self, request):
-        """This API is used to query the detailed information on one or multiple classic elastic public IPv6 instances.
+        r"""This API is used to query the detailed information on one or multiple classic elastic public IPv6 instances.
 
         :param request: Request instance for DescribeIp6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesRequest`
@@ -3104,7 +3104,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIpGeolocationDatabaseUrl(self, request):
-        """This API is used to obtain the download link of an IP location database.
+        r"""This API is used to obtain the download link of an IP location database.
         <font color="#FF0000">This API will be discontinued soon and is only available for existing users.</font>
 
         :param request: Request instance for DescribeIpGeolocationDatabaseUrl.
@@ -3128,7 +3128,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIpGeolocationInfos(self, request):
-        """This API is used to query the location and network information of one or more IP addresses.
+        r"""This API is used to query the location and network information of one or more IP addresses.
         <font color="#FF0000">This API will be discontinued soon and is only available for existing users.</font>
 
         :param request: Request instance for DescribeIpGeolocationInfos.
@@ -3152,7 +3152,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeLocalGateway(self, request):
-        """This API is used to query local gateways of a CDC instance.
+        r"""This API is used to query local gateways of a CDC instance.
 
         :param request: Request instance for DescribeLocalGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeLocalGatewayRequest`
@@ -3175,7 +3175,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNatGatewayDestinationIpPortTranslationNatRules(self, request):
-        """This API is used to query the array of objects of a NAT gateway's port forwarding rules.
+        r"""This API is used to query the array of objects of a NAT gateway's port forwarding rules.
 
         :param request: Request instance for DescribeNatGatewayDestinationIpPortTranslationNatRules.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest`
@@ -3198,7 +3198,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNatGatewayDirectConnectGatewayRoute(self, request):
-        """This API is used to query the routes between a NAT gateway and Direct Connect.
+        r"""This API is used to query the routes between a NAT gateway and Direct Connect.
 
         :param request: Request instance for DescribeNatGatewayDirectConnectGatewayRoute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDirectConnectGatewayRouteRequest`
@@ -3221,7 +3221,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
-        """This API is used to query the NAT gateway's SNAT forwarding rules.
+        r"""This API is used to query the NAT gateway's SNAT forwarding rules.
 
         :param request: Request instance for DescribeNatGatewaySourceIpTranslationNatRules.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaySourceIpTranslationNatRulesRequest`
@@ -3244,7 +3244,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNatGateways(self, request):
-        """This API is used to query NAT gateways.
+        r"""This API is used to query NAT gateways.
 
         :param request: Request instance for DescribeNatGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysRequest`
@@ -3267,7 +3267,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetDetectStates(self, request):
-        """This API (DescribeNetDetectStates) is used to query the list of network detection verification results.
+        r"""This API (DescribeNetDetectStates) is used to query the list of network detection verification results.
 
         :param request: Request instance for DescribeNetDetectStates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectStatesRequest`
@@ -3290,7 +3290,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetDetects(self, request):
-        """This API (DescribeNetDetects) is used to query the list of network detection instances.
+        r"""This API (DescribeNetDetects) is used to query the list of network detection instances.
 
         :param request: Request instance for DescribeNetDetects.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectsRequest`
@@ -3313,7 +3313,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetworkAclQuintupleEntries(self, request):
-        """This API is used to query the list of in/outbound network ACL quintuple entries.
+        r"""This API is used to query the list of in/outbound network ACL quintuple entries.
 
         :param request: Request instance for DescribeNetworkAclQuintupleEntries.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclQuintupleEntriesRequest`
@@ -3336,7 +3336,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetworkAcls(self, request):
-        """This API is used to query a list of network ACLs.
+        r"""This API is used to query a list of network ACLs.
 
         :param request: Request instance for DescribeNetworkAcls.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclsRequest`
@@ -3359,7 +3359,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetworkInterfaceLimit(self, request):
-        """This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the ID of CVM instance or ENI. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to the ENI.
+        r"""This API (DescribeNetworkInterfaceLimit) is used to query the ENI quota based on the ID of CVM instance or ENI. It returns the ENI quota to which the CVM instance can be bound and the IP address quota that can be allocated to the ENI.
 
         :param request: Request instance for DescribeNetworkInterfaceLimit.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfaceLimitRequest`
@@ -3382,7 +3382,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeNetworkInterfaces(self, request):
-        """This API (DescribeNetworkInterfaces) is used to query the ENI list.
+        r"""This API (DescribeNetworkInterfaces) is used to query the ENI list.
 
         :param request: Request instance for DescribeNetworkInterfaces.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfacesRequest`
@@ -3405,7 +3405,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeReserveIpAddresses(self, request):
-        """This API is used to query reserved private IP addresses.
+        r"""This API is used to query reserved private IP addresses.
 
         :param request: Request instance for DescribeReserveIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeReserveIpAddressesRequest`
@@ -3428,7 +3428,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeRouteTables(self, request):
-        """This API is used to query route tables.
+        r"""This API is used to query route tables.
 
         :param request: Request instance for DescribeRouteTables.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesRequest`
@@ -3451,7 +3451,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSecurityGroupAssociationStatistics(self, request):
-        """This API (DescribeSecurityGroupAssociationStatistics) is used to query statistics on the instances associated with a security group.
+        r"""This API (DescribeSecurityGroupAssociationStatistics) is used to query statistics on the instances associated with a security group.
 
         :param request: Request instance for DescribeSecurityGroupAssociationStatistics.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupAssociationStatisticsRequest`
@@ -3474,7 +3474,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSecurityGroupPolicies(self, request):
-        """This API (DescribeSecurityGroupPolicies) is used to query security group policies.
+        r"""This API (DescribeSecurityGroupPolicies) is used to query security group policies.
 
         :param request: Request instance for DescribeSecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupPoliciesRequest`
@@ -3497,7 +3497,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSecurityGroupReferences(self, request):
-        """This API (DescribeSecurityGroupReferences) is used to query referred security groups.
+        r"""This API (DescribeSecurityGroupReferences) is used to query referred security groups.
 
         :param request: Request instance for DescribeSecurityGroupReferences.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupReferencesRequest`
@@ -3520,7 +3520,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSecurityGroups(self, request):
-        """This API (DescribeSecurityGroups) is used to query security groups.
+        r"""This API (DescribeSecurityGroups) is used to query security groups.
 
         :param request: Request instance for DescribeSecurityGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupsRequest`
@@ -3543,7 +3543,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeServiceTemplateGroups(self, request):
-        """This API (DescribeServiceTemplateGroups) is used to query a protocol port template group.
+        r"""This API (DescribeServiceTemplateGroups) is used to query a protocol port template group.
 
         :param request: Request instance for DescribeServiceTemplateGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupsRequest`
@@ -3566,7 +3566,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeServiceTemplates(self, request):
-        """This API (DescribeServiceTemplates) is used to query protocol port templates.
+        r"""This API (DescribeServiceTemplates) is used to query protocol port templates.
 
         :param request: Request instance for DescribeServiceTemplates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplatesRequest`
@@ -3589,7 +3589,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSgSnapshotFileContent(self, request):
-        """This API is used to query the snapshot file contents.
+        r"""This API is used to query the snapshot file contents.
 
         :param request: Request instance for DescribeSgSnapshotFileContent.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSgSnapshotFileContentRequest`
@@ -3612,7 +3612,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSnapshotAttachedInstances(self, request):
-        """This API is used to query instances associated with a snapshot policy.
+        r"""This API is used to query instances associated with a snapshot policy.
 
         :param request: Request instance for DescribeSnapshotAttachedInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotAttachedInstancesRequest`
@@ -3635,7 +3635,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSnapshotFiles(self, request):
-        """This API is used to query snapshot files.
+        r"""This API is used to query snapshot files.
 
         :param request: Request instance for DescribeSnapshotFiles.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotFilesRequest`
@@ -3658,7 +3658,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSnapshotPolicies(self, request):
-        """This API is used to query snapshot policies.
+        r"""This API is used to query snapshot policies.
 
         :param request: Request instance for DescribeSnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotPoliciesRequest`
@@ -3681,7 +3681,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSubnetResourceDashboard(self, request):
-        """This API is used to query the subnet resource.
+        r"""This API is used to query the subnet resource.
 
         :param request: Request instance for DescribeSubnetResourceDashboard.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetResourceDashboardRequest`
@@ -3704,7 +3704,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeSubnets(self, request):
-        """This API (DescribeSubnets) is used to query the list of subnets.
+        r"""This API (DescribeSubnets) is used to query the list of subnets.
 
         :param request: Request instance for DescribeSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetsRequest`
@@ -3727,7 +3727,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeTaskResult(self, request):
-        """This API is used to query the EIP async job execution results.
+        r"""This API is used to query the EIP async job execution results.
 
         :param request: Request instance for DescribeTaskResult.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTaskResultRequest`
@@ -3750,7 +3750,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeTrafficPackages(self, request):
-        """This API is used to query the details of shared traffic packages.
+        r"""This API is used to query the details of shared traffic packages.
 
         :param request: Request instance for DescribeTrafficPackages.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficPackagesRequest`
@@ -3773,7 +3773,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeUsedIpAddress(self, request):
-        """This API is used to query the IP usage of a subnet or VPC.
+        r"""This API is used to query the IP usage of a subnet or VPC.
         If the IP is occupied, the resource type and ID associated with the are is returned. If the IP is not used, it returns null.
 
         :param request: Request instance for DescribeUsedIpAddress.
@@ -3797,7 +3797,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcEndPoint(self, request):
-        """This API is used to query the endpoint list.
+        r"""This API is used to query the endpoint list.
 
         :param request: Request instance for DescribeVpcEndPoint.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointRequest`
@@ -3820,7 +3820,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcEndPointService(self, request):
-        """This API is used to query the endpoint service list.
+        r"""This API is used to query the endpoint service list.
 
         :param request: Request instance for DescribeVpcEndPointService.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceRequest`
@@ -3843,7 +3843,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcEndPointServiceWhiteList(self, request):
-        """This API is used to query the endpoint service allowlist.
+        r"""This API is used to query the endpoint service allowlist.
 
         :param request: Request instance for DescribeVpcEndPointServiceWhiteList.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointServiceWhiteListRequest`
@@ -3866,7 +3866,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcInstances(self, request):
-        """This API (DescribeVpcInstances) is used to query a list of VCM instances on VPC.
+        r"""This API (DescribeVpcInstances) is used to query a list of VCM instances on VPC.
 
         :param request: Request instance for DescribeVpcInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcInstancesRequest`
@@ -3889,7 +3889,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcIpv6Addresses(self, request):
-        """This API (DescribeVpcIpv6Addresses) is used to query `VPC` `IPv6` information.
+        r"""This API (DescribeVpcIpv6Addresses) is used to query `VPC` `IPv6` information.
         This API is used to query only the information of `IPv6` addresses that are already in use. When querying IPs that have not yet been used, this API will not report an error, but the IPs will not appear in the returned results.
 
         :param request: Request instance for DescribeVpcIpv6Addresses.
@@ -3913,7 +3913,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcPrivateIpAddresses(self, request):
-        """This API (DescribeVpcPrivateIpAddresses) is used to query the private IP information of a VPC.<br />
+        r"""This API (DescribeVpcPrivateIpAddresses) is used to query the private IP information of a VPC.<br />
         This API is used to query only the information of IP addresses that are already in use. When querying IPs that have not yet been used, this API will not report an error, but the IPs will not appear in the returned results.
 
         :param request: Request instance for DescribeVpcPrivateIpAddresses.
@@ -3937,7 +3937,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcResourceDashboard(self, request):
-        """View VPC resources.
+        r"""View VPC resources.
 
         :param request: Request instance for DescribeVpcResourceDashboard.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcResourceDashboardRequest`
@@ -3960,7 +3960,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcTaskResult(self, request):
-        """This API is used to query the execution result of a VPC task.
+        r"""This API is used to query the execution result of a VPC task.
 
         :param request: Request instance for DescribeVpcTaskResult.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcTaskResultRequest`
@@ -3983,7 +3983,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcs(self, request):
-        """This API (DescribeVpcs) is used to query the VPC list.
+        r"""This API (DescribeVpcs) is used to query the VPC list.
 
         :param request: Request instance for DescribeVpcs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcsRequest`
@@ -4006,7 +4006,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnConnections(self, request):
-        """This API is used to used to query the list of VPN tunnels.
+        r"""This API is used to used to query the list of VPN tunnels.
 
         :param request: Request instance for DescribeVpnConnections.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnConnectionsRequest`
@@ -4029,7 +4029,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGatewayCcnRoutes(self, request):
-        """This API is used to query VPN gateway-based CCN routes.
+        r"""This API is used to query VPN gateway-based CCN routes.
 
         :param request: Request instance for DescribeVpnGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayCcnRoutesRequest`
@@ -4052,7 +4052,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGatewayRoutes(self, request):
-        """This API is used to query VPN gateway routes.
+        r"""This API is used to query VPN gateway routes.
 
         :param request: Request instance for DescribeVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayRoutesRequest`
@@ -4075,7 +4075,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGateways(self, request):
-        """This API (DescribeVpnGateways) is used to query the VPN gateway list.
+        r"""This API (DescribeVpnGateways) is used to query the VPN gateway list.
 
         :param request: Request instance for DescribeVpnGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaysRequest`
@@ -4098,7 +4098,7 @@ class VpcClient(AbstractClient):
 
 
     def DetachCcnInstances(self, request):
-        """This API (DetachCcnInstances) is used to unbind a specified network instance from a CCN instance.<br />
+        r"""This API (DetachCcnInstances) is used to unbind a specified network instance from a CCN instance.<br />
         After unbinding the network instance, the corresponding routing policy will also be deleted.
 
         :param request: Request instance for DetachCcnInstances.
@@ -4122,7 +4122,7 @@ class VpcClient(AbstractClient):
 
 
     def DetachClassicLinkVpc(self, request):
-        """This API is used to delete a Classiclink.
+        r"""This API is used to delete a Classiclink.
         >?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.
         >
 
@@ -4147,7 +4147,7 @@ class VpcClient(AbstractClient):
 
 
     def DetachNetworkInterface(self, request):
-        """This API is used to unbind an ENI from a CVM.
+        r"""This API is used to unbind an ENI from a CVM.
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for DetachNetworkInterface.
@@ -4171,7 +4171,7 @@ class VpcClient(AbstractClient):
 
 
     def DetachSnapshotInstances(self, request):
-        """This API is used to disassociate a snapshot policy with instances.
+        r"""This API is used to disassociate a snapshot policy with instances.
 
         :param request: Request instance for DetachSnapshotInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DetachSnapshotInstancesRequest`
@@ -4194,7 +4194,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableCcnRoutes(self, request):
-        """This API (DisableCcnRoutes) is used to disable CCN routes that are already enabled.
+        r"""This API (DisableCcnRoutes) is used to disable CCN routes that are already enabled.
 
         :param request: Request instance for DisableCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableCcnRoutesRequest`
@@ -4217,7 +4217,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableFlowLogs(self, request):
-        """This API is used to disable flow log.
+        r"""This API is used to disable flow log.
 
         :param request: Request instance for DisableFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableFlowLogsRequest`
@@ -4240,7 +4240,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableGatewayFlowMonitor(self, request):
-        """This API is used to disable gateway traffic monitor.
+        r"""This API is used to disable gateway traffic monitor.
 
         :param request: Request instance for DisableGatewayFlowMonitor.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorRequest`
@@ -4263,7 +4263,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableRoutes(self, request):
-        """This API is used to disable enabled subnet routes.
+        r"""This API is used to disable enabled subnet routes.
 
         :param request: Request instance for DisableRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesRequest`
@@ -4286,7 +4286,7 @@ class VpcClient(AbstractClient):
 
 
     def DisableSnapshotPolicies(self, request):
-        """This API is used to disable specified snapshot policies.
+        r"""This API is used to disable specified snapshot policies.
 
         :param request: Request instance for DisableSnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableSnapshotPoliciesRequest`
@@ -4309,7 +4309,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateAddress(self, request):
-        """This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
+        r"""This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
         * This API supports unbinding an EIP from CVM instances and ENIs.
         * This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.
         * Only EIPs in BIND or BIND_ENI status can be unbound.
@@ -4336,7 +4336,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateDirectConnectGatewayNatGateway(self, request):
-        """This API is used to unbind a direct connect gateway from a NAT Gateway. After unbinding, the direct connect gateway cannot access internet through the NAT Gateway.
+        r"""This API is used to unbind a direct connect gateway from a NAT Gateway. After unbinding, the direct connect gateway cannot access internet through the NAT Gateway.
 
         :param request: Request instance for DisassociateDirectConnectGatewayNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateDirectConnectGatewayNatGatewayRequest`
@@ -4359,7 +4359,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateIPv6Address(self, request):
-        """This API is used to unbind an EIPv6 instance.
+        r"""This API is used to unbind an EIPv6 instance.
 
         - You can unbind EIPv6 instances bound to Cloud Virtual Machine (CVM) or Elastic Network Interface (ENI).
         - Only EIPv6 instances in BIND or BIND_ENI status can be unbound.
@@ -4385,7 +4385,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateNatGatewayAddress(self, request):
-        """This API is used to unbind an EIP from a NAT gateway.
+        r"""This API is used to unbind an EIP from a NAT gateway.
 
         :param request: Request instance for DisassociateNatGatewayAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNatGatewayAddressRequest`
@@ -4408,7 +4408,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateNetworkAclSubnets(self, request):
-        """This API is used to disassociate a network ACL from subnets in a VPC instance.
+        r"""This API is used to disassociate a network ACL from subnets in a VPC instance.
 
         :param request: Request instance for DisassociateNetworkAclSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsRequest`
@@ -4431,7 +4431,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateNetworkInterfaceSecurityGroups(self, request):
-        """This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.
+        r"""This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.
 
         :param request: Request instance for DisassociateNetworkInterfaceSecurityGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkInterfaceSecurityGroupsRequest`
@@ -4454,7 +4454,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateVpcEndPointSecurityGroups(self, request):
-        """This API is used to unbind an endpoint from a security group.
+        r"""This API is used to unbind an endpoint from a security group.
 
         :param request: Request instance for DisassociateVpcEndPointSecurityGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateVpcEndPointSecurityGroupsRequest`
@@ -4477,7 +4477,7 @@ class VpcClient(AbstractClient):
 
 
     def DownloadCustomerGatewayConfiguration(self, request):
-        """This API is used to download VPN tunnel configurations.
+        r"""This API is used to download VPN tunnel configurations.
 
         :param request: Request instance for DownloadCustomerGatewayConfiguration.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationRequest`
@@ -4500,7 +4500,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableCcnRoutes(self, request):
-        """This API (EnableCcnRoutes) is used to enable CCN routes that are already added.<br />
+        r"""This API (EnableCcnRoutes) is used to enable CCN routes that are already added.<br />
         This API is used to verify whether there will be conflict with an existing route after a CCN route is enabled. If there is a conflict, the route will not be enabled, and the process will fail. When a conflict occurs, you must disable the conflicting route before you can enable the desired route.
 
         :param request: Request instance for EnableCcnRoutes.
@@ -4524,7 +4524,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableFlowLogs(self, request):
-        """This API is used to enable flow log.
+        r"""This API is used to enable flow log.
 
         :param request: Request instance for EnableFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableFlowLogsRequest`
@@ -4547,7 +4547,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableGatewayFlowMonitor(self, request):
-        """This API is used to enable gateway traffic monitor.
+        r"""This API is used to enable gateway traffic monitor.
 
         :param request: Request instance for EnableGatewayFlowMonitor.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorRequest`
@@ -4570,7 +4570,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableRoutes(self, request):
-        """This API is used to enable disabled subnet routes.<br />
+        r"""This API is used to enable disabled subnet routes.<br />
         The API is used to verify whether the enabled route conflicts with existing routes. If they conflict, the new route cannot be enabled and will result in a failure. When a route conflict occurs, you need to first disable the conflicting route before you can enable the new one.
 
         :param request: Request instance for EnableRoutes.
@@ -4594,7 +4594,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableSnapshotPolicies(self, request):
-        """This API is used to enable specified snapshot policies.
+        r"""This API is used to enable specified snapshot policies.
 
         :param request: Request instance for EnableSnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableSnapshotPoliciesRequest`
@@ -4617,7 +4617,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableVpcEndPointConnect(self, request):
-        """This API is used to determine whether to accept the request of connecting with an endpoint.
+        r"""This API is used to determine whether to accept the request of connecting with an endpoint.
 
         :param request: Request instance for EnableVpcEndPointConnect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableVpcEndPointConnectRequest`
@@ -4640,7 +4640,7 @@ class VpcClient(AbstractClient):
 
 
     def GenerateVpnConnectionDefaultHealthCheckIp(self, request):
-        """This API is used to get a pair of VPN tunnel health check addresses.
+        r"""This API is used to get a pair of VPN tunnel health check addresses.
 
         :param request: Request instance for GenerateVpnConnectionDefaultHealthCheckIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.GenerateVpnConnectionDefaultHealthCheckIpRequest`
@@ -4663,7 +4663,7 @@ class VpcClient(AbstractClient):
 
 
     def GetCcnRegionBandwidthLimits(self, request):
-        """This API is used to query the bandwidth limits of a CCN instance. Monthly-subscribed CCNs only support Inter-region Bandwidth Limits, while the pay-as-you-go CCNs support both the Inter-region Bandwidth Limits and Region Outbound Bandwidth Limits.
+        r"""This API is used to query the bandwidth limits of a CCN instance. Monthly-subscribed CCNs only support Inter-region Bandwidth Limits, while the pay-as-you-go CCNs support both the Inter-region Bandwidth Limits and Region Outbound Bandwidth Limits.
 
         :param request: Request instance for GetCcnRegionBandwidthLimits.
         :type request: :class:`tencentcloud.vpc.v20170312.models.GetCcnRegionBandwidthLimitsRequest`
@@ -4686,7 +4686,7 @@ class VpcClient(AbstractClient):
 
 
     def HaVipAssociateAddressIp(self, request):
-        """This API is used to bind an EIP to an HAVIP. <br />
+        r"""This API is used to bind an EIP to an HAVIP. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for HaVipAssociateAddressIp.
@@ -4710,7 +4710,7 @@ class VpcClient(AbstractClient):
 
 
     def HaVipDisassociateAddressIp(self, request):
-        """This API is used to unbind an EIP from an HAVIP. <br />
+        r"""This API is used to unbind an EIP from an HAVIP. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for HaVipDisassociateAddressIp.
@@ -4734,7 +4734,7 @@ class VpcClient(AbstractClient):
 
 
     def InquirePriceCreateDirectConnectGateway(self, request):
-        """This API is used to query the price of creating a direct connect gateway.
+        r"""This API is used to query the price of creating a direct connect gateway.
 
         :param request: Request instance for InquirePriceCreateDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquirePriceCreateDirectConnectGatewayRequest`
@@ -4757,7 +4757,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceAllocateAddresses(self, request):
-        """This API (InquiryPriceAllocateAddresses) is used to query the price of purchasing EIPs.
+        r"""This API (InquiryPriceAllocateAddresses) is used to query the price of purchasing EIPs.
 
         :param request: Request instance for InquiryPriceAllocateAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceAllocateAddressesRequest`
@@ -4780,7 +4780,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceModifyAddressesBandwidth(self, request):
-        """This API is used to query the price of modifying EIP bandwidth.
+        r"""This API is used to query the price of modifying EIP bandwidth.
 
         :param request: Request instance for InquiryPriceModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceModifyAddressesBandwidthRequest`
@@ -4803,7 +4803,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceRenewAddresses(self, request):
-        """This API (InquiryPriceRenewAddresses) is used to query the price of renewing prepaid EIPs.
+        r"""This API (InquiryPriceRenewAddresses) is used to query the price of renewing prepaid EIPs.
 
         :param request: Request instance for InquiryPriceRenewAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewAddressesRequest`
@@ -4826,7 +4826,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceRenewVpnGateway(self, request):
-        """This API (InquiryPriceRenewVpnGateway) is used to query the price for VPN gateway renewal. Currently, only querying prices for IPSEC-type gateways is supported.
+        r"""This API (InquiryPriceRenewVpnGateway) is used to query the price for VPN gateway renewal. Currently, only querying prices for IPSEC-type gateways is supported.
 
         :param request: Request instance for InquiryPriceRenewVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewVpnGatewayRequest`
@@ -4849,7 +4849,7 @@ class VpcClient(AbstractClient):
 
 
     def InquiryPriceResetVpnGatewayInternetMaxBandwidth(self, request):
-        """This API (InquiryPriceResetVpnGatewayInternetMaxBandwidth) is used to query the price for adjusting the bandwidth cap of a VPN gateway.
+        r"""This API (InquiryPriceResetVpnGatewayInternetMaxBandwidth) is used to query the price for adjusting the bandwidth cap of a VPN gateway.
 
         :param request: Request instance for InquiryPriceResetVpnGatewayInternetMaxBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest`
@@ -4872,7 +4872,7 @@ class VpcClient(AbstractClient):
 
 
     def MigrateNetworkInterface(self, request):
-        """This API is used to migrate ENIs.
+        r"""This API is used to migrate ENIs.
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for MigrateNetworkInterface.
@@ -4896,7 +4896,7 @@ class VpcClient(AbstractClient):
 
 
     def MigratePrivateIpAddress(self, request):
-        """This API is used to migrate the private IPs between ENIs.
+        r"""This API is used to migrate the private IPs between ENIs.
         * Note that primary IPs cannot be migrated.
         * The source and destination ENI must be within the same subnet.
 
@@ -4923,7 +4923,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressAttribute(self, request):
-        """This API (ModifyAddressAttribute) is used to modify the name of an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
+        r"""This API (ModifyAddressAttribute) is used to modify the name of an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
 
         :param request: Request instance for ModifyAddressAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressAttributeRequest`
@@ -4946,7 +4946,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressInternetChargeType(self, request):
-        """This API is used to adjust the network billing mode of an EIP. Please note that it's available to users whose network fees are billed on IPs but not CVMs.
+        r"""This API is used to adjust the network billing mode of an EIP. Please note that it's available to users whose network fees are billed on IPs but not CVMs.
         * The network billing mode can be switched between `BANDWIDTH_PREPAID_BY_MONTH` and `TRAFFIC_POSTPAID_BY_HOUR`.
         * The network billing mode for each EIP be changed for up to twice.
 
@@ -4971,7 +4971,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressTemplateAttribute(self, request):
-        """This API (ModifyAddressTemplateAttribute) is used to modify an IP address template.
+        r"""This API (ModifyAddressTemplateAttribute) is used to modify an IP address template.
 
         :param request: Request instance for ModifyAddressTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateAttributeRequest`
@@ -4994,7 +4994,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressTemplateGroupAttribute(self, request):
-        """This API (ModifyAddressTemplateGroupAttribute) is used to modify an IP address template group.
+        r"""This API (ModifyAddressTemplateGroupAttribute) is used to modify an IP address template group.
 
         :param request: Request instance for ModifyAddressTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateGroupAttributeRequest`
@@ -5017,7 +5017,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressesBandwidth(self, request):
-        """This API is used to adjust the bandwidth of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), including EIP billed on a pay-as-you-go, monthly subscription, and bandwidth package basis.
+        r"""This API is used to adjust the bandwidth of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), including EIP billed on a pay-as-you-go, monthly subscription, and bandwidth package basis.
 
         :param request: Request instance for ModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthRequest`
@@ -5040,7 +5040,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAddressesRenewFlag(self, request):
-        """This API is used to adjust the renewal flag for the monthly subscription EIP.
+        r"""This API is used to adjust the renewal flag for the monthly subscription EIP.
 
         :param request: Request instance for ModifyAddressesRenewFlag.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesRenewFlagRequest`
@@ -5063,7 +5063,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAssistantCidr(self, request):
-        """This API is used to batch modify (add or delete) secondary CIDR blocks.
+        r"""This API is used to batch modify (add or delete) secondary CIDR blocks.
 
         :param request: Request instance for ModifyAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrRequest`
@@ -5086,7 +5086,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyBandwidthPackageAttribute(self, request):
-        """This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.
+        r"""This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.
 
         :param request: Request instance for ModifyBandwidthPackageAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeRequest`
@@ -5109,7 +5109,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyBandwidthPackageBandwidth(self, request):
-        """This API is used to adjust the bandwidth of a [bandwidth package](https://www.tencentcloud.com/document/product/684/15245).
+        r"""This API is used to adjust the bandwidth of a [bandwidth package](https://www.tencentcloud.com/document/product/684/15245).
 
         :param request: Request instance for ModifyBandwidthPackageBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageBandwidthRequest`
@@ -5132,7 +5132,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyCcnAttachedInstancesAttribute(self, request):
-        """This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.
+        r"""This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.
 
         :param request: Request instance for ModifyCcnAttachedInstancesAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttachedInstancesAttributeRequest`
@@ -5155,7 +5155,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyCcnAttribute(self, request):
-        """This API (ModifyCcnAttribute) is used to modify CCN attributes.
+        r"""This API (ModifyCcnAttribute) is used to modify CCN attributes.
 
         :param request: Request instance for ModifyCcnAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttributeRequest`
@@ -5178,7 +5178,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyCcnRegionBandwidthLimitsType(self, request):
-        """This API is used to modify the bandwidth limit policy of a postpaid CCN instance.
+        r"""This API is used to modify the bandwidth limit policy of a postpaid CCN instance.
 
         :param request: Request instance for ModifyCcnRegionBandwidthLimitsType.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnRegionBandwidthLimitsTypeRequest`
@@ -5201,7 +5201,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyCustomerGatewayAttribute(self, request):
-        """This API (ModifyCustomerGatewayAttribute) is used to modify the customer gateway information.
+        r"""This API (ModifyCustomerGatewayAttribute) is used to modify the customer gateway information.
 
         :param request: Request instance for ModifyCustomerGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCustomerGatewayAttributeRequest`
@@ -5224,7 +5224,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyDirectConnectGatewayAttribute(self, request):
-        """This API is used to modify the attributes of a direct connect gateway.
+        r"""This API is used to modify the attributes of a direct connect gateway.
 
         :param request: Request instance for ModifyDirectConnectGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeRequest`
@@ -5247,7 +5247,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyFlowLogAttribute(self, request):
-        """This API is used to modify the attributes of a flow log.
+        r"""This API is used to modify the attributes of a flow log.
 
         :param request: Request instance for ModifyFlowLogAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`
@@ -5270,7 +5270,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyGatewayFlowQos(self, request):
-        """This API is used to adjust the bandwidth limit of a gateway.
+        r"""This API is used to adjust the bandwidth limit of a gateway.
 
         :param request: Request instance for ModifyGatewayFlowQos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosRequest`
@@ -5293,7 +5293,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyHaVipAttribute(self, request):
-        """This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.
+        r"""This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.
 
         :param request: Request instance for ModifyHaVipAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHaVipAttributeRequest`
@@ -5316,7 +5316,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyIPv6AddressesAttributes(self, request):
-        """This API is used to modify the name of an EIPv6 instance.
+        r"""This API is used to modify the name of an EIPv6 instance.
 
         - You can modify the name of both EIPv6 and traditional EIPv6 instances.
 
@@ -5341,7 +5341,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyIPv6AddressesBandwidth(self, request):
-        """This API is used to modify the bandwidth cap of an EIPv6 instance.
+        r"""This API is used to modify the bandwidth cap of an EIPv6 instance.
 
         :param request: Request instance for ModifyIPv6AddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesBandwidthRequest`
@@ -5364,7 +5364,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyIp6AddressesBandwidth(self, request):
-        """This API is used to adjust the bandwidth limit of a classic elastic public IPv6 instance.
+        r"""This API is used to adjust the bandwidth limit of a classic elastic public IPv6 instance.
 
         - You can adjust the bandwidth limit of only classic elastic public IPv6 instances.
         - To adjust the bandwidth limit of an elastic public IPv6 instance, call the ModifyIPv6AddressesBandwidth API.
@@ -5390,7 +5390,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyIpv6AddressesAttribute(self, request):
-        """This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI.
+        r"""This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI.
 
         :param request: Request instance for ModifyIpv6AddressesAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIpv6AddressesAttributeRequest`
@@ -5413,7 +5413,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyLocalGateway(self, request):
-        """This API is used to modify the local gateway of a CDC instance.
+        r"""This API is used to modify the local gateway of a CDC instance.
 
         :param request: Request instance for ModifyLocalGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyLocalGatewayRequest`
@@ -5436,7 +5436,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNatGatewayAttribute(self, request):
-        """This API is used to modify the attributes of a NAT gateway.
+        r"""This API is used to modify the attributes of a NAT gateway.
 
         :param request: Request instance for ModifyNatGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayAttributeRequest`
@@ -5459,7 +5459,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNatGatewayDestinationIpPortTranslationNatRule(self, request):
-        """This API is used to modify the port forwarding rule of a NAT gateway.
+        r"""This API is used to modify the port forwarding rule of a NAT gateway.
 
         :param request: Request instance for ModifyNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest`
@@ -5482,7 +5482,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNatGatewaySourceIpTranslationNatRule(self, request):
-        """This API is used to modify a NAT gateway's SNAT forwarding rules.
+        r"""This API is used to modify a NAT gateway's SNAT forwarding rules.
 
         :param request: Request instance for ModifyNatGatewaySourceIpTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewaySourceIpTranslationNatRuleRequest`
@@ -5505,7 +5505,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetDetect(self, request):
-        """This API (ModifyNetDetect) is used to modify network detection parameters.
+        r"""This API (ModifyNetDetect) is used to modify network detection parameters.
 
         :param request: Request instance for ModifyNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetDetectRequest`
@@ -5528,7 +5528,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkAclAttribute(self, request):
-        """This API is used to modify the attributes of a network ACL.
+        r"""This API is used to modify the attributes of a network ACL.
 
         :param request: Request instance for ModifyNetworkAclAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeRequest`
@@ -5551,7 +5551,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkAclEntries(self, request):
-        """This API is used to modify (add or delete) the inbound and outbound rules of a network ACL. In `NetworkAclEntrySet` parameters,
+        r"""This API is used to modify (add or delete) the inbound and outbound rules of a network ACL. In `NetworkAclEntrySet` parameters,
         * Passing in the new inbound/outbound rules will reset the original rules.
         * Passing in the inbound rules will only reset the original inbound rules and not affect the original outbound rules, and vice versa.
 
@@ -5576,7 +5576,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkAclQuintupleEntries(self, request):
-        """This API is used to modify the in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
+        r"""This API is used to modify the in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.
 
         :param request: Request instance for ModifyNetworkAclQuintupleEntries.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclQuintupleEntriesRequest`
@@ -5599,7 +5599,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkInterfaceAttribute(self, request):
-        """This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.
+        r"""This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.
 
         :param request: Request instance for ModifyNetworkInterfaceAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceAttributeRequest`
@@ -5622,7 +5622,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyPrivateIpAddressesAttribute(self, request):
-        """This API (ModifyPrivateIpAddressesAttribute) is used to modify the private IP attributes of an ENI.
+        r"""This API (ModifyPrivateIpAddressesAttribute) is used to modify the private IP attributes of an ENI.
 
         :param request: Request instance for ModifyPrivateIpAddressesAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyPrivateIpAddressesAttributeRequest`
@@ -5645,7 +5645,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyReserveIpAddress(self, request):
-        """This API is used to modify a reserved private IP address.
+        r"""This API is used to modify a reserved private IP address.
 
         :param request: Request instance for ModifyReserveIpAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyReserveIpAddressRequest`
@@ -5668,7 +5668,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyRouteTableAttribute(self, request):
-        """This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table.
+        r"""This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table.
 
         :param request: Request instance for ModifyRouteTableAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyRouteTableAttributeRequest`
@@ -5691,7 +5691,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifySecurityGroupAttribute(self, request):
-        """This API (ModifySecurityGroupAttribute) is used to modify the attributes of a security group (SecurityGroupPolicy).
+        r"""This API (ModifySecurityGroupAttribute) is used to modify the attributes of a security group (SecurityGroupPolicy).
 
         :param request: Request instance for ModifySecurityGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupAttributeRequest`
@@ -5714,7 +5714,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifySecurityGroupPolicies(self, request):
-        """This API is used to reset the `Egress` and `Ingress` rules (SecurityGroupPolicy) of a security group.
+        r"""This API is used to reset the `Egress` and `Ingress` rules (SecurityGroupPolicy) of a security group.
 
         <ul>
         <li>This API does not support custom indexes <code>PolicyIndex</code>. </li>
@@ -5752,7 +5752,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyServiceTemplateAttribute(self, request):
-        """This API (ModifyServiceTemplateAttribute) is used to modify a protocol port template.
+        r"""This API (ModifyServiceTemplateAttribute) is used to modify a protocol port template.
 
         :param request: Request instance for ModifyServiceTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateAttributeRequest`
@@ -5775,7 +5775,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyServiceTemplateGroupAttribute(self, request):
-        """This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group.
+        r"""This API (ModifyServiceTemplateGroupAttribute) is used to modify a protocol port template group.
 
         :param request: Request instance for ModifyServiceTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateGroupAttributeRequest`
@@ -5798,7 +5798,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifySnapshotPolicies(self, request):
-        """This API is used to modify specified snapshot policies.
+        r"""This API is used to modify specified snapshot policies.
 
         :param request: Request instance for ModifySnapshotPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySnapshotPoliciesRequest`
@@ -5821,7 +5821,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifySubnetAttribute(self, request):
-        """This API (ModifySubnetAttribute) is used to modify subnet attributes.
+        r"""This API (ModifySubnetAttribute) is used to modify subnet attributes.
 
         :param request: Request instance for ModifySubnetAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySubnetAttributeRequest`
@@ -5844,7 +5844,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyTemplateMember(self, request):
-        """This API is used to modify a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+        r"""This API is used to modify a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
 
         :param request: Request instance for ModifyTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberRequest`
@@ -5867,7 +5867,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpcAttribute(self, request):
-        """This API (ModifyVpcAttribute) is used to modify VPC attributes.
+        r"""This API (ModifyVpcAttribute) is used to modify VPC attributes.
 
         :param request: Request instance for ModifyVpcAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcAttributeRequest`
@@ -5890,7 +5890,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpcEndPointAttribute(self, request):
-        """This API is used to modify endpoint attributes.
+        r"""This API is used to modify endpoint attributes.
 
         :param request: Request instance for ModifyVpcEndPointAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointAttributeRequest`
@@ -5913,7 +5913,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpcEndPointServiceAttribute(self, request):
-        """This API is used to modify the VPC endpoint service attributes.
+        r"""This API is used to modify the VPC endpoint service attributes.
 
 
         :param request: Request instance for ModifyVpcEndPointServiceAttribute.
@@ -5937,7 +5937,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpcEndPointServiceWhiteList(self, request):
-        """This API is used to modify the attributes of the endpoint service allowlist.
+        r"""This API is used to modify the attributes of the endpoint service allowlist.
 
         :param request: Request instance for ModifyVpcEndPointServiceWhiteList.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcEndPointServiceWhiteListRequest`
@@ -5960,7 +5960,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnConnectionAttribute(self, request):
-        """This API (ModifyVpnConnectionAttribute) is used to modify VPN tunnels.
+        r"""This API (ModifyVpnConnectionAttribute) is used to modify VPN tunnels.
 
         :param request: Request instance for ModifyVpnConnectionAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnConnectionAttributeRequest`
@@ -5983,7 +5983,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnGatewayAttribute(self, request):
-        """This API (ModifyVpnGatewayAttribute) is used to modify the attributes of VPN gateways.
+        r"""This API (ModifyVpnGatewayAttribute) is used to modify the attributes of VPN gateways.
 
         :param request: Request instance for ModifyVpnGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayAttributeRequest`
@@ -6006,7 +6006,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnGatewayCcnRoutes(self, request):
-        """This API is used to modify VPN gateway-based CCN routes.
+        r"""This API is used to modify VPN gateway-based CCN routes.
 
         :param request: Request instance for ModifyVpnGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayCcnRoutesRequest`
@@ -6029,7 +6029,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnGatewayRoutes(self, request):
-        """This API is used to modify VPN gateway routes.
+        r"""This API is used to modify VPN gateway routes.
 
         :param request: Request instance for ModifyVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayRoutesRequest`
@@ -6052,7 +6052,7 @@ class VpcClient(AbstractClient):
 
 
     def NotifyRoutes(self, request):
-        """This API is used to publish a route to CCN. This can also be done by clicking "Publish to CCN" in the operation column on the page of route table list.
+        r"""This API is used to publish a route to CCN. This can also be done by clicking "Publish to CCN" in the operation column on the page of route table list.
 
         :param request: Request instance for NotifyRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesRequest`
@@ -6075,7 +6075,7 @@ class VpcClient(AbstractClient):
 
 
     def RefreshDirectConnectGatewayRouteToNatGateway(self, request):
-        """This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.
+        r"""This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.
 
         :param request: Request instance for RefreshDirectConnectGatewayRouteToNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RefreshDirectConnectGatewayRouteToNatGatewayRequest`
@@ -6098,7 +6098,7 @@ class VpcClient(AbstractClient):
 
 
     def RejectAttachCcnInstances(self, request):
-        """This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.
+        r"""This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.
 
         :param request: Request instance for RejectAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RejectAttachCcnInstancesRequest`
@@ -6121,7 +6121,7 @@ class VpcClient(AbstractClient):
 
 
     def ReleaseAddresses(self, request):
-        """This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
+        r"""This API (ReleaseAddresses) is used to release one or multiple [Elastic IPs](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1).
         * This operation is irreversible. Once you release an EIP, the IP address associated with the EIP no longer belongs to you.
         * Only EIPs in UNBIND status can be released.
 
@@ -6146,7 +6146,7 @@ class VpcClient(AbstractClient):
 
 
     def ReleaseIPv6Addresses(self, request):
-        """This API is used to release one or more EIPv6 instances.
+        r"""This API is used to release one or more EIPv6 instances.
 
         - You can release the obtained EIPv6 instances. To use them again, please reapply.
         - Only EIPv6 instances in UNBIND status can be released.
@@ -6172,7 +6172,7 @@ class VpcClient(AbstractClient):
 
 
     def ReleaseIp6AddressesBandwidth(self, request):
-        """This API is used to release the IPv6 public network bandwidth of classic elastic public IPv6 instances.
+        r"""This API is used to release the IPv6 public network bandwidth of classic elastic public IPv6 instances.
 
         - Classic elastic public IPv6 addresses still have the IPv6 private network communication capability after the public network bandwidth is released.
         - To allocate IPV6 public network bandwidth, call the AllocateIp6AddressesBandwidth API.
@@ -6198,7 +6198,7 @@ class VpcClient(AbstractClient):
 
 
     def RemoveBandwidthPackageResources(self, request):
-        """This API is used to delete a bandwidth package resource, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.
+        r"""This API is used to delete a bandwidth package resource, including [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1), [Cloud Load Balancer](https://intl.cloud.tencent.com/document/product/214/517?from_cn_redirect=1), and so on.
 
         :param request: Request instance for RemoveBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesRequest`
@@ -6221,7 +6221,7 @@ class VpcClient(AbstractClient):
 
 
     def RenewVpnGateway(self, request):
-        """This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.
+        r"""This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.
 
         :param request: Request instance for RenewVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayRequest`
@@ -6244,7 +6244,7 @@ class VpcClient(AbstractClient):
 
 
     def ReplaceDirectConnectGatewayCcnRoutes(self, request):
-        """This API (ReplaceDirectConnectGatewayCcnRoutes) is used to modify the specified route according to the route ID. Batch modification is supported.
+        r"""This API (ReplaceDirectConnectGatewayCcnRoutes) is used to modify the specified route according to the route ID. Batch modification is supported.
 
         :param request: Request instance for ReplaceDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceDirectConnectGatewayCcnRoutesRequest`
@@ -6267,7 +6267,7 @@ class VpcClient(AbstractClient):
 
 
     def ReplaceRouteTableAssociation(self, request):
-        """This API (ReplaceRouteTableAssociation) is used to modify the route table associated with a subnet.
+        r"""This API (ReplaceRouteTableAssociation) is used to modify the route table associated with a subnet.
         * A subnet can only be associated with one route table.
 
         :param request: Request instance for ReplaceRouteTableAssociation.
@@ -6291,7 +6291,7 @@ class VpcClient(AbstractClient):
 
 
     def ReplaceRoutes(self, request):
-        """This API (ReplaceRoutes) is used to modify a specified routing policy by its ID (RouteId). Batch modification is supported.
+        r"""This API (ReplaceRoutes) is used to modify a specified routing policy by its ID (RouteId). Batch modification is supported.
 
         :param request: Request instance for ReplaceRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutesRequest`
@@ -6314,7 +6314,7 @@ class VpcClient(AbstractClient):
 
 
     def ReplaceSecurityGroupPolicies(self, request):
-        """This API is used to batch modify security group policies.
+        r"""This API is used to batch modify security group policies.
         Policies to modify must be in the same direction. `PolicyIndex` must be specified.
 
         :param request: Request instance for ReplaceSecurityGroupPolicies.
@@ -6338,7 +6338,7 @@ class VpcClient(AbstractClient):
 
 
     def ReplaceSecurityGroupPolicy(self, request):
-        """This API (ReplaceSecurityGroupPolicy) is used to replace a single security group policy (SecurityGroupPolicy).
+        r"""This API (ReplaceSecurityGroupPolicy) is used to replace a single security group policy (SecurityGroupPolicy).
         Only one policy in a single direction can be replaced in each request, and the PolicyIndex parameter must be specified.
 
         :param request: Request instance for ReplaceSecurityGroupPolicy.
@@ -6362,7 +6362,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetAttachCcnInstances(self, request):
-        """This API (ResetAttachCcnInstances) is used to re-apply for the association operation when the application for cross-account instance association expires.
+        r"""This API (ResetAttachCcnInstances) is used to re-apply for the association operation when the application for cross-account instance association expires.
 
         :param request: Request instance for ResetAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetAttachCcnInstancesRequest`
@@ -6385,7 +6385,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetNatGatewayConnection(self, request):
-        """This API is used to adjust concurrent connection cap for the NAT gateway.
+        r"""This API is used to adjust concurrent connection cap for the NAT gateway.
 
         :param request: Request instance for ResetNatGatewayConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionRequest`
@@ -6408,7 +6408,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetRoutes(self, request):
-        """This API (ResetRoutes) is used to reset the name of a route table and all its routing policies.<br />
+        r"""This API (ResetRoutes) is used to reset the name of a route table and all its routing policies.<br />
         Note: When this API is called, all routing policies in the current route table are deleted before new routing policies are saved, which may incur network interruption.
 
         :param request: Request instance for ResetRoutes.
@@ -6432,7 +6432,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetVpnConnection(self, request):
-        """The API is used to reset a VPN tunnel.
+        r"""The API is used to reset a VPN tunnel.
 
         :param request: Request instance for ResetVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnConnectionRequest`
@@ -6455,7 +6455,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetVpnGatewayInternetMaxBandwidth(self, request):
-        """This API is used to adjust the bandwidth cap of a VPN gateway. The adjustment of the VPN gateway bandwidth is limited to [5,100] Mbps and [200,1000] Mbps.
+        r"""This API is used to adjust the bandwidth cap of a VPN gateway. The adjustment of the VPN gateway bandwidth is limited to [5,100] Mbps and [200,1000] Mbps.
 
         :param request: Request instance for ResetVpnGatewayInternetMaxBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnGatewayInternetMaxBandwidthRequest`
@@ -6478,7 +6478,7 @@ class VpcClient(AbstractClient):
 
 
     def ResumeSnapshotInstance(self, request):
-        """This API is used to restore security group policies with a backup.
+        r"""This API is used to restore security group policies with a backup.
 
         :param request: Request instance for ResumeSnapshotInstance.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResumeSnapshotInstanceRequest`
@@ -6501,7 +6501,7 @@ class VpcClient(AbstractClient):
 
 
     def ReturnNormalAddresses(self, request):
-        """This API is used to unbind and release public IPs.
+        r"""This API is used to unbind and release public IPs.
         Note: Starting from Dec 15, 2022, CAM authorization is required for a sub-account to call this API. For more details, see [Authorization Guide](https://intl.cloud.tencent.com/document/product/598/34545?from_cn_redirect=1).
 
         :param request: Request instance for ReturnNormalAddresses.
@@ -6525,7 +6525,7 @@ class VpcClient(AbstractClient):
 
 
     def SetCcnRegionBandwidthLimits(self, request):
-        """This API (SetCcnRegionBandwidthLimits) is used to set the outbound bandwidth cap for CCNs in each region. This API can only set the outbound bandwidth cap for regions in the network instances that have already been associated.
+        r"""This API (SetCcnRegionBandwidthLimits) is used to set the outbound bandwidth cap for CCNs in each region. This API can only set the outbound bandwidth cap for regions in the network instances that have already been associated.
 
         :param request: Request instance for SetCcnRegionBandwidthLimits.
         :type request: :class:`tencentcloud.vpc.v20170312.models.SetCcnRegionBandwidthLimitsRequest`
@@ -6548,7 +6548,7 @@ class VpcClient(AbstractClient):
 
 
     def SetVpnGatewaysRenewFlag(self, request):
-        """This API is used set the auto-renewal configuration of a VPN gateway.
+        r"""This API is used set the auto-renewal configuration of a VPN gateway.
 
         :param request: Request instance for SetVpnGatewaysRenewFlag.
         :type request: :class:`tencentcloud.vpc.v20170312.models.SetVpnGatewaysRenewFlagRequest`
@@ -6571,7 +6571,7 @@ class VpcClient(AbstractClient):
 
 
     def TransformAddress(self, request):
-        """This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
+        r"""This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).
         * Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).
 
         :param request: Request instance for TransformAddress.
@@ -6595,7 +6595,7 @@ class VpcClient(AbstractClient):
 
 
     def UnassignIpv6Addresses(self, request):
-        """This API is used to release the IPv6 addresses of an ENI. <br />
+        r"""This API is used to release the IPv6 addresses of an ENI. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
 
         :param request: Request instance for UnassignIpv6Addresses.
@@ -6619,7 +6619,7 @@ class VpcClient(AbstractClient):
 
 
     def UnassignIpv6CidrBlock(self, request):
-        """This API (UnassignIpv6CidrBlock) is used to release IPv6 IP ranges.
+        r"""This API (UnassignIpv6CidrBlock) is used to release IPv6 IP ranges.
         If the IP range still has occupied IPs that are not yet repossessed, the IP range cannot be released.
 
         :param request: Request instance for UnassignIpv6CidrBlock.
@@ -6643,7 +6643,7 @@ class VpcClient(AbstractClient):
 
 
     def UnassignIpv6SubnetCidrBlock(self, request):
-        """This API (UnassignIpv6SubnetCidrBlock) is used to release IPv6 subnet IP ranges.
+        r"""This API (UnassignIpv6SubnetCidrBlock) is used to release IPv6 subnet IP ranges.
         If the subnet IP range still has occupied IPs that are not yet repossessed, the subnet IP range cannot be released.
 
         :param request: Request instance for UnassignIpv6SubnetCidrBlock.
@@ -6667,7 +6667,7 @@ class VpcClient(AbstractClient):
 
 
     def UnassignPrivateIpAddresses(self, request):
-        """This API is used to return the private IP addresses of an ENI.
+        r"""This API is used to return the private IP addresses of an ENI.
         * If a secondary private IP of an ENI is returned, the EIP will be automatically unassociated as well. The primary private IP of the ENI cannot be returned.
 
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
@@ -6693,7 +6693,7 @@ class VpcClient(AbstractClient):
 
 
     def WithdrawNotifyRoutes(self, request):
-        """This API is used to withdraw a route from CCN.
+        r"""This API is used to withdraw a route from CCN.
 
         :param request: Request instance for WithdrawNotifyRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesRequest`

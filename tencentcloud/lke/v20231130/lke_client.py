@@ -27,7 +27,7 @@ class LkeClient(AbstractClient):
 
 
     def CheckAttributeLabelExist(self, request):
-        """This API is used to check if the label name under an attribute exist.
+        r"""This API is used to check if the label name under an attribute exist.
 
         :param request: Request instance for CheckAttributeLabelExist.
         :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelExistRequest`
@@ -50,7 +50,7 @@ class LkeClient(AbstractClient):
 
 
     def CheckAttributeLabelRefer(self, request):
-        """This API is used to check attribute label references.
+        r"""This API is used to check attribute label references.
 
         :param request: Request instance for CheckAttributeLabelRefer.
         :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelReferRequest`
@@ -73,7 +73,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateApp(self, request):
-        """This API is used to create knowledge engine applications.
+        r"""This API is used to create knowledge engine applications.
 
         :param request: Request instance for CreateApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAppRequest`
@@ -96,7 +96,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateAttributeLabel(self, request):
-        """This API is used to create attributes.
+        r"""This API is used to create attributes.
 
         :param request: Request instance for CreateAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateAttributeLabelRequest`
@@ -119,7 +119,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateCorp(self, request):
-        """This API is used to create enterprises.
+        r"""This API is used to create enterprises.
 
         :param request: Request instance for CreateCorp.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateCorpRequest`
@@ -142,7 +142,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateDocCate(self, request):
-        """This API is used to create doc categories.
+        r"""This API is used to create doc categories.
 
         :param request: Request instance for CreateDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateDocCateRequest`
@@ -165,7 +165,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateQA(self, request):
-        """This API is used to enter Q&As.
+        r"""This API is used to enter Q&As.
 
         :param request: Request instance for CreateQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateQARequest`
@@ -188,7 +188,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateQACate(self, request):
-        """This API is used to create Q&A categories.
+        r"""This API is used to create Q&A categories.
 
         :param request: Request instance for CreateQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateQACateRequest`
@@ -211,7 +211,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateReconstructDocumentFlow(self, request):
-        """This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
+        r"""This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.
         Document parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order.
         During the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.
 
@@ -236,7 +236,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateRejectedQuestion(self, request):
-        """This API is used to create rejected questions.
+        r"""This API is used to create rejected questions.
 
         :param request: Request instance for CreateRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateRejectedQuestionRequest`
@@ -259,7 +259,7 @@ class LkeClient(AbstractClient):
 
 
     def CreateRelease(self, request):
-        """This API is used to create a release.
+        r"""This API is used to create a release.
 
         :param request: Request instance for CreateRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.CreateReleaseRequest`
@@ -282,7 +282,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteApp(self, request):
-        """This API is used to delete applications.
+        r"""This API is used to delete applications.
 
         :param request: Request instance for DeleteApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAppRequest`
@@ -305,7 +305,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteAttributeLabel(self, request):
-        """This API is used to delete attribute labels.
+        r"""This API is used to delete attribute labels.
 
         :param request: Request instance for DeleteAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAttributeLabelRequest`
@@ -328,7 +328,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteDoc(self, request):
-        """This API is used to delete documents.
+        r"""This API is used to delete documents.
 
         :param request: Request instance for DeleteDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocRequest`
@@ -351,7 +351,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteDocCate(self, request):
-        """This API is used to delete Doc categories.
+        r"""This API is used to delete Doc categories.
 
         :param request: Request instance for DeleteDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateRequest`
@@ -374,7 +374,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteQA(self, request):
-        """This API is used to delete Q&As.
+        r"""This API is used to delete Q&As.
 
         :param request: Request instance for DeleteQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteQARequest`
@@ -397,7 +397,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteQACate(self, request):
-        """This API is used to delete categories.
+        r"""This API is used to delete categories.
 
         :param request: Request instance for DeleteQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteQACateRequest`
@@ -420,7 +420,7 @@ class LkeClient(AbstractClient):
 
 
     def DeleteRejectedQuestion(self, request):
-        """This API is used to delete rejected questions.
+        r"""This API is used to delete rejected questions.
 
         :param request: Request instance for DeleteRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.DeleteRejectedQuestionRequest`
@@ -443,7 +443,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeApp(self, request):
-        """This API is used to obtain application details under the corporate.
+        r"""This API is used to obtain application details under the corporate.
 
         :param request: Request instance for DescribeApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAppRequest`
@@ -466,7 +466,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeAttributeLabel(self, request):
-        """This API is used to query attribute label details.
+        r"""This API is used to query attribute label details.
 
         :param request: Request instance for DescribeAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAttributeLabelRequest`
@@ -489,7 +489,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeCallStatsGraph(self, request):
-        """This API is used to show line chart of API calls.
+        r"""This API is used to show line chart of API calls.
 
         :param request: Request instance for DescribeCallStatsGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCallStatsGraphRequest`
@@ -512,7 +512,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeConcurrencyUsage(self, request):
-        """This API is used to response to concurrent calls.
+        r"""This API is used to response to concurrent calls.
 
         :param request: Request instance for DescribeConcurrencyUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageRequest`
@@ -535,7 +535,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeConcurrencyUsageGraph(self, request):
-        """This API is used to show line chart of concurrent calls.
+        r"""This API is used to show line chart of concurrent calls.
 
         :param request: Request instance for DescribeConcurrencyUsageGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeConcurrencyUsageGraphRequest`
@@ -558,7 +558,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeCorp(self, request):
-        """This API is used to query corporate details.
+        r"""This API is used to query corporate details.
 
         :param request: Request instance for DescribeCorp.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCorpRequest`
@@ -581,7 +581,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeDoc(self, request):
-        """This API is used to query document details.
+        r"""This API is used to query document details.
 
         :param request: Request instance for DescribeDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeDocRequest`
@@ -604,7 +604,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeKnowledgeUsage(self, request):
-        """This API is used to query the knowledge library usage.
+        r"""This API is used to query the knowledge library usage.
 
         :param request: Request instance for DescribeKnowledgeUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsageRequest`
@@ -627,7 +627,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeKnowledgeUsagePieGraph(self, request):
-        """This API is used to query pie chart of the enterprise knowledge base capacity .
+        r"""This API is used to query pie chart of the enterprise knowledge base capacity .
 
         :param request: Request instance for DescribeKnowledgeUsagePieGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeKnowledgeUsagePieGraphRequest`
@@ -650,7 +650,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeQA(self, request):
-        """This API is used to query Q&A details.
+        r"""This API is used to query Q&A details.
 
         :param request: Request instance for DescribeQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeQARequest`
@@ -673,7 +673,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRefer(self, request):
-        """This API is used to get the reference source details list.
+        r"""This API is used to get the reference source details list.
 
         :param request: Request instance for DescribeRefer.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReferRequest`
@@ -696,7 +696,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRelease(self, request):
-        """This API is used to query release details.
+        r"""This API is used to query release details.
 
         :param request: Request instance for DescribeRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseRequest`
@@ -719,7 +719,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeReleaseInfo(self, request):
-        """This API is used to pull the release button status and last release time.
+        r"""This API is used to pull the release button status and last release time.
 
         :param request: Request instance for DescribeReleaseInfo.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseInfoRequest`
@@ -742,7 +742,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeRobotBizIDByAppKey(self, request):
-        """This API is used to get application business ID through appKey.
+        r"""This API is used to get application business ID through appKey.
 
         :param request: Request instance for DescribeRobotBizIDByAppKey.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeRobotBizIDByAppKeyRequest`
@@ -765,7 +765,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeSearchStatsGraph(self, request):
-        """This API is used to query line chart of search service calls.
+        r"""This API is used to query line chart of search service calls.
 
         :param request: Request instance for DescribeSearchStatsGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSearchStatsGraphRequest`
@@ -788,7 +788,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeSegments(self, request):
-        """This API is used to get fragment details.
+        r"""This API is used to get fragment details.
 
         :param request: Request instance for DescribeSegments.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsRequest`
@@ -811,7 +811,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeStorageCredential(self, request):
-        """This API is used to get the temporary key for file upload.
+        r"""This API is used to get the temporary key for file upload.
 
         :param request: Request instance for DescribeStorageCredential.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeStorageCredentialRequest`
@@ -834,7 +834,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeTokenUsage(self, request):
-        """This API is used to query API call token details.
+        r"""This API is used to query API call token details.
 
         :param request: Request instance for DescribeTokenUsage.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageRequest`
@@ -857,7 +857,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeTokenUsageGraph(self, request):
-        """This API is used to show API call token line chart.
+        r"""This API is used to show API call token line chart.
 
         :param request: Request instance for DescribeTokenUsageGraph.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeTokenUsageGraphRequest`
@@ -880,7 +880,7 @@ class LkeClient(AbstractClient):
 
 
     def DescribeUnsatisfiedReplyContext(self, request):
-        """This API is used to get the context of dissatisfied responses.
+        r"""This API is used to get the context of dissatisfied responses.
 
         :param request: Request instance for DescribeUnsatisfiedReplyContext.
         :type request: :class:`tencentcloud.lke.v20231130.models.DescribeUnsatisfiedReplyContextRequest`
@@ -903,7 +903,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportAttributeLabel(self, request):
-        """This API is used to export attribute labels.
+        r"""This API is used to export attribute labels.
 
         :param request: Request instance for ExportAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportAttributeLabelRequest`
@@ -926,7 +926,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportQAList(self, request):
-        """This API is used to export Q&A list.
+        r"""This API is used to export Q&A list.
 
         :param request: Request instance for ExportQAList.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportQAListRequest`
@@ -949,7 +949,7 @@ class LkeClient(AbstractClient):
 
 
     def ExportUnsatisfiedReply(self, request):
-        """This API is used to export dissatisfied responses.
+        r"""This API is used to export dissatisfied responses.
 
         :param request: Request instance for ExportUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.ExportUnsatisfiedReplyRequest`
@@ -972,7 +972,7 @@ class LkeClient(AbstractClient):
 
 
     def GenerateQA(self, request):
-        """This API is used to generate Q%A from document.
+        r"""This API is used to generate Q%A from document.
 
         :param request: Request instance for GenerateQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.GenerateQARequest`
@@ -995,7 +995,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAnswerTypeDataCount(self, request):
-        """This API is used to get response type data statistics.
+        r"""This API is used to get response type data statistics.
 
         :param request: Request instance for GetAnswerTypeDataCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountRequest`
@@ -1018,7 +1018,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAppKnowledgeCount(self, request):
-        """This API is used to get a model list.
+        r"""This API is used to get a model list.
 
         :param request: Request instance for GetAppKnowledgeCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAppKnowledgeCountRequest`
@@ -1041,7 +1041,7 @@ class LkeClient(AbstractClient):
 
 
     def GetAppSecret(self, request):
-        """This API is used to get application secret keys.
+        r"""This API is used to get application secret keys.
 
         :param request: Request instance for GetAppSecret.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetAppSecretRequest`
@@ -1064,7 +1064,7 @@ class LkeClient(AbstractClient):
 
 
     def GetDocPreview(self, request):
-        """This API is used to get document preview information.
+        r"""This API is used to get document preview information.
 
         :param request: Request instance for GetDocPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetDocPreviewRequest`
@@ -1087,7 +1087,7 @@ class LkeClient(AbstractClient):
 
 
     def GetLikeDataCount(self, request):
-        """This API is used to get likes and dislikes data statistics.
+        r"""This API is used to get likes and dislikes data statistics.
 
         :param request: Request instance for GetLikeDataCount.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountRequest`
@@ -1110,7 +1110,7 @@ class LkeClient(AbstractClient):
 
 
     def GetMsgRecord(self, request):
-        """This API is used to obtain chat history based on the session ID (only historical session data within the past 180 days will be retained).
+        r"""This API is used to obtain chat history based on the session ID (only historical session data within the past 180 days will be retained).
 
         :param request: Request instance for GetMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetMsgRecordRequest`
@@ -1133,7 +1133,7 @@ class LkeClient(AbstractClient):
 
 
     def GetReconstructDocumentResult(self, request):
-        """This is an asynchronous APIs, used to get document parsing task results.
+        r"""This is an asynchronous APIs, used to get document parsing task results.
 
         :param request: Request instance for GetReconstructDocumentResult.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
@@ -1156,7 +1156,7 @@ class LkeClient(AbstractClient):
 
 
     def GetTaskStatus(self, request):
-        """This API is used to get the task status.
+        r"""This API is used to get the task status.
 
         :param request: Request instance for GetTaskStatus.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetTaskStatusRequest`
@@ -1179,7 +1179,7 @@ class LkeClient(AbstractClient):
 
 
     def GetWsToken(self, request):
-        """This API is used to get ws token.
+        r"""This API is used to get ws token.
 
         :param request: Request instance for GetWsToken.
         :type request: :class:`tencentcloud.lke.v20231130.models.GetWsTokenRequest`
@@ -1202,7 +1202,7 @@ class LkeClient(AbstractClient):
 
 
     def GroupDoc(self, request):
-        """DocGroup.
+        r"""DocGroup.
 
         :param request: Request instance for GroupDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.GroupDocRequest`
@@ -1225,7 +1225,7 @@ class LkeClient(AbstractClient):
 
 
     def GroupQA(self, request):
-        """Q&A Group.
+        r"""Q&A Group.
 
         :param request: Request instance for GroupQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.GroupQARequest`
@@ -1248,7 +1248,7 @@ class LkeClient(AbstractClient):
 
 
     def IgnoreUnsatisfiedReply(self, request):
-        """This API is used to ignore dissatisfied responses.
+        r"""This API is used to ignore dissatisfied responses.
 
         :param request: Request instance for IgnoreUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.IgnoreUnsatisfiedReplyRequest`
@@ -1271,7 +1271,7 @@ class LkeClient(AbstractClient):
 
 
     def ListApp(self, request):
-        """This API is used to get the application list under the corporate.
+        r"""This API is used to get the application list under the corporate.
 
         :param request: Request instance for ListApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAppRequest`
@@ -1294,7 +1294,7 @@ class LkeClient(AbstractClient):
 
 
     def ListAppCategory(self, request):
-        """This API is used to get list of application types.
+        r"""This API is used to get list of application types.
 
         :param request: Request instance for ListAppCategory.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryRequest`
@@ -1317,7 +1317,7 @@ class LkeClient(AbstractClient):
 
 
     def ListAppKnowledgeDetail(self, request):
-        """This API is used to query the knowledge base capacity details in a list.
+        r"""This API is used to query the knowledge base capacity details in a list.
 
         :param request: Request instance for ListAppKnowledgeDetail.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailRequest`
@@ -1340,7 +1340,7 @@ class LkeClient(AbstractClient):
 
 
     def ListAttributeLabel(self, request):
-        """This API is used to query attribute label lists.
+        r"""This API is used to query attribute label lists.
 
         :param request: Request instance for ListAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListAttributeLabelRequest`
@@ -1363,7 +1363,7 @@ class LkeClient(AbstractClient):
 
 
     def ListDoc(self, request):
-        """This API is used to get document list.
+        r"""This API is used to get document list.
 
         :param request: Request instance for ListDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListDocRequest`
@@ -1386,7 +1386,7 @@ class LkeClient(AbstractClient):
 
 
     def ListDocCate(self, request):
-        """This API is used to get document category.
+        r"""This API is used to get document category.
 
         :param request: Request instance for ListDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListDocCateRequest`
@@ -1409,7 +1409,7 @@ class LkeClient(AbstractClient):
 
 
     def ListModel(self, request):
-        """This API is used to get the model list.
+        r"""This API is used to get the model list.
 
         :param request: Request instance for ListModel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListModelRequest`
@@ -1432,7 +1432,7 @@ class LkeClient(AbstractClient):
 
 
     def ListQA(self, request):
-        """This API is used to query Q&A lists.
+        r"""This API is used to query Q&A lists.
 
         :param request: Request instance for ListQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListQARequest`
@@ -1455,7 +1455,7 @@ class LkeClient(AbstractClient):
 
 
     def ListQACate(self, request):
-        """This API is used to get Q&A categories.
+        r"""This API is used to get Q&A categories.
 
         :param request: Request instance for ListQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListQACateRequest`
@@ -1478,7 +1478,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRejectedQuestion(self, request):
-        """This API is used to get rejected questions.
+        r"""This API is used to get rejected questions.
 
         :param request: Request instance for ListRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionRequest`
@@ -1501,7 +1501,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRejectedQuestionPreview(self, request):
-        """This API is used to release a preview of rejected questions.
+        r"""This API is used to release a preview of rejected questions.
 
         :param request: Request instance for ListRejectedQuestionPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionPreviewRequest`
@@ -1524,7 +1524,7 @@ class LkeClient(AbstractClient):
 
 
     def ListRelease(self, request):
-        """This API is used to get the release list.
+        r"""This API is used to get the release list.
 
         :param request: Request instance for ListRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseRequest`
@@ -1547,7 +1547,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseConfigPreview(self, request):
-        """This API is used to preview the release configuration items.
+        r"""This API is used to preview the release configuration items.
 
         :param request: Request instance for ListReleaseConfigPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseConfigPreviewRequest`
@@ -1570,7 +1570,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseDocPreview(self, request):
-        """This API is used to preview released documents.
+        r"""This API is used to preview released documents.
 
         :param request: Request instance for ListReleaseDocPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseDocPreviewRequest`
@@ -1593,7 +1593,7 @@ class LkeClient(AbstractClient):
 
 
     def ListReleaseQAPreview(self, request):
-        """List of documents.
+        r"""List of documents.
 
         :param request: Request instance for ListReleaseQAPreview.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseQAPreviewRequest`
@@ -1616,7 +1616,7 @@ class LkeClient(AbstractClient):
 
 
     def ListSelectDoc(self, request):
-        """This API is used to get account information.
+        r"""This API is used to get account information.
 
         :param request: Request instance for ListSelectDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListSelectDocRequest`
@@ -1639,7 +1639,7 @@ class LkeClient(AbstractClient):
 
 
     def ListUnsatisfiedReply(self, request):
-        """This API is used to query a list of dissatisfied responses.
+        r"""This API is used to query a list of dissatisfied responses.
 
         :param request: Request instance for ListUnsatisfiedReply.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListUnsatisfiedReplyRequest`
@@ -1662,7 +1662,7 @@ class LkeClient(AbstractClient):
 
 
     def ListUsageCallDetail(self, request):
-        """This API is used to query single call details in a list.
+        r"""This API is used to query single call details in a list.
 
         :param request: Request instance for ListUsageCallDetail.
         :type request: :class:`tencentcloud.lke.v20231130.models.ListUsageCallDetailRequest`
@@ -1685,7 +1685,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyApp(self, request):
-        """This API is used to modify application request structure.
+        r"""This API is used to modify application request structure.
 
         :param request: Request instance for ModifyApp.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAppRequest`
@@ -1708,7 +1708,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyAttributeLabel(self, request):
-        """This API is used to edit attribute labels.
+        r"""This API is used to edit attribute labels.
 
         :param request: Request instance for ModifyAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyAttributeLabelRequest`
@@ -1731,7 +1731,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDoc(self, request):
-        """This API is used to modify documents.
+        r"""This API is used to modify documents.
 
         :param request: Request instance for ModifyDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocRequest`
@@ -1754,7 +1754,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDocAttrRange(self, request):
-        """This API is used to modify applicable scope of the document in batches.
+        r"""This API is used to modify applicable scope of the document in batches.
 
         :param request: Request instance for ModifyDocAttrRange.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocAttrRangeRequest`
@@ -1777,7 +1777,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyDocCate(self, request):
-        """This API is used to modify Doc categories.
+        r"""This API is used to modify Doc categories.
 
         :param request: Request instance for ModifyDocCate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyDocCateRequest`
@@ -1800,7 +1800,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQA(self, request):
-        """This API is used to update Q&As.
+        r"""This API is used to update Q&As.
 
         :param request: Request instance for ModifyQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQARequest`
@@ -1823,7 +1823,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQAAttrRange(self, request):
-        """This API is used to modify Q&A applicable scope in batches.
+        r"""This API is used to modify Q&A applicable scope in batches.
 
         :param request: Request instance for ModifyQAAttrRange.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQAAttrRangeRequest`
@@ -1846,7 +1846,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyQACate(self, request):
-        """This API is used to modify Q&A categories.
+        r"""This API is used to modify Q&A categories.
 
         :param request: Request instance for ModifyQACate.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyQACateRequest`
@@ -1869,7 +1869,7 @@ class LkeClient(AbstractClient):
 
 
     def ModifyRejectedQuestion(self, request):
-        """This API is used to modify rejected questions.
+        r"""This API is used to modify rejected questions.
 
         :param request: Request instance for ModifyRejectedQuestion.
         :type request: :class:`tencentcloud.lke.v20231130.models.ModifyRejectedQuestionRequest`
@@ -1892,7 +1892,7 @@ class LkeClient(AbstractClient):
 
 
     def RateMsgRecord(self, request):
-        """This API is used to show messages for likes and dislikes.
+        r"""This API is used to show messages for likes and dislikes.
 
         :param request: Request instance for RateMsgRecord.
         :type request: :class:`tencentcloud.lke.v20231130.models.RateMsgRecordRequest`
@@ -1915,7 +1915,7 @@ class LkeClient(AbstractClient):
 
 
     def RenameDoc(self, request):
-        """This API is used to rename a document.
+        r"""This API is used to rename a document.
 
         :param request: Request instance for RenameDoc.
         :type request: :class:`tencentcloud.lke.v20231130.models.RenameDocRequest`
@@ -1938,7 +1938,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryDocAudit(self, request):
-        """This API is used to retry document parsing.
+        r"""This API is used to retry document parsing.
 
         :param request: Request instance for RetryDocAudit.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryDocAuditRequest`
@@ -1961,7 +1961,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryDocParse(self, request):
-        """This API is used to retry document parsing.
+        r"""This API is used to retry document parsing.
 
         :param request: Request instance for RetryDocParse.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryDocParseRequest`
@@ -1984,7 +1984,7 @@ class LkeClient(AbstractClient):
 
 
     def RetryRelease(self, request):
-        """This API is used to retry after release suspension.
+        r"""This API is used to retry after release suspension.
 
         :param request: Request instance for RetryRelease.
         :type request: :class:`tencentcloud.lke.v20231130.models.RetryReleaseRequest`
@@ -2007,7 +2007,7 @@ class LkeClient(AbstractClient):
 
 
     def SaveDoc(self, request):
-        """This API is used to save a knowledge base document Q&As.
+        r"""This API is used to save a knowledge base document Q&As.
         Three steps to store a file in the knowledge library of the application:
         1. Obtain a temporary key. For more information, see [API Documentation](https://cloud.tencent.com/document/product/1759/105050). Different parameter combinations of the temporary key have different permissions. For more information, see [Tencent Cloud Agent Development Platform/ADP COS Guide](https://cloud.tencent.com/document/product/1759/116238).
         2. Call the COS storage API provided by Tencent Cloud to store the file in the COS of ADP. For details, see [COS SDK Overview](https://cloud.tencent.com/document/product/436/6474). Note that the temporary key method is used to operate COS.
@@ -2035,7 +2035,7 @@ class LkeClient(AbstractClient):
 
 
     def StopDocParse(self, request):
-        """This API is used to terminate document parsing.
+        r"""This API is used to terminate document parsing.
 
         :param request: Request instance for StopDocParse.
         :type request: :class:`tencentcloud.lke.v20231130.models.StopDocParseRequest`
@@ -2058,7 +2058,7 @@ class LkeClient(AbstractClient):
 
 
     def UploadAttributeLabel(self, request):
-        """This API is used to upload and import attribute labels.
+        r"""This API is used to upload and import attribute labels.
 
         :param request: Request instance for UploadAttributeLabel.
         :type request: :class:`tencentcloud.lke.v20231130.models.UploadAttributeLabelRequest`
@@ -2081,7 +2081,7 @@ class LkeClient(AbstractClient):
 
 
     def VerifyQA(self, request):
-        """This API is used to verify Q&A.
+        r"""This API is used to verify Q&A.
 
         :param request: Request instance for VerifyQA.
         :type request: :class:`tencentcloud.lke.v20231130.models.VerifyQARequest`

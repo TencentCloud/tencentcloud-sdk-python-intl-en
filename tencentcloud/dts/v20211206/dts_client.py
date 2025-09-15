@@ -27,7 +27,7 @@ class DtsClient(AbstractClient):
 
 
     def CompleteMigrateJob(self, request):
-        """This API is used to complete a data migration task.
+        r"""This API is used to complete a data migration task.
         For tasks in incremental migration mode, you need to call this API before migration gets ready for completion to stop migrating incremental data.
         If the task status queried through the `DescribeMigrationJobs` API is ready (`Status` = `readyComplete`), you can call this API to complete the migration task.
 
@@ -52,7 +52,7 @@ class DtsClient(AbstractClient):
 
 
     def ConfigureSubscribeJob(self, request):
-        """This API is used to configure data subscription instances.
+        r"""This API is used to configure data subscription instances.
 
         :param request: Request instance for ConfigureSubscribeJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ConfigureSubscribeJobRequest`
@@ -75,7 +75,7 @@ class DtsClient(AbstractClient):
 
 
     def ConfigureSyncJob(self, request):
-        """This API is used to configure a sync task.
+        r"""This API is used to configure a sync task.
 
         :param request: Request instance for ConfigureSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ConfigureSyncJobRequest`
@@ -98,7 +98,7 @@ class DtsClient(AbstractClient):
 
 
     def ContinueMigrateJob(self, request):
-        """This API is used to resume a paused migration task.
+        r"""This API is used to resume a paused migration task.
 
         :param request: Request instance for ContinueMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobRequest`
@@ -121,7 +121,7 @@ class DtsClient(AbstractClient):
 
 
     def ContinueSyncJob(self, request):
-        """This API is used to resume a paused data sync task.
+        r"""This API is used to resume a paused data sync task.
 
         :param request: Request instance for ContinueSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobRequest`
@@ -144,7 +144,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateCheckSyncJob(self, request):
-        """This API is used to verify a sync task by checking required parameters and peripheral configuration.
+        r"""This API is used to verify a sync task by checking required parameters and peripheral configuration.
 
         :param request: Request instance for CreateCheckSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateCheckSyncJobRequest`
@@ -167,7 +167,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateCompareTask(self, request):
-        """This API is used to create a data consistency check task. After the task is successfully created, its ID will be returned in the format of `dts-8yv4w2i1-cmp-37skmii9`, and you can call `StartCompare` to start it.
+        r"""This API is used to create a data consistency check task. After the task is successfully created, its ID will be returned in the format of `dts-8yv4w2i1-cmp-37skmii9`, and you can call `StartCompare` to start it.
 
         :param request: Request instance for CreateCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateCompareTaskRequest`
@@ -190,7 +190,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateConsumerGroup(self, request):
-        """This API is used to creat a consumer group for the subscription instance.
+        r"""This API is used to creat a consumer group for the subscription instance.
 
         :param request: Request instance for CreateConsumerGroup.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateConsumerGroupRequest`
@@ -213,7 +213,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrateCheckJob(self, request):
-        """This API is used to verify a migration task.
+        r"""This API is used to verify a migration task.
         Before migration, you should call this API to create a check task. Migration will start only if the check succeeds. You can view the check result through the `DescribeMigrationCheckJob` API.
         After successful check, if the migration task needs to be modified, a new check task should be created, and migration will start only after the new check succeeds.
 
@@ -238,7 +238,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateMigrationService(self, request):
-        """This API is used to purchase migration tasks. After the tasks are purchased successfully, a randomly generated list of task IDs will be returned. You can also call the `DescribeMigrationJobs` API to query the IDs of the successfully purchased tasks. Note that once a task is purchased successfully, the types and regions of the source and target databases cannot be changed.
+        r"""This API is used to purchase migration tasks. After the tasks are purchased successfully, a randomly generated list of task IDs will be returned. You can also call the `DescribeMigrationJobs` API to query the IDs of the successfully purchased tasks. Note that once a task is purchased successfully, the types and regions of the source and target databases cannot be changed.
 
         :param request: Request instance for CreateMigrationService.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateMigrationServiceRequest`
@@ -261,7 +261,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateModifyCheckSyncJob(self, request):
-        """This API is used to check whether the current data sync task supports object modification after the task configuration is modified.
+        r"""This API is used to check whether the current data sync task supports object modification after the task configuration is modified.
 
         :param request: Request instance for CreateModifyCheckSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobRequest`
@@ -284,7 +284,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSubscribe(self, request):
-        """This API is used to create a data subscription task.
+        r"""This API is used to create a data subscription task.
 
         :param request: Request instance for CreateSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeRequest`
@@ -307,7 +307,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSubscribeCheckJob(self, request):
-        """This API is used to create a subscription check task. The task must have successfully called the ConfigureSubscribeJob interface to configure all necessary information before starting the check.
+        r"""This API is used to create a subscription check task. The task must have successfully called the ConfigureSubscribeJob interface to configure all necessary information before starting the check.
 
         :param request: Request instance for CreateSubscribeCheckJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeCheckJobRequest`
@@ -330,7 +330,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateSyncJob(self, request):
-        """This API is used to create a sync task.
+        r"""This API is used to create a sync task.
 
         :param request: Request instance for CreateSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateSyncJobRequest`
@@ -353,7 +353,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteCompareTask(self, request):
-        """This API is used to delete a data consistency check task, which can be called when the task status is `success`, `failed`, or `canceled`.
+        r"""This API is used to delete a data consistency check task, which can be called when the task status is `success`, `failed`, or `canceled`.
 
         :param request: Request instance for DeleteCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.DeleteCompareTaskRequest`
@@ -376,7 +376,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteConsumerGroup(self, request):
-        """This API is used to delete a consumer group of a subscription task.
+        r"""This API is used to delete a consumer group of a subscription task.
 
         :param request: Request instance for DeleteConsumerGroup.
         :type request: :class:`tencentcloud.dts.v20211206.models.DeleteConsumerGroupRequest`
@@ -399,7 +399,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCheckSyncJobResult(self, request):
-        """This API is used to query the result of the sync check task and check the required parameters and peripheral configurations.
+        r"""This API is used to query the result of the sync check task and check the required parameters and peripheral configurations.
 
         :param request: Request instance for DescribeCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCheckSyncJobResultRequest`
@@ -422,7 +422,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCompareReport(self, request):
-        """This API is used to query the details of a data consistency check task.
+        r"""This API is used to query the details of a data consistency check task.
 
         :param request: Request instance for DescribeCompareReport.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCompareReportRequest`
@@ -445,7 +445,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCompareTasks(self, request):
-        """This API is used to query the list of data consistency check tasks under the current task.
+        r"""This API is used to query the list of data consistency check tasks under the current task.
 
         :param request: Request instance for DescribeCompareTasks.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCompareTasksRequest`
@@ -468,7 +468,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeConsumerGroups(self, request):
-        """This API is used to get consumer group details for the subscription instance configuration.
+        r"""This API is used to get consumer group details for the subscription instance configuration.
 
         :param request: Request instance for DescribeConsumerGroups.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeConsumerGroupsRequest`
@@ -491,7 +491,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrateDBInstances(self, request):
-        """This API is used to query migratable database instances.
+        r"""This API is used to query migratable database instances.
 
         :param request: Request instance for DescribeMigrateDBInstances.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrateDBInstancesRequest`
@@ -514,7 +514,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationCheckJob(self, request):
-        """This API is used to get the check result and query the check status and progress after a check is created.
+        r"""This API is used to get the check result and query the check status and progress after a check is created.
         If the check succeeds, you can call the `StartMigrateJob` API to start migration.
         If the check fails, the cause can be queried. Modify the migration configuration or adjust relevant parameters of the source/target instances through the `ModifyMigrationJob` API based on the error message.
 
@@ -539,7 +539,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationDetail(self, request):
-        """This API is used to query the details of a migration task.
+        r"""This API is used to query the details of a migration task.
 
         :param request: Request instance for DescribeMigrationDetail.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationDetailRequest`
@@ -562,7 +562,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationJobs(self, request):
-        """This API is used to query the list of data migration tasks.
+        r"""This API is used to query the list of data migration tasks.
 
         :param request: Request instance for DescribeMigrationJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationJobsRequest`
@@ -585,7 +585,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeModifyCheckSyncJobResult(self, request):
-        """This API is used to query the result of the created check task for object modification.
+        r"""This API is used to query the result of the created check task for object modification.
 
         :param request: Request instance for DescribeModifyCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultRequest`
@@ -608,7 +608,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeOffsetByTime(self, request):
-        """This API is used to query the latest offset before the specified time in KafkaTopic.The offset output by the interface is the closest offset to this time.If the input time is much later than the current time, the output is equivalent to the latest offset;If the input time is much earlier than the current time, the output is equivalent to the oldest offset;If the input is empty, the default time is 0, which is the oldest offset to be queried.
+        r"""This API is used to query the latest offset before the specified time in KafkaTopic.The offset output by the interface is the closest offset to this time.If the input time is much later than the current time, the output is equivalent to the latest offset;If the input time is much earlier than the current time, the output is equivalent to the oldest offset;If the input is empty, the default time is 0, which is the oldest offset to be queried.
 
         :param request: Request instance for DescribeOffsetByTime.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeOffsetByTimeRequest`
@@ -631,7 +631,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeCheckJob(self, request):
-        """This API is used to query the results of a subscription check task.
+        r"""This API is used to query the results of a subscription check task.
 
         :param request: Request instance for DescribeSubscribeCheckJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeCheckJobRequest`
@@ -654,7 +654,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeDetail(self, request):
-        """This API is used to get the configuration information of the data subscription instance.
+        r"""This API is used to get the configuration information of the data subscription instance.
 
         :param request: Request instance for DescribeSubscribeDetail.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeDetailRequest`
@@ -677,7 +677,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeJobs(self, request):
-        """This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.
+        r"""This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.
 
         :param request: Request instance for DescribeSubscribeJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeJobsRequest`
@@ -700,7 +700,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSubscribeReturnable(self, request):
-        """This API is used to query whether a subscription task can be terminated and returned.
+        r"""This API is used to query whether a subscription task can be terminated and returned.
 
         :param request: Request instance for DescribeSubscribeReturnable.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeReturnableRequest`
@@ -723,7 +723,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeSyncJobs(self, request):
-        """This API is used to query the information of a sync task.
+        r"""This API is used to query the information of a sync task.
 
         :param request: Request instance for DescribeSyncJobs.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncJobsRequest`
@@ -746,7 +746,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroyIsolatedSubscribe(self, request):
-        """This API is used to deactivate an isolated data subscription instance.
+        r"""This API is used to deactivate an isolated data subscription instance.
 
         :param request: Request instance for DestroyIsolatedSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroyIsolatedSubscribeRequest`
@@ -769,7 +769,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroyMigrateJob(self, request):
-        """This API is used to delete a data migration task. For a billed task, you must first call the `IsolateMigrateJob` API to isolate it and make sure that it is in **Isolated** status before calling this API to delete it. For a free task, you can directly call the `IsolateMigrateJob` API to delete it.
+        r"""This API is used to delete a data migration task. For a billed task, you must first call the `IsolateMigrateJob` API to isolate it and make sure that it is in **Isolated** status before calling this API to delete it. For a free task, you can directly call the `IsolateMigrateJob` API to delete it.
 
         :param request: Request instance for DestroyMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroyMigrateJobRequest`
@@ -792,7 +792,7 @@ class DtsClient(AbstractClient):
 
 
     def DestroySyncJob(self, request):
-        """This API is used to delete a sync task. Only tasks in **Isolated** status can be completely deleted. After deletion, you can call the `DescribeSyncJobs` API to get the task list. If the deleted task is not in the list, it is deleted successfully.
+        r"""This API is used to delete a sync task. Only tasks in **Isolated** status can be completely deleted. After deletion, you can call the `DescribeSyncJobs` API to get the task list. If the deleted task is not in the list, it is deleted successfully.
 
         :param request: Request instance for DestroySyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DestroySyncJobRequest`
@@ -815,7 +815,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateMigrateJob(self, request):
-        """This API is used to isolate and return a data migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status. For a billed task, after isolating it, you can call `RecoverMigrationJob` to recover it or call `DestroyMigrateJob` to delete it. For a free task, calling this API will directly delete it permanently.
+        r"""This API is used to isolate and return a data migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status. For a billed task, after isolating it, you can call `RecoverMigrationJob` to recover it or call `DestroyMigrateJob` to delete it. For a free task, calling this API will directly delete it permanently.
 
         :param request: Request instance for IsolateMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateMigrateJobRequest`
@@ -838,7 +838,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSubscribe(self, request):
-        """This API is used to isolate the subscription task. After calling, the subscription task will not be available. Pay-as-you-go tasks will stop billing, and monthly subscription tasks will refund automatically.
+        r"""This API is used to isolate the subscription task. After calling, the subscription task will not be available. Pay-as-you-go tasks will stop billing, and monthly subscription tasks will refund automatically.
 
         :param request: Request instance for IsolateSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSubscribeRequest`
@@ -861,7 +861,7 @@ class DtsClient(AbstractClient):
 
 
     def IsolateSyncJob(self, request):
-        """This API is used to isolate a sync task. After the task is isolated, you can call the `DescribeSyncJobs` API to query its status, call `RecoverSyncJob` to recover it, or directly delete it. For a free task, calling this API will directly delete it permanently.
+        r"""This API is used to isolate a sync task. After the task is isolated, you can call the `DescribeSyncJobs` API to query its status, call `RecoverSyncJob` to recover it, or directly delete it. For a free task, calling this API will directly delete it permanently.
 
         :param request: Request instance for IsolateSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSyncJobRequest`
@@ -884,7 +884,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyCompareTask(self, request):
-        """This API is used to modify the parameters of a data consistency check task after it is created and before it starts.
+        r"""This API is used to modify the parameters of a data consistency check task after it is created and before it starts.
 
         :param request: Request instance for ModifyCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyCompareTaskRequest`
@@ -907,7 +907,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyCompareTaskName(self, request):
-        """This API is used to rename a data consistency check task.
+        r"""This API is used to rename a data consistency check task.
 
         :param request: Request instance for ModifyCompareTaskName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyCompareTaskNameRequest`
@@ -930,7 +930,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyConsumerGroupDescription(self, request):
-        """This API is used to modify the description of the specified subscription consumption group.
+        r"""This API is used to modify the description of the specified subscription consumption group.
 
         :param request: Request instance for ModifyConsumerGroupDescription.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupDescriptionRequest`
@@ -953,7 +953,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyConsumerGroupPassword(self, request):
-        """This API is used to modify the password of the specified subscription consumer group.
+        r"""This API is used to modify the password of the specified subscription consumer group.
 
         :param request: Request instance for ModifyConsumerGroupPassword.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupPasswordRequest`
@@ -976,7 +976,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateJobSpec(self, request):
-        """This API is used to adjust the specification of a pay-as-you-go task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
+        r"""This API is used to adjust the specification of a pay-as-you-go task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for ModifyMigrateJobSpec.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateJobSpecRequest`
@@ -999,7 +999,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateName(self, request):
-        """This API is used to rename a migration task.
+        r"""This API is used to rename a migration task.
 
         :param request: Request instance for ModifyMigrateName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateNameRequest`
@@ -1022,7 +1022,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateRateLimit(self, request):
-        """This API is used to restrict the rate limit of the task, when a user finds that migration task has a large impact on the load of user's database.
+        r"""This API is used to restrict the rate limit of the task, when a user finds that migration task has a large impact on the load of user's database.
 
         :param request: Request instance for ModifyMigrateRateLimit.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitRequest`
@@ -1045,7 +1045,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrateRuntimeAttribute(self, request):
-        """This API is used to modify task runtime attributes. This interface is different from the configuration class interface and does not perform state machine evaluation.
+        r"""This API is used to modify task runtime attributes. This interface is different from the configuration class interface and does not perform state machine evaluation.
 
         :param request: Request instance for ModifyMigrateRuntimeAttribute.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeRequest`
@@ -1068,7 +1068,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifyMigrationJob(self, request):
-        """This API is used to configure a migration task. After it is configured successfully, you can call the `CreateMigrationCheckJob` API to create a check task, and only after it passes the check can it be started.
+        r"""This API is used to configure a migration task. After it is configured successfully, you can call the `CreateMigrationCheckJob` API to create a check task, and only after it passes the check can it be started.
 
         :param request: Request instance for ModifyMigrationJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrationJobRequest`
@@ -1091,7 +1091,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeAutoRenewFlag(self, request):
-        """This API is used to modify the auto-renewal flag of your subscription instance. Only the monthly subscription modification task makes sense. After modifying, the pay-as-you-go task has no impact.
+        r"""This API is used to modify the auto-renewal flag of your subscription instance. Only the monthly subscription modification task makes sense. After modifying, the pay-as-you-go task has no impact.
 
         :param request: Request instance for ModifySubscribeAutoRenewFlag.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeAutoRenewFlagRequest`
@@ -1114,7 +1114,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeName(self, request):
-        """This API is used to modify the name of the data subscription instance.
+        r"""This API is used to modify the name of the data subscription instance.
 
         :param request: Request instance for ModifySubscribeName.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeNameRequest`
@@ -1137,7 +1137,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySubscribeObjects(self, request):
-        """This API is used to modify the data subscription object and Kafka partition rule. For MongoDB subscription, you can also modify the output aggregation rule.
+        r"""This API is used to modify the data subscription object and Kafka partition rule. For MongoDB subscription, you can also modify the output aggregation rule.
 
         :param request: Request instance for ModifySubscribeObjects.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeObjectsRequest`
@@ -1160,7 +1160,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySyncJobConfig(self, request):
-        """This API is used to modify the configuration of a data sync task after the task is started.\n Configuration modification steps:  Modify sync task configuration -> Create a modification check task -> Query the check task result -> Start the configuration modification check task
+        r"""This API is used to modify the configuration of a data sync task after the task is started.\n Configuration modification steps:  Modify sync task configuration -> Create a modification check task -> Query the check task result -> Start the configuration modification check task
 
         :param request: Request instance for ModifySyncJobConfig.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncJobConfigRequest`
@@ -1183,7 +1183,7 @@ class DtsClient(AbstractClient):
 
 
     def ModifySyncRateLimit(self, request):
-        """This API is used to restrict the rate limit of the task, when a user finds that the sync task has a large impact on the load of user's database.
+        r"""This API is used to restrict the rate limit of the task, when a user finds that the sync task has a large impact on the load of user's database.
 
         :param request: Request instance for ModifySyncRateLimit.
         :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitRequest`
@@ -1206,7 +1206,7 @@ class DtsClient(AbstractClient):
 
 
     def PauseMigrateJob(self, request):
-        """This API is used to pause a migration task.
+        r"""This API is used to pause a migration task.
 
         :param request: Request instance for PauseMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobRequest`
@@ -1229,7 +1229,7 @@ class DtsClient(AbstractClient):
 
 
     def PauseSyncJob(self, request):
-        """This API is used to pause a data sync task.
+        r"""This API is used to pause a data sync task.
 
         :param request: Request instance for PauseSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.PauseSyncJobRequest`
@@ -1252,7 +1252,7 @@ class DtsClient(AbstractClient):
 
 
     def RecoverMigrateJob(self, request):
-        """This API is used to recover a data migration task in **Isolated** status. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
+        r"""This API is used to recover a data migration task in **Isolated** status. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for RecoverMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.RecoverMigrateJobRequest`
@@ -1275,7 +1275,7 @@ class DtsClient(AbstractClient):
 
 
     def RecoverSyncJob(self, request):
-        """This API is used to recover a sync task in **Isolated** status. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
+        r"""This API is used to recover a sync task in **Isolated** status. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
 
         :param request: Request instance for RecoverSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.RecoverSyncJobRequest`
@@ -1298,7 +1298,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetConsumerGroupOffset(self, request):
-        """This API is used to reset the offset of the subscription consumer group. Call the DescribeConsumerGroups API to query the status of the consumer group, only when the status is Dead or Empty can this operation be executed. Otherwise, the reset will not be effective and the API will not return any error.
+        r"""This API is used to reset the offset of the subscription consumer group. Call the DescribeConsumerGroups API to query the status of the consumer group, only when the status is Dead or Empty can this operation be executed. Otherwise, the reset will not be effective and the API will not return any error.
 
         :param request: Request instance for ResetConsumerGroupOffset.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResetConsumerGroupOffsetRequest`
@@ -1321,7 +1321,7 @@ class DtsClient(AbstractClient):
 
 
     def ResetSubscribe(self, request):
-        """This API is used to reset the subscription instance. After resetting, the subscription task can be reconfigured.You can call DescribeSubscribeDetail to query the subscription information to determine whether the subscription is successful. When SubsStatus changes to notStarted, it means the reset is successful.
+        r"""This API is used to reset the subscription instance. After resetting, the subscription task can be reconfigured.You can call DescribeSubscribeDetail to query the subscription information to determine whether the subscription is successful. When SubsStatus changes to notStarted, it means the reset is successful.
 
         :param request: Request instance for ResetSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResetSubscribeRequest`
@@ -1344,7 +1344,7 @@ class DtsClient(AbstractClient):
 
 
     def ResizeSyncJob(self, request):
-        """This API is used to adjust the specification of a pay-as-you-go sync task. After this API is called, the backend needs to take about 3-5 minutes to implement the adjustment. You can call the `DescribeSyncJobs` API to query the latest task status.
+        r"""This API is used to adjust the specification of a pay-as-you-go sync task. After this API is called, the backend needs to take about 3-5 minutes to implement the adjustment. You can call the `DescribeSyncJobs` API to query the latest task status.
 
         :param request: Request instance for ResizeSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResizeSyncJobRequest`
@@ -1367,7 +1367,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeMigrateJob(self, request):
-        """This API is used to retry an abnormal or failed Redis data migration task. Note that this operation will skip the check stage and directly start the task, just like by calling `StartMigrationJob`. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
+        r"""This API is used to retry an abnormal or failed Redis data migration task. Note that this operation will skip the check stage and directly start the task, just like by calling `StartMigrationJob`. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for ResumeMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeMigrateJobRequest`
@@ -1390,7 +1390,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeSubscribe(self, request):
-        """This API is used to resume faulty subscription tasks. When the status of the subscription task is set to error, you can resume task via this API.
+        r"""This API is used to resume faulty subscription tasks. When the status of the subscription task is set to error, you can resume task via this API.
 
         :param request: Request instance for ResumeSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeSubscribeRequest`
@@ -1413,7 +1413,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeSyncJob(self, request):
-        """This API is used to retry a sync task after certain resolvable errors are reported. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
+        r"""This API is used to retry a sync task after certain resolvable errors are reported. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
 
         :param request: Request instance for ResumeSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeSyncJobRequest`
@@ -1436,7 +1436,7 @@ class DtsClient(AbstractClient):
 
 
     def SkipCheckItem(self, request):
-        """This API is used for the backend to skip a failed check item. Theoretically, to execute a migration task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).
+        r"""This API is used for the backend to skip a failed check item. Theoretically, to execute a migration task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).
 
         :param request: Request instance for SkipCheckItem.
         :type request: :class:`tencentcloud.dts.v20211206.models.SkipCheckItemRequest`
@@ -1459,7 +1459,7 @@ class DtsClient(AbstractClient):
 
 
     def SkipSyncCheckItem(self, request):
-        """This API is used for the backend to skip a failed check item. Theoretically, to execute a sync task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).
+        r"""This API is used for the backend to skip a failed check item. Theoretically, to execute a sync task normally, any check step cannot be skipped, and the check must be passed. For products or links that support check item skipping, see [Check Item Overview](https://www.tencentcloud.com/document/product/571/42551).
 
         :param request: Request instance for SkipSyncCheckItem.
         :type request: :class:`tencentcloud.dts.v20211206.models.SkipSyncCheckItemRequest`
@@ -1482,7 +1482,7 @@ class DtsClient(AbstractClient):
 
 
     def StartCompare(self, request):
-        """This API is used to start a data consistency check task after creating it by calling the `CreateCompareTask` API. After calling this API, you can call the `DescribeCompareTasks` API to query the latest task status.
+        r"""This API is used to start a data consistency check task after creating it by calling the `CreateCompareTask` API. After calling this API, you can call the `DescribeCompareTasks` API to query the latest task status.
 
         :param request: Request instance for StartCompare.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartCompareRequest`
@@ -1505,7 +1505,7 @@ class DtsClient(AbstractClient):
 
 
     def StartMigrateJob(self, request):
-        """This API (`StartMigrationJob`) is used to start a migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
+        r"""This API (`StartMigrationJob`) is used to start a migration task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for StartMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartMigrateJobRequest`
@@ -1528,7 +1528,7 @@ class DtsClient(AbstractClient):
 
 
     def StartModifySyncJob(self, request):
-        """This API is used to start the configuration modification process when the modification check task status becomes “success”.
+        r"""This API is used to start the configuration modification process when the modification check task status becomes “success”.
 
         :param request: Request instance for StartModifySyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobRequest`
@@ -1551,7 +1551,7 @@ class DtsClient(AbstractClient):
 
 
     def StartSubscribe(self, request):
-        """This API is used to start a Kafka version of the data subscription instance. This interface can be called only when the status of the subscription task is checkPass.
+        r"""This API is used to start a Kafka version of the data subscription instance. This interface can be called only when the status of the subscription task is checkPass.
 
         :param request: Request instance for StartSubscribe.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartSubscribeRequest`
@@ -1574,7 +1574,7 @@ class DtsClient(AbstractClient):
 
 
     def StartSyncJob(self, request):
-        """This API is used to start a sync task.
+        r"""This API is used to start a sync task.
 
         :param request: Request instance for StartSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StartSyncJobRequest`
@@ -1597,7 +1597,7 @@ class DtsClient(AbstractClient):
 
 
     def StopCompare(self, request):
-        """This API is used to stop a data consistency check task.
+        r"""This API is used to stop a data consistency check task.
 
         :param request: Request instance for StopCompare.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopCompareRequest`
@@ -1620,7 +1620,7 @@ class DtsClient(AbstractClient):
 
 
     def StopMigrateJob(self, request):
-        """This API is used to stop a data migration task.
+        r"""This API is used to stop a data migration task.
         After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for StopMigrateJob.
@@ -1644,7 +1644,7 @@ class DtsClient(AbstractClient):
 
 
     def StopSyncJob(self, request):
-        """This API is used to stop a sync task. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
+        r"""This API is used to stop a sync task. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
 
         :param request: Request instance for StopSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopSyncJobRequest`

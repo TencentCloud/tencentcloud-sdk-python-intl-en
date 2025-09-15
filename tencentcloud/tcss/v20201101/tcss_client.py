@@ -27,7 +27,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyDetail(self, request):
-        """This API is used to create a task to add and publish a network policy in the container network.
+        r"""This API is used to create a task to add and publish a network policy in the container network.
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailRequest`
@@ -50,7 +50,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        """This API is used to create a task to configure and publish a YAML network policy in the container network.
+        r"""This API is used to create a task to configure and publish a YAML network policy in the container network.
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -73,7 +73,7 @@ class TcssClient(AbstractClient):
 
 
     def AddAssetImageRegistryRegistryDetail(self, request):
-        """This API is used to add the details of an image repository.
+        r"""This API is used to add the details of an image repository.
 
         :param request: Request instance for AddAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAssetImageRegistryRegistryDetailRequest`
@@ -96,7 +96,7 @@ class TcssClient(AbstractClient):
 
 
     def AddComplianceAssetPolicySetToWhitelist(self, request):
-        """This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.
+        r"""This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.
         `AddCompliancePolicyItemToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.
 
         :param request: Request instance for AddComplianceAssetPolicySetToWhitelist.
@@ -120,7 +120,7 @@ class TcssClient(AbstractClient):
 
 
     def AddCompliancePolicyAssetSetToWhitelist(self, request):
-        """This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.
+        r"""This API is used to ignore the specified asset IDs and check item IDs so as to hide the assets contained in the specified check items.
         `AddCompliancePolicyItemToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.
 
         :param request: Request instance for AddCompliancePolicyAssetSetToWhitelist.
@@ -144,7 +144,7 @@ class TcssClient(AbstractClient):
 
 
     def AddCompliancePolicyItemToWhitelist(self, request):
-        """This API is used to add the specified check item IDs to the allowlist so as to hide the failure result.
+        r"""This API is used to add the specified check item IDs to the allowlist so as to hide the failure result.
 
         :param request: Request instance for AddCompliancePolicyItemToWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddCompliancePolicyItemToWhitelistRequest`
@@ -167,7 +167,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditAbnormalProcessRule(self, request):
-        """This API is used to add or edit an abnormal process policy at runtime.
+        r"""This API is used to add or edit an abnormal process policy at runtime.
 
         :param request: Request instance for AddEditAbnormalProcessRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditAbnormalProcessRuleRequest`
@@ -190,7 +190,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditAccessControlRule(self, request):
-        """This API is used to add or edit an access control policy at runtime.
+        r"""This API is used to add or edit an access control policy at runtime.
 
         :param request: Request instance for AddEditAccessControlRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditAccessControlRuleRequest`
@@ -213,7 +213,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditImageAutoAuthorizedRule(self, request):
-        """This API is used to add or edit an automatic licensing rule for local images.
+        r"""This API is used to add or edit an automatic licensing rule for local images.
 
         :param request: Request instance for AddEditImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditImageAutoAuthorizedRuleRequest`
@@ -236,7 +236,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditReverseShellWhiteList(self, request):
-        """This API is used to add or edit an allowed reverse shell at runtime.
+        r"""This API is used to add or edit an allowed reverse shell at runtime.
 
         :param request: Request instance for AddEditReverseShellWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditReverseShellWhiteListRequest`
@@ -259,7 +259,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditRiskSyscallWhiteList(self, request):
-        """This API is used to add or edit an allowed high-risk syscall at runtime.
+        r"""This API is used to add or edit an allowed high-risk syscall at runtime.
 
         :param request: Request instance for AddEditRiskSyscallWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditRiskSyscallWhiteListRequest`
@@ -282,7 +282,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEditWarningRules(self, request):
-        """This API is used to add or edit an alert policy.
+        r"""This API is used to add or edit an alert policy.
 
         :param request: Request instance for AddEditWarningRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditWarningRulesRequest`
@@ -305,7 +305,7 @@ class TcssClient(AbstractClient):
 
 
     def AddEscapeWhiteList(self, request):
-        """This API is used to add an allowed escape.
+        r"""This API is used to add an allowed escape.
 
         :param request: Request instance for AddEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddEscapeWhiteListRequest`
@@ -328,7 +328,7 @@ class TcssClient(AbstractClient):
 
 
     def AddIgnoreVul(self, request):
-        """This API is used to add ignored vulnerabilities in a vulnerability scan.
+        r"""This API is used to add ignored vulnerabilities in a vulnerability scan.
 
         :param request: Request instance for AddIgnoreVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddIgnoreVulRequest`
@@ -351,7 +351,7 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyDetail(self, request):
-        """This API is used to create a task to add a network policy in the container network.
+        r"""This API is used to create a task to add a network policy in the container network.
 
         :param request: Request instance for AddNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailRequest`
@@ -374,7 +374,7 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyYamlDetail(self, request):
-        """This API is used to create a task to add a YAML network policy in the container network.
+        r"""This API is used to create a task to add a YAML network policy in the container network.
 
         :param request: Request instance for AddNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailRequest`
@@ -397,7 +397,7 @@ class TcssClient(AbstractClient):
 
 
     def CheckNetworkFirewallPolicyYaml(self, request):
-        """This API is used to create a task to check a YAML network policy in the container network.
+        r"""This API is used to create a task to check a YAML network policy in the container network.
 
         :param request: Request instance for CheckNetworkFirewallPolicyYaml.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlRequest`
@@ -420,7 +420,7 @@ class TcssClient(AbstractClient):
 
 
     def CheckRepeatAssetImageRegistry(self, request):
-        """This API is used to check whether an image repository name is duplicated.
+        r"""This API is used to check whether an image repository name is duplicated.
 
         :param request: Request instance for CheckRepeatAssetImageRegistry.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckRepeatAssetImageRegistryRequest`
@@ -443,7 +443,7 @@ class TcssClient(AbstractClient):
 
 
     def ConfirmNetworkFirewallPolicy(self, request):
-        """This API is used to create a task to confirm a network policy in the container network.
+        r"""This API is used to create a task to confirm a network policy in the container network.
 
         :param request: Request instance for ConfirmNetworkFirewallPolicy.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyRequest`
@@ -466,7 +466,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAbnormalProcessRulesExportJob(self, request):
-        """This API is used to export abnormal process rules.
+        r"""This API is used to export abnormal process rules.
 
         :param request: Request instance for CreateAbnormalProcessRulesExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobRequest`
@@ -489,7 +489,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAccessControlsRuleExportJob(self, request):
-        """This API is used to export file tampering detection rules.
+        r"""This API is used to export file tampering detection rules.
 
         :param request: Request instance for CreateAccessControlsRuleExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobRequest`
@@ -512,7 +512,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageRegistryScanTask(self, request):
-        """This API is used to create an image scan task for an image repository.
+        r"""This API is used to create an image scan task for an image repository.
 
         :param request: Request instance for CreateAssetImageRegistryScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageRegistryScanTaskRequest`
@@ -535,7 +535,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageRegistryScanTaskOneKey(self, request):
-        """This API is used to create a quick image scan task for an image repository.
+        r"""This API is used to create a quick image scan task for an image repository.
 
         :param request: Request instance for CreateAssetImageRegistryScanTaskOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageRegistryScanTaskOneKeyRequest`
@@ -558,7 +558,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageScanSetting(self, request):
-        """This API is used to set an image scan.
+        r"""This API is used to set an image scan.
 
         :param request: Request instance for CreateAssetImageScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageScanSettingRequest`
@@ -581,7 +581,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageScanTask(self, request):
-        """This API is used to create an image scan task.
+        r"""This API is used to create an image scan task.
 
         :param request: Request instance for CreateAssetImageScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageScanTaskRequest`
@@ -604,7 +604,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateAssetImageVirusExportJob(self, request):
-        """This API is used to create a task to export the list of trojans in a local image.
+        r"""This API is used to create a task to export the list of trojans in a local image.
 
         :param request: Request instance for CreateAssetImageVirusExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageVirusExportJobRequest`
@@ -627,7 +627,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateCheckComponent(self, request):
-        """This API is used to install the check component and create a defender.
+        r"""This API is used to install the check component and create a defender.
 
         :param request: Request instance for CreateCheckComponent.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateCheckComponentRequest`
@@ -650,7 +650,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateClusterCheckTask(self, request):
-        """This API is used to create a cluster check task to check it for risk items.
+        r"""This API is used to create a cluster check task to check it for risk items.
 
         :param request: Request instance for CreateClusterCheckTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateClusterCheckTaskRequest`
@@ -673,7 +673,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateComplianceTask(self, request):
-        """This API is used to create a compliance check task for another check triggered at the asset level.
+        r"""This API is used to create a compliance check task for another check triggered at the asset level.
 
         :param request: Request instance for CreateComplianceTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateComplianceTaskRequest`
@@ -696,7 +696,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateComponentExportJob(self, request):
-        """This API is used to export the list of components in a local image.
+        r"""This API is used to export the list of components in a local image.
 
         :param request: Request instance for CreateComponentExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateComponentExportJobRequest`
@@ -719,7 +719,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateDefenceVulExportJob(self, request):
-        """This API is used to create a task to export vulnerabilities that can be prevented.
+        r"""This API is used to create a task to export vulnerabilities that can be prevented.
 
         :param request: Request instance for CreateDefenceVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateDefenceVulExportJobRequest`
@@ -742,7 +742,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEmergencyVulExportJob(self, request):
-        """This API is used to create a task to export emergency vulnerabilities.
+        r"""This API is used to create a task to export emergency vulnerabilities.
 
         :param request: Request instance for CreateEmergencyVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEmergencyVulExportJobRequest`
@@ -765,7 +765,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEscapeEventsExportJob(self, request):
-        """This API is used to create a task to asynchronously export escape events.
+        r"""This API is used to create a task to asynchronously export escape events.
 
         :param request: Request instance for CreateEscapeEventsExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeEventsExportJobRequest`
@@ -788,7 +788,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateEscapeWhiteListExportJob(self, request):
-        """This API is used to create a task to export the allowlist of escapes.
+        r"""This API is used to create a task to export the allowlist of escapes.
 
         :param request: Request instance for CreateEscapeWhiteListExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeWhiteListExportJobRequest`
@@ -811,7 +811,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateExportComplianceStatusListJob(self, request):
-        """This API is used to create a task to export security compliance information.
+        r"""This API is used to create a task to export security compliance information.
 
         :param request: Request instance for CreateExportComplianceStatusListJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateExportComplianceStatusListJobRequest`
@@ -834,7 +834,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateHostExportJob(self, request):
-        """This API is used to create a task to export the list of servers.
+        r"""This API is used to create a task to export the list of servers.
 
         :param request: Request instance for CreateHostExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateHostExportJobRequest`
@@ -857,7 +857,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateImageExportJob(self, request):
-        """This API is used to create an image export task.
+        r"""This API is used to create an image export task.
 
         :param request: Request instance for CreateImageExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateImageExportJobRequest`
@@ -880,7 +880,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalEventExportJob(self, request):
-        """This API is used to create K8sApi abnormal event export jobs.
+        r"""This API is used to create K8sApi abnormal event export jobs.
 
         :param request: Request instance for CreateK8sApiAbnormalEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalEventExportJobRequest`
@@ -903,7 +903,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalRuleExportJob(self, request):
-        """This API is used to export rules of K8sApi exceptions.
+        r"""This API is used to export rules of K8sApi exceptions.
 
         :param request: Request instance for CreateK8sApiAbnormalRuleExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleExportJobRequest`
@@ -926,7 +926,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalRuleInfo(self, request):
-        """This API is used to create K8sApi abnormal event rules.
+        r"""This API is used to create K8sApi abnormal event rules.
 
         :param request: Request instance for CreateK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleInfoRequest`
@@ -949,7 +949,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallClusterRefresh(self, request):
-        """This API is used to distribute a refresh task in the container network cluster.
+        r"""This API is used to distribute a refresh task in the container network cluster.
 
         :param request: Request instance for CreateNetworkFirewallClusterRefresh.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshRequest`
@@ -972,7 +972,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPolicyDiscover(self, request):
-        """This API is used to create a task to sync a network policy from the container network cluster.
+        r"""This API is used to create a task to sync a network policy from the container network cluster.
 
         :param request: Request instance for CreateNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverRequest`
@@ -995,7 +995,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPublish(self, request):
-        """This API is used to create a task to publish a network policy in the container network.
+        r"""This API is used to create a task to publish a network policy in the container network.
 
         :param request: Request instance for CreateNetworkFirewallPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishRequest`
@@ -1018,7 +1018,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallUndoPublish(self, request):
-        """This API is used to create a task to revoke a network policy in the container network.
+        r"""This API is used to create a task to revoke a network policy in the container network.
 
         :param request: Request instance for CreateNetworkFirewallUndoPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishRequest`
@@ -1041,7 +1041,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateOrModifyPostPayCores(self, request):
-        """This API is used to create or edit the upper limit for elastic billing.
+        r"""This API is used to create or edit the upper limit for elastic billing.
 
         :param request: Request instance for CreateOrModifyPostPayCores.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateOrModifyPostPayCoresRequest`
@@ -1064,7 +1064,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateProcessEventsExportJob(self, request):
-        """This API is used to create a task to asynchronously export abnormal process events.
+        r"""This API is used to create a task to asynchronously export abnormal process events.
 
         :param request: Request instance for CreateProcessEventsExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateProcessEventsExportJobRequest`
@@ -1087,7 +1087,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateRefreshTask(self, request):
-        """This API is used to distribute a task to refresh the asset information.
+        r"""This API is used to distribute a task to refresh the asset information.
 
         :param request: Request instance for CreateRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateRefreshTaskRequest`
@@ -1110,7 +1110,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateRiskDnsEventExportJob(self, request):
-        """This API is used to export malicious request events.
+        r"""This API is used to export malicious request events.
 
         :param request: Request instance for CreateRiskDnsEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateRiskDnsEventExportJobRequest`
@@ -1133,7 +1133,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateSearchTemplate(self, request):
-        """This API is used to add a search template.
+        r"""This API is used to add a search template.
 
         :param request: Request instance for CreateSearchTemplate.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSearchTemplateRequest`
@@ -1156,7 +1156,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateSystemVulExportJob(self, request):
-        """This API is used to create a task to export system vulnerabilities.
+        r"""This API is used to create a task to export system vulnerabilities.
 
         :param request: Request instance for CreateSystemVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSystemVulExportJobRequest`
@@ -1179,7 +1179,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVirusScanAgain(self, request):
-        """This API is used to perform another virus scan at runtime.
+        r"""This API is used to perform another virus scan at runtime.
 
         :param request: Request instance for CreateVirusScanAgain.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVirusScanAgainRequest`
@@ -1202,7 +1202,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVirusScanTask(self, request):
-        """This API is used to perform a quick virus scan at runtime.
+        r"""This API is used to perform a quick virus scan at runtime.
 
         :param request: Request instance for CreateVirusScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVirusScanTaskRequest`
@@ -1225,7 +1225,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulContainerExportJob(self, request):
-        """This API is used to create a task to export containers affected by vulnerabilities.
+        r"""This API is used to create a task to export containers affected by vulnerabilities.
 
         :param request: Request instance for CreateVulContainerExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulContainerExportJobRequest`
@@ -1248,7 +1248,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulDefenceEventExportJob(self, request):
-        """This API is used to create an exploit prevention event export task.
+        r"""This API is used to create an exploit prevention event export task.
 
         :param request: Request instance for CreateVulDefenceEventExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceEventExportJobRequest`
@@ -1271,7 +1271,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulDefenceHostExportJob(self, request):
-        """This API is used to create a task to export servers with exploit prevention enabled.
+        r"""This API is used to create a task to export servers with exploit prevention enabled.
 
         :param request: Request instance for CreateVulDefenceHostExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceHostExportJobRequest`
@@ -1294,7 +1294,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulExportJob(self, request):
-        """This API is used to export the list of vulnerabilities in a local image.
+        r"""This API is used to export the list of vulnerabilities in a local image.
 
         :param request: Request instance for CreateVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulExportJobRequest`
@@ -1317,7 +1317,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulImageExportJob(self, request):
-        """This API is used to create a task to export images affected by vulnerabilities.
+        r"""This API is used to create a task to export images affected by vulnerabilities.
 
         :param request: Request instance for CreateVulImageExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulImageExportJobRequest`
@@ -1340,7 +1340,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateVulScanTask(self, request):
-        """This API is used to create a vulnerability scan task.
+        r"""This API is used to create a vulnerability scan task.
 
         :param request: Request instance for CreateVulScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulScanTaskRequest`
@@ -1363,7 +1363,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateWebVulExportJob(self, request):
-        """This API is used to create a task to export web vulnerabilities.
+        r"""This API is used to create a task to export web vulnerabilities.
 
         :param request: Request instance for CreateWebVulExportJob.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateWebVulExportJobRequest`
@@ -1386,7 +1386,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteAbnormalProcessRules(self, request):
-        """This API is used to delete an abnormal process policy at runtime.
+        r"""This API is used to delete an abnormal process policy at runtime.
 
         :param request: Request instance for DeleteAbnormalProcessRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteAbnormalProcessRulesRequest`
@@ -1409,7 +1409,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteAccessControlRules(self, request):
-        """This API is used to delete an access control policy at runtime.
+        r"""This API is used to delete an access control policy at runtime.
 
         :param request: Request instance for DeleteAccessControlRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteAccessControlRulesRequest`
@@ -1432,7 +1432,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteComplianceAssetPolicySetFromWhitelist(self, request):
-        """This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.
+        r"""This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.
         `AddCompliancePolicyAssetSetToWhitelist` is the reference API. Except for the input field, others should be the same, and if not, it may be due to the definition.
 
         :param request: Request instance for DeleteComplianceAssetPolicySetFromWhitelist.
@@ -1456,7 +1456,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyAssetSetFromWhitelist(self, request):
-        """This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.
+        r"""This API is used to unignore the specified asset IDs and check item IDs so as to show the assets contained in the specified check items.
 
         :param request: Request instance for DeleteCompliancePolicyAssetSetFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyAssetSetFromWhitelistRequest`
@@ -1479,7 +1479,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyItemFromWhitelist(self, request):
-        """This API is used to remove the specified check item from the allowlist.
+        r"""This API is used to remove the specified check item from the allowlist.
 
         :param request: Request instance for DeleteCompliancePolicyItemFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyItemFromWhitelistRequest`
@@ -1502,7 +1502,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteEscapeWhiteList(self, request):
-        """This API is used to delete an allowed escape.
+        r"""This API is used to delete an allowed escape.
 
         :param request: Request instance for DeleteEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteEscapeWhiteListRequest`
@@ -1525,7 +1525,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteIgnoreVul(self, request):
-        """This API is used to unignore vulnerabilities in a vulnerability scan.
+        r"""This API is used to unignore vulnerabilities in a vulnerability scan.
 
         :param request: Request instance for DeleteIgnoreVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteIgnoreVulRequest`
@@ -1548,7 +1548,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteK8sApiAbnormalRule(self, request):
-        """This API is used to delete a K8sApi abnormal event rules.
+        r"""This API is used to delete a K8sApi abnormal event rules.
 
         :param request: Request instance for DeleteK8sApiAbnormalRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteK8sApiAbnormalRuleRequest`
@@ -1571,7 +1571,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """This API is used to uninstall the agent.
+        r"""This API is used to uninstall the agent.
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteMachineRequest`
@@ -1594,7 +1594,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteNetworkFirewallPolicyDetail(self, request):
-        """This API is used to create a task to delete a network policy in the container network.
+        r"""This API is used to create a task to delete a network policy in the container network.
 
         :param request: Request instance for DeleteNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailRequest`
@@ -1617,7 +1617,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteReverseShellEvents(self, request):
-        """This API is used to delete a reverse shell event at runtime.
+        r"""This API is used to delete a reverse shell event at runtime.
 
         :param request: Request instance for DeleteReverseShellEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellEventsRequest`
@@ -1640,7 +1640,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteReverseShellWhiteLists(self, request):
-        """This API is used to delete an allowed reverse shell at runtime.
+        r"""This API is used to delete an allowed reverse shell at runtime.
 
         :param request: Request instance for DeleteReverseShellWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellWhiteListsRequest`
@@ -1663,7 +1663,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteRiskSyscallEvents(self, request):
-        """This API is used to delete a high-risk syscall event at runtime.
+        r"""This API is used to delete a high-risk syscall event at runtime.
 
         :param request: Request instance for DeleteRiskSyscallEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallEventsRequest`
@@ -1686,7 +1686,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteRiskSyscallWhiteLists(self, request):
-        """This API is used to delete an allowed high-risk syscall at runtime.
+        r"""This API is used to delete an allowed high-risk syscall at runtime.
 
         :param request: Request instance for DeleteRiskSyscallWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallWhiteListsRequest`
@@ -1709,7 +1709,7 @@ class TcssClient(AbstractClient):
 
 
     def DeleteSearchTemplate(self, request):
-        """This API is used to delete a search template.
+        r"""This API is used to delete a search template.
 
         :param request: Request instance for DeleteSearchTemplate.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteSearchTemplateRequest`
@@ -1732,7 +1732,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeABTestConfig(self, request):
-        """This API is used to get the current canary configuration of the user.
+        r"""This API is used to get the current canary configuration of the user.
 
         :param request: Request instance for DescribeABTestConfig.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeABTestConfigRequest`
@@ -1755,7 +1755,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessDetail(self, request):
-        """This API is used to query the details of an abnormal process event at runtime.
+        r"""This API is used to query the details of an abnormal process event at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessDetailRequest`
@@ -1778,7 +1778,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEventTendency(self, request):
-        """This API is used to query the trend of pending abnormal process events.
+        r"""This API is used to query the trend of pending abnormal process events.
 
         :param request: Request instance for DescribeAbnormalProcessEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventTendencyRequest`
@@ -1801,7 +1801,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEvents(self, request):
-        """This API is used to query the list of abnormal process events at runtime.
+        r"""This API is used to query the list of abnormal process events at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsRequest`
@@ -1824,7 +1824,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEventsExport(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to query and export the list of abnormal process events at runtime.
 
@@ -1849,7 +1849,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessLevelSummary(self, request):
-        """This API is used to count the number of pending abnormal process events at each severity level.
+        r"""This API is used to count the number of pending abnormal process events at each severity level.
 
         :param request: Request instance for DescribeAbnormalProcessLevelSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessLevelSummaryRequest`
@@ -1872,7 +1872,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRuleDetail(self, request):
-        """This API is used to query the details of an abnormal process policy at runtime.
+        r"""This API is used to query the details of an abnormal process policy at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessRuleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRuleDetailRequest`
@@ -1895,7 +1895,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRules(self, request):
-        """This API is used to query the list of abnormal process policies at runtime.
+        r"""This API is used to query the list of abnormal process policies at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesRequest`
@@ -1918,7 +1918,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRulesExport(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to query and export the list of abnormal process policies at runtime.
 
@@ -1943,7 +1943,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlDetail(self, request):
-        """This API is used to query the details of an access control event at runtime.
+        r"""This API is used to query the details of an access control event at runtime.
 
         :param request: Request instance for DescribeAccessControlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlDetailRequest`
@@ -1966,7 +1966,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlEvents(self, request):
-        """This API is used to query the list of access control events at runtime.
+        r"""This API is used to query the list of access control events at runtime.
 
         :param request: Request instance for DescribeAccessControlEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlEventsRequest`
@@ -1989,7 +1989,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlEventsExport(self, request):
-        """This API is used to export the list of access control events at runtime.
+        r"""This API is used to export the list of access control events at runtime.
 
         :param request: Request instance for DescribeAccessControlEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlEventsExportRequest`
@@ -2012,7 +2012,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRuleDetail(self, request):
-        """This API is used to query the details of an access control policy at runtime.
+        r"""This API is used to query the details of an access control policy at runtime.
 
         :param request: Request instance for DescribeAccessControlRuleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRuleDetailRequest`
@@ -2035,7 +2035,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRules(self, request):
-        """This API is used to query the list of access control policies at runtime.
+        r"""This API is used to query the list of access control policies at runtime.
 
         :param request: Request instance for DescribeAccessControlRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesRequest`
@@ -2058,7 +2058,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRulesExport(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to export the list of access control policies at runtime.
 
@@ -2083,7 +2083,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedClusterCount(self, request):
-        """This API is used to get and return the number of affected clusters.
+        r"""This API is used to get and return the number of affected clusters.
 
         :param request: Request instance for DescribeAffectedClusterCount.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedClusterCountRequest`
@@ -2106,7 +2106,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedNodeList(self, request):
-        """This API is used to query affected node types and return the node list.
+        r"""This API is used to query affected node types and return the node list.
 
         :param request: Request instance for DescribeAffectedNodeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedNodeListRequest`
@@ -2129,7 +2129,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAffectedWorkloadList(self, request):
-        """This API is used to query affected workload types and return the workload list.
+        r"""This API is used to query affected workload types and return the workload list.
 
         :param request: Request instance for DescribeAffectedWorkloadList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAffectedWorkloadListRequest`
@@ -2152,7 +2152,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAgentDaemonSetCmd(self, request):
-        """This API is used to query parallel container installation commands.
+        r"""This API is used to query parallel container installation commands.
 
         :param request: Request instance for DescribeAgentDaemonSetCmd.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentDaemonSetCmdRequest`
@@ -2175,7 +2175,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAgentInstallCommand(self, request):
-        """This API is used to query agent installation commands.
+        r"""This API is used to query agent installation commands.
 
         :param request: Request instance for DescribeAgentInstallCommand.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentInstallCommandRequest`
@@ -2198,7 +2198,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetAppServiceList(self, request):
-        """This API is used to query the list of application services.
+        r"""This API is used to query the list of application services.
 
         :param request: Request instance for DescribeAssetAppServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetAppServiceListRequest`
@@ -2221,7 +2221,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetClusterList(self, request):
-        """This API is used to query the list of clusters.
+        r"""This API is used to query the list of clusters.
 
         :param request: Request instance for DescribeAssetClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetClusterListRequest`
@@ -2244,7 +2244,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetComponentList(self, request):
-        """This API is used to query the list of container components.
+        r"""This API is used to query the list of container components.
 
         :param request: Request instance for DescribeAssetComponentList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetComponentListRequest`
@@ -2267,7 +2267,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetContainerDetail(self, request):
-        """This API is used to query the information of a container.
+        r"""This API is used to query the information of a container.
 
         :param request: Request instance for DescribeAssetContainerDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetContainerDetailRequest`
@@ -2290,7 +2290,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetContainerList(self, request):
-        """This API is used to query the list of containers.
+        r"""This API is used to query the list of containers.
 
         :param request: Request instance for DescribeAssetContainerList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetContainerListRequest`
@@ -2313,7 +2313,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetDBServiceList(self, request):
-        """This API is used to query the list of database services.
+        r"""This API is used to query the list of database services.
 
         :param request: Request instance for DescribeAssetDBServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetDBServiceListRequest`
@@ -2336,7 +2336,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetHostDetail(self, request):
-        """This API is used to query the details of a server.
+        r"""This API is used to query the details of a server.
 
         :param request: Request instance for DescribeAssetHostDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetHostDetailRequest`
@@ -2359,7 +2359,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetHostList(self, request):
-        """This API is used to query the list of servers.
+        r"""This API is used to query the list of servers.
 
         :param request: Request instance for DescribeAssetHostList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetHostListRequest`
@@ -2382,7 +2382,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageBindRuleInfo(self, request):
-        """This API is used to query the list of rules bound to images, including runtime access control and abnormal process rules.
+        r"""This API is used to query the list of rules bound to images, including runtime access control and abnormal process rules.
 
         :param request: Request instance for DescribeAssetImageBindRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageBindRuleInfoRequest`
@@ -2405,7 +2405,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageDetail(self, request):
-        """This API is used to query the details of an image.
+        r"""This API is used to query the details of an image.
 
         :param request: Request instance for DescribeAssetImageDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageDetailRequest`
@@ -2428,7 +2428,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageHostList(self, request):
-        """This API is used to query the servers associated with an image.
+        r"""This API is used to query the servers associated with an image.
 
         :param request: Request instance for DescribeAssetImageHostList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageHostListRequest`
@@ -2451,7 +2451,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageList(self, request):
-        """This API is used to query the list of images.
+        r"""This API is used to query the list of images.
 
         :param request: Request instance for DescribeAssetImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListRequest`
@@ -2474,7 +2474,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageListExport(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to export the list of images.
 
@@ -2499,7 +2499,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryAssetStatus(self, request):
-        """This API is used to view the update progress of the assets in an image repository.
+        r"""This API is used to view the update progress of the assets in an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryAssetStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryAssetStatusRequest`
@@ -2522,7 +2522,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryDetail(self, request):
-        """This API is used to query the image repository details.
+        r"""This API is used to query the image repository details.
 
         :param request: Request instance for DescribeAssetImageRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryDetailRequest`
@@ -2545,7 +2545,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryList(self, request):
-        """This API is used to query the list of image repositories.
+        r"""This API is used to query the list of image repositories.
 
         :param request: Request instance for DescribeAssetImageRegistryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryListRequest`
@@ -2568,7 +2568,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryListExport(self, request):
-        """This API is used to export the list of images for an image repository.
+        r"""This API is used to export the list of images for an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryListExportRequest`
@@ -2591,7 +2591,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRegistryDetail(self, request):
-        """This API is used to view the details of an image repository.
+        r"""This API is used to view the details of an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRegistryDetailRequest`
@@ -2614,7 +2614,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRegistryList(self, request):
-        """This API is used to query the list of image registries.
+        r"""This API is used to query the list of image registries.
 
         :param request: Request instance for DescribeAssetImageRegistryRegistryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRegistryListRequest`
@@ -2637,7 +2637,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRiskInfoList(self, request):
-        """This API is used to query the list of image high-risk behaviors of an image repository.
+        r"""This API is used to query the list of image high-risk behaviors of an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryRiskInfoList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRiskInfoListRequest`
@@ -2660,7 +2660,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryRiskListExport(self, request):
-        """This API is used to export the list of sensitive data for an image repository.
+        r"""This API is used to export the list of sensitive data for an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryRiskListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryRiskListExportRequest`
@@ -2683,7 +2683,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryScanStatusOneKey(self, request):
-        """This API is used to query the quick image scanning status of an image repository.
+        r"""This API is used to query the quick image scanning status of an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryScanStatusOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryScanStatusOneKeyRequest`
@@ -2706,7 +2706,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistrySummary(self, request):
-        """This API is used to query the image statistics of an image repository.
+        r"""This API is used to query the image statistics of an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistrySummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistrySummaryRequest`
@@ -2729,7 +2729,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVirusList(self, request):
-        """This API is used to query the list of viruses and trojans in an image repository.
+        r"""This API is used to query the list of viruses and trojans in an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVirusListRequest`
@@ -2752,7 +2752,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVirusListExport(self, request):
-        """This API is used to export the list of trojan information for an image repository.
+        r"""This API is used to export the list of trojan information for an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryVirusListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVirusListExportRequest`
@@ -2775,7 +2775,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVulList(self, request):
-        """This API is used to query the list of image vulnerabilities of an image repository
+        r"""This API is used to query the list of image vulnerabilities of an image repository
 
         :param request: Request instance for DescribeAssetImageRegistryVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVulListRequest`
@@ -2798,7 +2798,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRegistryVulListExport(self, request):
-        """This API is used to export the list of vulnerabilities for an image repository.
+        r"""This API is used to export the list of vulnerabilities for an image repository.
 
         :param request: Request instance for DescribeAssetImageRegistryVulListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRegistryVulListExportRequest`
@@ -2821,7 +2821,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRiskList(self, request):
-        """This API is used to query the list of risks in an image.
+        r"""This API is used to query the list of risks in an image.
 
         :param request: Request instance for DescribeAssetImageRiskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRiskListRequest`
@@ -2844,7 +2844,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageRiskListExport(self, request):
-        """This API is used to export the list of risks in an image.
+        r"""This API is used to export the list of risks in an image.
 
         :param request: Request instance for DescribeAssetImageRiskListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageRiskListExportRequest`
@@ -2867,7 +2867,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanSetting(self, request):
-        """This API is used to get the image scan settings.
+        r"""This API is used to get the image scan settings.
 
         :param request: Request instance for DescribeAssetImageScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanSettingRequest`
@@ -2890,7 +2890,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanStatus(self, request):
-        """This API is used to query the image scanning status.
+        r"""This API is used to query the image scanning status.
 
         :param request: Request instance for DescribeAssetImageScanStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanStatusRequest`
@@ -2913,7 +2913,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageScanTask(self, request):
-        """This API is used to query the ID of a running quick image scan task.
+        r"""This API is used to query the ID of a running quick image scan task.
 
         :param request: Request instance for DescribeAssetImageScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageScanTaskRequest`
@@ -2936,7 +2936,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageSimpleList(self, request):
-        """This API is used to query the brief information list of an image.
+        r"""This API is used to query the brief information list of an image.
 
         :param request: Request instance for DescribeAssetImageSimpleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageSimpleListRequest`
@@ -2959,7 +2959,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVirusList(self, request):
-        """This API is used to query the list of viruses in an image.
+        r"""This API is used to query the list of viruses in an image.
 
         :param request: Request instance for DescribeAssetImageVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVirusListRequest`
@@ -2982,7 +2982,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVirusListExport(self, request):
-        """This API is used to export the list of trojans in an image.
+        r"""This API is used to export the list of trojans in an image.
 
         :param request: Request instance for DescribeAssetImageVirusListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVirusListExportRequest`
@@ -3005,7 +3005,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVulList(self, request):
-        """This API is used to query the list of vulnerabilities in an image.
+        r"""This API is used to query the list of vulnerabilities in an image.
 
         :param request: Request instance for DescribeAssetImageVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVulListRequest`
@@ -3028,7 +3028,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageVulListExport(self, request):
-        """This API is used to export the list of vulnerabilities in an image.
+        r"""This API is used to export the list of vulnerabilities in an image.
 
         :param request: Request instance for DescribeAssetImageVulListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageVulListExportRequest`
@@ -3051,7 +3051,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetPortList(self, request):
-        """This API is used to query the list of occupied ports.
+        r"""This API is used to query the list of occupied ports.
 
         :param request: Request instance for DescribeAssetPortList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetPortListRequest`
@@ -3074,7 +3074,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetProcessList(self, request):
-        """This API is used to query the list of processes.
+        r"""This API is used to query the list of processes.
 
         :param request: Request instance for DescribeAssetProcessList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetProcessListRequest`
@@ -3097,7 +3097,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSummary(self, request):
-        """This API is used to query the statistics of containers and images under an account.
+        r"""This API is used to query the statistics of containers and images under an account.
 
         :param request: Request instance for DescribeAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSummaryRequest`
@@ -3120,7 +3120,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetSyncLastTime(self, request):
-        """This API is used to query the last asset sync time.
+        r"""This API is used to query the last asset sync time.
 
         :param request: Request instance for DescribeAssetSyncLastTime.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSyncLastTimeRequest`
@@ -3143,7 +3143,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetWebServiceList(self, request):
-        """This API is used to query the list of web services.
+        r"""This API is used to query the list of web services.
 
         :param request: Request instance for DescribeAssetWebServiceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetWebServiceListRequest`
@@ -3166,7 +3166,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAutoAuthorizedRuleHost(self, request):
-        """This API is used to query the servers licensed according to an automatic licensing rule.
+        r"""This API is used to query the servers licensed according to an automatic licensing rule.
 
         :param request: Request instance for DescribeAutoAuthorizedRuleHost.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAutoAuthorizedRuleHostRequest`
@@ -3189,7 +3189,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCheckItemList(self, request):
-        """This API is used to query all check items and return the total number and list of check items.
+        r"""This API is used to query all check items and return the total number and list of check items.
 
         :param request: Request instance for DescribeCheckItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCheckItemListRequest`
@@ -3212,7 +3212,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """This API is used to query the details of a cluster.
+        r"""This API is used to query the details of a cluster.
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterDetailRequest`
@@ -3235,7 +3235,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeClusterSummary(self, request):
-        """This API is used to query the overview of cluster assets.
+        r"""This API is used to query the overview of cluster assets.
 
         :param request: Request instance for DescribeClusterSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterSummaryRequest`
@@ -3258,7 +3258,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetDetailInfo(self, request):
-        """This API is used to query the details of an asset.
+        r"""This API is used to query the details of an asset.
 
         :param request: Request instance for DescribeComplianceAssetDetailInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetDetailInfoRequest`
@@ -3281,7 +3281,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetList(self, request):
-        """This API is used to query the list of assets of a certain type.
+        r"""This API is used to query the list of assets of a certain type.
 
         :param request: Request instance for DescribeComplianceAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetListRequest`
@@ -3304,7 +3304,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceAssetPolicyItemList(self, request):
-        """This API is used to query the list of check items of an asset.
+        r"""This API is used to query the list of check items of an asset.
 
         :param request: Request instance for DescribeComplianceAssetPolicyItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceAssetPolicyItemListRequest`
@@ -3327,7 +3327,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePeriodTaskList(self, request):
-        """This API is used to query the list of scheduled tasks.
+        r"""This API is used to query the list of scheduled tasks.
 
         :param request: Request instance for DescribeCompliancePeriodTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePeriodTaskListRequest`
@@ -3350,7 +3350,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePolicyItemAffectedAssetList(self, request):
-        """This API is used to apply the asset level in the "check item + asset" two-level structure.
+        r"""This API is used to apply the asset level in the "check item + asset" two-level structure.
 
         :param request: Request instance for DescribeCompliancePolicyItemAffectedAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePolicyItemAffectedAssetListRequest`
@@ -3373,7 +3373,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeCompliancePolicyItemAffectedSummary(self, request):
-        """This API is used to apply the check item level in the "check item + asset" two-level structure.
+        r"""This API is used to apply the check item level in the "check item + asset" two-level structure.
 
         :param request: Request instance for DescribeCompliancePolicyItemAffectedSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeCompliancePolicyItemAffectedSummaryRequest`
@@ -3396,7 +3396,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceScanFailedAssetList(self, request):
-        """This API is used to query the aggregate information of the pass rate at the asset level, the first level in the "asset + check item" two-level structure.
+        r"""This API is used to query the aggregate information of the pass rate at the asset level, the first level in the "asset + check item" two-level structure.
 
         :param request: Request instance for DescribeComplianceScanFailedAssetList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceScanFailedAssetListRequest`
@@ -3419,7 +3419,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceTaskAssetSummary(self, request):
-        """This API is used to query the aggregated information of the asset pass rate in the last task.
+        r"""This API is used to query the aggregated information of the asset pass rate in the last task.
 
         :param request: Request instance for DescribeComplianceTaskAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceTaskAssetSummaryRequest`
@@ -3442,7 +3442,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceTaskPolicyItemSummaryList(self, request):
-        """This API is used to query the list of aggregated information of check items identified in the last task in line with the "check item + asset" two-level structure.
+        r"""This API is used to query the list of aggregated information of check items identified in the last task in line with the "check item + asset" two-level structure.
 
         :param request: Request instance for DescribeComplianceTaskPolicyItemSummaryList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceTaskPolicyItemSummaryListRequest`
@@ -3465,7 +3465,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeComplianceWhitelistItemList(self, request):
-        """This API is used to query the allowlist.
+        r"""This API is used to query the allowlist.
 
         :param request: Request instance for DescribeComplianceWhitelistItemList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeComplianceWhitelistItemListRequest`
@@ -3488,7 +3488,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeContainerAssetSummary(self, request):
-        """This API is used to query the asset overview.
+        r"""This API is used to query the asset overview.
 
         :param request: Request instance for DescribeContainerAssetSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeContainerAssetSummaryRequest`
@@ -3511,7 +3511,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeContainerSecEventSummary(self, request):
-        """This API is used to query the overview of pending events.
+        r"""This API is used to query the overview of pending events.
 
         :param request: Request instance for DescribeContainerSecEventSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeContainerSecEventSummaryRequest`
@@ -3534,7 +3534,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeESAggregations(self, request):
-        """This API is used to get the aggregation result of the ES field.
+        r"""This API is used to get the aggregation result of the ES field.
 
         :param request: Request instance for DescribeESAggregations.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESAggregationsRequest`
@@ -3557,7 +3557,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeESHits(self, request):
-        """This API is used to get the list of ES query files.
+        r"""This API is used to get the list of ES query files.
 
         :param request: Request instance for DescribeESHits.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESHitsRequest`
@@ -3580,7 +3580,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEmergencyVulList(self, request):
-        """This API is used to query the list of emergency vulnerabilities.
+        r"""This API is used to query the list of emergency vulnerabilities.
 
         :param request: Request instance for DescribeEmergencyVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEmergencyVulListRequest`
@@ -3603,7 +3603,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventDetail(self, request):
-        """This API is used to query the details of a container escape event.
+        r"""This API is used to query the details of a container escape event.
 
         :param request: Request instance for DescribeEscapeEventDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventDetailRequest`
@@ -3626,7 +3626,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventInfo(self, request):
-        """This API is used to query the list of container escape events.
+        r"""This API is used to query the list of container escape events.
 
         :param request: Request instance for DescribeEscapeEventInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventInfoRequest`
@@ -3649,7 +3649,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventTendency(self, request):
-        """This API is used to query the trend of pending escape events.
+        r"""This API is used to query the trend of pending escape events.
 
         :param request: Request instance for DescribeEscapeEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTendencyRequest`
@@ -3672,7 +3672,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventTypeSummary(self, request):
-        """This API is used to query the types of container escape events and the number of pending events.
+        r"""This API is used to query the types of container escape events and the number of pending events.
 
         :param request: Request instance for DescribeEscapeEventTypeSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTypeSummaryRequest`
@@ -3695,7 +3695,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventsExport(self, request):
-        """接口已废弃
+        r"""接口已废弃
 
         This API is used to export the list of container escape events.
 
@@ -3720,7 +3720,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeRuleInfo(self, request):
-        """This API is used to query the information of a container escape scan rule.
+        r"""This API is used to query the information of a container escape scan rule.
 
         :param request: Request instance for DescribeEscapeRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeRuleInfoRequest`
@@ -3743,7 +3743,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeSafeState(self, request):
-        """This API is used to query the container escape security status.
+        r"""This API is used to query the container escape security status.
 
         :param request: Request instance for DescribeEscapeSafeState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeSafeStateRequest`
@@ -3766,7 +3766,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeWhiteList(self, request):
-        """This API is used to query the allowlist of escapes.
+        r"""This API is used to query the allowlist of escapes.
 
         :param request: Request instance for DescribeEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeWhiteListRequest`
@@ -3789,7 +3789,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobDownloadURL(self, request):
-        """This API is used to query the URL to download the result of an exportation task.
+        r"""This API is used to query the URL to download the result of an exportation task.
 
         :param request: Request instance for DescribeExportJobDownloadURL.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobDownloadURLRequest`
@@ -3812,7 +3812,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobManageList(self, request):
-        """This API is used to query the export job management list.
+        r"""This API is used to query the export job management list.
 
         :param request: Request instance for DescribeExportJobManageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobManageListRequest`
@@ -3835,7 +3835,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobResult(self, request):
-        """This API is used to query the result of an export task.
+        r"""This API is used to query the result of an export task.
 
         :param request: Request instance for DescribeExportJobResult.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobResultRequest`
@@ -3858,7 +3858,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAuthorizedInfo(self, request):
-        """This API is used to query the image licensing information.
+        r"""This API is used to query the image licensing information.
 
         :param request: Request instance for DescribeImageAuthorizedInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAuthorizedInfoRequest`
@@ -3881,7 +3881,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedLogList(self, request):
-        """This API is used to query the list of automatic image licensing results.
+        r"""This API is used to query the list of automatic image licensing results.
 
         :param request: Request instance for DescribeImageAutoAuthorizedLogList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedLogListRequest`
@@ -3904,7 +3904,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedRule(self, request):
-        """This API is used to query an automatic licensing rule for local images.
+        r"""This API is used to query an automatic licensing rule for local images.
 
         :param request: Request instance for DescribeImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedRuleRequest`
@@ -3927,7 +3927,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageAutoAuthorizedTaskList(self, request):
-        """This API is used to query the list of automatic image licensing tasks.
+        r"""This API is used to query the list of automatic image licensing tasks.
 
         :param request: Request instance for DescribeImageAutoAuthorizedTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedTaskListRequest`
@@ -3950,7 +3950,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageComponentList(self, request):
-        """This API is used to query the list of components in an local image.
+        r"""This API is used to query the list of components in an local image.
 
         :param request: Request instance for DescribeImageComponentList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageComponentListRequest`
@@ -3973,7 +3973,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRegistryNamespaceList(self, request):
-        """This API is used to query the list of namespaces for an image repository.
+        r"""This API is used to query the list of namespaces for an image repository.
 
         :param request: Request instance for DescribeImageRegistryNamespaceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryNamespaceListRequest`
@@ -3996,7 +3996,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRegistryTimingScanTask(self, request):
-        """This API is used to view a scheduled task of an image repository.
+        r"""This API is used to view a scheduled task of an image repository.
 
         :param request: Request instance for DescribeImageRegistryTimingScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryTimingScanTaskRequest`
@@ -4019,7 +4019,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRiskSummary(self, request):
-        """This API is used to query the overview of local image risks.
+        r"""This API is used to query the overview of local image risks.
 
         :param request: Request instance for DescribeImageRiskSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRiskSummaryRequest`
@@ -4042,7 +4042,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRiskTendency(self, request):
-        """This API is used to query the trend of local image risks.
+        r"""This API is used to query the trend of local image risks.
 
         :param request: Request instance for DescribeImageRiskTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRiskTendencyRequest`
@@ -4065,7 +4065,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageSimpleList(self, request):
-        """This API is used to query the list of all images.
+        r"""This API is used to query the list of all images.
 
         :param request: Request instance for DescribeImageSimpleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageSimpleListRequest`
@@ -4088,7 +4088,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """This API is used to get the index list.
+        r"""This API is used to get the index list.
 
         :param request: Request instance for DescribeIndexList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeIndexListRequest`
@@ -4111,7 +4111,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeInspectionReport(self, request):
-        """This API is used to query check reports.
+        r"""This API is used to query check reports.
 
         :param request: Request instance for DescribeInspectionReport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeInspectionReportRequest`
@@ -4134,7 +4134,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalEventInfo(self, request):
-        """Querying details of a K8s API exception event
+        r"""Querying details of a K8s API exception event
 
         :param request: Request instance for DescribeK8sApiAbnormalEventInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventInfoRequest`
@@ -4157,7 +4157,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalEventList(self, request):
-        """This API is used to query the K8sApi abnormal event list.
+        r"""This API is used to query the K8sApi abnormal event list.
 
         :param request: Request instance for DescribeK8sApiAbnormalEventList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventListRequest`
@@ -4180,7 +4180,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleInfo(self, request):
-        """This API is used to query K8sApi abnormal request rule details.
+        r"""This API is used to query K8sApi abnormal request rule details.
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleInfoRequest`
@@ -4203,7 +4203,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleList(self, request):
-        """This API is used to the K8sApi abnormal request rule list.
+        r"""This API is used to the K8sApi abnormal request rule list.
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleListRequest`
@@ -4226,7 +4226,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleScopeList(self, request):
-        """This API is used to query rules for K8s API exceptions.
+        r"""This API is used to query rules for K8s API exceptions.
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleScopeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListRequest`
@@ -4249,7 +4249,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalSummary(self, request):
-        """This API is used to query the statistics of K8sApi abnormal events.
+        r"""This API is used to query the statistics of K8sApi abnormal events.
 
         :param request: Request instance for DescribeK8sApiAbnormalSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalSummaryRequest`
@@ -4272,7 +4272,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalTendency(self, request):
-        """This API is used to query the trend of K8sApi abnormal events.
+        r"""This API is used to query the trend of K8sApi abnormal events.
 
         :param request: Request instance for DescribeK8sApiAbnormalTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalTendencyRequest`
@@ -4295,7 +4295,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeLogStorageStatistic(self, request):
-        """This API is used to get the statistics of the log search usage.
+        r"""This API is used to get the statistics of the log search usage.
 
         :param request: Request instance for DescribeLogStorageStatistic.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeLogStorageStatisticRequest`
@@ -4318,7 +4318,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallAuditRecord(self, request):
-        """This API is used to query the list of cluster policy audits.
+        r"""This API is used to query the list of cluster policy audits.
 
         :param request: Request instance for DescribeNetworkFirewallAuditRecord.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordRequest`
@@ -4341,7 +4341,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterList(self, request):
-        """This API is used to query the list of clusters.
+        r"""This API is used to query the list of clusters.
 
         :param request: Request instance for DescribeNetworkFirewallClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListRequest`
@@ -4364,7 +4364,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterRefreshStatus(self, request):
-        """This API is used to query the progress of the asset query task in the container network.
+        r"""This API is used to query the progress of the asset query task in the container network.
 
         :param request: Request instance for DescribeNetworkFirewallClusterRefreshStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusRequest`
@@ -4387,7 +4387,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceLabelList(self, request):
-        """This API is used to query the list of cluster network namespace labels.
+        r"""This API is used to query the list of cluster network namespace labels.
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceLabelList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListRequest`
@@ -4410,7 +4410,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPodLabelsList(self, request):
-        """This API is used to query cluster network Pod labels.
+        r"""This API is used to query cluster network Pod labels.
 
         :param request: Request instance for DescribeNetworkFirewallPodLabelsList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListRequest`
@@ -4433,7 +4433,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDetail(self, request):
-        """This API is used to view the details of a policy in the container network cluster.
+        r"""This API is used to view the details of a policy in the container network cluster.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailRequest`
@@ -4456,7 +4456,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDiscover(self, request):
-        """This API is used to query the progress of a network policy sync task in the container network.
+        r"""This API is used to query the progress of a network policy sync task in the container network.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverRequest`
@@ -4479,7 +4479,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyList(self, request):
-        """This API is used to query the list of cluster network policies.
+        r"""This API is used to query the list of cluster network policies.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListRequest`
@@ -4502,7 +4502,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyStatus(self, request):
-        """This API is used to query the execution status of a network policy in the container network.
+        r"""This API is used to query the execution status of a network policy in the container network.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusRequest`
@@ -4525,7 +4525,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyYamlDetail(self, request):
-        """This API is used to view the details of a YAML network policy in the container network cluster.
+        r"""This API is used to view the details of a YAML network policy in the container network cluster.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailRequest`
@@ -4548,7 +4548,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNewestVul(self, request):
-        """This API is used to query the latest list of vulnerabilities.
+        r"""This API is used to query the latest list of vulnerabilities.
 
         :param request: Request instance for DescribeNewestVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNewestVulRequest`
@@ -4571,7 +4571,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePostPayDetail(self, request):
-        """This API is used to query the pay-as-you-go billing details.
+        r"""This API is used to query the pay-as-you-go billing details.
 
         :param request: Request instance for DescribePostPayDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePostPayDetailRequest`
@@ -4594,7 +4594,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeProVersionInfo(self, request):
-        """This API is used to check whether the Pro Edition needs to be purchased.
+        r"""This API is used to check whether the Pro Edition needs to be purchased.
 
         :param request: Request instance for DescribeProVersionInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeProVersionInfoRequest`
@@ -4617,7 +4617,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePromotionActivity(self, request):
-        """This API is used to query promotions.
+        r"""This API is used to query promotions.
 
         :param request: Request instance for DescribePromotionActivity.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePromotionActivityRequest`
@@ -4640,7 +4640,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePublicKey(self, request):
-        """This API is used to get the public key.
+        r"""This API is used to get the public key.
 
         :param request: Request instance for DescribePublicKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePublicKeyRequest`
@@ -4663,7 +4663,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribePurchaseStateInfo(self, request):
-        """This API is used to check whether TCSS is purchased.
+        r"""This API is used to check whether TCSS is purchased.
 
         :param request: Request instance for DescribePurchaseStateInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePurchaseStateInfoRequest`
@@ -4686,7 +4686,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRefreshTask(self, request):
-        """This API is used to query a refresh task.
+        r"""This API is used to query a refresh task.
 
         :param request: Request instance for DescribeRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRefreshTaskRequest`
@@ -4709,7 +4709,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellDetail(self, request):
-        """This API is used to query the details of a reverse shell event at runtime.
+        r"""This API is used to query the details of a reverse shell event at runtime.
 
         :param request: Request instance for DescribeReverseShellDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellDetailRequest`
@@ -4732,7 +4732,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellEvents(self, request):
-        """This API is used to query the list of reverse shell events at runtime.
+        r"""This API is used to query the list of reverse shell events at runtime.
 
         :param request: Request instance for DescribeReverseShellEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellEventsRequest`
@@ -4755,7 +4755,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellEventsExport(self, request):
-        """This API is used to query and export the list of reverse shell events at runtime.
+        r"""This API is used to query and export the list of reverse shell events at runtime.
 
         :param request: Request instance for DescribeReverseShellEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellEventsExportRequest`
@@ -4778,7 +4778,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellWhiteListDetail(self, request):
-        """This API is used to query the details of the allowlist of reverse shells at runtime.
+        r"""This API is used to query the details of the allowlist of reverse shells at runtime.
 
         :param request: Request instance for DescribeReverseShellWhiteListDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellWhiteListDetailRequest`
@@ -4801,7 +4801,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeReverseShellWhiteLists(self, request):
-        """This API is used to query the allowlist of reverse shells at runtime.
+        r"""This API is used to query the allowlist of reverse shells at runtime.
 
         :param request: Request instance for DescribeReverseShellWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellWhiteListsRequest`
@@ -4824,7 +4824,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskList(self, request):
-        """This API is used to query the list of risk items identified in the last task and filter them by special field.
+        r"""This API is used to query the list of risk items identified in the last task and filter them by special field.
 
         :param request: Request instance for DescribeRiskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskListRequest`
@@ -4847,7 +4847,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallDetail(self, request):
-        """This API is used to query the details of a high-risk syscall event.
+        r"""This API is used to query the details of a high-risk syscall event.
 
         :param request: Request instance for DescribeRiskSyscallDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallDetailRequest`
@@ -4870,7 +4870,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallEvents(self, request):
-        """This API is used to query the list of high-risk syscalls at runtime.
+        r"""This API is used to query the list of high-risk syscalls at runtime.
 
         :param request: Request instance for DescribeRiskSyscallEvents.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallEventsRequest`
@@ -4893,7 +4893,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallEventsExport(self, request):
-        """This API is used to export the list of high-risk syscalls at runtime.
+        r"""This API is used to export the list of high-risk syscalls at runtime.
 
         :param request: Request instance for DescribeRiskSyscallEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallEventsExportRequest`
@@ -4916,7 +4916,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallNames(self, request):
-        """This API is used to query the list of names of high-risk syscalls at runtime.
+        r"""This API is used to query the list of names of high-risk syscalls at runtime.
 
         :param request: Request instance for DescribeRiskSyscallNames.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallNamesRequest`
@@ -4939,7 +4939,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallWhiteListDetail(self, request):
-        """This API is used to query the details of the allowlist of high-risk syscalls at runtime.
+        r"""This API is used to query the details of the allowlist of high-risk syscalls at runtime.
 
         :param request: Request instance for DescribeRiskSyscallWhiteListDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallWhiteListDetailRequest`
@@ -4962,7 +4962,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeRiskSyscallWhiteLists(self, request):
-        """This API is used to query the allowlist of high-risk syscalls at runtime.
+        r"""This API is used to query the allowlist of high-risk syscalls at runtime.
 
         :param request: Request instance for DescribeRiskSyscallWhiteLists.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskSyscallWhiteListsRequest`
@@ -4985,7 +4985,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeScanIgnoreVulList(self, request):
-        """This API is used to query the list of vulnerabilities ignored in a scan.
+        r"""This API is used to query the list of vulnerabilities ignored in a scan.
 
         :param request: Request instance for DescribeScanIgnoreVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeScanIgnoreVulListRequest`
@@ -5008,7 +5008,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchExportList(self, request):
-        """This API is used to export the list of ES query files.
+        r"""This API is used to export the list of ES query files.
 
         :param request: Request instance for DescribeSearchExportList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchExportListRequest`
@@ -5031,7 +5031,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchLogs(self, request):
-        """This API is used to get historical search records.
+        r"""This API is used to get historical search records.
 
         :param request: Request instance for DescribeSearchLogs.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchLogsRequest`
@@ -5054,7 +5054,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSearchTemplates(self, request):
-        """This API is used to get the list of search templates.
+        r"""This API is used to get the list of search templates.
 
         :param request: Request instance for DescribeSearchTemplates.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchTemplatesRequest`
@@ -5077,7 +5077,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecEventsTendency(self, request):
-        """This API is used to query the trend of security events at runtime.
+        r"""This API is used to query the trend of security events at runtime.
 
         :param request: Request instance for DescribeSecEventsTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecEventsTendencyRequest`
@@ -5100,7 +5100,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogAlertMsg(self, request):
-        """This API is used to query a security log alert message.
+        r"""This API is used to query a security log alert message.
 
         :param request: Request instance for DescribeSecLogAlertMsg.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogAlertMsgRequest`
@@ -5123,7 +5123,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogCleanSettingInfo(self, request):
-        """This API is used to query the settings of security log cleanup.
+        r"""This API is used to query the settings of security log cleanup.
 
         :param request: Request instance for DescribeSecLogCleanSettingInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogCleanSettingInfoRequest`
@@ -5146,7 +5146,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryClsOptions(self, request):
-        """This API is used to query the options of security log delivery to CLS.
+        r"""This API is used to query the options of security log delivery to CLS.
 
         :param request: Request instance for DescribeSecLogDeliveryClsOptions.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsOptionsRequest`
@@ -5169,7 +5169,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryClsSetting(self, request):
-        """This API is used to query the settings of security log delivery to CLS.
+        r"""This API is used to query the settings of security log delivery to CLS.
 
         :param request: Request instance for DescribeSecLogDeliveryClsSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsSettingRequest`
@@ -5192,7 +5192,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryKafkaOptions(self, request):
-        """This API is used to query the options of security log delivery to Kafka.
+        r"""This API is used to query the options of security log delivery to Kafka.
 
         :param request: Request instance for DescribeSecLogDeliveryKafkaOptions.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaOptionsRequest`
@@ -5215,7 +5215,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogDeliveryKafkaSetting(self, request):
-        """This API is used to query the settings of security log delivery to Kafka.
+        r"""This API is used to query the settings of security log delivery to Kafka.
 
         :param request: Request instance for DescribeSecLogDeliveryKafkaSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaSettingRequest`
@@ -5238,7 +5238,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogJoinObjectList(self, request):
-        """This API is used to query the list of accessed security log objects.
+        r"""This API is used to query the list of accessed security log objects.
 
         :param request: Request instance for DescribeSecLogJoinObjectList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinObjectListRequest`
@@ -5261,7 +5261,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogJoinTypeList(self, request):
-        """This API is used to query the list of security log access types.
+        r"""This API is used to query the list of security log access types.
 
         :param request: Request instance for DescribeSecLogJoinTypeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinTypeListRequest`
@@ -5284,7 +5284,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogKafkaUIN(self, request):
-        """This API is used to query the UIN of a Kafka security log.
+        r"""This API is used to query the UIN of a Kafka security log.
 
         :param request: Request instance for DescribeSecLogKafkaUIN.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogKafkaUINRequest`
@@ -5307,7 +5307,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSecLogVasInfo(self, request):
-        """This API is used to query the information of the security log product.
+        r"""This API is used to query the information of the security log product.
 
         :param request: Request instance for DescribeSecLogVasInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogVasInfoRequest`
@@ -5330,7 +5330,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSupportDefenceVul(self, request):
-        """This API is used to query the list of vulnerabilities that can be prevented
+        r"""This API is used to query the list of vulnerabilities that can be prevented
 
         :param request: Request instance for DescribeSupportDefenceVul.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSupportDefenceVulRequest`
@@ -5353,7 +5353,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeSystemVulList(self, request):
-        """This API is used to query the list of system vulnerabilities.
+        r"""This API is used to query the list of system vulnerabilities.
 
         :param request: Request instance for DescribeSystemVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSystemVulListRequest`
@@ -5376,7 +5376,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeTaskResultSummary(self, request):
-        """This API is used to query the overview of a check result and return the number of affected nodes in the last seven days.
+        r"""This API is used to query the overview of a check result and return the number of affected nodes in the last seven days.
 
         :param request: Request instance for DescribeTaskResultSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeTaskResultSummaryRequest`
@@ -5399,7 +5399,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeTcssSummary(self, request):
-        """This API is used to query the TCSS overview.
+        r"""This API is used to query the TCSS overview.
 
         :param request: Request instance for DescribeTcssSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeTcssSummaryRequest`
@@ -5422,7 +5422,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUnauthorizedCoresTendency(self, request):
-        """This API is used to query the trend of daily unlicensed cores.
+        r"""This API is used to query the trend of daily unlicensed cores.
 
         :param request: Request instance for DescribeUnauthorizedCoresTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUnauthorizedCoresTendencyRequest`
@@ -5445,7 +5445,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUnfinishRefreshTask(self, request):
-        """This API is used to query the information of an unfinished asset refreshing task.
+        r"""This API is used to query the information of an unfinished asset refreshing task.
 
         :param request: Request instance for DescribeUnfinishRefreshTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUnfinishRefreshTaskRequest`
@@ -5468,7 +5468,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeUserCluster(self, request):
-        """This API is used to query the information of a cluster on the Security Dashboard and Cluster Security pages.
+        r"""This API is used to query the information of a cluster on the Security Dashboard and Cluster Security pages.
 
         :param request: Request instance for DescribeUserCluster.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUserClusterRequest`
@@ -5491,7 +5491,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeValueAddedSrvInfo(self, request):
-        """This API is used to query the information of the required value-added service.
+        r"""This API is used to query the information of the required value-added service.
 
         :param request: Request instance for DescribeValueAddedSrvInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeValueAddedSrvInfoRequest`
@@ -5514,7 +5514,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleDetail(self, request):
-        """This API is used to query the details of an automatically isolated trojan sample.
+        r"""This API is used to query the details of an automatically isolated trojan sample.
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDetailRequest`
@@ -5537,7 +5537,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleDownloadURL(self, request):
-        """This API is used to query the download URL of an automatically isolated trojan sample.
+        r"""This API is used to query the download URL of an automatically isolated trojan sample.
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleDownloadURL.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDownloadURLRequest`
@@ -5560,7 +5560,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSampleList(self, request):
-        """This API is used to query the list of automatically isolated trojan samples.
+        r"""This API is used to query the list of automatically isolated trojan samples.
 
         :param request: Request instance for DescribeVirusAutoIsolateSampleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleListRequest`
@@ -5583,7 +5583,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusAutoIsolateSetting(self, request):
-        """This API is used to query the settings of automatic trojan isolation.
+        r"""This API is used to query the settings of automatic trojan isolation.
 
         :param request: Request instance for DescribeVirusAutoIsolateSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSettingRequest`
@@ -5606,7 +5606,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusDetail(self, request):
-        """This API is used to query the information of a trojan file at runtime.
+        r"""This API is used to query the information of a trojan file at runtime.
 
         :param request: Request instance for DescribeVirusDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusDetailRequest`
@@ -5629,7 +5629,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusEventTendency(self, request):
-        """This API is used to query the trend of trojan events.
+        r"""This API is used to query the trend of trojan events.
 
         :param request: Request instance for DescribeVirusEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusEventTendencyRequest`
@@ -5652,7 +5652,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusList(self, request):
-        """This API is used to query the list of virus scanning events at runtime.
+        r"""This API is used to query the list of virus scanning events at runtime.
 
         :param request: Request instance for DescribeVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusListRequest`
@@ -5675,7 +5675,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusManualScanEstimateTimeout(self, request):
-        """This API is used to query the estimated timeout period of a quick trojan scan.
+        r"""This API is used to query the estimated timeout period of a quick trojan scan.
 
         :param request: Request instance for DescribeVirusManualScanEstimateTimeout.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusManualScanEstimateTimeoutRequest`
@@ -5698,7 +5698,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusMonitorSetting(self, request):
-        """This API is used to query the real-time monitoring settings of virus scanning at runtime.
+        r"""This API is used to query the real-time monitoring settings of virus scanning at runtime.
 
         :param request: Request instance for DescribeVirusMonitorSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorSettingRequest`
@@ -5721,7 +5721,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusSampleDownloadUrl(self, request):
-        """This API is used to query the download URL of a trojan sample.
+        r"""This API is used to query the download URL of a trojan sample.
 
         :param request: Request instance for DescribeVirusSampleDownloadUrl.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSampleDownloadUrlRequest`
@@ -5744,7 +5744,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanSetting(self, request):
-        """This API is used to query virus scanning settings at runtime.
+        r"""This API is used to query virus scanning settings at runtime.
 
         :param request: Request instance for DescribeVirusScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanSettingRequest`
@@ -5767,7 +5767,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanTaskStatus(self, request):
-        """This API is used to query the status of a virus scanning task at runtime.
+        r"""This API is used to query the status of a virus scanning task at runtime.
 
         :param request: Request instance for DescribeVirusScanTaskStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanTaskStatusRequest`
@@ -5790,7 +5790,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusScanTimeoutSetting(self, request):
-        """This API is used to query the timeout settings of a file scan at runtime.
+        r"""This API is used to query the timeout settings of a file scan at runtime.
 
         :param request: Request instance for DescribeVirusScanTimeoutSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanTimeoutSettingRequest`
@@ -5813,7 +5813,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusSummary(self, request):
-        """This API is used to query the trojan overview at runtime.
+        r"""This API is used to query the trojan overview at runtime.
 
         :param request: Request instance for DescribeVirusSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSummaryRequest`
@@ -5836,7 +5836,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusTaskList(self, request):
-        """This API is used to query the list of virus scanning tasks at runtime.
+        r"""This API is used to query the list of virus scanning tasks at runtime.
 
         :param request: Request instance for DescribeVirusTaskList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusTaskListRequest`
@@ -5859,7 +5859,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulContainerList(self, request):
-        """This API is used to query the list of containers affected by vulnerabilities.
+        r"""This API is used to query the list of containers affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulContainerList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulContainerListRequest`
@@ -5882,7 +5882,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEvent(self, request):
-        """This API is used to query the list of exploit prevention events.
+        r"""This API is used to query the list of exploit prevention events.
 
         :param request: Request instance for DescribeVulDefenceEvent.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventRequest`
@@ -5905,7 +5905,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEventDetail(self, request):
-        """This API is used to query the details of an exploit prevention event.
+        r"""This API is used to query the details of an exploit prevention event.
 
         :param request: Request instance for DescribeVulDefenceEventDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventDetailRequest`
@@ -5928,7 +5928,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceEventTendency(self, request):
-        """This API is used to query the trend of exploit prevention events.
+        r"""This API is used to query the trend of exploit prevention events.
 
         :param request: Request instance for DescribeVulDefenceEventTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventTendencyRequest`
@@ -5951,7 +5951,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceHost(self, request):
-        """This API is used to query the list of servers with exploit prevention enabled.
+        r"""This API is used to query the list of servers with exploit prevention enabled.
 
         :param request: Request instance for DescribeVulDefenceHost.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceHostRequest`
@@ -5974,7 +5974,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefencePlugin(self, request):
-        """This API is used to query the list of exploit prevention plugins.
+        r"""This API is used to query the list of exploit prevention plugins.
 
         :param request: Request instance for DescribeVulDefencePlugin.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefencePluginRequest`
@@ -5997,7 +5997,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDefenceSetting(self, request):
-        """This API is used to query the exploit prevention settings.
+        r"""This API is used to query the exploit prevention settings.
 
         :param request: Request instance for DescribeVulDefenceSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceSettingRequest`
@@ -6020,7 +6020,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulDetail(self, request):
-        """This API is used to query vulnerability details.
+        r"""This API is used to query vulnerability details.
 
         :param request: Request instance for DescribeVulDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDetailRequest`
@@ -6043,7 +6043,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulIgnoreLocalImageList(self, request):
-        """This API is used to query the list of local images ignored in a vulnerability scan.
+        r"""This API is used to query the list of local images ignored in a vulnerability scan.
 
         :param request: Request instance for DescribeVulIgnoreLocalImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreLocalImageListRequest`
@@ -6066,7 +6066,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulIgnoreRegistryImageList(self, request):
-        """This API is used to query the list of repository images ignored in a vulnerability scan.
+        r"""This API is used to query the list of repository images ignored in a vulnerability scan.
 
         :param request: Request instance for DescribeVulIgnoreRegistryImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreRegistryImageListRequest`
@@ -6089,7 +6089,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulImageList(self, request):
-        """This API is used to query the list of images affected by vulnerabilities.
+        r"""This API is used to query the list of images affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageListRequest`
@@ -6112,7 +6112,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulImageSummary(self, request):
-        """This API is used to query the statistics of images affected by vulnerabilities.
+        r"""This API is used to query the statistics of images affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageSummaryRequest`
@@ -6135,7 +6135,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulLevelImageSummary(self, request):
-        """This API is used to query the numbers of images affected by emergency vulnerabilities at each severity level.
+        r"""This API is used to query the numbers of images affected by emergency vulnerabilities at each severity level.
 
         :param request: Request instance for DescribeVulLevelImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelImageSummaryRequest`
@@ -6158,7 +6158,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulLevelSummary(self, request):
-        """This API is used to query the numbers of vulnerabilities at each severity level.
+        r"""This API is used to query the numbers of vulnerabilities at each severity level.
 
         :param request: Request instance for DescribeVulLevelSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelSummaryRequest`
@@ -6181,7 +6181,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulRegistryImageList(self, request):
-        """This API is used to query the list of repository images affected by vulnerabilities.
+        r"""This API is used to query the list of repository images affected by vulnerabilities.
 
         :param request: Request instance for DescribeVulRegistryImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListRequest`
@@ -6204,7 +6204,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanAuthorizedImageSummary(self, request):
-        """This API is used to count the number of licensed but not scanned images on the vulnerability scanning page.
+        r"""This API is used to count the number of licensed but not scanned images on the vulnerability scanning page.
 
         :param request: Request instance for DescribeVulScanAuthorizedImageSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanAuthorizedImageSummaryRequest`
@@ -6227,7 +6227,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanInfo(self, request):
-        """This API is used to query the information of a vulnerability scan task.
+        r"""This API is used to query the information of a vulnerability scan task.
 
         :param request: Request instance for DescribeVulScanInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanInfoRequest`
@@ -6250,7 +6250,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulScanLocalImageList(self, request):
-        """This API is used to query the list of local images in a vulnerability scan task.
+        r"""This API is used to query the list of local images in a vulnerability scan task.
 
         :param request: Request instance for DescribeVulScanLocalImageList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanLocalImageListRequest`
@@ -6273,7 +6273,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulSummary(self, request):
-        """This API is used to query the overview of vulnerability risks.
+        r"""This API is used to query the overview of vulnerability risks.
 
         :param request: Request instance for DescribeVulSummary.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulSummaryRequest`
@@ -6296,7 +6296,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulTendency(self, request):
-        """This API is used to query the trend of critical and high-risk vulnerabilities in local and repository images.
+        r"""This API is used to query the trend of critical and high-risk vulnerabilities in local and repository images.
 
         :param request: Request instance for DescribeVulTendency.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTendencyRequest`
@@ -6319,7 +6319,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVulTopRanking(self, request):
-        """This API is used to query the list of top vulnerabilities.
+        r"""This API is used to query the list of top vulnerabilities.
 
         :param request: Request instance for DescribeVulTopRanking.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTopRankingRequest`
@@ -6342,7 +6342,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeWarningRules(self, request):
-        """This API is used to get the list of alert policies.
+        r"""This API is used to get the list of alert policies.
 
         :param request: Request instance for DescribeWarningRules.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeWarningRulesRequest`
@@ -6365,7 +6365,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeWebVulList(self, request):
-        """This API is used to query the list of web application vulnerabilities.
+        r"""This API is used to query the list of web application vulnerabilities.
 
         :param request: Request instance for DescribeWebVulList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeWebVulListRequest`
@@ -6388,7 +6388,7 @@ class TcssClient(AbstractClient):
 
 
     def ExportVirusList(self, request):
-        """This API is used to export the list of virus scanning events at runtime.
+        r"""This API is used to export the list of virus scanning events at runtime.
 
         :param request: Request instance for ExportVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ExportVirusListRequest`
@@ -6411,7 +6411,7 @@ class TcssClient(AbstractClient):
 
 
     def InitializeUserComplianceEnvironment(self, request):
-        """This API is used to initialize the compliance baseline environment and create necessary data and options.
+        r"""This API is used to initialize the compliance baseline environment and create necessary data and options.
 
         :param request: Request instance for InitializeUserComplianceEnvironment.
         :type request: :class:`tencentcloud.tcss.v20201101.models.InitializeUserComplianceEnvironmentRequest`
@@ -6434,7 +6434,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAbnormalProcessRuleStatus(self, request):
-        """This API is used to change the status of an abnormal process policy at runtime.
+        r"""This API is used to change the status of an abnormal process policy at runtime.
 
         :param request: Request instance for ModifyAbnormalProcessRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAbnormalProcessRuleStatusRequest`
@@ -6457,7 +6457,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAbnormalProcessStatus(self, request):
-        """This API is used to change the status of an abnormal process event.
+        r"""This API is used to change the status of an abnormal process event.
 
         :param request: Request instance for ModifyAbnormalProcessStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAbnormalProcessStatusRequest`
@@ -6480,7 +6480,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAccessControlRuleStatus(self, request):
-        """This API is used to change the status of an access control policy at runtime, i.e., enable or disable it.
+        r"""This API is used to change the status of an access control policy at runtime, i.e., enable or disable it.
 
         :param request: Request instance for ModifyAccessControlRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAccessControlRuleStatusRequest`
@@ -6503,7 +6503,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAccessControlStatus(self, request):
-        """This API is used to change the status of an access control event at runtime.
+        r"""This API is used to change the status of an access control event at runtime.
 
         :param request: Request instance for ModifyAccessControlStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAccessControlStatusRequest`
@@ -6526,7 +6526,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAsset(self, request):
-        """This API is used to refresh server assets.
+        r"""This API is used to refresh server assets.
 
         :param request: Request instance for ModifyAsset.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetRequest`
@@ -6549,7 +6549,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageRegistryScanStop(self, request):
-        """This API is used to stop an image scan task for an image repository.
+        r"""This API is used to stop an image scan task for an image repository.
 
         :param request: Request instance for ModifyAssetImageRegistryScanStop.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageRegistryScanStopRequest`
@@ -6572,7 +6572,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageRegistryScanStopOneKey(self, request):
-        """This API is used to stop a quick image scan task for an image repository.
+        r"""This API is used to stop a quick image scan task for an image repository.
 
         :param request: Request instance for ModifyAssetImageRegistryScanStopOneKey.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageRegistryScanStopOneKeyRequest`
@@ -6595,7 +6595,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyAssetImageScanStop(self, request):
-        """This API is used to stop an image scan.
+        r"""This API is used to stop an image scan.
 
         :param request: Request instance for ModifyAssetImageScanStop.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyAssetImageScanStopRequest`
@@ -6618,7 +6618,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyCompliancePeriodTask(self, request):
-        """This API is used to modify the settings of a scheduled task, including the check cycle and the status of the compliance benchmark.
+        r"""This API is used to modify the settings of a scheduled task, including the check cycle and the status of the compliance benchmark.
 
         :param request: Request instance for ModifyCompliancePeriodTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyCompliancePeriodTaskRequest`
@@ -6641,7 +6641,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyContainerNetStatus(self, request):
-        """This API is used to isolate a container.
+        r"""This API is used to isolate a container.
 
         :param request: Request instance for ModifyContainerNetStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyContainerNetStatusRequest`
@@ -6664,7 +6664,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeEventStatus(self, request):
-        """This API is used to change the status of a container escape scan event.
+        r"""This API is used to change the status of a container escape scan event.
 
         :param request: Request instance for ModifyEscapeEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeEventStatusRequest`
@@ -6687,7 +6687,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeRule(self, request):
-        """This API is used to modify the information of a container escape scan rule.
+        r"""This API is used to modify the information of a container escape scan rule.
 
         :param request: Request instance for ModifyEscapeRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeRuleRequest`
@@ -6710,7 +6710,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyEscapeWhiteList(self, request):
-        """This API is used to modify an allowed escape.
+        r"""This API is used to modify an allowed escape.
 
         :param request: Request instance for ModifyEscapeWhiteList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeWhiteListRequest`
@@ -6733,7 +6733,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyImageAuthorized(self, request):
-        """This API is used to batch license images to be scanned (v2.0).
+        r"""This API is used to batch license images to be scanned (v2.0).
 
         :param request: Request instance for ModifyImageAuthorized.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyImageAuthorizedRequest`
@@ -6756,7 +6756,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalEventStatus(self, request):
-        """This API is used to modify the status of K8sApi exception events.
+        r"""This API is used to modify the status of K8sApi exception events.
 
         :param request: Request instance for ModifyK8sApiAbnormalEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalEventStatusRequest`
@@ -6779,7 +6779,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalRuleInfo(self, request):
-        """This API is used to modify the information of K8sApi abnormal rules.
+        r"""This API is used to modify the information of K8sApi abnormal rules.
 
         :param request: Request instance for ModifyK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleInfoRequest`
@@ -6802,7 +6802,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalRuleStatus(self, request):
-        """This API is used to modify the status of K8sApi abnormal event rules.
+        r"""This API is used to modify the status of K8sApi abnormal event rules.
 
         :param request: Request instance for ModifyK8sApiAbnormalRuleStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleStatusRequest`
@@ -6825,7 +6825,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyReverseShellStatus(self, request):
-        """This API is used to change the status of a reverse shell event.
+        r"""This API is used to change the status of a reverse shell event.
 
         :param request: Request instance for ModifyReverseShellStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyReverseShellStatusRequest`
@@ -6848,7 +6848,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyRiskSyscallStatus(self, request):
-        """This API is used to change the status of a high-risk syscall event.
+        r"""This API is used to change the status of a high-risk syscall event.
 
         :param request: Request instance for ModifyRiskSyscallStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskSyscallStatusRequest`
@@ -6871,7 +6871,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogCleanSettingInfo(self, request):
-        """This API is used to modify the settings of security log cleanup.
+        r"""This API is used to modify the settings of security log cleanup.
 
         :param request: Request instance for ModifySecLogCleanSettingInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogCleanSettingInfoRequest`
@@ -6894,7 +6894,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogDeliveryClsSetting(self, request):
-        """This API is used to update the configuration of security log delivery to CLS.
+        r"""This API is used to update the configuration of security log delivery to CLS.
 
         :param request: Request instance for ModifySecLogDeliveryClsSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryClsSettingRequest`
@@ -6917,7 +6917,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogDeliveryKafkaSetting(self, request):
-        """This API is used to update the settings of security log delivery to Kafka.
+        r"""This API is used to update the settings of security log delivery to Kafka.
 
         :param request: Request instance for ModifySecLogDeliveryKafkaSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryKafkaSettingRequest`
@@ -6940,7 +6940,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogJoinObjects(self, request):
-        """This API is used to modify an accessed security log object.
+        r"""This API is used to modify an accessed security log object.
 
         :param request: Request instance for ModifySecLogJoinObjects.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinObjectsRequest`
@@ -6963,7 +6963,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogJoinState(self, request):
-        """This API is used to change the security log access status.
+        r"""This API is used to change the security log access status.
 
         :param request: Request instance for ModifySecLogJoinState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinStateRequest`
@@ -6986,7 +6986,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifySecLogKafkaUIN(self, request):
-        """This API is used to modify the UIN of a Kafka security log.
+        r"""This API is used to modify the UIN of a Kafka security log.
 
         :param request: Request instance for ModifySecLogKafkaUIN.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogKafkaUINRequest`
@@ -7009,7 +7009,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusAutoIsolateExampleSwitch(self, request):
-        """This API is used to enable/disable automatic trojan sample isolation.
+        r"""This API is used to enable/disable automatic trojan sample isolation.
 
         :param request: Request instance for ModifyVirusAutoIsolateExampleSwitch.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateExampleSwitchRequest`
@@ -7032,7 +7032,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusAutoIsolateSetting(self, request):
-        """This API is used to modify the settings of automatic trojan isolation.
+        r"""This API is used to modify the settings of automatic trojan isolation.
 
         :param request: Request instance for ModifyVirusAutoIsolateSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateSettingRequest`
@@ -7055,7 +7055,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusFileStatus(self, request):
-        """This API is used to update the status of a trojan file at runtime.
+        r"""This API is used to update the status of a trojan file at runtime.
 
         :param request: Request instance for ModifyVirusFileStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusFileStatusRequest`
@@ -7078,7 +7078,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusMonitorSetting(self, request):
-        """This API is used to update the real-time monitoring settings of virus scanning at runtime.
+        r"""This API is used to update the real-time monitoring settings of virus scanning at runtime.
 
         :param request: Request instance for ModifyVirusMonitorSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusMonitorSettingRequest`
@@ -7101,7 +7101,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusScanSetting(self, request):
-        """This API is used to update virus scanning settings at runtime.
+        r"""This API is used to update virus scanning settings at runtime.
 
         :param request: Request instance for ModifyVirusScanSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusScanSettingRequest`
@@ -7124,7 +7124,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVirusScanTimeoutSetting(self, request):
-        """This API is used to modify the timeout settings of a file scan at runtime.
+        r"""This API is used to modify the timeout settings of a file scan at runtime.
 
         :param request: Request instance for ModifyVirusScanTimeoutSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusScanTimeoutSettingRequest`
@@ -7147,7 +7147,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVulDefenceEventStatus(self, request):
-        """This API is used to change the status of an exploit prevention event.
+        r"""This API is used to change the status of an exploit prevention event.
 
         :param request: Request instance for ModifyVulDefenceEventStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceEventStatusRequest`
@@ -7170,7 +7170,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyVulDefenceSetting(self, request):
-        """This API is used to edit the exploit prevention settings.
+        r"""This API is used to edit the exploit prevention settings.
 
         :param request: Request instance for ModifyVulDefenceSetting.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceSettingRequest`
@@ -7193,7 +7193,7 @@ class TcssClient(AbstractClient):
 
 
     def OpenTcssTrial(self, request):
-        """This API is used to activate TCSS trial.
+        r"""This API is used to activate TCSS trial.
 
         :param request: Request instance for OpenTcssTrial.
         :type request: :class:`tencentcloud.tcss.v20201101.models.OpenTcssTrialRequest`
@@ -7216,7 +7216,7 @@ class TcssClient(AbstractClient):
 
 
     def RemoveAssetImageRegistryRegistryDetail(self, request):
-        """This API is used to delete the details of an image repository.
+        r"""This API is used to delete the details of an image repository.
 
         :param request: Request instance for RemoveAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.RemoveAssetImageRegistryRegistryDetailRequest`
@@ -7239,7 +7239,7 @@ class TcssClient(AbstractClient):
 
 
     def RenewImageAuthorizeState(self, request):
-        """This API is used to license an image to be scanned.
+        r"""This API is used to license an image to be scanned.
 
         :param request: Request instance for RenewImageAuthorizeState.
         :type request: :class:`tencentcloud.tcss.v20201101.models.RenewImageAuthorizeStateRequest`
@@ -7262,7 +7262,7 @@ class TcssClient(AbstractClient):
 
 
     def ResetSecLogTopicConfig(self, request):
-        """This API is used to reset a security log topic.
+        r"""This API is used to reset a security log topic.
 
         :param request: Request instance for ResetSecLogTopicConfig.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ResetSecLogTopicConfigRequest`
@@ -7285,7 +7285,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceAssets(self, request):
-        """This API is used to check the specified asset again.
+        r"""This API is used to check the specified asset again.
 
         :param request: Request instance for ScanComplianceAssets.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceAssetsRequest`
@@ -7308,7 +7308,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceAssetsByPolicyItem(self, request):
-        """This API is used to check the specified asset again with the specified check item and return the ID of the created compliance check task.
+        r"""This API is used to check the specified asset again with the specified check item and return the ID of the created compliance check task.
 
         :param request: Request instance for ScanComplianceAssetsByPolicyItem.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceAssetsByPolicyItemRequest`
@@ -7331,7 +7331,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanCompliancePolicyItems(self, request):
-        """This API is used to check all the assets of the specified check item again and return the ID of the created compliance check task.
+        r"""This API is used to check all the assets of the specified check item again and return the ID of the created compliance check task.
 
         :param request: Request instance for ScanCompliancePolicyItems.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanCompliancePolicyItemsRequest`
@@ -7354,7 +7354,7 @@ class TcssClient(AbstractClient):
 
 
     def ScanComplianceScanFailedAssets(self, request):
-        """This API is used to check all the failed check items of the specified asset again and return the ID of the created compliance check task.
+        r"""This API is used to check all the failed check items of the specified asset again and return the ID of the created compliance check task.
 
         :param request: Request instance for ScanComplianceScanFailedAssets.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ScanComplianceScanFailedAssetsRequest`
@@ -7377,7 +7377,7 @@ class TcssClient(AbstractClient):
 
 
     def SetCheckMode(self, request):
-        """This API is used to set the check mode and automatic check.
+        r"""This API is used to set the check mode and automatic check.
 
         :param request: Request instance for SetCheckMode.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SetCheckModeRequest`
@@ -7400,7 +7400,7 @@ class TcssClient(AbstractClient):
 
 
     def StopVirusScanTask(self, request):
-        """This API is used to stop a trojan scan task at runtime.
+        r"""This API is used to stop a trojan scan task at runtime.
 
         :param request: Request instance for StopVirusScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.StopVirusScanTaskRequest`
@@ -7423,7 +7423,7 @@ class TcssClient(AbstractClient):
 
 
     def StopVulScanTask(self, request):
-        """This API is used to stop a vulnerability scan task.
+        r"""This API is used to stop a vulnerability scan task.
 
         :param request: Request instance for StopVulScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.StopVulScanTaskRequest`
@@ -7446,7 +7446,7 @@ class TcssClient(AbstractClient):
 
 
     def SwitchImageAutoAuthorizedRule(self, request):
-        """This API is used to enable/disable automatic licensing for local images.
+        r"""This API is used to enable/disable automatic licensing for local images.
 
         :param request: Request instance for SwitchImageAutoAuthorizedRule.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SwitchImageAutoAuthorizedRuleRequest`
@@ -7469,7 +7469,7 @@ class TcssClient(AbstractClient):
 
 
     def SyncAssetImageRegistryAsset(self, request):
-        """This API is used to refresh the assets in an image repository.
+        r"""This API is used to refresh the assets in an image repository.
 
         :param request: Request instance for SyncAssetImageRegistryAsset.
         :type request: :class:`tencentcloud.tcss.v20201101.models.SyncAssetImageRegistryAssetRequest`
@@ -7492,7 +7492,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
-        """This API is used to create a task to update and publish a network policy in the container network.
+        r"""This API is used to create a task to update and publish a network policy in the container network.
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailRequest`
@@ -7515,7 +7515,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        """This API is used to create a task to update and publish a YAML network policy in the container network.
+        r"""This API is used to create a task to update and publish a YAML network policy in the container network.
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -7538,7 +7538,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAssetImageRegistryRegistryDetail(self, request):
-        """This API is used to update the details of an image repository.
+        r"""This API is used to update the details of an image repository.
 
         :param request: Request instance for UpdateAssetImageRegistryRegistryDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAssetImageRegistryRegistryDetailRequest`
@@ -7561,7 +7561,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateImageRegistryTimingScanTask(self, request):
-        """This API is used to update a scheduled task for an image repository.
+        r"""This API is used to update a scheduled task for an image repository.
 
         :param request: Request instance for UpdateImageRegistryTimingScanTask.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateImageRegistryTimingScanTaskRequest`
@@ -7584,7 +7584,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyDetail(self, request):
-        """This API is used to create a task to update a network policy in the container network.
+        r"""This API is used to create a task to update a network policy in the container network.
 
         :param request: Request instance for UpdateNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailRequest`
@@ -7607,7 +7607,7 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyYamlDetail(self, request):
-        """This API is used to create a task to update a YAML network policy in the container network.
+        r"""This API is used to create a task to update a YAML network policy in the container network.
 
         :param request: Request instance for UpdateNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailRequest`

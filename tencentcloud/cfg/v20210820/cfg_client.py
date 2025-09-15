@@ -27,7 +27,7 @@ class CfgClient(AbstractClient):
 
 
     def CreateTaskFromAction(self, request):
-        """This API is used to create an experiment with an action.
+        r"""This API is used to create an experiment with an action.
 
         :param request: Request instance for CreateTaskFromAction.
         :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromActionRequest`
@@ -50,7 +50,7 @@ class CfgClient(AbstractClient):
 
 
     def CreateTaskFromTemplate(self, request):
-        """This API is used to create an experiment using a template.
+        r"""This API is used to create an experiment using a template.
 
         :param request: Request instance for CreateTaskFromTemplate.
         :type request: :class:`tencentcloud.cfg.v20210820.models.CreateTaskFromTemplateRequest`
@@ -73,7 +73,7 @@ class CfgClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """This API is used to delete a task.
+        r"""This API is used to delete a task.
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DeleteTaskRequest`
@@ -96,7 +96,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeActionFieldConfigList(self, request):
-        """This API is used to obtain the dynamic configuration parameters of the action field based on action ID, including action-specific parameters and common parameters.
+        r"""This API is used to obtain the dynamic configuration parameters of the action field based on action ID, including action-specific parameters and common parameters.
 
         :param request: Request instance for DescribeActionFieldConfigList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionFieldConfigListRequest`
@@ -119,7 +119,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeActionLibraryList(self, request):
-        """This API is used to obtain the action list of Chaotic Fault Generator.
+        r"""This API is used to obtain the action list of Chaotic Fault Generator.
 
         :param request: Request instance for DescribeActionLibraryList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeActionLibraryListRequest`
@@ -142,7 +142,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeObjectTypeList(self, request):
-        """This API is used to query the object type list.
+        r"""This API is used to query the object type list.
 
         :param request: Request instance for DescribeObjectTypeList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeObjectTypeListRequest`
@@ -165,7 +165,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTask(self, request):
-        """This API is used to query a task.
+        r"""This API is used to query a task.
 
         :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskRequest`
@@ -188,7 +188,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskExecuteLogs(self, request):
-        """This API is used to obtain all logs generated during an experiment.
+        r"""This API is used to obtain all logs generated during an experiment.
 
         :param request: Request instance for DescribeTaskExecuteLogs.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskExecuteLogsRequest`
@@ -211,7 +211,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskList(self, request):
-        """This API is used to query the task list.
+        r"""This API is used to query the task list.
 
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskListRequest`
@@ -234,7 +234,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTaskPolicyTriggerLog(self, request):
-        """This API is used to obtain the guardrail triggering logs.
+        r"""This API is used to obtain the guardrail triggering logs.
 
         :param request: Request instance for DescribeTaskPolicyTriggerLog.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskPolicyTriggerLogRequest`
@@ -257,7 +257,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTemplate(self, request):
-        """This API is used to query a template library.
+        r"""This API is used to query a template library.
 
         :param request: Request instance for DescribeTemplate.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTemplateRequest`
@@ -280,7 +280,7 @@ class CfgClient(AbstractClient):
 
 
     def DescribeTemplateList(self, request):
-        """This API is used to query the template list.
+        r"""This API is used to query the template list.
 
         :param request: Request instance for DescribeTemplateList.
         :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTemplateListRequest`
@@ -303,7 +303,7 @@ class CfgClient(AbstractClient):
 
 
     def ExecuteTask(self, request):
-        """This API is used to run a task.
+        r"""This API is used to run a task.
 
         :param request: Request instance for ExecuteTask.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ExecuteTaskRequest`
@@ -326,7 +326,7 @@ class CfgClient(AbstractClient):
 
 
     def ExecuteTaskInstance(self, request):
-        """This API is used to trigger the action of the chaos engineering experiment and perform an experiment on the instance.
+        r"""This API is used to trigger the action of the chaos engineering experiment and perform an experiment on the instance.
 
         :param request: Request instance for ExecuteTaskInstance.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ExecuteTaskInstanceRequest`
@@ -349,7 +349,7 @@ class CfgClient(AbstractClient):
 
 
     def ModifyTaskRunStatus(self, request):
-        """This API is used to change the task running status.
+        r"""This API is used to change the task running status.
 
         :param request: Request instance for ModifyTaskRunStatus.
         :type request: :class:`tencentcloud.cfg.v20210820.models.ModifyTaskRunStatusRequest`
@@ -372,7 +372,7 @@ class CfgClient(AbstractClient):
 
 
     def TriggerPolicy(self, request):
-        """This API is used to trigger the chaos engineering experiment guardrail (two types: trigger and recovery).
+        r"""This API is used to trigger the chaos engineering experiment guardrail (two types: trigger and recovery).
 
         :param request: Request instance for TriggerPolicy.
         :type request: :class:`tencentcloud.cfg.v20210820.models.TriggerPolicyRequest`

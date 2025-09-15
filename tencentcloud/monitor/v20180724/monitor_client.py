@@ -27,7 +27,7 @@ class MonitorClient(AbstractClient):
 
 
     def BindPrometheusManagedGrafana(self, request):
-        """This API is used to bind a Grafana instance.
+        r"""This API is used to bind a Grafana instance.
 
         :param request: Request instance for BindPrometheusManagedGrafana.
         :type request: :class:`tencentcloud.monitor.v20180724.models.BindPrometheusManagedGrafanaRequest`
@@ -50,7 +50,7 @@ class MonitorClient(AbstractClient):
 
 
     def BindingPolicyObject(self, request):
-        """This API is used to bind an alarm policy to a specific object.
+        r"""This API is used to bind an alarm policy to a specific object.
 
         :param request: Request instance for BindingPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectRequest`
@@ -73,7 +73,7 @@ class MonitorClient(AbstractClient):
 
 
     def CheckIsPrometheusNewUser(self, request):
-        """This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.
+        r"""This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.
 
         :param request: Request instance for CheckIsPrometheusNewUser.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserRequest`
@@ -96,7 +96,7 @@ class MonitorClient(AbstractClient):
 
 
     def CleanGrafanaInstance(self, request):
-        """This API is used to forcibly terminate a Grafana instance.
+        r"""This API is used to forcibly terminate a Grafana instance.
 
         :param request: Request instance for CleanGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CleanGrafanaInstanceRequest`
@@ -119,7 +119,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """This API is used to create a notification template.
+        r"""This API is used to create a notification template.
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmNoticeRequest`
@@ -142,7 +142,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmPolicy(self, request):
-        """This API is used to create an alarm policy.
+        r"""This API is used to create an alarm policy.
 
         :param request: Request instance for CreateAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyRequest`
@@ -165,7 +165,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlertRule(self, request):
-        """This API is used to create a Prometheus alerting rule.
+        r"""This API is used to create a Prometheus alerting rule.
 
         Note that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
 
@@ -190,7 +190,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateExporterIntegration(self, request):
-        """This API is used to create an exporter integration.
+        r"""This API is used to create an exporter integration.
 
         :param request: Request instance for CreateExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateExporterIntegrationRequest`
@@ -213,7 +213,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaInstance(self, request):
-        """This API is used to create a monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
+        r"""This API is used to create a monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
 
         :param request: Request instance for CreateGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaInstanceRequest`
@@ -236,7 +236,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaIntegration(self, request):
-        """This API is used to create a Grafana integration configuration.
+        r"""This API is used to create a Grafana integration configuration.
 
         :param request: Request instance for CreateGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaIntegrationRequest`
@@ -259,7 +259,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaNotificationChannel(self, request):
-        """This API is used to create a Grafana notification channel.
+        r"""This API is used to create a Grafana notification channel.
 
         :param request: Request instance for CreateGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaNotificationChannelRequest`
@@ -282,7 +282,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePolicyGroup(self, request):
-        """This API is used to add a policy group.
+        r"""This API is used to add a policy group.
 
         :param request: Request instance for CreatePolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupRequest`
@@ -305,7 +305,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusAgent(self, request):
-        """This API is used to create a Prometheus CVM agent.
+        r"""This API is used to create a Prometheus CVM agent.
 
         :param request: Request instance for CreatePrometheusAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAgentRequest`
@@ -328,7 +328,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusAlertPolicy(self, request):
-        """This API is used to create an alerting rule.
+        r"""This API is used to create an alerting rule.
 
         :param request: Request instance for CreatePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusAlertPolicyRequest`
@@ -351,7 +351,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusClusterAgent(self, request):
-        """This API is used to associate a cluster with a Cloud Monitor (CM)-integrated Tencent Managed Service for Prometheus (TMP) 2.0 instance.
+        r"""This API is used to associate a cluster with a Cloud Monitor (CM)-integrated Tencent Managed Service for Prometheus (TMP) 2.0 instance.
 
         :param request: Request instance for CreatePrometheusClusterAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusClusterAgentRequest`
@@ -374,7 +374,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusConfig(self, request):
-        """This API is used to create Prometheus configurations.
+        r"""This API is used to create Prometheus configurations.
 
         :param request: Request instance for CreatePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusConfigRequest`
@@ -397,7 +397,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusGlobalNotification(self, request):
-        """This API is used to create a global alert notification channel.
+        r"""This API is used to create a global alert notification channel.
 
         :param request: Request instance for CreatePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusGlobalNotificationRequest`
@@ -420,7 +420,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusMultiTenantInstancePostPayMode(self, request):
-        """This API is used to create a pay-as-you-go Prometheus instance.
+        r"""This API is used to create a pay-as-you-go Prometheus instance.
 
         :param request: Request instance for CreatePrometheusMultiTenantInstancePostPayMode.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusMultiTenantInstancePostPayModeRequest`
@@ -443,7 +443,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusRecordRuleYaml(self, request):
-        """This API is used to create a recording rule in the YAML way.
+        r"""This API is used to create a recording rule in the YAML way.
 
         :param request: Request instance for CreatePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusRecordRuleYamlRequest`
@@ -466,7 +466,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusScrapeJob(self, request):
-        """This API is used to create a Prometheus scrape task.
+        r"""This API is used to create a Prometheus scrape task.
 
         :param request: Request instance for CreatePrometheusScrapeJob.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusScrapeJobRequest`
@@ -489,7 +489,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreatePrometheusTemp(self, request):
-        """This API is used to create a TMP template.
+        r"""This API is used to create a TMP template.
 
         :param request: Request instance for CreatePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusTempRequest`
@@ -512,7 +512,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateRecordingRule(self, request):
-        """This API is used to create a Prometheus recording rule.
+        r"""This API is used to create a Prometheus recording rule.
 
         :param request: Request instance for CreateRecordingRule.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleRequest`
@@ -535,7 +535,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateSSOAccount(self, request):
-        """This API is used to authorize a Grafana instance to another Tencent Cloud user.
+        r"""This API is used to authorize a Grafana instance to another Tencent Cloud user.
 
         :param request: Request instance for CreateSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateSSOAccountRequest`
@@ -558,7 +558,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateServiceDiscovery(self, request):
-        """This API is used to create a Prometheus scrape configuration in TKE.
+        r"""This API is used to create a Prometheus scrape configuration in TKE.
         <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
         <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
 
@@ -583,7 +583,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlarmNotices(self, request):
-        """This API is used to delete an alarm notification template.
+        r"""This API is used to delete an alarm notification template.
 
         :param request: Request instance for DeleteAlarmNotices.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmNoticesRequest`
@@ -606,7 +606,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlarmPolicy(self, request):
-        """This API is used to delete an alarm policy.
+        r"""This API is used to delete an alarm policy.
 
         :param request: Request instance for DeleteAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmPolicyRequest`
@@ -629,7 +629,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteAlertRules(self, request):
-        """This API is used to batch delete Prometheus alerting rules.
+        r"""This API is used to batch delete Prometheus alerting rules.
 
         :param request: Request instance for DeleteAlertRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesRequest`
@@ -652,7 +652,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteExporterIntegration(self, request):
-        """This API is used to delete an exporter integration.
+        r"""This API is used to delete an exporter integration.
 
         :param request: Request instance for DeleteExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteExporterIntegrationRequest`
@@ -675,7 +675,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaInstance(self, request):
-        """This API is used to refund a monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
+        r"""This API is used to refund a monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
 
         :param request: Request instance for DeleteGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaInstanceRequest`
@@ -698,7 +698,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaIntegration(self, request):
-        """This API is used to delete a Grafana integration configuration.
+        r"""This API is used to delete a Grafana integration configuration.
 
         :param request: Request instance for DeleteGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaIntegrationRequest`
@@ -721,7 +721,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaNotificationChannel(self, request):
-        """This API is used to delete a Grafana notification channel.
+        r"""This API is used to delete a Grafana notification channel.
 
         :param request: Request instance for DeleteGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaNotificationChannelRequest`
@@ -744,7 +744,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePolicyGroup(self, request):
-        """This API is used to delete an alarm policy group.
+        r"""This API is used to delete an alarm policy group.
 
         :param request: Request instance for DeletePolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupRequest`
@@ -767,7 +767,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusAlertPolicy(self, request):
-        """This API is used to delete a TMP 2.0 instance alerting rule.
+        r"""This API is used to delete a TMP 2.0 instance alerting rule.
 
         :param request: Request instance for DeletePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusAlertPolicyRequest`
@@ -790,7 +790,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusClusterAgent(self, request):
-        """This API is used to disassociate a TMP instance from a cluster.
+        r"""This API is used to disassociate a TMP instance from a cluster.
 
         :param request: Request instance for DeletePrometheusClusterAgent.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusClusterAgentRequest`
@@ -813,7 +813,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusConfig(self, request):
-        """This API is used to delete Prometheus configurations. If the target cluster does not exist, a result indicating success will be returned.
+        r"""This API is used to delete Prometheus configurations. If the target cluster does not exist, a result indicating success will be returned.
 
         :param request: Request instance for DeletePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusConfigRequest`
@@ -836,7 +836,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusRecordRuleYaml(self, request):
-        """This API is used to delete a recording instance.
+        r"""This API is used to delete a recording instance.
 
         :param request: Request instance for DeletePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusRecordRuleYamlRequest`
@@ -859,7 +859,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusScrapeJobs(self, request):
-        """This API is used to delete a Prometheus scrape task.
+        r"""This API is used to delete a Prometheus scrape task.
 
         :param request: Request instance for DeletePrometheusScrapeJobs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusScrapeJobsRequest`
@@ -882,7 +882,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusTemp(self, request):
-        """This API is used to delete a TMP template.
+        r"""This API is used to delete a TMP template.
 
         :param request: Request instance for DeletePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempRequest`
@@ -905,7 +905,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePrometheusTempSync(self, request):
-        """This API is used to unsync a template, which will delete the configuration generated by the template in the target. It takes effect for v2 instances.
+        r"""This API is used to unsync a template, which will delete the configuration generated by the template in the target. It takes effect for v2 instances.
 
         :param request: Request instance for DeletePrometheusTempSync.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempSyncRequest`
@@ -928,7 +928,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteRecordingRules(self, request):
-        """This API is used to batch delete Prometheus recording rules.
+        r"""This API is used to batch delete Prometheus recording rules.
 
         :param request: Request instance for DeleteRecordingRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesRequest`
@@ -951,7 +951,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteSSOAccount(self, request):
-        """This API is used to delete an authorized TCMG user.
+        r"""This API is used to delete an authorized TCMG user.
 
         :param request: Request instance for DeleteSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteSSOAccountRequest`
@@ -974,7 +974,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAccidentEventList(self, request):
-        """This API is used to get the platform event list.
+        r"""This API is used to get the platform event list.
 
         :param request: Request instance for DescribeAccidentEventList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListRequest`
@@ -997,7 +997,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmEvents(self, request):
-        """This API is used to query the list of alarm events.
+        r"""This API is used to query the list of alarm events.
 
         :param request: Request instance for DescribeAlarmEvents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmEventsRequest`
@@ -1020,7 +1020,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmHistories(self, request):
-        """This API is used to query the alarm records.
+        r"""This API is used to query the alarm records.
 
         Note: **If you use a sub-account, you can only query the alarm records of authorized projects** or uncategorized products.
 
@@ -1045,7 +1045,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmMetrics(self, request):
-        """This API is used to query the list of alarm metrics.
+        r"""This API is used to query the list of alarm metrics.
 
         :param request: Request instance for DescribeAlarmMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmMetricsRequest`
@@ -1068,7 +1068,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotice(self, request):
-        """This API is used to query the details of a single notification template.
+        r"""This API is used to query the details of a single notification template.
 
         :param request: Request instance for DescribeAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeRequest`
@@ -1091,7 +1091,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNoticeCallbacks(self, request):
-        """This API is used to obtain all the callback URLs of an alarm notification template.
+        r"""This API is used to obtain all the callback URLs of an alarm notification template.
 
         :param request: Request instance for DescribeAlarmNoticeCallbacks.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeCallbacksRequest`
@@ -1114,7 +1114,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """This API is used to query the list of notification templates.
+        r"""This API is used to query the list of notification templates.
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticesRequest`
@@ -1137,7 +1137,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicies(self, request):
-        """This API is used to query the list of alarm policies.
+        r"""This API is used to query the list of alarm policies.
 
         :param request: Request instance for DescribeAlarmPolicies.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPoliciesRequest`
@@ -1160,7 +1160,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicy(self, request):
-        """This API is used to get the details of a single alarm policy.
+        r"""This API is used to get the details of a single alarm policy.
 
         :param request: Request instance for DescribeAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPolicyRequest`
@@ -1183,7 +1183,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlertRules(self, request):
-        """This API is used to query a Prometheus alerting rule.
+        r"""This API is used to query a Prometheus alerting rule.
 
         :param request: Request instance for DescribeAlertRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesRequest`
@@ -1206,7 +1206,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAllNamespaces(self, request):
-        """This API is used to query all namespaces.
+        r"""This API is used to query all namespaces.
 
         :param request: Request instance for DescribeAllNamespaces.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAllNamespacesRequest`
@@ -1229,7 +1229,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBaseMetrics(self, request):
-        """This API is used to get the attributes of basic metrics.
+        r"""This API is used to get the attributes of basic metrics.
 
         :param request: Request instance for DescribeBaseMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`
@@ -1252,7 +1252,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBasicAlarmList(self, request):
-        """This API is used to get the basic alarm list.
+        r"""This API is used to get the basic alarm list.
 
         :param request: Request instance for DescribeBasicAlarmList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListRequest`
@@ -1275,7 +1275,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBindingPolicyObjectList(self, request):
-        """This API is used to get the bound object list.
+        r"""This API is used to get the bound object list.
 
         :param request: Request instance for DescribeBindingPolicyObjectList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListRequest`
@@ -1298,7 +1298,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeClusterAgentCreatingProgress(self, request):
-        """This API is used to obtain the binding status between the TencentCloud Managed Service for Prometheus instance and the TKE cluster.
+        r"""This API is used to obtain the binding status between the TencentCloud Managed Service for Prometheus instance and the TKE cluster.
 
         :param request: Request instance for DescribeClusterAgentCreatingProgress.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeClusterAgentCreatingProgressRequest`
@@ -1321,7 +1321,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeConditionsTemplateList(self, request):
-        """This API is used to get the trigger condition template.
+        r"""This API is used to get the trigger condition template.
 
         :param request: Request instance for DescribeConditionsTemplateList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeConditionsTemplateListRequest`
@@ -1344,7 +1344,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeDNSConfig(self, request):
-        """This API is used to list Grafana DNS configurations.
+        r"""This API is used to list Grafana DNS configurations.
 
         :param request: Request instance for DescribeDNSConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeDNSConfigRequest`
@@ -1367,7 +1367,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeExporterIntegrations(self, request):
-        """This API is used to query the list of exporter integrations.
+        r"""This API is used to query the list of exporter integrations.
 
         :param request: Request instance for DescribeExporterIntegrations.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExporterIntegrationsRequest`
@@ -1390,7 +1390,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaChannels(self, request):
-        """This API is used to list all Grafana alert channels.
+        r"""This API is used to list all Grafana alert channels.
 
         :param request: Request instance for DescribeGrafanaChannels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaChannelsRequest`
@@ -1413,7 +1413,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaConfig(self, request):
-        """This API is used to list Grafana settings, i.e., the `grafana.ini` file content.
+        r"""This API is used to list Grafana settings, i.e., the `grafana.ini` file content.
 
         :param request: Request instance for DescribeGrafanaConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaConfigRequest`
@@ -1436,7 +1436,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaEnvironments(self, request):
-        """This API is used to list Grafana environment variables.
+        r"""This API is used to list Grafana environment variables.
 
         :param request: Request instance for DescribeGrafanaEnvironments.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaEnvironmentsRequest`
@@ -1459,7 +1459,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaInstances(self, request):
-        """This API is used to list all Grafana instances under a user account.
+        r"""This API is used to list all Grafana instances under a user account.
 
         :param request: Request instance for DescribeGrafanaInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaInstancesRequest`
@@ -1482,7 +1482,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaIntegrations(self, request):
-        """This API is used to list installed Grafana integrations.
+        r"""This API is used to list installed Grafana integrations.
 
         :param request: Request instance for DescribeGrafanaIntegrations.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaIntegrationsRequest`
@@ -1505,7 +1505,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaNotificationChannels(self, request):
-        """This API is used to list Grafana notification channels.
+        r"""This API is used to list Grafana notification channels.
 
         :param request: Request instance for DescribeGrafanaNotificationChannels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaNotificationChannelsRequest`
@@ -1528,7 +1528,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaWhiteList(self, request):
-        """This API is used to list the Grafana allowlist.
+        r"""This API is used to list the Grafana allowlist.
 
         :param request: Request instance for DescribeGrafanaWhiteList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaWhiteListRequest`
@@ -1551,7 +1551,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeInstalledPlugins(self, request):
-        """This API is used to list the plugins installed in an instance.
+        r"""This API is used to list the plugins installed in an instance.
 
         :param request: Request instance for DescribeInstalledPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeInstalledPluginsRequest`
@@ -1574,7 +1574,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeMonitorTypes(self, request):
-        """This API is used to list all the monitoring types supported by CM.
+        r"""This API is used to list all the monitoring types supported by CM.
 
         :param request: Request instance for DescribeMonitorTypes.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorTypesRequest`
@@ -1597,7 +1597,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyConditionList(self, request):
-        """This API is used to get basic alarm policy conditions.
+        r"""This API is used to get basic alarm policy conditions.
 
         :param request: Request instance for DescribePolicyConditionList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListRequest`
@@ -1620,7 +1620,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyGroupInfo(self, request):
-        """This API is used to get details of a basic policy group.
+        r"""This API is used to get details of a basic policy group.
 
         :param request: Request instance for DescribePolicyGroupInfo.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoRequest`
@@ -1643,7 +1643,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePolicyGroupList(self, request):
-        """This API is used to get the list of basic policy alarm groups.
+        r"""This API is used to get the list of basic policy alarm groups.
 
         :param request: Request instance for DescribePolicyGroupList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListRequest`
@@ -1666,7 +1666,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeProductEventList(self, request):
-        """This API is used to get the list of product events by page.
+        r"""This API is used to get the list of product events by page.
 
         :param request: Request instance for DescribeProductEventList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListRequest`
@@ -1689,7 +1689,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAgentInstances(self, request):
-        """This API is used to get the list of instances associated with the target cluster.
+        r"""This API is used to get the list of instances associated with the target cluster.
 
         :param request: Request instance for DescribePrometheusAgentInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentInstancesRequest`
@@ -1712,7 +1712,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAgents(self, request):
-        """This API is used to list Prometheus CVM agents.
+        r"""This API is used to list Prometheus CVM agents.
 
         :param request: Request instance for DescribePrometheusAgents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentsRequest`
@@ -1735,7 +1735,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusAlertPolicy(self, request):
-        """This API is used to get the list of v2.0 instance alerting rules.
+        r"""This API is used to get the list of v2.0 instance alerting rules.
 
         :param request: Request instance for DescribePrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertPolicyRequest`
@@ -1758,7 +1758,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusClusterAgents(self, request):
-        """This API is used to get the list of clusters associated with the TMP instance.
+        r"""This API is used to get the list of clusters associated with the TMP instance.
 
         :param request: Request instance for DescribePrometheusClusterAgents.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusClusterAgentsRequest`
@@ -1781,7 +1781,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusConfig(self, request):
-        """This API is used to get the Prometheus configuration.
+        r"""This API is used to get the Prometheus configuration.
 
         :param request: Request instance for DescribePrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusConfigRequest`
@@ -1804,7 +1804,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusGlobalConfig(self, request):
-        """This API is used to get the instance-level scrape configurations.
+        r"""This API is used to get the instance-level scrape configurations.
 
         :param request: Request instance for DescribePrometheusGlobalConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusGlobalConfigRequest`
@@ -1827,7 +1827,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusGlobalNotification(self, request):
-        """This API is used to query the global alert notification channel.
+        r"""This API is used to query the global alert notification channel.
 
         :param request: Request instance for DescribePrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusGlobalNotificationRequest`
@@ -1850,7 +1850,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceDetail(self, request):
-        """This API is used to get the details of a TMP instance.
+        r"""This API is used to get the details of a TMP instance.
 
         :param request: Request instance for DescribePrometheusInstanceDetail.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceDetailRequest`
@@ -1873,7 +1873,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceInitStatus(self, request):
-        """This API is used to get the initialization task status of a v2.0 instance.
+        r"""This API is used to get the initialization task status of a v2.0 instance.
 
         :param request: Request instance for DescribePrometheusInstanceInitStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceInitStatusRequest`
@@ -1896,7 +1896,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstanceUsage(self, request):
-        """This API is used to query the usage of a pay-as-you-go Tencent Managed Service for Prometheus (TMP) instance.
+        r"""This API is used to query the usage of a pay-as-you-go Tencent Managed Service for Prometheus (TMP) instance.
 
         :param request: Request instance for DescribePrometheusInstanceUsage.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceUsageRequest`
@@ -1919,7 +1919,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstances(self, request):
-        """This API is used to query the details of one or multiple instances.
+        r"""This API is used to query the details of one or multiple instances.
         <ul>
         <li>You can query the details of an instance by its ID, name, or status.</li>
         <li>If this parameter is empty, the information of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.</li>
@@ -1946,7 +1946,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstancesOverview(self, request):
-        """This API is used to obtain the list of Tencent Managed Service for Prometheus (TMP) instances and the clusters associated with them.
+        r"""This API is used to obtain the list of Tencent Managed Service for Prometheus (TMP) instances and the clusters associated with them.
 
         :param request: Request instance for DescribePrometheusInstancesOverview.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesOverviewRequest`
@@ -1969,7 +1969,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusRecordRuleYaml(self, request):
-        """This API is used to get the YAML list of Prometheus recording rules.
+        r"""This API is used to get the YAML list of Prometheus recording rules.
 
         :param request: Request instance for DescribePrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlRequest`
@@ -1992,7 +1992,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusRecordRules(self, request):
-        """This API is used to get the list of recording rules, including those created by CRD resources in the associated cluster.
+        r"""This API is used to get the list of recording rules, including those created by CRD resources in the associated cluster.
 
         :param request: Request instance for DescribePrometheusRecordRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRulesRequest`
@@ -2015,7 +2015,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusScrapeJobs(self, request):
-        """This API is used to list Prometheus scrape tasks.
+        r"""This API is used to list Prometheus scrape tasks.
 
         :param request: Request instance for DescribePrometheusScrapeJobs.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusScrapeJobsRequest`
@@ -2038,7 +2038,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTargetsTMP(self, request):
-        """This API is used to get the targets information.
+        r"""This API is used to get the targets information.
 
         :param request: Request instance for DescribePrometheusTargetsTMP.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTargetsTMPRequest`
@@ -2061,7 +2061,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTemp(self, request):
-        """This API is used to get the list of templates, where the default template is always on top.
+        r"""This API is used to get the list of templates, where the default template is always on top.
 
         :param request: Request instance for DescribePrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempRequest`
@@ -2084,7 +2084,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusTempSync(self, request):
-        """This API is used to get the information of instances associated with a template. It takes effect for v2 instances.
+        r"""This API is used to get the information of instances associated with a template. It takes effect for v2 instances.
 
         :param request: Request instance for DescribePrometheusTempSync.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempSyncRequest`
@@ -2107,7 +2107,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusZones(self, request):
-        """This API is used to list the AZs of Tencent Managed Service for Prometheus (TMP).
+        r"""This API is used to list the AZs of Tencent Managed Service for Prometheus (TMP).
 
         :param request: Request instance for DescribePrometheusZones.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesRequest`
@@ -2130,7 +2130,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeRecordingRules(self, request):
-        """This API is used to query Prometheus recording rules by filter.
+        r"""This API is used to query Prometheus recording rules by filter.
 
         :param request: Request instance for DescribeRecordingRules.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesRequest`
@@ -2153,7 +2153,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeSSOAccount(self, request):
-        """This API is used to list all authorized accounts of the current Grafana instance.
+        r"""This API is used to list all authorized accounts of the current Grafana instance.
 
         :param request: Request instance for DescribeSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeSSOAccountRequest`
@@ -2176,7 +2176,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeServiceDiscovery(self, request):
-        """This API is used to list Prometheus scrape configurations in TKE.
+        r"""This API is used to list Prometheus scrape configurations in TKE.
         <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
         <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
 
@@ -2201,7 +2201,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeStatisticData(self, request):
-        """This API is used to query monitoring data by dimension conditions.
+        r"""This API is used to query monitoring data by dimension conditions.
 
         :param request: Request instance for DescribeStatisticData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeStatisticDataRequest`
@@ -2224,7 +2224,7 @@ class MonitorClient(AbstractClient):
 
 
     def DestroyPrometheusInstance(self, request):
-        """This API is used to delete the data of a Prometheus instance. The specified instance must be terminated first.
+        r"""This API is used to delete the data of a Prometheus instance. The specified instance must be terminated first.
 
         :param request: Request instance for DestroyPrometheusInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DestroyPrometheusInstanceRequest`
@@ -2247,7 +2247,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableGrafanaInternet(self, request):
-        """This API is used to set the Grafana public network access.
+        r"""This API is used to set the Grafana public network access.
 
         :param request: Request instance for EnableGrafanaInternet.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableGrafanaInternetRequest`
@@ -2270,7 +2270,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableGrafanaSSO(self, request):
-        """This API is used to set the Grafana SSO through a Tencent Cloud account.
+        r"""This API is used to set the Grafana SSO through a Tencent Cloud account.
 
         :param request: Request instance for EnableGrafanaSSO.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableGrafanaSSORequest`
@@ -2293,7 +2293,7 @@ class MonitorClient(AbstractClient):
 
 
     def EnableSSOCamCheck(self, request):
-        """This API is used to set whether to enable CAM authentication during SSO.
+        r"""This API is used to set whether to enable CAM authentication during SSO.
 
         :param request: Request instance for EnableSSOCamCheck.
         :type request: :class:`tencentcloud.monitor.v20180724.models.EnableSSOCamCheckRequest`
@@ -2316,7 +2316,7 @@ class MonitorClient(AbstractClient):
 
 
     def GetMonitorData(self, request):
-        """This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.
+        r"""This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.
         You can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
         API call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.
         If you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.
@@ -2342,7 +2342,7 @@ class MonitorClient(AbstractClient):
 
 
     def GetPrometheusAgentManagementCommand(self, request):
-        """This API is used to get the command line for Prometheus agent management.
+        r"""This API is used to get the command line for Prometheus agent management.
 
         :param request: Request instance for GetPrometheusAgentManagementCommand.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetPrometheusAgentManagementCommandRequest`
@@ -2365,7 +2365,7 @@ class MonitorClient(AbstractClient):
 
 
     def InstallPlugins(self, request):
-        """This API is used to install a Grafana plugin.
+        r"""This API is used to install a Grafana plugin.
 
         :param request: Request instance for InstallPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.InstallPluginsRequest`
@@ -2388,7 +2388,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """This API is used to edit an alarm notification template.
+        r"""This API is used to edit an alarm notification template.
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmNoticeRequest`
@@ -2411,7 +2411,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyCondition(self, request):
-        """This API is used to modify the trigger condition of an alarm policy.
+        r"""This API is used to modify the trigger condition of an alarm policy.
 
         :param request: Request instance for ModifyAlarmPolicyCondition.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionRequest`
@@ -2434,7 +2434,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyInfo(self, request):
-        """This API is used to edit the basic information of a v2.0 alarm policy, including policy name and remarks.
+        r"""This API is used to edit the basic information of a v2.0 alarm policy, including policy name and remarks.
 
         :param request: Request instance for ModifyAlarmPolicyInfo.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyInfoRequest`
@@ -2457,7 +2457,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyNotice(self, request):
-        """This API is used to modify the alarm notification template bound to an alarm policy.
+        r"""This API is used to modify the alarm notification template bound to an alarm policy.
 
         :param request: Request instance for ModifyAlarmPolicyNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyNoticeRequest`
@@ -2480,7 +2480,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyStatus(self, request):
-        """This API is used to enable/disable an alarm policy.
+        r"""This API is used to enable/disable an alarm policy.
 
         :param request: Request instance for ModifyAlarmPolicyStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyStatusRequest`
@@ -2503,7 +2503,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyTasks(self, request):
-        """This API is used to modify the tasks triggered by alarm policy, which are listed by the value of the `TriggerTasks` field. If an empty array is passed in for `TriggerTasks`, it means unbinding all the trigger tasks from the policy.
+        r"""This API is used to modify the tasks triggered by alarm policy, which are listed by the value of the `TriggerTasks` field. If an empty array is passed in for `TriggerTasks`, it means unbinding all the trigger tasks from the policy.
 
         :param request: Request instance for ModifyAlarmPolicyTasks.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyTasksRequest`
@@ -2526,7 +2526,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmReceivers(self, request):
-        """This API is used to modify alarm recipients.
+        r"""This API is used to modify alarm recipients.
 
         :param request: Request instance for ModifyAlarmReceivers.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversRequest`
@@ -2549,7 +2549,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyGrafanaInstance(self, request):
-        """This API is used to modify the attributes of a Grafana instance.
+        r"""This API is used to modify the attributes of a Grafana instance.
 
         :param request: Request instance for ModifyGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyGrafanaInstanceRequest`
@@ -2572,7 +2572,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPolicyGroup(self, request):
-        """This API is used to update policy group.
+        r"""This API is used to update policy group.
 
         :param request: Request instance for ModifyPolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupRequest`
@@ -2595,7 +2595,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusAgentExternalLabels(self, request):
-        """This API is used to modify the external labels of the associated cluster.
+        r"""This API is used to modify the external labels of the associated cluster.
 
         :param request: Request instance for ModifyPrometheusAgentExternalLabels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusAgentExternalLabelsRequest`
@@ -2618,7 +2618,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusAlertPolicy(self, request):
-        """This API is used to modify a TMP 2.0 instance alerting rule.
+        r"""This API is used to modify a TMP 2.0 instance alerting rule.
 
         :param request: Request instance for ModifyPrometheusAlertPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusAlertPolicyRequest`
@@ -2641,7 +2641,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusConfig(self, request):
-        """This API is used to modify the Prometheus configuration. If there are no configuration items, one will be added.
+        r"""This API is used to modify the Prometheus configuration. If there are no configuration items, one will be added.
 
         :param request: Request instance for ModifyPrometheusConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusConfigRequest`
@@ -2664,7 +2664,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusGlobalNotification(self, request):
-        """This API is used to modify the global alert notification channel.
+        r"""This API is used to modify the global alert notification channel.
 
         :param request: Request instance for ModifyPrometheusGlobalNotification.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusGlobalNotificationRequest`
@@ -2687,7 +2687,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusInstanceAttributes(self, request):
-        """This API is used to modify the attributes of a Prometheus instance.
+        r"""This API is used to modify the attributes of a Prometheus instance.
 
         :param request: Request instance for ModifyPrometheusInstanceAttributes.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAttributesRequest`
@@ -2710,7 +2710,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusRecordRuleYaml(self, request):
-        """This API is used to modify a Prometheus recording instance through YAML.
+        r"""This API is used to modify a Prometheus recording instance through YAML.
 
         :param request: Request instance for ModifyPrometheusRecordRuleYaml.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusRecordRuleYamlRequest`
@@ -2733,7 +2733,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyPrometheusTemp(self, request):
-        """This API is used to modify a template.
+        r"""This API is used to modify a template.
 
         :param request: Request instance for ModifyPrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusTempRequest`
@@ -2756,7 +2756,7 @@ class MonitorClient(AbstractClient):
 
 
     def ResumeGrafanaInstance(self, request):
-        """This API is used to renew a monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
+        r"""This API is used to renew a monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
 
         :param request: Request instance for ResumeGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ResumeGrafanaInstanceRequest`
@@ -2779,7 +2779,7 @@ class MonitorClient(AbstractClient):
 
 
     def RunPrometheusInstance(self, request):
-        """This API is used to initialize a TMP instance, which is called when the integration center is enabled.
+        r"""This API is used to initialize a TMP instance, which is called when the integration center is enabled.
 
         :param request: Request instance for RunPrometheusInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.RunPrometheusInstanceRequest`
@@ -2802,7 +2802,7 @@ class MonitorClient(AbstractClient):
 
 
     def SendCustomAlarmMsg(self, request):
-        """This API is used to send a custom alarm notification.
+        r"""This API is used to send a custom alarm notification.
 
         :param request: Request instance for SendCustomAlarmMsg.
         :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`
@@ -2825,7 +2825,7 @@ class MonitorClient(AbstractClient):
 
 
     def SetDefaultAlarmPolicy(self, request):
-        """This API is used to set an alarm policy as the default policy in the current policy type under the current project.
+        r"""This API is used to set an alarm policy as the default policy in the current policy type under the current project.
         Alarm policies in the same type under the project will be set as non-default.
 
         :param request: Request instance for SetDefaultAlarmPolicy.
@@ -2849,7 +2849,7 @@ class MonitorClient(AbstractClient):
 
 
     def SyncPrometheusTemp(self, request):
-        """This API is used to sync a template to an instance or cluster. It takes effect for v2 instances.
+        r"""This API is used to sync a template to an instance or cluster. It takes effect for v2 instances.
 
         :param request: Request instance for SyncPrometheusTemp.
         :type request: :class:`tencentcloud.monitor.v20180724.models.SyncPrometheusTempRequest`
@@ -2872,7 +2872,7 @@ class MonitorClient(AbstractClient):
 
 
     def TerminatePrometheusInstances(self, request):
-        """This API is used to terminate a pay-as-you-go Prometheus instance.
+        r"""This API is used to terminate a pay-as-you-go Prometheus instance.
 
         :param request: Request instance for TerminatePrometheusInstances.
         :type request: :class:`tencentcloud.monitor.v20180724.models.TerminatePrometheusInstancesRequest`
@@ -2895,7 +2895,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnBindingAllPolicyObject(self, request):
-        """This API is used to delete all bound objects.
+        r"""This API is used to delete all bound objects.
 
         :param request: Request instance for UnBindingAllPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectRequest`
@@ -2918,7 +2918,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnBindingPolicyObject(self, request):
-        """This API is used to delete an object that is bound to a policy.
+        r"""This API is used to delete an object that is bound to a policy.
 
         :param request: Request instance for UnBindingPolicyObject.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectRequest`
@@ -2941,7 +2941,7 @@ class MonitorClient(AbstractClient):
 
 
     def UnbindPrometheusManagedGrafana(self, request):
-        """This API is used to unbind a Grafana instance from an instance.
+        r"""This API is used to unbind a Grafana instance from an instance.
 
         :param request: Request instance for UnbindPrometheusManagedGrafana.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UnbindPrometheusManagedGrafanaRequest`
@@ -2964,7 +2964,7 @@ class MonitorClient(AbstractClient):
 
 
     def UninstallGrafanaDashboard(self, request):
-        """This API is used to delete a Grafana dashboard.
+        r"""This API is used to delete a Grafana dashboard.
 
         :param request: Request instance for UninstallGrafanaDashboard.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaDashboardRequest`
@@ -2987,7 +2987,7 @@ class MonitorClient(AbstractClient):
 
 
     def UninstallGrafanaPlugins(self, request):
-        """This API is used to delete installed plugins.
+        r"""This API is used to delete installed plugins.
 
         :param request: Request instance for UninstallGrafanaPlugins.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UninstallGrafanaPluginsRequest`
@@ -3010,7 +3010,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateAlertRule(self, request):
-        """This API is used to update a Prometheus alerting rule.
+        r"""This API is used to update a Prometheus alerting rule.
 
         Note that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
 
@@ -3035,7 +3035,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateAlertRuleState(self, request):
-        """This API is used to update the status of a Prometheus alerting rule.
+        r"""This API is used to update the status of a Prometheus alerting rule.
 
         :param request: Request instance for UpdateAlertRuleState.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateRequest`
@@ -3058,7 +3058,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateDNSConfig(self, request):
-        """This API is used to update the Grafana DNS configuration.
+        r"""This API is used to update the Grafana DNS configuration.
 
         :param request: Request instance for UpdateDNSConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateDNSConfigRequest`
@@ -3081,7 +3081,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateExporterIntegration(self, request):
-        """This API is used to update the exporter integration configuration.
+        r"""This API is used to update the exporter integration configuration.
 
         :param request: Request instance for UpdateExporterIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateExporterIntegrationRequest`
@@ -3104,7 +3104,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaConfig(self, request):
-        """This API is used to update the Grafana configuration.
+        r"""This API is used to update the Grafana configuration.
 
         :param request: Request instance for UpdateGrafanaConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaConfigRequest`
@@ -3127,7 +3127,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaEnvironments(self, request):
-        """This API is used to update Grafana environment variables.
+        r"""This API is used to update Grafana environment variables.
 
         :param request: Request instance for UpdateGrafanaEnvironments.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaEnvironmentsRequest`
@@ -3150,7 +3150,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaIntegration(self, request):
-        """This API is used to update the Grafana integration configuration.
+        r"""This API is used to update the Grafana integration configuration.
 
         :param request: Request instance for UpdateGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaIntegrationRequest`
@@ -3173,7 +3173,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaNotificationChannel(self, request):
-        """This API is used to update the Grafana notification channel.
+        r"""This API is used to update the Grafana notification channel.
 
         :param request: Request instance for UpdateGrafanaNotificationChannel.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaNotificationChannelRequest`
@@ -3196,7 +3196,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateGrafanaWhiteList(self, request):
-        """This API is used to update the Grafana allowlist.
+        r"""This API is used to update the Grafana allowlist.
 
         :param request: Request instance for UpdateGrafanaWhiteList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateGrafanaWhiteListRequest`
@@ -3219,7 +3219,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusAgentStatus(self, request):
-        """This API is used to update the status of a Prometheus CVM agent.
+        r"""This API is used to update the status of a Prometheus CVM agent.
 
         :param request: Request instance for UpdatePrometheusAgentStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusAgentStatusRequest`
@@ -3242,7 +3242,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusScrapeJob(self, request):
-        """This API is used to update a Prometheus scrape task.
+        r"""This API is used to update a Prometheus scrape task.
 
         :param request: Request instance for UpdatePrometheusScrapeJob.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusScrapeJobRequest`
@@ -3265,7 +3265,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateRecordingRule(self, request):
-        """This API is used to update a Prometheus recording rule.
+        r"""This API is used to update a Prometheus recording rule.
 
         :param request: Request instance for UpdateRecordingRule.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleRequest`
@@ -3288,7 +3288,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateSSOAccount(self, request):
-        """This API is used to update the remarks and permission information of an authorized account in an overwriting manner.
+        r"""This API is used to update the remarks and permission information of an authorized account in an overwriting manner.
 
         :param request: Request instance for UpdateSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateSSOAccountRequest`
@@ -3311,7 +3311,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpgradeGrafanaDashboard(self, request):
-        """This API is used to update a Grafana dashboard.
+        r"""This API is used to update a Grafana dashboard.
 
         :param request: Request instance for UpgradeGrafanaDashboard.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaDashboardRequest`
@@ -3334,7 +3334,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpgradeGrafanaInstance(self, request):
-        """This API is used to upgrade a Grafana instance.
+        r"""This API is used to upgrade a Grafana instance.
 
         :param request: Request instance for UpgradeGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpgradeGrafanaInstanceRequest`

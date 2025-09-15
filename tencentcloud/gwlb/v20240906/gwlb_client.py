@@ -27,7 +27,7 @@ class GwlbClient(AbstractClient):
 
 
     def AssociateTargetGroups(self, request):
-        """This API is used to bind target groups to a CLB.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        r"""This API is used to bind target groups to a CLB.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for AssociateTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.AssociateTargetGroupsRequest`
@@ -50,7 +50,7 @@ class GwlbClient(AbstractClient):
 
 
     def CreateGatewayLoadBalancer(self, request):
-        """This API is used to create a GWLB instance. To use the GWLB service, you must purchase one or more GWLB instances. After this API is called successfully, a unique ID for the GWLB instance will be returned.Note: The default purchase quota for each account in each region is 10.This is an async API. After the API is called successfully, you can use the DescribeGatewayLoadBalancers API to query the status of the GWLB instance (such as creating and normal) to determine whether the creation is successful.
+        r"""This API is used to create a GWLB instance. To use the GWLB service, you must purchase one or more GWLB instances. After this API is called successfully, a unique ID for the GWLB instance will be returned.Note: The default purchase quota for each account in each region is 10.This is an async API. After the API is called successfully, you can use the DescribeGatewayLoadBalancers API to query the status of the GWLB instance (such as creating and normal) to determine whether the creation is successful.
 
         :param request: Request instance for CreateGatewayLoadBalancer.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.CreateGatewayLoadBalancerRequest`
@@ -73,7 +73,7 @@ class GwlbClient(AbstractClient):
 
 
     def CreateTargetGroup(self, request):
-        """This API is used to create a target group. This feature is in beta testing. If you need to use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).
+        r"""This API is used to create a target group. This feature is in beta testing. If you need to use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).
 
         :param request: Request instance for CreateTargetGroup.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.CreateTargetGroupRequest`
@@ -96,7 +96,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeleteGatewayLoadBalancer(self, request):
-        """This API is used to delete one or more specified GWLB instances. After successful deletion, the GWLB instances will be unbound from the backend service.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
+        r"""This API is used to delete one or more specified GWLB instances. After successful deletion, the GWLB instances will be unbound from the backend service.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeleteGatewayLoadBalancer.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DeleteGatewayLoadBalancerRequest`
@@ -119,7 +119,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeleteTargetGroups(self, request):
-        """This API is used to delete a target group.
+        r"""This API is used to delete a target group.
 
         :param request: Request instance for DeleteTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DeleteTargetGroupsRequest`
@@ -142,7 +142,7 @@ class GwlbClient(AbstractClient):
 
 
     def DeregisterTargetGroupInstances(self, request):
-        """This API is used to unbind a server from a target group.
+        r"""This API is used to unbind a server from a target group.
         This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DeregisterTargetGroupInstances.
@@ -166,7 +166,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeGatewayLoadBalancers(self, request):
-        """This API is used to query the list of GWLB instances in a region.
+        r"""This API is used to query the list of GWLB instances in a region.
 
         :param request: Request instance for DescribeGatewayLoadBalancers.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeGatewayLoadBalancersRequest`
@@ -189,7 +189,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstanceStatus(self, request):
-        """This API is used to query the backend service status of a target group. Currently, only GWLB type target groups support querying backend service status.
+        r"""This API is used to query the backend service status of a target group. Currently, only GWLB type target groups support querying backend service status.
 
         :param request: Request instance for DescribeTargetGroupInstanceStatus.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupInstanceStatusRequest`
@@ -212,7 +212,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupInstances(self, request):
-        """This API is used to obtain information on servers bound to a target group.
+        r"""This API is used to obtain information on servers bound to a target group.
 
         :param request: Request instance for DescribeTargetGroupInstances.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupInstancesRequest`
@@ -235,7 +235,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroupList(self, request):
-        """This API is used to obtain a target group list.
+        r"""This API is used to obtain a target group list.
 
         :param request: Request instance for DescribeTargetGroupList.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupListRequest`
@@ -258,7 +258,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTargetGroups(self, request):
-        """This API is used to query target group information.
+        r"""This API is used to query target group information.
 
         :param request: Request instance for DescribeTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTargetGroupsRequest`
@@ -281,7 +281,7 @@ class GwlbClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """This API is used to query the execution status of an async task. After non-query APIs (for example, used to create/delete CLB instances) are called successfully, this API needs to be used to query whether the task is successful.
+        r"""This API is used to query the execution status of an async task. After non-query APIs (for example, used to create/delete CLB instances) are called successfully, this API needs to be used to query whether the task is successful.
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DescribeTaskStatusRequest`
@@ -304,7 +304,7 @@ class GwlbClient(AbstractClient):
 
 
     def DisassociateTargetGroups(self, request):
-        """This API is used to disassociate a CLB from a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        r"""This API is used to disassociate a CLB from a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for DisassociateTargetGroups.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.DisassociateTargetGroupsRequest`
@@ -327,7 +327,7 @@ class GwlbClient(AbstractClient):
 
 
     def InquirePriceCreateGatewayLoadBalancer(self, request):
-        """This API is used to query the price for creating a GWLB.
+        r"""This API is used to query the price for creating a GWLB.
 
         :param request: Request instance for InquirePriceCreateGatewayLoadBalancer.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.InquirePriceCreateGatewayLoadBalancerRequest`
@@ -350,7 +350,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyGatewayLoadBalancerAttribute(self, request):
-        """This API is used to modify the attributes of a CLB instance. It supports modifying the name and bandwidth cap of the CLB instance.
+        r"""This API is used to modify the attributes of a CLB instance. It supports modifying the name and bandwidth cap of the CLB instance.
 
         :param request: Request instance for ModifyGatewayLoadBalancerAttribute.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyGatewayLoadBalancerAttributeRequest`
@@ -373,7 +373,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyTargetGroupAttribute(self, request):
-        """This API is used to modify the name, health check, and other attributes of the target group.
+        r"""This API is used to modify the name, health check, and other attributes of the target group.
 
         :param request: Request instance for ModifyTargetGroupAttribute.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyTargetGroupAttributeRequest`
@@ -396,7 +396,7 @@ class GwlbClient(AbstractClient):
 
 
     def ModifyTargetGroupInstancesWeight(self, request):
-        """This API is used to modify the server weight of a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        r"""This API is used to modify the server weight of a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for ModifyTargetGroupInstancesWeight.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.ModifyTargetGroupInstancesWeightRequest`
@@ -419,7 +419,7 @@ class GwlbClient(AbstractClient):
 
 
     def RegisterTargetGroupInstances(self, request):
-        """This API is used to register servers to a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
+        r"""This API is used to register servers to a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
 
         :param request: Request instance for RegisterTargetGroupInstances.
         :type request: :class:`tencentcloud.gwlb.v20240906.models.RegisterTargetGroupInstancesRequest`

@@ -27,7 +27,7 @@ class WafClient(AbstractClient):
 
 
     def AddAntiFakeUrl(self, request):
-        """Add tamper-proof URL
+        r"""Add tamper-proof URL
 
         :param request: Request instance for AddAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAntiFakeUrlRequest`
@@ -50,7 +50,7 @@ class WafClient(AbstractClient):
 
 
     def AddAntiInfoLeakRules(self, request):
-        """Add information leakage prevention rule
+        r"""Add information leakage prevention rule
 
         :param request: Request instance for AddAntiInfoLeakRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddAntiInfoLeakRulesRequest`
@@ -73,7 +73,7 @@ class WafClient(AbstractClient):
 
 
     def AddCustomRule(self, request):
-        """Add access control (from custom policy)
+        r"""Add access control (from custom policy)
 
         :param request: Request instance for AddCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomRuleRequest`
@@ -96,7 +96,7 @@ class WafClient(AbstractClient):
 
 
     def AddCustomWhiteRule(self, request):
-        """Add precision allowlist rules
+        r"""Add precision allowlist rules
 
         :param request: Request instance for AddCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleRequest`
@@ -119,7 +119,7 @@ class WafClient(AbstractClient):
 
 
     def AddSpartaProtection(self, request):
-        """Add SaaS WAF protection domain
+        r"""Add SaaS WAF protection domain
 
         :param request: Request instance for AddSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionRequest`
@@ -142,7 +142,7 @@ class WafClient(AbstractClient):
 
 
     def CreateDeals(self, request):
-        """Billing Resource Purchase, Renewal Order API
+        r"""Billing Resource Purchase, Renewal Order API
 
         :param request: Request instance for CreateDeals.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateDealsRequest`
@@ -165,7 +165,7 @@ class WafClient(AbstractClient):
 
 
     def CreateHost(self, request):
-        """Add a protection domain in CLB-WAF
+        r"""Add a protection domain in CLB-WAF
 
         :param request: Request instance for CreateHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateHostRequest`
@@ -188,7 +188,7 @@ class WafClient(AbstractClient):
 
 
     def CreateIpAccessControl(self, request):
-        """This API is used to add WAF IP allowlists/blocklists.
+        r"""This API is used to add WAF IP allowlists/blocklists.
 
         :param request: Request instance for CreateIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlRequest`
@@ -211,7 +211,7 @@ class WafClient(AbstractClient):
 
 
     def CreateOwaspWhiteRule(self, request):
-        """This API is used to add a rule engine allowlist.
+        r"""This API is used to add a rule engine allowlist.
 
         :param request: Request instance for CreateOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateOwaspWhiteRuleRequest`
@@ -234,7 +234,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAntiFakeUrl(self, request):
-        """Delete tamper-proof URL
+        r"""Delete tamper-proof URL
 
         :param request: Request instance for DeleteAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAntiFakeUrlRequest`
@@ -257,7 +257,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteAntiInfoLeakRule(self, request):
-        """Delete information leakage prevention rule
+        r"""Delete information leakage prevention rule
 
         :param request: Request instance for DeleteAntiInfoLeakRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAntiInfoLeakRuleRequest`
@@ -280,7 +280,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCCRule(self, request):
-        """WAF CC V2 deletion API
+        r"""WAF CC V2 deletion API
 
         :param request: Request instance for DeleteCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCCRuleRequest`
@@ -303,7 +303,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCustomRule(self, request):
-        """Delete custom rule
+        r"""Delete custom rule
 
         :param request: Request instance for DeleteCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomRuleRequest`
@@ -326,7 +326,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteCustomWhiteRule(self, request):
-        """Delete precision allowlist rules
+        r"""Delete precision allowlist rules
 
         :param request: Request instance for DeleteCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleRequest`
@@ -349,7 +349,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteHost(self, request):
-        """This API is used to delete a domain name protected by CLB WAF. Batch operation is supported.
+        r"""This API is used to delete a domain name protected by CLB WAF. Batch operation is supported.
 
         :param request: Request instance for DeleteHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteHostRequest`
@@ -372,7 +372,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteIpAccessControlV2(self, request):
-        """This API is used to delete latest versions of WAF IP allowlists/blocklists.
+        r"""This API is used to delete latest versions of WAF IP allowlists/blocklists.
 
         :param request: Request instance for DeleteIpAccessControlV2.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Request`
@@ -395,7 +395,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteOwaspRuleStatus(self, request):
-        """This API is used to unlock the Door God rule status.
+        r"""This API is used to unlock the Door God rule status.
 
         :param request: Request instance for DeleteOwaspRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspRuleStatusRequest`
@@ -418,7 +418,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteOwaspWhiteRule(self, request):
-        """This API is used to delete a user rule engine allowlist.
+        r"""This API is used to delete a user rule engine allowlist.
 
         :param request: Request instance for DeleteOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteOwaspWhiteRuleRequest`
@@ -441,7 +441,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSession(self, request):
-        """Delete CC attack session settings
+        r"""Delete CC attack session settings
 
         :param request: Request instance for DeleteSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSessionRequest`
@@ -464,7 +464,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSpartaProtection(self, request):
-        """This API is used to delete a domain name protected by SaaS WAF.
+        r"""This API is used to delete a domain name protected by SaaS WAF.
 
         :param request: Request instance for DeleteSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSpartaProtectionRequest`
@@ -487,7 +487,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAntiFakeRules(self, request):
-        """Obtain a tamper-proof URL
+        r"""Obtain a tamper-proof URL
 
         :param request: Request instance for DescribeAntiFakeRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeRulesRequest`
@@ -510,7 +510,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAntiInfoLeakageRules(self, request):
-        """Obtain the information leakage prevention rule list
+        r"""Obtain the information leakage prevention rule list
 
         :param request: Request instance for DescribeAntiInfoLeakageRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakageRulesRequest`
@@ -533,7 +533,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAttackOverview(self, request):
-        """This API is used to describe the attack overview.
+        r"""This API is used to describe the attack overview.
 
         :param request: Request instance for DescribeAttackOverview.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackOverviewRequest`
@@ -556,7 +556,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAttackType(self, request):
-        """Query the top N attack types for a specified domain
+        r"""Query the top N attack types for a specified domain
 
         :param request: Request instance for DescribeAttackType.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackTypeRequest`
@@ -579,7 +579,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeBatchIpAccessControl(self, request):
-        """This API is used to query the IP blocklist and allowlist for WAF batch protection.
+        r"""This API is used to query the IP blocklist and allowlist for WAF batch protection.
 
         :param request: Request instance for DescribeBatchIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBatchIpAccessControlRequest`
@@ -602,7 +602,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCRule(self, request):
-        """WAF CC V2 query API
+        r"""WAF CC V2 query API
 
         :param request: Request instance for DescribeCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleRequest`
@@ -625,7 +625,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCRuleList(self, request):
-        """Query CC rules based on multiple conditions
+        r"""Query CC rules based on multiple conditions
 
         :param request: Request instance for DescribeCCRuleList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleListRequest`
@@ -648,7 +648,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCertificateVerifyResult(self, request):
-        """Obtain certificate inspection result
+        r"""Obtain certificate inspection result
 
         :param request: Request instance for DescribeCertificateVerifyResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCertificateVerifyResultRequest`
@@ -671,7 +671,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCiphersDetail(self, request):
-        """Query SaaS WAF cipher suite information
+        r"""Query SaaS WAF cipher suite information
 
         :param request: Request instance for DescribeCiphersDetail.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCiphersDetailRequest`
@@ -694,7 +694,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCustomRuleList(self, request):
-        """Obtain the access control policy list in the protection configuration
+        r"""Obtain the access control policy list in the protection configuration
 
         :param request: Request instance for DescribeCustomRuleList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRuleListRequest`
@@ -717,7 +717,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCustomWhiteRule(self, request):
-        """Obtain the precision allowlist policy list in the protection configuration
+        r"""Obtain the precision allowlist policy list in the protection configuration
 
         :param request: Request instance for DescribeCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomWhiteRuleRequest`
@@ -740,7 +740,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainCountInfo(self, request):
-        """Obtain domain overview
+        r"""Obtain domain overview
 
         :param request: Request instance for DescribeDomainCountInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainCountInfoRequest`
@@ -763,7 +763,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsClb(self, request):
-        """Obtain CLB WAF domain details
+        r"""Obtain CLB WAF domain details
 
         :param request: Request instance for DescribeDomainDetailsClb.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsClbRequest`
@@ -786,7 +786,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsSaas(self, request):
-        """Query individual SaaS WAF domain details
+        r"""Query individual SaaS WAF domain details
 
         :param request: Request instance for DescribeDomainDetailsSaas.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsSaasRequest`
@@ -809,7 +809,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainVerifyResult(self, request):
-        """Obtain the result of adding domain operation
+        r"""Obtain the result of adding domain operation
 
         :param request: Request instance for DescribeDomainVerifyResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultRequest`
@@ -832,7 +832,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """Query detailed information of all user domains
+        r"""Query detailed information of all user domains
 
         :param request: Request instance for DescribeDomains.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainsRequest`
@@ -855,7 +855,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeFindDomainList(self, request):
-        """Obtain discovered domain name list API
+        r"""Obtain discovered domain name list API
 
         :param request: Request instance for DescribeFindDomainList.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeFindDomainListRequest`
@@ -878,7 +878,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHistogram(self, request):
-        """Query various conditions of cluster analysis
+        r"""Query various conditions of cluster analysis
 
         :param request: Request instance for DescribeHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHistogramRequest`
@@ -901,7 +901,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHost(self, request):
-        """Obtain protection domain details in CLB-WAF
+        r"""Obtain protection domain details in CLB-WAF
 
         :param request: Request instance for DescribeHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostRequest`
@@ -924,7 +924,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHostLimit(self, request):
-        """Firstly verify when adding a domain whether a package has been purchased, whether the limit of purchased package has not been reached, and whether the domain has already been added
+        r"""Firstly verify when adding a domain whether a package has been purchased, whether the limit of purchased package has not been reached, and whether the domain has already been added
 
         :param request: Request instance for DescribeHostLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostLimitRequest`
@@ -947,7 +947,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeHosts(self, request):
-        """Obtain protection domain list in CLB-WAF
+        r"""Obtain protection domain list in CLB-WAF
 
         :param request: Request instance for DescribeHosts.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHostsRequest`
@@ -970,7 +970,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """Query detailed information of all user instances
+        r"""Query detailed information of all user instances
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesRequest`
@@ -993,7 +993,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeIpAccessControl(self, request):
-        """WAF IP blocklist/allowlist query
+        r"""WAF IP blocklist/allowlist query
 
         :param request: Request instance for DescribeIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlRequest`
@@ -1016,7 +1016,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeModuleStatus(self, request):
-        """Query the switch status of each WAF basic security module, check if each module is enabled
+        r"""Query the switch status of each WAF basic security module, check if each module is enabled
 
         :param request: Request instance for DescribeModuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeModuleStatusRequest`
@@ -1039,7 +1039,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeObjects(self, request):
-        """View protected object list
+        r"""View protected object list
 
         :param request: Request instance for DescribeObjects.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeObjectsRequest`
@@ -1062,7 +1062,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspRuleTypes(self, request):
-        """This API is used to query the rule types of the rule engine.
+        r"""This API is used to query the rule types of the rule engine.
 
         :param request: Request instance for DescribeOwaspRuleTypes.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRuleTypesRequest`
@@ -1085,7 +1085,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspRules(self, request):
-        """This API is used to query the rule list of the rule engine.
+        r"""This API is used to query the rule list of the rule engine.
 
         :param request: Request instance for DescribeOwaspRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspRulesRequest`
@@ -1108,7 +1108,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeOwaspWhiteRules(self, request):
-        """This API is used to retrieve the allowlist for the rule engine.
+        r"""This API is used to retrieve the allowlist for the rule engine.
 
         :param request: Request instance for DescribeOwaspWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeOwaspWhiteRulesRequest`
@@ -1131,7 +1131,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePeakPoints(self, request):
-        """Query business and attack summary trends
+        r"""Query business and attack summary trends
 
         :param request: Request instance for DescribePeakPoints.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePeakPointsRequest`
@@ -1154,7 +1154,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePolicyStatus(self, request):
-        """Obtain protection status and the effective instance ID
+        r"""Obtain protection status and the effective instance ID
 
         :param request: Request instance for DescribePolicyStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePolicyStatusRequest`
@@ -1177,7 +1177,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePorts(self, request):
-        """Obtain the SaaS-type WAF protection port list
+        r"""Obtain the SaaS-type WAF protection port list
 
         :param request: Request instance for DescribePorts.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePortsRequest`
@@ -1200,7 +1200,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeRuleLimit(self, request):
-        """Obtain specific specification limits for each module
+        r"""Obtain specific specification limits for each module
 
         :param request: Request instance for DescribeRuleLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeRuleLimitRequest`
@@ -1223,7 +1223,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeSession(self, request):
-        """WAF session definition query API
+        r"""WAF session definition query API
 
         :param request: Request instance for DescribeSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSessionRequest`
@@ -1246,7 +1246,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeSpartaProtectionInfo(self, request):
-        """WAF Sparta - Obtain protection domain information
+        r"""WAF Sparta - Obtain protection domain information
 
         :param request: Request instance for DescribeSpartaProtectionInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSpartaProtectionInfoRequest`
@@ -1269,7 +1269,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTlsVersion(self, request):
-        """This API is used to query TLS versions supported by SaaS WAF.
+        r"""This API is used to query TLS versions supported by SaaS WAF.
 
         :param request: Request instance for DescribeTlsVersion.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTlsVersionRequest`
@@ -1292,7 +1292,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTopAttackDomain(self, request):
-        """Query top 5 attack domains
+        r"""Query top 5 attack domains
 
         :param request: Request instance for DescribeTopAttackDomain.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTopAttackDomainRequest`
@@ -1315,7 +1315,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserClbWafRegions(self, request):
-        """During the addition and modification of Domain Configuration for CLB-type WAF, it is required to display the supported region list for CLB-type WAF (clb-waf) through DescribeUserClbWafRegions to obtain the currently available region list for the customer.
+        r"""During the addition and modification of Domain Configuration for CLB-type WAF, it is required to display the supported region list for CLB-type WAF (clb-waf) through DescribeUserClbWafRegions to obtain the currently available region list for the customer.
 
         :param request: Request instance for DescribeUserClbWafRegions.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsRequest`
@@ -1338,7 +1338,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserDomainInfo(self, request):
-        """Query Domain Information for SaaS and CLB
+        r"""Query Domain Information for SaaS and CLB
 
         :param request: Request instance for DescribeUserDomainInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserDomainInfoRequest`
@@ -1361,7 +1361,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeUserLevel(self, request):
-        """Obtain the user protection rule level
+        r"""Obtain the user protection rule level
 
         :param request: Request instance for DescribeUserLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserLevelRequest`
@@ -1384,7 +1384,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeVipInfo(self, request):
-        """Query VIP information based on filter criteria
+        r"""Query VIP information based on filter criteria
 
         :param request: Request instance for DescribeVipInfo.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeVipInfoRequest`
@@ -1407,7 +1407,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeWebshellStatus(self, request):
-        """Obtain the webshell status of a domain
+        r"""Obtain the webshell status of a domain
 
         :param request: Request instance for DescribeWebshellStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWebshellStatusRequest`
@@ -1430,7 +1430,7 @@ class WafClient(AbstractClient):
 
 
     def FreshAntiFakeUrl(self, request):
-        """Refresh a tamper-proof URL
+        r"""Refresh a tamper-proof URL
 
         :param request: Request instance for FreshAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.FreshAntiFakeUrlRequest`
@@ -1453,7 +1453,7 @@ class WafClient(AbstractClient):
 
 
     def GenerateDealsAndPayNew(self, request):
-        """Billing Resource Purchase, Renewal Order API
+        r"""Billing Resource Purchase, Renewal Order API
 
         :param request: Request instance for GenerateDealsAndPayNew.
         :type request: :class:`tencentcloud.waf.v20180125.models.GenerateDealsAndPayNewRequest`
@@ -1476,7 +1476,7 @@ class WafClient(AbstractClient):
 
 
     def GetAttackHistogram(self, request):
-        """This API is used to generate a bar chart for the generation time of attack logs.
+        r"""This API is used to generate a bar chart for the generation time of attack logs.
 
         :param request: Request instance for GetAttackHistogram.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramRequest`
@@ -1499,7 +1499,7 @@ class WafClient(AbstractClient):
 
 
     def GetAttackTotalCount(self, request):
-        """Display total attack count by querying based on conditions
+        r"""Display total attack count by querying based on conditions
 
         :param request: Request instance for GetAttackTotalCount.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackTotalCountRequest`
@@ -1522,7 +1522,7 @@ class WafClient(AbstractClient):
 
 
     def GetInstanceQpsLimit(self, request):
-        """Obtain the elastic QPS limit of package instances
+        r"""Obtain the elastic QPS limit of package instances
 
         :param request: Request instance for GetInstanceQpsLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.GetInstanceQpsLimitRequest`
@@ -1545,7 +1545,7 @@ class WafClient(AbstractClient):
 
 
     def ImportIpAccessControl(self, request):
-        """This API is used to import IP allowlists/blocklists.
+        r"""This API is used to import IP allowlists/blocklists.
 
         :param request: Request instance for ImportIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlRequest`
@@ -1568,7 +1568,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiFakeUrl(self, request):
-        """Edit a tamper-proof URL
+        r"""Edit a tamper-proof URL
 
         :param request: Request instance for ModifyAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiFakeUrlRequest`
@@ -1591,7 +1591,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiFakeUrlStatus(self, request):
-        """Toggle tamper-proof switch
+        r"""Toggle tamper-proof switch
 
         :param request: Request instance for ModifyAntiFakeUrlStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiFakeUrlStatusRequest`
@@ -1614,7 +1614,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiInfoLeakRuleStatus(self, request):
-        """Information leakage prevention toggle rule switch
+        r"""Information leakage prevention toggle rule switch
 
         :param request: Request instance for ModifyAntiInfoLeakRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiInfoLeakRuleStatusRequest`
@@ -1637,7 +1637,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAntiInfoLeakRules(self, request):
-        """Edit an information leakage prevention rule
+        r"""Edit an information leakage prevention rule
 
         :param request: Request instance for ModifyAntiInfoLeakRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAntiInfoLeakRulesRequest`
@@ -1660,7 +1660,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyApiAnalyzeStatus(self, request):
-        """API analysis page switch
+        r"""API analysis page switch
 
         :param request: Request instance for ModifyApiAnalyzeStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyApiAnalyzeStatusRequest`
@@ -1683,7 +1683,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyBotStatus(self, request):
-        """Bot_V2 bot master switch update
+        r"""Bot_V2 bot master switch update
 
         :param request: Request instance for ModifyBotStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotStatusRequest`
@@ -1706,7 +1706,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomRule(self, request):
-        """This API is used to edit a custom rule.
+        r"""This API is used to edit a custom rule.
 
         :param request: Request instance for ModifyCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleRequest`
@@ -1729,7 +1729,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomRuleStatus(self, request):
-        """Enable or disable access control (from custom policy)
+        r"""Enable or disable access control (from custom policy)
 
         :param request: Request instance for ModifyCustomRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleStatusRequest`
@@ -1752,7 +1752,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomWhiteRule(self, request):
-        """This API is used to edit a precise allowlist.
+        r"""This API is used to edit a precise allowlist.
 
         :param request: Request instance for ModifyCustomWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleRequest`
@@ -1775,7 +1775,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomWhiteRuleStatus(self, request):
-        """Enable or disable a precision allowlist
+        r"""Enable or disable a precision allowlist
 
         :param request: Request instance for ModifyCustomWhiteRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleStatusRequest`
@@ -1798,7 +1798,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainIpv6Status(self, request):
-        """Toggle the IPv6 switch
+        r"""Toggle the IPv6 switch
 
         :param request: Request instance for ModifyDomainIpv6Status.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainIpv6StatusRequest`
@@ -1821,7 +1821,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainPostAction(self, request):
-        """This API is used to modify the domain shipping status.
+        r"""This API is used to modify the domain shipping status.
 
         :param request: Request instance for ModifyDomainPostAction.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionRequest`
@@ -1844,7 +1844,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainsCLSStatus(self, request):
-        """Enable or disable access log for domain list
+        r"""Enable or disable access log for domain list
 
         :param request: Request instance for ModifyDomainsCLSStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainsCLSStatusRequest`
@@ -1867,7 +1867,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHost(self, request):
-        """This API is used to edit the configuration of domain names protected by CLB WAF.
+        r"""This API is used to edit the configuration of domain names protected by CLB WAF.
 
         :param request: Request instance for ModifyHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostRequest`
@@ -1890,7 +1890,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostFlowMode(self, request):
-        """This API is used to set the traffic mode for domain names protected by CLB WAF. The mode can be mirror mode or cleaning mode.
+        r"""This API is used to set the traffic mode for domain names protected by CLB WAF. The mode can be mirror mode or cleaning mode.
 
         :param request: Request instance for ModifyHostFlowMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostFlowModeRequest`
@@ -1913,7 +1913,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostMode(self, request):
-        """Set CLB WAF protection domain status
+        r"""Set CLB WAF protection domain status
 
         :param request: Request instance for ModifyHostMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostModeRequest`
@@ -1936,7 +1936,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostStatus(self, request):
-        """This API is used to enable or disable CLB WAF for a protected domain name.
+        r"""This API is used to enable or disable CLB WAF for a protected domain name.
         Batch operation is supported.
 
         :param request: Request instance for ModifyHostStatus.
@@ -1960,7 +1960,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceElasticMode(self, request):
-        """Modify the QPS elastic billing switch for an instance
+        r"""Modify the QPS elastic billing switch for an instance
 
         :param request: Request instance for ModifyInstanceElasticMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeRequest`
@@ -1983,7 +1983,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceName(self, request):
-        """Modify instance name
+        r"""Modify instance name
 
         :param request: Request instance for ModifyInstanceName.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameRequest`
@@ -2006,7 +2006,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceQpsLimit(self, request):
-        """Set elastic QPS limit for package instances
+        r"""Set elastic QPS limit for package instances
 
         :param request: Request instance for ModifyInstanceQpsLimit.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitRequest`
@@ -2029,7 +2029,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyInstanceRenewFlag(self, request):
-        """Enable or disable auto-renewal for instance
+        r"""Enable or disable auto-renewal for instance
 
         :param request: Request instance for ModifyInstanceRenewFlag.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagRequest`
@@ -2052,7 +2052,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyIpAccessControl(self, request):
-        """This API is used to edit WAF IP allowlists/blocklists.
+        r"""This API is used to edit WAF IP allowlists/blocklists.
 
         :param request: Request instance for ModifyIpAccessControl.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlRequest`
@@ -2075,7 +2075,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyModuleStatus(self, request):
-        """Set the switch for the basic security module under a certain domain
+        r"""Set the switch for the basic security module under a certain domain
 
         :param request: Request instance for ModifyModuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyModuleStatusRequest`
@@ -2098,7 +2098,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyObject(self, request):
-        """Modify protection object
+        r"""Modify protection object
 
         :param request: Request instance for ModifyObject.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyObjectRequest`
@@ -2121,7 +2121,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleStatus(self, request):
-        """This API is used to refresh the rule switch.
+        r"""This API is used to refresh the rule switch.
 
         :param request: Request instance for ModifyOwaspRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleStatusRequest`
@@ -2144,7 +2144,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeAction(self, request):
-        """This API is used to update the protection mode of the rule type.
+        r"""This API is used to update the protection mode of the rule type.
 
         :param request: Request instance for ModifyOwaspRuleTypeAction.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeActionRequest`
@@ -2167,7 +2167,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeLevel(self, request):
-        """This API is used to update the protection level of a rule type.
+        r"""This API is used to update the protection level of a rule type.
 
         :param request: Request instance for ModifyOwaspRuleTypeLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeLevelRequest`
@@ -2190,7 +2190,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspRuleTypeStatus(self, request):
-        """This API is used to update the rule type switch.
+        r"""This API is used to update the rule type switch.
 
         :param request: Request instance for ModifyOwaspRuleTypeStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspRuleTypeStatusRequest`
@@ -2213,7 +2213,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyOwaspWhiteRule(self, request):
-        """This API is used to edit the allowlist for the rule engine.
+        r"""This API is used to edit the allowlist for the rule engine.
 
         :param request: Request instance for ModifyOwaspWhiteRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspWhiteRuleRequest`
@@ -2236,7 +2236,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyProtectionStatus(self, request):
-        """This API is used to obtain the enabling status of the basic security protection module of WAF.
+        r"""This API is used to obtain the enabling status of the basic security protection module of WAF.
 
         :param request: Request instance for ModifyProtectionStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyProtectionStatusRequest`
@@ -2259,7 +2259,7 @@ class WafClient(AbstractClient):
 
 
     def ModifySpartaProtection(self, request):
-        """This API is used to edit the configuration of domain names protected by SaaS WAF.
+        r"""This API is used to edit the configuration of domain names protected by SaaS WAF.
 
         :param request: Request instance for ModifySpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionRequest`
@@ -2282,7 +2282,7 @@ class WafClient(AbstractClient):
 
 
     def ModifySpartaProtectionMode(self, request):
-        """Set WAF protection status
+        r"""Set WAF protection status
 
         :param request: Request instance for ModifySpartaProtectionMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionModeRequest`
@@ -2305,7 +2305,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserLevel(self, request):
-        """Modify the user protection rule level
+        r"""Modify the user protection rule level
 
         :param request: Request instance for ModifyUserLevel.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserLevelRequest`
@@ -2328,7 +2328,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyUserSignatureRule(self, request):
-        """Modify user protection rules, turn on/off specific rules
+        r"""Modify user protection rules, turn on/off specific rules
 
         :param request: Request instance for ModifyUserSignatureRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleRequest`
@@ -2351,7 +2351,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyWebshellStatus(self, request):
-        """Set the Webshell status of a domain.
+        r"""Set the Webshell status of a domain.
 
         :param request: Request instance for ModifyWebshellStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWebshellStatusRequest`
@@ -2374,7 +2374,7 @@ class WafClient(AbstractClient):
 
 
     def RefreshAccessCheckResult(self, request):
-        """Refresh integration check results. The backend will generate integration check tasks
+        r"""Refresh integration check results. The backend will generate integration check tasks
 
         :param request: Request instance for RefreshAccessCheckResult.
         :type request: :class:`tencentcloud.waf.v20180125.models.RefreshAccessCheckResultRequest`
@@ -2397,7 +2397,7 @@ class WafClient(AbstractClient):
 
 
     def SearchAttackLog(self, request):
-        """The new version of the CLS API has parameter changes, with query changed to query_string to support Lucene syntax for API search queries.
+        r"""The new version of the CLS API has parameter changes, with query changed to query_string to support Lucene syntax for API search queries.
 
         :param request: Request instance for SearchAttackLog.
         :type request: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogRequest`
@@ -2420,7 +2420,7 @@ class WafClient(AbstractClient):
 
 
     def SwitchElasticMode(self, request):
-        """Toggle elasticity switch
+        r"""Toggle elasticity switch
 
         :param request: Request instance for SwitchElasticMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeRequest`
@@ -2443,7 +2443,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertCCRule(self, request):
-        """WAF CC V2 upsert API
+        r"""WAF CC V2 upsert API
 
         :param request: Request instance for UpsertCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertCCRuleRequest`
@@ -2466,7 +2466,7 @@ class WafClient(AbstractClient):
 
 
     def UpsertSession(self, request):
-        """WAF session definition upsert API
+        r"""WAF session definition upsert API
 
         :param request: Request instance for UpsertSession.
         :type request: :class:`tencentcloud.waf.v20180125.models.UpsertSessionRequest`

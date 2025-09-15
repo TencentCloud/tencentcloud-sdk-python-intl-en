@@ -27,7 +27,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateApiImportUserJob(self, request):
-        """This API is used to create an API for user import task.
+        r"""This API is used to create an API for user import task.
 
         :param request: Request instance for CreateApiImportUserJob.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateApiImportUserJobRequest`
@@ -50,7 +50,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateFileExportUserJob(self, request):
-        """This API is used to create a file for user export task.
+        r"""This API is used to create a file for user export task.
 
         :param request: Request instance for CreateFileExportUserJob.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateFileExportUserJobRequest`
@@ -73,7 +73,7 @@ class CiamClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to create a user.
+        r"""This API is used to create a user.
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserRequest`
@@ -96,7 +96,7 @@ class CiamClient(AbstractClient):
 
 
     def DeleteUsers(self, request):
-        """This API is used to delete users in batches.
+        r"""This API is used to delete users in batches.
 
         :param request: Request instance for DeleteUsers.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUsersRequest`
@@ -119,7 +119,7 @@ class CiamClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """This API is used to query the user information with multiple conditions.
+        r"""This API is used to query the user information with multiple conditions.
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DescribeUserRequest`
@@ -142,7 +142,7 @@ class CiamClient(AbstractClient):
 
 
     def DescribeUserById(self, request):
-        """This API is used to query a user by ID.
+        r"""This API is used to query a user by ID.
 
         :param request: Request instance for DescribeUserById.
         :type request: :class:`tencentcloud.ciam.v20220331.models.DescribeUserByIdRequest`
@@ -165,7 +165,7 @@ class CiamClient(AbstractClient):
 
 
     def LinkAccount(self, request):
-        """This API is used to merge accounts.
+        r"""This API is used to merge accounts.
 
         :param request: Request instance for LinkAccount.
         :type request: :class:`tencentcloud.ciam.v20220331.models.LinkAccountRequest`
@@ -188,7 +188,7 @@ class CiamClient(AbstractClient):
 
 
     def ListJobs(self, request):
-        """This API is used to query the details of a task.
+        r"""This API is used to query the details of a task.
 
         :param request: Request instance for ListJobs.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListJobsRequest`
@@ -211,7 +211,7 @@ class CiamClient(AbstractClient):
 
 
     def ListLogMessageByCondition(self, request):
-        """This API is used to query a specified log.
+        r"""This API is used to query a specified log.
 
         :param request: Request instance for ListLogMessageByCondition.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListLogMessageByConditionRequest`
@@ -234,7 +234,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUser(self, request):
-        """This API is used to query the list of users.
+        r"""This API is used to query the list of users.
 
         :param request: Request instance for ListUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserRequest`
@@ -257,7 +257,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUserByProperty(self, request):
-        """This API is used to query the list of users by attribute.
+        r"""This API is used to query the list of users by attribute.
 
         :param request: Request instance for ListUserByProperty.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserByPropertyRequest`
@@ -280,7 +280,7 @@ class CiamClient(AbstractClient):
 
 
     def ResetPassword(self, request):
-        """This API is used to reset the password for a user.
+        r"""This API is used to reset the password for a user.
 
         :param request: Request instance for ResetPassword.
         :type request: :class:`tencentcloud.ciam.v20220331.models.ResetPasswordRequest`
@@ -303,7 +303,7 @@ class CiamClient(AbstractClient):
 
 
     def SetPassword(self, request):
-        """This API is used to set the password for a user.
+        r"""This API is used to set the password for a user.
 
         :param request: Request instance for SetPassword.
         :type request: :class:`tencentcloud.ciam.v20220331.models.SetPasswordRequest`
@@ -326,7 +326,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUser(self, request):
-        """This API is used to update a user.
+        r"""This API is used to update a user.
 
         :param request: Request instance for UpdateUser.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserRequest`
@@ -349,7 +349,7 @@ class CiamClient(AbstractClient):
 
 
     def UpdateUserStatus(self, request):
-        """This API is used to update the status of a user.
+        r"""This API is used to update the status of a user.
 
         :param request: Request instance for UpdateUserStatus.
         :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserStatusRequest`

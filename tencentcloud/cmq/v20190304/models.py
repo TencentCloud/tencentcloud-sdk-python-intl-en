@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DeadLetterPolicy(AbstractModel):
-    """DeadLetterPolicy
+    r"""DeadLetterPolicy
 
     """
 
@@ -49,7 +49,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterQueueName(self):
-        """DeadLetterQueueName
+        r"""DeadLetterQueueName
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -61,7 +61,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterQueue(self):
-        """DeadLetterQueue
+        r"""DeadLetterQueue
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -73,7 +73,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Policy(self):
-        """Policy
+        r"""Policy
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -85,7 +85,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxTimeToLive(self):
-        """MaxTimeToLive
+        r"""MaxTimeToLive
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -97,7 +97,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxReceiveCount(self):
-        """MaxReceiveCount
+        r"""MaxReceiveCount
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -125,7 +125,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeadLetterSource(AbstractModel):
-    """DeadLetterSource
+    r"""DeadLetterSource
 
     """
 
@@ -143,7 +143,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueId(self):
-        """QueueId
+        r"""QueueId
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -155,7 +155,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
-        """QueueName
+        r"""QueueName
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -180,7 +180,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeQueueDetailRequest(AbstractModel):
-    """DescribeQueueDetail request structure.
+    r"""DescribeQueueDetail request structure.
 
     """
 
@@ -205,7 +205,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        r"""Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
         :rtype: int
         """
         return self._Offset
@@ -216,7 +216,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        r"""Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
         :rtype: int
         """
         return self._Limit
@@ -227,7 +227,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed
+        r"""Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed
         :rtype: list of Filter
         """
         return self._Filters
@@ -238,7 +238,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag search
+        r"""Tag search
         :rtype: str
         """
         return self._TagKey
@@ -249,7 +249,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """Exact match by `QueueName`
+        r"""Exact match by `QueueName`
         :rtype: str
         """
         return self._QueueName
@@ -281,7 +281,7 @@ class DescribeQueueDetailRequest(AbstractModel):
 
 
 class DescribeQueueDetailResponse(AbstractModel):
-    """DescribeQueueDetail response structure.
+    r"""DescribeQueueDetail response structure.
 
     """
 
@@ -300,7 +300,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of queues
+        r"""Total number of queues
         :rtype: int
         """
         return self._TotalCount
@@ -311,7 +311,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def QueueSet(self):
-        """Queue list
+        r"""Queue list
         :rtype: list of QueueSet
         """
         return self._QueueSet
@@ -322,7 +322,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -344,7 +344,7 @@ class DescribeQueueDetailResponse(AbstractModel):
 
 
 class DescribeTopicDetailRequest(AbstractModel):
-    """DescribeTopicDetail request structure.
+    r"""DescribeTopicDetail request structure.
 
     """
 
@@ -369,7 +369,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
+        r"""Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
         :rtype: int
         """
         return self._Offset
@@ -380,7 +380,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        r"""Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
         :rtype: int
         """
         return self._Limit
@@ -391,7 +391,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Currently, only filtering by `TopicName` is supported, and only one filter value can be entered
+        r"""Currently, only filtering by `TopicName` is supported, and only one filter value can be entered
         :rtype: list of Filter
         """
         return self._Filters
@@ -402,7 +402,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag match
+        r"""Tag match
         :rtype: str
         """
         return self._TagKey
@@ -413,7 +413,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """Exact match by `TopicName`
+        r"""Exact match by `TopicName`
         :rtype: str
         """
         return self._TopicName
@@ -445,7 +445,7 @@ class DescribeTopicDetailRequest(AbstractModel):
 
 
 class DescribeTopicDetailResponse(AbstractModel):
-    """DescribeTopicDetail response structure.
+    r"""DescribeTopicDetail response structure.
 
     """
 
@@ -464,7 +464,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """TotalCount
+        r"""TotalCount
         :rtype: int
         """
         return self._TotalCount
@@ -475,7 +475,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TopicSet(self):
-        """TopicSet
+        r"""TopicSet
         :rtype: list of TopicSet
         """
         return self._TopicSet
@@ -486,7 +486,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -508,7 +508,7 @@ class DescribeTopicDetailResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Filter parameter
+    r"""Filter parameter
 
     """
 
@@ -524,7 +524,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter parameter name
+        r"""Filter parameter name
         :rtype: str
         """
         return self._Name
@@ -535,7 +535,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Value
+        r"""Value
         :rtype: list of str
         """
         return self._Values
@@ -559,7 +559,7 @@ class Filter(AbstractModel):
 
 
 class QueueSet(AbstractModel):
-    """Batch queue attribute information
+    r"""Batch queue attribute information
 
     """
 
@@ -667,7 +667,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueId(self):
-        """QueueId
+        r"""QueueId
         :rtype: str
         """
         return self._QueueId
@@ -678,7 +678,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
-        """QueueName
+        r"""QueueName
         :rtype: str
         """
         return self._QueueName
@@ -689,7 +689,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
-        """Qps
+        r"""Qps
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -701,7 +701,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bps(self):
-        """Bps
+        r"""Bps
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -713,7 +713,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxDelaySeconds(self):
-        """MaxDelaySeconds
+        r"""MaxDelaySeconds
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -725,7 +725,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgHeapNum(self):
-        """MaxMsgHeapNum
+        r"""MaxMsgHeapNum
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -737,7 +737,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PollingWaitSeconds(self):
-        """PollingWaitSeconds
+        r"""PollingWaitSeconds
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -749,7 +749,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgRetentionSeconds(self):
-        """MsgRetentionSeconds
+        r"""MsgRetentionSeconds
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -761,7 +761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VisibilityTimeout(self):
-        """VisibilityTimeout
+        r"""VisibilityTimeout
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -773,7 +773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgSize(self):
-        """MaxMsgSize
+        r"""MaxMsgSize
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -785,7 +785,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RewindSeconds(self):
-        """RewindSeconds
+        r"""RewindSeconds
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -797,7 +797,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """CreateTime
+        r"""CreateTime
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -809,7 +809,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifyTime(self):
-        """LastModifyTime
+        r"""LastModifyTime
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -821,7 +821,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActiveMsgNum(self):
-        """ActiveMsgNum
+        r"""ActiveMsgNum
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -833,7 +833,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InactiveMsgNum(self):
-        """InactiveMsgNum
+        r"""InactiveMsgNum
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -845,7 +845,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayMsgNum(self):
-        """DelayMsgNum
+        r"""DelayMsgNum
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -857,7 +857,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RewindMsgNum(self):
-        """RewindMsgNum
+        r"""RewindMsgNum
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -869,7 +869,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinMsgTime(self):
-        """MinMsgTime
+        r"""MinMsgTime
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -881,7 +881,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Transaction(self):
-        """Transaction
+        r"""Transaction
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -893,7 +893,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterSource(self):
-        """DeadLetterSource
+        r"""DeadLetterSource
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DeadLetterSource
         """
@@ -905,7 +905,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterPolicy(self):
-        """DeadLetterPolicy
+        r"""DeadLetterPolicy
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
         """
@@ -917,7 +917,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransactionPolicy(self):
-        """TransactionPolicy
+        r"""TransactionPolicy
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
         """
@@ -929,7 +929,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
-        """Creator `uin`
+        r"""Creator `uin`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -941,7 +941,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -953,7 +953,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trace(self):
-        """Message trace flag. true: enabled, false: not enabled
+        r"""Message trace flag. true: enabled, false: not enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1015,7 +1015,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class Tag(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -1033,7 +1033,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1045,7 +1045,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1070,7 +1070,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TopicSet(AbstractModel):
-    """Field for displaying returned topic information
+    r"""Field for displaying returned topic information
 
     """
 
@@ -1128,7 +1128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
-        """TopicId
+        r"""TopicId
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1140,7 +1140,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
-        """TopicName
+        r"""TopicName
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1152,7 +1152,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgRetentionSeconds(self):
-        """MsgRetentionSeconds
+        r"""MsgRetentionSeconds
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1164,7 +1164,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgSize(self):
-        """MaxMsgSize
+        r"""MaxMsgSize
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1176,7 +1176,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
-        """Qps
+        r"""Qps
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1188,7 +1188,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterType(self):
-        """FilterType
+        r"""FilterType
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1200,7 +1200,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """CreateTime
+        r"""CreateTime
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1212,7 +1212,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifyTime(self):
-        """LastModifyTime
+        r"""LastModifyTime
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1224,7 +1224,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgCount(self):
-        """MsgCount
+        r"""MsgCount
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1236,7 +1236,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
-        """CreateUin
+        r"""CreateUin
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1248,7 +1248,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tags
+        r"""Tags
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -1260,7 +1260,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trace(self):
-        """Whether to enable message trace for a topic. true: yes, false: no
+        r"""Whether to enable message trace for a topic. true: yes, false: no
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1300,7 +1300,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TransactionPolicy(AbstractModel):
-    """TransactionPolicy
+    r"""TransactionPolicy
 
     """
 
@@ -1318,7 +1318,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstQueryInterval(self):
-        """FirstQueryInterval
+        r"""FirstQueryInterval
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1330,7 +1330,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxQueryCount(self):
-        """MaxQueryCount
+        r"""MaxQueryCount
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """

@@ -27,7 +27,7 @@ class GpmClient(AbstractClient):
 
 
     def CancelMatching(self, request):
-        """This API is used to cancel matching.
+        r"""This API is used to cancel matching.
 
         :param request: Request instance for CancelMatching.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CancelMatchingRequest`
@@ -50,7 +50,7 @@ class GpmClient(AbstractClient):
 
 
     def CreateMatch(self, request):
-        """This API is used to create a match.
+        r"""This API is used to create a match.
 
         :param request: Request instance for CreateMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CreateMatchRequest`
@@ -73,7 +73,7 @@ class GpmClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API is used to create a rule.
+        r"""This API is used to create a rule.
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CreateRuleRequest`
@@ -96,7 +96,7 @@ class GpmClient(AbstractClient):
 
 
     def DeleteMatch(self, request):
-        """This API is used to delete a match.
+        r"""This API is used to delete a match.
 
         :param request: Request instance for DeleteMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteMatchRequest`
@@ -119,7 +119,7 @@ class GpmClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """This API is used to delete a rule.
+        r"""This API is used to delete a rule.
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteRuleRequest`
@@ -142,7 +142,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeData(self, request):
-        """This API is used to view statistics.
+        r"""This API is used to view statistics.
 
         :param request: Request instance for DescribeData.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeDataRequest`
@@ -165,7 +165,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatch(self, request):
-        """This API is used to query the matchmaking details.
+        r"""This API is used to query the matchmaking details.
 
         :param request: Request instance for DescribeMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchRequest`
@@ -188,7 +188,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatchCodes(self, request):
-        """This API is used to query the created MatchCodes and paginate the query result.
+        r"""This API is used to query the created MatchCodes and paginate the query result.
 
         :param request: Request instance for DescribeMatchCodes.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchCodesRequest`
@@ -211,7 +211,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatches(self, request):
-        """This API is used to query the matchmaking list and paginate the query result.
+        r"""This API is used to query the matchmaking list and paginate the query result.
 
         :param request: Request instance for DescribeMatches.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchesRequest`
@@ -234,7 +234,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatchingProgress(self, request):
-        """This API is used to query the matching progress.
+        r"""This API is used to query the matching progress.
 
         :param request: Request instance for DescribeMatchingProgress.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchingProgressRequest`
@@ -257,7 +257,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeRule(self, request):
-        """This API is used to query the rule details.
+        r"""This API is used to query the rule details.
 
         :param request: Request instance for DescribeRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRuleRequest`
@@ -280,7 +280,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """This API is used to query the rule set list and paginate the query result.
+        r"""This API is used to query the rule set list and paginate the query result.
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRulesRequest`
@@ -303,7 +303,7 @@ class GpmClient(AbstractClient):
 
 
     def DescribeToken(self, request):
-        """This API is used to query the token of a Matchcode, which is used for verified the pushed message.
+        r"""This API is used to query the token of a Matchcode, which is used for verified the pushed message.
 
         :param request: Request instance for DescribeToken.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeTokenRequest`
@@ -326,7 +326,7 @@ class GpmClient(AbstractClient):
 
 
     def ModifyMatch(self, request):
-        """This API is used to modify a match.
+        r"""This API is used to modify a match.
 
         :param request: Request instance for ModifyMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyMatchRequest`
@@ -349,7 +349,7 @@ class GpmClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """This API is used to modify a rule (including description and tag).
+        r"""This API is used to modify a rule (including description and tag).
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyRuleRequest`
@@ -372,7 +372,7 @@ class GpmClient(AbstractClient):
 
 
     def ModifyToken(self, request):
-        """This API is used to modify the token of a Matchcode.
+        r"""This API is used to modify the token of a Matchcode.
 
         :param request: Request instance for ModifyToken.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyTokenRequest`
@@ -395,7 +395,7 @@ class GpmClient(AbstractClient):
 
 
     def StartMatching(self, request):
-        """This API is used to pass in one player or multiple players to initiate match. Players within the same request will be assigned to the same game session.
+        r"""This API is used to pass in one player or multiple players to initiate match. Players within the same request will be assigned to the same game session.
 
         :param request: Request instance for StartMatching.
         :type request: :class:`tencentcloud.gpm.v20200820.models.StartMatchingRequest`
@@ -418,7 +418,7 @@ class GpmClient(AbstractClient):
 
 
     def StartMatchingBackfill(self, request):
-        """This API is used to send a match backfill request, for which a MatchTicket will be searched to start a new match.
+        r"""This API is used to send a match backfill request, for which a MatchTicket will be searched to start a new match.
 
         :param request: Request instance for StartMatchingBackfill.
         :type request: :class:`tencentcloud.gpm.v20200820.models.StartMatchingBackfillRequest`

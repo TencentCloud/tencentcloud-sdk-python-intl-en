@@ -27,7 +27,7 @@ class ImsClient(AbstractClient):
 
 
     def ImageModeration(self, request):
-        """This API is used to submit an image for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate IMS](https://console.cloud.tencent.com/cms/image/package) and adjust the business configuration.
+        r"""This API is used to submit an image for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate IMS](https://console.cloud.tencent.com/cms/image/package) and adjust the business configuration.
         ### API use instructions
         - Go to the "[CMS console - IMS](https://console.cloud.tencent.com/cms/image/package)" to activate IMS.
         - This API is a paid API. For its billing mode, see [IMS Pricing](https://www.tencentcloud.com/document/product/1122/43810).

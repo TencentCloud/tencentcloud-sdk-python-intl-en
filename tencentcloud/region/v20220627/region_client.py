@@ -27,7 +27,7 @@ class RegionClient(AbstractClient):
 
 
     def DescribeProducts(self, request):
-        """This interface (DescribeProducts) is used for querying product information in each supported region list.
+        r"""This interface (DescribeProducts) is used for querying product information in each supported region list.
 
         :param request: Request instance for DescribeProducts.
         :type request: :class:`tencentcloud.region.v20220627.models.DescribeProductsRequest`
@@ -50,7 +50,7 @@ class RegionClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This interface (DescribeRegions) is used for querying the supported regions of each product.
+        r"""This interface (DescribeRegions) is used for querying the supported regions of each product.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.region.v20220627.models.DescribeRegionsRequest`
@@ -73,7 +73,7 @@ class RegionClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This interface (DescribeZones) is used for querying product availability zone information.
+        r"""This interface (DescribeZones) is used for querying product availability zone information.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.region.v20220627.models.DescribeZonesRequest`

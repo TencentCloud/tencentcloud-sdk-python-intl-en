@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateReconstructDocumentFlowConfig(AbstractModel):
-    """Configuration information for creating intelligent document parsing tasks.
+    r"""Configuration information for creating intelligent document parsing tasks.
 
     """
 
@@ -44,7 +44,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
 
     @property
     def TableResultType(self):
-        """The form in which tables in a Markdown file are returned.
+        r"""The form in which tables in a Markdown file are returned.
 - 0: returned as MD.
 - 1: returned as HTML.
 The default is 0.
@@ -58,7 +58,7 @@ The default is 0.
 
     @property
     def ResultType(self):
-        """The format of the returned results of intelligent document parsing.
+        r"""The format of the returned results of intelligent document parsing.
 - 0: only returns full-text MD.
 - 1: only returns the OCR original Json for each page.
 - 2: only returns the MD of each page.
@@ -88,7 +88,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
 
 
 class CreateReconstructDocumentFlowRequest(AbstractModel):
-    """CreateReconstructDocumentFlow request structure.
+    r"""CreateReconstructDocumentFlow request structure.
 
     """
 
@@ -122,7 +122,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
 **Supported file types**: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, MD, TXT, PNG, JPG, JPEG, CSV, HTML, EPUB, BMP, GIF, WEBP, HEIC, EPS, ICNS, IM, PCX, PPM, TIFF, XBM, HEIF, JP2.
 **Supported file sizes**: 
 - Max 100 MB for PDF.
@@ -139,7 +139,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/product/436/7749)
+        r"""File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/product/436/7749)
         :rtype: str
         """
         return self._FileUrl
@@ -150,7 +150,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """The base64 value of the file. Supported file types: PNG, JPG, JPEG, PDF, BMP, TIFF. File size limit: the downloaded file does not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
+        r"""The base64 value of the file. Supported file types: PNG, JPG, JPEG, PDF, BMP, TIFF. File size limit: the downloaded file does not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
         :rtype: str
         """
         return self._FileBase64
@@ -161,7 +161,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
+        r"""The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -172,7 +172,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.
+        r"""The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -183,7 +183,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Creates task configuration information for document parsing.
+        r"""Creates task configuration information for document parsing.
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.CreateReconstructDocumentFlowConfig`
         """
         return self._Config
@@ -213,7 +213,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
 
 class CreateReconstructDocumentFlowResponse(AbstractModel):
-    """CreateReconstructDocumentFlow response structure.
+    r"""CreateReconstructDocumentFlow response structure.
 
     """
 
@@ -229,7 +229,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult] within 30 days.
+        r"""Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult] within 30 days.
         :rtype: str
         """
         return self._TaskId
@@ -240,7 +240,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -256,7 +256,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
 
 class CreateSplitDocumentFlowConfig(AbstractModel):
-    """Configuration information for creating intelligent document splitting task.
+    r"""Configuration information for creating intelligent document splitting task.
 
     """
 
@@ -288,7 +288,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
     def TableResultType(self):
         warnings.warn("parameter `TableResultType` is deprecated", DeprecationWarning) 
 
-        """The form in which tables in a Markdown file are returned.
+        r"""The form in which tables in a Markdown file are returned.
 - 0: returned as MD.
 - 1: returned as HTML.
         :rtype: str
@@ -305,7 +305,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
     def ResultType(self):
         warnings.warn("parameter `ResultType` is deprecated", DeprecationWarning) 
 
-        """The format of the returned results of intelligent document parsing.
+        r"""The format of the returned results of intelligent document parsing.
 - 0: only returns full-text MD.
 - 1: only returns the OCR original Json for each page.
 - 2: only returns the MD of each page.
@@ -324,7 +324,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
 
     @property
     def EnableMllm(self):
-        """Whether to enable mllm.
+        r"""Whether to enable mllm.
         :rtype: bool
         """
         return self._EnableMllm
@@ -335,7 +335,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
 
     @property
     def MaxChunkSize(self):
-        """Max segment length.
+        r"""Max segment length.
         :rtype: int
         """
         return self._MaxChunkSize
@@ -361,7 +361,7 @@ The default value is 3 (returns the full-text MD and the original OCR Json of ea
 
 
 class CreateSplitDocumentFlowRequest(AbstractModel):
-    """CreateSplitDocumentFlow request structure.
+    r"""CreateSplitDocumentFlow request structure.
 
     """
 
@@ -400,7 +400,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
 **Supported file types**: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, MD, TXT, PNG, JPG, JPEG, CSV, HTML, EPUB.
 **Supported file sizes**: 
 - Max 500 MB for PDF.
@@ -417,7 +417,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def FileUrl(self):
-        """File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. 
+        r"""File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. 
 Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/product/436/7749).
         :rtype: str
         """
@@ -429,7 +429,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def FileName(self):
-        """Filename. optional.
+        r"""Filename. optional.
 **The file type suffix shall be included**. This field is required to be specified when the file name cannot be obtained from the passed-in "FileUrl".
         :rtype: str
         """
@@ -443,7 +443,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
     def FileBase64(self):
         warnings.warn("parameter `FileBase64` is deprecated", DeprecationWarning) 
 
-        """The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
+        r"""The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
         :rtype: str
         """
         return self._FileBase64
@@ -456,7 +456,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def FileStartPageNumber(self):
-        """The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
+        r"""The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -467,7 +467,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def FileEndPageNumber(self):
-        """The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.
+        r"""The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -478,7 +478,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
     @property
     def Config(self):
-        """Configuration message for document splitting task.
+        r"""Configuration message for document splitting task.
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.CreateSplitDocumentFlowConfig`
         """
         return self._Config
@@ -509,7 +509,7 @@ Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/p
 
 
 class CreateSplitDocumentFlowResponse(AbstractModel):
-    """CreateSplitDocumentFlow response structure.
+    r"""CreateSplitDocumentFlow response structure.
 
     """
 
@@ -526,7 +526,7 @@ The splitting results corresponding to the TaskId can be queried through the [Ge
 
     @property
     def TaskId(self):
-        """The unique ID of the splitting task.
+        r"""The unique ID of the splitting task.
 The splitting results corresponding to the TaskId can be queried through the [GetSplitDocumentResult] API within 30 days.
         :rtype: str
         """
@@ -538,7 +538,7 @@ The splitting results corresponding to the TaskId can be queried through the [Ge
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -554,7 +554,7 @@ The splitting results corresponding to the TaskId can be queried through the [Ge
 
 
 class DocumentUsage(AbstractModel):
-    """The usage of document splitting task.
+    r"""The usage of document splitting task.
 
     """
 
@@ -573,7 +573,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number of the document splitting task.
+        r"""Page number of the document splitting task.
         :rtype: int
         """
         return self._PageNumber
@@ -586,7 +586,7 @@ class DocumentUsage(AbstractModel):
     def TotalToken(self):
         warnings.warn("parameter `TotalToken` is deprecated", DeprecationWarning) 
 
-        """Total number of tokens consumed by the document splitting task.
+        r"""Total number of tokens consumed by the document splitting task.
         :rtype: int
         """
         return self._TotalToken
@@ -599,7 +599,7 @@ class DocumentUsage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """Total number of tokens consumed by the document splitting task.
+        r"""Total number of tokens consumed by the document splitting task.
         :rtype: int
         """
         return self._TotalTokens
@@ -624,7 +624,7 @@ class DocumentUsage(AbstractModel):
 
 
 class GetReconstructDocumentResultRequest(AbstractModel):
-    """GetReconstructDocumentResult request structure.
+    r"""GetReconstructDocumentResult request structure.
 
     """
 
@@ -637,7 +637,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Parsing task ID.
+        r"""Parsing task ID.
         :rtype: str
         """
         return self._TaskId
@@ -660,7 +660,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
 
 class GetReconstructDocumentResultResponse(AbstractModel):
-    """GetReconstructDocumentResult response structure.
+    r"""GetReconstructDocumentResult response structure.
 
     """
 
@@ -687,7 +687,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Task status.
+        r"""Task status.
 -Success: execution completed.
 -Processing: executing.
 -Pause: paused.
@@ -703,7 +703,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """Temporary download URL for the parsing result. The file is a zip compressed package, and the URL is valid for 30 minutes.
+        r"""Temporary download URL for the parsing result. The file is a zip compressed package, and the URL is valid for 30 minutes.
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl
@@ -714,7 +714,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """Page number where document parsing fails.
+        r"""Page number where document parsing fails.
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -725,7 +725,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -748,7 +748,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
 
 class GetSplitDocumentResultRequest(AbstractModel):
-    """GetSplitDocumentResult request structure.
+    r"""GetSplitDocumentResult request structure.
 
     """
 
@@ -761,7 +761,7 @@ class GetSplitDocumentResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Splitting task ID.
+        r"""Splitting task ID.
         :rtype: str
         """
         return self._TaskId
@@ -784,7 +784,7 @@ class GetSplitDocumentResultRequest(AbstractModel):
 
 
 class GetSplitDocumentResultResponse(AbstractModel):
-    """GetSplitDocumentResult response structure.
+    r"""GetSplitDocumentResult response structure.
 
     """
 
@@ -818,7 +818,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Task status:
+        r"""Task status:
 -Success: execution completed.
 -Processing: executing.
 -Pause: paused.
@@ -834,7 +834,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """Temporary download URL for the splitting result. The file is a zip compressed package, and the URL is valid for 30 minutes. The compressed package contains the following folders: \*.md, \*.jsonl, \*mllm.json, images.
+        r"""Temporary download URL for the splitting result. The file is a zip compressed package, and the URL is valid for 30 minutes. The compressed package contains the following folders: \*.md, \*.jsonl, \*mllm.json, images.
 >**jsonl** structure description:.
 - page_content: Used to generate an embedding library for retrieval purposes. The images in this field will be replaced with placeholders.
 - org_data: The minimum semantic integrity block corresponding to page_content, used for Q&A model processing.
@@ -851,7 +851,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
     def FailedPages(self):
         warnings.warn("parameter `FailedPages` is deprecated", DeprecationWarning) 
 
-        """Page number where document splitting fails.
+        r"""Page number where document splitting fails.
         :rtype: list of SplitDocumentFailedPage
         """
         return self._FailedPages
@@ -864,7 +864,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Amount of the document split task.
+        r"""Amount of the document split task.
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
         """
         return self._Usage
@@ -875,7 +875,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -901,7 +901,7 @@ class GetSplitDocumentResultResponse(AbstractModel):
 
 
 class Message(AbstractModel):
-    """Session content.
+    r"""Session content.
 
     """
 
@@ -920,7 +920,7 @@ class Message(AbstractModel):
 
     @property
     def Role(self):
-        """Role.
+        r"""Role.
         :rtype: str
         """
         return self._Role
@@ -931,7 +931,7 @@ class Message(AbstractModel):
 
     @property
     def Content(self):
-        """Content.
+        r"""Content.
         :rtype: str
         """
         return self._Content
@@ -942,7 +942,7 @@ class Message(AbstractModel):
 
     @property
     def ReasoningContent(self):
-        """Chain of thought content. The ReasoningConent parameter only supports output parameters, and is only returned by the deepseek-r1 model.
+        r"""Chain of thought content. The ReasoningConent parameter only supports output parameters, and is only returned by the deepseek-r1 model.
         :rtype: str
         """
         return self._ReasoningContent
@@ -967,7 +967,7 @@ class Message(AbstractModel):
 
 
 class QueryRewriteRequest(AbstractModel):
-    """QueryRewrite request structure.
+    r"""QueryRewrite request structure.
 
     """
 
@@ -983,7 +983,7 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Messages(self):
-        """The multi-round historical conversation that needs to be rewritten. Each round of historical conversation should include paired inputs of user (question) and assistant (answer). Due to the character limit of the model, a maximum of 4 rounds of conversations can be provided. The last round of conversation will be rewritten.
+        r"""The multi-round historical conversation that needs to be rewritten. Each round of historical conversation should include paired inputs of user (question) and assistant (answer). Due to the character limit of the model, a maximum of 4 rounds of conversations can be provided. The last round of conversation will be rewritten.
         :rtype: list of Message
         """
         return self._Messages
@@ -994,7 +994,7 @@ class QueryRewriteRequest(AbstractModel):
 
     @property
     def Model(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._Model
@@ -1023,7 +1023,7 @@ class QueryRewriteRequest(AbstractModel):
 
 
 class QueryRewriteResponse(AbstractModel):
-    """QueryRewrite response structure.
+    r"""QueryRewrite response structure.
 
     """
 
@@ -1042,7 +1042,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def Content(self):
-        """Rewritten result.
+        r"""Rewritten result.
         :rtype: str
         """
         return self._Content
@@ -1053,7 +1053,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Consumption. The numbers of input tokens, output tokens, and total tokens will be returned.
+        r"""Consumption. The numbers of input tokens, output tokens, and total tokens will be returned.
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage
@@ -1064,7 +1064,7 @@ class QueryRewriteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1083,7 +1083,7 @@ class QueryRewriteResponse(AbstractModel):
 
 
 class ReconstructDocumentFailedPage(AbstractModel):
-    """Document parsing failure record.
+    r"""Document parsing failure record.
 
     """
 
@@ -1096,7 +1096,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number that failed to parse.
+        r"""Page number that failed to parse.
         :rtype: int
         """
         return self._PageNumber
@@ -1119,7 +1119,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
 
 class RunRerankRequest(AbstractModel):
-    """RunRerank request structure.
+    r"""RunRerank request structure.
 
     """
 
@@ -1138,7 +1138,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -1149,7 +1149,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Docs(self):
-        """Document list, up to 20 documents.
+        r"""Document list, up to 20 documents.
         :rtype: list of str
         """
         return self._Docs
@@ -1160,7 +1160,7 @@ class RunRerankRequest(AbstractModel):
 
     @property
     def Model(self):
-        """Model name. Default: lke-reranker-base.
+        r"""Model name. Default: lke-reranker-base.
         :rtype: str
         """
         return self._Model
@@ -1185,7 +1185,7 @@ class RunRerankRequest(AbstractModel):
 
 
 class RunRerankResponse(AbstractModel):
-    """RunRerank response structure.
+    r"""RunRerank response structure.
 
     """
 
@@ -1204,7 +1204,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def ScoreList(self):
-        """Relevance. A higher numeric value indicates greater relevance.
+        r"""Relevance. A higher numeric value indicates greater relevance.
         :rtype: list of float
         """
         return self._ScoreList
@@ -1215,7 +1215,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def Usage(self):
-        """Consumption. Only returns TotalToken.
+        r"""Consumption. Only returns TotalToken.
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage
@@ -1226,7 +1226,7 @@ class RunRerankResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1245,7 +1245,7 @@ class RunRerankResponse(AbstractModel):
 
 
 class SplitDocumentFailedPage(AbstractModel):
-    """Document parsing failure record.
+    r"""Document parsing failure record.
 
     """
 
@@ -1258,7 +1258,7 @@ class SplitDocumentFailedPage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number that failed to parse.
+        r"""Page number that failed to parse.
         :rtype: int
         """
         return self._PageNumber
@@ -1281,7 +1281,7 @@ class SplitDocumentFailedPage(AbstractModel):
 
 
 class Usage(AbstractModel):
-    """Consumption.
+    r"""Consumption.
 
     """
 
@@ -1303,7 +1303,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalPages(self):
-        """Number of document pages.
+        r"""Number of document pages.
         :rtype: int
         """
         return self._TotalPages
@@ -1314,7 +1314,7 @@ class Usage(AbstractModel):
 
     @property
     def InputTokens(self):
-        """Number of input tokens.
+        r"""Number of input tokens.
         :rtype: int
         """
         return self._InputTokens
@@ -1325,7 +1325,7 @@ class Usage(AbstractModel):
 
     @property
     def OutputTokens(self):
-        """Number of output tokens.
+        r"""Number of output tokens.
         :rtype: int
         """
         return self._OutputTokens
@@ -1336,7 +1336,7 @@ class Usage(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """Total number of tokens.
+        r"""Total number of tokens.
         :rtype: int
         """
         return self._TotalTokens

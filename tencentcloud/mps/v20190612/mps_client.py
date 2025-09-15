@@ -27,7 +27,7 @@ class MpsClient(AbstractClient):
 
 
     def BatchProcessMedia(self, request):
-        """This API is used to initiate batch processing tasks for URL video links, with features including:
+        r"""This API is used to initiate batch processing tasks for URL video links, with features including:
         Smart subtitle (full speech, speech hotword, and speech translation)
 
         :param request: Request instance for BatchProcessMedia.
@@ -51,7 +51,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAIAnalysisTemplate(self, request):
-        """This API is used to create a custom content analysis template. Up to 50 templates can be created.
+        r"""This API is used to create a custom content analysis template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateAIAnalysisTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateRequest`
@@ -74,7 +74,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAIRecognitionTemplate(self, request):
-        """This API is used to create a custom content recognition template. Up to 50 templates can be created.
+        r"""This API is used to create a custom content recognition template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateRequest`
@@ -97,7 +97,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to create an adaptive bitrate streaming template. Up up to 100 such templates can be created.
+        r"""This API is used to create an adaptive bitrate streaming template. Up up to 100 such templates can be created.
 
         :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateRequest`
@@ -120,7 +120,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAnimatedGraphicsTemplate(self, request):
-        """This API is used to create a custom animated image generating template. Up to 16 templates can be created.
+        r"""This API is used to create a custom animated image generating template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAnimatedGraphicsTemplateRequest`
@@ -143,7 +143,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAsrHotwords(self, request):
-        """This API is used to create a smart subtitle hotword lexicon.
+        r"""This API is used to create a smart subtitle hotword lexicon.
 
         :param request: Request instance for CreateAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsRequest`
@@ -166,7 +166,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateContentReviewTemplate(self, request):
-        """This API is used to create a custom content moderation template. Up to 50 templates can be created in total.
+        r"""This API is used to create a custom content moderation template. Up to 50 templates can be created in total.
 
         :param request: Request instance for CreateContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`
@@ -189,7 +189,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateImageSpriteTemplate(self, request):
-        """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
+        r"""This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateImageSpriteTemplateRequest`
@@ -212,7 +212,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateLiveRecordTemplate(self, request):
-        """This API is used to create a live recording template.
+        r"""This API is used to create a live recording template.
 
         :param request: Request instance for CreateLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateLiveRecordTemplateRequest`
@@ -235,7 +235,7 @@ class MpsClient(AbstractClient):
 
 
     def CreatePersonSample(self, request):
-        """This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.
+        r"""This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.
 
         :param request: Request instance for CreatePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
@@ -258,7 +258,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateQualityControlTemplate(self, request):
-        """This API is used to create a media quality inspection template. Up to 50 templates can be created.
+        r"""This API is used to create a media quality inspection template. Up to 50 templates can be created.
 
         :param request: Request instance for CreateQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateRequest`
@@ -281,7 +281,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSampleSnapshotTemplate(self, request):
-        """This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
+        r"""This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSampleSnapshotTemplateRequest`
@@ -304,7 +304,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSchedule(self, request):
-        """This API is used to create a scheme for media files uploaded to a specified COS bucket. A scheme may include the following tasks:
+        r"""This API is used to create a scheme for media files uploaded to a specified COS bucket. A scheme may include the following tasks:
         1. Video transcoding (with watermark)
         2. Animated screenshot generating
         3. Time point screencapturing
@@ -338,7 +338,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSmartSubtitleTemplate(self, request):
-        """This API is used to create a custom smart subtitle template.
+        r"""This API is used to create a custom smart subtitle template.
 
         :param request: Request instance for CreateSmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateRequest`
@@ -361,7 +361,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateSnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
+        r"""This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
 
         :param request: Request instance for CreateSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateSnapshotByTimeOffsetTemplateRequest`
@@ -384,7 +384,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """This API is used to create a custom transcoding template. Up to 1,000 templates can be created.
+        r"""This API is used to create a custom transcoding template. Up to 1,000 templates can be created.
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateTranscodeTemplateRequest`
@@ -407,7 +407,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWatermarkTemplate(self, request):
-        """This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
+        r"""This API is used to create a custom watermarking template. Up to 1,000 templates can be created.
 
         :param request: Request instance for CreateWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWatermarkTemplateRequest`
@@ -430,7 +430,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWordSamples(self, request):
-        """This API is used to create keyword samples in batches for video processing operations such as content recognition and inappropriate information detection with the help of the OCR and ASR technologies.
+        r"""This API is used to create keyword samples in batches for video processing operations such as content recognition and inappropriate information detection with the help of the OCR and ASR technologies.
 
         :param request: Request instance for CreateWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
@@ -453,7 +453,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWorkflow(self, request):
-        """This API is used to create a workflow for media files uploaded to a specified COS bucket. A workflow may include the following tasks:
+        r"""This API is used to create a workflow for media files uploaded to a specified COS bucket. A workflow may include the following tasks:
         1. Video transcoding (with watermark)
         2. Animated image generating
         3. Time point screencapturing
@@ -487,7 +487,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAIAnalysisTemplate(self, request):
-        """This API is used to delete a custom content analysis template.
+        r"""This API is used to delete a custom content analysis template.
 
         Note: templates with an ID below 10000 are preset and cannot be deleted.
 
@@ -512,7 +512,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAIRecognitionTemplate(self, request):
-        """This API is used to delete a custom content recognition template.
+        r"""This API is used to delete a custom content recognition template.
 
         :param request: Request instance for DeleteAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateRequest`
@@ -535,7 +535,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to delete an adaptive bitrate streaming template.
+        r"""This API is used to delete an adaptive bitrate streaming template.
 
         :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
@@ -558,7 +558,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAnimatedGraphicsTemplate(self, request):
-        """This API is used to delete a custom animated image generating template.
+        r"""This API is used to delete a custom animated image generating template.
 
         :param request: Request instance for DeleteAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAnimatedGraphicsTemplateRequest`
@@ -581,7 +581,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAsrHotwords(self, request):
-        """This API is used to delete a smart subtitle hotword lexicon.
+        r"""This API is used to delete a smart subtitle hotword lexicon.
 
         :param request: Request instance for DeleteAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsRequest`
@@ -604,7 +604,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        """This API is used to delete a custom content moderation template.
+        r"""This API is used to delete a custom content moderation template.
 
         :param request: Request instance for DeleteContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
@@ -627,7 +627,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteImageSpriteTemplate(self, request):
-        """This API is used to delete an image sprite generating template.
+        r"""This API is used to delete an image sprite generating template.
 
         :param request: Request instance for DeleteImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteImageSpriteTemplateRequest`
@@ -650,7 +650,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteLiveRecordTemplate(self, request):
-        """This API is used to delete a live recording template.
+        r"""This API is used to delete a live recording template.
 
         :param request: Request instance for DeleteLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteLiveRecordTemplateRequest`
@@ -673,7 +673,7 @@ class MpsClient(AbstractClient):
 
 
     def DeletePersonSample(self, request):
-        """This API is used to delete image samples by image ID.
+        r"""This API is used to delete image samples by image ID.
 
         :param request: Request instance for DeletePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
@@ -696,7 +696,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteQualityControlTemplate(self, request):
-        """This API is used to delete a media quality inspection template.
+        r"""This API is used to delete a media quality inspection template.
 
         :param request: Request instance for DeleteQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateRequest`
@@ -719,7 +719,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSampleSnapshotTemplate(self, request):
-        """This API is used to delete a custom sampled screencapturing template.
+        r"""This API is used to delete a custom sampled screencapturing template.
 
         :param request: Request instance for DeleteSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSampleSnapshotTemplateRequest`
@@ -742,7 +742,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSchedule(self, request):
-        """This API is used to delete a scheme.
+        r"""This API is used to delete a scheme.
 
         :param request: Request instance for DeleteSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleRequest`
@@ -765,7 +765,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSmartSubtitleTemplate(self, request):
-        """This API is used to delete a user-defined smart subtitle template.
+        r"""This API is used to delete a user-defined smart subtitle template.
 
         :param request: Request instance for DeleteSmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateRequest`
@@ -788,7 +788,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to delete a custom time point screencapturing template.
+        r"""This API is used to delete a custom time point screencapturing template.
 
         :param request: Request instance for DeleteSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSnapshotByTimeOffsetTemplateRequest`
@@ -811,7 +811,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteTranscodeTemplate(self, request):
-        """This API is used to delete a custom transcoding template.
+        r"""This API is used to delete a custom transcoding template.
 
         :param request: Request instance for DeleteTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteTranscodeTemplateRequest`
@@ -834,7 +834,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWatermarkTemplate(self, request):
-        """This API is used to delete a custom watermarking template.
+        r"""This API is used to delete a custom watermarking template.
 
         :param request: Request instance for DeleteWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWatermarkTemplateRequest`
@@ -857,7 +857,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWordSamples(self, request):
-        """This API is used to delete keyword samples in batches.
+        r"""This API is used to delete keyword samples in batches.
 
         :param request: Request instance for DeleteWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesRequest`
@@ -880,7 +880,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWorkflow(self, request):
-        """This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted.
+        r"""This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted.
 
         :param request: Request instance for DeleteWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWorkflowRequest`
@@ -903,7 +903,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAIAnalysisTemplates(self, request):
-        """This API is used to get the list of content analysis templates based on unique template ID. The returned result includes all eligible custom and preset video content analysis templates.
+        r"""This API is used to get the list of content analysis templates based on unique template ID. The returned result includes all eligible custom and preset video content analysis templates.
 
         :param request: Request instance for DescribeAIAnalysisTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesRequest`
@@ -926,7 +926,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAIRecognitionTemplates(self, request):
-        """This API is used to get the list of content recognition templates based on unique template ID. The return result includes all eligible custom and preset content recognition templates.
+        r"""This API is used to get the list of content recognition templates based on unique template ID. The return result includes all eligible custom and preset content recognition templates.
 
         :param request: Request instance for DescribeAIRecognitionTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesRequest`
@@ -949,7 +949,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAdaptiveDynamicStreamingTemplates(self, request):
-        """This API is used to query the list of adaptive bitrate streaming templates and supports paginated queries by filters.
+        r"""This API is used to query the list of adaptive bitrate streaming templates and supports paginated queries by filters.
 
         :param request: Request instance for DescribeAdaptiveDynamicStreamingTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
@@ -972,7 +972,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAnimatedGraphicsTemplates(self, request):
-        """This API is used to query the list of animated image generating templates and supports paged queries by filters.
+        r"""This API is used to query the list of animated image generating templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeAnimatedGraphicsTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAnimatedGraphicsTemplatesRequest`
@@ -995,7 +995,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAsrHotwords(self, request):
-        """This API is used to query a smart subtitle hotword lexicon.
+        r"""This API is used to query a smart subtitle hotword lexicon.
 
         :param request: Request instance for DescribeAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsRequest`
@@ -1018,7 +1018,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAsrHotwordsList(self, request):
-        """This API is used to obtain the hotword lexicon list.
+        r"""This API is used to obtain the hotword lexicon list.
 
         :param request: Request instance for DescribeAsrHotwordsList.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListRequest`
@@ -1041,7 +1041,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeBatchTaskDetail(self, request):
-        """This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        r"""This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
 
         :param request: Request instance for DescribeBatchTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailRequest`
@@ -1064,7 +1064,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
+        r"""This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
 
         :param request: Request instance for DescribeContentReviewTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
@@ -1087,7 +1087,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeImageSpriteTemplates(self, request):
-        """This API is used to query the list of image sprite generating templates and supports paged queries by filters.
+        r"""This API is used to query the list of image sprite generating templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeImageSpriteTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageSpriteTemplatesRequest`
@@ -1110,7 +1110,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeImageTaskDetail(self, request):
-        """This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+        r"""This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
 
         :param request: Request instance for DescribeImageTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailRequest`
@@ -1133,7 +1133,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """This API is used to get a live recording template.
+        r"""This API is used to get a live recording template.
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeLiveRecordTemplatesRequest`
@@ -1156,7 +1156,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeMediaMetaData(self, request):
-        """This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.
+        r"""This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.
 
         :param request: Request instance for DescribeMediaMetaData.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataRequest`
@@ -1179,7 +1179,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribePersonSamples(self, request):
-        """This API is used to query the information of image samples. It supports paginated queries by image ID, name, and tag.
+        r"""This API is used to query the information of image samples. It supports paginated queries by image ID, name, and tag.
 
         :param request: Request instance for DescribePersonSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
@@ -1202,7 +1202,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeQualityControlTemplates(self, request):
-        """This API is used to query custom media quality inspection templates, supporting paged queries by conditions.
+        r"""This API is used to query custom media quality inspection templates, supporting paged queries by conditions.
 
         :param request: Request instance for DescribeQualityControlTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesRequest`
@@ -1225,7 +1225,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSampleSnapshotTemplates(self, request):
-        """This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
+        r"""This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeSampleSnapshotTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSampleSnapshotTemplatesRequest`
@@ -1248,7 +1248,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSchedules(self, request):
-        """This API is used to query a scheme.
+        r"""This API is used to query a scheme.
 
         :param request: Request instance for DescribeSchedules.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesRequest`
@@ -1271,7 +1271,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSmartSubtitleTemplates(self, request):
-        """This API is used to obtain the list of smart subtitle templates based on template unique identifier. The returned result includes all matching user-defined smart subtitle templates and system preset smart subtitle templates.
+        r"""This API is used to obtain the list of smart subtitle templates based on template unique identifier. The returned result includes all matching user-defined smart subtitle templates and system preset smart subtitle templates.
 
         :param request: Request instance for DescribeSmartSubtitleTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesRequest`
@@ -1294,7 +1294,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeSnapshotByTimeOffsetTemplates(self, request):
-        """This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
+        r"""This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeSnapshotByTimeOffsetTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSnapshotByTimeOffsetTemplatesRequest`
@@ -1317,7 +1317,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeStreamLinkSecurityGroup(self, request):
-        """This API is used to query a security group.
+        r"""This API is used to query a security group.
 
         :param request: Request instance for DescribeStreamLinkSecurityGroup.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupRequest`
@@ -1340,7 +1340,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
+        r"""This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTaskDetailRequest`
@@ -1363,7 +1363,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """* This API is used to query tasks.
+        r"""* This API is used to query tasks.
         * If the data is large, one API call may not be able to obtain all the tasks in the query. You can use the `ScrollToken` parameter to query tasks with multiple calls.
         * Only tasks in the last seven days (168 hours) can be queried.
 
@@ -1388,7 +1388,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeTranscodeTemplates(self, request):
-        """This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        r"""This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 
         :param request: Request instance for DescribeTranscodeTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTranscodeTemplatesRequest`
@@ -1411,7 +1411,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWatermarkTemplates(self, request):
-        """This API is used to query custom watermarking templates and supports paged queries by filters.
+        r"""This API is used to query custom watermarking templates and supports paged queries by filters.
 
         :param request: Request instance for DescribeWatermarkTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWatermarkTemplatesRequest`
@@ -1434,7 +1434,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWordSamples(self, request):
-        """This API is used to perform paged queries of keyword sample information by use case, keyword, and tag.
+        r"""This API is used to perform paged queries of keyword sample information by use case, keyword, and tag.
 
         :param request: Request instance for DescribeWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesRequest`
@@ -1457,7 +1457,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeWorkflows(self, request):
-        """This API is used to get the list of workflow details by workflow ID.
+        r"""This API is used to get the list of workflow details by workflow ID.
 
         :param request: Request instance for DescribeWorkflows.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWorkflowsRequest`
@@ -1480,7 +1480,7 @@ class MpsClient(AbstractClient):
 
 
     def DisableSchedule(self, request):
-        """This API is used to disable a scheme.
+        r"""This API is used to disable a scheme.
 
         :param request: Request instance for DisableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisableScheduleRequest`
@@ -1503,7 +1503,7 @@ class MpsClient(AbstractClient):
 
 
     def DisableWorkflow(self, request):
-        """This API is used to disable a workflow.
+        r"""This API is used to disable a workflow.
 
         :param request: Request instance for DisableWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisableWorkflowRequest`
@@ -1526,7 +1526,7 @@ class MpsClient(AbstractClient):
 
 
     def EditMedia(self, request):
-        """This API is used to edit a video to generate a new one. Editing features include:
+        r"""This API is used to edit a video to generate a new one. Editing features include:
 
 
         1. **Editing task**: simple video editing, such as clipping and splicing.
@@ -1561,7 +1561,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableSchedule(self, request):
-        """This API is used to enable a scheme.
+        r"""This API is used to enable a scheme.
 
         :param request: Request instance for EnableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableScheduleRequest`
@@ -1584,7 +1584,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableWorkflow(self, request):
-        """This API is used to enable a workflow.
+        r"""This API is used to enable a workflow.
 
         :param request: Request instance for EnableWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableWorkflowRequest`
@@ -1607,7 +1607,7 @@ class MpsClient(AbstractClient):
 
 
     def ExecuteFunction(self, request):
-        """This API is reserved for special circumstances. Do not use it unless you are directed to use it by technical support.
+        r"""This API is reserved for special circumstances. Do not use it unless you are directed to use it by technical support.
 
         :param request: Request instance for ExecuteFunction.
         :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
@@ -1630,7 +1630,7 @@ class MpsClient(AbstractClient):
 
 
     def ManageTask(self, request):
-        """This API is used to manage initiated tasks.
+        r"""This API is used to manage initiated tasks.
 
         :param request: Request instance for ManageTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.ManageTaskRequest`
@@ -1653,7 +1653,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAIAnalysisTemplate(self, request):
-        """This API is used to modify a custom content analysis template.
+        r"""This API is used to modify a custom content analysis template.
 
         Note: templates with an ID below 10000 are preset and cannot be modified.
 
@@ -1678,7 +1678,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAIRecognitionTemplate(self, request):
-        """This API is used to modify a custom content recognition template.
+        r"""This API is used to modify a custom content recognition template.
 
         :param request: Request instance for ModifyAIRecognitionTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateRequest`
@@ -1701,7 +1701,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAdaptiveDynamicStreamingTemplate(self, request):
-        """This API is used to modify an adaptive bitrate streaming template.
+        r"""This API is used to modify an adaptive bitrate streaming template.
 
         :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
@@ -1724,7 +1724,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAnimatedGraphicsTemplate(self, request):
-        """This API is used to modify a custom animated image generating template.
+        r"""This API is used to modify a custom animated image generating template.
 
         :param request: Request instance for ModifyAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAnimatedGraphicsTemplateRequest`
@@ -1747,7 +1747,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyAsrHotwords(self, request):
-        """This API is used to update a smart subtitle hotword lexicon.
+        r"""This API is used to update a smart subtitle hotword lexicon.
 
         :param request: Request instance for ModifyAsrHotwords.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsRequest`
@@ -1770,7 +1770,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyContentReviewTemplate(self, request):
-        """This API is used to modify a custom content moderation template.
+        r"""This API is used to modify a custom content moderation template.
 
         :param request: Request instance for ModifyContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`
@@ -1793,7 +1793,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyImageSpriteTemplate(self, request):
-        """This API is used to modify a custom image sprite generating template.
+        r"""This API is used to modify a custom image sprite generating template.
 
         :param request: Request instance for ModifyImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyImageSpriteTemplateRequest`
@@ -1816,7 +1816,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        """This API is used to modify a live recording template.
+        r"""This API is used to modify a live recording template.
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyLiveRecordTemplateRequest`
@@ -1839,7 +1839,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyPersonSample(self, request):
-        """This API is used to modify image samples by image ID. You can use it to modify the name and description of an image sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.
+        r"""This API is used to modify image samples by image ID. You can use it to modify the name and description of an image sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.
 
         :param request: Request instance for ModifyPersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`
@@ -1862,7 +1862,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyQualityControlTemplate(self, request):
-        """This API is used to modify a media quality inspection template.
+        r"""This API is used to modify a media quality inspection template.
 
         :param request: Request instance for ModifyQualityControlTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateRequest`
@@ -1885,7 +1885,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySampleSnapshotTemplate(self, request):
-        """This API is used to modify a custom sampled screencapturing template.
+        r"""This API is used to modify a custom sampled screencapturing template.
 
         :param request: Request instance for ModifySampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySampleSnapshotTemplateRequest`
@@ -1908,7 +1908,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySchedule(self, request):
-        """This API is used to modify a scheme.
+        r"""This API is used to modify a scheme.
 
         :param request: Request instance for ModifySchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleRequest`
@@ -1931,7 +1931,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySmartSubtitleTemplate(self, request):
-        """This API is used to modify a user-defined smart subtitle template.
+        r"""This API is used to modify a user-defined smart subtitle template.
 
         :param request: Request instance for ModifySmartSubtitleTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateRequest`
@@ -1954,7 +1954,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifySnapshotByTimeOffsetTemplate(self, request):
-        """This API is used to modify a custom time point screencapturing template.
+        r"""This API is used to modify a custom time point screencapturing template.
 
         :param request: Request instance for ModifySnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifySnapshotByTimeOffsetTemplateRequest`
@@ -1977,7 +1977,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyTranscodeTemplate(self, request):
-        """This API is used to modify a custom transcoding template.
+        r"""This API is used to modify a custom transcoding template.
 
         :param request: Request instance for ModifyTranscodeTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyTranscodeTemplateRequest`
@@ -2000,7 +2000,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyWatermarkTemplate(self, request):
-        """This API is used to modify a custom watermarking template. The watermark type cannot be modified.
+        r"""This API is used to modify a custom watermarking template. The watermark type cannot be modified.
 
         :param request: Request instance for ModifyWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWatermarkTemplateRequest`
@@ -2023,7 +2023,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyWordSample(self, request):
-        """This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
+        r"""This API is used to modify the use case and tag of a keyword. The keyword itself cannot be modified, but you can delete it and create another one if needed.
 
         :param request: Request instance for ModifyWordSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleRequest`
@@ -2046,7 +2046,7 @@ class MpsClient(AbstractClient):
 
 
     def ParseLiveStreamProcessNotification(self, request):
-        """This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.
+        r"""This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.
         Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
 
         :param request: Request instance for ParseLiveStreamProcessNotification.
@@ -2070,7 +2070,7 @@ class MpsClient(AbstractClient):
 
 
     def ParseNotification(self, request):
-        """This API is used to parse the content of an MPS event notification from the `msgBody` field in the message received from CMQ.
+        r"""This API is used to parse the content of an MPS event notification from the `msgBody` field in the message received from CMQ.
         Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
 
         :param request: Request instance for ParseNotification.
@@ -2094,7 +2094,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessImage(self, request):
-        """This API is used to initiate image processing, with features including:
+        r"""This API is used to initiate image processing, with features including:
         1. Format conversion.
         2. Image enhancement.
         3. Image erasure.
@@ -2120,7 +2120,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessLiveStream(self, request):
-        """This API is used to initiate live stream processing tasks. Such tasks may include the following:
+        r"""This API is used to initiate live stream processing tasks. Such tasks may include the following:
 
         * Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)
         * Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, real-time speech translation, object recognition, game event tracking)
@@ -2151,7 +2151,7 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate a processing task for video URLs or media files in COS. Features include:
+        r"""This API is used to initiate a processing task for video URLs or media files in COS. Features include:
         1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).
         2. Video-to-GIF conversion.
         3. Time point screenshot of videos.
@@ -2185,7 +2185,7 @@ class MpsClient(AbstractClient):
 
 
     def ResetWorkflow(self, request):
-        """This API is used to reset an existing workflow that is disabled.
+        r"""This API is used to reset an existing workflow that is disabled.
 
         :param request: Request instance for ResetWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.ResetWorkflowRequest`

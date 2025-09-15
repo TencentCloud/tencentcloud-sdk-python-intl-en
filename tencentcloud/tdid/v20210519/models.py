@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddLabelRequest(AbstractModel):
-    """AddLabel request structure.
+    r"""AddLabel request structure.
 
     """
 
@@ -35,7 +35,7 @@ class AddLabelRequest(AbstractModel):
 
     @property
     def LabelId(self):
-        """The label ID.
+        r"""The label ID.
         :rtype: int
         """
         return self._LabelId
@@ -46,7 +46,7 @@ class AddLabelRequest(AbstractModel):
 
     @property
     def Did(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Did
@@ -70,7 +70,7 @@ class AddLabelRequest(AbstractModel):
 
 
 class AddLabelResponse(AbstractModel):
-    """AddLabel response structure.
+    r"""AddLabel response structure.
 
     """
 
@@ -83,7 +83,7 @@ class AddLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -98,7 +98,7 @@ class AddLabelResponse(AbstractModel):
 
 
 class Authority(AbstractModel):
-    """The information of an authority.
+    r"""The information of an authority.
 
     """
 
@@ -160,7 +160,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Id(self):
-        """The authority ID.
+        r"""The authority ID.
         :rtype: int
         """
         return self._Id
@@ -171,7 +171,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DidId(self):
-        """The DID.
+        r"""The DID.
         :rtype: int
         """
         return self._DidId
@@ -182,7 +182,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Did(self):
-        """The details of the DID.
+        r"""The details of the DID.
         :rtype: str
         """
         return self._Did
@@ -193,7 +193,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
-        """The authority name.
+        r"""The authority name.
         :rtype: str
         """
         return self._Name
@@ -204,7 +204,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        """Whether the authority is certified. `1`: Yes; `2`: No.
+        r"""Whether the authority is certified. `1`: Yes; `2`: No.
         :rtype: int
         """
         return self._Status
@@ -215,7 +215,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DidServiceId(self):
-        """The DID service ID.
+        r"""The DID service ID.
         :rtype: int
         """
         return self._DidServiceId
@@ -226,7 +226,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ContractAppId(self):
-        """The application ID.
+        r"""The application ID.
         :rtype: int
         """
         return self._ContractAppId
@@ -237,7 +237,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -248,7 +248,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegisterTime(self):
-        """The registration time.
+        r"""The registration time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -260,7 +260,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RecognizeTime(self):
-        """The recognition time.
+        r"""The recognition time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -272,7 +272,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -284,7 +284,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
-        """The last updated time.
+        r"""The last updated time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -296,7 +296,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -307,7 +307,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -318,7 +318,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -329,7 +329,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LabelName(self):
-        """The on-chain label.
+        r"""The on-chain label.
         :rtype: str
         """
         return self._LabelName
@@ -367,7 +367,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class BcosClusterItem(AbstractModel):
-    """The information of a BCOS network.
+    r"""The information of a BCOS network.
 
     """
 
@@ -422,7 +422,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: int
         """
         return self._ChainId
@@ -433,7 +433,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainName(self):
-        """The network name.
+        r"""The network name.
         :rtype: str
         """
         return self._ChainName
@@ -444,7 +444,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AgencyCount(self):
-        """The number of organizations.
+        r"""The number of organizations.
         :rtype: int
         """
         return self._AgencyCount
@@ -455,7 +455,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -466,7 +466,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -477,7 +477,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """The expiration time.
+        r"""The expiration time.
         :rtype: str
         """
         return self._ExpireTime
@@ -488,7 +488,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainStatus(self):
-        """The network status.
+        r"""The network status.
         :rtype: int
         """
         return self._ChainStatus
@@ -499,7 +499,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ResourceId(self):
-        """The resource ID.
+        r"""The resource ID.
         :rtype: str
         """
         return self._ResourceId
@@ -510,7 +510,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The cluster ID.
+        r"""The cluster ID.
         :rtype: str
         """
         return self._ClusterId
@@ -521,7 +521,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -532,7 +532,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AgencyId(self):
-        """The organization ID.
+        r"""The organization ID.
         :rtype: int
         """
         return self._AgencyId
@@ -543,7 +543,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """The renewal status.
+        r"""The renewal status.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -554,7 +554,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalNetworkNode(self):
-        """The network mode.
+        r"""The network mode.
         :rtype: int
         """
         return self._TotalNetworkNode
@@ -565,7 +565,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalCreateNode(self):
-        """The number of nodes created.
+        r"""The number of nodes created.
         :rtype: int
         """
         return self._TotalCreateNode
@@ -576,7 +576,7 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalGroups(self):
-        """The total number of groups.
+        r"""The total number of groups.
         :rtype: int
         """
         return self._TotalGroups
@@ -613,7 +613,7 @@ class BcosClusterItem(AbstractModel):
 
 
 class CancelAuthorityIssuerRequest(AbstractModel):
-    """CancelAuthorityIssuer request structure.
+    r"""CancelAuthorityIssuer request structure.
 
     """
 
@@ -626,7 +626,7 @@ class CancelAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The details of the DID.
+        r"""The details of the DID.
         :rtype: str
         """
         return self._Did
@@ -649,7 +649,7 @@ class CancelAuthorityIssuerRequest(AbstractModel):
 
 
 class CancelAuthorityIssuerResponse(AbstractModel):
-    """CancelAuthorityIssuer response structure.
+    r"""CancelAuthorityIssuer response structure.
 
     """
 
@@ -662,7 +662,7 @@ class CancelAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -677,7 +677,7 @@ class CancelAuthorityIssuerResponse(AbstractModel):
 
 
 class CheckChainRequest(AbstractModel):
-    """CheckChain request structure.
+    r"""CheckChain request structure.
 
     """
 
@@ -696,7 +696,7 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -707,7 +707,7 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -718,7 +718,7 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def AgencyName(self):
-        """The name of the DID organization.
+        r"""The name of the DID organization.
         :rtype: str
         """
         return self._AgencyName
@@ -743,7 +743,7 @@ class CheckChainRequest(AbstractModel):
 
 
 class CheckChainResponse(AbstractModel):
-    """CheckChain response structure.
+    r"""CheckChain response structure.
 
     """
 
@@ -765,7 +765,7 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def RoleType(self):
-        """Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        r"""Whether you are the owner of the consortium. `1`: Yes; `0`: No.
         :rtype: int
         """
         return self._RoleType
@@ -776,7 +776,7 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def ChainId(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: str
         """
         return self._ChainId
@@ -787,7 +787,7 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -798,7 +798,7 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -816,7 +816,7 @@ class CheckChainResponse(AbstractModel):
 
 
 class CheckDidDeployRequest(AbstractModel):
-    """CheckDidDeploy request structure.
+    r"""CheckDidDeploy request structure.
 
     """
 
@@ -829,7 +829,7 @@ class CheckDidDeployRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """The task ID.
+        r"""The task ID.
         :rtype: int
         """
         return self._TaskId
@@ -852,7 +852,7 @@ class CheckDidDeployRequest(AbstractModel):
 
 
 class CheckDidDeployResponse(AbstractModel):
-    """CheckDidDeploy response structure.
+    r"""CheckDidDeploy response structure.
 
     """
 
@@ -868,7 +868,7 @@ class CheckDidDeployResponse(AbstractModel):
 
     @property
     def Task(self):
-        """The service information.
+        r"""The service information.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.Task`
         """
         return self._Task
@@ -879,7 +879,7 @@ class CheckDidDeployResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -897,7 +897,7 @@ class CheckDidDeployResponse(AbstractModel):
 
 
 class ConsortiumItem(AbstractModel):
-    """The information of a consortium.
+    r"""The information of a consortium.
 
     """
 
@@ -913,7 +913,7 @@ class ConsortiumItem(AbstractModel):
 
     @property
     def Id(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._Id
@@ -924,7 +924,7 @@ class ConsortiumItem(AbstractModel):
 
     @property
     def Name(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._Name
@@ -948,7 +948,7 @@ class ConsortiumItem(AbstractModel):
 
 
 class Contract(AbstractModel):
-    """The information of a deployed contract.
+    r"""The information of a deployed contract.
 
     """
 
@@ -982,7 +982,7 @@ class Contract(AbstractModel):
 
     @property
     def ApplyName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._ApplyName
@@ -993,7 +993,7 @@ class Contract(AbstractModel):
 
     @property
     def Enable(self):
-        """The contract status. `true`: Enabled; `false`: Not enabled.
+        r"""The contract status. `true`: Enabled; `false`: Not enabled.
         :rtype: bool
         """
         return self._Enable
@@ -1004,7 +1004,7 @@ class Contract(AbstractModel):
 
     @property
     def Hash(self):
-        """The CNS address of the contract.
+        r"""The CNS address of the contract.
         :rtype: str
         """
         return self._Hash
@@ -1015,7 +1015,7 @@ class Contract(AbstractModel):
 
     @property
     def HashShow(self):
-        """The desensitized CNS address.
+        r"""The desensitized CNS address.
         :rtype: str
         """
         return self._HashShow
@@ -1026,7 +1026,7 @@ class Contract(AbstractModel):
 
     @property
     def WeId(self):
-        """The DID of the organization that deployed the contract.
+        r"""The DID of the organization that deployed the contract.
         :rtype: str
         """
         return self._WeId
@@ -1037,7 +1037,7 @@ class Contract(AbstractModel):
 
     @property
     def DeployName(self):
-        """The name of the organization that deployed the contract.
+        r"""The name of the organization that deployed the contract.
         :rtype: str
         """
         return self._DeployName
@@ -1048,7 +1048,7 @@ class Contract(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group.
+        r"""The group.
         :rtype: str
         """
         return self._GroupId
@@ -1059,7 +1059,7 @@ class Contract(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The deployment time.
+        r"""The deployment time.
         :rtype: str
         """
         return self._CreateTime
@@ -1089,7 +1089,7 @@ class Contract(AbstractModel):
 
 
 class CptIssueRank(AbstractModel):
-    """Claim protocol type (CPT) rankings by the number of credentials issued.
+    r"""Claim protocol type (CPT) rankings by the number of credentials issued.
 
     """
 
@@ -1114,7 +1114,7 @@ class CptIssueRank(AbstractModel):
 
     @property
     def CptName(self):
-        """The (claim protocol type) CPT name.
+        r"""The (claim protocol type) CPT name.
         :rtype: str
         """
         return self._CptName
@@ -1125,7 +1125,7 @@ class CptIssueRank(AbstractModel):
 
     @property
     def Rank(self):
-        """The ranking.
+        r"""The ranking.
         :rtype: int
         """
         return self._Rank
@@ -1136,7 +1136,7 @@ class CptIssueRank(AbstractModel):
 
     @property
     def Count(self):
-        """The number of credentials issued.
+        r"""The number of credentials issued.
         :rtype: int
         """
         return self._Count
@@ -1147,7 +1147,7 @@ class CptIssueRank(AbstractModel):
 
     @property
     def ApplyName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._ApplyName
@@ -1158,7 +1158,7 @@ class CptIssueRank(AbstractModel):
 
     @property
     def ApplyId(self):
-        """The application ID.
+        r"""The application ID.
         :rtype: int
         """
         return self._ApplyId
@@ -1185,7 +1185,7 @@ class CptIssueRank(AbstractModel):
 
 
 class CptListData(AbstractModel):
-    """The information of claim protocol types (CPT).
+    r"""The information of claim protocol types (CPT).
 
     """
 
@@ -1237,7 +1237,7 @@ class CptListData(AbstractModel):
 
     @property
     def Id(self):
-        """The CPT ID.
+        r"""The CPT ID.
         :rtype: int
         """
         return self._Id
@@ -1248,7 +1248,7 @@ class CptListData(AbstractModel):
 
     @property
     def Name(self):
-        """The name of the claim protocol type (CPT).
+        r"""The name of the claim protocol type (CPT).
         :rtype: str
         """
         return self._Name
@@ -1259,7 +1259,7 @@ class CptListData(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -1270,7 +1270,7 @@ class CptListData(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -1281,7 +1281,7 @@ class CptListData(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The service ID.
+        r"""The service ID.
         :rtype: int
         """
         return self._ServiceId
@@ -1292,7 +1292,7 @@ class CptListData(AbstractModel):
 
     @property
     def ContractAppId(self):
-        """The application ID of the contract.
+        r"""The application ID of the contract.
         :rtype: int
         """
         return self._ContractAppId
@@ -1303,7 +1303,7 @@ class CptListData(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -1314,7 +1314,7 @@ class CptListData(AbstractModel):
 
     @property
     def CptType(self):
-        """The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        r"""The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
         :rtype: int
         """
         return self._CptType
@@ -1325,7 +1325,7 @@ class CptListData(AbstractModel):
 
     @property
     def Description(self):
-        """The description of the claim protocol type (CPT).
+        r"""The description of the claim protocol type (CPT).
         :rtype: str
         """
         return self._Description
@@ -1336,7 +1336,7 @@ class CptListData(AbstractModel):
 
     @property
     def CptJson(self):
-        """The JSON file of the claim protocol type (CPT).
+        r"""The JSON file of the claim protocol type (CPT).
         :rtype: str
         """
         return self._CptJson
@@ -1347,7 +1347,7 @@ class CptListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -1358,7 +1358,7 @@ class CptListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """The last updated time.
+        r"""The last updated time.
         :rtype: str
         """
         return self._UpdateTime
@@ -1369,7 +1369,7 @@ class CptListData(AbstractModel):
 
     @property
     def CreatorDid(self):
-        """The DID of the creator.
+        r"""The DID of the creator.
         :rtype: str
         """
         return self._CreatorDid
@@ -1380,7 +1380,7 @@ class CptListData(AbstractModel):
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -1416,7 +1416,7 @@ class CptListData(AbstractModel):
 
 
 class CreateCredentialRequest(AbstractModel):
-    """CreateCredential request structure.
+    r"""CreateCredential request structure.
 
     """
 
@@ -1438,7 +1438,7 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
-        """A parameter set. For details, see the example.
+        r"""A parameter set. For details, see the example.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.FunctionArg`
         """
         return self._FunctionArg
@@ -1449,7 +1449,7 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def TransactionArg(self):
-        """A parameter set. For details, see the example.
+        r"""A parameter set. For details, see the example.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.TransactionArg`
         """
         return self._TransactionArg
@@ -1460,7 +1460,7 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def VersionCredential(self):
-        """The version.
+        r"""The version.
         :rtype: str
         """
         return self._VersionCredential
@@ -1471,7 +1471,7 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def UnSigned(self):
-        """Whether the credential is unsigned.
+        r"""Whether the credential is unsigned.
         :rtype: bool
         """
         return self._UnSigned
@@ -1501,7 +1501,7 @@ class CreateCredentialRequest(AbstractModel):
 
 
 class CreateCredentialResponse(AbstractModel):
-    """CreateCredential response structure.
+    r"""CreateCredential response structure.
 
     """
 
@@ -1517,7 +1517,7 @@ class CreateCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
-        """The information of the credential.
+        r"""The information of the credential.
         :rtype: str
         """
         return self._CredentialData
@@ -1528,7 +1528,7 @@ class CreateCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1544,7 +1544,7 @@ class CreateCredentialResponse(AbstractModel):
 
 
 class CreateDidServiceRequest(AbstractModel):
-    """CreateDidService request structure.
+    r"""CreateDidService request structure.
 
     """
 
@@ -1575,7 +1575,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -1586,7 +1586,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -1597,7 +1597,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -1608,7 +1608,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def AgencyName(self):
-        """The organization name.
+        r"""The organization name.
         :rtype: str
         """
         return self._AgencyName
@@ -1619,7 +1619,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -1630,7 +1630,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -1641,7 +1641,7 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """The group name.
+        r"""The group name.
         :rtype: str
         """
         return self._GroupName
@@ -1670,7 +1670,7 @@ class CreateDidServiceRequest(AbstractModel):
 
 
 class CreateDidServiceResponse(AbstractModel):
-    """CreateDidService response structure.
+    r"""CreateDidService response structure.
 
     """
 
@@ -1686,7 +1686,7 @@ class CreateDidServiceResponse(AbstractModel):
 
     @property
     def Task(self):
-        """The service information.
+        r"""The service information.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.Task`
         """
         return self._Task
@@ -1697,7 +1697,7 @@ class CreateDidServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1715,7 +1715,7 @@ class CreateDidServiceResponse(AbstractModel):
 
 
 class CreateLabelRequest(AbstractModel):
-    """CreateLabel request structure.
+    r"""CreateLabel request structure.
 
     """
 
@@ -1734,7 +1734,7 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def LabelName(self):
-        """The label name.
+        r"""The label name.
         :rtype: str
         """
         return self._LabelName
@@ -1745,7 +1745,7 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -1756,7 +1756,7 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -1781,7 +1781,7 @@ class CreateLabelRequest(AbstractModel):
 
 
 class CreateLabelResponse(AbstractModel):
-    """CreateLabel response structure.
+    r"""CreateLabel response structure.
 
     """
 
@@ -1794,7 +1794,7 @@ class CreateLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1809,7 +1809,7 @@ class CreateLabelResponse(AbstractModel):
 
 
 class CreateSelectiveCredentialRequest(AbstractModel):
-    """CreateSelectiveCredential request structure.
+    r"""CreateSelectiveCredential request structure.
 
     """
 
@@ -1825,7 +1825,7 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
-        """A parameter set.
+        r"""A parameter set.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
         """
         return self._FunctionArg
@@ -1836,7 +1836,7 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        """The disclosure policy ID.
+        r"""The disclosure policy ID.
         :rtype: int
         """
         return self._PolicyId
@@ -1862,7 +1862,7 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
 
 class CreateSelectiveCredentialResponse(AbstractModel):
-    """CreateSelectiveCredential response structure.
+    r"""CreateSelectiveCredential response structure.
 
     """
 
@@ -1878,7 +1878,7 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
-        """The credential string.
+        r"""The credential string.
         :rtype: str
         """
         return self._CredentialData
@@ -1889,7 +1889,7 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1905,7 +1905,7 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
 
 class CreateTDidByPrivateKeyRequest(AbstractModel):
-    """CreateTDidByPrivateKey request structure.
+    r"""CreateTDidByPrivateKey request structure.
 
     """
 
@@ -1924,7 +1924,7 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -1935,7 +1935,7 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -1946,7 +1946,7 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
-        """The private key.
+        r"""The private key.
         :rtype: str
         """
         return self._PrivateKey
@@ -1971,7 +1971,7 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
 
 class CreateTDidByPrivateKeyResponse(AbstractModel):
-    """CreateTDidByPrivateKey response structure.
+    r"""CreateTDidByPrivateKey response structure.
 
     """
 
@@ -1987,7 +1987,7 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -1998,7 +1998,7 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2014,7 +2014,7 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
 
 class CreateTDidByPublicKeyRequest(AbstractModel):
-    """CreateTDidByPublicKey request structure.
+    r"""CreateTDidByPublicKey request structure.
 
     """
 
@@ -2036,7 +2036,7 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -2047,7 +2047,7 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -2058,7 +2058,7 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def PublicKey(self):
-        """The public key.
+        r"""The public key.
         :rtype: str
         """
         return self._PublicKey
@@ -2069,7 +2069,7 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def EncryptPubKey(self):
-        """The encrypted public key.
+        r"""The encrypted public key.
         :rtype: str
         """
         return self._EncryptPubKey
@@ -2095,7 +2095,7 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
 
 class CreateTDidByPublicKeyResponse(AbstractModel):
-    """CreateTDidByPublicKey response structure.
+    r"""CreateTDidByPublicKey response structure.
 
     """
 
@@ -2111,7 +2111,7 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -2122,7 +2122,7 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2138,7 +2138,7 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
 
 class CreateTDidRequest(AbstractModel):
-    """CreateTDid request structure.
+    r"""CreateTDid request structure.
 
     """
 
@@ -2157,7 +2157,7 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -2168,7 +2168,7 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -2179,7 +2179,7 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def Relegation(self):
-        """ 
+        r""" 
         :rtype: int
         """
         return self._Relegation
@@ -2204,7 +2204,7 @@ class CreateTDidRequest(AbstractModel):
 
 
 class CreateTDidResponse(AbstractModel):
-    """CreateTDid response structure.
+    r"""CreateTDid response structure.
 
     """
 
@@ -2220,7 +2220,7 @@ class CreateTDidResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -2231,7 +2231,7 @@ class CreateTDidResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2247,7 +2247,7 @@ class CreateTDidResponse(AbstractModel):
 
 
 class CredentialStatus(AbstractModel):
-    """The on-chain status of the credential.
+    r"""The on-chain status of the credential.
 
     """
 
@@ -2278,7 +2278,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CredentialId(self):
-        """The credential ID.
+        r"""The credential ID.
         :rtype: str
         """
         return self._CredentialId
@@ -2289,7 +2289,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        """The credential status. `0`: Invalid; `1`: Valid.
+        r"""The credential status. `0`: Invalid; `1`: Valid.
         :rtype: int
         """
         return self._Status
@@ -2300,7 +2300,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Issuer(self):
-        """The DID of the issuer.
+        r"""The DID of the issuer.
         :rtype: str
         """
         return self._Issuer
@@ -2311,7 +2311,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Digest(self):
-        """A summary of the credential.
+        r"""A summary of the credential.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2323,7 +2323,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Signature(self):
-        """The credential signature.
+        r"""The credential signature.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2335,7 +2335,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimeStamp(self):
-        """The last updated timestamp.
+        r"""The last updated timestamp.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -2364,7 +2364,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DeployByNameRequest(AbstractModel):
-    """DeployByName request structure.
+    r"""DeployByName request structure.
 
     """
 
@@ -2383,7 +2383,7 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._ApplicationName
@@ -2394,7 +2394,7 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -2405,7 +2405,7 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -2430,7 +2430,7 @@ class DeployByNameRequest(AbstractModel):
 
 
 class DeployByNameResponse(AbstractModel):
-    """DeployByName response structure.
+    r"""DeployByName response structure.
 
     """
 
@@ -2446,7 +2446,7 @@ class DeployByNameResponse(AbstractModel):
 
     @property
     def Hash(self):
-        """The hash value.
+        r"""The hash value.
         :rtype: str
         """
         return self._Hash
@@ -2457,7 +2457,7 @@ class DeployByNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2473,7 +2473,7 @@ class DeployByNameResponse(AbstractModel):
 
 
 class DidCluster(AbstractModel):
-    """The information of DID blockchain networks.
+    r"""The information of DID blockchain networks.
 
     """
 
@@ -2531,7 +2531,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainId(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: int
         """
         return self._ChainId
@@ -2542,7 +2542,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainName(self):
-        """The chain name.
+        r"""The chain name.
         :rtype: str
         """
         return self._ChainName
@@ -2553,7 +2553,7 @@ class DidCluster(AbstractModel):
 
     @property
     def AgencyCount(self):
-        """The number of organizations.
+        r"""The number of organizations.
         :rtype: int
         """
         return self._AgencyCount
@@ -2564,7 +2564,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -2575,7 +2575,7 @@ class DidCluster(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -2586,7 +2586,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """The expiration time.
+        r"""The expiration time.
         :rtype: str
         """
         return self._ExpireTime
@@ -2597,7 +2597,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainStatus(self):
-        """The network status.
+        r"""The network status.
         :rtype: int
         """
         return self._ChainStatus
@@ -2608,7 +2608,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ResourceId(self):
-        """The resource ID.
+        r"""The resource ID.
         :rtype: str
         """
         return self._ResourceId
@@ -2619,7 +2619,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -2630,7 +2630,7 @@ class DidCluster(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -2641,7 +2641,7 @@ class DidCluster(AbstractModel):
 
     @property
     def AgencyId(self):
-        """The organization ID.
+        r"""The organization ID.
         :rtype: int
         """
         return self._AgencyId
@@ -2652,7 +2652,7 @@ class DidCluster(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Whether auto-renewal is enabled.
+        r"""Whether auto-renewal is enabled.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2663,7 +2663,7 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalNetworkNode(self):
-        """The total number of network nodes.
+        r"""The total number of network nodes.
         :rtype: int
         """
         return self._TotalNetworkNode
@@ -2674,7 +2674,7 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalCreateNode(self):
-        """The number of nodes of the current organization.
+        r"""The number of nodes of the current organization.
         :rtype: int
         """
         return self._TotalCreateNode
@@ -2685,7 +2685,7 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalGroups(self):
-        """The total number of groups.
+        r"""The total number of groups.
         :rtype: int
         """
         return self._TotalGroups
@@ -2696,7 +2696,7 @@ class DidCluster(AbstractModel):
 
     @property
     def DidCount(self):
-        """The total number of DIDs.
+        r"""The total number of DIDs.
         :rtype: int
         """
         return self._DidCount
@@ -2734,7 +2734,7 @@ class DidCluster(AbstractModel):
 
 
 class DidData(AbstractModel):
-    """The information of DIDs.
+    r"""The information of DIDs.
 
     """
 
@@ -2777,7 +2777,7 @@ class DidData(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The service ID.
+        r"""The service ID.
         :rtype: int
         """
         return self._ServiceId
@@ -2788,7 +2788,7 @@ class DidData(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -2799,7 +2799,7 @@ class DidData(AbstractModel):
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -2810,7 +2810,7 @@ class DidData(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -2821,7 +2821,7 @@ class DidData(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -2832,7 +2832,7 @@ class DidData(AbstractModel):
 
     @property
     def AuthorityState(self):
-        """The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.
+        r"""The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.
         :rtype: int
         """
         return self._AuthorityState
@@ -2843,7 +2843,7 @@ class DidData(AbstractModel):
 
     @property
     def LabelName(self):
-        """The label of the DID.
+        r"""The label of the DID.
         :rtype: str
         """
         return self._LabelName
@@ -2854,7 +2854,7 @@ class DidData(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """The DID creation time.
+        r"""The DID creation time.
         :rtype: str
         """
         return self._CreatedAt
@@ -2865,7 +2865,7 @@ class DidData(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -2876,7 +2876,7 @@ class DidData(AbstractModel):
 
     @property
     def AllianceName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._AllianceName
@@ -2887,7 +2887,7 @@ class DidData(AbstractModel):
 
     @property
     def LabelId(self):
-        """The label ID.
+        r"""The label ID.
         :rtype: int
         """
         return self._LabelId
@@ -2920,7 +2920,7 @@ class DidData(AbstractModel):
 
 
 class DidServiceInfo(AbstractModel):
-    """The DID service information.
+    r"""The DID service information.
 
     """
 
@@ -2975,7 +2975,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Id(self):
-        """The DID service ID.
+        r"""The DID service ID.
         :rtype: int
         """
         return self._Id
@@ -2986,7 +2986,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Appid(self):
-        """The application ID.
+        r"""The application ID.
         :rtype: int
         """
         return self._Appid
@@ -2997,7 +2997,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Uin(self):
-        """The account ID.
+        r"""The account ID.
         :rtype: str
         """
         return self._Uin
@@ -3008,7 +3008,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -3019,7 +3019,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -3030,7 +3030,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -3041,7 +3041,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -3052,7 +3052,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ChainId(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: str
         """
         return self._ChainId
@@ -3063,7 +3063,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def RoleType(self):
-        """Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        r"""Whether you are the owner of the consortium. `1`: Yes; `0`: No.
         :rtype: int
         """
         return self._RoleType
@@ -3074,7 +3074,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def AgencyDid(self):
-        """The organization DID.
+        r"""The organization DID.
         :rtype: str
         """
         return self._AgencyDid
@@ -3085,7 +3085,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def CreateOrg(self):
-        """The organization name.
+        r"""The organization name.
         :rtype: str
         """
         return self._CreateOrg
@@ -3096,7 +3096,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Endpoint(self):
-        """The endpoint.
+        r"""The endpoint.
         :rtype: str
         """
         return self._Endpoint
@@ -3107,7 +3107,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -3118,7 +3118,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """The last updated time.
+        r"""The last updated time.
         :rtype: str
         """
         return self._UpdateTime
@@ -3129,7 +3129,7 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """The group name.
+        r"""The group name.
         :rtype: str
         """
         return self._GroupName
@@ -3166,7 +3166,7 @@ class DidServiceInfo(AbstractModel):
 
 
 class DownCptRequest(AbstractModel):
-    """DownCpt request structure.
+    r"""DownCpt request structure.
 
     """
 
@@ -3179,7 +3179,7 @@ class DownCptRequest(AbstractModel):
 
     @property
     def CptIndex(self):
-        """The claim protocol type (CPT) index.
+        r"""The claim protocol type (CPT) index.
         :rtype: int
         """
         return self._CptIndex
@@ -3202,7 +3202,7 @@ class DownCptRequest(AbstractModel):
 
 
 class DownCptResponse(AbstractModel):
-    """DownCpt response structure.
+    r"""DownCpt response structure.
 
     """
 
@@ -3215,7 +3215,7 @@ class DownCptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3230,7 +3230,7 @@ class DownCptResponse(AbstractModel):
 
 
 class EnableHashRequest(AbstractModel):
-    """EnableHash request structure.
+    r"""EnableHash request structure.
 
     """
 
@@ -3243,7 +3243,7 @@ class EnableHashRequest(AbstractModel):
 
     @property
     def Hash(self):
-        """The CNS address of the contract.
+        r"""The CNS address of the contract.
         :rtype: str
         """
         return self._Hash
@@ -3266,7 +3266,7 @@ class EnableHashRequest(AbstractModel):
 
 
 class EnableHashResponse(AbstractModel):
-    """EnableHash response structure.
+    r"""EnableHash response structure.
 
     """
 
@@ -3279,7 +3279,7 @@ class EnableHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3294,7 +3294,7 @@ class EnableHashResponse(AbstractModel):
 
 
 class FunctionArg(AbstractModel):
-    """The input parameters for creating a credential.
+    r"""The input parameters for creating a credential.
 
     """
 
@@ -3316,7 +3316,7 @@ class FunctionArg(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -3327,7 +3327,7 @@ class FunctionArg(AbstractModel):
 
     @property
     def Issuer(self):
-        """The DID of the issuer.
+        r"""The DID of the issuer.
         :rtype: str
         """
         return self._Issuer
@@ -3338,7 +3338,7 @@ class FunctionArg(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """The expiration time.
+        r"""The expiration time.
         :rtype: str
         """
         return self._ExpirationDate
@@ -3349,7 +3349,7 @@ class FunctionArg(AbstractModel):
 
     @property
     def ClaimJson(self):
-        """The claim.
+        r"""The claim.
         :rtype: str
         """
         return self._ClaimJson
@@ -3375,7 +3375,7 @@ class FunctionArg(AbstractModel):
 
 
 class GetAgencyTDidRequest(AbstractModel):
-    """GetAgencyTDid request structure.
+    r"""GetAgencyTDid request structure.
 
     """
 
@@ -3388,7 +3388,7 @@ class GetAgencyTDidRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -3411,7 +3411,7 @@ class GetAgencyTDidRequest(AbstractModel):
 
 
 class GetAgencyTDidResponse(AbstractModel):
-    """GetAgencyTDid response structure.
+    r"""GetAgencyTDid response structure.
 
     """
 
@@ -3430,7 +3430,7 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def Prefix(self):
-        """The prefix (fixed).
+        r"""The prefix (fixed).
         :rtype: str
         """
         return self._Prefix
@@ -3441,7 +3441,7 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def Identity(self):
-        """The details of the DID.
+        r"""The details of the DID.
         :rtype: list of Identity
         """
         return self._Identity
@@ -3452,7 +3452,7 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3474,7 +3474,7 @@ class GetAgencyTDidResponse(AbstractModel):
 
 
 class GetAuthoritiesListRequest(AbstractModel):
-    """GetAuthoritiesList request structure.
+    r"""GetAuthoritiesList request structure.
 
     """
 
@@ -3496,7 +3496,7 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """The page number, beginning from 1.
+        r"""The page number, beginning from 1.
         :rtype: int
         """
         return self._PageNumber
@@ -3507,7 +3507,7 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """The number of records per page.
+        r"""The number of records per page.
         :rtype: int
         """
         return self._PageSize
@@ -3518,7 +3518,7 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -3529,7 +3529,7 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.
+        r"""Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.
         :rtype: int
         """
         return self._Status
@@ -3555,7 +3555,7 @@ class GetAuthoritiesListRequest(AbstractModel):
 
 
 class GetAuthoritiesListResponse(AbstractModel):
-    """GetAuthoritiesList response structure.
+    r"""GetAuthoritiesList response structure.
 
     """
 
@@ -3574,7 +3574,7 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def ResultList(self):
-        """A data set.
+        r"""A data set.
         :rtype: list of Authority
         """
         return self._ResultList
@@ -3585,7 +3585,7 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """The total number of records.
+        r"""The total number of records.
         :rtype: int
         """
         return self._AllCount
@@ -3596,7 +3596,7 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3618,7 +3618,7 @@ class GetAuthoritiesListResponse(AbstractModel):
 
 
 class GetAuthorityIssuerRequest(AbstractModel):
-    """GetAuthorityIssuer request structure.
+    r"""GetAuthorityIssuer request structure.
 
     """
 
@@ -3631,7 +3631,7 @@ class GetAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -3654,7 +3654,7 @@ class GetAuthorityIssuerRequest(AbstractModel):
 
 
 class GetAuthorityIssuerResponse(AbstractModel):
-    """GetAuthorityIssuer response structure.
+    r"""GetAuthorityIssuer response structure.
 
     """
 
@@ -3688,7 +3688,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Name(self):
-        """The authority name.
+        r"""The authority name.
         :rtype: str
         """
         return self._Name
@@ -3699,7 +3699,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The blockchain network ID.
+        r"""The blockchain network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -3710,7 +3710,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """The blockchain group ID.
+        r"""The blockchain group ID.
         :rtype: int
         """
         return self._GroupId
@@ -3721,7 +3721,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID of the authority.
+        r"""The DID of the authority.
         :rtype: str
         """
         return self._Did
@@ -3732,7 +3732,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -3743,7 +3743,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RegisterTime(self):
-        """The registration time.
+        r"""The registration time.
         :rtype: str
         """
         return self._RegisterTime
@@ -3754,7 +3754,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RecognizeTime(self):
-        """The recognition time.
+        r"""The recognition time.
         :rtype: str
         """
         return self._RecognizeTime
@@ -3765,7 +3765,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3787,7 +3787,7 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
 
 class GetConsortiumClusterListRequest(AbstractModel):
-    """GetConsortiumClusterList request structure.
+    r"""GetConsortiumClusterList request structure.
 
     """
 
@@ -3800,7 +3800,7 @@ class GetConsortiumClusterListRequest(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -3823,7 +3823,7 @@ class GetConsortiumClusterListRequest(AbstractModel):
 
 
 class GetConsortiumClusterListResponse(AbstractModel):
-    """GetConsortiumClusterList response structure.
+    r"""GetConsortiumClusterList response structure.
 
     """
 
@@ -3839,7 +3839,7 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
     @property
     def ClusterList(self):
-        """A list of networks.
+        r"""A list of networks.
         :rtype: list of BcosClusterItem
         """
         return self._ClusterList
@@ -3850,7 +3850,7 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3871,13 +3871,13 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
 
 class GetConsortiumListRequest(AbstractModel):
-    """GetConsortiumList request structure.
+    r"""GetConsortiumList request structure.
 
     """
 
 
 class GetConsortiumListResponse(AbstractModel):
-    """GetConsortiumList response structure.
+    r"""GetConsortiumList response structure.
 
     """
 
@@ -3893,7 +3893,7 @@ class GetConsortiumListResponse(AbstractModel):
 
     @property
     def ConsortiumList(self):
-        """A list of the consortiums.
+        r"""A list of the consortiums.
         :rtype: list of ConsortiumItem
         """
         return self._ConsortiumList
@@ -3904,7 +3904,7 @@ class GetConsortiumListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3925,7 +3925,7 @@ class GetConsortiumListResponse(AbstractModel):
 
 
 class GetCptInfoRequest(AbstractModel):
-    """GetCptInfo request structure.
+    r"""GetCptInfo request structure.
 
     """
 
@@ -3938,7 +3938,7 @@ class GetCptInfoRequest(AbstractModel):
 
     @property
     def CptIndex(self):
-        """The claim protocol type (CPT) index.
+        r"""The claim protocol type (CPT) index.
         :rtype: int
         """
         return self._CptIndex
@@ -3961,7 +3961,7 @@ class GetCptInfoRequest(AbstractModel):
 
 
 class GetCptInfoResponse(AbstractModel):
-    """GetCptInfo response structure.
+    r"""GetCptInfo response structure.
 
     """
 
@@ -3977,7 +3977,7 @@ class GetCptInfoResponse(AbstractModel):
 
     @property
     def CptJsonData(self):
-        """The JSON data of the claim protocol type (CPT).
+        r"""The JSON data of the claim protocol type (CPT).
         :rtype: str
         """
         return self._CptJsonData
@@ -3988,7 +3988,7 @@ class GetCptInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4004,7 +4004,7 @@ class GetCptInfoResponse(AbstractModel):
 
 
 class GetCptListRequest(AbstractModel):
-    """GetCptList request structure.
+    r"""GetCptList request structure.
 
     """
 
@@ -4023,7 +4023,7 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
-        """The start.
+        r"""The start.
         :rtype: int
         """
         return self._DisplayStart
@@ -4034,7 +4034,7 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
-        """The maximum number of records to return.
+        r"""The maximum number of records to return.
         :rtype: int
         """
         return self._DisplayLength
@@ -4045,7 +4045,7 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def CptType(self):
-        """The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        r"""The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
         :rtype: int
         """
         return self._CptType
@@ -4070,7 +4070,7 @@ class GetCptListRequest(AbstractModel):
 
 
 class GetCptListResponse(AbstractModel):
-    """GetCptList response structure.
+    r"""GetCptList response structure.
 
     """
 
@@ -4089,7 +4089,7 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def CptDataList(self):
-        """The information of claim protocol types (CPT).
+        r"""The information of claim protocol types (CPT).
         :rtype: list of CptListData
         """
         return self._CptDataList
@@ -4100,7 +4100,7 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """The total number of claim protocol types (CPT).
+        r"""The total number of claim protocol types (CPT).
         :rtype: int
         """
         return self._AllCount
@@ -4111,7 +4111,7 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4133,7 +4133,7 @@ class GetCptListResponse(AbstractModel):
 
 
 class GetCredentialCptRankRequest(AbstractModel):
-    """GetCredentialCptRank request structure.
+    r"""GetCredentialCptRank request structure.
 
     """
 
@@ -4152,7 +4152,7 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """The start date (as early as 2021-4-23).
+        r"""The start date (as early as 2021-4-23).
         :rtype: str
         """
         return self._StartTime
@@ -4163,7 +4163,7 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end date (as early as 2021-4-23).
+        r"""The end date (as early as 2021-4-23).
         :rtype: str
         """
         return self._EndTime
@@ -4174,7 +4174,7 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -4199,7 +4199,7 @@ class GetCredentialCptRankRequest(AbstractModel):
 
 
 class GetCredentialCptRankResponse(AbstractModel):
-    """GetCredentialCptRank response structure.
+    r"""GetCredentialCptRank response structure.
 
     """
 
@@ -4215,7 +4215,7 @@ class GetCredentialCptRankResponse(AbstractModel):
 
     @property
     def RankIssueResult(self):
-        """The rankings.
+        r"""The rankings.
         :rtype: list of CptIssueRank
         """
         return self._RankIssueResult
@@ -4226,7 +4226,7 @@ class GetCredentialCptRankResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4247,7 +4247,7 @@ class GetCredentialCptRankResponse(AbstractModel):
 
 
 class GetCredentialIssueRankRequest(AbstractModel):
-    """GetCredentialIssueRank request structure.
+    r"""GetCredentialIssueRank request structure.
 
     """
 
@@ -4266,7 +4266,7 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """The start date (as early as 2021-4-23).
+        r"""The start date (as early as 2021-4-23).
         :rtype: str
         """
         return self._StartTime
@@ -4277,7 +4277,7 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end date (as early as 2021-4-23).
+        r"""The end date (as early as 2021-4-23).
         :rtype: str
         """
         return self._EndTime
@@ -4288,7 +4288,7 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -4313,7 +4313,7 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
 
 class GetCredentialIssueRankResponse(AbstractModel):
-    """GetCredentialIssueRank response structure.
+    r"""GetCredentialIssueRank response structure.
 
     """
 
@@ -4329,7 +4329,7 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
     @property
     def RankIssueResult(self):
-        """The rankings.
+        r"""The rankings.
         :rtype: list of CptIssueRank
         """
         return self._RankIssueResult
@@ -4340,7 +4340,7 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4361,7 +4361,7 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
 
 class GetCredentialIssueTrendRequest(AbstractModel):
-    """GetCredentialIssueTrend request structure.
+    r"""GetCredentialIssueTrend request structure.
 
     """
 
@@ -4380,7 +4380,7 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """The start date (as early as 2021-4-23).
+        r"""The start date (as early as 2021-4-23).
         :rtype: str
         """
         return self._StartTime
@@ -4391,7 +4391,7 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end date (as early as 2021-4-23).
+        r"""The end date (as early as 2021-4-23).
         :rtype: str
         """
         return self._EndTime
@@ -4402,7 +4402,7 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -4427,7 +4427,7 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
 
 class GetCredentialIssueTrendResponse(AbstractModel):
-    """GetCredentialIssueTrend response structure.
+    r"""GetCredentialIssueTrend response structure.
 
     """
 
@@ -4443,7 +4443,7 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
     @property
     def Trend(self):
-        """The trend information.
+        r"""The trend information.
         :rtype: list of Trend
         """
         return self._Trend
@@ -4454,7 +4454,7 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4475,7 +4475,7 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
 
 class GetCredentialStatusRequest(AbstractModel):
-    """GetCredentialStatus request structure.
+    r"""GetCredentialStatus request structure.
 
     """
 
@@ -4488,7 +4488,7 @@ class GetCredentialStatusRequest(AbstractModel):
 
     @property
     def CredentialId(self):
-        """The credential ID.
+        r"""The credential ID.
         :rtype: str
         """
         return self._CredentialId
@@ -4511,7 +4511,7 @@ class GetCredentialStatusRequest(AbstractModel):
 
 
 class GetCredentialStatusResponse(AbstractModel):
-    """GetCredentialStatus response structure.
+    r"""GetCredentialStatus response structure.
 
     """
 
@@ -4527,7 +4527,7 @@ class GetCredentialStatusResponse(AbstractModel):
 
     @property
     def CredentialStatus(self):
-        """The credential status.
+        r"""The credential status.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
         """
         return self._CredentialStatus
@@ -4538,7 +4538,7 @@ class GetCredentialStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4556,7 +4556,7 @@ class GetCredentialStatusResponse(AbstractModel):
 
 
 class GetDataPanelRequest(AbstractModel):
-    """GetDataPanel request structure.
+    r"""GetDataPanel request structure.
 
     """
 
@@ -4569,7 +4569,7 @@ class GetDataPanelRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -4592,7 +4592,7 @@ class GetDataPanelRequest(AbstractModel):
 
 
 class GetDataPanelResponse(AbstractModel):
-    """GetDataPanel response structure.
+    r"""GetDataPanel response structure.
 
     """
 
@@ -4641,7 +4641,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkCount(self):
-        """The number of blockchain networks.
+        r"""The number of blockchain networks.
         :rtype: int
         """
         return self._BlockNetworkCount
@@ -4652,7 +4652,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkName(self):
-        """The blockchain network name.
+        r"""The blockchain network name.
         :rtype: str
         """
         return self._BlockNetworkName
@@ -4663,7 +4663,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
-        """The current block height.
+        r"""The current block height.
         :rtype: int
         """
         return self._BlockHeight
@@ -4674,7 +4674,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkType(self):
-        """The blockchain network type.
+        r"""The blockchain network type.
         :rtype: int
         """
         return self._BlockNetworkType
@@ -4685,7 +4685,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def DidCount(self):
-        """The number of DIDs.
+        r"""The number of DIDs.
         :rtype: int
         """
         return self._DidCount
@@ -4696,7 +4696,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def CptCount(self):
-        """The number of claim protocol types (CPT).
+        r"""The number of claim protocol types (CPT).
         :rtype: int
         """
         return self._CptCount
@@ -4707,7 +4707,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def CertificatedAuthCount(self):
-        """The number of certified authorities.
+        r"""The number of certified authorities.
         :rtype: int
         """
         return self._CertificatedAuthCount
@@ -4718,7 +4718,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def IssueCptCount(self):
-        """The number of credentials issued.
+        r"""The number of credentials issued.
         :rtype: int
         """
         return self._IssueCptCount
@@ -4729,7 +4729,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def NewDidCount(self):
-        """The number of new DIDs in the current week.
+        r"""The number of new DIDs in the current week.
         :rtype: int
         """
         return self._NewDidCount
@@ -4740,7 +4740,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BcosCount(self):
-        """The number of BCOS networks.
+        r"""The number of BCOS networks.
         :rtype: int
         """
         return self._BcosCount
@@ -4751,7 +4751,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def FabricCount(self):
-        """The number of Fabric networks.
+        r"""The number of Fabric networks.
         :rtype: int
         """
         return self._FabricCount
@@ -4762,7 +4762,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def ChainMakerCount(self):
-        """The number of ChainMaker networks.
+        r"""The number of ChainMaker networks.
         :rtype: int
         """
         return self._ChainMakerCount
@@ -4773,7 +4773,7 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4800,7 +4800,7 @@ class GetDataPanelResponse(AbstractModel):
 
 
 class GetDeployInfoRequest(AbstractModel):
-    """GetDeployInfo request structure.
+    r"""GetDeployInfo request structure.
 
     """
 
@@ -4813,7 +4813,7 @@ class GetDeployInfoRequest(AbstractModel):
 
     @property
     def Hash(self):
-        """The CNS address of the contract.
+        r"""The CNS address of the contract.
         :rtype: str
         """
         return self._Hash
@@ -4836,7 +4836,7 @@ class GetDeployInfoRequest(AbstractModel):
 
 
 class GetDeployInfoResponse(AbstractModel):
-    """GetDeployInfo response structure.
+    r"""GetDeployInfo response structure.
 
     """
 
@@ -4888,7 +4888,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def Hash(self):
-        """The CNS address of the contract.
+        r"""The CNS address of the contract.
         :rtype: str
         """
         return self._Hash
@@ -4899,7 +4899,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """The main group ID of the contract.
+        r"""The main group ID of the contract.
         :rtype: str
         """
         return self._GroupId
@@ -4910,7 +4910,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def DeployDid(self):
-        """The DID of the organization that deployed the contract.
+        r"""The DID of the organization that deployed the contract.
         :rtype: str
         """
         return self._DeployDid
@@ -4921,7 +4921,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def SdkVersion(self):
-        """The TDID SDK version.
+        r"""The TDID SDK version.
         :rtype: str
         """
         return self._SdkVersion
@@ -4932,7 +4932,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def ContractVersion(self):
-        """The TDID contract version.
+        r"""The TDID contract version.
         :rtype: str
         """
         return self._ContractVersion
@@ -4943,7 +4943,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def BlockVersion(self):
-        """The blockchain node version.
+        r"""The blockchain node version.
         :rtype: str
         """
         return self._BlockVersion
@@ -4954,7 +4954,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def BlockIp(self):
-        """The IP address of the blockchain node.
+        r"""The IP address of the blockchain node.
         :rtype: str
         """
         return self._BlockIp
@@ -4965,7 +4965,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def DidAddress(self):
-        """The address of the DID contract.
+        r"""The address of the DID contract.
         :rtype: str
         """
         return self._DidAddress
@@ -4976,7 +4976,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def CptAddress(self):
-        """The address of the claim protocol type (CPT) contract.
+        r"""The address of the claim protocol type (CPT) contract.
         :rtype: str
         """
         return self._CptAddress
@@ -4987,7 +4987,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def AuthorityAddress(self):
-        """The address of the authority.
+        r"""The address of the authority.
         :rtype: str
         """
         return self._AuthorityAddress
@@ -4998,7 +4998,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def EvidenceAddress(self):
-        """The evidence contract address.
+        r"""The evidence contract address.
         :rtype: str
         """
         return self._EvidenceAddress
@@ -5009,7 +5009,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def SpecificAddress(self):
-        """The contract address of the specific issuer.
+        r"""The contract address of the specific issuer.
         :rtype: str
         """
         return self._SpecificAddress
@@ -5020,7 +5020,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def ChainId(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: str
         """
         return self._ChainId
@@ -5031,7 +5031,7 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5059,7 +5059,7 @@ class GetDeployInfoResponse(AbstractModel):
 
 
 class GetDeployListRequest(AbstractModel):
-    """GetDeployList request structure.
+    r"""GetDeployList request structure.
 
     """
 
@@ -5081,7 +5081,7 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5092,7 +5092,7 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -5103,7 +5103,7 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
-        """The start.
+        r"""The start.
         :rtype: int
         """
         return self._DisplayStart
@@ -5114,7 +5114,7 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
-        """The maximum number of records to return.
+        r"""The maximum number of records to return.
         :rtype: int
         """
         return self._DisplayLength
@@ -5140,7 +5140,7 @@ class GetDeployListRequest(AbstractModel):
 
 
 class GetDeployListResponse(AbstractModel):
-    """GetDeployList response structure.
+    r"""GetDeployList response structure.
 
     """
 
@@ -5159,7 +5159,7 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """The total number of contracts.
+        r"""The total number of contracts.
         :rtype: int
         """
         return self._AllCount
@@ -5170,7 +5170,7 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """A list of deployed contracts.
+        r"""A list of deployed contracts.
         :rtype: list of Contract
         """
         return self._Result
@@ -5181,7 +5181,7 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5203,7 +5203,7 @@ class GetDeployListResponse(AbstractModel):
 
 
 class GetDidClusterDetailRequest(AbstractModel):
-    """GetDidClusterDetail request structure.
+    r"""GetDidClusterDetail request structure.
 
     """
 
@@ -5216,7 +5216,7 @@ class GetDidClusterDetailRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The DID network ID.
+        r"""The DID network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5239,7 +5239,7 @@ class GetDidClusterDetailRequest(AbstractModel):
 
 
 class GetDidClusterDetailResponse(AbstractModel):
-    """GetDidClusterDetail response structure.
+    r"""GetDidClusterDetail response structure.
 
     """
 
@@ -5261,7 +5261,7 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5272,7 +5272,7 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -5283,7 +5283,7 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ChainAgency(self):
-        """The name of the blockchain organization.
+        r"""The name of the blockchain organization.
         :rtype: str
         """
         return self._ChainAgency
@@ -5294,7 +5294,7 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5312,13 +5312,13 @@ class GetDidClusterDetailResponse(AbstractModel):
 
 
 class GetDidClusterListRequest(AbstractModel):
-    """GetDidClusterList request structure.
+    r"""GetDidClusterList request structure.
 
     """
 
 
 class GetDidClusterListResponse(AbstractModel):
-    """GetDidClusterList response structure.
+    r"""GetDidClusterList response structure.
 
     """
 
@@ -5334,7 +5334,7 @@ class GetDidClusterListResponse(AbstractModel):
 
     @property
     def DidClusterList(self):
-        """A list of the DID networks.
+        r"""A list of the DID networks.
         :rtype: list of DidCluster
         """
         return self._DidClusterList
@@ -5345,7 +5345,7 @@ class GetDidClusterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5366,7 +5366,7 @@ class GetDidClusterListResponse(AbstractModel):
 
 
 class GetDidDetailRequest(AbstractModel):
-    """GetDidDetail request structure.
+    r"""GetDidDetail request structure.
 
     """
 
@@ -5379,7 +5379,7 @@ class GetDidDetailRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -5402,7 +5402,7 @@ class GetDidDetailRequest(AbstractModel):
 
 
 class GetDidDetailResponse(AbstractModel):
-    """GetDidDetail response structure.
+    r"""GetDidDetail response structure.
 
     """
 
@@ -5445,7 +5445,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -5456,7 +5456,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -5467,7 +5467,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def PublicKey(self):
-        """The public key.
+        r"""The public key.
         :rtype: str
         """
         return self._PublicKey
@@ -5478,7 +5478,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def AuthorityState(self):
-        """Whether the DID is a certified authority.
+        r"""Whether the DID is a certified authority.
         :rtype: int
         """
         return self._AuthorityState
@@ -5489,7 +5489,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ConsortiumId(self):
-        """The consortium ID.
+        r"""The consortium ID.
         :rtype: int
         """
         return self._ConsortiumId
@@ -5500,7 +5500,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ConsortiumName(self):
-        """The consortium name.
+        r"""The consortium name.
         :rtype: str
         """
         return self._ConsortiumName
@@ -5511,7 +5511,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -5522,7 +5522,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5533,7 +5533,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ResChainId(self):
-        """The BCOS resource ID.
+        r"""The BCOS resource ID.
         :rtype: str
         """
         return self._ResChainId
@@ -5544,7 +5544,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -5555,7 +5555,7 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5580,7 +5580,7 @@ class GetDidDetailResponse(AbstractModel):
 
 
 class GetDidDocumentRequest(AbstractModel):
-    """GetDidDocument request structure.
+    r"""GetDidDocument request structure.
 
     """
 
@@ -5593,7 +5593,7 @@ class GetDidDocumentRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -5616,7 +5616,7 @@ class GetDidDocumentRequest(AbstractModel):
 
 
 class GetDidDocumentResponse(AbstractModel):
-    """GetDidDocument response structure.
+    r"""GetDidDocument response structure.
 
     """
 
@@ -5635,7 +5635,7 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def Name(self):
-        """The name.
+        r"""The name.
         :rtype: str
         """
         return self._Name
@@ -5646,7 +5646,7 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def Document(self):
-        """The DID document.
+        r"""The DID document.
         :rtype: str
         """
         return self._Document
@@ -5657,7 +5657,7 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5674,7 +5674,7 @@ class GetDidDocumentResponse(AbstractModel):
 
 
 class GetDidListRequest(AbstractModel):
-    """GetDidList request structure.
+    r"""GetDidList request structure.
 
     """
 
@@ -5699,7 +5699,7 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """The number of records per page.
+        r"""The number of records per page.
         :rtype: int
         """
         return self._PageSize
@@ -5710,7 +5710,7 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """The page number, beginning from 1.
+        r"""The page number, beginning from 1.
         :rtype: int
         """
         return self._PageNumber
@@ -5721,7 +5721,7 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -5732,7 +5732,7 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5743,7 +5743,7 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -5770,7 +5770,7 @@ class GetDidListRequest(AbstractModel):
 
 
 class GetDidListResponse(AbstractModel):
-    """GetDidList response structure.
+    r"""GetDidList response structure.
 
     """
 
@@ -5789,7 +5789,7 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def DataList(self):
-        """A list of DIDs.
+        r"""A list of DIDs.
         :rtype: list of DidData
         """
         return self._DataList
@@ -5800,7 +5800,7 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """The total number of records.
+        r"""The total number of records.
         :rtype: int
         """
         return self._AllCount
@@ -5811,7 +5811,7 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5833,7 +5833,7 @@ class GetDidListResponse(AbstractModel):
 
 
 class GetDidRegisterTrendRequest(AbstractModel):
-    """GetDidRegisterTrend request structure.
+    r"""GetDidRegisterTrend request structure.
 
     """
 
@@ -5852,7 +5852,7 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """The start date (as early as 2021-4-23).
+        r"""The start date (as early as 2021-4-23).
         :rtype: str
         """
         return self._StartTime
@@ -5863,7 +5863,7 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end date (as early as 2021-4-23).
+        r"""The end date (as early as 2021-4-23).
         :rtype: str
         """
         return self._EndTime
@@ -5874,7 +5874,7 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -5899,7 +5899,7 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
 
 class GetDidRegisterTrendResponse(AbstractModel):
-    """GetDidRegisterTrend response structure.
+    r"""GetDidRegisterTrend response structure.
 
     """
 
@@ -5915,7 +5915,7 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
     @property
     def Trend(self):
-        """The trend information.
+        r"""The trend information.
         :rtype: list of Trend
         """
         return self._Trend
@@ -5926,7 +5926,7 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5947,7 +5947,7 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
 
 class GetDidServiceDetailRequest(AbstractModel):
-    """GetDidServiceDetail request structure.
+    r"""GetDidServiceDetail request structure.
 
     """
 
@@ -5960,7 +5960,7 @@ class GetDidServiceDetailRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The DID service ID.
+        r"""The DID service ID.
         :rtype: int
         """
         return self._ServiceId
@@ -5983,7 +5983,7 @@ class GetDidServiceDetailRequest(AbstractModel):
 
 
 class GetDidServiceDetailResponse(AbstractModel):
-    """GetDidServiceDetail response structure.
+    r"""GetDidServiceDetail response structure.
 
     """
 
@@ -5999,7 +5999,7 @@ class GetDidServiceDetailResponse(AbstractModel):
 
     @property
     def DidService(self):
-        """The DID service information.
+        r"""The DID service information.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.DidServiceInfo`
         """
         return self._DidService
@@ -6010,7 +6010,7 @@ class GetDidServiceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6028,7 +6028,7 @@ class GetDidServiceDetailResponse(AbstractModel):
 
 
 class GetDidServiceListRequest(AbstractModel):
-    """GetDidServiceList request structure.
+    r"""GetDidServiceList request structure.
 
     """
 
@@ -6041,7 +6041,7 @@ class GetDidServiceListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`1`: Return results at the network level; `0`: Return results at the service level.
+        r"""`1`: Return results at the network level; `0`: Return results at the service level.
         :rtype: int
         """
         return self._Type
@@ -6064,7 +6064,7 @@ class GetDidServiceListRequest(AbstractModel):
 
 
 class GetDidServiceListResponse(AbstractModel):
-    """GetDidServiceList response structure.
+    r"""GetDidServiceList response structure.
 
     """
 
@@ -6080,7 +6080,7 @@ class GetDidServiceListResponse(AbstractModel):
 
     @property
     def DidServiceList(self):
-        """A list of DID services.
+        r"""A list of DID services.
         :rtype: list of DidServiceInfo
         """
         return self._DidServiceList
@@ -6091,7 +6091,7 @@ class GetDidServiceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6112,7 +6112,7 @@ class GetDidServiceListResponse(AbstractModel):
 
 
 class GetGroupListRequest(AbstractModel):
-    """GetGroupList request structure.
+    r"""GetGroupList request structure.
 
     """
 
@@ -6128,7 +6128,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """`0`: Groups with no DID services; `1`: Groups with DID services.
+        r"""`0`: Groups with no DID services; `1`: Groups with DID services.
         :rtype: int
         """
         return self._Status
@@ -6139,7 +6139,7 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -6163,7 +6163,7 @@ class GetGroupListRequest(AbstractModel):
 
 
 class GetGroupListResponse(AbstractModel):
-    """GetGroupList response structure.
+    r"""GetGroupList response structure.
 
     """
 
@@ -6179,7 +6179,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """A list of groups.
+        r"""A list of groups.
         :rtype: list of Group
         """
         return self._Result
@@ -6190,7 +6190,7 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6211,7 +6211,7 @@ class GetGroupListResponse(AbstractModel):
 
 
 class GetLabelListRequest(AbstractModel):
-    """GetLabelList request structure.
+    r"""GetLabelList request structure.
 
     """
 
@@ -6233,7 +6233,7 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """The number of records per page.
+        r"""The number of records per page.
         :rtype: int
         """
         return self._PageSize
@@ -6244,7 +6244,7 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """The page number, beginning from 1.
+        r"""The page number, beginning from 1.
         :rtype: int
         """
         return self._PageNumber
@@ -6255,7 +6255,7 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -6266,7 +6266,7 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -6292,7 +6292,7 @@ class GetLabelListRequest(AbstractModel):
 
 
 class GetLabelListResponse(AbstractModel):
-    """GetLabelList response structure.
+    r"""GetLabelList response structure.
 
     """
 
@@ -6311,7 +6311,7 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """A data set.
+        r"""A data set.
         :rtype: list of Label
         """
         return self._Result
@@ -6322,7 +6322,7 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total number of records.
+        r"""The total number of records.
         :rtype: int
         """
         return self._TotalCount
@@ -6333,7 +6333,7 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6355,7 +6355,7 @@ class GetLabelListResponse(AbstractModel):
 
 
 class GetPolicyListRequest(AbstractModel):
-    """GetPolicyList request structure.
+    r"""GetPolicyList request structure.
 
     """
 
@@ -6371,7 +6371,7 @@ class GetPolicyListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
-        """The start.
+        r"""The start.
         :rtype: int
         """
         return self._DisplayStart
@@ -6382,7 +6382,7 @@ class GetPolicyListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
-        """The maximum number of records to return.
+        r"""The maximum number of records to return.
         :rtype: int
         """
         return self._DisplayLength
@@ -6406,7 +6406,7 @@ class GetPolicyListRequest(AbstractModel):
 
 
 class GetPolicyListResponse(AbstractModel):
-    """GetPolicyList response structure.
+    r"""GetPolicyList response structure.
 
     """
 
@@ -6425,7 +6425,7 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def PolicyDataList(self):
-        """A list of disclosure policies.
+        r"""A list of disclosure policies.
         :rtype: list of Policy
         """
         return self._PolicyDataList
@@ -6436,7 +6436,7 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def AllCount(self):
-        """The total number of records.
+        r"""The total number of records.
         :rtype: int
         """
         return self._AllCount
@@ -6447,7 +6447,7 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6469,7 +6469,7 @@ class GetPolicyListResponse(AbstractModel):
 
 
 class GetPublicKeyRequest(AbstractModel):
-    """GetPublicKey request structure.
+    r"""GetPublicKey request structure.
 
     """
 
@@ -6482,7 +6482,7 @@ class GetPublicKeyRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -6505,7 +6505,7 @@ class GetPublicKeyRequest(AbstractModel):
 
 
 class GetPublicKeyResponse(AbstractModel):
-    """GetPublicKey response structure.
+    r"""GetPublicKey response structure.
 
     """
 
@@ -6524,7 +6524,7 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -6535,7 +6535,7 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
-        """The public key.
+        r"""The public key.
         :rtype: str
         """
         return self._PublicKey
@@ -6546,7 +6546,7 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6563,7 +6563,7 @@ class GetPublicKeyResponse(AbstractModel):
 
 
 class Group(AbstractModel):
-    """The group information.
+    r"""The group information.
 
     """
 
@@ -6591,7 +6591,7 @@ class Group(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -6602,7 +6602,7 @@ class Group(AbstractModel):
 
     @property
     def NodeCount(self):
-        """The number of nodes.
+        r"""The number of nodes.
         :rtype: int
         """
         return self._NodeCount
@@ -6613,7 +6613,7 @@ class Group(AbstractModel):
 
     @property
     def NodeCountOfAgency(self):
-        """The number of nodes of the organization.
+        r"""The number of nodes of the organization.
         :rtype: int
         """
         return self._NodeCountOfAgency
@@ -6624,7 +6624,7 @@ class Group(AbstractModel):
 
     @property
     def Description(self):
-        """The description of the group.
+        r"""The description of the group.
         :rtype: str
         """
         return self._Description
@@ -6635,7 +6635,7 @@ class Group(AbstractModel):
 
     @property
     def RoleType(self):
-        """Whether you are the owner of the consortium or not.
+        r"""Whether you are the owner of the consortium or not.
         :rtype: int
         """
         return self._RoleType
@@ -6646,7 +6646,7 @@ class Group(AbstractModel):
 
     @property
     def ChainId(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: str
         """
         return self._ChainId
@@ -6674,7 +6674,7 @@ class Group(AbstractModel):
 
 
 class Identity(AbstractModel):
-    """The details of the DID.
+    r"""The details of the DID.
 
     """
 
@@ -6699,7 +6699,7 @@ class Identity(AbstractModel):
 
     @property
     def AccountIdentifier(self):
-        """The account identifier.
+        r"""The account identifier.
         :rtype: str
         """
         return self._AccountIdentifier
@@ -6710,7 +6710,7 @@ class Identity(AbstractModel):
 
     @property
     def ChainID(self):
-        """The chain ID.
+        r"""The chain ID.
         :rtype: str
         """
         return self._ChainID
@@ -6721,7 +6721,7 @@ class Identity(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -6732,7 +6732,7 @@ class Identity(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -6743,7 +6743,7 @@ class Identity(AbstractModel):
 
     @property
     def GroupName(self):
-        """The group name.
+        r"""The group name.
         :rtype: str
         """
         return self._GroupName
@@ -6770,7 +6770,7 @@ class Identity(AbstractModel):
 
 
 class Label(AbstractModel):
-    """The label information.
+    r"""The label information.
 
     """
 
@@ -6801,7 +6801,7 @@ class Label(AbstractModel):
 
     @property
     def LabelId(self):
-        """The label ID.
+        r"""The label ID.
         :rtype: int
         """
         return self._LabelId
@@ -6812,7 +6812,7 @@ class Label(AbstractModel):
 
     @property
     def LabelName(self):
-        """The label name.
+        r"""The label name.
         :rtype: str
         """
         return self._LabelName
@@ -6823,7 +6823,7 @@ class Label(AbstractModel):
 
     @property
     def DidCount(self):
-        """The number of DIDs.
+        r"""The number of DIDs.
         :rtype: int
         """
         return self._DidCount
@@ -6834,7 +6834,7 @@ class Label(AbstractModel):
 
     @property
     def Did(self):
-        """The DID of the creator.
+        r"""The DID of the creator.
         :rtype: str
         """
         return self._Did
@@ -6845,7 +6845,7 @@ class Label(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -6856,7 +6856,7 @@ class Label(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -6867,7 +6867,7 @@ class Label(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -6896,7 +6896,7 @@ class Label(AbstractModel):
 
 
 class Policy(AbstractModel):
-    """The policy information.
+    r"""The policy information.
 
     """
 
@@ -6948,7 +6948,7 @@ class Policy(AbstractModel):
 
     @property
     def Id(self):
-        """The policy index.
+        r"""The policy index.
         :rtype: int
         """
         return self._Id
@@ -6959,7 +6959,7 @@ class Policy(AbstractModel):
 
     @property
     def Name(self):
-        """The policy name.
+        r"""The policy name.
         :rtype: str
         """
         return self._Name
@@ -6970,7 +6970,7 @@ class Policy(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -6981,7 +6981,7 @@ class Policy(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -6992,7 +6992,7 @@ class Policy(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The service ID.
+        r"""The service ID.
         :rtype: int
         """
         return self._ServiceId
@@ -7003,7 +7003,7 @@ class Policy(AbstractModel):
 
     @property
     def ContractAppId(self):
-        """The application ID of the contract.
+        r"""The application ID of the contract.
         :rtype: int
         """
         return self._ContractAppId
@@ -7014,7 +7014,7 @@ class Policy(AbstractModel):
 
     @property
     def PolicyId(self):
-        """The policy ID.
+        r"""The policy ID.
         :rtype: int
         """
         return self._PolicyId
@@ -7025,7 +7025,7 @@ class Policy(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -7036,7 +7036,7 @@ class Policy(AbstractModel):
 
     @property
     def PolicyJson(self):
-        """The JSON data.
+        r"""The JSON data.
         :rtype: str
         """
         return self._PolicyJson
@@ -7047,7 +7047,7 @@ class Policy(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -7058,7 +7058,7 @@ class Policy(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """The last updated time.
+        r"""The last updated time.
         :rtype: str
         """
         return self._UpdateTime
@@ -7069,7 +7069,7 @@ class Policy(AbstractModel):
 
     @property
     def CreatorDid(self):
-        """The DID of the creator.
+        r"""The DID of the creator.
         :rtype: str
         """
         return self._CreatorDid
@@ -7080,7 +7080,7 @@ class Policy(AbstractModel):
 
     @property
     def AppName(self):
-        """The application name.
+        r"""The application name.
         :rtype: str
         """
         return self._AppName
@@ -7091,7 +7091,7 @@ class Policy(AbstractModel):
 
     @property
     def CptIndex(self):
-        """The claim protocol type (CPT) index.
+        r"""The claim protocol type (CPT) index.
         :rtype: int
         """
         return self._CptIndex
@@ -7127,7 +7127,7 @@ class Policy(AbstractModel):
 
 
 class Proof(AbstractModel):
-    """The credential signature.
+    r"""The credential signature.
 
     """
 
@@ -7152,7 +7152,7 @@ class Proof(AbstractModel):
 
     @property
     def Created(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: int
         """
         return self._Created
@@ -7163,7 +7163,7 @@ class Proof(AbstractModel):
 
     @property
     def Creator(self):
-        """The DID of the creator.
+        r"""The DID of the creator.
         :rtype: str
         """
         return self._Creator
@@ -7174,7 +7174,7 @@ class Proof(AbstractModel):
 
     @property
     def SaltJson(self):
-        """The salt value.
+        r"""The salt value.
         :rtype: str
         """
         return self._SaltJson
@@ -7185,7 +7185,7 @@ class Proof(AbstractModel):
 
     @property
     def SignatureValue(self):
-        """The signature.
+        r"""The signature.
         :rtype: str
         """
         return self._SignatureValue
@@ -7196,7 +7196,7 @@ class Proof(AbstractModel):
 
     @property
     def Type(self):
-        """The type.
+        r"""The type.
         :rtype: str
         """
         return self._Type
@@ -7223,7 +7223,7 @@ class Proof(AbstractModel):
 
 
 class QueryPolicyRequest(AbstractModel):
-    """QueryPolicy request structure.
+    r"""QueryPolicy request structure.
 
     """
 
@@ -7236,7 +7236,7 @@ class QueryPolicyRequest(AbstractModel):
 
     @property
     def PolicyIndex(self):
-        """The policy index.
+        r"""The policy index.
         :rtype: int
         """
         return self._PolicyIndex
@@ -7259,7 +7259,7 @@ class QueryPolicyRequest(AbstractModel):
 
 
 class QueryPolicyResponse(AbstractModel):
-    """QueryPolicy response structure.
+    r"""QueryPolicy response structure.
 
     """
 
@@ -7284,7 +7284,7 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
-        """The policy index.
+        r"""The policy index.
         :rtype: int
         """
         return self._Id
@@ -7295,7 +7295,7 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """The policy ID.
+        r"""The policy ID.
         :rtype: int
         """
         return self._PolicyId
@@ -7306,7 +7306,7 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -7317,7 +7317,7 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def PolicyData(self):
-        """The content of the policy.
+        r"""The content of the policy.
         :rtype: str
         """
         return self._PolicyData
@@ -7328,7 +7328,7 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7347,7 +7347,7 @@ class QueryPolicyResponse(AbstractModel):
 
 
 class RecognizeAuthorityIssuerRequest(AbstractModel):
-    """RecognizeAuthorityIssuer request structure.
+    r"""RecognizeAuthorityIssuer request structure.
 
     """
 
@@ -7360,7 +7360,7 @@ class RecognizeAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -7383,7 +7383,7 @@ class RecognizeAuthorityIssuerRequest(AbstractModel):
 
 
 class RecognizeAuthorityIssuerResponse(AbstractModel):
-    """RecognizeAuthorityIssuer response structure.
+    r"""RecognizeAuthorityIssuer response structure.
 
     """
 
@@ -7396,7 +7396,7 @@ class RecognizeAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7411,7 +7411,7 @@ class RecognizeAuthorityIssuerResponse(AbstractModel):
 
 
 class RegisterClaimPolicyRequest(AbstractModel):
-    """RegisterClaimPolicy request structure.
+    r"""RegisterClaimPolicy request structure.
 
     """
 
@@ -7427,7 +7427,7 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
     @property
     def CptIndex(self):
-        """The claim protocol type (CPT) index.
+        r"""The claim protocol type (CPT) index.
         :rtype: int
         """
         return self._CptIndex
@@ -7438,7 +7438,7 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
-        """The disclosure policy.
+        r"""The disclosure policy.
         :rtype: str
         """
         return self._Policy
@@ -7462,7 +7462,7 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
 
 class RegisterClaimPolicyResponse(AbstractModel):
-    """RegisterClaimPolicy response structure.
+    r"""RegisterClaimPolicy response structure.
 
     """
 
@@ -7481,7 +7481,7 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
-        """The policy index.
+        r"""The policy index.
         :rtype: int
         """
         return self._Id
@@ -7492,7 +7492,7 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        """The policy ID.
+        r"""The policy ID.
         :rtype: int
         """
         return self._PolicyId
@@ -7503,7 +7503,7 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7520,7 +7520,7 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
 
 class RegisterCptRequest(AbstractModel):
-    """RegisterCpt request structure.
+    r"""RegisterCpt request structure.
 
     """
 
@@ -7542,7 +7542,7 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -7553,7 +7553,7 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -7564,7 +7564,7 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def CptJson(self):
-        """The JSON data of the credential claim type (CPT).
+        r"""The JSON data of the credential claim type (CPT).
         :rtype: str
         """
         return self._CptJson
@@ -7575,7 +7575,7 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def CptId(self):
-        """If you do not specify this, the ID will auto increment.
+        r"""If you do not specify this, the ID will auto increment.
         :rtype: int
         """
         return self._CptId
@@ -7601,7 +7601,7 @@ class RegisterCptRequest(AbstractModel):
 
 
 class RegisterCptResponse(AbstractModel):
-    """RegisterCpt response structure.
+    r"""RegisterCpt response structure.
 
     """
 
@@ -7620,7 +7620,7 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def Id(self):
-        """The claim protocol type (CPT) index.
+        r"""The claim protocol type (CPT) index.
         :rtype: int
         """
         return self._Id
@@ -7631,7 +7631,7 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -7642,7 +7642,7 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7659,7 +7659,7 @@ class RegisterCptResponse(AbstractModel):
 
 
 class RegisterIssuerRequest(AbstractModel):
-    """RegisterIssuer request structure.
+    r"""RegisterIssuer request structure.
 
     """
 
@@ -7678,7 +7678,7 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
-        """The DID.
+        r"""The DID.
         :rtype: str
         """
         return self._Did
@@ -7689,7 +7689,7 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Name(self):
-        """The issuing authority name.
+        r"""The issuing authority name.
         :rtype: str
         """
         return self._Name
@@ -7700,7 +7700,7 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Description
@@ -7725,7 +7725,7 @@ class RegisterIssuerRequest(AbstractModel):
 
 
 class RegisterIssuerResponse(AbstractModel):
-    """RegisterIssuer response structure.
+    r"""RegisterIssuer response structure.
 
     """
 
@@ -7738,7 +7738,7 @@ class RegisterIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7753,7 +7753,7 @@ class RegisterIssuerResponse(AbstractModel):
 
 
 class RemoveHashRequest(AbstractModel):
-    """RemoveHash request structure.
+    r"""RemoveHash request structure.
 
     """
 
@@ -7766,7 +7766,7 @@ class RemoveHashRequest(AbstractModel):
 
     @property
     def Hash(self):
-        """The CNS address of the contract.
+        r"""The CNS address of the contract.
         :rtype: str
         """
         return self._Hash
@@ -7789,7 +7789,7 @@ class RemoveHashRequest(AbstractModel):
 
 
 class RemoveHashResponse(AbstractModel):
-    """RemoveHash response structure.
+    r"""RemoveHash response structure.
 
     """
 
@@ -7802,7 +7802,7 @@ class RemoveHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7817,7 +7817,7 @@ class RemoveHashResponse(AbstractModel):
 
 
 class SetCredentialStatusRequest(AbstractModel):
-    """SetCredentialStatus request structure.
+    r"""SetCredentialStatus request structure.
 
     """
 
@@ -7830,7 +7830,7 @@ class SetCredentialStatusRequest(AbstractModel):
 
     @property
     def CredentialStatus(self):
-        """The credential status.
+        r"""The credential status.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
         """
         return self._CredentialStatus
@@ -7855,7 +7855,7 @@ class SetCredentialStatusRequest(AbstractModel):
 
 
 class SetCredentialStatusResponse(AbstractModel):
-    """SetCredentialStatus response structure.
+    r"""SetCredentialStatus response structure.
 
     """
 
@@ -7868,7 +7868,7 @@ class SetCredentialStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7883,7 +7883,7 @@ class SetCredentialStatusResponse(AbstractModel):
 
 
 class Task(AbstractModel):
-    """The output parameter of `CreateDidService` and `CheckDidDeploy`.
+    r"""The output parameter of `CreateDidService` and `CheckDidDeploy`.
 
     """
 
@@ -7923,7 +7923,7 @@ class Task(AbstractModel):
 
     @property
     def Id(self):
-        """The task ID.
+        r"""The task ID.
         :rtype: int
         """
         return self._Id
@@ -7934,7 +7934,7 @@ class Task(AbstractModel):
 
     @property
     def AppId(self):
-        """The application ID.
+        r"""The application ID.
         :rtype: int
         """
         return self._AppId
@@ -7945,7 +7945,7 @@ class Task(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The network ID.
+        r"""The network ID.
         :rtype: str
         """
         return self._ClusterId
@@ -7956,7 +7956,7 @@ class Task(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID.
+        r"""The group ID.
         :rtype: int
         """
         return self._GroupId
@@ -7967,7 +7967,7 @@ class Task(AbstractModel):
 
     @property
     def ServiceId(self):
-        """The service ID.
+        r"""The service ID.
         :rtype: int
         """
         return self._ServiceId
@@ -7978,7 +7978,7 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
-        """`0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.
+        r"""`0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.
         :rtype: int
         """
         return self._Status
@@ -7989,7 +7989,7 @@ class Task(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """The error code.
+        r"""The error code.
         :rtype: str
         """
         return self._ErrorCode
@@ -8000,7 +8000,7 @@ class Task(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """The error message.
+        r"""The error message.
         :rtype: str
         """
         return self._ErrorMsg
@@ -8011,7 +8011,7 @@ class Task(AbstractModel):
 
     @property
     def CreateTime(self):
-        """The creation time.
+        r"""The creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -8022,7 +8022,7 @@ class Task(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """The last updated time.
+        r"""The last updated time.
         :rtype: str
         """
         return self._UpdateTime
@@ -8054,7 +8054,7 @@ class Task(AbstractModel):
 
 
 class TransactionArg(AbstractModel):
-    """The transaction parameters.
+    r"""The transaction parameters.
 
     """
 
@@ -8067,7 +8067,7 @@ class TransactionArg(AbstractModel):
 
     @property
     def InvokerTDid(self):
-        """The credential ID.
+        r"""The credential ID.
         :rtype: str
         """
         return self._InvokerTDid
@@ -8090,7 +8090,7 @@ class TransactionArg(AbstractModel):
 
 
 class Trend(AbstractModel):
-    """The trends.
+    r"""The trends.
 
     """
 
@@ -8106,7 +8106,7 @@ class Trend(AbstractModel):
 
     @property
     def Time(self):
-        """The time point.
+        r"""The time point.
         :rtype: str
         """
         return self._Time
@@ -8117,7 +8117,7 @@ class Trend(AbstractModel):
 
     @property
     def Count(self):
-        """The count.
+        r"""The count.
         :rtype: int
         """
         return self._Count
@@ -8141,7 +8141,7 @@ class Trend(AbstractModel):
 
 
 class VerifyCredentialRequest(AbstractModel):
-    """VerifyCredential request structure.
+    r"""VerifyCredential request structure.
 
     """
 
@@ -8154,7 +8154,7 @@ class VerifyCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
-        """A parameter set.
+        r"""A parameter set.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
         """
         return self._FunctionArg
@@ -8179,7 +8179,7 @@ class VerifyCredentialRequest(AbstractModel):
 
 
 class VerifyCredentialResponse(AbstractModel):
-    """VerifyCredential response structure.
+    r"""VerifyCredential response structure.
 
     """
 
@@ -8201,7 +8201,7 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether the verification is successful.
+        r"""Whether the verification is successful.
         :rtype: bool
         """
         return self._Result
@@ -8212,7 +8212,7 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def VerifyCode(self):
-        """The verification code.
+        r"""The verification code.
         :rtype: int
         """
         return self._VerifyCode
@@ -8223,7 +8223,7 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def VerifyMessage(self):
-        """The verification message.
+        r"""The verification message.
         :rtype: str
         """
         return self._VerifyMessage
@@ -8234,7 +8234,7 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8252,7 +8252,7 @@ class VerifyCredentialResponse(AbstractModel):
 
 
 class VerifyFunctionArg(AbstractModel):
-    """The credential verification parameters.
+    r"""The credential verification parameters.
 
     """
 
@@ -8289,7 +8289,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def CptId(self):
-        """The claim protocol type (CPT) ID.
+        r"""The claim protocol type (CPT) ID.
         :rtype: int
         """
         return self._CptId
@@ -8300,7 +8300,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Issuer(self):
-        """The issuer DID.
+        r"""The issuer DID.
         :rtype: str
         """
         return self._Issuer
@@ -8311,7 +8311,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        """The expiration time.
+        r"""The expiration time.
         :rtype: int
         """
         return self._ExpirationDate
@@ -8322,7 +8322,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def ClaimJson(self):
-        """The claim.
+        r"""The claim.
         :rtype: str
         """
         return self._ClaimJson
@@ -8333,7 +8333,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def IssuanceDate(self):
-        """The time when the credential was issued.
+        r"""The time when the credential was issued.
         :rtype: int
         """
         return self._IssuanceDate
@@ -8344,7 +8344,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Context(self):
-        """The context.
+        r"""The context.
         :rtype: str
         """
         return self._Context
@@ -8355,7 +8355,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Id(self):
-        """The ID.
+        r"""The ID.
         :rtype: str
         """
         return self._Id
@@ -8366,7 +8366,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Proof(self):
-        """The signature.
+        r"""The signature.
         :rtype: :class:`tencentcloud.tdid.v20210519.models.Proof`
         """
         return self._Proof
@@ -8377,7 +8377,7 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Type(self):
-        """The type.
+        r"""The type.
         :rtype: list of str
         """
         return self._Type

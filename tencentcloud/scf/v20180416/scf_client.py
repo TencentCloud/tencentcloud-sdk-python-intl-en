@@ -27,7 +27,7 @@ class ScfClient(AbstractClient):
 
 
     def CopyFunction(self, request):
-        """This API is used to replicate a function. You can store the replicated function in a specified Region and Namespace.
+        r"""This API is used to replicate a function. You can store the replicated function in a specified Region and Namespace.
         Note: This API **does not** replicate the following objects or attributes of the function:
         1. Function trigger
         2. Versions other than $LATEST
@@ -56,7 +56,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateAlias(self, request):
-        """This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.
+        r"""This API is used to create an alias for a function version. You can use the alias to mark a specific function version such as DEV/RELEASE. You can also modify the version pointed to by the alias at any time.
         An alias must point to a master version and can point to an additional version at the same time. If you specify an alias when invoking a function, the request will be sent to the versions pointed to by the alias. You can configure the ratio between the master version and additional version during request sending.
 
         :param request: Request instance for CreateAlias.
@@ -80,7 +80,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """This API is used to create a namespace based on the input parameters.
+        r"""This API is used to create a namespace based on the input parameters.
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateNamespaceRequest`
@@ -103,7 +103,7 @@ class ScfClient(AbstractClient):
 
 
     def CreateTrigger(self, request):
-        """This API is used to create a trigger based on the input parameters.
+        r"""This API is used to create a trigger based on the input parameters.
 
         :param request: Request instance for CreateTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.CreateTriggerRequest`
@@ -126,7 +126,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteAlias(self, request):
-        """This API is used to delete an alias of a function version.
+        r"""This API is used to delete an alias of a function version.
 
         :param request: Request instance for DeleteAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteAliasRequest`
@@ -149,7 +149,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteFunction(self, request):
-        """This API is used to delete a function based on the input parameters.
+        r"""This API is used to delete a function based on the input parameters.
 
         :param request: Request instance for DeleteFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteFunctionRequest`
@@ -172,7 +172,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteLayerVersion(self, request):
-        """This API is used to delete a specified version of a specified layer. The deleted version cannot be associated with a function, but the deletion does not affect functions that are referencing this layer.
+        r"""This API is used to delete a specified version of a specified layer. The deleted version cannot be associated with a function, but the deletion does not affect functions that are referencing this layer.
 
         :param request: Request instance for DeleteLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionRequest`
@@ -195,7 +195,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """This API is used to delete the specific namespace according to the parameters passed in.
+        r"""This API is used to delete the specific namespace according to the parameters passed in.
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteNamespaceRequest`
@@ -218,7 +218,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteProvisionedConcurrencyConfig(self, request):
-        """This API is used to delete the provisioned concurrency configuration of a function version.
+        r"""This API is used to delete the provisioned concurrency configuration of a function version.
 
         :param request: Request instance for DeleteProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteProvisionedConcurrencyConfigRequest`
@@ -241,7 +241,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteReservedConcurrencyConfig(self, request):
-        """This API is used to delete the configuration of reserved quota.
+        r"""This API is used to delete the configuration of reserved quota.
 
         :param request: Request instance for DeleteReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigRequest`
@@ -264,7 +264,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteTrigger(self, request):
-        """This API is used to delete an existing trigger based on the input parameters.
+        r"""This API is used to delete an existing trigger based on the input parameters.
 
         :param request: Request instance for DeleteTrigger.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteTriggerRequest`
@@ -287,7 +287,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAccount(self, request):
-        """This API is used to get the account information.
+        r"""This API is used to get the account information.
 
         :param request: Request instance for GetAccount.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAccountRequest`
@@ -310,7 +310,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAlias(self, request):
-        """This API is used to get the alias details such as the name, description, version, and routing information.
+        r"""This API is used to get the alias details such as the name, description, version, and routing information.
 
         :param request: Request instance for GetAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAliasRequest`
@@ -333,7 +333,7 @@ class ScfClient(AbstractClient):
 
 
     def GetAsyncEventStatus(self, request):
-        """This API is used to get the status of an async function execution event. The event status is retained for 3*24 hours, counting from the completion of the event.
+        r"""This API is used to get the status of an async function execution event. The event status is retained for 3*24 hours, counting from the completion of the event.
 
         :param request: Request instance for GetAsyncEventStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusRequest`
@@ -356,7 +356,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionAddress(self, request):
-        """This API is used to obtain the download address of the function code package.
+        r"""This API is used to obtain the download address of the function code package.
 
         :param request: Request instance for GetFunctionAddress.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionAddressRequest`
@@ -379,7 +379,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionEventInvokeConfig(self, request):
-        """This API is used to get the async retry configuration of a function, including the number of retry attempts and message retention period.
+        r"""This API is used to get the async retry configuration of a function, including the number of retry attempts and message retention period.
 
         :param request: Request instance for GetFunctionEventInvokeConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigRequest`
@@ -402,7 +402,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionLogs(self, request):
-        """This API returns function running logs according to the specified conditions. Note that this API has been disused. You can use [GetRequestStatus](https://intl.cloud.tencent.com/document/product/583/65348?from_cn_redirect=1) instead. See also [Retrieving Logs](https://intl.cloud.tencent.com/document/product/583/52637?from_cn_redirect=1).
+        r"""This API returns function running logs according to the specified conditions. Note that this API has been disused. You can use [GetRequestStatus](https://intl.cloud.tencent.com/document/product/583/65348?from_cn_redirect=1) instead. See also [Retrieving Logs](https://intl.cloud.tencent.com/document/product/583/52637?from_cn_redirect=1).
 
         :param request: Request instance for GetFunctionLogs.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionLogsRequest`
@@ -425,7 +425,7 @@ class ScfClient(AbstractClient):
 
 
     def GetLayerVersion(self, request):
-        """This API is used to get the layer version details, including links used to download files in the layer.
+        r"""This API is used to get the layer version details, including links used to download files in the layer.
 
         :param request: Request instance for GetLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionRequest`
@@ -448,7 +448,7 @@ class ScfClient(AbstractClient):
 
 
     def GetProvisionedConcurrencyConfig(self, request):
-        """This API is used to get the provisioned concurrency details of a function or its specified version.
+        r"""This API is used to get the provisioned concurrency details of a function or its specified version.
 
         :param request: Request instance for GetProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetProvisionedConcurrencyConfigRequest`
@@ -471,7 +471,7 @@ class ScfClient(AbstractClient):
 
 
     def GetRequestStatus(self, request):
-        """This API is used to query the status of a single function request.
+        r"""This API is used to query the status of a single function request.
 
         :param request: Request instance for GetRequestStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusRequest`
@@ -494,7 +494,7 @@ class ScfClient(AbstractClient):
 
 
     def GetReservedConcurrencyConfig(self, request):
-        """This API is used to obtain the reserved quota details of a function.
+        r"""This API is used to obtain the reserved quota details of a function.
 
         :param request: Request instance for GetReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigRequest`
@@ -517,7 +517,7 @@ class ScfClient(AbstractClient):
 
 
     def Invoke(self, request):
-        """This API is used to run a function.
+        r"""This API is used to run a function.
 
         :param request: Request instance for Invoke.
         :type request: :class:`tencentcloud.scf.v20180416.models.InvokeRequest`
@@ -540,7 +540,7 @@ class ScfClient(AbstractClient):
 
 
     def InvokeFunction(self, request):
-        """This API is used to invoke functions synchronously.
+        r"""This API is used to invoke functions synchronously.
 
         :param request: Request instance for InvokeFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.InvokeFunctionRequest`
@@ -563,7 +563,7 @@ class ScfClient(AbstractClient):
 
 
     def ListAliases(self, request):
-        """This API is used to return the list of all aliases under a function. You can filter them by the specific function version.
+        r"""This API is used to return the list of all aliases under a function. You can filter them by the specific function version.
 
         :param request: Request instance for ListAliases.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListAliasesRequest`
@@ -586,7 +586,7 @@ class ScfClient(AbstractClient):
 
 
     def ListAsyncEvents(self, request):
-        """This API is used to pull the list of async function events.
+        r"""This API is used to pull the list of async function events.
 
         :param request: Request instance for ListAsyncEvents.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListAsyncEventsRequest`
@@ -609,7 +609,7 @@ class ScfClient(AbstractClient):
 
 
     def ListFunctions(self, request):
-        """This API is used to return relevant function information based on the input query parameters.
+        r"""This API is used to return relevant function information based on the input query parameters.
 
         :param request: Request instance for ListFunctions.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListFunctionsRequest`
@@ -632,7 +632,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayerVersions(self, request):
-        """This API is used to get the information of all versions of a specified layer.
+        r"""This API is used to get the information of all versions of a specified layer.
 
         :param request: Request instance for ListLayerVersions.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsRequest`
@@ -655,7 +655,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayers(self, request):
-        """This API is used to return the list of all layers, including the information of the latest version of each layer. You can filter them by the compatible runtime.
+        r"""This API is used to return the list of all layers, including the information of the latest version of each layer. You can filter them by the compatible runtime.
 
         :param request: Request instance for ListLayers.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayersRequest`
@@ -678,7 +678,7 @@ class ScfClient(AbstractClient):
 
 
     def ListNamespaces(self, request):
-        """This API is used to display a namespace list.
+        r"""This API is used to display a namespace list.
 
         :param request: Request instance for ListNamespaces.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListNamespacesRequest`
@@ -701,7 +701,7 @@ class ScfClient(AbstractClient):
 
 
     def ListTriggers(self, request):
-        """This API is used to get the function trigger list.
+        r"""This API is used to get the function trigger list.
 
         :param request: Request instance for ListTriggers.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListTriggersRequest`
@@ -724,7 +724,7 @@ class ScfClient(AbstractClient):
 
 
     def ListVersionByFunction(self, request):
-        """This API is used to query the function version based on the input parameters.
+        r"""This API is used to query the function version based on the input parameters.
 
         :param request: Request instance for ListVersionByFunction.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListVersionByFunctionRequest`
@@ -747,7 +747,7 @@ class ScfClient(AbstractClient):
 
 
     def PublishLayerVersion(self, request):
-        """This API is used to create a version for a layer by using the given .zip file or COS object. Each time this API is called with the same layer name, a new version will be generated.
+        r"""This API is used to create a version for a layer by using the given .zip file or COS object. Each time this API is called with the same layer name, a new version will be generated.
 
         :param request: Request instance for PublishLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionRequest`
@@ -770,7 +770,7 @@ class ScfClient(AbstractClient):
 
 
     def PublishVersion(self, request):
-        """This API is used for users to release a new version of the function.
+        r"""This API is used for users to release a new version of the function.
 
         :param request: Request instance for PublishVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.PublishVersionRequest`
@@ -793,7 +793,7 @@ class ScfClient(AbstractClient):
 
 
     def PutProvisionedConcurrencyConfig(self, request):
-        """This API is used to set the provisioned concurrency of a non-$LATEST version of a function.
+        r"""This API is used to set the provisioned concurrency of a non-$LATEST version of a function.
 
         :param request: Request instance for PutProvisionedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutProvisionedConcurrencyConfigRequest`
@@ -816,7 +816,7 @@ class ScfClient(AbstractClient):
 
 
     def PutReservedConcurrencyConfig(self, request):
-        """This API is used to configure the reserved quota of a function.
+        r"""This API is used to configure the reserved quota of a function.
 
         :param request: Request instance for PutReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigRequest`
@@ -839,7 +839,7 @@ class ScfClient(AbstractClient):
 
 
     def PutTotalConcurrencyConfig(self, request):
-        """This API is used to modify the account concurrency quota.
+        r"""This API is used to modify the account concurrency quota.
 
         :param request: Request instance for PutTotalConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutTotalConcurrencyConfigRequest`
@@ -862,7 +862,7 @@ class ScfClient(AbstractClient):
 
 
     def TerminateAsyncEvent(self, request):
-        """This API is used to terminate a running async function event.
+        r"""This API is used to terminate a running async function event.
 
         :param request: Request instance for TerminateAsyncEvent.
         :type request: :class:`tencentcloud.scf.v20180416.models.TerminateAsyncEventRequest`
@@ -885,7 +885,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateAlias(self, request):
-        """This API is used to update the configuration of an alias.
+        r"""This API is used to update the configuration of an alias.
 
         :param request: Request instance for UpdateAlias.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateAliasRequest`
@@ -908,7 +908,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionCode(self, request):
-        """This API is used to update the function code based on the input parameters.
+        r"""This API is used to update the function code based on the input parameters.
 
         :param request: Request instance for UpdateFunctionCode.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionCodeRequest`
@@ -931,7 +931,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateFunctionEventInvokeConfig(self, request):
-        """This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.
+        r"""This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.
 
         :param request: Request instance for UpdateFunctionEventInvokeConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigRequest`
@@ -954,7 +954,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateNamespace(self, request):
-        """This API is used to update a namespace.
+        r"""This API is used to update a namespace.
 
         :param request: Request instance for UpdateNamespace.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateNamespaceRequest`
@@ -977,7 +977,7 @@ class ScfClient(AbstractClient):
 
 
     def UpdateTriggerStatus(self, request):
-        """This API is used to update the trigger status.
+        r"""This API is used to update the trigger status.
 
         :param request: Request instance for UpdateTriggerStatus.
         :type request: :class:`tencentcloud.scf.v20180416.models.UpdateTriggerStatusRequest`

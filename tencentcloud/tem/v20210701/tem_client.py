@@ -27,7 +27,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """This API is used to create an application.
+        r"""This API is used to create an application.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationRequest`
@@ -50,7 +50,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplicationAutoscaler(self, request):
-        """This API is used to create a scaling rule.
+        r"""This API is used to create a scaling rule.
 
         :param request: Request instance for CreateApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationAutoscalerRequest`
@@ -73,7 +73,7 @@ class TemClient(AbstractClient):
 
 
     def CreateApplicationService(self, request):
-        """This API is used to create an access policy.
+        r"""This API is used to create an access policy.
 
         :param request: Request instance for CreateApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceRequest`
@@ -96,7 +96,7 @@ class TemClient(AbstractClient):
 
 
     def CreateConfigData(self, request):
-        """This API is used to create a configuration.
+        r"""This API is used to create a configuration.
 
         :param request: Request instance for CreateConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateConfigDataRequest`
@@ -119,7 +119,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosToken(self, request):
-        """This API is used to generate a COS temporary key.
+        r"""This API is used to generate a COS temporary key.
 
         :param request: Request instance for CreateCosToken.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateCosTokenRequest`
@@ -142,7 +142,7 @@ class TemClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """This API is used to create an environment.
+        r"""This API is used to create an environment.
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateEnvironmentRequest`
@@ -165,7 +165,7 @@ class TemClient(AbstractClient):
 
 
     def CreateLogConfig(self, request):
-        """This API is used to create a log collecting configuration.
+        r"""This API is used to create a log collecting configuration.
 
         :param request: Request instance for CreateLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateLogConfigRequest`
@@ -188,7 +188,7 @@ class TemClient(AbstractClient):
 
 
     def CreateResource(self, request):
-        """This API is used to bind a cloud resource.
+        r"""This API is used to bind a cloud resource.
 
         :param request: Request instance for CreateResource.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateResourceRequest`
@@ -211,7 +211,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        """This API is used to delete an application.
+        r"""This API is used to delete an application.
           - Stop running the current application
           - Delete resources related to the application
           - Delete the application
@@ -237,7 +237,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplicationAutoscaler(self, request):
-        """This API is used to delete a scaling rule.
+        r"""This API is used to delete a scaling rule.
 
         :param request: Request instance for DeleteApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationAutoscalerRequest`
@@ -260,7 +260,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteApplicationService(self, request):
-        """This API is used to delete an access policy.
+        r"""This API is used to delete an access policy.
 
         :param request: Request instance for DeleteApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceRequest`
@@ -283,7 +283,7 @@ class TemClient(AbstractClient):
 
 
     def DeleteIngress(self, request):
-        """This API is used to delete an ingress rule.
+        r"""This API is used to delete an ingress rule.
 
         :param request: Request instance for DeleteIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeleteIngressRequest`
@@ -306,7 +306,7 @@ class TemClient(AbstractClient):
 
 
     def DeployApplication(self, request):
-        """This API is used to deploy an application.
+        r"""This API is used to deploy an application.
 
         :param request: Request instance for DeployApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.DeployApplicationRequest`
@@ -329,7 +329,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationAutoscalerList(self, request):
-        """This API is used to query the scaling rules of an application.
+        r"""This API is used to query the scaling rules of an application.
 
         :param request: Request instance for DescribeApplicationAutoscalerList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationAutoscalerListRequest`
@@ -352,7 +352,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationInfo(self, request):
-        """This API is used to check the basic information of an application.
+        r"""This API is used to check the basic information of an application.
 
         :param request: Request instance for DescribeApplicationInfo.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoRequest`
@@ -375,7 +375,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationPods(self, request):
-        """This API is used to get the list of application pods.
+        r"""This API is used to get the list of application pods.
 
         :param request: Request instance for DescribeApplicationPods.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationPodsRequest`
@@ -398,7 +398,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationServiceList(self, request):
-        """This API is used to query the list of access policies.
+        r"""This API is used to query the list of access policies.
 
         :param request: Request instance for DescribeApplicationServiceList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListRequest`
@@ -421,7 +421,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplications(self, request):
-        """This API is to query the list of running applications.
+        r"""This API is to query the list of running applications.
 
         :param request: Request instance for DescribeApplications.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsRequest`
@@ -444,7 +444,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeApplicationsStatus(self, request):
-        """This API is used to query the status of all applications in an envrionment.
+        r"""This API is used to query the status of all applications in an envrionment.
 
         :param request: Request instance for DescribeApplicationsStatus.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsStatusRequest`
@@ -467,7 +467,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeConfigData(self, request):
-        """This API is used to query details of a configuration.
+        r"""This API is used to query details of a configuration.
 
         :param request: Request instance for DescribeConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataRequest`
@@ -490,7 +490,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeConfigDataList(self, request):
-        """This API is used to query the list of configurations.
+        r"""This API is used to query the list of configurations.
 
         :param request: Request instance for DescribeConfigDataList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListRequest`
@@ -513,7 +513,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironment(self, request):
-        """This API is used to obtain the basic information of an environment.
+        r"""This API is used to obtain the basic information of an environment.
 
         :param request: Request instance for DescribeEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentRequest`
@@ -536,7 +536,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironmentStatus(self, request):
-        """This API is used to obtain the environment status.
+        r"""This API is used to obtain the environment status.
 
         :param request: Request instance for DescribeEnvironmentStatus.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusRequest`
@@ -559,7 +559,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """This API is used to obtain the list of environments.
+        r"""This API is used to obtain the list of environments.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentsRequest`
@@ -582,7 +582,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngress(self, request):
-        """This API is used to query an ingress rule.
+        r"""This API is used to query an ingress rule.
 
         :param request: Request instance for DescribeIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeIngressRequest`
@@ -605,7 +605,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeIngresses(self, request):
-        """This API is used to query the list of ingress rules.
+        r"""This API is used to query the list of ingress rules.
 
         :param request: Request instance for DescribeIngresses.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeIngressesRequest`
@@ -628,7 +628,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeLogConfig(self, request):
-        """This API is used to query details of a log collecting configuration.
+        r"""This API is used to query details of a log collecting configuration.
 
         :param request: Request instance for DescribeLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeLogConfigRequest`
@@ -651,7 +651,7 @@ class TemClient(AbstractClient):
 
 
     def DescribePagedLogConfigList(self, request):
-        """This API is used to querying the list of log collecting configurations.
+        r"""This API is used to querying the list of log collecting configurations.
 
         :param request: Request instance for DescribePagedLogConfigList.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribePagedLogConfigListRequest`
@@ -674,7 +674,7 @@ class TemClient(AbstractClient):
 
 
     def DescribeRelatedIngresses(self, request):
-        """This API is used to query the list of ingress rules associated with the application.
+        r"""This API is used to query the list of ingress rules associated with the application.
 
         :param request: Request instance for DescribeRelatedIngresses.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeRelatedIngressesRequest`
@@ -697,7 +697,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyConfigData(self, request):
-        """This API is used to terminate a configuration.
+        r"""This API is used to terminate a configuration.
 
         :param request: Request instance for DestroyConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyConfigDataRequest`
@@ -720,7 +720,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyEnvironment(self, request):
-        """This API is used to terminate an environment.
+        r"""This API is used to terminate an environment.
 
         :param request: Request instance for DestroyEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentRequest`
@@ -743,7 +743,7 @@ class TemClient(AbstractClient):
 
 
     def DestroyLogConfig(self, request):
-        """This API is used to terminate a log collecting configuration.
+        r"""This API is used to terminate a log collecting configuration.
 
         :param request: Request instance for DestroyLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyLogConfigRequest`
@@ -766,7 +766,7 @@ class TemClient(AbstractClient):
 
 
     def DisableApplicationAutoscaler(self, request):
-        """This API is used to disable a scaling rule.
+        r"""This API is used to disable a scaling rule.
 
         :param request: Request instance for DisableApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerRequest`
@@ -789,7 +789,7 @@ class TemClient(AbstractClient):
 
 
     def EnableApplicationAutoscaler(self, request):
-        """This API is used to enable a scaling rule.
+        r"""This API is used to enable a scaling rule.
 
         :param request: Request instance for EnableApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerRequest`
@@ -812,7 +812,7 @@ class TemClient(AbstractClient):
 
 
     def GenerateApplicationPackageDownloadUrl(self, request):
-        """This API is used to generate the pre-signed download URL for the specified application package.
+        r"""This API is used to generate the pre-signed download URL for the specified application package.
 
         :param request: Request instance for GenerateApplicationPackageDownloadUrl.
         :type request: :class:`tencentcloud.tem.v20210701.models.GenerateApplicationPackageDownloadUrlRequest`
@@ -835,7 +835,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationAutoscaler(self, request):
-        """This API is used to modify a scaling rule.
+        r"""This API is used to modify a scaling rule.
 
         :param request: Request instance for ModifyApplicationAutoscaler.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationAutoscalerRequest`
@@ -858,7 +858,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationInfo(self, request):
-        """This API is used to modify the basic information of an application.
+        r"""This API is used to modify the basic information of an application.
 
         :param request: Request instance for ModifyApplicationInfo.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationInfoRequest`
@@ -881,7 +881,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyApplicationService(self, request):
-        """This API is used to modify an access policy.
+        r"""This API is used to modify an access policy.
 
         :param request: Request instance for ModifyApplicationService.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceRequest`
@@ -904,7 +904,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyConfigData(self, request):
-        """This API is used to modify a configuration.
+        r"""This API is used to modify a configuration.
 
         :param request: Request instance for ModifyConfigData.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyConfigDataRequest`
@@ -927,7 +927,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyEnvironment(self, request):
-        """This API is used to edit an environment.
+        r"""This API is used to edit an environment.
 
         :param request: Request instance for ModifyEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyEnvironmentRequest`
@@ -950,7 +950,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyIngress(self, request):
-        """This API is used to create or update an ingress rule.
+        r"""This API is used to create or update an ingress rule.
 
         :param request: Request instance for ModifyIngress.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyIngressRequest`
@@ -973,7 +973,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyLogConfig(self, request):
-        """This API is used to modify a log collecting configuration.
+        r"""This API is used to modify a log collecting configuration.
 
         :param request: Request instance for ModifyLogConfig.
         :type request: :class:`tencentcloud.tem.v20210701.models.ModifyLogConfigRequest`
@@ -996,7 +996,7 @@ class TemClient(AbstractClient):
 
 
     def RestartApplication(self, request):
-        """This API is used to restart an application.
+        r"""This API is used to restart an application.
 
         :param request: Request instance for RestartApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationRequest`
@@ -1019,7 +1019,7 @@ class TemClient(AbstractClient):
 
 
     def RestartApplicationPod(self, request):
-        """This API is used to restart an application pod.
+        r"""This API is used to restart an application pod.
 
         :param request: Request instance for RestartApplicationPod.
         :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationPodRequest`
@@ -1042,7 +1042,7 @@ class TemClient(AbstractClient):
 
 
     def RollingUpdateApplicationByVersion(self, request):
-        """This API is used to configure the rolling update policy for an application.
+        r"""This API is used to configure the rolling update policy for an application.
 
         :param request: Request instance for RollingUpdateApplicationByVersion.
         :type request: :class:`tencentcloud.tem.v20210701.models.RollingUpdateApplicationByVersionRequest`
@@ -1065,7 +1065,7 @@ class TemClient(AbstractClient):
 
 
     def StopApplication(self, request):
-        """This API is used to stop an application.
+        r"""This API is used to stop an application.
 
         :param request: Request instance for StopApplication.
         :type request: :class:`tencentcloud.tem.v20210701.models.StopApplicationRequest`

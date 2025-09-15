@@ -27,7 +27,7 @@ class CamClient(AbstractClient):
 
 
     def AddUser(self, request):
-        """This API is used to create a sub-user.
+        r"""This API is used to create a sub-user.
 
         :param request: Request instance for AddUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserRequest`
@@ -50,7 +50,7 @@ class CamClient(AbstractClient):
 
 
     def AddUserToGroup(self, request):
-        """This API is used to add users to a user group.
+        r"""This API is used to add users to a user group.
 
         :param request: Request instance for AddUserToGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserToGroupRequest`
@@ -73,7 +73,7 @@ class CamClient(AbstractClient):
 
 
     def AttachGroupPolicy(self, request):
-        """This API (AttachGroupPolicy) is used to associate a policy with a user group.
+        r"""This API (AttachGroupPolicy) is used to associate a policy with a user group.
 
         :param request: Request instance for AttachGroupPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachGroupPolicyRequest`
@@ -96,7 +96,7 @@ class CamClient(AbstractClient):
 
 
     def AttachRolePolicy(self, request):
-        """This API (AttachRolePolicy) is used to associate a policy with a role.
+        r"""This API (AttachRolePolicy) is used to associate a policy with a role.
 
         :param request: Request instance for AttachRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachRolePolicyRequest`
@@ -119,7 +119,7 @@ class CamClient(AbstractClient):
 
 
     def AttachUserPolicy(self, request):
-        """This API (AttachUserPolicy) is used to associates a policy with a user.
+        r"""This API (AttachUserPolicy) is used to associates a policy with a user.
 
         :param request: Request instance for AttachUserPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachUserPolicyRequest`
@@ -142,7 +142,7 @@ class CamClient(AbstractClient):
 
 
     def ConsumeCustomMFAToken(self, request):
-        """This API is used to verify a custom multi-factor Token.
+        r"""This API is used to verify a custom multi-factor Token.
 
         :param request: Request instance for ConsumeCustomMFAToken.
         :type request: :class:`tencentcloud.cam.v20190116.models.ConsumeCustomMFATokenRequest`
@@ -165,7 +165,7 @@ class CamClient(AbstractClient):
 
 
     def CreateAccessKey(self, request):
-        """This API is used to create an access key for a CAM user.
+        r"""This API is used to create an access key for a CAM user.
 
         :param request: Request instance for CreateAccessKey.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateAccessKeyRequest`
@@ -188,7 +188,7 @@ class CamClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """This API is used to create a user group.
+        r"""This API is used to create a user group.
 
         :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateGroupRequest`
@@ -211,7 +211,7 @@ class CamClient(AbstractClient):
 
 
     def CreateOIDCConfig(self, request):
-        """This API is used to create role OIDC configurations.
+        r"""This API is used to create role OIDC configurations.
 
         :param request: Request instance for CreateOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateOIDCConfigRequest`
@@ -234,7 +234,7 @@ class CamClient(AbstractClient):
 
 
     def CreatePolicy(self, request):
-        """This API (CreatePolicy) is used to create a policy.
+        r"""This API (CreatePolicy) is used to create a policy.
 
         :param request: Request instance for CreatePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreatePolicyRequest`
@@ -257,7 +257,7 @@ class CamClient(AbstractClient):
 
 
     def CreatePolicyVersion(self, request):
-        """This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version.
+        r"""This API is used to add a policy version. After creating a policy version, you can easily change the policy by changing the policy version.
 
         :param request: Request instance for CreatePolicyVersion.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreatePolicyVersionRequest`
@@ -280,7 +280,7 @@ class CamClient(AbstractClient):
 
 
     def CreateRole(self, request):
-        """This API (CreateRole) is used to create a role.
+        r"""This API (CreateRole) is used to create a role.
 
         :param request: Request instance for CreateRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateRoleRequest`
@@ -303,7 +303,7 @@ class CamClient(AbstractClient):
 
 
     def CreateSAMLProvider(self, request):
-        """This API is used to create a SAML identity provider.
+        r"""This API is used to create a SAML identity provider.
 
         :param request: Request instance for CreateSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateSAMLProviderRequest`
@@ -326,7 +326,7 @@ class CamClient(AbstractClient):
 
 
     def CreateServiceLinkedRole(self, request):
-        """This API is used to create a service-linked role.
+        r"""This API is used to create a service-linked role.
 
         :param request: Request instance for CreateServiceLinkedRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateServiceLinkedRoleRequest`
@@ -349,7 +349,7 @@ class CamClient(AbstractClient):
 
 
     def CreateUserOIDCConfig(self, request):
-        """This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.
+        r"""This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.
 
         :param request: Request instance for CreateUserOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateUserOIDCConfigRequest`
@@ -372,7 +372,7 @@ class CamClient(AbstractClient):
 
 
     def CreateUserSAMLConfig(self, request):
-        """This API is used to create user SAML configurations.
+        r"""This API is used to create user SAML configurations.
 
         :param request: Request instance for CreateUserSAMLConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateUserSAMLConfigRequest`
@@ -395,7 +395,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteAccessKey(self, request):
-        """This API is used to delete an access key for a CAM user.
+        r"""This API is used to delete an access key for a CAM user.
         Calling this API is a high-risk operation because the key cannot be recovered once deleted and Tencent Cloud will deny all requests that use this key. Proceed with caution.
 
         :param request: Request instance for DeleteAccessKey.
@@ -419,7 +419,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """This API is used to delete a user group.
+        r"""This API is used to delete a user group.
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteGroupRequest`
@@ -442,7 +442,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteOIDCConfig(self, request):
-        """This API is used to delete OIDC IdPs.
+        r"""This API is used to delete OIDC IdPs.
 
         :param request: Request instance for DeleteOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteOIDCConfigRequest`
@@ -465,7 +465,7 @@ class CamClient(AbstractClient):
 
 
     def DeletePolicy(self, request):
-        """This API (DeletePolicy) is used to delete a policy.
+        r"""This API (DeletePolicy) is used to delete a policy.
 
         :param request: Request instance for DeletePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeletePolicyRequest`
@@ -488,7 +488,7 @@ class CamClient(AbstractClient):
 
 
     def DeletePolicyVersion(self, request):
-        """This API is used to delete a policy version of a policy.
+        r"""This API is used to delete a policy version of a policy.
 
         :param request: Request instance for DeletePolicyVersion.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeletePolicyVersionRequest`
@@ -511,7 +511,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteRole(self, request):
-        """This API (DeleteRole) is used to delete a specified role.
+        r"""This API (DeleteRole) is used to delete a specified role.
 
         :param request: Request instance for DeleteRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRoleRequest`
@@ -534,7 +534,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteRolePermissionsBoundary(self, request):
-        """This API is used to delete a role permission boundary.
+        r"""This API is used to delete a role permission boundary.
 
         :param request: Request instance for DeleteRolePermissionsBoundary.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRolePermissionsBoundaryRequest`
@@ -557,7 +557,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteSAMLProvider(self, request):
-        """This API is used to delete a SAML identity provider.
+        r"""This API is used to delete a SAML identity provider.
 
         :param request: Request instance for DeleteSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteSAMLProviderRequest`
@@ -580,7 +580,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteServiceLinkedRole(self, request):
-        """This API is used to delete a service-linked role.
+        r"""This API is used to delete a service-linked role.
 
         :param request: Request instance for DeleteServiceLinkedRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteServiceLinkedRoleRequest`
@@ -603,7 +603,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete a sub-user.
+        r"""This API is used to delete a sub-user.
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteUserRequest`
@@ -626,7 +626,7 @@ class CamClient(AbstractClient):
 
 
     def DeleteUserPermissionsBoundary(self, request):
-        """This API is used to delete a user permission boundary.
+        r"""This API is used to delete a user permission boundary.
 
         :param request: Request instance for DeleteUserPermissionsBoundary.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteUserPermissionsBoundaryRequest`
@@ -649,7 +649,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeOIDCConfig(self, request):
-        """This API is used to query role OIDC configurations.
+        r"""This API is used to query role OIDC configurations.
 
         :param request: Request instance for DescribeOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeOIDCConfigRequest`
@@ -672,7 +672,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeRoleList(self, request):
-        """This API (DescribeRoleList) is used to get the role list under the account.
+        r"""This API (DescribeRoleList) is used to get the role list under the account.
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeRoleListRequest`
@@ -695,7 +695,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeSafeAuthFlagColl(self, request):
-        """This API is used to get a sub-account’s security settings.
+        r"""This API is used to get a sub-account’s security settings.
 
         :param request: Request instance for DescribeSafeAuthFlagColl.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagCollRequest`
@@ -718,7 +718,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeSafeAuthFlagIntl(self, request):
-        """This API is used to query security settings.
+        r"""This API is used to query security settings.
 
         :param request: Request instance for DescribeSafeAuthFlagIntl.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagIntlRequest`
@@ -741,7 +741,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeSubAccounts(self, request):
-        """This API is used to query sub-users through the sub-user UIN list.
+        r"""This API is used to query sub-users through the sub-user UIN list.
 
         :param request: Request instance for DescribeSubAccounts.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSubAccountsRequest`
@@ -764,7 +764,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeUserOIDCConfig(self, request):
-        """This API is used to query the user OIDC configuration.
+        r"""This API is used to query the user OIDC configuration.
 
         :param request: Request instance for DescribeUserOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeUserOIDCConfigRequest`
@@ -787,7 +787,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeUserSAMLConfig(self, request):
-        """This API is used to query user SAML configurations.
+        r"""This API is used to query user SAML configurations.
 
         :param request: Request instance for DescribeUserSAMLConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeUserSAMLConfigRequest`
@@ -810,7 +810,7 @@ class CamClient(AbstractClient):
 
 
     def DetachGroupPolicy(self, request):
-        """This API (DetachGroupPolicy) is used to unassociate a policy and a user group.
+        r"""This API (DetachGroupPolicy) is used to unassociate a policy and a user group.
 
         :param request: Request instance for DetachGroupPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachGroupPolicyRequest`
@@ -833,7 +833,7 @@ class CamClient(AbstractClient):
 
 
     def DetachRolePolicy(self, request):
-        """This API (DetachRolePolicy) is used to unassociate a policy and a role.
+        r"""This API (DetachRolePolicy) is used to unassociate a policy and a role.
 
         :param request: Request instance for DetachRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachRolePolicyRequest`
@@ -856,7 +856,7 @@ class CamClient(AbstractClient):
 
 
     def DetachUserPolicy(self, request):
-        """This API (DetachUserPolicy) is used to unassociate a policy and a user.
+        r"""This API (DetachUserPolicy) is used to unassociate a policy and a user.
 
         :param request: Request instance for DetachUserPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachUserPolicyRequest`
@@ -879,7 +879,7 @@ class CamClient(AbstractClient):
 
 
     def DisableUserSSO(self, request):
-        """This API is used to disable user SSO.
+        r"""This API is used to disable user SSO.
 
         :param request: Request instance for DisableUserSSO.
         :type request: :class:`tencentcloud.cam.v20190116.models.DisableUserSSORequest`
@@ -902,7 +902,7 @@ class CamClient(AbstractClient):
 
 
     def GetAccountSummary(self, request):
-        """This API is used to query account summary.
+        r"""This API is used to query account summary.
 
         :param request: Request instance for GetAccountSummary.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetAccountSummaryRequest`
@@ -925,7 +925,7 @@ class CamClient(AbstractClient):
 
 
     def GetCustomMFATokenInfo(self, request):
-        """This API is used to get information associated with a custom multi-factor Token
+        r"""This API is used to get information associated with a custom multi-factor Token
 
         :param request: Request instance for GetCustomMFATokenInfo.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetCustomMFATokenInfoRequest`
@@ -948,7 +948,7 @@ class CamClient(AbstractClient):
 
 
     def GetGroup(self, request):
-        """This API is used to query user group details.
+        r"""This API is used to query user group details.
 
         :param request: Request instance for GetGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetGroupRequest`
@@ -971,7 +971,7 @@ class CamClient(AbstractClient):
 
 
     def GetPolicy(self, request):
-        """This API (GetPolicy) is used to query and view policy details.
+        r"""This API (GetPolicy) is used to query and view policy details.
 
         :param request: Request instance for GetPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetPolicyRequest`
@@ -994,7 +994,7 @@ class CamClient(AbstractClient):
 
 
     def GetPolicyVersion(self, request):
-        """This API is used to query policy version details.
+        r"""This API is used to query policy version details.
 
         :param request: Request instance for GetPolicyVersion.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetPolicyVersionRequest`
@@ -1017,7 +1017,7 @@ class CamClient(AbstractClient):
 
 
     def GetRole(self, request):
-        """This API (GetRole) is used to get the details of a specified role.
+        r"""This API (GetRole) is used to get the details of a specified role.
 
         :param request: Request instance for GetRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetRoleRequest`
@@ -1040,7 +1040,7 @@ class CamClient(AbstractClient):
 
 
     def GetSAMLProvider(self, request):
-        """This API is used to query SAML identity provider details.
+        r"""This API is used to query SAML identity provider details.
 
         :param request: Request instance for GetSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetSAMLProviderRequest`
@@ -1063,7 +1063,7 @@ class CamClient(AbstractClient):
 
 
     def GetSecurityLastUsed(self, request):
-        """This API is used to get a key’s recent usage details.
+        r"""This API is used to get a key’s recent usage details.
 
         :param request: Request instance for GetSecurityLastUsed.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetSecurityLastUsedRequest`
@@ -1086,7 +1086,7 @@ class CamClient(AbstractClient):
 
 
     def GetServiceLinkedRoleDeletionStatus(self, request):
-        """This API is used to get the status of the service-linked role deletion based on the `TaskId`
+        r"""This API is used to get the status of the service-linked role deletion based on the `TaskId`
 
         :param request: Request instance for GetServiceLinkedRoleDeletionStatus.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetServiceLinkedRoleDeletionStatusRequest`
@@ -1109,7 +1109,7 @@ class CamClient(AbstractClient):
 
 
     def GetUser(self, request):
-        """This API is used to query sub-users.
+        r"""This API is used to query sub-users.
 
         :param request: Request instance for GetUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetUserRequest`
@@ -1132,7 +1132,7 @@ class CamClient(AbstractClient):
 
 
     def GetUserAppId(self, request):
-        """This API is used to get the user AppId.
+        r"""This API is used to get the user AppId.
 
         :param request: Request instance for GetUserAppId.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetUserAppIdRequest`
@@ -1155,7 +1155,7 @@ class CamClient(AbstractClient):
 
 
     def ListAccessKeys(self, request):
-        """This API is used to list the access keys associated with a specified CAM user.
+        r"""This API is used to list the access keys associated with a specified CAM user.
 
         :param request: Request instance for ListAccessKeys.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAccessKeysRequest`
@@ -1178,7 +1178,7 @@ class CamClient(AbstractClient):
 
 
     def ListAttachedGroupPolicies(self, request):
-        """This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group.
+        r"""This API (ListAttachedGroupPolicies) is used to query the list of policies associated with a user group.
 
         :param request: Request instance for ListAttachedGroupPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedGroupPoliciesRequest`
@@ -1201,7 +1201,7 @@ class CamClient(AbstractClient):
 
 
     def ListAttachedRolePolicies(self, request):
-        """This API (ListAttachedRolePolicies) is used to obtain the list of the policies associated with a role.
+        r"""This API (ListAttachedRolePolicies) is used to obtain the list of the policies associated with a role.
 
         :param request: Request instance for ListAttachedRolePolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedRolePoliciesRequest`
@@ -1224,7 +1224,7 @@ class CamClient(AbstractClient):
 
 
     def ListAttachedUserAllPolicies(self, request):
-        """This API is used to list policies associated with the user (including those inherited from the user group).
+        r"""This API is used to list policies associated with the user (including those inherited from the user group).
 
         :param request: Request instance for ListAttachedUserAllPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserAllPoliciesRequest`
@@ -1247,7 +1247,7 @@ class CamClient(AbstractClient):
 
 
     def ListAttachedUserPolicies(self, request):
-        """This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.
+        r"""This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.
 
         :param request: Request instance for ListAttachedUserPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserPoliciesRequest`
@@ -1270,7 +1270,7 @@ class CamClient(AbstractClient):
 
 
     def ListCollaborators(self, request):
-        """This API is used to get the collaborator list.
+        r"""This API is used to get the collaborator list.
 
         :param request: Request instance for ListCollaborators.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListCollaboratorsRequest`
@@ -1293,7 +1293,7 @@ class CamClient(AbstractClient):
 
 
     def ListEntitiesForPolicy(self, request):
-        """This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy.
+        r"""This API (ListEntitiesForPolicy) is used to query the list of entities associated with a policy.
 
         :param request: Request instance for ListEntitiesForPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListEntitiesForPolicyRequest`
@@ -1316,7 +1316,7 @@ class CamClient(AbstractClient):
 
 
     def ListGroups(self, request):
-        """This API is used to query the list of user groups.
+        r"""This API is used to query the list of user groups.
 
         :param request: Request instance for ListGroups.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListGroupsRequest`
@@ -1339,7 +1339,7 @@ class CamClient(AbstractClient):
 
 
     def ListGroupsForUser(self, request):
-        """This API is used to list user groups associated with a user.
+        r"""This API is used to list user groups associated with a user.
 
         :param request: Request instance for ListGroupsForUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListGroupsForUserRequest`
@@ -1362,7 +1362,7 @@ class CamClient(AbstractClient):
 
 
     def ListPolicies(self, request):
-        """This API is used to query the policy list.
+        r"""This API is used to query the policy list.
 
         :param request: Request instance for ListPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesRequest`
@@ -1385,7 +1385,7 @@ class CamClient(AbstractClient):
 
 
     def ListPolicyVersions(self, request):
-        """This API is used to get the list of policy versions.
+        r"""This API is used to get the list of policy versions.
 
         :param request: Request instance for ListPolicyVersions.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListPolicyVersionsRequest`
@@ -1408,7 +1408,7 @@ class CamClient(AbstractClient):
 
 
     def ListSAMLProviders(self, request):
-        """This API is used to query the list of SAML identity providers.
+        r"""This API is used to query the list of SAML identity providers.
 
         :param request: Request instance for ListSAMLProviders.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListSAMLProvidersRequest`
@@ -1431,7 +1431,7 @@ class CamClient(AbstractClient):
 
 
     def ListUsers(self, request):
-        """This API is used to pull sub-users.
+        r"""This API is used to pull sub-users.
 
         :param request: Request instance for ListUsers.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListUsersRequest`
@@ -1454,7 +1454,7 @@ class CamClient(AbstractClient):
 
 
     def ListUsersForGroup(self, request):
-        """This API is used to query the list of users associated with a user group.
+        r"""This API is used to query the list of users associated with a user group.
 
         :param request: Request instance for ListUsersForGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListUsersForGroupRequest`
@@ -1477,7 +1477,7 @@ class CamClient(AbstractClient):
 
 
     def PutRolePermissionsBoundary(self, request):
-        """This API is used to set a role permission boundary.
+        r"""This API is used to set a role permission boundary.
 
         :param request: Request instance for PutRolePermissionsBoundary.
         :type request: :class:`tencentcloud.cam.v20190116.models.PutRolePermissionsBoundaryRequest`
@@ -1500,7 +1500,7 @@ class CamClient(AbstractClient):
 
 
     def PutUserPermissionsBoundary(self, request):
-        """This API is used to set a user permission boundary.
+        r"""This API is used to set a user permission boundary.
 
         :param request: Request instance for PutUserPermissionsBoundary.
         :type request: :class:`tencentcloud.cam.v20190116.models.PutUserPermissionsBoundaryRequest`
@@ -1523,7 +1523,7 @@ class CamClient(AbstractClient):
 
 
     def RemoveUserFromGroup(self, request):
-        """This API is used to delete users from a user group.
+        r"""This API is used to delete users from a user group.
 
         :param request: Request instance for RemoveUserFromGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.RemoveUserFromGroupRequest`
@@ -1546,7 +1546,7 @@ class CamClient(AbstractClient):
 
 
     def SetDefaultPolicyVersion(self, request):
-        """This API is used to set the operative policy version.
+        r"""This API is used to set the operative policy version.
 
         :param request: Request instance for SetDefaultPolicyVersion.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetDefaultPolicyVersionRequest`
@@ -1569,7 +1569,7 @@ class CamClient(AbstractClient):
 
 
     def SetMfaFlag(self, request):
-        """This API is used to set account verification for login and sensitive operations for sub-users.
+        r"""This API is used to set account verification for login and sensitive operations for sub-users.
 
         :param request: Request instance for SetMfaFlag.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagRequest`
@@ -1592,7 +1592,7 @@ class CamClient(AbstractClient):
 
 
     def TagRole(self, request):
-        """This API is used to bind tags to a role.
+        r"""This API is used to bind tags to a role.
 
         :param request: Request instance for TagRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.TagRoleRequest`
@@ -1615,7 +1615,7 @@ class CamClient(AbstractClient):
 
 
     def UntagRole(self, request):
-        """This API is used to unbind tags from a role.
+        r"""This API is used to unbind tags from a role.
 
         :param request: Request instance for UntagRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.UntagRoleRequest`
@@ -1638,7 +1638,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateAccessKey(self, request):
-        """This API is used to update an access key for a CAM user.
+        r"""This API is used to update an access key for a CAM user.
 
         :param request: Request instance for UpdateAccessKey.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAccessKeyRequest`
@@ -1661,7 +1661,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateAssumeRolePolicy(self, request):
-        """This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.
+        r"""This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.
 
         :param request: Request instance for UpdateAssumeRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAssumeRolePolicyRequest`
@@ -1684,7 +1684,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateGroup(self, request):
-        """This API is used to update a user group.
+        r"""This API is used to update a user group.
 
         :param request: Request instance for UpdateGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateGroupRequest`
@@ -1707,7 +1707,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateOIDCConfig(self, request):
-        """This API is used to modify role OIDC configurations.
+        r"""This API is used to modify role OIDC configurations.
 
         :param request: Request instance for UpdateOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateOIDCConfigRequest`
@@ -1730,7 +1730,7 @@ class CamClient(AbstractClient):
 
 
     def UpdatePolicy(self, request):
-        """This API is used to update a policy.
+        r"""This API is used to update a policy.
         This API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.
 
         :param request: Request instance for UpdatePolicy.
@@ -1754,7 +1754,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateRoleConsoleLogin(self, request):
-        """This API is used to modify a role's login permissions.
+        r"""This API is used to modify a role's login permissions.
 
         :param request: Request instance for UpdateRoleConsoleLogin.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginRequest`
@@ -1777,7 +1777,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateRoleDescription(self, request):
-        """This API (UpdateRoleDescription) is used to modify the description of a role.
+        r"""This API (UpdateRoleDescription) is used to modify the description of a role.
 
         :param request: Request instance for UpdateRoleDescription.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleDescriptionRequest`
@@ -1800,7 +1800,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateSAMLProvider(self, request):
-        """This API is used to update SAML identity provider information.
+        r"""This API is used to update SAML identity provider information.
 
         :param request: Request instance for UpdateSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateSAMLProviderRequest`
@@ -1823,7 +1823,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateUser(self, request):
-        """This API is used to update a sub-user.
+        r"""This API is used to update a sub-user.
 
         :param request: Request instance for UpdateUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserRequest`
@@ -1846,7 +1846,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateUserOIDCConfig(self, request):
-        """This API is used to modify the user OIDC configuration.
+        r"""This API is used to modify the user OIDC configuration.
 
         :param request: Request instance for UpdateUserOIDCConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserOIDCConfigRequest`
@@ -1869,7 +1869,7 @@ class CamClient(AbstractClient):
 
 
     def UpdateUserSAMLConfig(self, request):
-        """This API is used to modify user SAML configurations.
+        r"""This API is used to modify user SAML configurations.
 
         :param request: Request instance for UpdateUserSAMLConfig.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserSAMLConfigRequest`

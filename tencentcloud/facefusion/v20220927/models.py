@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class FaceRect(AbstractModel):
-    """Face box information
+    r"""Face box information
 
     """
 
@@ -41,7 +41,7 @@ class FaceRect(AbstractModel):
 
     @property
     def X(self):
-        """Top-left X-axis coordinate of the face box
+        r"""Top-left X-axis coordinate of the face box
         :rtype: int
         """
         return self._X
@@ -52,7 +52,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Y(self):
-        """Top-left Y-axis coordinate of the face box
+        r"""Top-left Y-axis coordinate of the face box
         :rtype: int
         """
         return self._Y
@@ -63,7 +63,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Width(self):
-        """Face box width
+        r"""Face box width
         :rtype: int
         """
         return self._Width
@@ -74,7 +74,7 @@ class FaceRect(AbstractModel):
 
     @property
     def Height(self):
-        """Face box height
+        r"""Face box height
         :rtype: int
         """
         return self._Height
@@ -100,7 +100,7 @@ class FaceRect(AbstractModel):
 
 
 class FuseFaceRequest(AbstractModel):
-    """FuseFace request structure.
+    r"""FuseFace request structure.
 
     """
 
@@ -136,7 +136,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def ProjectId(self):
-        """Activity ID. Check the ID in the <a href="https://console.cloud.tencent.com/facefusion" target="_blank"> Face Fusion console</a>.
+        r"""Activity ID. Check the ID in the <a href="https://console.cloud.tencent.com/facefusion" target="_blank"> Face Fusion console</a>.
         :rtype: str
         """
         return self._ProjectId
@@ -147,7 +147,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def ModelId(self):
-        """Material ID. Check the ID in the <a href="https://console.cloud.tencent.com/facefusion" target="_blank"> Face Fusion console</a>.
+        r"""Material ID. Check the ID in the <a href="https://console.cloud.tencent.com/facefusion" target="_blank"> Face Fusion console</a>.
         :rtype: str
         """
         return self._ModelId
@@ -158,7 +158,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def RspImgType(self):
-        """Image return method (url or base64). You cannot use both methods at the same time. The URL is valid for 7 days.
+        r"""Image return method (url or base64). You cannot use both methods at the same time. The URL is valid for 7 days.
         :rtype: str
         """
         return self._RspImgType
@@ -169,7 +169,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def MergeInfos(self):
-        """Face position information on the user face image and material template image. No more than 6 entries.
+        r"""Face position information on the user face image and material template image. No more than 6 entries.
         :rtype: list of MergeInfo
         """
         return self._MergeInfos
@@ -180,7 +180,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def LogoAdd(self):
-        """Switch indicating whether to add a synthesis logo to the fusion result image. Default value: 1.
+        r"""Switch indicating whether to add a synthesis logo to the fusion result image. Default value: 1.
 1: add logo
 0: do not add logo
 Other values: add logo
@@ -195,7 +195,7 @@ It is recommended to use an obvious logo to indicate that the result image uses 
 
     @property
     def LogoParam(self):
-        """Logo content settings
+        r"""Logo content settings
 By default, the text "Synthesized by AI" is added to the bottom right corner of the fusion result image. You can also use other texts.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
         """
@@ -207,7 +207,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
     @property
     def FuseParam(self):
-        """Fusion parameter.
+        r"""Fusion parameter.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FuseParam`
         """
         return self._FuseParam
@@ -245,7 +245,7 @@ By default, the text "Synthesized by AI" is added to the bottom right corner of 
 
 
 class FuseFaceResponse(AbstractModel):
-    """FuseFace response structure.
+    r"""FuseFace response structure.
 
     """
 
@@ -261,7 +261,7 @@ class FuseFaceResponse(AbstractModel):
 
     @property
     def FusedImage(self):
-        """When RspImgType is set to url, return the URL (valid for 7 days). When RspImgType is set to base64, return the Base64 code.
+        r"""When RspImgType is set to url, return the URL (valid for 7 days). When RspImgType is set to base64, return the Base64 code.
         :rtype: str
         """
         return self._FusedImage
@@ -272,7 +272,7 @@ class FuseFaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -288,7 +288,7 @@ class FuseFaceResponse(AbstractModel):
 
 
 class FuseFaceReviewDetail(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -310,7 +310,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Field(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Field
@@ -321,7 +321,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Label(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Label
@@ -332,7 +332,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Confidence(self):
-        """
+        r"""
         :rtype: float
         """
         return self._Confidence
@@ -343,7 +343,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Suggestion(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Suggestion
@@ -369,7 +369,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
 
 class FuseFaceReviewResult(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -397,7 +397,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Category(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Category
@@ -408,7 +408,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Code(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Code
@@ -419,7 +419,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def CodeDescription(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CodeDescription
@@ -430,7 +430,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Confidence(self):
-        """
+        r"""
         :rtype: float
         """
         return self._Confidence
@@ -441,7 +441,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Suggestion
@@ -452,7 +452,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def DetailSet(self):
-        """
+        r"""
         :rtype: list of FuseFaceReviewDetail
         """
         return self._DetailSet
@@ -485,7 +485,7 @@ class FuseFaceReviewResult(AbstractModel):
 
 
 class FuseParam(AbstractModel):
-    """Fusion parameter
+    r"""Fusion parameter
 
     """
 
@@ -498,7 +498,7 @@ class FuseParam(AbstractModel):
 
     @property
     def ImageCodecParam(self):
-        """Image encoding parameter
+        r"""Image encoding parameter
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.ImageCodecParam`
         """
         return self._ImageCodecParam
@@ -523,7 +523,7 @@ class FuseParam(AbstractModel):
 
 
 class ImageCodecParam(AbstractModel):
-    """Image encoding parameter
+    r"""Image encoding parameter
 
     """
 
@@ -536,7 +536,7 @@ class ImageCodecParam(AbstractModel):
 
     @property
     def MetaData(self):
-        """Metadata. The number of metadata entries cannot exceed 1.
+        r"""Metadata. The number of metadata entries cannot exceed 1.
         :rtype: list of MetaData
         """
         return self._MetaData
@@ -564,7 +564,7 @@ class ImageCodecParam(AbstractModel):
 
 
 class LogoParam(AbstractModel):
-    """Logo parameter
+    r"""Logo parameter
 
     """
 
@@ -587,7 +587,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoRect(self):
-        """Coordinates of the logo image in the fusion result image. The logo image will be stretched according to the coordinates.
+        r"""Coordinates of the logo image in the fusion result image. The logo image will be stretched according to the coordinates.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
         return self._LogoRect
@@ -598,7 +598,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoUrl(self):
-        """Logo image URL
+        r"""Logo image URL
 ●Either the Base64 code or URL must be provided. If both are provided, URL prevails.
 ●Supported image format: JPG or PNG
         :rtype: str
@@ -611,7 +611,7 @@ class LogoParam(AbstractModel):
 
     @property
     def LogoImage(self):
-        """Logo image Base64 code
+        r"""Logo image Base64 code
 ●Either the Base64 code or URL must be provided. If both are provided, URL prevails.
 ●Supported image format: JPG or PNG
         :rtype: str
@@ -640,7 +640,7 @@ class LogoParam(AbstractModel):
 
 
 class MergeInfo(AbstractModel):
-    """Face position information on the face image and material template image for fusion
+    r"""Face position information on the face image and material template image for fusion
 
     """
 
@@ -673,7 +673,7 @@ Width and height are no less than 30.
 
     @property
     def Image(self):
-        """Enter the image Base64 code.
+        r"""Enter the image Base64 code.
 ●Either the Base64 code or URL must be provided. If both are provided, URL prevails.
 ●Material image limitation: face size in the image greater than 34×34 pixels; image size greater than 64×64 pixels. (After encoding, the image size may increase by about 30%. It is recommended to control the image size reasonably.)
 ●Supported image format: JPG or PNG
@@ -687,7 +687,7 @@ Width and height are no less than 30.
 
     @property
     def Url(self):
-        """Enter the image URL.
+        r"""Enter the image URL.
 ●Either the Base64 code or URL must be provided. If both are provided, URL prevails.
 ●Material image limitation: face size in the image greater than 34×34 pixels; image size greater than 64×64 pixels. (After encoding, the image size may increase by about 30%. It is recommended to control the image size reasonably.)
 ●Supported image format: JPG or PNG
@@ -701,7 +701,7 @@ Width and height are no less than 30.
 
     @property
     def InputImageFaceRect(self):
-        """Face position information (face box) on the uploaded image
+        r"""Face position information (face box) on the uploaded image
 Width and height are no less than 30.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
@@ -713,7 +713,7 @@ Width and height are no less than 30.
 
     @property
     def TemplateFaceID(self):
-        """Material face ID. If this parameter is left blank, the largest face is used by default.
+        r"""Material face ID. If this parameter is left blank, the largest face is used by default.
         :rtype: str
         """
         return self._TemplateFaceID
@@ -724,7 +724,7 @@ Width and height are no less than 30.
 
     @property
     def TemplateFaceRect(self):
-        """Face position information (face box) on the template. If this parameter is left blank, the largest face is used by default. This parameter applies to scenes where custom material templates are used for fusion.
+        r"""Face position information (face box) on the template. If this parameter is left blank, the largest face is used by default. This parameter applies to scenes where custom material templates are used for fusion.
 Width and height are no less than 30.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
@@ -756,7 +756,7 @@ Width and height are no less than 30.
 
 
 class MetaData(AbstractModel):
-    """Metadata structure, in key/value format
+    r"""Metadata structure, in key/value format
 
     """
 
@@ -772,7 +772,7 @@ class MetaData(AbstractModel):
 
     @property
     def MetaKey(self):
-        """Metadata key
+        r"""Metadata key
         :rtype: str
         """
         return self._MetaKey
@@ -783,7 +783,7 @@ class MetaData(AbstractModel):
 
     @property
     def MetaValue(self):
-        """Metadata value
+        r"""Metadata value
         :rtype: str
         """
         return self._MetaValue
@@ -807,7 +807,7 @@ class MetaData(AbstractModel):
 
 
 class QueryVideoFaceFusionJobRequest(AbstractModel):
-    """QueryVideoFaceFusionJob request structure.
+    r"""QueryVideoFaceFusionJob request structure.
 
     """
 
@@ -820,7 +820,7 @@ class QueryVideoFaceFusionJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Job ID of the video face fusion task
+        r"""Job ID of the video face fusion task
         :rtype: str
         """
         return self._JobId
@@ -843,7 +843,7 @@ class QueryVideoFaceFusionJobRequest(AbstractModel):
 
 
 class QueryVideoFaceFusionJobResponse(AbstractModel):
-    """QueryVideoFaceFusionJob response structure.
+    r"""QueryVideoFaceFusionJob response structure.
 
     """
 
@@ -875,7 +875,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobStatus(self):
-        """Current task status: queuing, processing, processing failed, or processing completed
+        r"""Current task status: queuing, processing, processing failed, or processing completed
         :rtype: str
         """
         return self._JobStatus
@@ -886,7 +886,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoFaceFusionOutput(self):
-        """Video face fusion result
+        r"""Video face fusion result
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.VideoFaceFusionOutput`
         """
@@ -898,7 +898,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobStatusCode(self):
-        """Task status code. 1: queuing; 3: processing; 5: processing failed; 7: processing completed.
+        r"""Task status code. 1: queuing; 3: processing; 5: processing failed; 7: processing completed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -910,7 +910,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobErrorCode(self):
-        """Task failure error code
+        r"""Task failure error code
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -922,7 +922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobErrorMsg(self):
-        """Task failure error message
+        r"""Task failure error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -934,7 +934,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -956,7 +956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubmitVideoFaceFusionJobRequest(AbstractModel):
-    """SubmitVideoFaceFusionJob request structure.
+    r"""SubmitVideoFaceFusionJob request structure.
 
     """
 
@@ -993,7 +993,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def ProjectId(self):
-        """Activity ID. Check it in the video face fusion console.
+        r"""Activity ID. Check it in the video face fusion console.
         :rtype: str
         """
         return self._ProjectId
@@ -1004,7 +1004,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def ModelId(self):
-        """Material ID. Check it in the video face fusion console.
+        r"""Material ID. Check it in the video face fusion console.
         :rtype: str
         """
         return self._ModelId
@@ -1015,7 +1015,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def MergeInfos(self):
-        """Face position information on the user face image and material template image. Only one entry is allowed.
+        r"""Face position information on the user face image and material template image. Only one entry is allowed.
         :rtype: list of MergeInfo
         """
         return self._MergeInfos
@@ -1026,7 +1026,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def CelebrityIdentify(self):
-        """0: inappropriate content recognition not required; 1: inappropriate content recognition required. Default value: 0.
+        r"""0: inappropriate content recognition not required; 1: inappropriate content recognition required. Default value: 0.
 Note: Once the inappropriate content recognition service is enabled, you need to decide whether to adjust your business logic based on the returned results. For example, you need to replace the image if the system informs you that the image does not meet the requirements.
 **<font color=#1E90FF>Note: This field will be deprecated later due to business adjustments. It is not recommended for use.</font>**
         :rtype: int
@@ -1039,7 +1039,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def LogoParam(self):
-        """Video watermark logo parameter
+        r"""Video watermark logo parameter
         :rtype: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
         """
         return self._LogoParam
@@ -1050,7 +1050,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def UserDesignatedUrl(self):
-        """COS pre-signed URL (PUT method). If this parameter is specified, the video after fusion will be uploaded to this URL.
+        r"""COS pre-signed URL (PUT method). If this parameter is specified, the video after fusion will be uploaded to this URL.
 **<font color=#1E90FF>Note: If upload to this URL fails, the video will be uploaded to the default address of Tencent Cloud.</font>**
         :rtype: str
         """
@@ -1062,7 +1062,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def UserIp(self):
-        """User IP address
+        r"""User IP address
         :rtype: str
         """
         return self._UserIp
@@ -1073,7 +1073,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
     @property
     def MetaData(self):
-        """Video metadata field
+        r"""Video metadata field
         :rtype: list of MetaData
         """
         return self._MetaData
@@ -1115,7 +1115,7 @@ Note: Once the inappropriate content recognition service is enabled, you need to
 
 
 class SubmitVideoFaceFusionJobResponse(AbstractModel):
-    """SubmitVideoFaceFusionJob response structure.
+    r"""SubmitVideoFaceFusionJob response structure.
 
     """
 
@@ -1141,7 +1141,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Job ID of the video face fusion task
+        r"""Job ID of the video face fusion task
         :rtype: str
         """
         return self._JobId
@@ -1152,7 +1152,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EstimatedProcessTime(self):
-        """Estimated processing time of the video face fusion task, in seconds
+        r"""Estimated processing time of the video face fusion task, in seconds
         :rtype: float
         """
         return self._EstimatedProcessTime
@@ -1163,7 +1163,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobQueueLength(self):
-        """Estimated processing time of the video face fusion task, in seconds
+        r"""Estimated processing time of the video face fusion task, in seconds
         :rtype: int
         """
         return self._JobQueueLength
@@ -1174,7 +1174,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReviewResultSet(self):
-        """Inappropriate content recognition result. The element order of this array is the same as that of mergeinfo in the request, with a one-to-one relationship.
+        r"""Inappropriate content recognition result. The element order of this array is the same as that of mergeinfo in the request, with a one-to-one relationship.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of FuseFaceReviewResult
         """
@@ -1186,7 +1186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1210,7 +1210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class VideoFaceFusionOutput(AbstractModel):
-    """Returned video face fusion result
+    r"""Returned video face fusion result
 
     """
 
@@ -1241,7 +1241,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def VideoUrl(self):
-        """URL of the video output after video face fusion
+        r"""URL of the video output after video face fusion
         :rtype: str
         """
         return self._VideoUrl
@@ -1252,7 +1252,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def VideoMD5(self):
-        """MD5 value of the video output after video face fusion, which is used for verification
+        r"""MD5 value of the video output after video face fusion, which is used for verification
         :rtype: str
         """
         return self._VideoMD5
@@ -1263,7 +1263,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def Width(self):
-        """Video width
+        r"""Video width
         :rtype: int
         """
         return self._Width
@@ -1274,7 +1274,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def Height(self):
-        """Video height
+        r"""Video height
         :rtype: int
         """
         return self._Height
@@ -1285,7 +1285,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def FPS(self):
-        """Frames per second
+        r"""Frames per second
         :rtype: int
         """
         return self._FPS
@@ -1296,7 +1296,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def DurationInSec(self):
-        """Video duration, in seconds
+        r"""Video duration, in seconds
         :rtype: float
         """
         return self._DurationInSec
@@ -1307,7 +1307,7 @@ class VideoFaceFusionOutput(AbstractModel):
 
     @property
     def Frame(self):
-        """Number of frames
+        r"""Number of frames
         :rtype: int
         """
         return self._Frame

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateLogExportRequest(AbstractModel):
-    """CreateLogExport request structure.
+    r"""CreateLogExport request structure.
 
     """
 
@@ -50,7 +50,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -61,7 +61,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Log export start time
+        r"""Log export start time
         :rtype: str
         """
         return self._StartTime
@@ -72,7 +72,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Log export end time
+        r"""Log export end time
         :rtype: str
         """
         return self._EndTime
@@ -83,7 +83,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Log export search statement
+        r"""Log export search statement
         :rtype: str
         """
         return self._Query
@@ -94,7 +94,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Count(self):
-        """Number of logs to be exported. Maximum value: 10 million
+        r"""Number of logs to be exported. Maximum value: 10 million
         :rtype: int
         """
         return self._Count
@@ -105,7 +105,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Exported log sorting order by time. Valid values: asc: ascending; desc: descending. Default value: desc
+        r"""Exported log sorting order by time. Valid values: asc: ascending; desc: descending. Default value: desc
         :rtype: str
         """
         return self._Order
@@ -116,7 +116,7 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Format(self):
-        """Exported log data format. Valid values: json, csv. Default value: json
+        r"""Exported log data format. Valid values: json, csv. Default value: json
         :rtype: str
         """
         return self._Format
@@ -145,7 +145,7 @@ class CreateLogExportRequest(AbstractModel):
 
 
 class CreateLogExportResponse(AbstractModel):
-    """CreateLogExport response structure.
+    r"""CreateLogExport response structure.
 
     """
 
@@ -161,7 +161,7 @@ class CreateLogExportResponse(AbstractModel):
 
     @property
     def ExportID(self):
-        """Log export ID
+        r"""Log export ID
         :rtype: str
         """
         return self._ExportID
@@ -172,7 +172,7 @@ class CreateLogExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -188,7 +188,7 @@ class CreateLogExportResponse(AbstractModel):
 
 
 class CreateOfflineLogConfigRequest(AbstractModel):
-    """CreateOfflineLogConfig request structure.
+    r"""CreateOfflineLogConfig request structure.
 
     """
 
@@ -204,7 +204,7 @@ class CreateOfflineLogConfigRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -215,7 +215,7 @@ class CreateOfflineLogConfigRequest(AbstractModel):
 
     @property
     def UniqueID(self):
-        """Unique identifier of the user to be listened on (`aid` or `uin`)
+        r"""Unique identifier of the user to be listened on (`aid` or `uin`)
         :rtype: str
         """
         return self._UniqueID
@@ -239,7 +239,7 @@ class CreateOfflineLogConfigRequest(AbstractModel):
 
 
 class CreateOfflineLogConfigResponse(AbstractModel):
-    """CreateOfflineLogConfig response structure.
+    r"""CreateOfflineLogConfig response structure.
 
     """
 
@@ -255,7 +255,7 @@ class CreateOfflineLogConfigResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API response information
+        r"""API response information
         :rtype: str
         """
         return self._Msg
@@ -266,7 +266,7 @@ class CreateOfflineLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -282,7 +282,7 @@ class CreateOfflineLogConfigResponse(AbstractModel):
 
 
 class CreateProjectRequest(AbstractModel):
-    """CreateProject request structure.
+    r"""CreateProject request structure.
 
     """
 
@@ -316,7 +316,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the created project (required and up to 200 characters)
+        r"""Name of the created project (required and up to 200 characters)
         :rtype: str
         """
         return self._Name
@@ -327,7 +327,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Business system ID
+        r"""Business system ID
         :rtype: str
         """
         return self._InstanceID
@@ -338,7 +338,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Rate(self):
-        """Project sampling rate (greater than or equal to 0)
+        r"""Project sampling rate (greater than or equal to 0)
         :rtype: str
         """
         return self._Rate
@@ -349,7 +349,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def EnableURLGroup(self):
-        """Whether to enable aggregation
+        r"""Whether to enable aggregation
         :rtype: int
         """
         return self._EnableURLGroup
@@ -360,7 +360,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
+        r"""Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
         :rtype: str
         """
         return self._Type
@@ -371,7 +371,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Repo(self):
-        """Repository address of the project (optional and up to 256 characters)
+        r"""Repository address of the project (optional and up to 256 characters)
         :rtype: str
         """
         return self._Repo
@@ -382,7 +382,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def URL(self):
-        """Webpage address of the project (optional and up to 256 characters)
+        r"""Webpage address of the project (optional and up to 256 characters)
         :rtype: str
         """
         return self._URL
@@ -393,7 +393,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """Description of the created project (optional and up to 1,000 characters)
+        r"""Description of the created project (optional and up to 1,000 characters)
         :rtype: str
         """
         return self._Desc
@@ -423,7 +423,7 @@ class CreateProjectRequest(AbstractModel):
 
 
 class CreateProjectResponse(AbstractModel):
-    """CreateProject response structure.
+    r"""CreateProject response structure.
 
     """
 
@@ -442,7 +442,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -453,7 +453,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Key(self):
-        """Unique project key
+        r"""Unique project key
         :rtype: str
         """
         return self._Key
@@ -464,7 +464,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -481,7 +481,7 @@ class CreateProjectResponse(AbstractModel):
 
 
 class CreateReleaseFileRequest(AbstractModel):
-    """CreateReleaseFile request structure.
+    r"""CreateReleaseFile request structure.
 
     """
 
@@ -497,7 +497,7 @@ class CreateReleaseFileRequest(AbstractModel):
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -508,7 +508,7 @@ class CreateReleaseFileRequest(AbstractModel):
 
     @property
     def Files(self):
-        """File information list
+        r"""File information list
         :rtype: list of ReleaseFile
         """
         return self._Files
@@ -537,7 +537,7 @@ class CreateReleaseFileRequest(AbstractModel):
 
 
 class CreateReleaseFileResponse(AbstractModel):
-    """CreateReleaseFile response structure.
+    r"""CreateReleaseFile response structure.
 
     """
 
@@ -553,7 +553,7 @@ class CreateReleaseFileResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Call result
+        r"""Call result
         :rtype: str
         """
         return self._Msg
@@ -564,7 +564,7 @@ class CreateReleaseFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -580,7 +580,7 @@ class CreateReleaseFileResponse(AbstractModel):
 
 
 class CreateStarProjectRequest(AbstractModel):
-    """CreateStarProject request structure.
+    r"""CreateStarProject request structure.
 
     """
 
@@ -596,7 +596,7 @@ class CreateStarProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID, such as taw-123
+        r"""Instance ID, such as taw-123
         :rtype: str
         """
         return self._InstanceID
@@ -607,7 +607,7 @@ class CreateStarProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -631,7 +631,7 @@ class CreateStarProjectRequest(AbstractModel):
 
 
 class CreateStarProjectResponse(AbstractModel):
-    """CreateStarProject response structure.
+    r"""CreateStarProject response structure.
 
     """
 
@@ -647,7 +647,7 @@ class CreateStarProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API response information
+        r"""API response information
         :rtype: str
         """
         return self._Msg
@@ -658,7 +658,7 @@ class CreateStarProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -674,7 +674,7 @@ class CreateStarProjectResponse(AbstractModel):
 
 
 class CreateTawInstanceRequest(AbstractModel):
-    """CreateTawInstance request structure.
+    r"""CreateTawInstance request structure.
 
     """
 
@@ -720,7 +720,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def AreaId(self):
-        """Region ID (at least greater than 0)
+        r"""Region ID (at least greater than 0)
         :rtype: int
         """
         return self._AreaId
@@ -731,7 +731,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ChargeType(self):
-        """Billing type (1: Pay-as-you-go).
+        r"""Billing type (1: Pay-as-you-go).
         :rtype: int
         """
         return self._ChargeType
@@ -742,7 +742,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def DataRetentionDays(self):
-        """Data retention period (at least greater than 0)
+        r"""Data retention period (at least greater than 0)
         :rtype: int
         """
         return self._DataRetentionDays
@@ -753,7 +753,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name (up to 255 bytes)
+        r"""Instance name (up to 255 bytes)
         :rtype: str
         """
         return self._InstanceName
@@ -764,7 +764,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag list
+        r"""Tag list
         :rtype: list of Tag
         """
         return self._Tags
@@ -775,7 +775,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceDesc(self):
-        """Instance description (up to 1,024 bytes)
+        r"""Instance description (up to 1,024 bytes)
         :rtype: str
         """
         return self._InstanceDesc
@@ -786,7 +786,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def CountNum(self):
-        """Number of data entries reported per day
+        r"""Number of data entries reported per day
         :rtype: str
         """
         return self._CountNum
@@ -797,7 +797,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def PeriodRetain(self):
-        """Billing for data storage
+        r"""Billing for data storage
         :rtype: str
         """
         return self._PeriodRetain
@@ -808,7 +808,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def BuyingChannel(self):
-        """Instance purchase channel. Valid value: `cdn`.
+        r"""Instance purchase channel. Valid value: `cdn`.
         :rtype: str
         """
         return self._BuyingChannel
@@ -819,7 +819,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ResourcePackageType(self):
-        """Type of prepaid resource pack (only required for prepaid mode)
+        r"""Type of prepaid resource pack (only required for prepaid mode)
         :rtype: int
         """
         return self._ResourcePackageType
@@ -830,7 +830,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ResourcePackageNum(self):
-        """The number of prepaid resource packs (only required for prepaid mode)
+        r"""The number of prepaid resource packs (only required for prepaid mode)
         :rtype: int
         """
         return self._ResourcePackageNum
@@ -841,7 +841,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type. `1`: Web; `2`: Application
+        r"""Instance type. `1`: Web; `2`: Application
         :rtype: int
         """
         return self._InstanceType
@@ -880,7 +880,7 @@ class CreateTawInstanceRequest(AbstractModel):
 
 
 class CreateTawInstanceResponse(AbstractModel):
-    """CreateTawInstance response structure.
+    r"""CreateTawInstance response structure.
 
     """
 
@@ -900,7 +900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -911,7 +911,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
-        """ID of prepaid order
+        r"""ID of prepaid order
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -923,7 +923,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -940,7 +940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateWhitelistRequest(AbstractModel):
-    """CreateWhitelist request structure.
+    r"""CreateWhitelist request structure.
 
     """
 
@@ -962,7 +962,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID, such as taw-123
+        r"""Instance ID, such as taw-123
         :rtype: str
         """
         return self._InstanceID
@@ -973,7 +973,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -984,7 +984,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def WhitelistUin(self):
-        """uin: business identifier
+        r"""uin: business identifier
         :rtype: str
         """
         return self._WhitelistUin
@@ -995,7 +995,7 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Aid(self):
-        """Business identifier
+        r"""Business identifier
         :rtype: str
         """
         return self._Aid
@@ -1021,7 +1021,7 @@ class CreateWhitelistRequest(AbstractModel):
 
 
 class CreateWhitelistResponse(AbstractModel):
-    """CreateWhitelist response structure.
+    r"""CreateWhitelist response structure.
 
     """
 
@@ -1040,7 +1040,7 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Message
+        r"""Message
         :rtype: str
         """
         return self._Msg
@@ -1051,7 +1051,7 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def ID(self):
-        """Allowlist ID
+        r"""Allowlist ID
         :rtype: int
         """
         return self._ID
@@ -1062,7 +1062,7 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1079,7 +1079,7 @@ class CreateWhitelistResponse(AbstractModel):
 
 
 class DeleteInstanceRequest(AbstractModel):
-    """DeleteInstance request structure.
+    r"""DeleteInstance request structure.
 
     """
 
@@ -1092,7 +1092,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of the instance to be deleted
+        r"""ID of the instance to be deleted
         :rtype: str
         """
         return self._InstanceId
@@ -1115,7 +1115,7 @@ class DeleteInstanceRequest(AbstractModel):
 
 
 class DeleteInstanceResponse(AbstractModel):
-    """DeleteInstance response structure.
+    r"""DeleteInstance response structure.
 
     """
 
@@ -1128,7 +1128,7 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1143,7 +1143,7 @@ class DeleteInstanceResponse(AbstractModel):
 
 
 class DeleteLogExportRequest(AbstractModel):
-    """DeleteLogExport request structure.
+    r"""DeleteLogExport request structure.
 
     """
 
@@ -1159,7 +1159,7 @@ class DeleteLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -1170,7 +1170,7 @@ class DeleteLogExportRequest(AbstractModel):
 
     @property
     def ExportID(self):
-        """Log export ID
+        r"""Log export ID
         :rtype: str
         """
         return self._ExportID
@@ -1194,7 +1194,7 @@ class DeleteLogExportRequest(AbstractModel):
 
 
 class DeleteLogExportResponse(AbstractModel):
-    """DeleteLogExport response structure.
+    r"""DeleteLogExport response structure.
 
     """
 
@@ -1211,7 +1211,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Whether it is successful. If so, `success` will be returned; otherwise, `Error` rather than this parameter will be returned
+        r"""Whether it is successful. If so, `success` will be returned; otherwise, `Error` rather than this parameter will be returned
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1223,7 +1223,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1239,7 +1239,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteOfflineLogConfigRequest(AbstractModel):
-    """DeleteOfflineLogConfig request structure.
+    r"""DeleteOfflineLogConfig request structure.
 
     """
 
@@ -1255,7 +1255,7 @@ class DeleteOfflineLogConfigRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -1266,7 +1266,7 @@ class DeleteOfflineLogConfigRequest(AbstractModel):
 
     @property
     def UniqueID(self):
-        """Unique user identifier (uin or aid)
+        r"""Unique user identifier (uin or aid)
         :rtype: str
         """
         return self._UniqueID
@@ -1290,7 +1290,7 @@ class DeleteOfflineLogConfigRequest(AbstractModel):
 
 
 class DeleteOfflineLogConfigResponse(AbstractModel):
-    """DeleteOfflineLogConfig response structure.
+    r"""DeleteOfflineLogConfig response structure.
 
     """
 
@@ -1306,7 +1306,7 @@ class DeleteOfflineLogConfigResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API call information
+        r"""API call information
         :rtype: str
         """
         return self._Msg
@@ -1317,7 +1317,7 @@ class DeleteOfflineLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1333,7 +1333,7 @@ class DeleteOfflineLogConfigResponse(AbstractModel):
 
 
 class DeleteOfflineLogRecordRequest(AbstractModel):
-    """DeleteOfflineLogRecord request structure.
+    r"""DeleteOfflineLogRecord request structure.
 
     """
 
@@ -1349,7 +1349,7 @@ class DeleteOfflineLogRecordRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -1360,7 +1360,7 @@ class DeleteOfflineLogRecordRequest(AbstractModel):
 
     @property
     def FileID(self):
-        """Offline log file ID
+        r"""Offline log file ID
         :rtype: str
         """
         return self._FileID
@@ -1384,7 +1384,7 @@ class DeleteOfflineLogRecordRequest(AbstractModel):
 
 
 class DeleteOfflineLogRecordResponse(AbstractModel):
-    """DeleteOfflineLogRecord response structure.
+    r"""DeleteOfflineLogRecord response structure.
 
     """
 
@@ -1400,7 +1400,7 @@ class DeleteOfflineLogRecordResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API call information
+        r"""API call information
         :rtype: str
         """
         return self._Msg
@@ -1411,7 +1411,7 @@ class DeleteOfflineLogRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1427,7 +1427,7 @@ class DeleteOfflineLogRecordResponse(AbstractModel):
 
 
 class DeleteProjectRequest(AbstractModel):
-    """DeleteProject request structure.
+    r"""DeleteProject request structure.
 
     """
 
@@ -1440,7 +1440,7 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """ID of the project to be deleted
+        r"""ID of the project to be deleted
         :rtype: int
         """
         return self._ID
@@ -1463,7 +1463,7 @@ class DeleteProjectRequest(AbstractModel):
 
 
 class DeleteProjectResponse(AbstractModel):
-    """DeleteProject response structure.
+    r"""DeleteProject response structure.
 
     """
 
@@ -1479,7 +1479,7 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Operation information
+        r"""Operation information
         :rtype: str
         """
         return self._Msg
@@ -1490,7 +1490,7 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1506,7 +1506,7 @@ class DeleteProjectResponse(AbstractModel):
 
 
 class DeleteReleaseFileRequest(AbstractModel):
-    """DeleteReleaseFile request structure.
+    r"""DeleteReleaseFile request structure.
 
     """
 
@@ -1519,7 +1519,7 @@ class DeleteReleaseFileRequest(AbstractModel):
 
     @property
     def ID(self):
-        """File ID
+        r"""File ID
         :rtype: int
         """
         return self._ID
@@ -1542,7 +1542,7 @@ class DeleteReleaseFileRequest(AbstractModel):
 
 
 class DeleteReleaseFileResponse(AbstractModel):
-    """DeleteReleaseFile response structure.
+    r"""DeleteReleaseFile response structure.
 
     """
 
@@ -1558,7 +1558,7 @@ class DeleteReleaseFileResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Response string of the API request
+        r"""Response string of the API request
         :rtype: str
         """
         return self._Msg
@@ -1569,7 +1569,7 @@ class DeleteReleaseFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1585,7 +1585,7 @@ class DeleteReleaseFileResponse(AbstractModel):
 
 
 class DeleteStarProjectRequest(AbstractModel):
-    """DeleteStarProject request structure.
+    r"""DeleteStarProject request structure.
 
     """
 
@@ -1601,7 +1601,7 @@ class DeleteStarProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID, such as taw-123
+        r"""Instance ID, such as taw-123
         :rtype: str
         """
         return self._InstanceID
@@ -1612,7 +1612,7 @@ class DeleteStarProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -1636,7 +1636,7 @@ class DeleteStarProjectRequest(AbstractModel):
 
 
 class DeleteStarProjectResponse(AbstractModel):
-    """DeleteStarProject response structure.
+    r"""DeleteStarProject response structure.
 
     """
 
@@ -1653,7 +1653,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Response message
+        r"""Response message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1665,7 +1665,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1681,7 +1681,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteWhitelistRequest(AbstractModel):
-    """DeleteWhitelist request structure.
+    r"""DeleteWhitelist request structure.
 
     """
 
@@ -1697,7 +1697,7 @@ class DeleteWhitelistRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -1708,7 +1708,7 @@ class DeleteWhitelistRequest(AbstractModel):
 
     @property
     def ID(self):
-        """List ID
+        r"""List ID
         :rtype: str
         """
         return self._ID
@@ -1732,7 +1732,7 @@ class DeleteWhitelistRequest(AbstractModel):
 
 
 class DeleteWhitelistResponse(AbstractModel):
-    """DeleteWhitelist response structure.
+    r"""DeleteWhitelist response structure.
 
     """
 
@@ -1748,7 +1748,7 @@ class DeleteWhitelistResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Success message
+        r"""Success message
         :rtype: str
         """
         return self._Msg
@@ -1759,7 +1759,7 @@ class DeleteWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1775,7 +1775,7 @@ class DeleteWhitelistResponse(AbstractModel):
 
 
 class DescribeDataCustomUrlRequest(AbstractModel):
-    """DescribeDataCustomUrl request structure.
+    r"""DescribeDataCustomUrl request structure.
 
     """
 
@@ -1854,7 +1854,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -1865,7 +1865,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -1876,7 +1876,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -1887,7 +1887,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -1898,7 +1898,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -1909,7 +1909,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -1920,7 +1920,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -1931,7 +1931,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -1942,7 +1942,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -1953,7 +1953,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -1964,7 +1964,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -1975,7 +1975,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -1986,7 +1986,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -1997,7 +1997,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -2008,7 +2008,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -2019,7 +2019,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -2030,7 +2030,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -2041,7 +2041,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -2052,7 +2052,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -2063,7 +2063,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -2074,7 +2074,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -2085,7 +2085,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Key value of the custom speed test
+        r"""Key value of the custom speed test
         :rtype: str
         """
         return self._Url
@@ -2096,7 +2096,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -2141,7 +2141,7 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
 
 class DescribeDataCustomUrlResponse(AbstractModel):
-    """DescribeDataCustomUrl response structure.
+    r"""DescribeDataCustomUrl response structure.
 
     """
 
@@ -2157,7 +2157,7 @@ class DescribeDataCustomUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -2168,7 +2168,7 @@ class DescribeDataCustomUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2184,7 +2184,7 @@ class DescribeDataCustomUrlResponse(AbstractModel):
 
 
 class DescribeDataEventUrlRequest(AbstractModel):
-    """DescribeDataEventUrl request structure.
+    r"""DescribeDataEventUrl request structure.
 
     """
 
@@ -2260,7 +2260,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -2271,7 +2271,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -2282,7 +2282,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -2293,7 +2293,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -2304,7 +2304,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -2315,7 +2315,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -2326,7 +2326,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -2337,7 +2337,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -2348,7 +2348,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -2359,7 +2359,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -2370,7 +2370,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -2381,7 +2381,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -2392,7 +2392,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -2403,7 +2403,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -2414,7 +2414,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -2425,7 +2425,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -2436,7 +2436,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -2447,7 +2447,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -2458,7 +2458,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -2469,7 +2469,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -2480,7 +2480,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Filter
+        r"""Filter
         :rtype: str
         """
         return self._Name
@@ -2491,7 +2491,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -2535,7 +2535,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
 
 class DescribeDataEventUrlResponse(AbstractModel):
-    """DescribeDataEventUrl response structure.
+    r"""DescribeDataEventUrl response structure.
 
     """
 
@@ -2551,7 +2551,7 @@ class DescribeDataEventUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -2562,7 +2562,7 @@ class DescribeDataEventUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2578,7 +2578,7 @@ class DescribeDataEventUrlResponse(AbstractModel):
 
 
 class DescribeDataFetchProjectRequest(AbstractModel):
-    """DescribeDataFetchProject request structure.
+    r"""DescribeDataFetchProject request structure.
 
     """
 
@@ -2663,7 +2663,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -2674,7 +2674,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -2685,7 +2685,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -2696,7 +2696,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -2707,7 +2707,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -2718,7 +2718,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -2729,7 +2729,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -2740,7 +2740,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -2751,7 +2751,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -2762,7 +2762,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -2773,7 +2773,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -2784,7 +2784,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -2795,7 +2795,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -2806,7 +2806,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -2817,7 +2817,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -2828,7 +2828,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -2839,7 +2839,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -2850,7 +2850,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -2861,7 +2861,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -2872,7 +2872,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -2883,7 +2883,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -2894,7 +2894,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Url
@@ -2905,7 +2905,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -2916,7 +2916,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Status(self):
-        """HTTP status code.
+        r"""HTTP status code.
         :rtype: str
         """
         return self._Status
@@ -2927,7 +2927,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Ret(self):
-        """retcode
+        r"""retcode
         :rtype: str
         """
         return self._Ret
@@ -2974,7 +2974,7 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
 
 class DescribeDataFetchProjectResponse(AbstractModel):
-    """DescribeDataFetchProject response structure.
+    r"""DescribeDataFetchProject response structure.
 
     """
 
@@ -2990,7 +2990,7 @@ class DescribeDataFetchProjectResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -3001,7 +3001,7 @@ class DescribeDataFetchProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3017,7 +3017,7 @@ class DescribeDataFetchProjectResponse(AbstractModel):
 
 
 class DescribeDataFetchUrlInfoRequest(AbstractModel):
-    """DescribeDataFetchUrlInfo request structure.
+    r"""DescribeDataFetchUrlInfo request structure.
 
     """
 
@@ -3096,7 +3096,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -3107,7 +3107,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Type
@@ -3118,7 +3118,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -3129,7 +3129,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -3140,7 +3140,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -3151,7 +3151,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -3162,7 +3162,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -3173,7 +3173,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -3184,7 +3184,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -3195,7 +3195,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -3206,7 +3206,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -3217,7 +3217,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -3228,7 +3228,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -3239,7 +3239,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -3250,7 +3250,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -3261,7 +3261,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -3272,7 +3272,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -3283,7 +3283,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -3294,7 +3294,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -3305,7 +3305,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -3316,7 +3316,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -3327,7 +3327,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Url
@@ -3338,7 +3338,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -3383,7 +3383,7 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
 
 class DescribeDataFetchUrlInfoResponse(AbstractModel):
-    """DescribeDataFetchUrlInfo response structure.
+    r"""DescribeDataFetchUrlInfo response structure.
 
     """
 
@@ -3399,7 +3399,7 @@ class DescribeDataFetchUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -3410,7 +3410,7 @@ class DescribeDataFetchUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3426,7 +3426,7 @@ class DescribeDataFetchUrlInfoResponse(AbstractModel):
 
 
 class DescribeDataFetchUrlRequest(AbstractModel):
-    """DescribeDataFetchUrl request structure.
+    r"""DescribeDataFetchUrl request structure.
 
     """
 
@@ -3514,7 +3514,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -3525,7 +3525,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -3536,7 +3536,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -3547,7 +3547,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -3558,7 +3558,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -3569,7 +3569,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -3580,7 +3580,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -3591,7 +3591,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -3602,7 +3602,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -3613,7 +3613,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -3624,7 +3624,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -3635,7 +3635,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -3646,7 +3646,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -3657,7 +3657,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -3668,7 +3668,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -3679,7 +3679,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -3690,7 +3690,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -3701,7 +3701,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -3712,7 +3712,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -3723,7 +3723,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -3734,7 +3734,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -3745,7 +3745,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Url
@@ -3756,7 +3756,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -3767,7 +3767,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Status(self):
-        """HTTP status code.
+        r"""HTTP status code.
         :rtype: str
         """
         return self._Status
@@ -3778,7 +3778,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Ret(self):
-        """retcode
+        r"""retcode
         :rtype: str
         """
         return self._Ret
@@ -3789,7 +3789,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def NetStatus(self):
-        """Network status
+        r"""Network status
         :rtype: str
         """
         return self._NetStatus
@@ -3837,7 +3837,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
 
 class DescribeDataFetchUrlResponse(AbstractModel):
-    """DescribeDataFetchUrl response structure.
+    r"""DescribeDataFetchUrl response structure.
 
     """
 
@@ -3853,7 +3853,7 @@ class DescribeDataFetchUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -3864,7 +3864,7 @@ class DescribeDataFetchUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3880,7 +3880,7 @@ class DescribeDataFetchUrlResponse(AbstractModel):
 
 
 class DescribeDataLogUrlInfoRequest(AbstractModel):
-    """DescribeDataLogUrlInfo request structure.
+    r"""DescribeDataLogUrlInfo request structure.
 
     """
 
@@ -3899,7 +3899,7 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -3910,7 +3910,7 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Timestamp
+        r"""Timestamp
         :rtype: int
         """
         return self._StartTime
@@ -3921,7 +3921,7 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Timestamp
+        r"""Timestamp
         :rtype: int
         """
         return self._EndTime
@@ -3946,7 +3946,7 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
 
 class DescribeDataLogUrlInfoResponse(AbstractModel):
-    """DescribeDataLogUrlInfo response structure.
+    r"""DescribeDataLogUrlInfo response structure.
 
     """
 
@@ -3962,7 +3962,7 @@ class DescribeDataLogUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -3973,7 +3973,7 @@ class DescribeDataLogUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3989,7 +3989,7 @@ class DescribeDataLogUrlInfoResponse(AbstractModel):
 
 
 class DescribeDataLogUrlStatisticsRequest(AbstractModel):
-    """DescribeDataLogUrlStatistics request structure.
+    r"""DescribeDataLogUrlStatistics request structure.
 
     """
 
@@ -4062,7 +4062,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -4073,7 +4073,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -4084,7 +4084,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -4095,7 +4095,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -4106,7 +4106,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -4117,7 +4117,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -4128,7 +4128,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -4139,7 +4139,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -4150,7 +4150,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -4161,7 +4161,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -4172,7 +4172,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -4183,7 +4183,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -4194,7 +4194,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -4205,7 +4205,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -4216,7 +4216,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -4227,7 +4227,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -4238,7 +4238,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -4249,7 +4249,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -4260,7 +4260,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -4271,7 +4271,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -4282,7 +4282,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -4325,7 +4325,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
 
 class DescribeDataLogUrlStatisticsResponse(AbstractModel):
-    """DescribeDataLogUrlStatistics response structure.
+    r"""DescribeDataLogUrlStatistics response structure.
 
     """
 
@@ -4341,7 +4341,7 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -4352,7 +4352,7 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4368,7 +4368,7 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
 
 
 class DescribeDataPerformancePageRequest(AbstractModel):
-    """DescribeDataPerformancePage request structure.
+    r"""DescribeDataPerformancePage request structure.
 
     """
 
@@ -4447,7 +4447,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -4458,7 +4458,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -4469,7 +4469,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -4480,7 +4480,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        r"""`pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :rtype: str
         """
         return self._Type
@@ -4491,7 +4491,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -4502,7 +4502,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -4513,7 +4513,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -4524,7 +4524,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -4535,7 +4535,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -4546,7 +4546,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -4557,7 +4557,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -4568,7 +4568,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -4579,7 +4579,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -4590,7 +4590,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -4601,7 +4601,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -4612,7 +4612,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -4623,7 +4623,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -4634,7 +4634,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -4645,7 +4645,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -4656,7 +4656,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -4667,7 +4667,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -4678,7 +4678,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment variable
+        r"""Environment variable
         :rtype: str
         """
         return self._Env
@@ -4689,7 +4689,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def NetStatus(self):
-        """Network status
+        r"""Network status
         :rtype: str
         """
         return self._NetStatus
@@ -4734,7 +4734,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
 
 class DescribeDataPerformancePageResponse(AbstractModel):
-    """DescribeDataPerformancePage response structure.
+    r"""DescribeDataPerformancePage response structure.
 
     """
 
@@ -4750,7 +4750,7 @@ class DescribeDataPerformancePageResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -4761,7 +4761,7 @@ class DescribeDataPerformancePageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4777,7 +4777,7 @@ class DescribeDataPerformancePageResponse(AbstractModel):
 
 
 class DescribeDataPerformanceProjectRequest(AbstractModel):
-    """DescribeDataPerformanceProject request structure.
+    r"""DescribeDataPerformanceProject request structure.
 
     """
 
@@ -4853,7 +4853,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -4864,7 +4864,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        r"""`allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :rtype: str
         """
         return self._Type
@@ -4875,7 +4875,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -4886,7 +4886,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -4897,7 +4897,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -4908,7 +4908,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -4919,7 +4919,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -4930,7 +4930,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -4941,7 +4941,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -4952,7 +4952,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -4963,7 +4963,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -4974,7 +4974,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -4985,7 +4985,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -4996,7 +4996,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -5007,7 +5007,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -5018,7 +5018,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -5029,7 +5029,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -5040,7 +5040,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -5051,7 +5051,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -5062,7 +5062,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -5073,7 +5073,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation
+        r"""Duration calculation
         :rtype: str
         """
         return self._CostType
@@ -5084,7 +5084,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -5128,7 +5128,7 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
 
 class DescribeDataPerformanceProjectResponse(AbstractModel):
-    """DescribeDataPerformanceProject response structure.
+    r"""DescribeDataPerformanceProject response structure.
 
     """
 
@@ -5144,7 +5144,7 @@ class DescribeDataPerformanceProjectResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -5155,7 +5155,7 @@ class DescribeDataPerformanceProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5171,7 +5171,7 @@ class DescribeDataPerformanceProjectResponse(AbstractModel):
 
 
 class DescribeDataPvUrlInfoRequest(AbstractModel):
-    """DescribeDataPvUrlInfo request structure.
+    r"""DescribeDataPvUrlInfo request structure.
 
     """
 
@@ -5244,7 +5244,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -5255,7 +5255,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type
+        r"""Type
         :rtype: str
         """
         return self._Type
@@ -5266,7 +5266,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -5277,7 +5277,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -5288,7 +5288,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -5299,7 +5299,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -5310,7 +5310,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -5321,7 +5321,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -5332,7 +5332,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -5343,7 +5343,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -5354,7 +5354,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -5365,7 +5365,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -5376,7 +5376,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -5387,7 +5387,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -5398,7 +5398,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -5409,7 +5409,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -5420,7 +5420,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -5431,7 +5431,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -5442,7 +5442,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -5453,7 +5453,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -5464,7 +5464,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -5507,7 +5507,7 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
 
 class DescribeDataPvUrlInfoResponse(AbstractModel):
-    """DescribeDataPvUrlInfo response structure.
+    r"""DescribeDataPvUrlInfo response structure.
 
     """
 
@@ -5523,7 +5523,7 @@ class DescribeDataPvUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -5534,7 +5534,7 @@ class DescribeDataPvUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5550,7 +5550,7 @@ class DescribeDataPvUrlInfoResponse(AbstractModel):
 
 
 class DescribeDataPvUrlStatisticsRequest(AbstractModel):
-    """DescribeDataPvUrlStatistics request structure.
+    r"""DescribeDataPvUrlStatistics request structure.
 
     """
 
@@ -5629,7 +5629,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -5640,7 +5640,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -5651,7 +5651,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -5662,7 +5662,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -5673,7 +5673,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -5684,7 +5684,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -5695,7 +5695,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -5706,7 +5706,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -5717,7 +5717,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -5728,7 +5728,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -5739,7 +5739,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -5750,7 +5750,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -5761,7 +5761,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -5772,7 +5772,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -5783,7 +5783,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -5794,7 +5794,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -5805,7 +5805,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -5816,7 +5816,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -5827,7 +5827,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -5838,7 +5838,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -5849,7 +5849,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -5860,7 +5860,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def GroupByType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._GroupByType
@@ -5871,7 +5871,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsNewData(self):
-        """
+        r"""
         :rtype: int
         """
         return self._IsNewData
@@ -5916,7 +5916,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
 
 class DescribeDataPvUrlStatisticsResponse(AbstractModel):
-    """DescribeDataPvUrlStatistics response structure.
+    r"""DescribeDataPvUrlStatistics response structure.
 
     """
 
@@ -5932,7 +5932,7 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -5943,7 +5943,7 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5959,7 +5959,7 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
 
 
 class DescribeDataReportCountRequest(AbstractModel):
-    """DescribeDataReportCount request structure.
+    r"""DescribeDataReportCount request structure.
 
     """
 
@@ -5984,7 +5984,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -5995,7 +5995,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -6006,7 +6006,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -6017,7 +6017,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """Reporting type
+        r"""Reporting type
         :rtype: str
         """
         return self._ReportType
@@ -6028,7 +6028,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -6055,7 +6055,7 @@ class DescribeDataReportCountRequest(AbstractModel):
 
 
 class DescribeDataReportCountResponse(AbstractModel):
-    """DescribeDataReportCount response structure.
+    r"""DescribeDataReportCount response structure.
 
     """
 
@@ -6071,7 +6071,7 @@ class DescribeDataReportCountResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -6082,7 +6082,7 @@ class DescribeDataReportCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6098,7 +6098,7 @@ class DescribeDataReportCountResponse(AbstractModel):
 
 
 class DescribeDataRequest(AbstractModel):
-    """DescribeData request structure.
+    r"""DescribeData request structure.
 
     """
 
@@ -6114,7 +6114,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query string
+        r"""Query string
         :rtype: str
         """
         return self._Query
@@ -6125,7 +6125,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -6149,7 +6149,7 @@ class DescribeDataRequest(AbstractModel):
 
 
 class DescribeDataResponse(AbstractModel):
-    """DescribeData response structure.
+    r"""DescribeData response structure.
 
     """
 
@@ -6165,7 +6165,7 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -6176,7 +6176,7 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6192,7 +6192,7 @@ class DescribeDataResponse(AbstractModel):
 
 
 class DescribeDataSetUrlStatisticsRequest(AbstractModel):
-    """DescribeDataSetUrlStatistics request structure.
+    r"""DescribeDataSetUrlStatistics request structure.
 
     """
 
@@ -6271,7 +6271,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -6282,7 +6282,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        r"""`allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
         :rtype: str
         """
         return self._Type
@@ -6293,7 +6293,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -6304,7 +6304,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -6315,7 +6315,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -6326,7 +6326,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -6337,7 +6337,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -6348,7 +6348,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -6359,7 +6359,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -6370,7 +6370,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -6381,7 +6381,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -6392,7 +6392,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -6403,7 +6403,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -6414,7 +6414,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -6425,7 +6425,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -6436,7 +6436,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -6447,7 +6447,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -6458,7 +6458,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -6469,7 +6469,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -6480,7 +6480,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -6491,7 +6491,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation
+        r"""Duration calculation
         :rtype: str
         """
         return self._CostType
@@ -6502,7 +6502,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -6513,7 +6513,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """The obtained package.
+        r"""The obtained package.
         :rtype: str
         """
         return self._PackageType
@@ -6558,7 +6558,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
 
 class DescribeDataSetUrlStatisticsResponse(AbstractModel):
-    """DescribeDataSetUrlStatistics response structure.
+    r"""DescribeDataSetUrlStatistics response structure.
 
     """
 
@@ -6574,7 +6574,7 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -6585,7 +6585,7 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6601,7 +6601,7 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
 
 
 class DescribeDataStaticProjectRequest(AbstractModel):
-    """DescribeDataStaticProject request structure.
+    r"""DescribeDataStaticProject request structure.
 
     """
 
@@ -6680,7 +6680,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -6691,7 +6691,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -6702,7 +6702,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -6713,7 +6713,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -6724,7 +6724,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -6735,7 +6735,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -6746,7 +6746,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -6757,7 +6757,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -6768,7 +6768,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -6779,7 +6779,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -6790,7 +6790,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -6801,7 +6801,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -6812,7 +6812,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -6823,7 +6823,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -6834,7 +6834,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -6845,7 +6845,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -6856,7 +6856,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -6867,7 +6867,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -6878,7 +6878,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -6889,7 +6889,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -6900,7 +6900,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation
+        r"""Duration calculation
         :rtype: str
         """
         return self._CostType
@@ -6911,7 +6911,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: list of str
         """
         return self._Url
@@ -6922,7 +6922,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -6967,7 +6967,7 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
 
 class DescribeDataStaticProjectResponse(AbstractModel):
-    """DescribeDataStaticProject response structure.
+    r"""DescribeDataStaticProject response structure.
 
     """
 
@@ -6983,7 +6983,7 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -6994,7 +6994,7 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7010,7 +7010,7 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
 
 class DescribeDataStaticResourceRequest(AbstractModel):
-    """DescribeDataStaticResource request structure.
+    r"""DescribeDataStaticResource request structure.
 
     """
 
@@ -7089,7 +7089,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -7100,7 +7100,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -7111,7 +7111,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -7122,7 +7122,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -7133,7 +7133,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -7144,7 +7144,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -7155,7 +7155,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -7166,7 +7166,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -7177,7 +7177,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -7188,7 +7188,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -7199,7 +7199,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -7210,7 +7210,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -7221,7 +7221,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -7232,7 +7232,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -7243,7 +7243,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -7254,7 +7254,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -7265,7 +7265,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -7276,7 +7276,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -7287,7 +7287,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -7298,7 +7298,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -7309,7 +7309,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -7320,7 +7320,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Url
@@ -7331,7 +7331,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -7376,7 +7376,7 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
 
 class DescribeDataStaticResourceResponse(AbstractModel):
-    """DescribeDataStaticResource response structure.
+    r"""DescribeDataStaticResource response structure.
 
     """
 
@@ -7392,7 +7392,7 @@ class DescribeDataStaticResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -7403,7 +7403,7 @@ class DescribeDataStaticResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7419,7 +7419,7 @@ class DescribeDataStaticResourceResponse(AbstractModel):
 
 
 class DescribeDataStaticUrlRequest(AbstractModel):
-    """DescribeDataStaticUrl request structure.
+    r"""DescribeDataStaticUrl request structure.
 
     """
 
@@ -7498,7 +7498,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -7509,7 +7509,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Type(self):
-        """`pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        r"""`pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
         :rtype: str
         """
         return self._Type
@@ -7520,7 +7520,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -7531,7 +7531,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -7542,7 +7542,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -7553,7 +7553,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -7564,7 +7564,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -7575,7 +7575,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -7586,7 +7586,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -7597,7 +7597,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -7608,7 +7608,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -7619,7 +7619,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -7630,7 +7630,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -7641,7 +7641,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -7652,7 +7652,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -7663,7 +7663,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -7674,7 +7674,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -7685,7 +7685,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -7696,7 +7696,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -7707,7 +7707,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -7718,7 +7718,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation method
+        r"""Duration calculation method
         :rtype: str
         """
         return self._CostType
@@ -7729,7 +7729,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Url(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Url
@@ -7740,7 +7740,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -7785,7 +7785,7 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
 
 class DescribeDataStaticUrlResponse(AbstractModel):
-    """DescribeDataStaticUrl response structure.
+    r"""DescribeDataStaticUrl response structure.
 
     """
 
@@ -7801,7 +7801,7 @@ class DescribeDataStaticUrlResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -7812,7 +7812,7 @@ class DescribeDataStaticUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7828,7 +7828,7 @@ class DescribeDataStaticUrlResponse(AbstractModel):
 
 
 class DescribeDataWebVitalsPageRequest(AbstractModel):
-    """DescribeDataWebVitalsPage request structure.
+    r"""DescribeDataWebVitalsPage request structure.
 
     """
 
@@ -7904,7 +7904,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: int
         """
         return self._StartTime
@@ -7915,7 +7915,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: int
         """
         return self._EndTime
@@ -7926,7 +7926,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -7937,7 +7937,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
-        """Custom 2
+        r"""Custom 2
         :rtype: str
         """
         return self._ExtSecond
@@ -7948,7 +7948,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Engine(self):
-        """Browser engine
+        r"""Browser engine
         :rtype: str
         """
         return self._Engine
@@ -7959,7 +7959,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Isp(self):
-        """ISP
+        r"""ISP
         :rtype: str
         """
         return self._Isp
@@ -7970,7 +7970,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source page
+        r"""Source page
         :rtype: str
         """
         return self._From
@@ -7981,7 +7981,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Level(self):
-        """Log level
+        r"""Log level
         :rtype: str
         """
         return self._Level
@@ -7992,7 +7992,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Type(self):
-        """No type yet
+        r"""No type yet
         :rtype: str
         """
         return self._Type
@@ -8003,7 +8003,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Brand(self):
-        """Brand
+        r"""Brand
         :rtype: str
         """
         return self._Brand
@@ -8014,7 +8014,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -8025,7 +8025,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def VersionNum(self):
-        """Version
+        r"""Version
         :rtype: str
         """
         return self._VersionNum
@@ -8036,7 +8036,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Platform(self):
-        """Platform
+        r"""Platform
         :rtype: str
         """
         return self._Platform
@@ -8047,7 +8047,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtThird(self):
-        """Custom 3
+        r"""Custom 3
         :rtype: str
         """
         return self._ExtThird
@@ -8058,7 +8058,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
-        """Custom 1
+        r"""Custom 1
         :rtype: str
         """
         return self._ExtFirst
@@ -8069,7 +8069,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def NetType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetType
@@ -8080,7 +8080,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Device(self):
-        """Model
+        r"""Model
         :rtype: str
         """
         return self._Device
@@ -8091,7 +8091,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
-        """Whether it is outside the Chinese mainland
+        r"""Whether it is outside the Chinese mainland
         :rtype: str
         """
         return self._IsAbroad
@@ -8102,7 +8102,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Os(self):
-        """OS
+        r"""OS
         :rtype: str
         """
         return self._Os
@@ -8113,7 +8113,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Browser(self):
-        """Browser
+        r"""Browser
         :rtype: str
         """
         return self._Browser
@@ -8124,7 +8124,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def CostType(self):
-        """Duration calculation
+        r"""Duration calculation
         :rtype: str
         """
         return self._CostType
@@ -8135,7 +8135,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Env(self):
-        """Environment
+        r"""Environment
         :rtype: str
         """
         return self._Env
@@ -8179,7 +8179,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
 
 class DescribeDataWebVitalsPageResponse(AbstractModel):
-    """DescribeDataWebVitalsPage response structure.
+    r"""DescribeDataWebVitalsPage response structure.
 
     """
 
@@ -8195,7 +8195,7 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned value
+        r"""Returned value
         :rtype: str
         """
         return self._Result
@@ -8206,7 +8206,7 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8222,7 +8222,7 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
 
 
 class DescribeErrorRequest(AbstractModel):
-    """DescribeError request structure.
+    r"""DescribeError request structure.
 
     """
 
@@ -8238,7 +8238,7 @@ class DescribeErrorRequest(AbstractModel):
 
     @property
     def Date(self):
-        """Date
+        r"""Date
         :rtype: str
         """
         return self._Date
@@ -8249,7 +8249,7 @@ class DescribeErrorRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -8273,7 +8273,7 @@ class DescribeErrorRequest(AbstractModel):
 
 
 class DescribeErrorResponse(AbstractModel):
-    """DescribeError response structure.
+    r"""DescribeError response structure.
 
     """
 
@@ -8295,7 +8295,7 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def Content(self):
-        """Content
+        r"""Content
         :rtype: str
         """
         return self._Content
@@ -8306,7 +8306,7 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -8317,7 +8317,7 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._CreateTime
@@ -8328,7 +8328,7 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8346,7 +8346,7 @@ class DescribeErrorResponse(AbstractModel):
 
 
 class DescribeLogExportsRequest(AbstractModel):
-    """DescribeLogExports request structure.
+    r"""DescribeLogExports request structure.
 
     """
 
@@ -8359,7 +8359,7 @@ class DescribeLogExportsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -8382,7 +8382,7 @@ class DescribeLogExportsRequest(AbstractModel):
 
 
 class DescribeLogExportsResponse(AbstractModel):
-    """DescribeLogExports response structure.
+    r"""DescribeLogExports response structure.
 
     """
 
@@ -8398,7 +8398,7 @@ class DescribeLogExportsResponse(AbstractModel):
 
     @property
     def LogExportSet(self):
-        """List of log export records
+        r"""List of log export records
         :rtype: list of LogExport
         """
         return self._LogExportSet
@@ -8409,7 +8409,7 @@ class DescribeLogExportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8430,7 +8430,7 @@ class DescribeLogExportsResponse(AbstractModel):
 
 
 class DescribeLogListRequest(AbstractModel):
-    """DescribeLogList request structure.
+    r"""DescribeLogList request structure.
 
     """
 
@@ -8464,7 +8464,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Sort(self):
-        """Sorting order (required). Valid values: `desc`, `asc`.
+        r"""Sorting order (required). Valid values: `desc`, `asc`.
         :rtype: str
         """
         return self._Sort
@@ -8475,7 +8475,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """This parameter is required. Valid values: `searchlog`, `histogram`.
+        r"""This parameter is required. Valid values: `searchlog`, `histogram`.
         :rtype: str
         """
         return self._ActionType
@@ -8486,7 +8486,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -8497,7 +8497,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (required)
+        r"""Start time (required)
         :rtype: str
         """
         return self._StartTime
@@ -8508,7 +8508,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.
+        r"""The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -8519,7 +8519,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Context(self):
-        """Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
+        r"""Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
         :rtype: str
         """
         return self._Context
@@ -8530,7 +8530,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query statement, which is required and can contain up to 4,096 characters, such as "id:120001 AND type:\"log\"".
+        r"""Query statement, which is required and can contain up to 4,096 characters, such as "id:120001 AND type:\"log\"".
         :rtype: str
         """
         return self._Query
@@ -8541,7 +8541,7 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (required)
+        r"""End time (required)
         :rtype: str
         """
         return self._EndTime
@@ -8571,7 +8571,7 @@ class DescribeLogListRequest(AbstractModel):
 
 
 class DescribeLogListResponse(AbstractModel):
-    """DescribeLogList response structure.
+    r"""DescribeLogList response structure.
 
     """
 
@@ -8587,7 +8587,7 @@ class DescribeLogListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -8598,7 +8598,7 @@ class DescribeLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8614,7 +8614,7 @@ class DescribeLogListResponse(AbstractModel):
 
 
 class DescribeOfflineLogConfigsRequest(AbstractModel):
-    """DescribeOfflineLogConfigs request structure.
+    r"""DescribeOfflineLogConfigs request structure.
 
     """
 
@@ -8627,7 +8627,7 @@ class DescribeOfflineLogConfigsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -8650,7 +8650,7 @@ class DescribeOfflineLogConfigsRequest(AbstractModel):
 
 
 class DescribeOfflineLogConfigsResponse(AbstractModel):
-    """DescribeOfflineLogConfigs response structure.
+    r"""DescribeOfflineLogConfigs response structure.
 
     """
 
@@ -8669,7 +8669,7 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API call information
+        r"""API call information
         :rtype: str
         """
         return self._Msg
@@ -8680,7 +8680,7 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def UniqueIDSet(self):
-        """Array of unique user identifiers
+        r"""Array of unique user identifiers
         :rtype: list of str
         """
         return self._UniqueIDSet
@@ -8691,7 +8691,7 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8708,7 +8708,7 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
 
 class DescribeOfflineLogRecordsRequest(AbstractModel):
-    """DescribeOfflineLogRecords request structure.
+    r"""DescribeOfflineLogRecords request structure.
 
     """
 
@@ -8721,7 +8721,7 @@ class DescribeOfflineLogRecordsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -8744,7 +8744,7 @@ class DescribeOfflineLogRecordsRequest(AbstractModel):
 
 
 class DescribeOfflineLogRecordsResponse(AbstractModel):
-    """DescribeOfflineLogRecords response structure.
+    r"""DescribeOfflineLogRecords response structure.
 
     """
 
@@ -8763,7 +8763,7 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API call information
+        r"""API call information
         :rtype: str
         """
         return self._Msg
@@ -8774,7 +8774,7 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def RecordSet(self):
-        """Array of record IDs
+        r"""Array of record IDs
         :rtype: list of str
         """
         return self._RecordSet
@@ -8785,7 +8785,7 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8802,7 +8802,7 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
 
 class DescribeOfflineLogsRequest(AbstractModel):
-    """DescribeOfflineLogs request structure.
+    r"""DescribeOfflineLogs request structure.
 
     """
 
@@ -8818,7 +8818,7 @@ class DescribeOfflineLogsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
-        """Unique project key for reporting
+        r"""Unique project key for reporting
         :rtype: str
         """
         return self._ProjectKey
@@ -8829,7 +8829,7 @@ class DescribeOfflineLogsRequest(AbstractModel):
 
     @property
     def FileIDs(self):
-        """List of offline log file IDs
+        r"""List of offline log file IDs
         :rtype: list of str
         """
         return self._FileIDs
@@ -8853,7 +8853,7 @@ class DescribeOfflineLogsRequest(AbstractModel):
 
 
 class DescribeOfflineLogsResponse(AbstractModel):
-    """DescribeOfflineLogs response structure.
+    r"""DescribeOfflineLogs response structure.
 
     """
 
@@ -8872,7 +8872,7 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """API call response
+        r"""API call response
         :rtype: str
         """
         return self._Msg
@@ -8883,7 +8883,7 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def LogSet(self):
-        """Log list
+        r"""Log list
         :rtype: list of str
         """
         return self._LogSet
@@ -8894,7 +8894,7 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8911,7 +8911,7 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
 
 class DescribeProjectLimitsRequest(AbstractModel):
-    """DescribeProjectLimits request structure.
+    r"""DescribeProjectLimits request structure.
 
     """
 
@@ -8924,7 +8924,7 @@ class DescribeProjectLimitsRequest(AbstractModel):
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -8947,7 +8947,7 @@ class DescribeProjectLimitsRequest(AbstractModel):
 
 
 class DescribeProjectLimitsResponse(AbstractModel):
-    """DescribeProjectLimits response structure.
+    r"""DescribeProjectLimits response structure.
 
     """
 
@@ -8963,7 +8963,7 @@ class DescribeProjectLimitsResponse(AbstractModel):
 
     @property
     def ProjectLimitSet(self):
-        """Array of reporting rates
+        r"""Array of reporting rates
         :rtype: list of ProjectLimit
         """
         return self._ProjectLimitSet
@@ -8974,7 +8974,7 @@ class DescribeProjectLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8995,7 +8995,7 @@ class DescribeProjectLimitsResponse(AbstractModel):
 
 
 class DescribeProjectsRequest(AbstractModel):
-    """DescribeProjects request structure.
+    r"""DescribeProjects request structure.
 
     """
 
@@ -9017,7 +9017,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page (integer)
+        r"""Number of items per page (integer)
         :rtype: int
         """
         return self._Limit
@@ -9028,7 +9028,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number (integer)
+        r"""Page number (integer)
         :rtype: int
         """
         return self._Offset
@@ -9039,7 +9039,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter parameter. Pass in {"Name": "IsDemo", "Values":["1"]} for the demo mode.
+        r"""Filter parameter. Pass in {"Name": "IsDemo", "Values":["1"]} for the demo mode.
         :rtype: list of Filter
         """
         return self._Filters
@@ -9050,7 +9050,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def IsDemo(self):
-        """This parameter has been disused. You need to indicate whether the demo mode is used in `Filters`.
+        r"""This parameter has been disused. You need to indicate whether the demo mode is used in `Filters`.
         :rtype: int
         """
         return self._IsDemo
@@ -9081,7 +9081,7 @@ class DescribeProjectsRequest(AbstractModel):
 
 
 class DescribeProjectsResponse(AbstractModel):
-    """DescribeProjects response structure.
+    r"""DescribeProjects response structure.
 
     """
 
@@ -9100,7 +9100,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of items in the list
+        r"""Total number of items in the list
         :rtype: int
         """
         return self._TotalCount
@@ -9111,7 +9111,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def ProjectSet(self):
-        """Project list
+        r"""Project list
         :rtype: list of RumProject
         """
         return self._ProjectSet
@@ -9122,7 +9122,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9144,7 +9144,7 @@ class DescribeProjectsResponse(AbstractModel):
 
 
 class DescribePvListRequest(AbstractModel):
-    """DescribePvList request structure.
+    r"""DescribePvList request structure.
 
     """
 
@@ -9166,7 +9166,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """ID
+        r"""ID
         :rtype: int
         """
         return self._ProjectId
@@ -9177,7 +9177,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -9188,7 +9188,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -9199,7 +9199,7 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """Get day:d (leave this parameter empty if to get min)
+        r"""Get day:d (leave this parameter empty if to get min)
         :rtype: str
         """
         return self._Dimension
@@ -9225,7 +9225,7 @@ class DescribePvListRequest(AbstractModel):
 
 
 class DescribePvListResponse(AbstractModel):
-    """DescribePvList response structure.
+    r"""DescribePvList response structure.
 
     """
 
@@ -9242,7 +9242,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectPvSet(self):
-        """PV list
+        r"""PV list
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of RumPvInfo
         """
@@ -9254,7 +9254,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9275,7 +9275,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeReleaseFileSignRequest(AbstractModel):
-    """DescribeReleaseFileSign request structure.
+    r"""DescribeReleaseFileSign request structure.
 
     """
 
@@ -9291,7 +9291,7 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """Timeout period. If it is not set, it will be 5 minutes by default
+        r"""Timeout period. If it is not set, it will be 5 minutes by default
         :rtype: int
         """
         return self._Timeout
@@ -9302,7 +9302,7 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).
+        r"""Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).
         :rtype: int
         """
         return self._FileType
@@ -9326,7 +9326,7 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
 
 class DescribeReleaseFileSignResponse(AbstractModel):
-    """DescribeReleaseFileSign response structure.
+    r"""DescribeReleaseFileSign response structure.
 
     """
 
@@ -9354,7 +9354,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Temporary key
+        r"""Temporary key
         :rtype: str
         """
         return self._SecretKey
@@ -9365,7 +9365,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SecretID(self):
-        """Temporary key ID
+        r"""Temporary key ID
         :rtype: str
         """
         return self._SecretID
@@ -9376,7 +9376,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SessionToken(self):
-        """Temporary key token
+        r"""Temporary key token
         :rtype: str
         """
         return self._SessionToken
@@ -9387,7 +9387,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp
+        r"""Start timestamp
         :rtype: int
         """
         return self._StartTime
@@ -9398,7 +9398,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Expiration timestamp
+        r"""Expiration timestamp
         :rtype: int
         """
         return self._ExpiredTime
@@ -9409,7 +9409,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9429,7 +9429,7 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
 
 class DescribeReleaseFilesRequest(AbstractModel):
-    """DescribeReleaseFiles request structure.
+    r"""DescribeReleaseFiles request structure.
 
     """
 
@@ -9445,7 +9445,7 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -9456,7 +9456,7 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def FileVersion(self):
-        """File version
+        r"""File version
         :rtype: str
         """
         return self._FileVersion
@@ -9480,7 +9480,7 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
 
 class DescribeReleaseFilesResponse(AbstractModel):
-    """DescribeReleaseFiles response structure.
+    r"""DescribeReleaseFiles response structure.
 
     """
 
@@ -9496,7 +9496,7 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     @property
     def Files(self):
-        """File information list
+        r"""File information list
         :rtype: list of ReleaseFile
         """
         return self._Files
@@ -9507,7 +9507,7 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9528,7 +9528,7 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
 
 class DescribeRumGroupLogRequest(AbstractModel):
-    """DescribeRumGroupLog request structure.
+    r"""DescribeRumGroupLog request structure.
 
     """
 
@@ -9562,7 +9562,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting order (required). Valid values: `desc`, `asc`.
+        r"""Sorting order (required). Valid values: `desc`, `asc`.
         :rtype: str
         """
         return self._OrderBy
@@ -9573,7 +9573,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (required)
+        r"""Start time (required)
         :rtype: str
         """
         return self._StartTime
@@ -9584,7 +9584,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        r"""The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -9595,7 +9595,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Page
@@ -9606,7 +9606,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query statement, which is required and can contain up to 4,096 characters.
+        r"""Query statement, which is required and can contain up to 4,096 characters.
         :rtype: str
         """
         return self._Query
@@ -9617,7 +9617,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (required)
+        r"""End time (required)
         :rtype: str
         """
         return self._EndTime
@@ -9628,7 +9628,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -9639,7 +9639,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def GroupField(self):
-        """Aggregate field
+        r"""Aggregate field
         :rtype: str
         """
         return self._GroupField
@@ -9669,7 +9669,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
 
 class DescribeRumGroupLogResponse(AbstractModel):
-    """DescribeRumGroupLog response structure.
+    r"""DescribeRumGroupLog response structure.
 
     """
 
@@ -9685,7 +9685,7 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -9696,7 +9696,7 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9712,7 +9712,7 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
 
 class DescribeRumLogExportRequest(AbstractModel):
-    """DescribeRumLogExport request structure.
+    r"""DescribeRumLogExport request structure.
 
     """
 
@@ -9740,7 +9740,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Export identifier name
+        r"""Export identifier name
         :rtype: str
         """
         return self._Name
@@ -9751,7 +9751,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (required)
+        r"""Start time (required)
         :rtype: str
         """
         return self._StartTime
@@ -9762,7 +9762,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query statement, which is required and can contain up to 4,096 characters.
+        r"""Query statement, which is required and can contain up to 4,096 characters.
         :rtype: str
         """
         return self._Query
@@ -9773,7 +9773,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (required)
+        r"""End time (required)
         :rtype: str
         """
         return self._EndTime
@@ -9784,7 +9784,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -9795,7 +9795,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Fields(self):
-        """Filter field
+        r"""Filter field
         :rtype: list of str
         """
         return self._Fields
@@ -9823,7 +9823,7 @@ class DescribeRumLogExportRequest(AbstractModel):
 
 
 class DescribeRumLogExportResponse(AbstractModel):
-    """DescribeRumLogExport response structure.
+    r"""DescribeRumLogExport response structure.
 
     """
 
@@ -9839,7 +9839,7 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -9850,7 +9850,7 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9866,7 +9866,7 @@ class DescribeRumLogExportResponse(AbstractModel):
 
 
 class DescribeRumLogExportsRequest(AbstractModel):
-    """DescribeRumLogExports request structure.
+    r"""DescribeRumLogExports request structure.
 
     """
 
@@ -9885,7 +9885,7 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size
+        r"""Page size
         :rtype: int
         """
         return self._PageSize
@@ -9896,7 +9896,7 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._PageNum
@@ -9907,7 +9907,7 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -9932,7 +9932,7 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
 
 class DescribeRumLogExportsResponse(AbstractModel):
-    """DescribeRumLogExports response structure.
+    r"""DescribeRumLogExports response structure.
 
     """
 
@@ -9948,7 +9948,7 @@ class DescribeRumLogExportsResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -9959,7 +9959,7 @@ class DescribeRumLogExportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9975,7 +9975,7 @@ class DescribeRumLogExportsResponse(AbstractModel):
 
 
 class DescribeRumLogListRequest(AbstractModel):
-    """DescribeRumLogList request structure.
+    r"""DescribeRumLogList request structure.
 
     """
 
@@ -10006,7 +10006,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting order (required). Valid values: `desc`, `asc`.
+        r"""Sorting order (required). Valid values: `desc`, `asc`.
         :rtype: str
         """
         return self._OrderBy
@@ -10017,7 +10017,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time in milliseconds. It is in timestamp format and is required.
+        r"""Start time in milliseconds. It is in timestamp format and is required.
         :rtype: str
         """
         return self._StartTime
@@ -10028,7 +10028,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        r"""The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -10039,7 +10039,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Page(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Page
@@ -10050,7 +10050,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query statement, which is required and can contain up to 4,096 characters.
+        r"""Query statement, which is required and can contain up to 4,096 characters.
         :rtype: str
         """
         return self._Query
@@ -10061,7 +10061,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time in milliseconds. It is in timestamp format and is required.
+        r"""End time in milliseconds. It is in timestamp format and is required.
         :rtype: str
         """
         return self._EndTime
@@ -10072,7 +10072,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -10101,7 +10101,7 @@ class DescribeRumLogListRequest(AbstractModel):
 
 
 class DescribeRumLogListResponse(AbstractModel):
-    """DescribeRumLogList response structure.
+    r"""DescribeRumLogList response structure.
 
     """
 
@@ -10117,7 +10117,7 @@ class DescribeRumLogListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -10128,7 +10128,7 @@ class DescribeRumLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10144,7 +10144,7 @@ class DescribeRumLogListResponse(AbstractModel):
 
 
 class DescribeRumStatsLogListRequest(AbstractModel):
-    """DescribeRumStatsLogList request structure.
+    r"""DescribeRumStatsLogList request structure.
 
     """
 
@@ -10169,7 +10169,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (required)
+        r"""Start time (required)
         :rtype: str
         """
         return self._StartTime
@@ -10180,7 +10180,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        r"""The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -10191,7 +10191,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query statement, which is required and can contain up to 4,096 characters.
+        r"""Query statement, which is required and can contain up to 4,096 characters.
         :rtype: str
         """
         return self._Query
@@ -10202,7 +10202,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (required)
+        r"""End time (required)
         :rtype: str
         """
         return self._EndTime
@@ -10213,7 +10213,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID (required)
+        r"""Project ID (required)
         :rtype: int
         """
         return self._ID
@@ -10240,7 +10240,7 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
 
 class DescribeRumStatsLogListResponse(AbstractModel):
-    """DescribeRumStatsLogList response structure.
+    r"""DescribeRumStatsLogList response structure.
 
     """
 
@@ -10256,7 +10256,7 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Response string
+        r"""Response string
         :rtype: str
         """
         return self._Result
@@ -10267,7 +10267,7 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10283,7 +10283,7 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
 
 class DescribeScoresRequest(AbstractModel):
-    """DescribeScores request structure.
+    r"""DescribeScores request structure.
 
     """
 
@@ -10305,7 +10305,7 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -10316,7 +10316,7 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -10327,7 +10327,7 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -10338,7 +10338,7 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def IsDemo(self):
-        """This parameter has been disused.
+        r"""This parameter has been disused.
         :rtype: int
         """
         return self._IsDemo
@@ -10364,7 +10364,7 @@ class DescribeScoresRequest(AbstractModel):
 
 
 class DescribeScoresResponse(AbstractModel):
-    """DescribeScores response structure.
+    r"""DescribeScores response structure.
 
     """
 
@@ -10380,7 +10380,7 @@ class DescribeScoresResponse(AbstractModel):
 
     @property
     def ScoreSet(self):
-        """Array
+        r"""Array
         :rtype: list of ScoreInfo
         """
         return self._ScoreSet
@@ -10391,7 +10391,7 @@ class DescribeScoresResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10412,7 +10412,7 @@ class DescribeScoresResponse(AbstractModel):
 
 
 class DescribeTawAreasRequest(AbstractModel):
-    """DescribeTawAreas request structure.
+    r"""DescribeTawAreas request structure.
 
     """
 
@@ -10437,7 +10437,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaIds(self):
-        """Region ID
+        r"""Region ID
         :rtype: list of int
         """
         return self._AreaIds
@@ -10448,7 +10448,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaKeys(self):
-        """Region key
+        r"""Region key
         :rtype: list of str
         """
         return self._AreaKeys
@@ -10459,7 +10459,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination limit
+        r"""Pagination limit
         :rtype: int
         """
         return self._Limit
@@ -10470,7 +10470,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaStatuses(self):
-        """Region status (1: valid; 2: invalid)
+        r"""Region status (1: valid; 2: invalid)
         :rtype: list of int
         """
         return self._AreaStatuses
@@ -10481,7 +10481,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -10508,7 +10508,7 @@ class DescribeTawAreasRequest(AbstractModel):
 
 
 class DescribeTawAreasResponse(AbstractModel):
-    """DescribeTawAreas response structure.
+    r"""DescribeTawAreas response structure.
 
     """
 
@@ -10527,7 +10527,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of regions
+        r"""Total number of regions
         :rtype: int
         """
         return self._TotalCount
@@ -10538,7 +10538,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def AreaSet(self):
-        """Region list
+        r"""Region list
         :rtype: list of RumAreaInfo
         """
         return self._AreaSet
@@ -10549,7 +10549,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10571,7 +10571,7 @@ class DescribeTawAreasResponse(AbstractModel):
 
 
 class DescribeUvListRequest(AbstractModel):
-    """DescribeUvList request structure.
+    r"""DescribeUvList request structure.
 
     """
 
@@ -10593,7 +10593,7 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """ID
+        r"""ID
         :rtype: int
         """
         return self._ProjectId
@@ -10604,7 +10604,7 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -10615,7 +10615,7 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -10626,7 +10626,7 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        """Get day:d min:m
+        r"""Get day:d min:m
         :rtype: str
         """
         return self._Dimension
@@ -10652,7 +10652,7 @@ class DescribeUvListRequest(AbstractModel):
 
 
 class DescribeUvListResponse(AbstractModel):
-    """DescribeUvList response structure.
+    r"""DescribeUvList response structure.
 
     """
 
@@ -10668,7 +10668,7 @@ class DescribeUvListResponse(AbstractModel):
 
     @property
     def ProjectUvSet(self):
-        """UV list
+        r"""UV list
         :rtype: list of RumUvInfo
         """
         return self._ProjectUvSet
@@ -10679,7 +10679,7 @@ class DescribeUvListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10700,7 +10700,7 @@ class DescribeUvListResponse(AbstractModel):
 
 
 class DescribeWhitelistsRequest(AbstractModel):
-    """DescribeWhitelists request structure.
+    r"""DescribeWhitelists request structure.
 
     """
 
@@ -10713,7 +10713,7 @@ class DescribeWhitelistsRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -10736,7 +10736,7 @@ class DescribeWhitelistsRequest(AbstractModel):
 
 
 class DescribeWhitelistsResponse(AbstractModel):
-    """DescribeWhitelists response structure.
+    r"""DescribeWhitelists response structure.
 
     """
 
@@ -10752,7 +10752,7 @@ class DescribeWhitelistsResponse(AbstractModel):
 
     @property
     def WhitelistSet(self):
-        """Allowlist list
+        r"""Allowlist list
         :rtype: list of Whitelist
         """
         return self._WhitelistSet
@@ -10763,7 +10763,7 @@ class DescribeWhitelistsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10784,7 +10784,7 @@ class DescribeWhitelistsResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
+    r"""Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.
 
     · If more than one filter exists, the logical relationship between these filters is `AND`.
     · If multiple values exist in one filter, the logical relationship between these values is `OR`.
@@ -10803,7 +10803,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """One or more filter values.
+        r"""One or more filter values.
         :rtype: list of str
         """
         return self._Values
@@ -10814,7 +10814,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter name.
+        r"""Filter name.
         :rtype: str
         """
         return self._Name
@@ -10838,7 +10838,7 @@ class Filter(AbstractModel):
 
 
 class LogExport(AbstractModel):
-    """Log export record
+    r"""Log export record
 
     """
 
@@ -10884,7 +10884,7 @@ class LogExport(AbstractModel):
 
     @property
     def CosPath(self):
-        """Log export path
+        r"""Log export path
         :rtype: str
         """
         return self._CosPath
@@ -10895,7 +10895,7 @@ class LogExport(AbstractModel):
 
     @property
     def Count(self):
-        """Number of logs to be exported
+        r"""Number of logs to be exported
         :rtype: int
         """
         return self._Count
@@ -10906,7 +10906,7 @@ class LogExport(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Log export task creation time
+        r"""Log export task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -10917,7 +10917,7 @@ class LogExport(AbstractModel):
 
     @property
     def ExportID(self):
-        """Log export task ID
+        r"""Log export task ID
         :rtype: str
         """
         return self._ExportID
@@ -10928,7 +10928,7 @@ class LogExport(AbstractModel):
 
     @property
     def FileName(self):
-        """Log export filename
+        r"""Log export filename
         :rtype: str
         """
         return self._FileName
@@ -10939,7 +10939,7 @@ class LogExport(AbstractModel):
 
     @property
     def FileSize(self):
-        """Log file size
+        r"""Log file size
         :rtype: int
         """
         return self._FileSize
@@ -10950,7 +10950,7 @@ class LogExport(AbstractModel):
 
     @property
     def Format(self):
-        """Log export format
+        r"""Log export format
         :rtype: str
         """
         return self._Format
@@ -10961,7 +10961,7 @@ class LogExport(AbstractModel):
 
     @property
     def Order(self):
-        """Log export time sorting
+        r"""Log export time sorting
         :rtype: str
         """
         return self._Order
@@ -10972,7 +10972,7 @@ class LogExport(AbstractModel):
 
     @property
     def Query(self):
-        """Log export query statement
+        r"""Log export query statement
         :rtype: str
         """
         return self._Query
@@ -10983,7 +10983,7 @@ class LogExport(AbstractModel):
 
     @property
     def StartTime(self):
-        """Log export start time
+        r"""Log export start time
         :rtype: str
         """
         return self._StartTime
@@ -10994,7 +10994,7 @@ class LogExport(AbstractModel):
 
     @property
     def EndTime(self):
-        """Log export end time
+        r"""Log export end time
         :rtype: str
         """
         return self._EndTime
@@ -11005,7 +11005,7 @@ class LogExport(AbstractModel):
 
     @property
     def Status(self):
-        """Log download status. Valid values: Queuing: queuing; Processing: exporting; Complete: completed; Failed: failed; Expired: expired (3-day validity period).
+        r"""Log download status. Valid values: Queuing: queuing; Processing: exporting; Complete: completed; Failed: failed; Expired: expired (3-day validity period).
         :rtype: str
         """
         return self._Status
@@ -11039,7 +11039,7 @@ class LogExport(AbstractModel):
 
 
 class ModifyInstanceRequest(AbstractModel):
-    """ModifyInstance request structure.
+    r"""ModifyInstance request structure.
 
     """
 
@@ -11058,7 +11058,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of the instance to be modified
+        r"""ID of the instance to be modified
         :rtype: str
         """
         return self._InstanceId
@@ -11069,7 +11069,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """New instance name (up to 255 characters)
+        r"""New instance name (up to 255 characters)
         :rtype: str
         """
         return self._InstanceName
@@ -11080,7 +11080,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceDesc(self):
-        """New instance description (up to 1,024 characters)
+        r"""New instance description (up to 1,024 characters)
         :rtype: str
         """
         return self._InstanceDesc
@@ -11105,7 +11105,7 @@ class ModifyInstanceRequest(AbstractModel):
 
 
 class ModifyInstanceResponse(AbstractModel):
-    """ModifyInstance response structure.
+    r"""ModifyInstance response structure.
 
     """
 
@@ -11118,7 +11118,7 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11133,7 +11133,7 @@ class ModifyInstanceResponse(AbstractModel):
 
 
 class ModifyProjectLimitRequest(AbstractModel):
-    """ModifyProjectLimit request structure.
+    r"""ModifyProjectLimit request structure.
 
     """
 
@@ -11158,7 +11158,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -11169,7 +11169,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ProjectInterface(self):
-        """Project API
+        r"""Project API
         :rtype: str
         """
         return self._ProjectInterface
@@ -11180,7 +11180,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ReportRate(self):
-        """Reporting rate. 10 means 10%
+        r"""Reporting rate. 10 means 10%
         :rtype: int
         """
         return self._ReportRate
@@ -11191,7 +11191,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        """Reporting type. 1: rate; 2: number of reported data entries
+        r"""Reporting type. 1: rate; 2: number of reported data entries
         :rtype: int
         """
         return self._ReportType
@@ -11202,7 +11202,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Primary key ID
+        r"""Primary key ID
         :rtype: int
         """
         return self._ID
@@ -11229,7 +11229,7 @@ class ModifyProjectLimitRequest(AbstractModel):
 
 
 class ModifyProjectLimitResponse(AbstractModel):
-    """ModifyProjectLimit response structure.
+    r"""ModifyProjectLimit response structure.
 
     """
 
@@ -11246,7 +11246,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
-        """Returned message
+        r"""Returned message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11258,7 +11258,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11274,7 +11274,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyProjectRequest(AbstractModel):
-    """ModifyProject request structure.
+    r"""ModifyProject request structure.
 
     """
 
@@ -11311,7 +11311,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -11322,7 +11322,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Project name (optional, not empty, and up to 200 characters)
+        r"""Project name (optional, not empty, and up to 200 characters)
         :rtype: str
         """
         return self._Name
@@ -11333,7 +11333,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def URL(self):
-        """Project webpage URL (optional and up to 256 characters)
+        r"""Project webpage URL (optional and up to 256 characters)
         :rtype: str
         """
         return self._URL
@@ -11344,7 +11344,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Repo(self):
-        """Project repository address (optional and up to 256 characters)
+        r"""Project repository address (optional and up to 256 characters)
         :rtype: str
         """
         return self._Repo
@@ -11355,7 +11355,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        """ID of the instance to which to move the project (optional)
+        r"""ID of the instance to which to move the project (optional)
         :rtype: str
         """
         return self._InstanceID
@@ -11366,7 +11366,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Rate(self):
-        """Project sample rate (optional)
+        r"""Project sample rate (optional)
         :rtype: str
         """
         return self._Rate
@@ -11377,7 +11377,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def EnableURLGroup(self):
-        """Whether to enable aggregation (optional)
+        r"""Whether to enable aggregation (optional)
         :rtype: int
         """
         return self._EnableURLGroup
@@ -11388,7 +11388,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
+        r"""Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
         :rtype: str
         """
         return self._Type
@@ -11399,7 +11399,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """Project description (optional and up to 1,000 characters)
+        r"""Project description (optional and up to 1,000 characters)
         :rtype: str
         """
         return self._Desc
@@ -11430,7 +11430,7 @@ class ModifyProjectRequest(AbstractModel):
 
 
 class ModifyProjectResponse(AbstractModel):
-    """ModifyProject response structure.
+    r"""ModifyProject response structure.
 
     """
 
@@ -11449,7 +11449,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Operation information
+        r"""Operation information
         :rtype: str
         """
         return self._Msg
@@ -11460,7 +11460,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -11471,7 +11471,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11488,7 +11488,7 @@ class ModifyProjectResponse(AbstractModel):
 
 
 class ProjectLimit(AbstractModel):
-    """Project API restriction type
+    r"""Project API restriction type
 
     """
 
@@ -11513,7 +11513,7 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ID(self):
-        """Primary key ID
+        r"""Primary key ID
         :rtype: int
         """
         return self._ID
@@ -11524,7 +11524,7 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -11535,7 +11535,7 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ProjectInterface(self):
-        """API
+        r"""API
         :rtype: str
         """
         return self._ProjectInterface
@@ -11546,7 +11546,7 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ReportRate(self):
-        """Reporting rate
+        r"""Reporting rate
         :rtype: int
         """
         return self._ReportRate
@@ -11557,7 +11557,7 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ReportType(self):
-        """Reporting type. 1: reporting rate; 2: reporting count limit
+        r"""Reporting type. 1: reporting rate; 2: reporting count limit
         :rtype: int
         """
         return self._ReportType
@@ -11584,7 +11584,7 @@ class ProjectLimit(AbstractModel):
 
 
 class ReleaseFile(AbstractModel):
-    """Release file list (sourcemap)
+    r"""Release file list (sourcemap)
 
     """
 
@@ -11610,7 +11610,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """File version
+        r"""File version
         :rtype: str
         """
         return self._Version
@@ -11621,7 +11621,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileKey(self):
-        """Unique file key
+        r"""Unique file key
         :rtype: str
         """
         return self._FileKey
@@ -11632,7 +11632,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
-        """Filename
+        r"""Filename
         :rtype: str
         """
         return self._FileName
@@ -11643,7 +11643,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileHash(self):
-        """File hash
+        r"""File hash
         :rtype: str
         """
         return self._FileHash
@@ -11654,7 +11654,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
-        """File ID
+        r"""File ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11682,7 +11682,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ResumeInstanceRequest(AbstractModel):
-    """ResumeInstance request structure.
+    r"""ResumeInstance request structure.
 
     """
 
@@ -11695,7 +11695,7 @@ class ResumeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of the instance to be resumed
+        r"""ID of the instance to be resumed
         :rtype: str
         """
         return self._InstanceId
@@ -11718,7 +11718,7 @@ class ResumeInstanceRequest(AbstractModel):
 
 
 class ResumeInstanceResponse(AbstractModel):
-    """ResumeInstance response structure.
+    r"""ResumeInstance response structure.
 
     """
 
@@ -11731,7 +11731,7 @@ class ResumeInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11746,7 +11746,7 @@ class ResumeInstanceResponse(AbstractModel):
 
 
 class ResumeProjectRequest(AbstractModel):
-    """ResumeProject request structure.
+    r"""ResumeProject request structure.
 
     """
 
@@ -11759,7 +11759,7 @@ class ResumeProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -11782,7 +11782,7 @@ class ResumeProjectRequest(AbstractModel):
 
 
 class ResumeProjectResponse(AbstractModel):
-    """ResumeProject response structure.
+    r"""ResumeProject response structure.
 
     """
 
@@ -11795,7 +11795,7 @@ class ResumeProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11810,7 +11810,7 @@ class ResumeProjectResponse(AbstractModel):
 
 
 class RumAreaInfo(AbstractModel):
-    """RUM region information
+    r"""RUM region information
 
     """
 
@@ -11841,7 +11841,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._AreaId
@@ -11852,7 +11852,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaStatus(self):
-        """Region status (1: valid; 2: invalid)
+        r"""Region status (1: valid; 2: invalid)
         :rtype: int
         """
         return self._AreaStatus
@@ -11863,7 +11863,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaName(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._AreaName
@@ -11874,7 +11874,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaKey(self):
-        """Region key
+        r"""Region key
         :rtype: str
         """
         return self._AreaKey
@@ -11885,7 +11885,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaRegionID(self):
-        """Region ID.
+        r"""Region ID.
         :rtype: str
         """
         return self._AreaRegionID
@@ -11896,7 +11896,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaRegionCode(self):
-        """Region code, such as “ap-xxx” (xxx is the region name).
+        r"""Region code, such as “ap-xxx” (xxx is the region name).
         :rtype: str
         """
         return self._AreaRegionCode
@@ -11907,7 +11907,7 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaAbbr(self):
-        """Region abbreviation.
+        r"""Region abbreviation.
         :rtype: str
         """
         return self._AreaAbbr
@@ -11936,7 +11936,7 @@ class RumAreaInfo(AbstractModel):
 
 
 class RumProject(AbstractModel):
-    """RUM project information
+    r"""RUM project information
 
     """
 
@@ -12003,7 +12003,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Name(self):
-        """Project name
+        r"""Project name
         :rtype: str
         """
         return self._Name
@@ -12014,7 +12014,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Creator(self):
-        """Creator ID
+        r"""Creator ID
         :rtype: str
         """
         return self._Creator
@@ -12025,7 +12025,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceID(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -12036,7 +12036,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
-        """Project type
+        r"""Project type
         :rtype: str
         """
         return self._Type
@@ -12047,7 +12047,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -12058,7 +12058,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Repo(self):
-        """Project repository address
+        r"""Project repository address
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12070,7 +12070,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def URL(self):
-        """Project URL
+        r"""Project URL
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12082,7 +12082,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rate(self):
-        """Project sample rate
+        r"""Project sample rate
         :rtype: str
         """
         return self._Rate
@@ -12093,7 +12093,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Unique project key (12 characters)
+        r"""Unique project key (12 characters)
         :rtype: str
         """
         return self._Key
@@ -12104,7 +12104,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableURLGroup(self):
-        """Whether to enable URL aggregation
+        r"""Whether to enable URL aggregation
         :rtype: int
         """
         return self._EnableURLGroup
@@ -12115,7 +12115,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -12126,7 +12126,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ID
@@ -12137,7 +12137,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceKey(self):
-        """Instance key
+        r"""Instance key
         :rtype: str
         """
         return self._InstanceKey
@@ -12148,7 +12148,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Desc(self):
-        """Project description
+        r"""Project description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12160,7 +12160,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsStar(self):
-        """Starred status. 1: yes; 0: no
+        r"""Starred status. 1: yes; 0: no
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12172,7 +12172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectStatus(self):
-        """Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)
+        r"""Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12184,7 +12184,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPoint(self):
-        """Log access point, which can be ignored. 
+        r"""Log access point, which can be ignored. 
 Note:  This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12224,7 +12224,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
 
 class RumPvInfo(AbstractModel):
-    """RUM log object
+    r"""RUM log object
 
     """
 
@@ -12244,7 +12244,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -12255,7 +12255,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pv(self):
-        """Number of PVs
+        r"""Number of PVs
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12267,7 +12267,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Time
+        r"""Time
         :rtype: str
         """
         return self._CreateTime
@@ -12292,7 +12292,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class RumUvInfo(AbstractModel):
-    """Number of RUM UVs
+    r"""Number of RUM UVs
 
     """
 
@@ -12311,7 +12311,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -12322,7 +12322,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def Uv(self):
-        """Number of UVs
+        r"""Number of UVs
         :rtype: str
         """
         return self._Uv
@@ -12333,7 +12333,7 @@ class RumUvInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -12358,7 +12358,7 @@ class RumUvInfo(AbstractModel):
 
 
 class ScoreInfo(AbstractModel):
-    """Project score entity
+    r"""Project score entity
 
     """
 
@@ -12411,7 +12411,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticDuration(self):
-        """duration
+        r"""duration
         :rtype: str
         """
         return self._StaticDuration
@@ -12422,7 +12422,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PagePv(self):
-        """pv
+        r"""pv
         :rtype: str
         """
         return self._PagePv
@@ -12433,7 +12433,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiFail(self):
-        """Failure
+        r"""Failure
         :rtype: str
         """
         return self._ApiFail
@@ -12444,7 +12444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiNum(self):
-        """Request
+        r"""Request
         :rtype: str
         """
         return self._ApiNum
@@ -12455,7 +12455,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticFail(self):
-        """fail
+        r"""fail
         :rtype: str
         """
         return self._StaticFail
@@ -12466,7 +12466,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectID(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectID
@@ -12477,7 +12477,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageUv(self):
-        """uv
+        r"""uv
         :rtype: str
         """
         return self._PageUv
@@ -12488,7 +12488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDuration(self):
-        """Number of requests
+        r"""Number of requests
         :rtype: str
         """
         return self._ApiDuration
@@ -12499,7 +12499,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """Score
+        r"""Score
         :rtype: str
         """
         return self._Score
@@ -12510,7 +12510,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageError(self):
-        """error
+        r"""error
         :rtype: str
         """
         return self._PageError
@@ -12521,7 +12521,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticNum(self):
-        """num
+        r"""num
         :rtype: str
         """
         return self._StaticNum
@@ -12532,7 +12532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordNum(self):
-        """num
+        r"""num
         :rtype: int
         """
         return self._RecordNum
@@ -12543,7 +12543,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageDuration(self):
-        """Duration
+        r"""Duration
         :rtype: str
         """
         return self._PageDuration
@@ -12554,7 +12554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Time
+        r"""Time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12591,7 +12591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class StopInstanceRequest(AbstractModel):
-    """StopInstance request structure.
+    r"""StopInstance request structure.
 
     """
 
@@ -12604,7 +12604,7 @@ class StopInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of the instance to be stopped
+        r"""ID of the instance to be stopped
         :rtype: str
         """
         return self._InstanceId
@@ -12627,7 +12627,7 @@ class StopInstanceRequest(AbstractModel):
 
 
 class StopInstanceResponse(AbstractModel):
-    """StopInstance response structure.
+    r"""StopInstance response structure.
 
     """
 
@@ -12640,7 +12640,7 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12655,7 +12655,7 @@ class StopInstanceResponse(AbstractModel):
 
 
 class StopProjectRequest(AbstractModel):
-    """StopProject request structure.
+    r"""StopProject request structure.
 
     """
 
@@ -12668,7 +12668,7 @@ class StopProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -12691,7 +12691,7 @@ class StopProjectRequest(AbstractModel):
 
 
 class StopProjectResponse(AbstractModel):
-    """StopProject response structure.
+    r"""StopProject response structure.
 
     """
 
@@ -12704,7 +12704,7 @@ class StopProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12719,7 +12719,7 @@ class StopProjectResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -12735,7 +12735,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -12746,7 +12746,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._Value
@@ -12770,7 +12770,7 @@ class Tag(AbstractModel):
 
 
 class Whitelist(AbstractModel):
-    """Allowlist
+    r"""Allowlist
 
     """
 
@@ -12804,7 +12804,7 @@ class Whitelist(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -12815,7 +12815,7 @@ class Whitelist(AbstractModel):
 
     @property
     def InstanceID(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceID
@@ -12826,7 +12826,7 @@ class Whitelist(AbstractModel):
 
     @property
     def Ttl(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._Ttl
@@ -12837,7 +12837,7 @@ class Whitelist(AbstractModel):
 
     @property
     def ID(self):
-        """Auto-Increment allowlist ID
+        r"""Auto-Increment allowlist ID
         :rtype: str
         """
         return self._ID
@@ -12848,7 +12848,7 @@ class Whitelist(AbstractModel):
 
     @property
     def WhitelistUin(self):
-        """Unique business identifier
+        r"""Unique business identifier
         :rtype: str
         """
         return self._WhitelistUin
@@ -12859,7 +12859,7 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateUser(self):
-        """Creator ID
+        r"""Creator ID
         :rtype: str
         """
         return self._CreateUser
@@ -12870,7 +12870,7 @@ class Whitelist(AbstractModel):
 
     @property
     def Aid(self):
-        """aid
+        r"""aid
         :rtype: str
         """
         return self._Aid
@@ -12881,7 +12881,7 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime

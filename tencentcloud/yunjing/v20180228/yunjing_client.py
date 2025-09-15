@@ -27,7 +27,7 @@ class YunjingClient(AbstractClient):
 
 
     def AddLoginWhiteList(self, request):
-        """This API is used to add a allowlist rule.
+        r"""This API is used to add a allowlist rule.
 
         :param request: Request instance for AddLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.AddLoginWhiteListRequest`
@@ -50,7 +50,7 @@ class YunjingClient(AbstractClient):
 
 
     def AddMachineTag(self, request):
-        """This API is used to add a tag to a server.
+        r"""This API is used to add a tag to a server.
 
         :param request: Request instance for AddMachineTag.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.AddMachineTagRequest`
@@ -73,7 +73,7 @@ class YunjingClient(AbstractClient):
 
 
     def CloseProVersion(self, request):
-        """This API is used to deactivate CWP Pro.
+        r"""This API is used to deactivate CWP Pro.
 
         :param request: Request instance for CloseProVersion.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.CloseProVersionRequest`
@@ -96,7 +96,7 @@ class YunjingClient(AbstractClient):
 
 
     def CreateOpenPortTask(self, request):
-        """This API is used to create a real-time port acquisition task.
+        r"""This API is used to create a real-time port acquisition task.
 
         :param request: Request instance for CreateOpenPortTask.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateOpenPortTaskRequest`
@@ -119,7 +119,7 @@ class YunjingClient(AbstractClient):
 
 
     def CreateProcessTask(self, request):
-        """This API is used to create a real-time process pulling task.
+        r"""This API is used to create a real-time process pulling task.
 
         :param request: Request instance for CreateProcessTask.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateProcessTaskRequest`
@@ -142,7 +142,7 @@ class YunjingClient(AbstractClient):
 
 
     def CreateUsualLoginPlaces(self, request):
-        """This API is used to add one or more usual login locations.
+        r"""This API is used to add one or more usual login locations.
 
         :param request: Request instance for CreateUsualLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateUsualLoginPlacesRequest`
@@ -165,7 +165,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteBruteAttacks(self, request):
-        """This API is used to delete brute force attack records.
+        r"""This API is used to delete brute force attack records.
 
         :param request: Request instance for DeleteBruteAttacks.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteBruteAttacksRequest`
@@ -188,7 +188,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteLoginWhiteList(self, request):
-        """This API is used to delete a allowlist rule.
+        r"""This API is used to delete a allowlist rule.
 
         :param request: Request instance for DeleteLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteLoginWhiteListRequest`
@@ -211,7 +211,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """This API is used to uninstall the CWP agent.
+        r"""This API is used to uninstall the CWP agent.
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMachineRequest`
@@ -234,7 +234,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteMachineTag(self, request):
-        """This API is used to remove a tag from a server.
+        r"""This API is used to remove a tag from a server.
 
         :param request: Request instance for DeleteMachineTag.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMachineTagRequest`
@@ -257,7 +257,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteMaliciousRequests(self, request):
-        """This API is used to delete malicious request records.
+        r"""This API is used to delete malicious request records.
 
         :param request: Request instance for DeleteMaliciousRequests.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMaliciousRequestsRequest`
@@ -280,7 +280,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteMalwares(self, request):
-        """This API is used to delete trojan records.
+        r"""This API is used to delete trojan records.
 
         :param request: Request instance for DeleteMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMalwaresRequest`
@@ -303,7 +303,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteNonlocalLoginPlaces(self, request):
-        """This API is used to delete unusual login location records.
+        r"""This API is used to delete unusual login location records.
 
         :param request: Request instance for DeleteNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteNonlocalLoginPlacesRequest`
@@ -326,7 +326,7 @@ class YunjingClient(AbstractClient):
 
 
     def DeleteUsualLoginPlaces(self, request):
-        """This API is used to delete one or more usual login locations.
+        r"""This API is used to delete one or more usual login locations.
 
         :param request: Request instance for DeleteUsualLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteUsualLoginPlacesRequest`
@@ -349,7 +349,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeAccountStatistics(self, request):
-        """This API is used to get the account statistics list.
+        r"""This API is used to get the account statistics list.
 
         :param request: Request instance for DescribeAccountStatistics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountStatisticsRequest`
@@ -372,7 +372,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to get the account list.
+        r"""This API is used to get the account list.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountsRequest`
@@ -395,7 +395,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeAgentVuls(self, request):
-        """This API is used to get the list of vulnerabilities on a single server.
+        r"""This API is used to get the list of vulnerabilities on a single server.
 
         :param request: Request instance for DescribeAgentVuls.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAgentVulsRequest`
@@ -418,7 +418,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeAlarmAttribute(self, request):
-        """This API is used to get the alarm settings.
+        r"""This API is used to get the alarm settings.
 
         :param request: Request instance for DescribeAlarmAttribute.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAlarmAttributeRequest`
@@ -441,7 +441,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeBruteAttacks(self, request):
-        """This API is used to get the brute force attack event list.
+        r"""This API is used to get the brute force attack event list.
 
         :param request: Request instance for DescribeBruteAttacks.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeBruteAttacksRequest`
@@ -464,7 +464,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeComponentInfo(self, request):
-        """This API is used to get the component information.
+        r"""This API is used to get the component information.
 
         :param request: Request instance for DescribeComponentInfo.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentInfoRequest`
@@ -487,7 +487,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeComponentStatistics(self, request):
-        """This API is used to get the component statistics list.
+        r"""This API is used to get the component statistics list.
 
         :param request: Request instance for DescribeComponentStatistics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentStatisticsRequest`
@@ -510,7 +510,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeComponents(self, request):
-        """This API is used to get the component list.
+        r"""This API is used to get the component list.
 
         :param request: Request instance for DescribeComponents.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentsRequest`
@@ -533,7 +533,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeHistoryAccounts(self, request):
-        """This API is used to get the account change history list.
+        r"""This API is used to get the account change history list.
 
         :param request: Request instance for DescribeHistoryAccounts.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeHistoryAccountsRequest`
@@ -556,7 +556,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeImpactedHosts(self, request):
-        """This API is used to get the list of servers affected by a vulnerability.
+        r"""This API is used to get the list of servers affected by a vulnerability.
 
         :param request: Request instance for DescribeImpactedHosts.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeImpactedHostsRequest`
@@ -579,7 +579,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeLoginWhiteList(self, request):
-        """This API is used to get the list of login allowlist entries.
+        r"""This API is used to get the list of login allowlist entries.
 
         :param request: Request instance for DescribeLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeLoginWhiteListRequest`
@@ -602,7 +602,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeMachineInfo(self, request):
-        """This API is used to get server details.
+        r"""This API is used to get server details.
 
         :param request: Request instance for DescribeMachineInfo.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeMachineInfoRequest`
@@ -625,7 +625,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """This API is used to get the list of servers in a specified region.
+        r"""This API is used to get the list of servers in a specified region.
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeMachinesRequest`
@@ -648,7 +648,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeMaliciousRequests(self, request):
-        """This API is used to get malicious request data.
+        r"""This API is used to get malicious request data.
 
         :param request: Request instance for DescribeMaliciousRequests.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeMaliciousRequestsRequest`
@@ -671,7 +671,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeMalwares(self, request):
-        """This API is used to get the list of trojan events.
+        r"""This API is used to get the list of trojan events.
 
         :param request: Request instance for DescribeMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeMalwaresRequest`
@@ -694,7 +694,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeNonlocalLoginPlaces(self, request):
-        """This API is used to get unusual login events.
+        r"""This API is used to get unusual login events.
 
         :param request: Request instance for DescribeNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeNonlocalLoginPlacesRequest`
@@ -717,7 +717,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeOpenPortStatistics(self, request):
-        """This API is used to get the statistics on port usage
+        r"""This API is used to get the statistics on port usage
 
         :param request: Request instance for DescribeOpenPortStatistics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortStatisticsRequest`
@@ -740,7 +740,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeOpenPortTaskStatus(self, request):
-        """This API is used to get the status of a real-time port pulling task.
+        r"""This API is used to get the status of a real-time port pulling task.
 
         :param request: Request instance for DescribeOpenPortTaskStatus.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortTaskStatusRequest`
@@ -763,7 +763,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeOpenPorts(self, request):
-        """This API is used to get the port list.
+        r"""This API is used to get the port list.
 
         :param request: Request instance for DescribeOpenPorts.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortsRequest`
@@ -786,7 +786,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeOverviewStatistics(self, request):
-        """This API is used to get the overview statistics of CWP under the current account.
+        r"""This API is used to get the overview statistics of CWP under the current account.
 
         :param request: Request instance for DescribeOverviewStatistics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOverviewStatisticsRequest`
@@ -809,7 +809,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeProVersionInfo(self, request):
-        """This API is used to get the CWP Pro information.
+        r"""This API is used to get the CWP Pro information.
 
         :param request: Request instance for DescribeProVersionInfo.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProVersionInfoRequest`
@@ -832,7 +832,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeProcessStatistics(self, request):
-        """This API is used to get the process statistics list.
+        r"""This API is used to get the process statistics list.
 
         :param request: Request instance for DescribeProcessStatistics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessStatisticsRequest`
@@ -855,7 +855,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeProcessTaskStatus(self, request):
-        """This API is used to get the status of a real-time process pulling task.
+        r"""This API is used to get the status of a real-time process pulling task.
 
         :param request: Request instance for DescribeProcessTaskStatus.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessTaskStatusRequest`
@@ -878,7 +878,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeProcesses(self, request):
-        """This API is used to get the process list.
+        r"""This API is used to get the process list.
 
         :param request: Request instance for DescribeProcesses.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessesRequest`
@@ -901,7 +901,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeSecurityDynamics(self, request):
-        """This API is used to get the security event message data.
+        r"""This API is used to get the security event message data.
 
         :param request: Request instance for DescribeSecurityDynamics.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityDynamicsRequest`
@@ -924,7 +924,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeSecurityTrends(self, request):
-        """This API is used to get the security event statistics.
+        r"""This API is used to get the security event statistics.
 
         :param request: Request instance for DescribeSecurityTrends.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityTrendsRequest`
@@ -947,7 +947,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeTagMachines(self, request):
-        """This API is used to get the information of servers associated with a specified tag.
+        r"""This API is used to get the information of servers associated with a specified tag.
 
         :param request: Request instance for DescribeTagMachines.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagMachinesRequest`
@@ -970,7 +970,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """This API is used to get all server tags.
+        r"""This API is used to get all server tags.
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagsRequest`
@@ -993,7 +993,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeUsualLoginPlaces(self, request):
-        """This API is used to query usual login locations.
+        r"""This API is used to query usual login locations.
 
         :param request: Request instance for DescribeUsualLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeUsualLoginPlacesRequest`
@@ -1016,7 +1016,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeVulInfo(self, request):
-        """This API is used to get vulnerability details.
+        r"""This API is used to get vulnerability details.
 
         :param request: Request instance for DescribeVulInfo.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeVulInfoRequest`
@@ -1039,7 +1039,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeVulScanResult(self, request):
-        """This API is used to get the vulnerability detection result.
+        r"""This API is used to get the vulnerability detection result.
 
         :param request: Request instance for DescribeVulScanResult.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeVulScanResultRequest`
@@ -1062,7 +1062,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeVuls(self, request):
-        """This API is used to get the vulnerability list.
+        r"""This API is used to get the vulnerability list.
 
         :param request: Request instance for DescribeVuls.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeVulsRequest`
@@ -1085,7 +1085,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReportBruteAttacks(self, request):
-        """This API is used to get the brute force attack data in the weekly CWP Pro report.
+        r"""This API is used to get the brute force attack data in the weekly CWP Pro report.
 
         :param request: Request instance for DescribeWeeklyReportBruteAttacks.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportBruteAttacksRequest`
@@ -1108,7 +1108,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReportInfo(self, request):
-        """This API is used to get the details in the weekly CWP Pro report.
+        r"""This API is used to get the details in the weekly CWP Pro report.
 
         :param request: Request instance for DescribeWeeklyReportInfo.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportInfoRequest`
@@ -1131,7 +1131,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReportMalwares(self, request):
-        """This API is used to get the trojan data in the weekly CWP Pro report.
+        r"""This API is used to get the trojan data in the weekly CWP Pro report.
 
         :param request: Request instance for DescribeWeeklyReportMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportMalwaresRequest`
@@ -1154,7 +1154,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReportNonlocalLoginPlaces(self, request):
-        """This API is used to get the unusual login location data in the weekly CWP Pro report.
+        r"""This API is used to get the unusual login location data in the weekly CWP Pro report.
 
         :param request: Request instance for DescribeWeeklyReportNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportNonlocalLoginPlacesRequest`
@@ -1177,7 +1177,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReportVuls(self, request):
-        """This API is used to get the vulnerability data in the weekly CWP Pro report.
+        r"""This API is used to get the vulnerability data in the weekly CWP Pro report.
 
         :param request: Request instance for DescribeWeeklyReportVuls.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportVulsRequest`
@@ -1200,7 +1200,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeWeeklyReports(self, request):
-        """This API is used to get the weekly report list.
+        r"""This API is used to get the weekly report list.
 
         :param request: Request instance for DescribeWeeklyReports.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportsRequest`
@@ -1223,7 +1223,7 @@ class YunjingClient(AbstractClient):
 
 
     def EditTags(self, request):
-        """This API is used to add or edit tags.
+        r"""This API is used to add or edit tags.
 
         :param request: Request instance for EditTags.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.EditTagsRequest`
@@ -1246,7 +1246,7 @@ class YunjingClient(AbstractClient):
 
 
     def ExportBruteAttacks(self, request):
-        """This API is used to export brute force attack records into a CSV file.
+        r"""This API is used to export brute force attack records into a CSV file.
 
         :param request: Request instance for ExportBruteAttacks.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportBruteAttacksRequest`
@@ -1269,7 +1269,7 @@ class YunjingClient(AbstractClient):
 
 
     def ExportMaliciousRequests(self, request):
-        """This API is used to export the malicious request file into a CSV file for download.
+        r"""This API is used to export the malicious request file into a CSV file for download.
 
         :param request: Request instance for ExportMaliciousRequests.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportMaliciousRequestsRequest`
@@ -1292,7 +1292,7 @@ class YunjingClient(AbstractClient):
 
 
     def ExportMalwares(self, request):
-        """This API is used to export trojan records into a CSV file.
+        r"""This API is used to export trojan records into a CSV file.
 
         :param request: Request instance for ExportMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportMalwaresRequest`
@@ -1315,7 +1315,7 @@ class YunjingClient(AbstractClient):
 
 
     def ExportNonlocalLoginPlaces(self, request):
-        """This API is used to export unusual login location events into a CSV file.
+        r"""This API is used to export unusual login location events into a CSV file.
 
         :param request: Request instance for ExportNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportNonlocalLoginPlacesRequest`
@@ -1338,7 +1338,7 @@ class YunjingClient(AbstractClient):
 
 
     def IgnoreImpactedHosts(self, request):
-        """This API is used to ignore one or more vulnerabilities.
+        r"""This API is used to ignore one or more vulnerabilities.
 
         :param request: Request instance for IgnoreImpactedHosts.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.IgnoreImpactedHostsRequest`
@@ -1361,7 +1361,7 @@ class YunjingClient(AbstractClient):
 
 
     def MisAlarmNonlocalLoginPlaces(self, request):
-        """This API is used to set the current location as the usual login location.
+        r"""This API is used to set the current location as the usual login location.
 
         :param request: Request instance for MisAlarmNonlocalLoginPlaces.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.MisAlarmNonlocalLoginPlacesRequest`
@@ -1384,7 +1384,7 @@ class YunjingClient(AbstractClient):
 
 
     def ModifyAlarmAttribute(self, request):
-        """This API is used to modify alarm settings.
+        r"""This API is used to modify alarm settings.
 
         :param request: Request instance for ModifyAlarmAttribute.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyAlarmAttributeRequest`
@@ -1407,7 +1407,7 @@ class YunjingClient(AbstractClient):
 
 
     def ModifyAutoOpenProVersionConfig(self, request):
-        """This API is used to set whether to automatically activate CWP Pro for newly added servers.
+        r"""This API is used to set whether to automatically activate CWP Pro for newly added servers.
 
         :param request: Request instance for ModifyAutoOpenProVersionConfig.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyAutoOpenProVersionConfigRequest`
@@ -1430,7 +1430,7 @@ class YunjingClient(AbstractClient):
 
 
     def ModifyLoginWhiteList(self, request):
-        """This API is used to edit a allowlist rule.
+        r"""This API is used to edit a allowlist rule.
 
         :param request: Request instance for ModifyLoginWhiteList.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyLoginWhiteListRequest`
@@ -1453,7 +1453,7 @@ class YunjingClient(AbstractClient):
 
 
     def ModifyProVersionRenewFlag(self, request):
-        """This API is used to modify the renewal flag of CWP Pro.
+        r"""This API is used to modify the renewal flag of CWP Pro.
 
         :param request: Request instance for ModifyProVersionRenewFlag.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyProVersionRenewFlagRequest`
@@ -1476,7 +1476,7 @@ class YunjingClient(AbstractClient):
 
 
     def OpenProVersion(self, request):
-        """This API is used to activate CWP Pro.
+        r"""This API is used to activate CWP Pro.
 
         :param request: Request instance for OpenProVersion.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.OpenProVersionRequest`
@@ -1499,7 +1499,7 @@ class YunjingClient(AbstractClient):
 
 
     def RecoverMalwares(self, request):
-        """This API is used to recover isolated trojan files in a batch.
+        r"""This API is used to recover isolated trojan files in a batch.
 
         :param request: Request instance for RecoverMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.RecoverMalwaresRequest`
@@ -1522,7 +1522,7 @@ class YunjingClient(AbstractClient):
 
 
     def RescanImpactedHost(self, request):
-        """This API is used to re-scan for vulnerabilities.
+        r"""This API is used to re-scan for vulnerabilities.
 
         :param request: Request instance for RescanImpactedHost.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.RescanImpactedHostRequest`
@@ -1545,7 +1545,7 @@ class YunjingClient(AbstractClient):
 
 
     def SeparateMalwares(self, request):
-        """This API is used to isolate trojans.
+        r"""This API is used to isolate trojans.
 
         :param request: Request instance for SeparateMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.SeparateMalwaresRequest`
@@ -1568,7 +1568,7 @@ class YunjingClient(AbstractClient):
 
 
     def TrustMaliciousRequest(self, request):
-        """This API is used to trust a malicious request.
+        r"""This API is used to trust a malicious request.
 
         :param request: Request instance for TrustMaliciousRequest.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.TrustMaliciousRequestRequest`
@@ -1591,7 +1591,7 @@ class YunjingClient(AbstractClient):
 
 
     def TrustMalwares(self, request):
-        """This API is used to trust an identified trojan file.
+        r"""This API is used to trust an identified trojan file.
 
         :param request: Request instance for TrustMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.TrustMalwaresRequest`
@@ -1614,7 +1614,7 @@ class YunjingClient(AbstractClient):
 
 
     def UntrustMaliciousRequest(self, request):
-        """This API is used to untrust a malicious request.
+        r"""This API is used to untrust a malicious request.
 
         :param request: Request instance for UntrustMaliciousRequest.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.UntrustMaliciousRequestRequest`
@@ -1637,7 +1637,7 @@ class YunjingClient(AbstractClient):
 
 
     def UntrustMalwares(self, request):
-        """This API is used to untrust a trojan file.
+        r"""This API is used to untrust a trojan file.
 
         :param request: Request instance for UntrustMalwares.
         :type request: :class:`tencentcloud.yunjing.v20180228.models.UntrustMalwaresRequest`

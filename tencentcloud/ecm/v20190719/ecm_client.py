@@ -27,7 +27,7 @@ class EcmClient(AbstractClient):
 
 
     def AllocateAddresses(self, request):
-        """This API is used to apply for one or multiple EIPs.
+        r"""This API is used to apply for one or multiple EIPs.
 
         :param request: Request instance for AllocateAddresses.
         :type request: :class:`tencentcloud.ecm.v20190719.models.AllocateAddressesRequest`
@@ -50,7 +50,7 @@ class EcmClient(AbstractClient):
 
 
     def AssignIpv6Addresses(self, request):
-        """This API is used to apply for an IPv6 address for an ENI.
+        r"""This API is used to apply for an IPv6 address for an ENI.
 
         :param request: Request instance for AssignIpv6Addresses.
         :type request: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6AddressesRequest`
@@ -73,7 +73,7 @@ class EcmClient(AbstractClient):
 
 
     def AssignPrivateIpAddresses(self, request):
-        """This API is used to apply for a private IP for an ENI.
+        r"""This API is used to apply for a private IP for an ENI.
 
         :param request: Request instance for AssignPrivateIpAddresses.
         :type request: :class:`tencentcloud.ecm.v20190719.models.AssignPrivateIpAddressesRequest`
@@ -96,7 +96,7 @@ class EcmClient(AbstractClient):
 
 
     def AssociateAddress(self, request):
-        """This API is used to bind an EIP to an instance or the specified private IP of an ENI.
+        r"""This API is used to bind an EIP to an instance or the specified private IP of an ENI.
         Binding an EIP to an instance (ECM) is essentially to bind it to the primary private IP of the primary ENI of the instance.
         When you bind an EIP to the private IP of the specified ENI, if the private IP is already bound to an EIP or public IP, a failure will be reported, and you must unbind it first before you can bind it to a new EIP.
         Only EIPs in `UNBIND` status can be bound to a private IP.
@@ -122,7 +122,7 @@ class EcmClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API is used to bind a security group.
+        r"""This API is used to bind a security group.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.ecm.v20190719.models.AssociateSecurityGroupsRequest`
@@ -145,7 +145,7 @@ class EcmClient(AbstractClient):
 
 
     def AttachNetworkInterface(self, request):
-        """This API is used to bind an ENI to a CVM instance.
+        r"""This API is used to bind an ENI to a CVM instance.
 
         :param request: Request instance for AttachNetworkInterface.
         :type request: :class:`tencentcloud.ecm.v20190719.models.AttachNetworkInterfaceRequest`
@@ -168,7 +168,7 @@ class EcmClient(AbstractClient):
 
 
     def BatchDeregisterTargets(self, request):
-        """This API is used to batch unbind real servers.
+        r"""This API is used to batch unbind real servers.
 
         :param request: Request instance for BatchDeregisterTargets.
         :type request: :class:`tencentcloud.ecm.v20190719.models.BatchDeregisterTargetsRequest`
@@ -191,7 +191,7 @@ class EcmClient(AbstractClient):
 
 
     def BatchModifyTargetWeight(self, request):
-        """This API is used to batch modify the forwarding weights of the real servers bound to a listener.
+        r"""This API is used to batch modify the forwarding weights of the real servers bound to a listener.
 
         :param request: Request instance for BatchModifyTargetWeight.
         :type request: :class:`tencentcloud.ecm.v20190719.models.BatchModifyTargetWeightRequest`
@@ -214,7 +214,7 @@ class EcmClient(AbstractClient):
 
 
     def BatchRegisterTargets(self, request):
-        """This API is used to batch bind backend targets.
+        r"""This API is used to batch bind backend targets.
 
         :param request: Request instance for BatchRegisterTargets.
         :type request: :class:`tencentcloud.ecm.v20190719.models.BatchRegisterTargetsRequest`
@@ -237,7 +237,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateHaVip(self, request):
-        """This API is used to create an HAVIP.
+        r"""This API is used to create an HAVIP.
 
         :param request: Request instance for CreateHaVip.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateHaVipRequest`
@@ -260,7 +260,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateImage(self, request):
-        """This API is used to create an image with the system disk of an instance. The image can be used to create instances.
+        r"""This API is used to create an image with the system disk of an instance. The image can be used to create instances.
 
         :param request: Request instance for CreateImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateImageRequest`
@@ -283,7 +283,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateKeyPair(self, request):
-        """This API is used to create an `OpenSSH RSA` key pair, which can be used to log in to a Linux instance.
+        r"""This API is used to create an `OpenSSH RSA` key pair, which can be used to log in to a Linux instance.
 
         :param request: Request instance for CreateKeyPair.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateKeyPairRequest`
@@ -306,7 +306,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateListener(self, request):
-        """This API is used to create a CLB listener.
+        r"""This API is used to create a CLB listener.
 
         :param request: Request instance for CreateListener.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateListenerRequest`
@@ -329,7 +329,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        """This API is used to purchase a CLB instance.
+        r"""This API is used to purchase a CLB instance.
 
         :param request: Request instance for CreateLoadBalancer.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateLoadBalancerRequest`
@@ -352,7 +352,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateModule(self, request):
-        """This API is used to create a module.
+        r"""This API is used to create a module.
 
         :param request: Request instance for CreateModule.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateModuleRequest`
@@ -375,7 +375,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateNetworkInterface(self, request):
-        """This API is used to create an ENI.
+        r"""This API is used to create an ENI.
 
         :param request: Request instance for CreateNetworkInterface.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateNetworkInterfaceRequest`
@@ -398,7 +398,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateRouteTable(self, request):
-        """After a VPC is created, the system will create a default route table, with which all new subnets will be associated. By default, you can use the default route table to manage your routing policies. If you have multiple routing policies, you can call the API for route table creation to create more route tables to manage your routing policies.
+        r"""After a VPC is created, the system will create a default route table, with which all new subnets will be associated. By default, you can use the default route table to manage your routing policies. If you have multiple routing policies, you can call the API for route table creation to create more route tables to manage your routing policies.
 
         :param request: Request instance for CreateRouteTable.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateRouteTableRequest`
@@ -421,7 +421,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateRoutes(self, request):
-        """This API is used to create a routing policy.
+        r"""This API is used to create a routing policy.
 
         :param request: Request instance for CreateRoutes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateRoutesRequest`
@@ -444,7 +444,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateSecurityGroup(self, request):
-        """This API is used to create a security group.
+        r"""This API is used to create a security group.
 
         :param request: Request instance for CreateSecurityGroup.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateSecurityGroupRequest`
@@ -467,7 +467,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateSecurityGroupPolicies(self, request):
-        """<p>This API is used to create a security group policy.</p>
+        r"""<p>This API is used to create a security group policy.</p>
         <p>In the `SecurityGroupPolicySet` parameter:</p>
         <ul>
         <li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>
@@ -503,7 +503,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateSubnet(self, request):
-        """This API is used to create a subnet. After the subnet is created successfully, it will become the default subnet for the AZ.
+        r"""This API is used to create a subnet. After the subnet is created successfully, it will become the default subnet for the AZ.
 
         :param request: Request instance for CreateSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateSubnetRequest`
@@ -526,7 +526,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateVpc(self, request):
-        """This API is used to create a VPC.
+        r"""This API is used to create a VPC.
 
         :param request: Request instance for CreateVpc.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateVpcRequest`
@@ -549,7 +549,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteHaVip(self, request):
-        """This API is used to delete an HAVIP.
+        r"""This API is used to delete an HAVIP.
 
         :param request: Request instance for DeleteHaVip.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteHaVipRequest`
@@ -572,7 +572,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteImage(self, request):
-        """This API is used to delete an image.
+        r"""This API is used to delete an image.
 
         :param request: Request instance for DeleteImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteImageRequest`
@@ -595,7 +595,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteListener(self, request):
-        """This API is used to delete a CLB listener.
+        r"""This API is used to delete a CLB listener.
 
         :param request: Request instance for DeleteListener.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteListenerRequest`
@@ -618,7 +618,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteLoadBalancer(self, request):
-        """This API is used to delete a CLB instance.
+        r"""This API is used to delete a CLB instance.
 
         :param request: Request instance for DeleteLoadBalancer.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerRequest`
@@ -641,7 +641,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteLoadBalancerListeners(self, request):
-        """This API is used to delete multiple CLB listeners.
+        r"""This API is used to delete multiple CLB listeners.
 
         :param request: Request instance for DeleteLoadBalancerListeners.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerListenersRequest`
@@ -664,7 +664,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteModule(self, request):
-        """This API is used to delete a business module.
+        r"""This API is used to delete a business module.
 
         :param request: Request instance for DeleteModule.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteModuleRequest`
@@ -687,7 +687,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteNetworkInterface(self, request):
-        """This API is used to delete an ENI.
+        r"""This API is used to delete an ENI.
 
         :param request: Request instance for DeleteNetworkInterface.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteNetworkInterfaceRequest`
@@ -710,7 +710,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteRouteTable(self, request):
-        """This API is used to delete a route table.
+        r"""This API is used to delete a route table.
 
         :param request: Request instance for DeleteRouteTable.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteRouteTableRequest`
@@ -733,7 +733,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteRoutes(self, request):
-        """This API is used to batch delete routing policies from a route table.
+        r"""This API is used to batch delete routing policies from a route table.
 
         :param request: Request instance for DeleteRoutes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteRoutesRequest`
@@ -756,7 +756,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteSecurityGroup(self, request):
-        """Only security groups under the current account can be deleted.
+        r"""Only security groups under the current account can be deleted.
         A security group cannot be deleted directly if its instance ID is used in the policy of another security group. In this case, you need to modify the policy first before deleting the security group.
         Deleted security groups cannot be recovered. Therefore, call this API with caution.
 
@@ -781,7 +781,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteSecurityGroupPolicies(self, request):
-        """`SecurityGroupPolicySet.Version` is used to specify the version of the security group to be manipulated. If the `Version` value passed in differs from the current latest version of the security group, a failure will be returned. If `Version` is not passed in, the policy of the specified `PolicyIndex` will be deleted directly.
+        r"""`SecurityGroupPolicySet.Version` is used to specify the version of the security group to be manipulated. If the `Version` value passed in differs from the current latest version of the security group, a failure will be returned. If `Version` is not passed in, the policy of the specified `PolicyIndex` will be deleted directly.
 
         :param request: Request instance for DeleteSecurityGroupPolicies.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSecurityGroupPoliciesRequest`
@@ -804,7 +804,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteSnapshots(self, request):
-        """This API is used to delete a snapshot.
+        r"""This API is used to delete a snapshot.
 
         * Only snapshots in the `NORMAL` state can be deleted. To query the state of a snapshot, you can call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and check the `SnapshotState` field in the response.
         * Batch operations are supported. If there is any snapshot that cannot be deleted, the operation will not be performed and a specific error code will be returned.
@@ -830,7 +830,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteSubnet(self, request):
-        """This API is used to delete a subnet. If the subnet is the current default subnet in the AZ, after it is deleted, the default subnet automatically created by the system rather than the last subnet created by you will be used as the new default subnet. If the new default subnet does not meet your needs, you can call the API for setting the default subnet to configure it.
+        r"""This API is used to delete a subnet. If the subnet is the current default subnet in the AZ, after it is deleted, the default subnet automatically created by the system rather than the last subnet created by you will be used as the new default subnet. If the new default subnet does not meet your needs, you can call the API for setting the default subnet to configure it.
 
         :param request: Request instance for DeleteSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSubnetRequest`
@@ -853,7 +853,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteVpc(self, request):
-        """This API is used to delete a VPC.
+        r"""This API is used to delete a VPC.
 
         :param request: Request instance for DeleteVpc.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteVpcRequest`
@@ -876,7 +876,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeAddressQuota(self, request):
-        """This API is used to query the quota information of the EIP under your account in the current region.
+        r"""This API is used to query the quota information of the EIP under your account in the current region.
 
         :param request: Request instance for DescribeAddressQuota.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeAddressQuotaRequest`
@@ -899,7 +899,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeAddresses(self, request):
-        """This API is used to query the list of EIPs.
+        r"""This API is used to query the list of EIPs.
 
         :param request: Request instance for DescribeAddresses.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeAddressesRequest`
@@ -922,7 +922,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeBaseOverview(self, request):
-        """This API is used to get the basic data displayed on the overview page.
+        r"""This API is used to get the basic data displayed on the overview page.
 
         :param request: Request instance for DescribeBaseOverview.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeBaseOverviewRequest`
@@ -945,7 +945,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeConfig(self, request):
-        """This API is used to get the limits of data such as bandwidth and disk.
+        r"""This API is used to get the limits of data such as bandwidth and disk.
 
         :param request: Request instance for DescribeConfig.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeConfigRequest`
@@ -968,7 +968,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeCustomImageTask(self, request):
-        """This API is used to query an image import task.
+        r"""This API is used to query an image import task.
 
         :param request: Request instance for DescribeCustomImageTask.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeCustomImageTaskRequest`
@@ -991,7 +991,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeDefaultSubnet(self, request):
-        """This API is used to query the default subnet in an AZ.
+        r"""This API is used to query the default subnet in an AZ.
 
         :param request: Request instance for DescribeDefaultSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeDefaultSubnetRequest`
@@ -1014,7 +1014,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeHaVips(self, request):
-        """This API is used to query the list of HAVIPs.
+        r"""This API is used to query the list of HAVIPs.
 
         :param request: Request instance for DescribeHaVips.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeHaVipsRequest`
@@ -1037,7 +1037,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeImage(self, request):
-        """This API is used to display the list of images.
+        r"""This API is used to display the list of images.
 
         :param request: Request instance for DescribeImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeImageRequest`
@@ -1060,7 +1060,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeImportImageOs(self, request):
-        """This API is used to query the list of operating systems supported by an image imported from an external resource.
+        r"""This API is used to query the list of operating systems supported by an image imported from an external resource.
 
         :param request: Request instance for DescribeImportImageOs.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeImportImageOsRequest`
@@ -1083,7 +1083,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeInstanceTypeConfig(self, request):
-        """This API is used to get the list of model configurations.
+        r"""This API is used to get the list of model configurations.
 
         :param request: Request instance for DescribeInstanceTypeConfig.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeInstanceTypeConfigRequest`
@@ -1106,7 +1106,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeInstanceVncUrl(self, request):
-        """This API is used to query the VNC URL of an instance.
+        r"""This API is used to query the VNC URL of an instance.
 
         :param request: Request instance for DescribeInstanceVncUrl.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeInstanceVncUrlRequest`
@@ -1129,7 +1129,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to get the information of an instance.
+        r"""This API is used to get the information of an instance.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeInstancesRequest`
@@ -1152,7 +1152,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeInstancesDeniedActions(self, request):
-        """This API is used to get the information of prohibited operations by instance ID.
+        r"""This API is used to get the information of prohibited operations by instance ID.
 
         :param request: Request instance for DescribeInstancesDeniedActions.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeInstancesDeniedActionsRequest`
@@ -1175,7 +1175,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeListeners(self, request):
-        """This API is used to query the list of CLB listeners.
+        r"""This API is used to query the list of CLB listeners.
 
         :param request: Request instance for DescribeListeners.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeListenersRequest`
@@ -1198,7 +1198,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeLoadBalanceTaskStatus(self, request):
-        """This API is used to query the task status of a CLB instance.
+        r"""This API is used to query the task status of a CLB instance.
 
         :param request: Request instance for DescribeLoadBalanceTaskStatus.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalanceTaskStatusRequest`
@@ -1221,7 +1221,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeLoadBalancers(self, request):
-        """This API is used to query the list of CLB instances.
+        r"""This API is used to query the list of CLB instances.
 
         :param request: Request instance for DescribeLoadBalancers.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalancersRequest`
@@ -1244,7 +1244,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeModule(self, request):
-        """This API is used to get the list of modules.
+        r"""This API is used to get the list of modules.
 
         :param request: Request instance for DescribeModule.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeModuleRequest`
@@ -1267,7 +1267,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeModuleDetail(self, request):
-        """This API is used to display the details of a module.
+        r"""This API is used to display the details of a module.
 
         :param request: Request instance for DescribeModuleDetail.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeModuleDetailRequest`
@@ -1290,7 +1290,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeMonthPeakNetwork(self, request):
-        """This API is used to get the monthly peak and billable inbound/outbound bandwidth values of your node.
+        r"""This API is used to get the monthly peak and billable inbound/outbound bandwidth values of your node.
 
         :param request: Request instance for DescribeMonthPeakNetwork.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeMonthPeakNetworkRequest`
@@ -1313,7 +1313,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeNetworkInterfaces(self, request):
-        """This API is used to query the list of ENIs.
+        r"""This API is used to query the list of ENIs.
 
         :param request: Request instance for DescribeNetworkInterfaces.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeNetworkInterfacesRequest`
@@ -1336,7 +1336,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeNode(self, request):
-        """This API is used to get the list of nodes.
+        r"""This API is used to get the list of nodes.
 
         :param request: Request instance for DescribeNode.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeNodeRequest`
@@ -1359,7 +1359,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribePackingQuotaGroup(self, request):
-        """This API is used to get the packing quota of a model in a region (when a virtual model is used, a set of correlated packing quotas will be returned).
+        r"""This API is used to get the packing quota of a model in a region (when a virtual model is used, a set of correlated packing quotas will be returned).
 
         :param request: Request instance for DescribePackingQuotaGroup.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePackingQuotaGroupRequest`
@@ -1382,7 +1382,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribePeakBaseOverview(self, request):
-        """This API is used to get the peak data of basic information such as CPU, memory, and disk.
+        r"""This API is used to get the peak data of basic information such as CPU, memory, and disk.
 
         :param request: Request instance for DescribePeakBaseOverview.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePeakBaseOverviewRequest`
@@ -1405,7 +1405,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribePeakNetworkOverview(self, request):
-        """This API is used to get the peak network data.
+        r"""This API is used to get the peak network data.
 
         :param request: Request instance for DescribePeakNetworkOverview.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePeakNetworkOverviewRequest`
@@ -1428,7 +1428,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribePriceRunInstance(self, request):
-        """This API is used to query the price of an instance.
+        r"""This API is used to query the price of an instance.
 
         :param request: Request instance for DescribePriceRunInstance.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePriceRunInstanceRequest`
@@ -1451,7 +1451,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeRouteConflicts(self, request):
-        """This API is used to query the list of conflicts between a custom routing policy and a CCN routing policy.
+        r"""This API is used to query the list of conflicts between a custom routing policy and a CCN routing policy.
 
         :param request: Request instance for DescribeRouteConflicts.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteConflictsRequest`
@@ -1474,7 +1474,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeRouteTables(self, request):
-        """This API is used to query the list of the objects in a route table.
+        r"""This API is used to query the list of the objects in a route table.
 
         :param request: Request instance for DescribeRouteTables.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteTablesRequest`
@@ -1497,7 +1497,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSecurityGroupAssociationStatistics(self, request):
-        """This API is used to query statistics on the instances associated with a security group.
+        r"""This API is used to query statistics on the instances associated with a security group.
 
         :param request: Request instance for DescribeSecurityGroupAssociationStatistics.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupAssociationStatisticsRequest`
@@ -1520,7 +1520,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSecurityGroupLimits(self, request):
-        """This API is used to query the security group quota.
+        r"""This API is used to query the security group quota.
 
         :param request: Request instance for DescribeSecurityGroupLimits.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupLimitsRequest`
@@ -1543,7 +1543,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSecurityGroupPolicies(self, request):
-        """This API is used to query a security group rule.
+        r"""This API is used to query a security group rule.
 
         :param request: Request instance for DescribeSecurityGroupPolicies.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupPoliciesRequest`
@@ -1566,7 +1566,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSecurityGroups(self, request):
-        """This API is used to view a security group.
+        r"""This API is used to view a security group.
 
         :param request: Request instance for DescribeSecurityGroups.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupsRequest`
@@ -1589,7 +1589,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSnapshots(self, request):
-        """This API is used to query the list of snapshots.
+        r"""This API is used to query the list of snapshots.
 
         * You can filter results by snapshot ID and the ID and type of the cloud disk for which the snapshot is created. The relationship between different filters is `AND`. For more information on filters, see `Filter`.
         * If no parameter is defined, the status of a certain number of snapshots under the current account will be returned. The number is specified by `Limit` and is 20 by default.
@@ -1615,7 +1615,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeSubnets(self, request):
-        """This API is used to query the list of subnets.
+        r"""This API is used to query the list of subnets.
 
         :param request: Request instance for DescribeSubnets.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSubnetsRequest`
@@ -1638,7 +1638,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeTargetHealth(self, request):
-        """This API is used to get the health check status of a CLB real server.
+        r"""This API is used to get the health check status of a CLB real server.
 
         :param request: Request instance for DescribeTargetHealth.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetHealthRequest`
@@ -1661,7 +1661,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeTargets(self, request):
-        """This API is used to query the list of the real servers bound to a CLB instance.
+        r"""This API is used to query the list of the real servers bound to a CLB instance.
 
         :param request: Request instance for DescribeTargets.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetsRequest`
@@ -1684,7 +1684,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeTaskResult(self, request):
-        """This API is used to query the execution result of an EIP async task.
+        r"""This API is used to query the execution result of an EIP async task.
 
         :param request: Request instance for DescribeTaskResult.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTaskResultRequest`
@@ -1707,7 +1707,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """This API is used to get the status of an async task.
+        r"""This API is used to get the status of an async task.
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTaskStatusRequest`
@@ -1730,7 +1730,7 @@ class EcmClient(AbstractClient):
 
 
     def DescribeVpcs(self, request):
-        """This API is used to query the list of VPCs.
+        r"""This API is used to query the list of VPCs.
 
         :param request: Request instance for DescribeVpcs.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeVpcsRequest`
@@ -1753,7 +1753,7 @@ class EcmClient(AbstractClient):
 
 
     def DetachNetworkInterface(self, request):
-        """This API is used to unbind an ENI from a CVM instance.
+        r"""This API is used to unbind an ENI from a CVM instance.
 
         :param request: Request instance for DetachNetworkInterface.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DetachNetworkInterfaceRequest`
@@ -1776,7 +1776,7 @@ class EcmClient(AbstractClient):
 
 
     def DisableRoutes(self, request):
-        """This API is used to disable a subnet route.
+        r"""This API is used to disable a subnet route.
 
         :param request: Request instance for DisableRoutes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DisableRoutesRequest`
@@ -1799,7 +1799,7 @@ class EcmClient(AbstractClient):
 
 
     def DisassociateAddress(self, request):
-        """This API is used to unbind an EIP.
+        r"""This API is used to unbind an EIP.
         Only EIPs in `BIND` or `BIND_ENI` status can be unbound.
         Blocked EIPs cannot be unbound.
 
@@ -1824,7 +1824,7 @@ class EcmClient(AbstractClient):
 
 
     def DisassociateInstancesKeyPairs(self, request):
-        """This API is used to unbind a key pair from an instance.
+        r"""This API is used to unbind a key pair from an instance.
 
         :param request: Request instance for DisassociateInstancesKeyPairs.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DisassociateInstancesKeyPairsRequest`
@@ -1847,7 +1847,7 @@ class EcmClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """This API is used to unbind a security group.
+        r"""This API is used to unbind a security group.
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DisassociateSecurityGroupsRequest`
@@ -1870,7 +1870,7 @@ class EcmClient(AbstractClient):
 
 
     def EnableRoutes(self, request):
-        """This API is used to enable a disabled subnet route.
+        r"""This API is used to enable a disabled subnet route.
         This API verifies whether a CCN route will conflict with an existing route after it is enabled, and if so, you cannot enable it before you disable the conflicting route first.
 
         :param request: Request instance for EnableRoutes.
@@ -1894,7 +1894,7 @@ class EcmClient(AbstractClient):
 
 
     def ImportImage(self, request):
-        """This API is used to import an image from a CVM instance to an ECM instance.
+        r"""This API is used to import an image from a CVM instance to an ECM instance.
 
         :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ImportImageRequest`
@@ -1917,7 +1917,7 @@ class EcmClient(AbstractClient):
 
 
     def MigrateNetworkInterface(self, request):
-        """This API is used to migrate an ENI.
+        r"""This API is used to migrate an ENI.
 
         :param request: Request instance for MigrateNetworkInterface.
         :type request: :class:`tencentcloud.ecm.v20190719.models.MigrateNetworkInterfaceRequest`
@@ -1940,7 +1940,7 @@ class EcmClient(AbstractClient):
 
 
     def MigratePrivateIpAddress(self, request):
-        """This API is used to migrate a private IP from an ENI.
+        r"""This API is used to migrate a private IP from an ENI.
         It migrates a private IP from one ENI to another. Primary IPs cannot be migrated.
         The source and destination ENIs must be in the same subnet.
 
@@ -1965,7 +1965,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyAddressAttribute(self, request):
-        """This API is used to modify EIP attributes.
+        r"""This API is used to modify EIP attributes.
 
         :param request: Request instance for ModifyAddressAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyAddressAttributeRequest`
@@ -1988,7 +1988,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyAddressesBandwidth(self, request):
-        """This API is used to modify the EIP bandwidth.
+        r"""This API is used to modify the EIP bandwidth.
 
         :param request: Request instance for ModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyAddressesBandwidthRequest`
@@ -2011,7 +2011,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyDefaultSubnet(self, request):
-        """This API is used to modify the default subnet used when you create an instance in an AZ (if you don't specify the VPC parameter when creating the instance, `sunbetId` will be used).
+        r"""This API is used to modify the default subnet used when you create an instance in an AZ (if you don't specify the VPC parameter when creating the instance, `sunbetId` will be used).
 
         :param request: Request instance for ModifyDefaultSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyDefaultSubnetRequest`
@@ -2034,7 +2034,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyHaVipAttribute(self, request):
-        """This API is used to modify the attributes of an HAVIP.
+        r"""This API is used to modify the attributes of an HAVIP.
 
         :param request: Request instance for ModifyHaVipAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyHaVipAttributeRequest`
@@ -2057,7 +2057,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyImageAttribute(self, request):
-        """This API is used to modify the attributes of an image.
+        r"""This API is used to modify the attributes of an image.
 
         :param request: Request instance for ModifyImageAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyImageAttributeRequest`
@@ -2080,7 +2080,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """This API is used to modify the attributes of an instance.
+        r"""This API is used to modify the attributes of an instance.
 
         :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyInstancesAttributeRequest`
@@ -2103,7 +2103,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyIpv6AddressesAttribute(self, request):
-        """This API is used to modify the IPv6 address attributes of an ENI.
+        r"""This API is used to modify the IPv6 address attributes of an ENI.
 
         :param request: Request instance for ModifyIpv6AddressesAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyIpv6AddressesAttributeRequest`
@@ -2126,7 +2126,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyListener(self, request):
-        """This API is used to modify the attributes of a CLB listener.
+        r"""This API is used to modify the attributes of a CLB listener.
 
         :param request: Request instance for ModifyListener.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyListenerRequest`
@@ -2149,7 +2149,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyLoadBalancerAttributes(self, request):
-        """This API is used to modify the attributes of a CLB instance.
+        r"""This API is used to modify the attributes of a CLB instance.
 
         :param request: Request instance for ModifyLoadBalancerAttributes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyLoadBalancerAttributesRequest`
@@ -2172,7 +2172,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleConfig(self, request):
-        """This API is used to modify the configuration of a module. You cannot modify the configuration of the module if it is associated with an instance.
+        r"""This API is used to modify the configuration of a module. You cannot modify the configuration of the module if it is associated with an instance.
 
         :param request: Request instance for ModifyModuleConfig.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleConfigRequest`
@@ -2195,7 +2195,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleDisableWanIp(self, request):
-        """This API is used to specify whether to prohibit public IP assignment for a module.
+        r"""This API is used to specify whether to prohibit public IP assignment for a module.
 
         :param request: Request instance for ModifyModuleDisableWanIp.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleDisableWanIpRequest`
@@ -2218,7 +2218,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleImage(self, request):
-        """This API is used to modify the default image of a module.
+        r"""This API is used to modify the default image of a module.
 
         :param request: Request instance for ModifyModuleImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleImageRequest`
@@ -2241,7 +2241,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleIpDirect(self, request):
-        """This API is used to modify the IP direct access of a module.
+        r"""This API is used to modify the IP direct access of a module.
 
         :param request: Request instance for ModifyModuleIpDirect.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleIpDirectRequest`
@@ -2264,7 +2264,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleName(self, request):
-        """This API is used to rename a module.
+        r"""This API is used to rename a module.
 
         :param request: Request instance for ModifyModuleName.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleNameRequest`
@@ -2287,7 +2287,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleNetwork(self, request):
-        """This API is used to modify the default bandwidth cap of a module.
+        r"""This API is used to modify the default bandwidth cap of a module.
 
         :param request: Request instance for ModifyModuleNetwork.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleNetworkRequest`
@@ -2310,7 +2310,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleSecurityGroups(self, request):
-        """This API is used to modify the default security group of a module.
+        r"""This API is used to modify the default security group of a module.
 
         :param request: Request instance for ModifyModuleSecurityGroups.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleSecurityGroupsRequest`
@@ -2333,7 +2333,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyPrivateIpAddressesAttribute(self, request):
-        """This API is used to modify the private IP attributes of an ENI.
+        r"""This API is used to modify the private IP attributes of an ENI.
 
         :param request: Request instance for ModifyPrivateIpAddressesAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyPrivateIpAddressesAttributeRequest`
@@ -2356,7 +2356,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyRouteTableAttribute(self, request):
-        """This API is used to modify the attributes of a route table.
+        r"""This API is used to modify the attributes of a route table.
 
         :param request: Request instance for ModifyRouteTableAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyRouteTableAttributeRequest`
@@ -2379,7 +2379,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifySecurityGroupAttribute(self, request):
-        """This API is used to modify the attributes of a security group.
+        r"""This API is used to modify the attributes of a security group.
 
         :param request: Request instance for ModifySecurityGroupAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupAttributeRequest`
@@ -2402,7 +2402,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifySecurityGroupPolicies(self, request):
-        """This API is used to modify the outbound and inbound rules of a security group.
+        r"""This API is used to modify the outbound and inbound rules of a security group.
 
         :param request: Request instance for ModifySecurityGroupPolicies.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupPoliciesRequest`
@@ -2425,7 +2425,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifySubnetAttribute(self, request):
-        """This API is used to modify the attributes of a subnet.
+        r"""This API is used to modify the attributes of a subnet.
 
         :param request: Request instance for ModifySubnetAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifySubnetAttributeRequest`
@@ -2448,7 +2448,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyTargetPort(self, request):
-        """This API is used to modify the port of a real server bound to a listener.
+        r"""This API is used to modify the port of a real server bound to a listener.
 
         :param request: Request instance for ModifyTargetPort.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetPortRequest`
@@ -2471,7 +2471,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyTargetWeight(self, request):
-        """This API is used to modify the forwarding weight of a real server bound to a listener.
+        r"""This API is used to modify the forwarding weight of a real server bound to a listener.
 
         :param request: Request instance for ModifyTargetWeight.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetWeightRequest`
@@ -2494,7 +2494,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyVpcAttribute(self, request):
-        """This API is used to modify the attributes of a VPC.
+        r"""This API is used to modify the attributes of a VPC.
 
         :param request: Request instance for ModifyVpcAttribute.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyVpcAttributeRequest`
@@ -2517,7 +2517,7 @@ class EcmClient(AbstractClient):
 
 
     def RebootInstances(self, request):
-        """This API is used to restart an instance. Only instances in `RUNNING` status can be restarted. The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is restarted successfully. Forced restart is supported. Just like powering off a physical PC and restarting it, a forced restart may cause data loss or file system corruption. Make sure that you use this API only when the server cannot be restarted normally.
+        r"""This API is used to restart an instance. Only instances in `RUNNING` status can be restarted. The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is restarted successfully. Forced restart is supported. Just like powering off a physical PC and restarting it, a forced restart may cause data loss or file system corruption. Make sure that you use this API only when the server cannot be restarted normally.
 
         :param request: Request instance for RebootInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.RebootInstancesRequest`
@@ -2540,7 +2540,7 @@ class EcmClient(AbstractClient):
 
 
     def ReleaseAddresses(self, request):
-        """This API is used to release one or multiple EIPs.
+        r"""This API is used to release one or multiple EIPs.
         This operation is irreversible. Once you release an EIP, the IP address associated with it will no longer belong to you.
         Only EIPs in `UNBIND` status can be released.
 
@@ -2565,7 +2565,7 @@ class EcmClient(AbstractClient):
 
 
     def ReleaseIpv6Addresses(self, request):
-        """This API is used to release the IPv6 addresses of an ENI.
+        r"""This API is used to release the IPv6 addresses of an ENI.
 
         :param request: Request instance for ReleaseIpv6Addresses.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ReleaseIpv6AddressesRequest`
@@ -2588,7 +2588,7 @@ class EcmClient(AbstractClient):
 
 
     def RemovePrivateIpAddresses(self, request):
-        """This API is used to return the private IPs of an ENI.
+        r"""This API is used to return the private IPs of an ENI.
         To return the secondary private IPs of an ENI, the API will automatically unbind them from the ENI. The primary private IP of the ENI cannot be returned.
 
         :param request: Request instance for RemovePrivateIpAddresses.
@@ -2612,7 +2612,7 @@ class EcmClient(AbstractClient):
 
 
     def ReplaceRouteTableAssociation(self, request):
-        """This API is used to modify the route table associated with a subnet. A subnet can be associated with only one route table.
+        r"""This API is used to modify the route table associated with a subnet. A subnet can be associated with only one route table.
 
         :param request: Request instance for ReplaceRouteTableAssociation.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceRouteTableAssociationRequest`
@@ -2635,7 +2635,7 @@ class EcmClient(AbstractClient):
 
 
     def ReplaceRoutes(self, request):
-        """This API is used to replace a routing policy.
+        r"""This API is used to replace a routing policy.
 
         :param request: Request instance for ReplaceRoutes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceRoutesRequest`
@@ -2658,7 +2658,7 @@ class EcmClient(AbstractClient):
 
 
     def ReplaceSecurityGroupPolicy(self, request):
-        """This API is used to replace a single routing rule of a security group. You can replace only one rule in a single direction in one request and must specify the index (PolicyIndex).
+        r"""This API is used to replace a single routing rule of a security group. You can replace only one rule in a single direction in one request and must specify the index (PolicyIndex).
 
         :param request: Request instance for ReplaceSecurityGroupPolicy.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceSecurityGroupPolicyRequest`
@@ -2681,7 +2681,7 @@ class EcmClient(AbstractClient):
 
 
     def ResetInstances(self, request):
-        """This API is used to reinstall an instance. If you specify the `ImageId` parameter, the specified image will be used; otherwise, the image used by the current instance will be used. If you don't specify the password, a password will be sent later in Message Center.
+        r"""This API is used to reinstall an instance. If you specify the `ImageId` parameter, the specified image will be used; otherwise, the image used by the current instance will be used. If you don't specify the password, a password will be sent later in Message Center.
 
         :param request: Request instance for ResetInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ResetInstancesRequest`
@@ -2704,7 +2704,7 @@ class EcmClient(AbstractClient):
 
 
     def ResetInstancesMaxBandwidth(self, request):
-        """This API is used to reset the bandwidth cap of an instance.
+        r"""This API is used to reset the bandwidth cap of an instance.
 
         :param request: Request instance for ResetInstancesMaxBandwidth.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ResetInstancesMaxBandwidthRequest`
@@ -2727,7 +2727,7 @@ class EcmClient(AbstractClient):
 
 
     def ResetInstancesPassword(self, request):
-        """This API is used to reset the password for a running status. You need to explicitly specify the `ForceStop` parameter; otherwise, you can reset the password only for instances that have been shut down.
+        r"""This API is used to reset the password for a running status. You need to explicitly specify the `ForceStop` parameter; otherwise, you can reset the password only for instances that have been shut down.
 
         :param request: Request instance for ResetInstancesPassword.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ResetInstancesPasswordRequest`
@@ -2750,7 +2750,7 @@ class EcmClient(AbstractClient):
 
 
     def ResetRoutes(self, request):
-        """This API is used to reset a route table name and all routing policies.
+        r"""This API is used to reset a route table name and all routing policies.
 
         :param request: Request instance for ResetRoutes.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ResetRoutesRequest`
@@ -2773,7 +2773,7 @@ class EcmClient(AbstractClient):
 
 
     def RunInstances(self, request):
-        """This API is used to create an ECM instance.
+        r"""This API is used to create an ECM instance.
 
         :param request: Request instance for RunInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.RunInstancesRequest`
@@ -2796,7 +2796,7 @@ class EcmClient(AbstractClient):
 
 
     def SetLoadBalancerSecurityGroups(self, request):
-        """This API is used to configure security groups for a CLB instance.
+        r"""This API is used to configure security groups for a CLB instance.
 
         :param request: Request instance for SetLoadBalancerSecurityGroups.
         :type request: :class:`tencentcloud.ecm.v20190719.models.SetLoadBalancerSecurityGroupsRequest`
@@ -2819,7 +2819,7 @@ class EcmClient(AbstractClient):
 
 
     def SetSecurityGroupForLoadbalancers(self, request):
-        """This API is used to bind or unbind a security group to or from multiple CLB instances.
+        r"""This API is used to bind or unbind a security group to or from multiple CLB instances.
 
         :param request: Request instance for SetSecurityGroupForLoadbalancers.
         :type request: :class:`tencentcloud.ecm.v20190719.models.SetSecurityGroupForLoadbalancersRequest`
@@ -2842,7 +2842,7 @@ class EcmClient(AbstractClient):
 
 
     def StartInstances(self, request):
-        """This API is used to start an instance. Only instances in `STOPPED` status can be started. The instance status will become `STARTING` when this API is called successfully and will become `RUNNING` when the instance is started successfully.
+        r"""This API is used to start an instance. Only instances in `STOPPED` status can be started. The instance status will become `STARTING` when this API is called successfully and will become `RUNNING` when the instance is started successfully.
 
         :param request: Request instance for StartInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.StartInstancesRequest`
@@ -2865,7 +2865,7 @@ class EcmClient(AbstractClient):
 
 
     def StopInstances(self, request):
-        """Only instances in `RUNNING` status can be shut down.
+        r"""Only instances in `RUNNING` status can be shut down.
         The instance status will become `STOPPING` when the API is called successfully and will become `STOPPED` when the instance is shut down successfully.
         Forced shutdown is supported. Just like powering off a physical PC, a forced shutdown may cause data loss or file system corruption. Make sure that you use this API only when the server cannot be shut down normally.
 
@@ -2890,7 +2890,7 @@ class EcmClient(AbstractClient):
 
 
     def TerminateInstances(self, request):
-        """This API is used to terminate an instance.
+        r"""This API is used to terminate an instance.
 
         :param request: Request instance for TerminateInstances.
         :type request: :class:`tencentcloud.ecm.v20190719.models.TerminateInstancesRequest`

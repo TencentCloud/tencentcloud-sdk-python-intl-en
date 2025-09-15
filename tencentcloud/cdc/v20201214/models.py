@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CbsInfo(AbstractModel):
-    """Information about purchased CBS
+    r"""Information about purchased CBS
 
     """
 
@@ -35,7 +35,7 @@ class CbsInfo(AbstractModel):
 
     @property
     def Size(self):
-        """CBS storage size, in TB
+        r"""CBS storage size, in TB
         :rtype: int
         """
         return self._Size
@@ -46,7 +46,7 @@ class CbsInfo(AbstractModel):
 
     @property
     def Type(self):
-        """CBS storage type, SSD by default
+        r"""CBS storage type, SSD by default
         :rtype: str
         """
         return self._Type
@@ -70,7 +70,7 @@ class CbsInfo(AbstractModel):
 
 
 class CosCapacity(AbstractModel):
-    """Capacity of COS in CDC
+    r"""Capacity of COS in CDC
 
     """
 
@@ -89,7 +89,7 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalCapacity(self):
-        """Total capacity, in GB
+        r"""Total capacity, in GB
         :rtype: float
         """
         return self._TotalCapacity
@@ -100,7 +100,7 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalFreeCapacity(self):
-        """Available capacity, in GB
+        r"""Available capacity, in GB
         :rtype: float
         """
         return self._TotalFreeCapacity
@@ -111,7 +111,7 @@ class CosCapacity(AbstractModel):
 
     @property
     def TotalUsedCapacity(self):
-        """Used capacity, in GB
+        r"""Used capacity, in GB
         :rtype: float
         """
         return self._TotalUsedCapacity
@@ -136,7 +136,7 @@ class CosCapacity(AbstractModel):
 
 
 class CosInfo(AbstractModel):
-    """Used to add COS information on the purchase page.
+    r"""Used to add COS information on the purchase page.
 
     """
 
@@ -152,7 +152,7 @@ class CosInfo(AbstractModel):
 
     @property
     def Size(self):
-        """COS size, in TB
+        r"""COS size, in TB
         :rtype: int
         """
         return self._Size
@@ -163,7 +163,7 @@ class CosInfo(AbstractModel):
 
     @property
     def Type(self):
-        """COS type, COS by default
+        r"""COS type, COS by default
         :rtype: str
         """
         return self._Type
@@ -187,7 +187,7 @@ class CosInfo(AbstractModel):
 
 
 class CreateDedicatedClusterOrderRequest(AbstractModel):
-    """CreateDedicatedClusterOrder request structure.
+    r"""CreateDedicatedClusterOrder request structure.
 
     """
 
@@ -215,7 +215,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """CDC id
+        r"""CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -226,7 +226,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterTypes(self):
-        """Array of order-related CDC types
+        r"""Array of order-related CDC types
         :rtype: list of DedicatedClusterTypeInfo
         """
         return self._DedicatedClusterTypes
@@ -237,7 +237,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def CosInfo(self):
-        """Order-related COS storage information
+        r"""Order-related COS storage information
         :rtype: :class:`tencentcloud.cdc.v20201214.models.CosInfo`
         """
         return self._CosInfo
@@ -248,7 +248,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def CbsInfo(self):
-        """Order-related CBS storage information
+        r"""Order-related CBS storage information
         :rtype: :class:`tencentcloud.cdc.v20201214.models.CbsInfo`
         """
         return self._CbsInfo
@@ -259,7 +259,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def PurchaseSource(self):
-        """Purchase source, cloudApi by default
+        r"""Purchase source, cloudApi by default
         :rtype: str
         """
         return self._PurchaseSource
@@ -270,7 +270,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
-        """DedicatedClusterOrderId needs to be submitted when API is invoked to submit an order.
+        r"""DedicatedClusterOrderId needs to be submitted when API is invoked to submit an order.
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -307,7 +307,7 @@ class CreateDedicatedClusterOrderRequest(AbstractModel):
 
 
 class CreateDedicatedClusterOrderResponse(AbstractModel):
-    """CreateDedicatedClusterOrder response structure.
+    r"""CreateDedicatedClusterOrder response structure.
 
     """
 
@@ -324,7 +324,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterOrderId(self):
-        """CDC order id 
+        r"""CDC order id 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -336,7 +336,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -352,7 +352,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class CreateDedicatedClusterRequest(AbstractModel):
-    """CreateDedicatedCluster request structure.
+    r"""CreateDedicatedCluster request structure.
 
     """
 
@@ -374,7 +374,7 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def SiteId(self):
-        """SiteId to which the CDC belongs
+        r"""SiteId to which the CDC belongs
         :rtype: str
         """
         return self._SiteId
@@ -385,7 +385,7 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Name(self):
-        """CDC name
+        r"""CDC name
         :rtype: str
         """
         return self._Name
@@ -396,7 +396,7 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ to which the CDC belongs
+        r"""AZ to which the CDC belongs
         :rtype: str
         """
         return self._Zone
@@ -407,7 +407,7 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
     @property
     def Description(self):
-        """CDC description
+        r"""CDC description
         :rtype: str
         """
         return self._Description
@@ -433,7 +433,7 @@ class CreateDedicatedClusterRequest(AbstractModel):
 
 
 class CreateDedicatedClusterResponse(AbstractModel):
-    """CreateDedicatedCluster response structure.
+    r"""CreateDedicatedCluster response structure.
 
     """
 
@@ -449,7 +449,7 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Created CDC id
+        r"""Created CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -460,7 +460,7 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -476,7 +476,7 @@ class CreateDedicatedClusterResponse(AbstractModel):
 
 
 class CreateSiteRequest(AbstractModel):
-    """CreateSite request structure.
+    r"""CreateSite request structure.
 
     """
 
@@ -563,7 +563,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -574,7 +574,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Country(self):
-        """Country where the site is located
+        r"""Country where the site is located
         :rtype: str
         """
         return self._Country
@@ -585,7 +585,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Province(self):
-        """Province where the site is located
+        r"""Province where the site is located
         :rtype: str
         """
         return self._Province
@@ -596,7 +596,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def City(self):
-        """City where the site is located
+        r"""City where the site is located
         :rtype: str
         """
         return self._City
@@ -607,7 +607,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def AddressLine(self):
-        """Detailed address of the site
+        r"""Detailed address of the site
         :rtype: str
         """
         return self._AddressLine
@@ -618,7 +618,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Description(self):
-        """Site description
+        r"""Site description
         :rtype: str
         """
         return self._Description
@@ -629,7 +629,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Note(self):
-        """Note
+        r"""Note
         :rtype: str
         """
         return self._Note
@@ -640,7 +640,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def FiberType(self):
-        """You are using optical fiber type to connect the CDC device to the network Single-mode or multi-mode fibers are available.
+        r"""You are using optical fiber type to connect the CDC device to the network Single-mode or multi-mode fibers are available.
         :rtype: str
         """
         return self._FiberType
@@ -651,7 +651,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def OpticalStandard(self):
-        """Optical standard used to connect the CDC device to the network This field depends on the uplink speed, optical fiber type, and distance to upstream equipment.
+        r"""Optical standard used to connect the CDC device to the network This field depends on the uplink speed, optical fiber type, and distance to upstream equipment.
         :rtype: str
         """
         return self._OpticalStandard
@@ -662,7 +662,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerConnectors(self):
-        """Type of power connector
+        r"""Type of power connector
         :rtype: str
         """
         return self._PowerConnectors
@@ -673,7 +673,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerFeedDrop(self):
-        """Whether power is supplied from above or below the rack
+        r"""Whether power is supplied from above or below the rack
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -684,7 +684,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def MaxWeight(self):
-        """Maximum weight capacity (KG)
+        r"""Maximum weight capacity (KG)
         :rtype: int
         """
         return self._MaxWeight
@@ -695,7 +695,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerDrawKva(self):
-        """Power consumption (KW)
+        r"""Power consumption (KW)
         :rtype: int
         """
         return self._PowerDrawKva
@@ -706,7 +706,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkSpeedGbps(self):
-        """Uplink speed from the network to Tencent Cloud Region
+        r"""Uplink speed from the network to Tencent Cloud Region
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -717,7 +717,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkCount(self):
-        """Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
+        r"""Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
         :rtype: int
         """
         return self._UplinkCount
@@ -728,7 +728,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def ConditionRequirement(self):
-        """Whether the following environmental conditions are met: 
+        r"""Whether the following environmental conditions are met: 
 1. There are no material requirements or the acceptance standard on site that will affect the delivery and installation of the CDC device. 
 2. The following conditions are met for finalized rack positions: 
 Temperature ranges from 41 to 104°F (5 to 40°C). 
@@ -744,7 +744,7 @@ Air flows from front to back at the rack position and there is sufficient air in
 
     @property
     def DimensionRequirement(self):
-        """Whether the following dimension conditions are met: 
+        r"""Whether the following dimension conditions are met: 
 Your loading dock can accommodate one rack container (H x W x D = 94" x 54" x 48"). 
 You can provide a clear route from the delivery point of your rack (H x W x D = 80" x 24" x 48") to its final installation location. You should consider platforms, corridors, doors, turns, ramps, freight elevators as well as other access restrictions when measuring the depth. 
 There shall be a 48" or greater front clearance and a 24" or greater rear clearance where the CDC is finally installed.
@@ -758,7 +758,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantNetworking(self):
-        """Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
+        r"""Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
         :rtype: bool
         """
         return self._RedundantNetworking
@@ -769,7 +769,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PostalCode(self):
-        """Postal code of the site area
+        r"""Postal code of the site area
         :rtype: int
         """
         return self._PostalCode
@@ -780,7 +780,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def OptionalAddressLine(self):
-        """Detailed address of the site area (to be added)
+        r"""Detailed address of the site area (to be added)
         :rtype: str
         """
         return self._OptionalAddressLine
@@ -791,7 +791,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def NeedHelp(self):
-        """Whether you need help from Tencent Cloud for rack installation?
+        r"""Whether you need help from Tencent Cloud for rack installation?
         :rtype: bool
         """
         return self._NeedHelp
@@ -802,7 +802,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantPower(self):
-        """Whether there is power redundancy?
+        r"""Whether there is power redundancy?
         :rtype: bool
         """
         return self._RedundantPower
@@ -813,7 +813,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def BreakerRequirement(self):
-        """Whether there is an upstream circuit breaker?
+        r"""Whether there is an upstream circuit breaker?
         :rtype: bool
         """
         return self._BreakerRequirement
@@ -858,7 +858,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
 
 class CreateSiteResponse(AbstractModel):
-    """CreateSite response structure.
+    r"""CreateSite response structure.
 
     """
 
@@ -874,7 +874,7 @@ class CreateSiteResponse(AbstractModel):
 
     @property
     def SiteId(self):
-        """Created Site id
+        r"""Created Site id
         :rtype: str
         """
         return self._SiteId
@@ -885,7 +885,7 @@ class CreateSiteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -901,7 +901,7 @@ class CreateSiteResponse(AbstractModel):
 
 
 class DedicatedCluster(AbstractModel):
-    """CDC list
+    r"""CDC list
 
     """
 
@@ -933,7 +933,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterId(self):
-        """CDC id, e.g., cluster-xxxxx.
+        r"""CDC id, e.g., cluster-xxxxx.
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -944,7 +944,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Zone(self):
-        """Name of AZ to which the CDC belongs
+        r"""Name of AZ to which the CDC belongs
         :rtype: str
         """
         return self._Zone
@@ -955,7 +955,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Description(self):
-        """CDC description 
+        r"""CDC description 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -967,7 +967,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Name(self):
-        """CDC name
+        r"""CDC name
         :rtype: str
         """
         return self._Name
@@ -978,7 +978,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def LifecycleStatus(self):
-        """Life cycle of the CDC, e.g., PENDING.
+        r"""Life cycle of the CDC, e.g., PENDING.
         :rtype: str
         """
         return self._LifecycleStatus
@@ -989,7 +989,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CreateTime(self):
-        """Creation time of the CDC
+        r"""Creation time of the CDC
         :rtype: str
         """
         return self._CreateTime
@@ -1000,7 +1000,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SiteId(self):
-        """Site id to which the CDC belongs
+        r"""Site id to which the CDC belongs
         :rtype: str
         """
         return self._SiteId
@@ -1029,7 +1029,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DedicatedClusterInstanceType(AbstractModel):
-    """List of instance specifications supported by the CDC host
+    r"""List of instance specifications supported by the CDC host
 
     """
 
@@ -1084,7 +1084,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ
+        r"""AZ
         :rtype: str
         """
         return self._Zone
@@ -1095,7 +1095,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Type name
+        r"""Type name
         :rtype: str
         """
         return self._InstanceType
@@ -1106,7 +1106,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def NetworkCard(self):
-        """NIC type, e.g., 25 represents a 25 GB NIC.
+        r"""NIC type, e.g., 25 represents a 25 GB NIC.
         :rtype: int
         """
         return self._NetworkCard
@@ -1117,7 +1117,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores of instance, in cores
+        r"""Number of CPU cores of instance, in cores
         :rtype: int
         """
         return self._Cpu
@@ -1128,7 +1128,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory capacity of instance, in GB
+        r"""Memory capacity of instance, in GB
         :rtype: int
         """
         return self._Memory
@@ -1139,7 +1139,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        """Instance family
+        r"""Instance family
         :rtype: str
         """
         return self._InstanceFamily
@@ -1150,7 +1150,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def TypeName(self):
-        """Type name
+        r"""Type name
         :rtype: str
         """
         return self._TypeName
@@ -1161,7 +1161,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def StorageBlockAmount(self):
-        """Local storage block count
+        r"""Local storage block count
         :rtype: int
         """
         return self._StorageBlockAmount
@@ -1172,7 +1172,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstanceBandwidth(self):
-        """LAN bandwidth, in GB/s
+        r"""LAN bandwidth, in GB/s
         :rtype: float
         """
         return self._InstanceBandwidth
@@ -1183,7 +1183,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def InstancePps(self):
-        """Network packet receiving/sending capacity, in 10,000 PPS
+        r"""Network packet receiving/sending capacity, in 10,000 PPS
         :rtype: int
         """
         return self._InstancePps
@@ -1194,7 +1194,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def CpuType(self):
-        """Processor type
+        r"""Processor type
         :rtype: str
         """
         return self._CpuType
@@ -1205,7 +1205,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Gpu(self):
-        """Number of GPUs of instance
+        r"""Number of GPUs of instance
         :rtype: int
         """
         return self._Gpu
@@ -1216,7 +1216,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Fpga(self):
-        """Number of FPGAs of instance.
+        r"""Number of FPGAs of instance.
         :rtype: int
         """
         return self._Fpga
@@ -1227,7 +1227,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Remark(self):
-        """Type description
+        r"""Type description
         :rtype: str
         """
         return self._Remark
@@ -1238,7 +1238,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
     @property
     def Status(self):
-        """Whether the instance is for sale? Value values: <br><li>SELL: Indicates that the instance is for sale. <br><li>SOLD_OUT: Indicates that the instance has been sold out.
+        r"""Whether the instance is for sale? Value values: <br><li>SELL: Indicates that the instance is for sale. <br><li>SOLD_OUT: Indicates that the instance has been sold out.
         :rtype: str
         """
         return self._Status
@@ -1275,7 +1275,7 @@ class DedicatedClusterInstanceType(AbstractModel):
 
 
 class DedicatedClusterOrder(AbstractModel):
-    """CDC order
+    r"""CDC order
 
     """
 
@@ -1375,7 +1375,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterId(self):
-        """CDC id
+        r"""CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -1386,7 +1386,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterTypeId(self):
-        """CDC type id (moved to the next level, obsolete and will be deleted later)
+        r"""CDC type id (moved to the next level, obsolete and will be deleted later)
         :rtype: str
         """
         return self._DedicatedClusterTypeId
@@ -1397,7 +1397,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedStorageType(self):
-        """List of supported storage types (moved to the next level, obsolete and will be deleted later)
+        r"""List of supported storage types (moved to the next level, obsolete and will be deleted later)
         :rtype: list of str
         """
         return self._SupportedStorageType
@@ -1408,7 +1408,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedUplinkSpeed(self):
-        """Supported uplink switch transmission rate (GiB) (moved to the next level, obsolete and will be deleted later)
+        r"""Supported uplink switch transmission rate (GiB) (moved to the next level, obsolete and will be deleted later)
         :rtype: list of int
         """
         return self._SupportedUplinkSpeed
@@ -1419,7 +1419,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedInstanceFamily(self):
-        """List of supported instance families (moved to the next level, obsolete and will be deleted later)
+        r"""List of supported instance families (moved to the next level, obsolete and will be deleted later)
         :rtype: list of str
         """
         return self._SupportedInstanceFamily
@@ -1430,7 +1430,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Weight(self):
-        """Floor weight capacity (KG)
+        r"""Floor weight capacity (KG)
         :rtype: int
         """
         return self._Weight
@@ -1441,7 +1441,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def PowerDraw(self):
-        """Power requirements (KW)
+        r"""Power requirements (KW)
         :rtype: float
         """
         return self._PowerDraw
@@ -1452,7 +1452,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderStatus(self):
-        """Order status
+        r"""Order status
         :rtype: str
         """
         return self._OrderStatus
@@ -1463,7 +1463,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CreateTime(self):
-        """Order creation time
+        r"""Order creation time
         :rtype: str
         """
         return self._CreateTime
@@ -1474,7 +1474,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterOrderId(self):
-        """Large order ID
+        r"""Large order ID
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -1485,7 +1485,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Action(self):
-        """Order type, CREATE or EXTEND
+        r"""Order type, CREATE or EXTEND
         :rtype: str
         """
         return self._Action
@@ -1496,7 +1496,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterOrderItems(self):
-        """List of sub-order details 
+        r"""List of sub-order details 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of DedicatedClusterOrderItem
         """
@@ -1508,7 +1508,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Cpu(self):
-        """CPU value 
+        r"""CPU value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1520,7 +1520,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Mem(self):
-        """MEM value 
+        r"""MEM value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1532,7 +1532,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Gpu(self):
-        """GPU value 
+        r"""GPU value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1544,7 +1544,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def PayStatus(self):
-        """0 for unpaid, 1 for paid 
+        r"""0 for unpaid, 1 for paid 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1556,7 +1556,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def PayType(self):
-        """Payment method: lump-sum, monthly, and annually 
+        r"""Payment method: lump-sum, monthly, and annually 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1568,7 +1568,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TimeUnit(self):
-        """Unit of purchased period 
+        r"""Unit of purchased period 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1580,7 +1580,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TimeSpan(self):
-        """Purchased period 
+        r"""Purchased period 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1592,7 +1592,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderType(self):
-        """Order type 
+        r"""Order type 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1604,7 +1604,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckStatus(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CheckStatus
@@ -1615,7 +1615,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverExpectTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DeliverExpectTime
@@ -1626,7 +1626,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverFinishTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DeliverFinishTime
@@ -1637,7 +1637,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckExpectTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CheckExpectTime
@@ -1648,7 +1648,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckFinishTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CheckFinishTime
@@ -1659,7 +1659,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderSLA(self):
-        """
+        r"""
         :rtype: str
         """
         return self._OrderSLA
@@ -1670,7 +1670,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderPayPlan(self):
-        """
+        r"""
         :rtype: str
         """
         return self._OrderPayPlan
@@ -1724,7 +1724,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DedicatedClusterOrderItem(AbstractModel):
-    """CDC sub-order
+    r"""CDC sub-order
 
     """
 
@@ -1794,7 +1794,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterTypeId(self):
-        """CDC type id
+        r"""CDC type id
         :rtype: str
         """
         return self._DedicatedClusterTypeId
@@ -1805,7 +1805,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedStorageType(self):
-        """List of supported storage types
+        r"""List of supported storage types
         :rtype: list of str
         """
         return self._SupportedStorageType
@@ -1816,7 +1816,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedUplinkSpeed(self):
-        """Supported uplink switch transmission rate (GiB)
+        r"""Supported uplink switch transmission rate (GiB)
         :rtype: list of int
         """
         return self._SupportedUplinkSpeed
@@ -1827,7 +1827,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedInstanceFamily(self):
-        """List of supported instance families
+        r"""List of supported instance families
         :rtype: list of str
         """
         return self._SupportedInstanceFamily
@@ -1838,7 +1838,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Weight(self):
-        """Floor weight capacity (KG)
+        r"""Floor weight capacity (KG)
         :rtype: int
         """
         return self._Weight
@@ -1849,7 +1849,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def PowerDraw(self):
-        """Power requirements (KW)
+        r"""Power requirements (KW)
         :rtype: float
         """
         return self._PowerDraw
@@ -1860,7 +1860,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SubOrderStatus(self):
-        """Order status
+        r"""Order status
         :rtype: str
         """
         return self._SubOrderStatus
@@ -1871,7 +1871,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CreateTime(self):
-        """Order creation time
+        r"""Order creation time
         :rtype: str
         """
         return self._CreateTime
@@ -1882,7 +1882,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SubOrderId(self):
-        """Sub-order ID
+        r"""Sub-order ID
         :rtype: str
         """
         return self._SubOrderId
@@ -1893,7 +1893,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Count(self):
-        """Number of linked cluster types
+        r"""Number of linked cluster types
         :rtype: int
         """
         return self._Count
@@ -1904,7 +1904,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Name(self):
-        """Brief description of type
+        r"""Brief description of type
         :rtype: str
         """
         return self._Name
@@ -1915,7 +1915,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Description(self):
-        """Detailed description of type
+        r"""Detailed description of type
         :rtype: str
         """
         return self._Description
@@ -1926,7 +1926,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TotalCpu(self):
-        """Number of CPUs
+        r"""Number of CPUs
         :rtype: int
         """
         return self._TotalCpu
@@ -1937,7 +1937,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TotalMem(self):
-        """Number of memories
+        r"""Number of memories
         :rtype: int
         """
         return self._TotalMem
@@ -1948,7 +1948,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TotalGpu(self):
-        """Total GPUs
+        r"""Total GPUs
         :rtype: int
         """
         return self._TotalGpu
@@ -1959,7 +1959,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TypeName(self):
-        """English type name
+        r"""English type name
         :rtype: str
         """
         return self._TypeName
@@ -1970,7 +1970,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def ComputeFormat(self):
-        """Type display 
+        r"""Type display 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1982,7 +1982,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TypeFamily(self):
-        """Type family 
+        r"""Type family 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1994,7 +1994,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SubOrderPayStatus(self):
-        """0 for unpaid, 1 for paid 
+        r"""0 for unpaid, 1 for paid 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -2036,7 +2036,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DedicatedClusterType(AbstractModel):
-    """CDC configurations
+    r"""CDC configurations
 
     """
 
@@ -2077,7 +2077,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterTypeId(self):
-        """Configuration id
+        r"""Configuration id
         :rtype: str
         """
         return self._DedicatedClusterTypeId
@@ -2088,7 +2088,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Description(self):
-        """Configuration description, corresponding to description 
+        r"""Configuration description, corresponding to description 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2100,7 +2100,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Name(self):
-        """Configuration name, corresponding to computing resource type
+        r"""Configuration name, corresponding to computing resource type
         :rtype: str
         """
         return self._Name
@@ -2111,7 +2111,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CreateTime(self):
-        """Configuration creation time
+        r"""Configuration creation time
         :rtype: str
         """
         return self._CreateTime
@@ -2122,7 +2122,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedStorageType(self):
-        """List of supported storage types
+        r"""List of supported storage types
         :rtype: list of str
         """
         return self._SupportedStorageType
@@ -2133,7 +2133,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedUplinkGiB(self):
-        """Supported uplink switch transmission rate
+        r"""Supported uplink switch transmission rate
         :rtype: list of int
         """
         return self._SupportedUplinkGiB
@@ -2144,7 +2144,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SupportedInstanceFamily(self):
-        """List of supported instance families
+        r"""List of supported instance families
         :rtype: list of str
         """
         return self._SupportedInstanceFamily
@@ -2155,7 +2155,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Weight(self):
-        """Floor weight capacity (KG)
+        r"""Floor weight capacity (KG)
         :rtype: int
         """
         return self._Weight
@@ -2166,7 +2166,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def PowerDrawKva(self):
-        """Power requirements (KW)
+        r"""Power requirements (KW)
         :rtype: float
         """
         return self._PowerDrawKva
@@ -2177,7 +2177,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def ComputeFormatDesc(self):
-        """Displays the details of computing resource types, and does not display resources such as storage; corresponding to type
+        r"""Displays the details of computing resource types, and does not display resources such as storage; corresponding to type
         :rtype: str
         """
         return self._ComputeFormatDesc
@@ -2209,7 +2209,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DedicatedClusterTypeInfo(AbstractModel):
-    """DedicatedClusterType => (Id, Count)
+    r"""DedicatedClusterType => (Id, Count)
 
     """
 
@@ -2225,7 +2225,7 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Cluster type id
+        r"""Cluster type id
         :rtype: str
         """
         return self._Id
@@ -2236,7 +2236,7 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
     @property
     def Count(self):
-        """Cluster type count
+        r"""Cluster type count
         :rtype: int
         """
         return self._Count
@@ -2260,7 +2260,7 @@ class DedicatedClusterTypeInfo(AbstractModel):
 
 
 class DeleteDedicatedClustersRequest(AbstractModel):
-    """DeleteDedicatedClusters request structure.
+    r"""DeleteDedicatedClusters request structure.
 
     """
 
@@ -2273,7 +2273,7 @@ class DeleteDedicatedClustersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
-        """CDC id to be deleted
+        r"""CDC id to be deleted
         :rtype: list of str
         """
         return self._DedicatedClusterIds
@@ -2296,7 +2296,7 @@ class DeleteDedicatedClustersRequest(AbstractModel):
 
 
 class DeleteDedicatedClustersResponse(AbstractModel):
-    """DeleteDedicatedClusters response structure.
+    r"""DeleteDedicatedClusters response structure.
 
     """
 
@@ -2309,7 +2309,7 @@ class DeleteDedicatedClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2324,7 +2324,7 @@ class DeleteDedicatedClustersResponse(AbstractModel):
 
 
 class DeleteSitesRequest(AbstractModel):
-    """DeleteSites request structure.
+    r"""DeleteSites request structure.
 
     """
 
@@ -2337,7 +2337,7 @@ class DeleteSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
-        """List of site ids to be deleted
+        r"""List of site ids to be deleted
         :rtype: list of str
         """
         return self._SiteIds
@@ -2360,7 +2360,7 @@ class DeleteSitesRequest(AbstractModel):
 
 
 class DeleteSitesResponse(AbstractModel):
-    """DeleteSites response structure.
+    r"""DeleteSites response structure.
 
     """
 
@@ -2373,7 +2373,7 @@ class DeleteSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2388,7 +2388,7 @@ class DeleteSitesResponse(AbstractModel):
 
 
 class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
-    """DescribeDedicatedClusterCosCapacity request structure.
+    r"""DescribeDedicatedClusterCosCapacity request structure.
 
     """
 
@@ -2401,7 +2401,7 @@ class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Queried CDC id
+        r"""Queried CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -2424,7 +2424,7 @@ class DescribeDedicatedClusterCosCapacityRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
-    """DescribeDedicatedClusterCosCapacity response structure.
+    r"""DescribeDedicatedClusterCosCapacity response structure.
 
     """
 
@@ -2440,7 +2440,7 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
     @property
     def CosCapacity(self):
-        """Cluster COS capacity, in GB
+        r"""Cluster COS capacity, in GB
         :rtype: :class:`tencentcloud.cdc.v20201214.models.CosCapacity`
         """
         return self._CosCapacity
@@ -2451,7 +2451,7 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2469,7 +2469,7 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
 
 
 class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
-    """DescribeDedicatedClusterHostStatistics request structure.
+    r"""DescribeDedicatedClusterHostStatistics request structure.
 
     """
 
@@ -2494,7 +2494,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Queried CDC id
+        r"""Queried CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -2505,7 +2505,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def HostId(self):
-        """Host id
+        r"""Host id
         :rtype: str
         """
         return self._HostId
@@ -2516,7 +2516,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -2527,7 +2527,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -2538,7 +2538,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Time range accuracy, 1 min/5 min
+        r"""Time range accuracy, 1 min/5 min
         :rtype: str
         """
         return self._Period
@@ -2565,7 +2565,7 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
-    """DescribeDedicatedClusterHostStatistics response structure.
+    r"""DescribeDedicatedClusterHostStatistics response structure.
 
     """
 
@@ -2581,7 +2581,7 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
     @property
     def HostStatisticSet(self):
-        """List of statistic information of the cluster host
+        r"""List of statistic information of the cluster host
         :rtype: list of HostStatistic
         """
         return self._HostStatisticSet
@@ -2592,7 +2592,7 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2613,7 +2613,7 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
 
 
 class DescribeDedicatedClusterHostsRequest(AbstractModel):
-    """DescribeDedicatedClusterHosts request structure.
+    r"""DescribeDedicatedClusterHosts request structure.
 
     """
 
@@ -2632,7 +2632,7 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Cluster id
+        r"""Cluster id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -2643,7 +2643,7 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default
+        r"""Offset, 0 by default
         :rtype: int
         """
         return self._Offset
@@ -2654,7 +2654,7 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default
+        r"""Number of returned pieces, 20 by default
         :rtype: int
         """
         return self._Limit
@@ -2679,7 +2679,7 @@ class DescribeDedicatedClusterHostsRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterHostsResponse(AbstractModel):
-    """DescribeDedicatedClusterHosts response structure.
+    r"""DescribeDedicatedClusterHosts response structure.
 
     """
 
@@ -2699,7 +2699,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostInfoSet(self):
-        """Host information 
+        r"""Host information 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of HostInfo
         """
@@ -2711,7 +2711,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def TotalCount(self):
-        """Total number of hosts
+        r"""Total number of hosts
         :rtype: int
         """
         return self._TotalCount
@@ -2722,7 +2722,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2744,7 +2744,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
-    """DescribeDedicatedClusterInstanceTypes request structure.
+    r"""DescribeDedicatedClusterInstanceTypes request structure.
 
     """
 
@@ -2757,7 +2757,7 @@ class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Queried CDC id
+        r"""Queried CDC id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -2780,7 +2780,7 @@ class DescribeDedicatedClusterInstanceTypesRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
-    """DescribeDedicatedClusterInstanceTypes response structure.
+    r"""DescribeDedicatedClusterInstanceTypes response structure.
 
     """
 
@@ -2796,7 +2796,7 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
     @property
     def DedicatedClusterInstanceTypeSet(self):
-        """List of supported instance types
+        r"""List of supported instance types
         :rtype: list of DedicatedClusterInstanceType
         """
         return self._DedicatedClusterInstanceTypeSet
@@ -2807,7 +2807,7 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2828,7 +2828,7 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
 
 
 class DescribeDedicatedClusterOrdersRequest(AbstractModel):
-    """DescribeDedicatedClusterOrders request structure.
+    r"""DescribeDedicatedClusterOrders request structure.
 
     """
 
@@ -2859,7 +2859,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
-        """Filter by CDC id.
+        r"""Filter by CDC id.
         :rtype: list of str
         """
         return self._DedicatedClusterIds
@@ -2870,7 +2870,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderIds(self):
-        """Filter by CDC order id.
+        r"""Filter by CDC order id.
         :rtype: str
         """
         return self._DedicatedClusterOrderIds
@@ -2881,7 +2881,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -2892,7 +2892,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -2903,7 +2903,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def Status(self):
-        """The order status is the filter condition: PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED OFFLINE
+        r"""The order status is the filter condition: PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED OFFLINE
         :rtype: str
         """
         return self._Status
@@ -2914,7 +2914,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        """The order type is the filter condition: CREATE EXTEND
+        r"""The order type is the filter condition: CREATE EXTEND
         :rtype: str
         """
         return self._ActionType
@@ -2925,7 +2925,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def OrderTypes(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._OrderTypes
@@ -2954,7 +2954,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterOrdersResponse(AbstractModel):
-    """DescribeDedicatedClusterOrders response structure.
+    r"""DescribeDedicatedClusterOrders response structure.
 
     """
 
@@ -2973,7 +2973,7 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def DedicatedClusterOrderSet(self):
-        """List of CDC orders
+        r"""List of CDC orders
         :rtype: list of DedicatedClusterOrder
         """
         return self._DedicatedClusterOrderSet
@@ -2984,7 +2984,7 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of CDC orders that meet the conditions
+        r"""Total number of CDC orders that meet the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -2995,7 +2995,7 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3017,7 +3017,7 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
 
 
 class DescribeDedicatedClusterOverviewRequest(AbstractModel):
-    """DescribeDedicatedClusterOverview request structure.
+    r"""DescribeDedicatedClusterOverview request structure.
 
     """
 
@@ -3030,7 +3030,7 @@ class DescribeDedicatedClusterOverviewRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """Cluster id
+        r"""Cluster id
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3053,7 +3053,7 @@ class DescribeDedicatedClusterOverviewRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterOverviewResponse(AbstractModel):
-    """DescribeDedicatedClusterOverview response structure.
+    r"""DescribeDedicatedClusterOverview response structure.
 
     """
 
@@ -3097,7 +3097,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CvmCount(self):
-        """Number of CVMs
+        r"""Number of CVMs
         :rtype: int
         """
         return self._CvmCount
@@ -3108,7 +3108,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostCount(self):
-        """Number of hosts
+        r"""Number of hosts
         :rtype: int
         """
         return self._HostCount
@@ -3119,7 +3119,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def VpnConnectionState(self):
-        """VPN channel status 
+        r"""VPN channel status 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3131,7 +3131,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def VpngwBandwidthData(self):
-        """VPN gateway monitoring data 
+        r"""VPN gateway monitoring data 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
         """
@@ -3143,7 +3143,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def LocalNetInfo(self):
-        """Local gateway information 
+        r"""Local gateway information 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
         """
@@ -3155,7 +3155,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def VpnConnectionBandwidthData(self):
-        """VPN gateway channel monitoring data 
+        r"""VPN gateway channel monitoring data 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of VpngwBandwidthData
         """
@@ -3167,7 +3167,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostDetailInfo(self):
-        """
+        r"""
         :rtype: list of HostDetailInfo
         """
         return self._HostDetailInfo
@@ -3178,7 +3178,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostStandbyCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._HostStandbyCount
@@ -3189,7 +3189,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostNormalCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._HostNormalCount
@@ -3200,7 +3200,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3238,7 +3238,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class DescribeDedicatedClusterTypesRequest(AbstractModel):
-    """DescribeDedicatedClusterTypes request structure.
+    r"""DescribeDedicatedClusterTypes request structure.
 
     """
 
@@ -3263,7 +3263,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of fuzzy matching CDC configuration
+        r"""Name of fuzzy matching CDC configuration
         :rtype: str
         """
         return self._Name
@@ -3274,7 +3274,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def DedicatedClusterTypeIds(self):
-        """List of CDC configuration ids to be queried
+        r"""List of CDC configuration ids to be queried
         :rtype: list of str
         """
         return self._DedicatedClusterTypeIds
@@ -3285,7 +3285,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -3296,7 +3296,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -3307,7 +3307,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
     @property
     def IsCompute(self):
-        """Whether to query only the computing type?
+        r"""Whether to query only the computing type?
         :rtype: bool
         """
         return self._IsCompute
@@ -3334,7 +3334,7 @@ class DescribeDedicatedClusterTypesRequest(AbstractModel):
 
 
 class DescribeDedicatedClusterTypesResponse(AbstractModel):
-    """DescribeDedicatedClusterTypes response structure.
+    r"""DescribeDedicatedClusterTypes response structure.
 
     """
 
@@ -3353,7 +3353,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def DedicatedClusterTypeSet(self):
-        """List of CDC configurations
+        r"""List of CDC configurations
         :rtype: list of DedicatedClusterType
         """
         return self._DedicatedClusterTypeSet
@@ -3364,7 +3364,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of records that meet the conditions
+        r"""Number of records that meet the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -3375,7 +3375,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3397,7 +3397,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
 
 
 class DescribeDedicatedClustersRequest(AbstractModel):
-    """DescribeDedicatedClusters request structure.
+    r"""DescribeDedicatedClusters request structure.
 
     """
 
@@ -3428,7 +3428,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def DedicatedClusterIds(self):
-        """Query by one or more instance IDs. Example of instance ID: cluster-xxxxxxxx
+        r"""Query by one or more instance IDs. Example of instance ID: cluster-xxxxxxxx
         :rtype: list of str
         """
         return self._DedicatedClusterIds
@@ -3439,7 +3439,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Zones(self):
-        """Filter by AZ name.
+        r"""Filter by AZ name.
         :rtype: list of str
         """
         return self._Zones
@@ -3450,7 +3450,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def SiteIds(self):
-        """Filter by site id.
+        r"""Filter by site id.
         :rtype: list of str
         """
         return self._SiteIds
@@ -3461,7 +3461,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def LifecycleStatuses(self):
-        """Filter by CDC life cycle.
+        r"""Filter by CDC life cycle.
         :rtype: list of str
         """
         return self._LifecycleStatuses
@@ -3472,7 +3472,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of fuzzy matching CDC
+        r"""Name of fuzzy matching CDC
         :rtype: str
         """
         return self._Name
@@ -3483,7 +3483,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -3494,7 +3494,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -3523,7 +3523,7 @@ class DescribeDedicatedClustersRequest(AbstractModel):
 
 
 class DescribeDedicatedClustersResponse(AbstractModel):
-    """DescribeDedicatedClusters response structure.
+    r"""DescribeDedicatedClusters response structure.
 
     """
 
@@ -3542,7 +3542,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def DedicatedClusterSet(self):
-        """List of CDCs that meet the conditions
+        r"""List of CDCs that meet the conditions
         :rtype: list of DedicatedCluster
         """
         return self._DedicatedClusterSet
@@ -3553,7 +3553,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of CDCs that meet the conditions
+        r"""Total number of CDCs that meet the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -3564,7 +3564,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3586,7 +3586,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
 
 
 class DescribeDedicatedSupportedZonesRequest(AbstractModel):
-    """DescribeDedicatedSupportedZones request structure.
+    r"""DescribeDedicatedSupportedZones request structure.
 
     """
 
@@ -3599,7 +3599,7 @@ class DescribeDedicatedSupportedZonesRequest(AbstractModel):
 
     @property
     def Regions(self):
-        """List of input regions
+        r"""List of input regions
         :rtype: list of int
         """
         return self._Regions
@@ -3622,7 +3622,7 @@ class DescribeDedicatedSupportedZonesRequest(AbstractModel):
 
 
 class DescribeDedicatedSupportedZonesResponse(AbstractModel):
-    """DescribeDedicatedSupportedZones response structure.
+    r"""DescribeDedicatedSupportedZones response structure.
 
     """
 
@@ -3638,7 +3638,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """List of supported AZs
+        r"""List of supported AZs
         :rtype: list of RegionZoneInfo
         """
         return self._ZoneSet
@@ -3649,7 +3649,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3670,7 +3670,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
 
 
 class DescribeSitesDetailRequest(AbstractModel):
-    """DescribeSitesDetail request structure.
+    r"""DescribeSitesDetail request structure.
 
     """
 
@@ -3692,7 +3692,7 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def SiteIds(self):
-        """Filter by site id.
+        r"""Filter by site id.
         :rtype: list of str
         """
         return self._SiteIds
@@ -3703,7 +3703,7 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -3714,7 +3714,7 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -3725,7 +3725,7 @@ class DescribeSitesDetailRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Fuzzy match by site name.
+        r"""Fuzzy match by site name.
         :rtype: str
         """
         return self._Name
@@ -3751,7 +3751,7 @@ class DescribeSitesDetailRequest(AbstractModel):
 
 
 class DescribeSitesDetailResponse(AbstractModel):
-    """DescribeSitesDetail response structure.
+    r"""DescribeSitesDetail response structure.
 
     """
 
@@ -3770,7 +3770,7 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def SiteDetailSet(self):
-        """Site details
+        r"""Site details
         :rtype: list of SiteDetail
         """
         return self._SiteDetailSet
@@ -3781,7 +3781,7 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of sites that meet the conditions
+        r"""Total number of sites that meet the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -3792,7 +3792,7 @@ class DescribeSitesDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3814,7 +3814,7 @@ class DescribeSitesDetailResponse(AbstractModel):
 
 
 class DescribeSitesRequest(AbstractModel):
-    """DescribeSites request structure.
+    r"""DescribeSites request structure.
 
     """
 
@@ -3836,7 +3836,7 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def SiteIds(self):
-        """Filter by site id.
+        r"""Filter by site id.
         :rtype: list of str
         """
         return self._SiteIds
@@ -3847,7 +3847,7 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of fuzzy matching site
+        r"""Name of fuzzy matching site
         :rtype: str
         """
         return self._Name
@@ -3858,7 +3858,7 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset, 0 by default For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -3869,7 +3869,7 @@ class DescribeSitesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned pieces, 20 by default and can be up to 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -3895,7 +3895,7 @@ class DescribeSitesRequest(AbstractModel):
 
 
 class DescribeSitesResponse(AbstractModel):
-    """DescribeSites response structure.
+    r"""DescribeSites response structure.
 
     """
 
@@ -3914,7 +3914,7 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def SiteSet(self):
-        """List of sites that meet the query conditions
+        r"""List of sites that meet the query conditions
         :rtype: list of Site
         """
         return self._SiteSet
@@ -3925,7 +3925,7 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of sites that meet the conditions
+        r"""Number of sites that meet the conditions
         :rtype: int
         """
         return self._TotalCount
@@ -3936,7 +3936,7 @@ class DescribeSitesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3958,7 +3958,7 @@ class DescribeSitesResponse(AbstractModel):
 
 
 class DetailData(AbstractModel):
-    """Time-stamped detailed data
+    r"""Time-stamped detailed data
 
     """
 
@@ -3976,7 +3976,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Timestamps(self):
-        """Timestamp 
+        r"""Timestamp 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -3988,7 +3988,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Values(self):
-        """Corresponding value 
+        r"""Corresponding value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -4013,7 +4013,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class HostDetailInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -4038,7 +4038,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def HostTypeFamily(self):
-        """
+        r"""
         :rtype: str
         """
         return self._HostTypeFamily
@@ -4049,7 +4049,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuTotal(self):
-        """
+        r"""
         :rtype: float
         """
         return self._CpuTotal
@@ -4060,7 +4060,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuAvailable(self):
-        """
+        r"""
         :rtype: float
         """
         return self._CpuAvailable
@@ -4071,7 +4071,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemTotal(self):
-        """
+        r"""
         :rtype: float
         """
         return self._MemTotal
@@ -4082,7 +4082,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemAvailable(self):
-        """
+        r"""
         :rtype: float
         """
         return self._MemAvailable
@@ -4109,7 +4109,7 @@ class HostDetailInfo(AbstractModel):
 
 
 class HostInfo(AbstractModel):
-    """CDC host details
+    r"""CDC host details
 
     """
 
@@ -4153,7 +4153,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostIp(self):
-        """Host IP
+        r"""Host IP
         :rtype: str
         """
         return self._HostIp
@@ -4164,7 +4164,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def ServiceType(self):
-        """Cloud service type
+        r"""Cloud service type
         :rtype: str
         """
         return self._ServiceType
@@ -4175,7 +4175,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostStatus(self):
-        """Host running status
+        r"""Host running status
         :rtype: str
         """
         return self._HostStatus
@@ -4186,7 +4186,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostType(self):
-        """Host type
+        r"""Host type
         :rtype: str
         """
         return self._HostType
@@ -4197,7 +4197,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CpuAvailable(self):
-        """Number of available CPUs
+        r"""Number of available CPUs
         :rtype: int
         """
         return self._CpuAvailable
@@ -4208,7 +4208,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CpuTotal(self):
-        """Total CPUs
+        r"""Total CPUs
         :rtype: int
         """
         return self._CpuTotal
@@ -4219,7 +4219,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def MemAvailable(self):
-        """Available memories
+        r"""Available memories
         :rtype: int
         """
         return self._MemAvailable
@@ -4230,7 +4230,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def MemTotal(self):
-        """Total memories
+        r"""Total memories
         :rtype: int
         """
         return self._MemTotal
@@ -4241,7 +4241,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def RunTime(self):
-        """Running time
+        r"""Running time
         :rtype: str
         """
         return self._RunTime
@@ -4252,7 +4252,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def ExpireTime(self):
-        """Expiration time
+        r"""Expiration time
         :rtype: str
         """
         return self._ExpireTime
@@ -4263,7 +4263,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostId(self):
-        """Host id 
+        r"""Host id 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4297,7 +4297,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class HostStatistic(AbstractModel):
-    """Statistic information of hosts in the CDC
+    r"""Statistic information of hosts in the CDC
 
     """
 
@@ -4350,7 +4350,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostType(self):
-        """Host type
+        r"""Host type
         :rtype: str
         """
         return self._HostType
@@ -4361,7 +4361,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostFamily(self):
-        """Host model family
+        r"""Host model family
         :rtype: str
         """
         return self._HostFamily
@@ -4372,7 +4372,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Cpu(self):
-        """Number of CPU cores of host, in cores
+        r"""Number of CPU cores of host, in cores
         :rtype: int
         """
         return self._Cpu
@@ -4383,7 +4383,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Memory(self):
-        """Host memory, in GB
+        r"""Host memory, in GB
         :rtype: int
         """
         return self._Memory
@@ -4394,7 +4394,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Count(self):
-        """Number of hosts of this type
+        r"""Number of hosts of this type
         :rtype: int
         """
         return self._Count
@@ -4405,7 +4405,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CpuAverage(self):
-        """Average CPU load percentage 
+        r"""Average CPU load percentage 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: float
         """
@@ -4417,7 +4417,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def MemAverage(self):
-        """Average memory usage percentage 
+        r"""Average memory usage percentage 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: float
         """
@@ -4429,7 +4429,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def NetAverage(self):
-        """Average network traffic 
+        r"""Average network traffic 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: float
         """
@@ -4441,7 +4441,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CpuDetailData(self):
-        """Detailed CPU monitoring data 
+        r"""Detailed CPU monitoring data 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
@@ -4453,7 +4453,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def MemDetailData(self):
-        """Memory details 
+        r"""Memory details 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
@@ -4465,7 +4465,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def NetRateDetailData(self):
-        """Network rate details 
+        r"""Network rate details 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
@@ -4477,7 +4477,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def NetPacketDetailData(self):
-        """Network packet details 
+        r"""Network packet details 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
@@ -4520,7 +4520,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class InBandwidth(AbstractModel):
-    """Inbound bandwidth data
+    r"""Inbound bandwidth data
 
     """
 
@@ -4538,7 +4538,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Timestamps(self):
-        """Timestamp 
+        r"""Timestamp 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -4550,7 +4550,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Values(self):
-        """Time-specific value 
+        r"""Time-specific value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -4575,7 +4575,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class LocalNetInfo(AbstractModel):
-    """Local network information
+    r"""Local network information
 
     """
 
@@ -4601,7 +4601,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Protocol(self):
-        """Protocol 
+        r"""Protocol 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4613,7 +4613,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def VpcId(self):
-        """Network id 
+        r"""Network id 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4625,7 +4625,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def BGPRoute(self):
-        """Routing information 
+        r"""Routing information 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4637,7 +4637,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def LocalIp(self):
-        """Local IP 
+        r"""Local IP 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -4664,7 +4664,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class ModifyDedicatedClusterInfoRequest(AbstractModel):
-    """ModifyDedicatedClusterInfo request structure.
+    r"""ModifyDedicatedClusterInfo request structure.
 
     """
 
@@ -4689,7 +4689,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        """CDC ID
+        r"""CDC ID
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -4700,7 +4700,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Name(self):
-        """New cluster name
+        r"""New cluster name
         :rtype: str
         """
         return self._Name
@@ -4711,7 +4711,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """New cluster AZ
+        r"""New cluster AZ
         :rtype: str
         """
         return self._Zone
@@ -4722,7 +4722,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        """New cluster description
+        r"""New cluster description
         :rtype: str
         """
         return self._Description
@@ -4733,7 +4733,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
-        """Site where the cluster resides
+        r"""Site where the cluster resides
         :rtype: str
         """
         return self._SiteId
@@ -4760,7 +4760,7 @@ class ModifyDedicatedClusterInfoRequest(AbstractModel):
 
 
 class ModifyDedicatedClusterInfoResponse(AbstractModel):
-    """ModifyDedicatedClusterInfo response structure.
+    r"""ModifyDedicatedClusterInfo response structure.
 
     """
 
@@ -4773,7 +4773,7 @@ class ModifyDedicatedClusterInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4788,7 +4788,7 @@ class ModifyDedicatedClusterInfoResponse(AbstractModel):
 
 
 class ModifyOrderStatusRequest(AbstractModel):
-    """ModifyOrderStatus request structure.
+    r"""ModifyOrderStatus request structure.
 
     """
 
@@ -4807,7 +4807,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status to be updated
+        r"""Status to be updated
         :rtype: str
         """
         return self._Status
@@ -4818,7 +4818,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def DedicatedClusterOrderId(self):
-        """Large order ID
+        r"""Large order ID
         :rtype: str
         """
         return self._DedicatedClusterOrderId
@@ -4829,7 +4829,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
     @property
     def SubOrderIds(self):
-        """Small order ID
+        r"""Small order ID
         :rtype: list of str
         """
         return self._SubOrderIds
@@ -4854,7 +4854,7 @@ class ModifyOrderStatusRequest(AbstractModel):
 
 
 class ModifyOrderStatusResponse(AbstractModel):
-    """ModifyOrderStatus response structure.
+    r"""ModifyOrderStatus response structure.
 
     """
 
@@ -4867,7 +4867,7 @@ class ModifyOrderStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4882,7 +4882,7 @@ class ModifyOrderStatusResponse(AbstractModel):
 
 
 class ModifySiteDeviceInfoRequest(AbstractModel):
-    """ModifySiteDeviceInfo request structure.
+    r"""ModifySiteDeviceInfo request structure.
 
     """
 
@@ -4945,7 +4945,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def SiteId(self):
-        """Equipment room ID
+        r"""Equipment room ID
         :rtype: str
         """
         return self._SiteId
@@ -4956,7 +4956,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def FiberType(self):
-        """You are using optical fiber type to connect the CDC device to the network Single-mode or multi-mode fibers are available.
+        r"""You are using optical fiber type to connect the CDC device to the network Single-mode or multi-mode fibers are available.
         :rtype: str
         """
         return self._FiberType
@@ -4967,7 +4967,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def OpticalStandard(self):
-        """Optical standard used to connect the CDC device to the network This field depends on the uplink speed, optical fiber type, and distance to upstream equipment.
+        r"""Optical standard used to connect the CDC device to the network This field depends on the uplink speed, optical fiber type, and distance to upstream equipment.
         :rtype: str
         """
         return self._OpticalStandard
@@ -4978,7 +4978,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerConnectors(self):
-        """Type of power connector
+        r"""Type of power connector
         :rtype: str
         """
         return self._PowerConnectors
@@ -4989,7 +4989,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerFeedDrop(self):
-        """Whether power is supplied from above or below the rack
+        r"""Whether power is supplied from above or below the rack
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -5000,7 +5000,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def MaxWeight(self):
-        """Maximum weight capacity (KG)
+        r"""Maximum weight capacity (KG)
         :rtype: int
         """
         return self._MaxWeight
@@ -5011,7 +5011,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerDrawKva(self):
-        """Power consumption (KW)
+        r"""Power consumption (KW)
         :rtype: int
         """
         return self._PowerDrawKva
@@ -5022,7 +5022,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkSpeedGbps(self):
-        """Uplink speed from the network to Tencent Cloud Region
+        r"""Uplink speed from the network to Tencent Cloud Region
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -5033,7 +5033,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkCount(self):
-        """Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
+        r"""Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
         :rtype: int
         """
         return self._UplinkCount
@@ -5044,7 +5044,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def ConditionRequirement(self):
-        """Whether the following environmental conditions are met: 
+        r"""Whether the following environmental conditions are met: 
 1. There are no material requirements or the acceptance standard on site that will affect the delivery and installation of the CDC device. 
 2. The following conditions are met for finalized rack positions: 
 Temperature ranges from 41 to 104°F (5 to 40°C). 
@@ -5060,7 +5060,7 @@ Air flows from front to back at the rack position and there is sufficient air in
 
     @property
     def DimensionRequirement(self):
-        """Whether the following dimension conditions are met: 
+        r"""Whether the following dimension conditions are met: 
 Your loading dock can accommodate one rack container (H x W x D = 94" x 54" x 48"). 
 You can provide a clear route from the delivery point of your rack (H x W x D = 80" x 24" x 48") to its final installation location. You should consider platforms, corridors, doors, turns, ramps, freight elevators as well as other access restrictions when measuring the depth. 
 There shall be a 48" or greater front clearance and a 24" or greater rear clearance where the CDC is finally installed.
@@ -5074,7 +5074,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantNetworking(self):
-        """Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
+        r"""Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
         :rtype: bool
         """
         return self._RedundantNetworking
@@ -5085,7 +5085,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def NeedHelp(self):
-        """Whether you need help from Tencent Cloud for rack installation?
+        r"""Whether you need help from Tencent Cloud for rack installation?
         :rtype: bool
         """
         return self._NeedHelp
@@ -5096,7 +5096,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantPower(self):
-        """Whether there is power redundancy?
+        r"""Whether there is power redundancy?
         :rtype: bool
         """
         return self._RedundantPower
@@ -5107,7 +5107,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def BreakerRequirement(self):
-        """Whether there is an upstream circuit breaker?
+        r"""Whether there is an upstream circuit breaker?
         :rtype: bool
         """
         return self._BreakerRequirement
@@ -5144,7 +5144,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
 
 class ModifySiteDeviceInfoResponse(AbstractModel):
-    """ModifySiteDeviceInfo response structure.
+    r"""ModifySiteDeviceInfo response structure.
 
     """
 
@@ -5157,7 +5157,7 @@ class ModifySiteDeviceInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5172,7 +5172,7 @@ class ModifySiteDeviceInfoResponse(AbstractModel):
 
 
 class ModifySiteInfoRequest(AbstractModel):
-    """ModifySiteInfo request structure.
+    r"""ModifySiteInfo request structure.
 
     """
 
@@ -5209,7 +5209,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def SiteId(self):
-        """Equipment room ID
+        r"""Equipment room ID
         :rtype: str
         """
         return self._SiteId
@@ -5220,7 +5220,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -5231,7 +5231,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Site description
+        r"""Site description
         :rtype: str
         """
         return self._Description
@@ -5242,7 +5242,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Note(self):
-        """Note
+        r"""Note
         :rtype: str
         """
         return self._Note
@@ -5253,7 +5253,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Country(self):
-        """Country where the site is located
+        r"""Country where the site is located
         :rtype: str
         """
         return self._Country
@@ -5264,7 +5264,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def Province(self):
-        """Province where the site is located
+        r"""Province where the site is located
         :rtype: str
         """
         return self._Province
@@ -5275,7 +5275,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def City(self):
-        """City where the site is located
+        r"""City where the site is located
         :rtype: str
         """
         return self._City
@@ -5286,7 +5286,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def PostalCode(self):
-        """Postal code of the site area
+        r"""Postal code of the site area
         :rtype: str
         """
         return self._PostalCode
@@ -5297,7 +5297,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
     @property
     def AddressLine(self):
-        """Detailed address of the site
+        r"""Detailed address of the site
         :rtype: str
         """
         return self._AddressLine
@@ -5328,7 +5328,7 @@ class ModifySiteInfoRequest(AbstractModel):
 
 
 class ModifySiteInfoResponse(AbstractModel):
-    """ModifySiteInfo response structure.
+    r"""ModifySiteInfo response structure.
 
     """
 
@@ -5341,7 +5341,7 @@ class ModifySiteInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5356,7 +5356,7 @@ class ModifySiteInfoResponse(AbstractModel):
 
 
 class OutBandwidth(AbstractModel):
-    """Outbound bandwidth data
+    r"""Outbound bandwidth data
 
     """
 
@@ -5374,7 +5374,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Timestamps(self):
-        """Timestamp 
+        r"""Timestamp 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -5386,7 +5386,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Values(self):
-        """Time-specific value 
+        r"""Time-specific value 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: list of float
         """
@@ -5411,7 +5411,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class RegionZoneInfo(AbstractModel):
-    """Information of RegionZoneInfo
+    r"""Information of RegionZoneInfo
 
     """
 
@@ -5427,7 +5427,7 @@ class RegionZoneInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region id
+        r"""Region id
         :rtype: int
         """
         return self._RegionId
@@ -5438,7 +5438,7 @@ class RegionZoneInfo(AbstractModel):
 
     @property
     def Zones(self):
-        """ZoneInfo array
+        r"""ZoneInfo array
         :rtype: list of ZoneInfo
         """
         return self._Zones
@@ -5467,7 +5467,7 @@ class RegionZoneInfo(AbstractModel):
 
 
 class Site(AbstractModel):
-    """Customer site information
+    r"""Customer site information
 
     """
 
@@ -5490,7 +5490,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -5501,7 +5501,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def SiteId(self):
-        """Site id
+        r"""Site id
         :rtype: str
         """
         return self._SiteId
@@ -5512,7 +5512,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def Description(self):
-        """Site description 
+        r"""Site description 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -5524,7 +5524,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CreateTime(self):
-        """Site creation time
+        r"""Site creation time
         :rtype: str
         """
         return self._CreateTime
@@ -5550,7 +5550,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class SiteDetail(AbstractModel):
-    """Site details
+    r"""Site details
 
     """
 
@@ -5640,7 +5640,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def SiteId(self):
-        """Site id
+        r"""Site id
         :rtype: str
         """
         return self._SiteId
@@ -5651,7 +5651,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Name(self):
-        """Site name
+        r"""Site name
         :rtype: str
         """
         return self._Name
@@ -5662,7 +5662,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Description(self):
-        """Site description
+        r"""Site description
         :rtype: str
         """
         return self._Description
@@ -5673,7 +5673,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def CreateTime(self):
-        """Site creation time
+        r"""Site creation time
         :rtype: str
         """
         return self._CreateTime
@@ -5684,7 +5684,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def FiberType(self):
-        """Optical fiber type
+        r"""Optical fiber type
         :rtype: str
         """
         return self._FiberType
@@ -5695,7 +5695,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkSpeedGbps(self):
-        """Uplink speed from the network to Tencent Cloud Region
+        r"""Uplink speed from the network to Tencent Cloud Region
         :rtype: int
         """
         return self._UplinkSpeedGbps
@@ -5706,7 +5706,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def UplinkCount(self):
-        """Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
+        r"""Number of uplinks used by each CDC device (2 devices per rack) when connected to the network
         :rtype: int
         """
         return self._UplinkCount
@@ -5717,7 +5717,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def OpticalStandard(self):
-        """Optical standard used to connect the CDC device to the network
+        r"""Optical standard used to connect the CDC device to the network
         :rtype: str
         """
         return self._OpticalStandard
@@ -5728,7 +5728,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantNetworking(self):
-        """Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
+        r"""Whether redundant upstream equipment (switch or router) is provided so that both network devices can be connected to the network.
         :rtype: bool
         """
         return self._RedundantNetworking
@@ -5739,7 +5739,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerConnectors(self):
-        """Type of power connector
+        r"""Type of power connector
         :rtype: str
         """
         return self._PowerConnectors
@@ -5750,7 +5750,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerFeedDrop(self):
-        """Whether power is supplied from above or below the rack
+        r"""Whether power is supplied from above or below the rack
         :rtype: str
         """
         return self._PowerFeedDrop
@@ -5761,7 +5761,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PowerDrawKva(self):
-        """Power consumption (KW)
+        r"""Power consumption (KW)
         :rtype: float
         """
         return self._PowerDrawKva
@@ -5772,7 +5772,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def ConditionRequirement(self):
-        """Whether the following environmental conditions are met: 
+        r"""Whether the following environmental conditions are met: 
 1. There are no material requirements or the acceptance standard on site that will affect the delivery and installation of the CDC device. 
 2. The following conditions are met for finalized rack positions: 
 Temperature ranges from 41 to 104°F (5 to 40°C). 
@@ -5788,7 +5788,7 @@ Air flows from front to back at the rack position and there is sufficient air in
 
     @property
     def DimensionRequirement(self):
-        """Whether the following dimension conditions are met: 
+        r"""Whether the following dimension conditions are met: 
 Your loading dock can accommodate one rack container (H x W x D = 94" x 54" x 48"). 
 You can provide a clear route from the delivery point of your rack (H x W x D = 80" x 24" x 48") to its final installation location. You should consider platforms, corridors, doors, turns, ramps, freight elevators as well as other access restrictions when measuring the depth. 
 There shall be a 48" or greater front clearance and a 24" or greater rear clearance where the CDC is finally installed.
@@ -5802,7 +5802,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def MaxWeight(self):
-        """Maximum weight capacity (KG)
+        r"""Maximum weight capacity (KG)
         :rtype: int
         """
         return self._MaxWeight
@@ -5813,7 +5813,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def AddressLine(self):
-        """Site address
+        r"""Site address
         :rtype: str
         """
         return self._AddressLine
@@ -5824,7 +5824,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def OptionalAddressLine(self):
-        """Detailed address of the site area (to be added)
+        r"""Detailed address of the site area (to be added)
         :rtype: str
         """
         return self._OptionalAddressLine
@@ -5835,7 +5835,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def NeedHelp(self):
-        """Whether you need help from Tencent Cloud for rack installation?
+        r"""Whether you need help from Tencent Cloud for rack installation?
         :rtype: bool
         """
         return self._NeedHelp
@@ -5846,7 +5846,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def BreakerRequirement(self):
-        """Whether there is an upstream circuit breaker?
+        r"""Whether there is an upstream circuit breaker?
         :rtype: bool
         """
         return self._BreakerRequirement
@@ -5857,7 +5857,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def RedundantPower(self):
-        """Whether there is power redundancy?
+        r"""Whether there is power redundancy?
         :rtype: bool
         """
         return self._RedundantPower
@@ -5868,7 +5868,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Country(self):
-        """Country where the site is located
+        r"""Country where the site is located
         :rtype: str
         """
         return self._Country
@@ -5879,7 +5879,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def Province(self):
-        """Province where the site is located
+        r"""Province where the site is located
         :rtype: str
         """
         return self._Province
@@ -5890,7 +5890,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def City(self):
-        """City where the site is located
+        r"""City where the site is located
         :rtype: str
         """
         return self._City
@@ -5901,7 +5901,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
     @property
     def PostalCode(self):
-        """Postal code of the site area
+        r"""Postal code of the site area
         :rtype: int
         """
         return self._PostalCode
@@ -5947,7 +5947,7 @@ There shall be a 48" or greater front clearance and a 24" or greater rear cleara
 
 
 class VpngwBandwidthData(AbstractModel):
-    """VPN gateway traffic monitoring data
+    r"""VPN gateway traffic monitoring data
 
     """
 
@@ -5964,7 +5964,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OutBandwidth(self):
-        """Outbound bandwidth traffic 
+        r"""Outbound bandwidth traffic 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
         """
@@ -5976,7 +5976,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def InBandwidth(self):
-        """Inbound bandwidth traffic
+        r"""Inbound bandwidth traffic
         :rtype: :class:`tencentcloud.cdc.v20201214.models.InBandwidth`
         """
         return self._InBandwidth
@@ -6004,7 +6004,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class ZoneInfo(AbstractModel):
-    """AZ information
+    r"""AZ information
 
     """
 
@@ -6026,7 +6026,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ name
+        r"""AZ name
         :rtype: str
         """
         return self._Zone
@@ -6037,7 +6037,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        """AZ description
+        r"""AZ description
         :rtype: str
         """
         return self._ZoneName
@@ -6048,7 +6048,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """AZ ID
+        r"""AZ ID
         :rtype: int
         """
         return self._ZoneId
@@ -6059,7 +6059,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneState(self):
-        """AZ status: AVAILABLE or UNAVAILABLE AVAILABLE means the AZ is available while UNAVAILABLE means the AZ is unavailable.
+        r"""AZ status: AVAILABLE or UNAVAILABLE AVAILABLE means the AZ is available while UNAVAILABLE means the AZ is unavailable.
         :rtype: str
         """
         return self._ZoneState

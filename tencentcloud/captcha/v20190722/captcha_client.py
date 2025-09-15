@@ -27,7 +27,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaResult(self, request):
-        """This API is used to query the result of CAPTCHA ticket verification (web and app).
+        r"""This API is used to query the result of CAPTCHA ticket verification (web and app).
 
         :param request: Request instance for DescribeCaptchaResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaResultRequest`

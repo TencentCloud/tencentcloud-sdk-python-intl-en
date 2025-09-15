@@ -27,7 +27,7 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateAudit(self, request):
-        """Parameter requirements:
+        r"""Parameter requirements:
         1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `osBucketName` are required.
         2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
         3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.
@@ -54,7 +54,7 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateAuditTrack(self, request):
-        """This API is used to create a tracking set.
+        r"""This API is used to create a tracking set.
 
         :param request: Request instance for CreateAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditTrackRequest`
@@ -77,7 +77,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DeleteAudit(self, request):
-        """This API is used to delete a tracking set.
+        r"""This API is used to delete a tracking set.
 
         :param request: Request instance for DeleteAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditRequest`
@@ -100,7 +100,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DeleteAuditTrack(self, request):
-        """This API is used to delete a CloudAudit tracking set.
+        r"""This API is used to delete a CloudAudit tracking set.
 
         :param request: Request instance for DeleteAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditTrackRequest`
@@ -123,7 +123,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAudit(self, request):
-        """This API is used to query the details of a tracking set.
+        r"""This API is used to query the details of a tracking set.
 
         :param request: Request instance for DescribeAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditRequest`
@@ -146,7 +146,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAuditTrack(self, request):
-        """This API is used to query the CloudAudit tracking set details.
+        r"""This API is used to query the CloudAudit tracking set details.
 
         :param request: Request instance for DescribeAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTrackRequest`
@@ -169,7 +169,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeAuditTracks(self, request):
-        """This API is used to query the CloudAudit tracking set list.
+        r"""This API is used to query the CloudAudit tracking set list.
 
         :param request: Request instance for DescribeAuditTracks.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksRequest`
@@ -192,7 +192,7 @@ class CloudauditClient(AbstractClient):
 
 
     def DescribeEvents(self, request):
-        """This API is used to query CloudAudit logs.
+        r"""This API is used to query CloudAudit logs.
 
         :param request: Request instance for DescribeEvents.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeEventsRequest`
@@ -215,7 +215,7 @@ class CloudauditClient(AbstractClient):
 
 
     def GetAttributeKey(self, request):
-        """This API is used to query the valid values of `AttributeKey`.
+        r"""This API is used to query the valid values of `AttributeKey`.
 
         :param request: Request instance for GetAttributeKey.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyRequest`
@@ -238,7 +238,7 @@ class CloudauditClient(AbstractClient):
 
 
     def InquireAuditCredit(self, request):
-        """This API is used to query the number of tracking sets that can be created.
+        r"""This API is used to query the number of tracking sets that can be created.
 
         :param request: Request instance for InquireAuditCredit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditRequest`
@@ -261,7 +261,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListAudits(self, request):
-        """This API is used to query the summary of tracking sets.
+        r"""This API is used to query the summary of tracking sets.
 
         :param request: Request instance for ListAudits.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsRequest`
@@ -284,7 +284,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCmqEnableRegion(self, request):
-        """This API is used to query CloudAudit-enabled CMQ AZs.
+        r"""This API is used to query CloudAudit-enabled CMQ AZs.
 
         :param request: Request instance for ListCmqEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
@@ -307,7 +307,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ListCosEnableRegion(self, request):
-        """This API is used to query CloudAudit-enabled COS AZs.
+        r"""This API is used to query CloudAudit-enabled COS AZs.
 
         :param request: Request instance for ListCosEnableRegion.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`
@@ -330,7 +330,7 @@ class CloudauditClient(AbstractClient):
 
 
     def LookUpEvents(self, request):
-        """This API is used to search for operation logs to help query relevant operation information.
+        r"""This API is used to search for operation logs to help query relevant operation information.
 
         :param request: Request instance for LookUpEvents.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsRequest`
@@ -353,7 +353,7 @@ class CloudauditClient(AbstractClient):
 
 
     def ModifyAuditTrack(self, request):
-        """This API is used to modify a CloudAudit tracking set.
+        r"""This API is used to modify a CloudAudit tracking set.
 
         :param request: Request instance for ModifyAuditTrack.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyAuditTrackRequest`
@@ -376,7 +376,7 @@ class CloudauditClient(AbstractClient):
 
 
     def StartLogging(self, request):
-        """This API is used to enable a tracking set.
+        r"""This API is used to enable a tracking set.
 
         :param request: Request instance for StartLogging.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingRequest`
@@ -399,7 +399,7 @@ class CloudauditClient(AbstractClient):
 
 
     def StopLogging(self, request):
-        """This API is used to disable a tracking set.
+        r"""This API is used to disable a tracking set.
 
         :param request: Request instance for StopLogging.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingRequest`
@@ -422,7 +422,7 @@ class CloudauditClient(AbstractClient):
 
 
     def UpdateAudit(self, request):
-        """Parameter requirements:
+        r"""Parameter requirements:
         1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `osBucketName` are required.
         2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.
         3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.

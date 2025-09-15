@@ -27,7 +27,7 @@ class KmsClient(AbstractClient):
 
 
     def ArchiveKey(self, request):
-        """This API is used to archive keys.The archived keys can only be used for decryption but not encryption.
+        r"""This API is used to archive keys.The archived keys can only be used for decryption but not encryption.
 
         :param request: Request instance for ArchiveKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyRequest`
@@ -50,7 +50,7 @@ class KmsClient(AbstractClient):
 
 
     def AsymmetricRsaDecrypt(self, request):
-        """This API is used to decrypt data with the specified private key that is encrypted with RSA asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption.
+        r"""This API is used to decrypt data with the specified private key that is encrypted with RSA asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption.
 
         :param request: Request instance for AsymmetricRsaDecrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricRsaDecryptRequest`
@@ -73,7 +73,7 @@ class KmsClient(AbstractClient):
 
 
     def AsymmetricSm2Decrypt(self, request):
-        """This API is used to decrypt data with the specified private key that is encrypted with SM2 asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption. The length of the ciphertext passed in cannot exceed 256 bytes.
+        r"""This API is used to decrypt data with the specified private key that is encrypted with SM2 asymmetric cryptographic algorithm. The ciphertext must be encrypted with the corresponding public key. The asymmetric key must be in `Enabled` state for decryption. The length of the ciphertext passed in cannot exceed 256 bytes.
 
         :param request: Request instance for AsymmetricSm2Decrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricSm2DecryptRequest`
@@ -96,7 +96,7 @@ class KmsClient(AbstractClient):
 
 
     def BindCloudResource(self, request):
-        """This API is used to bind a key with a Tencent Cloud resource. If the key has been set to be expired automatically, the setting will be canceled to ensure that the key will not be invalid automatically. If the key and the resource has already been bound, the call will still be successful.
+        r"""This API is used to bind a key with a Tencent Cloud resource. If the key has been set to be expired automatically, the setting will be canceled to ensure that the key will not be invalid automatically. If the key and the resource has already been bound, the call will still be successful.
 
         :param request: Request instance for BindCloudResource.
         :type request: :class:`tencentcloud.kms.v20190118.models.BindCloudResourceRequest`
@@ -119,7 +119,7 @@ class KmsClient(AbstractClient):
 
 
     def CancelDataKeyDeletion(self, request):
-        """This API is used to cancel scheduled deletion for a data key.
+        r"""This API is used to cancel scheduled deletion for a data key.
 
         :param request: Request instance for CancelDataKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.CancelDataKeyDeletionRequest`
@@ -142,7 +142,7 @@ class KmsClient(AbstractClient):
 
 
     def CancelKeyArchive(self, request):
-        """This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.
+        r"""This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.
 
         :param request: Request instance for CancelKeyArchive.
         :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyArchiveRequest`
@@ -165,7 +165,7 @@ class KmsClient(AbstractClient):
 
 
     def CancelKeyDeletion(self, request):
-        """Cancel the scheduled deletion of CMK
+        r"""Cancel the scheduled deletion of CMK
 
         :param request: Request instance for CancelKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyDeletionRequest`
@@ -188,7 +188,7 @@ class KmsClient(AbstractClient):
 
 
     def CreateKey(self, request):
-        """Create a master key CMK (Custom Master Key) for user management data keys
+        r"""Create a master key CMK (Custom Master Key) for user management data keys
 
         :param request: Request instance for CreateKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.CreateKeyRequest`
@@ -211,7 +211,7 @@ class KmsClient(AbstractClient):
 
 
     def CreateWhiteBoxKey(self, request):
-        """This API is used to create a white-box key. Up to 50 ones can be created.
+        r"""This API is used to create a white-box key. Up to 50 ones can be created.
 
         :param request: Request instance for CreateWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.CreateWhiteBoxKeyRequest`
@@ -234,7 +234,7 @@ class KmsClient(AbstractClient):
 
 
     def Decrypt(self, request):
-        """This API is used to decrypt the ciphertext and obtain the plaintext data.
+        r"""This API is used to decrypt the ciphertext and obtain the plaintext data.
 
         :param request: Request instance for Decrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.DecryptRequest`
@@ -257,7 +257,7 @@ class KmsClient(AbstractClient):
 
 
     def DeleteImportedKeyMaterial(self, request):
-        """This API is used to delete the imported key material. It is only valid for EXTERNAL CMKs. Specifically, it puts a CMK into `PendingImport` status instead of deleting the CMK, so that the CMK can be used again after key material is reimported. To delete the CMK completely, please call the `ScheduleKeyDeletion` API.
+        r"""This API is used to delete the imported key material. It is only valid for EXTERNAL CMKs. Specifically, it puts a CMK into `PendingImport` status instead of deleting the CMK, so that the CMK can be used again after key material is reimported. To delete the CMK completely, please call the `ScheduleKeyDeletion` API.
 
         :param request: Request instance for DeleteImportedKeyMaterial.
         :type request: :class:`tencentcloud.kms.v20190118.models.DeleteImportedKeyMaterialRequest`
@@ -280,7 +280,7 @@ class KmsClient(AbstractClient):
 
 
     def DeleteWhiteBoxKey(self, request):
-        """This API is used to delete a white-box key. Note: only disabled white-box keys can be deleted.
+        r"""This API is used to delete a white-box key. Note: only disabled white-box keys can be deleted.
 
         :param request: Request instance for DeleteWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DeleteWhiteBoxKeyRequest`
@@ -303,7 +303,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeDataKey(self, request):
-        """This API is used to retrieve data key details.
+        r"""This API is used to retrieve data key details.
 
         :param request: Request instance for DescribeDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeyRequest`
@@ -326,7 +326,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeDataKeys(self, request):
-        """This API is used to return the key attribute information list.
+        r"""This API is used to return the key attribute information list.
 
         :param request: Request instance for DescribeDataKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeysRequest`
@@ -349,7 +349,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeKey(self, request):
-        """This API is used to get the attribute details of the CMK with a specified `KeyId`.
+        r"""This API is used to get the attribute details of the CMK with a specified `KeyId`.
 
         :param request: Request instance for DescribeKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeKeyRequest`
@@ -372,7 +372,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeKeys(self, request):
-        """This API is used to get the attribute information of CMKs in batches.
+        r"""This API is used to get the attribute information of CMKs in batches.
 
         :param request: Request instance for DescribeKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeKeysRequest`
@@ -395,7 +395,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeWhiteBoxDecryptKey(self, request):
-        """This API is used to get a white-box decryption key.
+        r"""This API is used to get a white-box decryption key.
 
         :param request: Request instance for DescribeWhiteBoxDecryptKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDecryptKeyRequest`
@@ -418,7 +418,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeWhiteBoxDeviceFingerprints(self, request):
-        """This API is used to get the device fingerprint list of a specified key.
+        r"""This API is used to get the device fingerprint list of a specified key.
 
         :param request: Request instance for DescribeWhiteBoxDeviceFingerprints.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDeviceFingerprintsRequest`
@@ -441,7 +441,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeWhiteBoxKey(self, request):
-        """This API is used to display white-box key information.
+        r"""This API is used to display white-box key information.
 
         :param request: Request instance for DescribeWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyRequest`
@@ -464,7 +464,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeWhiteBoxKeyDetails(self, request):
-        """This API is used to get the white-box key list.
+        r"""This API is used to get the white-box key list.
 
         :param request: Request instance for DescribeWhiteBoxKeyDetails.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyDetailsRequest`
@@ -487,7 +487,7 @@ class KmsClient(AbstractClient):
 
 
     def DescribeWhiteBoxServiceStatus(self, request):
-        """This API is used to get the white-box key service status.
+        r"""This API is used to get the white-box key service status.
 
         :param request: Request instance for DescribeWhiteBoxServiceStatus.
         :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxServiceStatusRequest`
@@ -510,7 +510,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableDataKey(self, request):
-        """This API is used to disable the data key.
+        r"""This API is used to disable the data key.
 
         :param request: Request instance for DisableDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeyRequest`
@@ -533,7 +533,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableDataKeys(self, request):
-        """This API is used to batch disable data keys.
+        r"""This API is used to batch disable data keys.
 
         :param request: Request instance for DisableDataKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeysRequest`
@@ -556,7 +556,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKey(self, request):
-        """This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.
+        r"""This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.
 
         :param request: Request instance for DisableKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeyRequest`
@@ -579,7 +579,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKeyRotation(self, request):
-        """Disabled key rotation for the specified CMK.
+        r"""Disabled key rotation for the specified CMK.
 
         :param request: Request instance for DisableKeyRotation.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeyRotationRequest`
@@ -602,7 +602,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableKeys(self, request):
-        """This API is used to batch prohibit the use of CMK.
+        r"""This API is used to batch prohibit the use of CMK.
 
         :param request: Request instance for DisableKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableKeysRequest`
@@ -625,7 +625,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableWhiteBoxKey(self, request):
-        """This API is used to disable a white-box key.
+        r"""This API is used to disable a white-box key.
 
         :param request: Request instance for DisableWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeyRequest`
@@ -648,7 +648,7 @@ class KmsClient(AbstractClient):
 
 
     def DisableWhiteBoxKeys(self, request):
-        """This API is used to disable white-box keys in batches.
+        r"""This API is used to disable white-box keys in batches.
 
         :param request: Request instance for DisableWhiteBoxKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeysRequest`
@@ -671,7 +671,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableDataKey(self, request):
-        """This API is used to enable the data key.
+        r"""This API is used to enable the data key.
 
         :param request: Request instance for EnableDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeyRequest`
@@ -694,7 +694,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableDataKeys(self, request):
-        """This API is used to batch enable data keys.
+        r"""This API is used to batch enable data keys.
 
         :param request: Request instance for EnableDataKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeysRequest`
@@ -717,7 +717,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKey(self, request):
-        """Enable a specified CMK.
+        r"""Enable a specified CMK.
 
         :param request: Request instance for EnableKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeyRequest`
@@ -740,7 +740,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKeyRotation(self, request):
-        """Turn on the key rotation function for the specified CMK.
+        r"""Turn on the key rotation function for the specified CMK.
 
         :param request: Request instance for EnableKeyRotation.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeyRotationRequest`
@@ -763,7 +763,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableKeys(self, request):
-        """This API is used to enable CMK in batches.
+        r"""This API is used to enable CMK in batches.
 
         :param request: Request instance for EnableKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableKeysRequest`
@@ -786,7 +786,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableWhiteBoxKey(self, request):
-        """This API is used to enable a white-box key.
+        r"""This API is used to enable a white-box key.
 
         :param request: Request instance for EnableWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeyRequest`
@@ -809,7 +809,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableWhiteBoxKeys(self, request):
-        """This API is used to enable white-box keys in batches.
+        r"""This API is used to enable white-box keys in batches.
 
         :param request: Request instance for EnableWhiteBoxKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeysRequest`
@@ -832,7 +832,7 @@ class KmsClient(AbstractClient):
 
 
     def Encrypt(self, request):
-        """This API is used to encrypt any data up to 4KB. It can be used to encrypt database passwords, RSA Key, or other small sensitive information. For application data encryption, use the DataKey generated by GenerateDataKey to perform local data encryption and decryption operations
+        r"""This API is used to encrypt any data up to 4KB. It can be used to encrypt database passwords, RSA Key, or other small sensitive information. For application data encryption, use the DataKey generated by GenerateDataKey to perform local data encryption and decryption operations
 
         :param request: Request instance for Encrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.EncryptRequest`
@@ -855,7 +855,7 @@ class KmsClient(AbstractClient):
 
 
     def EncryptByWhiteBox(self, request):
-        """This API is used to encrypt data with a white-box key.
+        r"""This API is used to encrypt data with a white-box key.
 
         :param request: Request instance for EncryptByWhiteBox.
         :type request: :class:`tencentcloud.kms.v20190118.models.EncryptByWhiteBoxRequest`
@@ -878,7 +878,7 @@ class KmsClient(AbstractClient):
 
 
     def GenerateDataKey(self, request):
-        """This API generates a data key, which you can use to encrypt local data.
+        r"""This API generates a data key, which you can use to encrypt local data.
 
         :param request: Request instance for GenerateDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.GenerateDataKeyRequest`
@@ -901,7 +901,7 @@ class KmsClient(AbstractClient):
 
 
     def GenerateRandom(self, request):
-        """This API is used to generate a random number.
+        r"""This API is used to generate a random number.
 
         :param request: Request instance for GenerateRandom.
         :type request: :class:`tencentcloud.kms.v20190118.models.GenerateRandomRequest`
@@ -924,7 +924,7 @@ class KmsClient(AbstractClient):
 
 
     def GetDataKeyCiphertextBlob(self, request):
-        """This API is used to download the encrypted data key.
+        r"""This API is used to download the encrypted data key.
 
         :param request: Request instance for GetDataKeyCiphertextBlob.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyCiphertextBlobRequest`
@@ -947,7 +947,7 @@ class KmsClient(AbstractClient):
 
 
     def GetDataKeyPlaintext(self, request):
-        """This API is used to retrieve the key plaintext.
+        r"""This API is used to retrieve the key plaintext.
 
         :param request: Request instance for GetDataKeyPlaintext.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyPlaintextRequest`
@@ -970,7 +970,7 @@ class KmsClient(AbstractClient):
 
 
     def GetKeyRotationStatus(self, request):
-        """Query whether the specified CMK has the key rotation function.
+        r"""Query whether the specified CMK has the key rotation function.
 
         :param request: Request instance for GetKeyRotationStatus.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetKeyRotationStatusRequest`
@@ -993,7 +993,7 @@ class KmsClient(AbstractClient):
 
 
     def GetParametersForImport(self, request):
-        """This API is used to obtain the parameters of the material to be imported into a CMK. The returned `Token` is used as one of the parameters to execute `ImportKeyMaterial`, and the returned `PublicKey` is used to encrypt the key material. The `Token` and `PublicKey` are valid for 24 hours. If they are expired, you will need to call the API again to get a new `Token` and `PublicKey`.
+        r"""This API is used to obtain the parameters of the material to be imported into a CMK. The returned `Token` is used as one of the parameters to execute `ImportKeyMaterial`, and the returned `PublicKey` is used to encrypt the key material. The `Token` and `PublicKey` are valid for 24 hours. If they are expired, you will need to call the API again to get a new `Token` and `PublicKey`.
 
         :param request: Request instance for GetParametersForImport.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetParametersForImportRequest`
@@ -1016,7 +1016,7 @@ class KmsClient(AbstractClient):
 
 
     def GetPublicKey(self, request):
-        """This API is used to get the public key of an asymmetric KMS key (which must be enabled). With the public key, you can encrypt messages and verify signatures.
+        r"""This API is used to get the public key of an asymmetric KMS key (which must be enabled). With the public key, you can encrypt messages and verify signatures.
 
         :param request: Request instance for GetPublicKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetPublicKeyRequest`
@@ -1039,7 +1039,7 @@ class KmsClient(AbstractClient):
 
 
     def GetRegions(self, request):
-        """This API is used to return all regions support KMS service.
+        r"""This API is used to return all regions support KMS service.
 
         :param request: Request instance for GetRegions.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetRegionsRequest`
@@ -1062,7 +1062,7 @@ class KmsClient(AbstractClient):
 
 
     def GetServiceStatus(self, request):
-        """Used to query whether the user has activated the KMS service.
+        r"""Used to query whether the user has activated the KMS service.
 
         :param request: Request instance for GetServiceStatus.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetServiceStatusRequest`
@@ -1085,7 +1085,7 @@ class KmsClient(AbstractClient):
 
 
     def ImportDataKey(self, request):
-        """Data key import API, managed by KMS.
+        r"""Data key import API, managed by KMS.
 
         :param request: Request instance for ImportDataKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.ImportDataKeyRequest`
@@ -1108,7 +1108,7 @@ class KmsClient(AbstractClient):
 
 
     def ImportKeyMaterial(self, request):
-        """This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.
+        r"""This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.
         Key material can only be imported into CMKs in `Enabled` and `PendingImport` status.
 
         :param request: Request instance for ImportKeyMaterial.
@@ -1132,7 +1132,7 @@ class KmsClient(AbstractClient):
 
 
     def ListAlgorithms(self, request):
-        """This API is used to list the encryption methods supported in the current region.
+        r"""This API is used to list the encryption methods supported in the current region.
 
         :param request: Request instance for ListAlgorithms.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListAlgorithmsRequest`
@@ -1155,7 +1155,7 @@ class KmsClient(AbstractClient):
 
 
     def ListDataKeyDetail(self, request):
-        """This API is used to retrieve data key list details based on specified Offset and Limit.
+        r"""This API is used to retrieve data key list details based on specified Offset and Limit.
 
         :param request: Request instance for ListDataKeyDetail.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeyDetailRequest`
@@ -1178,7 +1178,7 @@ class KmsClient(AbstractClient):
 
 
     def ListDataKeys(self, request):
-        """This API is used to query the list of data keys.
+        r"""This API is used to query the list of data keys.
 
         :param request: Request instance for ListDataKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeysRequest`
@@ -1201,7 +1201,7 @@ class KmsClient(AbstractClient):
 
 
     def ListKeyDetail(self, request):
-        """Get the master key list details according to the specified Offset and Limit.
+        r"""Get the master key list details according to the specified Offset and Limit.
 
         :param request: Request instance for ListKeyDetail.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListKeyDetailRequest`
@@ -1224,7 +1224,7 @@ class KmsClient(AbstractClient):
 
 
     def ListKeys(self, request):
-        """This API is used to list the KeyIds of CMKs in `Enabled`, `Disabled`, and `PendingImport` status under the account.
+        r"""This API is used to list the KeyIds of CMKs in `Enabled`, `Disabled`, and `PendingImport` status under the account.
 
         :param request: Request instance for ListKeys.
         :type request: :class:`tencentcloud.kms.v20190118.models.ListKeysRequest`
@@ -1247,7 +1247,7 @@ class KmsClient(AbstractClient):
 
 
     def OverwriteWhiteBoxDeviceFingerprints(self, request):
-        """This API is used to overwrite the device fingerprint information of a specified key.
+        r"""This API is used to overwrite the device fingerprint information of a specified key.
 
         :param request: Request instance for OverwriteWhiteBoxDeviceFingerprints.
         :type request: :class:`tencentcloud.kms.v20190118.models.OverwriteWhiteBoxDeviceFingerprintsRequest`
@@ -1270,7 +1270,7 @@ class KmsClient(AbstractClient):
 
 
     def PostQuantumCryptoDecrypt(self, request):
-        """This API is used to decrypt ciphertext using post-quantum cryptography (PQC) algorithm, and return the plaintext.
+        r"""This API is used to decrypt ciphertext using post-quantum cryptography (PQC) algorithm, and return the plaintext.
 
         :param request: Request instance for PostQuantumCryptoDecrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoDecryptRequest`
@@ -1293,7 +1293,7 @@ class KmsClient(AbstractClient):
 
 
     def PostQuantumCryptoEncrypt(self, request):
-        """This API is used to encrypt using PQC. It supports up to 4 KB of data. It is applicable for encryption of database passwords, RSA keys, or other sensitive information. You can also apply `DataKey` generated by API `GenerateDataKey` to encrypt or decrypt your local data.
+        r"""This API is used to encrypt using PQC. It supports up to 4 KB of data. It is applicable for encryption of database passwords, RSA keys, or other sensitive information. You can also apply `DataKey` generated by API `GenerateDataKey` to encrypt or decrypt your local data.
 
         :param request: Request instance for PostQuantumCryptoEncrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoEncryptRequest`
@@ -1316,7 +1316,7 @@ class KmsClient(AbstractClient):
 
 
     def PostQuantumCryptoSign(self, request):
-        """This API is used to sign using PQC.
+        r"""This API is used to sign using PQC.
 
         :param request: Request instance for PostQuantumCryptoSign.
         :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoSignRequest`
@@ -1339,7 +1339,7 @@ class KmsClient(AbstractClient):
 
 
     def PostQuantumCryptoVerify(self, request):
-        """This API is used to verify a signature using PQC.
+        r"""This API is used to verify a signature using PQC.
 
         :param request: Request instance for PostQuantumCryptoVerify.
         :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoVerifyRequest`
@@ -1362,7 +1362,7 @@ class KmsClient(AbstractClient):
 
 
     def ReEncrypt(self, request):
-        """Re-encrypt the ciphertext using the specified CMK.
+        r"""Re-encrypt the ciphertext using the specified CMK.
 
         :param request: Request instance for ReEncrypt.
         :type request: :class:`tencentcloud.kms.v20190118.models.ReEncryptRequest`
@@ -1385,7 +1385,7 @@ class KmsClient(AbstractClient):
 
 
     def ScheduleDataKeyDeletion(self, request):
-        """Schedule deletion for a data key.
+        r"""Schedule deletion for a data key.
 
         :param request: Request instance for ScheduleDataKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleDataKeyDeletionRequest`
@@ -1408,7 +1408,7 @@ class KmsClient(AbstractClient):
 
 
     def ScheduleKeyDeletion(self, request):
-        """CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days
+        r"""CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days
 
         :param request: Request instance for ScheduleKeyDeletion.
         :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleKeyDeletionRequest`
@@ -1431,7 +1431,7 @@ class KmsClient(AbstractClient):
 
 
     def SignByAsymmetricKey(self, request):
-        """This API is used to generate a signature with an asymmetric key.
+        r"""This API is used to generate a signature with an asymmetric key.
         Note that only when KeyUsage is `ASYMMETRIC_SIGN_VERIFY_${ALGORITHM}` (e.g., `ASYMMETRIC_SIGN_VERIFY_SM2` and `ASYMMETRIC_SIGN_VERIFY_ECC`), the key can be used for signing.
 
         :param request: Request instance for SignByAsymmetricKey.
@@ -1455,7 +1455,7 @@ class KmsClient(AbstractClient):
 
 
     def UnbindCloudResource(self, request):
-        """This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.
+        r"""This API is used to unbind a key with a Tencent Cloud resource, indicating that the Tencent Cloud resource will not use the key any longer.
 
         :param request: Request instance for UnbindCloudResource.
         :type request: :class:`tencentcloud.kms.v20190118.models.UnbindCloudResourceRequest`
@@ -1478,7 +1478,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateAlias(self, request):
-        """This API is used to modify the alias of a CMK. CMKs in `PendingDelete` status cannot be modified.
+        r"""This API is used to modify the alias of a CMK. CMKs in `PendingDelete` status cannot be modified.
 
         :param request: Request instance for UpdateAlias.
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateAliasRequest`
@@ -1501,7 +1501,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateDataKeyDescription(self, request):
-        """This API is used to modify the description of a data key.
+        r"""This API is used to modify the description of a data key.
 
         :param request: Request instance for UpdateDataKeyDescription.
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyDescriptionRequest`
@@ -1524,7 +1524,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateDataKeyName(self, request):
-        """This API is used to modify the data key name.
+        r"""This API is used to modify the data key name.
 
         :param request: Request instance for UpdateDataKeyName.
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyNameRequest`
@@ -1547,7 +1547,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateKeyDescription(self, request):
-        """This API is used to modify the description of the specified CMK. CMKs in `PendingDelete` status cannot be modified.
+        r"""This API is used to modify the description of the specified CMK. CMKs in `PendingDelete` status cannot be modified.
 
         :param request: Request instance for UpdateKeyDescription.
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateKeyDescriptionRequest`
@@ -1570,7 +1570,7 @@ class KmsClient(AbstractClient):
 
 
     def VerifyByAsymmetricKey(self, request):
-        """This API is used to verify a signature with an asymmetric key.
+        r"""This API is used to verify a signature with an asymmetric key.
 
         :param request: Request instance for VerifyByAsymmetricKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.VerifyByAsymmetricKeyRequest`

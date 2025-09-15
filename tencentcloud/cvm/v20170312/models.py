@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ActionTimer(AbstractModel):
-    """Scheduled tasks.
+    r"""Scheduled tasks.
 
     """
 
@@ -47,7 +47,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def TimerAction(self):
-        """Timer action currently only supports terminating one value: TerminateInstances.
+        r"""Timer action currently only supports terminating one value: TerminateInstances.
         :rtype: str
         """
         return self._TimerAction
@@ -58,7 +58,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def ActionTime(self):
-        """Execution time, in standard ISO8601 representation and using UTC time. format: YYYY-MM-DDThh:MM:ssZ. for example, 2018-05-29T11:26:40Z. the execution time must be later than the current time by 5 minutes.
+        r"""Execution time, in standard ISO8601 representation and using UTC time. format: YYYY-MM-DDThh:MM:ssZ. for example, 2018-05-29T11:26:40Z. the execution time must be later than the current time by 5 minutes.
         :rtype: str
         """
         return self._ActionTime
@@ -69,7 +69,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def Externals(self):
-        """Extension data. only used as output usage.
+        r"""Extension data. only used as output usage.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         return self._Externals
@@ -80,7 +80,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def ActionTimerId(self):
-        """Timer ID. only used as output usage.
+        r"""Timer ID. only used as output usage.
         :rtype: str
         """
         return self._ActionTimerId
@@ -91,7 +91,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def Status(self):
-        """Timer status, for output usage only. value ranges from: <li>UNDO: unexecuted</li> <li>DOING: executing</li> <li>DONE: execution completed.</li>.
+        r"""Timer status, for output usage only. value ranges from: <li>UNDO: unexecuted</li> <li>DOING: executing</li> <li>DONE: execution completed.</li>.
         :rtype: str
         """
         return self._Status
@@ -102,7 +102,7 @@ class ActionTimer(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID corresponding to a timer. used only for output.
+        r"""Instance ID corresponding to a timer. used only for output.
         :rtype: str
         """
         return self._InstanceId
@@ -132,7 +132,7 @@ class ActionTimer(AbstractModel):
 
 
 class AllocateHostsRequest(AbstractModel):
-    """AllocateHosts request structure.
+    r"""AllocateHosts request structure.
 
     """
 
@@ -163,7 +163,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def Placement(self):
-        """Instance location. This parameter is used to specify the attributes of an instance, such as its availability zone and project.
+        r"""Instance location. This parameter is used to specify the attributes of an instance, such as its availability zone and project.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -174,7 +174,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request.
+        r"""A string used to ensure the idempotency of the request.
         :rtype: str
         """
         return self._ClientToken
@@ -185,7 +185,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def HostChargePrepaid(self):
-        """Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
+        r"""Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ChargePrepaid`
         """
         return self._HostChargePrepaid
@@ -196,7 +196,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def HostChargeType(self):
-        """Instance billing model, only monthly or yearly subscription supported. Default value: `PREPAID'.
+        r"""Instance billing model, only monthly or yearly subscription supported. Default value: `PREPAID'.
         :rtype: str
         """
         return self._HostChargeType
@@ -207,7 +207,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def HostType(self):
-        """CDH instance model. Default value: `HS1`.
+        r"""CDH instance model. Default value: `HS1`.
         :rtype: str
         """
         return self._HostType
@@ -218,7 +218,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def HostCount(self):
-        """Quantity of CDH instances purchased. Default value: 1.
+        r"""Quantity of CDH instances purchased. Default value: 1.
         :rtype: int
         """
         return self._HostCount
@@ -229,7 +229,7 @@ class AllocateHostsRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """Tag description. You can specify the parameter to associate a tag with an instance.
+        r"""Tag description. You can specify the parameter to associate a tag with an instance.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -267,7 +267,7 @@ class AllocateHostsRequest(AbstractModel):
 
 
 class AllocateHostsResponse(AbstractModel):
-    """AllocateHosts response structure.
+    r"""AllocateHosts response structure.
 
     """
 
@@ -283,7 +283,7 @@ class AllocateHostsResponse(AbstractModel):
 
     @property
     def HostIdSet(self):
-        """IDs of created instances
+        r"""IDs of created instances
         :rtype: list of str
         """
         return self._HostIdSet
@@ -294,7 +294,7 @@ class AllocateHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -310,7 +310,7 @@ class AllocateHostsResponse(AbstractModel):
 
 
 class AssociateInstancesKeyPairsRequest(AbstractModel):
-    """AssociateInstancesKeyPairs request structure.
+    r"""AssociateInstancesKeyPairs request structure.
 
     """
 
@@ -329,7 +329,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). The maximum number of instances in each request is 100. <br>You can obtain the available instance IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the instance IDs. <br><li>Call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID(s). The maximum number of instances in each request is 100. <br>You can obtain the available instance IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the instance IDs. <br><li>Call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -340,7 +340,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """Key ID(s). The maximum number of key pairs in each request is 100. The key pair ID is in the format of `skey-3glfot13`. <br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
+        r"""Key ID(s). The maximum number of key pairs in each request is 100. The key pair ID is in the format of `skey-3glfot13`. <br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
         :rtype: list of str
         """
         return self._KeyIds
@@ -351,7 +351,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to force shut down a running instances. It is recommended to manually shut down a running instance before associating a key pair with it. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE.
+        r"""Whether to force shut down a running instances. It is recommended to manually shut down a running instance before associating a key pair with it. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE.
         :rtype: bool
         """
         return self._ForceStop
@@ -376,7 +376,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
 
 class AssociateInstancesKeyPairsResponse(AbstractModel):
-    """AssociateInstancesKeyPairs response structure.
+    r"""AssociateInstancesKeyPairs response structure.
 
     """
 
@@ -389,7 +389,7 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -404,7 +404,7 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
 
 class AssociateSecurityGroupsRequest(AbstractModel):
-    """AssociateSecurityGroups request structure.
+    r"""AssociateSecurityGroups request structure.
 
     """
 
@@ -420,7 +420,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """ID of the security group to be associated, such as `sg-efil73jd`. Only one security group can be associated.
+        r"""ID of the security group to be associated, such as `sg-efil73jd`. Only one security group can be associated.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -431,7 +431,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """ID of the instance bound in the format of ins-lesecurk. You can specify up to 100 instances in each request.
+        r"""ID of the instance bound in the format of ins-lesecurk. You can specify up to 100 instances in each request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -455,7 +455,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
 
 class AssociateSecurityGroupsResponse(AbstractModel):
-    """AssociateSecurityGroups response structure.
+    r"""AssociateSecurityGroups response structure.
 
     """
 
@@ -468,7 +468,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -483,7 +483,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
 
 class Attribute(AbstractModel):
-    """Attribute information.
+    r"""Attribute information.
 
     """
 
@@ -496,7 +496,7 @@ class Attribute(AbstractModel):
 
     @property
     def UserData(self):
-        """Custom data of instances.
+        r"""Custom data of instances.
         :rtype: str
         """
         return self._UserData
@@ -519,7 +519,7 @@ class Attribute(AbstractModel):
 
 
 class ChargePrepaid(AbstractModel):
-    """Parameters related to the prepaid billing method, including the subscription period, the auto renewal logic, etc.
+    r"""Parameters related to the prepaid billing method, including the subscription period, the auto renewal logic, etc.
 
     """
 
@@ -535,7 +535,7 @@ class ChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        """Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
+        r"""Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
         :rtype: int
         """
         return self._Period
@@ -546,7 +546,7 @@ class ChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_AUTO_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
+        r"""Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_AUTO_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
         :rtype: str
         """
         return self._RenewFlag
@@ -570,7 +570,7 @@ class ChargePrepaid(AbstractModel):
 
 
 class ChcDeployExtraConfig(AbstractModel):
-    """Configuration options for MiniOS of the CHC deployment network
+    r"""Configuration options for MiniOS of the CHC deployment network
 
     """
 
@@ -592,7 +592,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def MiniOsType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MiniOsType
@@ -603,7 +603,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def BootType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._BootType
@@ -614,7 +614,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def BootFile(self):
-        """
+        r"""
         :rtype: str
         """
         return self._BootFile
@@ -625,7 +625,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def NextServerAddress(self):
-        """
+        r"""
         :rtype: str
         """
         return self._NextServerAddress
@@ -651,7 +651,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
 
 class ChcHost(AbstractModel):
-    """CHC host information
+    r"""CHC host information
 
     """
 
@@ -751,7 +751,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChcId(self):
-        """CHC host ID
+        r"""CHC host ID
         :rtype: str
         """
         return self._ChcId
@@ -762,7 +762,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -773,7 +773,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SerialNumber(self):
-        """Server serial number
+        r"""Server serial number
         :rtype: str
         """
         return self._SerialNumber
@@ -784,7 +784,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceState(self):
-        """CHC host status<br/>
+        r"""CHC host status<br/>
 <ul>
 <li>REGISTERED: The CHC host is registered, but the out-of-band network and deployment network are not configured.</li>
 <li>VPC_READY: The out-of-band network and deployment network are configured.</li>
@@ -801,7 +801,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeviceType(self):
-        """Device type
+        r"""Device type
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -813,7 +813,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Placement(self):
-        """Availability zone
+        r"""Availability zone
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -824,7 +824,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BmcVirtualPrivateCloud(self):
-        """Out-of-band network
+        r"""Out-of-band network
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
@@ -836,7 +836,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BmcIp(self):
-        """Out-of-band network IP
+        r"""Out-of-band network IP
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -848,7 +848,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BmcSecurityGroupIds(self):
-        """Out-of-band network security group ID
+        r"""Out-of-band network security group ID
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -860,7 +860,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeployVirtualPrivateCloud(self):
-        """Deployment network
+        r"""Deployment network
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
@@ -872,7 +872,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeployIp(self):
-        """Deployment network IP
+        r"""Deployment network IP
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -884,7 +884,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeploySecurityGroupIds(self):
-        """Deployment network security group ID
+        r"""Deployment network security group ID
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -896,7 +896,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CvmInstanceId(self):
-        """ID of the associated CVM
+        r"""ID of the associated CVM
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -908,7 +908,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
-        """Server creation time
+        r"""Server creation time
         :rtype: str
         """
         return self._CreatedTime
@@ -919,7 +919,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HardwareDescription(self):
-        """Instance hardware description, including CPU cores, memory capacity and disk capacity.
+        r"""Instance hardware description, including CPU cores, memory capacity and disk capacity.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -931,7 +931,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CPU(self):
-        """CPU cores of the CHC host
+        r"""CPU cores of the CHC host
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -943,7 +943,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Memory(self):
-        """Memory capacity of the CHC host (unit: GB)
+        r"""Memory capacity of the CHC host (unit: GB)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -955,7 +955,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Disk(self):
-        """Disk capacity of the CHC host
+        r"""Disk capacity of the CHC host
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -967,7 +967,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BmcMAC(self):
-        """MAC address assigned under the out-of-band network
+        r"""MAC address assigned under the out-of-band network
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -979,7 +979,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeployMAC(self):
-        """MAC address assigned under the deployment network
+        r"""MAC address assigned under the deployment network
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -991,7 +991,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TenantType(self):
-        """Management type
+        r"""Management type
 HOSTING: Hosting
 TENANT: Leasing
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -1005,7 +1005,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeployExtraConfig(self):
-        """CHC DHCP option, which is used for MiniOS debugging.
+        r"""CHC DHCP option, which is used for MiniOS debugging.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
@@ -1058,7 +1058,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class ChcHostDeniedActions(AbstractModel):
-    """Describe details of actions not allowed for a CHC instance
+    r"""Describe details of actions not allowed for a CHC instance
 
     """
 
@@ -1077,7 +1077,7 @@ class ChcHostDeniedActions(AbstractModel):
 
     @property
     def ChcId(self):
-        """CHC instance ID
+        r"""CHC instance ID
         :rtype: str
         """
         return self._ChcId
@@ -1088,7 +1088,7 @@ class ChcHostDeniedActions(AbstractModel):
 
     @property
     def State(self):
-        """CHC instance status
+        r"""CHC instance status
         :rtype: str
         """
         return self._State
@@ -1099,7 +1099,7 @@ class ChcHostDeniedActions(AbstractModel):
 
     @property
     def DenyActions(self):
-        """Actions not allowed for the current CHC instance
+        r"""Actions not allowed for the current CHC instance
         :rtype: list of str
         """
         return self._DenyActions
@@ -1124,7 +1124,7 @@ class ChcHostDeniedActions(AbstractModel):
 
 
 class ConfigureChcAssistVpcRequest(AbstractModel):
-    """ConfigureChcAssistVpc request structure.
+    r"""ConfigureChcAssistVpc request structure.
 
     """
 
@@ -1149,7 +1149,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC host IDs
+        r"""CHC host IDs
         :rtype: list of str
         """
         return self._ChcIds
@@ -1160,7 +1160,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def BmcVirtualPrivateCloud(self):
-        """Out-of-band network information
+        r"""Out-of-band network information
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._BmcVirtualPrivateCloud
@@ -1171,7 +1171,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def BmcSecurityGroupIds(self):
-        """Out-of-band network security group list
+        r"""Out-of-band network security group list
         :rtype: list of str
         """
         return self._BmcSecurityGroupIds
@@ -1182,7 +1182,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def DeployVirtualPrivateCloud(self):
-        """Deployment network information
+        r"""Deployment network information
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._DeployVirtualPrivateCloud
@@ -1193,7 +1193,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def DeploySecurityGroupIds(self):
-        """Deployment network security group list
+        r"""Deployment network security group list
         :rtype: list of str
         """
         return self._DeploySecurityGroupIds
@@ -1224,7 +1224,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
 
 class ConfigureChcAssistVpcResponse(AbstractModel):
-    """ConfigureChcAssistVpc response structure.
+    r"""ConfigureChcAssistVpc response structure.
 
     """
 
@@ -1237,7 +1237,7 @@ class ConfigureChcAssistVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1252,7 +1252,7 @@ class ConfigureChcAssistVpcResponse(AbstractModel):
 
 
 class ConfigureChcDeployVpcRequest(AbstractModel):
-    """ConfigureChcDeployVpc request structure.
+    r"""ConfigureChcDeployVpc request structure.
 
     """
 
@@ -1271,7 +1271,7 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC instance ID
+        r"""CHC instance ID
         :rtype: list of str
         """
         return self._ChcIds
@@ -1282,7 +1282,7 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
 
     @property
     def DeployVirtualPrivateCloud(self):
-        """Deployment network information
+        r"""Deployment network information
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._DeployVirtualPrivateCloud
@@ -1293,7 +1293,7 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
 
     @property
     def DeploySecurityGroupIds(self):
-        """Deployment network security group list
+        r"""Deployment network security group list
         :rtype: list of str
         """
         return self._DeploySecurityGroupIds
@@ -1320,7 +1320,7 @@ class ConfigureChcDeployVpcRequest(AbstractModel):
 
 
 class ConfigureChcDeployVpcResponse(AbstractModel):
-    """ConfigureChcDeployVpc response structure.
+    r"""ConfigureChcDeployVpc response structure.
 
     """
 
@@ -1333,7 +1333,7 @@ class ConfigureChcDeployVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1348,7 +1348,7 @@ class ConfigureChcDeployVpcResponse(AbstractModel):
 
 
 class ConvertOperatingSystemsRequest(AbstractModel):
-    """ConvertOperatingSystems request structure.
+    r"""ConvertOperatingSystems request structure.
 
     """
 
@@ -1370,7 +1370,7 @@ class ConvertOperatingSystemsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """ID of an instance to execute operating system switching.
+        r"""ID of an instance to execute operating system switching.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1381,7 +1381,7 @@ class ConvertOperatingSystemsRequest(AbstractModel):
 
     @property
     def MinimalConversion(self):
-        """Whether it is a minimum scale switching.
+        r"""Whether it is a minimum scale switching.
         :rtype: bool
         """
         return self._MinimalConversion
@@ -1392,7 +1392,7 @@ class ConvertOperatingSystemsRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Whether it is pre-check only.
+        r"""Whether it is pre-check only.
         :rtype: bool
         """
         return self._DryRun
@@ -1403,7 +1403,7 @@ class ConvertOperatingSystemsRequest(AbstractModel):
 
     @property
     def TargetOSType(self):
-        """Target operating system type for switching. Only TencentOS is supported.
+        r"""Target operating system type for switching. Only TencentOS is supported.
         :rtype: str
         """
         return self._TargetOSType
@@ -1429,7 +1429,7 @@ class ConvertOperatingSystemsRequest(AbstractModel):
 
 
 class ConvertOperatingSystemsResponse(AbstractModel):
-    """ConvertOperatingSystems response structure.
+    r"""ConvertOperatingSystems response structure.
 
     """
 
@@ -1450,7 +1450,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SupportTargetOSList(self):
-        """Information about the target operating system, which is returned only when the input parameter DryRun is true.
+        r"""Information about the target operating system, which is returned only when the input parameter DryRun is true.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of TargetOS
         """
@@ -1462,7 +1462,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TaskId(self):
-        """Task ID for operating system switching.
+        r"""Task ID for operating system switching.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -1474,7 +1474,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1496,7 +1496,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class CpuTopology(AbstractModel):
-    """Information about the CPU topology of an instance.
+    r"""Information about the CPU topology of an instance.
 
     """
 
@@ -1513,7 +1513,7 @@ If not set, an instance uses the default hyper-threading policy. For how to enab
 
     @property
     def CoreCount(self):
-        """Number of physical CPU cores to enable.
+        r"""Number of physical CPU cores to enable.
         :rtype: int
         """
         return self._CoreCount
@@ -1524,7 +1524,7 @@ If not set, an instance uses the default hyper-threading policy. For how to enab
 
     @property
     def ThreadPerCore(self):
-        """Number of threads per core. This parameter determines whether to enable or disable hyper-threading.<br><li>1: Disable hyper-threading.</li><br><li>2: Enable hyper-threading.</li>
+        r"""Number of threads per core. This parameter determines whether to enable or disable hyper-threading.<br><li>1: Disable hyper-threading.</li><br><li>2: Enable hyper-threading.</li>
 If not set, an instance uses the default hyper-threading policy. For how to enable or disable hyper-threading, refer to [Enabling and Disabling Hyper-Threading](https://intl.cloud.tencent.com/document/product/213/103798?from_cn_redirect=1).
         :rtype: int
         """
@@ -1549,7 +1549,7 @@ If not set, an instance uses the default hyper-threading policy. For how to enab
 
 
 class CreateDisasterRecoverGroupRequest(AbstractModel):
-    """CreateDisasterRecoverGroup request structure.
+    r"""CreateDisasterRecoverGroup request structure.
 
     """
 
@@ -1574,7 +1574,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
+        r"""Name of the spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
         :rtype: str
         """
         return self._Name
@@ -1585,7 +1585,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type of a spread placement group. Valid values:<br><li>HOST: physical machine.</li><li>SW: switch.</li><li>RACK: rack.</li>
+        r"""Type of a spread placement group. Valid values:<br><li>HOST: physical machine.</li><li>SW: switch.</li><li>RACK: rack.</li>
         :rtype: str
         """
         return self._Type
@@ -1596,7 +1596,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see 'How to ensure idempotency'.
+        r"""A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see 'How to ensure idempotency'.
         :rtype: str
         """
         return self._ClientToken
@@ -1607,7 +1607,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Affinity(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Affinity
@@ -1618,7 +1618,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """List of tag description. By specifying this parameter, the tag can be bound to the placement group.
+        r"""List of tag description. By specifying this parameter, the tag can be bound to the placement group.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -1650,7 +1650,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
 
 class CreateDisasterRecoverGroupResponse(AbstractModel):
-    """CreateDisasterRecoverGroup response structure.
+    r"""CreateDisasterRecoverGroup response structure.
 
     """
 
@@ -1681,7 +1681,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        """List of spread placement group IDs.
+        r"""List of spread placement group IDs.
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -1692,7 +1692,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Type of a spread placement group. Valid values:<br><li>HOST: physical machine.</li><li>SW: switch.</li><li>RACK: rack.</li>
+        r"""Type of a spread placement group. Valid values:<br><li>HOST: physical machine.</li><li>SW: switch.</li><li>RACK: rack.</li>
         :rtype: str
         """
         return self._Type
@@ -1703,7 +1703,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Name of the spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
+        r"""Name of the spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
         :rtype: str
         """
         return self._Name
@@ -1714,7 +1714,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CvmQuotaTotal(self):
-        """The maximum number of CVMs in a placement group.
+        r"""The maximum number of CVMs in a placement group.
         :rtype: int
         """
         return self._CvmQuotaTotal
@@ -1725,7 +1725,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CurrentNum(self):
-        """The current number of CVMs in a placement group.
+        r"""The current number of CVMs in a placement group.
         :rtype: int
         """
         return self._CurrentNum
@@ -1736,7 +1736,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time of the placement group.
+        r"""Creation time of the placement group.
         :rtype: str
         """
         return self._CreateTime
@@ -1747,7 +1747,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1768,7 +1768,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
 
 class CreateImageRequest(AbstractModel):
-    """CreateImage request structure.
+    r"""CreateImage request structure.
 
     """
 
@@ -1812,7 +1812,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ImageName(self):
-        """Image name
+        r"""Image name
         :rtype: str
         """
         return self._ImageName
@@ -1823,7 +1823,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def InstanceId(self):
-        """ID of the instance from which an image will be created. This parameter is required when using instance to create an image.
+        r"""ID of the instance from which an image will be created. This parameter is required when using instance to create an image.
         :rtype: str
         """
         return self._InstanceId
@@ -1834,7 +1834,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ImageDescription(self):
-        """Image description
+        r"""Image description
         :rtype: str
         """
         return self._ImageDescription
@@ -1845,7 +1845,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ForcePoweroff(self):
-        """Whether to perform forced power-off operation to create an image.
+        r"""Whether to perform forced power-off operation to create an image.
 Valid values:<br><li>true: indicates that an image is created after forced power-off operation</li><br><li>false: indicates that an image is created in the power-on state</li><br><br>Default value: false.<br><br>Creating an image in the power-on state may result in some unbacked-up data, affecting data security.
         :rtype: str
         """
@@ -1857,7 +1857,7 @@ Valid values:<br><li>true: indicates that an image is created after forced power
 
     @property
     def Sysprep(self):
-        """Whether to enable Sysprep when creating a Windows image.
+        r"""Whether to enable Sysprep when creating a Windows image.
 Valid values: `TRUE` and `FALSE`; default value: `FALSE`.
 
 Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_redirect=1) to learn more about Sysprep.
@@ -1871,7 +1871,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def DataDiskIds(self):
-        """IDs of data disks included in the image. 
+        r"""IDs of data disks included in the image. 
         :rtype: list of str
         """
         return self._DataDiskIds
@@ -1882,7 +1882,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def SnapshotIds(self):
-        """Specified snapshot ID used to create an image. A system disk snapshot must be included. It cannot be passed together with `InstanceId`.
+        r"""Specified snapshot ID used to create an image. A system disk snapshot must be included. It cannot be passed together with `InstanceId`.
         :rtype: list of str
         """
         return self._SnapshotIds
@@ -1893,7 +1893,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def DryRun(self):
-        """Success status of this request, without affecting the resources involved
+        r"""Success status of this request, without affecting the resources involved
         :rtype: bool
         """
         return self._DryRun
@@ -1904,7 +1904,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def TagSpecification(self):
-        """Tag description list. This parameter is used to bind a tag to a custom image.
+        r"""Tag description list. This parameter is used to bind a tag to a custom image.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -1915,7 +1915,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
     @property
     def ImageFamily(self):
-        """Image family
+        r"""Image family
         :rtype: str
         """
         return self._ImageFamily
@@ -1952,7 +1952,7 @@ Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_r
 
 
 class CreateImageResponse(AbstractModel):
-    """CreateImage response structure.
+    r"""CreateImage response structure.
 
     """
 
@@ -1969,7 +1969,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ImageId(self):
-        """Image ID.
+        r"""Image ID.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -1981,7 +1981,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1997,7 +1997,7 @@ Note: This field may return null, indicating that no valid value was found.
 
 
 class CreateKeyPairRequest(AbstractModel):
-    """CreateKeyPair request structure.
+    r"""CreateKeyPair request structure.
 
     """
 
@@ -2020,7 +2020,7 @@ You can obtain a project ID in the following ways:
 
     @property
     def KeyName(self):
-        """Name of the key pair, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
+        r"""Name of the key pair, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
         :rtype: str
         """
         return self._KeyName
@@ -2031,7 +2031,7 @@ You can obtain a project ID in the following ways:
 
     @property
     def ProjectId(self):
-        """ID of the project to which the created key pair belongs.
+        r"""ID of the project to which the created key pair belongs.
 
 You can obtain a project ID in the following ways:
 <li>Query the project ID through the project list.</li>
@@ -2046,7 +2046,7 @@ You can obtain a project ID in the following ways:
 
     @property
     def TagSpecification(self):
-        """Tag description list. This parameter is used to bind a tag to a key pair.
+        r"""Tag description list. This parameter is used to bind a tag to a key pair.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -2076,7 +2076,7 @@ You can obtain a project ID in the following ways:
 
 
 class CreateKeyPairResponse(AbstractModel):
-    """CreateKeyPair response structure.
+    r"""CreateKeyPair response structure.
 
     """
 
@@ -2092,7 +2092,7 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def KeyPair(self):
-        """Key pair information.
+        r"""Key pair information.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.KeyPair`
         """
         return self._KeyPair
@@ -2103,7 +2103,7 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2121,7 +2121,7 @@ class CreateKeyPairResponse(AbstractModel):
 
 
 class CreateLaunchTemplateRequest(AbstractModel):
-    """CreateLaunchTemplate request structure.
+    r"""CreateLaunchTemplate request structure.
 
     """
 
@@ -2235,7 +2235,7 @@ Note: this field is in beta test.
 
     @property
     def LaunchTemplateName(self):
-        """Name of an instance launch template. It contains 2 to 128 English or Chinese characters.
+        r"""Name of an instance launch template. It contains 2 to 128 English or Chinese characters.
         :rtype: str
         """
         return self._LaunchTemplateName
@@ -2246,7 +2246,7 @@ Note: this field is in beta test.
 
     @property
     def Placement(self):
-        """Location of the instance. You can specify attributes such as availability zone, project, and host (specified when creating a instance on the CDH) to which the instance belongs through this parameter.
+        r"""Location of the instance. You can specify attributes such as availability zone, project, and host (specified when creating a instance on the CDH) to which the instance belongs through this parameter.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -2257,7 +2257,7 @@ Note: this field is in beta test.
 
     @property
     def ImageId(self):
-        """Specify an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. there are four image types: <li>PUBLIC image</li> <li>custom image</li> <li>shared image</li> <li>service market image</li>  you can obtain available mirror ids in the following ways: <li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ids of `service market image` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li> <li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.
+        r"""Specify an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. there are four image types: <li>PUBLIC image</li> <li>custom image</li> <li>shared image</li> <li>service market image</li>  you can obtain available mirror ids in the following ways: <li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ids of `service market image` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li> <li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.
         :rtype: str
         """
         return self._ImageId
@@ -2268,7 +2268,7 @@ Note: this field is in beta test.
 
     @property
     def LaunchTemplateVersionDescription(self):
-        """Version description of an instance launch template. It contains 2 to 256 English or Chinese characters.
+        r"""Version description of an instance launch template. It contains 2 to 256 English or Chinese characters.
         :rtype: str
         """
         return self._LaunchTemplateVersionDescription
@@ -2279,7 +2279,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceType(self):
-        """Instance model. Different instance models specify different resource specifications.
+        r"""Instance model. Different instance models specify different resource specifications.
 
 <br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained BY calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :rtype: str
@@ -2292,7 +2292,7 @@ Note: this field is in beta test.
 
     @property
     def SystemDisk(self):
-        """Instance system disk configuration information. If this parameter is not specified, it will be assigned based on the system default values.
+        r"""Instance system disk configuration information. If this parameter is not specified, it will be assigned based on the system default values.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -2303,7 +2303,7 @@ Note: this field is in beta test.
 
     @property
     def DataDisks(self):
-        """Instance data disk configuration information. if not specified, no data disks are purchased by default. support specifying 21 data disks at the time of purchase, among which a maximum of 1 LOCAL_BASIC data disk or LOCAL_SSD data disk can be included, and a maximum of 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks or CLOUD_SSD data disks can be included.
+        r"""Instance data disk configuration information. if not specified, no data disks are purchased by default. support specifying 21 data disks at the time of purchase, among which a maximum of 1 LOCAL_BASIC data disk or LOCAL_SSD data disk can be included, and a maximum of 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks or CLOUD_SSD data disks can be included.
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -2314,7 +2314,7 @@ Note: this field is in beta test.
 
     @property
     def VirtualPrivateCloud(self):
-        """VPC-related information configuration. You can specify information such as VPC ID and subnet ID through this parameter. If this parameter is not specified, use the basic network by default. If a VPC IP is specified in this parameter, it indicates the primary network interface card IP of each instance. In addition, the number of the InstanceCount parameter should be consistent with the number of the VPC IP and should not exceed 20.
+        r"""VPC-related information configuration. You can specify information such as VPC ID and subnet ID through this parameter. If this parameter is not specified, use the basic network by default. If a VPC IP is specified in this parameter, it indicates the primary network interface card IP of each instance. In addition, the number of the InstanceCount parameter should be consistent with the number of the VPC IP and should not exceed 20.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -2325,7 +2325,7 @@ Note: this field is in beta test.
 
     @property
     def InternetAccessible(self):
-        """Public bandwidth-related settings. If this parameter is not specified, the public bandwidth is 0 Mbps by default.
+        r"""Public bandwidth-related settings. If this parameter is not specified, the public bandwidth is 0 Mbps by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -2336,7 +2336,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceCount(self):
-        """Number of instances to purchase. value range for monthly subscription instances: [1, 300]. value range for pay-as-you-go instances: [1, 100]. default value: 1. the number of instances to purchase must not exceed the remaining user quota. for specific quota limitations, see [CVM instance purchase limitations](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1).
+        r"""Number of instances to purchase. value range for monthly subscription instances: [1, 300]. value range for pay-as-you-go instances: [1, 100]. default value: 1. the number of instances to purchase must not exceed the remaining user quota. for specific quota limitations, see [CVM instance purchase limitations](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1).
         :rtype: int
         """
         return self._InstanceCount
@@ -2347,7 +2347,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceName(self):
-        """Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.
+        r"""Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.
         :rtype: str
         """
         return self._InstanceName
@@ -2358,7 +2358,7 @@ Note: this field is in beta test.
 
     @property
     def LoginSettings(self):
-        """Instance login settings. this parameter allows you to set the instance login method to key or maintain the original login settings of the image.
+        r"""Instance login settings. this parameter allows you to set the instance login method to key or maintain the original login settings of the image.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -2369,7 +2369,7 @@ Note: this field is in beta test.
 
     @property
     def SecurityGroupIds(self):
-        """Security group to which an instance belongs. this parameter can be obtained by calling the sgId field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
+        r"""Security group to which an instance belongs. this parameter can be obtained by calling the sgId field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2380,7 +2380,7 @@ Note: this field is in beta test.
 
     @property
     def EnhancedService(self):
-        """Enhanced services. You can specify whether to enable services such as Cloud Security and Cloud Monitor through this parameter. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled for public images by default, but not enabled for custom images and marketplace images by default. Instead, they use services retained in the images.
+        r"""Enhanced services. You can specify whether to enable services such as Cloud Security and Cloud Monitor through this parameter. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled for public images by default, but not enabled for custom images and marketplace images by default. Instead, they use services retained in the images.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -2391,7 +2391,7 @@ Note: this field is in beta test.
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotence of the request. This string is generated by the customer and should be unique across different requests, with a maximum length of 64 ASCII characters. If this parameter is not specified, the idempotence of the request cannot be guaranteed.
+        r"""A string used to ensure the idempotence of the request. This string is generated by the customer and should be unique across different requests, with a maximum length of 64 ASCII characters. If this parameter is not specified, the idempotence of the request cannot be guaranteed.
         :rtype: str
         """
         return self._ClientToken
@@ -2402,7 +2402,7 @@ Note: this field is in beta test.
 
     @property
     def HostName(self):
-        """Specifies the HostName of the cloud virtual machine.<br><li>the dot (.) and hyphen (-) cannot be used at the beginning or end of the HostName, and cannot be used consecutively.</li><li>for Windows instances: the character length is 2 to 15. it consists of letters (case insensitive), digits, and hyphens (-). dots (.) are not supported, and it cannot be all digits.</li><li>for other types (such as Linux) instances: the character length is 2 to 60. multiple dots are allowed. each segment between dots can include letters (case insensitive), digits, and hyphens (-).</li>.
+        r"""Specifies the HostName of the cloud virtual machine.<br><li>the dot (.) and hyphen (-) cannot be used at the beginning or end of the HostName, and cannot be used consecutively.</li><li>for Windows instances: the character length is 2 to 15. it consists of letters (case insensitive), digits, and hyphens (-). dots (.) are not supported, and it cannot be all digits.</li><li>for other types (such as Linux) instances: the character length is 2 to 60. multiple dots are allowed. each segment between dots can include letters (case insensitive), digits, and hyphens (-).</li>.
         :rtype: str
         """
         return self._HostName
@@ -2413,7 +2413,7 @@ Note: this field is in beta test.
 
     @property
     def ActionTimer(self):
-        """Scheduled task. You can specify a scheduled task for the instance through this parameter. Currently, only scheduled termination is supported.
+        r"""Scheduled task. You can specify a scheduled task for the instance through this parameter. Currently, only scheduled termination is supported.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         """
         return self._ActionTimer
@@ -2424,7 +2424,7 @@ Note: this field is in beta test.
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. Only one can be specified.
+        r"""Placement group ID. Only one can be specified.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -2435,7 +2435,7 @@ Note: this field is in beta test.
 
     @property
     def TagSpecification(self):
-        """List of tag descriptions. You can bind tags to corresponding resource instances at the same time by specifying this parameter. Currently, only binding tags to the CVM is supported.
+        r"""List of tag descriptions. You can bind tags to corresponding resource instances at the same time by specifying this parameter. Currently, only binding tags to the CVM is supported.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -2446,7 +2446,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceMarketOptions(self):
-        """Market-Related options of the instance, such as relevant parameters of the bidding instance. this parameter is required if the payment mode of the specified instance is spot payment.
+        r"""Market-Related options of the instance, such as relevant parameters of the bidding instance. this parameter is required if the payment mode of the specified instance is spot payment.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -2457,7 +2457,7 @@ Note: this field is in beta test.
 
     @property
     def UserData(self):
-        """User data provided for an instance must be encoded in base64. valid values for maximum data size are up to 16 KB. for details on obtaining this parameter, see running commands at startup for Windows (https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and Linux (https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).
+        r"""User data provided for an instance must be encoded in base64. valid values for maximum data size are up to 16 KB. for details on obtaining this parameter, see running commands at startup for Windows (https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and Linux (https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).
         :rtype: str
         """
         return self._UserData
@@ -2468,7 +2468,7 @@ Note: this field is in beta test.
 
     @property
     def DryRun(self):
-        """Whether it is a pre-check for this request only.
+        r"""Whether it is a pre-check for this request only.
 true: sends a check request without creating an instance. check items include whether required parameters are filled in, request format, service limits, and cvm inventory.
 If the check fails, return the corresponding error code.
 If the check passed, return RequestId.
@@ -2483,7 +2483,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def CamRoleName(self):
-        """CAM role name. it can be obtained through the roleName in the return value from the API DescribeRoleList.
+        r"""CAM role name. it can be obtained through the roleName in the return value from the API DescribeRoleList.
         :rtype: str
         """
         return self._CamRoleName
@@ -2494,7 +2494,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def HpcClusterId(self):
-        """High-performance computing cluster ID. If the created instance is a high-performance computing instance, the cluster where the instance is placed should be specified. Otherwise, it cannot be specified.
+        r"""High-performance computing cluster ID. If the created instance is a high-performance computing instance, the cluster where the instance is placed should be specified. Otherwise, it cannot be specified.
         :rtype: str
         """
         return self._HpcClusterId
@@ -2505,7 +2505,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def InstanceChargeType(self):
-        """Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>PREPAID: prepaid, that is, monthly subscription.</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour.</li><li>CDHPAID: CDH instance (created based on CDH; the resources of the host are free of charge).</li><li>SPOTPAID: spot payment.</li>Default value: POSTPAID_BY_HOUR.
+        r"""Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>PREPAID: prepaid, that is, monthly subscription.</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour.</li><li>CDHPAID: CDH instance (created based on CDH; the resources of the host are free of charge).</li><li>SPOTPAID: spot payment.</li>Default value: POSTPAID_BY_HOUR.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2516,7 +2516,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def InstanceChargePrepaid(self):
-        """Prepaid mode, that is, annual and monthly subscription related parameter settings. Through this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to set auto-renewal, etc. If the specified instance's billing mode is the prepaid mode, this parameter must be passed.
+        r"""Prepaid mode, that is, annual and monthly subscription related parameter settings. Through this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to set auto-renewal, etc. If the specified instance's billing mode is the prepaid mode, this parameter must be passed.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -2527,7 +2527,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def DisableApiTermination(self):
-        """Instance destruction protection flag: indicates whether an instance is allowed to be deleted through an api. value ranges from: - **TRUE**: indicates that instance protection is enabled, deletion through apis is not allowed. - **FALSE**: indicates that instance protection is disabled, deletion through apis is allowed.  default value: FALSE.
+        r"""Instance destruction protection flag: indicates whether an instance is allowed to be deleted through an api. value ranges from: - **TRUE**: indicates that instance protection is enabled, deletion through apis is not allowed. - **FALSE**: indicates that instance protection is disabled, deletion through apis is allowed.  default value: FALSE.
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -2538,7 +2538,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def EnableJumboFrame(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._EnableJumboFrame
@@ -2549,7 +2549,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def LaunchTemplateTagSpecification(self):
-        """Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.
+        r"""Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.
         :rtype: list of TagSpecification
         """
         return self._LaunchTemplateTagSpecification
@@ -2560,7 +2560,7 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def Metadata(self):
-        """Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
+        r"""Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
 Note: this field is in beta test.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         """
@@ -2572,7 +2572,7 @@ Note: this field is in beta test.
 
     @property
     def TemplateDataModifyAction(self):
-        """Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.
+        r"""Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.
 
 -Update: if template t contains this parameter with a value of Update and metadata=[k1:v1, k2:v2], then RunInstances (with metadata=[k2:v3]) + t creates a cvm using metadata=[k1:v1, k2:v3]. 
 -Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. 
@@ -2664,7 +2664,7 @@ Note: this field is in beta test.
 
 
 class CreateLaunchTemplateResponse(AbstractModel):
-    """CreateLaunchTemplate response structure.
+    r"""CreateLaunchTemplate response structure.
 
     """
 
@@ -2680,7 +2680,7 @@ class CreateLaunchTemplateResponse(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """Specifies the ID of the successfully created instance launch template when this parameter is returned by creating an instance launch template through this interface.
+        r"""Specifies the ID of the successfully created instance launch template when this parameter is returned by creating an instance launch template through this interface.
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -2691,7 +2691,7 @@ class CreateLaunchTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2707,7 +2707,7 @@ class CreateLaunchTemplateResponse(AbstractModel):
 
 
 class CreateLaunchTemplateVersionRequest(AbstractModel):
-    """CreateLaunchTemplateVersion request structure.
+    r"""CreateLaunchTemplateVersion request structure.
 
     """
 
@@ -2818,7 +2818,7 @@ Note: this field is in beta test.
 
     @property
     def Placement(self):
-        """Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)
+        r"""Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -2829,7 +2829,7 @@ Note: this field is in beta test.
 
     @property
     def LaunchTemplateId(self):
-        """Instance launch template ID. This parameter is used as a basis for creating new template versions.
+        r"""Instance launch template ID. This parameter is used as a basis for creating new template versions.
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -2840,7 +2840,7 @@ Note: this field is in beta test.
 
     @property
     def LaunchTemplateVersion(self):
-        """This parameter, when specified, is used to create instance launch templates. If this parameter is not specified, the default version will be used.
+        r"""This parameter, when specified, is used to create instance launch templates. If this parameter is not specified, the default version will be used.
         :rtype: int
         """
         return self._LaunchTemplateVersion
@@ -2851,7 +2851,7 @@ Note: this field is in beta test.
 
     @property
     def LaunchTemplateVersionDescription(self):
-        """Description of instance launch template versions. This parameter can contain 2-256 characters.
+        r"""Description of instance launch template versions. This parameter can contain 2-256 characters.
         :rtype: str
         """
         return self._LaunchTemplateVersionDescription
@@ -2862,7 +2862,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceType(self):
-        """Instance model. Different instance models specify different resource specifications.
+        r"""Instance model. Different instance models specify different resource specifications.
 
 <br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API for the latest specification table or referring to [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>For instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. The specific format is: CDH_XCXG. For example, for creating a CDH instance with 1 CPU core and 1 GB memory, this parameter should be CDH_1C1G.</li>
         :rtype: str
@@ -2875,7 +2875,7 @@ Note: this field is in beta test.
 
     @property
     def ImageId(self):
-        """Assign an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format like `img-xxx`. there are four image types: <br/><li>PUBLIC image</li><li>custom image</li><li>shared image</li><li>cloud image market</li><br/>you can obtain available mirror ids in the following ways: <br/><li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ID of `cloud image market` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li><li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.
+        r"""Assign an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format like `img-xxx`. there are four image types: <br/><li>PUBLIC image</li><li>custom image</li><li>shared image</li><li>cloud image market</li><br/>you can obtain available mirror ids in the following ways: <br/><li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ID of `cloud image market` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li><li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.
         :rtype: str
         """
         return self._ImageId
@@ -2886,7 +2886,7 @@ Note: this field is in beta test.
 
     @property
     def SystemDisk(self):
-        """System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        r"""System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -2897,7 +2897,7 @@ Note: this field is in beta test.
 
     @property
     def DataDisks(self):
-        """The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
+        r"""The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -2908,7 +2908,7 @@ Note: this field is in beta test.
 
     @property
     def VirtualPrivateCloud(self):
-        """Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
+        r"""Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -2919,7 +2919,7 @@ Note: this field is in beta test.
 
     @property
     def InternetAccessible(self):
-        """Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        r"""Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -2930,7 +2930,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceCount(self):
-        """Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).
+        r"""Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).
         :rtype: int
         """
         return self._InstanceCount
@@ -2941,7 +2941,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceName(self):
-        """Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.
+        r"""Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.
         :rtype: str
         """
         return self._InstanceName
@@ -2952,7 +2952,7 @@ Note: this field is in beta test.
 
     @property
     def LoginSettings(self):
-        """Instance login settings. you can use this parameter to set the instance's login method to key or keep the original login settings of the image.
+        r"""Instance login settings. you can use this parameter to set the instance's login method to key or keep the original login settings of the image.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -2963,7 +2963,7 @@ Note: this field is in beta test.
 
     @property
     def SecurityGroupIds(self):
-        """Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2974,7 +2974,7 @@ Note: this field is in beta test.
 
     @property
     def EnhancedService(self):
-        """Enhanced service. this parameter can be used to specify whether to enable services such as cloud security and cloud monitoring. if this parameter is not specified, cloud monitor and cloud security services are enabled for public images by default; for custom images and marketplace images, cloud monitor and cloud security services are not enabled by default, and the services retained in the image will be used.
+        r"""Enhanced service. this parameter can be used to specify whether to enable services such as cloud security and cloud monitoring. if this parameter is not specified, cloud monitor and cloud security services are enabled for public images by default; for custom images and marketplace images, cloud monitor and cloud security services are not enabled by default, and the services retained in the image will be used.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -2985,7 +2985,7 @@ Note: this field is in beta test.
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :rtype: str
         """
         return self._ClientToken
@@ -2996,7 +2996,7 @@ Note: this field is in beta test.
 
     @property
     def HostName(self):
-        """Hostname of Cloud Virtual Machine.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
+        r"""Hostname of Cloud Virtual Machine.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
         :rtype: str
         """
         return self._HostName
@@ -3007,7 +3007,7 @@ Note: this field is in beta test.
 
     @property
     def ActionTimer(self):
-        """Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+        r"""Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         """
         return self._ActionTimer
@@ -3018,7 +3018,7 @@ Note: this field is in beta test.
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. You can only specify one.
+        r"""Placement group ID. You can only specify one.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -3029,7 +3029,7 @@ Note: this field is in beta test.
 
     @property
     def TagSpecification(self):
-        """The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        r"""The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -3040,7 +3040,7 @@ Note: this field is in beta test.
 
     @property
     def InstanceMarketOptions(self):
-        """Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        r"""Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -3051,7 +3051,7 @@ Note: this field is in beta test.
 
     @property
     def UserData(self):
-        """User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        r"""User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
         :rtype: str
         """
         return self._UserData
@@ -3062,7 +3062,7 @@ Note: this field is in beta test.
 
     @property
     def DryRun(self):
-        """Whether the request is a dry run only.
+        r"""Whether the request is a dry run only.
 `true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
 If the dry run fails, the corresponding error code will be returned.
 If the dry run succeeds, the RequestId will be returned.
@@ -3077,7 +3077,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def CamRoleName(self):
-        """CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1) API.
+        r"""CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._CamRoleName
@@ -3088,7 +3088,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def HpcClusterId(self):
-        """HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
+        r"""HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
         :rtype: str
         """
         return self._HpcClusterId
@@ -3099,7 +3099,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargeType(self):
-        """Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>PREPAID: prepaid, that is, monthly subscription.</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour.</li><li>CDHPAID: CDH instance (created based on CDH; the resources of the host are free of charge).</li><li>SPOTPAID: spot payment.</li>Default value: POSTPAID_BY_HOUR.
+        r"""Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>PREPAID: prepaid, that is, monthly subscription.</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour.</li><li>CDHPAID: CDH instance (created based on CDH; the resources of the host are free of charge).</li><li>SPOTPAID: spot payment.</li>Default value: POSTPAID_BY_HOUR.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3110,7 +3110,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargePrepaid(self):
-        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        r"""Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -3121,7 +3121,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DisableApiTermination(self):
-        """Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>TRUE: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>FALSE: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: FALSE.
+        r"""Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>TRUE: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>FALSE: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: FALSE.
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -3132,7 +3132,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Metadata(self):
-        """Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
+        r"""Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
 Note: this field is in beta test.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         """
@@ -3144,7 +3144,7 @@ Note: this field is in beta test.
 
     @property
     def TemplateDataModifyAction(self):
-        """Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.
+        r"""Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.
 
 -Update: if template t contains this parameter with a value of Update and metadata=[k1:v1, k2:v2], then RunInstances (with metadata=[k2:v3]) + t creates a cvm using metadata=[k1:v1, k2:v3]. 
 -Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. 
@@ -3230,7 +3230,7 @@ Note: this field is in beta test.
 
 
 class CreateLaunchTemplateVersionResponse(AbstractModel):
-    """CreateLaunchTemplateVersion response structure.
+    r"""CreateLaunchTemplateVersion response structure.
 
     """
 
@@ -3246,7 +3246,7 @@ class CreateLaunchTemplateVersionResponse(AbstractModel):
 
     @property
     def LaunchTemplateVersionNumber(self):
-        """Version number of the new instance launch template.
+        r"""Version number of the new instance launch template.
         :rtype: int
         """
         return self._LaunchTemplateVersionNumber
@@ -3257,7 +3257,7 @@ class CreateLaunchTemplateVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3273,7 +3273,7 @@ class CreateLaunchTemplateVersionResponse(AbstractModel):
 
 
 class DataDisk(AbstractModel):
-    """Describes data disk information.
+    r"""Describes data disk information.
 
     """
 
@@ -3322,7 +3322,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def DiskSize(self):
-        """Data disk size, unit: GiB. the minimum adjustment step size is 10 GiB. the value ranges of different data disk types vary. for specific limitations, see the storage overview (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). the default value is 0, which means no data disk purchase. for more restrictions, see the product document.
+        r"""Data disk size, unit: GiB. the minimum adjustment step size is 10 GiB. the value ranges of different data disk types vary. for specific limitations, see the storage overview (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). the default value is 0, which means no data disk purchase. for more restrictions, see the product document.
         :rtype: int
         """
         return self._DiskSize
@@ -3333,7 +3333,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def DiskType(self):
-        """Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD <br /><li>LOCAL_NVME: Local NVMe Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: Basic Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: Tremendous SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
+        r"""Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD <br /><li>LOCAL_NVME: Local NVMe Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: Basic Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: Tremendous SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
         :rtype: str
         """
         return self._DiskType
@@ -3344,7 +3344,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def DiskId(self):
-        """Specifies the data disk ID.
+        r"""Specifies the data disk ID.
 This parameter currently only serves as a response parameter for query apis such as `DescribeInstances`, and cannot be used as an input parameter for write apis such as `RunInstances`.
         :rtype: str
         """
@@ -3356,7 +3356,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def DeleteWithInstance(self):
-        """Whether the data disk is terminated with the instance. value range: <li>true: when the instance is terminated, the data disk is also terminated. only hourly postpaid cloud disks are supported. <li>false: when the instance is terminated, the data disk is retained. <br>default value: true <br>currently, this parameter is only used for the API `RunInstances`.
+        r"""Whether the data disk is terminated with the instance. value range: <li>true: when the instance is terminated, the data disk is also terminated. only hourly postpaid cloud disks are supported. <li>false: when the instance is terminated, the data disk is retained. <br>default value: true <br>currently, this parameter is only used for the API `RunInstances`.
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -3367,7 +3367,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def SnapshotId(self):
-        """Data disk snapshot ID. the size of the selected data disk snapshot must be less than the data disk size.
+        r"""Data disk snapshot ID. the size of the selected data disk snapshot must be less than the data disk size.
         :rtype: str
         """
         return self._SnapshotId
@@ -3378,7 +3378,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def Encrypt(self):
-        """Specifies whether the data disk is encrypted. value range: <li>true: encrypted</li> <li>false: unencrypted</li><br/> default value: false<br/> this parameter is currently only used for the `RunInstances` api.
+        r"""Specifies whether the data disk is encrypted. value range: <li>true: encrypted</li> <li>false: unencrypted</li><br/> default value: false<br/> this parameter is currently only used for the `RunInstances` api.
         :rtype: bool
         """
         return self._Encrypt
@@ -3389,7 +3389,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def KmsKeyId(self):
-        """Custom CMK's corresponding ID, with a value of UUID or something similar to kms - abcd1234. used for encrypting cloud disks.
+        r"""Custom CMK's corresponding ID, with a value of UUID or something similar to kms - abcd1234. used for encrypting cloud disks.
 
 This parameter is currently only used for the `RunInstances` api.
         :rtype: str
@@ -3402,7 +3402,7 @@ This parameter is currently only used for the `RunInstances` api.
 
     @property
     def ThroughputPerformance(self):
-        """Specifies the cloud disk performance (unit: MiB/s). using this parameter allows you to purchase additional performance for the cloud disk.
+        r"""Specifies the cloud disk performance (unit: MiB/s). using this parameter allows you to purchase additional performance for the cloud disk.
 Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD).
         :rtype: int
         """
@@ -3414,7 +3414,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def CdcId(self):
-        """Specifies the exclusive cluster ID it belongs to.
+        r"""Specifies the exclusive cluster ID it belongs to.
         :rtype: str
         """
         return self._CdcId
@@ -3425,7 +3425,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def BurstPerformance(self):
-        """Burst performance.
+        r"""Burst performance.
 
 <B>Note: this feature is in beta test.</b>.
         :rtype: bool
@@ -3438,7 +3438,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
     @property
     def DiskName(self):
-        """Disk name, with a length not exceeding 128 characters.
+        r"""Disk name, with a length not exceeding 128 characters.
         :rtype: str
         """
         return self._DiskName
@@ -3471,7 +3471,7 @@ Currently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOU
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
-    """DeleteDisasterRecoverGroups request structure.
+    r"""DeleteDisasterRecoverGroups request structure.
 
     """
 
@@ -3484,7 +3484,7 @@ class DeleteDisasterRecoverGroupsRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
-        """ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 10 spread placement groups in each request.
+        r"""ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 10 spread placement groups in each request.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -3507,7 +3507,7 @@ class DeleteDisasterRecoverGroupsRequest(AbstractModel):
 
 
 class DeleteDisasterRecoverGroupsResponse(AbstractModel):
-    """DeleteDisasterRecoverGroups response structure.
+    r"""DeleteDisasterRecoverGroups response structure.
 
     """
 
@@ -3520,7 +3520,7 @@ class DeleteDisasterRecoverGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3535,7 +3535,7 @@ class DeleteDisasterRecoverGroupsResponse(AbstractModel):
 
 
 class DeleteImagesRequest(AbstractModel):
-    """DeleteImages request structure.
+    r"""DeleteImages request structure.
 
     """
 
@@ -3554,7 +3554,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def ImageIds(self):
-        """List of the IDs of the instances to be deleted.
+        r"""List of the IDs of the instances to be deleted.
         :rtype: list of str
         """
         return self._ImageIds
@@ -3565,7 +3565,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def DeleteBindedSnap(self):
-        """Whether to delete the snapshot associated with the image
+        r"""Whether to delete the snapshot associated with the image
         :rtype: bool
         """
         return self._DeleteBindedSnap
@@ -3576,7 +3576,7 @@ class DeleteImagesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Check whether deleting an image is supported
+        r"""Check whether deleting an image is supported
         :rtype: bool
         """
         return self._DryRun
@@ -3601,7 +3601,7 @@ class DeleteImagesRequest(AbstractModel):
 
 
 class DeleteImagesResponse(AbstractModel):
-    """DeleteImages response structure.
+    r"""DeleteImages response structure.
 
     """
 
@@ -3614,7 +3614,7 @@ class DeleteImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3629,7 +3629,7 @@ class DeleteImagesResponse(AbstractModel):
 
 
 class DeleteKeyPairsRequest(AbstractModel):
-    """DeleteKeyPairs request structure.
+    r"""DeleteKeyPairs request structure.
 
     """
 
@@ -3642,7 +3642,7 @@ class DeleteKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """One or more key pair IDs to be operated. The maximum number of key pairs per request is 100.<br>You can obtain an available key pair ID in the following ways:<br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair ID.</li><br><li>Call the [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) API and obtain the key pair ID from the `KeyId` in the response.</li>
+        r"""One or more key pair IDs to be operated. The maximum number of key pairs per request is 100.<br>You can obtain an available key pair ID in the following ways:<br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair ID.</li><br><li>Call the [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) API and obtain the key pair ID from the `KeyId` in the response.</li>
         :rtype: list of str
         """
         return self._KeyIds
@@ -3665,7 +3665,7 @@ class DeleteKeyPairsRequest(AbstractModel):
 
 
 class DeleteKeyPairsResponse(AbstractModel):
-    """DeleteKeyPairs response structure.
+    r"""DeleteKeyPairs response structure.
 
     """
 
@@ -3678,7 +3678,7 @@ class DeleteKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3693,7 +3693,7 @@ class DeleteKeyPairsResponse(AbstractModel):
 
 
 class DeleteLaunchTemplateRequest(AbstractModel):
-    """DeleteLaunchTemplate request structure.
+    r"""DeleteLaunchTemplate request structure.
 
     """
 
@@ -3706,7 +3706,7 @@ class DeleteLaunchTemplateRequest(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """The launch template ID
+        r"""The launch template ID
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -3729,7 +3729,7 @@ class DeleteLaunchTemplateRequest(AbstractModel):
 
 
 class DeleteLaunchTemplateResponse(AbstractModel):
-    """DeleteLaunchTemplate response structure.
+    r"""DeleteLaunchTemplate response structure.
 
     """
 
@@ -3742,7 +3742,7 @@ class DeleteLaunchTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3757,7 +3757,7 @@ class DeleteLaunchTemplateResponse(AbstractModel):
 
 
 class DeleteLaunchTemplateVersionsRequest(AbstractModel):
-    """DeleteLaunchTemplateVersions request structure.
+    r"""DeleteLaunchTemplateVersions request structure.
 
     """
 
@@ -3773,7 +3773,7 @@ class DeleteLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """The launch template ID
+        r"""The launch template ID
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -3784,7 +3784,7 @@ class DeleteLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def LaunchTemplateVersions(self):
-        """List of instance launch template versions.
+        r"""List of instance launch template versions.
         :rtype: list of int
         """
         return self._LaunchTemplateVersions
@@ -3808,7 +3808,7 @@ class DeleteLaunchTemplateVersionsRequest(AbstractModel):
 
 
 class DeleteLaunchTemplateVersionsResponse(AbstractModel):
-    """DeleteLaunchTemplateVersions response structure.
+    r"""DeleteLaunchTemplateVersions response structure.
 
     """
 
@@ -3821,7 +3821,7 @@ class DeleteLaunchTemplateVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3836,7 +3836,7 @@ class DeleteLaunchTemplateVersionsResponse(AbstractModel):
 
 
 class DescribeChcDeniedActionsRequest(AbstractModel):
-    """DescribeChcDeniedActions request structure.
+    r"""DescribeChcDeniedActions request structure.
 
     """
 
@@ -3849,7 +3849,7 @@ class DescribeChcDeniedActionsRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC instance ID
+        r"""CHC instance ID
         :rtype: list of str
         """
         return self._ChcIds
@@ -3872,7 +3872,7 @@ class DescribeChcDeniedActionsRequest(AbstractModel):
 
 
 class DescribeChcDeniedActionsResponse(AbstractModel):
-    """DescribeChcDeniedActions response structure.
+    r"""DescribeChcDeniedActions response structure.
 
     """
 
@@ -3888,7 +3888,7 @@ class DescribeChcDeniedActionsResponse(AbstractModel):
 
     @property
     def ChcHostDeniedActionSet(self):
-        """Actions not allowed for the CHC instance
+        r"""Actions not allowed for the CHC instance
         :rtype: list of ChcHostDeniedActions
         """
         return self._ChcHostDeniedActionSet
@@ -3899,7 +3899,7 @@ class DescribeChcDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3920,7 +3920,7 @@ class DescribeChcDeniedActionsResponse(AbstractModel):
 
 
 class DescribeChcHostsRequest(AbstractModel):
-    """DescribeChcHosts request structure.
+    r"""DescribeChcHosts request structure.
 
     """
 
@@ -3953,7 +3953,7 @@ class DescribeChcHostsRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.
+        r"""CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.
         :rtype: list of str
         """
         return self._ChcIds
@@ -3964,7 +3964,7 @@ class DescribeChcHostsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li><strong>zone</strong></li>
+        r"""<li><strong>zone</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>instance-name</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>instance name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
@@ -3986,7 +3986,7 @@ class DescribeChcHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -3997,7 +3997,7 @@ class DescribeChcHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -4028,7 +4028,7 @@ class DescribeChcHostsRequest(AbstractModel):
 
 
 class DescribeChcHostsResponse(AbstractModel):
-    """DescribeChcHosts response structure.
+    r"""DescribeChcHosts response structure.
 
     """
 
@@ -4047,7 +4047,7 @@ class DescribeChcHostsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible instances
+        r"""Number of eligible instances
         :rtype: int
         """
         return self._TotalCount
@@ -4058,7 +4058,7 @@ class DescribeChcHostsResponse(AbstractModel):
 
     @property
     def ChcHostSet(self):
-        """List of returned instances
+        r"""List of returned instances
         :rtype: list of ChcHost
         """
         return self._ChcHostSet
@@ -4069,7 +4069,7 @@ class DescribeChcHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4091,13 +4091,13 @@ class DescribeChcHostsResponse(AbstractModel):
 
 
 class DescribeDisasterRecoverGroupQuotaRequest(AbstractModel):
-    """DescribeDisasterRecoverGroupQuota request structure.
+    r"""DescribeDisasterRecoverGroupQuota request structure.
 
     """
 
 
 class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
-    """DescribeDisasterRecoverGroupQuota response structure.
+    r"""DescribeDisasterRecoverGroupQuota response structure.
 
     """
 
@@ -4125,7 +4125,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def GroupQuota(self):
-        """The maximum number of placement groups that can be created.
+        r"""The maximum number of placement groups that can be created.
         :rtype: int
         """
         return self._GroupQuota
@@ -4136,7 +4136,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CurrentNum(self):
-        """The number of placement groups that have been created by the current user.
+        r"""The number of placement groups that have been created by the current user.
         :rtype: int
         """
         return self._CurrentNum
@@ -4147,7 +4147,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CvmInHostGroupQuota(self):
-        """Quota on instances in a physical-machine-type disaster recovery group.
+        r"""Quota on instances in a physical-machine-type disaster recovery group.
         :rtype: int
         """
         return self._CvmInHostGroupQuota
@@ -4158,7 +4158,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CvmInSwGroupQuota(self):
-        """Quota on instances in a switch-type disaster recovery group.
+        r"""Quota on instances in a switch-type disaster recovery group.
         :rtype: int
         """
         return self._CvmInSwGroupQuota
@@ -4169,7 +4169,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def CvmInRackGroupQuota(self):
-        """Quota on instances in a rack-type disaster recovery group.
+        r"""Quota on instances in a rack-type disaster recovery group.
         :rtype: int
         """
         return self._CvmInRackGroupQuota
@@ -4180,7 +4180,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4200,7 +4200,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
 
 
 class DescribeDisasterRecoverGroupsRequest(AbstractModel):
-    """DescribeDisasterRecoverGroups request structure.
+    r"""DescribeDisasterRecoverGroups request structure.
 
     """
 
@@ -4228,7 +4228,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
     @property
     def DisasterRecoverGroupIds(self):
-        """ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.
+        r"""ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -4239,7 +4239,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
     @property
     def Name(self):
-        """Name of a spread placement group. Fuzzy match is supported.
+        r"""Name of a spread placement group. Fuzzy match is supported.
         :rtype: str
         """
         return self._Name
@@ -4250,7 +4250,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
     @property
     def Offset(self):
-        """Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
+        r"""Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
         :rtype: int
         """
         return self._Offset
@@ -4261,7 +4261,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
         :rtype: int
         """
         return self._Limit
@@ -4272,7 +4272,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
     @property
     def Filters(self):
-        """<li> `tag-key` - String - Optional - Filter by the tag key.</li>
+        r"""<li> `tag-key` - String - Optional - Filter by the tag key.</li>
 <li>`tag-value` - String - Optional - Filter by the tag value.</li>
 <li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. Replace `tag-key` with the actual tag keys.</li>
 Each request can have up to 10 `Filters` and 5 `Filters.Values`.
@@ -4307,7 +4307,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`.
 
 
 class DescribeDisasterRecoverGroupsResponse(AbstractModel):
-    """DescribeDisasterRecoverGroups response structure.
+    r"""DescribeDisasterRecoverGroups response structure.
 
     """
 
@@ -4326,7 +4326,7 @@ class DescribeDisasterRecoverGroupsResponse(AbstractModel):
 
     @property
     def DisasterRecoverGroupSet(self):
-        """Information on spread placement groups.
+        r"""Information on spread placement groups.
         :rtype: list of DisasterRecoverGroup
         """
         return self._DisasterRecoverGroupSet
@@ -4337,7 +4337,7 @@ class DescribeDisasterRecoverGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of placement groups of the user.
+        r"""Total number of placement groups of the user.
         :rtype: int
         """
         return self._TotalCount
@@ -4348,7 +4348,7 @@ class DescribeDisasterRecoverGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4370,7 +4370,7 @@ class DescribeDisasterRecoverGroupsResponse(AbstractModel):
 
 
 class DescribeHostsRequest(AbstractModel):
-    """DescribeHosts request structure.
+    r"""DescribeHosts request structure.
 
     """
 
@@ -4399,7 +4399,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def Filters(self):
-        """<li><strong>zone</strong></li>
+        r"""<li><strong>zone</strong></li>
 <p style="padding-left: 30px;">Filter by the availability zone, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>project-id</strong></li>
 <p style="padding-left: 30px;">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Optional</p>
@@ -4420,7 +4420,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def Offset(self):
-        """Offset; default value: 0.
+        r"""Offset; default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -4431,7 +4431,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100.
+        r"""Number of results returned; default value: 20; maximum: 100.
         :rtype: int
         """
         return self._Limit
@@ -4461,7 +4461,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
 
 class DescribeHostsResponse(AbstractModel):
-    """DescribeHosts response structure.
+    r"""DescribeHosts response structure.
 
     """
 
@@ -4480,7 +4480,7 @@ class DescribeHostsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of CDH instances meeting the query conditions
+        r"""Total number of CDH instances meeting the query conditions
         :rtype: int
         """
         return self._TotalCount
@@ -4491,7 +4491,7 @@ class DescribeHostsResponse(AbstractModel):
 
     @property
     def HostSet(self):
-        """Information on CDH instances
+        r"""Information on CDH instances
         :rtype: list of HostItem
         """
         return self._HostSet
@@ -4502,7 +4502,7 @@ class DescribeHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4524,7 +4524,7 @@ class DescribeHostsResponse(AbstractModel):
 
 
 class DescribeImageFromFamilyRequest(AbstractModel):
-    """DescribeImageFromFamily request structure.
+    r"""DescribeImageFromFamily request structure.
 
     """
 
@@ -4537,7 +4537,7 @@ class DescribeImageFromFamilyRequest(AbstractModel):
 
     @property
     def ImageFamily(self):
-        """Image family
+        r"""Image family
         :rtype: str
         """
         return self._ImageFamily
@@ -4560,7 +4560,7 @@ class DescribeImageFromFamilyRequest(AbstractModel):
 
 
 class DescribeImageFromFamilyResponse(AbstractModel):
-    """DescribeImageFromFamily response structure.
+    r"""DescribeImageFromFamily response structure.
 
     """
 
@@ -4577,7 +4577,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Image(self):
-        """Image information. Null is returned when there is no available image.
+        r"""Image information. Null is returned when there is no available image.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Image`
         """
@@ -4589,7 +4589,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4607,13 +4607,13 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class DescribeImageQuotaRequest(AbstractModel):
-    """DescribeImageQuota request structure.
+    r"""DescribeImageQuota request structure.
 
     """
 
 
 class DescribeImageQuotaResponse(AbstractModel):
-    """DescribeImageQuota response structure.
+    r"""DescribeImageQuota response structure.
 
     """
 
@@ -4629,7 +4629,7 @@ class DescribeImageQuotaResponse(AbstractModel):
 
     @property
     def ImageNumQuota(self):
-        """The image quota of an account
+        r"""The image quota of an account
         :rtype: int
         """
         return self._ImageNumQuota
@@ -4640,7 +4640,7 @@ class DescribeImageQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4656,7 +4656,7 @@ class DescribeImageQuotaResponse(AbstractModel):
 
 
 class DescribeImageSharePermissionRequest(AbstractModel):
-    """DescribeImageSharePermission request structure.
+    r"""DescribeImageSharePermission request structure.
 
     """
 
@@ -4669,7 +4669,7 @@ class DescribeImageSharePermissionRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """The ID of the image to be shared
+        r"""The ID of the image to be shared
         :rtype: str
         """
         return self._ImageId
@@ -4692,7 +4692,7 @@ class DescribeImageSharePermissionRequest(AbstractModel):
 
 
 class DescribeImageSharePermissionResponse(AbstractModel):
-    """DescribeImageSharePermission response structure.
+    r"""DescribeImageSharePermission response structure.
 
     """
 
@@ -4708,7 +4708,7 @@ class DescribeImageSharePermissionResponse(AbstractModel):
 
     @property
     def SharePermissionSet(self):
-        """Information on image sharing.
+        r"""Information on image sharing.
         :rtype: list of SharePermission
         """
         return self._SharePermissionSet
@@ -4719,7 +4719,7 @@ class DescribeImageSharePermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4740,7 +4740,7 @@ class DescribeImageSharePermissionResponse(AbstractModel):
 
 
 class DescribeImagesRequest(AbstractModel):
-    """DescribeImages request structure.
+    r"""DescribeImages request structure.
 
     """
 
@@ -4780,7 +4780,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def ImageIds(self):
-        """List of image IDs, such as `img-gvbnzy6f`. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>View the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image).
+        r"""List of image IDs, such as `img-gvbnzy6f`. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>View the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image).
         :rtype: list of str
         """
         return self._ImageIds
@@ -4791,7 +4791,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:
+        r"""Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:
 
 <li><strong>image-id</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>image ID</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
@@ -4817,7 +4817,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        r"""Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
         :rtype: int
         """
         return self._Offset
@@ -4828,7 +4828,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
         :rtype: int
         """
         return self._Limit
@@ -4839,7 +4839,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type, e.g. `S1.SMALL1`
+        r"""Instance type, e.g. `S1.SMALL1`
         :rtype: str
         """
         return self._InstanceType
@@ -4871,7 +4871,7 @@ class DescribeImagesRequest(AbstractModel):
 
 
 class DescribeImagesResponse(AbstractModel):
-    """DescribeImages response structure.
+    r"""DescribeImages response structure.
 
     """
 
@@ -4890,7 +4890,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def ImageSet(self):
-        """Information on an image, including its state and attributes.
+        r"""Information on an image, including its state and attributes.
         :rtype: list of Image
         """
         return self._ImageSet
@@ -4901,7 +4901,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of images meeting the filtering conditions.
+        r"""Number of images meeting the filtering conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -4912,7 +4912,7 @@ class DescribeImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4934,13 +4934,13 @@ class DescribeImagesResponse(AbstractModel):
 
 
 class DescribeImportImageOsRequest(AbstractModel):
-    """DescribeImportImageOs request structure.
+    r"""DescribeImportImageOs request structure.
 
     """
 
 
 class DescribeImportImageOsResponse(AbstractModel):
-    """DescribeImportImageOs response structure.
+    r"""DescribeImportImageOs response structure.
 
     """
 
@@ -4959,7 +4959,7 @@ class DescribeImportImageOsResponse(AbstractModel):
 
     @property
     def ImportImageOsListSupported(self):
-        """Supported operating system types of imported images.
+        r"""Supported operating system types of imported images.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ImageOsList`
         """
         return self._ImportImageOsListSupported
@@ -4970,7 +4970,7 @@ class DescribeImportImageOsResponse(AbstractModel):
 
     @property
     def ImportImageOsVersionSet(self):
-        """Supported operating system versions of imported images. 
+        r"""Supported operating system versions of imported images. 
         :rtype: list of OsVersion
         """
         return self._ImportImageOsVersionSet
@@ -4981,7 +4981,7 @@ class DescribeImportImageOsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5005,13 +5005,13 @@ class DescribeImportImageOsResponse(AbstractModel):
 
 
 class DescribeInstanceFamilyConfigsRequest(AbstractModel):
-    """DescribeInstanceFamilyConfigs request structure.
+    r"""DescribeInstanceFamilyConfigs request structure.
 
     """
 
 
 class DescribeInstanceFamilyConfigsResponse(AbstractModel):
-    """DescribeInstanceFamilyConfigs response structure.
+    r"""DescribeInstanceFamilyConfigs response structure.
 
     """
 
@@ -5027,7 +5027,7 @@ class DescribeInstanceFamilyConfigsResponse(AbstractModel):
 
     @property
     def InstanceFamilyConfigSet(self):
-        """List of instance model families
+        r"""List of instance model families
         :rtype: list of InstanceFamilyConfig
         """
         return self._InstanceFamilyConfigSet
@@ -5038,7 +5038,7 @@ class DescribeInstanceFamilyConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5059,7 +5059,7 @@ class DescribeInstanceFamilyConfigsResponse(AbstractModel):
 
 
 class DescribeInstancesAttributesRequest(AbstractModel):
-    """DescribeInstancesAttributes request structure.
+    r"""DescribeInstancesAttributes request structure.
 
     """
 
@@ -5076,7 +5076,7 @@ UserData: Custom data of instances.
 
     @property
     def Attributes(self):
-        """Instance attributes to be obtained. Valid value(s): 
+        r"""Instance attributes to be obtained. Valid value(s): 
 UserData: Custom data of instances.
         :rtype: list of str
         """
@@ -5088,7 +5088,7 @@ UserData: Custom data of instances.
 
     @property
     def InstanceIds(self):
-        """Instance ID list.
+        r"""Instance ID list.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5112,7 +5112,7 @@ UserData: Custom data of instances.
 
 
 class DescribeInstancesAttributesResponse(AbstractModel):
-    """DescribeInstancesAttributes response structure.
+    r"""DescribeInstancesAttributes response structure.
 
     """
 
@@ -5128,7 +5128,7 @@ class DescribeInstancesAttributesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """List of attributes of specified instances.
+        r"""List of attributes of specified instances.
         :rtype: list of InstanceAttribute
         """
         return self._InstanceSet
@@ -5139,7 +5139,7 @@ class DescribeInstancesAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5160,7 +5160,7 @@ class DescribeInstancesAttributesResponse(AbstractModel):
 
 
 class DescribeInstancesOperationLimitRequest(AbstractModel):
-    """DescribeInstancesOperationLimit request structure.
+    r"""DescribeInstancesOperationLimit request structure.
 
     """
 
@@ -5177,7 +5177,7 @@ class DescribeInstancesOperationLimitRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).) You can query up to 100 instances in each request.
+        r"""Query by instance ID(s). You can obtain the instance IDs from the value of `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API. For example, instance ID: ins-xxxxxxxx. (For the specific format, refer to section `ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).) You can query up to 100 instances in each request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5188,7 +5188,7 @@ class DescribeInstancesOperationLimitRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """Operation on the instance(s).
+        r"""Operation on the instance(s).
 <li> INSTANCE_DEGRADE: downgrade the instance configurations</li>
         :rtype: str
         """
@@ -5213,7 +5213,7 @@ class DescribeInstancesOperationLimitRequest(AbstractModel):
 
 
 class DescribeInstancesOperationLimitResponse(AbstractModel):
-    """DescribeInstancesOperationLimit response structure.
+    r"""DescribeInstancesOperationLimit response structure.
 
     """
 
@@ -5229,7 +5229,7 @@ class DescribeInstancesOperationLimitResponse(AbstractModel):
 
     @property
     def InstanceOperationLimitSet(self):
-        """The maximum number of times you can modify the instance configurations (degrading the configurations)
+        r"""The maximum number of times you can modify the instance configurations (degrading the configurations)
         :rtype: list of OperationCountLimit
         """
         return self._InstanceOperationLimitSet
@@ -5240,7 +5240,7 @@ class DescribeInstancesOperationLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5261,7 +5261,7 @@ class DescribeInstancesOperationLimitResponse(AbstractModel):
 
 
 class DescribeInstancesRequest(AbstractModel):
-    """DescribeInstances request structure.
+    r"""DescribeInstances request structure.
 
     """
 
@@ -5298,7 +5298,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot spec
 
     @property
     def InstanceIds(self):
-        """Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time.
+        r"""Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5309,7 +5309,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot spec
 
     @property
     def Filters(self):
-        """Filters
+        r"""Filters
 <li> `zone` - String - Optional - Filter by the availability zone.</li>
 <li> `project-id` - Integer - Optional - Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. </li>
 <li> `host-id` - String - Optional - Filter by the CDH instance ID. Format: `host-xxxxxxxx`.</li>
@@ -5335,7 +5335,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot spec
 
     @property
     def Offset(self):
-        """Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
+        r"""Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
         :rtype: int
         """
         return self._Offset
@@ -5346,7 +5346,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot spec
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
         :rtype: int
         """
         return self._Limit
@@ -5377,7 +5377,7 @@ Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot spec
 
 
 class DescribeInstancesResponse(AbstractModel):
-    """DescribeInstances response structure.
+    r"""DescribeInstances response structure.
 
     """
 
@@ -5396,7 +5396,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of instances meeting the filtering conditions.
+        r"""Number of instances meeting the filtering conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -5407,7 +5407,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        """Detailed instance information.
+        r"""Detailed instance information.
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -5418,7 +5418,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5440,7 +5440,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 
 class DescribeInstancesStatusRequest(AbstractModel):
-    """DescribeInstancesStatus request structure.
+    r"""DescribeInstancesStatus request structure.
 
     """
 
@@ -5459,7 +5459,7 @@ class DescribeInstancesStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request.
+        r"""Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5470,7 +5470,7 @@ class DescribeInstancesStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
+        r"""Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
         :rtype: int
         """
         return self._Offset
@@ -5481,7 +5481,7 @@ class DescribeInstancesStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).
         :rtype: int
         """
         return self._Limit
@@ -5506,7 +5506,7 @@ class DescribeInstancesStatusRequest(AbstractModel):
 
 
 class DescribeInstancesStatusResponse(AbstractModel):
-    """DescribeInstancesStatus response structure.
+    r"""DescribeInstancesStatus response structure.
 
     """
 
@@ -5525,7 +5525,7 @@ class DescribeInstancesStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of instance states meeting the filtering conditions.
+        r"""Number of instance states meeting the filtering conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -5536,7 +5536,7 @@ class DescribeInstancesStatusResponse(AbstractModel):
 
     @property
     def InstanceStatusSet(self):
-        """[Instance status](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) list.
+        r"""[Instance status](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) list.
         :rtype: list of InstanceStatus
         """
         return self._InstanceStatusSet
@@ -5547,7 +5547,7 @@ class DescribeInstancesStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5569,13 +5569,13 @@ class DescribeInstancesStatusResponse(AbstractModel):
 
 
 class DescribeInternetChargeTypeConfigsRequest(AbstractModel):
-    """DescribeInternetChargeTypeConfigs request structure.
+    r"""DescribeInternetChargeTypeConfigs request structure.
 
     """
 
 
 class DescribeInternetChargeTypeConfigsResponse(AbstractModel):
-    """DescribeInternetChargeTypeConfigs response structure.
+    r"""DescribeInternetChargeTypeConfigs response structure.
 
     """
 
@@ -5591,7 +5591,7 @@ class DescribeInternetChargeTypeConfigsResponse(AbstractModel):
 
     @property
     def InternetChargeTypeConfigSet(self):
-        """List of network billing methods.
+        r"""List of network billing methods.
         :rtype: list of InternetChargeTypeConfig
         """
         return self._InternetChargeTypeConfigSet
@@ -5602,7 +5602,7 @@ class DescribeInternetChargeTypeConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5623,7 +5623,7 @@ class DescribeInternetChargeTypeConfigsResponse(AbstractModel):
 
 
 class DescribeKeyPairsRequest(AbstractModel):
-    """DescribeKeyPairs request structure.
+    r"""DescribeKeyPairs request structure.
 
     """
 
@@ -5647,7 +5647,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """Key pair ID(s) in the format of `skey-11112222`. This API supports using multiple IDs as filters at the same time. For more information on the format of this parameter, see the `id.N` section in [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You cannot specify `KeyIds` and `Filters` at the same time. You can log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the key pair IDs.
+        r"""Key pair ID(s) in the format of `skey-11112222`. This API supports using multiple IDs as filters at the same time. For more information on the format of this parameter, see the `id.N` section in [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You cannot specify `KeyIds` and `Filters` at the same time. You can log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the key pair IDs.
         :rtype: list of str
         """
         return self._KeyIds
@@ -5658,7 +5658,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters
+        r"""Filters
 <li> `project-id` - Integer - Optional - Filter by project ID. To view the list of project IDs, you can go to [Project Management](https://console.cloud.tencent.com/project), or call the `DescribeProject` API and look for `projectId` in the response.</li>
 <li> `key-name` - String - Optional - Filter by key pair name.</li>You cannot specify `KeyIds` and `Filters` at the same time.
         :rtype: list of Filter
@@ -5671,7 +5671,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -5682,7 +5682,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). 
         :rtype: int
         """
         return self._Limit
@@ -5713,7 +5713,7 @@ class DescribeKeyPairsRequest(AbstractModel):
 
 
 class DescribeKeyPairsResponse(AbstractModel):
-    """DescribeKeyPairs response structure.
+    r"""DescribeKeyPairs response structure.
 
     """
 
@@ -5732,7 +5732,7 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of key pairs meeting the filtering conditions.
+        r"""Number of key pairs meeting the filtering conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -5743,7 +5743,7 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def KeyPairSet(self):
-        """Detailed information on key pairs.
+        r"""Detailed information on key pairs.
         :rtype: list of KeyPair
         """
         return self._KeyPairSet
@@ -5754,7 +5754,7 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5776,7 +5776,7 @@ class DescribeKeyPairsResponse(AbstractModel):
 
 
 class DescribeLaunchTemplateVersionsRequest(AbstractModel):
-    """DescribeLaunchTemplateVersions request structure.
+    r"""DescribeLaunchTemplateVersions request structure.
 
     """
 
@@ -5807,7 +5807,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """The launch template ID
+        r"""The launch template ID
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -5818,7 +5818,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def LaunchTemplateVersions(self):
-        """List of instance launch templates.
+        r"""List of instance launch templates.
         :rtype: list of int non-negative
         """
         return self._LaunchTemplateVersions
@@ -5829,7 +5829,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def MinVersion(self):
-        """The minimum version number specified, which defaults to 0.
+        r"""The minimum version number specified, which defaults to 0.
         :rtype: int
         """
         return self._MinVersion
@@ -5840,7 +5840,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def MaxVersion(self):
-        """The maximum version number specified, which defaults to 30.
+        r"""The maximum version number specified, which defaults to 30.
         :rtype: int
         """
         return self._MaxVersion
@@ -5851,7 +5851,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -5862,7 +5862,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -5873,7 +5873,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
     @property
     def DefaultVersion(self):
-        """Specify whether to query the default version. This parameter and `LaunchTemplateVersions` cannot be specified at the same time.
+        r"""Specify whether to query the default version. This parameter and `LaunchTemplateVersions` cannot be specified at the same time.
         :rtype: bool
         """
         return self._DefaultVersion
@@ -5902,7 +5902,7 @@ class DescribeLaunchTemplateVersionsRequest(AbstractModel):
 
 
 class DescribeLaunchTemplateVersionsResponse(AbstractModel):
-    """DescribeLaunchTemplateVersions response structure.
+    r"""DescribeLaunchTemplateVersions response structure.
 
     """
 
@@ -5921,7 +5921,7 @@ class DescribeLaunchTemplateVersionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of instance launch templates.
+        r"""Total number of instance launch templates.
         :rtype: int
         """
         return self._TotalCount
@@ -5932,7 +5932,7 @@ class DescribeLaunchTemplateVersionsResponse(AbstractModel):
 
     @property
     def LaunchTemplateVersionSet(self):
-        """Set of instance launch template versions.
+        r"""Set of instance launch template versions.
         :rtype: list of LaunchTemplateVersionInfo
         """
         return self._LaunchTemplateVersionSet
@@ -5943,7 +5943,7 @@ class DescribeLaunchTemplateVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5965,7 +5965,7 @@ class DescribeLaunchTemplateVersionsResponse(AbstractModel):
 
 
 class DescribeLaunchTemplatesRequest(AbstractModel):
-    """DescribeLaunchTemplates request structure.
+    r"""DescribeLaunchTemplates request structure.
 
     """
 
@@ -5988,7 +5988,7 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def LaunchTemplateIds(self):
-        """Instance launch template ID. ID of one or more instance launch templates. If not specified, all templates of the user will be displayed.
+        r"""Instance launch template ID. ID of one or more instance launch templates. If not specified, all templates of the user will be displayed.
         :rtype: list of str
         """
         return self._LaunchTemplateIds
@@ -5999,7 +5999,7 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Filters(self):
-        """<p style="padding-left: 30px;">Filter by [<strong>LaunchTemplateName</strong>].</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
+        r"""<p style="padding-left: 30px;">Filter by [<strong>LaunchTemplateName</strong>].</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.
         :rtype: list of Filter
         """
@@ -6011,7 +6011,7 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Offset(self):
-        """The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -6022,7 +6022,7 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -6053,7 +6053,7 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
 
 class DescribeLaunchTemplatesResponse(AbstractModel):
-    """DescribeLaunchTemplates response structure.
+    r"""DescribeLaunchTemplates response structure.
 
     """
 
@@ -6074,7 +6074,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
-        """Number of eligible instance templates.
+        r"""Number of eligible instance templates.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6086,7 +6086,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateSet(self):
-        """List of instance details
+        r"""List of instance details
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of LaunchTemplateInfo
         """
@@ -6098,7 +6098,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6120,13 +6120,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions request structure.
+    r"""DescribeRegions request structure.
 
     """
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions response structure.
+    r"""DescribeRegions response structure.
 
     """
 
@@ -6145,7 +6145,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of regions
+        r"""Number of regions
         :rtype: int
         """
         return self._TotalCount
@@ -6156,7 +6156,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """List of regions
+        r"""List of regions
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -6167,7 +6167,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6189,7 +6189,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeReservedInstancesConfigInfosRequest(AbstractModel):
-    """DescribeReservedInstancesConfigInfos request structure.
+    r"""DescribeReservedInstancesConfigInfos request structure.
 
     """
 
@@ -6219,7 +6219,7 @@ Valid value: 31536000 (1 year)
 
     @property
     def Filters(self):
-        """<li><strong>zone</li></strong>
+        r"""<li><strong>zone</li></strong>
 Filters by the availability zones in which the reserved instance can be purchased, such as `ap-guangzhou-1`.
 Type: String
 Required: no
@@ -6264,7 +6264,7 @@ Valid value: 31536000 (1 year)
 
 
 class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
-    """DescribeReservedInstancesConfigInfos response structure.
+    r"""DescribeReservedInstancesConfigInfos response structure.
 
     """
 
@@ -6280,7 +6280,7 @@ class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
 
     @property
     def ReservedInstanceConfigInfos(self):
-        """Static configurations of the reserved instance.
+        r"""Static configurations of the reserved instance.
         :rtype: list of ReservedInstanceConfigInfoItem
         """
         return self._ReservedInstanceConfigInfos
@@ -6291,7 +6291,7 @@ class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6312,7 +6312,7 @@ class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
 
 
 class DescribeReservedInstancesOfferingsRequest(AbstractModel):
-    """DescribeReservedInstancesOfferings request structure.
+    r"""DescribeReservedInstancesOfferings request structure.
 
     """
 
@@ -6356,7 +6356,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def DryRun(self):
-        """Dry run. Default value: false.
+        r"""Dry run. Default value: false.
         :rtype: bool
         """
         return self._DryRun
@@ -6367,7 +6367,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def Offset(self):
-        """The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -6378,7 +6378,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def Limit(self):
-        """The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -6389,7 +6389,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
     @property
     def MaxDuration(self):
-        """The maximum duration as a filter, 
+        r"""The maximum duration as a filter, 
 in seconds.
 Default value: 94608000.
         :rtype: int
@@ -6402,7 +6402,7 @@ Default value: 94608000.
 
     @property
     def MinDuration(self):
-        """The minimum duration as a filter, 
+        r"""The minimum duration as a filter, 
 in seconds.
 Default value: 2592000.
         :rtype: int
@@ -6415,7 +6415,7 @@ Default value: 2592000.
 
     @property
     def Filters(self):
-        """<li><strong>zone</strong></li>
+        r"""<li><strong>zone</strong></li>
 <p style="padding-left: 30px;">Filters by the <strong>availability zones</strong> in which the Reserved Instances can be purchased, such as ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability Zones</a></p>
 <li><strong>duration</strong></li>
 <p style="padding-left: 30px;">Filters by the <strong>duration</strong> of the Reserved Instance, in seconds. For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Unit: second</p><p style="padding-left: 30px;">Required: no</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years)</p>
@@ -6460,7 +6460,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
 
 
 class DescribeReservedInstancesOfferingsResponse(AbstractModel):
-    """DescribeReservedInstancesOfferings response structure.
+    r"""DescribeReservedInstancesOfferings response structure.
 
     """
 
@@ -6479,7 +6479,7 @@ class DescribeReservedInstancesOfferingsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of Reserved Instances that meet the condition.
+        r"""The number of Reserved Instances that meet the condition.
         :rtype: int
         """
         return self._TotalCount
@@ -6490,7 +6490,7 @@ class DescribeReservedInstancesOfferingsResponse(AbstractModel):
 
     @property
     def ReservedInstancesOfferingsSet(self):
-        """The list of Reserved Instances that meet the condition.
+        r"""The list of Reserved Instances that meet the condition.
         :rtype: list of ReservedInstancesOffering
         """
         return self._ReservedInstancesOfferingsSet
@@ -6501,7 +6501,7 @@ class DescribeReservedInstancesOfferingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6523,7 +6523,7 @@ class DescribeReservedInstancesOfferingsResponse(AbstractModel):
 
 
 class DescribeReservedInstancesRequest(AbstractModel):
-    """DescribeReservedInstances request structure.
+    r"""DescribeReservedInstances request structure.
 
     """
 
@@ -6561,7 +6561,7 @@ Each request can have up to 10 filters, and each filter can have up to 5 values.
 
     @property
     def DryRun(self):
-        """Trial run. Default value: false.
+        r"""Trial run. Default value: false.
         :rtype: bool
         """
         return self._DryRun
@@ -6572,7 +6572,7 @@ Each request can have up to 10 filters, and each filter can have up to 5 values.
 
     @property
     def Offset(self):
-        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Offset. Default value: 0. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Offset
@@ -6583,7 +6583,7 @@ Each request can have up to 10 filters, and each filter can have up to 5 values.
 
     @property
     def Limit(self):
-        """Number of returned instances. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        r"""Number of returned instances. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :rtype: int
         """
         return self._Limit
@@ -6594,7 +6594,7 @@ Each request can have up to 10 filters, and each filter can have up to 5 values.
 
     @property
     def Filters(self):
-        """<li><strong>zone</strong></li>
+        r"""<li><strong>zone</strong></li>
 <p style="padding-left: 30px;">Filter by [<strong>availability zones</strong>] in which reserved instances can be purchased. For example, ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">availability zone list</a>.</p>
 <li><strong>duration</strong></li>
 <p style="padding-left: 30px;">Filter by [<strong>validity periods</strong>] of reserved instances, which is the instance purchase duration. For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer.</p><p style="padding-left: 30px;">Unit: Second.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years).</p>
@@ -6641,7 +6641,7 @@ Each request can have up to 10 filters, and each filter can have up to 5 values.
 
 
 class DescribeReservedInstancesResponse(AbstractModel):
-    """DescribeReservedInstances response structure.
+    r"""DescribeReservedInstances response structure.
 
     """
 
@@ -6660,7 +6660,7 @@ class DescribeReservedInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of reserved instances that meet the conditions.
+        r"""Number of reserved instances that meet the conditions.
         :rtype: int
         """
         return self._TotalCount
@@ -6671,7 +6671,7 @@ class DescribeReservedInstancesResponse(AbstractModel):
 
     @property
     def ReservedInstancesSet(self):
-        """List of reserved instances that meet the conditions.
+        r"""List of reserved instances that meet the conditions.
         :rtype: list of ReservedInstances
         """
         return self._ReservedInstancesSet
@@ -6682,7 +6682,7 @@ class DescribeReservedInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6704,7 +6704,7 @@ class DescribeReservedInstancesResponse(AbstractModel):
 
 
 class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
-    """DescribeZoneInstanceConfigInfos request structure.
+    r"""DescribeZoneInstanceConfigInfos request structure.
 
     """
 
@@ -6717,7 +6717,7 @@ class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """<li> instance-charge-type-String-required: no-(filter) billing mode of instances. (POSTPAID_BY_HOUR: pay-as-you-go billing by hour | SPOTPAID: spot billing, which is suitable for a [spot instance] (https://intl.cloud.Tencent.com/document/product/213/17817) | CDHPAID: CDH billing, that is, billing only for CDH, but not for the instances on CDH. )  </li>
+        r"""<li> instance-charge-type-String-required: no-(filter) billing mode of instances. (POSTPAID_BY_HOUR: pay-as-you-go billing by hour | SPOTPAID: spot billing, which is suitable for a [spot instance] (https://intl.cloud.Tencent.com/document/product/213/17817) | CDHPAID: CDH billing, that is, billing only for CDH, but not for the instances on CDH. )  </li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -6745,7 +6745,7 @@ class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
 
 
 class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
-    """DescribeZoneInstanceConfigInfos response structure.
+    r"""DescribeZoneInstanceConfigInfos response structure.
 
     """
 
@@ -6761,7 +6761,7 @@ class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def InstanceTypeQuotaSet(self):
-        """List of model configurations for the availability zone.
+        r"""List of model configurations for the availability zone.
         :rtype: list of InstanceTypeQuotaItem
         """
         return self._InstanceTypeQuotaSet
@@ -6772,7 +6772,7 @@ class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6793,13 +6793,13 @@ class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
 
 
 class DescribeZonesRequest(AbstractModel):
-    """DescribeZones request structure.
+    r"""DescribeZones request structure.
 
     """
 
 
 class DescribeZonesResponse(AbstractModel):
-    """DescribeZones response structure.
+    r"""DescribeZones response structure.
 
     """
 
@@ -6818,7 +6818,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of availability zones.
+        r"""Number of availability zones.
         :rtype: int
         """
         return self._TotalCount
@@ -6829,7 +6829,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """List of availability zones.
+        r"""List of availability zones.
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet
@@ -6840,7 +6840,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6862,7 +6862,7 @@ class DescribeZonesResponse(AbstractModel):
 
 
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
-    """DisassociateInstancesKeyPairs request structure.
+    r"""DisassociateInstancesKeyPairs request structure.
 
     """
 
@@ -6881,7 +6881,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). The maximum number of instances in each request is 100. <br><br>You can obtain the available instance IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the instance IDs. <br><li>Call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID(s). The maximum number of instances in each request is 100. <br><br>You can obtain the available instance IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the instance IDs. <br><li>Call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6892,7 +6892,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
-        """List of key pair IDs. The maximum number of key pairs in each request is 100. The key pair ID is in the format of `skey-11112222`. <br><br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
+        r"""List of key pair IDs. The maximum number of key pairs in each request is 100. The key pair ID is in the format of `skey-11112222`. <br><br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
         :rtype: list of str
         """
         return self._KeyIds
@@ -6903,7 +6903,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to force shut down a running instances. It is recommended to manually shut down a running instance before disassociating a key pair from it. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE.
+        r"""Whether to force shut down a running instances. It is recommended to manually shut down a running instance before disassociating a key pair from it. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE.
         :rtype: bool
         """
         return self._ForceStop
@@ -6928,7 +6928,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
 
 class DisassociateInstancesKeyPairsResponse(AbstractModel):
-    """DisassociateInstancesKeyPairs response structure.
+    r"""DisassociateInstancesKeyPairs response structure.
 
     """
 
@@ -6941,7 +6941,7 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6956,7 +6956,7 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
 
 class DisassociateSecurityGroupsRequest(AbstractModel):
-    """DisassociateSecurityGroups request structure.
+    r"""DisassociateSecurityGroups request structure.
 
     """
 
@@ -6972,7 +6972,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """ID of the security group to be disassociated, such as `sg-efil73jd`. Only one security group can be disassociated.
+        r"""ID of the security group to be disassociated, such as `sg-efil73jd`. Only one security group can be disassociated.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -6983,7 +6983,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """ID(s) of the instance(s) to be disassociated,such as `ins-lesecurk`. You can specify multiple instances.
+        r"""ID(s) of the instance(s) to be disassociated,such as `ins-lesecurk`. You can specify multiple instances.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7007,7 +7007,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
 
 class DisassociateSecurityGroupsResponse(AbstractModel):
-    """DisassociateSecurityGroups response structure.
+    r"""DisassociateSecurityGroups response structure.
 
     """
 
@@ -7020,7 +7020,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7035,7 +7035,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
 
 class DisasterRecoverGroup(AbstractModel):
-    """Information on disaster recovery groups
+    r"""Information on disaster recovery groups
 
     """
 
@@ -7074,7 +7074,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DisasterRecoverGroupId(self):
-        """ID of a spread placement group.
+        r"""ID of a spread placement group.
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -7085,7 +7085,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Name(self):
-        """Name of a spread placement group, which must be 1-60 characters long.
+        r"""Name of a spread placement group, which must be 1-60 characters long.
         :rtype: str
         """
         return self._Name
@@ -7096,7 +7096,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Type(self):
-        """Type of a spread placement group. Valid values:<br>
+        r"""Type of a spread placement group. Valid values:<br>
 <li>HOST: physical machine.<br></li>
 <li>SW: switch.<br></li>
 <li>RACK: rack.</li>
@@ -7110,7 +7110,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CvmQuotaTotal(self):
-        """The maximum number of CVMs that can be hosted in a spread placement group.
+        r"""The maximum number of CVMs that can be hosted in a spread placement group.
         :rtype: int
         """
         return self._CvmQuotaTotal
@@ -7121,7 +7121,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CurrentNum(self):
-        """The current number of CVMs in a spread placement group.
+        r"""The current number of CVMs in a spread placement group.
         :rtype: int
         """
         return self._CurrentNum
@@ -7132,7 +7132,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceIds(self):
-        """The list of CVM IDs in a spread placement group.
+        r"""The list of CVM IDs in a spread placement group.
 Note: This field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -7144,7 +7144,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
-        """Creation time of a spread placement group.
+        r"""Creation time of a spread placement group.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -7156,7 +7156,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """List of tags associated with the placement group.
+        r"""List of tags associated with the placement group.
         :rtype: list of Tag
         """
         return self._Tags
@@ -7191,7 +7191,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class EnhancedService(AbstractModel):
-    """Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.
+    r"""Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.
 
     """
 
@@ -7210,7 +7210,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
-        """Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
+        r"""Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RunSecurityServiceEnabled`
         """
         return self._SecurityService
@@ -7221,7 +7221,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
-        """Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
+        r"""Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RunMonitorServiceEnabled`
         """
         return self._MonitorService
@@ -7232,7 +7232,7 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationService(self):
-        """Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
+        r"""Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RunAutomationServiceEnabled`
         """
         return self._AutomationService
@@ -7263,7 +7263,7 @@ class EnhancedService(AbstractModel):
 
 
 class EnterRescueModeRequest(AbstractModel):
-    """EnterRescueMode request structure.
+    r"""EnterRescueMode request structure.
 
     """
 
@@ -7285,7 +7285,7 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID Needs to Enter Rescue Mode
+        r"""Instance ID Needs to Enter Rescue Mode
         :rtype: str
         """
         return self._InstanceId
@@ -7296,7 +7296,7 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def Password(self):
-        """System Password in Rescue Mode
+        r"""System Password in Rescue Mode
         :rtype: str
         """
         return self._Password
@@ -7307,7 +7307,7 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def Username(self):
-        """System Username in Rescue Mode
+        r"""System Username in Rescue Mode
         :rtype: str
         """
         return self._Username
@@ -7318,7 +7318,7 @@ class EnterRescueModeRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to perform forced shutdown.
+        r"""Whether to perform forced shutdown.
         :rtype: bool
         """
         return self._ForceStop
@@ -7344,7 +7344,7 @@ class EnterRescueModeRequest(AbstractModel):
 
 
 class EnterRescueModeResponse(AbstractModel):
-    """EnterRescueMode response structure.
+    r"""EnterRescueMode response structure.
 
     """
 
@@ -7357,7 +7357,7 @@ class EnterRescueModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7372,7 +7372,7 @@ class EnterRescueModeResponse(AbstractModel):
 
 
 class ExitRescueModeRequest(AbstractModel):
-    """ExitRescueMode request structure.
+    r"""ExitRescueMode request structure.
 
     """
 
@@ -7385,7 +7385,7 @@ class ExitRescueModeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID Exiting Rescue Mode
+        r"""Instance ID Exiting Rescue Mode
         :rtype: str
         """
         return self._InstanceId
@@ -7408,7 +7408,7 @@ class ExitRescueModeRequest(AbstractModel):
 
 
 class ExitRescueModeResponse(AbstractModel):
-    """ExitRescueMode response structure.
+    r"""ExitRescueMode response structure.
 
     """
 
@@ -7421,7 +7421,7 @@ class ExitRescueModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7436,7 +7436,7 @@ class ExitRescueModeResponse(AbstractModel):
 
 
 class ExportImagesRequest(AbstractModel):
-    """ExportImages request structure.
+    r"""ExportImages request structure.
 
     """
 
@@ -7467,7 +7467,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        """COS bucket name
+        r"""COS bucket name
         :rtype: str
         """
         return self._BucketName
@@ -7478,7 +7478,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def ImageIds(self):
-        """List of image IDs
+        r"""List of image IDs
         :rtype: list of str
         """
         return self._ImageIds
@@ -7489,7 +7489,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def ExportFormat(self):
-        """Format of the exported image file. Valid values: `RAW`, `QCOW2`, `VHD` and `VMDK`. Default value: `RAW`.
+        r"""Format of the exported image file. Valid values: `RAW`, `QCOW2`, `VHD` and `VMDK`. Default value: `RAW`.
         :rtype: str
         """
         return self._ExportFormat
@@ -7500,7 +7500,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def FileNamePrefixList(self):
-        """Prefix list of the name of exported files
+        r"""Prefix list of the name of exported files
         :rtype: list of str
         """
         return self._FileNamePrefixList
@@ -7511,7 +7511,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def OnlyExportRootDisk(self):
-        """Whether to export only the system disk
+        r"""Whether to export only the system disk
         :rtype: bool
         """
         return self._OnlyExportRootDisk
@@ -7522,7 +7522,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Check whether the image can be exported
+        r"""Check whether the image can be exported
         :rtype: bool
         """
         return self._DryRun
@@ -7533,7 +7533,7 @@ class ExportImagesRequest(AbstractModel):
 
     @property
     def RoleName(self):
-        """Role name (Default: `CVM_QcsRole`). Before exporting the images, make sure the role exists, and it has write permission to COS.
+        r"""Role name (Default: `CVM_QcsRole`). Before exporting the images, make sure the role exists, and it has write permission to COS.
         :rtype: str
         """
         return self._RoleName
@@ -7562,7 +7562,7 @@ class ExportImagesRequest(AbstractModel):
 
 
 class ExportImagesResponse(AbstractModel):
-    """ExportImages response structure.
+    r"""ExportImages response structure.
 
     """
 
@@ -7581,7 +7581,7 @@ class ExportImagesResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the image export task
+        r"""ID of the image export task
         :rtype: int
         """
         return self._TaskId
@@ -7592,7 +7592,7 @@ class ExportImagesResponse(AbstractModel):
 
     @property
     def CosPaths(self):
-        """List of COS filenames of the exported images
+        r"""List of COS filenames of the exported images
         :rtype: list of str
         """
         return self._CosPaths
@@ -7603,7 +7603,7 @@ class ExportImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7620,7 +7620,7 @@ class ExportImagesResponse(AbstractModel):
 
 
 class Externals(AbstractModel):
-    """Additional data
+    r"""Additional data
 
     """
 
@@ -7639,7 +7639,7 @@ class Externals(AbstractModel):
 
     @property
     def ReleaseAddress(self):
-        """Release Address
+        r"""Release Address
         :rtype: bool
         """
         return self._ReleaseAddress
@@ -7650,7 +7650,7 @@ class Externals(AbstractModel):
 
     @property
     def UnsupportNetworks(self):
-        """Unsupported network type. valid values: <br><li>BASIC: BASIC network</li><li>VPC1.0: private network VPC1.0</li>.
+        r"""Unsupported network type. valid values: <br><li>BASIC: BASIC network</li><li>VPC1.0: private network VPC1.0</li>.
         :rtype: list of str
         """
         return self._UnsupportNetworks
@@ -7661,7 +7661,7 @@ class Externals(AbstractModel):
 
     @property
     def StorageBlockAttr(self):
-        """Specifies the HDD local storage attributes.
+        r"""Specifies the HDD local storage attributes.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         return self._StorageBlockAttr
@@ -7688,7 +7688,7 @@ class Externals(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.
+    r"""> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.
     > * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.
     > * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.
     >
@@ -7714,7 +7714,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filters.
+        r"""Filters.
         :rtype: str
         """
         return self._Name
@@ -7725,7 +7725,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filter values.
+        r"""Filter values.
         :rtype: list of str
         """
         return self._Values
@@ -7749,7 +7749,7 @@ class Filter(AbstractModel):
 
 
 class GPUInfo(AbstractModel):
-    """GPU information of the instance
+    r"""GPU information of the instance
 
     """
 
@@ -7771,7 +7771,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def GPUCount(self):
-        """Number of GPUs. 
+        r"""Number of GPUs. 
 Note: this field may return `null`, indicating that no valid value can be found.
         :rtype: float
         """
@@ -7783,7 +7783,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def GPUId(self):
-        """GPU address
+        r"""GPU address
 Note: this field may return `null`, indicating that no valid value can be found.
         :rtype: list of str
         """
@@ -7795,7 +7795,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def GPUType(self):
-        """GPU type of the instance.
+        r"""GPU type of the instance.
 Note: this field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -7821,7 +7821,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
 
 class HostItem(AbstractModel):
-    """CDH instance details
+    r"""CDH instance details
 
     """
 
@@ -7871,7 +7871,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Placement(self):
-        """CDH instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        r"""CDH instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -7882,7 +7882,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostId(self):
-        """CDH instance ID
+        r"""CDH instance ID
         :rtype: str
         """
         return self._HostId
@@ -7893,7 +7893,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostType(self):
-        """CDH instance type
+        r"""CDH instance type
         :rtype: str
         """
         return self._HostType
@@ -7904,7 +7904,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostName(self):
-        """CDH instance name
+        r"""CDH instance name
         :rtype: str
         """
         return self._HostName
@@ -7915,7 +7915,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostChargeType(self):
-        """CDH instance billing mode
+        r"""CDH instance billing mode
         :rtype: str
         """
         return self._HostChargeType
@@ -7926,7 +7926,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RenewFlag(self):
-        """CDH instance renewal flag
+        r"""CDH instance renewal flag
         :rtype: str
         """
         return self._RenewFlag
@@ -7937,7 +7937,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CreatedTime(self):
-        """CDH instance creation time
+        r"""CDH instance creation time
         :rtype: str
         """
         return self._CreatedTime
@@ -7948,7 +7948,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ExpiredTime(self):
-        """CDH instance expiry time
+        r"""CDH instance expiry time
         :rtype: str
         """
         return self._ExpiredTime
@@ -7959,7 +7959,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceIds(self):
-        """List of IDs of CVMs created on a CDH instance
+        r"""List of IDs of CVMs created on a CDH instance
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7970,7 +7970,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostState(self):
-        """CDH instance status
+        r"""CDH instance status
         :rtype: str
         """
         return self._HostState
@@ -7981,7 +7981,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostIp(self):
-        """CDH instance IP
+        r"""CDH instance IP
         :rtype: str
         """
         return self._HostIp
@@ -7992,7 +7992,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def HostResource(self):
-        """CDH instance resource information
+        r"""CDH instance resource information
         :rtype: :class:`tencentcloud.cvm.v20170312.models.HostResource`
         """
         return self._HostResource
@@ -8003,7 +8003,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CageId(self):
-        """Cage ID of the CDH instance. This parameter is only valid for CDH instances in the cages of finance availability zones.
+        r"""Cage ID of the CDH instance. This parameter is only valid for CDH instances in the cages of finance availability zones.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: str
         """
@@ -8043,7 +8043,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class HostResource(AbstractModel):
-    """Resource information of the CDH instance
+    r"""Resource information of the CDH instance
 
     """
 
@@ -8080,7 +8080,7 @@ class HostResource(AbstractModel):
 
     @property
     def CpuTotal(self):
-        """Total number of CPU cores in the CDH instance
+        r"""Total number of CPU cores in the CDH instance
         :rtype: int
         """
         return self._CpuTotal
@@ -8091,7 +8091,7 @@ class HostResource(AbstractModel):
 
     @property
     def CpuAvailable(self):
-        """Number of available CPU cores in the CDH instance
+        r"""Number of available CPU cores in the CDH instance
         :rtype: int
         """
         return self._CpuAvailable
@@ -8102,7 +8102,7 @@ class HostResource(AbstractModel):
 
     @property
     def MemTotal(self):
-        """Total memory size of the CDH instance (unit: GiB)
+        r"""Total memory size of the CDH instance (unit: GiB)
         :rtype: float
         """
         return self._MemTotal
@@ -8113,7 +8113,7 @@ class HostResource(AbstractModel):
 
     @property
     def MemAvailable(self):
-        """Available memory size of the CDH instance (unit: GiB)
+        r"""Available memory size of the CDH instance (unit: GiB)
         :rtype: float
         """
         return self._MemAvailable
@@ -8124,7 +8124,7 @@ class HostResource(AbstractModel):
 
     @property
     def DiskTotal(self):
-        """Total disk size of the CDH instance (unit: GiB)
+        r"""Total disk size of the CDH instance (unit: GiB)
         :rtype: int
         """
         return self._DiskTotal
@@ -8135,7 +8135,7 @@ class HostResource(AbstractModel):
 
     @property
     def DiskAvailable(self):
-        """Available disk size of the CDH instance (unit: GiB)
+        r"""Available disk size of the CDH instance (unit: GiB)
         :rtype: int
         """
         return self._DiskAvailable
@@ -8146,7 +8146,7 @@ class HostResource(AbstractModel):
 
     @property
     def DiskType(self):
-        """Disk type of the CDH instance
+        r"""Disk type of the CDH instance
         :rtype: str
         """
         return self._DiskType
@@ -8157,7 +8157,7 @@ class HostResource(AbstractModel):
 
     @property
     def GpuTotal(self):
-        """Total number of GPU cards in the CDH instance
+        r"""Total number of GPU cards in the CDH instance
         :rtype: int
         """
         return self._GpuTotal
@@ -8168,7 +8168,7 @@ class HostResource(AbstractModel):
 
     @property
     def GpuAvailable(self):
-        """Number of available GPU cards in the CDH instance
+        r"""Number of available GPU cards in the CDH instance
         :rtype: int
         """
         return self._GpuAvailable
@@ -8199,7 +8199,7 @@ class HostResource(AbstractModel):
 
 
 class Image(AbstractModel):
-    """Details about an image, including its state and attributes.
+    r"""Details about an image, including its state and attributes.
 
     """
 
@@ -8270,7 +8270,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageId(self):
-        """Image ID
+        r"""Image ID
         :rtype: str
         """
         return self._ImageId
@@ -8281,7 +8281,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OsName(self):
-        """Operating system of the image
+        r"""Operating system of the image
         :rtype: str
         """
         return self._OsName
@@ -8292,7 +8292,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageType(self):
-        """Image type
+        r"""Image type
         :rtype: str
         """
         return self._ImageType
@@ -8303,7 +8303,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreatedTime(self):
-        """Creation time of the image
+        r"""Creation time of the image
         :rtype: str
         """
         return self._CreatedTime
@@ -8314,7 +8314,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageName(self):
-        """Image name
+        r"""Image name
         :rtype: str
         """
         return self._ImageName
@@ -8325,7 +8325,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageDescription(self):
-        """Image description
+        r"""Image description
         :rtype: str
         """
         return self._ImageDescription
@@ -8336,7 +8336,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageSize(self):
-        """Image size
+        r"""Image size
         :rtype: int
         """
         return self._ImageSize
@@ -8347,7 +8347,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Architecture(self):
-        """Image architecture
+        r"""Image architecture
         :rtype: str
         """
         return self._Architecture
@@ -8358,7 +8358,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageState(self):
-        """Image state
+        r"""Image state
         :rtype: str
         """
         return self._ImageState
@@ -8369,7 +8369,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Platform(self):
-        """Source platform of the image
+        r"""Source platform of the image
         :rtype: str
         """
         return self._Platform
@@ -8380,7 +8380,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageCreator(self):
-        """Image creator
+        r"""Image creator
         :rtype: str
         """
         return self._ImageCreator
@@ -8391,7 +8391,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageSource(self):
-        """Image source
+        r"""Image source
         :rtype: str
         """
         return self._ImageSource
@@ -8402,7 +8402,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SyncPercent(self):
-        """Synchronization percentage
+        r"""Synchronization percentage
 Note: This field may return null, indicating that no valid value is found.
         :rtype: int
         """
@@ -8414,7 +8414,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def IsSupportCloudinit(self):
-        """Whether the image supports cloud-init
+        r"""Whether the image supports cloud-init
 Note: This field may return null, indicating that no valid value is found.
         :rtype: bool
         """
@@ -8426,7 +8426,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SnapshotSet(self):
-        """Information on the snapshots associated with the image
+        r"""Information on the snapshots associated with the image
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of Snapshot
         """
@@ -8438,7 +8438,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """The list of tags bound to the image.
+        r"""The list of tags bound to the image.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of Tag
         """
@@ -8450,7 +8450,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def LicenseType(self):
-        """Image license type
+        r"""Image license type
         :rtype: str
         """
         return self._LicenseType
@@ -8461,7 +8461,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageFamily(self):
-        """Image family, Note: This field may return empty
+        r"""Image family, Note: This field may return empty
         :rtype: str
         """
         return self._ImageFamily
@@ -8472,7 +8472,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ImageDeprecated(self):
-        """Whether the image is deprecated
+        r"""Whether the image is deprecated
         :rtype: bool
         """
         return self._ImageDeprecated
@@ -8523,7 +8523,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ImageOsList(AbstractModel):
-    """Supported operating systems. They are divided into two categories, Windows and Linux.
+    r"""Supported operating systems. They are divided into two categories, Windows and Linux.
 
     """
 
@@ -8541,7 +8541,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Windows(self):
-        """Supported Windows OS
+        r"""Supported Windows OS
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8553,7 +8553,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Linux(self):
-        """Supported Linux OS
+        r"""Supported Linux OS
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8578,7 +8578,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class ImportImageRequest(AbstractModel):
-    """ImportImage request structure.
+    r"""ImportImage request structure.
 
     """
 
@@ -8627,7 +8627,7 @@ Valid values:
 
     @property
     def Architecture(self):
-        """OS architecture of the image to be imported, `x86_64` or `i386`.
+        r"""OS architecture of the image to be imported, `x86_64` or `i386`.
         :rtype: str
         """
         return self._Architecture
@@ -8638,7 +8638,7 @@ Valid values:
 
     @property
     def OsType(self):
-        """OS type of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.
+        r"""OS type of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.
         :rtype: str
         """
         return self._OsType
@@ -8649,7 +8649,7 @@ Valid values:
 
     @property
     def OsVersion(self):
-        """OS version of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.
+        r"""OS version of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.
         :rtype: str
         """
         return self._OsVersion
@@ -8660,7 +8660,7 @@ Valid values:
 
     @property
     def ImageUrl(self):
-        """Address on COS where the image to be imported is stored.
+        r"""Address on COS where the image to be imported is stored.
         :rtype: str
         """
         return self._ImageUrl
@@ -8671,7 +8671,7 @@ Valid values:
 
     @property
     def ImageName(self):
-        """Image name
+        r"""Image name
         :rtype: str
         """
         return self._ImageName
@@ -8682,7 +8682,7 @@ Valid values:
 
     @property
     def ImageDescription(self):
-        """Image description
+        r"""Image description
         :rtype: str
         """
         return self._ImageDescription
@@ -8693,7 +8693,7 @@ Valid values:
 
     @property
     def DryRun(self):
-        """Dry run to check the parameters without performing the operation
+        r"""Dry run to check the parameters without performing the operation
         :rtype: bool
         """
         return self._DryRun
@@ -8704,7 +8704,7 @@ Valid values:
 
     @property
     def Force(self):
-        """Whether to force import the image. For more information, see [Forcibly Import Image](https://intl.cloud.tencent.com/document/product/213/12849).
+        r"""Whether to force import the image. For more information, see [Forcibly Import Image](https://intl.cloud.tencent.com/document/product/213/12849).
         :rtype: bool
         """
         return self._Force
@@ -8715,7 +8715,7 @@ Valid values:
 
     @property
     def TagSpecification(self):
-        """Tag description list. This parameter is used to bind a tag to a custom image.
+        r"""Tag description list. This parameter is used to bind a tag to a custom image.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -8726,7 +8726,7 @@ Valid values:
 
     @property
     def LicenseType(self):
-        """The license type used to activate the OS after importing an image.
+        r"""The license type used to activate the OS after importing an image.
 Valid values:
 `TencentCloud`: Tencent Cloud official license
 `BYOL`: Bring Your Own License
@@ -8740,7 +8740,7 @@ Valid values:
 
     @property
     def BootMode(self):
-        """Boot mode
+        r"""Boot mode
         :rtype: str
         """
         return self._BootMode
@@ -8751,7 +8751,7 @@ Valid values:
 
     @property
     def ImageFamily(self):
-        """Image family
+        r"""Image family
         :rtype: str
         """
         return self._ImageFamily
@@ -8790,7 +8790,7 @@ Valid values:
 
 
 class ImportImageResponse(AbstractModel):
-    """ImportImage response structure.
+    r"""ImportImage response structure.
 
     """
 
@@ -8803,7 +8803,7 @@ class ImportImageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8818,7 +8818,7 @@ class ImportImageResponse(AbstractModel):
 
 
 class ImportKeyPairRequest(AbstractModel):
-    """ImportKeyPair request structure.
+    r"""ImportKeyPair request structure.
 
     """
 
@@ -8842,7 +8842,7 @@ If you want to use the default project, specify 0 for the parameter.
 
     @property
     def KeyName(self):
-        """Key pair name, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
+        r"""Key pair name, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
         :rtype: str
         """
         return self._KeyName
@@ -8853,7 +8853,7 @@ If you want to use the default project, specify 0 for the parameter.
 
     @property
     def ProjectId(self):
-        """The project ID to which the key pair belongs after it is created. <br><br>You can obtain the project ID in the following ways: <br><li>Check the project list in the [Project management](https://console.cloud.tencent.com/project) page.<br><li>Call the `DescribeProject` API and view the `projectId` in the response.
+        r"""The project ID to which the key pair belongs after it is created. <br><br>You can obtain the project ID in the following ways: <br><li>Check the project list in the [Project management](https://console.cloud.tencent.com/project) page.<br><li>Call the `DescribeProject` API and view the `projectId` in the response.
 
 If you want to use the default project, specify 0 for the parameter.
         :rtype: int
@@ -8866,7 +8866,7 @@ If you want to use the default project, specify 0 for the parameter.
 
     @property
     def PublicKey(self):
-        """Content of the public key in the key pair in the `OpenSSH RSA` format.
+        r"""Content of the public key in the key pair in the `OpenSSH RSA` format.
         :rtype: str
         """
         return self._PublicKey
@@ -8877,7 +8877,7 @@ If you want to use the default project, specify 0 for the parameter.
 
     @property
     def TagSpecification(self):
-        """Tag description list. This parameter is used to bind a tag to a key pair.
+        r"""Tag description list. This parameter is used to bind a tag to a key pair.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -8908,7 +8908,7 @@ If you want to use the default project, specify 0 for the parameter.
 
 
 class ImportKeyPairResponse(AbstractModel):
-    """ImportKeyPair response structure.
+    r"""ImportKeyPair response structure.
 
     """
 
@@ -8924,7 +8924,7 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def KeyId(self):
-        """Key pair ID
+        r"""Key pair ID
         :rtype: str
         """
         return self._KeyId
@@ -8935,7 +8935,7 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8951,7 +8951,7 @@ class ImportKeyPairResponse(AbstractModel):
 
 
 class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
-    """InquirePricePurchaseReservedInstancesOffering request structure.
+    r"""InquirePricePurchaseReservedInstancesOffering request structure.
 
     """
 
@@ -8976,7 +8976,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """The number of the reserved instances you are purchasing.
+        r"""The number of the reserved instances you are purchasing.
         :rtype: int
         """
         return self._InstanceCount
@@ -8987,7 +8987,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstancesOfferingId(self):
-        """The ID of the reserved instance offering.
+        r"""The ID of the reserved instance offering.
         :rtype: str
         """
         return self._ReservedInstancesOfferingId
@@ -8998,7 +8998,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Dry run.
+        r"""Dry run.
         :rtype: bool
         """
         return self._DryRun
@@ -9009,7 +9009,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :rtype: str
         """
         return self._ClientToken
@@ -9020,7 +9020,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstanceName(self):
-        """Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        r"""Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :rtype: str
         """
         return self._ReservedInstanceName
@@ -9047,7 +9047,7 @@ class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
 
 
 class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
-    """InquirePricePurchaseReservedInstancesOffering response structure.
+    r"""InquirePricePurchaseReservedInstancesOffering response structure.
 
     """
 
@@ -9063,7 +9063,7 @@ class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of the reserved instance with specified configuration.
+        r"""Price of the reserved instance with specified configuration.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ReservedInstancePrice`
         """
         return self._Price
@@ -9074,7 +9074,7 @@ class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9092,7 +9092,7 @@ class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
 
 
 class InquiryPriceRenewInstancesRequest(AbstractModel):
-    """InquiryPriceRenewInstances request structure.
+    r"""InquiryPriceRenewInstances request structure.
 
     """
 
@@ -9114,7 +9114,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9125,7 +9125,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.
+        r"""Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -9136,7 +9136,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Trial run, for testing purposes, does not execute specific logic. valid values: <li>`true`: skip execution logic</li> <li>`false`: execute logic</li>  default value: `false`.
+        r"""Trial run, for testing purposes, does not execute specific logic. valid values: <li>`true`: skip execution logic</li> <li>`false`: execute logic</li>  default value: `false`.
         :rtype: bool
         """
         return self._DryRun
@@ -9147,7 +9147,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
     @property
     def RenewPortableDataDisk(self):
-        """Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        r"""Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
         :rtype: bool
         """
         return self._RenewPortableDataDisk
@@ -9175,7 +9175,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
 
 
 class InquiryPriceRenewInstancesResponse(AbstractModel):
-    """InquiryPriceRenewInstances response structure.
+    r"""InquiryPriceRenewInstances response structure.
 
     """
 
@@ -9191,7 +9191,7 @@ class InquiryPriceRenewInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        """This parameter indicates the price for the corresponding configuration instance.
+        r"""This parameter indicates the price for the corresponding configuration instance.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -9202,7 +9202,7 @@ class InquiryPriceRenewInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9220,7 +9220,7 @@ class InquiryPriceRenewInstancesResponse(AbstractModel):
 
 
 class InquiryPriceResetInstanceRequest(AbstractModel):
-    """InquiryPriceResetInstance request structure.
+    r"""InquiryPriceResetInstance request structure.
 
     """
 
@@ -9245,7 +9245,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: str
         """
         return self._InstanceId
@@ -9256,7 +9256,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :rtype: str
         """
         return self._ImageId
@@ -9267,7 +9267,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """Configuration of the system disk of the instance. For instances with a cloud disk as the system disk, you can expand the system disk by using this parameter to specify the new capacity after reinstallation. If the parameter is not specified, the system disk capacity remains unchanged by default. You can only expand the capacity of the system disk; reducing its capacity is not supported. When reinstalling the system, you can only modify the capacity of the system disk, not the type.
+        r"""Configuration of the system disk of the instance. For instances with a cloud disk as the system disk, you can expand the system disk by using this parameter to specify the new capacity after reinstallation. If the parameter is not specified, the system disk capacity remains unchanged by default. You can only expand the capacity of the system disk; reducing its capacity is not supported. When reinstalling the system, you can only modify the capacity of the system disk, not the type.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -9278,7 +9278,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        """Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        r"""Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -9289,7 +9289,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        r"""Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -9322,7 +9322,7 @@ class InquiryPriceResetInstanceRequest(AbstractModel):
 
 
 class InquiryPriceResetInstanceResponse(AbstractModel):
-    """InquiryPriceResetInstance response structure.
+    r"""InquiryPriceResetInstance response structure.
 
     """
 
@@ -9338,7 +9338,7 @@ class InquiryPriceResetInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of reinstalling the instance with the specified configuration.
+        r"""Price of reinstalling the instance with the specified configuration.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -9349,7 +9349,7 @@ class InquiryPriceResetInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9367,7 +9367,7 @@ class InquiryPriceResetInstanceResponse(AbstractModel):
 
 
 class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
-    """InquiryPriceResetInstancesInternetMaxBandwidth request structure.
+    r"""InquiryPriceResetInstancesInternetMaxBandwidth request structure.
 
     """
 
@@ -9389,7 +9389,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100. When changing the bandwidth of instances with `BANDWIDTH_PREPAID` or `BANDWIDTH_POSTPAID_BY_HOUR` as the network billing method, you can only specify one instance at a time.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100. When changing the bandwidth of instances with `BANDWIDTH_PREPAID` or `BANDWIDTH_POSTPAID_BY_HOUR` as the network billing method, you can only specify one instance at a time.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9400,7 +9400,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """Configuration of public network egress bandwidth. The maximum bandwidth varies among different models. For more information, see the documentation on bandwidth limits. Currently only the `InternetMaxBandwidthOut` parameter is supported.
+        r"""Configuration of public network egress bandwidth. The maximum bandwidth varies among different models. For more information, see the documentation on bandwidth limits. Currently only the `InternetMaxBandwidthOut` parameter is supported.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -9411,7 +9411,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
+        r"""Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
         :rtype: str
         """
         return self._StartTime
@@ -9422,7 +9422,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :rtype: str
         """
         return self._EndTime
@@ -9450,7 +9450,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
 
 class InquiryPriceResetInstancesInternetMaxBandwidthResponse(AbstractModel):
-    """InquiryPriceResetInstancesInternetMaxBandwidth response structure.
+    r"""InquiryPriceResetInstancesInternetMaxBandwidth response structure.
 
     """
 
@@ -9466,7 +9466,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of the new bandwidth
+        r"""Price of the new bandwidth
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -9477,7 +9477,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9495,7 +9495,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
 
 class InquiryPriceResetInstancesTypeRequest(AbstractModel):
-    """InquiryPriceResetInstancesType request structure.
+    r"""InquiryPriceResetInstancesType request structure.
 
     """
 
@@ -9511,7 +9511,7 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 1.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 1.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9522,7 +9522,7 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance model. Resources vary with the instance model. Specific values can be found in the tables of [Instance Types] (https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) or in the latest specifications via the [DescribeInstanceTypeConfigs] (https://intl.cloud.tencent.com/document/product/213/15749?from_cn_redirect=1) API.
+        r"""Instance model. Resources vary with the instance model. Specific values can be found in the tables of [Instance Types] (https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) or in the latest specifications via the [DescribeInstanceTypeConfigs] (https://intl.cloud.tencent.com/document/product/213/15749?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceType
@@ -9546,7 +9546,7 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
 
 
 class InquiryPriceResetInstancesTypeResponse(AbstractModel):
-    """InquiryPriceResetInstancesType response structure.
+    r"""InquiryPriceResetInstancesType response structure.
 
     """
 
@@ -9562,7 +9562,7 @@ class InquiryPriceResetInstancesTypeResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of the instance using the specified model
+        r"""Price of the instance using the specified model
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -9573,7 +9573,7 @@ class InquiryPriceResetInstancesTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9591,7 +9591,7 @@ class InquiryPriceResetInstancesTypeResponse(AbstractModel):
 
 
 class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
-    """InquiryPriceResizeInstanceDisks request structure.
+    r"""InquiryPriceResizeInstanceDisks request structure.
 
     """
 
@@ -9611,7 +9611,7 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: str
         """
         return self._InstanceId
@@ -9622,7 +9622,7 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def DataDisks(self):
-        """Configuration information of a data disk to be expanded. Only inelastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. The unit of data disk capacity is GB. The minimum expansion step is 10 GB. For more information about data disk types, refer to Disk Product Introduction. The available data disk type is restricted by the instance type `InstanceType`. Additionally, the maximum allowable capacity for expansion varies by data disk type.
+        r"""Configuration information of a data disk to be expanded. Only inelastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. The unit of data disk capacity is GB. The minimum expansion step is 10 GB. For more information about data disk types, refer to Disk Product Introduction. The available data disk type is restricted by the instance type `InstanceType`. Additionally, the maximum allowable capacity for expansion varies by data disk type.
 <dx-alert infotype="explain" title="">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>
         :rtype: list of DataDisk
         """
@@ -9634,7 +9634,7 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.
+        r"""Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.
         :rtype: bool
         """
         return self._ForceStop
@@ -9664,7 +9664,7 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
 
 
 class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
-    """InquiryPriceResizeInstanceDisks response structure.
+    r"""InquiryPriceResizeInstanceDisks response structure.
 
     """
 
@@ -9680,7 +9680,7 @@ class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of the disks after being expanded to the specified configurations
+        r"""Price of the disks after being expanded to the specified configurations
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -9691,7 +9691,7 @@ class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9709,7 +9709,7 @@ class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
 
 
 class InquiryPriceRunInstancesRequest(AbstractModel):
-    """InquiryPriceRunInstances request structure.
+    r"""InquiryPriceRunInstances request structure.
 
     """
 
@@ -9784,7 +9784,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def Placement(self):
-        """Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project.
+        r"""Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project.
  <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
@@ -9796,7 +9796,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
         :rtype: str
         """
@@ -9808,7 +9808,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis<br>Default value: POSTPAID_BY_HOUR.
+        r"""The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis<br>Default value: POSTPAID_BY_HOUR.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -9819,7 +9819,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`. 
+        r"""Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`. 
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -9830,7 +9830,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.
+        r"""The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.
         :rtype: str
         """
         return self._InstanceType
@@ -9841,7 +9841,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        r"""System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -9852,7 +9852,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def DataDisks(self):
-        """Data disk configuration of the instance. If the parameter is not specified, no data disk will be purchased by default. If you want to purchase data disks, you can specify 21 data disks, including up to 1 `LOCAL_BASIC` data disk or `LOCAL_SSD` data disk and up to 20 `CLOUD_BASIC` data disks, `CLOUD_PREMIUM` data disks, or `CLOUD_SSD` data disks.
+        r"""Data disk configuration of the instance. If the parameter is not specified, no data disk will be purchased by default. If you want to purchase data disks, you can specify 21 data disks, including up to 1 `LOCAL_BASIC` data disk or `LOCAL_SSD` data disk and up to 20 `CLOUD_BASIC` data disks, `CLOUD_PREMIUM` data disks, or `CLOUD_SSD` data disks.
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -9863,7 +9863,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        """VPC configurations (VPC ID, subnet ID, etc). If it’s not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
+        r"""VPC configurations (VPC ID, subnet ID, etc). If it’s not specified, the classic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` can only be 1.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -9874,7 +9874,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """Configuration of public network bandwidth. If it’s not specified, 0 Mbps is used by default.
+        r"""Configuration of public network bandwidth. If it’s not specified, 0 Mbps is used by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -9885,7 +9885,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """Number of instances to purchase. Value range: 1 (default) to 100. It cannot exceed the remaining CVM quota of the user. For more information on quota, see [Restrictions on CVM Instance Purchase](https://intl.cloud.tencent.com/document/product/213/2664).
+        r"""Number of instances to purchase. Value range: 1 (default) to 100. It cannot exceed the remaining CVM quota of the user. For more information on quota, see [Restrictions on CVM Instance Purchase](https://intl.cloud.tencent.com/document/product/213/2664).
         :rtype: int
         """
         return self._InstanceCount
@@ -9896,7 +9896,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        r"""Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
         :rtype: str
         """
         return self._InstanceName
@@ -9907,7 +9907,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        """Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance, or keep the original login settings of the image. By default, a random password will be generated and sent to you via the Message Center.
+        r"""Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance, or keep the original login settings of the image. By default, a random password will be generated and sent to you via the Message Center.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -9918,7 +9918,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.
+        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -9929,7 +9929,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        r"""Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -9940,7 +9940,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :rtype: str
         """
         return self._ClientToken
@@ -9951,7 +9951,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def HostName(self):
-        """Hostname of Cloud Virtual Machine.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 30 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
+        r"""Hostname of Cloud Virtual Machine.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 30 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
         :rtype: str
         """
         return self._HostName
@@ -9962,7 +9962,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        """The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
+        r"""The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -9973,7 +9973,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
-        """The market options of the instance.
+        r"""The market options of the instance.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -9984,7 +9984,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def HpcClusterId(self):
-        """HPC cluster ID.
+        r"""HPC cluster ID.
         :rtype: str
         """
         return self._HpcClusterId
@@ -9995,7 +9995,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def CpuTopology(self):
-        """Information about the CPU topology of an instance. If not specified, it is determined by system resources.
+        r"""Information about the CPU topology of an instance. If not specified, it is determined by system resources.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         """
         return self._CpuTopology
@@ -10006,7 +10006,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     @property
     def LaunchTemplate(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
         """
         return self._LaunchTemplate
@@ -10079,7 +10079,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
 
 class InquiryPriceRunInstancesResponse(AbstractModel):
-    """InquiryPriceRunInstances response structure.
+    r"""InquiryPriceRunInstances response structure.
 
     """
 
@@ -10095,7 +10095,7 @@ class InquiryPriceRunInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        """Price of the instance with the specified configurations.
+        r"""Price of the instance with the specified configurations.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
         """
         return self._Price
@@ -10106,7 +10106,7 @@ class InquiryPriceRunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10124,7 +10124,7 @@ class InquiryPriceRunInstancesResponse(AbstractModel):
 
 
 class Instance(AbstractModel):
-    """Describes information on an instance
+    r"""Describes information on an instance
 
     """
 
@@ -10272,7 +10272,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def Placement(self):
-        """Location of the instance
+        r"""Location of the instance
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -10283,7 +10283,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Instance `ID`
+        r"""Instance `ID`
         :rtype: str
         """
         return self._InstanceId
@@ -10294,7 +10294,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InstanceType(self):
-        """Instance model
+        r"""Instance model
         :rtype: str
         """
         return self._InstanceType
@@ -10305,7 +10305,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def CPU(self):
-        """Number of CPU cores of the instance; unit: core
+        r"""Number of CPU cores of the instance; unit: core
         :rtype: int
         """
         return self._CPU
@@ -10316,7 +10316,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def Memory(self):
-        """Memory capacity; unit: `GB`.
+        r"""Memory capacity; unit: `GB`.
         :rtype: int
         """
         return self._Memory
@@ -10327,7 +10327,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def RestrictState(self):
-        """Instance status. Valid values: <br><li>NORMAL: instance is normal. <br><li>EXPIRED: instance expired. <br><li>PROTECTIVELY_ISOLATED: instance is protectively isolated.
+        r"""Instance status. Valid values: <br><li>NORMAL: instance is normal. <br><li>EXPIRED: instance expired. <br><li>PROTECTIVELY_ISOLATED: instance is protectively isolated.
         :rtype: str
         """
         return self._RestrictState
@@ -10338,7 +10338,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -10349,7 +10349,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InstanceChargeType(self):
-        """Instance billing plan. Valid values:<br><li>`POSTPAID_BY_HOUR`: pay after use. You are billed by the hour, by traffic.<br><li>`CDHPAID`: `CDH` billing plan. Applicable to `CDH` only, not the instances on the host.<br>
+        r"""Instance billing plan. Valid values:<br><li>`POSTPAID_BY_HOUR`: pay after use. You are billed by the hour, by traffic.<br><li>`CDHPAID`: `CDH` billing plan. Applicable to `CDH` only, not the instances on the host.<br>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -10360,7 +10360,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def SystemDisk(self):
-        """Information on the system disk of the instance
+        r"""Information on the system disk of the instance
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -10371,7 +10371,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def DataDisks(self):
-        """Information of the instance data disks.
+        r"""Information of the instance data disks.
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -10382,7 +10382,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def PrivateIpAddresses(self):
-        """List of private IPs of the instance's primary ENI.
+        r"""List of private IPs of the instance's primary ENI.
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -10393,7 +10393,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def PublicIpAddresses(self):
-        """List of public IPs of the instance's primary ENI.
+        r"""List of public IPs of the instance's primary ENI.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: list of str
         """
@@ -10405,7 +10405,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InternetAccessible(self):
-        """Information on instance bandwidth.
+        r"""Information on instance bandwidth.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -10416,7 +10416,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def VirtualPrivateCloud(self):
-        """Information on the VPC where the instance resides.
+        r"""Information on the VPC where the instance resides.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -10427,7 +10427,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ImageId(self):
-        """`ID` of the image used to create the instance.
+        r"""`ID` of the image used to create the instance.
         :rtype: str
         """
         return self._ImageId
@@ -10438,7 +10438,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def RenewFlag(self):
-        """Auto renewal flag. Valid values: <br><li>`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration, but do not renew automatically <br><li>`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically <br><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`: do not notify upon expiration and do not renew automatically.
+        r"""Auto renewal flag. Valid values: <br><li>`NOTIFY_AND_MANUAL_RENEW`: notify upon expiration, but do not renew automatically <br><li>`NOTIFY_AND_AUTO_RENEW`: notify upon expiration and renew automatically <br><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`: do not notify upon expiration and do not renew automatically.
 <br><li>Note: this parameter is `null` for postpaid instances.
         :rtype: str
         """
@@ -10450,7 +10450,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def CreatedTime(self):
-        """Creation time following the `ISO8601` standard and using `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        r"""Creation time following the `ISO8601` standard and using `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :rtype: str
         """
         return self._CreatedTime
@@ -10461,7 +10461,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ExpiredTime(self):
-        """Expiration time in UTC format following the `ISO8601` standard: `YYYY-MM-DDThh:mm:ssZ`. Note: this parameter is `null` for postpaid instances.
+        r"""Expiration time in UTC format following the `ISO8601` standard: `YYYY-MM-DDThh:mm:ssZ`. Note: this parameter is `null` for postpaid instances.
         :rtype: str
         """
         return self._ExpiredTime
@@ -10472,7 +10472,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OsName(self):
-        """Operating system name.
+        r"""Operating system name.
         :rtype: str
         """
         return self._OsName
@@ -10483,7 +10483,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SecurityGroupIds(self):
-        """Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.
+        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -10494,7 +10494,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def LoginSettings(self):
-        """Login settings of the instance. Currently only the key associated with the instance is returned.
+        r"""Login settings of the instance. Currently only the key associated with the instance is returned.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -10505,7 +10505,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceState(self):
-        """Instance state. Valid values: <br><li>PENDING: creating <br></li><li>LAUNCH_FAILED: creation failed <br></li><li>RUNNING: running <br></li><li>STOPPED: shut down <br></li><li>STARTING: starting <br></li><li>STOPPING: shutting down <br></li><li>REBOOTING: rebooting <br></li><li>SHUTDOWN: shut down and to be terminated <br></li><li>TERMINATING: terminating. <br></li>
+        r"""Instance state. Valid values: <br><li>PENDING: creating <br></li><li>LAUNCH_FAILED: creation failed <br></li><li>RUNNING: running <br></li><li>STOPPED: shut down <br></li><li>STARTING: starting <br></li><li>STOPPING: shutting down <br></li><li>REBOOTING: rebooting <br></li><li>SHUTDOWN: shut down and to be terminated <br></li><li>TERMINATING: terminating. <br></li>
         :rtype: str
         """
         return self._InstanceState
@@ -10516,7 +10516,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Tags(self):
-        """List of tags associated with the instance.
+        r"""List of tags associated with the instance.
         :rtype: list of Tag
         """
         return self._Tags
@@ -10527,7 +10527,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def StopChargingMode(self):
-        """Instance billing method after shutdown.
+        r"""Instance billing method after shutdown.
 Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>STOP_CHARGING: billing stops after shutdown <li>NOT_APPLICABLE: the instance is not shut down or stopping billing after shutdown is not applicable to the instance. <br>
         :rtype: str
         """
@@ -10539,7 +10539,7 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
 
     @property
     def Uuid(self):
-        """Globally unique ID of the instance.
+        r"""Globally unique ID of the instance.
         :rtype: str
         """
         return self._Uuid
@@ -10550,7 +10550,7 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
 
     @property
     def LatestOperation(self):
-        """Last operation of the instance, such as StopInstances or ResetInstance.
+        r"""Last operation of the instance, such as StopInstances or ResetInstance.
         :rtype: str
         """
         return self._LatestOperation
@@ -10561,7 +10561,7 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
 
     @property
     def LatestOperationState(self):
-        """The latest operation status of the instance. Valid values:<br><li>SUCCESS: operation succeeded<br><li>OPERATING: operation in progress<br><li>FAILED: operation failed
+        r"""The latest operation status of the instance. Valid values:<br><li>SUCCESS: operation succeeded<br><li>OPERATING: operation in progress<br><li>FAILED: operation failed
         :rtype: str
         """
         return self._LatestOperationState
@@ -10572,7 +10572,7 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
 
     @property
     def LatestOperationRequestId(self):
-        """Unique request ID for the last operation of the instance.
+        r"""Unique request ID for the last operation of the instance.
         :rtype: str
         """
         return self._LatestOperationRequestId
@@ -10583,7 +10583,7 @@ Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>ST
 
     @property
     def DisasterRecoverGroupId(self):
-        """ID of a spread placement group.
+        r"""ID of a spread placement group.
 Note: this field may return null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -10595,7 +10595,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def IPv6Addresses(self):
-        """IPv6 address of the instance.
+        r"""IPv6 address of the instance.
 Note: this field may return null, indicating that no valid value is obtained.
         :rtype: list of str
         """
@@ -10607,7 +10607,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def CamRoleName(self):
-        """CAM role name.
+        r"""CAM role name.
 Note: this field may return null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -10619,7 +10619,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def HpcClusterId(self):
-        """HPC cluster ID.
+        r"""HPC cluster ID.
 Note: this field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10631,7 +10631,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def RdmaIpAddresses(self):
-        """IP list of HPC cluster.
+        r"""IP list of HPC cluster.
 Note: this field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -10643,7 +10643,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def DedicatedClusterId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -10654,7 +10654,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def IsolatedSource(self):
-        """The isolation status of the instance. Valid values:<br><li>`ARREAR`: isolated due to overdue payment;<br></li><li>`EXPIRE`: isolated upon expiration;<br></li><li>`MANMADE`: isolated after manual returning;<br></li><li>`NOTISOLATED`: not isolated<br></li>
+        r"""The isolation status of the instance. Valid values:<br><li>`ARREAR`: isolated due to overdue payment;<br></li><li>`EXPIRE`: isolated upon expiration;<br></li><li>`MANMADE`: isolated after manual returning;<br></li><li>`NOTISOLATED`: not isolated<br></li>
 Note: this field may return null, indicating that no valid value was found.
         :rtype: str
         """
@@ -10666,7 +10666,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def GPUInfo(self):
-        """GPU information. This field is only returned for GPU instances.
+        r"""GPU information. This field is only returned for GPU instances.
 Note: this field may return null, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         """
@@ -10678,7 +10678,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def LicenseType(self):
-        """Instance OS license type. Default value: `TencentCloud`
+        r"""Instance OS license type. Default value: `TencentCloud`
         :rtype: str
         """
         return self._LicenseType
@@ -10689,7 +10689,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def DisableApiTermination(self):
-        """Whether the termination protection is enabled. Values: <br><li>`TRUE`: Enable instance protection, which means that this instance can not be deleted by an API action.<br><li>`FALSE`: Do not enable the instance protection.<br><br>Default value: `FALSE`.
+        r"""Whether the termination protection is enabled. Values: <br><li>`TRUE`: Enable instance protection, which means that this instance can not be deleted by an API action.<br><li>`FALSE`: Do not enable the instance protection.<br><br>Default value: `FALSE`.
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -10700,7 +10700,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def DefaultLoginUser(self):
-        """Default login user
+        r"""Default login user
         :rtype: str
         """
         return self._DefaultLoginUser
@@ -10711,7 +10711,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def DefaultLoginPort(self):
-        """Default login port
+        r"""Default login port
         :rtype: int
         """
         return self._DefaultLoginPort
@@ -10722,7 +10722,7 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def LatestOperationErrorMsg(self):
-        """Latest operation errors of the instance.
+        r"""Latest operation errors of the instance.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10734,7 +10734,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicIPv6Addresses(self):
-        """Public IPv6 address of the instance.
+        r"""Public IPv6 address of the instance.
 Note: this field may return null, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -10821,7 +10821,7 @@ Note: this field may return null, indicating that no valid value was found.
 
 
 class InstanceAttribute(AbstractModel):
-    """Instance attributes.
+    r"""Instance attributes.
 
     """
 
@@ -10837,7 +10837,7 @@ class InstanceAttribute(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -10848,7 +10848,7 @@ class InstanceAttribute(AbstractModel):
 
     @property
     def Attributes(self):
-        """Instance attribute information.
+        r"""Instance attribute information.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Attribute`
         """
         return self._Attributes
@@ -10874,7 +10874,7 @@ class InstanceAttribute(AbstractModel):
 
 
 class InstanceChargePrepaid(AbstractModel):
-    """Describes the billing method of an instance.
+    r"""Describes the billing method of an instance.
 
     """
 
@@ -10890,7 +10890,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
-        """Subscription period in months. value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        r"""Subscription period in months. value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
         :rtype: int
         """
         return self._Period
@@ -10901,7 +10901,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """AUTO-Renewal flag. value ranges:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY of expiration AND automatically RENEW.</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY of expiration but do not automatically RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: do not NOTIFY of expiration AND do not automatically RENEW.</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed monthly after expiration, provided that the account balance is sufficient.
+        r"""AUTO-Renewal flag. value ranges:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY of expiration AND automatically RENEW.</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY of expiration but do not automatically RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: do not NOTIFY of expiration AND do not automatically RENEW.</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed monthly after expiration, provided that the account balance is sufficient.
         :rtype: str
         """
         return self._RenewFlag
@@ -10925,7 +10925,7 @@ class InstanceChargePrepaid(AbstractModel):
 
 
 class InstanceFamilyConfig(AbstractModel):
-    """Describes the model family of the instance.
+    r"""Describes the model family of the instance.
     Examples: {'InstanceFamilyName': 'Standard S1', 'InstanceFamily': 'S1'}, {'InstanceFamilyName': 'Network-optimized N1', 'InstanceFamily': 'N1'}, {'InstanceFamilyName': 'High IO I1', 'InstanceFamily': 'I1'}, etc.
 
     """
@@ -10942,7 +10942,7 @@ class InstanceFamilyConfig(AbstractModel):
 
     @property
     def InstanceFamilyName(self):
-        """Full name of the model family.
+        r"""Full name of the model family.
         :rtype: str
         """
         return self._InstanceFamilyName
@@ -10953,7 +10953,7 @@ class InstanceFamilyConfig(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        """Acronym of the model family.
+        r"""Acronym of the model family.
         :rtype: str
         """
         return self._InstanceFamily
@@ -10977,7 +10977,7 @@ class InstanceFamilyConfig(AbstractModel):
 
 
 class InstanceMarketOptionsRequest(AbstractModel):
-    """Options related to bidding requests
+    r"""Options related to bidding requests
 
     """
 
@@ -10993,7 +10993,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def SpotOptions(self):
-        """Relevant options for spot instances.
+        r"""Relevant options for spot instances.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
         """
         return self._SpotOptions
@@ -11004,7 +11004,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     @property
     def MarketType(self):
-        """Market option type. The value can only be spot currently.
+        r"""Market option type. The value can only be spot currently.
         :rtype: str
         """
         return self._MarketType
@@ -11030,7 +11030,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
 
 class InstanceStatus(AbstractModel):
-    """Describes instance states. For state types, see [here](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).
+    r"""Describes instance states. For state types, see [here](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).
 
     """
 
@@ -11046,7 +11046,7 @@ class InstanceStatus(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance `ID`.
+        r"""Instance `ID`.
         :rtype: str
         """
         return self._InstanceId
@@ -11057,7 +11057,7 @@ class InstanceStatus(AbstractModel):
 
     @property
     def InstanceState(self):
-        """Instance status. Valid values:<br><li>PENDING: Creating.<br></li><li>LAUNCH_FAILED: Creation failed.<br></li><li>RUNNING: Running.<br></li><li>STOPPED: Shut down.<br></li><li>STARTING: Starting up.<br></li><li>STOPPING: Shutting down.<br></li><li>REBOOTING: Restarting.<br></li><li>SHUTDOWN: Shut down and to be terminated.<br></li><li>TERMINATING: Terminating.<br></li><li>ENTER_RESCUE_MODE: Entering the rescue mode.<br></li><li>RESCUE_MODE: In the rescue mode.<br></li><li>EXIT_RESCUE_MODE: Exiting the rescue mode.<br></li><li>ENTER_SERVICE_LIVE_MIGRATE: Entering online service migration.<br></li><li>SERVICE_LIVE_MIGRATE: In online service migration.<br></li><li>EXIT_SERVICE_LIVE_MIGRATE: Exiting online service migration.<br></li>
+        r"""Instance status. Valid values:<br><li>PENDING: Creating.<br></li><li>LAUNCH_FAILED: Creation failed.<br></li><li>RUNNING: Running.<br></li><li>STOPPED: Shut down.<br></li><li>STARTING: Starting up.<br></li><li>STOPPING: Shutting down.<br></li><li>REBOOTING: Restarting.<br></li><li>SHUTDOWN: Shut down and to be terminated.<br></li><li>TERMINATING: Terminating.<br></li><li>ENTER_RESCUE_MODE: Entering the rescue mode.<br></li><li>RESCUE_MODE: In the rescue mode.<br></li><li>EXIT_RESCUE_MODE: Exiting the rescue mode.<br></li><li>ENTER_SERVICE_LIVE_MIGRATE: Entering online service migration.<br></li><li>SERVICE_LIVE_MIGRATE: In online service migration.<br></li><li>EXIT_SERVICE_LIVE_MIGRATE: Exiting online service migration.<br></li>
         :rtype: str
         """
         return self._InstanceState
@@ -11081,7 +11081,7 @@ class InstanceStatus(AbstractModel):
 
 
 class InstanceTypeQuotaItem(AbstractModel):
-    """Describes instance model quota.
+    r"""Describes instance model quota.
 
     """
 
@@ -11167,7 +11167,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Zone(self):
-        """Availability zone.
+        r"""Availability zone.
         :rtype: str
         """
         return self._Zone
@@ -11178,7 +11178,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceType(self):
-        """Instance model.
+        r"""Instance model.
         :rtype: str
         """
         return self._InstanceType
@@ -11189,7 +11189,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceChargeType(self):
-        """Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
+        r"""Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -11200,7 +11200,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def NetworkCard(self):
-        """ENI type. For example, 25 represents an ENI of 25 GB.
+        r"""ENI type. For example, 25 represents an ENI of 25 GB.
         :rtype: int
         """
         return self._NetworkCard
@@ -11211,7 +11211,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Externals(self):
-        """Additional data.
+        r"""Additional data.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
@@ -11223,7 +11223,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Cpu(self):
-        """Number of CPU cores of an instance model.
+        r"""Number of CPU cores of an instance model.
         :rtype: int
         """
         return self._Cpu
@@ -11234,7 +11234,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Memory(self):
-        """Instance memory capacity; unit: `GB`.
+        r"""Instance memory capacity; unit: `GB`.
         :rtype: int
         """
         return self._Memory
@@ -11245,7 +11245,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def InstanceFamily(self):
-        """Instance model family.
+        r"""Instance model family.
         :rtype: str
         """
         return self._InstanceFamily
@@ -11256,7 +11256,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def TypeName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._TypeName
@@ -11267,7 +11267,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def LocalDiskTypeList(self):
-        """List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
+        r"""List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
         :rtype: list of LocalDiskType
         """
         return self._LocalDiskTypeList
@@ -11278,7 +11278,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Status(self):
-        """Whether an instance is for sale. Valid values:<br><li>SELL: The instance is available for purchase.<br></li>SOLD_OUT: The instance has been sold out.
+        r"""Whether an instance is for sale. Valid values:<br><li>SELL: The instance is available for purchase.<br></li>SOLD_OUT: The instance has been sold out.
         :rtype: str
         """
         return self._Status
@@ -11289,7 +11289,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Price(self):
-        """Price of an instance model.
+        r"""Price of an instance model.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
         """
         return self._Price
@@ -11300,7 +11300,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def SoldOutReason(self):
-        """Details of out-of-stock items
+        r"""Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -11312,7 +11312,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstanceBandwidth(self):
-        """Private network bandwidth, in Gbps.
+        r"""Private network bandwidth, in Gbps.
         :rtype: float
         """
         return self._InstanceBandwidth
@@ -11323,7 +11323,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstancePps(self):
-        """The max packet sending and receiving capability (in 10k PPS).
+        r"""The max packet sending and receiving capability (in 10k PPS).
         :rtype: int
         """
         return self._InstancePps
@@ -11334,7 +11334,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def StorageBlockAmount(self):
-        """Number of local storage blocks.
+        r"""Number of local storage blocks.
         :rtype: int
         """
         return self._StorageBlockAmount
@@ -11345,7 +11345,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def CpuType(self):
-        """CPU type.
+        r"""CPU type.
         :rtype: str
         """
         return self._CpuType
@@ -11356,7 +11356,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Gpu(self):
-        """Number of GPUs of the instance.
+        r"""Number of GPUs of the instance.
         :rtype: int
         """
         return self._Gpu
@@ -11367,7 +11367,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Fpga(self):
-        """Number of FPGAs of the instance.
+        r"""Number of FPGAs of the instance.
         :rtype: int
         """
         return self._Fpga
@@ -11378,7 +11378,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Remark(self):
-        """Descriptive information of the instance.
+        r"""Descriptive information of the instance.
         :rtype: str
         """
         return self._Remark
@@ -11389,7 +11389,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def GpuCount(self):
-        """
+        r"""
         :rtype: float
         """
         return self._GpuCount
@@ -11400,7 +11400,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Frequency(self):
-        """CPU clock rate of the instance
+        r"""CPU clock rate of the instance
         :rtype: str
         """
         return self._Frequency
@@ -11411,7 +11411,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def StatusCategory(self):
-        """Inventory status. Valid values:
+        r"""Inventory status. Valid values:
 <li>EnoughStock: Inventory is sufficient.</li> 
 <li>NormalStock: Supply is guaranteed.</li>
 <li>UnderStock: Inventory is about to sell out.</li> 
@@ -11470,7 +11470,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class InternetAccessible(AbstractModel):
-    """Describes the accessibility of an instance in the public network, including its network billing method, maximum bandwidth, etc.
+    r"""Describes the accessibility of an instance in the public network, including its network billing method, maximum bandwidth, etc.
 
     """
 
@@ -11523,7 +11523,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def InternetChargeType(self):
-        """Network connection billing plan. Valid value:
+        r"""Network connection billing plan. Valid value:
 
 <li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour. </li>
 <li>BANDWIDTH_PACKAGE: Bandwidth package user. </li>
@@ -11537,7 +11537,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def InternetMaxBandwidthOut(self):
-        """The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
+        r"""The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -11548,7 +11548,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def PublicIpAssigned(self):
-        """Whether to allocate a public IP address. Valid values:<br><li>true: Allocate a public IP address.</li><li>false: Do not allocate a public IP address.</li><br>When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable the public IP address. The public IP address is enabled by default. When the public network bandwidth is 0, allocating the public IP address is not supported. This parameter is only used as an input parameter in the RunInstances API.
+        r"""Whether to allocate a public IP address. Valid values:<br><li>true: Allocate a public IP address.</li><li>false: Do not allocate a public IP address.</li><br>When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable the public IP address. The public IP address is enabled by default. When the public network bandwidth is 0, allocating the public IP address is not supported. This parameter is only used as an input parameter in the RunInstances API.
         :rtype: bool
         """
         return self._PublicIpAssigned
@@ -11559,7 +11559,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def BandwidthPackageId(self):
-        """Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.
+        r"""Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -11570,7 +11570,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def InternetServiceProvider(self):
-        """Describes the line type. for details, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: `BGP`.
+        r"""Describes the line type. for details, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: `BGP`.
  <li>BGP Default: BGP</li>
 For a user who has activated the static single-line IP allowlist, possible values are:
  <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
@@ -11585,7 +11585,7 @@ Note: Only certain regions support static single-line IP addresses.
 
     @property
     def IPv4AddressType(self):
-        """Type of public IP address.
+        r"""Type of public IP address.
 
 <li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/zh/document/product/213/5733). </li> 
 Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions.
@@ -11600,7 +11600,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def IPv6AddressType(self):
-        """Indicates the type of EIPv6. Valid values:
+        r"""Indicates the type of EIPv6. Valid values:
 
 <li>EIPv6: common IPv6</li>
 <li>HighQualityEIPv6: High Quality EIPv6</li>
@@ -11619,7 +11619,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
     @property
     def AntiDDoSPackageId(self):
-        """Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        r"""Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
         :rtype: str
         """
         return self._AntiDDoSPackageId
@@ -11649,7 +11649,7 @@ This feature is currently in gradually released phase. To access it, please [con
 
 
 class InternetChargeTypeConfig(AbstractModel):
-    """Describes network billing.
+    r"""Describes network billing.
 
     """
 
@@ -11665,7 +11665,7 @@ class InternetChargeTypeConfig(AbstractModel):
 
     @property
     def InternetChargeType(self):
-        """Network billing method.
+        r"""Network billing method.
         :rtype: str
         """
         return self._InternetChargeType
@@ -11676,7 +11676,7 @@ class InternetChargeTypeConfig(AbstractModel):
 
     @property
     def Description(self):
-        """Description of the network billing method.
+        r"""Description of the network billing method.
         :rtype: str
         """
         return self._Description
@@ -11700,7 +11700,7 @@ class InternetChargeTypeConfig(AbstractModel):
 
 
 class ItemPrice(AbstractModel):
-    """Describes pricing information.
+    r"""Describes pricing information.
 
     """
 
@@ -11776,7 +11776,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPrice(self):
-        """Original price of subsequent total costs, postpaid billing mode usage, unit: usd. <li>if other time interval items are returned, such as UnitPriceSecondStep, this item represents the time interval (0, 96) hr. if no other time interval items are returned, this item represents the full period (0, ∞) hr.
+        r"""Original price of subsequent total costs, postpaid billing mode usage, unit: usd. <li>if other time interval items are returned, such as UnitPriceSecondStep, this item represents the time interval (0, 96) hr. if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :rtype: float
         """
         return self._UnitPrice
@@ -11787,7 +11787,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ChargeUnit(self):
-        """Billing unit for pay-as-you-go mode. valid values: <br><li>HOUR: billed on an hourly basis. it's used for hourly POSTPAID instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill BY TRAFFIC in GB. it's used for POSTPAID products that are billed BY the hourly TRAFFIC (`TRAFFIC_POSTPAID_BY_HOUR`).
+        r"""Billing unit for pay-as-you-go mode. valid values: <br><li>HOUR: billed on an hourly basis. it's used for hourly POSTPAID instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill BY TRAFFIC in GB. it's used for POSTPAID products that are billed BY the hourly TRAFFIC (`TRAFFIC_POSTPAID_BY_HOUR`).
         :rtype: str
         """
         return self._ChargeUnit
@@ -11798,7 +11798,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalPrice(self):
-        """Original price of total prepaid costs. measurement unit: usd.
+        r"""Original price of total prepaid costs. measurement unit: usd.
         :rtype: float
         """
         return self._OriginalPrice
@@ -11809,7 +11809,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountPrice(self):
-        """Discount price of total prepaid costs. unit: usd.
+        r"""Discount price of total prepaid costs. unit: usd.
         :rtype: float
         """
         return self._DiscountPrice
@@ -11820,7 +11820,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Discount(self):
-        """Discount, such as 20.0 representing 80% off.
+        r"""Discount, such as 20.0 representing 80% off.
         :rtype: float
         """
         return self._Discount
@@ -11831,7 +11831,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPriceDiscount(self):
-        """Discounted price of subsequent total cost, postpaid billing mode usage, unit: usd <li>if other time interval items are returned, such as UnitPriceDiscountSecondStep, this item represents the time interval (0, 96) hr; if no other time interval items are returned, this item represents the full period (0, ∞) hr.
+        r"""Discounted price of subsequent total cost, postpaid billing mode usage, unit: usd <li>if other time interval items are returned, such as UnitPriceDiscountSecondStep, this item represents the time interval (0, 96) hr; if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -11842,7 +11842,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPriceSecondStep(self):
-        """Original price of subsequent total costs for usage time range (96, 360) hr in postpaid billing mode. unit: usd.
+        r"""Original price of subsequent total costs for usage time range (96, 360) hr in postpaid billing mode. unit: usd.
         :rtype: float
         """
         return self._UnitPriceSecondStep
@@ -11853,7 +11853,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPriceDiscountSecondStep(self):
-        """Discounted price of subsequent total cost for usage time interval (96, 360) hr in postpaid billing mode. unit: usd.
+        r"""Discounted price of subsequent total cost for usage time interval (96, 360) hr in postpaid billing mode. unit: usd.
         :rtype: float
         """
         return self._UnitPriceDiscountSecondStep
@@ -11864,7 +11864,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPriceThirdStep(self):
-        """Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
+        r"""Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :rtype: float
         """
         return self._UnitPriceThirdStep
@@ -11875,7 +11875,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnitPriceDiscountThirdStep(self):
-        """Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
+        r"""Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :rtype: float
         """
         return self._UnitPriceDiscountThirdStep
@@ -11886,7 +11886,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalPriceThreeYear(self):
-        """Specifies the original price of total 3-year prepaid costs in prepaid billing mode. measurement unit: usd.
+        r"""Specifies the original price of total 3-year prepaid costs in prepaid billing mode. measurement unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11898,7 +11898,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountPriceThreeYear(self):
-        """Specifies the discount price for an advance payment of the total fee for three years, prepaid mode usage, measurement unit: usd.
+        r"""Specifies the discount price for an advance payment of the total fee for three years, prepaid mode usage, measurement unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11910,7 +11910,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountThreeYear(self):
-        """Specifies the discount for a 3-year advance payment, for example 20.0 represents 80% off.
+        r"""Specifies the discount for a 3-year advance payment, for example 20.0 represents 80% off.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11922,7 +11922,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalPriceFiveYear(self):
-        """Specifies the original price of the 5-year total cost with advance payment, using prepaid billing mode. measurement unit: usd.
+        r"""Specifies the original price of the 5-year total cost with advance payment, using prepaid billing mode. measurement unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11934,7 +11934,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountPriceFiveYear(self):
-        """Prepaid 5-year total cost discount price, prepaid billing mode usage. unit: usd.
+        r"""Prepaid 5-year total cost discount price, prepaid billing mode usage. unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11946,7 +11946,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountFiveYear(self):
-        """Specifies the discount for 5-year advance payment, such as 20.0 for 80% off.
+        r"""Specifies the discount for 5-year advance payment, such as 20.0 for 80% off.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11958,7 +11958,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalPriceOneYear(self):
-        """Original price of one-year advance payment total cost. prepaid mode usage. unit: usd.
+        r"""Original price of one-year advance payment total cost. prepaid mode usage. unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11970,7 +11970,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountPriceOneYear(self):
-        """Discount price for total advance payment for one year. specifies prepaid mode usage. measurement unit: usd.
+        r"""Discount price for total advance payment for one year. specifies prepaid mode usage. measurement unit: usd.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -11982,7 +11982,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountOneYear(self):
-        """Specifies the discount for a one-year advance payment, such as 20.0 for 80% off.
+        r"""Specifies the discount for a one-year advance payment, such as 20.0 for 80% off.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -12024,7 +12024,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class KeyPair(AbstractModel):
-    """Describes key pair information.
+    r"""Describes key pair information.
 
     """
 
@@ -12062,7 +12062,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyId(self):
-        """Key pair `ID`, the unique identifier of a key pair.
+        r"""Key pair `ID`, the unique identifier of a key pair.
         :rtype: str
         """
         return self._KeyId
@@ -12073,7 +12073,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyName(self):
-        """Key pair name.
+        r"""Key pair name.
         :rtype: str
         """
         return self._KeyName
@@ -12084,7 +12084,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ProjectId(self):
-        """`ID` of the project to which a key pair belongs.
+        r"""`ID` of the project to which a key pair belongs.
         :rtype: int
         """
         return self._ProjectId
@@ -12095,7 +12095,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Description(self):
-        """Key pair description.
+        r"""Key pair description.
         :rtype: str
         """
         return self._Description
@@ -12106,7 +12106,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PublicKey(self):
-        """Content of public key in a key pair.
+        r"""Content of public key in a key pair.
         :rtype: str
         """
         return self._PublicKey
@@ -12117,7 +12117,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PrivateKey(self):
-        """Content of private key in a key pair. Tencent Cloud do not keep private keys. Please keep it properly.
+        r"""Content of private key in a key pair. Tencent Cloud do not keep private keys. Please keep it properly.
         :rtype: str
         """
         return self._PrivateKey
@@ -12128,7 +12128,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AssociatedInstanceIds(self):
-        """`ID` list of instances associated with a key.
+        r"""`ID` list of instances associated with a key.
         :rtype: list of str
         """
         return self._AssociatedInstanceIds
@@ -12139,7 +12139,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatedTime(self):
-        """Creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        r"""Creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
         :rtype: str
         """
         return self._CreatedTime
@@ -12150,7 +12150,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Tags(self):
-        """The list of tags bound to the key.
+        r"""The list of tags bound to the key.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of Tag
         """
@@ -12187,7 +12187,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class LaunchTemplate(AbstractModel):
-    """Instance launch template. This parameter enables you to create an instance using the preset parameters in the template.
+    r"""Instance launch template. This parameter enables you to create an instance using the preset parameters in the template.
 
     """
 
@@ -12203,7 +12203,7 @@ class LaunchTemplate(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """Instance launch template ID. This parameter enables you to create an instance using the preset parameters in the template.
+        r"""Instance launch template ID. This parameter enables you to create an instance using the preset parameters in the template.
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -12214,7 +12214,7 @@ class LaunchTemplate(AbstractModel):
 
     @property
     def LaunchTemplateVersion(self):
-        """Instance launch template version number. If specified, this parameter will be used to create a new instance launch template.
+        r"""Instance launch template version number. If specified, this parameter will be used to create a new instance launch template.
         :rtype: int
         """
         return self._LaunchTemplateVersion
@@ -12238,7 +12238,7 @@ class LaunchTemplate(AbstractModel):
 
 
 class LaunchTemplateInfo(AbstractModel):
-    """Information of instance launch template.
+    r"""Information of instance launch template.
 
     """
 
@@ -12276,7 +12276,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LatestVersionNumber(self):
-        """Instance launch template version number.
+        r"""Instance launch template version number.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12288,7 +12288,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateId(self):
-        """Instance launch template ID.
+        r"""Instance launch template ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12300,7 +12300,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateName(self):
-        """Instance launch template name.
+        r"""Instance launch template name.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12312,7 +12312,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DefaultVersionNumber(self):
-        """Default instance launch template version number.
+        r"""Default instance launch template version number.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12324,7 +12324,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateVersionCount(self):
-        """Total number of versions that the instance launch template contains.
+        r"""Total number of versions that the instance launch template contains.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12336,7 +12336,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedBy(self):
-        """UIN of the user who created the template.
+        r"""UIN of the user who created the template.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12348,7 +12348,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreationTime(self):
-        """Creation time of the template.
+        r"""Creation time of the template.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12378,7 +12378,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class LaunchTemplateVersionData(AbstractModel):
-    """Information of instance launch template versions
+    r"""Information of instance launch template versions
 
     """
 
@@ -12489,7 +12489,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Placement(self):
-        """Location of the instance.
+        r"""Location of the instance.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
@@ -12501,7 +12501,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
-        """Instance model.
+        r"""Instance model.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12513,7 +12513,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceName(self):
-        """Instance name.
+        r"""Instance name.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12525,7 +12525,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceChargeType(self):
-        """Instance billing mode. Valid values: <br><li>`POSTPAID_BY_HOUR`: postpaid for pay-as-you-go instances <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs.<br>
+        r"""Instance billing mode. Valid values: <br><li>`POSTPAID_BY_HOUR`: postpaid for pay-as-you-go instances <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs.<br>
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12537,7 +12537,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SystemDisk(self):
-        """Instance system disk information.
+        r"""Instance system disk information.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
@@ -12549,7 +12549,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DataDisks(self):
-        """Instance data disk information. This parameter only covers the data disks purchased together with the instance.
+        r"""Instance data disk information. This parameter only covers the data disks purchased together with the instance.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of DataDisk
         """
@@ -12561,7 +12561,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetAccessible(self):
-        """Instance bandwidth information.
+        r"""Instance bandwidth information.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
@@ -12573,7 +12573,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VirtualPrivateCloud(self):
-        """Information of the VPC where the instance resides.
+        r"""Information of the VPC where the instance resides.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
@@ -12585,7 +12585,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ImageId(self):
-        """`ID` of the image used to create the instance.
+        r"""`ID` of the image used to create the instance.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12597,7 +12597,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroupIds(self):
-        """Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.
+        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -12609,7 +12609,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LoginSettings(self):
-        """Login settings of the instance. Currently, only the key associated with the instance is returned.
+        r"""Login settings of the instance. Currently, only the key associated with the instance is returned.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
@@ -12621,7 +12621,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CamRoleName(self):
-        """CAM role name.
+        r"""CAM role name.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12633,7 +12633,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HpcClusterId(self):
-        """HPC cluster `ID`.
+        r"""HPC cluster `ID`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12645,7 +12645,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceCount(self):
-        """Number of instances purchased.
+        r"""Number of instances purchased.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12657,7 +12657,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnhancedService(self):
-        """Enhanced service.
+        r"""Enhanced service.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
@@ -12669,7 +12669,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UserData(self):
-        """User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB.
+        r"""User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12681,7 +12681,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. You can only specify one.
+        r"""Placement group ID. You can only specify one.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -12693,7 +12693,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ActionTimer(self):
-        """Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+        r"""Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         """
@@ -12705,7 +12705,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceMarketOptions(self):
-        """Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        r"""Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
@@ -12717,7 +12717,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HostName(self):
-        """Hostname of a CVM.
+        r"""Hostname of a CVM.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12729,7 +12729,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClientToken(self):
-        """A string used to ensure the idempotency of the request.
+        r"""A string used to ensure the idempotency of the request.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12741,7 +12741,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceChargePrepaid(self):
-        """Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.
+        r"""Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
@@ -12753,7 +12753,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSpecification(self):
-        """List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
+        r"""List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of TagSpecification
         """
@@ -12765,7 +12765,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisableApiTermination(self):
-        """Whether to enable termination protection. Valid values:
+        r"""Whether to enable termination protection. Valid values:
 
 TRUE: Termination protection is enabled.
 FALSE: Termination protection is disabled.
@@ -12845,7 +12845,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class LaunchTemplateVersionInfo(AbstractModel):
-    """Set of instance launch template versions.
+    r"""Set of instance launch template versions.
 
     """
 
@@ -12878,7 +12878,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateVersion(self):
-        """Instance launch template version number.
+        r"""Instance launch template version number.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12890,7 +12890,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateVersionData(self):
-        """Details of instance launch template versions.
+        r"""Details of instance launch template versions.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplateVersionData`
         """
         return self._LaunchTemplateVersionData
@@ -12901,7 +12901,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreationTime(self):
-        """Creation time of the instance launch template version.
+        r"""Creation time of the instance launch template version.
         :rtype: str
         """
         return self._CreationTime
@@ -12912,7 +12912,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateId(self):
-        """Instance launch template ID.
+        r"""Instance launch template ID.
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -12923,7 +12923,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsDefaultVersion(self):
-        """Specifies whether it’s the default launch template version.
+        r"""Specifies whether it’s the default launch template version.
         :rtype: bool
         """
         return self._IsDefaultVersion
@@ -12934,7 +12934,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchTemplateVersionDescription(self):
-        """Information of instance launch template version description.
+        r"""Information of instance launch template version description.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12946,7 +12946,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedBy(self):
-        """Creator account
+        r"""Creator account
         :rtype: str
         """
         return self._CreatedBy
@@ -12977,7 +12977,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class LocalDiskType(AbstractModel):
-    """Describes local disk specifications.
+    r"""Describes local disk specifications.
 
     """
 
@@ -13002,7 +13002,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Type(self):
-        """Type of a local disk.
+        r"""Type of a local disk.
         :rtype: str
         """
         return self._Type
@@ -13013,7 +13013,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def PartitionType(self):
-        """Attributes of a local disk.
+        r"""Attributes of a local disk.
         :rtype: str
         """
         return self._PartitionType
@@ -13024,7 +13024,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MinSize(self):
-        """Minimum size of a local disk.
+        r"""Minimum size of a local disk.
         :rtype: int
         """
         return self._MinSize
@@ -13035,7 +13035,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MaxSize(self):
-        """Maximum size of a local disk.
+        r"""Maximum size of a local disk.
         :rtype: int
         """
         return self._MaxSize
@@ -13046,7 +13046,7 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Required(self):
-        """Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
+        r"""Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
         :rtype: str
         """
         return self._Required
@@ -13073,7 +13073,7 @@ class LocalDiskType(AbstractModel):
 
 
 class LoginSettings(AbstractModel):
-    """Describes login settings of an instance.
+    r"""Describes login settings of an instance.
 
     """
 
@@ -13093,7 +13093,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Password(self):
-        """Instance login password. The password complexity limits vary with the operating system type as follows: <br><li>The Linux instance password must be 8 to 30 characters long and include at least two of the following: [a-z], [A-Z], [0-9], and special characters of [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>The Windows instance password must be 12 to 30 characters long and include at least three of the following: [a-z], [A-Z], [0-9], and special characters [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, you need to set it before login by using the console to "reset password" or by calling the ResetInstancesPassword API.
+        r"""Instance login password. The password complexity limits vary with the operating system type as follows: <br><li>The Linux instance password must be 8 to 30 characters long and include at least two of the following: [a-z], [A-Z], [0-9], and special characters of [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>The Windows instance password must be 12 to 30 characters long and include at least three of the following: [a-z], [A-Z], [0-9], and special characters [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, you need to set it before login by using the console to "reset password" or by calling the ResetInstancesPassword API.
         :rtype: str
         """
         return self._Password
@@ -13104,7 +13104,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KeyIds(self):
-        """List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. You cannot specify a key and a password at the same time. Windows instances do not support keys.
+        r"""List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. You cannot specify a key and a password at the same time. Windows instances do not support keys.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -13116,7 +13116,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KeepImageLogin(self):
-        """Retain the original settings of the image. this parameter cannot be specified simultaneously with Password or KeyIds.N. it can be set to true only when an instance is created with a custom image, shared image, or externally imported image. value ranges from true to false: <li>true: indicates that the login settings of the image are retained</li><li>false: indicates that the login settings of the image are not retained</li>. default value: false.
+        r"""Retain the original settings of the image. this parameter cannot be specified simultaneously with Password or KeyIds.N. it can be set to true only when an instance is created with a custom image, shared image, or externally imported image. value ranges from true to false: <li>true: indicates that the login settings of the image are retained</li><li>false: indicates that the login settings of the image are not retained</li>. default value: false.
         :rtype: str
         """
         return self._KeepImageLogin
@@ -13141,7 +13141,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class Metadata(AbstractModel):
-    """Custom metadata.
+    r"""Custom metadata.
 
     """
 
@@ -13154,7 +13154,7 @@ class Metadata(AbstractModel):
 
     @property
     def Items(self):
-        """A list of custom metadata key-value pairs.
+        r"""A list of custom metadata key-value pairs.
         :rtype: list of MetadataItem
         """
         return self._Items
@@ -13182,7 +13182,7 @@ class Metadata(AbstractModel):
 
 
 class MetadataItem(AbstractModel):
-    """Custom metadata key and value.
+    r"""Custom metadata key and value.
 
     """
 
@@ -13199,7 +13199,7 @@ class MetadataItem(AbstractModel):
 
     @property
     def Key(self):
-        """Custom metadata key. it must comply with the regular expression ^[a-zA-Z0-9_-]+$. the length is less than or equal to 128 bytes (case-sensitive).
+        r"""Custom metadata key. it must comply with the regular expression ^[a-zA-Z0-9_-]+$. the length is less than or equal to 128 bytes (case-sensitive).
 
         :rtype: str
         """
@@ -13211,7 +13211,7 @@ class MetadataItem(AbstractModel):
 
     @property
     def Value(self):
-        """Specifies a custom metadata value. it supports any data . The size is &le; 256 KB. it is case-sensitive.
+        r"""Specifies a custom metadata value. it supports any data . The size is &le; 256 KB. it is case-sensitive.
         :rtype: str
         """
         return self._Value
@@ -13235,7 +13235,7 @@ class MetadataItem(AbstractModel):
 
 
 class ModifyChcAttributeRequest(AbstractModel):
-    """ModifyChcAttribute request structure.
+    r"""ModifyChcAttribute request structure.
 
     """
 
@@ -13263,7 +13263,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC host IDs
+        r"""CHC host IDs
         :rtype: list of str
         """
         return self._ChcIds
@@ -13274,7 +13274,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """CHC host name
+        r"""CHC host name
         :rtype: str
         """
         return self._InstanceName
@@ -13285,7 +13285,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        """Server type
+        r"""Server type
         :rtype: str
         """
         return self._DeviceType
@@ -13296,7 +13296,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def BmcUser(self):
-        """Valid characters: Letters, numbers, hyphens and underscores
+        r"""Valid characters: Letters, numbers, hyphens and underscores
         :rtype: str
         """
         return self._BmcUser
@@ -13307,7 +13307,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def Password(self):
-        """The password can contain 8 to 16 characters, including letters, numbers and special symbols (()`~!@#$%^&*-+=_|{}).
+        r"""The password can contain 8 to 16 characters, including letters, numbers and special symbols (()`~!@#$%^&*-+=_|{}).
         :rtype: str
         """
         return self._Password
@@ -13318,7 +13318,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
     @property
     def BmcSecurityGroupIds(self):
-        """BMC network security group list
+        r"""BMC network security group list
         :rtype: list of str
         """
         return self._BmcSecurityGroupIds
@@ -13346,7 +13346,7 @@ class ModifyChcAttributeRequest(AbstractModel):
 
 
 class ModifyChcAttributeResponse(AbstractModel):
-    """ModifyChcAttribute response structure.
+    r"""ModifyChcAttribute response structure.
 
     """
 
@@ -13359,7 +13359,7 @@ class ModifyChcAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13374,7 +13374,7 @@ class ModifyChcAttributeResponse(AbstractModel):
 
 
 class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
-    """ModifyDisasterRecoverGroupAttribute request structure.
+    r"""ModifyDisasterRecoverGroupAttribute request structure.
 
     """
 
@@ -13390,7 +13390,7 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        """Spread placement group ID, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API.
+        r"""Spread placement group ID, which can be obtained by calling the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -13401,7 +13401,7 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Name of a spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
+        r"""Name of a spread placement group. The name must be 1-60 characters long and can contain both Chinese characters and English letters.
         :rtype: str
         """
         return self._Name
@@ -13425,7 +13425,7 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
 
 
 class ModifyDisasterRecoverGroupAttributeResponse(AbstractModel):
-    """ModifyDisasterRecoverGroupAttribute response structure.
+    r"""ModifyDisasterRecoverGroupAttribute response structure.
 
     """
 
@@ -13438,7 +13438,7 @@ class ModifyDisasterRecoverGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13453,7 +13453,7 @@ class ModifyDisasterRecoverGroupAttributeResponse(AbstractModel):
 
 
 class ModifyHostsAttributeRequest(AbstractModel):
-    """ModifyHostsAttribute request structure.
+    r"""ModifyHostsAttribute request structure.
 
     """
 
@@ -13475,7 +13475,7 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
     @property
     def HostIds(self):
-        """CDH instance ID(s).
+        r"""CDH instance ID(s).
         :rtype: list of str
         """
         return self._HostIds
@@ -13486,7 +13486,7 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
     @property
     def HostName(self):
-        """CDH instance name to be displayed. You can specify any name you like, but its length cannot exceed 60 characters.
+        r"""CDH instance name to be displayed. You can specify any name you like, but its length cannot exceed 60 characters.
         :rtype: str
         """
         return self._HostName
@@ -13497,7 +13497,7 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
+        r"""Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
         :rtype: str
         """
         return self._RenewFlag
@@ -13508,7 +13508,7 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. You can use the `AddProject` API to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeHosts](https://intl.cloud.tencent.com/document/api/213/16474?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.
+        r"""Project ID. You can use the `AddProject` API to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeHosts](https://intl.cloud.tencent.com/document/api/213/16474?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -13534,7 +13534,7 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
 
 class ModifyHostsAttributeResponse(AbstractModel):
-    """ModifyHostsAttribute response structure.
+    r"""ModifyHostsAttribute response structure.
 
     """
 
@@ -13547,7 +13547,7 @@ class ModifyHostsAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13562,7 +13562,7 @@ class ModifyHostsAttributeResponse(AbstractModel):
 
 
 class ModifyImageAttributeRequest(AbstractModel):
-    """ModifyImageAttribute request structure.
+    r"""ModifyImageAttribute request structure.
 
     """
 
@@ -13587,7 +13587,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """Image ID, such as `img-gvbnzy6f`. You can obtain the image ID in the following ways:<li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><li>Obtain it in the [Image console](https://console.cloud.tencent.com/cvm/image).</li>
+        r"""Image ID, such as `img-gvbnzy6f`. You can obtain the image ID in the following ways:<li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><li>Obtain it in the [Image console](https://console.cloud.tencent.com/cvm/image).</li>
         :rtype: str
         """
         return self._ImageId
@@ -13598,7 +13598,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     @property
     def ImageName(self):
-        """New image name, which should meet the following requirements:<li>It should not exceed 60 characters.</li><li>It should be unique.</li>
+        r"""New image name, which should meet the following requirements:<li>It should not exceed 60 characters.</li><li>It should be unique.</li>
         :rtype: str
         """
         return self._ImageName
@@ -13609,7 +13609,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     @property
     def ImageDescription(self):
-        """New image description, which should meet the following requirement:<li>It should not exceed 256 characters.</li>
+        r"""New image description, which should meet the following requirement:<li>It should not exceed 256 characters.</li>
         :rtype: str
         """
         return self._ImageDescription
@@ -13620,7 +13620,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     @property
     def ImageFamily(self):
-        """Sets the image family;
+        r"""Sets the image family;
         :rtype: str
         """
         return self._ImageFamily
@@ -13631,7 +13631,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
     @property
     def ImageDeprecated(self):
-        """Sets whether the image is deprecated;
+        r"""Sets whether the image is deprecated;
         :rtype: bool
         """
         return self._ImageDeprecated
@@ -13658,7 +13658,7 @@ class ModifyImageAttributeRequest(AbstractModel):
 
 
 class ModifyImageAttributeResponse(AbstractModel):
-    """ModifyImageAttribute response structure.
+    r"""ModifyImageAttribute response structure.
 
     """
 
@@ -13671,7 +13671,7 @@ class ModifyImageAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13686,7 +13686,7 @@ class ModifyImageAttributeResponse(AbstractModel):
 
 
 class ModifyImageSharePermissionRequest(AbstractModel):
-    """ModifyImageSharePermission request structure.
+    r"""ModifyImageSharePermission request structure.
 
     """
 
@@ -13705,7 +13705,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """Image ID, such as `img-gvbnzy6f`. You can obtain the image ID in the following ways:<br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><br><li>Obtain it in the [Image console](https://console.cloud.tencent.com/cvm/image).</li><br>The image ID should correspond to an image in the `NORMAL` state. For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
+        r"""Image ID, such as `img-gvbnzy6f`. You can obtain the image ID in the following ways:<br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><br><li>Obtain it in the [Image console](https://console.cloud.tencent.com/cvm/image).</li><br>The image ID should correspond to an image in the `NORMAL` state. For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
         :rtype: str
         """
         return self._ImageId
@@ -13716,7 +13716,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
     @property
     def AccountIds(self):
-        """ID list of root accounts receiving shared images. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1). An account ID is different from a QQ number. For details on root account IDs, refer to the account ID section in [Account Information](https://console.cloud.tencent.com/developer).
+        r"""ID list of root accounts receiving shared images. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1). An account ID is different from a QQ number. For details on root account IDs, refer to the account ID section in [Account Information](https://console.cloud.tencent.com/developer).
         :rtype: list of str
         """
         return self._AccountIds
@@ -13727,7 +13727,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
     @property
     def Permission(self):
-        """Operations. Valid values: `SHARE`, sharing an image; `CANCEL`, cancelling an image sharing. 
+        r"""Operations. Valid values: `SHARE`, sharing an image; `CANCEL`, cancelling an image sharing. 
         :rtype: str
         """
         return self._Permission
@@ -13752,7 +13752,7 @@ class ModifyImageSharePermissionRequest(AbstractModel):
 
 
 class ModifyImageSharePermissionResponse(AbstractModel):
-    """ModifyImageSharePermission response structure.
+    r"""ModifyImageSharePermission response structure.
 
     """
 
@@ -13765,7 +13765,7 @@ class ModifyImageSharePermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13780,7 +13780,7 @@ class ModifyImageSharePermissionResponse(AbstractModel):
 
 
 class ModifyInstancesAttributeRequest(AbstractModel):
-    """ModifyInstancesAttribute request structure.
+    r"""ModifyInstancesAttribute request structure.
 
     """
 
@@ -13823,7 +13823,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13834,7 +13834,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def InstanceName(self):
-        """The instance name, which can not exceed 60 characters
+        r"""The instance name, which can not exceed 60 characters
 <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they can not be both specified.</dx-alert>
         :rtype: str
         """
@@ -13846,7 +13846,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def UserData(self):
-        """User data provided to an instance, which needs to be encoded in Base64 format with a maximum size of 16 KB. For details on obtaining this parameter, refer to the startup commands for [Windows](https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and [Linux](https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).
+        r"""User data provided to an instance, which needs to be encoded in Base64 format with a maximum size of 16 KB. For details on obtaining this parameter, refer to the startup commands for [Windows](https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and [Linux](https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).
         :rtype: str
         """
         return self._UserData
@@ -13857,7 +13857,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def SecurityGroups(self):
-        """IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
+        r"""IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype="explain" title="">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -13868,7 +13868,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def CamRoleName(self):
-        """The role bound with the instance. If it is not specified, it indicates to unbind the current role of the CVM.
+        r"""The role bound with the instance. If it is not specified, it indicates to unbind the current role of the CVM.
         :rtype: str
         """
         return self._CamRoleName
@@ -13879,7 +13879,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def HostName(self):
-        """Modified hostname of an instance.<li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>Note: After the hostname is modified, the instance will restart immediately, and the new hostname will take effect after the restart.
+        r"""Modified hostname of an instance.<li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>Note: After the hostname is modified, the instance will restart immediately, and the new hostname will take effect after the restart.
         :rtype: str
         """
         return self._HostName
@@ -13890,7 +13890,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def DisableApiTermination(self):
-        """Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li>Default value: false.
+        r"""Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li>Default value: false.
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -13901,7 +13901,7 @@ Note: This parameter is valid only when a hostname is modified.
 
     @property
     def CamRoleType(self):
-        """The role type, which is used in conjunction with `CamRoleName`. The value is obtained in `RoleType` field, returning by `CAM DescribeRoleList` and `GetRole` APIs. Valid value: `user`, `system` and `service_linked`.
+        r"""The role type, which is used in conjunction with `CamRoleName`. The value is obtained in `RoleType` field, returning by `CAM DescribeRoleList` and `GetRole` APIs. Valid value: `user`, `system` and `service_linked`.
 For example, when `LinkedRoleIn` is contained in `CamRoleName` (such as `TKE_QCSLinkedRoleInPrometheusService`), the returned `RoleType` of `DescribeRoleList` and `GetRoleis` is `service_linked`, and the `CamRoleType` `service_linked`.
 When the value obtained in `RoleType` is `user` (default) or `system`, `CamRoleType` can be left empty.
         :rtype: str
@@ -13914,7 +13914,7 @@ When the value obtained in `RoleType` is `user` (default) or `system`, `CamRoleT
 
     @property
     def AutoReboot(self):
-        """Whether to automatically restart an instance when modifying a hostname. If not specified, the instance will automatically restart by default.
+        r"""Whether to automatically restart an instance when modifying a hostname. If not specified, the instance will automatically restart by default.
 - true: Modify the hostname and automatically restart the instance.
 - false: Modify the hostname without automatically restarting the instance. A manual restart is required for the new hostname to take effect.
 Note: This parameter is valid only when a hostname is modified.
@@ -13948,7 +13948,7 @@ Note: This parameter is valid only when a hostname is modified.
 
 
 class ModifyInstancesAttributeResponse(AbstractModel):
-    """ModifyInstancesAttribute response structure.
+    r"""ModifyInstancesAttribute response structure.
 
     """
 
@@ -13961,7 +13961,7 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13976,7 +13976,7 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
 
 class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
-    """ModifyInstancesDisasterRecoverGroup request structure.
+    r"""ModifyInstancesDisasterRecoverGroup request structure.
 
     """
 
@@ -13995,7 +13995,7 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). the maximum number of instances per request is 100.
+        r"""One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). the maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14006,7 +14006,7 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        """Spread placement group ID. obtain through the api [DescribeDisasterRecoverGroups](https://www.tencentcloud.com/zh/document/api/213/33261).
+        r"""Spread placement group ID. obtain through the api [DescribeDisasterRecoverGroups](https://www.tencentcloud.com/zh/document/api/213/33261).
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -14017,7 +14017,7 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Force(self):
-        """Whether to forcibly change instance hosts. value range:<br><li>true: indicates that the instance is allowed to change hosts, allowing the instance to reboot. local disk machine does not support specifying this parameter.</li><br><li>false: does not allow the instance to change hosts. instances can only be added to the placement group on the current host. this may result in a failure to change the placement group.</li><br><br>default value: false.
+        r"""Whether to forcibly change instance hosts. value range:<br><li>true: indicates that the instance is allowed to change hosts, allowing the instance to reboot. local disk machine does not support specifying this parameter.</li><br><li>false: does not allow the instance to change hosts. instances can only be added to the placement group on the current host. this may result in a failure to change the placement group.</li><br><br>default value: false.
         :rtype: bool
         """
         return self._Force
@@ -14042,7 +14042,7 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
 
 class ModifyInstancesDisasterRecoverGroupResponse(AbstractModel):
-    """ModifyInstancesDisasterRecoverGroup response structure.
+    r"""ModifyInstancesDisasterRecoverGroup response structure.
 
     """
 
@@ -14055,7 +14055,7 @@ class ModifyInstancesDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14070,7 +14070,7 @@ class ModifyInstancesDisasterRecoverGroupResponse(AbstractModel):
 
 
 class ModifyInstancesProjectRequest(AbstractModel):
-    """ModifyInstancesProject request structure.
+    r"""ModifyInstancesProject request structure.
 
     """
 
@@ -14086,7 +14086,7 @@ class ModifyInstancesProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
+        r"""Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14097,7 +14097,7 @@ class ModifyInstancesProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. You can use the API `AddProject` to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.
+        r"""Project ID. You can use the API `AddProject` to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -14121,7 +14121,7 @@ class ModifyInstancesProjectRequest(AbstractModel):
 
 
 class ModifyInstancesProjectResponse(AbstractModel):
-    """ModifyInstancesProject response structure.
+    r"""ModifyInstancesProject response structure.
 
     """
 
@@ -14134,7 +14134,7 @@ class ModifyInstancesProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14149,7 +14149,7 @@ class ModifyInstancesProjectResponse(AbstractModel):
 
 
 class ModifyInstancesRenewFlagRequest(AbstractModel):
-    """ModifyInstancesRenewFlag request structure.
+    r"""ModifyInstancesRenewFlag request structure.
 
     """
 
@@ -14165,7 +14165,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """For one or more instance IDs to be operated. You can obtain the instance ID through the `instanceid` in the returned value from the API [DescribeInstances](https://cloud.tencent.com/document/api/213/15728). The maximum number of instances that can be operated for each request is 100.
+        r"""For one or more instance IDs to be operated. You can obtain the instance ID through the `instanceid` in the returned value from the API [DescribeInstances](https://cloud.tencent.com/document/api/213/15728). The maximum number of instances that can be operated for each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14176,7 +14176,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notifies of expiration and performs auto-renewal.</li><li>NOTIFY_AND_MANUAL_RENEW: Notifies of expiration but does not perform auto-renewal.</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
+        r"""Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notifies of expiration and performs auto-renewal.</li><li>NOTIFY_AND_MANUAL_RENEW: Notifies of expiration but does not perform auto-renewal.</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
         :rtype: str
         """
         return self._RenewFlag
@@ -14200,7 +14200,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
 
 class ModifyInstancesRenewFlagResponse(AbstractModel):
-    """ModifyInstancesRenewFlag response structure.
+    r"""ModifyInstancesRenewFlag response structure.
 
     """
 
@@ -14213,7 +14213,7 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14228,7 +14228,7 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
 
 
 class ModifyInstancesVpcAttributeRequest(AbstractModel):
-    """ModifyInstancesVpcAttribute request structure.
+    r"""ModifyInstancesVpcAttribute request structure.
 
     """
 
@@ -14250,7 +14250,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14261,7 +14261,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        """VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, VPC IP, etc. If the specified VPC ID and subnet ID (the subnet must be in the same availability zone as the instance) are different from the VPC where the specified instance resides, the instance will be migrated to a subnet of the specified VPC. You can use `PrivateIpAddresses` to specify the VPC subnet IP. If you want to specify the subnet IP, you will need to specify a subnet IP for each of the specified instances, and each `InstanceIds` will match a `PrivateIpAddresses`. If `PrivateIpAddresses` is not specified, the VPC subnet IP will be assigned randomly.
+        r"""VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, VPC IP, etc. If the specified VPC ID and subnet ID (the subnet must be in the same availability zone as the instance) are different from the VPC where the specified instance resides, the instance will be migrated to a subnet of the specified VPC. You can use `PrivateIpAddresses` to specify the VPC subnet IP. If you want to specify the subnet IP, you will need to specify a subnet IP for each of the specified instances, and each `InstanceIds` will match a `PrivateIpAddresses`. If `PrivateIpAddresses` is not specified, the VPC subnet IP will be assigned randomly.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -14272,7 +14272,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to force shut down a running instances. Default value: TRUE.
+        r"""Whether to force shut down a running instances. Default value: TRUE.
         :rtype: bool
         """
         return self._ForceStop
@@ -14283,7 +14283,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
     @property
     def ReserveHostName(self):
-        """Whether to keep the host name. Default value: FALSE.
+        r"""Whether to keep the host name. Default value: FALSE.
         :rtype: bool
         """
         return self._ReserveHostName
@@ -14311,7 +14311,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
 
 class ModifyInstancesVpcAttributeResponse(AbstractModel):
-    """ModifyInstancesVpcAttribute response structure.
+    r"""ModifyInstancesVpcAttribute response structure.
 
     """
 
@@ -14324,7 +14324,7 @@ class ModifyInstancesVpcAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14339,7 +14339,7 @@ class ModifyInstancesVpcAttributeResponse(AbstractModel):
 
 
 class ModifyKeyPairAttributeRequest(AbstractModel):
-    """ModifyKeyPairAttribute request structure.
+    r"""ModifyKeyPairAttribute request structure.
 
     """
 
@@ -14358,7 +14358,7 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        """Key pair ID in the format of `skey-xxxxxxxx`. <br><br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
+        r"""Key pair ID in the format of `skey-xxxxxxxx`. <br><br>You can obtain the available key pair IDs in two ways: <br><li>Log in to the [console](https://console.cloud.tencent.com/cvm/sshkey) to query the key pair IDs. <br><li>Call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) and look for `KeyId` in the response.
         :rtype: str
         """
         return self._KeyId
@@ -14369,7 +14369,7 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
     @property
     def KeyName(self):
-        """New key pair name, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
+        r"""New key pair name, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.
         :rtype: str
         """
         return self._KeyName
@@ -14380,7 +14380,7 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
     @property
     def Description(self):
-        """New key pair description. You can specify any name you like, but its length cannot exceed 60 characters.
+        r"""New key pair description. You can specify any name you like, but its length cannot exceed 60 characters.
         :rtype: str
         """
         return self._Description
@@ -14405,7 +14405,7 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
 
 class ModifyKeyPairAttributeResponse(AbstractModel):
-    """ModifyKeyPairAttribute response structure.
+    r"""ModifyKeyPairAttribute response structure.
 
     """
 
@@ -14418,7 +14418,7 @@ class ModifyKeyPairAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14433,7 +14433,7 @@ class ModifyKeyPairAttributeResponse(AbstractModel):
 
 
 class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
-    """ModifyLaunchTemplateDefaultVersion request structure.
+    r"""ModifyLaunchTemplateDefaultVersion request structure.
 
     """
 
@@ -14449,7 +14449,7 @@ class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
 
     @property
     def LaunchTemplateId(self):
-        """The launch template ID
+        r"""The launch template ID
         :rtype: str
         """
         return self._LaunchTemplateId
@@ -14460,7 +14460,7 @@ class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
 
     @property
     def DefaultVersion(self):
-        """The number of the version that you want to set as the default version
+        r"""The number of the version that you want to set as the default version
         :rtype: int
         """
         return self._DefaultVersion
@@ -14484,7 +14484,7 @@ class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
 
 
 class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
-    """ModifyLaunchTemplateDefaultVersion response structure.
+    r"""ModifyLaunchTemplateDefaultVersion response structure.
 
     """
 
@@ -14497,7 +14497,7 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14512,7 +14512,7 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
 
 
 class OperationCountLimit(AbstractModel):
-    """Describes the maximum number of times you can perform an operation on a single instance.
+    r"""Describes the maximum number of times you can perform an operation on a single instance.
 
     """
 
@@ -14534,7 +14534,7 @@ class OperationCountLimit(AbstractModel):
 
     @property
     def Operation(self):
-        """Instance operation. Valid values: <br><li>`INSTANCE_DEGRADE`: downgrade an instance<br><li>`INTERNET_CHARGE_TYPE_CHANGE`: modify the billing plan of the network connection
+        r"""Instance operation. Valid values: <br><li>`INSTANCE_DEGRADE`: downgrade an instance<br><li>`INTERNET_CHARGE_TYPE_CHANGE`: modify the billing plan of the network connection
         :rtype: str
         """
         return self._Operation
@@ -14545,7 +14545,7 @@ class OperationCountLimit(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -14556,7 +14556,7 @@ class OperationCountLimit(AbstractModel):
 
     @property
     def CurrentCount(self):
-        """Number of operations already performed. If it returns `-1`, it means there is no limit on the times of the operation.
+        r"""Number of operations already performed. If it returns `-1`, it means there is no limit on the times of the operation.
         :rtype: int
         """
         return self._CurrentCount
@@ -14567,7 +14567,7 @@ class OperationCountLimit(AbstractModel):
 
     @property
     def LimitCount(self):
-        """Maximum number of times you can perform an operation. If it returns `-1`, it means there is no limit on the times of the operation. If it returns `0`, it means that configuration modification is not supported.
+        r"""Maximum number of times you can perform an operation. If it returns `-1`, it means there is no limit on the times of the operation. If it returns `0`, it means that configuration modification is not supported.
         :rtype: int
         """
         return self._LimitCount
@@ -14593,7 +14593,7 @@ class OperationCountLimit(AbstractModel):
 
 
 class OsVersion(AbstractModel):
-    """Supported operating system types.
+    r"""Supported operating system types.
 
     """
 
@@ -14612,7 +14612,7 @@ class OsVersion(AbstractModel):
 
     @property
     def OsName(self):
-        """Operating system type
+        r"""Operating system type
         :rtype: str
         """
         return self._OsName
@@ -14623,7 +14623,7 @@ class OsVersion(AbstractModel):
 
     @property
     def OsVersions(self):
-        """Supported operating system versions
+        r"""Supported operating system versions
         :rtype: list of str
         """
         return self._OsVersions
@@ -14634,7 +14634,7 @@ class OsVersion(AbstractModel):
 
     @property
     def Architecture(self):
-        """Supported operating system architecture
+        r"""Supported operating system architecture
         :rtype: list of str
         """
         return self._Architecture
@@ -14659,7 +14659,7 @@ class OsVersion(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """Placement of an instance, including its availability zone, project, host (for CDH products only), master host IP, etc.
+    r"""Placement of an instance, including its availability zone, project, host (for CDH products only), master host IP, etc.
 
     """
 
@@ -14681,7 +14681,7 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
-        """ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
+        r"""ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
         :rtype: str
         """
         return self._Zone
@@ -14692,7 +14692,7 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
-        """ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
+        r"""ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
         :rtype: int
         """
         return self._ProjectId
@@ -14703,7 +14703,7 @@ class Placement(AbstractModel):
 
     @property
     def HostIds(self):
-        """ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
+        r"""ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
         :rtype: list of str
         """
         return self._HostIds
@@ -14714,7 +14714,7 @@ class Placement(AbstractModel):
 
     @property
     def HostId(self):
-        """The ID of the CDH to which the instance belongs, only used as an output parameter.
+        r"""The ID of the CDH to which the instance belongs, only used as an output parameter.
         :rtype: str
         """
         return self._HostId
@@ -14740,7 +14740,7 @@ class Placement(AbstractModel):
 
 
 class Price(AbstractModel):
-    """Price.
+    r"""Price.
 
     """
 
@@ -14756,7 +14756,7 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
-        """Instance price.
+        r"""Instance price.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
         """
         return self._InstancePrice
@@ -14767,7 +14767,7 @@ class Price(AbstractModel):
 
     @property
     def BandwidthPrice(self):
-        """Network price.
+        r"""Network price.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
         """
         return self._BandwidthPrice
@@ -14795,7 +14795,7 @@ class Price(AbstractModel):
 
 
 class PurchaseReservedInstancesOfferingRequest(AbstractModel):
-    """PurchaseReservedInstancesOffering request structure.
+    r"""PurchaseReservedInstancesOffering request structure.
 
     """
 
@@ -14820,7 +14820,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        """The number of the Reserved Instance you are purchasing.
+        r"""The number of the Reserved Instance you are purchasing.
         :rtype: int
         """
         return self._InstanceCount
@@ -14831,7 +14831,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstancesOfferingId(self):
-        """The ID of the Reserved Instance.
+        r"""The ID of the Reserved Instance.
         :rtype: str
         """
         return self._ReservedInstancesOfferingId
@@ -14842,7 +14842,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        """Dry run
+        r"""Dry run
         :rtype: bool
         """
         return self._DryRun
@@ -14853,7 +14853,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.
         :rtype: str
         """
         return self._ClientToken
@@ -14864,7 +14864,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
     @property
     def ReservedInstanceName(self):
-        """Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
+        r"""Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>
         :rtype: str
         """
         return self._ReservedInstanceName
@@ -14891,7 +14891,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
 
 
 class PurchaseReservedInstancesOfferingResponse(AbstractModel):
-    """PurchaseReservedInstancesOffering response structure.
+    r"""PurchaseReservedInstancesOffering response structure.
 
     """
 
@@ -14907,7 +14907,7 @@ class PurchaseReservedInstancesOfferingResponse(AbstractModel):
 
     @property
     def ReservedInstanceId(self):
-        """The ID of the Reserved Instance purchased.
+        r"""The ID of the Reserved Instance purchased.
         :rtype: str
         """
         return self._ReservedInstanceId
@@ -14918,7 +14918,7 @@ class PurchaseReservedInstancesOfferingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14934,7 +14934,7 @@ class PurchaseReservedInstancesOfferingResponse(AbstractModel):
 
 
 class RebootInstancesRequest(AbstractModel):
-    """RebootInstances request structure.
+    r"""RebootInstances request structure.
 
     """
 
@@ -14953,7 +14953,7 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
+        r"""Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14964,7 +14964,7 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def ForceReboot(self):
-        """Whether to forcibly restart an instance after a normal restart fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. This parameter has been disused. We recommend using `StopType` instead. Note that `ForceReboot` and `StopType` parameters cannot be specified at the same time.
+        r"""Whether to forcibly restart an instance after a normal restart fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. This parameter has been disused. We recommend using `StopType` instead. Note that `ForceReboot` and `StopType` parameters cannot be specified at the same time.
         :rtype: bool
         """
         return self._ForceReboot
@@ -14975,7 +14975,7 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def StopType(self):
-        """Shutdown type. Valid values: <br><li>SOFT: soft shutdown<br><li>HARD: hard shutdown<br><li>SOFT_FIRST: perform a soft shutdown first, and perform a hard shutdown if the soft shutdown fails<br><br>Default value: SOFT.
+        r"""Shutdown type. Valid values: <br><li>SOFT: soft shutdown<br><li>HARD: hard shutdown<br><li>SOFT_FIRST: perform a soft shutdown first, and perform a hard shutdown if the soft shutdown fails<br><br>Default value: SOFT.
         :rtype: str
         """
         return self._StopType
@@ -15000,7 +15000,7 @@ class RebootInstancesRequest(AbstractModel):
 
 
 class RebootInstancesResponse(AbstractModel):
-    """RebootInstances response structure.
+    r"""RebootInstances response structure.
 
     """
 
@@ -15013,7 +15013,7 @@ class RebootInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15028,7 +15028,7 @@ class RebootInstancesResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """Region information.
+    r"""Region information.
 
     """
 
@@ -15047,7 +15047,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Region name, such as `ap-guangzhou`
+        r"""Region name, such as `ap-guangzhou`
         :rtype: str
         """
         return self._Region
@@ -15058,7 +15058,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region description, such as South China (Guangzhou)
+        r"""Region description, such as South China (Guangzhou)
         :rtype: str
         """
         return self._RegionName
@@ -15069,7 +15069,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
-        """Whether the region is available
+        r"""Whether the region is available
         :rtype: str
         """
         return self._RegionState
@@ -15094,7 +15094,7 @@ class RegionInfo(AbstractModel):
 
 
 class RemoveChcAssistVpcRequest(AbstractModel):
-    """RemoveChcAssistVpc request structure.
+    r"""RemoveChcAssistVpc request structure.
 
     """
 
@@ -15107,7 +15107,7 @@ class RemoveChcAssistVpcRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC ID
+        r"""CHC ID
         :rtype: list of str
         """
         return self._ChcIds
@@ -15130,7 +15130,7 @@ class RemoveChcAssistVpcRequest(AbstractModel):
 
 
 class RemoveChcAssistVpcResponse(AbstractModel):
-    """RemoveChcAssistVpc response structure.
+    r"""RemoveChcAssistVpc response structure.
 
     """
 
@@ -15143,7 +15143,7 @@ class RemoveChcAssistVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15158,7 +15158,7 @@ class RemoveChcAssistVpcResponse(AbstractModel):
 
 
 class RemoveChcDeployVpcRequest(AbstractModel):
-    """RemoveChcDeployVpc request structure.
+    r"""RemoveChcDeployVpc request structure.
 
     """
 
@@ -15171,7 +15171,7 @@ class RemoveChcDeployVpcRequest(AbstractModel):
 
     @property
     def ChcIds(self):
-        """CHC ID
+        r"""CHC ID
         :rtype: list of str
         """
         return self._ChcIds
@@ -15194,7 +15194,7 @@ class RemoveChcDeployVpcRequest(AbstractModel):
 
 
 class RemoveChcDeployVpcResponse(AbstractModel):
-    """RemoveChcDeployVpc response structure.
+    r"""RemoveChcDeployVpc response structure.
 
     """
 
@@ -15207,7 +15207,7 @@ class RemoveChcDeployVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15222,7 +15222,7 @@ class RemoveChcDeployVpcResponse(AbstractModel):
 
 
 class RenewInstancesRequest(AbstractModel):
-    """RenewInstances request structure.
+    r"""RenewInstances request structure.
 
     """
 
@@ -15242,7 +15242,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
     @property
     def InstanceIds(self):
-        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -15253,7 +15253,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
     @property
     def InstanceChargePrepaid(self):
-        """Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
+        r"""Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
 Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
@@ -15265,7 +15265,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
     @property
     def RenewPortableDataDisk(self):
-        """Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        r"""Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
         :rtype: bool
         """
         return self._RenewPortableDataDisk
@@ -15292,7 +15292,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
 
 class RenewInstancesResponse(AbstractModel):
-    """RenewInstances response structure.
+    r"""RenewInstances response structure.
 
     """
 
@@ -15305,7 +15305,7 @@ class RenewInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15320,7 +15320,7 @@ class RenewInstancesResponse(AbstractModel):
 
 
 class ReservedInstanceConfigInfoItem(AbstractModel):
-    """Static configurations of the reserved instance.
+    r"""Static configurations of the reserved instance.
 
     """
 
@@ -15342,7 +15342,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
     @property
     def Type(self):
-        """Abbreviation name of the instance type.
+        r"""Abbreviation name of the instance type.
         :rtype: str
         """
         return self._Type
@@ -15353,7 +15353,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
     @property
     def TypeName(self):
-        """Full name of the instance type.
+        r"""Full name of the instance type.
         :rtype: str
         """
         return self._TypeName
@@ -15364,7 +15364,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
     @property
     def Order(self):
-        """Priority.
+        r"""Priority.
         :rtype: int
         """
         return self._Order
@@ -15375,7 +15375,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
     @property
     def InstanceFamilies(self):
-        """List of instance families.
+        r"""List of instance families.
         :rtype: list of ReservedInstanceFamilyItem
         """
         return self._InstanceFamilies
@@ -15406,7 +15406,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
 
 class ReservedInstanceFamilyItem(AbstractModel):
-    """RI-related instance family.
+    r"""RI-related instance family.
 
     """
 
@@ -15425,7 +15425,7 @@ class ReservedInstanceFamilyItem(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        """Instance family.
+        r"""Instance family.
         :rtype: str
         """
         return self._InstanceFamily
@@ -15436,7 +15436,7 @@ class ReservedInstanceFamilyItem(AbstractModel):
 
     @property
     def Order(self):
-        """Priority.
+        r"""Priority.
         :rtype: int
         """
         return self._Order
@@ -15447,7 +15447,7 @@ class ReservedInstanceFamilyItem(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        """List of instance types.
+        r"""List of instance types.
         :rtype: list of ReservedInstanceTypeItem
         """
         return self._InstanceTypes
@@ -15477,7 +15477,7 @@ class ReservedInstanceFamilyItem(AbstractModel):
 
 
 class ReservedInstancePrice(AbstractModel):
-    """Price of the reserved instance. Currently, RIs are only offered to beta users.
+    r"""Price of the reserved instance. Currently, RIs are only offered to beta users.
 
     """
 
@@ -15507,7 +15507,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalFixedPrice(self):
-        """Original upfront payment, in USD.
+        r"""Original upfront payment, in USD.
         :rtype: float
         """
         return self._OriginalFixedPrice
@@ -15518,7 +15518,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountFixedPrice(self):
-        """Discounted upfront payment, in USD.
+        r"""Discounted upfront payment, in USD.
         :rtype: float
         """
         return self._DiscountFixedPrice
@@ -15529,7 +15529,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def OriginalUsagePrice(self):
-        """Original subsequent unit price, in USD/hr.
+        r"""Original subsequent unit price, in USD/hr.
         :rtype: float
         """
         return self._OriginalUsagePrice
@@ -15540,7 +15540,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiscountUsagePrice(self):
-        """Discounted subsequent unit price, in USD/hr.
+        r"""Discounted subsequent unit price, in USD/hr.
         :rtype: float
         """
         return self._DiscountUsagePrice
@@ -15551,7 +15551,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def FixedPriceDiscount(self):
-        """Discount on upfront cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.
+        r"""Discount on upfront cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -15563,7 +15563,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UsagePriceDiscount(self):
-        """Discount on subsequent cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.
+        r"""Discount on subsequent cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.
 Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
@@ -15592,7 +15592,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class ReservedInstancePriceItem(AbstractModel):
-    """Price information of the reserved instance based on the payment method.
+    r"""Price information of the reserved instance based on the payment method.
 
     """
 
@@ -15631,7 +15631,7 @@ Valid value: `Linux`.
 
     @property
     def OfferingType(self):
-        """Payment method. Valid values: All Upfront, Partial Upfront, and No Upfront.
+        r"""Payment method. Valid values: All Upfront, Partial Upfront, and No Upfront.
         :rtype: str
         """
         return self._OfferingType
@@ -15642,7 +15642,7 @@ Valid value: `Linux`.
 
     @property
     def FixedPrice(self):
-        """Upfront payment, in USD.
+        r"""Upfront payment, in USD.
         :rtype: float
         """
         return self._FixedPrice
@@ -15653,7 +15653,7 @@ Valid value: `Linux`.
 
     @property
     def UsagePrice(self):
-        """Subsequent unit price, in USD/hr.
+        r"""Subsequent unit price, in USD/hr.
         :rtype: float
         """
         return self._UsagePrice
@@ -15664,7 +15664,7 @@ Valid value: `Linux`.
 
     @property
     def ReservedInstancesOfferingId(self):
-        """The ID of the reserved instance offering.
+        r"""The ID of the reserved instance offering.
         :rtype: str
         """
         return self._ReservedInstancesOfferingId
@@ -15675,7 +15675,7 @@ Valid value: `Linux`.
 
     @property
     def Zone(self):
-        """The availability zone in which the reserved instance can be purchased.
+        r"""The availability zone in which the reserved instance can be purchased.
         :rtype: str
         """
         return self._Zone
@@ -15686,7 +15686,7 @@ Valid value: `Linux`.
 
     @property
     def Duration(self):
-        """The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, `31536000`.
+        r"""The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, `31536000`.
 Unit: second
         :rtype: int
         """
@@ -15698,7 +15698,7 @@ Unit: second
 
     @property
     def ProductDescription(self):
-        """The operating system of the reserved instance, such as `Linux`.
+        r"""The operating system of the reserved instance, such as `Linux`.
 Valid value: `Linux`.
         :rtype: str
         """
@@ -15710,7 +15710,7 @@ Valid value: `Linux`.
 
     @property
     def DiscountUsagePrice(self):
-        """Discount price for subsequent total cost, in USD/hr.
+        r"""Discount price for subsequent total cost, in USD/hr.
         :rtype: float
         """
         return self._DiscountUsagePrice
@@ -15721,7 +15721,7 @@ Valid value: `Linux`.
 
     @property
     def DiscountFixedPrice(self):
-        """Discount price for upfront total cost, in USD.
+        r"""Discount price for upfront total cost, in USD.
         :rtype: float
         """
         return self._DiscountFixedPrice
@@ -15752,7 +15752,7 @@ Valid value: `Linux`.
 
 
 class ReservedInstanceTypeItem(AbstractModel):
-    """Reserved instance specification.
+    r"""Reserved instance specification.
 
     """
 
@@ -15804,7 +15804,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type.
+        r"""Instance type.
         :rtype: str
         """
         return self._InstanceType
@@ -15815,7 +15815,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores.
+        r"""Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -15826,7 +15826,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size.
+        r"""Memory size.
         :rtype: int
         """
         return self._Memory
@@ -15837,7 +15837,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Gpu(self):
-        """Number of GPUs.
+        r"""Number of GPUs.
         :rtype: int
         """
         return self._Gpu
@@ -15848,7 +15848,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Fpga(self):
-        """Number of FPGAs.
+        r"""Number of FPGAs.
         :rtype: int
         """
         return self._Fpga
@@ -15859,7 +15859,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def StorageBlock(self):
-        """Number of local storage blocks.
+        r"""Number of local storage blocks.
         :rtype: int
         """
         return self._StorageBlock
@@ -15870,7 +15870,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def NetworkCard(self):
-        """Number of NICs.
+        r"""Number of NICs.
         :rtype: int
         """
         return self._NetworkCard
@@ -15881,7 +15881,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        """Maximum bandwidth.
+        r"""Maximum bandwidth.
         :rtype: float
         """
         return self._MaxBandwidth
@@ -15892,7 +15892,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Frequency(self):
-        """CPU frequency.
+        r"""CPU frequency.
         :rtype: str
         """
         return self._Frequency
@@ -15903,7 +15903,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def CpuModelName(self):
-        """CPU type.
+        r"""CPU type.
         :rtype: str
         """
         return self._CpuModelName
@@ -15914,7 +15914,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Pps(self):
-        """Packet forwarding rate.
+        r"""Packet forwarding rate.
         :rtype: int
         """
         return self._Pps
@@ -15925,7 +15925,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Externals(self):
-        """Other information.
+        r"""Other information.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         return self._Externals
@@ -15936,7 +15936,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks.
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -15947,7 +15947,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
     @property
     def Prices(self):
-        """Price information about the reserved instance.
+        r"""Price information about the reserved instance.
         :rtype: list of ReservedInstancePriceItem
         """
         return self._Prices
@@ -15990,7 +15990,7 @@ class ReservedInstanceTypeItem(AbstractModel):
 
 
 class ReservedInstances(AbstractModel):
-    """Information on reserved instances purchased by the user.
+    r"""Information on reserved instances purchased by the user.
 
     """
 
@@ -16052,7 +16052,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
     def ReservedInstancesId(self):
         warnings.warn("parameter `ReservedInstancesId` is deprecated", DeprecationWarning) 
 
-        """(This field has been deprecated. ReservedInstanceId is recommended.) IDs of purchased reserved instances. For example, ri-rtbh4han.
+        r"""(This field has been deprecated. ReservedInstanceId is recommended.) IDs of purchased reserved instances. For example, ri-rtbh4han.
         :rtype: str
         """
         return self._ReservedInstancesId
@@ -16065,7 +16065,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
 
     @property
     def InstanceType(self):
-        """Specifications of reserved instances. For example, S3.MEDIUM4.
+        r"""Specifications of reserved instances. For example, S3.MEDIUM4.
 Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance specification list.</a>
         :rtype: str
         """
@@ -16077,7 +16077,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
 
     @property
     def Zone(self):
-        """Availability zones in which reserved instances can be purchased. For example, ap-guangzhou-1.
+        r"""Availability zones in which reserved instances can be purchased. For example, ap-guangzhou-1.
 Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability zone list.</a>
         :rtype: str
         """
@@ -16089,7 +16089,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091
 
     @property
     def StartTime(self):
-        """Billing start time of reserved instances. For example, 1949-10-01 00:00:00.
+        r"""Billing start time of reserved instances. For example, 1949-10-01 00:00:00.
         :rtype: str
         """
         return self._StartTime
@@ -16100,7 +16100,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091
 
     @property
     def EndTime(self):
-        """Billing end time of reserved instances. For example, 1949-10-01 00:00:00.
+        r"""Billing end time of reserved instances. For example, 1949-10-01 00:00:00.
         :rtype: str
         """
         return self._EndTime
@@ -16111,7 +16111,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091
 
     @property
     def Duration(self):
-        """Validity periods of reserved instances, which is the purchase duration of reserved instances. For example, 31536000.
+        r"""Validity periods of reserved instances, which is the purchase duration of reserved instances. For example, 31536000.
 Unit: second.
         :rtype: int
         """
@@ -16123,7 +16123,7 @@ Unit: second.
 
     @property
     def InstanceCount(self):
-        """Number of purchased reserved instances. For example, 10.
+        r"""Number of purchased reserved instances. For example, 10.
         :rtype: int
         """
         return self._InstanceCount
@@ -16134,7 +16134,7 @@ Unit: second.
 
     @property
     def ProductDescription(self):
-        """Platform descriptions (operating systems) of reserved instances. For example, linux.
+        r"""Platform descriptions (operating systems) of reserved instances. For example, linux.
 Return value: linux.
         :rtype: str
         """
@@ -16146,7 +16146,7 @@ Return value: linux.
 
     @property
     def State(self):
-        """Statuses of purchased reserved instances. For example: active.
+        r"""Statuses of purchased reserved instances. For example: active.
 Return values: active (created) | pending (waiting to be created) | retired (expired).
         :rtype: str
         """
@@ -16158,7 +16158,7 @@ Return values: active (created) | pending (waiting to be created) | retired (exp
 
     @property
     def CurrencyCode(self):
-        """Billing currencies of purchasable reserved instances. Use standard currency codes defined in ISO 4217. For example, USD.
+        r"""Billing currencies of purchasable reserved instances. Use standard currency codes defined in ISO 4217. For example, USD.
 Return value: USD.
         :rtype: str
         """
@@ -16170,7 +16170,7 @@ Return value: USD.
 
     @property
     def OfferingType(self):
-        """Payment types of reserved instances. For example, All Upfront.
+        r"""Payment types of reserved instances. For example, All Upfront.
 Return value: All Upfront (fully prepaid).
         :rtype: str
         """
@@ -16182,7 +16182,7 @@ Return value: All Upfront (fully prepaid).
 
     @property
     def InstanceFamily(self):
-        """Types of reserved instances. For example, S3.
+        r"""Types of reserved instances. For example, S3.
 Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance type list.</a>
         :rtype: str
         """
@@ -16194,7 +16194,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
 
     @property
     def ReservedInstanceId(self):
-        """IDs of purchased reserved instances. For example, ri-rtbh4han.
+        r"""IDs of purchased reserved instances. For example, ri-rtbh4han.
         :rtype: str
         """
         return self._ReservedInstanceId
@@ -16205,7 +16205,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
 
     @property
     def ReservedInstanceName(self):
-        """Display names of reserved instances. For example, riname-01.
+        r"""Display names of reserved instances. For example, riname-01.
         :rtype: str
         """
         return self._ReservedInstanceName
@@ -16241,7 +16241,7 @@ Return values: <a href="https://intl.cloud.tencent.com/document/product/213/1151
 
 
 class ReservedInstancesOffering(AbstractModel):
-    """The information of the Reserved Instance offering.
+    r"""The information of the Reserved Instance offering.
 
     """
 
@@ -16287,7 +16287,7 @@ Unit: USD/hr. This field uses the currency code specified in `currencyCode`, and
 
     @property
     def Zone(self):
-        """The availability zones in which the Reserved Instance can be purchased, such as ap-guangzhou-1.
+        r"""The availability zones in which the Reserved Instance can be purchased, such as ap-guangzhou-1.
 Valid value: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability Zones</a>
         :rtype: str
         """
@@ -16299,7 +16299,7 @@ Valid value: <a href="https://intl.cloud.tencent.com/document/product/213/6091?f
 
     @property
     def CurrencyCode(self):
-        """The billing currency of the Reserved Instance you are purchasing. It's specified using ISO 4217 standard currency.
+        r"""The billing currency of the Reserved Instance you are purchasing. It's specified using ISO 4217 standard currency.
 Value: USD.
         :rtype: str
         """
@@ -16311,7 +16311,7 @@ Value: USD.
 
     @property
     def Duration(self):
-        """The **validity** of the Reserved Instance in seconds, which is the purchased usage period. For example, 31536000.
+        r"""The **validity** of the Reserved Instance in seconds, which is the purchased usage period. For example, 31536000.
 Unit: second
         :rtype: int
         """
@@ -16323,7 +16323,7 @@ Unit: second
 
     @property
     def FixedPrice(self):
-        """The purchase price of the Reserved Instance, such as 4000.0.
+        r"""The purchase price of the Reserved Instance, such as 4000.0.
 Unit: this field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.
         :rtype: float
         """
@@ -16335,7 +16335,7 @@ Unit: this field uses the currency code specified in `currencyCode`, and only su
 
     @property
     def InstanceType(self):
-        """The instance model of the Reserved Instance, such as S3.MEDIUM4.
+        r"""The instance model of the Reserved Instance, such as S3.MEDIUM4.
 Valid values: please see <a href="https://intl.cloud.tencent.com/document/product/213/11518">Reserved Instance Types</a>
         :rtype: str
         """
@@ -16347,7 +16347,7 @@ Valid values: please see <a href="https://intl.cloud.tencent.com/document/produc
 
     @property
     def OfferingType(self):
-        """The payment term of the Reserved Instance, such as **All Upfront**.
+        r"""The payment term of the Reserved Instance, such as **All Upfront**.
 Valid value: All Upfront.
         :rtype: str
         """
@@ -16359,7 +16359,7 @@ Valid value: All Upfront.
 
     @property
     def ReservedInstancesOfferingId(self):
-        """The ID of the Reserved Instance offering, such as 650c138f-ae7e-4750-952a-96841d6e9fc1.
+        r"""The ID of the Reserved Instance offering, such as 650c138f-ae7e-4750-952a-96841d6e9fc1.
         :rtype: str
         """
         return self._ReservedInstancesOfferingId
@@ -16370,7 +16370,7 @@ Valid value: All Upfront.
 
     @property
     def ProductDescription(self):
-        """The operating system of the Reserved Instance, such as **linux**.
+        r"""The operating system of the Reserved Instance, such as **linux**.
 Valid value: linux.
         :rtype: str
         """
@@ -16382,7 +16382,7 @@ Valid value: linux.
 
     @property
     def UsagePrice(self):
-        """The hourly usage price of the Reserved Instance, such as 0.0.
+        r"""The hourly usage price of the Reserved Instance, such as 0.0.
 Currently, the only supported payment mode is **All Upfront**, so the default value of `UsagePrice` is 0 USD/hr.
 Unit: USD/hr. This field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.
         :rtype: float
@@ -16415,7 +16415,7 @@ Unit: USD/hr. This field uses the currency code specified in `currencyCode`, and
 
 
 class ResetInstanceRequest(AbstractModel):
-    """ResetInstance request structure.
+    r"""ResetInstance request structure.
 
     """
 
@@ -16447,7 +16447,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: str
         """
         return self._InstanceId
@@ -16458,7 +16458,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        """Specified effective [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways:<br/><li>for IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE); for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list).</li><li>Call the API [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""Specified effective [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways:<br/><li>for IDs of `public images`, `custom images`, and `shared images`, log in to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE); for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list).</li><li>Call the API [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
 <br>Default value: current image.
         :rtype: str
         """
@@ -16470,7 +16470,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """Configurations of the system disk. For an instance whose system disk is a cloud disk, this parameter can be used to expand the system disk by specifying a new capacity after reinstallation. The system disk capacity can only be expanded but not shrunk. Reinstalling the system can only resize rather than changing the type of the system disk.
+        r"""Configurations of the system disk. For an instance whose system disk is a cloud disk, this parameter can be used to expand the system disk by specifying a new capacity after reinstallation. The system disk capacity can only be expanded but not shrunk. Reinstalling the system can only resize rather than changing the type of the system disk.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -16481,7 +16481,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        """Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        r"""Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -16492,7 +16492,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
-        """Enhanced services. You can specify whether to enable services such as Cloud Security and Cloud Monitor through this parameter. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled for public images by default, but not enabled for custom images and marketplace images by default. Instead, they use services retained in the images.
+        r"""Enhanced services. You can specify whether to enable services such as Cloud Security and Cloud Monitor through this parameter. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled for public images by default, but not enabled for custom images and marketplace images by default. Instead, they use services retained in the images.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -16503,7 +16503,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def HostName(self):
-        """When reinstalling a system, you can modify an instance's hostname.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
+        r"""When reinstalling a system, you can modify an instance's hostname.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li>
         :rtype: str
         """
         return self._HostName
@@ -16514,7 +16514,7 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def UserData(self):
-        """User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        r"""User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
         :rtype: str
         """
         return self._UserData
@@ -16549,7 +16549,7 @@ class ResetInstanceRequest(AbstractModel):
 
 
 class ResetInstanceResponse(AbstractModel):
-    """ResetInstance response structure.
+    r"""ResetInstance response structure.
 
     """
 
@@ -16562,7 +16562,7 @@ class ResetInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16577,7 +16577,7 @@ class ResetInstanceResponse(AbstractModel):
 
 
 class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
-    """ResetInstancesInternetMaxBandwidth request structure.
+    r"""ResetInstancesInternetMaxBandwidth request structure.
 
     """
 
@@ -16599,7 +16599,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100. When changing the bandwidth of instances with `BANDWIDTH_PREPAID` or `BANDWIDTH_POSTPAID_BY_HOUR` as the network billing method, you can only specify one instance at a time.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100. When changing the bandwidth of instances with `BANDWIDTH_PREPAID` or `BANDWIDTH_POSTPAID_BY_HOUR` as the network billing method, you can only specify one instance at a time.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -16610,7 +16610,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        """Configuration of public network egress bandwidth. The maximum bandwidth varies among different models. For more information, see the documentation on bandwidth limits. Currently only the `InternetMaxBandwidthOut` parameter is supported.
+        r"""Configuration of public network egress bandwidth. The maximum bandwidth varies among different models. For more information, see the documentation on bandwidth limits. Currently only the `InternetMaxBandwidthOut` parameter is supported.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -16621,7 +16621,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
+        r"""Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
         :rtype: str
         """
         return self._StartTime
@@ -16632,7 +16632,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9388?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9388?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :rtype: str
         """
         return self._EndTime
@@ -16660,7 +16660,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
 
 class ResetInstancesInternetMaxBandwidthResponse(AbstractModel):
-    """ResetInstancesInternetMaxBandwidth response structure.
+    r"""ResetInstancesInternetMaxBandwidth response structure.
 
     """
 
@@ -16673,7 +16673,7 @@ class ResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16688,7 +16688,7 @@ class ResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
 
 class ResetInstancesPasswordRequest(AbstractModel):
-    """ResetInstancesPassword request structure.
+    r"""ResetInstancesPassword request structure.
 
     """
 
@@ -16712,7 +16712,7 @@ For a Windows CVM, the password must be 12 to 30 characters in length. It cannot
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -16723,7 +16723,7 @@ For a Windows CVM, the password must be 12 to 30 characters in length. It cannot
 
     @property
     def Password(self):
-        """Login password of the instance. The password requirements vary among different operating systems:
+        r"""Login password of the instance. The password requirements vary among different operating systems:
 For a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with "/", and must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
 For a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with "/" or contain a username. It must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<br><li>If the specified instances include both `Linux` and `Windows` instances, you will need to follow the password requirements for `Windows` instances.
         :rtype: str
@@ -16736,7 +16736,7 @@ For a Windows CVM, the password must be 12 to 30 characters in length. It cannot
 
     @property
     def UserName(self):
-        """Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters.
+        r"""Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters.
         :rtype: str
         """
         return self._UserName
@@ -16747,7 +16747,7 @@ For a Windows CVM, the password must be 12 to 30 characters in length. It cannot
 
     @property
     def ForceStop(self):
-        """Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
+        r"""Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.
         :rtype: bool
         """
         return self._ForceStop
@@ -16773,7 +16773,7 @@ For a Windows CVM, the password must be 12 to 30 characters in length. It cannot
 
 
 class ResetInstancesPasswordResponse(AbstractModel):
-    """ResetInstancesPassword response structure.
+    r"""ResetInstancesPassword response structure.
 
     """
 
@@ -16786,7 +16786,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16801,7 +16801,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
 
 class ResetInstancesTypeRequest(AbstractModel):
-    """ResetInstancesType request structure.
+    r"""ResetInstancesType request structure.
 
     """
 
@@ -16820,7 +16820,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API and find the value `InstanceId` in the response. The maximum number of instances in each request is 1.
+        r"""Instance ID(s). To obtain the instance IDs, you can call the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API and find the value `InstanceId` in the response. The maximum number of instances in each request is 1.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -16831,7 +16831,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        r"""Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceType
@@ -16842,7 +16842,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Forced shutdown of a running instances. We recommend you firstly try to shut down a running instance manually. Valid values: <br><li>TRUE: forced shutdown of an instance after a normal shutdown fails.<br><li>FALSE: no forced shutdown of an instance after a normal shutdown fails.<br><br>Default value: FALSE.<br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force a CVM to shut off if the normal shutdown fails.
+        r"""Forced shutdown of a running instances. We recommend you firstly try to shut down a running instance manually. Valid values: <br><li>TRUE: forced shutdown of an instance after a normal shutdown fails.<br><li>FALSE: no forced shutdown of an instance after a normal shutdown fails.<br><br>Default value: FALSE.<br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force a CVM to shut off if the normal shutdown fails.
         :rtype: bool
         """
         return self._ForceStop
@@ -16867,7 +16867,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
 
 class ResetInstancesTypeResponse(AbstractModel):
-    """ResetInstancesType response structure.
+    r"""ResetInstancesType response structure.
 
     """
 
@@ -16880,7 +16880,7 @@ class ResetInstancesTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16895,7 +16895,7 @@ class ResetInstancesTypeResponse(AbstractModel):
 
 
 class ResizeInstanceDisksRequest(AbstractModel):
-    """ResizeInstanceDisks request structure.
+    r"""ResizeInstanceDisks request structure.
 
     """
 
@@ -16923,7 +16923,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
+        r"""Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.
         :rtype: str
         """
         return self._InstanceId
@@ -16934,7 +16934,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def DataDisks(self):
-        """Configuration information of a data disk to be expanded. Only inelastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. The unit of data disk capacity is GB. The minimum expansion step is 10 GB. For more information about data disk types, refer to [Disk Product Introduction](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). The available data disk type is restricted by the instance type `InstanceType`. Additionally, the maximum allowable capacity for expansion varies by data disk type.
+        r"""Configuration information of a data disk to be expanded. Only inelastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. The unit of data disk capacity is GB. The minimum expansion step is 10 GB. For more information about data disk types, refer to [Disk Product Introduction](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). The available data disk type is restricted by the instance type `InstanceType`. Additionally, the maximum allowable capacity for expansion varies by data disk type.
 <dx-alert infotype="explain" title="">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>
         :rtype: list of DataDisk
         """
@@ -16946,7 +16946,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def ForceStop(self):
-        """Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.
+        r"""Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.
         :rtype: bool
         """
         return self._ForceStop
@@ -16957,7 +16957,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        """Configuration information of a system disk to be expanded. Only cloud disks can be expanded.
+        r"""Configuration information of a system disk to be expanded. Only cloud disks can be expanded.
 
 <dx-alert infotype="explain" title="">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -16970,7 +16970,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
     @property
     def ResizeOnline(self):
-        """Whether the cloud disk is expanded online.
+        r"""Whether the cloud disk is expanded online.
         :rtype: bool
         """
         return self._ResizeOnline
@@ -17004,7 +17004,7 @@ class ResizeInstanceDisksRequest(AbstractModel):
 
 
 class ResizeInstanceDisksResponse(AbstractModel):
-    """ResizeInstanceDisks response structure.
+    r"""ResizeInstanceDisks response structure.
 
     """
 
@@ -17017,7 +17017,7 @@ class ResizeInstanceDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17032,7 +17032,7 @@ class ResizeInstanceDisksResponse(AbstractModel):
 
 
 class RunAutomationServiceEnabled(AbstractModel):
-    """Describes the TAT service information.
+    r"""Describes the TAT service information.
 
     """
 
@@ -17045,7 +17045,7 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        r"""Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
         :rtype: bool
         """
         return self._Enabled
@@ -17068,7 +17068,7 @@ class RunAutomationServiceEnabled(AbstractModel):
 
 
 class RunInstancesRequest(AbstractModel):
-    """RunInstances request structure.
+    r"""RunInstances request structure.
 
     """
 
@@ -17178,7 +17178,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargeType(self):
-        """Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: Monthly Subscription, used for at least one month <br><li>`POSTPAID_BY_HOUR`: Hourly-based pay-as-you-go <br><li>`CDHPAID`: [Dedicated CVM](https://www.tencentcloud.com/document/product/416/5068?lang=en&pg=) (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>`SPOTPAID`: [Spot instance](https://intl.cloud.tencent.com/document/product/213/17817)<br>Default value: `POSTPAID_BY_HOUR`.
+        r"""Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: Monthly Subscription, used for at least one month <br><li>`POSTPAID_BY_HOUR`: Hourly-based pay-as-you-go <br><li>`CDHPAID`: [Dedicated CVM](https://www.tencentcloud.com/document/product/416/5068?lang=en&pg=) (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>`SPOTPAID`: [Spot instance](https://intl.cloud.tencent.com/document/product/213/17817)<br>Default value: `POSTPAID_BY_HOUR`.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -17189,7 +17189,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargePrepaid(self):
-        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        r"""Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -17200,7 +17200,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Placement(self):
-        """Location of the instance. You can use this parameter to specify the availability zone, project, and CDH (for dedicated CVMs).
+        r"""Location of the instance. You can use this parameter to specify the availability zone, project, and CDH (for dedicated CVMs).
  <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
@@ -17212,7 +17212,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceType(self):
-        """The instance model. 
+        r"""The instance model. 
 <br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :rtype: str
         """
@@ -17224,7 +17224,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def ImageId(self):
-        """The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
+        r"""The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
         :rtype: str
         """
@@ -17236,7 +17236,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def SystemDisk(self):
-        """System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        r"""System disk configuration of the instance. If this parameter is not specified, the default value will be used.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -17247,7 +17247,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DataDisks(self):
-        """The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
+        r"""The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -17258,7 +17258,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def VirtualPrivateCloud(self):
-        """Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be the same as the number of VPC IPs, which cannot be greater than 20.
+        r"""Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be the same as the number of VPC IPs, which cannot be greater than 20.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -17269,7 +17269,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InternetAccessible(self):
-        """Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        r"""Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -17280,7 +17280,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceCount(self):
-        """The number of instances to be purchased. Value range for pay-as-you-go instances: [1, 100]. Default value: `1`. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on the quota, see [Quota for CVM Instances](https://intl.cloud.tencent.com/document/product/213/2664).
+        r"""The number of instances to be purchased. Value range for pay-as-you-go instances: [1, 100]. Default value: `1`. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on the quota, see [Quota for CVM Instances](https://intl.cloud.tencent.com/document/product/213/2664).
         :rtype: int
         """
         return self._InstanceCount
@@ -17291,7 +17291,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceName(self):
-        """Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
+        r"""Instance name.<br><li>If this parameter is not specified, "Unnamed" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>
         :rtype: str
         """
         return self._InstanceName
@@ -17302,7 +17302,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def LoginSettings(self):
-        """Instance login settings. You can use this parameter to set the login method, password and key of the instance, or keep the original login settings of the image. If it's not specified, the user needs to set the login password using the "Reset password" option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
+        r"""Instance login settings. You can use this parameter to set the login method, password and key of the instance, or keep the original login settings of the image. If it's not specified, the user needs to set the login password using the "Reset password" option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -17313,7 +17313,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def SecurityGroupIds(self):
-        """Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
+        r"""Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -17324,7 +17324,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def EnhancedService(self):
-        """Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
+        r"""Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         """
         return self._EnhancedService
@@ -17335,7 +17335,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def ClientToken(self):
-        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
         :rtype: str
         """
         return self._ClientToken
@@ -17346,7 +17346,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def HostName(self):
-        """Hostname of an instance.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li><br><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server{R:3}`. If you purchase only one instance, the hostname will be `server3`; if you purchase two, they will be `server3` and `server4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><br><li>If you purchase multiple instances without specifying a pattern string, the hostnames will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server`, the hostnames will be `server1` and `server2`.</li>
+        r"""Hostname of an instance.<br><li>Period (.) and hyphen (-) should not be used as the first or last character of the hostname, and should not be used consecutively.</li><br><li>Windows instances: The hostname should contain 2 to 15 characters, including letters (case insensitive), digits, and hyphens (-), does not support periods (.), and should not be all digits.</li><br><li>Instances of other types (such as Linux instances): The hostname should contain 2 to 60 characters, including multiple periods (.), with each segment between periods considered as one section. Each section can contain letters (case insensitive), digits, and hyphens (-).</li><br><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server{R:3}`. If you purchase only one instance, the hostname will be `server3`; if you purchase two, they will be `server3` and `server4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><br><li>If you purchase multiple instances without specifying a pattern string, the hostnames will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server`, the hostnames will be `server1` and `server2`.</li>
         :rtype: str
         """
         return self._HostName
@@ -17357,7 +17357,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def ActionTimer(self):
-        """Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
+        r"""Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         """
         return self._ActionTimer
@@ -17368,7 +17368,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. You can only specify one.
+        r"""Placement group ID. You can only specify one.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -17379,7 +17379,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def TagSpecification(self):
-        """List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
+        r"""List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -17390,7 +17390,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceMarketOptions(self):
-        """The market options of the instance.
+        r"""The market options of the instance.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -17401,7 +17401,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def UserData(self):
-        """User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        r"""User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
         :rtype: str
         """
         return self._UserData
@@ -17412,7 +17412,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Metadata(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         """
         return self._Metadata
@@ -17423,7 +17423,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DryRun(self):
-        """Whether the request is a dry run only.
+        r"""Whether the request is a dry run only.
 `true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
 If the dry run fails, the corresponding error code will be returned.
 If the dry run succeeds, the RequestId will be returned.
@@ -17438,7 +17438,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def CpuTopology(self):
-        """Information about the CPU topology of an instance. If not specified, it is determined by system resources.
+        r"""Information about the CPU topology of an instance. If not specified, it is determined by system resources.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         """
         return self._CpuTopology
@@ -17449,7 +17449,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def CamRoleName(self):
-        """CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1) API.
+        r"""CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._CamRoleName
@@ -17460,7 +17460,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def HpcClusterId(self):
-        """HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
+        r"""HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.
         :rtype: str
         """
         return self._HpcClusterId
@@ -17471,7 +17471,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def LaunchTemplate(self):
-        """Instance launch template.
+        r"""Instance launch template.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
         """
         return self._LaunchTemplate
@@ -17482,7 +17482,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DedicatedClusterId(self):
-        """Specify the ID of the dedicated cluster where the CVM is created.
+        r"""Specify the ID of the dedicated cluster where the CVM is created.
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -17493,7 +17493,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def ChcIds(self):
-        """Specify the CHC physical server that used to create the CHC CVM.
+        r"""Specify the CHC physical server that used to create the CHC CVM.
         :rtype: list of str
         """
         return self._ChcIds
@@ -17504,7 +17504,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DisableApiTermination(self):
-        """Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
+        r"""Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -17515,7 +17515,7 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def EnableJumboFrame(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._EnableJumboFrame
@@ -17602,7 +17602,7 @@ If the dry run succeeds, the RequestId will be returned.
 
 
 class RunInstancesResponse(AbstractModel):
-    """RunInstances response structure.
+    r"""RunInstances response structure.
 
     """
 
@@ -17618,7 +17618,7 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """If you use this API to create instance(s), this parameter will be returned, representing one or more instance IDs. Retuning the instance ID list does not necessarily mean that the instance(s) were created successfully. To check whether the instance(s) were created successfully, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and check the status of the instances in `InstancesSet` in the response. If the status of an instance changes from "PENDING" to "RUNNING", it means that the instance has been created successfully.
+        r"""If you use this API to create instance(s), this parameter will be returned, representing one or more instance IDs. Retuning the instance ID list does not necessarily mean that the instance(s) were created successfully. To check whether the instance(s) were created successfully, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and check the status of the instances in `InstancesSet` in the response. If the status of an instance changes from "PENDING" to "RUNNING", it means that the instance has been created successfully.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -17629,7 +17629,7 @@ class RunInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17645,7 +17645,7 @@ class RunInstancesResponse(AbstractModel):
 
 
 class RunMonitorServiceEnabled(AbstractModel):
-    """Describes information related to the Cloud Monitor service.
+    r"""Describes information related to the Cloud Monitor service.
 
     """
 
@@ -17658,7 +17658,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """Whether to enable the cloud monitor service. value ranges from: <li>true: indicates enabling the cloud monitor service</li> <li>false: indicates disabling the cloud monitor service</li> default value: true.
+        r"""Whether to enable the cloud monitor service. value ranges from: <li>true: indicates enabling the cloud monitor service</li> <li>false: indicates disabling the cloud monitor service</li> default value: true.
         :rtype: bool
         """
         return self._Enabled
@@ -17681,7 +17681,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
 
 class RunSecurityServiceEnabled(AbstractModel):
-    """Describes information related to the Cloud Security service.
+    r"""Describes information related to the Cloud Security service.
 
     """
 
@@ -17694,7 +17694,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
-        """Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
+        r"""Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
         :rtype: bool
         """
         return self._Enabled
@@ -17717,7 +17717,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
 
 class SharePermission(AbstractModel):
-    """Describes image sharing information.
+    r"""Describes image sharing information.
 
     """
 
@@ -17733,7 +17733,7 @@ class SharePermission(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """Time when an image was shared.
+        r"""Time when an image was shared.
         :rtype: str
         """
         return self._CreatedTime
@@ -17744,7 +17744,7 @@ class SharePermission(AbstractModel):
 
     @property
     def AccountId(self):
-        """ID of the account with which the image is shared.
+        r"""ID of the account with which the image is shared.
         :rtype: str
         """
         return self._AccountId
@@ -17768,7 +17768,7 @@ class SharePermission(AbstractModel):
 
 
 class Snapshot(AbstractModel):
-    """Describes information on the snapshot associated with an image.
+    r"""Describes information on the snapshot associated with an image.
 
     """
 
@@ -17789,7 +17789,7 @@ DATA_DISK: data disk
 
     @property
     def SnapshotId(self):
-        """Snapshot ID.
+        r"""Snapshot ID.
         :rtype: str
         """
         return self._SnapshotId
@@ -17800,7 +17800,7 @@ DATA_DISK: data disk
 
     @property
     def DiskUsage(self):
-        """Type of the cloud disk used to create the snapshot. Valid values:
+        r"""Type of the cloud disk used to create the snapshot. Valid values:
 SYSTEM_DISK: system disk
 DATA_DISK: data disk
         :rtype: str
@@ -17813,7 +17813,7 @@ DATA_DISK: data disk
 
     @property
     def DiskSize(self):
-        """Size of the cloud disk used to create the snapshot; unit: GB.
+        r"""Size of the cloud disk used to create the snapshot; unit: GB.
         :rtype: int
         """
         return self._DiskSize
@@ -17838,7 +17838,7 @@ DATA_DISK: data disk
 
 
 class SpotMarketOptions(AbstractModel):
-    """Options related to bidding.
+    r"""Options related to bidding.
 
     """
 
@@ -17854,7 +17854,7 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def MaxPrice(self):
-        """Bid price.
+        r"""Bid price.
         :rtype: str
         """
         return self._MaxPrice
@@ -17865,7 +17865,7 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def SpotInstanceType(self):
-        """Bid request type. valid values: one-time. currently, only the one-time type is supported.
+        r"""Bid request type. valid values: one-time. currently, only the one-time type is supported.
         :rtype: str
         """
         return self._SpotInstanceType
@@ -17889,7 +17889,7 @@ class SpotMarketOptions(AbstractModel):
 
 
 class StartInstancesRequest(AbstractModel):
-    """StartInstances request structure.
+    r"""StartInstances request structure.
 
     """
 
@@ -17902,7 +17902,7 @@ class StartInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17925,7 +17925,7 @@ class StartInstancesRequest(AbstractModel):
 
 
 class StartInstancesResponse(AbstractModel):
-    """StartInstances response structure.
+    r"""StartInstances response structure.
 
     """
 
@@ -17938,7 +17938,7 @@ class StartInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17953,7 +17953,7 @@ class StartInstancesResponse(AbstractModel):
 
 
 class StopInstancesRequest(AbstractModel):
-    """StopInstances request structure.
+    r"""StopInstances request structure.
 
     """
 
@@ -17977,7 +17977,7 @@ This parameter is only valid for some pay-as-you-go instances using cloud disks.
 
     @property
     def InstanceIds(self):
-        """Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
+        r"""Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17988,7 +17988,7 @@ This parameter is only valid for some pay-as-you-go instances using cloud disks.
 
     @property
     def ForceStop(self):
-        """(Disused. Please use `StopType` instead.) Whether to forcibly shut down an instance after a normal shutdown fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. 
+        r"""(Disused. Please use `StopType` instead.) Whether to forcibly shut down an instance after a normal shutdown fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. 
         :rtype: bool
         """
         return self._ForceStop
@@ -17999,7 +17999,7 @@ This parameter is only valid for some pay-as-you-go instances using cloud disks.
 
     @property
     def StopType(self):
-        """Instance shutdown mode. Valid values: <br><li>SOFT_FIRST: perform a soft shutdown first, and force shut down the instance if the soft shutdown fails <br><li>HARD: force shut down the instance directly <br><li>SOFT: soft shutdown only <br>Default value: SOFT.
+        r"""Instance shutdown mode. Valid values: <br><li>SOFT_FIRST: perform a soft shutdown first, and force shut down the instance if the soft shutdown fails <br><li>HARD: force shut down the instance directly <br><li>SOFT: soft shutdown only <br>Default value: SOFT.
         :rtype: str
         """
         return self._StopType
@@ -18010,7 +18010,7 @@ This parameter is only valid for some pay-as-you-go instances using cloud disks.
 
     @property
     def StoppedMode(self):
-        """Billing method of a pay-as-you-go instance after shutdown.
+        r"""Billing method of a pay-as-you-go instance after shutdown.
 Valid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>STOP_CHARGING: billing stops after shutdown <br>Default value: KEEP_CHARGING.
 This parameter is only valid for some pay-as-you-go instances using cloud disks. For more information, see [No charges when shut down for pay-as-you-go instances](https://intl.cloud.tencent.com/document/product/213/19918).
         :rtype: str
@@ -18038,7 +18038,7 @@ This parameter is only valid for some pay-as-you-go instances using cloud disks.
 
 
 class StopInstancesResponse(AbstractModel):
-    """StopInstances response structure.
+    r"""StopInstances response structure.
 
     """
 
@@ -18051,7 +18051,7 @@ class StopInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18066,7 +18066,7 @@ class StopInstancesResponse(AbstractModel):
 
 
 class StorageBlock(AbstractModel):
-    """Information on local HDD storage.
+    r"""Information on local HDD storage.
 
     """
 
@@ -18085,7 +18085,7 @@ class StorageBlock(AbstractModel):
 
     @property
     def Type(self):
-        """HDD LOCAL storage type specifies the value: LOCAL_PRO.
+        r"""HDD LOCAL storage type specifies the value: LOCAL_PRO.
         :rtype: str
         """
         return self._Type
@@ -18096,7 +18096,7 @@ class StorageBlock(AbstractModel):
 
     @property
     def MinSize(self):
-        """Specifies the minimum HDD local storage capacity. measurement unit: GiB.
+        r"""Specifies the minimum HDD local storage capacity. measurement unit: GiB.
         :rtype: int
         """
         return self._MinSize
@@ -18107,7 +18107,7 @@ class StorageBlock(AbstractModel):
 
     @property
     def MaxSize(self):
-        """Specifies the maximum capacity of HDD local storage. measurement unit: GiB.
+        r"""Specifies the maximum capacity of HDD local storage. measurement unit: GiB.
         :rtype: int
         """
         return self._MaxSize
@@ -18132,7 +18132,7 @@ class StorageBlock(AbstractModel):
 
 
 class SyncImage(AbstractModel):
-    """Image sync information
+    r"""Image sync information
 
     """
 
@@ -18148,7 +18148,7 @@ class SyncImage(AbstractModel):
 
     @property
     def ImageId(self):
-        """Image ID
+        r"""Image ID
         :rtype: str
         """
         return self._ImageId
@@ -18159,7 +18159,7 @@ class SyncImage(AbstractModel):
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -18183,7 +18183,7 @@ class SyncImage(AbstractModel):
 
 
 class SyncImagesRequest(AbstractModel):
-    """SyncImages request structure.
+    r"""SyncImages request structure.
 
     """
 
@@ -18222,7 +18222,7 @@ If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
 
     @property
     def ImageIds(self):
-        """Image ID list. You can obtain the image IDs in the following ways:<br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><li>Obtain the image IDs in the [Image console](https://console.cloud.tencent.com/cvm/image).<br>The image IDs should meet the following requirement:</li><li>The image ID should correspond to an image in the `NORMAL` state.</li>For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
+        r"""Image ID list. You can obtain the image IDs in the following ways:<br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><li>Obtain the image IDs in the [Image console](https://console.cloud.tencent.com/cvm/image).<br>The image IDs should meet the following requirement:</li><li>The image ID should correspond to an image in the `NORMAL` state.</li>For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
         :rtype: list of str
         """
         return self._ImageIds
@@ -18233,7 +18233,7 @@ If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
 
     @property
     def DestinationRegions(self):
-        """List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://intl.cloud.tencent.com/document/product/213/4943?from_cn_redirect=1#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
+        r"""List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://intl.cloud.tencent.com/document/product/213/4943?from_cn_redirect=1#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._DestinationRegions
@@ -18244,7 +18244,7 @@ If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
 
     @property
     def DryRun(self):
-        """Checks whether image synchronization can be initiated.
+        r"""Checks whether image synchronization can be initiated.
 
 Default value: false.
         :rtype: bool
@@ -18257,7 +18257,7 @@ Default value: false.
 
     @property
     def ImageName(self):
-        """Target image name. By default, the source image name is used.
+        r"""Target image name. By default, the source image name is used.
         :rtype: str
         """
         return self._ImageName
@@ -18268,7 +18268,7 @@ Default value: false.
 
     @property
     def ImageSetRequired(self):
-        """Whether to return the ID of the image created in the target region.
+        r"""Whether to return the ID of the image created in the target region.
 
 Default value: false.
         :rtype: bool
@@ -18281,7 +18281,7 @@ Default value: false.
 
     @property
     def Encrypt(self):
-        """Whether to synchronize as an encrypted custom image.
+        r"""Whether to synchronize as an encrypted custom image.
 Default value is `false`.
 Synchronization to an encrypted custom image is only supported within the same region.
         :rtype: bool
@@ -18294,7 +18294,7 @@ Synchronization to an encrypted custom image is only supported within the same r
 
     @property
     def KmsKeyId(self):
-        """KMS key ID used when synchronizing to an encrypted custom image. 
+        r"""KMS key ID used when synchronizing to an encrypted custom image. 
 This parameter is valid only synchronizing to an encrypted image.
 If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
         :rtype: str
@@ -18325,7 +18325,7 @@ If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
 
 
 class SyncImagesResponse(AbstractModel):
-    """SyncImages response structure.
+    r"""SyncImages response structure.
 
     """
 
@@ -18341,7 +18341,7 @@ class SyncImagesResponse(AbstractModel):
 
     @property
     def ImageSet(self):
-        """ID of the image created in the destination region
+        r"""ID of the image created in the destination region
         :rtype: list of SyncImage
         """
         return self._ImageSet
@@ -18352,7 +18352,7 @@ class SyncImagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18373,7 +18373,7 @@ class SyncImagesResponse(AbstractModel):
 
 
 class SystemDisk(AbstractModel):
-    """Describes information on the block device where the operating system is stored, i.e., the system disk.
+    r"""Describes information on the block device where the operating system is stored, i.e., the system disk.
 
     """
 
@@ -18408,7 +18408,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def DiskType(self):
-        """Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>
+        r"""Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>
 <li>LOCAL_BASIC: Local SATA disk</li>
 <li>LOCAL_SSD: Local NVMe SSD</li>
 <li>CLOUD_BASIC: Cloud SATA disk</li>
@@ -18428,7 +18428,7 @@ Default value: Current disk types with inventory available.
 
     @property
     def DiskId(self):
-        """Specifies the system disk ID.
+        r"""Specifies the system disk ID.
 This parameter currently only serves as a response parameter for query apis such as `DescribeInstances`, and cannot be used as an input parameter for write apis such as `RunInstances`.
         :rtype: str
         """
@@ -18440,7 +18440,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def DiskSize(self):
-        """System disk size; unit: GiB; default value: 50 GiB.
+        r"""System disk size; unit: GiB; default value: 50 GiB.
         :rtype: int
         """
         return self._DiskSize
@@ -18451,7 +18451,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def CdcId(self):
-        """Specifies the exclusive cluster ID it belongs to.
+        r"""Specifies the exclusive cluster ID it belongs to.
         :rtype: str
         """
         return self._CdcId
@@ -18462,7 +18462,7 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def DiskName(self):
-        """Disk name, which specifies a length not exceeding 128 characters.
+        r"""Disk name, which specifies a length not exceeding 128 characters.
         :rtype: str
         """
         return self._DiskName
@@ -18489,7 +18489,7 @@ This parameter currently only serves as a response parameter for query apis such
 
 
 class Tag(AbstractModel):
-    """Key-value pair of a tag.
+    r"""Key-value pair of a tag.
 
     """
 
@@ -18505,7 +18505,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._Key
@@ -18516,7 +18516,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._Value
@@ -18540,7 +18540,7 @@ class Tag(AbstractModel):
 
 
 class TagSpecification(AbstractModel):
-    """Description of tags associated with resource instances during instance creation.
+    r"""Description of tags associated with resource instances during instance creation.
 
     """
 
@@ -18556,7 +18556,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Tag-Bound resource type. "instance" for cloud virtual machine, "host" for cdh, "image" for mirror, and "keypair" for key.
+        r"""Tag-Bound resource type. "instance" for cloud virtual machine, "host" for cdh, "image" for mirror, and "keypair" for key.
         :rtype: str
         """
         return self._ResourceType
@@ -18567,7 +18567,7 @@ class TagSpecification(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag pair list
+        r"""Tag pair list
         :rtype: list of Tag
         """
         return self._Tags
@@ -18596,7 +18596,7 @@ class TagSpecification(AbstractModel):
 
 
 class TargetOS(AbstractModel):
-    """Information about the target operating system for operating system switching.
+    r"""Information about the target operating system for operating system switching.
 
     """
 
@@ -18612,7 +18612,7 @@ class TargetOS(AbstractModel):
 
     @property
     def TargetOSType(self):
-        """Target operating system type.
+        r"""Target operating system type.
         :rtype: str
         """
         return self._TargetOSType
@@ -18623,7 +18623,7 @@ class TargetOS(AbstractModel):
 
     @property
     def TargetOSVersion(self):
-        """Target operating system version.
+        r"""Target operating system version.
         :rtype: str
         """
         return self._TargetOSVersion
@@ -18647,7 +18647,7 @@ class TargetOS(AbstractModel):
 
 
 class TerminateInstancesRequest(AbstractModel):
-    """TerminateInstances request structure.
+    r"""TerminateInstances request structure.
 
     """
 
@@ -18670,7 +18670,7 @@ Default value: `false`.
 
     @property
     def InstanceIds(self):
-        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        r"""One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -18681,7 +18681,7 @@ Default value: `false`.
 
     @property
     def ReleaseAddress(self):
-        """Release an Elastic IP. Under EIP 2.0, only the first EIP on the primary network interface can be released, and currently supported release types are limited to HighQualityEIP, AntiDDoSEIP, EIPv6, and HighQualityEIPv6.
+        r"""Release an Elastic IP. Under EIP 2.0, only the first EIP on the primary network interface can be released, and currently supported release types are limited to HighQualityEIP, AntiDDoSEIP, EIPv6, and HighQualityEIPv6.
 Default value:  `false`.
 
 This feature is currently in gradually released phase. To access it, please contact us.
@@ -18695,7 +18695,7 @@ This feature is currently in gradually released phase. To access it, please cont
 
     @property
     def ReleasePrepaidDataDisks(self):
-        """Whether to release a monthly subscription data disk mounted on an instance. true: Release the data disk along with termination of the instance. false: Only terminate the instance.
+        r"""Whether to release a monthly subscription data disk mounted on an instance. true: Release the data disk along with termination of the instance. false: Only terminate the instance.
 Default value: `false`.
         :rtype: bool
         """
@@ -18721,7 +18721,7 @@ Default value: `false`.
 
 
 class TerminateInstancesResponse(AbstractModel):
-    """TerminateInstances response structure.
+    r"""TerminateInstances response structure.
 
     """
 
@@ -18734,7 +18734,7 @@ class TerminateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18749,7 +18749,7 @@ class TerminateInstancesResponse(AbstractModel):
 
 
 class VirtualPrivateCloud(AbstractModel):
-    """Describes information on VPC, including subnets, IP addresses, etc.
+    r"""Describes information on VPC, including subnets, IP addresses, etc.
 
     """
 
@@ -18775,7 +18775,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
+        r"""VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
         :rtype: str
         """
         return self._VpcId
@@ -18786,7 +18786,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
     @property
     def SubnetId(self):
-        """vpc subnet ID, in the form of `subnet-xxx`. valid vpc subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/subnet?rid=1); or they can be obtained from the `SubnetId` field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1). if SubnetId and VpcId are both input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.
+        r"""vpc subnet ID, in the form of `subnet-xxx`. valid vpc subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/subnet?rid=1); or they can be obtained from the `SubnetId` field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1). if SubnetId and VpcId are both input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.
         :rtype: str
         """
         return self._SubnetId
@@ -18797,7 +18797,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
     @property
     def AsVpcGateway(self):
-        """Whether it is used as a public gateway. A public gateway can only be used normally when an instance has a public IP address and is in a VPC. Valid values:<li>true: It is used as a public gateway.</li><li>false: It is not used as a public gateway.</li>Default value: false.
+        r"""Whether it is used as a public gateway. A public gateway can only be used normally when an instance has a public IP address and is in a VPC. Valid values:<li>true: It is used as a public gateway.</li><li>false: It is not used as a public gateway.</li>Default value: false.
         :rtype: bool
         """
         return self._AsVpcGateway
@@ -18808,7 +18808,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
     @property
     def PrivateIpAddresses(self):
-        """Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
+        r"""Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -18819,7 +18819,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
     @property
     def Ipv6AddressCount(self):
-        """Number of IPv6 addresses randomly generated for the ENI.
+        r"""Number of IPv6 addresses randomly generated for the ENI.
 If IPv6AddressType is specified under InternetAccessible, this parameter must not be set to 0.
         :rtype: int
         """
@@ -18847,7 +18847,7 @@ If IPv6AddressType is specified under InternetAccessible, this parameter must no
 
 
 class ZoneInfo(AbstractModel):
-    """Information on availability zones.
+    r"""Information on availability zones.
 
     """
 
@@ -18926,7 +18926,7 @@ The names of availability zones across the network are as follows:
 
     @property
     def Zone(self):
-        """Availability zone name, for example, ap-guangzhou-3.
+        r"""Availability zone name, for example, ap-guangzhou-3.
 
 The names of availability zones across the network are as follows:
 <li> ap-chongqing-1 </li>
@@ -18994,7 +18994,7 @@ The names of availability zones across the network are as follows:
 
     @property
     def ZoneName(self):
-        """Availability zone description, such as Guangzhou Zone 3.
+        r"""Availability zone description, such as Guangzhou Zone 3.
         :rtype: str
         """
         return self._ZoneName
@@ -19005,7 +19005,7 @@ The names of availability zones across the network are as follows:
 
     @property
     def ZoneId(self):
-        """Availability zone ID.
+        r"""Availability zone ID.
         :rtype: str
         """
         return self._ZoneId
@@ -19016,7 +19016,7 @@ The names of availability zones across the network are as follows:
 
     @property
     def ZoneState(self):
-        """Availability zone status. Valid values: `AVAILABLE`: available; `UNAVAILABLE`: unavailable.
+        r"""Availability zone status. Valid values: `AVAILABLE`: available; `UNAVAILABLE`: unavailable.
         :rtype: str
         """
         return self._ZoneState

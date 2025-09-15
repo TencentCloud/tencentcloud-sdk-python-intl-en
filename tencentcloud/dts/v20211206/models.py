@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CheckStep(AbstractModel):
-    """Check step
+    r"""Check step
 
     """
 
@@ -57,7 +57,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
-        """Step number
+        r"""Step number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -69,7 +69,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
-        """Step ID such as `ConnectDBCheck`, `VersionCheck`, and `SrcPrivilegeCheck`. The specific check items are subject to source and target instances.
+        r"""Step ID such as `ConnectDBCheck`, `VersionCheck`, and `SrcPrivilegeCheck`. The specific check items are subject to source and target instances.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -81,7 +81,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
-        """Step name
+        r"""Step name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -93,7 +93,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepStatus(self):
-        """Result of this check step. Valid values: `pass`, `failed`, `notStarted`, `blocked`, `warning`.
+        r"""Result of this check step. Valid values: `pass`, `failed`, `notStarted`, `blocked`, `warning`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -105,7 +105,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepMessage(self):
-        """Error message in this check step
+        r"""Error message in this check step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -117,7 +117,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailCheckItems(self):
-        """Specific check item in this check step
+        r"""Specific check item in this check step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DetailCheckItem
         """
@@ -129,7 +129,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasSkipped(self):
-        """Whether this step was skipped
+        r"""Whether this step was skipped
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -164,7 +164,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CheckStepInfo(AbstractModel):
-    """Check task running details
+    r"""Check task running details
 
     """
 
@@ -186,7 +186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartAt(self):
-        """Task start time
+        r"""Task start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -198,7 +198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndAt(self):
-        """Task end time
+        r"""Task end time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -210,7 +210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Task step information
+        r"""Task step information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
@@ -238,7 +238,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Column(AbstractModel):
-    """Column information in data sync
+    r"""Column information in data sync
 
     """
 
@@ -255,7 +255,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnName(self):
-        """Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Column nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ColumnName
@@ -266,7 +266,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewColumnName(self):
-        """New column name
+        r"""New column name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -291,7 +291,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareAbstractInfo(AbstractModel):
-    """Summary information of data consistency check
+    r"""Summary information of data consistency check
 
     """
 
@@ -357,7 +357,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
-        """Configuration parameters of the check task
+        r"""Configuration parameters of the check task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
@@ -369,7 +369,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Objects(self):
-        """Consistency check objects
+        r"""Consistency check objects
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
@@ -381,7 +381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Conclusion(self):
-        """Comparison conclusion. Valid values: `same`, `different`.
+        r"""Comparison conclusion. Valid values: `same`, `different`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -393,7 +393,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task status. Valid values: `success`, `failed`.
+        r"""Task status. Valid values: `success`, `failed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -405,7 +405,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalTables(self):
-        """Total number of tables
+        r"""Total number of tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -417,7 +417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckedTables(self):
-        """Number of checked tables
+        r"""Number of checked tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -429,7 +429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DifferentTables(self):
-        """Number of inconsistent tables
+        r"""Number of inconsistent tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -441,7 +441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkippedTables(self):
-        """Number of skipped tables
+        r"""Number of skipped tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -453,7 +453,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NearlyTableCount(self):
-        """The estimated number of tables
+        r"""The estimated number of tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -465,7 +465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DifferentRows(self):
-        """Number of inconsistent data rows
+        r"""Number of inconsistent data rows
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -477,7 +477,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcSampleRows(self):
-        """Source database row count, which takes effect only when the comparison type is **Row count comparison**.
+        r"""Source database row count, which takes effect only when the comparison type is **Row count comparison**.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -489,7 +489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstSampleRows(self):
-        """Target database row count, which takes effect only when the comparison type is **Row count comparison**.
+        r"""Target database row count, which takes effect only when the comparison type is **Row count comparison**.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -501,7 +501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartedAt(self):
-        """Start time
+        r"""Start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -513,7 +513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
-        """End time
+        r"""End time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -554,7 +554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareColumnItem(AbstractModel):
-    """Column options
+    r"""Column options
 
     """
 
@@ -567,7 +567,7 @@ class CompareColumnItem(AbstractModel):
 
     @property
     def ColumnName(self):
-        """Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Column nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ColumnName
@@ -590,7 +590,7 @@ class CompareColumnItem(AbstractModel):
 
 
 class CompareDetailInfo(AbstractModel):
-    """Data consistency check details
+    r"""Data consistency check details
 
     """
 
@@ -608,7 +608,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Difference(self):
-        """Details of inconsistent tables
+        r"""Details of inconsistent tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
         """
@@ -620,7 +620,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Skipped(self):
-        """Details of skipped tables
+        r"""Details of skipped tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
         """
@@ -649,7 +649,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareObject(AbstractModel):
-    """Configuration of the data consistency check object
+    r"""Configuration of the data consistency check object
 
     """
 
@@ -670,7 +670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectMode(self):
-        """Data comparison object mode (`all`: Entire instance; `partial`: Some objects)
+        r"""Data comparison object mode (`all`: Entire instance; `partial`: Some objects)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -682,7 +682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectItems(self):
-        """Object list
+        r"""Object list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareObjectItem
         """
@@ -694,7 +694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
-        """Advanced object types, such as account, index, shardkey, schema.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Advanced object types, such as account, index, shardkey, schema.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -724,7 +724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareObjectItem(AbstractModel):
-    """Database/Table objects for data consistency check
+    r"""Database/Table objects for data consistency check
 
     """
 
@@ -760,7 +760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        """Database name
+        r"""Database name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -772,7 +772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbMode(self):
-        """Database selection mode. Valid values: `all`, `partial`.
+        r"""Database selection mode. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -784,7 +784,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
-        """Schema name
+        r"""Schema name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -796,7 +796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
-        """Schema selection mode. Valid values: `all`, `partial`.
+        r"""Schema selection mode. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -808,7 +808,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        """Table configuration for data consistency check, which is required if `TableMode` is `partial`.
+        r"""Table configuration for data consistency check, which is required if `TableMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareTableItem
         """
@@ -820,7 +820,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
-        """View selection mode: all refers to all view objects under the current object, partial refers to partial view objects (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""View selection mode: all refers to all view objects under the current object, partial refers to partial view objects (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ViewMode
@@ -831,7 +831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
-        """View configuration used for consistency check. When ViewMode is partial, it needs to be filled in (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""View configuration used for consistency check. When ViewMode is partial, it needs to be filled in (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareViewItem
         """
         return self._Views
@@ -870,7 +870,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareOptions(AbstractModel):
-    """Consistency check options
+    r"""Consistency check options
 
     """
 
@@ -891,7 +891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """Comparative Method: dataCheck (Complete Data Comparison), sampleDataCheck (Sampling Data Comparison), rowsCount (Row Count Comparison)Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Comparative Method: dataCheck (Complete Data Comparison), sampleDataCheck (Sampling Data Comparison), rowsCount (Row Count Comparison)Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Method
@@ -902,7 +902,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        """Sampling rate. Value range: 0-100%.
+        r"""Sampling rate. Value range: 0-100%.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -914,7 +914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThreadCount(self):
-        """The number of threads, which defaults to 1. Value range: 1-5.
+        r"""The number of threads, which defaults to 1. Value range: 1-5.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -940,7 +940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareTableItem(AbstractModel):
-    """Table configuration for data consistency check
+    r"""Table configuration for data consistency check
 
     """
 
@@ -960,7 +960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -972,7 +972,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnMode(self):
-        """In column mode, all refers to all data, while partial refers to part of the data (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""In column mode, all refers to all data, while partial refers to part of the data (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ColumnMode
@@ -983,7 +983,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Columns(self):
-        """This field is required when ColumnMode is set to partial (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""This field is required when ColumnMode is set to partial (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareColumnItem
         """
         return self._Columns
@@ -1013,7 +1013,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareTaskInfo(AbstractModel):
-    """Data consistency check result
+    r"""Data consistency check result
 
     """
 
@@ -1031,7 +1031,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID
+        r"""Data consistency check task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1043,7 +1043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Data consistency check result. Valid values: `unstart` (the task is not started); `running` (the task is running); `canceled` (the task is stopped); `failed` (the task failed); `inconsistent` (the data is inconsistent); `consistent` (the data is consistent); `notexist` (the task does not exist).
+        r"""Data consistency check result. Valid values: `unstart` (the task is not started); `running` (the task is running); `canceled` (the task is stopped); `failed` (the task failed); `inconsistent` (the data is inconsistent); `consistent` (the data is consistent); `notexist` (the task does not exist).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1068,7 +1068,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareTaskItem(AbstractModel):
-    """Information of the data consistency check object
+    r"""Information of the data consistency check object
 
     """
 
@@ -1134,7 +1134,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1146,7 +1146,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID
+        r"""Data consistency check task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1158,7 +1158,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskName(self):
-        """Data consistency check task name
+        r"""Data consistency check task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1170,7 +1170,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
+        r"""Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1182,7 +1182,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
-        """Data consistency check task configuration
+        r"""Data consistency check task configuration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
@@ -1194,7 +1194,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckProcess(self):
-        """Check details of the data consistency check task
+        r"""Check details of the data consistency check task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
@@ -1206,7 +1206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareProcess(self):
-        """Running details of the data consistency check task
+        r"""Running details of the data consistency check task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
@@ -1218,7 +1218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Conclusion(self):
-        """Comparison result. Valid values: `same`, `different`, `skipAll`.
+        r"""Comparison result. Valid values: `same`, `different`, `skipAll`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1230,7 +1230,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
-        """Task creation time
+        r"""Task creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1242,7 +1242,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartedAt(self):
-        """Task start time
+        r"""Task start time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1254,7 +1254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
-        """Comparison end time
+        r"""Comparison end time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1266,7 +1266,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
+        r"""Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1278,7 +1278,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
-        """Configuration information of the comparison task
+        r"""Configuration information of the comparison task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
@@ -1290,7 +1290,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Consistency check prompt message
+        r"""Consistency check prompt message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1335,7 +1335,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareViewItem(AbstractModel):
-    """View configuration for data consistency check
+    r"""View configuration for data consistency check
 
     """
 
@@ -1349,7 +1349,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
-        """View name
+        r"""View name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1373,7 +1373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompleteMigrateJobRequest(AbstractModel):
-    """CompleteMigrateJob request structure.
+    r"""CompleteMigrateJob request structure.
 
     """
 
@@ -1389,7 +1389,7 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -1400,7 +1400,7 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def CompleteMode(self):
-        """The way to complete the task, which is supported only for legacy MySQL migration tasks. Valid values: `waitForSync` (wait for the source-replica lag to become 0 before stopping); `immediately` (complete immediately without waiting for source-replica sync). Default value: `waitForSync`.
+        r"""The way to complete the task, which is supported only for legacy MySQL migration tasks. Valid values: `waitForSync` (wait for the source-replica lag to become 0 before stopping); `immediately` (complete immediately without waiting for source-replica sync). Default value: `waitForSync`.
         :rtype: str
         """
         return self._CompleteMode
@@ -1424,7 +1424,7 @@ class CompleteMigrateJobRequest(AbstractModel):
 
 
 class CompleteMigrateJobResponse(AbstractModel):
-    """CompleteMigrateJob response structure.
+    r"""CompleteMigrateJob response structure.
 
     """
 
@@ -1437,7 +1437,7 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1452,7 +1452,7 @@ class CompleteMigrateJobResponse(AbstractModel):
 
 
 class ConfigureSubscribeJobRequest(AbstractModel):
-    """ConfigureSubscribeJob request structure.
+    r"""ConfigureSubscribeJob request structure.
 
     """
 
@@ -1489,7 +1489,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -1500,7 +1500,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def SubscribeMode(self):
-        """Data subscription type. Valid values for non-mongo DatabaseType: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo DatabaseType: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).
+        r"""Data subscription type. Valid values for non-mongo DatabaseType: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo DatabaseType: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).
         :rtype: str
         """
         return self._SubscribeMode
@@ -1511,7 +1511,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def AccessType(self):
-        """Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.
+        r"""Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.
         :rtype: str
         """
         return self._AccessType
@@ -1522,7 +1522,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def Endpoints(self):
-        """Database node information
+        r"""Database node information
         :rtype: list of EndpointItem
         """
         return self._Endpoints
@@ -1533,7 +1533,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def KafkaConfig(self):
-        """Kafka configuration
+        r"""Kafka configuration
         :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
         """
         return self._KafkaConfig
@@ -1544,7 +1544,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def SubscribeObjects(self):
-        """Subscription database table information. When SubscribeMode is not all or ddl, SubscribeObjects is a required parameter.
+        r"""Subscription database table information. When SubscribeMode is not all or ddl, SubscribeObjects is a required parameter.
         :rtype: list of SubscribeObject
         """
         return self._SubscribeObjects
@@ -1555,7 +1555,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Subscription data format, such as: protobuf, json, avro. Note: The specific optional values depend on the current link support capabilities. For details on the data format, please refer to the consumption demo documentation on the official website.
+        r"""Subscription data format, such as: protobuf, json, avro. Note: The specific optional values depend on the current link support capabilities. For details on the data format, please refer to the consumption demo documentation on the official website.
         :rtype: str
         """
         return self._Protocol
@@ -1566,7 +1566,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def PipelineInfo(self):
-        """mongo optional parameter: output aggregation settings.
+        r"""mongo optional parameter: output aggregation settings.
         :rtype: list of PipelineInfo
         """
         return self._PipelineInfo
@@ -1577,7 +1577,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     @property
     def ExtraAttr(self):
-        """Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. If true is filled in, it will be processed. If it is left blank or filled with other values, it will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported. If not filled in, the default is changeStream.Other businesses currently have no optional parameters.
+        r"""Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. If true is filled in, it will be processed. If it is left blank or filled with other values, it will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported. If not filled in, the default is changeStream.Other businesses currently have no optional parameters.
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -1630,7 +1630,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
 
 class ConfigureSubscribeJobResponse(AbstractModel):
-    """ConfigureSubscribeJob response structure.
+    r"""ConfigureSubscribeJob response structure.
 
     """
 
@@ -1643,7 +1643,7 @@ class ConfigureSubscribeJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1658,7 +1658,7 @@ class ConfigureSubscribeJobResponse(AbstractModel):
 
 
 class ConfigureSyncJobRequest(AbstractModel):
-    """ConfigureSyncJob request structure.
+    r"""ConfigureSyncJob request structure.
 
     """
 
@@ -1716,7 +1716,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
+        r"""Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
         :rtype: str
         """
         return self._JobId
@@ -1727,7 +1727,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        """Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet). Note that the valid values are subject to the current link.
+        r"""Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet). Note that the valid values are subject to the current link.
         :rtype: str
         """
         return self._SrcAccessType
@@ -1738,7 +1738,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        """Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `ckafka` (CKafka instance). Note that the valid values are subject to the current link.
+        r"""Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `ckafka` (CKafka instance). Note that the valid values are subject to the current link.
         :rtype: str
         """
         return self._DstAccessType
@@ -1749,7 +1749,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Objects(self):
-        """Information of synced database/table objects
+        r"""Information of synced database/table objects
         :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
         """
         return self._Objects
@@ -1760,7 +1760,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Sync task name
+        r"""Sync task name
         :rtype: str
         """
         return self._JobName
@@ -1771,7 +1771,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobMode(self):
-        """Enumerated values: `liteMode`: Lite mode; `fullMode`: Standard mode
+        r"""Enumerated values: `liteMode`: Lite mode; `fullMode`: Standard mode
         :rtype: str
         """
         return self._JobMode
@@ -1782,7 +1782,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        """Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
+        r"""Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
         :rtype: str
         """
         return self._RunMode
@@ -1793,7 +1793,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `Timed`.
+        r"""Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `Timed`.
         :rtype: str
         """
         return self._ExpectRunTime
@@ -1804,7 +1804,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
-        """Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.
+        r"""Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._SrcInfo
@@ -1815,7 +1815,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfos(self):
-        """Source database information. This parameter is valid for multi-node databases, and the value of `SrcNodeType` must be `cluster`.
+        r"""Source database information. This parameter is valid for multi-node databases, and the value of `SrcNodeType` must be `cluster`.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._SrcInfos
@@ -1826,7 +1826,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcNodeType(self):
-        """Enumerated values: `single` (for single-node source database), `cluster` (for multi-node source database).
+        r"""Enumerated values: `single` (for single-node source database), `cluster` (for multi-node source database).
         :rtype: str
         """
         return self._SrcNodeType
@@ -1837,7 +1837,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
-        """Target database information. This parameter is used by single-node databases.
+        r"""Target database information. This parameter is used by single-node databases.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._DstInfo
@@ -1848,7 +1848,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfos(self):
-        """Target database information. This parameter is valid for multi-node databases, and the value of `DstNodeType` must be `cluster`.
+        r"""Target database information. This parameter is valid for multi-node databases, and the value of `DstNodeType` must be `cluster`.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._DstInfos
@@ -1859,7 +1859,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstNodeType(self):
-        """Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).
+        r"""Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).
         :rtype: str
         """
         return self._DstNodeType
@@ -1870,7 +1870,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Options(self):
-        """Sync task options. The `RateLimitOption` option cannot take effect currently. To modify the speed limit settings, use the `ModifySyncRateLimit` API.
+        r"""Sync task options. The `RateLimitOption` option cannot take effect currently. To modify the speed limit settings, use the `ModifySyncRateLimit` API.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
         """
         return self._Options
@@ -1881,7 +1881,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        """Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        r"""Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -1931,7 +1931,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
 
 class ConfigureSyncJobResponse(AbstractModel):
-    """ConfigureSyncJob response structure.
+    r"""ConfigureSyncJob response structure.
 
     """
 
@@ -1944,7 +1944,7 @@ class ConfigureSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1959,7 +1959,7 @@ class ConfigureSyncJobResponse(AbstractModel):
 
 
 class ConflictHandleOption(AbstractModel):
-    """Detailed description of conflict processing
+    r"""Detailed description of conflict processing
 
     """
 
@@ -1981,7 +1981,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionColumn(self):
-        """Conditionally overwritten column
+        r"""Conditionally overwritten column
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1993,7 +1993,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOperator(self):
-        """Conditional overwrite operation
+        r"""Conditional overwrite operation
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2005,7 +2005,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOrderInSrcAndDst(self):
-        """Conditional overwrite priority configuration
+        r"""Conditional overwrite priority configuration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2031,7 +2031,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConsistencyOption(AbstractModel):
-    """Data consistency check option. Data consistency check is disabled by default.
+    r"""Data consistency check option. Data consistency check is disabled by default.
 
     """
 
@@ -2045,7 +2045,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
-        """Data consistency check type. Valid values: `full`, `noCheck`, `notConfigured`.
+        r"""Data consistency check type. Valid values: `full`, `noCheck`, `notConfigured`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2069,7 +2069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ContinueMigrateJobRequest(AbstractModel):
-    """ContinueMigrateJob request structure.
+    r"""ContinueMigrateJob request structure.
 
     """
 
@@ -2082,7 +2082,7 @@ class ContinueMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -2105,7 +2105,7 @@ class ContinueMigrateJobRequest(AbstractModel):
 
 
 class ContinueMigrateJobResponse(AbstractModel):
-    """ContinueMigrateJob response structure.
+    r"""ContinueMigrateJob response structure.
 
     """
 
@@ -2118,7 +2118,7 @@ class ContinueMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2133,7 +2133,7 @@ class ContinueMigrateJobResponse(AbstractModel):
 
 
 class ContinueSyncJobRequest(AbstractModel):
-    """ContinueSyncJob request structure.
+    r"""ContinueSyncJob request structure.
 
     """
 
@@ -2146,7 +2146,7 @@ class ContinueSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -2169,7 +2169,7 @@ class ContinueSyncJobRequest(AbstractModel):
 
 
 class ContinueSyncJobResponse(AbstractModel):
-    """ContinueSyncJob response structure.
+    r"""ContinueSyncJob response structure.
 
     """
 
@@ -2182,7 +2182,7 @@ class ContinueSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2197,7 +2197,7 @@ class ContinueSyncJobResponse(AbstractModel):
 
 
 class CreateCheckSyncJobRequest(AbstractModel):
-    """CreateCheckSyncJob request structure.
+    r"""CreateCheckSyncJob request structure.
 
     """
 
@@ -2210,7 +2210,7 @@ class CreateCheckSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -2233,7 +2233,7 @@ class CreateCheckSyncJobRequest(AbstractModel):
 
 
 class CreateCheckSyncJobResponse(AbstractModel):
-    """CreateCheckSyncJob response structure.
+    r"""CreateCheckSyncJob response structure.
 
     """
 
@@ -2246,7 +2246,7 @@ class CreateCheckSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2261,7 +2261,7 @@ class CreateCheckSyncJobResponse(AbstractModel):
 
 
 class CreateCompareTaskRequest(AbstractModel):
-    """CreateCompareTask request structure.
+    r"""CreateCompareTask request structure.
 
     """
 
@@ -2286,7 +2286,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -2297,7 +2297,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """Data consistency check task name. If this parameter is left empty, the value of `CompareTaskId` will be assigned to it.
+        r"""Data consistency check task name. If this parameter is left empty, the value of `CompareTaskId` will be assigned to it.
         :rtype: str
         """
         return self._TaskName
@@ -2308,7 +2308,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def ObjectMode(self):
-        """Data comparison object mode. Valid values: `sameAsMigrate` (all migration objects); `custom` (custom mode). Default value: `sameAsMigrate`.
+        r"""Data comparison object mode. Valid values: `sameAsMigrate` (all migration objects); `custom` (custom mode). Default value: `sameAsMigrate`.
         :rtype: str
         """
         return self._ObjectMode
@@ -2319,7 +2319,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def Objects(self):
-        """Configuration of the data consistency check object
+        r"""Configuration of the data consistency check object
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Objects
@@ -2330,7 +2330,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def Options(self):
-        """Consistency check options
+        r"""Consistency check options
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -2361,7 +2361,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
 
 class CreateCompareTaskResponse(AbstractModel):
-    """CreateCompareTask response structure.
+    r"""CreateCompareTask response structure.
 
     """
 
@@ -2378,7 +2378,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`.
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2390,7 +2390,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2406,7 +2406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateConsumerGroupRequest(AbstractModel):
-    """CreateConsumerGroup request structure.
+    r"""CreateConsumerGroup request structure.
 
     """
 
@@ -2431,7 +2431,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -2442,7 +2442,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name, which consists of numbers, letters (upper and lower case), or begins with _ - . Ends with numbers, letters (upper and lower case). The full name of the actually generated consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        r"""Consumer group name, which consists of numbers, letters (upper and lower case), or begins with _ - . Ends with numbers, letters (upper and lower case). The full name of the actually generated consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -2453,7 +2453,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name, which consists of numbers, letters (upper and lower case), or begins with _-.. Ends with numbers, letters (upper and lower case). The full name of the actually generated account is in the form: account-#{SubscribeId}-#{AccountName}.
+        r"""Account name, which consists of numbers, letters (upper and lower case), or begins with _-.. Ends with numbers, letters (upper and lower case). The full name of the actually generated account is in the form: account-#{SubscribeId}-#{AccountName}.
         :rtype: str
         """
         return self._AccountName
@@ -2464,7 +2464,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Consumer group password, which should be longer than 3 characters.
+        r"""Consumer group password, which should be longer than 3 characters.
         :rtype: str
         """
         return self._Password
@@ -2475,7 +2475,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Consumer group description
+        r"""Consumer group description
         :rtype: str
         """
         return self._Description
@@ -2502,7 +2502,7 @@ class CreateConsumerGroupRequest(AbstractModel):
 
 
 class CreateConsumerGroupResponse(AbstractModel):
-    """CreateConsumerGroup response structure.
+    r"""CreateConsumerGroup response structure.
 
     """
 
@@ -2515,7 +2515,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2530,7 +2530,7 @@ class CreateConsumerGroupResponse(AbstractModel):
 
 
 class CreateMigrateCheckJobRequest(AbstractModel):
-    """CreateMigrateCheckJob request structure.
+    r"""CreateMigrateCheckJob request structure.
 
     """
 
@@ -2543,7 +2543,7 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -2566,7 +2566,7 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
 
 class CreateMigrateCheckJobResponse(AbstractModel):
-    """CreateMigrateCheckJob response structure.
+    r"""CreateMigrateCheckJob response structure.
 
     """
 
@@ -2579,7 +2579,7 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2594,7 +2594,7 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
 
 class CreateMigrationServiceRequest(AbstractModel):
-    """CreateMigrationService request structure.
+    r"""CreateMigrationService request structure.
 
     """
 
@@ -2628,7 +2628,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        """Source database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
+        r"""Source database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -2639,7 +2639,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        """Target database type. Valid values: `mysql`, `redis`, `percona`, `mongodb` ,`postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
+        r"""Target database type. Valid values: `mysql`, `redis`, `percona`, `mongodb` ,`postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
         :rtype: str
         """
         return self._DstDatabaseType
@@ -2650,7 +2650,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
-        """Source instance region, such as `ap-guangzhou`.
+        r"""Source instance region, such as `ap-guangzhou`.
         :rtype: str
         """
         return self._SrcRegion
@@ -2661,7 +2661,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstRegion(self):
-        """Target instance region, such as `ap-guangzhou`. Note that it must be the same as the API request region.
+        r"""Target instance region, such as `ap-guangzhou`. Note that it must be the same as the API request region.
         :rtype: str
         """
         return self._DstRegion
@@ -2672,7 +2672,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def InstanceClass(self):
-        """Instance specification. Valid values: `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        r"""Instance specification. Valid values: `small`, `medium`, `large`, `xlarge`, `2xlarge`.
         :rtype: str
         """
         return self._InstanceClass
@@ -2683,7 +2683,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Count(self):
-        """Quantity. Value range: [1,15]. Default value: `1`.
+        r"""Quantity. Value range: [1,15]. Default value: `1`.
         :rtype: int
         """
         return self._Count
@@ -2694,7 +2694,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Migration task name, which can contain up to 128 characters.
+        r"""Migration task name, which can contain up to 128 characters.
         :rtype: str
         """
         return self._JobName
@@ -2705,7 +2705,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagItem
         """
         return self._Tags
@@ -2740,7 +2740,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
 
 class CreateMigrationServiceResponse(AbstractModel):
-    """CreateMigrationService response structure.
+    r"""CreateMigrationService response structure.
 
     """
 
@@ -2757,7 +2757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobIds(self):
-        """The list of migration task IDs randomly generated in the format of `dts-c1f6rs21` after a successful order placement
+        r"""The list of migration task IDs randomly generated in the format of `dts-c1f6rs21` after a successful order placement
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2769,7 +2769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2785,7 +2785,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateModifyCheckSyncJobRequest(AbstractModel):
-    """CreateModifyCheckSyncJob request structure.
+    r"""CreateModifyCheckSyncJob request structure.
 
     """
 
@@ -2798,7 +2798,7 @@ class CreateModifyCheckSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -2821,7 +2821,7 @@ class CreateModifyCheckSyncJobRequest(AbstractModel):
 
 
 class CreateModifyCheckSyncJobResponse(AbstractModel):
-    """CreateModifyCheckSyncJob response structure.
+    r"""CreateModifyCheckSyncJob response structure.
 
     """
 
@@ -2834,7 +2834,7 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2849,7 +2849,7 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
 
 class CreateSubscribeCheckJobRequest(AbstractModel):
-    """CreateSubscribeCheckJob request structure.
+    r"""CreateSubscribeCheckJob request structure.
 
     """
 
@@ -2862,7 +2862,7 @@ class CreateSubscribeCheckJobRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -2885,7 +2885,7 @@ class CreateSubscribeCheckJobRequest(AbstractModel):
 
 
 class CreateSubscribeCheckJobResponse(AbstractModel):
-    """CreateSubscribeCheckJob response structure.
+    r"""CreateSubscribeCheckJob response structure.
 
     """
 
@@ -2898,7 +2898,7 @@ class CreateSubscribeCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2913,7 +2913,7 @@ class CreateSubscribeCheckJobResponse(AbstractModel):
 
 
 class CreateSubscribeRequest(AbstractModel):
-    """CreateSubscribe request structure.
+    r"""CreateSubscribe request structure.
 
     """
 
@@ -2944,7 +2944,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Product(self):
-        """Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, and tdsqlpercona are supported.
+        r"""Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, and tdsqlpercona are supported.
         :rtype: str
         """
         return self._Product
@@ -2955,7 +2955,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def PayType(self):
-        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -2966,7 +2966,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Duration(self):
-        """Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
+        r"""Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
         :rtype: int
         """
         return self._Duration
@@ -2977,7 +2977,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
+        r"""Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
         :rtype: int
         """
         return self._AutoRenew
@@ -2988,7 +2988,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Count(self):
-        """Quantity. Default value: 1. Maximum value: 10.
+        r"""Quantity. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._Count
@@ -2999,7 +2999,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Instance resource tags
+        r"""Instance resource tags
         :rtype: list of TagItem
         """
         return self._Tags
@@ -3010,7 +3010,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Custom task name
+        r"""Custom task name
         :rtype: str
         """
         return self._Name
@@ -3044,7 +3044,7 @@ class CreateSubscribeRequest(AbstractModel):
 
 
 class CreateSubscribeResponse(AbstractModel):
-    """CreateSubscribe response structure.
+    r"""CreateSubscribe response structure.
 
     """
 
@@ -3061,7 +3061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeIds(self):
-        """Array of data subscription instance IDs
+        r"""Array of data subscription instance IDs
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3073,7 +3073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3089,7 +3089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateSyncJobRequest(AbstractModel):
-    """CreateSyncJob request structure.
+    r"""CreateSyncJob request structure.
 
     """
 
@@ -3135,7 +3135,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
+        r"""Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
         :rtype: str
         """
         return self._PayMode
@@ -3146,7 +3146,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        """Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+        r"""Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -3157,7 +3157,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
-        """Source database region, such as `ap-guangzhou`.
+        r"""Source database region, such as `ap-guangzhou`.
         :rtype: str
         """
         return self._SrcRegion
@@ -3168,7 +3168,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        """Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, `tdsqlmysql`, and `kafka`.
+        r"""Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, `tdsqlmysql`, and `kafka`.
         :rtype: str
         """
         return self._DstDatabaseType
@@ -3179,7 +3179,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def DstRegion(self):
-        """Target database region, such as `ap-guangzhou`.
+        r"""Target database region, such as `ap-guangzhou`.
         :rtype: str
         """
         return self._DstRegion
@@ -3190,7 +3190,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Specification(self):
-        """Sync task specification, such as `Standard`.
+        r"""Sync task specification, such as `Standard`.
         :rtype: str
         """
         return self._Specification
@@ -3201,7 +3201,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagItem
         """
         return self._Tags
@@ -3212,7 +3212,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Count(self):
-        """The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.
+        r"""The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.
         :rtype: int
         """
         return self._Count
@@ -3223,7 +3223,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled). Default value: `0`.
+        r"""Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled). Default value: `0`.
         :rtype: int
         """
         return self._AutoRenew
@@ -3234,7 +3234,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def InstanceClass(self):
-        """Sync link specification, such as `micro`, `small`, `medium`, and `large`. Default value: `medium`.
+        r"""Sync link specification, such as `micro`, `small`, `medium`, and `large`. Default value: `medium`.
         :rtype: str
         """
         return self._InstanceClass
@@ -3245,7 +3245,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Sync task name
+        r"""Sync task name
         :rtype: str
         """
         return self._JobName
@@ -3256,7 +3256,7 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def ExistedJobId(self):
-        """ID of the existing task used to create a similar task
+        r"""ID of the existing task used to create a similar task
         :rtype: str
         """
         return self._ExistedJobId
@@ -3295,7 +3295,7 @@ class CreateSyncJobRequest(AbstractModel):
 
 
 class CreateSyncJobResponse(AbstractModel):
-    """CreateSyncJob response structure.
+    r"""CreateSyncJob response structure.
 
     """
 
@@ -3311,7 +3311,7 @@ class CreateSyncJobResponse(AbstractModel):
 
     @property
     def JobIds(self):
-        """Sync task IDs
+        r"""Sync task IDs
         :rtype: list of str
         """
         return self._JobIds
@@ -3322,7 +3322,7 @@ class CreateSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3338,7 +3338,7 @@ class CreateSyncJobResponse(AbstractModel):
 
 
 class DBEndpointInfo(AbstractModel):
-    """Instance information
+    r"""Instance information
 
     """
 
@@ -3383,7 +3383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Instance region
+        r"""Instance region
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3395,7 +3395,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
-        """Instances network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
+        r"""Instances network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3407,7 +3407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseType(self):
-        """Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
+        r"""Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3419,7 +3419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
-        """Node type, empty or simple indicates a general node, cluster indicates a cluster node; for mongo services, valid values: replicaset (mongodb replica set), standalone (mongodb single node), cluster (mongodb cluster); for redis instances, valid values: empty or simple (single node), cluster (cluster), cluster-cache (cache cluster), cluster-proxy (proxy cluster).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Node type, empty or simple indicates a general node, cluster indicates a cluster node; for mongo services, valid values: replicaset (mongodb replica set), standalone (mongodb single node), cluster (mongodb cluster); for redis instances, valid values: empty or simple (single node), cluster (cluster), cluster-cache (cache cluster), cluster-proxy (proxy cluster).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._NodeType
@@ -3430,7 +3430,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
-        """Database information
+        r"""Database information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DBInfo
         """
@@ -3442,7 +3442,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Supplier(self):
-        """Instance service provider, such as "aliyun" and "others".
+        r"""Instance service provider, such as "aliyun" and "others".
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3454,7 +3454,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraAttr(self):
-        """For MongoDB, you can define the following parameters: 	['AuthDatabase':'admin', 
+        r"""For MongoDB, you can define the following parameters: 	['AuthDatabase':'admin', 
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of KeyValuePairOption
@@ -3467,7 +3467,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseNetEnv(self):
-        """Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+        r"""Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3479,7 +3479,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ConnectType
@@ -3520,7 +3520,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DBInfo(AbstractModel):
-    """Database information
+    r"""Database information
 
     """
 
@@ -3607,7 +3607,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
-        """Node role in a distributed database, such as the mongos node in MongoDB.
+        r"""Node role in a distributed database, such as the mongos node in MongoDB.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3619,7 +3619,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbKernel(self):
-        """Kernel version, such as the different kernel versions of MariaDB.
+        r"""Kernel version, such as the different kernel versions of MariaDB.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3631,7 +3631,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
-        """Instance IP address, which is required for the following access types: public network, Direct Connect, VPN, CCN, intranet, and VPC.
+        r"""Instance IP address, which is required for the following access types: public network, Direct Connect, VPN, CCN, intranet, and VPC.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3643,7 +3643,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        """Instance port, which is required for the following access types: public network, self-build on CVM, Direct Connect, VPN, CCN, intranet, and VPC.
+        r"""Instance port, which is required for the following access types: public network, self-build on CVM, Direct Connect, VPN, CCN, intranet, and VPC.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3655,7 +3655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
-        """Instance username
+        r"""Instance username
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3667,7 +3667,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        """Instance password
+        r"""Instance password
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3679,7 +3679,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CvmInstanceId(self):
-        """Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
+        r"""Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3691,7 +3691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpnGwId(self):
-        """VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
+        r"""VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3703,7 +3703,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqDcgId(self):
-        """Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
+        r"""Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3715,7 +3715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of `cdb-powiqx8q`, which is required if the access type is `cdb`.
+        r"""Database instance ID in the format of `cdb-powiqx8q`, which is required if the access type is `cdb`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3727,7 +3727,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnGwId(self):
-        """CCN instance ID such as `ccn-afp6kltc`
+        r"""CCN instance ID such as `ccn-afp6kltc`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3739,7 +3739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
+        r"""VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3751,7 +3751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
+        r"""ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3763,7 +3763,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EngineVersion(self):
-        """Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
+        r"""Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3775,7 +3775,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Account(self):
-        """Instance account
+        r"""Instance account
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3787,7 +3787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountRole(self):
-        """The role used for cross-account migration, which can contain [a-zA-Z0-9\-\_]+.
+        r"""The role used for cross-account migration, which can contain [a-zA-Z0-9\-\_]+.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3799,7 +3799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountMode(self):
-        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+        r"""The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3811,7 +3811,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretId(self):
-        """Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpSecretId
@@ -3822,7 +3822,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretKey(self):
-        """Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpSecretKey
@@ -3833,7 +3833,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpToken(self):
-        """Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpToken
@@ -3875,7 +3875,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DBItem(AbstractModel):
-    """Migration object information, which is case-sensitive when objects such as databases, tables, and views are configured.
+    r"""Migration object information, which is case-sensitive when objects such as databases, tables, and views are configured.
 
     """
 
@@ -3965,7 +3965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        """Name of the database to be migrated or synced, which is required if `ObjectMode` is `partial`.
+        r"""Name of the database to be migrated or synced, which is required if `ObjectMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3977,7 +3977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDbName(self):
-        """Name of the database after migration or sync, which is the same as the source database name by default.
+        r"""Name of the database after migration or sync, which is the same as the source database name by default.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3989,7 +3989,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
-        """The schema to be migrated or synced
+        r"""The schema to be migrated or synced
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4001,7 +4001,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewSchemaName(self):
-        """Name of the schema after migration or sync
+        r"""Name of the schema after migration or sync
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4013,7 +4013,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBMode(self):
-        """Database selection mode, which is required if `ObjectMode` is `partial`. Valid values: `all`, `partial`.
+        r"""Database selection mode, which is required if `ObjectMode` is `partial`. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4025,7 +4025,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaMode(self):
-        """Schema selection mode. Valid values: `all`, `partial`.
+        r"""Schema selection mode. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4037,7 +4037,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
-        """Table selection mode, which is required if `DBMode` is `partial`. Valid values: `all`, `partial`.
+        r"""Table selection mode, which is required if `DBMode` is `partial`. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4049,7 +4049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        """The set of table objects, which is required if `TableMode` is `partial`.
+        r"""The set of table objects, which is required if `TableMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TableItem
         """
@@ -4061,7 +4061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
-        """View selection mode. Valid values: `all`, `partial`.
+        r"""View selection mode. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4073,7 +4073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
-        """The set of view objects, which is required if `ViewMode` is `partial`.
+        r"""The set of view objects, which is required if `ViewMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ViewItem
         """
@@ -4085,7 +4085,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleMode(self):
-        """Role selection mode, which is exclusive to PostgreSQL. Valid values: `all`, `partial`.
+        r"""Role selection mode, which is exclusive to PostgreSQL. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4097,7 +4097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Roles(self):
-        """Role, which is exclusive to PostgreSQL and required if `RoleMode` is `partial`.
+        r"""Role, which is exclusive to PostgreSQL and required if `RoleMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RoleItem
         """
@@ -4109,7 +4109,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionMode(self):
-        """Sync mode. Valid values: `partial`, `all`.
+        r"""Sync mode. Valid values: `partial`, `all`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4121,7 +4121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
-        """Sync mode. Valid values: `partial`, `all`.
+        r"""Sync mode. Valid values: `partial`, `all`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4133,7 +4133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
-        """Sync mode. Valid values: `partial`, `all`.
+        r"""Sync mode. Valid values: `partial`, `all`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4145,7 +4145,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureMode(self):
-        """Sync mode. Valid values: `partial`, `all`.
+        r"""Sync mode. Valid values: `partial`, `all`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4157,7 +4157,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Functions(self):
-        """This parameter is required if `FunctionMode` is `partial`.
+        r"""This parameter is required if `FunctionMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4169,7 +4169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Procedures(self):
-        """This parameter is required if `ProcedureMode` is `partial`.
+        r"""This parameter is required if `ProcedureMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4181,7 +4181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
-        """This parameter is required if `EventMode` is `partial`.
+        r"""This parameter is required if `EventMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4193,7 +4193,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Triggers(self):
-        """This parameter is required if `TriggerMode` is `partial`.
+        r"""This parameter is required if `TriggerMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4251,7 +4251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Database(AbstractModel):
-    """The database/table objects to be synced
+    r"""The database/table objects to be synced
 
     """
 
@@ -4329,7 +4329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        """Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.
+        r"""Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4341,7 +4341,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDbName(self):
-        """Name of the database after migration or sync, which is the same as the source database name by default.
+        r"""Name of the database after migration or sync, which is the same as the source database name by default.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4353,7 +4353,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbMode(self):
-        """Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
+        r"""Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4365,7 +4365,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
-        """The schema to be migrated or synced
+        r"""The schema to be migrated or synced
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4377,7 +4377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewSchemaName(self):
-        """Name of the schema after migration or sync
+        r"""Name of the schema after migration or sync
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4389,7 +4389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
-        """Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+        r"""Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4401,7 +4401,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        """The set of table objects, which is required if `TableMode` is `Partial`.
+        r"""The set of table objects, which is required if `TableMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Table
         """
@@ -4413,7 +4413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
-        """View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+        r"""View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4425,7 +4425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
-        """The set of view objects, which is required if `ViewMode` is `Partial`.
+        r"""The set of view objects, which is required if `ViewMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of View
         """
@@ -4437,7 +4437,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionMode(self):
-        """Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+        r"""Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4449,7 +4449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Functions(self):
-        """This parameter is required if `FunctionMode` is `Partial`.
+        r"""This parameter is required if `FunctionMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4461,7 +4461,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureMode(self):
-        """Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+        r"""Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4473,7 +4473,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Procedures(self):
-        """This parameter is required if `ProcedureMode` is `Partial`.
+        r"""This parameter is required if `ProcedureMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4485,7 +4485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
-        """Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
+        r"""Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4497,7 +4497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Triggers(self):
-        """This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
+        r"""This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4509,7 +4509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
-        """Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
+        r"""Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4521,7 +4521,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
-        """This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
+        r"""This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4571,7 +4571,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DatabaseTableObject(AbstractModel):
-    """Migration object options, which tell DTS which database/table objects should be migrated.
+    r"""Migration object options, which tell DTS which database/table objects should be migrated.
 
     """
 
@@ -4592,7 +4592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectMode(self):
-        """Migration object type. Valid values: `all`, `partial`.
+        r"""Migration object type. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4604,7 +4604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
-        """Migration object, which is required if `ObjectMode` is `partial`.
+        r"""Migration object, which is required if `ObjectMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DBItem
         """
@@ -4616,7 +4616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
-        """Advanced object types, such as trigger, function, procedure, event. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Advanced object types, such as trigger, function, procedure, event. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -4646,7 +4646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DdlOption(AbstractModel):
-    """DDL statement sync processing during data sync
+    r"""DDL statement sync processing during data sync
 
     """
 
@@ -4664,7 +4664,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlObject(self):
-        """DDL type, such as database, table, view, and index.
+        r"""DDL type, such as database, table, view, and index.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4676,7 +4676,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlValue(self):
-        """DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
+        r"""DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4701,7 +4701,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteCompareTaskRequest(AbstractModel):
-    """DeleteCompareTask request structure.
+    r"""DeleteCompareTask request structure.
 
     """
 
@@ -4717,7 +4717,7 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -4728,7 +4728,7 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :rtype: str
         """
         return self._CompareTaskId
@@ -4752,7 +4752,7 @@ class DeleteCompareTaskRequest(AbstractModel):
 
 
 class DeleteCompareTaskResponse(AbstractModel):
-    """DeleteCompareTask response structure.
+    r"""DeleteCompareTask response structure.
 
     """
 
@@ -4765,7 +4765,7 @@ class DeleteCompareTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4780,7 +4780,7 @@ class DeleteCompareTaskResponse(AbstractModel):
 
 
 class DeleteConsumerGroupRequest(AbstractModel):
-    """DeleteConsumerGroup request structure.
+    r"""DeleteConsumerGroup request structure.
 
     """
 
@@ -4799,7 +4799,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """ID of the data subscription instance
+        r"""ID of the data subscription instance
         :rtype: str
         """
         return self._SubscribeId
@@ -4810,7 +4810,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        r"""Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -4821,7 +4821,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        r"""Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
         :rtype: str
         """
         return self._AccountName
@@ -4846,7 +4846,7 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
 
 class DeleteConsumerGroupResponse(AbstractModel):
-    """DeleteConsumerGroup response structure.
+    r"""DeleteConsumerGroup response structure.
 
     """
 
@@ -4859,7 +4859,7 @@ class DeleteConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4874,7 +4874,7 @@ class DeleteConsumerGroupResponse(AbstractModel):
 
 
 class DescribeCheckSyncJobResultRequest(AbstractModel):
-    """DescribeCheckSyncJobResult request structure.
+    r"""DescribeCheckSyncJobResult request structure.
 
     """
 
@@ -4887,7 +4887,7 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task. This parameter is required.
+        r"""Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task. This parameter is required.
         :rtype: str
         """
         return self._JobId
@@ -4910,7 +4910,7 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
 
 class DescribeCheckSyncJobResultResponse(AbstractModel):
-    """DescribeCheckSyncJobResult response structure.
+    r"""DescribeCheckSyncJobResult response structure.
 
     """
 
@@ -4943,7 +4943,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Execution status of the check task. Valid values: `notStarted`, `running`, `failed`, `success`.
+        r"""Execution status of the check task. Valid values: `notStarted`, `running`, `failed`, `success`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4955,7 +4955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepCount(self):
-        """Total number of steps
+        r"""Total number of steps
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4967,7 +4967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepCur(self):
-        """The current step
+        r"""The current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4979,7 +4979,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Overall progress. Value range: 0-100.
+        r"""Overall progress. Value range: 0-100.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4991,7 +4991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfos(self):
-        """Step information
+        r"""Step information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepInfo
         """
@@ -5003,7 +5003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5028,7 +5028,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeCompareReportRequest(AbstractModel):
-    """DescribeCompareReport request structure.
+    r"""DescribeCompareReport request structure.
 
     """
 
@@ -5068,7 +5068,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -5079,7 +5079,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Check task ID
+        r"""Check task ID
         :rtype: str
         """
         return self._CompareTaskId
@@ -5090,7 +5090,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceLimit(self):
-        """Number of inconsistent objects to be returned
+        r"""Number of inconsistent objects to be returned
         :rtype: int
         """
         return self._DifferenceLimit
@@ -5101,7 +5101,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceOffset(self):
-        """Offset of inconsistent objects
+        r"""Offset of inconsistent objects
         :rtype: int
         """
         return self._DifferenceOffset
@@ -5112,7 +5112,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceDB(self):
-        """Search criterion: Inconsistent database name
+        r"""Search criterion: Inconsistent database name
         :rtype: str
         """
         return self._DifferenceDB
@@ -5123,7 +5123,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceTable(self):
-        """Search criterion: Inconsistent table name
+        r"""Search criterion: Inconsistent table name
         :rtype: str
         """
         return self._DifferenceTable
@@ -5134,7 +5134,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedLimit(self):
-        """Number of unchecked objects to be returned
+        r"""Number of unchecked objects to be returned
         :rtype: int
         """
         return self._SkippedLimit
@@ -5145,7 +5145,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedOffset(self):
-        """Offset of unchecked objects
+        r"""Offset of unchecked objects
         :rtype: int
         """
         return self._SkippedOffset
@@ -5156,7 +5156,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedDB(self):
-        """Search criterion: Unchecked database name
+        r"""Search criterion: Unchecked database name
         :rtype: str
         """
         return self._SkippedDB
@@ -5167,7 +5167,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedTable(self):
-        """Search criterion: Unchecked table name
+        r"""Search criterion: Unchecked table name
         :rtype: str
         """
         return self._SkippedTable
@@ -5199,7 +5199,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
 
 class DescribeCompareReportResponse(AbstractModel):
-    """DescribeCompareReport response structure.
+    r"""DescribeCompareReport response structure.
 
     """
 
@@ -5220,7 +5220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Abstract(self):
-        """Summary information of data consistency check
+        r"""Summary information of data consistency check
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
         """
@@ -5232,7 +5232,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        """Data consistency check details
+        r"""Data consistency check details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         """
@@ -5244,7 +5244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5265,7 +5265,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeCompareTasksRequest(AbstractModel):
-    """DescribeCompareTasks request structure.
+    r"""DescribeCompareTasks request structure.
 
     """
 
@@ -5290,7 +5290,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -5301,7 +5301,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of tasks to be displayed per page. Default value: `20`.
+        r"""Number of tasks to be displayed per page. Default value: `20`.
         :rtype: int
         """
         return self._Limit
@@ -5312,7 +5312,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -5323,7 +5323,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Check task ID
+        r"""Check task ID
         :rtype: str
         """
         return self._CompareTaskId
@@ -5334,7 +5334,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
+        r"""Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
         :rtype: list of str
         """
         return self._Status
@@ -5361,7 +5361,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
 
 class DescribeCompareTasksResponse(AbstractModel):
-    """DescribeCompareTasks response structure.
+    r"""DescribeCompareTasks response structure.
 
     """
 
@@ -5382,7 +5382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Quantity
+        r"""Quantity
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5394,7 +5394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        """List of data consistency check tasks
+        r"""List of data consistency check tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareTaskItem
         """
@@ -5406,7 +5406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5428,7 +5428,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeConsumerGroupsRequest(AbstractModel):
-    """DescribeConsumerGroups request structure.
+    r"""DescribeConsumerGroups request structure.
 
     """
 
@@ -5447,7 +5447,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -5458,7 +5458,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting offset for returned results. Default value: 0.
+        r"""Starting offset for returned results. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -5469,7 +5469,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned at a time. Default value: 10.
+        r"""Number of results to be returned at a time. Default value: 10.
         :rtype: int
         """
         return self._Limit
@@ -5494,7 +5494,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
 
 class DescribeConsumerGroupsResponse(AbstractModel):
-    """DescribeConsumerGroups response structure.
+    r"""DescribeConsumerGroups response structure.
 
     """
 
@@ -5513,7 +5513,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of consumer groups under the specific instance
+        r"""Total number of consumer groups under the specific instance
         :rtype: int
         """
         return self._TotalCount
@@ -5524,7 +5524,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Consumer group list
+        r"""Consumer group list
         :rtype: list of GroupInfo
         """
         return self._Items
@@ -5535,7 +5535,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5557,7 +5557,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
 
 class DescribeMigrateDBInstancesRequest(AbstractModel):
-    """DescribeMigrateDBInstances request structure.
+    r"""DescribeMigrateDBInstances request structure.
 
     """
 
@@ -5597,7 +5597,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def DatabaseType(self):
-        """Database type, such as `mysql`.
+        r"""Database type, such as `mysql`.
         :rtype: str
         """
         return self._DatabaseType
@@ -5608,7 +5608,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def MigrateRole(self):
-        """Specifies whether the instance is the migration source or target. Valid values: `src` (source); `dts` (target).
+        r"""Specifies whether the instance is the migration source or target. Valid values: `src` (source); `dts` (target).
         :rtype: str
         """
         return self._MigrateRole
@@ -5619,7 +5619,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID
+        r"""Database instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -5630,7 +5630,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Database instance name
+        r"""Database instance name
         :rtype: str
         """
         return self._InstanceName
@@ -5641,7 +5641,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned
+        r"""Number of results to be returned
         :rtype: int
         """
         return self._Limit
@@ -5652,7 +5652,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -5663,7 +5663,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def AccountMode(self):
-        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+        r"""The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
         :rtype: str
         """
         return self._AccountMode
@@ -5674,7 +5674,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """ID of the temporary key, which is required if the operation is performed across accounts.
+        r"""ID of the temporary key, which is required if the operation is performed across accounts.
         :rtype: str
         """
         return self._TmpSecretId
@@ -5685,7 +5685,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """Key of the temporary key, which is required if the operation is performed across accounts.
+        r"""Key of the temporary key, which is required if the operation is performed across accounts.
         :rtype: str
         """
         return self._TmpSecretKey
@@ -5696,7 +5696,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpToken(self):
-        """Temporary token, which is required if the operation is performed across accounts.
+        r"""Temporary token, which is required if the operation is performed across accounts.
         :rtype: str
         """
         return self._TmpToken
@@ -5728,7 +5728,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
 
 class DescribeMigrateDBInstancesResponse(AbstractModel):
-    """DescribeMigrateDBInstances response structure.
+    r"""DescribeMigrateDBInstances response structure.
 
     """
 
@@ -5749,7 +5749,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of eligible items
+        r"""Number of eligible items
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5761,7 +5761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Instances(self):
-        """Instance list
+        r"""Instance list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MigrateDBItem
         """
@@ -5773,7 +5773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5795,7 +5795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMigrationCheckJobRequest(AbstractModel):
-    """DescribeMigrationCheckJob request structure.
+    r"""DescribeMigrationCheckJob request structure.
 
     """
 
@@ -5808,7 +5808,7 @@ class DescribeMigrationCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -5831,7 +5831,7 @@ class DescribeMigrationCheckJobRequest(AbstractModel):
 
 
 class DescribeMigrationCheckJobResponse(AbstractModel):
-    """DescribeMigrationCheckJob response structure.
+    r"""DescribeMigrationCheckJob response structure.
 
     """
 
@@ -5859,7 +5859,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Check task execution status. Valid values: `notStarted`, `running`, `failed`, `success`.
+        r"""Check task execution status. Valid values: `notStarted`, `running`, `failed`, `success`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5871,7 +5871,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
-        """Check task result message
+        r"""Check task result message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5883,7 +5883,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
-        """Check step
+        r"""Check step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CheckStep
         """
@@ -5895,7 +5895,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckFlag(self):
-        """Check result. Valid values: `checkPass`, `checkNotPass`.
+        r"""Check result. Valid values: `checkPass`, `checkNotPass`.
         :rtype: str
         """
         return self._CheckFlag
@@ -5906,7 +5906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5930,7 +5930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMigrationDetailRequest(AbstractModel):
-    """DescribeMigrationDetail request structure.
+    r"""DescribeMigrationDetail request structure.
 
     """
 
@@ -5943,7 +5943,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -5966,7 +5966,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
 
 class DescribeMigrationDetailResponse(AbstractModel):
-    """DescribeMigrationDetail response structure.
+    r"""DescribeMigrationDetail response structure.
 
     """
 
@@ -6065,7 +6065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6077,7 +6077,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
-        """Data migration task name
+        r"""Data migration task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6089,7 +6089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6101,7 +6101,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Task update time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task update time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6113,7 +6113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Task start time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task start time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6125,7 +6125,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Task end time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task end time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6137,7 +6137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
-        """Migration task error message
+        r"""Migration task error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6149,7 +6149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task status. Valid values: `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Task status. Valid values: `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Status
@@ -6160,7 +6160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Task operation information
+        r"""Task operation information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         """
@@ -6172,7 +6172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
-        """Information of the migration task execution process. The check and migration step information will be displayed in the check and migration stages respectively.
+        r"""Information of the migration task execution process. The check and migration step information will be displayed in the check and migration stages respectively.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         """
@@ -6184,7 +6184,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
-        """Source instance information
+        r"""Source instance information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
@@ -6196,7 +6196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
-        """Target database information
+        r"""Target database information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
@@ -6208,7 +6208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTask(self):
-        """Data consistency check result
+        r"""Data consistency check result
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         """
@@ -6220,7 +6220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagItem
         """
@@ -6232,7 +6232,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
-        """Running mode. Valid values: `immediate`, `timed`.
+        r"""Running mode. Valid values: `immediate`, `timed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6244,7 +6244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
-        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
+        r"""Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6256,7 +6256,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateOption(self):
-        """Migration options, which describe how the task performs migration.
+        r"""Migration options, which describe how the task performs migration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
         """
@@ -6268,7 +6268,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckStepInfo(self):
-        """Check task running details
+        r"""Check task running details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CheckStepInfo`
         """
@@ -6280,7 +6280,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeInfo(self):
-        """Billing information
+        r"""Billing information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         """
@@ -6292,7 +6292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorInfo(self):
-        """Task error information
+        r"""Task error information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ErrorInfoItem
         """
@@ -6304,7 +6304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
-        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+        r"""Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
         :rtype: str
         """
         return self._DumperResumeCtrl
@@ -6315,7 +6315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RateLimitOption(self):
-        """Task throttling information
+        r"""Task throttling information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         """
@@ -6327,7 +6327,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6392,7 +6392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMigrationJobsRequest(AbstractModel):
-    """DescribeMigrationJobs request structure.
+    r"""DescribeMigrationJobs request structure.
 
     """
 
@@ -6450,7 +6450,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID such as `dts-amm1jw5q`
+        r"""Data migration task ID such as `dts-amm1jw5q`
         :rtype: str
         """
         return self._JobId
@@ -6461,7 +6461,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Data migration task name
+        r"""Data migration task name
         :rtype: str
         """
         return self._JobName
@@ -6472,7 +6472,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Data migration task status. Valid values: `created`, `checking`, `checkPass`, `checkNotPass`, `readyRun`, `running`, `readyComplete`, `success`, `failed`, `stopping`, `completing`.
+        r"""Data migration task status. Valid values: `created`, `checking`, `checkPass`, `checkNotPass`, `readyRun`, `running`, `readyComplete`, `success`, `failed`, `stopping`, `completing`.
         :rtype: list of str
         """
         return self._Status
@@ -6483,7 +6483,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcInstanceId(self):
-        """Source instance ID in the format of `cdb-c1nl9rpv`
+        r"""Source instance ID in the format of `cdb-c1nl9rpv`
         :rtype: str
         """
         return self._SrcInstanceId
@@ -6494,7 +6494,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
-        """Source instance region, such as `ap-guangzhou`.
+        r"""Source instance region, such as `ap-guangzhou`.
         :rtype: str
         """
         return self._SrcRegion
@@ -6505,7 +6505,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        """Source database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
+        r"""Source database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
         :rtype: list of str
         """
         return self._SrcDatabaseType
@@ -6516,7 +6516,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        """Source instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
+        r"""Source instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
         :rtype: list of str
         """
         return self._SrcAccessType
@@ -6527,7 +6527,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstInstanceId(self):
-        """Target instance ID in the format of `cdb-c1nl9rpv`
+        r"""Target instance ID in the format of `cdb-c1nl9rpv`
         :rtype: str
         """
         return self._DstInstanceId
@@ -6538,7 +6538,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstRegion(self):
-        """Target instance region, such as `ap-guangzhou`.
+        r"""Target instance region, such as `ap-guangzhou`.
         :rtype: str
         """
         return self._DstRegion
@@ -6549,7 +6549,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        """Target database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
+        r"""Target database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
         :rtype: list of str
         """
         return self._DstDatabaseType
@@ -6560,7 +6560,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        """Target instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
+        r"""Target instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
         :rtype: list of str
         """
         return self._DstAccessType
@@ -6571,7 +6571,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        """Task running mode. Valid values: `immediate`, `timed`.
+        r"""Task running mode. Valid values: `immediate`, `timed`.
         :rtype: str
         """
         return self._RunMode
@@ -6582,7 +6582,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
-        """Sorting order. Valid values: `asc`, `desc`. Default value: `desc` by creation time.
+        r"""Sorting order. Valid values: `asc`, `desc`. Default value: `desc` by creation time.
         :rtype: str
         """
         return self._OrderSeq
@@ -6593,7 +6593,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of instances to be returned. Value range: [1,100]. Default value: `20`.
+        r"""Number of instances to be returned. Value range: [1,100]. Default value: `20`.
         :rtype: int
         """
         return self._Limit
@@ -6604,7 +6604,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: `0`.
+        r"""Offset. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -6615,7 +6615,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """Tag filter
+        r"""Tag filter
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -6658,7 +6658,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
 
 class DescribeMigrationJobsResponse(AbstractModel):
-    """DescribeMigrationJobs response structure.
+    r"""DescribeMigrationJobs response structure.
 
     """
 
@@ -6679,7 +6679,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of migration tasks
+        r"""Number of migration tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6691,7 +6691,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobList(self):
-        """Migration task list
+        r"""Migration task list
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of JobItem
         """
@@ -6703,7 +6703,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6725,7 +6725,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
-    """DescribeModifyCheckSyncJobResult request structure.
+    r"""DescribeModifyCheckSyncJobResult request structure.
 
     """
 
@@ -6738,7 +6738,7 @@ class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -6761,7 +6761,7 @@ class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
 
 
 class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
-    """DescribeModifyCheckSyncJobResult response structure.
+    r"""DescribeModifyCheckSyncJobResult response structure.
 
     """
 
@@ -6789,7 +6789,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Execution status of the check task Valid values: `notStarted` (Not started), `running` (Running), `failed` (Failed), `success` (Successful).
+        r"""Execution status of the check task Valid values: `notStarted` (Not started), `running` (Running), `failed` (Failed), `success` (Successful).
         :rtype: str
         """
         return self._Status
@@ -6800,7 +6800,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepCount(self):
-        """Number of check steps Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of check steps Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._StepCount
@@ -6811,7 +6811,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepCur(self):
-        """Current step Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Current step Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._StepCur
@@ -6822,7 +6822,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """Overall progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Overall progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Progress
@@ -6833,7 +6833,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepInfos(self):
-        """Step details Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Step details Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepInfo
         """
         return self._StepInfos
@@ -6844,7 +6844,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6869,7 +6869,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
 
 class DescribeOffsetByTimeRequest(AbstractModel):
-    """DescribeOffsetByTime request structure.
+    r"""DescribeOffsetByTime request structure.
 
     """
 
@@ -6885,7 +6885,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -6896,7 +6896,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     @property
     def Time(self):
-        """Timestamp, the format is: Y-m-d h:m:s. If the input time is much later than the current time, this is equivalent to the latest offset; if the input time is much earlier than the current time, this is equivalent to the oldest offset; if the input is empty, the default time is 0, which is the oldest offset to be queried.
+        r"""Timestamp, the format is: Y-m-d h:m:s. If the input time is much later than the current time, this is equivalent to the latest offset; if the input time is much earlier than the current time, this is equivalent to the oldest offset; if the input is empty, the default time is 0, which is the oldest offset to be queried.
         :rtype: str
         """
         return self._Time
@@ -6920,7 +6920,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
 
 class DescribeOffsetByTimeResponse(AbstractModel):
-    """DescribeOffsetByTime response structure.
+    r"""DescribeOffsetByTime response structure.
 
     """
 
@@ -6936,7 +6936,7 @@ class DescribeOffsetByTimeResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Time and Offset response.
+        r"""Time and Offset response.
         :rtype: list of OffsetTimeMap
         """
         return self._Items
@@ -6947,7 +6947,7 @@ class DescribeOffsetByTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6968,7 +6968,7 @@ class DescribeOffsetByTimeResponse(AbstractModel):
 
 
 class DescribeSubscribeCheckJobRequest(AbstractModel):
-    """DescribeSubscribeCheckJob request structure.
+    r"""DescribeSubscribeCheckJob request structure.
 
     """
 
@@ -6981,7 +6981,7 @@ class DescribeSubscribeCheckJobRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -7004,7 +7004,7 @@ class DescribeSubscribeCheckJobRequest(AbstractModel):
 
 
 class DescribeSubscribeCheckJobResponse(AbstractModel):
-    """DescribeSubscribeCheckJob response structure.
+    r"""DescribeSubscribeCheckJob response structure.
 
     """
 
@@ -7039,7 +7039,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -7050,7 +7050,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Failure or error prompts, success signals 'success'.
+        r"""Failure or error prompts, success signals 'success'.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7062,7 +7062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Job running status. Valid values: running, failed, success.
+        r"""Job running status. Valid values: running, failed, success.
         :rtype: str
         """
         return self._Status
@@ -7073,7 +7073,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Current overall progress. Value range: 0-100.
+        r"""Current overall progress. Value range: 0-100.
         :rtype: int
         """
         return self._Progress
@@ -7084,7 +7084,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
-        """Total check steps
+        r"""Total check steps
         :rtype: int
         """
         return self._StepAll
@@ -7095,7 +7095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
-        """Current step in execution
+        r"""Current step in execution
         :rtype: int
         """
         return self._StepNow
@@ -7106,7 +7106,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Steps(self):
-        """Running status of each stepNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Running status of each stepNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubscribeCheckStepInfo
         """
         return self._Steps
@@ -7117,7 +7117,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7144,7 +7144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeSubscribeDetailRequest(AbstractModel):
-    """DescribeSubscribeDetail request structure.
+    r"""DescribeSubscribeDetail request structure.
 
     """
 
@@ -7157,7 +7157,7 @@ class DescribeSubscribeDetailRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -7180,7 +7180,7 @@ class DescribeSubscribeDetailRequest(AbstractModel):
 
 
 class DescribeSubscribeDetailResponse(AbstractModel):
-    """DescribeSubscribeDetail response structure.
+    r"""DescribeSubscribeDetail response structure.
 
     """
 
@@ -7279,7 +7279,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeId(self):
-        """The ID of the data subscription, such as subs-b6x64o31tm
+        r"""The ID of the data subscription, such as subs-b6x64o31tm
         :rtype: str
         """
         return self._SubscribeId
@@ -7290,7 +7290,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeName(self):
-        """Data subscription instance name
+        r"""Data subscription instance name
         :rtype: str
         """
         return self._SubscribeName
@@ -7301,7 +7301,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Product(self):
-        """Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        r"""Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
         :rtype: str
         """
         return self._Product
@@ -7312,7 +7312,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """The subscribed cloud database instance ID. This value only makes sense if cloud database is subscribed. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The subscribed cloud database instance ID. This value only makes sense if cloud database is subscribed. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -7323,7 +7323,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """The subscribed cloud database instance status. This value only makes sense if cloud database is subscribed. Valid values: running, isolated, offline.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The subscribed cloud database instance status. This value only makes sense if cloud database is subscribed. Valid values: running, isolated, offline.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceStatus
@@ -7334,7 +7334,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Subscription task billing status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        r"""Subscription task billing status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
         :rtype: str
         """
         return self._Status
@@ -7345,7 +7345,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubsStatus(self):
-        """Subscription task status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        r"""Subscription task status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
         :rtype: str
         """
         return self._SubsStatus
@@ -7356,7 +7356,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifyTime(self):
-        """Modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ModifyTime
@@ -7367,7 +7367,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -7378,7 +7378,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateTime(self):
-        """Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IsolateTime
@@ -7389,7 +7389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExpireTime
@@ -7400,7 +7400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
-        """Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OfflineTime
@@ -7411,7 +7411,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
-        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -7422,7 +7422,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        r"""Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7433,7 +7433,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """The region where the task is located
+        r"""The region where the task is located
         :rtype: str
         """
         return self._Region
@@ -7444,7 +7444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
-        """Kafka topic
+        r"""Kafka topic
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7456,7 +7456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Broker(self):
-        """Broker address of Kafka serviceNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Broker address of Kafka serviceNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Broker
@@ -7467,7 +7467,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeMode(self):
-        """Data subscription type. Valid values for non-mongo Product: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo Product: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Data subscription type. Valid values for non-mongo Product: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo Product: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubscribeMode
@@ -7478,7 +7478,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Subscription data format. If it is empty, the default format is used: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg is protobuf, mongo is json. When DatabaseType is mysql and cynosdbmysql, there are three optional protocols: protobuf\avro\json. For details on data format, please refer to the consumption demo documentation on the official website.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subscription data format. If it is empty, the default format is used: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg is protobuf, mongo is json. When DatabaseType is mysql and cynosdbmysql, there are three optional protocols: protobuf\avro\json. For details on data format, please refer to the consumption demo documentation on the official website.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Protocol
@@ -7489,7 +7489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeObjects(self):
-        """Information of subscribed tableNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Information of subscribed tableNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubscribeObject
         """
         return self._SubscribeObjects
@@ -7500,7 +7500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KafkaConfig(self):
-        """Kafka configuration information
+        r"""Kafka configuration information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
         """
@@ -7512,7 +7512,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
-        """Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AccessType
@@ -7523,7 +7523,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Endpoints(self):
-        """Access type information
+        r"""Access type information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of EndpointItem
         """
@@ -7535,7 +7535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PipelineInfo(self):
-        """Mongo output aggregation settings
+        r"""Mongo output aggregation settings
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PipelineInfo
         """
@@ -7547,7 +7547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """TagNote: This field may return null, indicating that no valid values can be obtained.
+        r"""TagNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagItem
         """
         return self._Tags
@@ -7558,7 +7558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
-        """Subscription task error information
+        r"""Subscription task error information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubsErr
         """
@@ -7570,7 +7570,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraAttr(self):
-        """Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -7581,7 +7581,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7655,7 +7655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeSubscribeJobsRequest(AbstractModel):
-    """DescribeSubscribeJobs request structure.
+    r"""DescribeSubscribeJobs request structure.
 
     """
 
@@ -7698,7 +7698,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription ID (exact match)
+        r"""Subscription ID (exact match)
         :rtype: str
         """
         return self._SubscribeId
@@ -7709,7 +7709,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
-        """Subscription name (prefix fuzzy match)
+        r"""Subscription name (prefix fuzzy match)
         :rtype: str
         """
         return self._SubscribeName
@@ -7720,7 +7720,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Subscribed cloud database instance ID (exact match)
+        r"""Subscribed cloud database instance ID (exact match)
         :rtype: str
         """
         return self._InstanceId
@@ -7731,7 +7731,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def PayType(self):
-        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        r"""Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
         :rtype: int
         """
         return self._PayType
@@ -7742,7 +7742,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Product(self):
-        """Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        r"""Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
         :rtype: str
         """
         return self._Product
@@ -7753,7 +7753,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Data subscription lifecycle status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        r"""Data subscription lifecycle status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
         :rtype: list of str
         """
         return self._Status
@@ -7764,7 +7764,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubsStatus(self):
-        """Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        r"""Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
         :rtype: list of str
         """
         return self._SubsStatus
@@ -7775,7 +7775,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Starting offset for returned results. Default value: 0.
+        r"""Starting offset for returned results. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -7786,7 +7786,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results to be returned at a time. Default value: 20. Maximum value: 100.
+        r"""Number of results to be returned at a time. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -7797,7 +7797,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        """Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time.
+        r"""Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time.
         :rtype: str
         """
         return self._OrderDirection
@@ -7808,7 +7808,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """Tag filter condition, the relationship between multiple TagFilters is and.
+        r"""Tag filter condition, the relationship between multiple TagFilters is and.
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -7846,7 +7846,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
 
 class DescribeSubscribeJobsResponse(AbstractModel):
-    """DescribeSubscribeJobs response structure.
+    r"""DescribeSubscribeJobs response structure.
 
     """
 
@@ -7865,7 +7865,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible instances.
+        r"""Number of eligible instances.
         :rtype: int
         """
         return self._TotalCount
@@ -7876,7 +7876,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Information list of data subscription instances
+        r"""Information list of data subscription instances
         :rtype: list of SubscribeInfo
         """
         return self._Items
@@ -7887,7 +7887,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7909,7 +7909,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
 
 class DescribeSubscribeReturnableRequest(AbstractModel):
-    """DescribeSubscribeReturnable request structure.
+    r"""DescribeSubscribeReturnable request structure.
 
     """
 
@@ -7922,7 +7922,7 @@ class DescribeSubscribeReturnableRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -7945,7 +7945,7 @@ class DescribeSubscribeReturnableRequest(AbstractModel):
 
 
 class DescribeSubscribeReturnableResponse(AbstractModel):
-    """DescribeSubscribeReturnable response structure.
+    r"""DescribeSubscribeReturnable response structure.
 
     """
 
@@ -7965,7 +7965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsReturnable(self):
-        """Whether the instance is returnable
+        r"""Whether the instance is returnable
         :rtype: bool
         """
         return self._IsReturnable
@@ -7976,7 +7976,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReturnFailMessage(self):
-        """Reason for the non-returnability
+        r"""Reason for the non-returnability
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7988,7 +7988,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8005,7 +8005,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeSyncJobsRequest(AbstractModel):
-    """DescribeSyncJobs request structure.
+    r"""DescribeSyncJobs request structure.
 
     """
 
@@ -8048,7 +8048,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID, such as `sync-werwfs23`.
+        r"""Sync task ID, such as `sync-werwfs23`.
         :rtype: str
         """
         return self._JobId
@@ -8059,7 +8059,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Sync task name
+        r"""Sync task name
         :rtype: str
         """
         return self._JobName
@@ -8070,7 +8070,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sort by field, such as `CreateTime`.
+        r"""Sort by field, such as `CreateTime`.
         :rtype: str
         """
         return self._Order
@@ -8081,7 +8081,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
-        """Sorting order. Valid values: `ASC`, `DESC`. Default value: `DESC` by `CreateTime`.
+        r"""Sorting order. Valid values: `ASC`, `DESC`. Default value: `DESC` by `CreateTime`.
         :rtype: str
         """
         return self._OrderSeq
@@ -8092,7 +8092,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default value: `0`.
+        r"""Offset. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -8103,7 +8103,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of sync task instances to be returned. Value range: [1,100]. Default value: `20`.
+        r"""Number of sync task instances to be returned. Value range: [1,100]. Default value: `20`.
         :rtype: int
         """
         return self._Limit
@@ -8114,7 +8114,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """The set of status values, such as `Initialized,CheckPass,Running,ResumableErr,Stopped`.
+        r"""The set of status values, such as `Initialized,CheckPass,Running,ResumableErr,Stopped`.
         :rtype: list of str
         """
         return self._Status
@@ -8125,7 +8125,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        """Running mode. Valid values: `Immediate`, `Timed`.
+        r"""Running mode. Valid values: `Immediate`, `Timed`.
         :rtype: str
         """
         return self._RunMode
@@ -8136,7 +8136,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobType(self):
-        """Task type, such as `mysql2mysql` (sync from MySQL to MySQL).
+        r"""Task type, such as `mysql2mysql` (sync from MySQL to MySQL).
         :rtype: str
         """
         return self._JobType
@@ -8147,7 +8147,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing mode. Valid values: `PrePay` (prepaid); `PostPay` (postpaid).
+        r"""Billing mode. Valid values: `PrePay` (prepaid); `PostPay` (postpaid).
         :rtype: str
         """
         return self._PayMode
@@ -8158,7 +8158,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        """tag
+        r"""tag
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -8196,7 +8196,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
 
 class DescribeSyncJobsResponse(AbstractModel):
-    """DescribeSyncJobs response structure.
+    r"""DescribeSyncJobs response structure.
 
     """
 
@@ -8217,7 +8217,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of tasks
+        r"""Number of tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8229,7 +8229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobList(self):
-        """Array of task details
+        r"""Array of task details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SyncJobInfo
         """
@@ -8241,7 +8241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8263,7 +8263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DestroyIsolatedSubscribeRequest(AbstractModel):
-    """DestroyIsolatedSubscribe request structure.
+    r"""DestroyIsolatedSubscribe request structure.
 
     """
 
@@ -8276,7 +8276,7 @@ class DestroyIsolatedSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -8299,7 +8299,7 @@ class DestroyIsolatedSubscribeRequest(AbstractModel):
 
 
 class DestroyIsolatedSubscribeResponse(AbstractModel):
-    """DestroyIsolatedSubscribe response structure.
+    r"""DestroyIsolatedSubscribe response structure.
 
     """
 
@@ -8312,7 +8312,7 @@ class DestroyIsolatedSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8327,7 +8327,7 @@ class DestroyIsolatedSubscribeResponse(AbstractModel):
 
 
 class DestroyMigrateJobRequest(AbstractModel):
-    """DestroyMigrateJob request structure.
+    r"""DestroyMigrateJob request structure.
 
     """
 
@@ -8340,7 +8340,7 @@ class DestroyMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -8363,7 +8363,7 @@ class DestroyMigrateJobRequest(AbstractModel):
 
 
 class DestroyMigrateJobResponse(AbstractModel):
-    """DestroyMigrateJob response structure.
+    r"""DestroyMigrateJob response structure.
 
     """
 
@@ -8376,7 +8376,7 @@ class DestroyMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8391,7 +8391,7 @@ class DestroyMigrateJobResponse(AbstractModel):
 
 
 class DestroySyncJobRequest(AbstractModel):
-    """DestroySyncJob request structure.
+    r"""DestroySyncJob request structure.
 
     """
 
@@ -8404,7 +8404,7 @@ class DestroySyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -8427,7 +8427,7 @@ class DestroySyncJobRequest(AbstractModel):
 
 
 class DestroySyncJobResponse(AbstractModel):
-    """DestroySyncJob response structure.
+    r"""DestroySyncJob response structure.
 
     """
 
@@ -8440,7 +8440,7 @@ class DestroySyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8455,7 +8455,7 @@ class DestroySyncJobResponse(AbstractModel):
 
 
 class DetailCheckItem(AbstractModel):
-    """Specific check item in this check step
+    r"""Specific check item in this check step
 
     """
 
@@ -8497,7 +8497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckItemName(self):
-        """Check item name, such as source database permission check.
+        r"""Check item name, such as source database permission check.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8509,7 +8509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Check item details
+        r"""Check item details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8521,7 +8521,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckResult(self):
-        """Check item result. Valid values: `pass` (pass); `failed` (failure); `warning` (pass with warning).
+        r"""Check item result. Valid values: `pass` (pass); `failed` (failure); `warning` (pass with warning).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8533,7 +8533,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailureReason(self):
-        """The cause of the check item failure
+        r"""The cause of the check item failure
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8545,7 +8545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
-        """Solution
+        r"""Solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8557,7 +8557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorLog(self):
-        """Execution error log
+        r"""Execution error log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8569,7 +8569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
-        """URL of the detailed help document
+        r"""URL of the detailed help document
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -8581,7 +8581,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkipInfo(self):
-        """Prompt text for ignoring a risk
+        r"""Prompt text for ignoring a risk
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8612,7 +8612,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DifferenceDetail(AbstractModel):
-    """Details of inconsistent tables
+    r"""Details of inconsistent tables
 
     """
 
@@ -8630,7 +8630,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of inconsistent tables
+        r"""Number of inconsistent tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8642,7 +8642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        """Details of inconsistent tables
+        r"""Details of inconsistent tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DifferenceItem
         """
@@ -8672,7 +8672,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DifferenceItem(AbstractModel):
-    """Details of inconsistent tables
+    r"""Details of inconsistent tables
 
     """
 
@@ -8722,7 +8722,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Db(self):
-        """Database name
+        r"""Database name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8734,7 +8734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Table(self):
-        """Table name
+        r"""Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8746,7 +8746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Chunk(self):
-        """Chunk ID
+        r"""Chunk ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8758,7 +8758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcItem(self):
-        """Source database value
+        r"""Source database value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8770,7 +8770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstItem(self):
-        """Target database value
+        r"""Target database value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8782,7 +8782,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexName(self):
-        """Index name
+        r"""Index name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8794,7 +8794,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LowerBoundary(self):
-        """First index key
+        r"""First index key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8806,7 +8806,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpperBoundary(self):
-        """Last index key
+        r"""Last index key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8818,7 +8818,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CostTime(self):
-        """Comparison time in ms
+        r"""Comparison time in ms
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -8830,7 +8830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
-        """Completion time
+        r"""Completion time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8863,7 +8863,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DistributeRule(AbstractModel):
-    """Kafka partition rules for subscription tasks. Data that matches the regex of the database name and table name will be delivered to the Kafka partition according to the RuleType . If multiple rules are configured, the first hit rule will take effect according to the configured order.
+    r"""Kafka partition rules for subscription tasks. Data that matches the regex of the database name and table name will be delivered to the Kafka partition according to the RuleType . If multiple rules are configured, the first hit rule will take effect according to the configured order.
 
     """
 
@@ -8885,7 +8885,7 @@ class DistributeRule(AbstractModel):
 
     @property
     def RuleType(self):
-        """Rule type. Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key); cols (partitioned by column name). Valid values for mongo: collection (partitioned by collection name); collectionAndObjectId (partitioned by collection + primary key). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Rule type. Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key); cols (partitioned by column name). Valid values for mongo: collection (partitioned by collection name); collectionAndObjectId (partitioned by collection + primary key). Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RuleType
@@ -8896,7 +8896,7 @@ class DistributeRule(AbstractModel):
 
     @property
     def DbPattern(self):
-        """Database name matching rule, please fill in the regular expression.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database name matching rule, please fill in the regular expression.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DbPattern
@@ -8907,7 +8907,7 @@ class DistributeRule(AbstractModel):
 
     @property
     def TablePattern(self):
-        """Table name matching rule. If DatabaseType is mongodb, it matches the collection name.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Table name matching rule. If DatabaseType is mongodb, it matches the collection name.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TablePattern
@@ -8918,7 +8918,7 @@ class DistributeRule(AbstractModel):
 
     @property
     def Columns(self):
-        """Column name. This field is required if RuleType is cols. The subscription task will use the value of this column to calculate the partition. Mongo does not partition by column, so there is no need to pass this field.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Column name. This field is required if RuleType is cols. The subscription task will use the value of this column to calculate the partition. Mongo does not partition by column, so there is no need to pass this field.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Columns
@@ -8944,7 +8944,7 @@ class DistributeRule(AbstractModel):
 
 
 class DynamicOptions(AbstractModel):
-    """Data sync options
+    r"""Data sync options
 
     """
 
@@ -8966,7 +8966,7 @@ class DynamicOptions(AbstractModel):
 
     @property
     def OpTypes(self):
-        """DML and DDL options to be synced. Valid values: `Insert` (INSERT), `Update` (UPDATE), `Delete` (DELETE), `DDL` (structure sync), `PartialDDL` (custom option, which is used together with `DdlOptions`). This parameter is required, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""DML and DDL options to be synced. Valid values: `Insert` (INSERT), `Update` (UPDATE), `Delete` (DELETE), `DDL` (structure sync), `PartialDDL` (custom option, which is used together with `DdlOptions`). This parameter is required, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._OpTypes
@@ -8977,7 +8977,7 @@ class DynamicOptions(AbstractModel):
 
     @property
     def DdlOptions(self):
-        """DDL options to be synced. This parameter is required when `OpTypes` is `PartialDDL`, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""DDL options to be synced. This parameter is required when `OpTypes` is `PartialDDL`, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DdlOption
         """
         return self._DdlOptions
@@ -8988,7 +8988,7 @@ class DynamicOptions(AbstractModel):
 
     @property
     def ConflictHandleType(self):
-        """Conflict resolution method. Valid values: `ReportError` (Report error), `Ignore` (Ignore), `Cover` (Overwrite), `ConditionCover` (Conditionally overwrite). Currently, this parameter cannot be modified if the target of the link is Kafka. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Conflict resolution method. Valid values: `ReportError` (Report error), `Ignore` (Ignore), `Cover` (Overwrite), `ConditionCover` (Conditionally overwrite). Currently, this parameter cannot be modified if the target of the link is Kafka. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ConflictHandleType
@@ -8999,7 +8999,7 @@ class DynamicOptions(AbstractModel):
 
     @property
     def ConflictHandleOption(self):
-        """Detailed options of the conflict resolution method, such as the conditionally overwritten rows and condition operations for the “conditionally overwrite” method. The internal field of this parameter cannot be modified separately. If this parameter needs to be updated, update it fully. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Detailed options of the conflict resolution method, such as the conditionally overwritten rows and condition operations for the “conditionally overwrite” method. The internal field of this parameter cannot be modified separately. If this parameter needs to be updated, update it fully. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
         """
         return self._ConflictHandleOption
@@ -9032,7 +9032,7 @@ class DynamicOptions(AbstractModel):
 
 
 class Endpoint(AbstractModel):
-    """Information of the source and target databases in data sync
+    r"""Information of the source and target databases in data sync
 
     """
 
@@ -9156,7 +9156,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
-        """Region name, such as `ap-guangzhou`.
+        r"""Region name, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9168,7 +9168,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
-        """Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
+        r"""Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9180,7 +9180,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbKernel(self):
-        """Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
+        r"""Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9192,7 +9192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of `cdb-powiqx8q`
+        r"""Database instance ID in the format of `cdb-powiqx8q`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9204,7 +9204,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
-        """Instance IP address, which is required if the access type is not `cdb`.
+        r"""Instance IP address, which is required if the access type is not `cdb`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9216,7 +9216,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        """Instance port, which is required if the access type is not `cdb`.
+        r"""Instance port, which is required if the access type is not `cdb`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9228,7 +9228,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
-        """Username, which is required for an instance authenticated by username and password.
+        r"""Username, which is required for an instance authenticated by username and password.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9240,7 +9240,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        """Password, which is required for an instance authenticated by username and password.
+        r"""Password, which is required for an instance authenticated by username and password.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9252,7 +9252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
-        """Database name, which is required if the database type is `cdwpg`.
+        r"""Database name, which is required if the database type is `cdwpg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9264,7 +9264,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
+        r"""VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9276,7 +9276,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
+        r"""ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9288,7 +9288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CvmInstanceId(self):
-        """Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
+        r"""Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9300,7 +9300,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqDcgId(self):
-        """Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
+        r"""Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9312,7 +9312,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpnGwId(self):
-        """VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
+        r"""VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9324,7 +9324,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnId(self):
-        """CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.
+        r"""CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9336,7 +9336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Supplier(self):
-        """Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.
+        r"""Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9348,7 +9348,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EngineVersion(self):
-        """Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
+        r"""Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9360,7 +9360,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Account(self):
-        """Instance account, which is required if the operation is performed across accounts.
+        r"""Instance account, which is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9372,7 +9372,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountMode(self):
-        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+        r"""The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9384,7 +9384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountRole(self):
-        """The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
+        r"""The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9396,7 +9396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleExternalId(self):
-        """External role ID
+        r"""External role ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9408,7 +9408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretId(self):
-        """Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpSecretId
@@ -9419,7 +9419,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretKey(self):
-        """Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpSecretKey
@@ -9430,7 +9430,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpToken(self):
-        """Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TmpToken
@@ -9441,7 +9441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptConn(self):
-        """Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
+        r"""Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9453,7 +9453,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseNetEnv(self):
-        """Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+        r"""Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9465,7 +9465,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnOwnerUin(self):
-        """The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
+        r"""The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9477,7 +9477,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9488,7 +9488,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ChildInstanceType
@@ -9499,7 +9499,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SetId
@@ -9551,7 +9551,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class EndpointItem(AbstractModel):
-    """Instance node information of data subscription
+    r"""Instance node information of data subscription
 
     """
 
@@ -9615,7 +9615,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def DatabaseRegion(self):
-        """Region of the source database. If AccessType is ccn, please fill in the region where vpc is located because the region of the source database is unknown. For other access methods, please fill in the region where the subscription task is located, as ensuring the subscription task and the source database are in the same region is the optimal network solution.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Region of the source database. If AccessType is ccn, please fill in the region where vpc is located because the region of the source database is unknown. For other access methods, please fill in the region where the subscription task is located, as ensuring the subscription task and the source database are in the same region is the optimal network solution.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DatabaseRegion
@@ -9626,7 +9626,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def User(self):
-        """UsernameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""UsernameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._User
@@ -9637,7 +9637,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def Password(self):
-        """Password. It is required when used as an input parameter and empty when used as an output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Password. It is required when used as an input parameter and empty when used as an output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Password
@@ -9648,7 +9648,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Target instance ID. This field is required when AccessType is cdb. When configuring the InstanceId, the instance information is queried and checked. The mysql query interface has been authenticated. Please ensure that the sub-user has the cdb:DescribeDBInstances interface permission.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Target instance ID. This field is required when AccessType is cdb. When configuring the InstanceId, the instance information is queried and checked. The mysql query interface has been authenticated. Please ensure that the sub-user has the cdb:DescribeDBInstances interface permission.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -9659,7 +9659,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def CvmInstanceId(self):
-        """Cloud Virtual Machine ID. This field is required when AccessType is cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cloud Virtual Machine ID. This field is required when AccessType is cvm.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CvmInstanceId
@@ -9670,7 +9670,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def UniqDcgId(self):
-        """Direct Connect gateway ID. This field is required when AccessType is dcg.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Direct Connect gateway ID. This field is required when AccessType is dcg.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UniqDcgId
@@ -9681,7 +9681,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def CcnId(self):
-        """Cloud Connect Network ID. This field is required when AccessType is ccn.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cloud Connect Network ID. This field is required when AccessType is ccn.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CcnId
@@ -9692,7 +9692,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def UniqVpnGwId(self):
-        """VPN gateway ID. This field is required when AccessType is vpncloud.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""VPN gateway ID. This field is required when AccessType is vpncloud.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UniqVpnGwId
@@ -9703,7 +9703,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def VpcId(self):
-        """VpcID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""VpcID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._VpcId
@@ -9714,7 +9714,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subnet ID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubnetId
@@ -9725,7 +9725,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def HostName(self):
-        """Database address, supports domain name and IP. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database address, supports domain name and IP. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._HostName
@@ -9736,7 +9736,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def Port(self):
-        """Database port. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet\cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database port. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet\cvm.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Port
@@ -9747,7 +9747,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def EncryptConn(self):
-        """Whether to use encrypted transmission. Valid values: UnEncrypted; Encrypted. Only mysql supports it. If it is not filled in, it will not be encrypted by default. Other products do not need to fill in this.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to use encrypted transmission. Valid values: UnEncrypted; Encrypted. Only mysql supports it. If it is not filled in, it will not be encrypted by default. Other products do not need to fill in this.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EncryptConn
@@ -9758,7 +9758,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def DatabaseNetEnv(self):
-        """Database network environment. This field is required when AccessType is ccn. Valid values: UserIDC; TencentVPC; Aws; AliYun; Others.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database network environment. This field is required when AccessType is ccn. Valid values: UserIDC; TencentVPC; Aws; AliYun; Others.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DatabaseNetEnv
@@ -9769,7 +9769,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def CcnOwnerUin(self):
-        """The UIN of the main account to which the Cloud Connect Network gateway belongs. It is required for cross-account CCN.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The UIN of the main account to which the Cloud Connect Network gateway belongs. It is required for cross-account CCN.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CcnOwnerUin
@@ -9780,7 +9780,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ExtraAttr(self):
-        """Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -9791,7 +9791,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9802,7 +9802,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ChildInstanceType
@@ -9847,7 +9847,7 @@ class EndpointItem(AbstractModel):
 
 
 class ErrInfo(AbstractModel):
-    """Error information and the corresponding solution
+    r"""Error information and the corresponding solution
 
     """
 
@@ -9868,7 +9868,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """Cause of the error
+        r"""Cause of the error
         :rtype: str
         """
         return self._Reason
@@ -9879,7 +9879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9891,7 +9891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
-        """Solution
+        r"""Solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9917,7 +9917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ErrorInfoItem(AbstractModel):
-    """Task error information
+    r"""Task error information
 
     """
 
@@ -9943,7 +9943,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
-        """Error code
+        r"""Error code
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9955,7 +9955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
-        """Solution
+        r"""Solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9967,7 +9967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorLog(self):
-        """Error log
+        r"""Error log
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9979,7 +9979,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
-        """Help document
+        r"""Help document
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10006,7 +10006,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class GroupInfo(AbstractModel):
-    """Kafka consumer group details
+    r"""Kafka consumer group details
 
     """
 
@@ -10049,7 +10049,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Account(self):
-        """Consumer group account
+        r"""Consumer group account
         :rtype: str
         """
         return self._Account
@@ -10060,7 +10060,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name
+        r"""Consumer group name
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -10071,7 +10071,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        """Consumer group descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Consumer group descriptionNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Description
@@ -10082,7 +10082,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupOffset(self):
-        """Consumer group offset. This field is for compatibility with the previous single partition scenario, where the value is the offset of the last partition. For the offset of each partition, please refer to the StateOfPartition field.
+        r"""Consumer group offset. This field is for compatibility with the previous single partition scenario, where the value is the offset of the last partition. For the offset of each partition, please refer to the StateOfPartition field.
         :rtype: int
         """
         return self._ConsumerGroupOffset
@@ -10093,7 +10093,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupLag(self):
-        """The amount of data that has not been consumed by the consumer group. This field is for compatibility with the previous single partition scenario, where the value is the amount of unconsumed data in the last partition. For the amount of unconsumed data in each partition, refer to the StateOfPartition field.
+        r"""The amount of data that has not been consumed by the consumer group. This field is for compatibility with the previous single partition scenario, where the value is the amount of unconsumed data in the last partition. For the amount of unconsumed data in each partition, refer to the StateOfPartition field.
         :rtype: int
         """
         return self._ConsumerGroupLag
@@ -10104,7 +10104,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Latency(self):
-        """Consumption delay (in seconds)
+        r"""Consumption delay (in seconds)
         :rtype: int
         """
         return self._Latency
@@ -10115,7 +10115,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def StateOfPartition(self):
-        """Consumption status of each partition
+        r"""Consumption status of each partition
         :rtype: list of MonitorInfo
         """
         return self._StateOfPartition
@@ -10126,7 +10126,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """Consumer group creation time, the format is: YYYY-MM-DD hh:mm:ss.
+        r"""Consumer group creation time, the format is: YYYY-MM-DD hh:mm:ss.
         :rtype: str
         """
         return self._CreatedAt
@@ -10137,7 +10137,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        """Consumer group update time, the format is: YYYY-MM-DD hh:mm:ss.
+        r"""Consumer group update time, the format is: YYYY-MM-DD hh:mm:ss.
         :rtype: str
         """
         return self._UpdatedAt
@@ -10148,7 +10148,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupState(self):
-        """Consumer group states, including Dead, Empty, Stable, etc. Only Dead and Empty states can perform reset operations.
+        r"""Consumer group states, including Dead, Empty, Stable, etc. Only Dead and Empty states can perform reset operations.
         :rtype: str
         """
         return self._ConsumerGroupState
@@ -10159,7 +10159,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def PartitionAssignment(self):
-        """The partition is being consumed by each consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The partition is being consumed by each consumer.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PartitionAssignment
         """
         return self._PartitionAssignment
@@ -10202,7 +10202,7 @@ class GroupInfo(AbstractModel):
 
 
 class IsolateMigrateJobRequest(AbstractModel):
-    """IsolateMigrateJob request structure.
+    r"""IsolateMigrateJob request structure.
 
     """
 
@@ -10215,7 +10215,7 @@ class IsolateMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -10238,7 +10238,7 @@ class IsolateMigrateJobRequest(AbstractModel):
 
 
 class IsolateMigrateJobResponse(AbstractModel):
-    """IsolateMigrateJob response structure.
+    r"""IsolateMigrateJob response structure.
 
     """
 
@@ -10251,7 +10251,7 @@ class IsolateMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10266,7 +10266,7 @@ class IsolateMigrateJobResponse(AbstractModel):
 
 
 class IsolateSubscribeRequest(AbstractModel):
-    """IsolateSubscribe request structure.
+    r"""IsolateSubscribe request structure.
 
     """
 
@@ -10279,7 +10279,7 @@ class IsolateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -10302,7 +10302,7 @@ class IsolateSubscribeRequest(AbstractModel):
 
 
 class IsolateSubscribeResponse(AbstractModel):
-    """IsolateSubscribe response structure.
+    r"""IsolateSubscribe response structure.
 
     """
 
@@ -10315,7 +10315,7 @@ class IsolateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10330,7 +10330,7 @@ class IsolateSubscribeResponse(AbstractModel):
 
 
 class IsolateSyncJobRequest(AbstractModel):
-    """IsolateSyncJob request structure.
+    r"""IsolateSyncJob request structure.
 
     """
 
@@ -10343,7 +10343,7 @@ class IsolateSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -10366,7 +10366,7 @@ class IsolateSyncJobRequest(AbstractModel):
 
 
 class IsolateSyncJobResponse(AbstractModel):
-    """IsolateSyncJob response structure.
+    r"""IsolateSyncJob response structure.
 
     """
 
@@ -10379,7 +10379,7 @@ class IsolateSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10394,7 +10394,7 @@ class IsolateSyncJobResponse(AbstractModel):
 
 
 class JobItem(AbstractModel):
-    """Migration task list
+    r"""Migration task list
 
     """
 
@@ -10479,7 +10479,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10491,7 +10491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
-        """Data migration task name
+        r"""Data migration task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10503,7 +10503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10515,7 +10515,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        """Task update time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task update time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10527,7 +10527,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Task start time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task start time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10539,7 +10539,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Task end time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Task end time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10551,7 +10551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
-        """Migration task error message
+        r"""Migration task error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10563,7 +10563,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task status. Valid values: `creating` (Creating), `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Task status. Valid values: `creating` (Creating), `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Status
@@ -10574,7 +10574,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
-        """Task running mode. Valid values: `immediate`, `timed`.
+        r"""Task running mode. Valid values: `immediate`, `timed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10586,7 +10586,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
-        """Expected start time in the format of "2022-07-11 16:20:49", which is required if `RunMode` is `timed`.
+        r"""Expected start time in the format of "2022-07-11 16:20:49", which is required if `RunMode` is `timed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10598,7 +10598,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Task operation information
+        r"""Task operation information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         """
@@ -10610,7 +10610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
-        """Information of the migration task execution process
+        r"""Information of the migration task execution process
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         """
@@ -10622,7 +10622,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
-        """Source instance information
+        r"""Source instance information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
@@ -10634,7 +10634,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
-        """Target database information
+        r"""Target database information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
@@ -10646,7 +10646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTask(self):
-        """Data consistency check result
+        r"""Data consistency check result
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         """
@@ -10658,7 +10658,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeInfo(self):
-        """Billing status information
+        r"""Billing status information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         """
@@ -10670,7 +10670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagItem
         """
@@ -10682,7 +10682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        """Information of automatic retry time
+        r"""Information of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10694,7 +10694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
-        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+        r"""Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10753,7 +10753,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class KafkaOption(AbstractModel):
-    """Sync options configured when the target database is Kafka
+    r"""Sync options configured when the target database is Kafka
 
     """
 
@@ -10775,7 +10775,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DataType(self):
-        """Data type delivered to Kafka, such as Avro, Json, canal-pb, canal-json
+        r"""Data type delivered to Kafka, such as Avro, Json, canal-pb, canal-json
         :rtype: str
         """
         return self._DataType
@@ -10786,7 +10786,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicType(self):
-        """Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
+        r"""Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
         :rtype: str
         """
         return self._TopicType
@@ -10797,7 +10797,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DDLTopicName(self):
-        """Topic for DDL storage
+        r"""Topic for DDL storage
         :rtype: str
         """
         return self._DDLTopicName
@@ -10808,7 +10808,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicRules(self):
-        """Topic description
+        r"""Topic description
         :rtype: list of TopicRule
         """
         return self._TopicRules
@@ -10839,7 +10839,7 @@ class KafkaOption(AbstractModel):
 
 
 class KeyValuePairOption(AbstractModel):
-    """Additional configuration information
+    r"""Additional configuration information
 
     """
 
@@ -10857,7 +10857,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Option key
+        r"""Option key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10869,7 +10869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Option value
+        r"""Option value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10894,7 +10894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MigrateAction(AbstractModel):
-    """Task operation information, which contains the list of all operations in the migration task as well as the list of allowed operations under the current status.
+    r"""Task operation information, which contains the list of all operations in the migration task as well as the list of allowed operations under the current status.
 
     """
 
@@ -10912,7 +10912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllAction(self):
-        """List of all operations in the task
+        r"""List of all operations in the task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -10924,7 +10924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllowedAction(self):
-        """List of allowed operations in the task under the current status
+        r"""List of allowed operations in the task under the current status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -10949,7 +10949,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MigrateDBItem(AbstractModel):
-    """Object in the migration task instance list
+    r"""Object in the migration task instance list
 
     """
 
@@ -10977,7 +10977,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -10988,7 +10988,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._InstanceName
@@ -10999,7 +10999,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vip(self):
-        """Instance VIP
+        r"""Instance VIP
         :rtype: str
         """
         return self._Vip
@@ -11010,7 +11010,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vport(self):
-        """Instance Vport
+        r"""Instance Vport
         :rtype: int
         """
         return self._Vport
@@ -11021,7 +11021,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Usable(self):
-        """Whether the instance can be migrated. Valid values: `1 (yes); `0` (no).
+        r"""Whether the instance can be migrated. Valid values: `1 (yes); `0` (no).
         :rtype: int
         """
         return self._Usable
@@ -11032,7 +11032,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Hint(self):
-        """The cause why the instance cannot be migrated
+        r"""The cause why the instance cannot be migrated
         :rtype: str
         """
         return self._Hint
@@ -11060,7 +11060,7 @@ class MigrateDBItem(AbstractModel):
 
 
 class MigrateDetailInfo(AbstractModel):
-    """Information of the migration task execution process
+    r"""Information of the migration task execution process
 
     """
 
@@ -11090,7 +11090,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
-        """Total number of steps
+        r"""Total number of steps
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11102,7 +11102,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
-        """Current step
+        r"""Current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11114,7 +11114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterSlaveDistance(self):
-        """Source-replica lag in MB. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
+        r"""Source-replica lag in MB. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11126,7 +11126,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecondsBehindMaster(self):
-        """Source-replica lag in seconds. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
+        r"""Source-replica lag in seconds. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11138,7 +11138,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
-        """Step information
+        r"""Step information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepDetailInfo
         """
@@ -11171,7 +11171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MigrateOption(AbstractModel):
-    """Migration options, which describe how the task performs migration.
+    r"""Migration options, which describe how the task performs migration.
 
     """
 
@@ -11213,7 +11213,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseTable(self):
-        """Migration object options, which tell DTS which database/table objects should be migrated.
+        r"""Migration object options, which tell DTS which database/table objects should be migrated.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
         """
@@ -11225,7 +11225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateType(self):
-        """Migration type. Valid values: `full`, `structure`, `fullAndIncrement`. Default value: `fullAndIncrement`.
+        r"""Migration type. Valid values: `full`, `structure`, `fullAndIncrement`. Default value: `fullAndIncrement`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11237,7 +11237,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Consistency(self):
-        """Data consistency check option. Data consistency check is disabled by default.
+        r"""Data consistency check option. Data consistency check is disabled by default.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
         """
@@ -11249,7 +11249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMigrateAccount(self):
-        """Whether to migrate accounts. Valid values: `yes`, `no`.
+        r"""Whether to migrate accounts. Valid values: `yes`, `no`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -11261,7 +11261,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsOverrideRoot(self):
-        """Whether to use the `Root` account in the source database to overwrite that in the target database. Valid values: `false`, `true`. For database/table or structural migration, you should specify `false`. Note that this parameter takes effect only for OldDTS.
+        r"""Whether to use the `Root` account in the source database to overwrite that in the target database. Valid values: `false`, `true`. For database/table or structural migration, you should specify `false`. Note that this parameter takes effect only for OldDTS.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -11273,7 +11273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDstReadOnly(self):
-        """Whether to set the target database to read-only during migration, which takes effect only for MySQL databases. Valid values: `true`, `false`. Default value: `false`.
+        r"""Whether to set the target database to read-only during migration, which takes effect only for MySQL databases. Valid values: `true`, `false`. Default value: `false`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -11285,7 +11285,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraAttr(self):
-        """Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: 
+        r"""Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: 
 ["DstWriteMode": `normal`. 	Target database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) 	"IsDstReadOnly": `true`. 	Whether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) 	"ClientOutputBufferHardLimit": 512. 	Hard limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferSoftLimit": 512. 	Soft limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferPersistTime": 60. Soft limit duration of the replica buffer zone in seconds. 	"ReplBacklogSize": 512, 	Limit of the circular buffer zone capacity in MB. 	"ReplTimeout":120,		Replication timeout period in seconds]
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of KeyValuePairOption
@@ -11298,7 +11298,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateWay(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MigrateWay
@@ -11337,7 +11337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifiedSubscribeObject(AbstractModel):
-    """The object of the data subscription is used in the ModifySubscribeObjects interface. Similar to the SubscribeObject structure, only the type and parameter names differ.
+    r"""The object of the data subscription is used in the ModifySubscribeObjects interface. Similar to the SubscribeObject structure, only the type and parameter names differ.
 
     """
 
@@ -11356,7 +11356,7 @@ class ModifiedSubscribeObject(AbstractModel):
 
     @property
     def ObjectsType(self):
-        """Subscription object type. Valid values: 0 (database); 1 (table, for mongo tasks, this corresponds to a collection).Note: mongo only supports full instance, single database or single collection subscription, so this field should not conflict with SubscribeObjectType. For example, when SubscribeObjectType=4, it means mongo single database subscription, then 0 should be passed in this field.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subscription object type. Valid values: 0 (database); 1 (table, for mongo tasks, this corresponds to a collection).Note: mongo only supports full instance, single database or single collection subscription, so this field should not conflict with SubscribeObjectType. For example, when SubscribeObjectType=4, it means mongo single database subscription, then 0 should be passed in this field.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ObjectsType
@@ -11367,7 +11367,7 @@ class ModifiedSubscribeObject(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """Subscription database nameNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Subscription database nameNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DatabaseName
@@ -11378,7 +11378,7 @@ class ModifiedSubscribeObject(AbstractModel):
 
     @property
     def TableNames(self):
-        """Name of the table (or collection) in the subscription database. If ObjectsType is 1, this field is required and not empty; 
+        r"""Name of the table (or collection) in the subscription database. If ObjectsType is 1, this field is required and not empty; 
         :rtype: list of str
         """
         return self._TableNames
@@ -11403,7 +11403,7 @@ class ModifiedSubscribeObject(AbstractModel):
 
 
 class ModifyCompareTaskNameRequest(AbstractModel):
-    """ModifyCompareTaskName request structure.
+    r"""ModifyCompareTaskName request structure.
 
     """
 
@@ -11422,7 +11422,7 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -11433,7 +11433,7 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :rtype: str
         """
         return self._CompareTaskId
@@ -11444,7 +11444,7 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """Data consistency check task name
+        r"""Data consistency check task name
         :rtype: str
         """
         return self._TaskName
@@ -11469,7 +11469,7 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
 
 class ModifyCompareTaskNameResponse(AbstractModel):
-    """ModifyCompareTaskName response structure.
+    r"""ModifyCompareTaskName response structure.
 
     """
 
@@ -11482,7 +11482,7 @@ class ModifyCompareTaskNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11497,7 +11497,7 @@ class ModifyCompareTaskNameResponse(AbstractModel):
 
 
 class ModifyCompareTaskRequest(AbstractModel):
-    """ModifyCompareTask request structure.
+    r"""ModifyCompareTask request structure.
 
     """
 
@@ -11525,7 +11525,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -11536,7 +11536,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :rtype: str
         """
         return self._CompareTaskId
@@ -11547,7 +11547,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._TaskName
@@ -11558,7 +11558,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def ObjectMode(self):
-        """Data comparison object mode. Valid values: `sameAsMigrate` (All migration objects), `custom` (Custom mode. The custom comparison objects must be a subset of the migration objects). Default value: `sameAsMigrate`.
+        r"""Data comparison object mode. Valid values: `sameAsMigrate` (All migration objects), `custom` (Custom mode. The custom comparison objects must be a subset of the migration objects). Default value: `sameAsMigrate`.
         :rtype: str
         """
         return self._ObjectMode
@@ -11569,7 +11569,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def Objects(self):
-        """Compared object, which is required if `CompareObjectMode` is `custom`.
+        r"""Compared object, which is required if `CompareObjectMode` is `custom`.
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Objects
@@ -11580,7 +11580,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def Options(self):
-        """Consistency check options
+        r"""Consistency check options
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -11612,7 +11612,7 @@ class ModifyCompareTaskRequest(AbstractModel):
 
 
 class ModifyCompareTaskResponse(AbstractModel):
-    """ModifyCompareTask response structure.
+    r"""ModifyCompareTask response structure.
 
     """
 
@@ -11625,7 +11625,7 @@ class ModifyCompareTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11640,7 +11640,7 @@ class ModifyCompareTaskResponse(AbstractModel):
 
 
 class ModifyConsumerGroupDescriptionRequest(AbstractModel):
-    """ModifyConsumerGroupDescription request structure.
+    r"""ModifyConsumerGroupDescription request structure.
 
     """
 
@@ -11662,7 +11662,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -11673,7 +11673,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        r"""Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -11684,7 +11684,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        r"""Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
         :rtype: str
         """
         return self._AccountName
@@ -11695,7 +11695,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Updated description of the consumer group
+        r"""Updated description of the consumer group
         :rtype: str
         """
         return self._Description
@@ -11721,7 +11721,7 @@ class ModifyConsumerGroupDescriptionRequest(AbstractModel):
 
 
 class ModifyConsumerGroupDescriptionResponse(AbstractModel):
-    """ModifyConsumerGroupDescription response structure.
+    r"""ModifyConsumerGroupDescription response structure.
 
     """
 
@@ -11734,7 +11734,7 @@ class ModifyConsumerGroupDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11749,7 +11749,7 @@ class ModifyConsumerGroupDescriptionResponse(AbstractModel):
 
 
 class ModifyConsumerGroupPasswordRequest(AbstractModel):
-    """ModifyConsumerGroupPassword request structure.
+    r"""ModifyConsumerGroupPassword request structure.
 
     """
 
@@ -11774,7 +11774,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -11785,7 +11785,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.
+        r"""Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.
         :rtype: str
         """
         return self._AccountName
@@ -11796,7 +11796,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        r"""Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -11807,7 +11807,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def OldPassword(self):
-        """Old Password.
+        r"""Old Password.
         :rtype: str
         """
         return self._OldPassword
@@ -11818,7 +11818,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
     @property
     def NewPassword(self):
-        """New password. The character length is no less than 3 and no more than 32.
+        r"""New password. The character length is no less than 3 and no more than 32.
         :rtype: str
         """
         return self._NewPassword
@@ -11845,7 +11845,7 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
 
 
 class ModifyConsumerGroupPasswordResponse(AbstractModel):
-    """ModifyConsumerGroupPassword response structure.
+    r"""ModifyConsumerGroupPassword response structure.
 
     """
 
@@ -11858,7 +11858,7 @@ class ModifyConsumerGroupPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11873,7 +11873,7 @@ class ModifyConsumerGroupPasswordResponse(AbstractModel):
 
 
 class ModifyMigrateJobSpecRequest(AbstractModel):
-    """ModifyMigrateJobSpec request structure.
+    r"""ModifyMigrateJobSpec request structure.
 
     """
 
@@ -11889,7 +11889,7 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -11900,7 +11900,7 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     @property
     def NewInstanceClass(self):
-        """New instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        r"""New instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
         :rtype: str
         """
         return self._NewInstanceClass
@@ -11924,7 +11924,7 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
 
 class ModifyMigrateJobSpecResponse(AbstractModel):
-    """ModifyMigrateJobSpec response structure.
+    r"""ModifyMigrateJobSpec response structure.
 
     """
 
@@ -11937,7 +11937,7 @@ class ModifyMigrateJobSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11952,7 +11952,7 @@ class ModifyMigrateJobSpecResponse(AbstractModel):
 
 
 class ModifyMigrateNameRequest(AbstractModel):
-    """ModifyMigrateName request structure.
+    r"""ModifyMigrateName request structure.
 
     """
 
@@ -11968,7 +11968,7 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -11979,7 +11979,7 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """New migration task name
+        r"""New migration task name
         :rtype: str
         """
         return self._JobName
@@ -12003,7 +12003,7 @@ class ModifyMigrateNameRequest(AbstractModel):
 
 
 class ModifyMigrateNameResponse(AbstractModel):
-    """ModifyMigrateName response structure.
+    r"""ModifyMigrateName response structure.
 
     """
 
@@ -12016,7 +12016,7 @@ class ModifyMigrateNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12031,7 +12031,7 @@ class ModifyMigrateNameResponse(AbstractModel):
 
 
 class ModifyMigrateRateLimitRequest(AbstractModel):
-    """ModifyMigrateRateLimit request structure.
+    r"""ModifyMigrateRateLimit request structure.
 
     """
 
@@ -12059,7 +12059,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -12070,7 +12070,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def DumpThread(self):
-        """Number of full export threads for migration task. Value range: 1-16.
+        r"""Number of full export threads for migration task. Value range: 1-16.
         :rtype: int
         """
         return self._DumpThread
@@ -12081,7 +12081,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def DumpRps(self):
-        """The full export Rps for migration task. The value needs to be greater than 0.
+        r"""The full export Rps for migration task. The value needs to be greater than 0.
         :rtype: int
         """
         return self._DumpRps
@@ -12092,7 +12092,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def LoadThread(self):
-        """Number of full import threads for migration task. Value range: 1-16.
+        r"""Number of full import threads for migration task. Value range: 1-16.
         :rtype: int
         """
         return self._LoadThread
@@ -12103,7 +12103,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def SinkerThread(self):
-        """Number of incremental import threads for migration task. Value range: 1-128.
+        r"""Number of incremental import threads for migration task. Value range: 1-128.
         :rtype: int
         """
         return self._SinkerThread
@@ -12114,7 +12114,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def LoadRps(self):
-        """Limits for full import Rps.
+        r"""Limits for full import Rps.
         :rtype: int
         """
         return self._LoadRps
@@ -12142,7 +12142,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
 
 class ModifyMigrateRateLimitResponse(AbstractModel):
-    """ModifyMigrateRateLimit response structure.
+    r"""ModifyMigrateRateLimit response structure.
 
     """
 
@@ -12155,7 +12155,7 @@ class ModifyMigrateRateLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12170,7 +12170,7 @@ class ModifyMigrateRateLimitResponse(AbstractModel):
 
 
 class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
-    """ModifyMigrateRuntimeAttribute request structure.
+    r"""ModifyMigrateRuntimeAttribute request structure.
 
     """
 
@@ -12186,7 +12186,7 @@ class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task id, for example: dts-2rgv0f09
+        r"""Migration task id, for example: dts-2rgv0f09
         :rtype: str
         """
         return self._JobId
@@ -12197,7 +12197,7 @@ class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
 
     @property
     def OtherOptions(self):
-        """Attributes that need to be modified. This structure is designed as a generic structure to separate customized attributes for multiple businesses. <br>For instance, for Redis:<br>{<br>	 "Key": "DstWriteMode",	// Target database write mode<br> 	"Value": "normal"	          // clearData (clear target instance data), overwrite (perform task in overwrite manner), normal (follow normal procedure, no additional actions, this is the default value) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	// Whether to set target database as read-only during migration<br/> 	"Value": "true"	          // true (set as read-only), false (do not set as read-only) <br/>}
+        r"""Attributes that need to be modified. This structure is designed as a generic structure to separate customized attributes for multiple businesses. <br>For instance, for Redis:<br>{<br>	 "Key": "DstWriteMode",	// Target database write mode<br> 	"Value": "normal"	          // clearData (clear target instance data), overwrite (perform task in overwrite manner), normal (follow normal procedure, no additional actions, this is the default value) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	// Whether to set target database as read-only during migration<br/> 	"Value": "true"	          // true (set as read-only), false (do not set as read-only) <br/>}
         :rtype: list of KeyValuePairOption
         """
         return self._OtherOptions
@@ -12226,7 +12226,7 @@ class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
 
 
 class ModifyMigrateRuntimeAttributeResponse(AbstractModel):
-    """ModifyMigrateRuntimeAttribute response structure.
+    r"""ModifyMigrateRuntimeAttribute response structure.
 
     """
 
@@ -12239,7 +12239,7 @@ class ModifyMigrateRuntimeAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12254,7 +12254,7 @@ class ModifyMigrateRuntimeAttributeResponse(AbstractModel):
 
 
 class ModifyMigrationJobRequest(AbstractModel):
-    """ModifyMigrationJob request structure.
+    r"""ModifyMigrationJob request structure.
 
     """
 
@@ -12291,7 +12291,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -12302,7 +12302,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        """Running mode. Valid values: `immediate`, `timed`.
+        r"""Running mode. Valid values: `immediate`, `timed`.
         :rtype: str
         """
         return self._RunMode
@@ -12313,7 +12313,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def MigrateOption(self):
-        """Migration task configuration options, which describe how the task performs migration. The `RateLimitOption` option cannot be configured. To modify the speed limit settings of the task, use the `ModifyMigrateRateLimit` API after the task starts running.
+        r"""Migration task configuration options, which describe how the task performs migration. The `RateLimitOption` option cannot be configured. To modify the speed limit settings of the task, use the `ModifyMigrateRateLimit` API after the task starts running.
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
         """
         return self._MigrateOption
@@ -12324,7 +12324,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
-        """Source instance information
+        r"""Source instance information
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._SrcInfo
@@ -12335,7 +12335,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
-        """Target instance information
+        r"""Target instance information
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._DstInfo
@@ -12346,7 +12346,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def JobName(self):
-        """Migration task name, which can contain up to 128 characters.
+        r"""Migration task name, which can contain up to 128 characters.
         :rtype: str
         """
         return self._JobName
@@ -12357,7 +12357,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
+        r"""Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
         :rtype: str
         """
         return self._ExpectRunTime
@@ -12368,7 +12368,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagItem
         """
         return self._Tags
@@ -12379,7 +12379,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        """Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        r"""Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -12421,7 +12421,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
 
 class ModifyMigrationJobResponse(AbstractModel):
-    """ModifyMigrationJob response structure.
+    r"""ModifyMigrationJob response structure.
 
     """
 
@@ -12434,7 +12434,7 @@ class ModifyMigrationJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12449,7 +12449,7 @@ class ModifyMigrationJobResponse(AbstractModel):
 
 
 class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
-    """ModifySubscribeAutoRenewFlag request structure.
+    r"""ModifySubscribeAutoRenewFlag request structure.
 
     """
 
@@ -12465,7 +12465,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -12476,7 +12476,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. Valid values: 1 (auto-renewal enabled); 0 (auto-renewal disabled).
+        r"""Auto-renewal flag. Valid values: 1 (auto-renewal enabled); 0 (auto-renewal disabled).
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -12500,7 +12500,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
 
 class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
-    """ModifySubscribeAutoRenewFlag response structure.
+    r"""ModifySubscribeAutoRenewFlag response structure.
 
     """
 
@@ -12513,7 +12513,7 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12528,7 +12528,7 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
 
 
 class ModifySubscribeNameRequest(AbstractModel):
-    """ModifySubscribeName request structure.
+    r"""ModifySubscribeName request structure.
 
     """
 
@@ -12544,7 +12544,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -12555,7 +12555,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
-        """Modified data subscription instance name. Value range: 1-60.
+        r"""Modified data subscription instance name. Value range: 1-60.
         :rtype: str
         """
         return self._SubscribeName
@@ -12579,7 +12579,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
 
 class ModifySubscribeNameResponse(AbstractModel):
-    """ModifySubscribeName response structure.
+    r"""ModifySubscribeName response structure.
 
     """
 
@@ -12592,7 +12592,7 @@ class ModifySubscribeNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12607,7 +12607,7 @@ class ModifySubscribeNameResponse(AbstractModel):
 
 
 class ModifySubscribeObjectsRequest(AbstractModel):
-    """ModifySubscribeObjects request structure.
+    r"""ModifySubscribeObjects request structure.
 
     """
 
@@ -12635,7 +12635,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -12646,7 +12646,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
-        """Data subscription type. Valid values for non-mongo task: 0 (full instance update); 1 (data update); 2 (structure update); 3 (data + structure update). Valid values for mongo task: 0 (full instance update); 4 (subscribe to a table); 5 (subscribe to a collection).
+        r"""Data subscription type. Valid values for non-mongo task: 0 (full instance update); 1 (data update); 2 (structure update); 3 (data + structure update). Valid values for mongo task: 0 (full instance update); 4 (subscribe to a table); 5 (subscribe to a collection).
         :rtype: int
         """
         return self._SubscribeObjectType
@@ -12657,7 +12657,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def Objects(self):
-        """Modified subscription database table information. It will replace the original subscription object, this field is required unless SubscribeObjectType = 0 or 2.
+        r"""Modified subscription database table information. It will replace the original subscription object, this field is required unless SubscribeObjectType = 0 or 2.
         :rtype: list of ModifiedSubscribeObject
         """
         return self._Objects
@@ -12668,7 +12668,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def DistributeRules(self):
-        """Kafka partitioning policy. If left blank, it will remain unchanged by default. If filled, it will replace the original policy.
+        r"""Kafka partitioning policy. If left blank, it will remain unchanged by default. If filled, it will replace the original policy.
         :rtype: list of DistributeRule
         """
         return self._DistributeRules
@@ -12679,7 +12679,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def DefaultRuleType(self):
-        """Default partitioning policy. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Default strategies supported by non-mongo products: table - partitioned by table name, pk - partitioned by table name + primary key. Mongo's default strategy only supports: collection-partitioned by collection name.This field is used in conjunction with DistributeRules. If DistributeRules is configured, this field is also required. If this field is configured, it is considered as configuring a DistributeRules, and the original partitioning policy will also be overwritten.
+        r"""Default partitioning policy. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Default strategies supported by non-mongo products: table - partitioned by table name, pk - partitioned by table name + primary key. Mongo's default strategy only supports: collection-partitioned by collection name.This field is used in conjunction with DistributeRules. If DistributeRules is configured, this field is also required. If this field is configured, it is considered as configuring a DistributeRules, and the original partitioning policy will also be overwritten.
         :rtype: str
         """
         return self._DefaultRuleType
@@ -12690,7 +12690,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def PipelineInfo(self):
-        """Mongo output aggregation settings, optional for Mongo tasks. If left blank, no modification will be made by default.
+        r"""Mongo output aggregation settings, optional for Mongo tasks. If left blank, no modification will be made by default.
         :rtype: list of PipelineInfo
         """
         return self._PipelineInfo
@@ -12733,7 +12733,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
 
 class ModifySubscribeObjectsResponse(AbstractModel):
-    """ModifySubscribeObjects response structure.
+    r"""ModifySubscribeObjects response structure.
 
     """
 
@@ -12746,7 +12746,7 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12761,7 +12761,7 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
 
 class ModifySyncJobConfigRequest(AbstractModel):
-    """ModifySyncJobConfig request structure.
+    r"""ModifySyncJobConfig request structure.
 
     """
 
@@ -12780,7 +12780,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -12791,7 +12791,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def DynamicObjects(self):
-        """The modified sync objects
+        r"""The modified sync objects
         :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
         """
         return self._DynamicObjects
@@ -12802,7 +12802,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def DynamicOptions(self):
-        """The modified sync task options
+        r"""The modified sync task options
         :rtype: :class:`tencentcloud.dts.v20211206.models.DynamicOptions`
         """
         return self._DynamicOptions
@@ -12831,7 +12831,7 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
 
 class ModifySyncJobConfigResponse(AbstractModel):
-    """ModifySyncJobConfig response structure.
+    r"""ModifySyncJobConfig response structure.
 
     """
 
@@ -12844,7 +12844,7 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12859,7 +12859,7 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
 
 class ModifySyncRateLimitRequest(AbstractModel):
-    """ModifySyncRateLimit request structure.
+    r"""ModifySyncRateLimit request structure.
 
     """
 
@@ -12887,7 +12887,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -12898,7 +12898,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def DumpThread(self):
-        """Number of full export threads for sync task. Value range: 1-16.
+        r"""Number of full export threads for sync task. Value range: 1-16.
         :rtype: int
         """
         return self._DumpThread
@@ -12909,7 +12909,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def DumpRps(self):
-        """The full export Rps for sync task. The value needs to be greater than 0.
+        r"""The full export Rps for sync task. The value needs to be greater than 0.
         :rtype: int
         """
         return self._DumpRps
@@ -12920,7 +12920,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def LoadThread(self):
-        """Number of full import threads for sync task. Value range: 1-16.
+        r"""Number of full import threads for sync task. Value range: 1-16.
         :rtype: int
         """
         return self._LoadThread
@@ -12931,7 +12931,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def SinkerThread(self):
-        """Number of incremental import threads for sync task. Value range: 1-128.
+        r"""Number of incremental import threads for sync task. Value range: 1-128.
         :rtype: int
         """
         return self._SinkerThread
@@ -12942,7 +12942,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def LoadRps(self):
-        """The full import Rps for sync task.
+        r"""The full import Rps for sync task.
         :rtype: int
         """
         return self._LoadRps
@@ -12970,7 +12970,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
 
 class ModifySyncRateLimitResponse(AbstractModel):
-    """ModifySyncRateLimit response structure.
+    r"""ModifySyncRateLimit response structure.
 
     """
 
@@ -12983,7 +12983,7 @@ class ModifySyncRateLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12998,7 +12998,7 @@ class ModifySyncRateLimitResponse(AbstractModel):
 
 
 class MonitorInfo(AbstractModel):
-    """Partition details of Kafka consumer group
+    r"""Partition details of Kafka consumer group
 
     """
 
@@ -13020,7 +13020,7 @@ class MonitorInfo(AbstractModel):
 
     @property
     def PartitionNo(self):
-        """The number of the current partition, starting from 0.
+        r"""The number of the current partition, starting from 0.
         :rtype: int
         """
         return self._PartitionNo
@@ -13031,7 +13031,7 @@ class MonitorInfo(AbstractModel):
 
     @property
     def ConsumerGroupOffset(self):
-        """The offset of the current partition.
+        r"""The offset of the current partition.
         :rtype: int
         """
         return self._ConsumerGroupOffset
@@ -13042,7 +13042,7 @@ class MonitorInfo(AbstractModel):
 
     @property
     def ConsumerGroupLag(self):
-        """The amount of unconsumed data in the current partition.
+        r"""The amount of unconsumed data in the current partition.
         :rtype: int
         """
         return self._ConsumerGroupLag
@@ -13053,7 +13053,7 @@ class MonitorInfo(AbstractModel):
 
     @property
     def Latency(self):
-        """The consumption delay of the current partition (in seconds).
+        r"""The consumption delay of the current partition (in seconds).
         :rtype: int
         """
         return self._Latency
@@ -13079,7 +13079,7 @@ class MonitorInfo(AbstractModel):
 
 
 class Objects(AbstractModel):
-    """Description of synced database objects
+    r"""Description of synced database objects
 
     """
 
@@ -13103,7 +13103,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
-        """Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Mode
@@ -13114,7 +13114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
-        """Sync object, which is required if `Mode` is `Partial`.
+        r"""Sync object, which is required if `Mode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Database
         """
@@ -13126,7 +13126,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
-        """Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -13137,7 +13137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineDDL(self):
-        """A redundant field that specifies the online DDL type
+        r"""A redundant field that specifies the online DDL type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
@@ -13171,7 +13171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OffsetTimeMap(AbstractModel):
-    """Checkpoint information in Kafka partition for data subscription.
+    r"""Checkpoint information in Kafka partition for data subscription.
 
     """
 
@@ -13187,7 +13187,7 @@ class OffsetTimeMap(AbstractModel):
 
     @property
     def PartitionNo(self):
-        """Kafka partition numberNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Kafka partition numberNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._PartitionNo
@@ -13198,7 +13198,7 @@ class OffsetTimeMap(AbstractModel):
 
     @property
     def Offset(self):
-        """Kafka offsetNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Kafka offsetNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Offset
@@ -13222,7 +13222,7 @@ class OffsetTimeMap(AbstractModel):
 
 
 class OnlineDDL(AbstractModel):
-    """Online DDL type
+    r"""Online DDL type
 
     """
 
@@ -13236,7 +13236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
+        r"""Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13260,7 +13260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Options(AbstractModel):
-    """Data sync options
+    r"""Data sync options
 
     """
 
@@ -13316,7 +13316,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitType(self):
-        """Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.
+        r"""Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13328,7 +13328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealOfExistSameTable(self):
-        """Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.
+        r"""Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13340,7 +13340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleType(self):
-        """Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.
+        r"""Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13352,7 +13352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddAdditionalColumn(self):
-        """Whether to add the additional column
+        r"""Whether to add the additional column
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -13364,7 +13364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OpTypes(self):
-        """DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.
+        r"""DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -13376,7 +13376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleOption(self):
-        """Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.
+        r"""Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
         """
@@ -13388,7 +13388,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlOptions(self):
-        """DDL statements to be synced
+        r"""DDL statements to be synced
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DdlOption
         """
@@ -13400,7 +13400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KafkaOption(self):
-        """Kafka sync options
+        r"""Kafka sync options
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
@@ -13412,7 +13412,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RateLimitOption(self):
-        """Task speed limit information
+        r"""Task speed limit information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         """
@@ -13424,7 +13424,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        """Settings of the automatic retry time range
+        r"""Settings of the automatic retry time range
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13436,7 +13436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterBeginCommit(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._FilterBeginCommit
@@ -13447,7 +13447,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCheckpoint(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._FilterCheckpoint
@@ -13492,7 +13492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PartitionAssignment(AbstractModel):
-    """The partition allocation of Kafka consumer groups in data subscriptions. This data is queried in real time. If you need the latest data, you need to call the interface again.
+    r"""The partition allocation of Kafka consumer groups in data subscriptions. This data is queried in real time. If you need the latest data, you need to call the interface again.
 
     """
 
@@ -13508,7 +13508,7 @@ class PartitionAssignment(AbstractModel):
 
     @property
     def ClientId(self):
-        """The clientId of the consumer
+        r"""The clientId of the consumer
         :rtype: str
         """
         return self._ClientId
@@ -13519,7 +13519,7 @@ class PartitionAssignment(AbstractModel):
 
     @property
     def PartitionNo(self):
-        """The partition is being consumed by this consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The partition is being consumed by this consumer.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int non-negative
         """
         return self._PartitionNo
@@ -13543,7 +13543,7 @@ class PartitionAssignment(AbstractModel):
 
 
 class PauseMigrateJobRequest(AbstractModel):
-    """PauseMigrateJob request structure.
+    r"""PauseMigrateJob request structure.
 
     """
 
@@ -13556,7 +13556,7 @@ class PauseMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -13579,7 +13579,7 @@ class PauseMigrateJobRequest(AbstractModel):
 
 
 class PauseMigrateJobResponse(AbstractModel):
-    """PauseMigrateJob response structure.
+    r"""PauseMigrateJob response structure.
 
     """
 
@@ -13592,7 +13592,7 @@ class PauseMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13607,7 +13607,7 @@ class PauseMigrateJobResponse(AbstractModel):
 
 
 class PauseSyncJobRequest(AbstractModel):
-    """PauseSyncJob request structure.
+    r"""PauseSyncJob request structure.
 
     """
 
@@ -13620,7 +13620,7 @@ class PauseSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -13643,7 +13643,7 @@ class PauseSyncJobRequest(AbstractModel):
 
 
 class PauseSyncJobResponse(AbstractModel):
-    """PauseSyncJob response structure.
+    r"""PauseSyncJob response structure.
 
     """
 
@@ -13656,7 +13656,7 @@ class PauseSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13671,7 +13671,7 @@ class PauseSyncJobResponse(AbstractModel):
 
 
 class PipelineInfo(AbstractModel):
-    """Mongo output aggregation settings. Default value: Change Event.
+    r"""Mongo output aggregation settings. Default value: Change Event.
 
     """
 
@@ -13687,7 +13687,7 @@ class PipelineInfo(AbstractModel):
 
     @property
     def AggOp(self):
-        """Aggregation operators: $addFields, $match, $project, $replaceRoot, $redact, $replaceWith, $set, $unset. $replaceWith, $set, $unset are available options for subscription instances that are version 4.2 or higher.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Aggregation operators: $addFields, $match, $project, $replaceRoot, $redact, $replaceWith, $set, $unset. $replaceWith, $set, $unset are available options for subscription instances that are version 4.2 or higher.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AggOp
@@ -13698,7 +13698,7 @@ class PipelineInfo(AbstractModel):
 
     @property
     def AggCmd(self):
-        """Aggregation expression must be in json format.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Aggregation expression must be in json format.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AggCmd
@@ -13722,7 +13722,7 @@ class PipelineInfo(AbstractModel):
 
 
 class ProcessProgress(AbstractModel):
-    """Task step information
+    r"""Task step information
 
     """
 
@@ -13756,7 +13756,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Step status. Valid values: `notStarted`, `running`, `success`, `failed`.
+        r"""Step status. Valid values: `notStarted`, `running`, `success`, `failed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13768,7 +13768,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        """Progress information
+        r"""Progress information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13780,7 +13780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
-        """Total number of steps
+        r"""Total number of steps
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13792,7 +13792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
-        """Current step
+        r"""Current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13804,7 +13804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """The prompt output in the current step
+        r"""The prompt output in the current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13816,7 +13816,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Steps(self):
-        """Step information
+        r"""Step information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepDetailInfo
         """
@@ -13850,7 +13850,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ProcessStepTip(AbstractModel):
-    """Object of the error or warning information
+    r"""Object of the error or warning information
 
     """
 
@@ -13872,7 +13872,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Prompt message
+        r"""Prompt message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13884,7 +13884,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
-        """Solution
+        r"""Solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13896,7 +13896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
-        """Help document
+        r"""Help document
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -13922,7 +13922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RateLimitOption(AbstractModel):
-    """Speed limit details of migration and sync tasks
+    r"""Speed limit details of migration and sync tasks
 
     """
 
@@ -13966,7 +13966,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentDumpThread(self):
-        """The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CurrentDumpThread
@@ -13977,7 +13977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpThread(self):
-        """The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DefaultDumpThread
@@ -13988,7 +13988,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentDumpRps(self):
-        """The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CurrentDumpRps
@@ -13999,7 +13999,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpRps(self):
-        """The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DefaultDumpRps
@@ -14010,7 +14010,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadThread(self):
-        """The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CurrentLoadThread
@@ -14021,7 +14021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadThread(self):
-        """The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DefaultLoadThread
@@ -14032,7 +14032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadRps(self):
-        """The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CurrentLoadRps
@@ -14043,7 +14043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadRps(self):
-        """The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DefaultLoadRps
@@ -14054,7 +14054,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentSinkerThread(self):
-        """The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CurrentSinkerThread
@@ -14065,7 +14065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultSinkerThread(self):
-        """The default number of incremental import threads. This field is only meaningful in the output parameter.
+        r"""The default number of incremental import threads. This field is only meaningful in the output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14077,7 +14077,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasUserSetRateLimit(self):
-        """enum:"no"/"yes", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""enum:"no"/"yes", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._HasUserSetRateLimit
@@ -14110,7 +14110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RecoverMigrateJobRequest(AbstractModel):
-    """RecoverMigrateJob request structure.
+    r"""RecoverMigrateJob request structure.
 
     """
 
@@ -14123,7 +14123,7 @@ class RecoverMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._JobId
@@ -14146,7 +14146,7 @@ class RecoverMigrateJobRequest(AbstractModel):
 
 
 class RecoverMigrateJobResponse(AbstractModel):
-    """RecoverMigrateJob response structure.
+    r"""RecoverMigrateJob response structure.
 
     """
 
@@ -14159,7 +14159,7 @@ class RecoverMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14174,7 +14174,7 @@ class RecoverMigrateJobResponse(AbstractModel):
 
 
 class RecoverSyncJobRequest(AbstractModel):
-    """RecoverSyncJob request structure.
+    r"""RecoverSyncJob request structure.
 
     """
 
@@ -14187,7 +14187,7 @@ class RecoverSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
+        r"""Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
         :rtype: str
         """
         return self._JobId
@@ -14210,7 +14210,7 @@ class RecoverSyncJobRequest(AbstractModel):
 
 
 class RecoverSyncJobResponse(AbstractModel):
-    """RecoverSyncJob response structure.
+    r"""RecoverSyncJob response structure.
 
     """
 
@@ -14223,7 +14223,7 @@ class RecoverSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14238,7 +14238,7 @@ class RecoverSyncJobResponse(AbstractModel):
 
 
 class ResetConsumerGroupOffsetRequest(AbstractModel):
-    """ResetConsumerGroupOffset request structure.
+    r"""ResetConsumerGroupOffset request structure.
 
     """
 
@@ -14266,7 +14266,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Subscription instance ID
+        r"""Subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -14277,7 +14277,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """Subscribed Kafka topic
+        r"""Subscribed Kafka topic
         :rtype: str
         """
         return self._TopicName
@@ -14288,7 +14288,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        r"""Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -14299,7 +14299,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def PartitionNos(self):
-        """The partition number of offset needs to be modified.
+        r"""The partition number of offset needs to be modified.
         :rtype: list of int
         """
         return self._PartitionNos
@@ -14310,7 +14310,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ResetMode(self):
-        """Reset mode. Valid values: earliest (start consumption from the earliest position); latest (start consumption from the latest position); datetime (start consumption from the most recent checkpoint before the specified time).
+        r"""Reset mode. Valid values: earliest (start consumption from the earliest position); latest (start consumption from the latest position); datetime (start consumption from the most recent checkpoint before the specified time).
         :rtype: str
         """
         return self._ResetMode
@@ -14321,7 +14321,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ResetDatetime(self):
-        """When ResetMode is datetime, this field needs to be filled in, the format is: Y-m-d h:m:s. If not filled in, the default time is 0, and the effect is the same as earliest.
+        r"""When ResetMode is datetime, this field needs to be filled in, the format is: Y-m-d h:m:s. If not filled in, the default time is 0, and the effect is the same as earliest.
         :rtype: str
         """
         return self._ResetDatetime
@@ -14349,7 +14349,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
 
 class ResetConsumerGroupOffsetResponse(AbstractModel):
-    """ResetConsumerGroupOffset response structure.
+    r"""ResetConsumerGroupOffset response structure.
 
     """
 
@@ -14362,7 +14362,7 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14377,7 +14377,7 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
 
 class ResetSubscribeRequest(AbstractModel):
-    """ResetSubscribe request structure.
+    r"""ResetSubscribe request structure.
 
     """
 
@@ -14390,7 +14390,7 @@ class ResetSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -14413,7 +14413,7 @@ class ResetSubscribeRequest(AbstractModel):
 
 
 class ResetSubscribeResponse(AbstractModel):
-    """ResetSubscribe response structure.
+    r"""ResetSubscribe response structure.
 
     """
 
@@ -14426,7 +14426,7 @@ class ResetSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14441,7 +14441,7 @@ class ResetSubscribeResponse(AbstractModel):
 
 
 class ResizeSyncJobRequest(AbstractModel):
-    """ResizeSyncJob request structure.
+    r"""ResizeSyncJob request structure.
 
     """
 
@@ -14457,7 +14457,7 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -14468,7 +14468,7 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def NewInstanceClass(self):
-        """Task specification
+        r"""Task specification
         :rtype: str
         """
         return self._NewInstanceClass
@@ -14492,7 +14492,7 @@ class ResizeSyncJobRequest(AbstractModel):
 
 
 class ResizeSyncJobResponse(AbstractModel):
-    """ResizeSyncJob response structure.
+    r"""ResizeSyncJob response structure.
 
     """
 
@@ -14505,7 +14505,7 @@ class ResizeSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14520,7 +14520,7 @@ class ResizeSyncJobResponse(AbstractModel):
 
 
 class ResumeMigrateJobRequest(AbstractModel):
-    """ResumeMigrateJob request structure.
+    r"""ResumeMigrateJob request structure.
 
     """
 
@@ -14536,7 +14536,7 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -14547,7 +14547,7 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     @property
     def ResumeOption(self):
-        """Task resumption mode. Valid values: `clearData` (Clearing the target instance data); `overwrite` (Executing the task in overwrite mode); `normal` (Following the normal process without additional operations). `clearData` and `overwrite` are only valid for Redis links and `normal` for non-Redis links.
+        r"""Task resumption mode. Valid values: `clearData` (Clearing the target instance data); `overwrite` (Executing the task in overwrite mode); `normal` (Following the normal process without additional operations). `clearData` and `overwrite` are only valid for Redis links and `normal` for non-Redis links.
         :rtype: str
         """
         return self._ResumeOption
@@ -14571,7 +14571,7 @@ class ResumeMigrateJobRequest(AbstractModel):
 
 
 class ResumeMigrateJobResponse(AbstractModel):
-    """ResumeMigrateJob response structure.
+    r"""ResumeMigrateJob response structure.
 
     """
 
@@ -14584,7 +14584,7 @@ class ResumeMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14599,7 +14599,7 @@ class ResumeMigrateJobResponse(AbstractModel):
 
 
 class ResumeSubscribeRequest(AbstractModel):
-    """ResumeSubscribe request structure.
+    r"""ResumeSubscribe request structure.
 
     """
 
@@ -14612,7 +14612,7 @@ class ResumeSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -14635,7 +14635,7 @@ class ResumeSubscribeRequest(AbstractModel):
 
 
 class ResumeSubscribeResponse(AbstractModel):
-    """ResumeSubscribe response structure.
+    r"""ResumeSubscribe response structure.
 
     """
 
@@ -14648,7 +14648,7 @@ class ResumeSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14663,7 +14663,7 @@ class ResumeSubscribeResponse(AbstractModel):
 
 
 class ResumeSyncJobRequest(AbstractModel):
-    """ResumeSyncJob request structure.
+    r"""ResumeSyncJob request structure.
 
     """
 
@@ -14676,7 +14676,7 @@ class ResumeSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -14699,7 +14699,7 @@ class ResumeSyncJobRequest(AbstractModel):
 
 
 class ResumeSyncJobResponse(AbstractModel):
-    """ResumeSyncJob response structure.
+    r"""ResumeSyncJob response structure.
 
     """
 
@@ -14712,7 +14712,7 @@ class ResumeSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14727,7 +14727,7 @@ class ResumeSyncJobResponse(AbstractModel):
 
 
 class RoleItem(AbstractModel):
-    """Role object, which is exclusive to PostgreSQL.
+    r"""Role object, which is exclusive to PostgreSQL.
 
     """
 
@@ -14745,7 +14745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleName(self):
-        """Role name
+        r"""Role name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14757,7 +14757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewRoleName(self):
-        """Role name after migration
+        r"""Role name after migration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14782,7 +14782,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SkipCheckItemRequest(AbstractModel):
-    """SkipCheckItem request structure.
+    r"""SkipCheckItem request structure.
 
     """
 
@@ -14801,7 +14801,7 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -14812,7 +14812,7 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def StepIds(self):
-        """ID of the check step to be skipped, which is obtained in the `StepInfo[i].StepId` field returned by the `DescribeMigrationCheckJob` API, such as "OptimizeCheck".
+        r"""ID of the check step to be skipped, which is obtained in the `StepInfo[i].StepId` field returned by the `DescribeMigrationCheckJob` API, such as "OptimizeCheck".
         :rtype: list of str
         """
         return self._StepIds
@@ -14823,7 +14823,7 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def ForeignKeyFlag(self):
-        """When the check fails due to foreign key dependency, you can use this field to specify whether to migrate the foreign key dependency. The foreign key dependency won’t be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `shield`, and will be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `migrate`.
+        r"""When the check fails due to foreign key dependency, you can use this field to specify whether to migrate the foreign key dependency. The foreign key dependency won’t be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `shield`, and will be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `migrate`.
         :rtype: str
         """
         return self._ForeignKeyFlag
@@ -14848,7 +14848,7 @@ class SkipCheckItemRequest(AbstractModel):
 
 
 class SkipCheckItemResponse(AbstractModel):
-    """SkipCheckItem response structure.
+    r"""SkipCheckItem response structure.
 
     """
 
@@ -14865,7 +14865,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Message prompted for skipping the check item
+        r"""Message prompted for skipping the check item
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14877,7 +14877,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14893,7 +14893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SkipSyncCheckItemRequest(AbstractModel):
-    """SkipSyncCheckItem request structure.
+    r"""SkipSyncCheckItem request structure.
 
     """
 
@@ -14909,7 +14909,7 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Task ID, such as "sync-4ddgid2".
+        r"""Task ID, such as "sync-4ddgid2".
         :rtype: str
         """
         return self._JobId
@@ -14920,7 +14920,7 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     @property
     def StepIds(self):
-        """ID of the check step to be skipped, which is obtained in the `StepInfos[i].StepId` field returned by the `DescribeCheckSyncJobResult` API, such as "OptimizeCheck".
+        r"""ID of the check step to be skipped, which is obtained in the `StepInfos[i].StepId` field returned by the `DescribeCheckSyncJobResult` API, such as "OptimizeCheck".
         :rtype: list of str
         """
         return self._StepIds
@@ -14944,7 +14944,7 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
 
 class SkipSyncCheckItemResponse(AbstractModel):
-    """SkipSyncCheckItem response structure.
+    r"""SkipSyncCheckItem response structure.
 
     """
 
@@ -14957,7 +14957,7 @@ class SkipSyncCheckItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14972,7 +14972,7 @@ class SkipSyncCheckItemResponse(AbstractModel):
 
 
 class SkippedDetail(AbstractModel):
-    """Details of skipped tables
+    r"""Details of skipped tables
 
     """
 
@@ -14990,7 +14990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of skipped tables
+        r"""Number of skipped tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15002,7 +15002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        """Details of skipped tables
+        r"""Details of skipped tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SkippedItem
         """
@@ -15032,7 +15032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SkippedItem(AbstractModel):
-    """Details of skipped tables
+    r"""Details of skipped tables
 
     """
 
@@ -15054,7 +15054,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Db(self):
-        """Database name
+        r"""Database name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15066,7 +15066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Table(self):
-        """Table name
+        r"""Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15078,7 +15078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """The cause why check is not initiated
+        r"""The cause why check is not initiated
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15104,7 +15104,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class StartCompareRequest(AbstractModel):
-    """StartCompare request structure.
+    r"""StartCompare request structure.
 
     """
 
@@ -15120,7 +15120,7 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -15131,7 +15131,7 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :rtype: str
         """
         return self._CompareTaskId
@@ -15155,7 +15155,7 @@ class StartCompareRequest(AbstractModel):
 
 
 class StartCompareResponse(AbstractModel):
-    """StartCompare response structure.
+    r"""StartCompare response structure.
 
     """
 
@@ -15168,7 +15168,7 @@ class StartCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15183,7 +15183,7 @@ class StartCompareResponse(AbstractModel):
 
 
 class StartMigrateJobRequest(AbstractModel):
-    """StartMigrateJob request structure.
+    r"""StartMigrateJob request structure.
 
     """
 
@@ -15196,7 +15196,7 @@ class StartMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -15219,7 +15219,7 @@ class StartMigrateJobRequest(AbstractModel):
 
 
 class StartMigrateJobResponse(AbstractModel):
-    """StartMigrateJob response structure.
+    r"""StartMigrateJob response structure.
 
     """
 
@@ -15232,7 +15232,7 @@ class StartMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15247,7 +15247,7 @@ class StartMigrateJobResponse(AbstractModel):
 
 
 class StartModifySyncJobRequest(AbstractModel):
-    """StartModifySyncJob request structure.
+    r"""StartModifySyncJob request structure.
 
     """
 
@@ -15260,7 +15260,7 @@ class StartModifySyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -15283,7 +15283,7 @@ class StartModifySyncJobRequest(AbstractModel):
 
 
 class StartModifySyncJobResponse(AbstractModel):
-    """StartModifySyncJob response structure.
+    r"""StartModifySyncJob response structure.
 
     """
 
@@ -15296,7 +15296,7 @@ class StartModifySyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15311,7 +15311,7 @@ class StartModifySyncJobResponse(AbstractModel):
 
 
 class StartSubscribeRequest(AbstractModel):
-    """StartSubscribe request structure.
+    r"""StartSubscribe request structure.
 
     """
 
@@ -15324,7 +15324,7 @@ class StartSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -15347,7 +15347,7 @@ class StartSubscribeRequest(AbstractModel):
 
 
 class StartSubscribeResponse(AbstractModel):
-    """StartSubscribe response structure.
+    r"""StartSubscribe response structure.
 
     """
 
@@ -15360,7 +15360,7 @@ class StartSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15375,7 +15375,7 @@ class StartSubscribeResponse(AbstractModel):
 
 
 class StartSyncJobRequest(AbstractModel):
-    """StartSyncJob request structure.
+    r"""StartSyncJob request structure.
 
     """
 
@@ -15388,7 +15388,7 @@ class StartSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -15411,7 +15411,7 @@ class StartSyncJobRequest(AbstractModel):
 
 
 class StartSyncJobResponse(AbstractModel):
-    """StartSyncJob response structure.
+    r"""StartSyncJob response structure.
 
     """
 
@@ -15424,7 +15424,7 @@ class StartSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15439,7 +15439,7 @@ class StartSyncJobResponse(AbstractModel):
 
 
 class StepDetailInfo(AbstractModel):
-    """Step information
+    r"""Step information
 
     """
 
@@ -15485,7 +15485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
-        """Step number
+        r"""Step number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15497,7 +15497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
-        """Step name
+        r"""Step name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15509,7 +15509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
-        """Step ID
+        r"""Step ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15521,7 +15521,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Step status. Valid values: `success`, `failed`, `running`, `notStarted`. Default value: `notStarted`.
+        r"""Step status. Valid values: `success`, `failed`, `running`, `notStarted`. Default value: `notStarted`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15533,7 +15533,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time of the current step in the format of "yyyy-mm-dd hh:mm:ss". If this field does not exist or is empty, it is meaningless.
+        r"""Start time of the current step in the format of "yyyy-mm-dd hh:mm:ss". If this field does not exist or is empty, it is meaningless.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15545,7 +15545,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepMessage(self):
-        """Step error message
+        r"""Step error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15557,7 +15557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        """Execution progress
+        r"""Execution progress
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15569,7 +15569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ProcessStepTip
         """
@@ -15581,7 +15581,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warnings(self):
-        """Warning
+        r"""Warning
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ProcessStepTip
         """
@@ -15623,7 +15623,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class StepInfo(AbstractModel):
-    """Step details
+    r"""Step details
 
     """
 
@@ -15664,7 +15664,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
-        """Step number
+        r"""Step number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -15676,7 +15676,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
-        """Step name
+        r"""Step name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15688,7 +15688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
-        """Step ID
+        r"""Step ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15700,7 +15700,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status of the current step. Valid values: `notStarted`, `running`, `failed`, `finished, `skipped`, `paused`.
+        r"""Status of the current step. Valid values: `notStarted`, `running`, `failed`, `finished, `skipped`, `paused`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15712,7 +15712,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Step start time, which may be null.
+        r"""Step start time, which may be null.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15724,7 +15724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepTip
         """
@@ -15736,7 +15736,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warnings(self):
-        """Warning message
+        r"""Warning message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepTip
         """
@@ -15748,7 +15748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Current step progress. Value range: 0-100. The value `-1` indicates that the progress of the current step is unavailable. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Current step progress. Value range: 0-100. The value `-1` indicates that the progress of the current step is unavailable. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Progress
@@ -15788,7 +15788,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class StepTip(AbstractModel):
-    """Error or warning information in the current step
+    r"""Error or warning information in the current step
 
     """
 
@@ -15818,7 +15818,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
-        """Error code
+        r"""Error code
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15830,7 +15830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15842,7 +15842,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
-        """Solution
+        r"""Solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15854,7 +15854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
-        """Help document
+        r"""Help document
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15866,7 +15866,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkipInfo(self):
-        """Whether the current step is skipped
+        r"""Whether the current step is skipped
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -15894,7 +15894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class StopCompareRequest(AbstractModel):
-    """StopCompare request structure.
+    r"""StopCompare request structure.
 
     """
 
@@ -15910,7 +15910,7 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: str
         """
         return self._JobId
@@ -15921,7 +15921,7 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        r"""Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :rtype: str
         """
         return self._CompareTaskId
@@ -15945,7 +15945,7 @@ class StopCompareRequest(AbstractModel):
 
 
 class StopCompareResponse(AbstractModel):
-    """StopCompare response structure.
+    r"""StopCompare response structure.
 
     """
 
@@ -15958,7 +15958,7 @@ class StopCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15973,7 +15973,7 @@ class StopCompareResponse(AbstractModel):
 
 
 class StopMigrateJobRequest(AbstractModel):
-    """StopMigrateJob request structure.
+    r"""StopMigrateJob request structure.
 
     """
 
@@ -15986,7 +15986,7 @@ class StopMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Data migration task ID
+        r"""Data migration task ID
         :rtype: str
         """
         return self._JobId
@@ -16009,7 +16009,7 @@ class StopMigrateJobRequest(AbstractModel):
 
 
 class StopMigrateJobResponse(AbstractModel):
-    """StopMigrateJob response structure.
+    r"""StopMigrateJob response structure.
 
     """
 
@@ -16022,7 +16022,7 @@ class StopMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16037,7 +16037,7 @@ class StopMigrateJobResponse(AbstractModel):
 
 
 class StopSyncJobRequest(AbstractModel):
-    """StopSyncJob request structure.
+    r"""StopSyncJob request structure.
 
     """
 
@@ -16050,7 +16050,7 @@ class StopSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        """Sync task ID
+        r"""Sync task ID
         :rtype: str
         """
         return self._JobId
@@ -16073,7 +16073,7 @@ class StopSyncJobRequest(AbstractModel):
 
 
 class StopSyncJobResponse(AbstractModel):
-    """StopSyncJob response structure.
+    r"""StopSyncJob response structure.
 
     """
 
@@ -16086,7 +16086,7 @@ class StopSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16101,7 +16101,7 @@ class StopSyncJobResponse(AbstractModel):
 
 
 class SubsErr(AbstractModel):
-    """Subscription error message
+    r"""Subscription error message
 
     """
 
@@ -16114,7 +16114,7 @@ class SubsErr(AbstractModel):
 
     @property
     def Message(self):
-        """Error message
+        r"""Error message
         :rtype: str
         """
         return self._Message
@@ -16137,7 +16137,7 @@ class SubsErr(AbstractModel):
 
 
 class SubscribeCheckStepInfo(AbstractModel):
-    """Information about each step of the subscription check task.
+    r"""Information about each step of the subscription check task.
 
     """
 
@@ -16171,7 +16171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
-        """Step name
+        r"""Step name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16183,7 +16183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
-        """Step Id
+        r"""Step Id
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16195,7 +16195,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
-        """Step number, starting from 1
+        r"""Step number, starting from 1
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16207,7 +16207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Current step status. Valid values: notStarted, running, finished, failed.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Current step status. Valid values: notStarted, running, finished, failed.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Status
@@ -16218,7 +16218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        """Current step progressNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Current step progressNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Percent
@@ -16229,7 +16229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
-        """Error messageNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Error messageNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubscribeCheckStepTip
         """
         return self._Errors
@@ -16240,7 +16240,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warnings(self):
-        """Warning messageNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Warning messageNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubscribeCheckStepTip
         """
         return self._Warnings
@@ -16279,7 +16279,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubscribeCheckStepTip(AbstractModel):
-    """Prompts for subscription check tasks
+    r"""Prompts for subscription check tasks
 
     """
 
@@ -16296,7 +16296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Error or warning detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Error or warning detailsNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Message
@@ -16307,7 +16307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
-        """Help documentation
+        r"""Help documentation
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16332,7 +16332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubscribeInfo(AbstractModel):
-    """Subscription instance information
+    r"""Subscription instance information
 
     """
 
@@ -16407,7 +16407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeId(self):
-        """Data subscription instance ID
+        r"""Data subscription instance ID
         :rtype: str
         """
         return self._SubscribeId
@@ -16418,7 +16418,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeName(self):
-        """Data subscription instance name
+        r"""Data subscription instance name
         :rtype: str
         """
         return self._SubscribeName
@@ -16429,7 +16429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
-        """Kafka topic for data sent by the subscription instance
+        r"""Kafka topic for data sent by the subscription instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16441,7 +16441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Product(self):
-        """Subscription instance type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        r"""Subscription instance type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
         :rtype: str
         """
         return self._Product
@@ -16452,7 +16452,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """The subscribed database instance ID (if the subscription is a cloud database). If the instance is not on Tencent Cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The subscribed database instance ID (if the subscription is a cloud database). If the instance is not on Tencent Cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -16463,7 +16463,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
-        """Cloud database status: running, isolated, offline. If it is not on the cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Cloud database status: running, isolated, offline. If it is not on the cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceStatus
@@ -16474,7 +16474,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
+        r"""Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
         :rtype: str
         """
         return self._Status
@@ -16485,7 +16485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubsStatus(self):
-        """Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        r"""Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
         :rtype: str
         """
         return self._SubsStatus
@@ -16496,7 +16496,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifyTime(self):
-        """Last modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Last modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ModifyTime
@@ -16507,7 +16507,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CreateTime
@@ -16518,7 +16518,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateTime(self):
-        """Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IsolateTime
@@ -16529,7 +16529,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ExpireTime
@@ -16540,7 +16540,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
-        """Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OfflineTime
@@ -16551,7 +16551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
-        """Billing mode. 1: pay-as-you-go
+        r"""Billing mode. 1: pay-as-you-go
         :rtype: int
         """
         return self._PayType
@@ -16562,7 +16562,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        r"""Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -16573,7 +16573,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Data subscription instance region
+        r"""Data subscription instance region
         :rtype: str
         """
         return self._Region
@@ -16584,7 +16584,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
-        """Access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AccessType
@@ -16595,7 +16595,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Endpoints(self):
-        """Database node information
+        r"""Database node information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of EndpointItem
         """
@@ -16607,7 +16607,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeVersion(self):
-        """Data subscription version, only Kafka version is currently supported.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Data subscription version, only Kafka version is currently supported.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubscribeVersion
@@ -16618,7 +16618,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """TagNote: This field may return null, indicating that no valid values can be obtained.
+        r"""TagNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagItem
         """
         return self._Tags
@@ -16629,7 +16629,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
-        """Task error messageNote: This field may return null, indicating that no valid values can be obtained.
+        r"""Task error messageNote: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SubsErr
         """
         return self._Errors
@@ -16687,7 +16687,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubscribeKafkaConfig(AbstractModel):
-    """Number of subscribed Kafka partitions and partition rules. mariadb, percona, tdsqlmysql, tdpg do not support custom partitions, so DistributeRules and DefaultRuleType can be left blank, but NumberOfPartitions is required.
+    r"""Number of subscribed Kafka partitions and partition rules. mariadb, percona, tdsqlmysql, tdpg do not support custom partitions, so DistributeRules and DefaultRuleType can be left blank, but NumberOfPartitions is required.
 
     """
 
@@ -16707,7 +16707,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NumberOfPartitions(self):
-        """Number of Kafka partitions. Valid values: 1, 4, 8.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of Kafka partitions. Valid values: 1, 4, 8.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._NumberOfPartitions
@@ -16718,7 +16718,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DistributeRules(self):
-        """Partition rules. This field is required when NumberOfPartitions > 1.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Partition rules. This field is required when NumberOfPartitions > 1.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DistributeRule
         """
         return self._DistributeRules
@@ -16729,7 +16729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultRuleType(self):
-        """Default partitioning policy. If NumberOfPartitions > 1, this field is required. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key). Valid values for mongo: collection (partitioned by collection name). This field is used in conjunction with DistributeRules. If this field is configured, it is considered as configuring a DistributeRules.
+        r"""Default partitioning policy. If NumberOfPartitions > 1, this field is required. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key). Valid values for mongo: collection (partitioned by collection name). This field is used in conjunction with DistributeRules. If this field is configured, it is considered as configuring a DistributeRules.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16760,7 +16760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubscribeObject(AbstractModel):
-    """Subscription database and table information, used to configure and query the subscription task interfaces.
+    r"""Subscription database and table information, used to configure and query the subscription task interfaces.
 
     """
 
@@ -16780,7 +16780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectType(self):
-        """Subscription data type. Valid values: database; table (if DatabaseType is mongodb, it means a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subscription data type. Valid values: database; table (if DatabaseType is mongodb, it means a collection).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ObjectType
@@ -16791,7 +16791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Database(self):
-        """Subscribed database name
+        r"""Subscribed database name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16803,7 +16803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        """Name of the table in the subscribed database. If DatabaseType is mongodb, fill in the collection name. MongoDB only supports subscribing to a single database or a single collection.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Name of the table in the subscribed database. If DatabaseType is mongodb, fill in the collection name. MongoDB only supports subscribing to a single database or a single collection.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Tables
@@ -16828,7 +16828,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SyncDBEndpointInfos(AbstractModel):
-    """Node information of multi-node databases configured for data sync. This data structure is valid for multi-node databases such as TDSQL for MySQL. For single-node databases such as MySQL, use `Endpoint` instead.
+    r"""Node information of multi-node databases configured for data sync. This data structure is valid for multi-node databases such as TDSQL for MySQL. For single-node databases such as MySQL, use `Endpoint` instead.
 
     """
 
@@ -16853,7 +16853,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region of the database
+        r"""Region of the database
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16865,7 +16865,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
-        """Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
+        r"""Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16877,7 +16877,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseType(self):
-        """Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
+        r"""Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -16889,7 +16889,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
-        """Database information. Note: If the data type is tdsqlmysql, the order of this Endpoint array should correspond to the set order, and the first shard (shardkey range starting from 0) must be entered first.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Database information. Note: If the data type is tdsqlmysql, the order of this Endpoint array should correspond to the set order, and the first shard (shardkey range starting from 0) must be entered first.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Endpoint
         """
         return self._Info
@@ -16920,7 +16920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SyncDetailInfo(AbstractModel):
-    """Step information of the sync task
+    r"""Step information of the sync task
 
     """
 
@@ -16970,7 +16970,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
-        """Total number of steps
+        r"""Total number of steps
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16982,7 +16982,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
-        """Current step
+        r"""Current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -16994,7 +16994,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Overall progress
+        r"""Overall progress
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17006,7 +17006,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentStepProgress(self):
-        """Progress of the current step. Value range: 0-100. The value of `-1` indicates that you can't check the progress of the current step.
+        r"""Progress of the current step. Value range: 0-100. The value of `-1` indicates that you can't check the progress of the current step.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17018,7 +17018,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterSlaveDistance(self):
-        """Data volume difference between the sync source and target
+        r"""Data volume difference between the sync source and target
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17030,7 +17030,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecondsBehindMaster(self):
-        """Time difference between the sync source and target
+        r"""Time difference between the sync source and target
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17042,7 +17042,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """Overall description
+        r"""Overall description
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17054,7 +17054,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfos(self):
-        """Step details
+        r"""Step details
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of StepInfo
         """
@@ -17066,7 +17066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CauseOfCompareDisable(self):
-        """Cause of the failure of initiating data consistency check
+        r"""Cause of the failure of initiating data consistency check
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17078,7 +17078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrInfo(self):
-        """Task error and the corresponding solution
+        r"""Task error and the corresponding solution
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
         """
@@ -17118,7 +17118,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SyncJobInfo(AbstractModel):
-    """Sync task information
+    r"""Sync task information
 
     """
 
@@ -17268,7 +17268,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
-        """Sync task ID, such as `sync-btso140`.
+        r"""Sync task ID, such as `sync-btso140`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17280,7 +17280,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
-        """Sync task name
+        r"""Sync task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17292,7 +17292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
-        """Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
+        r"""Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17304,7 +17304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
-        """Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
+        r"""Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17316,7 +17316,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
-        """Expected execution time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Expected execution time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17328,7 +17328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllActions(self):
-        """All supported operations
+        r"""All supported operations
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -17340,7 +17340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Actions(self):
-        """Operations that can be performed under the current status
+        r"""Operations that can be performed under the current status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -17352,7 +17352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
-        """Sync options
+        r"""Sync options
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
         """
@@ -17364,7 +17364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Objects(self):
-        """Sync database/table objects
+        r"""Sync database/table objects
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
         """
@@ -17376,7 +17376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Specification(self):
-        """Task specification
+        r"""Task specification
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17388,7 +17388,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Expiration time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17400,7 +17400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcRegion(self):
-        """Source database region, such as `ap-guangzhou`.
+        r"""Source database region, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17412,7 +17412,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcDatabaseType(self):
-        """Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+        r"""Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17424,7 +17424,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcAccessType(self):
-        """Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
+        r"""Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17436,7 +17436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
-        """Source database information. This parameter is used by single-node databases.
+        r"""Source database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
@@ -17448,7 +17448,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcNodeType(self):
-        """Valid values: `cluster`, `single`. `single`: For single-node source databases; `cluster`: For multi-node source databases.
+        r"""Valid values: `cluster`, `single`. `single`: For single-node source databases; `cluster`: For multi-node source databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17460,7 +17460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfos(self):
-        """Source database information. This parameter is used for multi-node databases.
+        r"""Source database information. This parameter is used for multi-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
@@ -17472,7 +17472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstRegion(self):
-        """Target database region, such as `ap-guangzhou`.
+        r"""Target database region, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17484,7 +17484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstDatabaseType(self):
-        """Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+        r"""Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17496,7 +17496,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstAccessType(self):
-        """Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
+        r"""Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17508,7 +17508,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
-        """Target database information. This parameter is used by single-node databases.
+        r"""Target database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
@@ -17520,7 +17520,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstNodeType(self):
-        """Valid values: `cluster`, `single`. `single`: For single-node target databases; `cluster`: For multi-node target databases.
+        r"""Valid values: `cluster`, `single`. `single`: For single-node target databases; `cluster`: For multi-node target databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17532,7 +17532,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfos(self):
-        """Target database information. This parameter is used for multi-node databases.
+        r"""Target database information. This parameter is used for multi-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
@@ -17544,7 +17544,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Creation time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17556,7 +17556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Start time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17568,7 +17568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task status. Valid values: `UnInitialized`, `Initialized`, `Checking`, `CheckPass`, `CheckNotPass`, `ReadyRunning`, `Running`, `Pausing`, `Paused`, `Stopping`, `Stopped`, `ResumableErr`, `Resuming`, `Failed`, `Released`, `Resetting`, `Unknown`.
+        r"""Task status. Valid values: `UnInitialized`, `Initialized`, `Checking`, `CheckPass`, `CheckNotPass`, `ReadyRunning`, `Running`, `Pausing`, `Paused`, `Stopping`, `Stopped`, `ResumableErr`, `Resuming`, `Failed`, `Released`, `Resetting`, `Unknown`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17580,7 +17580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""End time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17592,7 +17592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of TagItem
         """
@@ -17604,7 +17604,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        """Step information of the sync task
+        r"""Step information of the sync task
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
         """
@@ -17616,7 +17616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeStatus(self):
-        """Billing status. Valid values: `Normal`, `Resizing`, `Renewing`, `Isolating`, `Isolated`, `Offlining`, `Offlined`, `NotBilled`, `Recovering`, `PostPay2Prepaying`, `PrePay2Postpaying`.
+        r"""Billing status. Valid values: `Normal`, `Resizing`, `Renewing`, `Isolating`, `Isolated`, `Offlining`, `Offlined`, `NotBilled`, `Recovering`, `PostPay2Prepaying`, `PrePay2Postpaying`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17628,7 +17628,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceClass(self):
-        """Sync link specification, such as `micro`, `small`, `medium`, and `large`.
+        r"""Sync link specification, such as `micro`, `small`, `medium`, and `large`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17640,7 +17640,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenew(self):
-        """Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled).
+        r"""Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17652,7 +17652,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
-        """Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
+        r"""Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17664,7 +17664,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        """Settings of automatic retry time
+        r"""Settings of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -17676,7 +17676,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
-        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+        r"""Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17753,7 +17753,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Table(AbstractModel):
-    """Synced table description
+    r"""Synced table description
 
     """
 
@@ -17789,7 +17789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17801,7 +17801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewTableName(self):
-        """New table name
+        r"""New table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17813,7 +17813,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCondition(self):
-        """Filter condition
+        r"""Filter condition
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17825,7 +17825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnMode(self):
-        """Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in ModifySyncJobConfig interface does not support Partial at the moment): some columns under the current table, detailed table information is provided by filling the Columns field.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in ModifySyncJobConfig interface does not support Partial at the moment): some columns under the current table, detailed table information is provided by filling the Columns field.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ColumnMode
@@ -17836,7 +17836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Columns(self):
-        """Column information in data sync. This field is required when ColumnMode is set to Partial.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Column information in data sync. This field is required when ColumnMode is set to Partial.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Column
         """
         return self._Columns
@@ -17847,7 +17847,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpTables(self):
-        """The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
+        r"""The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -17859,7 +17859,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableEditMode(self):
-        """Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
+        r"""Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17894,7 +17894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableItem(AbstractModel):
-    """The set of table objects, which is required if `TableMode` is `partial`.
+    r"""The set of table objects, which is required if `TableMode` is `partial`.
 
     """
 
@@ -17920,7 +17920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Name of the migrated table, which is case-sensitive
+        r"""Name of the migrated table, which is case-sensitive
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17932,7 +17932,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewTableName(self):
-        """New name of the migrated table. This parameter is required when `TableEditMode` is `rename`. It is mutually exclusive with `TmpTables`.
+        r"""New name of the migrated table. This parameter is required when `TableEditMode` is `rename`. It is mutually exclusive with `TmpTables`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17944,7 +17944,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpTables(self):
-        """The temp tables to be migrated. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured migration objects are table-level ones and `TableEditMode` is `pt`. To migrate temp tables generated when pt-osc or other tools are used during the migration process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["_t1_new","_t1_old"]; to perform the gh-ost operation on t1, configure it as ["_t1_ghc","_t1_gho","_t1_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
+        r"""The temp tables to be migrated. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured migration objects are table-level ones and `TableEditMode` is `pt`. To migrate temp tables generated when pt-osc or other tools are used during the migration process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["_t1_new","_t1_old"]; to perform the gh-ost operation on t1, configure it as ["_t1_ghc","_t1_gho","_t1_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -17956,7 +17956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableEditMode(self):
-        """Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
+        r"""Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -17983,7 +17983,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TagFilter(AbstractModel):
-    """Tag filter
+    r"""Tag filter
 
     """
 
@@ -17999,7 +17999,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -18010,7 +18010,7 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: list of str
         """
         return self._TagValue
@@ -18034,7 +18034,7 @@ class TagFilter(AbstractModel):
 
 
 class TagItem(AbstractModel):
-    """Tag
+    r"""Tag
 
     """
 
@@ -18052,7 +18052,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18064,7 +18064,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18089,7 +18089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TopicRule(AbstractModel):
-    """Topic description
+    r"""Topic description
 
     """
 
@@ -18117,7 +18117,7 @@ class TopicRule(AbstractModel):
 
     @property
     def TopicName(self):
-        """Topic name
+        r"""Topic name
         :rtype: str
         """
         return self._TopicName
@@ -18128,7 +18128,7 @@ class TopicRule(AbstractModel):
 
     @property
     def PartitionType(self):
-        """Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
+        r"""Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
         :rtype: str
         """
         return self._PartitionType
@@ -18139,7 +18139,7 @@ class TopicRule(AbstractModel):
 
     @property
     def DbMatchMode(self):
-        """Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        r"""Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
         :rtype: str
         """
         return self._DbMatchMode
@@ -18150,7 +18150,7 @@ class TopicRule(AbstractModel):
 
     @property
     def DbName(self):
-        """Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        r"""Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
         :rtype: str
         """
         return self._DbName
@@ -18161,7 +18161,7 @@ class TopicRule(AbstractModel):
 
     @property
     def TableMatchMode(self):
-        """Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        r"""Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
         :rtype: str
         """
         return self._TableMatchMode
@@ -18172,7 +18172,7 @@ class TopicRule(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        r"""Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
         :rtype: str
         """
         return self._TableName
@@ -18200,7 +18200,7 @@ class TopicRule(AbstractModel):
 
 
 class TradeInfo(AbstractModel):
-    """Billing status information
+    r"""Billing status information
 
     """
 
@@ -18254,7 +18254,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
-        """Order number
+        r"""Order number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18266,7 +18266,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastDealName(self):
-        """Last order number
+        r"""Last order number
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18278,7 +18278,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceClass(self):
-        """Instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        r"""Instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18290,7 +18290,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeStatus(self):
-        """Task billing status. Valid values: `normal` (billed or to be billed); `resizing` (adjusting configuration); `reversing` (topping up, which is a short status); `isolating` (isolating, which is a short status); `isolated` (isolated); `offlining` (deleting); `offlined` (deleted); `notBilled` (not billed).
+        r"""Task billing status. Valid values: `normal` (billed or to be billed); `resizing` (adjusting configuration); `reversing` (topping up, which is a short status); `isolating` (isolating, which is a short status); `isolated` (isolated); `offlining` (deleting); `offlined` (deleted); `notBilled` (not billed).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18302,7 +18302,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
-        """Expiration time in the format of "yyyy-mm-dd hh:mm:ss"
+        r"""Expiration time in the format of "yyyy-mm-dd hh:mm:ss"
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18314,7 +18314,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
-        """Deletion time in the format of "yyyy-mm-dd hh:mm:ss"
+        r"""Deletion time in the format of "yyyy-mm-dd hh:mm:ss"
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18326,7 +18326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateTime(self):
-        """Isolation time in the format of "yyyy-mm-dd hh:mm:ss"
+        r"""Isolation time in the format of "yyyy-mm-dd hh:mm:ss"
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18338,7 +18338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineReason(self):
-        """The cause of deletion
+        r"""The cause of deletion
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18350,7 +18350,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateReason(self):
-        """The cause of isolation
+        r"""The cause of isolation
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18362,7 +18362,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
-        """Billing mode. Valid values: `postpay` (postpaid); `prepay` (prepaid).
+        r"""Billing mode. Valid values: `postpay` (postpaid); `prepay` (prepaid).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18374,7 +18374,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillingType(self):
-        """Task billing type. Valid values: `billing` (billed); `notBilling` (free); `promotions` (in promotion).
+        r"""Task billing type. Valid values: `billing` (billed); `notBilling` (free); `promotions` (in promotion).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18408,7 +18408,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class View(AbstractModel):
-    """Synced view description
+    r"""Synced view description
 
     """
 
@@ -18425,7 +18425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
-        """View name
+        r"""View name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18437,7 +18437,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewName(self):
-        """Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._NewViewName
@@ -18461,7 +18461,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ViewItem(AbstractModel):
-    """View object
+    r"""View object
 
     """
 
@@ -18479,7 +18479,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
-        """View name
+        r"""View name
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18491,7 +18491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewName(self):
-        """View name after migration
+        r"""View name after migration
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """

@@ -14,11 +14,17 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
 # Operation failed.
 FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = 'FailedOperation.CheckIfSupportPodStretch'
+
+# DB exception.
+FAILEDOPERATION_DBEXCEPTION = 'FailedOperation.DBException'
 
 # Failed to fetch resource tag.
 FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = 'FailedOperation.DescribeResourceTagsFailed'
@@ -41,11 +47,20 @@ FAILEDOPERATION_GETCVMSERVERFAILED = 'FailedOperation.GetCvmServerFailed'
 # Failed to call the price inquiry center service.
 FAILEDOPERATION_GETTRADESERVERFAILED = 'FailedOperation.GetTradeServerFailed'
 
+# No more scaling rules are allowed.
+FAILEDOPERATION_MORESTRATEGYNOTALLOWED = 'FailedOperation.MoreStrategyNotAllowed'
+
+# Unauthorized operation.
+FAILEDOPERATION_NOTAUTHENTICATED = 'FailedOperation.NotAuthenticated'
+
 # Operation failed. The pods are not supported.
 FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
 
 # Operation failed.
 FAILEDOPERATION_REFUNDCVMFAILED = 'FailedOperation.RefundCvmFailed'
+
+# Operation failed.
+FAILEDOPERATION_SPECDELETEDENYFORAUTOSCALESTRATEGIES = 'FailedOperation.SpecDeleteDenyForAutoScaleStrategies'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -83,11 +98,17 @@ INTERNALERROR_CVMERROR = 'InternalError.CvmError'
 # Database query error.
 INTERNALERROR_DBQUERYEXCEPTION = 'InternalError.DBQueryException'
 
+# An exception occurred when OpenTSDB is being requested.
+INTERNALERROR_DOOPENTSDBREQUESTEXCEPTION = 'InternalError.DoOpenTSDBRequestException'
+
 # Error in calling EKS.
 INTERNALERROR_EKSERROR = 'InternalError.EKSError'
 
 # An error occurred while calling another service API.
 INTERNALERROR_KMSERROR = 'InternalError.KmsError'
+
+# Failed to request OpenTSDB.
+INTERNALERROR_OPENTSDBHTTPRETURNCODENOTOK = 'InternalError.OpenTSDBHttpReturnCodeNotOK'
 
 # An error occurred while calling another service API.
 INTERNALERROR_PROJECTCGWERROR = 'InternalError.ProjectCgwError'
@@ -119,6 +140,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Parameter error.
 INVALIDPARAMETER_APPIDRESOURCENOTMATCH = 'InvalidParameter.AppIdResourceNotMatch'
 
+# Invalid CpuType parameter.
+INVALIDPARAMETER_CPUTYPE = 'InvalidParameter.CpuType'
+
 # Incorrect display policy.
 INVALIDPARAMETER_DISPLAYSTRATEGYNOTMATCH = 'InvalidParameter.DisplayStrategyNotMatch'
 
@@ -143,6 +167,9 @@ INVALIDPARAMETER_INVALIDAPPID = 'InvalidParameter.InvalidAppId'
 # Invalid auto-renewal flag.
 INVALIDPARAMETER_INVALIDAUTORENEW = 'InvalidParameter.InvalidAutoRenew'
 
+# Invalid Classification parameter value.
+INVALIDPARAMETER_INVALIDCLASSIFICATION = 'InvalidParameter.InvalidClassification'
+
 # Invalid ClickHouse cluster.
 INVALIDPARAMETER_INVALIDCLICKHOUSECLUSTER = 'InvalidParameter.InvalidClickHouseCluster'
 
@@ -155,8 +182,14 @@ INVALIDPARAMETER_INVALIDCLUSTERID = 'InvalidParameter.InvalidClusterId'
 # Invalid parameter.
 INVALIDPARAMETER_INVALIDCOMMONDISKTYPE = 'InvalidParameter.InvalidCommonDiskType'
 
+# Illegal metric comparison method.
+INVALIDPARAMETER_INVALIDCOMPAREMETHOD = 'InvalidParameter.InvalidCompareMethod'
+
 # Invalid component.
 INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
+
+# At least one trigger condition is required.
+INVALIDPARAMETER_INVALIDCONDITIONNUM = 'InvalidParameter.InvalidConditionNum'
 
 # The number of core nodes is invalid.
 INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
@@ -164,7 +197,10 @@ INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
 # Parameter error.
 INVALIDPARAMETER_INVALIDCOREDISKTYPE = 'InvalidParameter.InvalidCoreDiskType'
 
-# 
+# The CosBucket parameter is invalid.
+INVALIDPARAMETER_INVALIDCOSBUCKET = 'InvalidParameter.InvalidCosBucket'
+
+# Invalid CosFileUri parameter value.
 INVALIDPARAMETER_INVALIDCOSFILEURI = 'InvalidParameter.InvalidCosFileURI'
 
 # The count must be greater than 0.
@@ -184,6 +220,9 @@ INVALIDPARAMETER_INVALIDDISKNUM = 'InvalidParameter.InvalidDiskNum'
 
 # Invalid disk size.
 INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
+
+# Parameter error.
+INVALIDPARAMETER_INVALIDDISKTYPE = 'InvalidParameter.InvalidDiskType'
 
 # Invalid EKS instance.
 INVALIDPARAMETER_INVALIDEKSINSTANCE = 'InvalidParameter.InvalidEksInstance'
@@ -205,6 +244,9 @@ INVALIDPARAMETER_INVALIDINSTANCETYPE = 'InvalidParameter.InvalidInstanceType'
 
 # Invalid process task.
 INVALIDPARAMETER_INVALIDJOBFLOW = 'InvalidParameter.InvalidJobFlow'
+
+# Invalid LoadBalancerId.
+INVALIDPARAMETER_INVALIDLOADBALANCER = 'InvalidParameter.InvalidLoadBalancer'
 
 # Invalid login settings.
 INVALIDPARAMETER_INVALIDLOGINSETTING = 'InvalidParameter.InvalidLoginSetting'
@@ -230,6 +272,9 @@ INVALIDPARAMETER_INVALIDNODEFLAG = 'InvalidParameter.InvalidNodeFlag'
 # Invalid `NodeType`.
 INVALIDPARAMETER_INVALIDNODETYPE = 'InvalidParameter.InvalidNodeType'
 
+# The SoftInfo parameter is invalid.
+INVALIDPARAMETER_INVALIDPARAMTERINVALIDSOFTINFO = 'InvalidParameter.InvalidParamterInvalidSoftInfo'
+
 # Invalid password.
 INVALIDPARAMETER_INVALIDPASSWORD = 'InvalidParameter.InvalidPassword'
 
@@ -238,6 +283,9 @@ INVALIDPARAMETER_INVALIDPAYMODE = 'InvalidParameter.InvalidPaymode'
 
 # Invalid bootstrap script.
 INVALIDPARAMETER_INVALIDPREEXECUTEDFILE = 'InvalidParameter.InvalidPreExecutedFile'
+
+# Illegal metric processing method.
+INVALIDPARAMETER_INVALIDPROCESSMETHOD = 'InvalidParameter.InvalidProcessMethod'
 
 # Invalid product ID.
 INVALIDPARAMETER_INVALIDPRODUCTID = 'InvalidParameter.InvalidProductId'
@@ -252,10 +300,16 @@ INVALIDPARAMETER_INVALIDPROJECTID = 'InvalidParameter.InvalidProjectId'
 INVALIDPARAMETER_INVALIDRENEWFLAG = 'InvalidParameter.InvalidRenewFlag'
 
 # Invalid resource ID.
+INVALIDPARAMETER_INVALIDRESOURCEID = 'InvalidParameter.InvalidResourceId'
+
+# Invalid resource ID.
 INVALIDPARAMETER_INVALIDRESOURCEIDS = 'InvalidParameter.InvalidResourceIds'
 
 # Invalid resource specification.
 INVALIDPARAMETER_INVALIDRESOURCESPEC = 'InvalidParameter.InvalidResourceSpec'
+
+# Invalid scaling action.
+INVALIDPARAMETER_INVALIDSCALEACTION = 'InvalidParameter.InvalidScaleAction'
 
 # Invalid bootstrap script execution parameter.
 INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = 'InvalidParameter.InvalidScriptBootstrapActionConfig'
@@ -290,6 +344,21 @@ INVALIDPARAMETER_INVALIDSOFTWAREVERSION = 'InvalidParameter.InvalidSoftWareVersi
 # Invalid `StartTime` or `EndTime` parameter.
 INVALIDPARAMETER_INVALIDSTARTTIMEORENDTIME = 'InvalidParameter.InvalidStartTimeOrEndTime'
 
+# The StatisticPeriod or TriggerThreshold parameter is invalid.
+INVALIDPARAMETER_INVALIDSTATISTICPERIODORTRIGGERTHRESHOLD = 'InvalidParameter.InvalidStatisticPeriodOrTriggerThreshold'
+
+# Parameter error.
+INVALIDPARAMETER_INVALIDSTRATEGY = 'InvalidParameter.InvalidStrategy'
+
+# Invalid rule priority.
+INVALIDPARAMETER_INVALIDSTRATEGYPRIORITY = 'InvalidParameter.InvalidStrategyPriority'
+
+# Invalid specification.
+INVALIDPARAMETER_INVALIDSTRATEGYSPEC = 'InvalidParameter.InvalidStrategySpec'
+
+# Unsupported scaling policy type.
+INVALIDPARAMETER_INVALIDSTRATEGYTYPE = 'InvalidParameter.InvalidStrategyType'
+
 # Invalid subnet ID.
 INVALIDPARAMETER_INVALIDSUBNETID = 'InvalidParameter.InvalidSubnetId'
 
@@ -298,6 +367,9 @@ INVALIDPARAMETER_INVALIDSUPPORTHA = 'InvalidParameter.InvalidSupportHA'
 
 # The number of task nodes cannot exceed 20.
 INVALIDPARAMETER_INVALIDTASKCOUNT = 'InvalidParameter.InvalidTaskCount'
+
+# Parameter error.
+INVALIDPARAMETER_INVALIDTIMELAYOUT = 'InvalidParameter.InvalidTimeLayout'
 
 # Invalid `timespan`.
 INVALIDPARAMETER_INVALIDTIMESPAN = 'InvalidParameter.InvalidTimeSpan'
@@ -314,6 +386,12 @@ INVALIDPARAMETER_INVALIDUINNUM = 'InvalidParameter.InvalidUinNum'
 # Invalid unified metadatabase.
 INVALIDPARAMETER_INVALIDUNIFYMETA = 'InvalidParameter.InvalidUnifyMeta'
 
+# Parameter error.
+INVALIDPARAMETER_INVALIDVENDORTYPE = 'InvalidParameter.InvalidVendorType'
+
+# Parameter error.
+INVALIDPARAMETER_INVALIDVOLUMETYPE = 'InvalidParameter.InvalidVolumeType'
+
 # Invalid VPC ID.
 INVALIDPARAMETER_INVALIDVPCID = 'InvalidParameter.InvalidVpcId'
 
@@ -322,6 +400,15 @@ INVALIDPARAMETER_INVALIDZONE = 'InvalidParameter.InvalidZone'
 
 # Invalid identifier for Kerberos support.
 INVALIDPARAMETER_KERBEROSSUPPORT = 'InvalidParameter.KerberosSupport'
+
+# Parameter error.
+INVALIDPARAMETER_LESSCOMMONCOUNT = 'InvalidParameter.LessCommonCount'
+
+# Parameter error.
+INVALIDPARAMETER_LESSTASKCOUNT = 'InvalidParameter.LessTaskCount'
+
+# Number of CVM instances exceeds the maximum limit.
+INVALIDPARAMETER_MOREMAXLIMITNUM = 'InvalidParameter.MoreMaxlimitNum'
 
 # Invalid parameter. Necessary components are missing.
 INVALIDPARAMETER_NOTCONTAINMUSTSELECTSOFTWARE = 'InvalidParameter.NotContainMustSelectSoftware'
@@ -335,6 +422,21 @@ INVALIDPARAMETER_PAYMODERESOURCENOTMATCH = 'InvalidParameter.PayModeResourceNotM
 # The project does not match the resource.
 INVALIDPARAMETER_PROJECTRESOURCENOTMATCH = 'InvalidParameter.ProjectResourceNotMatch'
 
+# Duplicate execution time.
+INVALIDPARAMETER_REPEATEDEXECUTIONTIME = 'InvalidParameter.RepeatedExecutionTime'
+
+# Repeated scaling rule name.
+INVALIDPARAMETER_REPEATEDSTRATEGYNAME = 'InvalidParameter.RepeatedStrategyName'
+
+# Invalid ResourceProviderType parameter.
+INVALIDPARAMETER_RESOURCEPROVIDERTYPE = 'InvalidParameter.ResourceProviderType'
+
+# This service does not support restart.
+INVALIDPARAMETER_RESTARTSERVICEUNSUPPORTED = 'InvalidParameter.RestartServiceUnsupported'
+
+# Invalid product component exists.
+INVALIDPARAMETER_SOFTWARENOTINPRODUCR = 'InvalidParameter.SoftwareNotInProducr'
+
 # There is an invalid product component.
 INVALIDPARAMETER_SOFTWARENOTINPRODUCT = 'InvalidParameter.SoftwareNotInProduct'
 
@@ -343,6 +445,9 @@ INVALIDPARAMETER_UNGRANTEDPOLICY = 'InvalidParameter.UngrantedPolicy'
 
 # The role is not authorized.
 INVALIDPARAMETER_UNGRANTEDROLE = 'InvalidParameter.UngrantedRole'
+
+# Parameter error.
+INVALIDPARAMETER_UNSATISFIEDSOFTDEPENDECY = 'InvalidParameter.UnsatisfiedSoftDependecy'
 
 # The AZ and resource do not match.
 INVALIDPARAMETER_ZONERESOURCENOTMATCH = 'InvalidParameter.ZoneResourceNotMatch'
@@ -353,11 +458,29 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # The TKE cluster ID is invalid, or the TKE cluster is not eligible.
 INVALIDPARAMETERVALUE_INVALIDTKEINSTANCE = 'InvalidParameterValue.InvalidTkeInstance'
 
+# The quota limit is exceeded.
+LIMITEXCEEDED = 'LimitExceeded'
+
+# Request backlogs have exceeded the limit.
+LIMITEXCEEDED_REQUESTBACKLOGEXCEEDSLIMIT = 'LimitExceeded.RequestBacklogExceedsLimit'
+
 # The number of security groups exceeds the limit.
 LIMITEXCEEDED_SECURITYGROUPNUMLIMITEXCEEDED = 'LimitExceeded.SecurityGroupNumLimitExceeded'
 
+# Number of users exceeds the limit.
+LIMITEXCEEDED_USERCOUNTEXCEEDSLIMIT = 'LimitExceeded.UserCountExceedsLimit'
+
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# Error of misiParameter errors are missing.
+MISSINGPARAMETER_MISSINGCORERESOURCE = 'MissingParameter.MissingCoreResource'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
+
+# Number of requests exceeds the frequency limit.
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # The instance is under workflow.
 RESOURCEINUSE_INSTANCEINPROCESS = 'ResourceInUse.InstanceInProcess'
@@ -386,6 +509,12 @@ RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 # Unable to find the monitoring metadata.
 RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
 
+# The specifications do not exist.
+RESOURCENOTFOUND_SPECNOTFOUND = 'ResourceNotFound.SpecNotFound'
+
+# Corresponding scaling rules not found.
+RESOURCENOTFOUND_STRATEGYNOTFOUND = 'ResourceNotFound.StrategyNotFound'
+
 # No corresponding subnet found.
 RESOURCENOTFOUND_SUBNETNOTFOUND = 'ResourceNotFound.SubnetNotFound'
 
@@ -394,6 +523,15 @@ RESOURCENOTFOUND_TKEPRECONDITIONNOTFOUND = 'ResourceNotFound.TKEPreconditionNotF
 
 # No specified tag found.
 RESOURCENOTFOUND_TAGSNOTFOUND = 'ResourceNotFound.TagsNotFound'
+
+# Resources are unavailable.
+RESOURCEUNAVAILABLE_NOTSUPPORTNODETYPE = 'ResourceUnavailable.NotSupportNodeType'
+
+# Resources are unavailable.
+RESOURCEUNAVAILABLE_NOTSUPPORTRESOURCETYPE = 'ResourceUnavailable.NotSupportResourceType'
+
+# Duplicate resource specifications.
+RESOURCEUNAVAILABLE_REPEATSPEC = 'ResourceUnavailable.RepeatSpec'
 
 # There is no default value of the current resource spec.
 RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpecNotDefaultSpec'
@@ -409,6 +547,9 @@ RESOURCESSOLDOUT_CBSSOLDOUT = 'ResourcesSoldOut.CbsSoldOut'
 
 # CVM instances have been sold out.
 RESOURCESSOLDOUT_CVMSOLDOUT = 'ResourcesSoldOut.CvmSoldOut'
+
+# Unauthorized operation.
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # The `appId` is inconsistent.
 UNAUTHORIZEDOPERATION_APPIDMISMATCHED = 'UnauthorizedOperation.AppIdMismatched'

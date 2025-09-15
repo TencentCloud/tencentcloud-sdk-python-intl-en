@@ -27,7 +27,7 @@ class EcdnClient(AbstractClient):
 
 
     def AddEcdnDomain(self, request):
-        """This API is used to create an acceleration domain name.
+        r"""This API is used to create an acceleration domain name.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41123?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -52,7 +52,7 @@ class EcdnClient(AbstractClient):
 
 
     def DeleteEcdnDomain(self, request):
-        """This API is used to delete a specified acceleration domain name. The acceleration domain name to be deleted must be in disabled status.
+        r"""This API is used to delete a specified acceleration domain name. The acceleration domain name to be deleted must be in disabled status.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/570/42471?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -77,7 +77,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeDomains(self, request):
-        """This API is used to query the basic information of a CDN domain name, including the project ID, status, business type, creation time, update time, etc.
+        r"""This API is used to query the basic information of a CDN domain name, including the project ID, status, business type, creation time, update time, etc.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41118?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -102,7 +102,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeDomainsConfig(self, request):
-        """This API is used to query the detailed configuration information of a CDN acceleration domain name.
+        r"""This API is used to query the detailed configuration information of a CDN acceleration domain name.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41117?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -127,7 +127,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnDomainLogs(self, request):
-        """This API is used to query the access log download link of a domain name.
+        r"""This API is used to query the access log download link of a domain name.
 
         :param request: Request instance for DescribeEcdnDomainLogs.
         :type request: :class:`tencentcloud.ecdn.v20191012.models.DescribeEcdnDomainLogsRequest`
@@ -150,7 +150,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnDomainStatistics(self, request):
-        """This API is used to query the statistical metrics of domain name access within a specified time period.
+        r"""This API is used to query the statistical metrics of domain name access within a specified time period.
 
         :param request: Request instance for DescribeEcdnDomainStatistics.
         :type request: :class:`tencentcloud.ecdn.v20191012.models.DescribeEcdnDomainStatisticsRequest`
@@ -173,7 +173,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeEcdnStatistics(self, request):
-        """This API is used to query ECDN real-time access monitoring data and supports the following metrics:
+        r"""This API is used to query ECDN real-time access monitoring data and supports the following metrics:
 
         + Traffic (in bytes)
         + Bandwidth (in bps)
@@ -204,7 +204,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribeIpStatus(self, request):
-        """This API is used to query ECDN node IPs. This API is only available to beta users. Please submit a ticket to use it.
+        r"""This API is used to query ECDN node IPs. This API is only available to beta users. Please submit a ticket to use it.
 
         If you need to add the node IPs to your origin allowlist, keep querying the updating the IPs regularly to ensure the success of origin forwarding.
 
@@ -229,7 +229,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribePurgeQuota(self, request):
-        """This API is used to query the usage quota of the purge API.
+        r"""This API is used to query the usage quota of the purge API.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41956?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -254,7 +254,7 @@ class EcdnClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """This API is used to query the submission record and progress of purge tasks.
+        r"""This API is used to query the submission record and progress of purge tasks.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/37873?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -279,7 +279,7 @@ class EcdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.
+        r"""This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/570/42475?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -304,7 +304,7 @@ class EcdnClient(AbstractClient):
 
 
     def PurgeUrlsCache(self, request):
-        """This API is used to batch purge URLs. One purge task ID will be returned for each submission.
+        r"""This API is used to batch purge URLs. One purge task ID will be returned for each submission.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/37870?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -329,7 +329,7 @@ class EcdnClient(AbstractClient):
 
 
     def StartEcdnDomain(self, request):
-        """This API is used to enable an acceleration domain name. The domain name to be enabled must be in deactivated status.
+        r"""This API is used to enable an acceleration domain name. The domain name to be enabled must be in deactivated status.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/product/228/41121?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -354,7 +354,7 @@ class EcdnClient(AbstractClient):
 
 
     def StopEcdnDomain(self, request):
-        """This API is used to disable an acceleration domain name. The domain name to be disabled must be in enabled or deploying status.
+        r"""This API is used to disable an acceleration domain name. The domain name to be disabled must be in enabled or deploying status.
 
         >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/product/228/41120?from_cn_redirect=1">corresponding CDN API</a>.
 
@@ -379,7 +379,7 @@ class EcdnClient(AbstractClient):
 
 
     def UpdateDomainConfig(self, request):
-        """This API is used to update the configuration information of an ECDN acceleration domain name.
+        r"""This API is used to update the configuration information of an ECDN acceleration domain name.
         Note: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration.
 
         >?  If your application has been migrated to Tencent Cloud CDN, you can use <a href="https://intl.cloud.tencent.com/document/product/228/41116?from_cn_redirect=1">CDN APIs</a>.

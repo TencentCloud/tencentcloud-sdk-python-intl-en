@@ -27,7 +27,7 @@ class FacefusionClient(AbstractClient):
 
 
     def FuseFace(self, request):
-        """This API is used to perform the fusion of a single face, multiple faces, and specified faces with the material template by uploading face images. Users can add logos to generated images. See <a href="https://intl.cloud.tencent.com/document/product/670/38247?from_cn_redirect=1" target="_blank">Fusion Access Guide</a>.
+        r"""This API is used to perform the fusion of a single face, multiple faces, and specified faces with the material template by uploading face images. Users can add logos to generated images. See <a href="https://intl.cloud.tencent.com/document/product/670/38247?from_cn_redirect=1" target="_blank">Fusion Access Guide</a>.
 
 
 
@@ -54,7 +54,7 @@ class FacefusionClient(AbstractClient):
 
 
     def QueryVideoFaceFusionJob(self, request):
-        """This API is used to query the progress and status of video face fusion tasks by Job ID.
+        r"""This API is used to query the progress and status of video face fusion tasks by Job ID.
 
         :param request: Request instance for QueryVideoFaceFusionJob.
         :type request: :class:`tencentcloud.facefusion.v20220927.models.QueryVideoFaceFusionJobRequest`
@@ -77,7 +77,7 @@ class FacefusionClient(AbstractClient):
 
 
     def SubmitVideoFaceFusionJob(self, request):
-        """This API is used to submit asynchronous processing tasks of video face fusion. After a task is submitted, the Job ID, estimated completion time, and current queue length will be returned.
+        r"""This API is used to submit asynchronous processing tasks of video face fusion. After a task is submitted, the Job ID, estimated completion time, and current queue length will be returned.
 
         :param request: Request instance for SubmitVideoFaceFusionJob.
         :type request: :class:`tencentcloud.facefusion.v20220927.models.SubmitVideoFaceFusionJobRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccountCreateInfo(AbstractModel):
-    """Account creation information
+    r"""Account creation information
 
     """
 
@@ -56,7 +56,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """Instance username
+        r"""Instance username
         :rtype: str
         """
         return self._UserName
@@ -67,7 +67,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def Password(self):
-        """Instance password
+        r"""Instance password
         :rtype: str
         """
         return self._Password
@@ -78,7 +78,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def DBPrivileges(self):
-        """List of database permissions
+        r"""List of database permissions
         :rtype: list of DBPrivilege
         """
         return self._DBPrivileges
@@ -89,7 +89,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """Account remarks
+        r"""Account remarks
         :rtype: str
         """
         return self._Remark
@@ -100,7 +100,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def IsAdmin(self):
-        """Whether it is an admin account. Valid values: true (it is an admin account when the instance is a single-node type and AccountType is L0; when the instance is a two-node type and AccountType is L1), false (it is a standard account when AccountType is L3)
+        r"""Whether it is an admin account. Valid values: true (it is an admin account when the instance is a single-node type and AccountType is L0; when the instance is a two-node type and AccountType is L1), false (it is a standard account when AccountType is L3)
         :rtype: bool
         """
         return self._IsAdmin
@@ -111,7 +111,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def Authentication(self):
-        """Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`
+        r"""Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`
         :rtype: str
         """
         return self._Authentication
@@ -122,7 +122,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def AccountType(self):
-        """Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
+        r"""Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
         :rtype: str
         """
         return self._AccountType
@@ -133,7 +133,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def IsCam(self):
-        """Whether CAM authentication is enabled.
+        r"""Whether CAM authentication is enabled.
         :rtype: bool
         """
         return self._IsCam
@@ -144,7 +144,7 @@ class AccountCreateInfo(AbstractModel):
 
     @property
     def EncryptedVersion(self):
-        """Encryption key version number. 0: disable encryption.
+        r"""Encryption key version number. 0: disable encryption.
         :rtype: int
         """
         return self._EncryptedVersion
@@ -180,7 +180,7 @@ class AccountCreateInfo(AbstractModel):
 
 
 class AccountDetail(AbstractModel):
-    """Account information details
+    r"""Account information details
 
     """
 
@@ -229,7 +229,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Account name
+        r"""Account name
         :rtype: str
         """
         return self._Name
@@ -240,7 +240,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Remark(self):
-        """Account remarks
+        r"""Account remarks
         :rtype: str
         """
         return self._Remark
@@ -251,7 +251,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Account creation time
+        r"""Account creation time
         :rtype: str
         """
         return self._CreateTime
@@ -262,7 +262,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
+        r"""Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting
         :rtype: int
         """
         return self._Status
@@ -273,7 +273,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Account update time
+        r"""Account update time
         :rtype: str
         """
         return self._UpdateTime
@@ -284,7 +284,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def PassTime(self):
-        """Password update time
+        r"""Password update time
         :rtype: str
         """
         return self._PassTime
@@ -295,7 +295,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def InternalStatus(self):
-        """Internal account status, which should be `enable` normally
+        r"""Internal account status, which should be `enable` normally
         :rtype: str
         """
         return self._InternalStatus
@@ -306,7 +306,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Dbs(self):
-        """Information of read and write permissions of this account on relevant databases
+        r"""Information of read and write permissions of this account on relevant databases
         :rtype: list of DBPrivilege
         """
         return self._Dbs
@@ -317,7 +317,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def IsAdmin(self):
-        """Whether it is an admin account
+        r"""Whether it is an admin account
         :rtype: bool
         """
         return self._IsAdmin
@@ -328,7 +328,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def IsCam(self):
-        """Whether it is a CAM managed account
+        r"""Whether it is a CAM managed account
         :rtype: bool
         """
         return self._IsCam
@@ -339,7 +339,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Authentication(self):
-        """Valid values: `win-windows authentication`, `sql-sqlserver authentication`.
+        r"""Valid values: `win-windows authentication`, `sql-sqlserver authentication`.
         :rtype: str
         """
         return self._Authentication
@@ -350,7 +350,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def Host(self):
-        """The host required for `win-windows authentication` account
+        r"""The host required for `win-windows authentication` account
         :rtype: str
         """
         return self._Host
@@ -361,7 +361,7 @@ class AccountDetail(AbstractModel):
 
     @property
     def AccountType(self):
-        """Account type. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
+        r"""Account type. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
         :rtype: str
         """
         return self._AccountType
@@ -401,7 +401,7 @@ class AccountDetail(AbstractModel):
 
 
 class AccountPassword(AbstractModel):
-    """Instance account password information
+    r"""Instance account password information
 
     """
 
@@ -417,7 +417,7 @@ class AccountPassword(AbstractModel):
 
     @property
     def UserName(self):
-        """Username
+        r"""Username
         :rtype: str
         """
         return self._UserName
@@ -428,7 +428,7 @@ class AccountPassword(AbstractModel):
 
     @property
     def Password(self):
-        """Password
+        r"""Password
         :rtype: str
         """
         return self._Password
@@ -452,7 +452,7 @@ class AccountPassword(AbstractModel):
 
 
 class AccountPrivilege(AbstractModel):
-    """Database account permission information, which is set when the database is created
+    r"""Database account permission information, which is set when the database is created
 
     """
 
@@ -471,7 +471,7 @@ class AccountPrivilege(AbstractModel):
 
     @property
     def UserName(self):
-        """Database username
+        r"""Database username
         :rtype: str
         """
         return self._UserName
@@ -482,7 +482,7 @@ class AccountPrivilege(AbstractModel):
 
     @property
     def Privilege(self):
-        """Database permission. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the database permissions of this account), `DBOwner` (owner).
+        r"""Database permission. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the database permissions of this account), `DBOwner` (owner).
         :rtype: str
         """
         return self._Privilege
@@ -493,7 +493,7 @@ class AccountPrivilege(AbstractModel):
 
     @property
     def AccountType(self):
-        """Account name. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
+        r"""Account name. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
         :rtype: str
         """
         return self._AccountType
@@ -518,7 +518,7 @@ class AccountPrivilege(AbstractModel):
 
 
 class AccountPrivilegeModifyInfo(AbstractModel):
-    """Database account permission change information
+    r"""Database account permission change information
 
     """
 
@@ -540,7 +540,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
     @property
     def UserName(self):
-        """Database username
+        r"""Database username
         :rtype: str
         """
         return self._UserName
@@ -551,7 +551,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
     @property
     def DBPrivileges(self):
-        """Account permission change information
+        r"""Account permission change information
         :rtype: list of DBPrivilegeModifyInfo
         """
         return self._DBPrivileges
@@ -562,7 +562,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
     @property
     def IsAdmin(self):
-        """Whether it is an instance admin account. Valid values: `true` (Yes. When the instance is single-node and `AccountType` is `L0`, it's an admin account; when the instance is two-node and `AccountType` is `L1`, it's a privileged account), `false` (No. It's a standard account and `AccountType` is `L3`).
+        r"""Whether it is an instance admin account. Valid values: `true` (Yes. When the instance is single-node and `AccountType` is `L0`, it's an admin account; when the instance is two-node and `AccountType` is `L1`, it's a privileged account), `false` (No. It's a standard account and `AccountType` is `L3`).
         :rtype: bool
         """
         return self._IsAdmin
@@ -573,7 +573,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
     @property
     def AccountType(self):
-        """Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
+        r"""Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
         :rtype: str
         """
         return self._AccountType
@@ -604,7 +604,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
 
 
 class AccountRemark(AbstractModel):
-    """Account remarks
+    r"""Account remarks
 
     """
 
@@ -620,7 +620,7 @@ class AccountRemark(AbstractModel):
 
     @property
     def UserName(self):
-        """Account name
+        r"""Account name
         :rtype: str
         """
         return self._UserName
@@ -631,7 +631,7 @@ class AccountRemark(AbstractModel):
 
     @property
     def Remark(self):
-        """New remarks of account
+        r"""New remarks of account
         :rtype: str
         """
         return self._Remark
@@ -655,7 +655,7 @@ class AccountRemark(AbstractModel):
 
 
 class AssociateSecurityGroupsRequest(AbstractModel):
-    """AssociateSecurityGroups request structure.
+    r"""AssociateSecurityGroups request structure.
 
     """
 
@@ -671,7 +671,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID.
+        r"""Security group ID.
         :rtype: str
         """
         return self._SecurityGroupId
@@ -682,7 +682,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.
+        r"""Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -706,7 +706,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
 
 class AssociateSecurityGroupsResponse(AbstractModel):
-    """AssociateSecurityGroups response structure.
+    r"""AssociateSecurityGroups response structure.
 
     """
 
@@ -719,7 +719,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -734,7 +734,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
 
 class Backup(AbstractModel):
-    """Backup file details
+    r"""Backup file details
 
     """
 
@@ -795,7 +795,7 @@ class Backup(AbstractModel):
 
     @property
     def FileName(self):
-        """File name. The name of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
+        r"""File name. The name of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :rtype: str
         """
         return self._FileName
@@ -806,7 +806,7 @@ class Backup(AbstractModel):
 
     @property
     def Size(self):
-        """File size in KB. The size of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
+        r"""File size in KB. The size of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :rtype: int
         """
         return self._Size
@@ -817,7 +817,7 @@ class Backup(AbstractModel):
 
     @property
     def StartTime(self):
-        """Backup start time
+        r"""Backup start time
         :rtype: str
         """
         return self._StartTime
@@ -828,7 +828,7 @@ class Backup(AbstractModel):
 
     @property
     def EndTime(self):
-        """Backup end time
+        r"""Backup end time
         :rtype: str
         """
         return self._EndTime
@@ -839,7 +839,7 @@ class Backup(AbstractModel):
 
     @property
     def InternalAddr(self):
-        """Private network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
+        r"""Private network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :rtype: str
         """
         return self._InternalAddr
@@ -850,7 +850,7 @@ class Backup(AbstractModel):
 
     @property
     def ExternalAddr(self):
-        """Public network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
+        r"""Public network download address. The download address of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :rtype: str
         """
         return self._ExternalAddr
@@ -861,7 +861,7 @@ class Backup(AbstractModel):
 
     @property
     def Id(self):
-        """Unique ID of a backup file, which is used by the `RestoreInstance` API. The unique ID of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
+        r"""Unique ID of a backup file, which is used by the `RestoreInstance` API. The unique ID of an unarchived backup file is returned by the `DescribeBackupFiles` API instead of this parameter.
         :rtype: int
         """
         return self._Id
@@ -872,7 +872,7 @@ class Backup(AbstractModel):
 
     @property
     def Status(self):
-        """Backup file status (0: creating, 1: succeeded, 2: failed)
+        r"""Backup file status (0: creating, 1: succeeded, 2: failed)
         :rtype: int
         """
         return self._Status
@@ -883,7 +883,7 @@ class Backup(AbstractModel):
 
     @property
     def DBs(self):
-        """List of databases for multi-database backup
+        r"""List of databases for multi-database backup
         :rtype: list of str
         """
         return self._DBs
@@ -894,7 +894,7 @@ class Backup(AbstractModel):
 
     @property
     def Strategy(self):
-        """Backup policy (0: instance backup, 1: multi-database backup)
+        r"""Backup policy (0: instance backup, 1: multi-database backup)
         :rtype: int
         """
         return self._Strategy
@@ -905,7 +905,7 @@ class Backup(AbstractModel):
 
     @property
     def BackupWay(self):
-        """Backup Mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup).
+        r"""Backup Mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup).
         :rtype: int
         """
         return self._BackupWay
@@ -916,7 +916,7 @@ class Backup(AbstractModel):
 
     @property
     def BackupName(self):
-        """Backup task name (customizable)
+        r"""Backup task name (customizable)
         :rtype: str
         """
         return self._BackupName
@@ -927,7 +927,7 @@ class Backup(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID of unarchived backup files, which can be used as a request parameter in the `DescribeBackupFiles` API to get details of unarchived backup files in the specified group. This parameter is invalid for archived backup files.
+        r"""Group ID of unarchived backup files, which can be used as a request parameter in the `DescribeBackupFiles` API to get details of unarchived backup files in the specified group. This parameter is invalid for archived backup files.
         :rtype: str
         """
         return self._GroupId
@@ -938,7 +938,7 @@ class Backup(AbstractModel):
 
     @property
     def BackupFormat(self):
-        """Backup file format. Valid values:`pkg` (archive file), `single` (unarchived files).
+        r"""Backup file format. Valid values:`pkg` (archive file), `single` (unarchived files).
         :rtype: str
         """
         return self._BackupFormat
@@ -949,7 +949,7 @@ class Backup(AbstractModel):
 
     @property
     def Region(self):
-        """The code of current region where the instance resides
+        r"""The code of current region where the instance resides
         :rtype: str
         """
         return self._Region
@@ -960,7 +960,7 @@ class Backup(AbstractModel):
 
     @property
     def CrossBackupAddr(self):
-        """The download address of cross-region backup in target region
+        r"""The download address of cross-region backup in target region
         :rtype: list of CrossBackupAddr
         """
         return self._CrossBackupAddr
@@ -971,7 +971,7 @@ class Backup(AbstractModel):
 
     @property
     def CrossBackupStatus(self):
-        """The target region and status of cross-region backup
+        r"""The target region and status of cross-region backup
         :rtype: list of CrossRegionStatus
         """
         return self._CrossBackupStatus
@@ -1020,7 +1020,7 @@ class Backup(AbstractModel):
 
 
 class BackupFile(AbstractModel):
-    """If the backup files are unarchived, each database corresponds to one backup file.
+    r"""If the backup files are unarchived, each database corresponds to one backup file.
 
     """
 
@@ -1051,7 +1051,7 @@ class BackupFile(AbstractModel):
 
     @property
     def Id(self):
-        """Unique ID of a backup file
+        r"""Unique ID of a backup file
         :rtype: int
         """
         return self._Id
@@ -1062,7 +1062,7 @@ class BackupFile(AbstractModel):
 
     @property
     def FileName(self):
-        """Backup file name
+        r"""Backup file name
         :rtype: str
         """
         return self._FileName
@@ -1073,7 +1073,7 @@ class BackupFile(AbstractModel):
 
     @property
     def Size(self):
-        """File size in KB
+        r"""File size in KB
         :rtype: int
         """
         return self._Size
@@ -1084,7 +1084,7 @@ class BackupFile(AbstractModel):
 
     @property
     def DBs(self):
-        """Name of the database corresponding to the backup file
+        r"""Name of the database corresponding to the backup file
         :rtype: list of str
         """
         return self._DBs
@@ -1095,7 +1095,7 @@ class BackupFile(AbstractModel):
 
     @property
     def DownloadLink(self):
-        """Download address
+        r"""Download address
         :rtype: str
         """
         return self._DownloadLink
@@ -1106,7 +1106,7 @@ class BackupFile(AbstractModel):
 
     @property
     def Region(self):
-        """The code of the region where current instance resides
+        r"""The code of the region where current instance resides
         :rtype: str
         """
         return self._Region
@@ -1117,7 +1117,7 @@ class BackupFile(AbstractModel):
 
     @property
     def CrossBackupAddr(self):
-        """The target region and download address of cross-region backup
+        r"""The target region and download address of cross-region backup
         :rtype: list of CrossBackupAddr
         """
         return self._CrossBackupAddr
@@ -1151,7 +1151,7 @@ class BackupFile(AbstractModel):
 
 
 class BalanceReadOnlyGroupRequest(AbstractModel):
-    """BalanceReadOnlyGroup request structure.
+    r"""BalanceReadOnlyGroup request structure.
 
     """
 
@@ -1167,7 +1167,7 @@ class BalanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID, in the format of mssql-3l3fgqn7.
+        r"""Primary instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -1178,7 +1178,7 @@ class BalanceReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID, in the format of mssqlrg-dj5i29c5n.
+        r"""Read-only group ID, in the format of mssqlrg-dj5i29c5n.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -1202,7 +1202,7 @@ class BalanceReadOnlyGroupRequest(AbstractModel):
 
 
 class BalanceReadOnlyGroupResponse(AbstractModel):
-    """BalanceReadOnlyGroup response structure.
+    r"""BalanceReadOnlyGroup response structure.
 
     """
 
@@ -1215,7 +1215,7 @@ class BalanceReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1230,7 +1230,7 @@ class BalanceReadOnlyGroupResponse(AbstractModel):
 
 
 class BusinessIntelligenceFile(AbstractModel):
-    """Business intelligence service file type
+    r"""Business intelligence service file type
 
     """
 
@@ -1282,7 +1282,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FileName(self):
-        """File name
+        r"""File name
         :rtype: str
         """
         return self._FileName
@@ -1293,7 +1293,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FileType(self):
-        """File type
+        r"""File type
         :rtype: str
         """
         return self._FileType
@@ -1304,7 +1304,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FileURL(self):
-        """File COS_URL
+        r"""File COS_URL
         :rtype: str
         """
         return self._FileURL
@@ -1315,7 +1315,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FilePath(self):
-        """The file path on the server
+        r"""The file path on the server
         :rtype: str
         """
         return self._FilePath
@@ -1326,7 +1326,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FileSize(self):
-        """File size in bytes
+        r"""File size in bytes
         :rtype: int
         """
         return self._FileSize
@@ -1337,7 +1337,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def FileMd5(self):
-        """File MD5 value
+        r"""File MD5 value
         :rtype: str
         """
         return self._FileMd5
@@ -1348,7 +1348,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def Status(self):
-        """File deployment status. Valid values: `1`(Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed).
+        r"""File deployment status. Valid values: `1`(Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed).
         :rtype: int
         """
         return self._Status
@@ -1359,7 +1359,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -1370,7 +1370,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def CreateTime(self):
-        """File creation time
+        r"""File creation time
         :rtype: str
         """
         return self._CreateTime
@@ -1381,7 +1381,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of file deployment
+        r"""Start time of file deployment
         :rtype: str
         """
         return self._StartTime
@@ -1392,7 +1392,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of file deployment
+        r"""End time of file deployment
         :rtype: str
         """
         return self._EndTime
@@ -1403,7 +1403,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def Message(self):
-        """Returned error message
+        r"""Returned error message
         :rtype: str
         """
         return self._Message
@@ -1414,7 +1414,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business intelligence instance ID
+        r"""Business intelligence instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -1425,7 +1425,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
     @property
     def Action(self):
-        """Operation information
+        r"""Operation information
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.FileAction`
         """
         return self._Action
@@ -1463,7 +1463,7 @@ class BusinessIntelligenceFile(AbstractModel):
 
 
 class CheckItem(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -1491,7 +1491,7 @@ class CheckItem(AbstractModel):
 
     @property
     def CheckName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CheckName
@@ -1502,7 +1502,7 @@ class CheckItem(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CurrentValue
@@ -1513,7 +1513,7 @@ class CheckItem(AbstractModel):
 
     @property
     def Passed(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Passed
@@ -1524,7 +1524,7 @@ class CheckItem(AbstractModel):
 
     @property
     def IsAffect(self):
-        """
+        r"""
         :rtype: int
         """
         return self._IsAffect
@@ -1535,7 +1535,7 @@ class CheckItem(AbstractModel):
 
     @property
     def Msg(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Msg
@@ -1546,7 +1546,7 @@ class CheckItem(AbstractModel):
 
     @property
     def MsgCode(self):
-        """
+        r"""
         :rtype: int
         """
         return self._MsgCode
@@ -1574,7 +1574,7 @@ class CheckItem(AbstractModel):
 
 
 class CloneDBRequest(AbstractModel):
-    """CloneDB request structure.
+    r"""CloneDB request structure.
 
     """
 
@@ -1590,7 +1590,7 @@ class CloneDBRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-j8kv137v
+        r"""Instance ID in the format of mssql-j8kv137v
         :rtype: str
         """
         return self._InstanceId
@@ -1601,7 +1601,7 @@ class CloneDBRequest(AbstractModel):
 
     @property
     def RenameRestore(self):
-        """Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.
+        r"""Clone and rename the databases specified in `ReNameRestoreDatabase`. Please note that the clones must be renamed.
         :rtype: list of RenameRestoreDatabase
         """
         return self._RenameRestore
@@ -1630,7 +1630,7 @@ class CloneDBRequest(AbstractModel):
 
 
 class CloneDBResponse(AbstractModel):
-    """CloneDB response structure.
+    r"""CloneDB response structure.
 
     """
 
@@ -1646,7 +1646,7 @@ class CloneDBResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task
+        r"""Async task request ID, which can be used in the `DescribeFlowStatus` API to query the execution result of an async task
         :rtype: int
         """
         return self._FlowId
@@ -1657,7 +1657,7 @@ class CloneDBResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1673,7 +1673,7 @@ class CloneDBResponse(AbstractModel):
 
 
 class CloseInterCommunicationRequest(AbstractModel):
-    """CloseInterCommunication request structure.
+    r"""CloseInterCommunication request structure.
 
     """
 
@@ -1686,7 +1686,7 @@ class CloseInterCommunicationRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """IDs of instances with interconnection disabled
+        r"""IDs of instances with interconnection disabled
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -1709,7 +1709,7 @@ class CloseInterCommunicationRequest(AbstractModel):
 
 
 class CloseInterCommunicationResponse(AbstractModel):
-    """CloseInterCommunication response structure.
+    r"""CloseInterCommunication response structure.
 
     """
 
@@ -1725,7 +1725,7 @@ class CloseInterCommunicationResponse(AbstractModel):
 
     @property
     def InterInstanceFlowSet(self):
-        """IDs of instance and async task
+        r"""IDs of instance and async task
         :rtype: list of InterInstanceFlow
         """
         return self._InterInstanceFlowSet
@@ -1736,7 +1736,7 @@ class CloseInterCommunicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1757,7 +1757,7 @@ class CloseInterCommunicationResponse(AbstractModel):
 
 
 class CompleteExpansionRequest(AbstractModel):
-    """CompleteExpansion request structure.
+    r"""CompleteExpansion request structure.
 
     """
 
@@ -1770,7 +1770,7 @@ class CompleteExpansionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-j8kv137v.
+        r"""Instance ID, in the format of mssql-j8kv137v.
         :rtype: str
         """
         return self._InstanceId
@@ -1793,7 +1793,7 @@ class CompleteExpansionRequest(AbstractModel):
 
 
 class CompleteExpansionResponse(AbstractModel):
-    """CompleteExpansion response structure.
+    r"""CompleteExpansion response structure.
 
     """
 
@@ -1809,7 +1809,7 @@ class CompleteExpansionResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Process ID, which can be used to query the status of the immediate switch upgrade task through the API DescribeFlowStatus.
+        r"""Process ID, which can be used to query the status of the immediate switch upgrade task through the API DescribeFlowStatus.
         :rtype: int
         """
         return self._FlowId
@@ -1820,7 +1820,7 @@ class CompleteExpansionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1836,7 +1836,7 @@ class CompleteExpansionResponse(AbstractModel):
 
 
 class CompleteMigrationRequest(AbstractModel):
-    """CompleteMigration request structure.
+    r"""CompleteMigration request structure.
 
     """
 
@@ -1849,7 +1849,7 @@ class CompleteMigrationRequest(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID.
+        r"""Migration task ID.
         :rtype: int
         """
         return self._MigrateId
@@ -1872,7 +1872,7 @@ class CompleteMigrationRequest(AbstractModel):
 
 
 class CompleteMigrationResponse(AbstractModel):
-    """CompleteMigration response structure.
+    r"""CompleteMigration response structure.
 
     """
 
@@ -1888,7 +1888,7 @@ class CompleteMigrationResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Process ID returned after the migration process is initiated.
+        r"""Process ID returned after the migration process is initiated.
         :rtype: int
         """
         return self._FlowId
@@ -1899,7 +1899,7 @@ class CompleteMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1915,7 +1915,7 @@ class CompleteMigrationResponse(AbstractModel):
 
 
 class CosUploadBackupFile(AbstractModel):
-    """Querying the size of uploaded backup files.
+    r"""Querying the size of uploaded backup files.
 
     """
 
@@ -1931,7 +1931,7 @@ class CosUploadBackupFile(AbstractModel):
 
     @property
     def FileName(self):
-        """Backup name
+        r"""Backup name
         :rtype: str
         """
         return self._FileName
@@ -1942,7 +1942,7 @@ class CosUploadBackupFile(AbstractModel):
 
     @property
     def Size(self):
-        """Backup size
+        r"""Backup size
         :rtype: int
         """
         return self._Size
@@ -1966,7 +1966,7 @@ class CosUploadBackupFile(AbstractModel):
 
 
 class CreateAccountRequest(AbstractModel):
-    """CreateAccount request structure.
+    r"""CreateAccount request structure.
 
     """
 
@@ -1982,7 +1982,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl.
+        r"""Database instance ID in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -1993,7 +1993,7 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """Database instance account information.
+        r"""Database instance account information.
         :rtype: list of AccountCreateInfo
         """
         return self._Accounts
@@ -2022,7 +2022,7 @@ class CreateAccountRequest(AbstractModel):
 
 
 class CreateAccountResponse(AbstractModel):
-    """CreateAccount response structure.
+    r"""CreateAccount response structure.
 
     """
 
@@ -2038,7 +2038,7 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID.
+        r"""Task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -2049,7 +2049,7 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2065,7 +2065,7 @@ class CreateAccountResponse(AbstractModel):
 
 
 class CreateBackupMigrationRequest(AbstractModel):
-    """CreateBackupMigration request structure.
+    r"""CreateBackupMigration request structure.
 
     """
 
@@ -2090,7 +2090,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -2101,7 +2101,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     @property
     def RecoveryType(self):
-        """Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration
+        r"""Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration
         :rtype: str
         """
         return self._RecoveryType
@@ -2112,7 +2112,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     @property
     def UploadType(self):
-        """Backup upload type. COS_URL: the backup is stored in user's Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application's Cloud Object Storage and needs to be uploaded by the user.
+        r"""Backup upload type. COS_URL: the backup is stored in user's Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application's Cloud Object Storage and needs to be uploaded by the user.
         :rtype: str
         """
         return self._UploadType
@@ -2123,7 +2123,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     @property
     def MigrationName(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._MigrationName
@@ -2134,7 +2134,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupFiles(self):
-        """If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        r"""If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
         :rtype: list of str
         """
         return self._BackupFiles
@@ -2161,7 +2161,7 @@ class CreateBackupMigrationRequest(AbstractModel):
 
 
 class CreateBackupMigrationResponse(AbstractModel):
-    """CreateBackupMigration response structure.
+    r"""CreateBackupMigration response structure.
 
     """
 
@@ -2177,7 +2177,7 @@ class CreateBackupMigrationResponse(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID
+        r"""Backup import task ID
         :rtype: str
         """
         return self._BackupMigrationId
@@ -2188,7 +2188,7 @@ class CreateBackupMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2204,7 +2204,7 @@ class CreateBackupMigrationResponse(AbstractModel):
 
 
 class CreateBackupRequest(AbstractModel):
-    """CreateBackup request structure.
+    r"""CreateBackup request structure.
 
     """
 
@@ -2229,7 +2229,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """Backup policy (0: instance backup, 1: multi-database backup)
+        r"""Backup policy (0: instance backup, 1: multi-database backup)
         :rtype: int
         """
         return self._Strategy
@@ -2240,7 +2240,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def DBNames(self):
-        """List of names of databases to be backed up (required only for multi-database backup)
+        r"""List of names of databases to be backed up (required only for multi-database backup)
         :rtype: list of str
         """
         return self._DBNames
@@ -2251,7 +2251,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """(Required) Instance ID in the format of mssql-i1z41iwd
+        r"""(Required) Instance ID in the format of mssql-i1z41iwd
         :rtype: str
         """
         return self._InstanceId
@@ -2262,7 +2262,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        """Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.
+        r"""Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.
         :rtype: str
         """
         return self._BackupName
@@ -2273,7 +2273,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def StorageStrategy(self):
-        """Backup storage policy. 0: Follow the custom backup retention policy; 1: Follow the instance lifecycle until the instance is eliminated. Default value: 0.
+        r"""Backup storage policy. 0: Follow the custom backup retention policy; 1: Follow the instance lifecycle until the instance is eliminated. Default value: 0.
         :rtype: int
         """
         return self._StorageStrategy
@@ -2300,7 +2300,7 @@ class CreateBackupRequest(AbstractModel):
 
 
 class CreateBackupResponse(AbstractModel):
-    """CreateBackup response structure.
+    r"""CreateBackup response structure.
 
     """
 
@@ -2316,7 +2316,7 @@ class CreateBackupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """The async job ID
+        r"""The async job ID
         :rtype: int
         """
         return self._FlowId
@@ -2327,7 +2327,7 @@ class CreateBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2343,7 +2343,7 @@ class CreateBackupResponse(AbstractModel):
 
 
 class CreateBasicDBInstancesRequest(AbstractModel):
-    """CreateBasicDBInstances request structure.
+    r"""CreateBasicDBInstances request structure.
 
     """
 
@@ -2422,7 +2422,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
+        r"""Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -2433,7 +2433,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores.
+        r"""Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -2444,7 +2444,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB.
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -2455,7 +2455,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance storage capacity in GB.
+        r"""Instance storage capacity in GB.
         :rtype: int
         """
         return self._Storage
@@ -2466,7 +2466,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of subnet-bdoe83fa.
+        r"""VPC subnet ID in the format of subnet-bdoe83fa.
         :rtype: str
         """
         return self._SubnetId
@@ -2477,7 +2477,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of vpc-dsp338hz.
+        r"""VPC ID in the format of vpc-dsp338hz.
         :rtype: str
         """
         return self._VpcId
@@ -2488,7 +2488,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """Host type of purchased instances. CLOUD_PREMIUM: Premium Disk for virtual machines; CLOUD_SSD: Cloud SSD for virtual machines; CLOUD_HSSD: Enhanced SSD for virtual machines; CLOUD_BSSD: Balanced SSD for virtual machines.
+        r"""Host type of purchased instances. CLOUD_PREMIUM: Premium Disk for virtual machines; CLOUD_SSD: Cloud SSD for virtual machines; CLOUD_HSSD: Enhanced SSD for virtual machines; CLOUD_BSSD: Balanced SSD for virtual machines.
         :rtype: str
         """
         return self._MachineType
@@ -2499,7 +2499,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid value: POSTPAID (pay-as-you-go).
+        r"""Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2510,7 +2510,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -2521,7 +2521,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: 1. Maximum value: 10.
+        r"""Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._GoodsNum
@@ -2532,7 +2532,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
+        r"""SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -2543,7 +2543,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
+        r"""Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :rtype: int
         """
         return self._Period
@@ -2554,7 +2554,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of sg-xxx.
+        r"""Security group list, which contains security group IDs in the format of sg-xxx.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -2565,7 +2565,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
+        r"""Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2576,7 +2576,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
+        r"""Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :rtype: int
         """
         return self._AutoVoucher
@@ -2587,7 +2587,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order).
+        r"""Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -2598,7 +2598,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
+        r"""Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -2609,7 +2609,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        r"""Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -2620,7 +2620,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Configuration of the maintenance window, which specifies the maintenance duration in hours.
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :rtype: int
         """
         return self._Span
@@ -2631,7 +2631,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created.
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -2642,7 +2642,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
+        r"""Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -2653,7 +2653,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value: `China Standard Time`.
+        r"""System time zone. Default value: `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -2664,7 +2664,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def DiskEncryptFlag(self):
-        """Disk encryption identifier, 0-unencrypted, 1-encrypted.
+        r"""Disk encryption identifier, 0-unencrypted, 1-encrypted.
         :rtype: int
         """
         return self._DiskEncryptFlag
@@ -2714,7 +2714,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
 
 class CreateBasicDBInstancesResponse(AbstractModel):
-    """CreateBasicDBInstances response structure.
+    r"""CreateBasicDBInstances response structure.
 
     """
 
@@ -2730,7 +2730,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name.
+        r"""Order name.
         :rtype: str
         """
         return self._DealName
@@ -2741,7 +2741,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2757,7 +2757,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
 
 class CreateBusinessDBInstancesRequest(AbstractModel):
-    """CreateBusinessDBInstances request structure.
+    r"""CreateBusinessDBInstances request structure.
 
     """
 
@@ -2812,7 +2812,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        r"""Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -2823,7 +2823,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB
+        r"""Instance memory size in GB
         :rtype: int
         """
         return self._Memory
@@ -2834,7 +2834,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance disk size in GB
+        r"""Instance disk size in GB
         :rtype: int
         """
         return self._Storage
@@ -2845,7 +2845,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """The number of CPU cores of the instance you want to purchase.
+        r"""The number of CPU cores of the instance you want to purchase.
         :rtype: int
         """
         return self._Cpu
@@ -2856,7 +2856,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """The host type of purchased instance. Valid values: `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD).
+        r"""The host type of purchased instance. Valid values: `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD).
         :rtype: str
         """
         return self._MachineType
@@ -2867,7 +2867,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -2878,7 +2878,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: `1`.
+        r"""Number of instances purchased this time. Default value: `1`.
         :rtype: int
         """
         return self._GoodsNum
@@ -2889,7 +2889,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of subnet-bdoe83fa. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC subnet ID in the format of subnet-bdoe83fa. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._SubnetId
@@ -2900,7 +2900,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of vpc-dsp338hz. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC ID in the format of vpc-dsp338hz. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._VpcId
@@ -2911,7 +2911,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """- Supported versions of business intelligence server. Valid values: `201603` (SQL Server 2016 Integration Services), `201703` (SQL Server 2017 Integration Services), `201903` (SQL Server 2019 Integration Services). Default value: `201903`. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region.
+        r"""- Supported versions of business intelligence server. Valid values: `201603` (SQL Server 2016 Integration Services), `201703` (SQL Server 2017 Integration Services), `201903` (SQL Server 2019 Integration Services). Default value: `201903`. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region.
         :rtype: str
         """
         return self._DBVersion
@@ -2922,7 +2922,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of sg-xxx.
+        r"""Security group list, which contains security group IDs in the format of sg-xxx.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -2933,7 +2933,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
+        r"""Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -2944,7 +2944,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        r"""Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -2955,7 +2955,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Configuration of the maintenance window, which specifies the maintenance duration in hours.
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :rtype: int
         """
         return self._Span
@@ -2966,7 +2966,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created
+        r"""Tags associated with the instances to be created
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3008,7 +3008,7 @@ class CreateBusinessDBInstancesRequest(AbstractModel):
 
 
 class CreateBusinessDBInstancesResponse(AbstractModel):
-    """CreateBusinessDBInstances response structure.
+    r"""CreateBusinessDBInstances response structure.
 
     """
 
@@ -3030,7 +3030,7 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name
+        r"""Order name
         :rtype: str
         """
         return self._DealName
@@ -3041,7 +3041,7 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Process ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Process ID Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FlowId
@@ -3052,7 +3052,7 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """IDs of instances Note: This field may return null, indicating that no valid values can be obtained.
+        r"""IDs of instances Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -3063,7 +3063,7 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3081,7 +3081,7 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
 
 
 class CreateBusinessIntelligenceFileRequest(AbstractModel):
-    """CreateBusinessIntelligenceFile request structure.
+    r"""CreateBusinessIntelligenceFile request structure.
 
     """
 
@@ -3103,7 +3103,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3114,7 +3114,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileURL(self):
-        """
+        r"""
         :rtype: str
         """
         return self._FileURL
@@ -3125,7 +3125,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """File type. Valid values: `FLAT` (flat file as data source), `SSIS` (.ispac SSIS package file)
+        r"""File type. Valid values: `FLAT` (flat file as data source), `SSIS` (.ispac SSIS package file)
         :rtype: str
         """
         return self._FileType
@@ -3136,7 +3136,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -3162,7 +3162,7 @@ class CreateBusinessIntelligenceFileRequest(AbstractModel):
 
 
 class CreateBusinessIntelligenceFileResponse(AbstractModel):
-    """CreateBusinessIntelligenceFile response structure.
+    r"""CreateBusinessIntelligenceFile response structure.
 
     """
 
@@ -3178,7 +3178,7 @@ class CreateBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def FileTaskId(self):
-        """File name
+        r"""File name
         :rtype: str
         """
         return self._FileTaskId
@@ -3189,7 +3189,7 @@ class CreateBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3205,7 +3205,7 @@ class CreateBusinessIntelligenceFileResponse(AbstractModel):
 
 
 class CreateCloudDBInstancesRequest(AbstractModel):
-    """CreateCloudDBInstances request structure.
+    r"""CreateCloudDBInstances request structure.
 
     """
 
@@ -3284,7 +3284,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        r"""Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -3295,7 +3295,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB
+        r"""Instance memory size in GB
         :rtype: int
         """
         return self._Memory
@@ -3306,7 +3306,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance disk size in GB
+        r"""Instance disk size in GB
         :rtype: int
         """
         return self._Storage
@@ -3317,7 +3317,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores
+        r"""Number of CPU cores
         :rtype: int
         """
         return self._Cpu
@@ -3328,7 +3328,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """The host type of the purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
+        r"""The host type of the purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :rtype: str
         """
         return self._MachineType
@@ -3339,7 +3339,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        r"""Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3350,7 +3350,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -3361,7 +3361,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: `1`.  Maximum value: `10`.
+        r"""Number of instances purchased this time. Default value: `1`.  Maximum value: `10`.
         :rtype: int
         """
         return self._GoodsNum
@@ -3372,7 +3372,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._SubnetId
@@ -3383,7 +3383,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._VpcId
@@ -3394,7 +3394,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
+        r"""The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
         :rtype: int
         """
         return self._Period
@@ -3405,7 +3405,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
+        r"""Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :rtype: int
         """
         return self._AutoVoucher
@@ -3416,7 +3416,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order)
+        r"""Array of voucher IDs (currently, only one voucher can be used per order)
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3427,7 +3427,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """SQL Server version. Valid values:  `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard).  Default value: `2008R2`.  The available version varies by region, and you can pull the version information through the `DescribeProductConfig` API.
+        r"""SQL Server version. Valid values:  `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard).  Default value: `2008R2`.  The available version varies by region, and you can pull the version information through the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -3438,7 +3438,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
+        r"""Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -3449,7 +3449,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of `sg-xxx`.
+        r"""Security group list, which contains security group IDs in the format of `sg-xxx`.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -3460,7 +3460,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
+        r"""Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -3471,7 +3471,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        r"""Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -3482,7 +3482,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour
         :rtype: int
         """
         return self._Span
@@ -3493,7 +3493,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def MultiZones(self):
-        """Whether to deploy across AZs. Default value: `false`.
+        r"""Whether to deploy across AZs. Default value: `false`.
         :rtype: bool
         """
         return self._MultiZones
@@ -3504,7 +3504,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created
+        r"""Tags associated with the instances to be created
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3515,7 +3515,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value:  `Chinese_PRC_CI_AS`.
+        r"""Collation of system character sets. Default value:  `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -3526,7 +3526,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value:  `China Standard Time`.
+        r"""System time zone. Default value:  `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -3576,7 +3576,7 @@ class CreateCloudDBInstancesRequest(AbstractModel):
 
 
 class CreateCloudDBInstancesResponse(AbstractModel):
-    """CreateCloudDBInstances response structure.
+    r"""CreateCloudDBInstances response structure.
 
     """
 
@@ -3592,7 +3592,7 @@ class CreateCloudDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name
+        r"""Order name
         :rtype: str
         """
         return self._DealName
@@ -3603,7 +3603,7 @@ class CreateCloudDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3619,7 +3619,7 @@ class CreateCloudDBInstancesResponse(AbstractModel):
 
 
 class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
-    """CreateCloudReadOnlyDBInstances request structure.
+    r"""CreateCloudReadOnlyDBInstances request structure.
 
     """
 
@@ -3704,7 +3704,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of  `mssql-3l3fgqn7`.
+        r"""Instance ID in the format of  `mssql-3l3fgqn7`.
         :rtype: str
         """
         return self._InstanceId
@@ -3715,7 +3715,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        r"""Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -3726,7 +3726,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupType(self):
-        """Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
+        r"""Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
         :rtype: int
         """
         return self._ReadOnlyGroupType
@@ -3737,7 +3737,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB.
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -3748,7 +3748,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance disk size in GB.
+        r"""Instance disk size in GB.
         :rtype: int
         """
         return self._Storage
@@ -3759,7 +3759,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of instance cores.
+        r"""Number of instance cores.
         :rtype: int
         """
         return self._Cpu
@@ -3770,7 +3770,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """The host type of purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
+        r"""The host type of purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :rtype: str
         """
         return self._MachineType
@@ -3781,7 +3781,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupForcedUpgrade(self):
-        """Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
+        r"""Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
         :rtype: int
         """
         return self._ReadOnlyGroupForcedUpgrade
@@ -3792,7 +3792,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
+        r"""Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -3803,7 +3803,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
+        r"""New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -3814,7 +3814,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupIsOfflineDelay(self):
-        """Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
+        r"""Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
         :rtype: int
         """
         return self._ReadOnlyGroupIsOfflineDelay
@@ -3825,7 +3825,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMaxDelayTime(self):
-        """The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        r"""The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMaxDelayTime
@@ -3836,7 +3836,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMinInGroup(self):
-        """Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        r"""Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMinInGroup
@@ -3847,7 +3847,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        r"""Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3858,7 +3858,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of read-only instances to be purchased this time. Default value: `2`.
+        r"""Number of read-only instances to be purchased this time. Default value: `2`.
         :rtype: int
         """
         return self._GoodsNum
@@ -3869,7 +3869,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._SubnetId
@@ -3880,7 +3880,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._VpcId
@@ -3891,7 +3891,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
+        r"""The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
         :rtype: int
         """
         return self._Period
@@ -3902,7 +3902,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of `sg-xxx`.
+        r"""Security group list, which contains security group IDs in the format of `sg-xxx`.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -3913,7 +3913,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
+        r"""Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :rtype: int
         """
         return self._AutoVoucher
@@ -3924,7 +3924,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order).
+        r"""Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3935,7 +3935,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created.
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3946,7 +3946,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
+        r"""Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :rtype: str
         """
         return self._Collation
@@ -3957,7 +3957,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value:  `China Standard Time`.
+        r"""System time zone. Default value:  `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -3968,7 +3968,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def DiskEncryptFlag(self):
-        """Disk encryption identification, 0 - no encryption, 1 - encryption.
+        r"""Disk encryption identification, 0 - no encryption, 1 - encryption.
         :rtype: int
         """
         return self._DiskEncryptFlag
@@ -4020,7 +4020,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
 
 class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
-    """CreateCloudReadOnlyDBInstances response structure.
+    r"""CreateCloudReadOnlyDBInstances response structure.
 
     """
 
@@ -4036,7 +4036,7 @@ class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order name in array.
+        r"""Order name in array.
         :rtype: list of str
         """
         return self._DealNames
@@ -4047,7 +4047,7 @@ class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4063,7 +4063,7 @@ class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
 
 
 class CreateDBInstancesRequest(AbstractModel):
-    """CreateDBInstances request structure.
+    r"""CreateDBInstances request structure.
 
     """
 
@@ -4145,7 +4145,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
+        r"""Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -4156,7 +4156,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB.
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -4167,7 +4167,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance storage capacity in GB.
+        r"""Instance storage capacity in GB.
         :rtype: int
         """
         return self._Storage
@@ -4178,7 +4178,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid value: POSTPAID (pay-as-you-go).
+        r"""Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -4189,7 +4189,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -4200,7 +4200,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: 1. Maximum value: 10.
+        r"""Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._GoodsNum
@@ -4211,7 +4211,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
+        r"""VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._SubnetId
@@ -4222,7 +4222,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
+        r"""VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._VpcId
@@ -4233,7 +4233,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
+        r"""Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :rtype: int
         """
         return self._Period
@@ -4244,7 +4244,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
+        r"""Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :rtype: int
         """
         return self._AutoVoucher
@@ -4255,7 +4255,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order).
+        r"""Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -4266,7 +4266,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
+        r"""SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -4277,7 +4277,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
+        r"""Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4288,7 +4288,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of sg-xxx.
+        r"""Security group list, which contains security group IDs in the format of sg-xxx.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -4299,7 +4299,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
+        r"""Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -4310,7 +4310,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        r"""Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -4321,7 +4321,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Configuration of the maintenance window, which specifies the maintenance duration in hours.
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :rtype: int
         """
         return self._Span
@@ -4332,7 +4332,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def HAType(self):
-        """The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.
+        r"""The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.
         :rtype: str
         """
         return self._HAType
@@ -4343,7 +4343,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def MultiZones(self):
-        """Whether to deploy across availability zones. Default value: false.
+        r"""Whether to deploy across availability zones. Default value: false.
         :rtype: bool
         """
         return self._MultiZones
@@ -4354,7 +4354,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created.
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -4365,7 +4365,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
+        r"""Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -4376,7 +4376,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value: `China Standard Time`.
+        r"""System time zone. Default value: `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -4387,7 +4387,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def MultiNodes(self):
-        """Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
+        r"""Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
         :rtype: bool
         """
         return self._MultiNodes
@@ -4398,7 +4398,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def DrZones(self):
-        """The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        r"""The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
         :rtype: list of str
         """
         return self._DrZones
@@ -4449,7 +4449,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
 
 class CreateDBInstancesResponse(AbstractModel):
-    """CreateDBInstances response structure.
+    r"""CreateDBInstances response structure.
 
     """
 
@@ -4468,7 +4468,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name.
+        r"""Order name.
         :rtype: str
         """
         return self._DealName
@@ -4479,7 +4479,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order name array.
+        r"""Order name array.
         :rtype: list of str
         """
         return self._DealNames
@@ -4490,7 +4490,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4507,7 +4507,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
 
 class CreateDBRequest(AbstractModel):
-    """CreateDB request structure.
+    r"""CreateDB request structure.
 
     """
 
@@ -4523,7 +4523,7 @@ class CreateDBRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -4534,7 +4534,7 @@ class CreateDBRequest(AbstractModel):
 
     @property
     def DBs(self):
-        """Database creation information
+        r"""Database creation information
         :rtype: list of DBCreateInfo
         """
         return self._DBs
@@ -4563,7 +4563,7 @@ class CreateDBRequest(AbstractModel):
 
 
 class CreateDBResponse(AbstractModel):
-    """CreateDB response structure.
+    r"""CreateDB response structure.
 
     """
 
@@ -4579,7 +4579,7 @@ class CreateDBResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -4590,7 +4590,7 @@ class CreateDBResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4606,7 +4606,7 @@ class CreateDBResponse(AbstractModel):
 
 
 class CreateIncrementalMigrationRequest(AbstractModel):
-    """CreateIncrementalMigration request structure.
+    r"""CreateIncrementalMigration request structure.
 
     """
 
@@ -4628,7 +4628,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -4639,7 +4639,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration.
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration.
         :rtype: str
         """
         return self._BackupMigrationId
@@ -4650,7 +4650,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupFiles(self):
-        """Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        r"""Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
         :rtype: list of str
         """
         return self._BackupFiles
@@ -4661,7 +4661,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IsRecovery(self):
-        """Whether restoration is required. No: not required. Yes: required. Not required by default.
+        r"""Whether restoration is required. No: not required. Yes: required. Not required by default.
         :rtype: str
         """
         return self._IsRecovery
@@ -4687,7 +4687,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
 
 
 class CreateIncrementalMigrationResponse(AbstractModel):
-    """CreateIncrementalMigration response structure.
+    r"""CreateIncrementalMigration response structure.
 
     """
 
@@ -4703,7 +4703,7 @@ class CreateIncrementalMigrationResponse(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """ID of an incremental backup import task
+        r"""ID of an incremental backup import task
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -4714,7 +4714,7 @@ class CreateIncrementalMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4730,7 +4730,7 @@ class CreateIncrementalMigrationResponse(AbstractModel):
 
 
 class CreateMigrationRequest(AbstractModel):
-    """CreateMigration request structure.
+    r"""CreateMigration request structure.
 
     """
 
@@ -4761,7 +4761,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def MigrateName(self):
-        """Migration task name
+        r"""Migration task name
         :rtype: str
         """
         return self._MigrateName
@@ -4772,7 +4772,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def MigrateType(self):
-        """Migration type (1: structure migration, 2: data migration, 3: incremental sync)
+        r"""Migration type (1: structure migration, 2: data migration, 3: incremental sync)
         :rtype: int
         """
         return self._MigrateType
@@ -4783,7 +4783,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        """Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
+        r"""Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :rtype: int
         """
         return self._SourceType
@@ -4794,7 +4794,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def Source(self):
-        """Migration source
+        r"""Migration source
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
         """
         return self._Source
@@ -4805,7 +4805,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def Target(self):
-        """Migration target
+        r"""Migration target
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         """
         return self._Target
@@ -4816,7 +4816,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def MigrateDBSet(self):
-        """Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
+        r"""Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
         :rtype: list of MigrateDB
         """
         return self._MigrateDBSet
@@ -4827,7 +4827,7 @@ class CreateMigrationRequest(AbstractModel):
 
     @property
     def RenameRestore(self):
-        """Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.
+        r"""Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.
         :rtype: list of RenameRestoreDatabase
         """
         return self._RenameRestore
@@ -4870,7 +4870,7 @@ class CreateMigrationRequest(AbstractModel):
 
 
 class CreateMigrationResponse(AbstractModel):
-    """CreateMigration response structure.
+    r"""CreateMigration response structure.
 
     """
 
@@ -4886,7 +4886,7 @@ class CreateMigrationResponse(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -4897,7 +4897,7 @@ class CreateMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4913,7 +4913,7 @@ class CreateMigrationResponse(AbstractModel):
 
 
 class CreatePublishSubscribeRequest(AbstractModel):
-    """CreatePublishSubscribe request structure.
+    r"""CreatePublishSubscribe request structure.
 
     """
 
@@ -4935,7 +4935,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishInstanceId(self):
-        """Publishing instance ID. For example, mssql-j8kv137v.
+        r"""Publishing instance ID. For example, mssql-j8kv137v.
         :rtype: str
         """
         return self._PublishInstanceId
@@ -4946,7 +4946,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeInstanceId(self):
-        """Subscription instance ID. For example, mssql-j8kv137v.
+        r"""Subscription instance ID. For example, mssql-j8kv137v.
         :rtype: str
         """
         return self._SubscribeInstanceId
@@ -4957,7 +4957,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
 
     @property
     def DatabaseTupleSet(self):
-        """Publish/subscribe relationship collection of the database.
+        r"""Publish/subscribe relationship collection of the database.
         :rtype: list of DatabaseTuple
         """
         return self._DatabaseTupleSet
@@ -4968,7 +4968,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishSubscribeName(self):
-        """Publish/subscribe name. The default value is default_name.
+        r"""Publish/subscribe name. The default value is default_name.
         :rtype: str
         """
         return self._PublishSubscribeName
@@ -4999,7 +4999,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
 
 
 class CreatePublishSubscribeResponse(AbstractModel):
-    """CreatePublishSubscribe response structure.
+    r"""CreatePublishSubscribe response structure.
 
     """
 
@@ -5015,7 +5015,7 @@ class CreatePublishSubscribeResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Process ID. The DescribeFlowStatus API can be used to query the status of the immediate switch upgrade task.
+        r"""Process ID. The DescribeFlowStatus API can be used to query the status of the immediate switch upgrade task.
         :rtype: int
         """
         return self._FlowId
@@ -5026,7 +5026,7 @@ class CreatePublishSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5042,7 +5042,7 @@ class CreatePublishSubscribeResponse(AbstractModel):
 
 
 class CreateReadOnlyDBInstancesRequest(AbstractModel):
-    """CreateReadOnlyDBInstances request structure.
+    r"""CreateReadOnlyDBInstances request structure.
 
     """
 
@@ -5118,7 +5118,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of  `mssql-3l3fgqn7`.
+        r"""Instance ID in the format of  `mssql-3l3fgqn7`.
         :rtype: str
         """
         return self._InstanceId
@@ -5129,7 +5129,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        r"""Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -5140,7 +5140,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupType(self):
-        """Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
+        r"""Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
         :rtype: int
         """
         return self._ReadOnlyGroupType
@@ -5151,7 +5151,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB.
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -5162,7 +5162,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance disk size in GB.
+        r"""Instance disk size in GB.
         :rtype: int
         """
         return self._Storage
@@ -5173,7 +5173,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupForcedUpgrade(self):
-        """Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
+        r"""Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
         :rtype: int
         """
         return self._ReadOnlyGroupForcedUpgrade
@@ -5184,7 +5184,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
+        r"""Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -5195,7 +5195,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
+        r"""New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -5206,7 +5206,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupIsOfflineDelay(self):
-        """Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
+        r"""Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
         :rtype: int
         """
         return self._ReadOnlyGroupIsOfflineDelay
@@ -5217,7 +5217,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMaxDelayTime(self):
-        """The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        r"""The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMaxDelayTime
@@ -5228,7 +5228,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMinInGroup(self):
-        """Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        r"""Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMinInGroup
@@ -5239,7 +5239,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        r"""Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5250,7 +5250,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of read-only instances to be purchased this time. Default value: `2`.
+        r"""Number of read-only instances to be purchased this time. Default value: `2`.
         :rtype: int
         """
         return self._GoodsNum
@@ -5261,7 +5261,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._SubnetId
@@ -5272,7 +5272,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        r"""VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._VpcId
@@ -5283,7 +5283,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
+        r"""The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
         :rtype: int
         """
         return self._Period
@@ -5294,7 +5294,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of `sg-xxx`.
+        r"""Security group list, which contains security group IDs in the format of `sg-xxx`.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -5305,7 +5305,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
+        r"""Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :rtype: int
         """
         return self._AutoVoucher
@@ -5316,7 +5316,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order).
+        r"""Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -5327,7 +5327,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created.
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -5338,7 +5338,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
+        r"""Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :rtype: str
         """
         return self._Collation
@@ -5349,7 +5349,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value:  `China Standard Time`.
+        r"""System time zone. Default value:  `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -5398,7 +5398,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
 
 class CreateReadOnlyDBInstancesResponse(AbstractModel):
-    """CreateReadOnlyDBInstances response structure.
+    r"""CreateReadOnlyDBInstances response structure.
 
     """
 
@@ -5414,7 +5414,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order name in array.
+        r"""Order name in array.
         :rtype: list of str
         """
         return self._DealNames
@@ -5425,7 +5425,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5441,7 +5441,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
 
 
 class CrossBackupAddr(AbstractModel):
-    """All Download addresses of cross-region backup
+    r"""All Download addresses of cross-region backup
 
     """
 
@@ -5460,7 +5460,7 @@ class CrossBackupAddr(AbstractModel):
 
     @property
     def CrossRegion(self):
-        """The target region of cross-region backup
+        r"""The target region of cross-region backup
         :rtype: str
         """
         return self._CrossRegion
@@ -5471,7 +5471,7 @@ class CrossBackupAddr(AbstractModel):
 
     @property
     def CrossInternalAddr(self):
-        """The address used to download the cross-region backup over a private network
+        r"""The address used to download the cross-region backup over a private network
         :rtype: str
         """
         return self._CrossInternalAddr
@@ -5482,7 +5482,7 @@ class CrossBackupAddr(AbstractModel):
 
     @property
     def CrossExternalAddr(self):
-        """The address used to download the cross-region backup over a public network
+        r"""The address used to download the cross-region backup over a public network
         :rtype: str
         """
         return self._CrossExternalAddr
@@ -5507,7 +5507,7 @@ class CrossBackupAddr(AbstractModel):
 
 
 class CrossRegionStatus(AbstractModel):
-    """The target region and status of cross-region backup
+    r"""The target region and status of cross-region backup
 
     """
 
@@ -5523,7 +5523,7 @@ class CrossRegionStatus(AbstractModel):
 
     @property
     def CrossRegion(self):
-        """The target region of cross-region backup
+        r"""The target region of cross-region backup
         :rtype: str
         """
         return self._CrossRegion
@@ -5534,7 +5534,7 @@ class CrossRegionStatus(AbstractModel):
 
     @property
     def CrossStatus(self):
-        """Synchronization status of cross-region backup. Valid values: `0` (creating), `1` (succeeded), `2`: (failed), `4` (syncing)
+        r"""Synchronization status of cross-region backup. Valid values: `0` (creating), `1` (succeeded), `2`: (failed), `4` (syncing)
         :rtype: int
         """
         return self._CrossStatus
@@ -5558,7 +5558,7 @@ class CrossRegionStatus(AbstractModel):
 
 
 class CrossSummaryDetailRes(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -5610,7 +5610,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -5621,7 +5621,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Region(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Region
@@ -5632,7 +5632,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def InstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -5643,7 +5643,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -5654,7 +5654,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossBackupEnabled(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CrossBackupEnabled
@@ -5665,7 +5665,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossRegions(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._CrossRegions
@@ -5676,7 +5676,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LastBackupStartTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._LastBackupStartTime
@@ -5687,7 +5687,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def CrossBackupSaveDays(self):
-        """
+        r"""
         :rtype: int
         """
         return self._CrossBackupSaveDays
@@ -5698,7 +5698,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DataBackupSpace
@@ -5709,7 +5709,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DataBackupCount
@@ -5720,7 +5720,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._LogBackupSpace
@@ -5731,7 +5731,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._LogBackupCount
@@ -5742,7 +5742,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ActualUsedSpace
@@ -5753,7 +5753,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ActualUsedCount
@@ -5789,7 +5789,7 @@ class CrossSummaryDetailRes(AbstractModel):
 
 
 class CutXEventsRequest(AbstractModel):
-    """CutXEvents request structure.
+    r"""CutXEvents request structure.
 
     """
 
@@ -5802,7 +5802,7 @@ class CutXEventsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -5825,7 +5825,7 @@ class CutXEventsRequest(AbstractModel):
 
 
 class CutXEventsResponse(AbstractModel):
-    """CutXEvents response structure.
+    r"""CutXEvents response structure.
 
     """
 
@@ -5838,7 +5838,7 @@ class CutXEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5853,7 +5853,7 @@ class CutXEventsResponse(AbstractModel):
 
 
 class DBCreateInfo(AbstractModel):
-    """Database creation information
+    r"""Database creation information
 
     """
 
@@ -5875,7 +5875,7 @@ class DBCreateInfo(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._DBName
@@ -5886,7 +5886,7 @@ class DBCreateInfo(AbstractModel):
 
     @property
     def Charset(self):
-        """Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.
+        r"""Character set, which can be queried by the `DescribeDBCharsets` API. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Charset
@@ -5897,7 +5897,7 @@ class DBCreateInfo(AbstractModel):
 
     @property
     def Accounts(self):
-        """Database account permission information
+        r"""Database account permission information
         :rtype: list of AccountPrivilege
         """
         return self._Accounts
@@ -5908,7 +5908,7 @@ class DBCreateInfo(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -5939,7 +5939,7 @@ class DBCreateInfo(AbstractModel):
 
 
 class DBDetail(AbstractModel):
-    """Database information
+    r"""Database information
 
     """
 
@@ -5973,7 +5973,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._Name
@@ -5984,7 +5984,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Charset(self):
-        """Character set
+        r"""Character set
         :rtype: str
         """
         return self._Charset
@@ -5995,7 +5995,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -6006,7 +6006,7 @@ class DBDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Database creation time
+        r"""Database creation time
         :rtype: str
         """
         return self._CreateTime
@@ -6017,7 +6017,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Database status. 1: creating, 2: running, 3: modifying, -1: dropping
+        r"""Database status. 1: creating, 2: running, 3: modifying, -1: dropping
         :rtype: int
         """
         return self._Status
@@ -6028,7 +6028,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Accounts(self):
-        """Database account permission information
+        r"""Database account permission information
         :rtype: list of AccountPrivilege
         """
         return self._Accounts
@@ -6039,7 +6039,7 @@ class DBDetail(AbstractModel):
 
     @property
     def InternalStatus(self):
-        """Internal status. ONLINE: running
+        r"""Internal status. ONLINE: running
         :rtype: str
         """
         return self._InternalStatus
@@ -6050,7 +6050,7 @@ class DBDetail(AbstractModel):
 
     @property
     def Encryption(self):
-        """TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        r"""TDE status. Valid values: `enable` (enabled), `disable` (disabled).
         :rtype: str
         """
         return self._Encryption
@@ -6085,7 +6085,7 @@ class DBDetail(AbstractModel):
 
 
 class DBInstance(AbstractModel):
-    """Instance details
+    r"""Instance details
 
     """
 
@@ -6261,7 +6261,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -6272,7 +6272,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Name(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._Name
@@ -6283,7 +6283,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID of instance
+        r"""Project ID of instance
         :rtype: int
         """
         return self._ProjectId
@@ -6294,7 +6294,7 @@ class DBInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        """Instance region ID
+        r"""Instance region ID
         :rtype: int
         """
         return self._RegionId
@@ -6305,7 +6305,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Instance AZ ID
+        r"""Instance AZ ID
         :rtype: int
         """
         return self._ZoneId
@@ -6316,7 +6316,7 @@ class DBInstance(AbstractModel):
 
     @property
     def VpcId(self):
-        """Instance VPC ID, which will be 0 if the basic network is used
+        r"""Instance VPC ID, which will be 0 if the basic network is used
         :rtype: int
         """
         return self._VpcId
@@ -6327,7 +6327,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Instance VPC subnet ID, which will be 0 if the basic network is used
+        r"""Instance VPC subnet ID, which will be 0 if the basic network is used
         :rtype: int
         """
         return self._SubnetId
@@ -6338,7 +6338,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Status(self):
-        """Instance status. Valid values: <li>1: creating</li> <li>2: running</li> <li>3: instance operations restricted (due to the ongoing primary-replica switch)</li> <li>4: isolated</li> <li>5: repossessing</li> <li>6: repossessed</li> <li>7: running tasks (such as backup and rollback tasks)</li> <li>8: eliminated</li> <li>9: expanding capacity</li> <li>10: migrating</li> <li>11: read-only</li> <li>12: restarting</li>  <li>13: modifying configuration and waiting for switch</li> <li>14: implementing pub/sub</li> <li>15: modifying pub/sub configuration</li> <li>16: modifying configuration and switching</li> <li>17: creating read-only instances</li>
+        r"""Instance status. Valid values: <li>1: creating</li> <li>2: running</li> <li>3: instance operations restricted (due to the ongoing primary-replica switch)</li> <li>4: isolated</li> <li>5: repossessing</li> <li>6: repossessed</li> <li>7: running tasks (such as backup and rollback tasks)</li> <li>8: eliminated</li> <li>9: expanding capacity</li> <li>10: migrating</li> <li>11: read-only</li> <li>12: restarting</li>  <li>13: modifying configuration and waiting for switch</li> <li>14: implementing pub/sub</li> <li>15: modifying pub/sub configuration</li> <li>16: modifying configuration and switching</li> <li>17: creating read-only instances</li>
         :rtype: int
         """
         return self._Status
@@ -6349,7 +6349,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Vip(self):
-        """Instance access IP
+        r"""Instance access IP
         :rtype: str
         """
         return self._Vip
@@ -6360,7 +6360,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Vport(self):
-        """Instance access port
+        r"""Instance access port
         :rtype: int
         """
         return self._Vport
@@ -6371,7 +6371,7 @@ class DBInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Instance creation time
+        r"""Instance creation time
         :rtype: str
         """
         return self._CreateTime
@@ -6382,7 +6382,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Instance update time
+        r"""Instance update time
         :rtype: str
         """
         return self._UpdateTime
@@ -6393,7 +6393,7 @@ class DBInstance(AbstractModel):
 
     @property
     def StartTime(self):
-        """Instance billing start time
+        r"""Instance billing start time
         :rtype: str
         """
         return self._StartTime
@@ -6404,7 +6404,7 @@ class DBInstance(AbstractModel):
 
     @property
     def EndTime(self):
-        """Instance billing end time
+        r"""Instance billing end time
         :rtype: str
         """
         return self._EndTime
@@ -6415,7 +6415,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsolateTime(self):
-        """Instance isolation time
+        r"""Instance isolation time
         :rtype: str
         """
         return self._IsolateTime
@@ -6426,7 +6426,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB
+        r"""Instance memory size in GB
         :rtype: int
         """
         return self._Memory
@@ -6437,7 +6437,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UsedStorage(self):
-        """Used storage capacity of instance in GB
+        r"""Used storage capacity of instance in GB
         :rtype: int
         """
         return self._UsedStorage
@@ -6448,7 +6448,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance storage capacity in GB
+        r"""Instance storage capacity in GB
         :rtype: int
         """
         return self._Storage
@@ -6459,7 +6459,7 @@ class DBInstance(AbstractModel):
 
     @property
     def VersionName(self):
-        """Instance version
+        r"""Instance version
         :rtype: str
         """
         return self._VersionName
@@ -6470,7 +6470,7 @@ class DBInstance(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """Instance renewal flag
+        r"""Instance renewal flag
         :rtype: int
         """
         return self._RenewFlag
@@ -6481,7 +6481,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Model(self):
-        """Instance disaster recovery type. 1: dual-server high availability; 2: single-node; 3: cross-AZ; 4: cross-AZ cluster; 5: cluster; 6: multi-node cluster; 7: multi-node cross-AZ cluster.
+        r"""Instance disaster recovery type. 1: dual-server high availability; 2: single-node; 3: cross-AZ; 4: cross-AZ cluster; 5: cluster; 6: multi-node cluster; 7: multi-node cross-AZ cluster.
         :rtype: int
         """
         return self._Model
@@ -6492,7 +6492,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Region(self):
-        """Instance region name, such as ap-guangzhou
+        r"""Instance region name, such as ap-guangzhou
         :rtype: str
         """
         return self._Region
@@ -6503,7 +6503,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ name, such as ap-guangzhou-1
+        r"""Instance AZ name, such as ap-guangzhou-1
         :rtype: str
         """
         return self._Zone
@@ -6514,7 +6514,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupTime(self):
-        """Backup time point
+        r"""Backup time point
         :rtype: str
         """
         return self._BackupTime
@@ -6525,7 +6525,7 @@ class DBInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        """Instance billing mode. 0: pay-as-you-go
+        r"""Instance billing mode. 0: pay-as-you-go
         :rtype: int
         """
         return self._PayMode
@@ -6536,7 +6536,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Uid(self):
-        """Instance UID
+        r"""Instance UID
         :rtype: str
         """
         return self._Uid
@@ -6547,7 +6547,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores of instance
+        r"""Number of CPU cores of instance
         :rtype: int
         """
         return self._Cpu
@@ -6558,7 +6558,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Version(self):
-        """Instance version code
+        r"""Instance version code
         :rtype: str
         """
         return self._Version
@@ -6569,7 +6569,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Type(self):
-        """Instance type. Valid values: `TS85` (physical machine, local SSD), `Z3` (early version of physical machine, local SSD), `CLOUD_BASIC` (virtual machine, HDD cloud disk), `CLOUD_PREMIUM` (virtual machine, premium cloud disk), `CLOUD_SSD` (virtual machine, SSD), `CLOUD_HSSD` (virtual machine, enhanced SSD), `CLOUD_TSSD` (virtual machine, ulTra SSD), `CLOUD_BSSD` virtual machine, balanced SSD).
+        r"""Instance type. Valid values: `TS85` (physical machine, local SSD), `Z3` (early version of physical machine, local SSD), `CLOUD_BASIC` (virtual machine, HDD cloud disk), `CLOUD_PREMIUM` (virtual machine, premium cloud disk), `CLOUD_SSD` (virtual machine, SSD), `CLOUD_HSSD` (virtual machine, enhanced SSD), `CLOUD_TSSD` (virtual machine, ulTra SSD), `CLOUD_BSSD` virtual machine, balanced SSD).
         :rtype: str
         """
         return self._Type
@@ -6580,7 +6580,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Pid(self):
-        """Billing ID
+        r"""Billing ID
         :rtype: int
         """
         return self._Pid
@@ -6591,7 +6591,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used
+        r"""Unique string-type ID of instance VPC in the format of `vpc-xxx`, which is an empty string if the basic network is used
         :rtype: str
         """
         return self._UniqVpcId
@@ -6602,7 +6602,7 @@ class DBInstance(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        """Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
+        r"""Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
         :rtype: str
         """
         return self._UniqSubnetId
@@ -6613,7 +6613,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsolateOperator(self):
-        """Instance isolation operation.
+        r"""Instance isolation operation.
         :rtype: str
         """
         return self._IsolateOperator
@@ -6624,7 +6624,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SubFlag(self):
-        """Publishing/Subscription flag. SUB: subscription instance; PUB: publishing instance. If this parameter is left blank, the instance is an ordinary instance that does not involve publishing or subscription.
+        r"""Publishing/Subscription flag. SUB: subscription instance; PUB: publishing instance. If this parameter is left blank, the instance is an ordinary instance that does not involve publishing or subscription.
         :rtype: str
         """
         return self._SubFlag
@@ -6635,7 +6635,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ROFlag(self):
-        """Read-only flag. RO: read-only instance; MASTER: primary instance bound to a read-only instance. If this parameter is left blank, the instance is not a read-only instance and is not in any read-only group.
+        r"""Read-only flag. RO: read-only instance; MASTER: primary instance bound to a read-only instance. If this parameter is left blank, the instance is not a read-only instance and is not in any read-only group.
         :rtype: str
         """
         return self._ROFlag
@@ -6646,7 +6646,7 @@ class DBInstance(AbstractModel):
 
     @property
     def HAFlag(self):
-        """Disaster recovery type. MIRROR: image; ALWAYSON: Always On; SINGLE: single instance.
+        r"""Disaster recovery type. MIRROR: image; ALWAYSON: Always On; SINGLE: single instance.
         :rtype: str
         """
         return self._HAFlag
@@ -6657,7 +6657,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -6668,7 +6668,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupModel(self):
-        """Backup mode. master_pkg: backup on the primary node (default value); master_no_pkg: no backup on the primary node; slave_pkg: backup on secondary nodes (valid for Always On clusters); slave_no_pkg: no backup on secondary nodes (valid for Always On clusters). This parameter is invalid for read-only instances.
+        r"""Backup mode. master_pkg: backup on the primary node (default value); master_no_pkg: no backup on the primary node; slave_pkg: backup on secondary nodes (valid for Always On clusters); slave_no_pkg: no backup on secondary nodes (valid for Always On clusters). This parameter is invalid for read-only instances.
         :rtype: str
         """
         return self._BackupModel
@@ -6679,7 +6679,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceNote(self):
-        """Instance backup information.
+        r"""Instance backup information.
         :rtype: str
         """
         return self._InstanceNote
@@ -6690,7 +6690,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupCycle(self):
-        """Backup cycle
+        r"""Backup cycle
         :rtype: list of int
         """
         return self._BackupCycle
@@ -6701,7 +6701,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupCycleType(self):
-        """Backup cycle type. Valid values: `daily`, `weekly`, `monthly`.
+        r"""Backup cycle type. Valid values: `daily`, `weekly`, `monthly`.
         :rtype: str
         """
         return self._BackupCycleType
@@ -6712,7 +6712,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupSaveDays(self):
-        """Data (log) backup retention period
+        r"""Data (log) backup retention period
         :rtype: int
         """
         return self._BackupSaveDays
@@ -6723,7 +6723,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
+        r"""Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
 
         :rtype: str
         """
@@ -6735,7 +6735,7 @@ class DBInstance(AbstractModel):
 
     @property
     def CrossRegions(self):
-        """The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.
+        r"""The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.
         :rtype: list of str
         """
         return self._CrossRegions
@@ -6746,7 +6746,7 @@ class DBInstance(AbstractModel):
 
     @property
     def CrossBackupEnabled(self):
-        """Cross-region backup status. Valid values: `enable` (enabled), `disable` (disabed)
+        r"""Cross-region backup status. Valid values: `enable` (enabled), `disable` (disabed)
         :rtype: str
         """
         return self._CrossBackupEnabled
@@ -6757,7 +6757,7 @@ class DBInstance(AbstractModel):
 
     @property
     def CrossBackupSaveDays(self):
-        """The retention period of cross-region backup. Default value: 7 days
+        r"""The retention period of cross-region backup. Default value: 7 days
         :rtype: int
         """
         return self._CrossBackupSaveDays
@@ -6768,7 +6768,7 @@ class DBInstance(AbstractModel):
 
     @property
     def DnsPodDomain(self):
-        """Domain name of the public network address
+        r"""Domain name of the public network address
         :rtype: str
         """
         return self._DnsPodDomain
@@ -6779,7 +6779,7 @@ class DBInstance(AbstractModel):
 
     @property
     def TgwWanVPort(self):
-        """Port number of the public network
+        r"""Port number of the public network
         :rtype: int
         """
         return self._TgwWanVPort
@@ -6790,7 +6790,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
+        r"""Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -6801,7 +6801,7 @@ class DBInstance(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value: `China Standard Time`.
+        r"""System time zone. Default value: `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -6812,7 +6812,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsDrZone(self):
-        """Whether the instance is deployed across AZs
+        r"""Whether the instance is deployed across AZs
         :rtype: bool
         """
         return self._IsDrZone
@@ -6823,7 +6823,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SlaveZones(self):
-        """Secondary AZ information on the two-node instance.
+        r"""Secondary AZ information on the two-node instance.
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         """
         return self._SlaveZones
@@ -6834,7 +6834,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Architecture(self):
-        """Architecture flag. SINGLE: single-node; DOUBLE: two-node.
+        r"""Architecture flag. SINGLE: single-node; DOUBLE: two-node.
         :rtype: str
         """
         return self._Architecture
@@ -6845,7 +6845,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Style(self):
-        """Type flag. EXCLUSIVE: exclusive; SHARED: shared.
+        r"""Type flag. EXCLUSIVE: exclusive; SHARED: shared.
         :rtype: str
         """
         return self._Style
@@ -6856,7 +6856,7 @@ class DBInstance(AbstractModel):
 
     @property
     def MultiSlaveZones(self):
-        """
+        r"""
         :rtype: list of SlaveZones
         """
         return self._MultiSlaveZones
@@ -6945,7 +6945,7 @@ class DBInstance(AbstractModel):
 
 
 class DBPrivilege(AbstractModel):
-    """Database permission information of account
+    r"""Database permission information of account
 
     """
 
@@ -6961,7 +6961,7 @@ class DBPrivilege(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._DBName
@@ -6972,7 +6972,7 @@ class DBPrivilege(AbstractModel):
 
     @property
     def Privilege(self):
-        """Database permissions. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `DBOwner` (owner)
+        r"""Database permissions. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `DBOwner` (owner)
         :rtype: str
         """
         return self._Privilege
@@ -6996,7 +6996,7 @@ class DBPrivilege(AbstractModel):
 
 
 class DBPrivilegeModifyInfo(AbstractModel):
-    """Database permission change information
+    r"""Database permission change information
 
     """
 
@@ -7012,7 +7012,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._DBName
@@ -7023,7 +7023,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
 
     @property
     def Privilege(self):
-        """Permission modification information. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the account's permission to this database), `DBOwner` (owner).
+        r"""Permission modification information. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the account's permission to this database), `DBOwner` (owner).
         :rtype: str
         """
         return self._Privilege
@@ -7047,7 +7047,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
 
 
 class DBRemark(AbstractModel):
-    """Database remarks
+    r"""Database remarks
 
     """
 
@@ -7063,7 +7063,7 @@ class DBRemark(AbstractModel):
 
     @property
     def Name(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._Name
@@ -7074,7 +7074,7 @@ class DBRemark(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -7098,7 +7098,7 @@ class DBRemark(AbstractModel):
 
 
 class DBRenameRes(AbstractModel):
-    """Database renaming response parameter
+    r"""Database renaming response parameter
 
     """
 
@@ -7114,7 +7114,7 @@ class DBRenameRes(AbstractModel):
 
     @property
     def NewName(self):
-        """Name of the new database
+        r"""Name of the new database
         :rtype: str
         """
         return self._NewName
@@ -7125,7 +7125,7 @@ class DBRenameRes(AbstractModel):
 
     @property
     def OldName(self):
-        """Name of the old database
+        r"""Name of the old database
         :rtype: str
         """
         return self._OldName
@@ -7149,7 +7149,7 @@ class DBRenameRes(AbstractModel):
 
 
 class DBTDEEncrypt(AbstractModel):
-    """This example shows you how to enable or disable TDE of a database.
+    r"""This example shows you how to enable or disable TDE of a database.
 
     """
 
@@ -7165,7 +7165,7 @@ class DBTDEEncrypt(AbstractModel):
 
     @property
     def DBName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DBName
@@ -7176,7 +7176,7 @@ class DBTDEEncrypt(AbstractModel):
 
     @property
     def Encryption(self):
-        """TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        r"""TDE status. Valid values: `enable` (enabled), `disable` (disabled).
         :rtype: str
         """
         return self._Encryption
@@ -7200,7 +7200,7 @@ class DBTDEEncrypt(AbstractModel):
 
 
 class DataBasePrivilegeModifyInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -7216,7 +7216,7 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
     @property
     def DataBaseName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DataBaseName
@@ -7227,7 +7227,7 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
     @property
     def AccountPrivileges(self):
-        """
+        r"""
         :rtype: list of AccountPrivilege
         """
         return self._AccountPrivileges
@@ -7256,7 +7256,7 @@ class DataBasePrivilegeModifyInfo(AbstractModel):
 
 
 class DatabaseTuple(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -7272,7 +7272,7 @@ class DatabaseTuple(AbstractModel):
 
     @property
     def PublishDatabase(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PublishDatabase
@@ -7283,7 +7283,7 @@ class DatabaseTuple(AbstractModel):
 
     @property
     def SubscribeDatabase(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubscribeDatabase
@@ -7307,7 +7307,7 @@ class DatabaseTuple(AbstractModel):
 
 
 class DatabaseTupleStatus(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -7329,7 +7329,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def PublishDatabase(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PublishDatabase
@@ -7340,7 +7340,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def SubscribeDatabase(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubscribeDatabase
@@ -7351,7 +7351,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def LastSyncTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._LastSyncTime
@@ -7362,7 +7362,7 @@ class DatabaseTupleStatus(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Status
@@ -7388,7 +7388,7 @@ class DatabaseTupleStatus(AbstractModel):
 
 
 class DbNormalDetail(AbstractModel):
-    """Database configurations
+    r"""Database configurations
 
     """
 
@@ -7455,7 +7455,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsSubscribed(self):
-        """Whether it is subscribed. Valid values: `0` (no), `1` (yes)
+        r"""Whether it is subscribed. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsSubscribed
@@ -7466,7 +7466,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def CollationName(self):
-        """Database collation
+        r"""Database collation
         :rtype: str
         """
         return self._CollationName
@@ -7477,7 +7477,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsAutoCleanupOn(self):
-        """Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)
+        r"""Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsAutoCleanupOn
@@ -7488,7 +7488,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsBrokerEnabled(self):
-        """Whether SQL Server Service Broker is enabled. Valid values: `0` (no), `1` (yes)
+        r"""Whether SQL Server Service Broker is enabled. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsBrokerEnabled
@@ -7499,7 +7499,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsCdcEnabled(self):
-        """Whether CDC is enabled. Valid values: `0` (disabled), `1` (enabled)
+        r"""Whether CDC is enabled. Valid values: `0` (disabled), `1` (enabled)
         :rtype: str
         """
         return self._IsCdcEnabled
@@ -7510,7 +7510,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsDbChainingOn(self):
-        """Whether CT is enabled. Valid values: `0` (disabled), `1` (enabled)
+        r"""Whether CT is enabled. Valid values: `0` (disabled), `1` (enabled)
         :rtype: str
         """
         return self._IsDbChainingOn
@@ -7521,7 +7521,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsEncrypted(self):
-        """Whether it is encrypted. Valid values: `0` (no), `1` (yes)
+        r"""Whether it is encrypted. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsEncrypted
@@ -7534,7 +7534,7 @@ class DbNormalDetail(AbstractModel):
     def IsFulltextEnabled(self):
         warnings.warn("parameter `IsFulltextEnabled` is deprecated", DeprecationWarning) 
 
-        """Whether full-text indexes are enabled. Valid values: `0` (no), `1` (yes)
+        r"""Whether full-text indexes are enabled. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsFulltextEnabled
@@ -7547,7 +7547,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsMirroring(self):
-        """Whether it is a mirror database. Valid values: `0` (no), `1` (yes)
+        r"""Whether it is a mirror database. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsMirroring
@@ -7558,7 +7558,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsPublished(self):
-        """Whether it is published. Valid values: `0` (no), `1` (yes)
+        r"""Whether it is published. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsPublished
@@ -7569,7 +7569,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsReadCommittedSnapshotOn(self):
-        """Whether snapshots are enabled. Valid values: `0` (no), `1` (yes)
+        r"""Whether snapshots are enabled. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsReadCommittedSnapshotOn
@@ -7580,7 +7580,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsTrustworthyOn(self):
-        """Whether it is trustworthy. Valid values: `0` (no), `1` (yes)
+        r"""Whether it is trustworthy. Valid values: `0` (no), `1` (yes)
         :rtype: str
         """
         return self._IsTrustworthyOn
@@ -7591,7 +7591,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def MirroringState(self):
-        """Mirroring state
+        r"""Mirroring state
         :rtype: str
         """
         return self._MirroringState
@@ -7602,7 +7602,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._Name
@@ -7613,7 +7613,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def RecoveryModelDesc(self):
-        """Recovery model
+        r"""Recovery model
         :rtype: str
         """
         return self._RecoveryModelDesc
@@ -7624,7 +7624,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def RetentionPeriod(self):
-        """Retention period (in days) of change tracking information
+        r"""Retention period (in days) of change tracking information
         :rtype: str
         """
         return self._RetentionPeriod
@@ -7635,7 +7635,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def StateDesc(self):
-        """Database status
+        r"""Database status
         :rtype: str
         """
         return self._StateDesc
@@ -7646,7 +7646,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def UserAccessDesc(self):
-        """User type
+        r"""User type
         :rtype: str
         """
         return self._UserAccessDesc
@@ -7657,7 +7657,7 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Database creation time
+        r"""Database creation time
         :rtype: str
         """
         return self._CreateTime
@@ -7698,7 +7698,7 @@ class DbNormalDetail(AbstractModel):
 
 
 class DbRollbackTimeInfo(AbstractModel):
-    """Information of time range available for database rollback
+    r"""Information of time range available for database rollback
 
     """
 
@@ -7717,7 +7717,7 @@ class DbRollbackTimeInfo(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._DBName
@@ -7728,7 +7728,7 @@ class DbRollbackTimeInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of time range available for rollback
+        r"""Start time of time range available for rollback
         :rtype: str
         """
         return self._StartTime
@@ -7739,7 +7739,7 @@ class DbRollbackTimeInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of time range available for rollback
+        r"""End time of time range available for rollback
         :rtype: str
         """
         return self._EndTime
@@ -7764,7 +7764,7 @@ class DbRollbackTimeInfo(AbstractModel):
 
 
 class DealInfo(AbstractModel):
-    """Order information
+    r"""Order information
 
     """
 
@@ -7792,7 +7792,7 @@ class DealInfo(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name
+        r"""Order name
         :rtype: str
         """
         return self._DealName
@@ -7803,7 +7803,7 @@ class DealInfo(AbstractModel):
 
     @property
     def Count(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._Count
@@ -7814,7 +7814,7 @@ class DealInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        """ID of associated flow, which can be used to query the flow execution status
+        r"""ID of associated flow, which can be used to query the flow execution status
         :rtype: int
         """
         return self._FlowId
@@ -7825,7 +7825,7 @@ class DealInfo(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """This field is required only for an order that creates an instance, indicating the ID of the instance created by the order
+        r"""This field is required only for an order that creates an instance, indicating the ID of the instance created by the order
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -7836,7 +7836,7 @@ class DealInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        """Account
+        r"""Account
         :rtype: str
         """
         return self._OwnerUin
@@ -7847,7 +7847,7 @@ class DealInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Instance billing type
+        r"""Instance billing type
         :rtype: str
         """
         return self._InstanceChargeType
@@ -7875,7 +7875,7 @@ class DealInfo(AbstractModel):
 
 
 class DealInstance(AbstractModel):
-    """List of the resource IDs corresponding to order number
+    r"""List of the resource IDs corresponding to order number
 
     """
 
@@ -7891,7 +7891,7 @@ class DealInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: list of str
         """
         return self._InstanceId
@@ -7902,7 +7902,7 @@ class DealInstance(AbstractModel):
 
     @property
     def DealName(self):
-        """Order ID
+        r"""Order ID
         :rtype: str
         """
         return self._DealName
@@ -7926,7 +7926,7 @@ class DealInstance(AbstractModel):
 
 
 class DeleteAccountRequest(AbstractModel):
-    """DeleteAccount request structure.
+    r"""DeleteAccount request structure.
 
     """
 
@@ -7942,7 +7942,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl
+        r"""Database instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -7953,7 +7953,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def UserNames(self):
-        """Array of instance usernames
+        r"""Array of instance usernames
         :rtype: list of str
         """
         return self._UserNames
@@ -7977,7 +7977,7 @@ class DeleteAccountRequest(AbstractModel):
 
 
 class DeleteAccountResponse(AbstractModel):
-    """DeleteAccount response structure.
+    r"""DeleteAccount response structure.
 
     """
 
@@ -7993,7 +7993,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -8004,7 +8004,7 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8020,7 +8020,7 @@ class DeleteAccountResponse(AbstractModel):
 
 
 class DeleteBackupMigrationRequest(AbstractModel):
-    """DeleteBackupMigration request structure.
+    r"""DeleteBackupMigration request structure.
 
     """
 
@@ -8036,7 +8036,7 @@ class DeleteBackupMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Target instance ID, which is returned through the API DescribeBackupMigration.
+        r"""Target instance ID, which is returned through the API DescribeBackupMigration.
         :rtype: str
         """
         return self._InstanceId
@@ -8047,7 +8047,7 @@ class DeleteBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API DescribeBackupMigration.
+        r"""Backup import task ID, which is returned through the API DescribeBackupMigration.
         :rtype: str
         """
         return self._BackupMigrationId
@@ -8071,7 +8071,7 @@ class DeleteBackupMigrationRequest(AbstractModel):
 
 
 class DeleteBackupMigrationResponse(AbstractModel):
-    """DeleteBackupMigration response structure.
+    r"""DeleteBackupMigration response structure.
 
     """
 
@@ -8084,7 +8084,7 @@ class DeleteBackupMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8099,7 +8099,7 @@ class DeleteBackupMigrationResponse(AbstractModel):
 
 
 class DeleteBusinessIntelligenceFileRequest(AbstractModel):
-    """DeleteBusinessIntelligenceFile request structure.
+    r"""DeleteBusinessIntelligenceFile request structure.
 
     """
 
@@ -8115,7 +8115,7 @@ class DeleteBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8126,7 +8126,7 @@ class DeleteBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileNameSet(self):
-        """File name set
+        r"""File name set
         :rtype: list of str
         """
         return self._FileNameSet
@@ -8150,7 +8150,7 @@ class DeleteBusinessIntelligenceFileRequest(AbstractModel):
 
 
 class DeleteBusinessIntelligenceFileResponse(AbstractModel):
-    """DeleteBusinessIntelligenceFile response structure.
+    r"""DeleteBusinessIntelligenceFile response structure.
 
     """
 
@@ -8163,7 +8163,7 @@ class DeleteBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8178,7 +8178,7 @@ class DeleteBusinessIntelligenceFileResponse(AbstractModel):
 
 
 class DeleteDBInstanceRequest(AbstractModel):
-    """DeleteDBInstance request structure.
+    r"""DeleteDBInstance request structure.
 
     """
 
@@ -8191,7 +8191,7 @@ class DeleteDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.
+        r"""Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -8214,7 +8214,7 @@ class DeleteDBInstanceRequest(AbstractModel):
 
 
 class DeleteDBInstanceResponse(AbstractModel):
-    """DeleteDBInstance response structure.
+    r"""DeleteDBInstance response structure.
 
     """
 
@@ -8227,7 +8227,7 @@ class DeleteDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8242,7 +8242,7 @@ class DeleteDBInstanceResponse(AbstractModel):
 
 
 class DeleteDBRequest(AbstractModel):
-    """DeleteDB request structure.
+    r"""DeleteDB request structure.
 
     """
 
@@ -8258,7 +8258,7 @@ class DeleteDBRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-rljoi3bf
+        r"""Instance ID in the format of mssql-rljoi3bf
         :rtype: str
         """
         return self._InstanceId
@@ -8269,7 +8269,7 @@ class DeleteDBRequest(AbstractModel):
 
     @property
     def Names(self):
-        """Array of database names
+        r"""Array of database names
         :rtype: list of str
         """
         return self._Names
@@ -8293,7 +8293,7 @@ class DeleteDBRequest(AbstractModel):
 
 
 class DeleteDBResponse(AbstractModel):
-    """DeleteDB response structure.
+    r"""DeleteDB response structure.
 
     """
 
@@ -8309,7 +8309,7 @@ class DeleteDBResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -8320,7 +8320,7 @@ class DeleteDBResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8336,7 +8336,7 @@ class DeleteDBResponse(AbstractModel):
 
 
 class DeleteIncrementalMigrationRequest(AbstractModel):
-    """DeleteIncrementalMigration request structure.
+    r"""DeleteIncrementalMigration request structure.
 
     """
 
@@ -8355,7 +8355,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Target instance ID.
+        r"""Target instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -8366,7 +8366,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the `CreateBackupMigration` API
+        r"""Backup import task ID, which is returned through the `CreateBackupMigration` API
         :rtype: str
         """
         return self._BackupMigrationId
@@ -8377,7 +8377,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API
+        r"""Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -8402,7 +8402,7 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
 
 
 class DeleteIncrementalMigrationResponse(AbstractModel):
-    """DeleteIncrementalMigration response structure.
+    r"""DeleteIncrementalMigration response structure.
 
     """
 
@@ -8415,7 +8415,7 @@ class DeleteIncrementalMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8430,7 +8430,7 @@ class DeleteIncrementalMigrationResponse(AbstractModel):
 
 
 class DeleteMigrationRequest(AbstractModel):
-    """DeleteMigration request structure.
+    r"""DeleteMigration request structure.
 
     """
 
@@ -8443,7 +8443,7 @@ class DeleteMigrationRequest(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -8466,7 +8466,7 @@ class DeleteMigrationRequest(AbstractModel):
 
 
 class DeleteMigrationResponse(AbstractModel):
-    """DeleteMigration response structure.
+    r"""DeleteMigration response structure.
 
     """
 
@@ -8479,7 +8479,7 @@ class DeleteMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8494,7 +8494,7 @@ class DeleteMigrationResponse(AbstractModel):
 
 
 class DeletePublishSubscribeRequest(AbstractModel):
-    """DeletePublishSubscribe request structure.
+    r"""DeletePublishSubscribe request structure.
 
     """
 
@@ -8510,7 +8510,7 @@ class DeletePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishSubscribeId(self):
-        """Publish/subscribe ID, which can be obtained through the DescribePublishSubscribe API.
+        r"""Publish/subscribe ID, which can be obtained through the DescribePublishSubscribe API.
         :rtype: int
         """
         return self._PublishSubscribeId
@@ -8521,7 +8521,7 @@ class DeletePublishSubscribeRequest(AbstractModel):
 
     @property
     def DatabaseTupleSet(self):
-        """Publish/subscribe relationship collection of the database to be deleted.
+        r"""Publish/subscribe relationship collection of the database to be deleted.
         :rtype: list of DatabaseTuple
         """
         return self._DatabaseTupleSet
@@ -8550,7 +8550,7 @@ class DeletePublishSubscribeRequest(AbstractModel):
 
 
 class DeletePublishSubscribeResponse(AbstractModel):
-    """DeletePublishSubscribe response structure.
+    r"""DeletePublishSubscribe response structure.
 
     """
 
@@ -8563,7 +8563,7 @@ class DeletePublishSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8578,7 +8578,7 @@ class DeletePublishSubscribeResponse(AbstractModel):
 
 
 class DescribeAccountPrivilegeByDBRequest(AbstractModel):
-    """DescribeAccountPrivilegeByDB request structure.
+    r"""DescribeAccountPrivilegeByDB request structure.
 
     """
 
@@ -8603,7 +8603,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-njj2mtpl7.
+        r"""Instance ID, in the format of mssql-njj2mtpl7.
         :rtype: str
         """
         return self._InstanceId
@@ -8614,7 +8614,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name.
+        r"""Database name.
         :rtype: str
         """
         return self._DBName
@@ -8625,7 +8625,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Database account name.
+        r"""Database account name.
         :rtype: str
         """
         return self._AccountName
@@ -8636,7 +8636,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
+        r"""The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -8647,7 +8647,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number in pagination mode. The default value is 0.
+        r"""Page number in pagination mode. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -8674,7 +8674,7 @@ class DescribeAccountPrivilegeByDBRequest(AbstractModel):
 
 
 class DescribeAccountPrivilegeByDBResponse(AbstractModel):
-    """DescribeAccountPrivilegeByDB response structure.
+    r"""DescribeAccountPrivilegeByDB response structure.
 
     """
 
@@ -8693,7 +8693,7 @@ class DescribeAccountPrivilegeByDBResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of accounts.
+        r"""Total number of accounts.
         :rtype: int
         """
         return self._TotalCount
@@ -8704,7 +8704,7 @@ class DescribeAccountPrivilegeByDBResponse(AbstractModel):
 
     @property
     def Accounts(self):
-        """Account permission list.
+        r"""Account permission list.
         :rtype: list of AccountPrivilege
         """
         return self._Accounts
@@ -8715,7 +8715,7 @@ class DescribeAccountPrivilegeByDBResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8737,7 +8737,7 @@ class DescribeAccountPrivilegeByDBResponse(AbstractModel):
 
 
 class DescribeAccountsRequest(AbstractModel):
-    """DescribeAccounts request structure.
+    r"""DescribeAccounts request structure.
 
     """
 
@@ -8765,7 +8765,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8776,7 +8776,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 20
+        r"""Number of results per page. Value range: 1-100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -8787,7 +8787,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -8798,7 +8798,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Account ID
+        r"""Account ID
         :rtype: str
         """
         return self._Name
@@ -8809,7 +8809,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting by `createTime`, `updateTime`, or `passTime`. Default value: `createTime` (desc).
+        r"""Sorting by `createTime`, `updateTime`, or `passTime`. Default value: `createTime` (desc).
         :rtype: str
         """
         return self._OrderBy
@@ -8820,7 +8820,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
+        r"""Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
         :rtype: str
         """
         return self._OrderByType
@@ -8848,7 +8848,7 @@ class DescribeAccountsRequest(AbstractModel):
 
 
 class DescribeAccountsResponse(AbstractModel):
-    """DescribeAccounts response structure.
+    r"""DescribeAccounts response structure.
 
     """
 
@@ -8870,7 +8870,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -8881,7 +8881,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Accounts(self):
-        """Account information list
+        r"""Account information list
         :rtype: list of AccountDetail
         """
         return self._Accounts
@@ -8892,7 +8892,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -8903,7 +8903,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8926,7 +8926,7 @@ class DescribeAccountsResponse(AbstractModel):
 
 
 class DescribeBackupByFlowIdRequest(AbstractModel):
-    """DescribeBackupByFlowId request structure.
+    r"""DescribeBackupByFlowId request structure.
 
     """
 
@@ -8942,7 +8942,7 @@ class DescribeBackupByFlowIdRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-3l3fgqn7.
+        r"""Instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -8953,7 +8953,7 @@ class DescribeBackupByFlowIdRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """Backup creation process ID, which can be obtained through the [CreateBackup](https://cloud.tencent.com/document/product/238/19946) API.
+        r"""Backup creation process ID, which can be obtained through the [CreateBackup](https://cloud.tencent.com/document/product/238/19946) API.
         :rtype: str
         """
         return self._FlowId
@@ -8977,7 +8977,7 @@ class DescribeBackupByFlowIdRequest(AbstractModel):
 
 
 class DescribeBackupByFlowIdResponse(AbstractModel):
-    """DescribeBackupByFlowId response structure.
+    r"""DescribeBackupByFlowId response structure.
 
     """
 
@@ -9029,7 +9029,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def Id(self):
-        """Unique identifier of the backup file. This field is used by the RestoreInstance API. For a single-database backup file, only the unique identifier of the backup file for the first record is returned. Through the DescribeBackupFiles API, IDs of all backup files that are available for rollback can be obtained for single-database backup files.
+        r"""Unique identifier of the backup file. This field is used by the RestoreInstance API. For a single-database backup file, only the unique identifier of the backup file for the first record is returned. Through the DescribeBackupFiles API, IDs of all backup files that are available for rollback can be obtained for single-database backup files.
         :rtype: int
         """
         return self._Id
@@ -9040,7 +9040,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def FileName(self):
-        """File name. For a single-database backup file, only the file name of the first record is returned. Through the DescribeBackupFiles API, file names of all records can be obtained for single-database backup files.
+        r"""File name. For a single-database backup file, only the file name of the first record is returned. Through the DescribeBackupFiles API, file names of all records can be obtained for single-database backup files.
         :rtype: str
         """
         return self._FileName
@@ -9051,7 +9051,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def BackupName(self):
-        """Backup task name, which can be customized.
+        r"""Backup task name, which can be customized.
         :rtype: str
         """
         return self._BackupName
@@ -9062,7 +9062,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Backup start time.
+        r"""Backup start time.
         :rtype: str
         """
         return self._StartTime
@@ -9073,7 +9073,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Backup end time.
+        r"""Backup end time.
         :rtype: str
         """
         return self._EndTime
@@ -9084,7 +9084,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def Size(self):
-        """File size, in KB. For a single-database backup file, only the file size of the first record is returned. Through the DescribeBackupFiles API, file sizes of all records can be obtained for single-database backup files.
+        r"""File size, in KB. For a single-database backup file, only the file size of the first record is returned. Through the DescribeBackupFiles API, file sizes of all records can be obtained for single-database backup files.
         :rtype: int
         """
         return self._Size
@@ -9095,7 +9095,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def Strategy(self):
-        """Backup policy: 0 - instance backup; 1 - multi-database backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.
+        r"""Backup policy: 0 - instance backup; 1 - multi-database backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.
         :rtype: int
         """
         return self._Strategy
@@ -9106,7 +9106,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Backup file status. 0 - creating; 1 - successful; 2-failed.
+        r"""Backup file status. 0 - creating; 1 - successful; 2-failed.
         :rtype: int
         """
         return self._Status
@@ -9117,7 +9117,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def BackupWay(self):
-        """Backup method. 0 - scheduled backup; 1 - manual temporary backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.
+        r"""Backup method. 0 - scheduled backup; 1 - manual temporary backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.
         :rtype: int
         """
         return self._BackupWay
@@ -9128,7 +9128,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def DBs(self):
-        """Database list. For a single-database backup file, only the database name included in the first record is returned. Through the DescribeBackupFiles API, the database names of all records can be obtained for single-database backup files.
+        r"""Database list. For a single-database backup file, only the database name included in the first record is returned. Through the DescribeBackupFiles API, the database names of all records can be obtained for single-database backup files.
         :rtype: list of str
         """
         return self._DBs
@@ -9139,7 +9139,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def InternalAddr(self):
-        """Private network download address. For a single-database backup file, only the private network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.
+        r"""Private network download address. For a single-database backup file, only the private network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.
         :rtype: str
         """
         return self._InternalAddr
@@ -9150,7 +9150,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def ExternalAddr(self):
-        """Public network download address. For a single-database backup file, only the public network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.
+        r"""Public network download address. For a single-database backup file, only the public network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.
         :rtype: str
         """
         return self._ExternalAddr
@@ -9161,7 +9161,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Aggregation ID. This value is not returned for packaging backup files. Call the DescribeBackupFiles API with this value to obtain detailed information about single-database backup files.
+        r"""Aggregation ID. This value is not returned for packaging backup files. Call the DescribeBackupFiles API with this value to obtain detailed information about single-database backup files.
         :rtype: str
         """
         return self._GroupId
@@ -9172,7 +9172,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9200,7 +9200,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
 
 class DescribeBackupCommandRequest(AbstractModel):
-    """DescribeBackupCommand request structure.
+    r"""DescribeBackupCommand request structure.
 
     """
 
@@ -9222,7 +9222,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
     @property
     def BackupFileType(self):
-        """Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.
+        r"""Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.
         :rtype: str
         """
         return self._BackupFileType
@@ -9233,7 +9233,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
     @property
     def DataBaseName(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._DataBaseName
@@ -9244,7 +9244,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
     @property
     def IsRecovery(self):
-        """Whether restoration is required. No: not required. Yes: required.
+        r"""Whether restoration is required. No: not required. Yes: required.
         :rtype: str
         """
         return self._IsRecovery
@@ -9255,7 +9255,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
     @property
     def LocalPath(self):
-        """Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\.
+        r"""Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\.
         :rtype: str
         """
         return self._LocalPath
@@ -9281,7 +9281,7 @@ class DescribeBackupCommandRequest(AbstractModel):
 
 
 class DescribeBackupCommandResponse(AbstractModel):
-    """DescribeBackupCommand response structure.
+    r"""DescribeBackupCommand response structure.
 
     """
 
@@ -9297,7 +9297,7 @@ class DescribeBackupCommandResponse(AbstractModel):
 
     @property
     def Command(self):
-        """Create a backup command
+        r"""Create a backup command
         :rtype: str
         """
         return self._Command
@@ -9308,7 +9308,7 @@ class DescribeBackupCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9324,7 +9324,7 @@ class DescribeBackupCommandResponse(AbstractModel):
 
 
 class DescribeBackupFilesRequest(AbstractModel):
-    """DescribeBackupFiles request structure.
+    r"""DescribeBackupFiles request structure.
 
     """
 
@@ -9355,7 +9355,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-njj2mtpl
+        r"""Instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -9366,7 +9366,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API (Querying archived backup record is not supported).
+        r"""Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API (Querying archived backup record is not supported).
         :rtype: str
         """
         return self._GroupId
@@ -9377,7 +9377,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries to be returned per page. Value range: 1-100. Default value: `20`
+        r"""Number of entries to be returned per page. Value range: 1-100. Default value: `20`
         :rtype: int
         """
         return self._Limit
@@ -9388,7 +9388,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`
+        r"""Page number. Default value: `0`
         :rtype: int
         """
         return self._Offset
@@ -9399,7 +9399,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """Filter backups by database name. If the parameter is left empty, this filter criterion will not take effect.
+        r"""Filter backups by database name. If the parameter is left empty, this filter criterion will not take effect.
         :rtype: str
         """
         return self._DatabaseName
@@ -9410,7 +9410,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """List items sorting by backup size. Valid values: `desc`(descending order), `asc` (ascending order). Default value: `desc`.
+        r"""List items sorting by backup size. Valid values: `desc`(descending order), `asc` (ascending order). Default value: `desc`.
         :rtype: str
         """
         return self._OrderBy
@@ -9421,7 +9421,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting field. Size - sort by backup size; DBs - sort by database name. The default value is size.
+        r"""Sorting field. Size - sort by backup size; DBs - sort by database name. The default value is size.
         :rtype: str
         """
         return self._OrderByType
@@ -9450,7 +9450,7 @@ class DescribeBackupFilesRequest(AbstractModel):
 
 
 class DescribeBackupFilesResponse(AbstractModel):
-    """DescribeBackupFiles response structure.
+    r"""DescribeBackupFiles response structure.
 
     """
 
@@ -9469,7 +9469,7 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of backups
+        r"""Total number of backups
         :rtype: int
         """
         return self._TotalCount
@@ -9480,7 +9480,7 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def BackupFiles(self):
-        """List of backup file details
+        r"""List of backup file details
         :rtype: list of BackupFile
         """
         return self._BackupFiles
@@ -9491,7 +9491,7 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9513,7 +9513,7 @@ class DescribeBackupFilesResponse(AbstractModel):
 
 
 class DescribeBackupMigrationRequest(AbstractModel):
-    """DescribeBackupMigration request structure.
+    r"""DescribeBackupMigration request structure.
 
     """
 
@@ -9556,7 +9556,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -9567,7 +9567,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration.
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration.
         :rtype: str
         """
         return self._BackupMigrationId
@@ -9578,7 +9578,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def MigrationName(self):
-        """Import task name
+        r"""Import task name
         :rtype: str
         """
         return self._MigrationName
@@ -9589,7 +9589,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupFileName(self):
-        """Backup file name
+        r"""Backup file name
         :rtype: str
         """
         return self._BackupFileName
@@ -9600,7 +9600,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """Status set of import tasks
+        r"""Status set of import tasks
         :rtype: list of int
         """
         return self._StatusSet
@@ -9611,7 +9611,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def RecoveryType(self):
-        """Import task restoration type: FULL,FULL_LOG,FULL_DIFF
+        r"""Import task restoration type: FULL,FULL_LOG,FULL_DIFF
         :rtype: str
         """
         return self._RecoveryType
@@ -9622,7 +9622,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def UploadType(self):
-        """COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        r"""COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
         :rtype: str
         """
         return self._UploadType
@@ -9633,7 +9633,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Default value: `100`.
+        r"""The maximum number of results returned per page. Default value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -9644,7 +9644,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`.
+        r"""Page number. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -9655,7 +9655,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.
+        r"""Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.
         :rtype: str
         """
         return self._OrderBy
@@ -9666,7 +9666,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.
+        r"""Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.
         :rtype: str
         """
         return self._OrderByType
@@ -9699,7 +9699,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
 
 
 class DescribeBackupMigrationResponse(AbstractModel):
-    """DescribeBackupMigration response structure.
+    r"""DescribeBackupMigration response structure.
 
     """
 
@@ -9718,7 +9718,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of tasks
+        r"""Total number of tasks
         :rtype: int
         """
         return self._TotalCount
@@ -9729,7 +9729,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
 
     @property
     def BackupMigrationSet(self):
-        """Migration task set
+        r"""Migration task set
         :rtype: list of Migration
         """
         return self._BackupMigrationSet
@@ -9740,7 +9740,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9762,7 +9762,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
 
 
 class DescribeBackupMonitorRequest(AbstractModel):
-    """DescribeBackupMonitor request structure.
+    r"""DescribeBackupMonitor request structure.
 
     """
 
@@ -9781,7 +9781,7 @@ class DescribeBackupMonitorRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Sets the start time for querying backup space usage details.
+        r"""Sets the start time for querying backup space usage details.
         :rtype: str
         """
         return self._StartTime
@@ -9792,7 +9792,7 @@ class DescribeBackupMonitorRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of backup space usage.
+        r"""End time of backup space usage.
         :rtype: str
         """
         return self._EndTime
@@ -9803,7 +9803,7 @@ class DescribeBackupMonitorRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Backup trend query type. local - local backup; cross - cross-region backup.
+        r"""Backup trend query type. local - local backup; cross - cross-region backup.
         :rtype: str
         """
         return self._Type
@@ -9828,7 +9828,7 @@ class DescribeBackupMonitorRequest(AbstractModel):
 
 
 class DescribeBackupMonitorResponse(AbstractModel):
-    """DescribeBackupMonitor response structure.
+    r"""DescribeBackupMonitor response structure.
 
     """
 
@@ -9856,7 +9856,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def TimeStamp(self):
-        """Backup trend chart timeline.
+        r"""Backup trend chart timeline.
         :rtype: list of str
         """
         return self._TimeStamp
@@ -9867,7 +9867,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def FreeSpace(self):
-        """Free backup space.
+        r"""Free backup space.
         :rtype: list of float
         """
         return self._FreeSpace
@@ -9878,7 +9878,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        """Actual total backup space.
+        r"""Actual total backup space.
         :rtype: list of float
         """
         return self._ActualUsedSpace
@@ -9889,7 +9889,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        """Backup space for logs.
+        r"""Backup space for logs.
         :rtype: list of float
         """
         return self._LogBackupSpace
@@ -9900,7 +9900,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        """Backup space for data.
+        r"""Backup space for data.
         :rtype: list of float
         """
         return self._DataBackupSpace
@@ -9911,7 +9911,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9931,7 +9931,7 @@ class DescribeBackupMonitorResponse(AbstractModel):
 
 
 class DescribeBackupStatisticalRequest(AbstractModel):
-    """DescribeBackupStatistical request structure.
+    r"""DescribeBackupStatistical request structure.
 
     """
 
@@ -9959,7 +9959,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 100.
+        r"""The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 100.
         :rtype: int
         """
         return self._Limit
@@ -9970,7 +9970,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number in pagination mode. The default value is 0.
+        r"""Page number in pagination mode. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -9981,7 +9981,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """One or more instance IDs. The instance ID is in the format of mssql-si2823jyl.
+        r"""One or more instance IDs. The instance ID is in the format of mssql-si2823jyl.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -9992,7 +9992,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def InstanceNameSet(self):
-        """Instance name list. Fuzzy query is supported.
+        r"""Instance name list. Fuzzy query is supported.
         :rtype: list of str
         """
         return self._InstanceNameSet
@@ -10003,7 +10003,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting field. The default value is default, which indicates sorting by backup space in descending order. default - sort by backup space; data - sort by data backup; log - sort by log backup; auto - sort by automatic backup; manual - sort by manual backup.
+        r"""Sorting field. The default value is default, which indicates sorting by backup space in descending order. default - sort by backup space; data - sort by data backup; log - sort by log backup; auto - sort by automatic backup; manual - sort by manual backup.
         :rtype: str
         """
         return self._OrderBy
@@ -10014,7 +10014,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """The default value is desc. [desc - descending order; asc - ascending order].
+        r"""The default value is desc. [desc - descending order; asc - ascending order].
         :rtype: str
         """
         return self._OrderByType
@@ -10042,7 +10042,7 @@ class DescribeBackupStatisticalRequest(AbstractModel):
 
 
 class DescribeBackupStatisticalResponse(AbstractModel):
-    """DescribeBackupStatistical response structure.
+    r"""DescribeBackupStatistical response structure.
 
     """
 
@@ -10061,7 +10061,7 @@ class DescribeBackupStatisticalResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of instances meeting conditions. When results are returned in pagination mode, this value refers to the total number of instances that meet conditions, rather than the number of instances returned based on the specified Limit and Offset values.
+        r"""Total number of instances meeting conditions. When results are returned in pagination mode, this value refers to the total number of instances that meet conditions, rather than the number of instances returned based on the specified Limit and Offset values.
         :rtype: int
         """
         return self._TotalCount
@@ -10072,7 +10072,7 @@ class DescribeBackupStatisticalResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Instance list.
+        r"""Instance list.
         :rtype: list of SummaryDetailRes
         """
         return self._Items
@@ -10083,7 +10083,7 @@ class DescribeBackupStatisticalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10105,13 +10105,13 @@ class DescribeBackupStatisticalResponse(AbstractModel):
 
 
 class DescribeBackupSummaryRequest(AbstractModel):
-    """DescribeBackupSummary request structure.
+    r"""DescribeBackupSummary request structure.
 
     """
 
 
 class DescribeBackupSummaryResponse(AbstractModel):
-    """DescribeBackupSummary response structure.
+    r"""DescribeBackupSummary response structure.
 
     """
 
@@ -10193,7 +10193,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def FreeSpace(self):
-        """Actual free total space, in KB.
+        r"""Actual free total space, in KB.
         :rtype: int
         """
         return self._FreeSpace
@@ -10204,7 +10204,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        """Actual used space of backups, in KB.
+        r"""Actual used space of backups, in KB.
         :rtype: int
         """
         return self._ActualUsedSpace
@@ -10215,7 +10215,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def BackupFilesTotal(self):
-        """Total number of backup files.
+        r"""Total number of backup files.
         :rtype: int
         """
         return self._BackupFilesTotal
@@ -10226,7 +10226,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def BillingSpace(self):
-        """Charged space of the space occupied by backups, in KB.
+        r"""Charged space of the space occupied by backups, in KB.
         :rtype: int
         """
         return self._BillingSpace
@@ -10237,7 +10237,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        """Data backup usage space, in KB.
+        r"""Data backup usage space, in KB.
         :rtype: int
         """
         return self._DataBackupSpace
@@ -10248,7 +10248,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def DataBackupCount(self):
-        """Total number of data backup files.
+        r"""Total number of data backup files.
         :rtype: int
         """
         return self._DataBackupCount
@@ -10259,7 +10259,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def ManualBackupSpace(self):
-        """Storage space used by manual backups in data backup, in KB.
+        r"""Storage space used by manual backups in data backup, in KB.
         :rtype: int
         """
         return self._ManualBackupSpace
@@ -10270,7 +10270,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def ManualBackupCount(self):
-        """Total number of files for manual backups in data backup.
+        r"""Total number of files for manual backups in data backup.
         :rtype: int
         """
         return self._ManualBackupCount
@@ -10281,7 +10281,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def AutoBackupSpace(self):
-        """Storage space used by automatic backups in data backup, in KB.
+        r"""Storage space used by automatic backups in data backup, in KB.
         :rtype: int
         """
         return self._AutoBackupSpace
@@ -10292,7 +10292,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def AutoBackupCount(self):
-        """Total number of files for automatic backups in data backup.
+        r"""Total number of files for automatic backups in data backup.
         :rtype: int
         """
         return self._AutoBackupCount
@@ -10303,7 +10303,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        """Backup usage space for logs, in KB.
+        r"""Backup usage space for logs, in KB.
         :rtype: int
         """
         return self._LogBackupSpace
@@ -10314,7 +10314,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        """Total number of log backup files.
+        r"""Total number of log backup files.
         :rtype: int
         """
         return self._LogBackupCount
@@ -10325,7 +10325,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def EstimatedAmount(self):
-        """Estimated fees, in USD/hour.
+        r"""Estimated fees, in USD/hour.
         :rtype: float
         """
         return self._EstimatedAmount
@@ -10336,7 +10336,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def LocalBackupFilesTotal(self):
-        """Total number of local backup files.
+        r"""Total number of local backup files.
         :rtype: int
         """
         return self._LocalBackupFilesTotal
@@ -10347,7 +10347,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossBackupFilesTotal(self):
-        """Total number of cross-region backup files.
+        r"""Total number of cross-region backup files.
         :rtype: int
         """
         return self._CrossBackupFilesTotal
@@ -10358,7 +10358,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossBillingSpace(self):
-        """Charged space of the space occupied by cross-region backups, in KB.
+        r"""Charged space of the space occupied by cross-region backups, in KB.
         :rtype: int
         """
         return self._CrossBillingSpace
@@ -10369,7 +10369,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossAutoBackupSpace(self):
-        """Space used by cross-region automatic data backups, in KB.
+        r"""Space used by cross-region automatic data backups, in KB.
         :rtype: int
         """
         return self._CrossAutoBackupSpace
@@ -10380,7 +10380,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossAutoBackupCount(self):
-        """Total number of files for cross-region automatic data backups.
+        r"""Total number of files for cross-region automatic data backups.
         :rtype: int
         """
         return self._CrossAutoBackupCount
@@ -10391,7 +10391,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def LocalLogBackupSpace(self):
-        """Space used by local log backups, in KB.
+        r"""Space used by local log backups, in KB.
         :rtype: int
         """
         return self._LocalLogBackupSpace
@@ -10402,7 +10402,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def LocalLogBackupCount(self):
-        """Total number of files for local log backups.
+        r"""Total number of files for local log backups.
         :rtype: int
         """
         return self._LocalLogBackupCount
@@ -10413,7 +10413,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossLogBackupSpace(self):
-        """Space used by cross-region log backups, in KB.
+        r"""Space used by cross-region log backups, in KB.
         :rtype: int
         """
         return self._CrossLogBackupSpace
@@ -10424,7 +10424,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossLogBackupCount(self):
-        """Total number of files for cross-region log backups.
+        r"""Total number of files for cross-region log backups.
         :rtype: int
         """
         return self._CrossLogBackupCount
@@ -10435,7 +10435,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def CrossEstimatedAmount(self):
-        """Estimated fees for cross-region backups, in USD/hour.
+        r"""Estimated fees for cross-region backups, in USD/hour.
         :rtype: float
         """
         return self._CrossEstimatedAmount
@@ -10446,7 +10446,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10484,7 +10484,7 @@ class DescribeBackupSummaryResponse(AbstractModel):
 
 
 class DescribeBackupUploadSizeRequest(AbstractModel):
-    """DescribeBackupUploadSize request structure.
+    r"""DescribeBackupUploadSize request structure.
 
     """
 
@@ -10503,7 +10503,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -10514,7 +10514,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -10525,7 +10525,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """Incremental import task ID
+        r"""Incremental import task ID
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -10550,7 +10550,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
 
 
 class DescribeBackupUploadSizeResponse(AbstractModel):
-    """DescribeBackupUploadSize response structure.
+    r"""DescribeBackupUploadSize response structure.
 
     """
 
@@ -10566,7 +10566,7 @@ class DescribeBackupUploadSizeResponse(AbstractModel):
 
     @property
     def CosUploadBackupFileSet(self):
-        """Information of uploaded backups
+        r"""Information of uploaded backups
         :rtype: list of CosUploadBackupFile
         """
         return self._CosUploadBackupFileSet
@@ -10577,7 +10577,7 @@ class DescribeBackupUploadSizeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10598,7 +10598,7 @@ class DescribeBackupUploadSizeResponse(AbstractModel):
 
 
 class DescribeBackupsRequest(AbstractModel):
-    """DescribeBackups request structure.
+    r"""DescribeBackups request structure.
 
     """
 
@@ -10650,7 +10650,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start name (yyyy-MM-dd HH:mm:ss)
+        r"""Start name (yyyy-MM-dd HH:mm:ss)
         :rtype: str
         """
         return self._StartTime
@@ -10661,7 +10661,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (yyyy-MM-dd HH:mm:ss)
+        r"""End time (yyyy-MM-dd HH:mm:ss)
         :rtype: str
         """
         return self._EndTime
@@ -10672,7 +10672,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-njj2mtpl
+        r"""Instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -10683,7 +10683,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 20
+        r"""Number of results per page. Value range: 1-100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -10694,7 +10694,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -10705,7 +10705,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        """Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.
+        r"""Filter by backup name. If this parameter is left empty, backup name will not be used in filtering.
         :rtype: str
         """
         return self._BackupName
@@ -10716,7 +10716,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.
+        r"""Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.
         :rtype: int
         """
         return self._Strategy
@@ -10727,7 +10727,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def BackupWay(self):
-        """Filter by backup mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup). Default value: `2`.
+        r"""Filter by backup mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup). Default value: `2`.
         :rtype: int
         """
         return self._BackupWay
@@ -10738,7 +10738,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
+        r"""Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
         :rtype: int
         """
         return self._BackupId
@@ -10749,7 +10749,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        """Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.
+        r"""Filter backups by the database name. If the parameter is left empty, this filter criteria will not take effect.
         :rtype: str
         """
         return self._DatabaseName
@@ -10760,7 +10760,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Group(self):
-        """Whether to group backup files by backup task. Valid value: `0` (no), `1` (yes). Default value: `0`. This parameter is valid only for unarchived backup files.
+        r"""Whether to group backup files by backup task. Valid value: `0` (no), `1` (yes). Default value: `0`. This parameter is valid only for unarchived backup files.
         :rtype: int
         """
         return self._Group
@@ -10771,7 +10771,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Backup type. Valid values: `1` (data backup), `2` (log backup). Default value: `1`.
+        r"""Backup type. Valid values: `1` (data backup), `2` (log backup). Default value: `1`.
         :rtype: int
         """
         return self._Type
@@ -10782,7 +10782,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def BackupFormat(self):
-        """Filter by backup file format. Valid values: `pkg` (archive file), `single` (Unarchived files).
+        r"""Filter by backup file format. Valid values: `pkg` (archive file), `single` (Unarchived files).
         :rtype: str
         """
         return self._BackupFormat
@@ -10793,7 +10793,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def StorageStrategy(self):
-        """Backup storage policy. 0 - follow the custom backup retention policy; 1 - follow the instance lifecycle until the instance is eliminated. The default value is 0.
+        r"""Backup storage policy. 0 - follow the custom backup retention policy; 1 - follow the instance lifecycle until the instance is eliminated. The default value is 0.
         :rtype: int
         """
         return self._StorageStrategy
@@ -10829,7 +10829,7 @@ class DescribeBackupsRequest(AbstractModel):
 
 
 class DescribeBackupsResponse(AbstractModel):
-    """DescribeBackups response structure.
+    r"""DescribeBackups response structure.
 
     """
 
@@ -10848,7 +10848,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of backups
+        r"""Total number of backups
         :rtype: int
         """
         return self._TotalCount
@@ -10859,7 +10859,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     @property
     def Backups(self):
-        """Backup list details
+        r"""Backup list details
         :rtype: list of Backup
         """
         return self._Backups
@@ -10870,7 +10870,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10892,7 +10892,7 @@ class DescribeBackupsResponse(AbstractModel):
 
 
 class DescribeBusinessIntelligenceFileRequest(AbstractModel):
-    """DescribeBusinessIntelligenceFile request structure.
+    r"""DescribeBusinessIntelligenceFile request structure.
 
     """
 
@@ -10926,7 +10926,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -10937,7 +10937,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """File name
+        r"""File name
         :rtype: str
         """
         return self._FileName
@@ -10948,7 +10948,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """Migration task status set. Valid values: `1` (Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed)
+        r"""Migration task status set. Valid values: `1` (Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed)
         :rtype: list of int
         """
         return self._StatusSet
@@ -10959,7 +10959,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """File type. Valid values: `FLAT` (flat files), `SSIS` (project file for business intelligence service).
+        r"""File type. Valid values: `FLAT` (flat files), `SSIS` (project file for business intelligence service).
         :rtype: str
         """
         return self._FileType
@@ -10970,7 +10970,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Value range: 1-100.
+        r"""The maximum number of results returned per page. Value range: 1-100.
         :rtype: int
         """
         return self._Limit
@@ -10981,7 +10981,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`.
+        r"""Page number. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -10992,7 +10992,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting field. Valid values: `file_name`, `create_time`, `start_time`.
+        r"""Sorting field. Valid values: `file_name`, `create_time`, `start_time`.
         :rtype: str
         """
         return self._OrderBy
@@ -11003,7 +11003,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting order: Valid values: `desc`, `asc`.
+        r"""Sorting order: Valid values: `desc`, `asc`.
         :rtype: str
         """
         return self._OrderByType
@@ -11033,7 +11033,7 @@ class DescribeBusinessIntelligenceFileRequest(AbstractModel):
 
 
 class DescribeBusinessIntelligenceFileResponse(AbstractModel):
-    """DescribeBusinessIntelligenceFile response structure.
+    r"""DescribeBusinessIntelligenceFile response structure.
 
     """
 
@@ -11052,7 +11052,7 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of file deployment tasks
+        r"""Total number of file deployment tasks
         :rtype: int
         """
         return self._TotalCount
@@ -11063,7 +11063,7 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def BackupMigrationSet(self):
-        """File deployment task set
+        r"""File deployment task set
         :rtype: list of BusinessIntelligenceFile
         """
         return self._BackupMigrationSet
@@ -11074,7 +11074,7 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11096,7 +11096,7 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
 
 
 class DescribeCollationTimeZoneRequest(AbstractModel):
-    """DescribeCollationTimeZone request structure.
+    r"""DescribeCollationTimeZone request structure.
 
     """
 
@@ -11113,7 +11113,7 @@ CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CV
 
     @property
     def MachineType(self):
-        """Host type of the purchased instance. PM: physical server; CLOUD_PREMIUM: CVM with Premium Cloud Disk;
+        r"""Host type of the purchased instance. PM: physical server; CLOUD_PREMIUM: CVM with Premium Cloud Disk;
 CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CVM with Tremendous SSD; CLOUD_BSSD: CVM with Balanced SSD; CLOUD_BASIC: CVM with cloud disk. PM is set as the default value.
         :rtype: str
         """
@@ -11125,7 +11125,7 @@ CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CV
 
     @property
     def DBVersion(self):
-        """Version number of the purchased instance.
+        r"""Version number of the purchased instance.
         :rtype: str
         """
         return self._DBVersion
@@ -11149,7 +11149,7 @@ CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CV
 
 
 class DescribeCollationTimeZoneResponse(AbstractModel):
-    """DescribeCollationTimeZone response structure.
+    r"""DescribeCollationTimeZone response structure.
 
     """
 
@@ -11168,7 +11168,7 @@ class DescribeCollationTimeZoneResponse(AbstractModel):
 
     @property
     def Collation(self):
-        """System character set collation list.
+        r"""System character set collation list.
         :rtype: list of str
         """
         return self._Collation
@@ -11179,7 +11179,7 @@ class DescribeCollationTimeZoneResponse(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone list.
+        r"""System time zone list.
         :rtype: list of str
         """
         return self._TimeZone
@@ -11190,7 +11190,7 @@ class DescribeCollationTimeZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11207,7 +11207,7 @@ class DescribeCollationTimeZoneResponse(AbstractModel):
 
 
 class DescribeCrossBackupStatisticalRequest(AbstractModel):
-    """DescribeCrossBackupStatistical request structure.
+    r"""DescribeCrossBackupStatistical request structure.
 
     """
 
@@ -11244,7 +11244,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination number.
+        r"""Pagination number.
 
         :rtype: int
         """
@@ -11256,7 +11256,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination size.
+        r"""Pagination size.
 
         :rtype: int
         """
@@ -11268,7 +11268,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID list.
+        r"""Instance ID list.
 
         :rtype: list of str
         """
@@ -11280,7 +11280,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def InstanceNameSet(self):
-        """Instance name list.
+        r"""Instance name list.
         :rtype: list of str
         """
         return self._InstanceNameSet
@@ -11291,7 +11291,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def CrossBackupStatus(self):
-        """Cross-region backup status. enable: enabled; disable: disabled.
+        r"""Cross-region backup status. enable: enabled; disable: disabled.
         :rtype: str
         """
         return self._CrossBackupStatus
@@ -11302,7 +11302,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def CrossRegion(self):
-        """Target region for cross-region backups.
+        r"""Target region for cross-region backups.
         :rtype: str
         """
         return self._CrossRegion
@@ -11313,7 +11313,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting field. The default value is default, which indicates sorting by backup space in descending order. data - sort by data backup; log - sort by log backup.
+        r"""Sorting field. The default value is default, which indicates sorting by backup space in descending order. data - sort by data backup; log - sort by log backup.
         :rtype: str
         """
         return self._OrderBy
@@ -11324,7 +11324,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Collation rule (desc - descending order; asc - ascending order). The default value is desc.
+        r"""Collation rule (desc - descending order; asc - ascending order). The default value is desc.
         :rtype: str
         """
         return self._OrderByType
@@ -11354,7 +11354,7 @@ class DescribeCrossBackupStatisticalRequest(AbstractModel):
 
 
 class DescribeCrossBackupStatisticalResponse(AbstractModel):
-    """DescribeCrossBackupStatistical response structure.
+    r"""DescribeCrossBackupStatistical response structure.
 
     """
 
@@ -11373,7 +11373,7 @@ class DescribeCrossBackupStatisticalResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Real-time statistics on the total number of cross-region backup overview data entries.
+        r"""Real-time statistics on the total number of cross-region backup overview data entries.
         :rtype: int
         """
         return self._TotalCount
@@ -11384,7 +11384,7 @@ class DescribeCrossBackupStatisticalResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Real-time statistics list of cross-region backups.
+        r"""Real-time statistics list of cross-region backups.
         :rtype: list of CrossSummaryDetailRes
         """
         return self._Items
@@ -11395,7 +11395,7 @@ class DescribeCrossBackupStatisticalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11417,7 +11417,7 @@ class DescribeCrossBackupStatisticalResponse(AbstractModel):
 
 
 class DescribeCrossRegionZoneRequest(AbstractModel):
-    """DescribeCrossRegionZone request structure.
+    r"""DescribeCrossRegionZone request structure.
 
     """
 
@@ -11430,7 +11430,7 @@ class DescribeCrossRegionZoneRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-3l3fgqn7.
+        r"""Instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -11453,7 +11453,7 @@ class DescribeCrossRegionZoneRequest(AbstractModel):
 
 
 class DescribeCrossRegionZoneResponse(AbstractModel):
-    """DescribeCrossRegionZone response structure.
+    r"""DescribeCrossRegionZone response structure.
 
     """
 
@@ -11472,7 +11472,7 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
 
     @property
     def Region(self):
-        """String ID of the region where the secondary node is located, in the format of ap-guangzhou.
+        r"""String ID of the region where the secondary node is located, in the format of ap-guangzhou.
         :rtype: str
         """
         return self._Region
@@ -11483,7 +11483,7 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
 
     @property
     def Zone(self):
-        """String ID of the AZ where the secondary node is located, in the format of ap-guangzhou-1.
+        r"""String ID of the AZ where the secondary node is located, in the format of ap-guangzhou-1.
         :rtype: str
         """
         return self._Zone
@@ -11494,7 +11494,7 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11511,13 +11511,13 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
 
 
 class DescribeCrossRegionsRequest(AbstractModel):
-    """DescribeCrossRegions request structure.
+    r"""DescribeCrossRegions request structure.
 
     """
 
 
 class DescribeCrossRegionsResponse(AbstractModel):
-    """DescribeCrossRegions response structure.
+    r"""DescribeCrossRegions response structure.
 
     """
 
@@ -11533,7 +11533,7 @@ class DescribeCrossRegionsResponse(AbstractModel):
 
     @property
     def Regions(self):
-        """Collection of target regions that support cross-region backups.
+        r"""Collection of target regions that support cross-region backups.
         :rtype: list of str
         """
         return self._Regions
@@ -11544,7 +11544,7 @@ class DescribeCrossRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11560,7 +11560,7 @@ class DescribeCrossRegionsResponse(AbstractModel):
 
 
 class DescribeDBCharsetsRequest(AbstractModel):
-    """DescribeDBCharsets request structure.
+    r"""DescribeDBCharsets request structure.
 
     """
 
@@ -11573,7 +11573,7 @@ class DescribeDBCharsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-j8kv137v
+        r"""Instance ID in the format of mssql-j8kv137v
         :rtype: str
         """
         return self._InstanceId
@@ -11596,7 +11596,7 @@ class DescribeDBCharsetsRequest(AbstractModel):
 
 
 class DescribeDBCharsetsResponse(AbstractModel):
-    """DescribeDBCharsets response structure.
+    r"""DescribeDBCharsets response structure.
 
     """
 
@@ -11612,7 +11612,7 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     @property
     def DatabaseCharsets(self):
-        """Database character set list
+        r"""Database character set list
         :rtype: list of str
         """
         return self._DatabaseCharsets
@@ -11623,7 +11623,7 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11639,7 +11639,7 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
 
 class DescribeDBInstanceInterRequest(AbstractModel):
-    """DescribeDBInstanceInter request structure.
+    r"""DescribeDBInstanceInter request structure.
 
     """
 
@@ -11667,7 +11667,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Value range: 1-100.
+        r"""The maximum number of results returned per page. Value range: 1-100.
         :rtype: int
         """
         return self._Limit
@@ -11678,7 +11678,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Filter by instance ID.
+        r"""Filter by instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -11689,7 +11689,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
+        r"""Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
         :rtype: int
         """
         return self._Status
@@ -11700,7 +11700,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def VersionSet(self):
-        """The list of instance version numbers.
+        r"""The list of instance version numbers.
         :rtype: list of str
         """
         return self._VersionSet
@@ -11711,7 +11711,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ ID in the format of ap-guangzhou-3.
+        r"""Instance AZ ID in the format of ap-guangzhou-3.
         :rtype: str
         """
         return self._Zone
@@ -11722,7 +11722,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`.
+        r"""Page number. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -11750,7 +11750,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
 
 class DescribeDBInstanceInterResponse(AbstractModel):
-    """DescribeDBInstanceInter response structure.
+    r"""DescribeDBInstanceInter response structure.
 
     """
 
@@ -11769,7 +11769,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of records returned.
+        r"""Number of records returned.
         :rtype: int
         """
         return self._TotalCount
@@ -11780,7 +11780,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     @property
     def InterInstanceSet(self):
-        """Details of instance in the interworking group.
+        r"""Details of instance in the interworking group.
         :rtype: list of InterInstance
         """
         return self._InterInstanceSet
@@ -11791,7 +11791,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11813,7 +11813,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
 
 class DescribeDBInstancesAttributeRequest(AbstractModel):
-    """DescribeDBInstancesAttribute request structure.
+    r"""DescribeDBInstancesAttribute request structure.
 
     """
 
@@ -11826,7 +11826,7 @@ class DescribeDBInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -11849,7 +11849,7 @@ class DescribeDBInstancesAttributeRequest(AbstractModel):
 
 
 class DescribeDBInstancesAttributeResponse(AbstractModel):
-    """DescribeDBInstancesAttribute response structure.
+    r"""DescribeDBInstancesAttribute response structure.
 
     """
 
@@ -11898,7 +11898,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -11909,7 +11909,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RegularBackupEnable(self):
-        """Archive backup status. Valid values: `enable` (enabled), `disable` (disabled)
+        r"""Archive backup status. Valid values: `enable` (enabled), `disable` (disabled)
         :rtype: str
         """
         return self._RegularBackupEnable
@@ -11920,7 +11920,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RegularBackupSaveDays(self):
-        """Archive backup retention period: [90-3650] days
+        r"""Archive backup retention period: [90-3650] days
         :rtype: int
         """
         return self._RegularBackupSaveDays
@@ -11931,7 +11931,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RegularBackupStrategy(self):
-        """Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly).
+        r"""Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly).
         :rtype: str
         """
         return self._RegularBackupStrategy
@@ -11942,7 +11942,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RegularBackupCounts(self):
-        """The number of retained archive backups
+        r"""The number of retained archive backups
         :rtype: int
         """
         return self._RegularBackupCounts
@@ -11953,7 +11953,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RegularBackupStartTime(self):
-        """Archive backup start date in YYYY-MM-DD format, which is the current time by default.
+        r"""Archive backup start date in YYYY-MM-DD format, which is the current time by default.
         :rtype: str
         """
         return self._RegularBackupStartTime
@@ -11964,7 +11964,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def BlockedThreshold(self):
-        """Block process threshold in milliseconds
+        r"""Block process threshold in milliseconds
         :rtype: int
         """
         return self._BlockedThreshold
@@ -11975,7 +11975,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def EventSaveDays(self):
-        """Retention period for the files of slow SQL, blocking, deadlock, and extended events.
+        r"""Retention period for the files of slow SQL, blocking, deadlock, and extended events.
         :rtype: int
         """
         return self._EventSaveDays
@@ -11986,7 +11986,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def TDEConfig(self):
-        """TDE configuration
+        r"""TDE configuration
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
         """
         return self._TDEConfig
@@ -11997,7 +11997,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def SSLConfig(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SSLConfig`
         """
         return self._SSLConfig
@@ -12008,7 +12008,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def DrReadableInfo(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DrReadableInfo`
         """
         return self._DrReadableInfo
@@ -12019,7 +12019,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def OldVipList(self):
-        """
+        r"""
         :rtype: list of OldVip
         """
         return self._OldVipList
@@ -12030,7 +12030,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12068,7 +12068,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
 
 
 class DescribeDBInstancesRequest(AbstractModel):
-    """DescribeDBInstances request structure.
+    r"""DescribeDBInstances request structure.
 
     """
 
@@ -12141,7 +12141,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        r"""Project ID
         :rtype: int
         """
         return self._ProjectId
@@ -12152,7 +12152,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Instance status. Valid values:
+        r"""Instance status. Valid values:
 <li>1: applying</li>
 <li>2: running</li>
 <li>3: running restrictedly (primary/secondary switching)</li>
@@ -12175,7 +12175,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -12186,7 +12186,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 100
+        r"""Number of results per page. Value range: 1-100. Default value: 100
         :rtype: int
         """
         return self._Limit
@@ -12197,7 +12197,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """One or more instance IDs in the format of mssql-si2823jyl
+        r"""One or more instance IDs in the format of mssql-si2823jyl
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -12208,7 +12208,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Retrieves billing type. 0: pay-as-you-go
+        r"""Retrieves billing type. 0: pay-as-you-go
         :rtype: int
         """
         return self._PayMode
@@ -12219,7 +12219,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
+        r"""Unique string-type ID of instance VPC in the format of `vpc-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
         :rtype: str
         """
         return self._VpcId
@@ -12230,7 +12230,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
+        r"""Unique string-type ID of instance subnet in the format of `subnet-xxx`. If an empty string ("") is passed in, filtering will be made by basic network.
         :rtype: str
         """
         return self._SubnetId
@@ -12241,7 +12241,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VipSet(self):
-        """The list of instance private IPs, such as 172.1.0.12
+        r"""The list of instance private IPs, such as 172.1.0.12
         :rtype: list of str
         """
         return self._VipSet
@@ -12252,7 +12252,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceNameSet(self):
-        """The list of instance names used for fuzzy match
+        r"""The list of instance names used for fuzzy match
         :rtype: list of str
         """
         return self._InstanceNameSet
@@ -12263,7 +12263,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VersionSet(self):
-        """The list of instance version numbers, such as 2008R2, 2012SP3
+        r"""The list of instance version numbers, such as 2008R2, 2012SP3
         :rtype: list of str
         """
         return self._VersionSet
@@ -12274,7 +12274,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance availability zone, such as ap-guangzhou-3
+        r"""Instance availability zone, such as ap-guangzhou-3
         :rtype: str
         """
         return self._Zone
@@ -12285,7 +12285,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        """The list of instance tags
+        r"""The list of instance tags
         :rtype: list of str
         """
         return self._TagKeys
@@ -12296,7 +12296,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """Keyword used for fuzzy match, including instance ID, instance name, and instance private IP
+        r"""Keyword used for fuzzy match, including instance ID, instance name, and instance private IP
         :rtype: str
         """
         return self._SearchKey
@@ -12307,7 +12307,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def UidSet(self):
-        """Unique Uid of an instance
+        r"""Unique Uid of an instance
         :rtype: list of str
         """
         return self._UidSet
@@ -12318,7 +12318,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: dual-server high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
+        r"""Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: dual-server high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
         :rtype: str
         """
         return self._InstanceType
@@ -12329,7 +12329,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PaginationType(self):
-        """Pagination query method. offset - pagination query by offset; pageNumber - pagination query by number of pages. The default value is pageNumber.
+        r"""Pagination query method. offset - pagination query by offset; pageNumber - pagination query by number of pages. The default value is pageNumber.
         :rtype: str
         """
         return self._PaginationType
@@ -12368,7 +12368,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
 
 class DescribeDBInstancesResponse(AbstractModel):
-    """DescribeDBInstances response structure.
+    r"""DescribeDBInstances response structure.
 
     """
 
@@ -12387,7 +12387,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`
+        r"""Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`
         :rtype: int
         """
         return self._TotalCount
@@ -12398,7 +12398,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def DBInstances(self):
-        """Instance list
+        r"""Instance list
         :rtype: list of DBInstance
         """
         return self._DBInstances
@@ -12409,7 +12409,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12431,7 +12431,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
 
 class DescribeDBPrivilegeByAccountRequest(AbstractModel):
-    """DescribeDBPrivilegeByAccount request structure.
+    r"""DescribeDBPrivilegeByAccount request structure.
 
     """
 
@@ -12456,7 +12456,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-njj2mtpl.
+        r"""Instance ID, in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -12467,7 +12467,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name.
+        r"""Account name.
         :rtype: str
         """
         return self._AccountName
@@ -12478,7 +12478,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name associated with the account.
+        r"""Database name associated with the account.
         :rtype: str
         """
         return self._DBName
@@ -12489,7 +12489,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
+        r"""The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -12500,7 +12500,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number in pagination mode. The default value is 0.
+        r"""Page number in pagination mode. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -12527,7 +12527,7 @@ class DescribeDBPrivilegeByAccountRequest(AbstractModel):
 
 
 class DescribeDBPrivilegeByAccountResponse(AbstractModel):
-    """DescribeDBPrivilegeByAccount response structure.
+    r"""DescribeDBPrivilegeByAccount response structure.
 
     """
 
@@ -12546,7 +12546,7 @@ class DescribeDBPrivilegeByAccountResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of databases.
+        r"""Total number of databases.
         :rtype: int
         """
         return self._TotalCount
@@ -12557,7 +12557,7 @@ class DescribeDBPrivilegeByAccountResponse(AbstractModel):
 
     @property
     def DBList(self):
-        """Database permission list.
+        r"""Database permission list.
         :rtype: list of DBPrivilege
         """
         return self._DBList
@@ -12568,7 +12568,7 @@ class DescribeDBPrivilegeByAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12590,7 +12590,7 @@ class DescribeDBPrivilegeByAccountResponse(AbstractModel):
 
 
 class DescribeDBRestoreTimeRequest(AbstractModel):
-    """DescribeDBRestoreTime request structure.
+    r"""DescribeDBRestoreTime request structure.
 
     """
 
@@ -12615,7 +12615,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Original instance ID.
+        r"""Original instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -12626,7 +12626,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        """ID of the target instance for rollback. If this parameter is left unspecified, roll back to the original instance by default.
+        r"""ID of the target instance for rollback. If this parameter is left unspecified, roll back to the original instance by default.
         :rtype: str
         """
         return self._TargetInstanceId
@@ -12637,7 +12637,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
     @property
     def Time(self):
-        """Queries databases that can be rolled back by time point, with the time format of YYYY-MM-DD HH:MM:SS. Either BackupId or Time should be specified, as they cannot be empty simultaneously.
+        r"""Queries databases that can be rolled back by time point, with the time format of YYYY-MM-DD HH:MM:SS. Either BackupId or Time should be specified, as they cannot be empty simultaneously.
         :rtype: str
         """
         return self._Time
@@ -12648,7 +12648,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """Queries databases that can be rolled back by backup set ID, which can be obtained through the DescribeBackups API. Either BackupId or Time should be specified, as they cannot be empty simultaneously.
+        r"""Queries databases that can be rolled back by backup set ID, which can be obtained through the DescribeBackups API. Either BackupId or Time should be specified, as they cannot be empty simultaneously.
         :rtype: int
         """
         return self._BackupId
@@ -12659,7 +12659,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
     @property
     def DBName(self):
-        """Database name.
+        r"""Database name.
         :rtype: str
         """
         return self._DBName
@@ -12686,7 +12686,7 @@ class DescribeDBRestoreTimeRequest(AbstractModel):
 
 
 class DescribeDBRestoreTimeResponse(AbstractModel):
-    """DescribeDBRestoreTime response structure.
+    r"""DescribeDBRestoreTime response structure.
 
     """
 
@@ -12705,7 +12705,7 @@ class DescribeDBRestoreTimeResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of databases that can be rolled back.
+        r"""Total number of databases that can be rolled back.
         :rtype: int
         """
         return self._TotalCount
@@ -12716,7 +12716,7 @@ class DescribeDBRestoreTimeResponse(AbstractModel):
 
     @property
     def Details(self):
-        """List of databases that can be rolled back.
+        r"""List of databases that can be rolled back.
         :rtype: list of DBRenameRes
         """
         return self._Details
@@ -12727,7 +12727,7 @@ class DescribeDBRestoreTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12749,7 +12749,7 @@ class DescribeDBRestoreTimeResponse(AbstractModel):
 
 
 class DescribeDBSecurityGroupsRequest(AbstractModel):
-    """DescribeDBSecurityGroups request structure.
+    r"""DescribeDBSecurityGroups request structure.
 
     """
 
@@ -12762,7 +12762,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.
+        r"""Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.
         :rtype: str
         """
         return self._InstanceId
@@ -12785,7 +12785,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
 
 class DescribeDBSecurityGroupsResponse(AbstractModel):
-    """DescribeDBSecurityGroups response structure.
+    r"""DescribeDBSecurityGroups response structure.
 
     """
 
@@ -12801,7 +12801,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def SecurityGroupSet(self):
-        """Security group details.
+        r"""Security group details.
         :rtype: list of SecurityGroup
         """
         return self._SecurityGroupSet
@@ -12812,7 +12812,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12833,7 +12833,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
 
 class DescribeDBsNormalRequest(AbstractModel):
-    """DescribeDBsNormal request structure.
+    r"""DescribeDBsNormal request structure.
 
     """
 
@@ -12846,7 +12846,7 @@ class DescribeDBsNormalRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-7vfv3rk3
+        r"""Instance ID in the format of mssql-7vfv3rk3
         :rtype: str
         """
         return self._InstanceId
@@ -12869,7 +12869,7 @@ class DescribeDBsNormalRequest(AbstractModel):
 
 
 class DescribeDBsNormalResponse(AbstractModel):
-    """DescribeDBsNormal response structure.
+    r"""DescribeDBsNormal response structure.
 
     """
 
@@ -12888,7 +12888,7 @@ class DescribeDBsNormalResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of databases of the instance
+        r"""Total number of databases of the instance
         :rtype: int
         """
         return self._TotalCount
@@ -12899,7 +12899,7 @@ class DescribeDBsNormalResponse(AbstractModel):
 
     @property
     def DBList(self):
-        """Detailed database configurations, such as whether CDC or CT is enabled for the database
+        r"""Detailed database configurations, such as whether CDC or CT is enabled for the database
         :rtype: list of DbNormalDetail
         """
         return self._DBList
@@ -12910,7 +12910,7 @@ class DescribeDBsNormalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12932,7 +12932,7 @@ class DescribeDBsNormalResponse(AbstractModel):
 
 
 class DescribeDBsRequest(AbstractModel):
-    """DescribeDBs request structure.
+    r"""DescribeDBs request structure.
 
     """
 
@@ -12960,7 +12960,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -12971,7 +12971,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 20
+        r"""Number of results per page. Value range: 1-100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -12982,7 +12982,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -12993,7 +12993,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Database name
+        r"""Database name
         :rtype: str
         """
         return self._Name
@@ -13004,7 +13004,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
+        r"""Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
         :rtype: str
         """
         return self._OrderByType
@@ -13015,7 +13015,7 @@ class DescribeDBsRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        """TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        r"""TDE status. Valid values: `enable` (enabled), `disable` (disabled).
         :rtype: str
         """
         return self._Encryption
@@ -13043,7 +13043,7 @@ class DescribeDBsRequest(AbstractModel):
 
 
 class DescribeDBsResponse(AbstractModel):
-    """DescribeDBs response structure.
+    r"""DescribeDBs response structure.
 
     """
 
@@ -13062,7 +13062,7 @@ class DescribeDBsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of databases
+        r"""Number of databases
         :rtype: int
         """
         return self._TotalCount
@@ -13073,7 +13073,7 @@ class DescribeDBsResponse(AbstractModel):
 
     @property
     def DBInstances(self):
-        """List of instance databases
+        r"""List of instance databases
         :rtype: list of InstanceDBDetail
         """
         return self._DBInstances
@@ -13084,7 +13084,7 @@ class DescribeDBsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13106,7 +13106,7 @@ class DescribeDBsResponse(AbstractModel):
 
 
 class DescribeDatabaseNamesRequest(AbstractModel):
-    """DescribeDatabaseNames request structure.
+    r"""DescribeDatabaseNames request structure.
 
     """
 
@@ -13122,7 +13122,7 @@ class DescribeDatabaseNamesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-rljoi3bf.
+        r"""Instance ID, in the format of mssql-rljoi3bf.
         :rtype: str
         """
         return self._InstanceId
@@ -13133,7 +13133,7 @@ class DescribeDatabaseNamesRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Account name.
+        r"""Account name.
         :rtype: str
         """
         return self._AccountName
@@ -13157,7 +13157,7 @@ class DescribeDatabaseNamesRequest(AbstractModel):
 
 
 class DescribeDatabaseNamesResponse(AbstractModel):
-    """DescribeDatabaseNames response structure.
+    r"""DescribeDatabaseNames response structure.
 
     """
 
@@ -13176,7 +13176,7 @@ class DescribeDatabaseNamesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of databases associated with the account.
+        r"""Total number of databases associated with the account.
         :rtype: int
         """
         return self._TotalCount
@@ -13187,7 +13187,7 @@ class DescribeDatabaseNamesResponse(AbstractModel):
 
     @property
     def DatabaseNameSet(self):
-        """Database name set.
+        r"""Database name set.
         :rtype: list of str
         """
         return self._DatabaseNameSet
@@ -13198,7 +13198,7 @@ class DescribeDatabaseNamesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13215,7 +13215,7 @@ class DescribeDatabaseNamesResponse(AbstractModel):
 
 
 class DescribeDatabasesNormalRequest(AbstractModel):
-    """DescribeDatabasesNormal request structure.
+    r"""DescribeDatabasesNormal request structure.
 
     """
 
@@ -13228,7 +13228,7 @@ class DescribeDatabasesNormalRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-7vfv3rk3.
+        r"""Instance ID, in the format of mssql-7vfv3rk3.
         :rtype: str
         """
         return self._InstanceId
@@ -13251,7 +13251,7 @@ class DescribeDatabasesNormalRequest(AbstractModel):
 
 
 class DescribeDatabasesNormalResponse(AbstractModel):
-    """DescribeDatabasesNormal response structure.
+    r"""DescribeDatabasesNormal response structure.
 
     """
 
@@ -13270,7 +13270,7 @@ class DescribeDatabasesNormalResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Indicates the total number of databases under the current instance.
+        r"""Indicates the total number of databases under the current instance.
         :rtype: int
         """
         return self._TotalCount
@@ -13281,7 +13281,7 @@ class DescribeDatabasesNormalResponse(AbstractModel):
 
     @property
     def DBList(self):
-        """Returns detailed configuration information of the databases, such as whether CDC and CT are enabled for the databases.
+        r"""Returns detailed configuration information of the databases, such as whether CDC and CT are enabled for the databases.
         :rtype: list of DbNormalDetail
         """
         return self._DBList
@@ -13292,7 +13292,7 @@ class DescribeDatabasesNormalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13314,7 +13314,7 @@ class DescribeDatabasesNormalResponse(AbstractModel):
 
 
 class DescribeDatabasesRequest(AbstractModel):
-    """DescribeDatabases request structure.
+    r"""DescribeDatabases request structure.
 
     """
 
@@ -13345,7 +13345,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -13356,7 +13356,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
+        r"""The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -13367,7 +13367,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number in pagination mode. The default value is 0.
+        r"""Page number in pagination mode. The default value is 0.
         :rtype: int
         """
         return self._Offset
@@ -13378,7 +13378,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Database name.
+        r"""Database name.
         :rtype: str
         """
         return self._Name
@@ -13389,7 +13389,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Collation rule (desc - descending order; asc - ascending order). The default value is desc.
+        r"""Collation rule (desc - descending order; asc - ascending order). The default value is desc.
         :rtype: str
         """
         return self._OrderByType
@@ -13400,7 +13400,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        """Whether TDE encryption is enabled. enable - encrypted; disable - unencrypted.
+        r"""Whether TDE encryption is enabled. enable - encrypted; disable - unencrypted.
         :rtype: str
         """
         return self._Encryption
@@ -13411,7 +13411,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting field. (Name - sort by name; CreateTime - sort by creation time). The default value is CreateTime.
+        r"""Sorting field. (Name - sort by name; CreateTime - sort by creation time). The default value is CreateTime.
         :rtype: str
         """
         return self._OrderBy
@@ -13440,7 +13440,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
 
 class DescribeDatabasesResponse(AbstractModel):
-    """DescribeDatabases response structure.
+    r"""DescribeDatabases response structure.
 
     """
 
@@ -13459,7 +13459,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of databases.
+        r"""Number of databases.
         :rtype: int
         """
         return self._TotalCount
@@ -13470,7 +13470,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def DBInstances(self):
-        """Instance database list.
+        r"""Instance database list.
         :rtype: list of InstanceDBDetail
         """
         return self._DBInstances
@@ -13481,7 +13481,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13503,7 +13503,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
 
 class DescribeFlowStatusRequest(AbstractModel):
-    """DescribeFlowStatus request structure.
+    r"""DescribeFlowStatus request structure.
 
     """
 
@@ -13516,7 +13516,7 @@ class DescribeFlowStatusRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """Flow ID
+        r"""Flow ID
         :rtype: int
         """
         return self._FlowId
@@ -13539,7 +13539,7 @@ class DescribeFlowStatusRequest(AbstractModel):
 
 
 class DescribeFlowStatusResponse(AbstractModel):
-    """DescribeFlowStatus response structure.
+    r"""DescribeFlowStatus response structure.
 
     """
 
@@ -13555,7 +13555,7 @@ class DescribeFlowStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Flow status. 0: succeeded, 1: failed, 2: running
+        r"""Flow status. 0: succeeded, 1: failed, 2: running
         :rtype: int
         """
         return self._Status
@@ -13566,7 +13566,7 @@ class DescribeFlowStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13582,7 +13582,7 @@ class DescribeFlowStatusResponse(AbstractModel):
 
 
 class DescribeHASwitchLogRequest(AbstractModel):
-    """DescribeHASwitchLog request structure.
+    r"""DescribeHASwitchLog request structure.
 
     """
 
@@ -13610,7 +13610,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -13621,7 +13621,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (yyyy-MM-dd HH:mm:ss).
+        r"""Start time (yyyy-MM-dd HH:mm:ss).
         :rtype: str
         """
         return self._StartTime
@@ -13632,7 +13632,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (yyyy-MM-dd HH:mm:ss).
+        r"""End time (yyyy-MM-dd HH:mm:ss).
         :rtype: str
         """
         return self._EndTime
@@ -13643,7 +13643,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def SwitchType(self):
-        """Switch mode. 0 - system automatic switch; 1 - manual switch. Check all switch modes by default if the parameter is left unspecified.
+        r"""Switch mode. 0 - system automatic switch; 1 - manual switch. Check all switch modes by default if the parameter is left unspecified.
         :rtype: int
         """
         return self._SwitchType
@@ -13654,7 +13654,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination size.
+        r"""Pagination size.
         :rtype: int
         """
         return self._Limit
@@ -13665,7 +13665,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination number.
+        r"""Pagination number.
         :rtype: int
         """
         return self._Offset
@@ -13693,7 +13693,7 @@ class DescribeHASwitchLogRequest(AbstractModel):
 
 
 class DescribeHASwitchLogResponse(AbstractModel):
-    """DescribeHASwitchLog response structure.
+    r"""DescribeHASwitchLog response structure.
 
     """
 
@@ -13712,7 +13712,7 @@ class DescribeHASwitchLogResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of logs.
+        r"""Total number of logs.
         :rtype: int
         """
         return self._TotalCount
@@ -13723,7 +13723,7 @@ class DescribeHASwitchLogResponse(AbstractModel):
 
     @property
     def SwitchLog(self):
-        """Primary-secondary switch logs.
+        r"""Primary-secondary switch logs.
         :rtype: list of SwitchLog
         """
         return self._SwitchLog
@@ -13734,7 +13734,7 @@ class DescribeHASwitchLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13756,7 +13756,7 @@ class DescribeHASwitchLogResponse(AbstractModel):
 
 
 class DescribeIncrementalMigrationRequest(AbstractModel):
-    """DescribeIncrementalMigration request structure.
+    r"""DescribeIncrementalMigration request structure.
 
     """
 
@@ -13793,7 +13793,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -13804,7 +13804,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -13815,7 +13815,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupFileName(self):
-        """Backup file name
+        r"""Backup file name
         :rtype: str
         """
         return self._BackupFileName
@@ -13826,7 +13826,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """Status set of import tasks
+        r"""Status set of import tasks
         :rtype: list of int
         """
         return self._StatusSet
@@ -13837,7 +13837,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Default value: `100`.
+        r"""The maximum number of results returned per page. Default value: `100`.
         :rtype: int
         """
         return self._Limit
@@ -13848,7 +13848,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`.
+        r"""Page number. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -13859,7 +13859,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.
+        r"""Sort by field. Valid values: `name`, `createTime`, `startTime`, `endTime`. By default, the results returned are sorted by `createTime` in the ascending order.
         :rtype: str
         """
         return self._OrderBy
@@ -13870,7 +13870,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.
+        r"""Sorting order which is valid only when `OrderBy` is specified. Valid values: `asc` (ascending), `desc` (descending). Default value: `asc`.
         :rtype: str
         """
         return self._OrderByType
@@ -13881,7 +13881,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.
+        r"""Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -13912,7 +13912,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
 
 
 class DescribeIncrementalMigrationResponse(AbstractModel):
-    """DescribeIncrementalMigration response structure.
+    r"""DescribeIncrementalMigration response structure.
 
     """
 
@@ -13931,7 +13931,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of import tasks
+        r"""Total number of import tasks
         :rtype: int
         """
         return self._TotalCount
@@ -13942,7 +13942,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
 
     @property
     def IncrementalMigrationSet(self):
-        """Incremental import task set
+        r"""Incremental import task set
         :rtype: list of Migration
         """
         return self._IncrementalMigrationSet
@@ -13953,7 +13953,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13975,7 +13975,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
 
 
 class DescribeInstanceByOrdersRequest(AbstractModel):
-    """DescribeInstanceByOrders request structure.
+    r"""DescribeInstanceByOrders request structure.
 
     """
 
@@ -13988,7 +13988,7 @@ class DescribeInstanceByOrdersRequest(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order ID set
+        r"""Order ID set
         :rtype: list of str
         """
         return self._DealNames
@@ -14011,7 +14011,7 @@ class DescribeInstanceByOrdersRequest(AbstractModel):
 
 
 class DescribeInstanceByOrdersResponse(AbstractModel):
-    """DescribeInstanceByOrders response structure.
+    r"""DescribeInstanceByOrders response structure.
 
     """
 
@@ -14027,7 +14027,7 @@ class DescribeInstanceByOrdersResponse(AbstractModel):
 
     @property
     def DealInstance(self):
-        """Resource ID set.
+        r"""Resource ID set.
         :rtype: list of DealInstance
         """
         return self._DealInstance
@@ -14038,7 +14038,7 @@ class DescribeInstanceByOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14059,7 +14059,7 @@ class DescribeInstanceByOrdersResponse(AbstractModel):
 
 
 class DescribeInstanceParamRecordsRequest(AbstractModel):
-    """DescribeInstanceParamRecords request structure.
+    r"""DescribeInstanceParamRecords request structure.
 
     """
 
@@ -14078,7 +14078,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.
+        r"""Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.
         :rtype: str
         """
         return self._InstanceId
@@ -14089,7 +14089,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`.
+        r"""Page number. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -14100,7 +14100,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Maximum value: `100`. Default value: `20`.
+        r"""The maximum number of results returned per page. Maximum value: `100`. Default value: `20`.
         :rtype: int
         """
         return self._Limit
@@ -14125,7 +14125,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
 
 class DescribeInstanceParamRecordsResponse(AbstractModel):
-    """DescribeInstanceParamRecords response structure.
+    r"""DescribeInstanceParamRecords response structure.
 
     """
 
@@ -14144,7 +14144,7 @@ class DescribeInstanceParamRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible records
+        r"""Number of eligible records
         :rtype: int
         """
         return self._TotalCount
@@ -14155,7 +14155,7 @@ class DescribeInstanceParamRecordsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Parameter modification records
+        r"""Parameter modification records
         :rtype: list of ParamRecord
         """
         return self._Items
@@ -14166,7 +14166,7 @@ class DescribeInstanceParamRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14188,7 +14188,7 @@ class DescribeInstanceParamRecordsResponse(AbstractModel):
 
 
 class DescribeInstanceParamsRequest(AbstractModel):
-    """DescribeInstanceParams request structure.
+    r"""DescribeInstanceParams request structure.
 
     """
 
@@ -14201,7 +14201,7 @@ class DescribeInstanceParamsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.
+        r"""Instance ID in the format of mssql-dj5i29c5n. It is the same as the instance ID displayed in the TencentDB console and the response parameter `InstanceId` of the `DescribeDBInstances` API.
         :rtype: str
         """
         return self._InstanceId
@@ -14224,7 +14224,7 @@ class DescribeInstanceParamsRequest(AbstractModel):
 
 
 class DescribeInstanceParamsResponse(AbstractModel):
-    """DescribeInstanceParams response structure.
+    r"""DescribeInstanceParams response structure.
 
     """
 
@@ -14243,7 +14243,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of instance parameters
+        r"""Total number of instance parameters
         :rtype: int
         """
         return self._TotalCount
@@ -14254,7 +14254,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
     @property
     def Items(self):
-        """Parameter details
+        r"""Parameter details
         :rtype: list of ParameterDetail
         """
         return self._Items
@@ -14265,7 +14265,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14287,7 +14287,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
 
 class DescribeInstanceTasksRequest(AbstractModel):
-    """DescribeInstanceTasks request structure.
+    r"""DescribeInstanceTasks request structure.
 
     """
 
@@ -14309,7 +14309,7 @@ class DescribeInstanceTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID, in the format of mssql-njj2mtpl.
+        r"""Database instance ID, in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -14320,7 +14320,7 @@ class DescribeInstanceTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination size.
+        r"""Pagination size.
         :rtype: int
         """
         return self._Limit
@@ -14331,7 +14331,7 @@ class DescribeInstanceTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Asynchronous task status. 1 - running; 2 - running successful; 3 - running failed.
+        r"""Asynchronous task status. 1 - running; 2 - running successful; 3 - running failed.
         :rtype: int
         """
         return self._Status
@@ -14342,7 +14342,7 @@ class DescribeInstanceTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset.
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -14368,7 +14368,7 @@ class DescribeInstanceTasksRequest(AbstractModel):
 
 
 class DescribeInstanceTasksResponse(AbstractModel):
-    """DescribeInstanceTasks response structure.
+    r"""DescribeInstanceTasks response structure.
 
     """
 
@@ -14387,7 +14387,7 @@ class DescribeInstanceTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of asynchronous tasks.
+        r"""Total number of asynchronous tasks.
         :rtype: int
         """
         return self._TotalCount
@@ -14398,7 +14398,7 @@ class DescribeInstanceTasksResponse(AbstractModel):
 
     @property
     def InstanceTaskSet(self):
-        """Asynchronous task information array.
+        r"""Asynchronous task information array.
         :rtype: list of InstanceTask
         """
         return self._InstanceTaskSet
@@ -14409,7 +14409,7 @@ class DescribeInstanceTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14431,7 +14431,7 @@ class DescribeInstanceTasksResponse(AbstractModel):
 
 
 class DescribeInstanceTradeParameterRequest(AbstractModel):
-    """DescribeInstanceTradeParameter request structure.
+    r"""DescribeInstanceTradeParameter request structure.
 
     """
 
@@ -14513,7 +14513,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
+        r"""Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -14524,7 +14524,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores.
+        r"""Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -14535,7 +14535,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB.
+        r"""Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -14546,7 +14546,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance storage capacity in GB.
+        r"""Instance storage capacity in GB.
         :rtype: int
         """
         return self._Storage
@@ -14557,7 +14557,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Type of purchased instances. HA: high-availability edition (including dual-server high-availability edition and Always On cluster edition); RO: read-only replica edition; SI: single-node edition; BI: business intelligence edition; cvmHA: new high-availability edition; cvmRO: new read-only replica edition; MultiHA: multi-node edition; cvmMultiHA: multi-node cloud disk edition.
+        r"""Type of purchased instances. HA: high-availability edition (including dual-server high-availability edition and Always On cluster edition); RO: read-only replica edition; SI: single-node edition; BI: business intelligence edition; cvmHA: new high-availability edition; cvmRO: new read-only replica edition; MultiHA: multi-node edition; cvmMultiHA: multi-node cloud disk edition.
         :rtype: str
         """
         return self._InstanceType
@@ -14568,7 +14568,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """Host disk type of purchased instances. CLOUD_HSSD - Enhanced SSD for CVMs, CLOUD_TSSD - Tremendous SSD for CVMs, CLOUD_BSSD - Balanced SSD for CVMs. 
+        r"""Host disk type of purchased instances. CLOUD_HSSD - Enhanced SSD for CVMs, CLOUD_TSSD - Tremendous SSD for CVMs, CLOUD_BSSD - Balanced SSD for CVMs. 
         :rtype: str
         """
         return self._MachineType
@@ -14579,7 +14579,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing mode. Valid value: POSTPAID (pay-as-you-go).
+        r"""Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -14590,7 +14590,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID.
+        r"""Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -14601,7 +14601,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: 1. Maximum value: 10.
+        r"""Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._GoodsNum
@@ -14612,7 +14612,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
+        r"""SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -14623,7 +14623,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
+        r"""VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._SubnetId
@@ -14634,7 +14634,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
+        r"""VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._VpcId
@@ -14645,7 +14645,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
+        r"""Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :rtype: int
         """
         return self._Period
@@ -14656,7 +14656,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """Security group list, which contains security group IDs in the format of sg-xxx.
+        r"""Security group list, which contains security group IDs in the format of sg-xxx.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -14667,7 +14667,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
+        r"""Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -14678,7 +14678,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
+        r"""Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -14689,7 +14689,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        r"""Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -14700,7 +14700,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Configuration of the maintenance window, which specifies the maintenance duration in hours.
+        r"""Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :rtype: int
         """
         return self._Span
@@ -14711,7 +14711,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def MultiZones(self):
-        """Whether to deploy across availability zones. Default value: false.
+        r"""Whether to deploy across availability zones. Default value: false.
         :rtype: bool
         """
         return self._MultiZones
@@ -14722,7 +14722,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created.
+        r"""Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -14733,7 +14733,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value: `China Standard Time`.
+        r"""System time zone. Default value: `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -14744,7 +14744,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
+        r"""Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -14755,7 +14755,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def MultiNodes(self):
-        """Whether it is a multi-node architecture instance. Default value: `false`.
+        r"""Whether it is a multi-node architecture instance. Default value: `false`.
         :rtype: bool
         """
         return self._MultiNodes
@@ -14766,7 +14766,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
     @property
     def DrZones(self):
-        """The zone in which the standby node is available. Default is empty. If it is a multi-node architecture, it must be transmitted. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        r"""The zone in which the standby node is available. Default is empty. If it is a multi-node architecture, it must be transmitted. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
         :rtype: list of str
         """
         return self._DrZones
@@ -14817,7 +14817,7 @@ class DescribeInstanceTradeParameterRequest(AbstractModel):
 
 
 class DescribeInstanceTradeParameterResponse(AbstractModel):
-    """DescribeInstanceTradeParameter response structure.
+    r"""DescribeInstanceTradeParameter response structure.
 
     """
 
@@ -14833,7 +14833,7 @@ class DescribeInstanceTradeParameterResponse(AbstractModel):
 
     @property
     def Parameter(self):
-        """Billing parameter.
+        r"""Billing parameter.
         :rtype: str
         """
         return self._Parameter
@@ -14844,7 +14844,7 @@ class DescribeInstanceTradeParameterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14860,7 +14860,7 @@ class DescribeInstanceTradeParameterResponse(AbstractModel):
 
 
 class DescribeMaintenanceSpanRequest(AbstractModel):
-    """DescribeMaintenanceSpan request structure.
+    r"""DescribeMaintenanceSpan request structure.
 
     """
 
@@ -14873,7 +14873,7 @@ class DescribeMaintenanceSpanRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. For example, mssql-k8voqdlz.
+        r"""Instance ID. For example, mssql-k8voqdlz.
         :rtype: str
         """
         return self._InstanceId
@@ -14896,7 +14896,7 @@ class DescribeMaintenanceSpanRequest(AbstractModel):
 
 
 class DescribeMaintenanceSpanResponse(AbstractModel):
-    """DescribeMaintenanceSpan response structure.
+    r"""DescribeMaintenanceSpan response structure.
 
     """
 
@@ -14918,7 +14918,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
 
     @property
     def Weekly(self):
-        """Specifies the days in each week allowed for maintenance. For example, [1,2,3,4,5,6,7] indicates that all days from Monday to Sunday are allowed for maintenance.
+        r"""Specifies the days in each week allowed for maintenance. For example, [1,2,3,4,5,6,7] indicates that all days from Monday to Sunday are allowed for maintenance.
         :rtype: list of int
         """
         return self._Weekly
@@ -14929,7 +14929,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Maintenance start time each day. For example, 10:24 indicates that the maintenance window starts at 10:24.
+        r"""Maintenance start time each day. For example, 10:24 indicates that the maintenance window starts at 10:24.
         :rtype: str
         """
         return self._StartTime
@@ -14940,7 +14940,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
 
     @property
     def Span(self):
-        """Maintenance duration each day, in hours. For example, 1 indicates that the duration is 1 hour after maintenance starts.
+        r"""Maintenance duration each day, in hours. For example, 1 indicates that the duration is 1 hour after maintenance starts.
         :rtype: int
         """
         return self._Span
@@ -14951,7 +14951,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14969,7 +14969,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
 
 
 class DescribeMigrationDatabasesRequest(AbstractModel):
-    """DescribeMigrationDatabases request structure.
+    r"""DescribeMigrationDatabases request structure.
 
     """
 
@@ -14988,7 +14988,7 @@ class DescribeMigrationDatabasesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Migration source instance ID, in the format of mssql-si2823jyl.
+        r"""Migration source instance ID, in the format of mssql-si2823jyl.
         :rtype: str
         """
         return self._InstanceId
@@ -14999,7 +14999,7 @@ class DescribeMigrationDatabasesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        """Username of the migration source instance.
+        r"""Username of the migration source instance.
         :rtype: str
         """
         return self._UserName
@@ -15010,7 +15010,7 @@ class DescribeMigrationDatabasesRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password of the migration source instance.
+        r"""Password of the migration source instance.
         :rtype: str
         """
         return self._Password
@@ -15035,7 +15035,7 @@ class DescribeMigrationDatabasesRequest(AbstractModel):
 
 
 class DescribeMigrationDatabasesResponse(AbstractModel):
-    """DescribeMigrationDatabases response structure.
+    r"""DescribeMigrationDatabases response structure.
 
     """
 
@@ -15054,7 +15054,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
 
     @property
     def Amount(self):
-        """Number of databases.
+        r"""Number of databases.
         :rtype: int
         """
         return self._Amount
@@ -15065,7 +15065,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
 
     @property
     def MigrateDBSet(self):
-        """Database name array.
+        r"""Database name array.
         :rtype: list of str
         """
         return self._MigrateDBSet
@@ -15076,7 +15076,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15093,7 +15093,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
 
 
 class DescribeMigrationDetailRequest(AbstractModel):
-    """DescribeMigrationDetail request structure.
+    r"""DescribeMigrationDetail request structure.
 
     """
 
@@ -15106,7 +15106,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -15129,7 +15129,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
 
 class DescribeMigrationDetailResponse(AbstractModel):
-    """DescribeMigrationDetail response structure.
+    r"""DescribeMigrationDetail response structure.
 
     """
 
@@ -15184,7 +15184,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -15195,7 +15195,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def MigrateName(self):
-        """Migration task name
+        r"""Migration task name
         :rtype: str
         """
         return self._MigrateName
@@ -15206,7 +15206,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def AppId(self):
-        """User ID of migration task
+        r"""User ID of migration task
         :rtype: int
         """
         return self._AppId
@@ -15217,7 +15217,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def Region(self):
-        """Migration task region
+        r"""Migration task region
         :rtype: str
         """
         return self._Region
@@ -15228,7 +15228,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def SourceType(self):
-        """Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
+        r"""Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :rtype: int
         """
         return self._SourceType
@@ -15239,7 +15239,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Migration task creation time
+        r"""Migration task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -15250,7 +15250,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Migration task start time
+        r"""Migration task start time
         :rtype: str
         """
         return self._StartTime
@@ -15261,7 +15261,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Migration task end time
+        r"""Migration task end time
         :rtype: str
         """
         return self._EndTime
@@ -15272,7 +15272,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)
+        r"""Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)
         :rtype: int
         """
         return self._Status
@@ -15283,7 +15283,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def Progress(self):
-        """Migration task progress
+        r"""Migration task progress
         :rtype: int
         """
         return self._Progress
@@ -15294,7 +15294,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def MigrateType(self):
-        """Migration type (1: structure migration, 2: data migration, 3: incremental sync)
+        r"""Migration type (1: structure migration, 2: data migration, 3: incremental sync)
         :rtype: int
         """
         return self._MigrateType
@@ -15305,7 +15305,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def Source(self):
-        """Migration source
+        r"""Migration source
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
         """
         return self._Source
@@ -15316,7 +15316,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def Target(self):
-        """Migration target
+        r"""Migration target
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         """
         return self._Target
@@ -15327,7 +15327,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def MigrateDBSet(self):
-        """Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
+        r"""Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)
         :rtype: list of MigrateDB
         """
         return self._MigrateDBSet
@@ -15338,7 +15338,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15376,7 +15376,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
 
 class DescribeMigrationsRequest(AbstractModel):
-    """DescribeMigrations request structure.
+    r"""DescribeMigrations request structure.
 
     """
 
@@ -15404,7 +15404,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        """Status set. As long as a migration task is in a status therein, it will be listed
+        r"""Status set. As long as a migration task is in a status therein, it will be listed
         :rtype: list of int
         """
         return self._StatusSet
@@ -15415,7 +15415,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def MigrateName(self):
-        """Migration task name (fuzzy match)
+        r"""Migration task name (fuzzy match)
         :rtype: str
         """
         return self._MigrateName
@@ -15426,7 +15426,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 100
+        r"""Number of results per page. Value range: 1-100. Default value: 100
         :rtype: int
         """
         return self._Limit
@@ -15437,7 +15437,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -15448,7 +15448,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status
+        r"""The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status
         :rtype: str
         """
         return self._OrderBy
@@ -15459,7 +15459,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting order. Valid values: desc, asc
+        r"""Sorting order. Valid values: desc, asc
         :rtype: str
         """
         return self._OrderByType
@@ -15487,7 +15487,7 @@ class DescribeMigrationsRequest(AbstractModel):
 
 
 class DescribeMigrationsResponse(AbstractModel):
-    """DescribeMigrations response structure.
+    r"""DescribeMigrations response structure.
 
     """
 
@@ -15506,7 +15506,7 @@ class DescribeMigrationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of query results
+        r"""Total number of query results
         :rtype: int
         """
         return self._TotalCount
@@ -15517,7 +15517,7 @@ class DescribeMigrationsResponse(AbstractModel):
 
     @property
     def MigrateTaskSet(self):
-        """List of query results
+        r"""List of query results
         :rtype: list of MigrateTask
         """
         return self._MigrateTaskSet
@@ -15528,7 +15528,7 @@ class DescribeMigrationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15550,7 +15550,7 @@ class DescribeMigrationsResponse(AbstractModel):
 
 
 class DescribeOrdersRequest(AbstractModel):
-    """DescribeOrders request structure.
+    r"""DescribeOrders request structure.
 
     """
 
@@ -15563,7 +15563,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status
+        r"""Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status
         :rtype: list of str
         """
         return self._DealNames
@@ -15586,7 +15586,7 @@ class DescribeOrdersRequest(AbstractModel):
 
 
 class DescribeOrdersResponse(AbstractModel):
-    """DescribeOrders response structure.
+    r"""DescribeOrders response structure.
 
     """
 
@@ -15605,7 +15605,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def Deals(self):
-        """Order information array
+        r"""Order information array
         :rtype: list of DealInfo
         """
         return self._Deals
@@ -15616,7 +15616,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of orders returned
+        r"""Number of orders returned
         :rtype: int
         """
         return self._TotalCount
@@ -15627,7 +15627,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15649,7 +15649,7 @@ class DescribeOrdersResponse(AbstractModel):
 
 
 class DescribeProductConfigRequest(AbstractModel):
-    """DescribeProductConfig request structure.
+    r"""DescribeProductConfig request structure.
 
     """
 
@@ -15665,7 +15665,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ ID in the format of ap-guangzhou-1.
+        r"""AZ ID in the format of ap-guangzhou-1.
         :rtype: str
         """
         return self._Zone
@@ -15676,7 +15676,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica.
+        r"""Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica.
         :rtype: str
         """
         return self._InstanceType
@@ -15700,7 +15700,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
 
 class DescribeProductConfigResponse(AbstractModel):
-    """DescribeProductConfig response structure.
+    r"""DescribeProductConfig response structure.
 
     """
 
@@ -15719,7 +15719,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        """Specification information array.
+        r"""Specification information array.
         :rtype: list of SpecInfo
         """
         return self._SpecInfoList
@@ -15730,7 +15730,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of date entries returned.
+        r"""Number of date entries returned.
         :rtype: int
         """
         return self._TotalCount
@@ -15741,7 +15741,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15763,7 +15763,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
 
 class DescribeProjectSecurityGroupsRequest(AbstractModel):
-    """DescribeProjectSecurityGroups request structure.
+    r"""DescribeProjectSecurityGroups request structure.
 
     """
 
@@ -15776,7 +15776,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID, which can be viewed under project management in the console.
+        r"""Project ID, which can be viewed under project management in the console.
         :rtype: int
         """
         return self._ProjectId
@@ -15799,7 +15799,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
 
 class DescribeProjectSecurityGroupsResponse(AbstractModel):
-    """DescribeProjectSecurityGroups response structure.
+    r"""DescribeProjectSecurityGroups response structure.
 
     """
 
@@ -15815,7 +15815,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     @property
     def SecurityGroupSet(self):
-        """Security group details.
+        r"""Security group details.
         :rtype: list of SecurityGroup
         """
         return self._SecurityGroupSet
@@ -15826,7 +15826,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15847,7 +15847,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
 
 class DescribePublishSubscribeRequest(AbstractModel):
-    """DescribePublishSubscribe request structure.
+    r"""DescribePublishSubscribe request structure.
 
     """
 
@@ -15884,7 +15884,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. For example, mssql-j8kv137v.
+        r"""Instance ID. For example, mssql-j8kv137v.
         :rtype: str
         """
         return self._InstanceId
@@ -15895,7 +15895,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def PubOrSubInstanceId(self):
-        """Publish/subscribe instance ID, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by subscription instance ID is performed for this field. When the value of InstanceId is a subscription instance, filtering by publishing instance ID is performed for this field.
+        r"""Publish/subscribe instance ID, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by subscription instance ID is performed for this field. When the value of InstanceId is a subscription instance, filtering by publishing instance ID is performed for this field.
         :rtype: str
         """
         return self._PubOrSubInstanceId
@@ -15906,7 +15906,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def PubOrSubInstanceIp(self):
-        """Private address of the publish/subscribe instance, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by private IP address of the subscription instance is performed for this field. When the value of InstanceId is a subscription instance, filtering by private IP address of the publishing instance is performed for this field.
+        r"""Private address of the publish/subscribe instance, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by private IP address of the subscription instance is performed for this field. When the value of InstanceId is a subscription instance, filtering by private IP address of the publishing instance is performed for this field.
         :rtype: str
         """
         return self._PubOrSubInstanceIp
@@ -15917,7 +15917,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishSubscribeId(self):
-        """Publish/subscribe ID, which is used for filtering.
+        r"""Publish/subscribe ID, which is used for filtering.
         :rtype: int
         """
         return self._PublishSubscribeId
@@ -15928,7 +15928,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishSubscribeName(self):
-        """Publish/subscribe name, which is used for filtering.
+        r"""Publish/subscribe name, which is used for filtering.
         :rtype: str
         """
         return self._PublishSubscribeName
@@ -15939,7 +15939,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishDBName(self):
-        """Publishing database name, which is used for filtering.
+        r"""Publishing database name, which is used for filtering.
         :rtype: str
         """
         return self._PublishDBName
@@ -15950,7 +15950,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeDBName(self):
-        """Subscription database name, which is used for filtering.
+        r"""Subscription database name, which is used for filtering.
         :rtype: str
         """
         return self._SubscribeDBName
@@ -15961,7 +15961,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination number.
+        r"""Pagination number.
         :rtype: int
         """
         return self._Offset
@@ -15972,7 +15972,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Pagination size.
+        r"""Pagination size.
         :rtype: int
         """
         return self._Limit
@@ -16003,7 +16003,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
 
 
 class DescribePublishSubscribeResponse(AbstractModel):
-    """DescribePublishSubscribe response structure.
+    r"""DescribePublishSubscribe response structure.
 
     """
 
@@ -16022,7 +16022,7 @@ class DescribePublishSubscribeResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number.
+        r"""Total number.
         :rtype: int
         """
         return self._TotalCount
@@ -16033,7 +16033,7 @@ class DescribePublishSubscribeResponse(AbstractModel):
 
     @property
     def PublishSubscribeSet(self):
-        """Publish/subscribe list.
+        r"""Publish/subscribe list.
         :rtype: list of PublishSubscribe
         """
         return self._PublishSubscribeSet
@@ -16044,7 +16044,7 @@ class DescribePublishSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16066,7 +16066,7 @@ class DescribePublishSubscribeResponse(AbstractModel):
 
 
 class DescribeReadOnlyGroupAutoWeightRequest(AbstractModel):
-    """DescribeReadOnlyGroupAutoWeight request structure.
+    r"""DescribeReadOnlyGroupAutoWeight request structure.
 
     """
 
@@ -16082,7 +16082,7 @@ class DescribeReadOnlyGroupAutoWeightRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID, in the format of mssql-3l3fgqn7.
+        r"""Primary instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -16093,7 +16093,7 @@ class DescribeReadOnlyGroupAutoWeightRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID, in the format of mssqlro-3l3fgqn7.
+        r"""Read-only group ID, in the format of mssqlro-3l3fgqn7.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -16117,7 +16117,7 @@ class DescribeReadOnlyGroupAutoWeightRequest(AbstractModel):
 
 
 class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
-    """DescribeReadOnlyGroupAutoWeight response structure.
+    r"""DescribeReadOnlyGroupAutoWeight response structure.
 
     """
 
@@ -16173,7 +16173,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID, in the format of mssqlro-3l3fgqn7.
+        r"""Read-only group ID, in the format of mssqlro-3l3fgqn7.
 
         :rtype: str
         """
@@ -16185,7 +16185,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """Read-only group name.
+        r"""Read-only group name.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -16196,7 +16196,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID of the read-only group, which is the same as that of the primary instance.
+        r"""Region ID of the read-only group, which is the same as that of the primary instance.
         :rtype: str
         """
         return self._RegionId
@@ -16207,7 +16207,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """AZ of the read-only group, which is the same as that of the primary instance.
+        r"""AZ of the read-only group, which is the same as that of the primary instance.
         :rtype: str
         """
         return self._ZoneId
@@ -16218,7 +16218,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        """Whether to enable the delayed read-only instance removal feature. 1 - enabled; 0 - disabled.
+        r"""Whether to enable the delayed read-only instance removal feature. 1 - enabled; 0 - disabled.
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -16229,7 +16229,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        """Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.
+        r"""Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -16240,7 +16240,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        """Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
+        r"""Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -16251,7 +16251,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def Vip(self):
-        """Read-only group VIP.
+        r"""Read-only group VIP.
         :rtype: str
         """
         return self._Vip
@@ -16262,7 +16262,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def Vport(self):
-        """Read-only group VPort.
+        r"""Read-only group VPort.
         :rtype: int
         """
         return self._Vport
@@ -16273,7 +16273,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID of the read-only group.
+        r"""VPC ID of the read-only group.
         :rtype: str
         """
         return self._VpcId
@@ -16284,7 +16284,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID of the read-only group.
+        r"""VPC subnet ID of the read-only group.
         :rtype: str
         """
         return self._SubnetId
@@ -16295,7 +16295,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def ReadOnlyInstanceSet(self):
-        """Read-only instance replica collection.
+        r"""Read-only instance replica collection.
         :rtype: list of ReadOnlyInstance
         """
         return self._ReadOnlyInstanceSet
@@ -16306,7 +16306,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Read-only group status: 1 - running after successful application; 5 - applying.
+        r"""Read-only group status: 1 - running after successful application; 5 - applying.
         :rtype: int
         """
         return self._Status
@@ -16317,7 +16317,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """Primary instance ID. For example, mssql-sgeshe3th.
+        r"""Primary instance ID. For example, mssql-sgeshe3th.
         :rtype: str
         """
         return self._MasterInstanceId
@@ -16328,7 +16328,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16362,7 +16362,7 @@ class DescribeReadOnlyGroupAutoWeightResponse(AbstractModel):
 
 
 class DescribeReadOnlyGroupByReadOnlyInstanceRequest(AbstractModel):
-    """DescribeReadOnlyGroupByReadOnlyInstance request structure.
+    r"""DescribeReadOnlyGroupByReadOnlyInstance request structure.
 
     """
 
@@ -16375,7 +16375,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssqlro-3l3fgqn7.
+        r"""Instance ID, in the format of mssqlro-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -16398,7 +16398,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceRequest(AbstractModel):
 
 
 class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
-    """DescribeReadOnlyGroupByReadOnlyInstance response structure.
+    r"""DescribeReadOnlyGroupByReadOnlyInstance response structure.
 
     """
 
@@ -16450,7 +16450,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read only group ID.
+        r"""Read only group ID.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -16461,7 +16461,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """Read-only group name.
+        r"""Read-only group name.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -16472,7 +16472,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID of the read-only group.
+        r"""Region ID of the read-only group.
         :rtype: str
         """
         return self._RegionId
@@ -16483,7 +16483,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """AZ ID of the read-only group.
+        r"""AZ ID of the read-only group.
         :rtype: str
         """
         return self._ZoneId
@@ -16494,7 +16494,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        """Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.
+        r"""Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -16505,7 +16505,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        """Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.
+        r"""Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -16516,7 +16516,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        """Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
+        r"""Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -16527,7 +16527,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def Vip(self):
-        """Read-only group VIP.
+        r"""Read-only group VIP.
         :rtype: str
         """
         return self._Vip
@@ -16538,7 +16538,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def Vport(self):
-        """Read-only group VPort.
+        r"""Read-only group VPort.
         :rtype: int
         """
         return self._Vport
@@ -16549,7 +16549,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID of the read-only group.
+        r"""VPC ID of the read-only group.
         :rtype: str
         """
         return self._VpcId
@@ -16560,7 +16560,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID of the read-only group.
+        r"""VPC subnet ID of the read-only group.
         :rtype: str
         """
         return self._SubnetId
@@ -16571,7 +16571,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """Primary instance ID. For example, mssql-sgeshe3th.
+        r"""Primary instance ID. For example, mssql-sgeshe3th.
         :rtype: str
         """
         return self._MasterInstanceId
@@ -16582,7 +16582,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def MasterRegionId(self):
-        """Region ID of the primary instance.
+        r"""Region ID of the primary instance.
         :rtype: str
         """
         return self._MasterRegionId
@@ -16593,7 +16593,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16621,7 +16621,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
 
 
 class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
-    """DescribeReadOnlyGroupDetails request structure.
+    r"""DescribeReadOnlyGroupDetails request structure.
 
     """
 
@@ -16637,7 +16637,7 @@ class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID, in the format of mssql-3l3fgqn7.
+        r"""Primary instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -16648,7 +16648,7 @@ class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID, in the format of mssqlrg-3l3fgqn7.
+        r"""Read-only group ID, in the format of mssqlrg-3l3fgqn7.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -16672,7 +16672,7 @@ class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
 
 
 class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
-    """DescribeReadOnlyGroupDetails response structure.
+    r"""DescribeReadOnlyGroupDetails response structure.
 
     """
 
@@ -16727,7 +16727,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID.
+        r"""Read-only group ID.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -16738,7 +16738,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """Read-only group name.
+        r"""Read-only group name.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -16749,7 +16749,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID of the read-only group, which is the same as that of the primary instance.
+        r"""Region ID of the read-only group, which is the same as that of the primary instance.
         :rtype: str
         """
         return self._RegionId
@@ -16760,7 +16760,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        """AZ ID of the read-only group, which is the same as that of the primary instance.
+        r"""AZ ID of the read-only group, which is the same as that of the primary instance.
         :rtype: str
         """
         return self._ZoneId
@@ -16771,7 +16771,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        """Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.
+        r"""Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -16782,7 +16782,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        """Timeout threshold used after the delayed read-only instance removal feature is enabled.
+        r"""Timeout threshold used after the delayed read-only instance removal feature is enabled.
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -16793,7 +16793,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        """Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
+        r"""Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -16804,7 +16804,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def Vip(self):
-        """Read-only group VIP.
+        r"""Read-only group VIP.
         :rtype: str
         """
         return self._Vip
@@ -16815,7 +16815,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def Vport(self):
-        """Read-only group VPort.
+        r"""Read-only group VPort.
         :rtype: int
         """
         return self._Vport
@@ -16826,7 +16826,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID of the read-only group.
+        r"""VPC ID of the read-only group.
         :rtype: str
         """
         return self._VpcId
@@ -16837,7 +16837,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID of the read-only group.
+        r"""VPC subnet ID of the read-only group.
         :rtype: str
         """
         return self._SubnetId
@@ -16848,7 +16848,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def ReadOnlyInstanceSet(self):
-        """Read-only instance replica collection.
+        r"""Read-only instance replica collection.
         :rtype: list of ReadOnlyInstance
         """
         return self._ReadOnlyInstanceSet
@@ -16859,7 +16859,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Read-only group status: 1 - running after successful application; 5 - applying.
+        r"""Read-only group status: 1 - running after successful application; 5 - applying.
         :rtype: int
         """
         return self._Status
@@ -16870,7 +16870,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """Primary instance ID. For example, mssql-sgeshe3th.
+        r"""Primary instance ID. For example, mssql-sgeshe3th.
         :rtype: str
         """
         return self._MasterInstanceId
@@ -16881,7 +16881,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16915,7 +16915,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
 
 
 class DescribeReadOnlyGroupListRequest(AbstractModel):
-    """DescribeReadOnlyGroupList request structure.
+    r"""DescribeReadOnlyGroupList request structure.
 
     """
 
@@ -16928,7 +16928,7 @@ class DescribeReadOnlyGroupListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID, in the format of mssql-3l3fgqn7.
+        r"""Primary instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -16951,7 +16951,7 @@ class DescribeReadOnlyGroupListRequest(AbstractModel):
 
 
 class DescribeReadOnlyGroupListResponse(AbstractModel):
-    """DescribeReadOnlyGroupList response structure.
+    r"""DescribeReadOnlyGroupList response structure.
 
     """
 
@@ -16967,7 +16967,7 @@ class DescribeReadOnlyGroupListResponse(AbstractModel):
 
     @property
     def ReadOnlyGroupSet(self):
-        """Read-only group list.
+        r"""Read-only group list.
         :rtype: list of ReadOnlyGroup
         """
         return self._ReadOnlyGroupSet
@@ -16978,7 +16978,7 @@ class DescribeReadOnlyGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16999,13 +16999,13 @@ class DescribeReadOnlyGroupListResponse(AbstractModel):
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions request structure.
+    r"""DescribeRegions request structure.
 
     """
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions response structure.
+    r"""DescribeRegions response structure.
 
     """
 
@@ -17024,7 +17024,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of regions returned
+        r"""Total number of regions returned
         :rtype: int
         """
         return self._TotalCount
@@ -17035,7 +17035,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
-        """Region information array
+        r"""Region information array
         :rtype: list of RegionInfo
         """
         return self._RegionSet
@@ -17046,7 +17046,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17068,7 +17068,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeRegularBackupPlanRequest(AbstractModel):
-    """DescribeRegularBackupPlan request structure.
+    r"""DescribeRegularBackupPlan request structure.
 
     """
 
@@ -17096,7 +17096,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -17107,7 +17107,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def RegularBackupSaveDays(self):
-        """Scheduled backup retention days, in the range of [90 - 3650]. The default value is 365.
+        r"""Scheduled backup retention days, in the range of [90 - 3650]. The default value is 365.
         :rtype: int
         """
         return self._RegularBackupSaveDays
@@ -17118,7 +17118,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def RegularBackupStrategy(self):
-        """Scheduled backup policy. years - annually; quarters - quarterly; months - monthly. The default value is months.
+        r"""Scheduled backup policy. years - annually; quarters - quarterly; months - monthly. The default value is months.
         :rtype: str
         """
         return self._RegularBackupStrategy
@@ -17129,7 +17129,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def RegularBackupCounts(self):
-        """Number of retained scheduled backups. The default value is 1.
+        r"""Number of retained scheduled backups. The default value is 1.
         :rtype: int
         """
         return self._RegularBackupCounts
@@ -17140,7 +17140,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def RegularBackupStartTime(self):
-        """Scheduled backup start date, in the format of YYYY-MM-DD. The current date is used by default.
+        r"""Scheduled backup start date, in the format of YYYY-MM-DD. The current date is used by default.
         :rtype: str
         """
         return self._RegularBackupStartTime
@@ -17151,7 +17151,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
     @property
     def BackupCycle(self):
-        """Regular backup cycle.
+        r"""Regular backup cycle.
         :rtype: list of int non-negative
         """
         return self._BackupCycle
@@ -17179,7 +17179,7 @@ class DescribeRegularBackupPlanRequest(AbstractModel):
 
 
 class DescribeRegularBackupPlanResponse(AbstractModel):
-    """DescribeRegularBackupPlan response structure.
+    r"""DescribeRegularBackupPlan response structure.
 
     """
 
@@ -17198,7 +17198,7 @@ class DescribeRegularBackupPlanResponse(AbstractModel):
 
     @property
     def SaveModePeriod(self):
-        """Regular backup plan.
+        r"""Regular backup plan.
         :rtype: list of str
         """
         return self._SaveModePeriod
@@ -17209,7 +17209,7 @@ class DescribeRegularBackupPlanResponse(AbstractModel):
 
     @property
     def SaveModeRegular(self):
-        """Scheduled backup plan.
+        r"""Scheduled backup plan.
         :rtype: list of str
         """
         return self._SaveModeRegular
@@ -17220,7 +17220,7 @@ class DescribeRegularBackupPlanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17237,7 +17237,7 @@ class DescribeRegularBackupPlanResponse(AbstractModel):
 
 
 class DescribeRestoreTaskRequest(AbstractModel):
-    """DescribeRestoreTask request structure.
+    r"""DescribeRestoreTask request structure.
 
     """
 
@@ -17283,7 +17283,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Source Instance ID.
+        r"""Source Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -17294,7 +17294,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -17305,7 +17305,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -17316,7 +17316,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def RestoreType(self):
-        """Rollback method. 0 - roll back by time point; 1 - roll back by backup set.
+        r"""Rollback method. 0 - roll back by time point; 1 - roll back by backup set.
         :rtype: int
         """
         return self._RestoreType
@@ -17327,7 +17327,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def TargetRegion(self):
-        """Region where the target instance is located for rollback.
+        r"""Region where the target instance is located for rollback.
         :rtype: str
         """
         return self._TargetRegion
@@ -17338,7 +17338,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        """Type of the target instance for rollback. 0 - current instance; 1 - existing instance; 2 - new instance.
+        r"""Type of the target instance for rollback. 0 - current instance; 1 - existing instance; 2 - new instance.
         :rtype: int
         """
         return self._TargetType
@@ -17349,7 +17349,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Rollback status, 0: initialized; 1: running; 2: successful; 3: failed.
+        r"""Rollback status, 0: initialized; 1: running; 2: successful; 3: failed.
         :rtype: int
         """
         return self._Status
@@ -17360,7 +17360,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
+        r"""The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.
         :rtype: int
         """
         return self._Offset
@@ -17371,7 +17371,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Page number in pagination mode. The default value is 0.
+        r"""Page number in pagination mode. The default value is 0.
         :rtype: int
         """
         return self._Limit
@@ -17382,7 +17382,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        """Sorting field. restoreTime - rollback time; startTime-task start time; endTime-task end time. By default, the results are sorted in descending order by task start time.
+        r"""Sorting field. restoreTime - rollback time; startTime-task start time; endTime-task end time. By default, the results are sorted in descending order by task start time.
         :rtype: str
         """
         return self._OrderBy
@@ -17393,7 +17393,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        """Sorting rule. desc - descending order; asc - ascending order. The default value is desc.
+        r"""Sorting rule. desc - descending order; asc - ascending order. The default value is desc.
         :rtype: str
         """
         return self._OrderByType
@@ -17404,7 +17404,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        """Asynchronous rollback task ID.
+        r"""Asynchronous rollback task ID.
         :rtype: int
         """
         return self._FlowId
@@ -17438,7 +17438,7 @@ class DescribeRestoreTaskRequest(AbstractModel):
 
 
 class DescribeRestoreTaskResponse(AbstractModel):
-    """DescribeRestoreTask response structure.
+    r"""DescribeRestoreTask response structure.
 
     """
 
@@ -17457,7 +17457,7 @@ class DescribeRestoreTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of rollback tasks.
+        r"""Total number of rollback tasks.
         :rtype: int
         """
         return self._TotalCount
@@ -17468,7 +17468,7 @@ class DescribeRestoreTaskResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """Rollback task record list.
+        r"""Rollback task record list.
         :rtype: list of RestoreTask
         """
         return self._Tasks
@@ -17479,7 +17479,7 @@ class DescribeRestoreTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17501,7 +17501,7 @@ class DescribeRestoreTaskResponse(AbstractModel):
 
 
 class DescribeRestoreTimeRangeRequest(AbstractModel):
-    """DescribeRestoreTimeRange request structure.
+    r"""DescribeRestoreTimeRange request structure.
 
     """
 
@@ -17517,7 +17517,7 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -17528,7 +17528,7 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TargetInstanceId
@@ -17552,7 +17552,7 @@ class DescribeRestoreTimeRangeRequest(AbstractModel):
 
 
 class DescribeRestoreTimeRangeResponse(AbstractModel):
-    """DescribeRestoreTimeRange response structure.
+    r"""DescribeRestoreTimeRange response structure.
 
     """
 
@@ -17571,7 +17571,7 @@ class DescribeRestoreTimeRangeResponse(AbstractModel):
 
     @property
     def MinTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MinTime
@@ -17582,7 +17582,7 @@ class DescribeRestoreTimeRangeResponse(AbstractModel):
 
     @property
     def MaxTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MaxTime
@@ -17593,7 +17593,7 @@ class DescribeRestoreTimeRangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17610,7 +17610,7 @@ class DescribeRestoreTimeRangeResponse(AbstractModel):
 
 
 class DescribeRollbackTimeRequest(AbstractModel):
-    """DescribeRollbackTime request structure.
+    r"""DescribeRollbackTime request structure.
 
     """
 
@@ -17626,7 +17626,7 @@ class DescribeRollbackTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -17637,7 +17637,7 @@ class DescribeRollbackTimeRequest(AbstractModel):
 
     @property
     def DBs(self):
-        """List of databases to be queried
+        r"""List of databases to be queried
         :rtype: list of str
         """
         return self._DBs
@@ -17661,7 +17661,7 @@ class DescribeRollbackTimeRequest(AbstractModel):
 
 
 class DescribeRollbackTimeResponse(AbstractModel):
-    """DescribeRollbackTime response structure.
+    r"""DescribeRollbackTime response structure.
 
     """
 
@@ -17677,7 +17677,7 @@ class DescribeRollbackTimeResponse(AbstractModel):
 
     @property
     def Details(self):
-        """Information of time range available for database rollback
+        r"""Information of time range available for database rollback
         :rtype: list of DbRollbackTimeInfo
         """
         return self._Details
@@ -17688,7 +17688,7 @@ class DescribeRollbackTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17709,7 +17709,7 @@ class DescribeRollbackTimeResponse(AbstractModel):
 
 
 class DescribeSlowlogsRequest(AbstractModel):
-    """DescribeSlowlogs request structure.
+    r"""DescribeSlowlogs request structure.
 
     """
 
@@ -17734,7 +17734,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-k8voqdlz
+        r"""Instance ID in the format of mssql-k8voqdlz
         :rtype: str
         """
         return self._InstanceId
@@ -17745,7 +17745,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time in the format of `yyyy-MM-dd HH:mm:ss`
+        r"""Start time in the format of `yyyy-MM-dd HH:mm:ss`
         :rtype: str
         """
         return self._StartTime
@@ -17756,7 +17756,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time in the format of `yyyy-MM-dd HH:mm:ss`
+        r"""End time in the format of `yyyy-MM-dd HH:mm:ss`
         :rtype: str
         """
         return self._EndTime
@@ -17767,7 +17767,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page. Value range: 1-100. Default value: 20
+        r"""Number of results per page. Value range: 1-100. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -17778,7 +17778,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -17805,7 +17805,7 @@ class DescribeSlowlogsRequest(AbstractModel):
 
 
 class DescribeSlowlogsResponse(AbstractModel):
-    """DescribeSlowlogs response structure.
+    r"""DescribeSlowlogs response structure.
 
     """
 
@@ -17827,7 +17827,7 @@ class DescribeSlowlogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of queries
+        r"""Total number of queries
         :rtype: int
         """
         return self._TotalCount
@@ -17840,7 +17840,7 @@ class DescribeSlowlogsResponse(AbstractModel):
     def Slowlogs(self):
         warnings.warn("parameter `Slowlogs` is deprecated", DeprecationWarning) 
 
-        """Information list of slow query logs
+        r"""Information list of slow query logs
         :rtype: list of SlowlogInfo
         """
         return self._Slowlogs
@@ -17853,7 +17853,7 @@ class DescribeSlowlogsResponse(AbstractModel):
 
     @property
     def SlowLogs(self):
-        """
+        r"""
         :rtype: list of SlowLog
         """
         return self._SlowLogs
@@ -17864,7 +17864,7 @@ class DescribeSlowlogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17892,7 +17892,7 @@ class DescribeSlowlogsResponse(AbstractModel):
 
 
 class DescribeSpecSellStatusRequest(AbstractModel):
-    """DescribeSpecSellStatus request structure.
+    r"""DescribeSpecSellStatus request structure.
 
     """
 
@@ -17920,7 +17920,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ ID. For example, ap-guangzhou-3.
+        r"""AZ ID. For example, ap-guangzhou-3.
         :rtype: str
         """
         return self._Zone
@@ -17931,7 +17931,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def SpecIdSet(self):
-        """Instance specification ID, which can be obtained by calling the DescribeProductConfig API.
+        r"""Instance specification ID, which can be obtained by calling the DescribeProductConfig API.
         :rtype: list of int non-negative
         """
         return self._SpecIdSet
@@ -17942,7 +17942,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """Database version, which can be obtained by calling the DescribeProductConfig API.
+        r"""Database version, which can be obtained by calling the DescribeProductConfig API.
         :rtype: str
         """
         return self._DBVersion
@@ -17953,7 +17953,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def Pid(self):
-        """Product ID, which can be obtained by calling the DescribeProductConfig API.
+        r"""Product ID, which can be obtained by calling the DescribeProductConfig API.
         :rtype: int
         """
         return self._Pid
@@ -17964,7 +17964,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Payment mode. POST: pay-as-you-go; PRE: monthly subscription.
+        r"""Payment mode. POST: pay-as-you-go; PRE: monthly subscription.
         :rtype: str
         """
         return self._PayMode
@@ -17975,7 +17975,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
     @property
     def Currency(self):
-        """Currency. CNY; USD.
+        r"""Currency. CNY; USD.
         :rtype: str
         """
         return self._Currency
@@ -18003,7 +18003,7 @@ class DescribeSpecSellStatusRequest(AbstractModel):
 
 
 class DescribeSpecSellStatusResponse(AbstractModel):
-    """DescribeSpecSellStatus response structure.
+    r"""DescribeSpecSellStatus response structure.
 
     """
 
@@ -18019,7 +18019,7 @@ class DescribeSpecSellStatusResponse(AbstractModel):
 
     @property
     def DescribeSpecSellStatusSet(self):
-        """Status set of specifications in different regions.
+        r"""Status set of specifications in different regions.
         :rtype: list of SpecSellStatus
         """
         return self._DescribeSpecSellStatusSet
@@ -18030,7 +18030,7 @@ class DescribeSpecSellStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18051,7 +18051,7 @@ class DescribeSpecSellStatusResponse(AbstractModel):
 
 
 class DescribeUpgradeInstanceCheckRequest(AbstractModel):
-    """DescribeUpgradeInstanceCheck request structure.
+    r"""DescribeUpgradeInstanceCheck request structure.
 
     """
 
@@ -18085,7 +18085,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID, in the format of mssql-njj2mtpl.
+        r"""Database instance ID, in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -18096,7 +18096,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of CPU cores after instance configuration adjustment. If it is left blank, no modification is required.
+        r"""Number of CPU cores after instance configuration adjustment. If it is left blank, no modification is required.
         :rtype: int
         """
         return self._Cpu
@@ -18107,7 +18107,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size after instance configuration adjustment, in GB. If it is left blank, no modification is required.
+        r"""Memory size after instance configuration adjustment, in GB. If it is left blank, no modification is required.
         :rtype: int
         """
         return self._Memory
@@ -18118,7 +18118,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Disk size after instance configuration adjustment, in GB. If it is left blank, no modification is required.
+        r"""Disk size after instance configuration adjustment, in GB. If it is left blank, no modification is required.
         :rtype: int
         """
         return self._Storage
@@ -18129,7 +18129,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """Instance version. If it is left blank, no modification is required.
+        r"""Instance version. If it is left blank, no modification is required.
         :rtype: str
         """
         return self._DBVersion
@@ -18140,7 +18140,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def HAType(self):
-        """Type after instance configuration adjustment. Valid values: CLUSTER - cluster. If it is left blank, no modification is required.
+        r"""Type after instance configuration adjustment. Valid values: CLUSTER - cluster. If it is left blank, no modification is required.
         :rtype: str
         """
         return self._HAType
@@ -18151,7 +18151,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def MultiZones(self):
-        """Cross-AZ type after instance configuration adjustment. Valid values: SameZones - change to the same AZ; MultiZones - change to cross-AZ. If it is left blank, no modification is required.
+        r"""Cross-AZ type after instance configuration adjustment. Valid values: SameZones - change to the same AZ; MultiZones - change to cross-AZ. If it is left blank, no modification is required.
         :rtype: str
         """
         return self._MultiZones
@@ -18162,7 +18162,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
     @property
     def DrZones(self):
-        """Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
+        r"""Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
         :rtype: list of DrZoneInfo
         """
         return self._DrZones
@@ -18197,7 +18197,7 @@ class DescribeUpgradeInstanceCheckRequest(AbstractModel):
 
 
 class DescribeUpgradeInstanceCheckResponse(AbstractModel):
-    """DescribeUpgradeInstanceCheck response structure.
+    r"""DescribeUpgradeInstanceCheck response structure.
 
     """
 
@@ -18222,7 +18222,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
     @property
     def IsAffect(self):
-        """Whether the configuration adjustment has an impact on the instance. 0 - no; 1 - yes.
+        r"""Whether the configuration adjustment has an impact on the instance. 0 - no; 1 - yes.
         :rtype: int
         """
         return self._IsAffect
@@ -18233,7 +18233,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
     @property
     def Passed(self):
-        """Whether the configuration adjustment can be executed. 0 - no; 1 - yes.
+        r"""Whether the configuration adjustment can be executed. 0 - no; 1 - yes.
         :rtype: int
         """
         return self._Passed
@@ -18244,7 +18244,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
     @property
     def ModifyMode(self):
-        """Whether the configuration adjustment is a downgrade or an upgrade. Down - downgrade; up - upgrade.
+        r"""Whether the configuration adjustment is a downgrade or an upgrade. Down - downgrade; up - upgrade.
         :rtype: str
         """
         return self._ModifyMode
@@ -18255,7 +18255,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
     @property
     def CheckItems(self):
-        """Check item list.
+        r"""Check item list.
         :rtype: list of CheckItem
         """
         return self._CheckItems
@@ -18266,7 +18266,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18290,7 +18290,7 @@ class DescribeUpgradeInstanceCheckResponse(AbstractModel):
 
 
 class DescribeUploadBackupInfoRequest(AbstractModel):
-    """DescribeUploadBackupInfo request structure.
+    r"""DescribeUploadBackupInfo request structure.
 
     """
 
@@ -18306,7 +18306,7 @@ class DescribeUploadBackupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -18317,7 +18317,7 @@ class DescribeUploadBackupInfoRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -18341,7 +18341,7 @@ class DescribeUploadBackupInfoRequest(AbstractModel):
 
 
 class DescribeUploadBackupInfoResponse(AbstractModel):
-    """DescribeUploadBackupInfo response structure.
+    r"""DescribeUploadBackupInfo response structure.
 
     """
 
@@ -18381,7 +18381,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def BucketName(self):
-        """Bucket name
+        r"""Bucket name
         :rtype: str
         """
         return self._BucketName
@@ -18392,7 +18392,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def Region(self):
-        """Bucket location information
+        r"""Bucket location information
         :rtype: str
         """
         return self._Region
@@ -18403,7 +18403,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def Path(self):
-        """Storage path
+        r"""Storage path
         :rtype: str
         """
         return self._Path
@@ -18414,7 +18414,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """Temporary key ID
+        r"""Temporary key ID
         :rtype: str
         """
         return self._TmpSecretId
@@ -18425,7 +18425,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """Temporary key (Key)
+        r"""Temporary key (Key)
         :rtype: str
         """
         return self._TmpSecretKey
@@ -18438,7 +18438,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
     def XCosSecurityToken(self):
         warnings.warn("parameter `XCosSecurityToken` is deprecated", DeprecationWarning) 
 
-        """Temporary key (Token)
+        r"""Temporary key (Token)
         :rtype: str
         """
         return self._XCosSecurityToken
@@ -18451,7 +18451,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Temporary key start time
+        r"""Temporary key start time
         :rtype: str
         """
         return self._StartTime
@@ -18462,7 +18462,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Temporary key expiration time
+        r"""Temporary key expiration time
         :rtype: str
         """
         return self._ExpiredTime
@@ -18473,7 +18473,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def CosSecurityToken(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CosSecurityToken
@@ -18484,7 +18484,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18508,7 +18508,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
 
 class DescribeXEventsRequest(AbstractModel):
-    """DescribeXEvents request structure.
+    r"""DescribeXEvents request structure.
 
     """
 
@@ -18536,7 +18536,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -18547,7 +18547,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def EventType(self):
-        """Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  deadlock` (deadlock event).
+        r"""Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  deadlock` (deadlock event).
         :rtype: str
         """
         return self._EventType
@@ -18558,7 +18558,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Generation start time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
+        r"""Generation start time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
         :rtype: str
         """
         return self._StartTime
@@ -18569,7 +18569,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Generation end time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
+        r"""Generation end time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
         :rtype: str
         """
         return self._EndTime
@@ -18580,7 +18580,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: `0`
+        r"""Page number. Default value: `0`
         :rtype: int
         """
         return self._Offset
@@ -18591,7 +18591,7 @@ class DescribeXEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries to be returned per page. Value range: 1-100. Default value: `20`
+        r"""Number of entries to be returned per page. Value range: 1-100. Default value: `20`
         :rtype: int
         """
         return self._Limit
@@ -18619,7 +18619,7 @@ class DescribeXEventsRequest(AbstractModel):
 
 
 class DescribeXEventsResponse(AbstractModel):
-    """DescribeXEvents response structure.
+    r"""DescribeXEvents response structure.
 
     """
 
@@ -18638,7 +18638,7 @@ class DescribeXEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        """List of extended events
+        r"""List of extended events
         :rtype: list of Events
         """
         return self._Events
@@ -18649,7 +18649,7 @@ class DescribeXEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of extended events
+        r"""Total number of extended events
         :rtype: int
         """
         return self._TotalCount
@@ -18660,7 +18660,7 @@ class DescribeXEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18682,13 +18682,13 @@ class DescribeXEventsResponse(AbstractModel):
 
 
 class DescribeZonesRequest(AbstractModel):
-    """DescribeZones request structure.
+    r"""DescribeZones request structure.
 
     """
 
 
 class DescribeZonesResponse(AbstractModel):
-    """DescribeZones response structure.
+    r"""DescribeZones response structure.
 
     """
 
@@ -18707,7 +18707,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of AZs returned.
+        r"""Number of AZs returned.
         :rtype: int
         """
         return self._TotalCount
@@ -18718,7 +18718,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """Array of AZs.
+        r"""Array of AZs.
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet
@@ -18729,7 +18729,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18751,7 +18751,7 @@ class DescribeZonesResponse(AbstractModel):
 
 
 class DisassociateSecurityGroupsRequest(AbstractModel):
-    """DisassociateSecurityGroups request structure.
+    r"""DisassociateSecurityGroups request structure.
 
     """
 
@@ -18767,7 +18767,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID.
+        r"""Security group ID.
         :rtype: str
         """
         return self._SecurityGroupId
@@ -18778,7 +18778,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.
+        r"""Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -18802,7 +18802,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
 
 class DisassociateSecurityGroupsResponse(AbstractModel):
-    """DisassociateSecurityGroups response structure.
+    r"""DisassociateSecurityGroups response structure.
 
     """
 
@@ -18815,7 +18815,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18830,7 +18830,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
 
 class DrReadableInfo(AbstractModel):
-    """Replica server read-only information
+    r"""Replica server read-only information
 
     """
 
@@ -18864,7 +18864,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlaveStatus(self):
-        """Replica server status. Valid values: enable - running; disable - unavailable
+        r"""Replica server status. Valid values: enable - running; disable - unavailable
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18876,7 +18876,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadableStatus(self):
-        """Replica server readable status. Valid values: enable - enabled; disable - disabled
+        r"""Replica server readable status. Valid values: enable - enabled; disable - disabled
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18888,7 +18888,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
-        """Replica server read-only VIP
+        r"""Replica server read-only VIP
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18900,7 +18900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VPort(self):
-        """Replica server read-only port
+        r"""Replica server read-only port
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -18912,7 +18912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
-        """Replica server VPC ID
+        r"""Replica server VPC ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18924,7 +18924,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqSubnetId(self):
-        """Replica server VPC subnet ID
+        r"""Replica server VPC subnet ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -18953,7 +18953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DrZoneInfo(AbstractModel):
-    """AZ information on the secondary node.
+    r"""AZ information on the secondary node.
 
     """
 
@@ -18969,7 +18969,7 @@ class DrZoneInfo(AbstractModel):
 
     @property
     def DrInstanceId(self):
-        """Resource ID of the secondary node.
+        r"""Resource ID of the secondary node.
         :rtype: str
         """
         return self._DrInstanceId
@@ -18980,7 +18980,7 @@ class DrZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ of the secondary node.
+        r"""AZ of the secondary node.
         :rtype: str
         """
         return self._Zone
@@ -19004,7 +19004,7 @@ class DrZoneInfo(AbstractModel):
 
 
 class EventConfig(AbstractModel):
-    """Threshold setting for an extended event
+    r"""Threshold setting for an extended event
 
     """
 
@@ -19020,7 +19020,7 @@ class EventConfig(AbstractModel):
 
     @property
     def EventType(self):
-        """Event type. Valid values: `slow` (set threshold for slow SQL ), `blocked` (set threshold for the blocking and deadlock).
+        r"""Event type. Valid values: `slow` (set threshold for slow SQL ), `blocked` (set threshold for the blocking and deadlock).
         :rtype: str
         """
         return self._EventType
@@ -19031,7 +19031,7 @@ class EventConfig(AbstractModel):
 
     @property
     def Threshold(self):
-        """Threshold in milliseconds. Valid values: `0`(disable), `non-zero` (enable)
+        r"""Threshold in milliseconds. Valid values: `0`(disable), `non-zero` (enable)
         :rtype: int
         """
         return self._Threshold
@@ -19055,7 +19055,7 @@ class EventConfig(AbstractModel):
 
 
 class Events(AbstractModel):
-    """Details of an extended event
+    r"""Details of an extended event
 
     """
 
@@ -19092,7 +19092,7 @@ class Events(AbstractModel):
 
     @property
     def Id(self):
-        """ID
+        r"""ID
         :rtype: int
         """
         return self._Id
@@ -19103,7 +19103,7 @@ class Events(AbstractModel):
 
     @property
     def FileName(self):
-        """File name of an extended event
+        r"""File name of an extended event
         :rtype: str
         """
         return self._FileName
@@ -19114,7 +19114,7 @@ class Events(AbstractModel):
 
     @property
     def Size(self):
-        """File size of an extended event
+        r"""File size of an extended event
         :rtype: int
         """
         return self._Size
@@ -19125,7 +19125,7 @@ class Events(AbstractModel):
 
     @property
     def EventType(self):
-        """Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  `deadlock` (deadlock event).
+        r"""Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  `deadlock` (deadlock event).
         :rtype: str
         """
         return self._EventType
@@ -19136,7 +19136,7 @@ class Events(AbstractModel):
 
     @property
     def Status(self):
-        """Event record status. Valid values: `1` (succeeded), `2` (failed).
+        r"""Event record status. Valid values: `1` (succeeded), `2` (failed).
         :rtype: int
         """
         return self._Status
@@ -19147,7 +19147,7 @@ class Events(AbstractModel):
 
     @property
     def StartTime(self):
-        """Generation start time of an extended file
+        r"""Generation start time of an extended file
         :rtype: str
         """
         return self._StartTime
@@ -19158,7 +19158,7 @@ class Events(AbstractModel):
 
     @property
     def EndTime(self):
-        """Generation end time of an extended file
+        r"""Generation end time of an extended file
         :rtype: str
         """
         return self._EndTime
@@ -19169,7 +19169,7 @@ class Events(AbstractModel):
 
     @property
     def InternalAddr(self):
-        """Download address on the private network
+        r"""Download address on the private network
         :rtype: str
         """
         return self._InternalAddr
@@ -19180,7 +19180,7 @@ class Events(AbstractModel):
 
     @property
     def ExternalAddr(self):
-        """Download address on the public network
+        r"""Download address on the public network
         :rtype: str
         """
         return self._ExternalAddr
@@ -19211,7 +19211,7 @@ class Events(AbstractModel):
 
 
 class FileAction(AbstractModel):
-    """Information of allowed operation
+    r"""Information of allowed operation
 
     """
 
@@ -19227,7 +19227,7 @@ class FileAction(AbstractModel):
 
     @property
     def AllAction(self):
-        """Allowed operations. Valid values: `view` (view list), `remark` (modify remark), `deploy` (deploy files), `delete` (delete files).
+        r"""Allowed operations. Valid values: `view` (view list), `remark` (modify remark), `deploy` (deploy files), `delete` (delete files).
         :rtype: list of str
         """
         return self._AllAction
@@ -19238,7 +19238,7 @@ class FileAction(AbstractModel):
 
     @property
     def AllowedAction(self):
-        """Operation allowed in the current status. If the subset of `AllAction` is empty, no operations will be allowed.
+        r"""Operation allowed in the current status. If the subset of `AllAction` is empty, no operations will be allowed.
         :rtype: list of str
         """
         return self._AllowedAction
@@ -19262,7 +19262,7 @@ class FileAction(AbstractModel):
 
 
 class InquiryPriceCreateDBInstancesRequest(AbstractModel):
-    """InquiryPriceCreateDBInstances request structure.
+    r"""InquiryPriceCreateDBInstances request structure.
 
     """
 
@@ -19303,7 +19303,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API
+        r"""AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API
         :rtype: str
         """
         return self._Zone
@@ -19314,7 +19314,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size in GB
+        r"""Memory size in GB
         :rtype: int
         """
         return self._Memory
@@ -19325,7 +19325,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance capacity in GB
+        r"""Instance capacity in GB
         :rtype: int
         """
         return self._Storage
@@ -19336,7 +19336,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """Billing type. Valid value: POSTPAID.
+        r"""Billing type. Valid value: POSTPAID.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -19347,7 +19347,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Length of purchase in months. Value range: 1-48. Default value: 1
+        r"""Length of purchase in months. Value range: 1-48. Default value: 1
         :rtype: int
         """
         return self._Period
@@ -19358,7 +19358,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased at a time. Value range: 1-100. Default value: 1
+        r"""Number of instances purchased at a time. Value range: 1-100. Default value: 1
         :rtype: int
         """
         return self._GoodsNum
@@ -19369,7 +19369,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """SQL version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), `201402` (SQL Server 2014 Standard)`, `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The purchasable version varies by region. It can be queried by the `DescribeProductConfig` API.
+        r"""SQL version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), `201402` (SQL Server 2014 Standard)`, `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The purchasable version varies by region. It can be queried by the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -19380,7 +19380,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """The number of CPU cores of the instance you want to purchase.
+        r"""The number of CPU cores of the instance you want to purchase.
         :rtype: int
         """
         return self._Cpu
@@ -19391,7 +19391,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """The type of instance to be purchased. Valid values: `HA` (high-availability edition, including dual-server high-availability and AlwaysOn cluster edition), `RO` (read-only replica edition), `SI` (single-node edition), `cvmHA` (dual-server high-availability edition for CVM), `cvmRO` (read-only edition for CVM).
+        r"""The type of instance to be purchased. Valid values: `HA` (high-availability edition, including dual-server high-availability and AlwaysOn cluster edition), `RO` (read-only replica edition), `SI` (single-node edition), `cvmHA` (dual-server high-availability edition for CVM), `cvmRO` (read-only edition for CVM).
         :rtype: str
         """
         return self._InstanceType
@@ -19402,7 +19402,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """The host type of the instance to be purchased. Valid values: `PM` (physical machine), `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD), 
+        r"""The host type of the instance to be purchased. Valid values: `PM` (physical machine), `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD), 
 `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :rtype: str
         """
@@ -19435,7 +19435,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
 
 
 class InquiryPriceCreateDBInstancesResponse(AbstractModel):
-    """InquiryPriceCreateDBInstances response structure.
+    r"""InquiryPriceCreateDBInstances response structure.
 
     """
 
@@ -19454,7 +19454,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
+        r"""Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
         :rtype: int
         """
         return self._OriginalPrice
@@ -19465,7 +19465,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        """The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
+        r"""The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD
         :rtype: int
         """
         return self._Price
@@ -19476,7 +19476,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19493,7 +19493,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
 
 class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
-    """InquiryPriceUpgradeDBInstance request structure.
+    r"""InquiryPriceUpgradeDBInstance request structure.
 
     """
 
@@ -19515,7 +19515,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-njj2mtpl.
+        r"""Instance ID in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -19526,7 +19526,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size.
+        r"""Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size.
         :rtype: int
         """
         return self._Memory
@@ -19537,7 +19537,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity.
+        r"""Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity.
         :rtype: int
         """
         return self._Storage
@@ -19548,7 +19548,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.
+        r"""The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.
         :rtype: int
         """
         return self._Cpu
@@ -19574,7 +19574,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
 
 class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
-    """InquiryPriceUpgradeDBInstance response structure.
+    r"""InquiryPriceUpgradeDBInstance response structure.
 
     """
 
@@ -19593,7 +19593,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
+        r"""Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :rtype: int
         """
         return self._OriginalPrice
@@ -19604,7 +19604,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        """The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
+        r"""The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :rtype: int
         """
         return self._Price
@@ -19615,7 +19615,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19632,7 +19632,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
 
 class InstanceDBDetail(AbstractModel):
-    """Instance database information
+    r"""Instance database information
 
     """
 
@@ -19648,7 +19648,7 @@ class InstanceDBDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19659,7 +19659,7 @@ class InstanceDBDetail(AbstractModel):
 
     @property
     def DBDetails(self):
-        """Database information list
+        r"""Database information list
         :rtype: list of DBDetail
         """
         return self._DBDetails
@@ -19688,7 +19688,7 @@ class InstanceDBDetail(AbstractModel):
 
 
 class InstanceTask(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -19722,7 +19722,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Id(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Id
@@ -19733,7 +19733,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Type(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Type
@@ -19744,7 +19744,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -19755,7 +19755,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Progress(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Progress
@@ -19766,7 +19766,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -19777,7 +19777,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def EndTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -19788,7 +19788,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def ErrorCode(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ErrorCode
@@ -19799,7 +19799,7 @@ class InstanceTask(AbstractModel):
 
     @property
     def Message(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Message
@@ -19829,7 +19829,7 @@ class InstanceTask(AbstractModel):
 
 
 class InterInstance(AbstractModel):
-    """Details of instances in the interwoking group
+    r"""Details of instances in the interwoking group
 
     """
 
@@ -19872,7 +19872,7 @@ class InterInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -19883,7 +19883,7 @@ class InterInstance(AbstractModel):
 
     @property
     def InterVip(self):
-        """Instance interworking IP, which can be accessed after the instance is added to the interworking group.
+        r"""Instance interworking IP, which can be accessed after the instance is added to the interworking group.
         :rtype: str
         """
         return self._InterVip
@@ -19894,7 +19894,7 @@ class InterInstance(AbstractModel):
 
     @property
     def InterPort(self):
-        """Instance interworking port, which can be accessed after the instance is added to the interworking group.
+        r"""Instance interworking port, which can be accessed after the instance is added to the interworking group.
         :rtype: int
         """
         return self._InterPort
@@ -19905,7 +19905,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Status(self):
-        """Instance interworking status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6`(Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
+        r"""Instance interworking status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6`(Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
         :rtype: int
         """
         return self._Status
@@ -19916,7 +19916,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Region(self):
-        """Instance region, such as ap-guangzhou.
+        r"""Instance region, such as ap-guangzhou.
         :rtype: str
         """
         return self._Region
@@ -19927,7 +19927,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ name, such as ap-guangzhou-1.
+        r"""Instance AZ name, such as ap-guangzhou-1.
         :rtype: str
         """
         return self._Zone
@@ -19938,7 +19938,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Version(self):
-        """Instance version code
+        r"""Instance version code
         :rtype: str
         """
         return self._Version
@@ -19949,7 +19949,7 @@ class InterInstance(AbstractModel):
 
     @property
     def VersionName(self):
-        """Instance version
+        r"""Instance version
         :rtype: str
         """
         return self._VersionName
@@ -19960,7 +19960,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Name(self):
-        """Instance name
+        r"""Instance name
         :rtype: str
         """
         return self._Name
@@ -19971,7 +19971,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Vip(self):
-        """Instance access IP
+        r"""Instance access IP
         :rtype: str
         """
         return self._Vip
@@ -19982,7 +19982,7 @@ class InterInstance(AbstractModel):
 
     @property
     def Vport(self):
-        """Instance access port
+        r"""Instance access port
         :rtype: int
         """
         return self._Vport
@@ -20015,7 +20015,7 @@ class InterInstance(AbstractModel):
 
 
 class InterInstanceFlow(AbstractModel):
-    """Instance status after enabling or disabling the interworking group
+    r"""Instance status after enabling or disabling the interworking group
 
     """
 
@@ -20031,7 +20031,7 @@ class InterInstanceFlow(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, such as mssql-sdf32n1d.
+        r"""Instance ID, such as mssql-sdf32n1d.
         :rtype: str
         """
         return self._InstanceId
@@ -20042,7 +20042,7 @@ class InterInstanceFlow(AbstractModel):
 
     @property
     def FlowId(self):
-        """Instance task ID for enabling or disabling the interworking group. When `FlowId` is less than 0, the interworking group will be enabled or disabled successfully; otherwise, the operation failed.
+        r"""Instance task ID for enabling or disabling the interworking group. When `FlowId` is less than 0, the interworking group will be enabled or disabled successfully; otherwise, the operation failed.
         :rtype: int
         """
         return self._FlowId
@@ -20066,7 +20066,7 @@ class InterInstanceFlow(AbstractModel):
 
 
 class MigrateDB(AbstractModel):
-    """List of databases to be migrated
+    r"""List of databases to be migrated
 
     """
 
@@ -20079,7 +20079,7 @@ class MigrateDB(AbstractModel):
 
     @property
     def DBName(self):
-        """Name of migrated database
+        r"""Name of migrated database
         :rtype: str
         """
         return self._DBName
@@ -20102,7 +20102,7 @@ class MigrateDB(AbstractModel):
 
 
 class MigrateDetail(AbstractModel):
-    """Migration progress details
+    r"""Migration progress details
 
     """
 
@@ -20118,7 +20118,7 @@ class MigrateDetail(AbstractModel):
 
     @property
     def StepName(self):
-        """Name of current step
+        r"""Name of current step
         :rtype: str
         """
         return self._StepName
@@ -20129,7 +20129,7 @@ class MigrateDetail(AbstractModel):
 
     @property
     def Progress(self):
-        """Progress of current step in %
+        r"""Progress of current step in %
         :rtype: int
         """
         return self._Progress
@@ -20153,7 +20153,7 @@ class MigrateDetail(AbstractModel):
 
 
 class MigrateSource(AbstractModel):
-    """Source type of migration task
+    r"""Source type of migration task
 
     """
 
@@ -20193,7 +20193,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)
+        r"""Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)
         :rtype: str
         """
         return self._InstanceId
@@ -20204,7 +20204,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def CvmId(self):
-        """ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
+        r"""ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :rtype: str
         """
         return self._CvmId
@@ -20215,7 +20215,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
+        r"""VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :rtype: str
         """
         return self._VpcId
@@ -20226,7 +20226,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
+        r"""VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :rtype: str
         """
         return self._SubnetId
@@ -20237,7 +20237,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def UserName(self):
-        """Username, which is used when `MigrateType` is 1 or 2
+        r"""Username, which is used when `MigrateType` is 1 or 2
         :rtype: str
         """
         return self._UserName
@@ -20248,7 +20248,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def Password(self):
-        """Password, which is used when `MigrateType` is 1 or 2
+        r"""Password, which is used when `MigrateType` is 1 or 2
         :rtype: str
         """
         return self._Password
@@ -20259,7 +20259,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def Ip(self):
-        """Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
+        r"""Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :rtype: str
         """
         return self._Ip
@@ -20270,7 +20270,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def Port(self):
-        """Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
+        r"""Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)
         :rtype: int
         """
         return self._Port
@@ -20281,7 +20281,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def Url(self):
-        """Source backup address for offline migration, which is used when `MigrateType` is 4 or 5
+        r"""Source backup address for offline migration, which is used when `MigrateType` is 4 or 5
         :rtype: list of str
         """
         return self._Url
@@ -20292,7 +20292,7 @@ class MigrateSource(AbstractModel):
 
     @property
     def UrlPassword(self):
-        """Source backup password for offline migration, which is used when `MigrateType` is 4 or 5
+        r"""Source backup password for offline migration, which is used when `MigrateType` is 4 or 5
         :rtype: str
         """
         return self._UrlPassword
@@ -20324,7 +20324,7 @@ class MigrateSource(AbstractModel):
 
 
 class MigrateTarget(AbstractModel):
-    """Target type of migration task
+    r"""Target type of migration task
 
     """
 
@@ -20343,7 +20343,7 @@ class MigrateTarget(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of target instance in the format of mssql-si2823jyl
+        r"""ID of target instance in the format of mssql-si2823jyl
         :rtype: str
         """
         return self._InstanceId
@@ -20354,7 +20354,7 @@ class MigrateTarget(AbstractModel):
 
     @property
     def UserName(self):
-        """Username of migration target instance
+        r"""Username of migration target instance
         :rtype: str
         """
         return self._UserName
@@ -20365,7 +20365,7 @@ class MigrateTarget(AbstractModel):
 
     @property
     def Password(self):
-        """Password of migration target instance
+        r"""Password of migration target instance
         :rtype: str
         """
         return self._Password
@@ -20390,7 +20390,7 @@ class MigrateTarget(AbstractModel):
 
 
 class MigrateTask(AbstractModel):
-    """Migration task type
+    r"""Migration task type
 
     """
 
@@ -20439,7 +20439,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -20450,7 +20450,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def MigrateName(self):
-        """Migration task name
+        r"""Migration task name
         :rtype: str
         """
         return self._MigrateName
@@ -20461,7 +20461,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def AppId(self):
-        """User ID of migration task
+        r"""User ID of migration task
         :rtype: int
         """
         return self._AppId
@@ -20472,7 +20472,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def Region(self):
-        """Migration task region
+        r"""Migration task region
         :rtype: str
         """
         return self._Region
@@ -20483,7 +20483,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def SourceType(self):
-        """Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
+        r"""Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)
         :rtype: int
         """
         return self._SourceType
@@ -20494,7 +20494,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Migration task creation time
+        r"""Migration task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -20505,7 +20505,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """Migration task start time
+        r"""Migration task start time
         :rtype: str
         """
         return self._StartTime
@@ -20516,7 +20516,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def EndTime(self):
-        """Migration task end time
+        r"""Migration task end time
         :rtype: str
         """
         return self._EndTime
@@ -20527,7 +20527,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def Status(self):
-        """Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)
+        r"""Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)
         :rtype: int
         """
         return self._Status
@@ -20538,7 +20538,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def Message(self):
-        """Information
+        r"""Information
         :rtype: str
         """
         return self._Message
@@ -20549,7 +20549,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def CheckFlag(self):
-        """Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)
+        r"""Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)
         :rtype: int
         """
         return self._CheckFlag
@@ -20560,7 +20560,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def Progress(self):
-        """Migration task progress in %
+        r"""Migration task progress in %
         :rtype: int
         """
         return self._Progress
@@ -20571,7 +20571,7 @@ class MigrateTask(AbstractModel):
 
     @property
     def MigrateDetail(self):
-        """Migration task progress details
+        r"""Migration task progress details
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateDetail`
         """
         return self._MigrateDetail
@@ -20608,7 +20608,7 @@ class MigrateTask(AbstractModel):
 
 
 class Migration(AbstractModel):
-    """Cold backup migration import
+    r"""Cold backup migration import
 
     """
 
@@ -20672,7 +20672,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrationId(self):
-        """Backup import task ID or incremental import task ID
+        r"""Backup import task ID or incremental import task ID
         :rtype: str
         """
         return self._MigrationId
@@ -20683,7 +20683,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrationName(self):
-        """Backup import task name. For an incremental import task, this field will be left empty.
+        r"""Backup import task name. For an incremental import task, this field will be left empty.
 Note: this field may return ‘null’, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20695,7 +20695,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def AppId(self):
-        """Application ID
+        r"""Application ID
         :rtype: int
         """
         return self._AppId
@@ -20706,7 +20706,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -20717,7 +20717,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def InstanceId(self):
-        """ID of migrated target instance
+        r"""ID of migrated target instance
         :rtype: str
         """
         return self._InstanceId
@@ -20728,7 +20728,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def RecoveryType(self):
-        """Migration task restoration type
+        r"""Migration task restoration type
         :rtype: str
         """
         return self._RecoveryType
@@ -20739,7 +20739,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def UploadType(self):
-        """Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        r"""Backup user upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
         :rtype: str
         """
         return self._UploadType
@@ -20750,7 +20750,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def BackupFiles(self):
-        """Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.
+        r"""Backup file list, which is determined by UploadType. If the upload type is COS_URL, URL will be saved. If the upload type is COS_UPLOAD, the backup name will be saved.
         :rtype: list of str
         """
         return self._BackupFiles
@@ -20761,7 +20761,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Status(self):
-        """Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).
+        r"""Migration task status. Valid values: `2` (Creation completed), `7` (Importing full backups), `8` (Waiting for incremental backups), `9` (Import success), `10` (Import failure), `12` (Importing incremental backups).
         :rtype: int
         """
         return self._Status
@@ -20772,7 +20772,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def CreateTime(self):
-        """Migration task creation time
+        r"""Migration task creation time
         :rtype: str
         """
         return self._CreateTime
@@ -20783,7 +20783,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def StartTime(self):
-        """Migration task start time
+        r"""Migration task start time
         :rtype: str
         """
         return self._StartTime
@@ -20794,7 +20794,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def EndTime(self):
-        """Migration task end time
+        r"""Migration task end time
         :rtype: str
         """
         return self._EndTime
@@ -20805,7 +20805,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Message(self):
-        """More information
+        r"""More information
         :rtype: str
         """
         return self._Message
@@ -20816,7 +20816,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Detail(self):
-        """Migration detail
+        r"""Migration detail
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrationDetail`
         """
         return self._Detail
@@ -20827,7 +20827,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Action(self):
-        """Operation allowed in the current status
+        r"""Operation allowed in the current status
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`
         """
         return self._Action
@@ -20838,7 +20838,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def IsRecovery(self):
-        """Whether this is the final restoration. For a full import task, this field will be left empty.
+        r"""Whether this is the final restoration. For a full import task, this field will be left empty.
 Note: this field may return ‘null’, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -20850,7 +20850,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def DBRename(self):
-        """Name set of renamed databases
+        r"""Name set of renamed databases
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DBRenameRes
         """
@@ -20899,7 +20899,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MigrationAction(AbstractModel):
-    """Operation allowed by a cold backup import task
+    r"""Operation allowed by a cold backup import task
 
     """
 
@@ -20915,7 +20915,7 @@ class MigrationAction(AbstractModel):
 
     @property
     def AllAction(self):
-        """All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).
+        r"""All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).
         :rtype: list of str
         """
         return self._AllAction
@@ -20926,7 +20926,7 @@ class MigrationAction(AbstractModel):
 
     @property
     def AllowedAction(self):
-        """Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.
+        r"""Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.
         :rtype: list of str
         """
         return self._AllowedAction
@@ -20950,7 +20950,7 @@ class MigrationAction(AbstractModel):
 
 
 class MigrationDetail(AbstractModel):
-    """Details of a cold backup import task
+    r"""Details of a cold backup import task
 
     """
 
@@ -20973,7 +20973,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def StepAll(self):
-        """Total number of steps
+        r"""Total number of steps
         :rtype: int
         """
         return self._StepAll
@@ -20984,7 +20984,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def StepNow(self):
-        """Current step
+        r"""Current step
         :rtype: int
         """
         return self._StepNow
@@ -20995,7 +20995,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def Progress(self):
-        """Overall progress. For example, “30” means 30%.
+        r"""Overall progress. For example, “30” means 30%.
         :rtype: int
         """
         return self._Progress
@@ -21006,7 +21006,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
     @property
     def StepInfo(self):
-        """Step information. ‘null’ means the migration has not started
+        r"""Step information. ‘null’ means the migration has not started
 Note: this field may return ‘null’, indicating that no valid values can be obtained.
         :rtype: list of MigrationStep
         """
@@ -21038,7 +21038,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
 
 
 class MigrationStep(AbstractModel):
-    """Migration steps of a cold backup import task
+    r"""Migration steps of a cold backup import task
 
     """
 
@@ -21060,7 +21060,7 @@ class MigrationStep(AbstractModel):
 
     @property
     def StepNo(self):
-        """Step sequence
+        r"""Step sequence
         :rtype: int
         """
         return self._StepNo
@@ -21071,7 +21071,7 @@ class MigrationStep(AbstractModel):
 
     @property
     def StepName(self):
-        """Step name
+        r"""Step name
         :rtype: str
         """
         return self._StepName
@@ -21082,7 +21082,7 @@ class MigrationStep(AbstractModel):
 
     @property
     def StepId(self):
-        """Step ID in English
+        r"""Step ID in English
         :rtype: str
         """
         return self._StepId
@@ -21093,7 +21093,7 @@ class MigrationStep(AbstractModel):
 
     @property
     def Status(self):
-        """Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
+        r"""Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
         :rtype: int
         """
         return self._Status
@@ -21119,7 +21119,7 @@ class MigrationStep(AbstractModel):
 
 
 class ModifyAccountPrivilegeRequest(AbstractModel):
-    """ModifyAccountPrivilege request structure.
+    r"""ModifyAccountPrivilege request structure.
 
     """
 
@@ -21135,7 +21135,7 @@ class ModifyAccountPrivilegeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl
+        r"""Database instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -21146,7 +21146,7 @@ class ModifyAccountPrivilegeRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """Account permission change information
+        r"""Account permission change information
         :rtype: list of AccountPrivilegeModifyInfo
         """
         return self._Accounts
@@ -21175,7 +21175,7 @@ class ModifyAccountPrivilegeRequest(AbstractModel):
 
 
 class ModifyAccountPrivilegeResponse(AbstractModel):
-    """ModifyAccountPrivilege response structure.
+    r"""ModifyAccountPrivilege response structure.
 
     """
 
@@ -21191,7 +21191,7 @@ class ModifyAccountPrivilegeResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Async task flow ID
+        r"""Async task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -21202,7 +21202,7 @@ class ModifyAccountPrivilegeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21218,7 +21218,7 @@ class ModifyAccountPrivilegeResponse(AbstractModel):
 
 
 class ModifyAccountRemarkRequest(AbstractModel):
-    """ModifyAccountRemark request structure.
+    r"""ModifyAccountRemark request structure.
 
     """
 
@@ -21234,7 +21234,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-j8kv137v
+        r"""Instance ID in the format of mssql-j8kv137v
         :rtype: str
         """
         return self._InstanceId
@@ -21245,7 +21245,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """Information of account for which to modify remarks
+        r"""Information of account for which to modify remarks
         :rtype: list of AccountRemark
         """
         return self._Accounts
@@ -21274,7 +21274,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 
 class ModifyAccountRemarkResponse(AbstractModel):
-    """ModifyAccountRemark response structure.
+    r"""ModifyAccountRemark response structure.
 
     """
 
@@ -21287,7 +21287,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21302,7 +21302,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
 
 class ModifyBackupMigrationRequest(AbstractModel):
-    """ModifyBackupMigration request structure.
+    r"""ModifyBackupMigration request structure.
 
     """
 
@@ -21333,7 +21333,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -21344,7 +21344,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -21355,7 +21355,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def MigrationName(self):
-        """Task name
+        r"""Task name
         :rtype: str
         """
         return self._MigrationName
@@ -21366,7 +21366,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def RecoveryType(self):
-        """Migration task restoration type: FULL,FULL_LOG,FULL_DIFF
+        r"""Migration task restoration type: FULL,FULL_LOG,FULL_DIFF
         :rtype: str
         """
         return self._RecoveryType
@@ -21377,7 +21377,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def UploadType(self):
-        """COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
+        r"""COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.
         :rtype: str
         """
         return self._UploadType
@@ -21388,7 +21388,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupFiles(self):
-        """If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        r"""If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
         :rtype: list of str
         """
         return self._BackupFiles
@@ -21399,7 +21399,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
     @property
     def DBRename(self):
-        """Name set of databases to be renamed
+        r"""Name set of databases to be renamed
         :rtype: list of RenameRestoreDatabase
         """
         return self._DBRename
@@ -21433,7 +21433,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
 
 
 class ModifyBackupMigrationResponse(AbstractModel):
-    """ModifyBackupMigration response structure.
+    r"""ModifyBackupMigration response structure.
 
     """
 
@@ -21449,7 +21449,7 @@ class ModifyBackupMigrationResponse(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID
+        r"""Backup import task ID
         :rtype: str
         """
         return self._BackupMigrationId
@@ -21460,7 +21460,7 @@ class ModifyBackupMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21476,7 +21476,7 @@ class ModifyBackupMigrationResponse(AbstractModel):
 
 
 class ModifyBackupNameRequest(AbstractModel):
-    """ModifyBackupName request structure.
+    r"""ModifyBackupName request structure.
 
     """
 
@@ -21498,7 +21498,7 @@ class ModifyBackupNameRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-3l3fgqn7.
+        r"""Instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -21509,7 +21509,7 @@ class ModifyBackupNameRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        """Modified backup name.
+        r"""Modified backup name.
         :rtype: str
         """
         return self._BackupName
@@ -21520,7 +21520,7 @@ class ModifyBackupNameRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """The backup ID can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API. When the value of GroupId is null, BackupId is required.
+        r"""The backup ID can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API. When the value of GroupId is null, BackupId is required.
         :rtype: int
         """
         return self._BackupId
@@ -21531,7 +21531,7 @@ class ModifyBackupNameRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Backup task group ID, which can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API in single-database backup file mode. BackupId and GroupId exist simultaneously, and are modified according to BackupId.
+        r"""Backup task group ID, which can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API in single-database backup file mode. BackupId and GroupId exist simultaneously, and are modified according to BackupId.
         :rtype: str
         """
         return self._GroupId
@@ -21557,7 +21557,7 @@ class ModifyBackupNameRequest(AbstractModel):
 
 
 class ModifyBackupNameResponse(AbstractModel):
-    """ModifyBackupName response structure.
+    r"""ModifyBackupName response structure.
 
     """
 
@@ -21570,7 +21570,7 @@ class ModifyBackupNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21585,7 +21585,7 @@ class ModifyBackupNameResponse(AbstractModel):
 
 
 class ModifyBackupStrategyRequest(AbstractModel):
-    """ModifyBackupStrategy request structure.
+    r"""ModifyBackupStrategy request structure.
 
     """
 
@@ -21631,7 +21631,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -21642,7 +21642,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        """Backup type. Valid values: `weekly` (when length(BackupDay) <=7 && length(BackupDay) >=2), `daily` (when length(BackupDay)=1). Default value: `daily`.
+        r"""Backup type. Valid values: `weekly` (when length(BackupDay) <=7 && length(BackupDay) >=2), `daily` (when length(BackupDay)=1). Default value: `daily`.
         :rtype: str
         """
         return self._BackupType
@@ -21653,7 +21653,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupTime(self):
-        """Backup time. Value range: an integer from 0 to 23.
+        r"""Backup time. Value range: an integer from 0 to 23.
         :rtype: int
         """
         return self._BackupTime
@@ -21664,7 +21664,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupDay(self):
-        """Backup interval in days when the `BackupType` is `daily`. Valid value: 1.
+        r"""Backup interval in days when the `BackupType` is `daily`. Valid value: 1.
         :rtype: int
         """
         return self._BackupDay
@@ -21675,7 +21675,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupModel(self):
-        """Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node), `slave_no_pkg` (do not archive the backup files of the replica node). Backup files of the replica node are supported only when Always On disaster recovery is enabled.
+        r"""Backup mode. Valid values: `master_pkg` (archive the backup files of the primary node), `master_no_pkg` (do not archive the backup files of the primary node), `slave_pkg` (archive the backup files of the replica node), `slave_no_pkg` (do not archive the backup files of the replica node). Backup files of the replica node are supported only when Always On disaster recovery is enabled.
         :rtype: str
         """
         return self._BackupModel
@@ -21686,7 +21686,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupCycle(self):
-        """The days of the week on which backup will be performed when "BackupType" is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.
+        r"""The days of the week on which backup will be performed when "BackupType" is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.
         :rtype: list of int non-negative
         """
         return self._BackupCycle
@@ -21697,7 +21697,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def BackupSaveDays(self):
-        """Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.
+        r"""Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.
         :rtype: int
         """
         return self._BackupSaveDays
@@ -21708,7 +21708,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def RegularBackupEnable(self):
-        """Archive backup status. Valid values: `enable` (enabled); `disable` (disabled). Default value: `disable`.
+        r"""Archive backup status. Valid values: `enable` (enabled); `disable` (disabled). Default value: `disable`.
         :rtype: str
         """
         return self._RegularBackupEnable
@@ -21719,7 +21719,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def RegularBackupSaveDays(self):
-        """Archive backup retention days. Value range: 90-3650 days. Default value: 365 days.
+        r"""Archive backup retention days. Value range: 90-3650 days. Default value: 365 days.
         :rtype: int
         """
         return self._RegularBackupSaveDays
@@ -21730,7 +21730,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def RegularBackupStrategy(self):
-        """Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly); Default value: `months`.
+        r"""Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly); Default value: `months`.
         :rtype: str
         """
         return self._RegularBackupStrategy
@@ -21741,7 +21741,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def RegularBackupCounts(self):
-        """The number of retained archive backups. Default value: `1`.
+        r"""The number of retained archive backups. Default value: `1`.
         :rtype: int
         """
         return self._RegularBackupCounts
@@ -21752,7 +21752,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
     @property
     def RegularBackupStartTime(self):
-        """Archive backup start date in YYYY-MM-DD format, which is the current time by default.
+        r"""Archive backup start date in YYYY-MM-DD format, which is the current time by default.
         :rtype: str
         """
         return self._RegularBackupStartTime
@@ -21786,7 +21786,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
 
 
 class ModifyBackupStrategyResponse(AbstractModel):
-    """ModifyBackupStrategy response structure.
+    r"""ModifyBackupStrategy response structure.
 
     """
 
@@ -21810,7 +21810,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
     def Errno(self):
         warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
 
-        """Returned error code.
+        r"""Returned error code.
         :rtype: int
         """
         return self._Errno
@@ -21823,7 +21823,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Returned error message.
+        r"""Returned error message.
         :rtype: str
         """
         return self._Msg
@@ -21834,7 +21834,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
 
     @property
     def Code(self):
-        """Returned error code.
+        r"""Returned error code.
         :rtype: int
         """
         return self._Code
@@ -21845,7 +21845,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21863,7 +21863,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
 
 
 class ModifyCloseWanIpRequest(AbstractModel):
-    """ModifyCloseWanIp request structure.
+    r"""ModifyCloseWanIp request structure.
 
     """
 
@@ -21879,7 +21879,7 @@ class ModifyCloseWanIpRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance resource ID. 
+        r"""Instance resource ID. 
         :rtype: str
         """
         return self._InstanceId
@@ -21890,7 +21890,7 @@ class ModifyCloseWanIpRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        """RO group ID.
+        r"""RO group ID.
         :rtype: str
         """
         return self._RoGroupId
@@ -21914,7 +21914,7 @@ class ModifyCloseWanIpRequest(AbstractModel):
 
 
 class ModifyCloseWanIpResponse(AbstractModel):
-    """ModifyCloseWanIp response structure.
+    r"""ModifyCloseWanIp response structure.
 
     """
 
@@ -21930,7 +21930,7 @@ class ModifyCloseWanIpResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """ID of the process of disabling the public network.
+        r"""ID of the process of disabling the public network.
         :rtype: int
         """
         return self._FlowId
@@ -21941,7 +21941,7 @@ class ModifyCloseWanIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21957,7 +21957,7 @@ class ModifyCloseWanIpResponse(AbstractModel):
 
 
 class ModifyCrossBackupStrategyRequest(AbstractModel):
-    """ModifyCrossBackupStrategy request structure.
+    r"""ModifyCrossBackupStrategy request structure.
 
     """
 
@@ -21985,7 +21985,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def CrossBackupEnabled(self):
-        """Cross-region backup switch (data backup & log backup). enable - enabled; disable - disabled.
+        r"""Cross-region backup switch (data backup & log backup). enable - enabled; disable - disabled.
         :rtype: str
         """
         return self._CrossBackupEnabled
@@ -21996,7 +21996,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -22007,7 +22007,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Instance ID list.
+        r"""Instance ID list.
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -22018,7 +22018,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def CrossBackupSaveDays(self):
-        """Retention days for cross-region backups. Value range: 7-1830. The default value is 7.
+        r"""Retention days for cross-region backups. Value range: 7-1830. The default value is 7.
         :rtype: int
         """
         return self._CrossBackupSaveDays
@@ -22029,7 +22029,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def CrossBackupRegion(self):
-        """Target region ID for cross-region backups, with a maximum of two and a minimum of one.
+        r"""Target region ID for cross-region backups, with a maximum of two and a minimum of one.
         :rtype: list of str
         """
         return self._CrossBackupRegion
@@ -22040,7 +22040,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
     @property
     def CleanUpCrossBackup(self):
-        """Whether to clean up cross-region backups (data backups & log backups) immediately. This parameter is only valid when the value of BackupEnabled is disabled. 1 - yes; 0 - no. The default value is 0.
+        r"""Whether to clean up cross-region backups (data backups & log backups) immediately. This parameter is only valid when the value of BackupEnabled is disabled. 1 - yes; 0 - no. The default value is 0.
         :rtype: int
         """
         return self._CleanUpCrossBackup
@@ -22068,7 +22068,7 @@ class ModifyCrossBackupStrategyRequest(AbstractModel):
 
 
 class ModifyCrossBackupStrategyResponse(AbstractModel):
-    """ModifyCrossBackupStrategy response structure.
+    r"""ModifyCrossBackupStrategy response structure.
 
     """
 
@@ -22081,7 +22081,7 @@ class ModifyCrossBackupStrategyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22096,7 +22096,7 @@ class ModifyCrossBackupStrategyResponse(AbstractModel):
 
 
 class ModifyDBEncryptAttributesRequest(AbstractModel):
-    """ModifyDBEncryptAttributes request structure.
+    r"""ModifyDBEncryptAttributes request structure.
 
     """
 
@@ -22112,7 +22112,7 @@ class ModifyDBEncryptAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -22123,7 +22123,7 @@ class ModifyDBEncryptAttributesRequest(AbstractModel):
 
     @property
     def DBTDEEncrypt(self):
-        """A parameter used to enable or disable TDE of the database
+        r"""A parameter used to enable or disable TDE of the database
         :rtype: list of DBTDEEncrypt
         """
         return self._DBTDEEncrypt
@@ -22152,7 +22152,7 @@ class ModifyDBEncryptAttributesRequest(AbstractModel):
 
 
 class ModifyDBEncryptAttributesResponse(AbstractModel):
-    """ModifyDBEncryptAttributes response structure.
+    r"""ModifyDBEncryptAttributes response structure.
 
     """
 
@@ -22168,7 +22168,7 @@ class ModifyDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -22179,7 +22179,7 @@ class ModifyDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22195,7 +22195,7 @@ class ModifyDBEncryptAttributesResponse(AbstractModel):
 
 
 class ModifyDBInstanceNameRequest(AbstractModel):
-    """ModifyDBInstanceName request structure.
+    r"""ModifyDBInstanceName request structure.
 
     """
 
@@ -22211,7 +22211,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl
+        r"""Database instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -22222,7 +22222,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """New name of database instance
+        r"""New name of database instance
         :rtype: str
         """
         return self._InstanceName
@@ -22246,7 +22246,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
 
 class ModifyDBInstanceNameResponse(AbstractModel):
-    """ModifyDBInstanceName response structure.
+    r"""ModifyDBInstanceName response structure.
 
     """
 
@@ -22259,7 +22259,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22274,7 +22274,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
 
 class ModifyDBInstanceNetworkRequest(AbstractModel):
-    """ModifyDBInstanceNetwork request structure.
+    r"""ModifyDBInstanceNetwork request structure.
 
     """
 
@@ -22306,7 +22306,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -22317,7 +22317,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def NewVpcId(self):
-        """ID of the new VPC.
+        r"""ID of the new VPC.
         :rtype: str
         """
         return self._NewVpcId
@@ -22328,7 +22328,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def NewSubnetId(self):
-        """ID of the new subnet.
+        r"""ID of the new subnet.
         :rtype: str
         """
         return self._NewSubnetId
@@ -22339,7 +22339,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def OldIpRetainTime(self):
-        """Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
+        r"""Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
         :rtype: int
         """
         return self._OldIpRetainTime
@@ -22350,7 +22350,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """New VIP.
+        r"""New VIP.
         :rtype: str
         """
         return self._Vip
@@ -22361,7 +22361,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def DRNetwork(self):
-        """Target node. 0 - modify the primary node network; 1 - modify the secondary node network. The default value is 0.
+        r"""Target node. 0 - modify the primary node network; 1 - modify the secondary node network. The default value is 0.
 
         :rtype: int
         """
@@ -22373,7 +22373,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def DrInstanceId(self):
-        """Secondary server resource ID. It is required when DRNetwork = 1.
+        r"""Secondary server resource ID. It is required when DRNetwork = 1.
         :rtype: str
         """
         return self._DrInstanceId
@@ -22402,7 +22402,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
 
 class ModifyDBInstanceNetworkResponse(AbstractModel):
-    """ModifyDBInstanceNetwork response structure.
+    r"""ModifyDBInstanceNetwork response structure.
 
     """
 
@@ -22418,7 +22418,7 @@ class ModifyDBInstanceNetworkResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.
+        r"""ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.
         :rtype: int
         """
         return self._FlowId
@@ -22429,7 +22429,7 @@ class ModifyDBInstanceNetworkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22445,7 +22445,7 @@ class ModifyDBInstanceNetworkResponse(AbstractModel):
 
 
 class ModifyDBInstanceNoteRequest(AbstractModel):
-    """ModifyDBInstanceNote request structure.
+    r"""ModifyDBInstanceNote request structure.
 
     """
 
@@ -22461,7 +22461,7 @@ class ModifyDBInstanceNoteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID, in the format of mssql-njj2mtpl.
+        r"""Database instance ID, in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -22472,7 +22472,7 @@ class ModifyDBInstanceNoteRequest(AbstractModel):
 
     @property
     def InstanceNote(self):
-        """Instance remarks.
+        r"""Instance remarks.
         :rtype: str
         """
         return self._InstanceNote
@@ -22496,7 +22496,7 @@ class ModifyDBInstanceNoteRequest(AbstractModel):
 
 
 class ModifyDBInstanceNoteResponse(AbstractModel):
-    """ModifyDBInstanceNote response structure.
+    r"""ModifyDBInstanceNote response structure.
 
     """
 
@@ -22509,7 +22509,7 @@ class ModifyDBInstanceNoteResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22524,7 +22524,7 @@ class ModifyDBInstanceNoteResponse(AbstractModel):
 
 
 class ModifyDBInstanceProjectRequest(AbstractModel):
-    """ModifyDBInstanceProject request structure.
+    r"""ModifyDBInstanceProject request structure.
 
     """
 
@@ -22540,7 +22540,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """Array of instance IDs in the format of mssql-j8kv137v
+        r"""Array of instance IDs in the format of mssql-j8kv137v
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -22551,7 +22551,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. If this parameter is 0, the default project will be used
+        r"""Project ID. If this parameter is 0, the default project will be used
         :rtype: int
         """
         return self._ProjectId
@@ -22575,7 +22575,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
 
 class ModifyDBInstanceProjectResponse(AbstractModel):
-    """ModifyDBInstanceProject response structure.
+    r"""ModifyDBInstanceProject response structure.
 
     """
 
@@ -22591,7 +22591,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
 
     @property
     def Count(self):
-        """Number of successfully modified instances
+        r"""Number of successfully modified instances
         :rtype: int
         """
         return self._Count
@@ -22602,7 +22602,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22618,7 +22618,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
 
 
 class ModifyDBInstanceSSLRequest(AbstractModel):
-    """ModifyDBInstanceSSL request structure.
+    r"""ModifyDBInstanceSSL request structure.
 
     """
 
@@ -22646,7 +22646,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -22657,7 +22657,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Operation type. enable - enable SSL; disable - disable SSL; renew - update the validity period of the certificate.
+        r"""Operation type. enable - enable SSL; disable - disable SSL; renew - update the validity period of the certificate.
         :rtype: str
         """
         return self._Type
@@ -22668,7 +22668,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        """Operation settings. 0 - execute immediately; 1 - execute within the maintenance time. The default value is 0.
+        r"""Operation settings. 0 - execute immediately; 1 - execute within the maintenance time. The default value is 0.
         :rtype: int
         """
         return self._WaitSwitch
@@ -22679,7 +22679,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def IsKMS(self):
-        """Whether it is protected through KMS encryption. 0 - no; 1 - yes. The default value is 0.
+        r"""Whether it is protected through KMS encryption. 0 - no; 1 - yes. The default value is 0.
         :rtype: int
         """
         return self._IsKMS
@@ -22690,7 +22690,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        """This parameter is required when the value of IsKMS is 1.
+        r"""This parameter is required when the value of IsKMS is 1.
         :rtype: str
         """
         return self._KeyId
@@ -22701,7 +22701,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
     @property
     def KeyRegion(self):
-        """This parameter is required when the value of IsKMS is 1.
+        r"""This parameter is required when the value of IsKMS is 1.
         :rtype: str
         """
         return self._KeyRegion
@@ -22729,7 +22729,7 @@ class ModifyDBInstanceSSLRequest(AbstractModel):
 
 
 class ModifyDBInstanceSSLResponse(AbstractModel):
-    """ModifyDBInstanceSSL response structure.
+    r"""ModifyDBInstanceSSL response structure.
 
     """
 
@@ -22745,7 +22745,7 @@ class ModifyDBInstanceSSLResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Asynchronous task flow ID.
+        r"""Asynchronous task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -22756,7 +22756,7 @@ class ModifyDBInstanceSSLResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22772,7 +22772,7 @@ class ModifyDBInstanceSSLResponse(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
-    """ModifyDBInstanceSecurityGroups request structure.
+    r"""ModifyDBInstanceSecurityGroups request structure.
 
     """
 
@@ -22788,7 +22788,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.
+        r"""Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.
         :rtype: str
         """
         return self._InstanceId
@@ -22799,7 +22799,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIdSet(self):
-        """List of security group IDs to be modified, which is an array of one or more security group IDs.
+        r"""List of security group IDs to be modified, which is an array of one or more security group IDs.
         :rtype: list of str
         """
         return self._SecurityGroupIdSet
@@ -22823,7 +22823,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
 
 class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
-    """ModifyDBInstanceSecurityGroups response structure.
+    r"""ModifyDBInstanceSecurityGroups response structure.
 
     """
 
@@ -22836,7 +22836,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22851,7 +22851,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class ModifyDBNameRequest(AbstractModel):
-    """ModifyDBName request structure.
+    r"""ModifyDBName request structure.
 
     """
 
@@ -22870,7 +22870,7 @@ class ModifyDBNameRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -22881,7 +22881,7 @@ class ModifyDBNameRequest(AbstractModel):
 
     @property
     def OldDBName(self):
-        """Old database name
+        r"""Old database name
         :rtype: str
         """
         return self._OldDBName
@@ -22892,7 +22892,7 @@ class ModifyDBNameRequest(AbstractModel):
 
     @property
     def NewDBName(self):
-        """New name of database
+        r"""New name of database
         :rtype: str
         """
         return self._NewDBName
@@ -22917,7 +22917,7 @@ class ModifyDBNameRequest(AbstractModel):
 
 
 class ModifyDBNameResponse(AbstractModel):
-    """ModifyDBName response structure.
+    r"""ModifyDBName response structure.
 
     """
 
@@ -22933,7 +22933,7 @@ class ModifyDBNameResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -22944,7 +22944,7 @@ class ModifyDBNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22960,7 +22960,7 @@ class ModifyDBNameResponse(AbstractModel):
 
 
 class ModifyDBRemarkRequest(AbstractModel):
-    """ModifyDBRemark request structure.
+    r"""ModifyDBRemark request structure.
 
     """
 
@@ -22976,7 +22976,7 @@ class ModifyDBRemarkRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-rljoi3bf
+        r"""Instance ID in the format of mssql-rljoi3bf
         :rtype: str
         """
         return self._InstanceId
@@ -22987,7 +22987,7 @@ class ModifyDBRemarkRequest(AbstractModel):
 
     @property
     def DBRemarks(self):
-        """Array of database names and remarks, where each element contains a database name and the corresponding remarks
+        r"""Array of database names and remarks, where each element contains a database name and the corresponding remarks
         :rtype: list of DBRemark
         """
         return self._DBRemarks
@@ -23016,7 +23016,7 @@ class ModifyDBRemarkRequest(AbstractModel):
 
 
 class ModifyDBRemarkResponse(AbstractModel):
-    """ModifyDBRemark response structure.
+    r"""ModifyDBRemark response structure.
 
     """
 
@@ -23029,7 +23029,7 @@ class ModifyDBRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23044,7 +23044,7 @@ class ModifyDBRemarkResponse(AbstractModel):
 
 
 class ModifyDReadableRequest(AbstractModel):
-    """ModifyDReadable request structure.
+    r"""ModifyDReadable request structure.
 
     """
 
@@ -23069,7 +23069,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23080,7 +23080,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Operation type. Valid values: enable - enabling the read-only mode of the replica server; disable - disabling the read-only mode of the replica server
+        r"""Operation type. Valid values: enable - enabling the read-only mode of the replica server; disable - disabling the read-only mode of the replica server
         :rtype: str
         """
         return self._Type
@@ -23091,7 +23091,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """Replica server network ID, which will be consistent with the primary instance by default if left blank
+        r"""Replica server network ID, which will be consistent with the primary instance by default if left blank
         :rtype: str
         """
         return self._VpcId
@@ -23102,7 +23102,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Replica server subnet ID, which will be consistent with the primary instance by default if left blank
+        r"""Replica server subnet ID, which will be consistent with the primary instance by default if left blank
         :rtype: str
         """
         return self._SubnetId
@@ -23113,7 +23113,7 @@ class ModifyDReadableRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """Specified replica server read-only VIP, which will be assigned automatically if left blank
+        r"""Specified replica server read-only VIP, which will be assigned automatically if left blank
         :rtype: str
         """
         return self._Vip
@@ -23140,7 +23140,7 @@ class ModifyDReadableRequest(AbstractModel):
 
 
 class ModifyDReadableResponse(AbstractModel):
-    """ModifyDReadable response structure.
+    r"""ModifyDReadable response structure.
 
     """
 
@@ -23156,7 +23156,7 @@ class ModifyDReadableResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -23167,7 +23167,7 @@ class ModifyDReadableResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23183,7 +23183,7 @@ class ModifyDReadableResponse(AbstractModel):
 
 
 class ModifyDataBaseTuple(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -23202,7 +23202,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def DatabaseTuple(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
         """
         return self._DatabaseTuple
@@ -23213,7 +23213,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def NewDatabaseTuple(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DatabaseTuple`
         """
         return self._NewDatabaseTuple
@@ -23224,7 +23224,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
     @property
     def DeleteDataBasesTuple(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._DeleteDataBasesTuple
@@ -23253,7 +23253,7 @@ class ModifyDataBaseTuple(AbstractModel):
 
 
 class ModifyDatabaseCDCRequest(AbstractModel):
-    """ModifyDatabaseCDC request structure.
+    r"""ModifyDatabaseCDC request structure.
 
     """
 
@@ -23272,7 +23272,7 @@ class ModifyDatabaseCDCRequest(AbstractModel):
 
     @property
     def DBNames(self):
-        """Array of database names
+        r"""Array of database names
         :rtype: list of str
         """
         return self._DBNames
@@ -23283,7 +23283,7 @@ class ModifyDatabaseCDCRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        """Enable or disable CDC. Valid values: `enable`, `disable`
+        r"""Enable or disable CDC. Valid values: `enable`, `disable`
         :rtype: str
         """
         return self._ModifyType
@@ -23294,7 +23294,7 @@ class ModifyDatabaseCDCRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23319,7 +23319,7 @@ class ModifyDatabaseCDCRequest(AbstractModel):
 
 
 class ModifyDatabaseCDCResponse(AbstractModel):
-    """ModifyDatabaseCDC response structure.
+    r"""ModifyDatabaseCDC response structure.
 
     """
 
@@ -23335,7 +23335,7 @@ class ModifyDatabaseCDCResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -23346,7 +23346,7 @@ class ModifyDatabaseCDCResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23362,7 +23362,7 @@ class ModifyDatabaseCDCResponse(AbstractModel):
 
 
 class ModifyDatabaseCTRequest(AbstractModel):
-    """ModifyDatabaseCT request structure.
+    r"""ModifyDatabaseCT request structure.
 
     """
 
@@ -23384,7 +23384,7 @@ class ModifyDatabaseCTRequest(AbstractModel):
 
     @property
     def DBNames(self):
-        """Array of database names
+        r"""Array of database names
         :rtype: list of str
         """
         return self._DBNames
@@ -23395,7 +23395,7 @@ class ModifyDatabaseCTRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        """Enable or disable CT. Valid values: `enable`, `disable`
+        r"""Enable or disable CT. Valid values: `enable`, `disable`
         :rtype: str
         """
         return self._ModifyType
@@ -23406,7 +23406,7 @@ class ModifyDatabaseCTRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23417,7 +23417,7 @@ class ModifyDatabaseCTRequest(AbstractModel):
 
     @property
     def ChangeRetentionDay(self):
-        """Retention period (in days) of change tracking information when CT is enabled. Value range: 3-30. Default value: `3`
+        r"""Retention period (in days) of change tracking information when CT is enabled. Value range: 3-30. Default value: `3`
         :rtype: int
         """
         return self._ChangeRetentionDay
@@ -23443,7 +23443,7 @@ class ModifyDatabaseCTRequest(AbstractModel):
 
 
 class ModifyDatabaseCTResponse(AbstractModel):
-    """ModifyDatabaseCT response structure.
+    r"""ModifyDatabaseCT response structure.
 
     """
 
@@ -23459,7 +23459,7 @@ class ModifyDatabaseCTResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -23470,7 +23470,7 @@ class ModifyDatabaseCTResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23486,7 +23486,7 @@ class ModifyDatabaseCTResponse(AbstractModel):
 
 
 class ModifyDatabaseMdfRequest(AbstractModel):
-    """ModifyDatabaseMdf request structure.
+    r"""ModifyDatabaseMdf request structure.
 
     """
 
@@ -23502,7 +23502,7 @@ class ModifyDatabaseMdfRequest(AbstractModel):
 
     @property
     def DBNames(self):
-        """Array of database names
+        r"""Array of database names
         :rtype: list of str
         """
         return self._DBNames
@@ -23513,7 +23513,7 @@ class ModifyDatabaseMdfRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23537,7 +23537,7 @@ class ModifyDatabaseMdfRequest(AbstractModel):
 
 
 class ModifyDatabaseMdfResponse(AbstractModel):
-    """ModifyDatabaseMdf response structure.
+    r"""ModifyDatabaseMdf response structure.
 
     """
 
@@ -23553,7 +23553,7 @@ class ModifyDatabaseMdfResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -23564,7 +23564,7 @@ class ModifyDatabaseMdfResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23580,7 +23580,7 @@ class ModifyDatabaseMdfResponse(AbstractModel):
 
 
 class ModifyDatabasePrivilegeRequest(AbstractModel):
-    """ModifyDatabasePrivilege request structure.
+    r"""ModifyDatabasePrivilege request structure.
 
     """
 
@@ -23596,7 +23596,7 @@ class ModifyDatabasePrivilegeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-njj2mtpl.
+        r"""Instance ID, in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -23607,7 +23607,7 @@ class ModifyDatabasePrivilegeRequest(AbstractModel):
 
     @property
     def DataBaseSet(self):
-        """Database permission change information.
+        r"""Database permission change information.
         :rtype: list of DataBasePrivilegeModifyInfo
         """
         return self._DataBaseSet
@@ -23636,7 +23636,7 @@ class ModifyDatabasePrivilegeRequest(AbstractModel):
 
 
 class ModifyDatabasePrivilegeResponse(AbstractModel):
-    """ModifyDatabasePrivilege response structure.
+    r"""ModifyDatabasePrivilege response structure.
 
     """
 
@@ -23652,7 +23652,7 @@ class ModifyDatabasePrivilegeResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Asynchronous task flow ID.
+        r"""Asynchronous task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -23663,7 +23663,7 @@ class ModifyDatabasePrivilegeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23679,7 +23679,7 @@ class ModifyDatabasePrivilegeResponse(AbstractModel):
 
 
 class ModifyDatabaseShrinkMDFRequest(AbstractModel):
-    """ModifyDatabaseShrinkMDF request structure.
+    r"""ModifyDatabaseShrinkMDF request structure.
 
     """
 
@@ -23695,7 +23695,7 @@ class ModifyDatabaseShrinkMDFRequest(AbstractModel):
 
     @property
     def DBNames(self):
-        """Database name array.
+        r"""Database name array.
         :rtype: list of str
         """
         return self._DBNames
@@ -23706,7 +23706,7 @@ class ModifyDatabaseShrinkMDFRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -23730,7 +23730,7 @@ class ModifyDatabaseShrinkMDFRequest(AbstractModel):
 
 
 class ModifyDatabaseShrinkMDFResponse(AbstractModel):
-    """ModifyDatabaseShrinkMDF response structure.
+    r"""ModifyDatabaseShrinkMDF response structure.
 
     """
 
@@ -23746,7 +23746,7 @@ class ModifyDatabaseShrinkMDFResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Process ID.
+        r"""Process ID.
         :rtype: int
         """
         return self._FlowId
@@ -23757,7 +23757,7 @@ class ModifyDatabaseShrinkMDFResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23773,7 +23773,7 @@ class ModifyDatabaseShrinkMDFResponse(AbstractModel):
 
 
 class ModifyIncrementalMigrationRequest(AbstractModel):
-    """ModifyIncrementalMigration request structure.
+    r"""ModifyIncrementalMigration request structure.
 
     """
 
@@ -23798,7 +23798,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -23809,7 +23809,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -23820,7 +23820,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.
+        r"""Incremental backup import task ID, which is returned through the `CreateIncrementalMigration` API.
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -23831,7 +23831,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IsRecovery(self):
-        """Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, current settings will be applied.
+        r"""Whether to restore backups. Valid values: `NO`, `YES`. If this parameter is not specified, current settings will be applied.
         :rtype: str
         """
         return self._IsRecovery
@@ -23842,7 +23842,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupFiles(self):
-        """If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
+        r"""If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
         :rtype: list of str
         """
         return self._BackupFiles
@@ -23869,7 +23869,7 @@ class ModifyIncrementalMigrationRequest(AbstractModel):
 
 
 class ModifyIncrementalMigrationResponse(AbstractModel):
-    """ModifyIncrementalMigration response structure.
+    r"""ModifyIncrementalMigration response structure.
 
     """
 
@@ -23885,7 +23885,7 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """ID of an incremental backup import task
+        r"""ID of an incremental backup import task
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -23896,7 +23896,7 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23912,7 +23912,7 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
 
 class ModifyInstanceEncryptAttributesRequest(AbstractModel):
-    """ModifyInstanceEncryptAttributes request structure.
+    r"""ModifyInstanceEncryptAttributes request structure.
 
     """
 
@@ -23931,7 +23931,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -23942,7 +23942,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
 
     @property
     def CertificateAttribution(self):
-        """Certificate ownership. Valid values: `self` (certificate of this account), `others` (certificate of the other account). Default value: `self`.
+        r"""Certificate ownership. Valid values: `self` (certificate of this account), `others` (certificate of the other account). Default value: `self`.
         :rtype: str
         """
         return self._CertificateAttribution
@@ -23953,7 +23953,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
 
     @property
     def QuoteUin(self):
-        """ID of the other referenced root account, which is required when `CertificateAttribution` is `others`.
+        r"""ID of the other referenced root account, which is required when `CertificateAttribution` is `others`.
         :rtype: str
         """
         return self._QuoteUin
@@ -23978,7 +23978,7 @@ class ModifyInstanceEncryptAttributesRequest(AbstractModel):
 
 
 class ModifyInstanceEncryptAttributesResponse(AbstractModel):
-    """ModifyInstanceEncryptAttributes response structure.
+    r"""ModifyInstanceEncryptAttributes response structure.
 
     """
 
@@ -23994,7 +23994,7 @@ class ModifyInstanceEncryptAttributesResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID
+        r"""Task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -24005,7 +24005,7 @@ class ModifyInstanceEncryptAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24021,7 +24021,7 @@ class ModifyInstanceEncryptAttributesResponse(AbstractModel):
 
 
 class ModifyInstanceParamRequest(AbstractModel):
-    """ModifyInstanceParam request structure.
+    r"""ModifyInstanceParam request structure.
 
     """
 
@@ -24040,7 +24040,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID list.
+        r"""Instance ID list.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -24051,7 +24051,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        """List of modified parameters. Each list element has two fields: `Name` and `CurrentValue`. Set `Name` to the parameter name and `CurrentValue` to the new value after modification. <b>Note</b>: if the instance needs to be <b>restarted</b> for the modified parameter to take effect, it will be <b>restarted</b> immediately or during the maintenance time. Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.
+        r"""List of modified parameters. Each list element has two fields: `Name` and `CurrentValue`. Set `Name` to the parameter name and `CurrentValue` to the new value after modification. <b>Note</b>: if the instance needs to be <b>restarted</b> for the modified parameter to take effect, it will be <b>restarted</b> immediately or during the maintenance time. Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.
         :rtype: list of Parameter
         """
         return self._ParamList
@@ -24062,7 +24062,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        """When to execute the parameter modification task. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `0`.
+        r"""When to execute the parameter modification task. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `0`.
         :rtype: int
         """
         return self._WaitSwitch
@@ -24092,7 +24092,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
 
 class ModifyInstanceParamResponse(AbstractModel):
-    """ModifyInstanceParam response structure.
+    r"""ModifyInstanceParam response structure.
 
     """
 
@@ -24105,7 +24105,7 @@ class ModifyInstanceParamResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24120,7 +24120,7 @@ class ModifyInstanceParamResponse(AbstractModel):
 
 
 class ModifyMaintenanceSpanRequest(AbstractModel):
-    """ModifyMaintenanceSpan request structure.
+    r"""ModifyMaintenanceSpan request structure.
 
     """
 
@@ -24142,7 +24142,7 @@ class ModifyMaintenanceSpanRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-k8voqdlz.
+        r"""Instance ID, in the format of mssql-k8voqdlz.
         :rtype: str
         """
         return self._InstanceId
@@ -24153,7 +24153,7 @@ class ModifyMaintenanceSpanRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """Specifies the days in each week allowed for maintenance. For example, [1,2,3,4,5,6,7] indicates that all days from Monday to Sunday are allowed for maintenance. If this parameter is left unspecified, this value is not modified.
+        r"""Specifies the days in each week allowed for maintenance. For example, [1,2,3,4,5,6,7] indicates that all days from Monday to Sunday are allowed for maintenance. If this parameter is left unspecified, this value is not modified.
         :rtype: list of int
         """
         return self._Weekly
@@ -24164,7 +24164,7 @@ class ModifyMaintenanceSpanRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Maintenance start time each day. For example, 10:24 indicates that the maintenance window starts at 10:24. If this parameter is left unspecified, this value is not modified.
+        r"""Maintenance start time each day. For example, 10:24 indicates that the maintenance window starts at 10:24. If this parameter is left unspecified, this value is not modified.
         :rtype: str
         """
         return self._StartTime
@@ -24175,7 +24175,7 @@ class ModifyMaintenanceSpanRequest(AbstractModel):
 
     @property
     def Span(self):
-        """Maintenance duration each day, in hours. For example, 1 indicates that the duration is 1 hour after maintenance starts. If this parameter is left unspecified, this value is not modified.
+        r"""Maintenance duration each day, in hours. For example, 1 indicates that the duration is 1 hour after maintenance starts. If this parameter is left unspecified, this value is not modified.
         :rtype: int
         """
         return self._Span
@@ -24201,7 +24201,7 @@ class ModifyMaintenanceSpanRequest(AbstractModel):
 
 
 class ModifyMaintenanceSpanResponse(AbstractModel):
-    """ModifyMaintenanceSpan response structure.
+    r"""ModifyMaintenanceSpan response structure.
 
     """
 
@@ -24214,7 +24214,7 @@ class ModifyMaintenanceSpanResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24229,7 +24229,7 @@ class ModifyMaintenanceSpanResponse(AbstractModel):
 
 
 class ModifyMigrationRequest(AbstractModel):
-    """ModifyMigration request structure.
+    r"""ModifyMigration request structure.
 
     """
 
@@ -24260,7 +24260,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -24271,7 +24271,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def MigrateName(self):
-        """New name of migration task. If this parameter is left empty, no modification will be made
+        r"""New name of migration task. If this parameter is left empty, no modification will be made
         :rtype: str
         """
         return self._MigrateName
@@ -24282,7 +24282,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def MigrateType(self):
-        """New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made
+        r"""New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made
         :rtype: int
         """
         return self._MigrateType
@@ -24293,7 +24293,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        """Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made
+        r"""Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made
         :rtype: int
         """
         return self._SourceType
@@ -24304,7 +24304,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def Source(self):
-        """Migration source. If this parameter is left empty, no modification will be made
+        r"""Migration source. If this parameter is left empty, no modification will be made
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
         """
         return self._Source
@@ -24315,7 +24315,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def Target(self):
-        """Migration target. If this parameter is left empty, no modification will be made
+        r"""Migration target. If this parameter is left empty, no modification will be made
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         """
         return self._Target
@@ -24326,7 +24326,7 @@ class ModifyMigrationRequest(AbstractModel):
 
     @property
     def MigrateDBSet(self):
-        """Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made
+        r"""Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made
         :rtype: list of MigrateDB
         """
         return self._MigrateDBSet
@@ -24364,7 +24364,7 @@ class ModifyMigrationRequest(AbstractModel):
 
 
 class ModifyMigrationResponse(AbstractModel):
-    """ModifyMigration response structure.
+    r"""ModifyMigration response structure.
 
     """
 
@@ -24380,7 +24380,7 @@ class ModifyMigrationResponse(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -24391,7 +24391,7 @@ class ModifyMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24407,7 +24407,7 @@ class ModifyMigrationResponse(AbstractModel):
 
 
 class ModifyOpenWanIpRequest(AbstractModel):
-    """ModifyOpenWanIp request structure.
+    r"""ModifyOpenWanIp request structure.
 
     """
 
@@ -24423,7 +24423,7 @@ class ModifyOpenWanIpRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance resource ID. 
+        r"""Instance resource ID. 
         :rtype: str
         """
         return self._InstanceId
@@ -24434,7 +24434,7 @@ class ModifyOpenWanIpRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        """RO group ID.
+        r"""RO group ID.
         :rtype: str
         """
         return self._RoGroupId
@@ -24458,7 +24458,7 @@ class ModifyOpenWanIpRequest(AbstractModel):
 
 
 class ModifyOpenWanIpResponse(AbstractModel):
-    """ModifyOpenWanIp response structure.
+    r"""ModifyOpenWanIp response structure.
 
     """
 
@@ -24474,7 +24474,7 @@ class ModifyOpenWanIpResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """ID of the process of enabling the public network.
+        r"""ID of the process of enabling the public network.
         :rtype: int
         """
         return self._FlowId
@@ -24485,7 +24485,7 @@ class ModifyOpenWanIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24501,7 +24501,7 @@ class ModifyOpenWanIpResponse(AbstractModel):
 
 
 class ModifyPublishSubscribeNameRequest(AbstractModel):
-    """ModifyPublishSubscribeName request structure.
+    r"""ModifyPublishSubscribeName request structure.
 
     """
 
@@ -24517,7 +24517,7 @@ class ModifyPublishSubscribeNameRequest(AbstractModel):
 
     @property
     def PublishSubscribeId(self):
-        """Publish/subscribe ID.
+        r"""Publish/subscribe ID.
         :rtype: int
         """
         return self._PublishSubscribeId
@@ -24528,7 +24528,7 @@ class ModifyPublishSubscribeNameRequest(AbstractModel):
 
     @property
     def PublishSubscribeName(self):
-        """Publish/subscribe name to be modified.
+        r"""Publish/subscribe name to be modified.
         :rtype: str
         """
         return self._PublishSubscribeName
@@ -24552,7 +24552,7 @@ class ModifyPublishSubscribeNameRequest(AbstractModel):
 
 
 class ModifyPublishSubscribeNameResponse(AbstractModel):
-    """ModifyPublishSubscribeName response structure.
+    r"""ModifyPublishSubscribeName response structure.
 
     """
 
@@ -24565,7 +24565,7 @@ class ModifyPublishSubscribeNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24580,7 +24580,7 @@ class ModifyPublishSubscribeNameResponse(AbstractModel):
 
 
 class ModifyPublishSubscribeRequest(AbstractModel):
-    """ModifyPublishSubscribe request structure.
+    r"""ModifyPublishSubscribe request structure.
 
     """
 
@@ -24599,7 +24599,7 @@ class ModifyPublishSubscribeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. For example: mssql-dg32dcv.
+        r"""Instance ID. For example: mssql-dg32dcv.
         :rtype: str
         """
         return self._InstanceId
@@ -24610,7 +24610,7 @@ class ModifyPublishSubscribeRequest(AbstractModel):
 
     @property
     def PublishSubscribeId(self):
-        """Publish/subscribe ID.
+        r"""Publish/subscribe ID.
         :rtype: int
         """
         return self._PublishSubscribeId
@@ -24621,7 +24621,7 @@ class ModifyPublishSubscribeRequest(AbstractModel):
 
     @property
     def DatabaseTupleSet(self):
-        """Publish/subscribe relationship collection of the database to be modified.
+        r"""Publish/subscribe relationship collection of the database to be modified.
         :rtype: list of ModifyDataBaseTuple
         """
         return self._DatabaseTupleSet
@@ -24651,7 +24651,7 @@ class ModifyPublishSubscribeRequest(AbstractModel):
 
 
 class ModifyPublishSubscribeResponse(AbstractModel):
-    """ModifyPublishSubscribe response structure.
+    r"""ModifyPublishSubscribe response structure.
 
     """
 
@@ -24667,7 +24667,7 @@ class ModifyPublishSubscribeResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID.
+        r"""Task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -24678,7 +24678,7 @@ class ModifyPublishSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24694,7 +24694,7 @@ class ModifyPublishSubscribeResponse(AbstractModel):
 
 
 class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
-    """ModifyReadOnlyGroupDetails request structure.
+    r"""ModifyReadOnlyGroupDetails request structure.
 
     """
 
@@ -24731,7 +24731,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID, in the format of mssql-3l3fgqn7.
+        r"""Primary instance ID, in the format of mssql-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -24742,7 +24742,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID.
+        r"""Read-only group ID.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -24753,7 +24753,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """Read-only group name. The modification is not performed if this parameter is left unspecified.
+        r"""Read-only group name. The modification is not performed if this parameter is left unspecified.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -24764,7 +24764,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        """Whether to enable the delayed read-only instance removal feature. 0 - disabled; 1 - enabled. The modification is not performed if this parameter is left unspecified.
+        r"""Whether to enable the delayed read-only instance removal feature. 0 - disabled; 1 - enabled. The modification is not performed if this parameter is left unspecified.
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -24775,7 +24775,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        """Timeout threshold used after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.
+        r"""Timeout threshold used after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -24786,7 +24786,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        """Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.
+        r"""Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -24797,7 +24797,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def WeightPairs(self):
-        """Collection of read-only group instance weight modification. The modification is not performed if this parameter is left unspecified.
+        r"""Collection of read-only group instance weight modification. The modification is not performed if this parameter is left unspecified.
         :rtype: list of ReadOnlyInstanceWeightPair
         """
         return self._WeightPairs
@@ -24808,7 +24808,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def AutoWeight(self):
-        """0 - user-defined weight (adjust according to WeightPairs); 1 - automatically assigned weight by the system (invalid WeightPairs). The default value is 0.
+        r"""0 - user-defined weight (adjust according to WeightPairs); 1 - automatically assigned weight by the system (invalid WeightPairs). The default value is 0.
         :rtype: int
         """
         return self._AutoWeight
@@ -24819,7 +24819,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
     @property
     def BalanceWeight(self):
-        """0 - not rebalance the load; 1 - rebalance the load. The default value is 0.
+        r"""0 - not rebalance the load; 1 - rebalance the load. The default value is 0.
         :rtype: int
         """
         return self._BalanceWeight
@@ -24855,7 +24855,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
 
 
 class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
-    """ModifyReadOnlyGroupDetails response structure.
+    r"""ModifyReadOnlyGroupDetails response structure.
 
     """
 
@@ -24868,7 +24868,7 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24883,7 +24883,7 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
 
 
 class OldVip(AbstractModel):
-    """This API is used to return the number of unrecovered IP addresses for the instance.
+    r"""This API is used to return the number of unrecovered IP addresses for the instance.
 
     """
 
@@ -24903,7 +24903,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
-        """Unrecovered old IP addresses
+        r"""Unrecovered old IP addresses
         :rtype: str
         """
         return self._Vip
@@ -24914,7 +24914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecycleTime(self):
-        """IP recovery time
+        r"""IP recovery time
         :rtype: str
         """
         return self._RecycleTime
@@ -24925,7 +24925,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldIpRetainTime(self):
-        """Old IP retention time (hours)
+        r"""Old IP retention time (hours)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -24951,7 +24951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OpenInterCommunicationRequest(AbstractModel):
-    """OpenInterCommunication request structure.
+    r"""OpenInterCommunication request structure.
 
     """
 
@@ -24964,7 +24964,7 @@ class OpenInterCommunicationRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """IDs of instances with interwoking group enabled
+        r"""IDs of instances with interwoking group enabled
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -24987,7 +24987,7 @@ class OpenInterCommunicationRequest(AbstractModel):
 
 
 class OpenInterCommunicationResponse(AbstractModel):
-    """OpenInterCommunication response structure.
+    r"""OpenInterCommunication response structure.
 
     """
 
@@ -25003,7 +25003,7 @@ class OpenInterCommunicationResponse(AbstractModel):
 
     @property
     def InterInstanceFlowSet(self):
-        """IDs of instance and async task
+        r"""IDs of instance and async task
         :rtype: list of InterInstanceFlow
         """
         return self._InterInstanceFlowSet
@@ -25014,7 +25014,7 @@ class OpenInterCommunicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -25035,7 +25035,7 @@ class OpenInterCommunicationResponse(AbstractModel):
 
 
 class ParamRecord(AbstractModel):
-    """Instance parameter modification record
+    r"""Instance parameter modification record
 
     """
 
@@ -25063,7 +25063,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -25074,7 +25074,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def ParamName(self):
-        """Parameter name
+        r"""Parameter name
         :rtype: str
         """
         return self._ParamName
@@ -25085,7 +25085,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def OldValue(self):
-        """Parameter value before modification
+        r"""Parameter value before modification
         :rtype: str
         """
         return self._OldValue
@@ -25096,7 +25096,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def NewValue(self):
-        """Parameter value after modification
+        r"""Parameter value after modification
         :rtype: str
         """
         return self._NewValue
@@ -25107,7 +25107,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def Status(self):
-        """Parameter modification status. Valid values: `1` (initializing and waiting for modification), `2` (modification succeed), `3` (modification failed), `4` (modifying)
+        r"""Parameter modification status. Valid values: `1` (initializing and waiting for modification), `2` (modification succeed), `3` (modification failed), `4` (modifying)
         :rtype: int
         """
         return self._Status
@@ -25118,7 +25118,7 @@ class ParamRecord(AbstractModel):
 
     @property
     def ModifyTime(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifyTime
@@ -25146,7 +25146,7 @@ class ParamRecord(AbstractModel):
 
 
 class Parameter(AbstractModel):
-    """Database instance parameter
+    r"""Database instance parameter
 
     """
 
@@ -25162,7 +25162,7 @@ class Parameter(AbstractModel):
 
     @property
     def Name(self):
-        """Parameter name
+        r"""Parameter name
         :rtype: str
         """
         return self._Name
@@ -25173,7 +25173,7 @@ class Parameter(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """Parameter value
+        r"""Parameter value
         :rtype: str
         """
         return self._CurrentValue
@@ -25197,7 +25197,7 @@ class Parameter(AbstractModel):
 
 
 class ParameterDetail(AbstractModel):
-    """Instance parameter details
+    r"""Instance parameter details
 
     """
 
@@ -25237,7 +25237,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Name(self):
-        """Parameter name
+        r"""Parameter name
         :rtype: str
         """
         return self._Name
@@ -25248,7 +25248,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def ParamType(self):
-        """Data type of the parameter. Valid values: `integer`, `enum`
+        r"""Data type of the parameter. Valid values: `integer`, `enum`
         :rtype: str
         """
         return self._ParamType
@@ -25259,7 +25259,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Default(self):
-        """Default value of the parameter
+        r"""Default value of the parameter
         :rtype: str
         """
         return self._Default
@@ -25270,7 +25270,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Description(self):
-        """Parameter description
+        r"""Parameter description
         :rtype: str
         """
         return self._Description
@@ -25281,7 +25281,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def CurrentValue(self):
-        """Current value of the parameter
+        r"""Current value of the parameter
         :rtype: str
         """
         return self._CurrentValue
@@ -25292,7 +25292,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def NeedReboot(self):
-        """Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)
+        r"""Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)
         :rtype: int
         """
         return self._NeedReboot
@@ -25303,7 +25303,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Max(self):
-        """Maximum value of the parameter
+        r"""Maximum value of the parameter
         :rtype: int
         """
         return self._Max
@@ -25314,7 +25314,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Min(self):
-        """Minimum value of the parameter
+        r"""Minimum value of the parameter
         :rtype: int
         """
         return self._Min
@@ -25325,7 +25325,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def EnumValue(self):
-        """Enumerated values of the parameter
+        r"""Enumerated values of the parameter
         :rtype: list of str
         """
         return self._EnumValue
@@ -25336,7 +25336,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Parameter status. Valid values: `0` (normal), `1` (modifying)
+        r"""Parameter status. Valid values: `0` (normal), `1` (modifying)
         :rtype: int
         """
         return self._Status
@@ -25368,7 +25368,7 @@ class ParameterDetail(AbstractModel):
 
 
 class Price(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -25390,7 +25390,7 @@ class Price(AbstractModel):
 
     @property
     def PrepaidPrice(self):
-        """
+        r"""
         :rtype: int
         """
         return self._PrepaidPrice
@@ -25401,7 +25401,7 @@ class Price(AbstractModel):
 
     @property
     def PrepaidPriceUnit(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PrepaidPriceUnit
@@ -25412,7 +25412,7 @@ class Price(AbstractModel):
 
     @property
     def PostpaidPrice(self):
-        """
+        r"""
         :rtype: int
         """
         return self._PostpaidPrice
@@ -25423,7 +25423,7 @@ class Price(AbstractModel):
 
     @property
     def PostpaidPriceUnit(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PostpaidPriceUnit
@@ -25449,7 +25449,7 @@ class Price(AbstractModel):
 
 
 class PublishSubscribe(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -25486,7 +25486,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def Id(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Id
@@ -25497,7 +25497,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -25508,7 +25508,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PublishInstanceId
@@ -25519,7 +25519,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PublishInstanceName
@@ -25530,7 +25530,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def PublishInstanceIp(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PublishInstanceIp
@@ -25541,7 +25541,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubscribeInstanceId
@@ -25552,7 +25552,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubscribeInstanceName
@@ -25563,7 +25563,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def SubscribeInstanceIp(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubscribeInstanceIp
@@ -25574,7 +25574,7 @@ class PublishSubscribe(AbstractModel):
 
     @property
     def DatabaseTupleSet(self):
-        """
+        r"""
         :rtype: list of DatabaseTupleStatus
         """
         return self._DatabaseTupleSet
@@ -25609,8 +25609,122 @@ class PublishSubscribe(AbstractModel):
         
 
 
-class ReadOnlyGroup(AbstractModel):
+class QueryMigrationCheckProcessRequest(AbstractModel):
+    r"""QueryMigrationCheckProcess request structure.
+
     """
+
+    def __init__(self):
+        r"""
+        :param _MigrateId: Migration task ID.
+        :type MigrateId: int
+        """
+        self._MigrateId = None
+
+    @property
+    def MigrateId(self):
+        r"""Migration task ID.
+        :rtype: int
+        """
+        return self._MigrateId
+
+    @MigrateId.setter
+    def MigrateId(self, MigrateId):
+        self._MigrateId = MigrateId
+
+
+    def _deserialize(self, params):
+        self._MigrateId = params.get("MigrateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMigrationCheckProcessResponse(AbstractModel):
+    r"""QueryMigrationCheckProcess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalStep: Total number of steps.
+        :type TotalStep: int
+        :param _CurrentStep: Current step number, starting from 1.
+        :type CurrentStep: int
+        :param _StepDetails: Details of all steps.
+        :type StepDetails: list of StepDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalStep = None
+        self._CurrentStep = None
+        self._StepDetails = None
+        self._RequestId = None
+
+    @property
+    def TotalStep(self):
+        r"""Total number of steps.
+        :rtype: int
+        """
+        return self._TotalStep
+
+    @TotalStep.setter
+    def TotalStep(self, TotalStep):
+        self._TotalStep = TotalStep
+
+    @property
+    def CurrentStep(self):
+        r"""Current step number, starting from 1.
+        :rtype: int
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def StepDetails(self):
+        r"""Details of all steps.
+        :rtype: list of StepDetail
+        """
+        return self._StepDetails
+
+    @StepDetails.setter
+    def StepDetails(self, StepDetails):
+        self._StepDetails = StepDetails
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalStep = params.get("TotalStep")
+        self._CurrentStep = params.get("CurrentStep")
+        if params.get("StepDetails") is not None:
+            self._StepDetails = []
+            for item in params.get("StepDetails"):
+                obj = StepDetail()
+                obj._deserialize(item)
+                self._StepDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ReadOnlyGroup(AbstractModel):
+    r"""
 
     """
 
@@ -25668,7 +25782,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -25679,7 +25793,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -25690,7 +25804,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def RegionId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._RegionId
@@ -25701,7 +25815,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ZoneId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ZoneId
@@ -25712,7 +25826,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def IsOfflineDelay(self):
-        """
+        r"""
         :rtype: int
         """
         return self._IsOfflineDelay
@@ -25723,7 +25837,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyMaxDelayTime(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ReadOnlyMaxDelayTime
@@ -25734,7 +25848,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MinReadOnlyInGroup(self):
-        """
+        r"""
         :rtype: int
         """
         return self._MinReadOnlyInGroup
@@ -25745,7 +25859,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Vip(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Vip
@@ -25756,7 +25870,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Vport(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Vport
@@ -25767,7 +25881,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def VpcId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._VpcId
@@ -25778,7 +25892,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def SubnetId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SubnetId
@@ -25789,7 +25903,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -25800,7 +25914,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MasterInstanceId
@@ -25811,7 +25925,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def ReadOnlyInstanceSet(self):
-        """
+        r"""
         :rtype: list of ReadOnlyInstance
         """
         return self._ReadOnlyInstanceSet
@@ -25822,7 +25936,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def DnsPodDomain(self):
-        """RO group's public network address domain name
+        r"""RO group's public network address domain name
         :rtype: str
         """
         return self._DnsPodDomain
@@ -25833,7 +25947,7 @@ class ReadOnlyGroup(AbstractModel):
 
     @property
     def TgwWanVPort(self):
-        """RO group's public network address port
+        r"""RO group's public network address port
         :rtype: int
         """
         return self._TgwWanVPort
@@ -25876,7 +25990,7 @@ class ReadOnlyGroup(AbstractModel):
 
 
 class ReadOnlyInstance(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -25958,7 +26072,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -25969,7 +26083,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -25980,7 +26094,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Uid(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Uid
@@ -25991,7 +26105,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def ProjectId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ProjectId
@@ -26002,7 +26116,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -26013,7 +26127,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CreateTime
@@ -26024,7 +26138,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._UpdateTime
@@ -26035,7 +26149,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Memory(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Memory
@@ -26046,7 +26160,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Storage(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Storage
@@ -26057,7 +26171,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Cpu(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Cpu
@@ -26068,7 +26182,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Version(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Version
@@ -26079,7 +26193,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Type(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Type
@@ -26090,7 +26204,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Model(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Model
@@ -26101,7 +26215,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        """
+        r"""
         :rtype: int
         """
         return self._PayMode
@@ -26112,7 +26226,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def Weight(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Weight
@@ -26123,7 +26237,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def DelayTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DelayTime
@@ -26134,7 +26248,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def SynStatus(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SynStatus
@@ -26145,7 +26259,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def DatabaseDifference(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DatabaseDifference
@@ -26156,7 +26270,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def AccountDifference(self):
-        """
+        r"""
         :rtype: str
         """
         return self._AccountDifference
@@ -26167,7 +26281,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def StartTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -26178,7 +26292,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def EndTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -26189,7 +26303,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def IsolateTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._IsolateTime
@@ -26200,7 +26314,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._RegionId
@@ -26211,7 +26325,7 @@ class ReadOnlyInstance(AbstractModel):
 
     @property
     def ZoneId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ZoneId
@@ -26257,7 +26371,7 @@ class ReadOnlyInstance(AbstractModel):
 
 
 class ReadOnlyInstanceWeightPair(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -26273,7 +26387,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
 
     @property
     def ReadOnlyInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ReadOnlyInstanceId
@@ -26284,7 +26398,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
 
     @property
     def ReadOnlyWeight(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ReadOnlyWeight
@@ -26308,7 +26422,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
 
 
 class RecycleDBInstanceRequest(AbstractModel):
-    """RecycleDBInstance request structure.
+    r"""RecycleDBInstance request structure.
 
     """
 
@@ -26321,7 +26435,7 @@ class RecycleDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -26344,7 +26458,7 @@ class RecycleDBInstanceRequest(AbstractModel):
 
 
 class RecycleDBInstanceResponse(AbstractModel):
-    """RecycleDBInstance response structure.
+    r"""RecycleDBInstance response structure.
 
     """
 
@@ -26360,7 +26474,7 @@ class RecycleDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -26371,7 +26485,7 @@ class RecycleDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26387,7 +26501,7 @@ class RecycleDBInstanceResponse(AbstractModel):
 
 
 class RecycleReadOnlyGroupRequest(AbstractModel):
-    """RecycleReadOnlyGroup request structure.
+    r"""RecycleReadOnlyGroup request structure.
 
     """
 
@@ -26403,7 +26517,7 @@ class RecycleReadOnlyGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Primary instance ID.
+        r"""Primary instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -26414,7 +26528,7 @@ class RecycleReadOnlyGroupRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """Read-only group ID.
+        r"""Read-only group ID.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -26438,7 +26552,7 @@ class RecycleReadOnlyGroupRequest(AbstractModel):
 
 
 class RecycleReadOnlyGroupResponse(AbstractModel):
-    """RecycleReadOnlyGroup response structure.
+    r"""RecycleReadOnlyGroup response structure.
 
     """
 
@@ -26454,7 +26568,7 @@ class RecycleReadOnlyGroupResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task flow ID.
+        r"""Task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -26465,7 +26579,7 @@ class RecycleReadOnlyGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26481,7 +26595,7 @@ class RecycleReadOnlyGroupResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """Region information
+    r"""Region information
 
     """
 
@@ -26503,7 +26617,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
-        """Region ID in the format of ap-guangzhou
+        r"""Region ID in the format of ap-guangzhou
         :rtype: str
         """
         return self._Region
@@ -26514,7 +26628,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._RegionName
@@ -26525,7 +26639,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        """Numeric ID of region
+        r"""Numeric ID of region
         :rtype: int
         """
         return self._RegionId
@@ -26536,7 +26650,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
-        """Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable
+        r"""Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable
         :rtype: str
         """
         return self._RegionState
@@ -26562,7 +26676,7 @@ class RegionInfo(AbstractModel):
 
 
 class RemoveBackupsRequest(AbstractModel):
-    """RemoveBackups request structure.
+    r"""RemoveBackups request structure.
 
     """
 
@@ -26584,7 +26698,7 @@ class RemoveBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. For example, mssql-j8kv137v.
+        r"""Instance ID. For example, mssql-j8kv137v.
         :rtype: str
         """
         return self._InstanceId
@@ -26595,7 +26709,7 @@ class RemoveBackupsRequest(AbstractModel):
 
     @property
     def BackupNames(self):
-        """Backup names to be deleted. Backup names can be obtained through the FileName field of the DescribeBackups API. The number of backups for batch deletion in a single request should not exceed 10. This field is required when the values of StartTime and EndTime are null.
+        r"""Backup names to be deleted. Backup names can be obtained through the FileName field of the DescribeBackups API. The number of backups for batch deletion in a single request should not exceed 10. This field is required when the values of StartTime and EndTime are null.
         :rtype: list of str
         """
         return self._BackupNames
@@ -26606,7 +26720,7 @@ class RemoveBackupsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time for batch deletion of manual backups. This field is required when the value of BackupNames is null.
+        r"""Start time for batch deletion of manual backups. This field is required when the value of BackupNames is null.
         :rtype: str
         """
         return self._StartTime
@@ -26617,7 +26731,7 @@ class RemoveBackupsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Deadline for batch deletion of manual backups. This field is required when the value of BackupNames is null.
+        r"""Deadline for batch deletion of manual backups. This field is required when the value of BackupNames is null.
         :rtype: str
         """
         return self._EndTime
@@ -26643,7 +26757,7 @@ class RemoveBackupsRequest(AbstractModel):
 
 
 class RemoveBackupsResponse(AbstractModel):
-    """RemoveBackups response structure.
+    r"""RemoveBackups response structure.
 
     """
 
@@ -26656,7 +26770,7 @@ class RemoveBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26671,7 +26785,7 @@ class RemoveBackupsResponse(AbstractModel):
 
 
 class RenameRestoreDatabase(AbstractModel):
-    """It is used to specify and rename the database to be restored through the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, `CloneDB` or `ModifyBackupMigration` APIs.
+    r"""It is used to specify and rename the database to be restored through the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, `CloneDB` or `ModifyBackupMigration` APIs.
 
     """
 
@@ -26688,7 +26802,7 @@ It can be left empty in offline migration tasks.
 
     @property
     def OldName(self):
-        """Database name. If the `OldName` database does not exist, a failure will be returned.
+        r"""Database name. If the `OldName` database does not exist, a failure will be returned.
 It can be left empty in offline migration tasks.
         :rtype: str
         """
@@ -26700,7 +26814,7 @@ It can be left empty in offline migration tasks.
 
     @property
     def NewName(self):
-        """New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.
+        r"""New database name. In offline migration, `OldName` will be used if `NewName` is left empty (`OldName` and `NewName` cannot be both empty). In database cloning, `OldName` and `NewName` must be both specified and cannot have the same value.
         :rtype: str
         """
         return self._NewName
@@ -26724,7 +26838,7 @@ It can be left empty in offline migration tasks.
 
 
 class RenewPostpaidDBInstanceRequest(AbstractModel):
-    """RenewPostpaidDBInstance request structure.
+    r"""RenewPostpaidDBInstance request structure.
 
     """
 
@@ -26737,7 +26851,7 @@ class RenewPostpaidDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.
+        r"""Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.
         :rtype: str
         """
         return self._InstanceId
@@ -26760,7 +26874,7 @@ class RenewPostpaidDBInstanceRequest(AbstractModel):
 
 
 class RenewPostpaidDBInstanceResponse(AbstractModel):
-    """RenewPostpaidDBInstance response structure.
+    r"""RenewPostpaidDBInstance response structure.
 
     """
 
@@ -26773,7 +26887,7 @@ class RenewPostpaidDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26788,7 +26902,7 @@ class RenewPostpaidDBInstanceResponse(AbstractModel):
 
 
 class ResetAccountPasswordRequest(AbstractModel):
-    """ResetAccountPassword request structure.
+    r"""ResetAccountPassword request structure.
 
     """
 
@@ -26804,7 +26918,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl
+        r"""Database instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -26815,7 +26929,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        """Updated account password information array
+        r"""Updated account password information array
         :rtype: list of AccountPassword
         """
         return self._Accounts
@@ -26844,7 +26958,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
 
 class ResetAccountPasswordResponse(AbstractModel):
-    """ResetAccountPassword response structure.
+    r"""ResetAccountPassword response structure.
 
     """
 
@@ -26860,7 +26974,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """ID of asynchronous task flow for account password modification
+        r"""ID of asynchronous task flow for account password modification
         :rtype: int
         """
         return self._FlowId
@@ -26871,7 +26985,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -26887,7 +27001,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
 
 class ResourceTag(AbstractModel):
-    """The information of tags associated with instances
+    r"""The information of tags associated with instances
 
     """
 
@@ -26903,7 +27017,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -26914,7 +27028,7 @@ class ResourceTag(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -26938,7 +27052,7 @@ class ResourceTag(AbstractModel):
 
 
 class RestartDBInstanceRequest(AbstractModel):
-    """RestartDBInstance request structure.
+    r"""RestartDBInstance request structure.
 
     """
 
@@ -26951,7 +27065,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Database instance ID in the format of mssql-njj2mtpl
+        r"""Database instance ID in the format of mssql-njj2mtpl
         :rtype: str
         """
         return self._InstanceId
@@ -26974,7 +27088,7 @@ class RestartDBInstanceRequest(AbstractModel):
 
 
 class RestartDBInstanceResponse(AbstractModel):
-    """RestartDBInstance response structure.
+    r"""RestartDBInstance response structure.
 
     """
 
@@ -26990,7 +27104,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Async task flow ID
+        r"""Async task flow ID
         :rtype: int
         """
         return self._FlowId
@@ -27001,7 +27115,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -27017,7 +27131,7 @@ class RestartDBInstanceResponse(AbstractModel):
 
 
 class RestoreInstanceRequest(AbstractModel):
-    """RestoreInstance request structure.
+    r"""RestoreInstance request structure.
 
     """
 
@@ -27048,7 +27162,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-j8kv137v
+        r"""Instance ID in the format of mssql-j8kv137v
         :rtype: str
         """
         return self._InstanceId
@@ -27059,7 +27173,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        """Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API
+        r"""Backup file ID, which can be obtained through the `Id` field in the returned value of the `DescribeBackups` API
         :rtype: int
         """
         return self._BackupId
@@ -27070,7 +27184,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        """ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
+        r"""ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
         :rtype: str
         """
         return self._TargetInstanceId
@@ -27081,7 +27195,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def RenameRestore(self):
-        """Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
+        r"""Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
         :rtype: list of RenameRestoreDatabase
         """
         return self._RenameRestore
@@ -27092,7 +27206,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Rollback type. Valid values: `0` (overwriting), `1` (renaming).
+        r"""Rollback type. Valid values: `0` (overwriting), `1` (renaming).
         :rtype: int
         """
         return self._Type
@@ -27103,7 +27217,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def DBList(self):
-        """Database to be overwritten, which is required when overwriting a rollback database.
+        r"""Database to be overwritten, which is required when overwriting a rollback database.
         :rtype: list of str
         """
         return self._DBList
@@ -27114,7 +27228,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID of unarchived backup files grouped by backup task
+        r"""Group ID of unarchived backup files grouped by backup task
         :rtype: str
         """
         return self._GroupId
@@ -27148,7 +27262,7 @@ class RestoreInstanceRequest(AbstractModel):
 
 
 class RestoreInstanceResponse(AbstractModel):
-    """RestoreInstance response structure.
+    r"""RestoreInstance response structure.
 
     """
 
@@ -27164,7 +27278,7 @@ class RestoreInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status
+        r"""Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status
         :rtype: int
         """
         return self._FlowId
@@ -27175,7 +27289,7 @@ class RestoreInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -27191,7 +27305,7 @@ class RestoreInstanceResponse(AbstractModel):
 
 
 class RestoreTask(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -27237,7 +27351,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TargetInstanceId
@@ -27248,7 +27362,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TargetInstanceName
@@ -27259,7 +27373,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetInstanceStatus(self):
-        """
+        r"""
         :rtype: int
         """
         return self._TargetInstanceStatus
@@ -27270,7 +27384,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetRegion(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TargetRegion
@@ -27281,7 +27395,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._RestoreId
@@ -27292,7 +27406,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._TargetType
@@ -27303,7 +27417,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._RestoreType
@@ -27314,7 +27428,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._RestoreTime
@@ -27325,7 +27439,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def StartTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -27336,7 +27450,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def EndTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -27347,7 +27461,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -27358,7 +27472,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def FlowId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._FlowId
@@ -27392,7 +27506,7 @@ class RestoreTask(AbstractModel):
 
 
 class RollbackInstanceRequest(AbstractModel):
-    """RollbackInstance request structure.
+    r"""RollbackInstance request structure.
 
     """
 
@@ -27420,7 +27534,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -27431,7 +27545,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database
+        r"""Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database
         :rtype: int
         """
         return self._Type
@@ -27442,7 +27556,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def Time(self):
-        """Target time point for rollback
+        r"""Target time point for rollback
         :rtype: str
         """
         return self._Time
@@ -27453,7 +27567,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def DBs(self):
-        """Database to be rolled back
+        r"""Database to be rolled back
         :rtype: list of str
         """
         return self._DBs
@@ -27464,7 +27578,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        """ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
+        r"""ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.
         :rtype: str
         """
         return self._TargetInstanceId
@@ -27475,7 +27589,7 @@ class RollbackInstanceRequest(AbstractModel):
 
     @property
     def RenameRestore(self):
-        """Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.
+        r"""Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.
         :rtype: list of RenameRestoreDatabase
         """
         return self._RenameRestore
@@ -27508,7 +27622,7 @@ class RollbackInstanceRequest(AbstractModel):
 
 
 class RollbackInstanceResponse(AbstractModel):
-    """RollbackInstance response structure.
+    r"""RollbackInstance response structure.
 
     """
 
@@ -27524,7 +27638,7 @@ class RollbackInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """The async job ID
+        r"""The async job ID
         :rtype: int
         """
         return self._FlowId
@@ -27535,7 +27649,7 @@ class RollbackInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -27551,7 +27665,7 @@ class RollbackInstanceResponse(AbstractModel):
 
 
 class RunMigrationRequest(AbstractModel):
-    """RunMigration request structure.
+    r"""RunMigration request structure.
 
     """
 
@@ -27564,7 +27678,7 @@ class RunMigrationRequest(AbstractModel):
 
     @property
     def MigrateId(self):
-        """Migration task ID
+        r"""Migration task ID
         :rtype: int
         """
         return self._MigrateId
@@ -27587,7 +27701,7 @@ class RunMigrationRequest(AbstractModel):
 
 
 class RunMigrationResponse(AbstractModel):
-    """RunMigration response structure.
+    r"""RunMigration response structure.
 
     """
 
@@ -27603,7 +27717,7 @@ class RunMigrationResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """After the migration task starts, the flow ID will be returned
+        r"""After the migration task starts, the flow ID will be returned
         :rtype: int
         """
         return self._FlowId
@@ -27614,7 +27728,7 @@ class RunMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -27630,7 +27744,7 @@ class RunMigrationResponse(AbstractModel):
 
 
 class SSLConfig(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -27649,7 +27763,7 @@ class SSLConfig(AbstractModel):
 
     @property
     def Encryption(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Encryption
@@ -27660,7 +27774,7 @@ class SSLConfig(AbstractModel):
 
     @property
     def SSLValidityPeriod(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SSLValidityPeriod
@@ -27671,7 +27785,7 @@ class SSLConfig(AbstractModel):
 
     @property
     def SSLValidity(self):
-        """
+        r"""
         :rtype: int
         """
         return self._SSLValidity
@@ -27696,7 +27810,7 @@ class SSLConfig(AbstractModel):
 
 
 class SecurityGroup(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -27727,7 +27841,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ProjectId
@@ -27738,7 +27852,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CreateTime
@@ -27749,7 +27863,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def InboundSet(self):
-        """
+        r"""
         :rtype: list of SecurityGroupPolicy
         """
         return self._InboundSet
@@ -27760,7 +27874,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def OutboundSet(self):
-        """
+        r"""
         :rtype: list of SecurityGroupPolicy
         """
         return self._OutboundSet
@@ -27771,7 +27885,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SecurityGroupId
@@ -27782,7 +27896,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SecurityGroupName
@@ -27793,7 +27907,7 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SecurityGroupRemark
@@ -27832,7 +27946,7 @@ class SecurityGroup(AbstractModel):
 
 
 class SecurityGroupPolicy(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -27857,7 +27971,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Action(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Action
@@ -27868,7 +27982,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def CidrIp(self):
-        """
+        r"""
         :rtype: str
         """
         return self._CidrIp
@@ -27879,7 +27993,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def PortRange(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PortRange
@@ -27890,7 +28004,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """
+        r"""
         :rtype: str
         """
         return self._IpProtocol
@@ -27901,7 +28015,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Dir(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Dir
@@ -27928,7 +28042,7 @@ class SecurityGroupPolicy(AbstractModel):
 
 
 class SlaveZones(AbstractModel):
-    """Replica AZ information
+    r"""Replica AZ information
 
     """
 
@@ -27944,7 +28058,7 @@ class SlaveZones(AbstractModel):
 
     @property
     def SlaveZone(self):
-        """Replica AZ region code
+        r"""Replica AZ region code
         :rtype: str
         """
         return self._SlaveZone
@@ -27955,7 +28069,7 @@ class SlaveZones(AbstractModel):
 
     @property
     def SlaveZoneName(self):
-        """Replica AZ
+        r"""Replica AZ
         :rtype: str
         """
         return self._SlaveZoneName
@@ -27979,7 +28093,7 @@ class SlaveZones(AbstractModel):
 
 
 class SlowLog(AbstractModel):
-    """Slow query log file information
+    r"""Slow query log file information
 
     """
 
@@ -28014,7 +28128,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Unique ID of slow query log file
+        r"""Unique ID of slow query log file
         :rtype: int
         """
         return self._Id
@@ -28025,7 +28139,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """File generation start time
+        r"""File generation start time
         :rtype: str
         """
         return self._StartTime
@@ -28036,7 +28150,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """File generation end time
+        r"""File generation end time
         :rtype: str
         """
         return self._EndTime
@@ -28047,7 +28161,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
-        """File size in KB
+        r"""File size in KB
         :rtype: int
         """
         return self._Size
@@ -28058,7 +28172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
-        """Number of logs in file
+        r"""Number of logs in file
         :rtype: int
         """
         return self._Count
@@ -28069,7 +28183,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalAddr(self):
-        """Download address for private network
+        r"""Download address for private network
         :rtype: str
         """
         return self._InternalAddr
@@ -28080,7 +28194,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExternalAddr(self):
-        """Download address for public network
+        r"""Download address for public network
         :rtype: str
         """
         return self._ExternalAddr
@@ -28091,7 +28205,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status (1: success, 2: failure)
+        r"""Status (1: success, 2: failure)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -28122,7 +28236,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SlowlogInfo(AbstractModel):
-    """Slow query log file information
+    r"""Slow query log file information
 
     """
 
@@ -28157,7 +28271,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Unique ID of slow query log file
+        r"""Unique ID of slow query log file
         :rtype: int
         """
         return self._Id
@@ -28168,7 +28282,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """File generation start time
+        r"""File generation start time
         :rtype: str
         """
         return self._StartTime
@@ -28179,7 +28293,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """File generation end time
+        r"""File generation end time
         :rtype: str
         """
         return self._EndTime
@@ -28190,7 +28304,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
-        """File size in KB
+        r"""File size in KB
         :rtype: int
         """
         return self._Size
@@ -28201,7 +28315,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
-        """Number of logs in file
+        r"""Number of logs in file
         :rtype: int
         """
         return self._Count
@@ -28212,7 +28326,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalAddr(self):
-        """Download address for private network
+        r"""Download address for private network
         :rtype: str
         """
         return self._InternalAddr
@@ -28223,7 +28337,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExternalAddr(self):
-        """Download address for public network
+        r"""Download address for public network
         :rtype: str
         """
         return self._ExternalAddr
@@ -28234,7 +28348,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status (1: success, 2: failure)
+        r"""Status (1: success, 2: failure)
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -28265,7 +28379,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SpecInfo(AbstractModel):
-    """Information of purchasable specification for an instance
+    r"""Information of purchasable specification for an instance
 
     """
 
@@ -28324,7 +28438,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecId(self):
-        """Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ
+        r"""Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ
         :rtype: int
         """
         return self._SpecId
@@ -28335,7 +28449,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MachineType(self):
-        """Model ID
+        r"""Model ID
         :rtype: str
         """
         return self._MachineType
@@ -28346,7 +28460,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MachineTypeName(self):
-        """Model name
+        r"""Model name
         :rtype: str
         """
         return self._MachineTypeName
@@ -28357,7 +28471,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
+        r"""Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
         :rtype: str
         """
         return self._Version
@@ -28368,7 +28482,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionName(self):
-        """Version name corresponding to the `Version` field
+        r"""Version name corresponding to the `Version` field
         :rtype: str
         """
         return self._VersionName
@@ -28379,7 +28493,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
-        """Memory size in GB
+        r"""Memory size in GB
         :rtype: int
         """
         return self._Memory
@@ -28390,7 +28504,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CPU(self):
-        """Number of CPU cores
+        r"""Number of CPU cores
         :rtype: int
         """
         return self._CPU
@@ -28401,7 +28515,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinStorage(self):
-        """Minimum disk size under this specification in GB
+        r"""Minimum disk size under this specification in GB
         :rtype: int
         """
         return self._MinStorage
@@ -28412,7 +28526,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxStorage(self):
-        """Maximum disk size under this specification in GB
+        r"""Maximum disk size under this specification in GB
         :rtype: int
         """
         return self._MaxStorage
@@ -28423,7 +28537,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QPS(self):
-        """QPS of this specification
+        r"""QPS of this specification
         :rtype: int
         """
         return self._QPS
@@ -28434,7 +28548,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuitInfo(self):
-        """Description of this specification
+        r"""Description of this specification
         :rtype: str
         """
         return self._SuitInfo
@@ -28445,7 +28559,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
-        """Pid of this specification
+        r"""Pid of this specification
         :rtype: int
         """
         return self._Pid
@@ -28456,7 +28570,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PostPid(self):
-        """Pay-as-you-go Pid list corresponding to this specification
+        r"""Pay-as-you-go Pid list corresponding to this specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -28468,7 +28582,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeStatus(self):
-        """Billing mode under this specification. POST: pay-as-you-go
+        r"""Billing mode under this specification. POST: pay-as-you-go
         :rtype: str
         """
         return self._PayModeStatus
@@ -28479,7 +28593,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
-        """Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
+        r"""Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)
         :rtype: str
         """
         return self._InstanceType
@@ -28490,7 +28604,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MultiZonesStatus(self):
-        """Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)
+        r"""Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)
         :rtype: str
         """
         return self._MultiZonesStatus
@@ -28528,7 +28642,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SpecSellStatus(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -28571,7 +28685,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Id(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Id
@@ -28582,7 +28696,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def SpecId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._SpecId
@@ -28593,7 +28707,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def PayModeStatus(self):
-        """
+        r"""
         :rtype: str
         """
         return self._PayModeStatus
@@ -28604,7 +28718,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def InstanceType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._InstanceType
@@ -28615,7 +28729,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def MultiZonesStatus(self):
-        """
+        r"""
         :rtype: str
         """
         return self._MultiZonesStatus
@@ -28626,7 +28740,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Architecture(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Architecture
@@ -28637,7 +28751,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Style(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Style
@@ -28648,7 +28762,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Version(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Version
@@ -28659,7 +28773,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def ZoneStatusSet(self):
-        """
+        r"""
         :rtype: list of ZoneStatus
         """
         return self._ZoneStatusSet
@@ -28670,7 +28784,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Price(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.Price`
         """
         return self._Price
@@ -28681,7 +28795,7 @@ class SpecSellStatus(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -28721,7 +28835,7 @@ class SpecSellStatus(AbstractModel):
 
 
 class StartBackupMigrationRequest(AbstractModel):
-    """StartBackupMigration request structure.
+    r"""StartBackupMigration request structure.
 
     """
 
@@ -28737,7 +28851,7 @@ class StartBackupMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -28748,7 +28862,7 @@ class StartBackupMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -28772,7 +28886,7 @@ class StartBackupMigrationRequest(AbstractModel):
 
 
 class StartBackupMigrationResponse(AbstractModel):
-    """StartBackupMigration response structure.
+    r"""StartBackupMigration response structure.
 
     """
 
@@ -28788,7 +28902,7 @@ class StartBackupMigrationResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -28799,7 +28913,7 @@ class StartBackupMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -28815,7 +28929,7 @@ class StartBackupMigrationResponse(AbstractModel):
 
 
 class StartIncrementalMigrationRequest(AbstractModel):
-    """StartIncrementalMigration request structure.
+    r"""StartIncrementalMigration request structure.
 
     """
 
@@ -28834,7 +28948,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """ID of imported target instance
+        r"""ID of imported target instance
         :rtype: str
         """
         return self._InstanceId
@@ -28845,7 +28959,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
 
     @property
     def BackupMigrationId(self):
-        """Backup import task ID, which is returned through the API CreateBackupMigration
+        r"""Backup import task ID, which is returned through the API CreateBackupMigration
         :rtype: str
         """
         return self._BackupMigrationId
@@ -28856,7 +28970,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
 
     @property
     def IncrementalMigrationId(self):
-        """ID of an incremental backup import task
+        r"""ID of an incremental backup import task
         :rtype: str
         """
         return self._IncrementalMigrationId
@@ -28881,7 +28995,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
 
 
 class StartIncrementalMigrationResponse(AbstractModel):
-    """StartIncrementalMigration response structure.
+    r"""StartIncrementalMigration response structure.
 
     """
 
@@ -28897,7 +29011,7 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._FlowId
@@ -28908,7 +29022,7 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -28924,7 +29038,7 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
 
 class StartInstanceXEventRequest(AbstractModel):
-    """StartInstanceXEvent request structure.
+    r"""StartInstanceXEvent request structure.
 
     """
 
@@ -28940,7 +29054,7 @@ class StartInstanceXEventRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -28951,7 +29065,7 @@ class StartInstanceXEventRequest(AbstractModel):
 
     @property
     def EventConfig(self):
-        """Whether to start or stop an extended event
+        r"""Whether to start or stop an extended event
         :rtype: list of EventConfig
         """
         return self._EventConfig
@@ -28980,7 +29094,7 @@ class StartInstanceXEventRequest(AbstractModel):
 
 
 class StartInstanceXEventResponse(AbstractModel):
-    """StartInstanceXEvent response structure.
+    r"""StartInstanceXEvent response structure.
 
     """
 
@@ -28993,7 +29107,7 @@ class StartInstanceXEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -29007,8 +29121,74 @@ class StartInstanceXEventResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class SummaryDetailRes(AbstractModel):
+class StepDetail(AbstractModel):
+    r"""
+
     """
+
+    def __init__(self):
+        r"""
+        :param _Msg: 
+        :type Msg: str
+        :param _Status: 
+        :type Status: int
+        :param _Name: 
+        :type Name: str
+        """
+        self._Msg = None
+        self._Status = None
+        self._Name = None
+
+    @property
+    def Msg(self):
+        r"""
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        r"""
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SummaryDetailRes(AbstractModel):
+    r"""
 
     """
 
@@ -29060,7 +29240,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def RegionId(self):
-        """
+        r"""
         :rtype: int
         """
         return self._RegionId
@@ -29071,7 +29251,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status
@@ -29082,7 +29262,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def InstanceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -29093,7 +29273,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -29104,7 +29284,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ActualUsedSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ActualUsedSpace
@@ -29115,7 +29295,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DataBackupSpace
@@ -29126,7 +29306,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def DataBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DataBackupCount
@@ -29137,7 +29317,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._LogBackupSpace
@@ -29148,7 +29328,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def LogBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._LogBackupCount
@@ -29159,7 +29339,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def AutoBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._AutoBackupSpace
@@ -29170,7 +29350,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def AutoBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._AutoBackupCount
@@ -29181,7 +29361,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ManualBackupSpace(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ManualBackupSpace
@@ -29192,7 +29372,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def ManualBackupCount(self):
-        """
+        r"""
         :rtype: int
         """
         return self._ManualBackupCount
@@ -29203,7 +29383,7 @@ class SummaryDetailRes(AbstractModel):
 
     @property
     def Region(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Region
@@ -29239,7 +29419,7 @@ class SummaryDetailRes(AbstractModel):
 
 
 class SwitchCloudInstanceHARequest(AbstractModel):
-    """SwitchCloudInstanceHA request structure.
+    r"""SwitchCloudInstanceHA request structure.
 
     """
 
@@ -29255,7 +29435,7 @@ class SwitchCloudInstanceHARequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -29266,7 +29446,7 @@ class SwitchCloudInstanceHARequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        """Switch execution method. 0 - execute immediately; 1 - execute within the time window. The default value is 0.
+        r"""Switch execution method. 0 - execute immediately; 1 - execute within the time window. The default value is 0.
         :rtype: int
         """
         return self._WaitSwitch
@@ -29290,7 +29470,7 @@ class SwitchCloudInstanceHARequest(AbstractModel):
 
 
 class SwitchCloudInstanceHAResponse(AbstractModel):
-    """SwitchCloudInstanceHA response structure.
+    r"""SwitchCloudInstanceHA response structure.
 
     """
 
@@ -29306,7 +29486,7 @@ class SwitchCloudInstanceHAResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        """Asynchronous task flow ID.
+        r"""Asynchronous task flow ID.
         :rtype: int
         """
         return self._FlowId
@@ -29317,7 +29497,7 @@ class SwitchCloudInstanceHAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -29333,7 +29513,7 @@ class SwitchCloudInstanceHAResponse(AbstractModel):
 
 
 class SwitchLog(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -29358,7 +29538,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def EventId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EventId
@@ -29369,7 +29549,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def SwitchType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._SwitchType
@@ -29380,7 +29560,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def StartTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -29391,7 +29571,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def EndTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -29402,7 +29582,7 @@ class SwitchLog(AbstractModel):
 
     @property
     def Reason(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Reason
@@ -29429,7 +29609,7 @@ class SwitchLog(AbstractModel):
 
 
 class TDEConfigAttribute(AbstractModel):
-    """TDE configuration
+    r"""TDE configuration
 
     """
 
@@ -29448,7 +29628,7 @@ class TDEConfigAttribute(AbstractModel):
 
     @property
     def Encryption(self):
-        """TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        r"""TDE status. Valid values: `enable` (enabled), `disable` (disabled).
         :rtype: str
         """
         return self._Encryption
@@ -29459,7 +29639,7 @@ class TDEConfigAttribute(AbstractModel):
 
     @property
     def CertificateAttribution(self):
-        """Certificate ownership. Valid values: `self` (certificate of the this account), `others` (certificate of the other account), `none` (no certificate).
+        r"""Certificate ownership. Valid values: `self` (certificate of the this account), `others` (certificate of the other account), `none` (no certificate).
         :rtype: str
         """
         return self._CertificateAttribution
@@ -29470,7 +29650,7 @@ class TDEConfigAttribute(AbstractModel):
 
     @property
     def QuoteUin(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._QuoteUin
@@ -29495,7 +29675,7 @@ class TDEConfigAttribute(AbstractModel):
 
 
 class TerminateDBInstanceRequest(AbstractModel):
-    """TerminateDBInstance request structure.
+    r"""TerminateDBInstance request structure.
 
     """
 
@@ -29508,7 +29688,7 @@ class TerminateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        """List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page
+        r"""List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -29531,7 +29711,7 @@ class TerminateDBInstanceRequest(AbstractModel):
 
 
 class TerminateDBInstanceResponse(AbstractModel):
-    """TerminateDBInstance response structure.
+    r"""TerminateDBInstance response structure.
 
     """
 
@@ -29544,7 +29724,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -29559,7 +29739,7 @@ class TerminateDBInstanceResponse(AbstractModel):
 
 
 class UpgradeDBInstanceRequest(AbstractModel):
-    """UpgradeDBInstance request structure.
+    r"""UpgradeDBInstance request structure.
 
     """
 
@@ -29602,7 +29782,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-j8kv137v
+        r"""Instance ID in the format of mssql-j8kv137v
         :rtype: str
         """
         return self._InstanceId
@@ -29613,7 +29793,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
+        r"""Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
         :rtype: int
         """
         return self._Memory
@@ -29624,7 +29804,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
+        r"""Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
         :rtype: int
         """
         return self._Storage
@@ -29635,7 +29815,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0
+        r"""Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0
         :rtype: int
         """
         return self._AutoVoucher
@@ -29646,7 +29826,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Voucher ID (currently, only one voucher can be used per order)
+        r"""Voucher ID (currently, only one voucher can be used per order)
         :rtype: list of str
         """
         return self._VoucherIds
@@ -29657,7 +29837,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """The number of CUP cores after the instance is upgraded.
+        r"""The number of CUP cores after the instance is upgraded.
         :rtype: int
         """
         return self._Cpu
@@ -29668,7 +29848,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.
+        r"""Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.
         :rtype: str
         """
         return self._DBVersion
@@ -29679,7 +29859,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def HAType(self):
-        """Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.
+        r"""Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.
         :rtype: str
         """
         return self._HAType
@@ -29690,7 +29870,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def MultiZones(self):
-        """Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).
+        r"""Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).
         :rtype: str
         """
         return self._MultiZones
@@ -29701,7 +29881,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        """The time when configuration adjustment task is performed. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `1`.
+        r"""The time when configuration adjustment task is performed. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `1`.
         :rtype: int
         """
         return self._WaitSwitch
@@ -29712,7 +29892,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DrZones(self):
-        """Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
+        r"""Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
         :rtype: list of DrZoneInfo
         """
         return self._DrZones
@@ -29750,7 +29930,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
 
 class UpgradeDBInstanceResponse(AbstractModel):
-    """UpgradeDBInstance response structure.
+    r"""UpgradeDBInstance response structure.
 
     """
 
@@ -29766,7 +29946,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name.
+        r"""Order name.
         :rtype: str
         """
         return self._DealName
@@ -29777,7 +29957,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -29793,7 +29973,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
 
 class ZoneInfo(AbstractModel):
-    """AZ information
+    r"""AZ information
 
     """
 
@@ -29818,7 +29998,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)
+        r"""AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)
         :rtype: str
         """
         return self._Zone
@@ -29829,7 +30009,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        """AZ name
+        r"""AZ name
         :rtype: str
         """
         return self._ZoneName
@@ -29840,7 +30020,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Numeric ID of AZ
+        r"""Numeric ID of AZ
         :rtype: int
         """
         return self._ZoneId
@@ -29851,7 +30031,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def SpecId(self):
-        """ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ
+        r"""ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ
         :rtype: int
         """
         return self._SpecId
@@ -29862,7 +30042,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Version(self):
-        """Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
+        r"""Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)
         :rtype: str
         """
         return self._Version
@@ -29889,7 +30069,7 @@ class ZoneInfo(AbstractModel):
 
 
 class ZoneStatus(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -29908,7 +30088,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Zone(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Zone
@@ -29919,7 +30099,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Region(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Region
@@ -29930,7 +30110,7 @@ class ZoneStatus(AbstractModel):
 
     @property
     def Status(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Status

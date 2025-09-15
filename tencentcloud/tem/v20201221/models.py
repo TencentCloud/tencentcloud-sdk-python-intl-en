@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CosToken(AbstractModel):
-    """Cos token
+    r"""Cos token
 
     """
 
@@ -56,7 +56,7 @@ class CosToken(AbstractModel):
 
     @property
     def RequestId(self):
-        """Unique request ID
+        r"""Unique request ID
         :rtype: str
         """
         return self._RequestId
@@ -67,7 +67,7 @@ class CosToken(AbstractModel):
 
     @property
     def Bucket(self):
-        """Bucket name
+        r"""Bucket name
         :rtype: str
         """
         return self._Bucket
@@ -78,7 +78,7 @@ class CosToken(AbstractModel):
 
     @property
     def Region(self):
-        """Bucket region
+        r"""Bucket region
         :rtype: str
         """
         return self._Region
@@ -89,7 +89,7 @@ class CosToken(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """`SecretId` of temporary key
+        r"""`SecretId` of temporary key
         :rtype: str
         """
         return self._TmpSecretId
@@ -100,7 +100,7 @@ class CosToken(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """`SecretKey` of temporary key
+        r"""`SecretKey` of temporary key
         :rtype: str
         """
         return self._TmpSecretKey
@@ -111,7 +111,7 @@ class CosToken(AbstractModel):
 
     @property
     def SessionToken(self):
-        """`sessionToken` of temporary key
+        r"""`sessionToken` of temporary key
         :rtype: str
         """
         return self._SessionToken
@@ -122,7 +122,7 @@ class CosToken(AbstractModel):
 
     @property
     def StartTime(self):
-        """`StartTime` of temporary key acquisition
+        r"""`StartTime` of temporary key acquisition
         :rtype: str
         """
         return self._StartTime
@@ -133,7 +133,7 @@ class CosToken(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """`ExpiredTime` of temporary key
+        r"""`ExpiredTime` of temporary key
         :rtype: str
         """
         return self._ExpiredTime
@@ -144,7 +144,7 @@ class CosToken(AbstractModel):
 
     @property
     def FullPath(self):
-        """Full package path
+        r"""Full package path
         :rtype: str
         """
         return self._FullPath
@@ -175,7 +175,7 @@ class CosToken(AbstractModel):
 
 
 class CreateCosTokenV2Request(AbstractModel):
-    """CreateCosTokenV2 request structure.
+    r"""CreateCosTokenV2 request structure.
 
     """
 
@@ -200,7 +200,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -211,7 +211,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     @property
     def PkgName(self):
-        """Package name
+        r"""Package name
         :rtype: str
         """
         return self._PkgName
@@ -222,7 +222,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     @property
     def OptType(self):
-        """optType. 1: upload; 2: query
+        r"""optType. 1: upload; 2: query
         :rtype: int
         """
         return self._OptType
@@ -233,7 +233,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -244,7 +244,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
     @property
     def TimeVersion(self):
-        """Input parameter of `deployVersion`
+        r"""Input parameter of `deployVersion`
         :rtype: str
         """
         return self._TimeVersion
@@ -271,7 +271,7 @@ class CreateCosTokenV2Request(AbstractModel):
 
 
 class CreateCosTokenV2Response(AbstractModel):
-    """CreateCosTokenV2 response structure.
+    r"""CreateCosTokenV2 response structure.
 
     """
 
@@ -288,7 +288,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """`CosToken` object in case of success and `null` in case of failure
+        r"""`CosToken` object in case of success and `null` in case of failure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tem.v20201221.models.CosToken`
         """
@@ -300,7 +300,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -318,7 +318,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateNamespaceRequest(AbstractModel):
-    """CreateNamespace request structure.
+    r"""CreateNamespace request structure.
 
     """
 
@@ -349,7 +349,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._NamespaceName
@@ -360,7 +360,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Vpc(self):
-        """VPC name
+        r"""VPC name
         :rtype: str
         """
         return self._Vpc
@@ -371,7 +371,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """Subnet list
+        r"""Subnet list
         :rtype: list of str
         """
         return self._SubnetIds
@@ -382,7 +382,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
         :rtype: str
         """
         return self._Description
@@ -393,7 +393,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def K8sVersion(self):
-        """K8s version
+        r"""K8s version
         :rtype: str
         """
         return self._K8sVersion
@@ -404,7 +404,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -415,7 +415,7 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def EnableTswTraceService(self):
-        """Whether to enable the TSW service.
+        r"""Whether to enable the TSW service.
         :rtype: bool
         """
         return self._EnableTswTraceService
@@ -444,7 +444,7 @@ class CreateNamespaceRequest(AbstractModel):
 
 
 class CreateNamespaceResponse(AbstractModel):
-    """CreateNamespace response structure.
+    r"""CreateNamespace response structure.
 
     """
 
@@ -461,7 +461,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Namespace ID in case of success and `null` in case of failure
+        r"""Namespace ID in case of success and `null` in case of failure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -473,7 +473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -489,7 +489,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateResourceRequest(AbstractModel):
-    """CreateResource request structure.
+    r"""CreateResource request structure.
 
     """
 
@@ -511,7 +511,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Namespace ID
+        r"""Namespace ID
         :rtype: str
         """
         return self._NamespaceId
@@ -522,7 +522,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)
+        r"""Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)
         :rtype: str
         """
         return self._ResourceType
@@ -533,7 +533,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        """Resource ID
+        r"""Resource ID
         :rtype: str
         """
         return self._ResourceId
@@ -544,7 +544,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -570,7 +570,7 @@ class CreateResourceRequest(AbstractModel):
 
 
 class CreateResourceResponse(AbstractModel):
-    """CreateResource response structure.
+    r"""CreateResource response structure.
 
     """
 
@@ -587,7 +587,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Success or failure
+        r"""Success or failure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -599,7 +599,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -615,7 +615,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class CreateServiceV2Request(AbstractModel):
-    """CreateServiceV2 request structure.
+    r"""CreateServiceV2 request structure.
 
     """
 
@@ -663,7 +663,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Service name
+        r"""Service name
         :rtype: str
         """
         return self._ServiceName
@@ -674,7 +674,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -685,7 +685,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def UseDefaultImageService(self):
-        """Whether to use the default image service. 1: yes; 0: no
+        r"""Whether to use the default image service. 1: yes; 0: no
         :rtype: int
         """
         return self._UseDefaultImageService
@@ -696,7 +696,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def RepoType(self):
-        """Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
+        r"""Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition
         :rtype: int
         """
         return self._RepoType
@@ -707,7 +707,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID of Enterprise Edition image service
+        r"""Instance ID of Enterprise Edition image service
         :rtype: str
         """
         return self._InstanceId
@@ -718,7 +718,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def RepoServer(self):
-        """Address of the bound image server
+        r"""Address of the bound image server
         :rtype: str
         """
         return self._RepoServer
@@ -729,7 +729,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def RepoName(self):
-        """Name of the bound image repository
+        r"""Name of the bound image repository
         :rtype: str
         """
         return self._RepoName
@@ -740,7 +740,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -751,7 +751,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def SubnetList(self):
-        """Service subnet
+        r"""Service subnet
         :rtype: list of str
         """
         return self._SubnetList
@@ -762,7 +762,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def CodingLanguage(self):
-        """Programming language 
+        r"""Programming language 
 - JAVA
 - OTHER
         :rtype: str
@@ -775,7 +775,7 @@ class CreateServiceV2Request(AbstractModel):
 
     @property
     def DeployMode(self):
-        """Deployment mode 
+        r"""Deployment mode 
 - IMAGE
 - JAR
 - WAR
@@ -811,7 +811,7 @@ class CreateServiceV2Request(AbstractModel):
 
 
 class CreateServiceV2Response(AbstractModel):
-    """CreateServiceV2 response structure.
+    r"""CreateServiceV2 response structure.
 
     """
 
@@ -827,7 +827,7 @@ class CreateServiceV2Response(AbstractModel):
 
     @property
     def Result(self):
-        """Service code
+        r"""Service code
         :rtype: str
         """
         return self._Result
@@ -838,7 +838,7 @@ class CreateServiceV2Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -854,7 +854,7 @@ class CreateServiceV2Response(AbstractModel):
 
 
 class DeleteIngressRequest(AbstractModel):
-    """DeleteIngress request structure.
+    r"""DeleteIngress request structure.
 
     """
 
@@ -876,7 +876,7 @@ class DeleteIngressRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """tem NamespaceId
+        r"""tem NamespaceId
         :rtype: str
         """
         return self._NamespaceId
@@ -887,7 +887,7 @@ class DeleteIngressRequest(AbstractModel):
 
     @property
     def EksNamespace(self):
-        """EKS namespace name
+        r"""EKS namespace name
         :rtype: str
         """
         return self._EksNamespace
@@ -898,7 +898,7 @@ class DeleteIngressRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Ingress rule name
+        r"""Ingress rule name
         :rtype: str
         """
         return self._Name
@@ -909,7 +909,7 @@ class DeleteIngressRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -935,7 +935,7 @@ class DeleteIngressRequest(AbstractModel):
 
 
 class DeleteIngressResponse(AbstractModel):
-    """DeleteIngress response structure.
+    r"""DeleteIngress response structure.
 
     """
 
@@ -951,7 +951,7 @@ class DeleteIngressResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Whether deletion succeeded
+        r"""Whether deletion succeeded
         :rtype: bool
         """
         return self._Result
@@ -962,7 +962,7 @@ class DeleteIngressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -978,7 +978,7 @@ class DeleteIngressResponse(AbstractModel):
 
 
 class DeployServiceV2Request(AbstractModel):
-    """DeployServiceV2 request structure.
+    r"""DeployServiceV2 request structure.
 
     """
 
@@ -1096,7 +1096,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -1107,7 +1107,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def ContainerPort(self):
-        """Container port
+        r"""Container port
         :rtype: int
         """
         return self._ContainerPort
@@ -1118,7 +1118,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def InitPodNum(self):
-        """Number of initialized pods
+        r"""Number of initialized pods
         :rtype: int
         """
         return self._InitPodNum
@@ -1129,7 +1129,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def CpuSpec(self):
-        """CPU specification
+        r"""CPU specification
         :rtype: float
         """
         return self._CpuSpec
@@ -1140,7 +1140,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def MemorySpec(self):
-        """Memory specification
+        r"""Memory specification
         :rtype: float
         """
         return self._MemorySpec
@@ -1151,7 +1151,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def NamespaceId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._NamespaceId
@@ -1162,7 +1162,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def ImgRepo(self):
-        """Image repository
+        r"""Image repository
         :rtype: str
         """
         return self._ImgRepo
@@ -1173,7 +1173,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def VersionDesc(self):
-        """Version description
+        r"""Version description
         :rtype: str
         """
         return self._VersionDesc
@@ -1184,7 +1184,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def JvmOpts(self):
-        """Launch parameters
+        r"""Launch parameters
         :rtype: str
         """
         return self._JvmOpts
@@ -1195,7 +1195,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def EsInfo(self):
-        """Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled
+        r"""Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled
         :rtype: :class:`tencentcloud.tem.v20201221.models.EsInfo`
         """
         return self._EsInfo
@@ -1206,7 +1206,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def EnvConf(self):
-        """Environment variable configuration
+        r"""Environment variable configuration
         :rtype: list of Pair
         """
         return self._EnvConf
@@ -1217,7 +1217,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def LogConfs(self):
-        """Log configuration
+        r"""Log configuration
         :rtype: list of str
         """
         return self._LogConfs
@@ -1228,7 +1228,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def StorageConfs(self):
-        """Data volume configuration
+        r"""Data volume configuration
         :rtype: list of StorageConf
         """
         return self._StorageConfs
@@ -1239,7 +1239,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def StorageMountConfs(self):
-        """Data volume mount configuration
+        r"""Data volume mount configuration
         :rtype: list of StorageMountConf
         """
         return self._StorageMountConfs
@@ -1250,7 +1250,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def DeployMode(self):
-        """Deployment type.
+        r"""Deployment type.
 - JAR: deployment through JAR package
 - WAR: deployment through WAR package
 - IMAGE: deployment through image
@@ -1264,7 +1264,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def DeployVersion(self):
-        """When the deployment type is `IMAGE`, this parameter indicates the image tag.
+        r"""When the deployment type is `IMAGE`, this parameter indicates the image tag.
 When the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.
         :rtype: str
         """
@@ -1276,7 +1276,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def PkgName(self):
-        """Package name, which is required when using JAR or WAR packages for deployment.
+        r"""Package name, which is required when using JAR or WAR packages for deployment.
         :rtype: str
         """
         return self._PkgName
@@ -1287,7 +1287,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def JdkVersion(self):
-        """JDK version.
+        r"""JDK version.
 - KONA: use KONA JDK.
 - OPEN: use open JDK.
         :rtype: str
@@ -1300,7 +1300,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def SecurityGroupIds(self):
-        """Security group IDs
+        r"""Security group IDs
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -1311,7 +1311,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def LogOutputConf(self):
-        """Log output configuration
+        r"""Log output configuration
         :rtype: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`
         """
         return self._LogOutputConf
@@ -1322,7 +1322,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -1333,7 +1333,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def Description(self):
-        """Version description
+        r"""Version description
         :rtype: str
         """
         return self._Description
@@ -1344,7 +1344,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def ImageCommand(self):
-        """Image command
+        r"""Image command
         :rtype: str
         """
         return self._ImageCommand
@@ -1355,7 +1355,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def ImageArgs(self):
-        """Image command parameters
+        r"""Image command parameters
         :rtype: list of str
         """
         return self._ImageArgs
@@ -1366,7 +1366,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def PortMappings(self):
-        """Service port mapping.
+        r"""Service port mapping.
         :rtype: list of PortMapping
         """
         return self._PortMappings
@@ -1377,7 +1377,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def UseRegistryDefaultConfig(self):
-        """Whether to add the registry’s default configurations.
+        r"""Whether to add the registry’s default configurations.
         :rtype: bool
         """
         return self._UseRegistryDefaultConfig
@@ -1388,7 +1388,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def SettingConfs(self):
-        """Mounting configurations
+        r"""Mounting configurations
         :rtype: list of MountedSettingConf
         """
         return self._SettingConfs
@@ -1399,7 +1399,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def EksService(self):
-        """EKS access configuration
+        r"""EKS access configuration
         :rtype: :class:`tencentcloud.tem.v20201221.models.EksService`
         """
         return self._EksService
@@ -1410,7 +1410,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def VersionId(self):
-        """ID of the version that you want to roll back to
+        r"""ID of the version that you want to roll back to
         :rtype: str
         """
         return self._VersionId
@@ -1421,7 +1421,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def PostStart(self):
-        """The script to run after startup
+        r"""The script to run after startup
         :rtype: str
         """
         return self._PostStart
@@ -1432,7 +1432,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def PreStop(self):
-        """The script to run before stop
+        r"""The script to run before stop
         :rtype: str
         """
         return self._PreStop
@@ -1443,7 +1443,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def DeployStrategyConf(self):
-        """Configuration of 
+        r"""Configuration of 
         :rtype: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`
         """
         return self._DeployStrategyConf
@@ -1454,7 +1454,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def Liveness(self):
-        """Configuration of aliveness probe
+        r"""Configuration of aliveness probe
         :rtype: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
         """
         return self._Liveness
@@ -1465,7 +1465,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
     @property
     def Readiness(self):
-        """Configuration of readiness probe
+        r"""Configuration of readiness probe
         :rtype: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
         """
         return self._Readiness
@@ -1558,7 +1558,7 @@ When the deployment type is `JAR` or `WAR`, this parameter indicates the package
 
 
 class DeployServiceV2Response(AbstractModel):
-    """DeployServiceV2 response structure.
+    r"""DeployServiceV2 response structure.
 
     """
 
@@ -1574,7 +1574,7 @@ class DeployServiceV2Response(AbstractModel):
 
     @property
     def Result(self):
-        """Version ID (which can be ignored for the frontend)
+        r"""Version ID (which can be ignored for the frontend)
         :rtype: str
         """
         return self._Result
@@ -1585,7 +1585,7 @@ class DeployServiceV2Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1601,7 +1601,7 @@ class DeployServiceV2Response(AbstractModel):
 
 
 class DeployStrategyConf(AbstractModel):
-    """Configuration of batch release policies
+    r"""Configuration of batch release policies
 
     """
 
@@ -1623,7 +1623,7 @@ class DeployStrategyConf(AbstractModel):
 
     @property
     def TotalBatchCount(self):
-        """Total batches
+        r"""Total batches
         :rtype: int
         """
         return self._TotalBatchCount
@@ -1634,7 +1634,7 @@ class DeployStrategyConf(AbstractModel):
 
     @property
     def BetaBatchNum(self):
-        """Number of instances for the beta batch
+        r"""Number of instances for the beta batch
         :rtype: int
         """
         return self._BetaBatchNum
@@ -1645,7 +1645,7 @@ class DeployStrategyConf(AbstractModel):
 
     @property
     def DeployStrategyType(self):
-        """Batch deploy policy. `0`: automatically; `1`: manually. If you use beta batch, the policy for beta batch must be `0`. The policy specified here only applies to the rest batches.
+        r"""Batch deploy policy. `0`: automatically; `1`: manually. If you use beta batch, the policy for beta batch must be `0`. The policy specified here only applies to the rest batches.
         :rtype: int
         """
         return self._DeployStrategyType
@@ -1656,7 +1656,7 @@ class DeployStrategyConf(AbstractModel):
 
     @property
     def BatchInterval(self):
-        """Interval between batches
+        r"""Interval between batches
         :rtype: int
         """
         return self._BatchInterval
@@ -1682,7 +1682,7 @@ class DeployStrategyConf(AbstractModel):
 
 
 class DescribeIngressRequest(AbstractModel):
-    """DescribeIngress request structure.
+    r"""DescribeIngress request structure.
 
     """
 
@@ -1704,7 +1704,7 @@ class DescribeIngressRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """tem namespaceId
+        r"""tem namespaceId
         :rtype: str
         """
         return self._NamespaceId
@@ -1715,7 +1715,7 @@ class DescribeIngressRequest(AbstractModel):
 
     @property
     def EksNamespace(self):
-        """EKS namespace name
+        r"""EKS namespace name
         :rtype: str
         """
         return self._EksNamespace
@@ -1726,7 +1726,7 @@ class DescribeIngressRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Ingress rule name
+        r"""Ingress rule name
         :rtype: str
         """
         return self._Name
@@ -1737,7 +1737,7 @@ class DescribeIngressRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -1763,7 +1763,7 @@ class DescribeIngressRequest(AbstractModel):
 
 
 class DescribeIngressResponse(AbstractModel):
-    """DescribeIngress response structure.
+    r"""DescribeIngress response structure.
 
     """
 
@@ -1779,7 +1779,7 @@ class DescribeIngressResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Ingress rule configuration
+        r"""Ingress rule configuration
         :rtype: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
         """
         return self._Result
@@ -1790,7 +1790,7 @@ class DescribeIngressResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1808,7 +1808,7 @@ class DescribeIngressResponse(AbstractModel):
 
 
 class DescribeIngressesRequest(AbstractModel):
-    """DescribeIngresses request structure.
+    r"""DescribeIngresses request structure.
 
     """
 
@@ -1830,7 +1830,7 @@ class DescribeIngressesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """namespace id
+        r"""namespace id
         :rtype: str
         """
         return self._NamespaceId
@@ -1841,7 +1841,7 @@ class DescribeIngressesRequest(AbstractModel):
 
     @property
     def EksNamespace(self):
-        """namespace
+        r"""namespace
         :rtype: str
         """
         return self._EksNamespace
@@ -1852,7 +1852,7 @@ class DescribeIngressesRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -1863,7 +1863,7 @@ class DescribeIngressesRequest(AbstractModel):
 
     @property
     def Names(self):
-        """Ingress rule name list.
+        r"""Ingress rule name list.
         :rtype: list of str
         """
         return self._Names
@@ -1889,7 +1889,7 @@ class DescribeIngressesRequest(AbstractModel):
 
 
 class DescribeIngressesResponse(AbstractModel):
-    """DescribeIngresses response structure.
+    r"""DescribeIngresses response structure.
 
     """
 
@@ -1906,7 +1906,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Ingress array
+        r"""Ingress array
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of IngressInfo
         """
@@ -1918,7 +1918,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1939,7 +1939,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeNamespacesRequest(AbstractModel):
-    """DescribeNamespaces request structure.
+    r"""DescribeNamespaces request structure.
 
     """
 
@@ -1958,7 +1958,7 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page
+        r"""Number of items per page
         :rtype: int
         """
         return self._Limit
@@ -1969,7 +1969,7 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Offset
@@ -1980,7 +1980,7 @@ class DescribeNamespacesRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source
+        r"""Source
         :rtype: int
         """
         return self._SourceChannel
@@ -2005,7 +2005,7 @@ class DescribeNamespacesRequest(AbstractModel):
 
 
 class DescribeNamespacesResponse(AbstractModel):
-    """DescribeNamespaces response structure.
+    r"""DescribeNamespaces response structure.
 
     """
 
@@ -2021,7 +2021,7 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Returned result
+        r"""Returned result
         :rtype: :class:`tencentcloud.tem.v20201221.models.NamespacePage`
         """
         return self._Result
@@ -2032,7 +2032,7 @@ class DescribeNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2050,7 +2050,7 @@ class DescribeNamespacesResponse(AbstractModel):
 
 
 class DescribeRelatedIngressesRequest(AbstractModel):
-    """DescribeRelatedIngresses request structure.
+    r"""DescribeRelatedIngresses request structure.
 
     """
 
@@ -2072,7 +2072,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Environment ID.
+        r"""Environment ID.
         :rtype: str
         """
         return self._NamespaceId
@@ -2083,7 +2083,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
     @property
     def EksNamespace(self):
-        """EKS namespace.
+        r"""EKS namespace.
         :rtype: str
         """
         return self._EksNamespace
@@ -2094,7 +2094,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel.
+        r"""Source channel.
         :rtype: int
         """
         return self._SourceChannel
@@ -2105,7 +2105,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID.
+        r"""Service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -2131,7 +2131,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
 
 
 class DescribeRelatedIngressesResponse(AbstractModel):
-    """DescribeRelatedIngresses response structure.
+    r"""DescribeRelatedIngresses response structure.
 
     """
 
@@ -2148,7 +2148,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Result(self):
-        """Ingress array.
+        r"""Ingress array.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of IngressInfo
         """
@@ -2160,7 +2160,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2181,7 +2181,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeRunPodPage(AbstractModel):
-    """Version pod list
+    r"""Version pod list
 
     """
 
@@ -2206,7 +2206,7 @@ class DescribeRunPodPage(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Offset
@@ -2217,7 +2217,7 @@ class DescribeRunPodPage(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page
+        r"""Number of items per page
         :rtype: int
         """
         return self._Limit
@@ -2228,7 +2228,7 @@ class DescribeRunPodPage(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._TotalCount
@@ -2239,7 +2239,7 @@ class DescribeRunPodPage(AbstractModel):
 
     @property
     def RequestId(self):
-        """Request ID
+        r"""Request ID
         :rtype: str
         """
         return self._RequestId
@@ -2250,7 +2250,7 @@ class DescribeRunPodPage(AbstractModel):
 
     @property
     def PodList(self):
-        """Number of items
+        r"""Number of items
         :rtype: list of RunVersionPod
         """
         return self._PodList
@@ -2282,7 +2282,7 @@ class DescribeRunPodPage(AbstractModel):
 
 
 class DescribeServiceRunPodListV2Request(AbstractModel):
-    """DescribeServiceRunPodListV2 request structure.
+    r"""DescribeServiceRunPodListV2 request structure.
 
     """
 
@@ -2316,7 +2316,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._NamespaceId
@@ -2327,7 +2327,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service name ID
+        r"""Service name ID
         :rtype: str
         """
         return self._ServiceId
@@ -2338,7 +2338,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page. Default value: 20
+        r"""Number of items per page. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -2349,7 +2349,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number. Default value: 0
+        r"""Page number. Default value: 0
         :rtype: int
         """
         return self._Offset
@@ -2360,7 +2360,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def Status(self):
-        """Pod status 
+        r"""Pod status 
 - Running 
 - Pending 
 - Error
@@ -2374,7 +2374,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def PodName(self):
-        """Pod name
+        r"""Pod name
         :rtype: str
         """
         return self._PodName
@@ -2385,7 +2385,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -2414,7 +2414,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
 
 
 class DescribeServiceRunPodListV2Response(AbstractModel):
-    """DescribeServiceRunPodListV2 response structure.
+    r"""DescribeServiceRunPodListV2 response structure.
 
     """
 
@@ -2430,7 +2430,7 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
 
     @property
     def Result(self):
-        """Returned result
+        r"""Returned result
         :rtype: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`
         """
         return self._Result
@@ -2441,7 +2441,7 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2459,7 +2459,7 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
 
 
 class EksService(AbstractModel):
-    """EKS service information
+    r"""EKS service information
 
     """
 
@@ -2513,7 +2513,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
-        """Service name
+        r"""Service name
         :rtype: str
         """
         return self._Name
@@ -2524,7 +2524,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Ports(self):
-        """Available ports
+        r"""Available ports
         :rtype: list of int
         """
         return self._Ports
@@ -2535,7 +2535,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Yaml(self):
-        """Yaml contents
+        r"""Yaml contents
         :rtype: str
         """
         return self._Yaml
@@ -2546,7 +2546,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ServiceName(self):
-        """Service name
+        r"""Service name
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -2558,7 +2558,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def VersionName(self):
-        """Version name
+        r"""Version name
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -2570,7 +2570,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClusterIp(self):
-        """Private IP
+        r"""Private IP
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of str
         """
@@ -2582,7 +2582,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ExternalIp(self):
-        """Public IP
+        r"""Public IP
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -2594,7 +2594,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
-        """The access type. Valid values:
+        r"""The access type. Valid values:
 - EXTERNAL (internet access)
 - VPC（Intra-VPC access)
 - CLUSTER (Intra-cluster access)
@@ -2609,7 +2609,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SubnetId(self):
-        """Subnet ID. It is filled when the access type is `VPC`.
+        r"""Subnet ID. It is filled when the access type is `VPC`.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2621,7 +2621,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LoadBalanceId(self):
-        """Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.
+        r"""Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2633,7 +2633,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PortMappings(self):
-        """Port Mapping
+        r"""Port Mapping
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: list of PortMapping
         """
@@ -2672,7 +2672,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class EsInfo(AbstractModel):
-    """Auto scaling configuration
+    r"""Auto scaling configuration
 
     """
 
@@ -2697,7 +2697,7 @@ class EsInfo(AbstractModel):
 
     @property
     def MinAliveInstances(self):
-        """Minimum number of instances
+        r"""Minimum number of instances
         :rtype: int
         """
         return self._MinAliveInstances
@@ -2708,7 +2708,7 @@ class EsInfo(AbstractModel):
 
     @property
     def MaxAliveInstances(self):
-        """Maximum number of instances
+        r"""Maximum number of instances
         :rtype: int
         """
         return self._MaxAliveInstances
@@ -2719,7 +2719,7 @@ class EsInfo(AbstractModel):
 
     @property
     def EsStrategy(self):
-        """Auto scaling policy. 1: CPU; 2: memory
+        r"""Auto scaling policy. 1: CPU; 2: memory
         :rtype: int
         """
         return self._EsStrategy
@@ -2730,7 +2730,7 @@ class EsInfo(AbstractModel):
 
     @property
     def Threshold(self):
-        """Auto scaling condition value
+        r"""Auto scaling condition value
         :rtype: int
         """
         return self._Threshold
@@ -2741,7 +2741,7 @@ class EsInfo(AbstractModel):
 
     @property
     def VersionId(self):
-        """Version ID
+        r"""Version ID
         :rtype: str
         """
         return self._VersionId
@@ -2768,7 +2768,7 @@ class EsInfo(AbstractModel):
 
 
 class GenerateDownloadUrlRequest(AbstractModel):
-    """GenerateDownloadUrl request structure.
+    r"""GenerateDownloadUrl request structure.
 
     """
 
@@ -2790,7 +2790,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID
+        r"""Service ID
         :rtype: str
         """
         return self._ServiceId
@@ -2801,7 +2801,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
     @property
     def PkgName(self):
-        """Package Name
+        r"""Package Name
         :rtype: str
         """
         return self._PkgName
@@ -2812,7 +2812,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
     @property
     def DeployVersion(self):
-        """Version of the package to download
+        r"""Version of the package to download
         :rtype: str
         """
         return self._DeployVersion
@@ -2823,7 +2823,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -2849,7 +2849,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
 
 
 class GenerateDownloadUrlResponse(AbstractModel):
-    """GenerateDownloadUrl response structure.
+    r"""GenerateDownloadUrl response structure.
 
     """
 
@@ -2866,7 +2866,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Result(self):
-        """Temp download URL for the package
+        r"""Temp download URL for the package
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -2878,7 +2878,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2894,7 +2894,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class HealthCheckConfig(AbstractModel):
-    """Health Check Configuration
+    r"""Health Check Configuration
 
     """
 
@@ -2928,7 +2928,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def Type(self):
-        """Health check type. Valid values: `HttpGet`，`TcpSocket`，`Exec`
+        r"""Health check type. Valid values: `HttpGet`，`TcpSocket`，`Exec`
         :rtype: str
         """
         return self._Type
@@ -2939,7 +2939,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def Protocol(self):
-        """The protocol type. It’s only valid when the health check type is `HttpGet`.
+        r"""The protocol type. It’s only valid when the health check type is `HttpGet`.
         :rtype: str
         """
         return self._Protocol
@@ -2950,7 +2950,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def Path(self):
-        """The request path. It’s only valid when the health check type is `HttpGet`.
+        r"""The request path. It’s only valid when the health check type is `HttpGet`.
         :rtype: str
         """
         return self._Path
@@ -2961,7 +2961,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def Exec(self):
-        """The script to be executed. It’s only valid when the health check type is `Exec`.
+        r"""The script to be executed. It’s only valid when the health check type is `Exec`.
         :rtype: str
         """
         return self._Exec
@@ -2972,7 +2972,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def Port(self):
-        """The request port. It’s only valid when the health check type is `HttpGet` or `TcpSocket `.
+        r"""The request port. It’s only valid when the health check type is `HttpGet` or `TcpSocket `.
         :rtype: int
         """
         return self._Port
@@ -2983,7 +2983,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
-        """The initial delay for health check in seconds. Default: `0`
+        r"""The initial delay for health check in seconds. Default: `0`
         :rtype: int
         """
         return self._InitialDelaySeconds
@@ -2994,7 +2994,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        """Timeout period in seconds. Default: `1`
+        r"""Timeout period in seconds. Default: `1`
         :rtype: int
         """
         return self._TimeoutSeconds
@@ -3005,7 +3005,7 @@ class HealthCheckConfig(AbstractModel):
 
     @property
     def PeriodSeconds(self):
-        """Interval period in seconds. Default: `10`
+        r"""Interval period in seconds. Default: `10`
         :rtype: int
         """
         return self._PeriodSeconds
@@ -3035,7 +3035,7 @@ class HealthCheckConfig(AbstractModel):
 
 
 class IngressInfo(AbstractModel):
-    """Ingress configuration
+    r"""Ingress configuration
 
     """
 
@@ -3084,7 +3084,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NamespaceId(self):
-        """tem namespaceId
+        r"""tem namespaceId
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3096,7 +3096,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EksNamespace(self):
-        """eks namespace
+        r"""eks namespace
         :rtype: str
         """
         return self._EksNamespace
@@ -3107,7 +3107,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddressIPVersion(self):
-        """ip version
+        r"""ip version
         :rtype: str
         """
         return self._AddressIPVersion
@@ -3118,7 +3118,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """ingress name
+        r"""ingress name
         :rtype: str
         """
         return self._Name
@@ -3129,7 +3129,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """Rules configuration
+        r"""Rules configuration
         :rtype: list of IngressRule
         """
         return self._Rules
@@ -3140,7 +3140,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClbId(self):
-        """clb ID
+        r"""clb ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3152,7 +3152,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tls(self):
-        """TLS configuration
+        r"""TLS configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of IngressTls
         """
@@ -3164,7 +3164,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """eks clusterId
+        r"""eks clusterId
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3176,7 +3176,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
-        """clb ip
+        r"""clb ip
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3188,7 +3188,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        """Creation time.
+        r"""Creation time.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -3200,7 +3200,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mixed(self):
-        """Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.
+        r"""Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.
         :rtype: bool
         """
         return self._Mixed
@@ -3243,7 +3243,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class IngressRule(AbstractModel):
-    """Ingress rule configuration
+    r"""Ingress rule configuration
 
     """
 
@@ -3263,7 +3263,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Http(self):
-        """ingress rule value
+        r"""ingress rule value
         :rtype: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`
         """
         return self._Http
@@ -3274,7 +3274,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
-        """Host address
+        r"""Host address
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3286,7 +3286,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol. Options include HTTP and HTTPS. The default option is HTTP.
+        r"""Protocol. Options include HTTP and HTTPS. The default option is HTTP.
         :rtype: str
         """
         return self._Protocol
@@ -3313,7 +3313,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class IngressRuleBackend(AbstractModel):
-    """Ingress rule backend configuration
+    r"""Ingress rule backend configuration
 
     """
 
@@ -3329,7 +3329,7 @@ class IngressRuleBackend(AbstractModel):
 
     @property
     def ServiceName(self):
-        """EKS service name
+        r"""EKS service name
         :rtype: str
         """
         return self._ServiceName
@@ -3340,7 +3340,7 @@ class IngressRuleBackend(AbstractModel):
 
     @property
     def ServicePort(self):
-        """EKS service port
+        r"""EKS service port
         :rtype: int
         """
         return self._ServicePort
@@ -3364,7 +3364,7 @@ class IngressRuleBackend(AbstractModel):
 
 
 class IngressRulePath(AbstractModel):
-    """Ingress rule path configuration
+    r"""Ingress rule path configuration
 
     """
 
@@ -3380,7 +3380,7 @@ class IngressRulePath(AbstractModel):
 
     @property
     def Path(self):
-        """Path information
+        r"""Path information
         :rtype: str
         """
         return self._Path
@@ -3391,7 +3391,7 @@ class IngressRulePath(AbstractModel):
 
     @property
     def Backend(self):
-        """Backend configuration
+        r"""Backend configuration
         :rtype: :class:`tencentcloud.tem.v20201221.models.IngressRuleBackend`
         """
         return self._Backend
@@ -3417,7 +3417,7 @@ class IngressRulePath(AbstractModel):
 
 
 class IngressRuleValue(AbstractModel):
-    """Ingress rule value configuration
+    r"""Ingress rule value configuration
 
     """
 
@@ -3430,7 +3430,7 @@ class IngressRuleValue(AbstractModel):
 
     @property
     def Paths(self):
-        """Overall rule configuration
+        r"""Overall rule configuration
         :rtype: list of IngressRulePath
         """
         return self._Paths
@@ -3458,7 +3458,7 @@ class IngressRuleValue(AbstractModel):
 
 
 class IngressTls(AbstractModel):
-    """Ingress TLS configuration
+    r"""Ingress TLS configuration
 
     """
 
@@ -3477,7 +3477,7 @@ class IngressTls(AbstractModel):
 
     @property
     def Hosts(self):
-        """Host array. An empty array indicates the default certificate for all domain names.
+        r"""Host array. An empty array indicates the default certificate for all domain names.
         :rtype: list of str
         """
         return self._Hosts
@@ -3488,7 +3488,7 @@ class IngressTls(AbstractModel):
 
     @property
     def SecretName(self):
-        """Secret name. If a certificate is used, this field is left empty.
+        r"""Secret name. If a certificate is used, this field is left empty.
         :rtype: str
         """
         return self._SecretName
@@ -3499,7 +3499,7 @@ class IngressTls(AbstractModel):
 
     @property
     def CertificateId(self):
-        """SSL Certificate Id
+        r"""SSL Certificate Id
         :rtype: str
         """
         return self._CertificateId
@@ -3524,7 +3524,7 @@ class IngressTls(AbstractModel):
 
 
 class LogOutputConf(AbstractModel):
-    """Log output configuration
+    r"""Log output configuration
 
     """
 
@@ -3549,7 +3549,7 @@ class LogOutputConf(AbstractModel):
 
     @property
     def OutputType(self):
-        """Log consumer type
+        r"""Log consumer type
         :rtype: str
         """
         return self._OutputType
@@ -3560,7 +3560,7 @@ class LogOutputConf(AbstractModel):
 
     @property
     def ClsLogsetName(self):
-        """CLS logset
+        r"""CLS logset
         :rtype: str
         """
         return self._ClsLogsetName
@@ -3571,7 +3571,7 @@ class LogOutputConf(AbstractModel):
 
     @property
     def ClsLogTopicId(self):
-        """CLS log topic
+        r"""CLS log topic
         :rtype: str
         """
         return self._ClsLogTopicId
@@ -3582,7 +3582,7 @@ class LogOutputConf(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        """CLS logset ID
+        r"""CLS logset ID
         :rtype: str
         """
         return self._ClsLogsetId
@@ -3593,7 +3593,7 @@ class LogOutputConf(AbstractModel):
 
     @property
     def ClsLogTopicName(self):
-        """CLS log topic name
+        r"""CLS log topic name
         :rtype: str
         """
         return self._ClsLogTopicName
@@ -3620,7 +3620,7 @@ class LogOutputConf(AbstractModel):
 
 
 class ModifyIngressRequest(AbstractModel):
-    """ModifyIngress request structure.
+    r"""ModifyIngress request structure.
 
     """
 
@@ -3636,7 +3636,7 @@ class ModifyIngressRequest(AbstractModel):
 
     @property
     def Ingress(self):
-        """Ingress rule configuration
+        r"""Ingress rule configuration
         :rtype: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
         """
         return self._Ingress
@@ -3647,7 +3647,7 @@ class ModifyIngressRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -3673,7 +3673,7 @@ class ModifyIngressRequest(AbstractModel):
 
 
 class ModifyIngressResponse(AbstractModel):
-    """ModifyIngress response structure.
+    r"""ModifyIngress response structure.
 
     """
 
@@ -3690,7 +3690,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Created successfully
+        r"""Created successfully
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3702,7 +3702,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3718,7 +3718,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyNamespaceRequest(AbstractModel):
-    """ModifyNamespace request structure.
+    r"""ModifyNamespace request structure.
 
     """
 
@@ -3746,7 +3746,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Environment ID
+        r"""Environment ID
         :rtype: str
         """
         return self._NamespaceId
@@ -3757,7 +3757,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._NamespaceName
@@ -3768,7 +3768,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
         :rtype: str
         """
         return self._Description
@@ -3779,7 +3779,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def Vpc(self):
-        """VPC name
+        r"""VPC name
         :rtype: str
         """
         return self._Vpc
@@ -3790,7 +3790,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        """Subnet
+        r"""Subnet
         :rtype: list of str
         """
         return self._SubnetIds
@@ -3801,7 +3801,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel
+        r"""Source channel
         :rtype: int
         """
         return self._SourceChannel
@@ -3829,7 +3829,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
 
 class ModifyNamespaceResponse(AbstractModel):
-    """ModifyNamespace response structure.
+    r"""ModifyNamespace response structure.
 
     """
 
@@ -3846,7 +3846,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Namespace ID in case of success and `null` in case of failure
+        r"""Namespace ID in case of success and `null` in case of failure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -3858,7 +3858,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3874,7 +3874,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyServiceInfoRequest(AbstractModel):
-    """ModifyServiceInfo request structure.
+    r"""ModifyServiceInfo request structure.
 
     """
 
@@ -3893,7 +3893,7 @@ class ModifyServiceInfoRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID.
+        r"""Service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -3904,7 +3904,7 @@ class ModifyServiceInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -3915,7 +3915,7 @@ class ModifyServiceInfoRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel.
+        r"""Source channel.
         :rtype: int
         """
         return self._SourceChannel
@@ -3940,7 +3940,7 @@ class ModifyServiceInfoRequest(AbstractModel):
 
 
 class ModifyServiceInfoResponse(AbstractModel):
-    """ModifyServiceInfo response structure.
+    r"""ModifyServiceInfo response structure.
 
     """
 
@@ -3957,7 +3957,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Result(self):
-        """Results.
+        r"""Results.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: bool
         """
@@ -3969,7 +3969,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3985,7 +3985,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class MountedSettingConf(AbstractModel):
-    """Mounting configuration information
+    r"""Mounting configuration information
 
     """
 
@@ -4004,7 +4004,7 @@ class MountedSettingConf(AbstractModel):
 
     @property
     def ConfigDataName(self):
-        """Configuration Name
+        r"""Configuration Name
         :rtype: str
         """
         return self._ConfigDataName
@@ -4015,7 +4015,7 @@ class MountedSettingConf(AbstractModel):
 
     @property
     def MountedPath(self):
-        """Mount point path
+        r"""Mount point path
         :rtype: str
         """
         return self._MountedPath
@@ -4026,7 +4026,7 @@ class MountedSettingConf(AbstractModel):
 
     @property
     def Data(self):
-        """Configuration Content
+        r"""Configuration Content
         :rtype: list of Pair
         """
         return self._Data
@@ -4056,7 +4056,7 @@ class MountedSettingConf(AbstractModel):
 
 
 class NamespacePage(AbstractModel):
-    """Namespace pagination
+    r"""Namespace pagination
 
     """
 
@@ -4078,7 +4078,7 @@ class NamespacePage(AbstractModel):
 
     @property
     def Records(self):
-        """Records
+        r"""Records
         :rtype: list of TemNamespaceInfo
         """
         return self._Records
@@ -4089,7 +4089,7 @@ class NamespacePage(AbstractModel):
 
     @property
     def Total(self):
-        """Total number
+        r"""Total number
         :rtype: int
         """
         return self._Total
@@ -4100,7 +4100,7 @@ class NamespacePage(AbstractModel):
 
     @property
     def Size(self):
-        """Number of items
+        r"""Number of items
         :rtype: int
         """
         return self._Size
@@ -4111,7 +4111,7 @@ class NamespacePage(AbstractModel):
 
     @property
     def Pages(self):
-        """Number of pages
+        r"""Number of pages
         :rtype: int
         """
         return self._Pages
@@ -4142,7 +4142,7 @@ class NamespacePage(AbstractModel):
 
 
 class Pair(AbstractModel):
-    """Key-Value pair
+    r"""Key-Value pair
 
     """
 
@@ -4158,7 +4158,7 @@ class Pair(AbstractModel):
 
     @property
     def Key(self):
-        """Key
+        r"""Key
         :rtype: str
         """
         return self._Key
@@ -4169,7 +4169,7 @@ class Pair(AbstractModel):
 
     @property
     def Value(self):
-        """Value
+        r"""Value
         :rtype: str
         """
         return self._Value
@@ -4193,7 +4193,7 @@ class Pair(AbstractModel):
 
 
 class PortMapping(AbstractModel):
-    """Service port mapping
+    r"""Service port mapping
 
     """
 
@@ -4212,7 +4212,7 @@ class PortMapping(AbstractModel):
 
     @property
     def Port(self):
-        """Port.
+        r"""Port.
         :rtype: int
         """
         return self._Port
@@ -4223,7 +4223,7 @@ class PortMapping(AbstractModel):
 
     @property
     def TargetPort(self):
-        """Mapped port.
+        r"""Mapped port.
         :rtype: int
         """
         return self._TargetPort
@@ -4234,7 +4234,7 @@ class PortMapping(AbstractModel):
 
     @property
     def Protocol(self):
-        """TCP/UDP protocol stack.
+        r"""TCP/UDP protocol stack.
         :rtype: str
         """
         return self._Protocol
@@ -4259,7 +4259,7 @@ class PortMapping(AbstractModel):
 
 
 class RestartServiceRunPodRequest(AbstractModel):
-    """RestartServiceRunPod request structure.
+    r"""RestartServiceRunPod request structure.
 
     """
 
@@ -4290,7 +4290,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        """Environment ID.
+        r"""Environment ID.
         :rtype: str
         """
         return self._NamespaceId
@@ -4301,7 +4301,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        """Service ID.
+        r"""Service ID.
         :rtype: str
         """
         return self._ServiceId
@@ -4312,7 +4312,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def PodName(self):
-        """Pod name.
+        r"""Pod name.
         :rtype: str
         """
         return self._PodName
@@ -4323,7 +4323,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._Limit
@@ -4334,7 +4334,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._Offset
@@ -4345,7 +4345,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Pod status.
+        r"""Pod status.
         :rtype: str
         """
         return self._Status
@@ -4356,7 +4356,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
     @property
     def SourceChannel(self):
-        """Source channel.
+        r"""Source channel.
         :rtype: int
         """
         return self._SourceChannel
@@ -4385,7 +4385,7 @@ class RestartServiceRunPodRequest(AbstractModel):
 
 
 class RestartServiceRunPodResponse(AbstractModel):
-    """RestartServiceRunPod response structure.
+    r"""RestartServiceRunPod response structure.
 
     """
 
@@ -4402,7 +4402,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Result(self):
-        """Returned results.
+        r"""Returned results.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: bool
         """
@@ -4414,7 +4414,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4430,7 +4430,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
 
 class RunVersionPod(AbstractModel):
-    """Pod
+    r"""Pod
 
     """
 
@@ -4467,7 +4467,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def Webshell(self):
-        """Shell address
+        r"""Shell address
         :rtype: str
         """
         return self._Webshell
@@ -4478,7 +4478,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def PodId(self):
-        """Pod ID
+        r"""Pod ID
         :rtype: str
         """
         return self._PodId
@@ -4489,7 +4489,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def Status(self):
-        """Status
+        r"""Status
         :rtype: str
         """
         return self._Status
@@ -4500,7 +4500,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -4511,7 +4511,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def PodIp(self):
-        """Pod IP.
+        r"""Pod IP.
         :rtype: str
         """
         return self._PodIp
@@ -4522,7 +4522,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
     @property
     def Zone(self):
-        """Availability zone.
+        r"""Availability zone.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -4534,7 +4534,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DeployVersion(self):
-        """Deployed version.
+        r"""Deployed version.
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -4546,7 +4546,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RestartCount(self):
-        """Number of Restarts
+        r"""Number of Restarts
 Note: This is field may return `null`, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -4577,7 +4577,7 @@ Note: This is field may return `null`, indicating that no valid value can be obt
 
 
 class StorageConf(AbstractModel):
-    """Storage volume configuration
+    r"""Storage volume configuration
 
     """
 
@@ -4597,7 +4597,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageVolName(self):
-        """Storage volume name
+        r"""Storage volume name
         :rtype: str
         """
         return self._StorageVolName
@@ -4608,7 +4608,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageVolPath(self):
-        """Storage volume path
+        r"""Storage volume path
         :rtype: str
         """
         return self._StorageVolPath
@@ -4619,7 +4619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageVolIp(self):
-        """Storage volume IP
+        r"""Storage volume IP
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4645,7 +4645,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class StorageMountConf(AbstractModel):
-    """Data volume mount information
+    r"""Data volume mount information
 
     """
 
@@ -4661,7 +4661,7 @@ class StorageMountConf(AbstractModel):
 
     @property
     def VolumeName(self):
-        """Data volume name
+        r"""Data volume name
         :rtype: str
         """
         return self._VolumeName
@@ -4672,7 +4672,7 @@ class StorageMountConf(AbstractModel):
 
     @property
     def MountPath(self):
-        """Data volume binding path
+        r"""Data volume binding path
         :rtype: str
         """
         return self._MountPath
@@ -4696,7 +4696,7 @@ class StorageMountConf(AbstractModel):
 
 
 class TemNamespaceInfo(AbstractModel):
-    """Namespace object
+    r"""Namespace object
 
     """
 
@@ -4758,7 +4758,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NamespaceId(self):
-        """Namespace ID
+        r"""Namespace ID
         :rtype: str
         """
         return self._NamespaceId
@@ -4769,7 +4769,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Channel(self):
-        """Channel
+        r"""Channel
         :rtype: str
         """
         return self._Channel
@@ -4780,7 +4780,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NamespaceName(self):
-        """Namespace name
+        r"""Namespace name
         :rtype: str
         """
         return self._NamespaceName
@@ -4791,7 +4791,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Region name
+        r"""Region name
         :rtype: str
         """
         return self._Region
@@ -4802,7 +4802,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Namespace description
+        r"""Namespace description
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4814,7 +4814,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. 1: terminated; 0: normal
+        r"""Status. 1: terminated; 0: normal
         :rtype: int
         """
         return self._Status
@@ -4825,7 +4825,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vpc(self):
-        """VPC
+        r"""VPC
         :rtype: str
         """
         return self._Vpc
@@ -4836,7 +4836,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateDate(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateDate
@@ -4847,7 +4847,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifyDate(self):
-        """Modification time
+        r"""Modification time
         :rtype: str
         """
         return self._ModifyDate
@@ -4858,7 +4858,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Modifier(self):
-        """Modifier
+        r"""Modifier
         :rtype: str
         """
         return self._Modifier
@@ -4869,7 +4869,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        """Creator
+        r"""Creator
         :rtype: str
         """
         return self._Creator
@@ -4880,7 +4880,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceNum(self):
-        """Number of services
+        r"""Number of services
         :rtype: int
         """
         return self._ServiceNum
@@ -4891,7 +4891,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunInstancesNum(self):
-        """Number of running instances
+        r"""Number of running instances
         :rtype: int
         """
         return self._RunInstancesNum
@@ -4902,7 +4902,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """Subnet
+        r"""Subnet
         :rtype: str
         """
         return self._SubnetId
@@ -4913,7 +4913,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TcbEnvStatus(self):
-        """TCB environment status
+        r"""TCB environment status
         :rtype: str
         """
         return self._TcbEnvStatus
@@ -4924,7 +4924,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterStatus(self):
-        """eks cluster status
+        r"""eks cluster status
         :rtype: str
         """
         return self._ClusterStatus
@@ -4935,7 +4935,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableTswTraceService(self):
-        """Whether to enable TSW
+        r"""Whether to enable TSW
         :rtype: bool
         """
         return self._EnableTswTraceService

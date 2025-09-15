@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AcListsData(AbstractModel):
-    """Access control list rule
+    r"""Access control list rule
 
     """
 
@@ -66,7 +66,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: int
         """
         return self._Id
@@ -77,7 +77,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceIp(self):
-        """Access source
+        r"""Access source
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -89,7 +89,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetIp(self):
-        """Access destination
+        r"""Access destination
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -101,7 +101,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Protocol(self):
-        """Protocol
+        r"""Protocol
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -113,7 +113,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Port(self):
-        """Port
+        r"""Port
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -125,7 +125,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Strategy(self):
-        """Policy
+        r"""Policy
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -137,7 +137,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Detail(self):
-        """Description
+        r"""Description
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -149,7 +149,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Count(self):
-        """Hit count
+        r"""Hit count
         :rtype: int
         """
         return self._Count
@@ -160,7 +160,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OrderIndex(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._OrderIndex
@@ -171,7 +171,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def LogId(self):
-        """Alert rule ID
+        r"""Alert rule ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -204,7 +204,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class AddAcRuleRequest(AbstractModel):
-    """AddAcRule request structure.
+    r"""AddAcRule request structure.
 
     """
 
@@ -300,7 +300,7 @@ true: enable; false: disable
 
     @property
     def OrderIndex(self):
-        """-1: lowest priority; 1: highest priority
+        r"""-1: lowest priority; 1: highest priority
         :rtype: str
         """
         return self._OrderIndex
@@ -311,7 +311,7 @@ true: enable; false: disable
 
     @property
     def RuleAction(self):
-        """The action that Cloud Firewall performs on the traffic. Valid values:
+        r"""The action that Cloud Firewall performs on the traffic. Valid values:
 accept: allow
 drop: deny
 log: observe
@@ -325,7 +325,7 @@ log: observe
 
     @property
     def Direction(self):
-        """The traffic direction for access control rules. Valid values:
+        r"""The traffic direction for access control rules. Valid values:
 in: incoming traffic access control
 out: outgoing traffic access control
         :rtype: str
@@ -338,7 +338,7 @@ out: outgoing traffic access control
 
     @property
     def Description(self):
-        """The description of access control rules.
+        r"""The description of access control rules.
         :rtype: str
         """
         return self._Description
@@ -349,7 +349,7 @@ out: outgoing traffic access control
 
     @property
     def SourceType(self):
-        """The type of source address in access control rules. Valid values:
+        r"""The type of source address in access control rules. Valid values:
 net: source IP or range (IP or CIDR)
 location: source region
 template: CFW address template
@@ -365,7 +365,7 @@ vendor: Cloud vendor
 
     @property
     def SourceContent(self):
-        """The source address in the access control policy. 
+        r"""The source address in the access control policy. 
 When `SourceType` is `net`, `SourceContent` is the source IP or CIDR block.
 For example: 1.1.1.0/24
 
@@ -389,7 +389,7 @@ Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`.
 
     @property
     def DestType(self):
-        """The type of destination address in access control rules. Valid values:
+        r"""The type of destination address in access control rules. Valid values:
 net: destination IP or range (IP or CIDR)
 location: source region
 template: CFW address template
@@ -406,7 +406,7 @@ domain: Domain name or IP.
 
     @property
     def DestContent(self):
-        """The destination address in the access control policy. 
+        r"""The destination address in the access control policy. 
 When `DestType` is `net`, `DestContent` is the destination IP or CIDR block.
 For example: 1.1.1.0/24
 
@@ -433,7 +433,7 @@ Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`.
 
     @property
     def Port(self):
-        """The port to apply access control rules. Valid values:
+        r"""The port to apply access control rules. Valid values:
 -1/-1: all ports
 80,443: 80 or 443
         :rtype: str
@@ -446,7 +446,7 @@ Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`.
 
     @property
     def Protocol(self):
-        """The protocol type of traffic in access control rules. Valid value: TCP. Only TCP is supported for edge firewall rules. If this parameter is not specified, it defaults to TCP.
+        r"""The protocol type of traffic in access control rules. Valid value: TCP. Only TCP is supported for edge firewall rules. If this parameter is not specified, it defaults to TCP.
         :rtype: str
         """
         return self._Protocol
@@ -457,7 +457,7 @@ Values: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`.
 
     @property
     def ApplicationName(self):
-        """The Layer 7 protocol. Valid values:
+        r"""The Layer 7 protocol. Valid values:
 HTTP/HTTPS
 TLS/SSL
         :rtype: str
@@ -470,7 +470,7 @@ TLS/SSL
 
     @property
     def Enable(self):
-        """Indicates whether to enable the rules. Default: enable. Valid values:
+        r"""Indicates whether to enable the rules. Default: enable. Valid values:
 true: enable; false: disable
         :rtype: str
         """
@@ -505,7 +505,7 @@ true: enable; false: disable
 
 
 class AddAcRuleResponse(AbstractModel):
-    """AddAcRule response structure.
+    r"""AddAcRule response structure.
 
     """
 
@@ -527,7 +527,7 @@ class AddAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUID of the new rule
+        r"""UUID of the new rule
         :rtype: int
         """
         return self._RuleUuid
@@ -538,7 +538,7 @@ class AddAcRuleResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """0: operation successful; -1: operation failed
+        r"""0: operation successful; -1: operation failed
         :rtype: int
         """
         return self._ReturnCode
@@ -549,7 +549,7 @@ class AddAcRuleResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """success: operation successful; failed: operation failed
+        r"""success: operation successful; failed: operation failed
         :rtype: str
         """
         return self._ReturnMsg
@@ -560,7 +560,7 @@ class AddAcRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -578,7 +578,7 @@ class AddAcRuleResponse(AbstractModel):
 
 
 class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
-    """AddEnterpriseSecurityGroupRules request structure.
+    r"""AddEnterpriseSecurityGroupRules request structure.
 
     """
 
@@ -600,7 +600,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Creates rule data
+        r"""Creates rule data
         :rtype: list of SecurityGroupRule
         """
         return self._Data
@@ -611,7 +611,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Adding type. 0: add to the end; 1: add to the front; 2: insert. Default: 0
+        r"""Adding type. 0: add to the end; 1: add to the front; 2: insert. Default: 0
         :rtype: int
         """
         return self._Type
@@ -622,7 +622,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        """An identifier to ensure the idempotency of the request. The value of the ClientToken parameter is a unique string that is generated by your client and can contain up to 64 ASCII characters in length.
+        r"""An identifier to ensure the idempotency of the request. The value of the ClientToken parameter is a unique string that is generated by your client and can contain up to 64 ASCII characters in length.
         :rtype: str
         """
         return self._ClientToken
@@ -633,7 +633,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def IsDelay(self):
-        """Indicates whether to delay publishing. 1: delay; other values: do not delay
+        r"""Indicates whether to delay publishing. 1: delay; other values: do not delay
         :rtype: int
         """
         return self._IsDelay
@@ -664,7 +664,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
 
 class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
-    """AddEnterpriseSecurityGroupRules response structure.
+    r"""AddEnterpriseSecurityGroupRules response structure.
 
     """
 
@@ -680,7 +680,7 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: added successfully; non-0: failed to add
+        r"""Status value. 0: added successfully; non-0: failed to add
         :rtype: int
         """
         return self._Status
@@ -691,7 +691,7 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -707,7 +707,7 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
 
 class AddNatAcRuleRequest(AbstractModel):
-    """AddNatAcRule request structure.
+    r"""AddNatAcRule request structure.
 
     """
 
@@ -723,7 +723,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """NAT access control rules to be added.
+        r"""NAT access control rules to be added.
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -734,7 +734,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
     @property
     def From(self):
-        """Source of the rules to be added. Generally, this parameter is not used. The value insert_rule indicates that rules in the specified location are inserted, and the value batch_import indicates that rules are imported in batches. If the parameter is left empty, rules defined in the API request are added.
+        r"""Source of the rules to be added. Generally, this parameter is not used. The value insert_rule indicates that rules in the specified location are inserted, and the value batch_import indicates that rules are imported in batches. If the parameter is left empty, rules defined in the API request are added.
         :rtype: str
         """
         return self._From
@@ -763,7 +763,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
 
 class AddNatAcRuleResponse(AbstractModel):
-    """AddNatAcRule response structure.
+    r"""AddNatAcRule response structure.
 
     """
 
@@ -779,7 +779,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """ID list of new rules.
+        r"""ID list of new rules.
         :rtype: list of int
         """
         return self._RuleUuid
@@ -790,7 +790,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -806,7 +806,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
 
 class AssetZone(AbstractModel):
-    """AssetZone
+    r"""AssetZone
 
     """
 
@@ -822,7 +822,7 @@ class AssetZone(AbstractModel):
 
     @property
     def Zone(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Zone
@@ -833,7 +833,7 @@ class AssetZone(AbstractModel):
 
     @property
     def ZoneEng(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._ZoneEng
@@ -857,7 +857,7 @@ class AssetZone(AbstractModel):
 
 
 class AssociatedInstanceInfo(AbstractModel):
-    """Instance associated with an enterprise security group
+    r"""Instance associated with an enterprise security group
 
     """
 
@@ -899,7 +899,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -911,7 +911,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -923,7 +923,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Type(self):
-        """Instance type. 3: CVM instance; 4: CLB instance; 5: ENI instance; 6: Cloud database
+        r"""Instance type. 3: CVM instance; 4: CLB instance; 5: ENI instance; 6: Cloud database
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -935,7 +935,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -947,7 +947,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcName(self):
-        """VPC name
+        r"""VPC name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -959,7 +959,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIp(self):
-        """Public IP
+        r"""Public IP
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -971,7 +971,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Ip(self):
-        """Private IP
+        r"""Private IP
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -983,7 +983,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SecurityGroupCount(self):
-        """The number of associated security groups
+        r"""The number of associated security groups
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -1014,7 +1014,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class BetaInfoByACL(AbstractModel):
-    """Canary publish information of the rule
+    r"""Canary publish information of the rule
 
     """
 
@@ -1036,7 +1036,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1048,7 +1048,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskName(self):
-        """Task name.
+        r"""Task name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1060,7 +1060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastTime(self):
-        """Last execution time
+        r"""Last execution time
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1086,7 +1086,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class BlockIgnoreRule(AbstractModel):
-    """Allowlist or blocklist for intrusion prevention
+    r"""Allowlist or blocklist for intrusion prevention
 
     """
 
@@ -1159,7 +1159,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain name.
+        r"""Domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1171,7 +1171,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ioc(self):
-        """Rule IP.
+        r"""Rule IP.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1183,7 +1183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Level(self):
-        """Threat level.
+        r"""Threat level.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1195,7 +1195,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventName(self):
-        """Source event name.
+        r"""Source event name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1207,7 +1207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Direction(self):
-        """Direction. Valid values: 0: outbound; 1: inbound.
+        r"""Direction. Valid values: 0: outbound; 1: inbound.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1219,7 +1219,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol.
+        r"""Protocol.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1231,7 +1231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
-        """Address.
+        r"""Address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1243,7 +1243,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
-        """Rule type. Valid values: 1: block; 2: allow.
+        r"""Rule type. Valid values: 1: block; 2: allow.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1255,7 +1255,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Time when a rule starts to take effect.
+        r"""Time when a rule starts to take effect.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1267,7 +1267,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """Time when a rule expires.
+        r"""Time when a rule expires.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1279,7 +1279,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IgnoreReason(self):
-        """Reason for ignoring.
+        r"""Reason for ignoring.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1291,7 +1291,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Source(self):
-        """Security event source.
+        r"""Security event source.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1303,7 +1303,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqueId(self):
-        """Rule ID.
+        r"""Rule ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1315,7 +1315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MatchTimes(self):
-        """Number of rule matching times.
+        r"""Number of rule matching times.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1327,7 +1327,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
-        """Country.
+        r"""Country.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1339,7 +1339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Comment
@@ -1377,7 +1377,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CfwNatDnatRule(AbstractModel):
-    """NAT firewall DNAT rules
+    r"""NAT firewall DNAT rules
 
     """
 
@@ -1405,7 +1405,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def IpProtocol(self):
-        """Network protocol. Valid values: TCP or UDP.
+        r"""Network protocol. Valid values: TCP or UDP.
         :rtype: str
         """
         return self._IpProtocol
@@ -1416,7 +1416,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def PublicIpAddress(self):
-        """Elastic IP.
+        r"""Elastic IP.
         :rtype: str
         """
         return self._PublicIpAddress
@@ -1427,7 +1427,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def PublicPort(self):
-        """Public port.
+        r"""Public port.
         :rtype: int
         """
         return self._PublicPort
@@ -1438,7 +1438,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
-        """Private address.
+        r"""Private address.
         :rtype: str
         """
         return self._PrivateIpAddress
@@ -1449,7 +1449,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def PrivatePort(self):
-        """Private port.
+        r"""Private port.
         :rtype: int
         """
         return self._PrivatePort
@@ -1460,7 +1460,7 @@ class CfwNatDnatRule(AbstractModel):
 
     @property
     def Description(self):
-        """The description of NAT firewall forwarding rules.
+        r"""The description of NAT firewall forwarding rules.
         :rtype: str
         """
         return self._Description
@@ -1488,7 +1488,7 @@ class CfwNatDnatRule(AbstractModel):
 
 
 class CommonFilter(AbstractModel):
-    """Common filters for search
+    r"""Common filters for search
 
     """
 
@@ -1535,7 +1535,7 @@ enum FilterOperatorType {
 
     @property
     def Name(self):
-        """Search key.
+        r"""Search key.
         :rtype: str
         """
         return self._Name
@@ -1546,7 +1546,7 @@ enum FilterOperatorType {
 
     @property
     def Values(self):
-        """Search values.
+        r"""Search values.
         :rtype: list of str
         """
         return self._Values
@@ -1557,7 +1557,7 @@ enum FilterOperatorType {
 
     @property
     def OperatorType(self):
-        """Enum of integers that represent relations between Name and Values.
+        r"""Enum of integers that represent relations between Name and Values.
 enum FilterOperatorType {
     // Invalid
     FILTER_OPERATOR_TYPE_INVALID = 0;
@@ -1610,7 +1610,7 @@ enum FilterOperatorType {
 
 
 class CreateAcRulesRequest(AbstractModel):
-    """CreateAcRules request structure.
+    r"""CreateAcRules request structure.
 
     """
 
@@ -1644,7 +1644,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Creates rule data
+        r"""Creates rule data
         :rtype: list of RuleInfoData
         """
         return self._Data
@@ -1655,7 +1655,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """0: add (default); 1: insert
+        r"""0: add (default); 1: insert
         :rtype: int
         """
         return self._Type
@@ -1666,7 +1666,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID
+        r"""Edge ID
         :rtype: str
         """
         return self._EdgeId
@@ -1677,7 +1677,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Access control rule status
+        r"""Access control rule status
         :rtype: int
         """
         return self._Enable
@@ -1688,7 +1688,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def Overwrite(self):
-        """0: add; 1: overwrite
+        r"""0: add; 1: overwrite
         :rtype: int
         """
         return self._Overwrite
@@ -1699,7 +1699,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """NAT instance ID, required when the parameter Area exists
+        r"""NAT instance ID, required when the parameter Area exists
         :rtype: str
         """
         return self._InstanceId
@@ -1710,7 +1710,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def From(self):
-        """portScan: from port scanning; patchImport: from batch import
+        r"""portScan: from port scanning; patchImport: from batch import
         :rtype: str
         """
         return self._From
@@ -1721,7 +1721,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region
+        r"""NAT region
         :rtype: str
         """
         return self._Area
@@ -1756,7 +1756,7 @@ class CreateAcRulesRequest(AbstractModel):
 
 
 class CreateAcRulesResponse(AbstractModel):
-    """CreateAcRules response structure.
+    r"""CreateAcRules response structure.
 
     """
 
@@ -1776,7 +1776,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status value. 0: operation successful
+        r"""Status value. 0: operation successful
         :rtype: int
         """
         return self._Status
@@ -1787,7 +1787,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Info(self):
-        """Returns redundant information
+        r"""Returns redundant information
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -1799,7 +1799,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1816,7 +1816,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class CreateNatFwInstanceRequest(AbstractModel):
-    """CreateNatFwInstance request structure.
+    r"""CreateNatFwInstance request structure.
 
     """
 
@@ -1853,7 +1853,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Firewall instance name
+        r"""Firewall instance name
         :rtype: str
         """
         return self._Name
@@ -1864,7 +1864,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Width(self):
-        """Bandwidth
+        r"""Bandwidth
         :rtype: int
         """
         return self._Width
@@ -1875,7 +1875,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Mode. 1: use existing; 0: create new
+        r"""Mode. 1: use existing; 0: create new
         :rtype: int
         """
         return self._Mode
@@ -1886,7 +1886,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def NewModeItems(self):
-        """Parameter passed for the Create New mode. Either NewModeItems or NatgwList is required.
+        r"""Parameter passed for the Create New mode. Either NewModeItems or NatgwList is required.
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
         """
         return self._NewModeItems
@@ -1897,7 +1897,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        """NAT gateway list for the Using Existing mode. Either NewModeItems or NatgwList is required.
+        r"""NAT gateway list for the Using Existing mode. Either NewModeItems or NatgwList is required.
         :rtype: list of str
         """
         return self._NatGwList
@@ -1908,7 +1908,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Primary zone. The default zone is selected if it is empty.
+        r"""Primary zone. The default zone is selected if it is empty.
         :rtype: str
         """
         return self._Zone
@@ -1919,7 +1919,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def ZoneBak(self):
-        """Secondary zone. The default zone is selected if it is empty.
+        r"""Secondary zone. The default zone is selected if it is empty.
         :rtype: str
         """
         return self._ZoneBak
@@ -1930,7 +1930,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def CrossAZone(self):
-        """Remote disaster recovery. 1: enable; 0: disable; empty: disable by default
+        r"""Remote disaster recovery. 1: enable; 0: disable; empty: disable by default
         :rtype: int
         """
         return self._CrossAZone
@@ -1941,7 +1941,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        """IP range of the firewall
+        r"""IP range of the firewall
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -1976,7 +1976,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
 
 class CreateNatFwInstanceResponse(AbstractModel):
-    """CreateNatFwInstance response structure.
+    r"""CreateNatFwInstance response structure.
 
     """
 
@@ -1992,7 +1992,7 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
     @property
     def CfwInsId(self):
-        """Firewall instance ID
+        r"""Firewall instance ID
         :rtype: str
         """
         return self._CfwInsId
@@ -2003,7 +2003,7 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2019,7 +2019,7 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
 
 class CreateNatFwInstanceWithDomainRequest(AbstractModel):
-    """CreateNatFwInstanceWithDomain request structure.
+    r"""CreateNatFwInstanceWithDomain request structure.
 
     """
 
@@ -2062,7 +2062,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Firewall instance name
+        r"""Firewall instance name
         :rtype: str
         """
         return self._Name
@@ -2073,7 +2073,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Width(self):
-        """Bandwidth
+        r"""Bandwidth
         :rtype: int
         """
         return self._Width
@@ -2084,7 +2084,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Mode. 1: use existing; 0: create new
+        r"""Mode. 1: use existing; 0: create new
         :rtype: int
         """
         return self._Mode
@@ -2095,7 +2095,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def NewModeItems(self):
-        """Parameter passed for the Create New mode. Either NewModeItems or NatgwList is required.
+        r"""Parameter passed for the Create New mode. Either NewModeItems or NatgwList is required.
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
         """
         return self._NewModeItems
@@ -2106,7 +2106,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        """NAT gateway list for the Using Existing mode. Either NewModeItems or NatgwList is required.
+        r"""NAT gateway list for the Using Existing mode. Either NewModeItems or NatgwList is required.
         :rtype: list of str
         """
         return self._NatGwList
@@ -2117,7 +2117,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Primary zone. The default zone is selected if it is empty.
+        r"""Primary zone. The default zone is selected if it is empty.
         :rtype: str
         """
         return self._Zone
@@ -2128,7 +2128,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def ZoneBak(self):
-        """Secondary zone. The default zone is selected if it is empty.
+        r"""Secondary zone. The default zone is selected if it is empty.
         :rtype: str
         """
         return self._ZoneBak
@@ -2139,7 +2139,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def CrossAZone(self):
-        """Remote disaster recovery. 1: enable; 0: disable; empty: disable by default
+        r"""Remote disaster recovery. 1: enable; 0: disable; empty: disable by default
         :rtype: int
         """
         return self._CrossAZone
@@ -2150,7 +2150,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def IsCreateDomain(self):
-        """0: not create; 1: create
+        r"""0: not create; 1: create
         :rtype: int
         """
         return self._IsCreateDomain
@@ -2161,7 +2161,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Required for creating a domain name
+        r"""Required for creating a domain name
         :rtype: str
         """
         return self._Domain
@@ -2172,7 +2172,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        """IP range of the firewall
+        r"""IP range of the firewall
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -2209,7 +2209,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
 
 class CreateNatFwInstanceWithDomainResponse(AbstractModel):
-    """CreateNatFwInstanceWithDomain response structure.
+    r"""CreateNatFwInstanceWithDomain response structure.
 
     """
 
@@ -2226,7 +2226,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CfwInsId(self):
-        """NAT instance info
+        r"""NAT instance info
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -2238,7 +2238,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2254,7 +2254,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class CreateNatRuleItem(AbstractModel):
-    """Parameters for creating an NAT access control rule
+    r"""Parameters for creating an NAT access control rule
 
     """
 
@@ -2300,7 +2300,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        """Access source. Example: `net: IP/CIDR(192.168.0.2)`
+        r"""Access source. Example: `net: IP/CIDR(192.168.0.2)`
         :rtype: str
         """
         return self._SourceContent
@@ -2311,7 +2311,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        """Access source type. Values for inbound rules: `ip`, `net`, `template`, and `location`. Values for outbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`.
+        r"""Access source type. Values for inbound rules: `ip`, `net`, `template`, and `location`. Values for outbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`.
         :rtype: str
         """
         return self._SourceType
@@ -2322,7 +2322,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetContent(self):
-        """Access target. Example: `net: IP/CIDR(192.168.0.2); domain: domain name rule, e.g., *.qq.com
+        r"""Access target. Example: `net: IP/CIDR(192.168.0.2); domain: domain name rule, e.g., *.qq.com
         :rtype: str
         """
         return self._TargetContent
@@ -2333,7 +2333,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetType(self):
-        """Access target type. Values for inbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`. Values for outbound rules: `ip`, `net`, `domain`, `template`, and `location`.
+        r"""Access target type. Values for inbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`. Values for outbound rules: `ip`, `net`, `domain`, `template`, and `location`.
         :rtype: str
         """
         return self._TargetType
@@ -2344,7 +2344,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol. Values: `TCP`, `UDP`, `ICMP`, `ANY`, `HTTP`, `HTTPS`, `HTTP/HTTPS`, `SMTP`, `SMTPS`, `SMTP/SMTPS`, `FTP`, and `DNS`.
+        r"""Protocol. Values: `TCP`, `UDP`, `ICMP`, `ANY`, `HTTP`, `HTTPS`, `HTTP/HTTPS`, `SMTP`, `SMTPS`, `SMTP/SMTPS`, `FTP`, and `DNS`.
         :rtype: str
         """
         return self._Protocol
@@ -2355,7 +2355,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        """Specify how the CFW instance deals with the traffic hit the access control rule. Values: `accept` (allow), `drop` (reject), and `log` (observe).
+        r"""Specify how the CFW instance deals with the traffic hit the access control rule. Values: `accept` (allow), `drop` (reject), and `log` (observe).
         :rtype: str
         """
         return self._RuleAction
@@ -2366,7 +2366,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        """The port of the access control rule. Values: `-1/-1` (all ports) and `80` (Port 80)
+        r"""The port of the access control rule. Values: `-1/-1` (all ports) and `80` (Port 80)
         :rtype: str
         """
         return self._Port
@@ -2377,7 +2377,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Direction(self):
-        """Rule direction. Values: `1` (Inbound) and `0` (Outbound)
+        r"""Rule direction. Values: `1` (Inbound) and `0` (Outbound)
         :rtype: int
         """
         return self._Direction
@@ -2388,7 +2388,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """Rule sequence number
+        r"""Rule sequence number
         :rtype: int
         """
         return self._OrderIndex
@@ -2399,7 +2399,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        """Rule status. `true` (Enabled); `false` (Disabled)
+        r"""Rule status. `true` (Enabled); `false` (Disabled)
         :rtype: str
         """
         return self._Enable
@@ -2410,7 +2410,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        """The unique ID of the rule, which is not required when you create a rule.
+        r"""The unique ID of the rule, which is not required when you create a rule.
         :rtype: int
         """
         return self._Uuid
@@ -2421,7 +2421,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -2455,7 +2455,7 @@ class CreateNatRuleItem(AbstractModel):
 
 
 class CreateSecurityGroupRulesRequest(AbstractModel):
-    """CreateSecurityGroupRules request structure.
+    r"""CreateSecurityGroupRules request structure.
 
     """
 
@@ -2477,7 +2477,7 @@ class CreateSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Added enterprise security group rule data
+        r"""Added enterprise security group rule data
         :rtype: list of SecurityGroupListData
         """
         return self._Data
@@ -2488,7 +2488,7 @@ class CreateSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 1 by default
+        r"""Direction. 0: outbound; 1: inbound. 1 by default
         :rtype: int
         """
         return self._Direction
@@ -2499,7 +2499,7 @@ class CreateSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """0: at the end; 1: at the top; 2: in the middle. 0 by default
+        r"""0: at the end; 1: at the top; 2: in the middle. 0 by default
         :rtype: int
         """
         return self._Type
@@ -2510,7 +2510,7 @@ class CreateSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Indicates whether to enable rules after addition. 0: disable; 1: enable. 1 by default
+        r"""Indicates whether to enable rules after addition. 0: disable; 1: enable. 1 by default
         :rtype: int
         """
         return self._Enable
@@ -2541,7 +2541,7 @@ class CreateSecurityGroupRulesRequest(AbstractModel):
 
 
 class CreateSecurityGroupRulesResponse(AbstractModel):
-    """CreateSecurityGroupRules response structure.
+    r"""CreateSecurityGroupRules response structure.
 
     """
 
@@ -2557,7 +2557,7 @@ class CreateSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: added successfully; non-0: failed to add
+        r"""Status value. 0: added successfully; non-0: failed to add
         :rtype: int
         """
         return self._Status
@@ -2568,7 +2568,7 @@ class CreateSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2584,7 +2584,7 @@ class CreateSecurityGroupRulesResponse(AbstractModel):
 
 
 class DeleteAcRuleRequest(AbstractModel):
-    """DeleteAcRule request structure.
+    r"""DeleteAcRule request structure.
 
     """
 
@@ -2606,7 +2606,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """The ID of the rule to delete. It can be queried via the DescribeAcLists API.
+        r"""The ID of the rule to delete. It can be queried via the DescribeAcLists API.
         :rtype: int
         """
         return self._Id
@@ -2617,7 +2617,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -2628,7 +2628,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID between two VPCs
+        r"""Edge ID between two VPCs
         :rtype: str
         """
         return self._EdgeId
@@ -2639,7 +2639,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region, e.g. ap-shanghai/ap-guangzhou/ap-chongqing
+        r"""NAT region, e.g. ap-shanghai/ap-guangzhou/ap-chongqing
         :rtype: str
         """
         return self._Area
@@ -2665,7 +2665,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
 
 class DeleteAcRuleResponse(AbstractModel):
-    """DeleteAcRule response structure.
+    r"""DeleteAcRule response structure.
 
     """
 
@@ -2685,7 +2685,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status value. 0: deleted successfully; !0: deletion failed
+        r"""Status value. 0: deleted successfully; !0: deletion failed
         :rtype: int
         """
         return self._Status
@@ -2696,7 +2696,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Info(self):
-        """Returns redundant information
+        r"""Returns redundant information
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -2708,7 +2708,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2725,7 +2725,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DeleteAllAccessControlRuleRequest(AbstractModel):
-    """DeleteAllAccessControlRule request structure.
+    r"""DeleteAllAccessControlRule request structure.
 
     """
 
@@ -2744,7 +2744,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 0 by default
+        r"""Direction. 0: outbound; 1: inbound. 0 by default
         :rtype: int
         """
         return self._Direction
@@ -2755,7 +2755,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Deletes all the access control rules for inter-VPC firewall toggles associated with the EdgeId. It is empty by default. Enter either EdgeId or Area.
+        r"""Deletes all the access control rules for inter-VPC firewall toggles associated with the EdgeId. It is empty by default. Enter either EdgeId or Area.
         :rtype: str
         """
         return self._EdgeId
@@ -2766,7 +2766,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Deletes all the access control rules for NAT firewalls of this region. It is empty by default. Enter either EdgeId or Area.
+        r"""Deletes all the access control rules for NAT firewalls of this region. It is empty by default. Enter either EdgeId or Area.
         :rtype: str
         """
         return self._Area
@@ -2791,7 +2791,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
 
 class DeleteAllAccessControlRuleResponse(AbstractModel):
-    """DeleteAllAccessControlRule response structure.
+    r"""DeleteAllAccessControlRule response structure.
 
     """
 
@@ -2811,7 +2811,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status of the task. `0`: Modified successfully; Others: Modification failed
+        r"""Status of the task. `0`: Modified successfully; Others: Modification failed
         :rtype: int
         """
         return self._Status
@@ -2822,7 +2822,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Info(self):
-        """Number of access control rules deleted.
+        r"""Number of access control rules deleted.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -2834,7 +2834,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2851,7 +2851,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DeleteResourceGroupRequest(AbstractModel):
-    """DeleteResourceGroup request structure.
+    r"""DeleteResourceGroup request structure.
 
     """
 
@@ -2864,7 +2864,7 @@ class DeleteResourceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: str
         """
         return self._GroupId
@@ -2887,7 +2887,7 @@ class DeleteResourceGroupRequest(AbstractModel):
 
 
 class DeleteResourceGroupResponse(AbstractModel):
-    """DeleteResourceGroup response structure.
+    r"""DeleteResourceGroup response structure.
 
     """
 
@@ -2900,7 +2900,7 @@ class DeleteResourceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2915,7 +2915,7 @@ class DeleteResourceGroupResponse(AbstractModel):
 
 
 class DeleteSecurityGroupRuleRequest(AbstractModel):
-    """DeleteSecurityGroupRule request structure.
+    r"""DeleteSecurityGroupRule request structure.
 
     """
 
@@ -2937,7 +2937,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        """ID of the rule to delete
+        r"""ID of the rule to delete
         :rtype: int
         """
         return self._Id
@@ -2948,7 +2948,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Tencent Cloud region (abbreviation)
+        r"""Tencent Cloud region (abbreviation)
         :rtype: str
         """
         return self._Area
@@ -2959,7 +2959,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -2970,7 +2970,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def IsDelReverse(self):
-        """Indicates whether to delete the reverse rule. 0: no; 1: yes
+        r"""Indicates whether to delete the reverse rule. 0: no; 1: yes
         :rtype: int
         """
         return self._IsDelReverse
@@ -2996,7 +2996,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
 
 class DeleteSecurityGroupRuleResponse(AbstractModel):
-    """DeleteSecurityGroupRule response structure.
+    r"""DeleteSecurityGroupRule response structure.
 
     """
 
@@ -3016,7 +3016,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status value. 0: operation successful; non-0: operation failed
+        r"""Status value. 0: operation successful; non-0: operation failed
         :rtype: int
         """
         return self._Status
@@ -3027,7 +3027,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Info(self):
-        """Returns redundant information
+        r"""Returns redundant information
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -3039,7 +3039,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3056,13 +3056,13 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DeleteVpcInstanceRequest(AbstractModel):
-    """DeleteVpcInstance request structure.
+    r"""DeleteVpcInstance request structure.
 
     """
 
 
 class DeleteVpcInstanceResponse(AbstractModel):
-    """DeleteVpcInstance response structure.
+    r"""DeleteVpcInstance response structure.
 
     """
 
@@ -3075,7 +3075,7 @@ class DeleteVpcInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3090,7 +3090,7 @@ class DeleteVpcInstanceResponse(AbstractModel):
 
 
 class DescAcItem(AbstractModel):
-    """Item in the access control list. Each item represents an access control rule.
+    r"""Item in the access control list. Each item represents an access control rule.
 
     """
 
@@ -3198,7 +3198,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SourceContent(self):
-        """Access source.
+        r"""Access source.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3210,7 +3210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetContent(self):
-        """Access destination.
+        r"""Access destination.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3222,7 +3222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        """Protocol.
+        r"""Protocol.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3234,7 +3234,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        """Port.
+        r"""Port.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3246,7 +3246,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleAction(self):
-        """Action that Cloud Firewall performs on the traffic. Valid values: accept (allow), drop (reject), and log (monitor).
+        r"""Action that Cloud Firewall performs on the traffic. Valid values: accept (allow), drop (reject), and log (monitor).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3258,7 +3258,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Description.
+        r"""Description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3270,7 +3270,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
-        """Number of rule matching times.
+        r"""Number of rule matching times.
         :rtype: int
         """
         return self._Count
@@ -3281,7 +3281,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderIndex(self):
-        """Rule sequence number.
+        r"""Rule sequence number.
         :rtype: int
         """
         return self._OrderIndex
@@ -3292,7 +3292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceType(self):
-        """Access source type. Valid values for an inbound rule: ip, net, template, and location; valid values for an outbound rule: ip, net, template, instance, group, and tag.
+        r"""Access source type. Valid values for an inbound rule: ip, net, template, and location; valid values for an outbound rule: ip, net, template, instance, group, and tag.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3304,7 +3304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetType(self):
-        """Access destination type. Valid values for an inbound rule: ip, net, template, instance, group, and tag; valid values for an outbound rule: ip, net, domain, template, and location.
+        r"""Access destination type. Valid values for an inbound rule: ip, net, template, instance, group, and tag; valid values for an outbound rule: ip, net, domain, template, and location.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3316,7 +3316,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uuid(self):
-        """Unique ID of the rule.
+        r"""Unique ID of the rule.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3328,7 +3328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Invalid(self):
-        """Rule validity.
+        r"""Rule validity.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3340,7 +3340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsRegion(self):
-        """Valid values: 0: common rules; 1: regional rules.
+        r"""Valid values: 0: common rules; 1: regional rules.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3352,7 +3352,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CountryCode(self):
-        """Country ID.
+        r"""Country ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3364,7 +3364,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CityCode(self):
-        """City ID.
+        r"""City ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3376,7 +3376,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CountryName(self):
-        """Country name.
+        r"""Country name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3388,7 +3388,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CityName(self):
-        """City name.
+        r"""City name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3400,7 +3400,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CloudCode(self):
-        """Cloud provider code.
+        r"""Cloud provider code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3412,7 +3412,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsCloud(self):
-        """Valid values: 0: common rules; 1: cloud provider rules.
+        r"""Valid values: 0: common rules; 1: cloud provider rules.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3424,7 +3424,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enable(self):
-        """Rule status. Valid values: true: enabled; false: disabled.
+        r"""Rule status. Valid values: true: enabled; false: disabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3436,7 +3436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Direction(self):
-        """Rule direction. Valid values: 1: inbound; 0: outbound.
+        r"""Rule direction. Valid values: 1: inbound; 0: outbound.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3448,7 +3448,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name.
+        r"""Instance name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -3460,7 +3460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternalUuid(self):
-        """UUID for internal use. Generally, this field is not required.
+        r"""UUID for internal use. Generally, this field is not required.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3472,7 +3472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Rule status. This field is valid when you query rule matching details. Valid values: 0: new; 1: deleted; 2: edited and deleted.
+        r"""Rule status. This field is valid when you query rule matching details. Valid values: 0: new; 1: deleted; 2: edited and deleted.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -3484,7 +3484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BetaList(self):
-        """Details of associated tasks
+        r"""Details of associated tasks
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of BetaInfoByACL
         """
@@ -3537,7 +3537,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class DescribeAcListsRequest(AbstractModel):
-    """DescribeAcLists request structure.
+    r"""DescribeAcLists request structure.
 
     """
 
@@ -3577,7 +3577,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol
+        r"""Protocol
         :rtype: str
         """
         return self._Protocol
@@ -3588,7 +3588,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Strategy(self):
-        """Policy
+        r"""Policy
         :rtype: str
         """
         return self._Strategy
@@ -3599,7 +3599,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search value
+        r"""Search value
         :rtype: str
         """
         return self._SearchValue
@@ -3610,7 +3610,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page
+        r"""Number of entries per page
         :rtype: int
         """
         return self._Limit
@@ -3621,7 +3621,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -3632,7 +3632,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Indicates whether it is outbound or inbound. 1: inbound; 0: outbound
+        r"""Indicates whether it is outbound or inbound. 1: inbound; 0: outbound
         :rtype: int
         """
         return self._Direction
@@ -3643,7 +3643,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """EdgeId value
+        r"""EdgeId value
         :rtype: str
         """
         return self._EdgeId
@@ -3654,7 +3654,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Indicates whether the rule is enabled. '0': disabled; '1': enabled. '0' by default
+        r"""Indicates whether the rule is enabled. '0': disabled; '1': enabled. '0' by default
         :rtype: str
         """
         return self._Status
@@ -3665,7 +3665,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Area
@@ -3676,7 +3676,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
         :rtype: str
         """
         return self._InstanceId
@@ -3708,7 +3708,7 @@ class DescribeAcListsRequest(AbstractModel):
 
 
 class DescribeAcListsResponse(AbstractModel):
-    """DescribeAcLists response structure.
+    r"""DescribeAcLists response structure.
 
     """
 
@@ -3734,7 +3734,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total entries
+        r"""Total entries
         :rtype: int
         """
         return self._Total
@@ -3745,7 +3745,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Data(self):
-        """Access control list data
+        r"""Access control list data
         :rtype: list of AcListsData
         """
         return self._Data
@@ -3756,7 +3756,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AllTotal(self):
-        """Total entries excluding the filtered ones
+        r"""Total entries excluding the filtered ones
         :rtype: int
         """
         return self._AllTotal
@@ -3767,7 +3767,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Enable(self):
-        """All access control rules enabled/disabled
+        r"""All access control rules enabled/disabled
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -3779,7 +3779,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3803,7 +3803,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeAssociatedInstanceListRequest(AbstractModel):
-    """DescribeAssociatedInstanceList request structure.
+    r"""DescribeAssociatedInstanceList request structure.
 
     """
 
@@ -3837,7 +3837,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """List offset
+        r"""List offset
         :rtype: int
         """
         return self._Offset
@@ -3848,7 +3848,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of records per page
+        r"""Number of records per page
         :rtype: int
         """
         return self._Limit
@@ -3859,7 +3859,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region code (e.g. ap-guangzhou). All Tencent Cloud regions are supported.
+        r"""Region code (e.g. ap-guangzhou). All Tencent Cloud regions are supported.
         :rtype: str
         """
         return self._Area
@@ -3870,7 +3870,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Additional search criteria (JSON string)
+        r"""Additional search criteria (JSON string)
         :rtype: str
         """
         return self._SearchValue
@@ -3881,7 +3881,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def By(self):
-        """Sorting field
+        r"""Sorting field
         :rtype: str
         """
         return self._By
@@ -3892,7 +3892,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sort order. asc: ascending; desc: descending
+        r"""Sort order. asc: ascending; desc: descending
         :rtype: str
         """
         return self._Order
@@ -3903,7 +3903,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID
+        r"""Security group ID
         :rtype: str
         """
         return self._SecurityGroupId
@@ -3914,7 +3914,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Instance type. '3': CVM instance; '4': CLB instance; '5': ENI instance; '6': Cloud database
+        r"""Instance type. '3': CVM instance; '4': CLB instance; '5': ENI instance; '6': Cloud database
         :rtype: str
         """
         return self._Type
@@ -3944,7 +3944,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
 
 class DescribeAssociatedInstanceListResponse(AbstractModel):
-    """DescribeAssociatedInstanceList response structure.
+    r"""DescribeAssociatedInstanceList response structure.
 
     """
 
@@ -3965,7 +3965,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Number of instances
+        r"""Number of instances
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -3977,7 +3977,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Data(self):
-        """Instance list
+        r"""Instance list
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of AssociatedInstanceInfo
         """
@@ -3989,7 +3989,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4011,7 +4011,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeBlockByIpTimesListRequest(AbstractModel):
-    """DescribeBlockByIpTimesList request structure.
+    r"""DescribeBlockByIpTimesList request structure.
 
     """
 
@@ -4045,7 +4045,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -4056,7 +4056,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def Ip(self):
-        """IP search criteria
+        r"""IP search criteria
         :rtype: str
         """
         return self._Ip
@@ -4067,7 +4067,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -4078,7 +4078,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction
+        r"""Direction
         :rtype: str
         """
         return self._Direction
@@ -4089,7 +4089,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Inter-VPC firewall toggle edge ID
+        r"""Inter-VPC firewall toggle edge ID
         :rtype: str
         """
         return self._EdgeId
@@ -4100,7 +4100,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        """Log source. move: inter-VPC firewall
+        r"""Log source. move: inter-VPC firewall
         :rtype: str
         """
         return self._LogSource
@@ -4111,7 +4111,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def Source(self):
-        """Source
+        r"""Source
         :rtype: str
         """
         return self._Source
@@ -4122,7 +4122,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Zone
@@ -4152,7 +4152,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
 
 class DescribeBlockByIpTimesListResponse(AbstractModel):
-    """DescribeBlockByIpTimesList response structure.
+    r"""DescribeBlockByIpTimesList response structure.
 
     """
 
@@ -4168,7 +4168,7 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Response  data
+        r"""Response  data
         :rtype: list of IpStatic
         """
         return self._Data
@@ -4179,7 +4179,7 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4200,7 +4200,7 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
 
 
 class DescribeBlockIgnoreListRequest(AbstractModel):
-    """DescribeBlockIgnoreList request structure.
+    r"""DescribeBlockIgnoreList request structure.
 
     """
 
@@ -4231,7 +4231,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page.
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -4242,7 +4242,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset.
+        r"""Page offset.
         :rtype: int
         """
         return self._Offset
@@ -4253,7 +4253,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. Valid values: 1: inbound public access; 0: outbound public access; 3: private network access; empty string: all access.
+        r"""Direction. Valid values: 1: inbound public access; 0: outbound public access; 3: private network access; empty string: all access.
         :rtype: str
         """
         return self._Direction
@@ -4264,7 +4264,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        """Rule type. Valid values: 1: block; 2: allow.
+        r"""Rule type. Valid values: 1: block; 2: allow.
         :rtype: int
         """
         return self._RuleType
@@ -4275,7 +4275,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Column by which rules are sorted. Valid values: EndTime: end time; StartTime: start time; MatchTimes: number of matching times.
+        r"""Column by which rules are sorted. Valid values: EndTime: end time; StartTime: start time; MatchTimes: number of matching times.
         :rtype: str
         """
         return self._Order
@@ -4286,7 +4286,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def By(self):
-        """Sort order. Valid values: desc: descending; asc: ascending.
+        r"""Sort order. Valid values: desc: descending; asc: ascending.
         :rtype: str
         """
         return self._By
@@ -4297,7 +4297,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search keys, in a JSON string. Valid values: {}: empty; domain: domain name; level: threat level; ignore_reason: reason for allowing access; rule_source: source of a security event; address: geographical location; common: fuzzy search.
+        r"""Search keys, in a JSON string. Valid values: {}: empty; domain: domain name; level: threat level; ignore_reason: reason for allowing access; rule_source: source of a security event; address: geographical location; common: fuzzy search.
         :rtype: str
         """
         return self._SearchValue
@@ -4326,7 +4326,7 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
 
 
 class DescribeBlockIgnoreListResponse(AbstractModel):
-    """DescribeBlockIgnoreList response structure.
+    r"""DescribeBlockIgnoreList response structure.
 
     """
 
@@ -4351,7 +4351,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """List data.
+        r"""List data.
         :rtype: list of BlockIgnoreRule
         """
         return self._Data
@@ -4362,7 +4362,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of results, which is used for pagination.
+        r"""Total number of results, which is used for pagination.
         :rtype: int
         """
         return self._Total
@@ -4373,7 +4373,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """Status code. Valid values: 0: successful; others: failed.
+        r"""Status code. Valid values: 0: successful; others: failed.
         :rtype: int
         """
         return self._ReturnCode
@@ -4384,7 +4384,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """Status message. Valid values: success: successful query; fail: failed query.
+        r"""Status message. Valid values: success: successful query; fail: failed query.
         :rtype: str
         """
         return self._ReturnMsg
@@ -4395,7 +4395,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4419,7 +4419,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
 
 
 class DescribeBlockStaticListRequest(AbstractModel):
-    """DescribeBlockStaticList request structure.
+    r"""DescribeBlockStaticList request structure.
 
     """
 
@@ -4444,7 +4444,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -4455,7 +4455,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -4466,7 +4466,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """List type. Valid values: port, address, or IP
+        r"""List type. Valid values: port, address, or IP
         :rtype: str
         """
         return self._QueryType
@@ -4477,7 +4477,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     @property
     def Top(self):
-        """Number of top results returned
+        r"""Number of top results returned
         :rtype: int
         """
         return self._Top
@@ -4488,7 +4488,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search criteria
+        r"""Search criteria
         :rtype: str
         """
         return self._SearchValue
@@ -4515,7 +4515,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
 
 class DescribeBlockStaticListResponse(AbstractModel):
-    """DescribeBlockStaticList response structure.
+    r"""DescribeBlockStaticList response structure.
 
     """
 
@@ -4531,7 +4531,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """None
+        r"""None
         :rtype: list of StaticInfo
         """
         return self._Data
@@ -4542,7 +4542,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4563,13 +4563,13 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
 
 class DescribeDefenseSwitchRequest(AbstractModel):
-    """DescribeDefenseSwitch request structure.
+    r"""DescribeDefenseSwitch request structure.
 
     """
 
 
 class DescribeDefenseSwitchResponse(AbstractModel):
-    """DescribeDefenseSwitch response structure.
+    r"""DescribeDefenseSwitch response structure.
 
     """
 
@@ -4603,7 +4603,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def BasicRuleSwitch(self):
-        """Whether to enable the Basic Protection feature
+        r"""Whether to enable the Basic Protection feature
         :rtype: int
         """
         return self._BasicRuleSwitch
@@ -4614,7 +4614,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def BaselineAllSwitch(self):
-        """Whether to enable the Security Baseline feature
+        r"""Whether to enable the Security Baseline feature
         :rtype: int
         """
         return self._BaselineAllSwitch
@@ -4625,7 +4625,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def TiSwitch(self):
-        """Whether to enable the Treat Intelligence feature
+        r"""Whether to enable the Treat Intelligence feature
         :rtype: int
         """
         return self._TiSwitch
@@ -4636,7 +4636,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def VirtualPatchSwitch(self):
-        """Whether to enable the Virtual Patch feature
+        r"""Whether to enable the Virtual Patch feature
         :rtype: int
         """
         return self._VirtualPatchSwitch
@@ -4647,7 +4647,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def HistoryOpen(self):
-        """Whether it has been enabled before
+        r"""Whether it has been enabled before
         :rtype: int
         """
         return self._HistoryOpen
@@ -4658,7 +4658,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """Status code. `0`: Succeeded. Others: Failed
+        r"""Status code. `0`: Succeeded. Others: Failed
         :rtype: int
         """
         return self._ReturnCode
@@ -4669,7 +4669,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """Status message. `success` and `fail.
+        r"""Status message. `success` and `fail.
         :rtype: str
         """
         return self._ReturnMsg
@@ -4680,7 +4680,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4702,7 +4702,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
 
 class DescribeEnterpriseSecurityGroupRuleRequest(AbstractModel):
-    """DescribeEnterpriseSecurityGroupRule request structure.
+    r"""DescribeEnterpriseSecurityGroupRule request structure.
 
     """
 
@@ -4765,7 +4765,7 @@ true: enable; false: disable
 
     @property
     def PageNo(self):
-        """Page number of the current page displayed for query by page number.
+        r"""Page number of the current page displayed for query by page number.
 
 1 by default.
         :rtype: str
@@ -4778,7 +4778,7 @@ true: enable; false: disable
 
     @property
     def PageSize(self):
-        """Maximum number of entries per page displayed for query by page number.
+        r"""Maximum number of entries per page displayed for query by page number.
 
 Maximum value: 50.
         :rtype: str
@@ -4791,7 +4791,7 @@ Maximum value: 50.
 
     @property
     def SourceContent(self):
-        """Source example:
+        r"""Source example:
 net: IP/CIDR (192.168.0.2)
 template: parameter template (ipm-dyodhpby)
 instance: asset instance (ins-123456)
@@ -4809,7 +4809,7 @@ Wildcards are supported.
 
     @property
     def DestContent(self):
-        """Destination example:
+        r"""Destination example:
 net: IP/CIDR (192.168.0.2)
 template: parameter template (ipm-dyodhpby)
 instance: asset instance (ins-123456)
@@ -4827,7 +4827,7 @@ Wildcards are supported.
 
     @property
     def Description(self):
-        """Rule description. Wildcards are supported.
+        r"""Rule description. Wildcards are supported.
         :rtype: str
         """
         return self._Description
@@ -4838,7 +4838,7 @@ Wildcards are supported.
 
     @property
     def RuleAction(self):
-        """The action that Cloud Firewall performs on the traffic. Valid values:
+        r"""The action that Cloud Firewall performs on the traffic. Valid values:
 accept: allow
 drop: deny
         :rtype: str
@@ -4851,7 +4851,7 @@ drop: deny
 
     @property
     def Enable(self):
-        """Indicates whether to enable the rules. Default: enable. Valid values:
+        r"""Indicates whether to enable the rules. Default: enable. Valid values:
 true: enable; false: disable
         :rtype: str
         """
@@ -4863,7 +4863,7 @@ true: enable; false: disable
 
     @property
     def Port(self):
-        """The port to apply access control rules. Valid values:
+        r"""The port to apply access control rules. Valid values:
 -1/-1: all ports
 80: port 80
         :rtype: str
@@ -4876,7 +4876,7 @@ true: enable; false: disable
 
     @property
     def Protocol(self):
-        """Protocol. TCP/UDP/ICMP/ANY
+        r"""Protocol. TCP/UDP/ICMP/ANY
         :rtype: str
         """
         return self._Protocol
@@ -4887,7 +4887,7 @@ true: enable; false: disable
 
     @property
     def ServiceTemplateId(self):
-        """Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port
+        r"""Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port
         :rtype: str
         """
         return self._ServiceTemplateId
@@ -4919,7 +4919,7 @@ true: enable; false: disable
 
 
 class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
-    """DescribeEnterpriseSecurityGroupRule response structure.
+    r"""DescribeEnterpriseSecurityGroupRule response structure.
 
     """
 
@@ -4944,7 +4944,7 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def PageNo(self):
-        """Page number of the current page displayed for query by page number.
+        r"""Page number of the current page displayed for query by page number.
         :rtype: str
         """
         return self._PageNo
@@ -4955,7 +4955,7 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        """Maximum number of entries per page displayed for query by page number.
+        r"""Maximum number of entries per page displayed for query by page number.
         :rtype: str
         """
         return self._PageSize
@@ -4966,7 +4966,7 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def Rules(self):
-        """Access control rule list
+        r"""Access control rule list
         :rtype: list of SecurityGroupRule
         """
         return self._Rules
@@ -4977,7 +4977,7 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of access control rules
+        r"""Total number of access control rules
         :rtype: str
         """
         return self._TotalCount
@@ -4988,7 +4988,7 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5012,13 +5012,13 @@ class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
 
 class DescribeGuideScanInfoRequest(AbstractModel):
-    """DescribeGuideScanInfo request structure.
+    r"""DescribeGuideScanInfo request structure.
 
     """
 
 
 class DescribeGuideScanInfoResponse(AbstractModel):
-    """DescribeGuideScanInfo response structure.
+    r"""DescribeGuideScanInfo response structure.
 
     """
 
@@ -5034,7 +5034,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Scan information
+        r"""Scan information
         :rtype: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`
         """
         return self._Data
@@ -5045,7 +5045,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5063,7 +5063,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
 
 class DescribeIPStatusListRequest(AbstractModel):
-    """DescribeIPStatusList request structure.
+    r"""DescribeIPStatusList request structure.
 
     """
 
@@ -5076,7 +5076,7 @@ class DescribeIPStatusListRequest(AbstractModel):
 
     @property
     def IPList(self):
-        """Asset ID
+        r"""Asset ID
         :rtype: list of str
         """
         return self._IPList
@@ -5099,7 +5099,7 @@ class DescribeIPStatusListRequest(AbstractModel):
 
 
 class DescribeIPStatusListResponse(AbstractModel):
-    """DescribeIPStatusList response structure.
+    r"""DescribeIPStatusList response structure.
 
     """
 
@@ -5121,7 +5121,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
     @property
     def StatusList(self):
-        """IP status information
+        r"""IP status information
         :rtype: list of IPDefendStatus
         """
         return self._StatusList
@@ -5132,7 +5132,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """Status code
+        r"""Status code
         :rtype: int
         """
         return self._ReturnCode
@@ -5143,7 +5143,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """Status information
+        r"""Status information
         :rtype: str
         """
         return self._ReturnMsg
@@ -5154,7 +5154,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5177,7 +5177,7 @@ class DescribeIPStatusListResponse(AbstractModel):
 
 
 class DescribeNatAcRuleRequest(AbstractModel):
-    """DescribeNatAcRule request structure.
+    r"""DescribeNatAcRule request structure.
 
     """
 
@@ -5211,7 +5211,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page.
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -5222,7 +5222,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset.
+        r"""Page offset.
         :rtype: int
         """
         return self._Offset
@@ -5233,7 +5233,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        """Index to be queried. This parameter is optional, and is used only in specific cases.
+        r"""Index to be queried. This parameter is optional, and is used only in specific cases.
         :rtype: str
         """
         return self._Index
@@ -5244,7 +5244,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter condition combination.
+        r"""Filter condition combination.
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -5255,7 +5255,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time for search. This parameter is optional.
+        r"""Start time for search. This parameter is optional.
         :rtype: str
         """
         return self._StartTime
@@ -5266,7 +5266,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time for search. This parameter is optional.
+        r"""End time for search. This parameter is optional.
         :rtype: str
         """
         return self._EndTime
@@ -5277,7 +5277,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Valid values: desc: descending; asc: ascending. The returned results are sorted by the value of By. If this parameter is specified, By is also required.
+        r"""Valid values: desc: descending; asc: ascending. The returned results are sorted by the value of By. If this parameter is specified, By is also required.
         :rtype: str
         """
         return self._Order
@@ -5288,7 +5288,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        """Field by which the returned results are sorted.
+        r"""Field by which the returned results are sorted.
         :rtype: str
         """
         return self._By
@@ -5323,7 +5323,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
 
 class DescribeNatAcRuleResponse(AbstractModel):
-    """DescribeNatAcRule response structure.
+    r"""DescribeNatAcRule response structure.
 
     """
 
@@ -5346,7 +5346,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
-        """Total number of entries.
+        r"""Total number of entries.
         :rtype: int
         """
         return self._Total
@@ -5357,7 +5357,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """NAT access control list data.
+        r"""NAT access control list data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescAcItem
         """
@@ -5369,7 +5369,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllTotal(self):
-        """Total number of entries returned without filtering.
+        r"""Total number of entries returned without filtering.
         :rtype: int
         """
         return self._AllTotal
@@ -5380,7 +5380,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5403,13 +5403,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeNatFwInfoCountRequest(AbstractModel):
-    """DescribeNatFwInfoCount request structure.
+    r"""DescribeNatFwInfoCount request structure.
 
     """
 
 
 class DescribeNatFwInfoCountResponse(AbstractModel):
-    """DescribeNatFwInfoCount response structure.
+    r"""DescribeNatFwInfoCount response structure.
 
     """
 
@@ -5438,7 +5438,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Response parameter
+        r"""Response parameter
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -5450,7 +5450,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatFwInsCount(self):
-        """Number of NAT instances of the current tenant
+        r"""Number of NAT instances of the current tenant
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -5462,7 +5462,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubnetCount(self):
-        """Number of subnets connected by the current tenant
+        r"""Number of subnets connected by the current tenant
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -5474,7 +5474,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OpenSwitchCount(self):
-        """Number of firewalls enabled
+        r"""Number of firewalls enabled
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -5486,7 +5486,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5505,13 +5505,13 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeNatFwInstanceRequest(AbstractModel):
-    """DescribeNatFwInstance request structure.
+    r"""DescribeNatFwInstance request structure.
 
     """
 
 
 class DescribeNatFwInstanceResponse(AbstractModel):
-    """DescribeNatFwInstance response structure.
+    r"""DescribeNatFwInstance response structure.
 
     """
 
@@ -5527,7 +5527,7 @@ class DescribeNatFwInstanceResponse(AbstractModel):
 
     @property
     def NatinsLst(self):
-        """Instance array
+        r"""Instance array
         :rtype: list of NatFwInstance
         """
         return self._NatinsLst
@@ -5538,7 +5538,7 @@ class DescribeNatFwInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5559,13 +5559,13 @@ class DescribeNatFwInstanceResponse(AbstractModel):
 
 
 class DescribeNatFwInstanceWithRegionRequest(AbstractModel):
-    """DescribeNatFwInstanceWithRegion request structure.
+    r"""DescribeNatFwInstanceWithRegion request structure.
 
     """
 
 
 class DescribeNatFwInstanceWithRegionResponse(AbstractModel):
-    """DescribeNatFwInstanceWithRegion response structure.
+    r"""DescribeNatFwInstanceWithRegion response structure.
 
     """
 
@@ -5582,7 +5582,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatinsLst(self):
-        """Instance array
+        r"""Instance array
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of NatFwInstance
         """
@@ -5594,7 +5594,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5615,7 +5615,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeNatFwInstancesInfoRequest(AbstractModel):
-    """DescribeNatFwInstancesInfo request structure.
+    r"""DescribeNatFwInstancesInfo request structure.
 
     """
 
@@ -5634,7 +5634,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Gets filtering fields of instance list
+        r"""Gets filtering fields of instance list
         :rtype: list of NatFwFilter
         """
         return self._Filter
@@ -5645,7 +5645,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page number
+        r"""Page number
         :rtype: int
         """
         return self._Offset
@@ -5656,7 +5656,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Page length
+        r"""Page length
         :rtype: int
         """
         return self._Limit
@@ -5686,7 +5686,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
 
 class DescribeNatFwInstancesInfoResponse(AbstractModel):
-    """DescribeNatFwInstancesInfo response structure.
+    r"""DescribeNatFwInstancesInfo response structure.
 
     """
 
@@ -5707,7 +5707,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatinsLst(self):
-        """Instance card info array
+        r"""Instance card info array
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of NatInstanceInfo
         """
@@ -5719,7 +5719,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Number of NAT firewalls
+        r"""Number of NAT firewalls
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -5731,7 +5731,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5753,7 +5753,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeNatFwVpcDnsLstRequest(AbstractModel):
-    """DescribeNatFwVpcDnsLst request structure.
+    r"""DescribeNatFwVpcDnsLst request structure.
 
     """
 
@@ -5775,7 +5775,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def NatFwInsId(self):
-        """NAT firewall instance ID
+        r"""NAT firewall instance ID
         :rtype: str
         """
         return self._NatFwInsId
@@ -5786,7 +5786,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def NatInsIdFilter(self):
-        """Content filtered by NAT firewall, separated with ","
+        r"""Content filtered by NAT firewall, separated with ","
         :rtype: str
         """
         return self._NatInsIdFilter
@@ -5797,7 +5797,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Number of pages
+        r"""Number of pages
         :rtype: int
         """
         return self._Offset
@@ -5808,7 +5808,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum entries per page
+        r"""Maximum entries per page
         :rtype: int
         """
         return self._Limit
@@ -5834,7 +5834,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
 
 class DescribeNatFwVpcDnsLstResponse(AbstractModel):
-    """DescribeNatFwVpcDnsLst response structure.
+    r"""DescribeNatFwVpcDnsLst response structure.
 
     """
 
@@ -5859,7 +5859,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcDnsSwitchLst(self):
-        """VPC DNS info array of NAT firewall
+        r"""VPC DNS info array of NAT firewall
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of VpcDnsInfo
         """
@@ -5871,7 +5871,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Response parameter
+        r"""Response parameter
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -5883,7 +5883,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total number of toggles
+        r"""Total number of toggles
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -5895,7 +5895,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5918,7 +5918,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeResourceGroupNewRequest(AbstractModel):
-    """DescribeResourceGroupNew request structure.
+    r"""DescribeResourceGroupNew request structure.
 
     """
 
@@ -5937,7 +5937,7 @@ class DescribeResourceGroupNewRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """Query type. Network–VPC; business recognition–resource; resource tag–tag
+        r"""Query type. Network–VPC; business recognition–resource; resource tag–tag
         :rtype: str
         """
         return self._QueryType
@@ -5948,7 +5948,7 @@ class DescribeResourceGroupNewRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Asset group ID, 0: all asset group IDs
+        r"""Asset group ID, 0: all asset group IDs
         :rtype: str
         """
         return self._GroupId
@@ -5959,7 +5959,7 @@ class DescribeResourceGroupNewRequest(AbstractModel):
 
     @property
     def ShowType(self):
-        """all: all, including subgroups; own: my asset groups only
+        r"""all: all, including subgroups; own: my asset groups only
         :rtype: str
         """
         return self._ShowType
@@ -5984,7 +5984,7 @@ class DescribeResourceGroupNewRequest(AbstractModel):
 
 
 class DescribeResourceGroupNewResponse(AbstractModel):
-    """DescribeResourceGroupNew response structure.
+    r"""DescribeResourceGroupNew response structure.
 
     """
 
@@ -6009,7 +6009,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Returns a tree structure
+        r"""Returns a tree structure
         :rtype: str
         """
         return self._Data
@@ -6020,7 +6020,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
     @property
     def UnResourceNum(self):
-        """Number of uncategorizd instances
+        r"""Number of uncategorizd instances
         :rtype: int
         """
         return self._UnResourceNum
@@ -6031,7 +6031,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """Response message
+        r"""Response message
         :rtype: str
         """
         return self._ReturnMsg
@@ -6042,7 +6042,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """Return code. 0: Request successful
+        r"""Return code. 0: Request successful
         :rtype: int
         """
         return self._ReturnCode
@@ -6053,7 +6053,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6072,7 +6072,7 @@ class DescribeResourceGroupNewResponse(AbstractModel):
 
 
 class DescribeRuleOverviewRequest(AbstractModel):
-    """DescribeRuleOverview request structure.
+    r"""DescribeRuleOverview request structure.
 
     """
 
@@ -6085,7 +6085,7 @@ class DescribeRuleOverviewRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -6108,7 +6108,7 @@ class DescribeRuleOverviewRequest(AbstractModel):
 
 
 class DescribeRuleOverviewResponse(AbstractModel):
-    """DescribeRuleOverview response structure.
+    r"""DescribeRuleOverview response structure.
 
     """
 
@@ -6141,7 +6141,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AllTotal(self):
-        """Total number of rules
+        r"""Total number of rules
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6153,7 +6153,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StrategyNum(self):
-        """Number of blocking rules
+        r"""Number of blocking rules
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6165,7 +6165,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StartRuleNum(self):
-        """Number of enabled rules
+        r"""Number of enabled rules
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6177,7 +6177,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StopRuleNum(self):
-        """Number of disabled rules
+        r"""Number of disabled rules
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6189,7 +6189,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RemainingNum(self):
-        """Remaining quota
+        r"""Remaining quota
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6201,7 +6201,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6221,7 +6221,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeSecurityGroupListRequest(AbstractModel):
-    """DescribeSecurityGroupList request structure.
+    r"""DescribeSecurityGroupList request structure.
 
     """
 
@@ -6252,7 +6252,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """0: outbound rule; 1: inbound rule
+        r"""0: outbound rule; 1: inbound rule
         :rtype: int
         """
         return self._Direction
@@ -6263,7 +6263,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region code (e.g. ap-guangzhou ). All Tencent Cloud regions are supported.
+        r"""Region code (e.g. ap-guangzhou ). All Tencent Cloud regions are supported.
         :rtype: str
         """
         return self._Area
@@ -6274,7 +6274,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search value
+        r"""Search value
         :rtype: str
         """
         return self._SearchValue
@@ -6285,7 +6285,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Default: 10
+        r"""Number of entries per page. Default: 10
         :rtype: int
         """
         return self._Limit
@@ -6296,7 +6296,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default: 0
+        r"""Offset. Default: 0
         :rtype: int
         """
         return self._Offset
@@ -6307,7 +6307,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status. Null: all; '0': filter disabled rules; '1': filter enabled rules
+        r"""Status. Null: all; '0': filter disabled rules; '1': filter enabled rules
         :rtype: str
         """
         return self._Status
@@ -6318,7 +6318,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """0: not filter; 1: filter out normal rules to retain abnormal rules
+        r"""0: not filter; 1: filter out normal rules to retain abnormal rules
         :rtype: int
         """
         return self._Filter
@@ -6347,7 +6347,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
 
 class DescribeSecurityGroupListResponse(AbstractModel):
-    """DescribeSecurityGroupList response structure.
+    r"""DescribeSecurityGroupList response structure.
 
     """
 
@@ -6373,7 +6373,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total rules in the list
+        r"""Total rules in the list
         :rtype: int
         """
         return self._Total
@@ -6384,7 +6384,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Data(self):
-        """Security group rule list data
+        r"""Security group rule list data
         :rtype: list of SecurityGroupListData
         """
         return self._Data
@@ -6395,7 +6395,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AllTotal(self):
-        """Total entries excluding the filtered ones
+        r"""Total entries excluding the filtered ones
         :rtype: int
         """
         return self._AllTotal
@@ -6406,7 +6406,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Enable(self):
-        """All access control rules enabled/disabled
+        r"""All access control rules enabled/disabled
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6418,7 +6418,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6442,7 +6442,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeSourceAssetRequest(AbstractModel):
-    """DescribeSourceAsset request structure.
+    r"""DescribeSourceAsset request structure.
 
     """
 
@@ -6470,7 +6470,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def FuzzySearch(self):
-        """Fuzzy search
+        r"""Fuzzy search
         :rtype: str
         """
         return self._FuzzySearch
@@ -6481,7 +6481,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def InsType(self):
-        """Asset type. 1: public network; 2: private network
+        r"""Asset type. 1: public network; 2: private network
         :rtype: str
         """
         return self._InsType
@@ -6492,7 +6492,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def ChooseType(self):
-        """If ChooseType is 1, grouped assets are queried; if ChooseType is not 1, non-grouped assets are queried
+        r"""If ChooseType is 1, grouped assets are queried; if ChooseType is not 1, non-grouped assets are queried
         :rtype: str
         """
         return self._ChooseType
@@ -6503,7 +6503,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Zone
@@ -6514,7 +6514,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of results returned per page. For example, if it is set to 10, 10 results will be returned at most.
+        r"""Maximum number of results returned per page. For example, if it is set to 10, 10 results will be returned at most.
         :rtype: int
         """
         return self._Limit
@@ -6525,7 +6525,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset of search results
+        r"""Offset of search results
         :rtype: int
         """
         return self._Offset
@@ -6553,7 +6553,7 @@ class DescribeSourceAssetRequest(AbstractModel):
 
 
 class DescribeSourceAssetResponse(AbstractModel):
-    """DescribeSourceAsset response structure.
+    r"""DescribeSourceAsset response structure.
 
     """
 
@@ -6575,7 +6575,7 @@ class DescribeSourceAssetResponse(AbstractModel):
 
     @property
     def ZoneList(self):
-        """Region collection
+        r"""Region collection
         :rtype: list of AssetZone
         """
         return self._ZoneList
@@ -6586,7 +6586,7 @@ class DescribeSourceAssetResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Data
+        r"""Data
         :rtype: list of InstanceInfo
         """
         return self._Data
@@ -6597,7 +6597,7 @@ class DescribeSourceAssetResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of returned data
+        r"""Total number of returned data
         :rtype: int
         """
         return self._Total
@@ -6608,7 +6608,7 @@ class DescribeSourceAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6636,7 +6636,7 @@ class DescribeSourceAssetResponse(AbstractModel):
 
 
 class DescribeSwitchListsRequest(AbstractModel):
-    """DescribeSwitchLists request structure.
+    r"""DescribeSwitchLists request structure.
 
     """
 
@@ -6670,7 +6670,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Firewall status. 0: disabled; 1: enabled
+        r"""Firewall status. 0: disabled; 1: enabled
         :rtype: int
         """
         return self._Status
@@ -6681,7 +6681,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Asset type, e.g. CVM/NAT/VPN/CLB/others
+        r"""Asset type, e.g. CVM/NAT/VPN/CLB/others
         :rtype: str
         """
         return self._Type
@@ -6692,7 +6692,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Region, e.g. Shanghai, Chongqing, Guangzhou, etc.
+        r"""Region, e.g. Shanghai, Chongqing, Guangzhou, etc.
         :rtype: str
         """
         return self._Area
@@ -6703,7 +6703,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search value, e.g. "{"common":"106.54.189.45"}"
+        r"""Search value, e.g. "{"common":"106.54.189.45"}"
         :rtype: str
         """
         return self._SearchValue
@@ -6714,7 +6714,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries. Default: 10
+        r"""Number of entries. Default: 10
         :rtype: int
         """
         return self._Limit
@@ -6725,7 +6725,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset. Default: 0
+        r"""Offset. Default: 0
         :rtype: int
         """
         return self._Offset
@@ -6736,7 +6736,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Sort order. desc: descending; asc: ascending
+        r"""Sort order. desc: descending; asc: ascending
         :rtype: str
         """
         return self._Order
@@ -6747,7 +6747,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     @property
     def By(self):
-        """Sorting field. PortTimes (number of risky ports)
+        r"""Sorting field. PortTimes (number of risky ports)
         :rtype: str
         """
         return self._By
@@ -6777,7 +6777,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
 
 class DescribeSwitchListsResponse(AbstractModel):
-    """DescribeSwitchLists response structure.
+    r"""DescribeSwitchLists response structure.
 
     """
 
@@ -6807,7 +6807,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Total(self):
-        """Total entries
+        r"""Total entries
         :rtype: int
         """
         return self._Total
@@ -6818,7 +6818,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Data(self):
-        """List data
+        r"""List data
         :rtype: list of SwitchListsData
         """
         return self._Data
@@ -6829,7 +6829,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AreaLists(self):
-        """Region list
+        r"""Region list
         :rtype: list of str
         """
         return self._AreaLists
@@ -6840,7 +6840,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OnNum(self):
-        """Number of enabled firewalls
+        r"""Number of enabled firewalls
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6852,7 +6852,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OffNum(self):
-        """Number of disabled firewalls
+        r"""Number of disabled firewalls
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -6864,7 +6864,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6889,7 +6889,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeTLogInfoRequest(AbstractModel):
-    """DescribeTLogInfo request structure.
+    r"""DescribeTLogInfo request structure.
 
     """
 
@@ -6911,7 +6911,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -6922,7 +6922,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -6933,7 +6933,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """Type. 1: alert; 2: block
+        r"""Type. 1: alert; 2: block
         :rtype: str
         """
         return self._QueryType
@@ -6944,7 +6944,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search criteria
+        r"""Search criteria
         :rtype: str
         """
         return self._SearchValue
@@ -6970,7 +6970,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
 
 class DescribeTLogInfoResponse(AbstractModel):
-    """DescribeTLogInfo response structure.
+    r"""DescribeTLogInfo response structure.
 
     """
 
@@ -6991,7 +6991,7 @@ class DescribeTLogInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        """`NetworkNum`: Number of detected network scans
+        r"""`NetworkNum`: Number of detected network scans
  `HandleNum`: Number of pending processing events
 "BanNum": 
   `VulNum`: Number of vulnerability exploits
@@ -7007,7 +7007,7 @@ class DescribeTLogInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7025,7 +7025,7 @@ class DescribeTLogInfoResponse(AbstractModel):
 
 
 class DescribeTLogIpListRequest(AbstractModel):
-    """DescribeTLogIpList request structure.
+    r"""DescribeTLogIpList request structure.
 
     """
 
@@ -7050,7 +7050,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -7061,7 +7061,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -7072,7 +7072,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """Type. 1: alert; 2: block
+        r"""Type. 1: alert; 2: block
         :rtype: str
         """
         return self._QueryType
@@ -7083,7 +7083,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     @property
     def Top(self):
-        """Number of top results returned
+        r"""Number of top results returned
         :rtype: int
         """
         return self._Top
@@ -7094,7 +7094,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        """Search criteria
+        r"""Search criteria
         :rtype: str
         """
         return self._SearchValue
@@ -7121,7 +7121,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
 
 class DescribeTLogIpListResponse(AbstractModel):
-    """DescribeTLogIpList response structure.
+    r"""DescribeTLogIpList response structure.
 
     """
 
@@ -7137,7 +7137,7 @@ class DescribeTLogIpListResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Data collection
+        r"""Data collection
         :rtype: list of StaticInfo
         """
         return self._Data
@@ -7148,7 +7148,7 @@ class DescribeTLogIpListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7169,7 +7169,7 @@ class DescribeTLogIpListResponse(AbstractModel):
 
 
 class DescribeTableStatusRequest(AbstractModel):
-    """DescribeTableStatus request structure.
+    r"""DescribeTableStatus request structure.
 
     """
 
@@ -7191,7 +7191,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID between two VPCs, required for VPCs
+        r"""Edge ID between two VPCs, required for VPCs
         :rtype: str
         """
         return self._EdgeId
@@ -7202,7 +7202,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: the only default value
+        r"""Status value. 0: the only default value
         :rtype: int
         """
         return self._Status
@@ -7213,7 +7213,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region, required for NAT
+        r"""NAT region, required for NAT
         :rtype: str
         """
         return self._Area
@@ -7224,7 +7224,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 0 by default
+        r"""Direction. 0: outbound; 1: inbound. 0 by default
         :rtype: int
         """
         return self._Direction
@@ -7250,7 +7250,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
 
 class DescribeTableStatusResponse(AbstractModel):
-    """DescribeTableStatus response structure.
+    r"""DescribeTableStatus response structure.
 
     """
 
@@ -7267,7 +7267,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: normal; non-0: abnormal
+        r"""0: normal; non-0: abnormal
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -7279,7 +7279,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7295,7 +7295,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeUnHandleEventTabListRequest(AbstractModel):
-    """DescribeUnHandleEventTabList request structure.
+    r"""DescribeUnHandleEventTabList request structure.
 
     """
 
@@ -7314,7 +7314,7 @@ class DescribeUnHandleEventTabListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time
+        r"""Start time
         :rtype: str
         """
         return self._StartTime
@@ -7325,7 +7325,7 @@ class DescribeUnHandleEventTabListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time
+        r"""End time
         :rtype: str
         """
         return self._EndTime
@@ -7336,7 +7336,7 @@ class DescribeUnHandleEventTabListRequest(AbstractModel):
 
     @property
     def AssetID(self):
-        """Gets example ID
+        r"""Gets example ID
         :rtype: str
         """
         return self._AssetID
@@ -7361,7 +7361,7 @@ class DescribeUnHandleEventTabListRequest(AbstractModel):
 
 
 class DescribeUnHandleEventTabListResponse(AbstractModel):
-    """DescribeUnHandleEventTabList response structure.
+    r"""DescribeUnHandleEventTabList response structure.
 
     """
 
@@ -7384,7 +7384,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Data(self):
-        """Gets unhandled security events
+        r"""Gets unhandled security events
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: :class:`tencentcloud.cfw.v20190904.models.UnHandleEvent`
         """
@@ -7396,7 +7396,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnCode(self):
-        """Error code. 0: success; non-0: error
+        r"""Error code. 0: success; non-0: error
         :rtype: int
         """
         return self._ReturnCode
@@ -7407,7 +7407,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Return message: success
+        r"""Return message: success
         :rtype: str
         """
         return self._ReturnMsg
@@ -7418,7 +7418,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7438,7 +7438,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeVpcAcRuleRequest(AbstractModel):
-    """DescribeVpcAcRule request structure.
+    r"""DescribeVpcAcRule request structure.
 
     """
 
@@ -7472,7 +7472,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Limit
+        r"""Limit
         :rtype: int
         """
         return self._Limit
@@ -7483,7 +7483,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset
+        r"""Offset
         :rtype: int
         """
         return self._Offset
@@ -7494,7 +7494,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        """Index to be queried, used in specific scenarios, can be left blank
+        r"""Index to be queried, used in specific scenarios, can be left blank
         :rtype: str
         """
         return self._Index
@@ -7505,7 +7505,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter combinations
+        r"""Filter combinations
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -7516,7 +7516,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Search start time
+        r"""Search start time
         :rtype: str
         """
         return self._StartTime
@@ -7527,7 +7527,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Search end time
+        r"""Search end time
         :rtype: str
         """
         return self._EndTime
@@ -7538,7 +7538,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        """Order Type:desc,asc
+        r"""Order Type:desc,asc
         :rtype: str
         """
         return self._Order
@@ -7549,7 +7549,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        """Order By FileName
+        r"""Order By FileName
         :rtype: str
         """
         return self._By
@@ -7584,7 +7584,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
 
 class DescribeVpcAcRuleResponse(AbstractModel):
-    """DescribeVpcAcRule response structure.
+    r"""DescribeVpcAcRule response structure.
 
     """
 
@@ -7603,7 +7603,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total Data
+        r"""Total Data
         :rtype: int
         """
         return self._Total
@@ -7614,7 +7614,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Data list
+        r"""Data list
         :rtype: list of VpcRuleItem
         """
         return self._Data
@@ -7625,7 +7625,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7647,7 +7647,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
 
 class DnsVpcSwitch(AbstractModel):
-    """Sets the VPC DNS toggle of the NAT firewall
+    r"""Sets the VPC DNS toggle of the NAT firewall
 
     """
 
@@ -7663,7 +7663,7 @@ class DnsVpcSwitch(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -7674,7 +7674,7 @@ class DnsVpcSwitch(AbstractModel):
 
     @property
     def Status(self):
-        """0: off; 1: on
+        r"""0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -7698,7 +7698,7 @@ class DnsVpcSwitch(AbstractModel):
 
 
 class ExpandCfwVerticalRequest(AbstractModel):
-    """ExpandCfwVertical request structure.
+    r"""ExpandCfwVertical request structure.
 
     """
 
@@ -7717,7 +7717,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def FwType(self):
-        """nat: NAT firewall, ew: east-west firewall
+        r"""nat: NAT firewall, ew: east-west firewall
         :rtype: str
         """
         return self._FwType
@@ -7728,7 +7728,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def Width(self):
-        """Bandwidth value
+        r"""Bandwidth value
         :rtype: int
         """
         return self._Width
@@ -7739,7 +7739,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        """Firewall instance ID
+        r"""Firewall instance ID
         :rtype: str
         """
         return self._CfwInstance
@@ -7764,7 +7764,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
 
 class ExpandCfwVerticalResponse(AbstractModel):
-    """ExpandCfwVertical response structure.
+    r"""ExpandCfwVertical response structure.
 
     """
 
@@ -7777,7 +7777,7 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7792,7 +7792,7 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
 
 class FwCidrInfo(AbstractModel):
-    """Firewall IP range information
+    r"""Firewall IP range information
 
     """
 
@@ -7811,7 +7811,7 @@ class FwCidrInfo(AbstractModel):
 
     @property
     def FwCidrType(self):
-        """The IP range type of the firewall. Values: `VpcSelf` (VPC IP range preferred); `Assis` (Secondary IP range preferred); `Custom` (Custom IP range)
+        r"""The IP range type of the firewall. Values: `VpcSelf` (VPC IP range preferred); `Assis` (Secondary IP range preferred); `Custom` (Custom IP range)
         :rtype: str
         """
         return self._FwCidrType
@@ -7822,7 +7822,7 @@ class FwCidrInfo(AbstractModel):
 
     @property
     def FwCidrLst(self):
-        """The IP segment assigned for each VPC.
+        r"""The IP segment assigned for each VPC.
         :rtype: list of FwVpcCidr
         """
         return self._FwCidrLst
@@ -7833,7 +7833,7 @@ class FwCidrInfo(AbstractModel):
 
     @property
     def ComFwCidr(self):
-        """The IP segment used by other firewalls. Specify this if you want to assign a dedicated segment for the firewall.
+        r"""The IP segment used by other firewalls. Specify this if you want to assign a dedicated segment for the firewall.
         :rtype: str
         """
         return self._ComFwCidr
@@ -7863,7 +7863,7 @@ class FwCidrInfo(AbstractModel):
 
 
 class FwVpcCidr(AbstractModel):
-    """Firewall IP range of the VPC
+    r"""Firewall IP range of the VPC
 
     """
 
@@ -7879,7 +7879,7 @@ class FwVpcCidr(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -7890,7 +7890,7 @@ class FwVpcCidr(AbstractModel):
 
     @property
     def FwCidr(self):
-        """IP range of the firewall. The mask must be at least /24.
+        r"""IP range of the firewall. The mask must be at least /24.
         :rtype: str
         """
         return self._FwCidr
@@ -7914,7 +7914,7 @@ class FwVpcCidr(AbstractModel):
 
 
 class IPDefendStatus(AbstractModel):
-    """IP protection status
+    r"""IP protection status
 
     """
 
@@ -7930,7 +7930,7 @@ class IPDefendStatus(AbstractModel):
 
     @property
     def IP(self):
-        """IP address
+        r"""IP address
         :rtype: str
         """
         return self._IP
@@ -7941,7 +7941,7 @@ class IPDefendStatus(AbstractModel):
 
     @property
     def Status(self):
-        """Protection status. 1: enabled; -1: incorrect address; others: disabled
+        r"""Protection status. 1: enabled; -1: incorrect address; others: disabled
         :rtype: int
         """
         return self._Status
@@ -7965,7 +7965,7 @@ class IPDefendStatus(AbstractModel):
 
 
 class InstanceInfo(AbstractModel):
-    """// InstanceInfo instance details result
+    r"""// InstanceInfo instance details result
     type InstanceInfo struct {
     	AppID        string `json:"AppId" gorm:"column:appid"`
     	Region       string `json:"Region" gorm:"column:region"`
@@ -8037,7 +8037,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AppId(self):
-        """App ID
+        r"""App ID
         :rtype: str
         """
         return self._AppId
@@ -8048,7 +8048,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -8059,7 +8059,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -8070,7 +8070,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VPCName(self):
-        """VPC name
+        r"""VPC name
         :rtype: str
         """
         return self._VPCName
@@ -8081,7 +8081,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
         :rtype: str
         """
         return self._SubnetId
@@ -8092,7 +8092,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Asset ID
+        r"""Asset ID
         :rtype: str
         """
         return self._InstanceId
@@ -8103,7 +8103,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Asset name
+        r"""Asset name
         :rtype: str
         """
         return self._InstanceName
@@ -8114,7 +8114,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InsType(self):
-        """Asset type
+        r"""Asset type
  3: CVM instance; 4: CLB instance; 5: ENI instance; 6: MySQL; 7: Redis; 8: NAT; 9: VPN; 10: ES; 11: MariaDB; 12: Kafka; 13: NATFW
         :rtype: int
         """
@@ -8126,7 +8126,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIp(self):
-        """Public IP
+        r"""Public IP
         :rtype: str
         """
         return self._PublicIp
@@ -8137,7 +8137,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PrivateIp(self):
-        """Private IP
+        r"""Private IP
         :rtype: str
         """
         return self._PrivateIp
@@ -8148,7 +8148,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PortNum(self):
-        """Number of ports
+        r"""Number of ports
         :rtype: str
         """
         return self._PortNum
@@ -8159,7 +8159,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def LeakNum(self):
-        """Number of vulnerabilities
+        r"""Number of vulnerabilities
         :rtype: str
         """
         return self._LeakNum
@@ -8170,7 +8170,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InsSource(self):
-        """1: public network; 2: private network
+        r"""1: public network; 2: private network
         :rtype: str
         """
         return self._InsSource
@@ -8181,7 +8181,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ResourcePath(self):
-        """[a,b]
+        r"""[a,b]
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -8218,7 +8218,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class IocListData(AbstractModel):
-    """Blocklist, allowlist, IOC list
+    r"""Blocklist, allowlist, IOC list
 
     """
 
@@ -8237,7 +8237,7 @@ class IocListData(AbstractModel):
 
     @property
     def IP(self):
-        """IP address to be handled. Either IP or Domain is required.
+        r"""IP address to be handled. Either IP or Domain is required.
         :rtype: str
         """
         return self._IP
@@ -8248,7 +8248,7 @@ class IocListData(AbstractModel):
 
     @property
     def Direction(self):
-        """0 or 1. 0: outbound; 1: inbound
+        r"""0 or 1. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -8259,7 +8259,7 @@ class IocListData(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain name to be handled. Either IP or Domain is required.
+        r"""Domain name to be handled. Either IP or Domain is required.
         :rtype: str
         """
         return self._Domain
@@ -8284,7 +8284,7 @@ class IocListData(AbstractModel):
 
 
 class IpStatic(AbstractModel):
-    """Statistical line graph general structure
+    r"""Statistical line graph general structure
 
     """
 
@@ -8300,7 +8300,7 @@ class IpStatic(AbstractModel):
 
     @property
     def Num(self):
-        """Value
+        r"""Value
         :rtype: int
         """
         return self._Num
@@ -8311,7 +8311,7 @@ class IpStatic(AbstractModel):
 
     @property
     def StatTime(self):
-        """Time shown on the x-axis of the line graph
+        r"""Time shown on the x-axis of the line graph
         :rtype: str
         """
         return self._StatTime
@@ -8335,7 +8335,7 @@ class IpStatic(AbstractModel):
 
 
 class ModifyAcRuleRequest(AbstractModel):
-    """ModifyAcRule request structure.
+    r"""ModifyAcRule request structure.
 
     """
 
@@ -8357,7 +8357,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Array of rules
+        r"""Array of rules
         :rtype: list of RuleInfoData
         """
         return self._Data
@@ -8368,7 +8368,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """EdgeId value
+        r"""EdgeId value
         :rtype: str
         """
         return self._EdgeId
@@ -8379,7 +8379,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Access rule status
+        r"""Access rule status
         :rtype: int
         """
         return self._Enable
@@ -8390,7 +8390,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region
+        r"""NAT region
         :rtype: str
         """
         return self._Area
@@ -8421,7 +8421,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
 
 class ModifyAcRuleResponse(AbstractModel):
-    """ModifyAcRule response structure.
+    r"""ModifyAcRule response structure.
 
     """
 
@@ -8441,7 +8441,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status value. 0: operation successful; non-0: operation failed
+        r"""Status value. 0: operation successful; non-0: operation failed
         :rtype: int
         """
         return self._Status
@@ -8452,7 +8452,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Info(self):
-        """Returns redundant information
+        r"""Returns redundant information
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -8464,7 +8464,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8481,7 +8481,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyAllPublicIPSwitchStatusRequest(AbstractModel):
-    """ModifyAllPublicIPSwitchStatus request structure.
+    r"""ModifyAllPublicIPSwitchStatus request structure.
 
     """
 
@@ -8497,7 +8497,7 @@ class ModifyAllPublicIPSwitchStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 0: off; 1: on
+        r"""Status. 0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -8508,7 +8508,7 @@ class ModifyAllPublicIPSwitchStatusRequest(AbstractModel):
 
     @property
     def FireWallPublicIPs(self):
-        """ID of the selected firewall toggle
+        r"""ID of the selected firewall toggle
         :rtype: list of str
         """
         return self._FireWallPublicIPs
@@ -8532,7 +8532,7 @@ class ModifyAllPublicIPSwitchStatusRequest(AbstractModel):
 
 
 class ModifyAllPublicIPSwitchStatusResponse(AbstractModel):
-    """ModifyAllPublicIPSwitchStatus response structure.
+    r"""ModifyAllPublicIPSwitchStatus response structure.
 
     """
 
@@ -8553,7 +8553,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Return message
+        r"""Return message
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -8565,7 +8565,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnCode(self):
-        """Error code. 0: success; non-0: failed
+        r"""Error code. 0: success; non-0: failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -8577,7 +8577,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8594,7 +8594,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyAllRuleStatusRequest(AbstractModel):
-    """ModifyAllRuleStatus request structure.
+    r"""ModifyAllRuleStatus request structure.
 
     """
 
@@ -8616,7 +8616,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 0: all disabled; 1: all enabled
+        r"""Status. 0: all disabled; 1: all enabled
         :rtype: int
         """
         return self._Status
@@ -8627,7 +8627,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -8638,7 +8638,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID value
+        r"""Edge ID value
         :rtype: str
         """
         return self._EdgeId
@@ -8649,7 +8649,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region
+        r"""NAT region
         :rtype: str
         """
         return self._Area
@@ -8675,7 +8675,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
 
 class ModifyAllRuleStatusResponse(AbstractModel):
-    """ModifyAllRuleStatus response structure.
+    r"""ModifyAllRuleStatus response structure.
 
     """
 
@@ -8692,7 +8692,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: modified successfully; non-0: modification failed
+        r"""0: modified successfully; non-0: modification failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -8704,7 +8704,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8720,7 +8720,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyAllVPCSwitchStatusRequest(AbstractModel):
-    """ModifyAllVPCSwitchStatus request structure.
+    r"""ModifyAllVPCSwitchStatus request structure.
 
     """
 
@@ -8736,7 +8736,7 @@ class ModifyAllVPCSwitchStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status. 0: off; 1: on
+        r"""Status. 0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -8747,7 +8747,7 @@ class ModifyAllVPCSwitchStatusRequest(AbstractModel):
 
     @property
     def FireWallVpcIds(self):
-        """ID of the selected firewall toggle
+        r"""ID of the selected firewall toggle
         :rtype: list of str
         """
         return self._FireWallVpcIds
@@ -8771,7 +8771,7 @@ class ModifyAllVPCSwitchStatusRequest(AbstractModel):
 
 
 class ModifyAllVPCSwitchStatusResponse(AbstractModel):
-    """ModifyAllVPCSwitchStatus response structure.
+    r"""ModifyAllVPCSwitchStatus response structure.
 
     """
 
@@ -8784,7 +8784,7 @@ class ModifyAllVPCSwitchStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8799,7 +8799,7 @@ class ModifyAllVPCSwitchStatusResponse(AbstractModel):
 
 
 class ModifyAssetScanRequest(AbstractModel):
-    """ModifyAssetScan request structure.
+    r"""ModifyAssetScan request structure.
 
     """
 
@@ -8827,7 +8827,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def ScanRange(self):
-        """Scan range. 1: port; 2: port + vulnerability scan
+        r"""Scan range. 1: port; 2: port + vulnerability scan
         :rtype: int
         """
         return self._ScanRange
@@ -8838,7 +8838,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def ScanDeep(self):
-        """Scan mode: 'heavy', 'medium', 'light'
+        r"""Scan mode: 'heavy', 'medium', 'light'
         :rtype: str
         """
         return self._ScanDeep
@@ -8849,7 +8849,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def RangeType(self):
-        """Scan type. 1: scan now; 2: periodic scan
+        r"""Scan type. 1: scan now; 2: periodic scan
         :rtype: int
         """
         return self._RangeType
@@ -8860,7 +8860,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def ScanPeriod(self):
-        """Scheduled task time, required when RangeType is 2
+        r"""Scheduled task time, required when RangeType is 2
         :rtype: str
         """
         return self._ScanPeriod
@@ -8871,7 +8871,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def ScanFilterIp(self):
-        """Scans this field now and passes the filtered IPs
+        r"""Scans this field now and passes the filtered IPs
         :rtype: list of str
         """
         return self._ScanFilterIp
@@ -8882,7 +8882,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        """1: all; 2: single
+        r"""1: all; 2: single
         :rtype: int
         """
         return self._ScanType
@@ -8910,7 +8910,7 @@ class ModifyAssetScanRequest(AbstractModel):
 
 
 class ModifyAssetScanResponse(AbstractModel):
-    """ModifyAssetScan response structure.
+    r"""ModifyAssetScan response structure.
 
     """
 
@@ -8934,7 +8934,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Return message
+        r"""Return message
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -8946,7 +8946,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnCode(self):
-        """Error code. 0: success; non-0: failed
+        r"""Error code. 0: success; non-0: failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -8958,7 +8958,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Status value. 0: success; 1: scanning; others: failed
+        r"""Status value. 0: success; 1: scanning; others: failed
         :rtype: int
         """
         return self._Status
@@ -8969,7 +8969,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8987,7 +8987,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyBlockIgnoreListRequest(AbstractModel):
-    """ModifyBlockIgnoreList request structure.
+    r"""ModifyBlockIgnoreList request structure.
 
     """
 
@@ -9012,7 +9012,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        """Type of the rule. Values: `1` (Blocklist); `2` (Allowlist)
+        r"""Type of the rule. Values: `1` (Blocklist); `2` (Allowlist)
         :rtype: int
         """
         return self._RuleType
@@ -9023,7 +9023,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def IOC(self):
-        """Either IP or Domain is required
+        r"""Either IP or Domain is required
         :rtype: list of IocListData
         """
         return self._IOC
@@ -9034,7 +9034,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def IocAction(self):
-        """Optional values: delete, edit, and add
+        r"""Optional values: delete, edit, and add
         :rtype: str
         """
         return self._IocAction
@@ -9045,7 +9045,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Time format: yyyy-MM-dd HH:mm:ss. Required when IocAction is edit or add
+        r"""Time format: yyyy-MM-dd HH:mm:ss. Required when IocAction is edit or add
         :rtype: str
         """
         return self._StartTime
@@ -9056,7 +9056,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the period in the format of yyyy-MM-dd HH:mm:ss. It must be later than both the start time and the current time. It’s required when `IocAction` is `edit` or `add`. 
+        r"""End time of the period in the format of yyyy-MM-dd HH:mm:ss. It must be later than both the start time and the current time. It’s required when `IocAction` is `edit` or `add`. 
         :rtype: str
         """
         return self._EndTime
@@ -9088,7 +9088,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
 
 class ModifyBlockIgnoreListResponse(AbstractModel):
-    """ModifyBlockIgnoreList response structure.
+    r"""ModifyBlockIgnoreList response structure.
 
     """
 
@@ -9107,7 +9107,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        """Return message
+        r"""Return message
         :rtype: str
         """
         return self._ReturnMsg
@@ -9118,7 +9118,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        """Error code. 0: success; non-0: failed
+        r"""Error code. 0: success; non-0: failed
         :rtype: int
         """
         return self._ReturnCode
@@ -9129,7 +9129,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9146,7 +9146,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
 
 class ModifyBlockTopRequest(AbstractModel):
-    """ModifyBlockTop request structure.
+    r"""ModifyBlockTop request structure.
 
     """
 
@@ -9162,7 +9162,7 @@ class ModifyBlockTopRequest(AbstractModel):
 
     @property
     def UniqueId(self):
-        """Record ID
+        r"""Record ID
         :rtype: str
         """
         return self._UniqueId
@@ -9173,7 +9173,7 @@ class ModifyBlockTopRequest(AbstractModel):
 
     @property
     def OpeType(self):
-        """Operation type. 1: pin to top; 0: unpin
+        r"""Operation type. 1: pin to top; 0: unpin
         :rtype: str
         """
         return self._OpeType
@@ -9197,7 +9197,7 @@ class ModifyBlockTopRequest(AbstractModel):
 
 
 class ModifyBlockTopResponse(AbstractModel):
-    """ModifyBlockTop response structure.
+    r"""ModifyBlockTop response structure.
 
     """
 
@@ -9210,7 +9210,7 @@ class ModifyBlockTopResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9225,7 +9225,7 @@ class ModifyBlockTopResponse(AbstractModel):
 
 
 class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
-    """ModifyEnterpriseSecurityDispatchStatus request structure.
+    r"""ModifyEnterpriseSecurityDispatchStatus request structure.
 
     """
 
@@ -9238,7 +9238,7 @@ class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status. Values: `0` (Publish now), `1` (Stop publishing)
+        r"""Status. Values: `0` (Publish now), `1` (Stop publishing)
         :rtype: int
         """
         return self._Status
@@ -9261,7 +9261,7 @@ class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
 
 
 class ModifyEnterpriseSecurityDispatchStatusResponse(AbstractModel):
-    """ModifyEnterpriseSecurityDispatchStatus response structure.
+    r"""ModifyEnterpriseSecurityDispatchStatus response structure.
 
     """
 
@@ -9278,7 +9278,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """`0`: Modified successfully; Others: Modification failed
+        r"""`0`: Modified successfully; Others: Modification failed
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9290,7 +9290,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9306,7 +9306,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
-    """ModifyEnterpriseSecurityGroupRule request structure.
+    r"""ModifyEnterpriseSecurityGroupRule request structure.
 
     """
 
@@ -9328,7 +9328,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUID of the rule, which can be obtained by querying the rule list
+        r"""UUID of the rule, which can be obtained by querying the rule list
         :rtype: int
         """
         return self._RuleUuid
@@ -9339,7 +9339,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        """Modification type. Values: `0` (Modify rule content), `1` (Toggle on/off a rule) and `2` (Toggle on/off all rules)
+        r"""Modification type. Values: `0` (Modify rule content), `1` (Toggle on/off a rule) and `2` (Toggle on/off all rules)
         :rtype: int
         """
         return self._ModifyType
@@ -9350,7 +9350,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Data(self):
-        """The new rule content you want. It’s only required when you want to modify the rule content (`ModifyType=0`)
+        r"""The new rule content you want. It’s only required when you want to modify the rule content (`ModifyType=0`)
         :rtype: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
         """
         return self._Data
@@ -9361,7 +9361,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """`0`: Do not enable; `1`: Enable
+        r"""`0`: Do not enable; `1`: Enable
         :rtype: int
         """
         return self._Enable
@@ -9389,7 +9389,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
 
 class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
-    """ModifyEnterpriseSecurityGroupRule response structure.
+    r"""ModifyEnterpriseSecurityGroupRule response structure.
 
     """
 
@@ -9408,7 +9408,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. `0`: Edited successfully; Others: Failed to edit
+        r"""Status value. `0`: Edited successfully; Others: Failed to edit
         :rtype: int
         """
         return self._Status
@@ -9419,7 +9419,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def NewRuleUuid(self):
-        """ID of new rule generated after the modification
+        r"""ID of new rule generated after the modification
         :rtype: int
         """
         return self._NewRuleUuid
@@ -9430,7 +9430,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9447,7 +9447,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
 
 class ModifyNatAcRuleRequest(AbstractModel):
-    """ModifyNatAcRule request structure.
+    r"""ModifyNatAcRule request structure.
 
     """
 
@@ -9460,7 +9460,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        """Array of rules to be modified.
+        r"""Array of rules to be modified.
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -9488,7 +9488,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
 
 class ModifyNatAcRuleResponse(AbstractModel):
-    """ModifyNatAcRule response structure.
+    r"""ModifyNatAcRule response structure.
 
     """
 
@@ -9504,7 +9504,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """ID list of new rules that have been successfully modified.
+        r"""ID list of new rules that have been successfully modified.
         :rtype: list of int
         """
         return self._RuleUuid
@@ -9515,7 +9515,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9531,7 +9531,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
 
 class ModifyNatFwReSelectRequest(AbstractModel):
-    """ModifyNatFwReSelect request structure.
+    r"""ModifyNatFwReSelect request structure.
 
     """
 
@@ -9556,7 +9556,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Mode. 1: use existing; 0: create new
+        r"""Mode. 1: use existing; 0: create new
         :rtype: int
         """
         return self._Mode
@@ -9567,7 +9567,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        """Firewall instance ID
+        r"""Firewall instance ID
         :rtype: str
         """
         return self._CfwInstance
@@ -9578,7 +9578,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        """List of NAT gateways reconnected for the Using Existing mode. Only one of NatGwList and VpcList can be passed.
+        r"""List of NAT gateways reconnected for the Using Existing mode. Only one of NatGwList and VpcList can be passed.
         :rtype: list of str
         """
         return self._NatGwList
@@ -9589,7 +9589,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def VpcList(self):
-        """List of VPCs reconnected for the Create New mode. Only one of NatGwList and VpcList can be passed.
+        r"""List of VPCs reconnected for the Create New mode. Only one of NatGwList and VpcList can be passed.
         :rtype: list of str
         """
         return self._VpcList
@@ -9600,7 +9600,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        """IP range of the firewall
+        r"""IP range of the firewall
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -9629,7 +9629,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
 
 class ModifyNatFwReSelectResponse(AbstractModel):
-    """ModifyNatFwReSelect response structure.
+    r"""ModifyNatFwReSelect response structure.
 
     """
 
@@ -9642,7 +9642,7 @@ class ModifyNatFwReSelectResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9657,7 +9657,7 @@ class ModifyNatFwReSelectResponse(AbstractModel):
 
 
 class ModifyNatFwSwitchRequest(AbstractModel):
-    """ModifyNatFwSwitch request structure.
+    r"""ModifyNatFwSwitch request structure.
 
     """
 
@@ -9679,7 +9679,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        """Status. 0: off; 1: on
+        r"""Status. 0: off; 1: on
         :rtype: int
         """
         return self._Enable
@@ -9690,7 +9690,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def CfwInsIdList(self):
-        """List of firewall instance IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
+        r"""List of firewall instance IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
         :rtype: list of str
         """
         return self._CfwInsIdList
@@ -9701,7 +9701,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def SubnetIdList(self):
-        """List of subnet IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
+        r"""List of subnet IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
         :rtype: list of str
         """
         return self._SubnetIdList
@@ -9712,7 +9712,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def RouteTableIdList(self):
-        """List of route table IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
+        r"""List of route table IDs. Only one of CfwInsIdList, SubnetIdList, and RouteTableIdList can be passed.
         :rtype: list of str
         """
         return self._RouteTableIdList
@@ -9738,7 +9738,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
 
 class ModifyNatFwSwitchResponse(AbstractModel):
-    """ModifyNatFwSwitch response structure.
+    r"""ModifyNatFwSwitch response structure.
 
     """
 
@@ -9751,7 +9751,7 @@ class ModifyNatFwSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9766,7 +9766,7 @@ class ModifyNatFwSwitchResponse(AbstractModel):
 
 
 class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
-    """ModifyNatFwVpcDnsSwitch request structure.
+    r"""ModifyNatFwVpcDnsSwitch request structure.
 
     """
 
@@ -9782,7 +9782,7 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
     @property
     def NatFwInsId(self):
-        """NAT firewall ID
+        r"""NAT firewall ID
         :rtype: str
         """
         return self._NatFwInsId
@@ -9793,7 +9793,7 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
     @property
     def DnsVpcSwitchLst(self):
-        """DNS toggle list
+        r"""DNS toggle list
         :rtype: list of DnsVpcSwitch
         """
         return self._DnsVpcSwitchLst
@@ -9822,7 +9822,7 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
 
 class ModifyNatFwVpcDnsSwitchResponse(AbstractModel):
-    """ModifyNatFwVpcDnsSwitch response structure.
+    r"""ModifyNatFwVpcDnsSwitch response structure.
 
     """
 
@@ -9839,7 +9839,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Modified successfully
+        r"""Modified successfully
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -9851,7 +9851,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9867,7 +9867,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyNatSequenceRulesRequest(AbstractModel):
-    """ModifyNatSequenceRules request structure.
+    r"""ModifyNatSequenceRules request structure.
 
     """
 
@@ -9883,7 +9883,7 @@ class ModifyNatSequenceRulesRequest(AbstractModel):
 
     @property
     def RuleChangeItems(self):
-        """Rule sequence number. Values: `OrderIndex` (Original sequence number), `NewOrderIndex` (New sequence number)
+        r"""Rule sequence number. Values: `OrderIndex` (Original sequence number), `NewOrderIndex` (New sequence number)
         :rtype: list of RuleChangeItem
         """
         return self._RuleChangeItems
@@ -9894,7 +9894,7 @@ class ModifyNatSequenceRulesRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Rule direction. Values: `1` (Inbound) and `0` (Outbound)
+        r"""Rule direction. Values: `1` (Inbound) and `0` (Outbound)
         :rtype: int
         """
         return self._Direction
@@ -9923,7 +9923,7 @@ class ModifyNatSequenceRulesRequest(AbstractModel):
 
 
 class ModifyNatSequenceRulesResponse(AbstractModel):
-    """ModifyNatSequenceRules response structure.
+    r"""ModifyNatSequenceRules response structure.
 
     """
 
@@ -9936,7 +9936,7 @@ class ModifyNatSequenceRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9951,7 +9951,7 @@ class ModifyNatSequenceRulesResponse(AbstractModel):
 
 
 class ModifyPublicIPSwitchStatusRequest(AbstractModel):
-    """ModifyPublicIPSwitchStatus request structure.
+    r"""ModifyPublicIPSwitchStatus request structure.
 
     """
 
@@ -9967,7 +9967,7 @@ class ModifyPublicIPSwitchStatusRequest(AbstractModel):
 
     @property
     def FireWallPublicIP(self):
-        """Public IP
+        r"""Public IP
         :rtype: str
         """
         return self._FireWallPublicIP
@@ -9978,7 +9978,7 @@ class ModifyPublicIPSwitchStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: off; 1: on
+        r"""Status value. 0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -10002,7 +10002,7 @@ class ModifyPublicIPSwitchStatusRequest(AbstractModel):
 
 
 class ModifyPublicIPSwitchStatusResponse(AbstractModel):
-    """ModifyPublicIPSwitchStatus response structure.
+    r"""ModifyPublicIPSwitchStatus response structure.
 
     """
 
@@ -10022,7 +10022,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """Return message
+        r"""Return message
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -10034,7 +10034,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnCode(self):
-        """Error code. 0: success; non-0: failed
+        r"""Error code. 0: success; non-0: failed
         :rtype: int
         """
         return self._ReturnCode
@@ -10045,7 +10045,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10062,7 +10062,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyResourceGroupRequest(AbstractModel):
-    """ModifyResourceGroup request structure.
+    r"""ModifyResourceGroup request structure.
 
     """
 
@@ -10081,7 +10081,7 @@ class ModifyResourceGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: str
         """
         return self._GroupId
@@ -10092,7 +10092,7 @@ class ModifyResourceGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -10103,7 +10103,7 @@ class ModifyResourceGroupRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        """Parent group ID
+        r"""Parent group ID
         :rtype: str
         """
         return self._ParentId
@@ -10128,7 +10128,7 @@ class ModifyResourceGroupRequest(AbstractModel):
 
 
 class ModifyResourceGroupResponse(AbstractModel):
-    """ModifyResourceGroup response structure.
+    r"""ModifyResourceGroup response structure.
 
     """
 
@@ -10141,7 +10141,7 @@ class ModifyResourceGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10156,7 +10156,7 @@ class ModifyResourceGroupResponse(AbstractModel):
 
 
 class ModifyRunSyncAssetRequest(AbstractModel):
-    """ModifyRunSyncAsset request structure.
+    r"""ModifyRunSyncAsset request structure.
 
     """
 
@@ -10169,7 +10169,7 @@ class ModifyRunSyncAssetRequest(AbstractModel):
 
     @property
     def Type(self):
-        """0: edge firewall toggle; 1: VPC firewall toggle
+        r"""0: edge firewall toggle; 1: VPC firewall toggle
         :rtype: int
         """
         return self._Type
@@ -10192,7 +10192,7 @@ class ModifyRunSyncAssetRequest(AbstractModel):
 
 
 class ModifyRunSyncAssetResponse(AbstractModel):
-    """ModifyRunSyncAsset response structure.
+    r"""ModifyRunSyncAsset response structure.
 
     """
 
@@ -10208,7 +10208,7 @@ class ModifyRunSyncAssetResponse(AbstractModel):
 
     @property
     def Status(self):
-        """0: synced successfully, 1: updating assets, 2: failed to sync by calling the API at the backend
+        r"""0: synced successfully, 1: updating assets, 2: failed to sync by calling the API at the backend
         :rtype: int
         """
         return self._Status
@@ -10219,7 +10219,7 @@ class ModifyRunSyncAssetResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10235,7 +10235,7 @@ class ModifyRunSyncAssetResponse(AbstractModel):
 
 
 class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
-    """ModifySecurityGroupItemRuleStatus request structure.
+    r"""ModifySecurityGroupItemRuleStatus request structure.
 
     """
 
@@ -10254,7 +10254,7 @@ class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 1 by default
+        r"""Direction. 0: outbound; 1: inbound. 1 by default
         :rtype: int
         """
         return self._Direction
@@ -10265,7 +10265,7 @@ class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Toggle status. 0: off; 1: on
+        r"""Toggle status. 0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -10276,7 +10276,7 @@ class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
 
     @property
     def RuleSequence(self):
-        """Modified priority of enterprise security group rules
+        r"""Modified priority of enterprise security group rules
         :rtype: int
         """
         return self._RuleSequence
@@ -10301,7 +10301,7 @@ class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
 
 
 class ModifySecurityGroupItemRuleStatusResponse(AbstractModel):
-    """ModifySecurityGroupItemRuleStatus response structure.
+    r"""ModifySecurityGroupItemRuleStatus response structure.
 
     """
 
@@ -10317,7 +10317,7 @@ class ModifySecurityGroupItemRuleStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: modified successfully; non-0: failed to modify
+        r"""Status value. 0: modified successfully; non-0: failed to modify
         :rtype: int
         """
         return self._Status
@@ -10328,7 +10328,7 @@ class ModifySecurityGroupItemRuleStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10344,7 +10344,7 @@ class ModifySecurityGroupItemRuleStatusResponse(AbstractModel):
 
 
 class ModifySecurityGroupSequenceRulesRequest(AbstractModel):
-    """ModifySecurityGroupSequenceRules request structure.
+    r"""ModifySecurityGroupSequenceRules request structure.
 
     """
 
@@ -10360,7 +10360,7 @@ class ModifySecurityGroupSequenceRulesRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 1 by default
+        r"""Direction. 0: outbound; 1: inbound. 1 by default
         :rtype: int
         """
         return self._Direction
@@ -10371,7 +10371,7 @@ class ModifySecurityGroupSequenceRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Sorting data of enterprise security group rules
+        r"""Sorting data of enterprise security group rules
         :rtype: list of SecurityGroupOrderIndexData
         """
         return self._Data
@@ -10400,7 +10400,7 @@ class ModifySecurityGroupSequenceRulesRequest(AbstractModel):
 
 
 class ModifySecurityGroupSequenceRulesResponse(AbstractModel):
-    """ModifySecurityGroupSequenceRules response structure.
+    r"""ModifySecurityGroupSequenceRules response structure.
 
     """
 
@@ -10416,7 +10416,7 @@ class ModifySecurityGroupSequenceRulesResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 0: modified successfully; non-0: failed to modify
+        r"""Status value. 0: modified successfully; non-0: failed to modify
         :rtype: int
         """
         return self._Status
@@ -10427,7 +10427,7 @@ class ModifySecurityGroupSequenceRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10443,7 +10443,7 @@ class ModifySecurityGroupSequenceRulesResponse(AbstractModel):
 
 
 class ModifySequenceRulesRequest(AbstractModel):
-    """ModifySequenceRules request structure.
+    r"""ModifySequenceRules request structure.
 
     """
 
@@ -10465,7 +10465,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID value
+        r"""Edge ID value
         :rtype: str
         """
         return self._EdgeId
@@ -10476,7 +10476,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        """Modifies data
+        r"""Modifies data
         :rtype: list of SequenceData
         """
         return self._Data
@@ -10487,7 +10487,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region
+        r"""NAT region
         :rtype: str
         """
         return self._Area
@@ -10498,7 +10498,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -10529,7 +10529,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
 
 class ModifySequenceRulesResponse(AbstractModel):
-    """ModifySequenceRules response structure.
+    r"""ModifySequenceRules response structure.
 
     """
 
@@ -10546,7 +10546,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: modified successfully; non-0: modification failed
+        r"""0: modified successfully; non-0: modification failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -10558,7 +10558,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10574,13 +10574,13 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ModifyStorageSettingRequest(AbstractModel):
-    """ModifyStorageSetting request structure.
+    r"""ModifyStorageSetting request structure.
 
     """
 
 
 class ModifyStorageSettingResponse(AbstractModel):
-    """ModifyStorageSetting response structure.
+    r"""ModifyStorageSetting response structure.
 
     """
 
@@ -10593,7 +10593,7 @@ class ModifyStorageSettingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10608,7 +10608,7 @@ class ModifyStorageSettingResponse(AbstractModel):
 
 
 class ModifyTableStatusRequest(AbstractModel):
-    """ModifyTableStatus request structure.
+    r"""ModifyTableStatus request structure.
 
     """
 
@@ -10630,7 +10630,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     @property
     def EdgeId(self):
-        """Edge ID between two VPCs
+        r"""Edge ID between two VPCs
         :rtype: str
         """
         return self._EdgeId
@@ -10641,7 +10641,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Status value. 1: table locked; 2: table unlocked
+        r"""Status value. 1: table locked; 2: table unlocked
         :rtype: int
         """
         return self._Status
@@ -10652,7 +10652,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     @property
     def Area(self):
-        """NAT region
+        r"""NAT region
         :rtype: str
         """
         return self._Area
@@ -10663,7 +10663,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """0: outbound; 1: inbound
+        r"""0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -10689,7 +10689,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
 
 class ModifyTableStatusResponse(AbstractModel):
-    """ModifyTableStatus response structure.
+    r"""ModifyTableStatus response structure.
 
     """
 
@@ -10706,7 +10706,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: normal; -1: abnormal
+        r"""0: normal; -1: abnormal
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -10718,7 +10718,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10734,7 +10734,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class NatFwFilter(AbstractModel):
-    """The filter list displayed by the NAT firewall instance
+    r"""The filter list displayed by the NAT firewall instance
 
     """
 
@@ -10750,7 +10750,7 @@ class NatFwFilter(AbstractModel):
 
     @property
     def FilterType(self):
-        """Filter type, e.g., instance ID
+        r"""Filter type, e.g., instance ID
         :rtype: str
         """
         return self._FilterType
@@ -10761,7 +10761,7 @@ class NatFwFilter(AbstractModel):
 
     @property
     def FilterContent(self):
-        """Filtered content, separated with ","
+        r"""Filtered content, separated with ","
         :rtype: str
         """
         return self._FilterContent
@@ -10785,7 +10785,7 @@ class NatFwFilter(AbstractModel):
 
 
 class NatFwInstance(AbstractModel):
-    """NAT instance type
+    r"""NAT instance type
 
     """
 
@@ -10817,7 +10817,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatinsId(self):
-        """NAT instance ID
+        r"""NAT instance ID
         :rtype: str
         """
         return self._NatinsId
@@ -10828,7 +10828,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatinsName(self):
-        """NAT instance name
+        r"""NAT instance name
         :rtype: str
         """
         return self._NatinsName
@@ -10839,7 +10839,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Instance region
+        r"""Instance region
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -10851,7 +10851,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FwMode(self):
-        """0: create new; 1: use existing
+        r"""0: create new; 1: use existing
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -10863,7 +10863,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: normal; 1: creating
+        r"""0: normal; 1: creating
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -10875,7 +10875,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatIp(self):
-        """NAT public IP
+        r"""NAT public IP
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -10904,7 +10904,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class NatInstanceInfo(AbstractModel):
-    """NAT instance card details
+    r"""NAT instance card details
 
     """
 
@@ -10974,7 +10974,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NatinsId(self):
-        """NAT instance ID
+        r"""NAT instance ID
         :rtype: str
         """
         return self._NatinsId
@@ -10985,7 +10985,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NatinsName(self):
-        """NAT instance name
+        r"""NAT instance name
         :rtype: str
         """
         return self._NatinsName
@@ -10996,7 +10996,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Instance region
+        r"""Instance region
         :rtype: str
         """
         return self._Region
@@ -11007,7 +11007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FwMode(self):
-        """0: create new; 1: use existing
+        r"""0: create new; 1: use existing
         :rtype: int
         """
         return self._FwMode
@@ -11018,7 +11018,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandWidth(self):
-        """Instance bandwidth (Mbps)
+        r"""Instance bandwidth (Mbps)
         :rtype: int
         """
         return self._BandWidth
@@ -11029,7 +11029,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InFlowMax(self):
-        """Inbound traffic peak bandwidth (bps)
+        r"""Inbound traffic peak bandwidth (bps)
         :rtype: int
         """
         return self._InFlowMax
@@ -11040,7 +11040,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutFlowMax(self):
-        """Outbound traffic peak bandwidth (bps)
+        r"""Outbound traffic peak bandwidth (bps)
         :rtype: int
         """
         return self._OutFlowMax
@@ -11051,7 +11051,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionZh(self):
-        """Chinese region information
+        r"""Chinese region information
         :rtype: str
         """
         return self._RegionZh
@@ -11062,7 +11062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EipAddress(self):
-        """Public IP array
+        r"""Public IP array
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -11074,7 +11074,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcIp(self):
-        """Array of internal and external IPs
+        r"""Array of internal and external IPs
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -11086,7 +11086,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Subnets(self):
-        """Array of subnets associated with an instance
+        r"""Array of subnets associated with an instance
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of str
         """
@@ -11098,7 +11098,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: normal 1: initializing
+        r"""0: normal 1: initializing
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -11110,7 +11110,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RegionDetail(self):
-        """Region information
+        r"""Region information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11122,7 +11122,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneZh(self):
-        """Availability zone of the instance
+        r"""Availability zone of the instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11134,7 +11134,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneZhBak(self):
-        """Availability zone of the instance
+        r"""Availability zone of the instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11146,7 +11146,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleUsed(self):
-        """Number of used rules.
+        r"""Number of used rules.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11158,7 +11158,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleMax(self):
-        """The maximum number of rules allowed in the instance.
+        r"""The maximum number of rules allowed in the instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11198,7 +11198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class NewModeItems(AbstractModel):
-    """Parameters passed for the Create New mode
+    r"""Parameters passed for the Create New mode
 
     """
 
@@ -11217,7 +11217,7 @@ class NewModeItems(AbstractModel):
 
     @property
     def VpcList(self):
-        """VPC list for the Create New mode
+        r"""VPC list for the Create New mode
         :rtype: list of str
         """
         return self._VpcList
@@ -11228,7 +11228,7 @@ class NewModeItems(AbstractModel):
 
     @property
     def Eips(self):
-        """The list of egress public EIPs bound for the Create New mode. Either Eips or AddCount is required.
+        r"""The list of egress public EIPs bound for the Create New mode. Either Eips or AddCount is required.
         :rtype: list of str
         """
         return self._Eips
@@ -11239,7 +11239,7 @@ class NewModeItems(AbstractModel):
 
     @property
     def AddCount(self):
-        """The number of egress public EIPs newly bound for the Create New mode. Either Eips or AddCount is required.
+        r"""The number of egress public EIPs newly bound for the Create New mode. Either Eips or AddCount is required.
         :rtype: int
         """
         return self._AddCount
@@ -11264,7 +11264,7 @@ class NewModeItems(AbstractModel):
 
 
 class RemoveAcRuleRequest(AbstractModel):
-    """RemoveAcRule request structure.
+    r"""RemoveAcRule request structure.
 
     """
 
@@ -11277,7 +11277,7 @@ class RemoveAcRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUID of the rule, which can be obtained by querying the rule list
+        r"""UUID of the rule, which can be obtained by querying the rule list
         :rtype: int
         """
         return self._RuleUuid
@@ -11300,7 +11300,7 @@ class RemoveAcRuleRequest(AbstractModel):
 
 
 class RemoveAcRuleResponse(AbstractModel):
-    """RemoveAcRule response structure.
+    r"""RemoveAcRule response structure.
 
     """
 
@@ -11324,7 +11324,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RuleUuid(self):
-        """Returns the UUID of the deleted policy after the deletion is successful
+        r"""Returns the UUID of the deleted policy after the deletion is successful
         :rtype: int
         """
         return self._RuleUuid
@@ -11335,7 +11335,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnCode(self):
-        """0: operation successful; -1: operation failed
+        r"""0: operation successful; -1: operation failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -11347,7 +11347,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ReturnMsg(self):
-        """success: operation successful; failed: operation failed
+        r"""success: operation successful; failed: operation failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -11359,7 +11359,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11377,7 +11377,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
-    """RemoveEnterpriseSecurityGroupRule request structure.
+    r"""RemoveEnterpriseSecurityGroupRule request structure.
 
     """
 
@@ -11393,7 +11393,7 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUID of the rule, which can be obtained by querying the rule list
+        r"""UUID of the rule, which can be obtained by querying the rule list
         :rtype: int
         """
         return self._RuleUuid
@@ -11404,7 +11404,7 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def RemoveType(self):
-        """Type of deletion. 0: delete a single entry, and enter ID of the deleted rule for RuleUuid; 1: delete all, and enter 0 for RuleUuid
+        r"""Type of deletion. 0: delete a single entry, and enter ID of the deleted rule for RuleUuid; 1: delete all, and enter 0 for RuleUuid
         :rtype: int
         """
         return self._RemoveType
@@ -11428,7 +11428,7 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
 
 class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
-    """RemoveEnterpriseSecurityGroupRule response structure.
+    r"""RemoveEnterpriseSecurityGroupRule response structure.
 
     """
 
@@ -11448,7 +11448,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RuleUuid(self):
-        """Returns the UUID of the deleted policy after the deletion is successful
+        r"""Returns the UUID of the deleted policy after the deletion is successful
         :rtype: int
         """
         return self._RuleUuid
@@ -11459,7 +11459,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """0: operation successful; -1: operation failed
+        r"""0: operation successful; -1: operation failed
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -11471,7 +11471,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11488,7 +11488,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class RemoveNatAcRuleRequest(AbstractModel):
-    """RemoveNatAcRule request structure.
+    r"""RemoveNatAcRule request structure.
 
     """
 
@@ -11504,7 +11504,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUIDs of the rules to delete, which can be obtained by querying the rule list. Note: If [-1] is passed in, all rules are deleted.
+        r"""UUIDs of the rules to delete, which can be obtained by querying the rule list. Note: If [-1] is passed in, all rules are deleted.
         :rtype: list of int
         """
         return self._RuleUuid
@@ -11515,7 +11515,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        """Rule direction. Valid values: 1: inbound; 0: outbound.
+        r"""Rule direction. Valid values: 1: inbound; 0: outbound.
         :rtype: int
         """
         return self._Direction
@@ -11539,7 +11539,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
 
 class RemoveNatAcRuleResponse(AbstractModel):
-    """RemoveNatAcRule response structure.
+    r"""RemoveNatAcRule response structure.
 
     """
 
@@ -11555,7 +11555,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        """UUID list of the deleted rules.
+        r"""UUID list of the deleted rules.
         :rtype: list of int
         """
         return self._RuleUuid
@@ -11566,7 +11566,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11582,7 +11582,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
 
 class RuleChangeItem(AbstractModel):
-    """Changes of the rule sequence number.
+    r"""Changes of the rule sequence number.
 
     """
 
@@ -11598,7 +11598,7 @@ class RuleChangeItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """Original sequence number
+        r"""Original sequence number
         :rtype: int
         """
         return self._OrderIndex
@@ -11609,7 +11609,7 @@ class RuleChangeItem(AbstractModel):
 
     @property
     def NewOrderIndex(self):
-        """New sequence number
+        r"""New sequence number
         :rtype: int
         """
         return self._NewOrderIndex
@@ -11633,7 +11633,7 @@ class RuleChangeItem(AbstractModel):
 
 
 class RuleInfoData(AbstractModel):
-    """Rule input object
+    r"""Rule input object
 
     """
 
@@ -11697,7 +11697,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._OrderIndex
@@ -11708,7 +11708,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def SourceIp(self):
-        """Access source
+        r"""Access source
         :rtype: str
         """
         return self._SourceIp
@@ -11719,7 +11719,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def TargetIp(self):
-        """Access destination
+        r"""Access destination
         :rtype: str
         """
         return self._TargetIp
@@ -11730,7 +11730,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Protocol(self):
-        """Protocol
+        r"""Protocol
         :rtype: str
         """
         return self._Protocol
@@ -11741,7 +11741,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Strategy(self):
-        """Policy. 0: observe; 1: block; 2: allow
+        r"""Policy. 0: observe; 1: block; 2: allow
         :rtype: str
         """
         return self._Strategy
@@ -11752,7 +11752,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def SourceType(self):
-        """Access source type. 1: IP; 3: domain name; 4: IP address template; 5: domain name address template
+        r"""Access source type. 1: IP; 3: domain name; 4: IP address template; 5: domain name address template
         :rtype: int
         """
         return self._SourceType
@@ -11763,7 +11763,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound
+        r"""Direction. 0: outbound; 1: inbound
         :rtype: int
         """
         return self._Direction
@@ -11774,7 +11774,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Detail(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Detail
@@ -11785,7 +11785,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def TargetType(self):
-        """Access destination type. 1: IP, 3: domain name; 4: IP address template; 5: domain name address template
+        r"""Access destination type. 1: IP, 3: domain name; 4: IP address template; 5: domain name address template
         :rtype: int
         """
         return self._TargetType
@@ -11796,7 +11796,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Port(self):
-        """Port
+        r"""Port
         :rtype: str
         """
         return self._Port
@@ -11807,7 +11807,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Id(self):
-        """ID value
+        r"""ID value
         :rtype: int
         """
         return self._Id
@@ -11818,7 +11818,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def LogId(self):
-        """Log ID, required when an alert log is created
+        r"""Log ID, required when an alert log is created
         :rtype: str
         """
         return self._LogId
@@ -11829,7 +11829,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def City(self):
-        """City code
+        r"""City code
         :rtype: int
         """
         return self._City
@@ -11840,7 +11840,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def Country(self):
-        """Country code
+        r"""Country code
         :rtype: int
         """
         return self._Country
@@ -11851,7 +11851,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def CloudCode(self):
-        """Cloud vendor. Multiple vendors are supported and separated with commas. 1: Tencent Cloud (only in Hong Kong, China and overseas); 2: Alibaba Cloud; 3: Amazon Cloud; 4: Huawei Cloud; 5: Microsoft Cloud
+        r"""Cloud vendor. Multiple vendors are supported and separated with commas. 1: Tencent Cloud (only in Hong Kong, China and overseas); 2: Alibaba Cloud; 3: Amazon Cloud; 4: Huawei Cloud; 5: Microsoft Cloud
         :rtype: str
         """
         return self._CloudCode
@@ -11862,7 +11862,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def IsRegion(self):
-        """Indicates whether it is a region
+        r"""Indicates whether it is a region
         :rtype: int
         """
         return self._IsRegion
@@ -11873,7 +11873,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def CityName(self):
-        """City name
+        r"""City name
         :rtype: str
         """
         return self._CityName
@@ -11884,7 +11884,7 @@ class RuleInfoData(AbstractModel):
 
     @property
     def CountryName(self):
-        """Country name
+        r"""Country name
         :rtype: str
         """
         return self._CountryName
@@ -11924,7 +11924,7 @@ class RuleInfoData(AbstractModel):
 
 
 class ScanInfo(AbstractModel):
-    """Getting started on scanning information
+    r"""Getting started on scanning information
 
     """
 
@@ -11946,7 +11946,7 @@ class ScanInfo(AbstractModel):
 
     @property
     def ScanResultInfo(self):
-        """Scanning result information
+        r"""Scanning result information
         :rtype: :class:`tencentcloud.cfw.v20190904.models.ScanResultInfo`
         """
         return self._ScanResultInfo
@@ -11957,7 +11957,7 @@ class ScanInfo(AbstractModel):
 
     @property
     def ScanStatus(self):
-        """Scanning status. 0: scanning; 1: completed; 2: auto scanning unselected
+        r"""Scanning status. 0: scanning; 1: completed; 2: auto scanning unselected
         :rtype: int
         """
         return self._ScanStatus
@@ -11968,7 +11968,7 @@ class ScanInfo(AbstractModel):
 
     @property
     def ScanPercent(self):
-        """Progress
+        r"""Progress
         :rtype: float
         """
         return self._ScanPercent
@@ -11979,7 +11979,7 @@ class ScanInfo(AbstractModel):
 
     @property
     def ScanTime(self):
-        """Estimated completion time
+        r"""Estimated completion time
         :rtype: str
         """
         return self._ScanTime
@@ -12007,7 +12007,7 @@ class ScanInfo(AbstractModel):
 
 
 class ScanResultInfo(AbstractModel):
-    """Getting started on scanning result information PortNum   int
+    r"""Getting started on scanning result information PortNum   int
     	LeakNum   int
     	IPNum     int
     	IPStatus  bool
@@ -12040,7 +12040,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def LeakNum(self):
-        """Number of vulnerability exploits
+        r"""Number of vulnerability exploits
         :rtype: int
         """
         return self._LeakNum
@@ -12051,7 +12051,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def IPNum(self):
-        """Number of protected IPs
+        r"""Number of protected IPs
         :rtype: int
         """
         return self._IPNum
@@ -12062,7 +12062,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def PortNum(self):
-        """Number of exposed ports
+        r"""Number of exposed ports
         :rtype: int
         """
         return self._PortNum
@@ -12073,7 +12073,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def IPStatus(self):
-        """Protection status
+        r"""Protection status
         :rtype: bool
         """
         return self._IPStatus
@@ -12084,7 +12084,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def IdpStatus(self):
-        """Attack blocking status
+        r"""Attack blocking status
         :rtype: bool
         """
         return self._IdpStatus
@@ -12095,7 +12095,7 @@ class ScanResultInfo(AbstractModel):
 
     @property
     def BanStatus(self):
-        """Port blocking status
+        r"""Port blocking status
         :rtype: bool
         """
         return self._BanStatus
@@ -12123,7 +12123,7 @@ class ScanResultInfo(AbstractModel):
 
 
 class SecurityGroupBothWayInfo(AbstractModel):
-    """Two-way enterprise security group rules
+    r"""Two-way enterprise security group rules
 
     """
 
@@ -12219,7 +12219,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OrderIndex(self):
-        """Priority
+        r"""Priority
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12231,7 +12231,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceId(self):
-        """Access source
+        r"""Access source
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12243,7 +12243,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceType(self):
-        """Access source type. Default: 0. 0: IP; 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: asset group
+        r"""Access source type. Default: 0. 0: IP; 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: asset group
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12255,7 +12255,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetId(self):
-        """Access destination
+        r"""Access destination
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12267,7 +12267,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetType(self):
-        """Access destination type. Default: 0. 0: IP; 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: asset group
+        r"""Access destination type. Default: 0. 0: IP; 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: asset group
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12279,7 +12279,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Protocol(self):
-        """Protocol
+        r"""Protocol
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12291,7 +12291,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Port(self):
-        """Destination port
+        r"""Destination port
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12303,7 +12303,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Strategy(self):
-        """Policy. 1: block; 2: allow
+        r"""Policy. 1: block; 2: allow
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12315,7 +12315,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 1 by default
+        r"""Direction. 0: outbound; 1: inbound. 1 by default
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12327,7 +12327,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Region(self):
-        """Region
+        r"""Region
         :rtype: str
         """
         return self._Region
@@ -12338,7 +12338,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Detail(self):
-        """Description
+        r"""Description
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12350,7 +12350,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Toggle status. 0: off; 1: on
+        r"""Toggle status. 0: off; 1: on
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12362,7 +12362,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def IsNew(self):
-        """Indicates whether the rule is normal. 0: normal; 1: abnormal
+        r"""Indicates whether the rule is normal. 0: normal; 1: abnormal
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12374,7 +12374,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BothWay(self):
-        """One-way/two-way. 0: one-way; 1: two-way
+        r"""One-way/two-way. 0: one-way; 1: two-way
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -12386,7 +12386,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12398,7 +12398,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12410,7 +12410,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12422,7 +12422,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIp(self):
-        """Public IP. Multiple IPs are separated by commas.
+        r"""Public IP. Multiple IPs are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12434,7 +12434,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PrivateIp(self):
-        """Private IP. Multiple IPs are separated by commas.
+        r"""Private IP. Multiple IPs are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12446,7 +12446,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Cidr(self):
-        """Masked address. Multiple addresses are separated by commas.
+        r"""Masked address. Multiple addresses are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12458,7 +12458,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ServiceTemplateId(self):
-        """Port protocol template ID
+        r"""Port protocol template ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12470,7 +12470,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ProtocolPortType(self):
-        """Indicates whether to use the port protocol template. 0: no; 1: yes
+        r"""Indicates whether to use the port protocol template. 0: no; 1: yes
         :rtype: int
         """
         return self._ProtocolPortType
@@ -12514,7 +12514,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class SecurityGroupListData(AbstractModel):
-    """Security group list data
+    r"""Security group list data
 
     """
 
@@ -12601,7 +12601,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OrderIndex(self):
-        """Priority
+        r"""Priority
         :rtype: int
         """
         return self._OrderIndex
@@ -12612,7 +12612,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceId(self):
-        """Access source
+        r"""Access source
         :rtype: str
         """
         return self._SourceId
@@ -12623,7 +12623,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceType(self):
-        """Access source type. Default: 0. 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: Resource group
+        r"""Access source type. Default: 0. 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template. 100: Resource group
         :rtype: int
         """
         return self._SourceType
@@ -12634,7 +12634,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetId(self):
-        """Access destination
+        r"""Access destination
         :rtype: str
         """
         return self._TargetId
@@ -12645,7 +12645,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TargetType(self):
-        """Access destination type. Default: 0. 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template; 100: resource group
+        r"""Access destination type. Default: 0. 1: VPC; 2: SUBNET; 3: CVM; 4: CLB; 5: ENI; 6: CDB; 7: Parameter template; 100: resource group
         :rtype: int
         """
         return self._TargetType
@@ -12656,7 +12656,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Protocol(self):
-        """Protocol
+        r"""Protocol
         :rtype: str
         """
         return self._Protocol
@@ -12667,7 +12667,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Port(self):
-        """Destination port
+        r"""Destination port
         :rtype: str
         """
         return self._Port
@@ -12678,7 +12678,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Strategy(self):
-        """Policy. 1: block; 2: allow
+        r"""Policy. 1: block; 2: allow
         :rtype: int
         """
         return self._Strategy
@@ -12689,7 +12689,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Detail(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Detail
@@ -12700,7 +12700,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BothWay(self):
-        """One-way/two-way. 0: one-way; 1: two-way
+        r"""One-way/two-way. 0: one-way; 1: two-way
         :rtype: int
         """
         return self._BothWay
@@ -12711,7 +12711,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: int
         """
         return self._Id
@@ -12722,7 +12722,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """Toggle status. 0: off; 1: on
+        r"""Toggle status. 0: off; 1: on
         :rtype: int
         """
         return self._Status
@@ -12733,7 +12733,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def IsNew(self):
-        """Indicates whether the rule is normal. 0: normal; 1: abnormal
+        r"""Indicates whether the rule is normal. 0: normal; 1: abnormal
         :rtype: int
         """
         return self._IsNew
@@ -12744,7 +12744,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12756,7 +12756,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SubnetId(self):
-        """Subnet ID
+        r"""Subnet ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12768,7 +12768,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12780,7 +12780,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIp(self):
-        """Public IP. Multiple IPs are separated by commas.
+        r"""Public IP. Multiple IPs are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12792,7 +12792,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PrivateIp(self):
-        """Private IP. Multiple IPs are separated by commas.
+        r"""Private IP. Multiple IPs are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12804,7 +12804,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Cidr(self):
-        """Masked address. Multiple addresses are separated by commas.
+        r"""Masked address. Multiple addresses are separated by commas.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12816,7 +12816,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ServiceTemplateId(self):
-        """Port protocol template ID
+        r"""Port protocol template ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -12828,7 +12828,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BothWayInfo(self):
-        """Two-way rules
+        r"""Two-way rules
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: list of SecurityGroupBothWayInfo
         """
@@ -12840,7 +12840,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Direction(self):
-        """Direction. 0: outbound; 1: inbound. 1 by default
+        r"""Direction. 0: outbound; 1: inbound. 1 by default
         :rtype: int
         """
         return self._Direction
@@ -12851,7 +12851,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ProtocolPortType(self):
-        """Indicates whether to use the port protocol template. 0: no; 1: yes
+        r"""Indicates whether to use the port protocol template. 0: no; 1: yes
         :rtype: int
         """
         return self._ProtocolPortType
@@ -12901,7 +12901,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class SecurityGroupOrderIndexData(AbstractModel):
-    """Change priority of enterprise security group rules
+    r"""Change priority of enterprise security group rules
 
     """
 
@@ -12917,7 +12917,7 @@ class SecurityGroupOrderIndexData(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """Current priority of enterprise security group rules
+        r"""Current priority of enterprise security group rules
         :rtype: int
         """
         return self._OrderIndex
@@ -12928,7 +12928,7 @@ class SecurityGroupOrderIndexData(AbstractModel):
 
     @property
     def NewOrderIndex(self):
-        """New priority of enterprise security group rules
+        r"""New priority of enterprise security group rules
         :rtype: int
         """
         return self._NewOrderIndex
@@ -12952,7 +12952,7 @@ class SecurityGroupOrderIndexData(AbstractModel):
 
 
 class SecurityGroupRule(AbstractModel):
-    """Security group rules
+    r"""Security group rules
 
     """
 
@@ -13017,7 +13017,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourceContent(self):
-        """Source example:
+        r"""Source example:
 net: IP/CIDR (192.168.0.2)
 template: parameter template (ipm-dyodhpby)
 instance: asset instance (ins-123456)
@@ -13034,7 +13034,7 @@ region: region (ap-gaungzhou)
 
     @property
     def SourceType(self):
-        """Access source type. Valid values: net|template|instance|resourcegroup|tag|region
+        r"""Access source type. Valid values: net|template|instance|resourcegroup|tag|region
         :rtype: str
         """
         return self._SourceType
@@ -13045,7 +13045,7 @@ region: region (ap-gaungzhou)
 
     @property
     def DestContent(self):
-        """Destination example:
+        r"""Destination example:
 net: IP/CIDR (192.168.0.2)
 template: parameter template (ipm-dyodhpby)
 instance: asset instance (ins-123456)
@@ -13062,7 +13062,7 @@ region: region (ap-gaungzhou)
 
     @property
     def DestType(self):
-        """Access destination type. Valid values: net|template|instance|resourcegroup|tag|region
+        r"""Access destination type. Valid values: net|template|instance|resourcegroup|tag|region
         :rtype: str
         """
         return self._DestType
@@ -13073,7 +13073,7 @@ region: region (ap-gaungzhou)
 
     @property
     def RuleAction(self):
-        """The action that Cloud Firewall performs on the traffic. Valid values:
+        r"""The action that Cloud Firewall performs on the traffic. Valid values:
 accept: allow
 drop: deny
         :rtype: str
@@ -13086,7 +13086,7 @@ drop: deny
 
     @property
     def Description(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._Description
@@ -13097,7 +13097,7 @@ drop: deny
 
     @property
     def OrderIndex(self):
-        """Rule priority. -1: lowest; 1: highest
+        r"""Rule priority. -1: lowest; 1: highest
         :rtype: str
         """
         return self._OrderIndex
@@ -13108,7 +13108,7 @@ drop: deny
 
     @property
     def Protocol(self):
-        """Protocol. TCP/UDP/ICMP/ANY
+        r"""Protocol. TCP/UDP/ICMP/ANY
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13120,7 +13120,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Port(self):
-        """The port to apply access control rules. Valid values:
+        r"""The port to apply access control rules. Valid values:
 -1/-1: all ports
 80: port 80
 Note: This field may return `null`, indicating that no valid value was found.
@@ -13134,7 +13134,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ServiceTemplateId(self):
-        """Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port
+        r"""Parameter template ID of port and protocol type; mutually exclusive with Protocol and Port
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13146,7 +13146,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """The unique ID of the rule
+        r"""The unique ID of the rule
         :rtype: str
         """
         return self._Id
@@ -13157,7 +13157,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Enable(self):
-        """Rule status. true: enabled; false: disabled
+        r"""Rule status. true: enabled; false: disabled
         :rtype: str
         """
         return self._Enable
@@ -13191,7 +13191,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class SequenceData(AbstractModel):
-    """Priority
+    r"""Priority
 
     """
 
@@ -13210,7 +13210,7 @@ class SequenceData(AbstractModel):
 
     @property
     def Id(self):
-        """Rule ID
+        r"""Rule ID
         :rtype: int
         """
         return self._Id
@@ -13221,7 +13221,7 @@ class SequenceData(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """Rule priority before change
+        r"""Rule priority before change
         :rtype: int
         """
         return self._OrderIndex
@@ -13232,7 +13232,7 @@ class SequenceData(AbstractModel):
 
     @property
     def NewOrderIndex(self):
-        """Rule priority after change
+        r"""Rule priority after change
         :rtype: int
         """
         return self._NewOrderIndex
@@ -13257,7 +13257,7 @@ class SequenceData(AbstractModel):
 
 
 class SetNatFwDnatRuleRequest(AbstractModel):
-    """SetNatFwDnatRule request structure.
+    r"""SetNatFwDnatRule request structure.
 
     """
 
@@ -13285,7 +13285,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """0: Create new; 1: Use existing
+        r"""0: Create new; 1: Use existing
         :rtype: int
         """
         return self._Mode
@@ -13296,7 +13296,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def OperationType(self):
-        """Operation type. Valid values: add, del, and modify.
+        r"""Operation type. Valid values: add, del, and modify.
         :rtype: str
         """
         return self._OperationType
@@ -13307,7 +13307,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        """Firewall instance ID. This field is required.
+        r"""Firewall instance ID. This field is required.
         :rtype: str
         """
         return self._CfwInstance
@@ -13318,7 +13318,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def AddOrDelDnatRules(self):
-        """List of added/deleted DNAT rules
+        r"""List of added/deleted DNAT rules
         :rtype: list of CfwNatDnatRule
         """
         return self._AddOrDelDnatRules
@@ -13329,7 +13329,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def OriginDnat(self):
-        """Original DNAT rule before change
+        r"""Original DNAT rule before change
         :rtype: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
         """
         return self._OriginDnat
@@ -13340,7 +13340,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def NewDnat(self):
-        """New DNAT rule after change
+        r"""New DNAT rule after change
         :rtype: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
         """
         return self._NewDnat
@@ -13377,7 +13377,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
 
 class SetNatFwDnatRuleResponse(AbstractModel):
-    """SetNatFwDnatRule response structure.
+    r"""SetNatFwDnatRule response structure.
 
     """
 
@@ -13390,7 +13390,7 @@ class SetNatFwDnatRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13405,7 +13405,7 @@ class SetNatFwDnatRuleResponse(AbstractModel):
 
 
 class SetNatFwEipRequest(AbstractModel):
-    """SetNatFwEip request structure.
+    r"""SetNatFwEip request structure.
 
     """
 
@@ -13424,7 +13424,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def OperationType(self):
-        """bind: bind EIP; unbind: unbind EIP; newAdd: add firewall EIP
+        r"""bind: bind EIP; unbind: unbind EIP; newAdd: add firewall EIP
         :rtype: str
         """
         return self._OperationType
@@ -13435,7 +13435,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        """Firewall instance ID
+        r"""Firewall instance ID
         :rtype: str
         """
         return self._CfwInstance
@@ -13446,7 +13446,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def EipList(self):
-        """This field is required when OperationType is "bind" or "unbind".
+        r"""This field is required when OperationType is "bind" or "unbind".
         :rtype: list of str
         """
         return self._EipList
@@ -13471,7 +13471,7 @@ class SetNatFwEipRequest(AbstractModel):
 
 
 class SetNatFwEipResponse(AbstractModel):
-    """SetNatFwEip response structure.
+    r"""SetNatFwEip response structure.
 
     """
 
@@ -13484,7 +13484,7 @@ class SetNatFwEipResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13499,7 +13499,7 @@ class SetNatFwEipResponse(AbstractModel):
 
 
 class StaticInfo(AbstractModel):
-    """Most frequent attacker statistics
+    r"""Most frequent attacker statistics
 
 
     """
@@ -13528,7 +13528,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def Num(self):
-        """Number
+        r"""Number
         :rtype: int
         """
         return self._Num
@@ -13539,7 +13539,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def Port(self):
-        """Port
+        r"""Port
         :rtype: str
         """
         return self._Port
@@ -13550,7 +13550,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def Ip(self):
-        """IP
+        r"""IP
         :rtype: str
         """
         return self._Ip
@@ -13561,7 +13561,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def Address(self):
-        """Address
+        r"""Address
         :rtype: str
         """
         return self._Address
@@ -13572,7 +13572,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def InsID(self):
-        """Asset ID
+        r"""Asset ID
         :rtype: str
         """
         return self._InsID
@@ -13583,7 +13583,7 @@ class StaticInfo(AbstractModel):
 
     @property
     def InsName(self):
-        """Asset name
+        r"""Asset name
         :rtype: str
         """
         return self._InsName
@@ -13611,7 +13611,7 @@ class StaticInfo(AbstractModel):
 
 
 class StopSecurityGroupRuleDispatchRequest(AbstractModel):
-    """StopSecurityGroupRuleDispatch request structure.
+    r"""StopSecurityGroupRuleDispatch request structure.
 
     """
 
@@ -13624,7 +13624,7 @@ class StopSecurityGroupRuleDispatchRequest(AbstractModel):
 
     @property
     def StopType(self):
-        """Stops all if set to 1
+        r"""Stops all if set to 1
         :rtype: int
         """
         return self._StopType
@@ -13647,7 +13647,7 @@ class StopSecurityGroupRuleDispatchRequest(AbstractModel):
 
 
 class StopSecurityGroupRuleDispatchResponse(AbstractModel):
-    """StopSecurityGroupRuleDispatch response structure.
+    r"""StopSecurityGroupRuleDispatch response structure.
 
     """
 
@@ -13664,7 +13664,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
-        """true: operation successful; false: error
+        r"""true: operation successful; false: error
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: bool
         """
@@ -13676,7 +13676,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13692,7 +13692,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class SwitchListsData(AbstractModel):
-    """Firewall status list
+    r"""Firewall status list
 
     """
 
@@ -13751,7 +13751,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIp(self):
-        """Public IP
+        r"""Public IP
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13763,7 +13763,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def IntranetIp(self):
-        """Private IP
+        r"""Private IP
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13775,7 +13775,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceName(self):
-        """Instance name
+        r"""Instance name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13787,7 +13787,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
-        """Instance ID
+        r"""Instance ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13799,7 +13799,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AssetType(self):
-        """Asset type
+        r"""Asset type
         :rtype: str
         """
         return self._AssetType
@@ -13810,7 +13810,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Area(self):
-        """Region
+        r"""Region
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13822,7 +13822,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Switch(self):
-        """Firewall toggle
+        r"""Firewall toggle
         :rtype: int
         """
         return self._Switch
@@ -13833,7 +13833,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Id(self):
-        """ID value
+        r"""ID value
         :rtype: int
         """
         return self._Id
@@ -13844,7 +13844,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PublicIpType(self):
-        """Public IP type
+        r"""Public IP type
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -13856,7 +13856,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PortTimes(self):
-        """Number of risky ports
+        r"""Number of risky ports
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -13868,7 +13868,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def LastTime(self):
-        """Last scan time
+        r"""Last scan time
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13880,7 +13880,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ScanMode(self):
-        """Scan mode
+        r"""Scan mode
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -13892,7 +13892,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ScanStatus(self):
-        """Scan status
+        r"""Scan status
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -13928,7 +13928,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class TLogInfo(AbstractModel):
-    """Alert monitoring data
+    r"""Alert monitoring data
 
     """
 
@@ -13956,7 +13956,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def OutNum(self):
-        """Compromised servers
+        r"""Compromised servers
         :rtype: int
         """
         return self._OutNum
@@ -13967,7 +13967,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def HandleNum(self):
-        """Unhandled alerts
+        r"""Unhandled alerts
         :rtype: int
         """
         return self._HandleNum
@@ -13978,7 +13978,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def VulNum(self):
-        """Vulnerability attacks
+        r"""Vulnerability attacks
         :rtype: int
         """
         return self._VulNum
@@ -13989,7 +13989,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def NetworkNum(self):
-        """Detected networks
+        r"""Detected networks
         :rtype: int
         """
         return self._NetworkNum
@@ -14000,7 +14000,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def BanNum(self):
-        """Blocklist
+        r"""Blocklist
         :rtype: int
         """
         return self._BanNum
@@ -14011,7 +14011,7 @@ class TLogInfo(AbstractModel):
 
     @property
     def BruteForceNum(self):
-        """Brute force attacks
+        r"""Brute force attacks
         :rtype: int
         """
         return self._BruteForceNum
@@ -14039,7 +14039,7 @@ class TLogInfo(AbstractModel):
 
 
 class UnHandleEvent(AbstractModel):
-    """Unhandled event details
+    r"""Unhandled event details
 
     """
 
@@ -14065,7 +14065,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EventTableListStruct(self):
-        """Unhandled event type
+        r"""Unhandled event type
         :rtype: list of UnHandleEventDetail
         """
         return self._EventTableListStruct
@@ -14076,7 +14076,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BaseLineUser(self):
-        """1: yes; 0: no
+        r"""1: yes; 0: no
         :rtype: int
         """
         return self._BaseLineUser
@@ -14087,7 +14087,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BaseLineInSwitch(self):
-        """1: on; 0: off
+        r"""1: on; 0: off
         :rtype: int
         """
         return self._BaseLineInSwitch
@@ -14098,7 +14098,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BaseLineOutSwitch(self):
-        """1: on; 0: off
+        r"""1: on; 0: off
         :rtype: int
         """
         return self._BaseLineOutSwitch
@@ -14109,7 +14109,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcFwCount(self):
-        """Number of inter-VPC firewall instances
+        r"""Number of inter-VPC firewall instances
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
         """
@@ -14142,7 +14142,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class UnHandleEventDetail(AbstractModel):
-    """Unhandled event statistics
+    r"""Unhandled event statistics
 
     """
 
@@ -14158,7 +14158,7 @@ class UnHandleEventDetail(AbstractModel):
 
     @property
     def EventName(self):
-        """Security event name
+        r"""Security event name
         :rtype: str
         """
         return self._EventName
@@ -14169,7 +14169,7 @@ class UnHandleEventDetail(AbstractModel):
 
     @property
     def Total(self):
-        """Number of unhandled events
+        r"""Number of unhandled events
         :rtype: int
         """
         return self._Total
@@ -14193,7 +14193,7 @@ class UnHandleEventDetail(AbstractModel):
 
 
 class VpcDnsInfo(AbstractModel):
-    """VPC DNS status of NAT firewall
+    r"""VPC DNS status of NAT firewall
 
     """
 
@@ -14229,7 +14229,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcId(self):
-        """VPC ID
+        r"""VPC ID
         :rtype: str
         """
         return self._VpcId
@@ -14240,7 +14240,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcName(self):
-        """VPC name
+        r"""VPC name
         :rtype: str
         """
         return self._VpcName
@@ -14251,7 +14251,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FwMode(self):
-        """NAT firewall mode. 0: Create new; 1: Use existing
+        r"""NAT firewall mode. 0: Create new; 1: Use existing
         :rtype: int
         """
         return self._FwMode
@@ -14262,7 +14262,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VpcIpv4Cidr(self):
-        """VPC IPv4 CIDR block (Classless Inter-Domain Routing)
+        r"""VPC IPv4 CIDR block (Classless Inter-Domain Routing)
         :rtype: str
         """
         return self._VpcIpv4Cidr
@@ -14273,7 +14273,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DNSEip(self):
-        """Public EIP, which is the firewall DNS resolution address
+        r"""Public EIP, which is the firewall DNS resolution address
         :rtype: str
         """
         return self._DNSEip
@@ -14284,7 +14284,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatInsId(self):
-        """NAT gateway ID
+        r"""NAT gateway ID
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -14296,7 +14296,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NatInsName(self):
-        """NAT gateway name
+        r"""NAT gateway name
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -14308,7 +14308,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SwitchStatus(self):
-        """0: off; 1: on
+        r"""0: off; 1: on
         :rtype: int
         """
         return self._SwitchStatus
@@ -14338,7 +14338,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class VpcRuleItem(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -14423,7 +14423,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SourceContent
@@ -14434,7 +14434,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SourceType
@@ -14445,7 +14445,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestContent(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DestContent
@@ -14456,7 +14456,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._DestType
@@ -14467,7 +14467,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Protocol
@@ -14478,7 +14478,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        """
+        r"""
         :rtype: str
         """
         return self._RuleAction
@@ -14489,7 +14489,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Port
@@ -14500,7 +14500,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Description
@@ -14511,7 +14511,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        """
+        r"""
         :rtype: int
         """
         return self._OrderIndex
@@ -14522,7 +14522,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Enable
@@ -14533,7 +14533,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EdgeId
@@ -14544,7 +14544,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Uuid
@@ -14555,7 +14555,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DetectedTimes(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DetectedTimes
@@ -14566,7 +14566,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._EdgeName
@@ -14577,7 +14577,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def InternalUuid(self):
-        """
+        r"""
         :rtype: int
         """
         return self._InternalUuid
@@ -14588,7 +14588,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Deleted(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Deleted
@@ -14599,7 +14599,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._FwGroupId
@@ -14610,7 +14610,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._FwGroupName
@@ -14621,7 +14621,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def BetaList(self):
-        """
+        r"""
         :rtype: list of BetaInfoByACL
         """
         return self._BetaList
@@ -14632,7 +14632,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ParamTemplateId
@@ -14643,7 +14643,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._ParamTemplateName
@@ -14654,7 +14654,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def TargetName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TargetName
@@ -14665,7 +14665,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SourceName
@@ -14676,7 +14676,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def IpVersion(self):
-        """
+        r"""
         :rtype: int
         """
         return self._IpVersion
@@ -14687,7 +14687,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Invalid(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Invalid

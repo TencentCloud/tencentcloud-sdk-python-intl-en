@@ -27,7 +27,7 @@ class CtsdbClient(AbstractClient):
 
 
     def DescribeClusters(self, request):
-        """This API is used to query the instance list and details.
+        r"""This API is used to query the instance list and details.
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.ctsdb.v20230202.models.DescribeClustersRequest`
@@ -50,7 +50,7 @@ class CtsdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API is used to query the database list.
+        r"""This API is used to query the database list.
         ```
           "Database":{
             "ClusterID":"ctsdbi-rebg0ghl",

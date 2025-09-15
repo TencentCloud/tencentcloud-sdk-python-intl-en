@@ -27,7 +27,7 @@ class MdcClient(AbstractClient):
 
 
     def CreateStreamLinkFlow(self, request):
-        """This API is used to create a StreamLink flow.
+        r"""This API is used to create a StreamLink flow.
 
         :param request: Request instance for CreateStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkFlowRequest`
@@ -50,7 +50,7 @@ class MdcClient(AbstractClient):
 
 
     def CreateStreamLinkInput(self, request):
-        """Create an input configuration for the StreamLink.
+        r"""Create an input configuration for the StreamLink.
 
         :param request: Request instance for CreateStreamLinkInput.
         :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkInputRequest`
@@ -73,7 +73,7 @@ class MdcClient(AbstractClient):
 
 
     def CreateStreamLinkOutputInfo(self, request):
-        """This API is used to create a StreamLink output.
+        r"""This API is used to create a StreamLink output.
 
         :param request: Request instance for CreateStreamLinkOutputInfo.
         :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkOutputInfoRequest`
@@ -96,7 +96,7 @@ class MdcClient(AbstractClient):
 
 
     def DeleteStreamLinkFlow(self, request):
-        """This API is used to delete a StreamLink flow.
+        r"""This API is used to delete a StreamLink flow.
 
         :param request: Request instance for DeleteStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkFlowRequest`
@@ -119,7 +119,7 @@ class MdcClient(AbstractClient):
 
 
     def DeleteStreamLinkOutput(self, request):
-        """This API is used to delete an output of a StreamLink flow.
+        r"""This API is used to delete an output of a StreamLink flow.
 
         :param request: Request instance for DeleteStreamLinkOutput.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DeleteStreamLinkOutputRequest`
@@ -142,7 +142,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlow(self, request):
-        """This API is used to query the configuration information of a StreamLink flow.
+        r"""This API is used to query the configuration information of a StreamLink flow.
 
         :param request: Request instance for DescribeStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowRequest`
@@ -165,7 +165,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowLogs(self, request):
-        """This API is used to query the logs of a StreamLink flow.
+        r"""This API is used to query the logs of a StreamLink flow.
 
         :param request: Request instance for DescribeStreamLinkFlowLogs.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowLogsRequest`
@@ -188,7 +188,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowMediaStatistics(self, request):
-        """This API is used to query the media quality of a StreamLink flow.
+        r"""This API is used to query the media quality of a StreamLink flow.
 
         :param request: Request instance for DescribeStreamLinkFlowMediaStatistics.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowMediaStatisticsRequest`
@@ -211,7 +211,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowRealtimeStatus(self, request):
-        """This API is used to query the current status of a flow.
+        r"""This API is used to query the current status of a flow.
 
         :param request: Request instance for DescribeStreamLinkFlowRealtimeStatus.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowRealtimeStatusRequest`
@@ -234,7 +234,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowSRTStatistics(self, request):
-        """This API is used to query the SRT streaming performance of a StreamLink flow.
+        r"""This API is used to query the SRT streaming performance of a StreamLink flow.
 
         :param request: Request instance for DescribeStreamLinkFlowSRTStatistics.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowSRTStatisticsRequest`
@@ -257,7 +257,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlowStatistics(self, request):
-        """This API is used to query the media quality of a StreamLink flow.
+        r"""This API is used to query the media quality of a StreamLink flow.
 
         :param request: Request instance for DescribeStreamLinkFlowStatistics.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowStatisticsRequest`
@@ -280,7 +280,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkFlows(self, request):
-        """This API is used to query the configuration information of multiple StreamLink flows in batches.
+        r"""This API is used to query the configuration information of multiple StreamLink flows in batches.
 
         :param request: Request instance for DescribeStreamLinkFlows.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkFlowsRequest`
@@ -303,7 +303,7 @@ class MdcClient(AbstractClient):
 
 
     def DescribeStreamLinkRegions(self, request):
-        """This API is used to query all StreamLink regions.
+        r"""This API is used to query all StreamLink regions.
 
         :param request: Request instance for DescribeStreamLinkRegions.
         :type request: :class:`tencentcloud.mdc.v20200828.models.DescribeStreamLinkRegionsRequest`
@@ -326,7 +326,7 @@ class MdcClient(AbstractClient):
 
 
     def ModifyStreamLinkFlow(self, request):
-        """This API is used to modify the configuration information of a StreamLink flow.
+        r"""This API is used to modify the configuration information of a StreamLink flow.
 
         :param request: Request instance for ModifyStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkFlowRequest`
@@ -349,7 +349,7 @@ class MdcClient(AbstractClient):
 
 
     def ModifyStreamLinkInput(self, request):
-        """This API is used to modify an input of a StreamLink flow.
+        r"""This API is used to modify an input of a StreamLink flow.
 
         :param request: Request instance for ModifyStreamLinkInput.
         :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkInputRequest`
@@ -372,7 +372,7 @@ class MdcClient(AbstractClient):
 
 
     def ModifyStreamLinkOutputInfo(self, request):
-        """This API is used to modify an output of a StreamLink flow.
+        r"""This API is used to modify an output of a StreamLink flow.
 
         :param request: Request instance for ModifyStreamLinkOutputInfo.
         :type request: :class:`tencentcloud.mdc.v20200828.models.ModifyStreamLinkOutputInfoRequest`
@@ -395,7 +395,7 @@ class MdcClient(AbstractClient):
 
 
     def StartStreamLinkFlow(self, request):
-        """This API is used to start a StreamLink flow.
+        r"""This API is used to start a StreamLink flow.
 
         :param request: Request instance for StartStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.StartStreamLinkFlowRequest`
@@ -418,7 +418,7 @@ class MdcClient(AbstractClient):
 
 
     def StopStreamLinkFlow(self, request):
-        """This API is used to stop a StreamLink flow.
+        r"""This API is used to stop a StreamLink flow.
 
         :param request: Request instance for StopStreamLinkFlow.
         :type request: :class:`tencentcloud.mdc.v20200828.models.StopStreamLinkFlowRequest`

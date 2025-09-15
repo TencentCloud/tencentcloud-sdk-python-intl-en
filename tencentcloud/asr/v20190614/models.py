@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class CreateRecTaskRequest(AbstractModel):
-    """CreateRecTask request structure.
+    r"""CreateRecTask request structure.
 
     """
 
@@ -199,7 +199,7 @@ Notes:
 
     @property
     def EngineModelType(self):
-        """Engine model type.
+        r"""Engine model type.
 Each recognition engine adopts a specific billing plan. Engines marked with "large model version" adopt the large model billing plan. For product billing instructions, [click here] (https://intl.cloud.tencent.com/document/product/1093/35686?from_cn_redirect=1).
 
 
@@ -223,7 +223,7 @@ Engines for general scenarios:
 
     @property
     def ChannelNum(self):
-        """Number of recognition channels.
+        r"""Number of recognition channels.
 1: Mono. (16k engines only support mono. ** Do no t** set to stereo.)
 2: Stereo. (Stereo is supported only for 8k engines, and the two channels should correspond to the respective communication parties.)
 
@@ -240,7 +240,7 @@ Note:
 
     @property
     def ResTextFormat(self):
-        """Format of the returned recognition result.
+        r"""Format of the returned recognition result.
 0: The basic recognition result (containing only valid voice timestamps but no word-level [detailed recognition result] (https://intl.cloud.tencent.com/document/api/1093/37824?from_cn_redirect=1#SentenceDetail)).
 1: The basic recognition result and word-level [detailed recognition result] (https://intl.cloud.tencent.com/document/api/1093/37824?from_cn_redirect=1#SentenceDetail) (containing word-level timestamps and speech speed value but ** no punctuation **).
 2: The basic recognition result and word-level [detailed recognition result] (https://intl.cloud.tencent.com/document/api/1093/37824?from_cn_redirect=1#SentenceDetail) (containing word-level timestamps, speech speed value, and ** punctuation **).
@@ -261,7 +261,7 @@ If this parameter is set to 5, make sure that an [oral-to-written resource packa
 
     @property
     def SourceType(self):
-        """Audio source.
+        r"""Audio source.
 0: Audio URL.
 1: Local audio file (body of the POST request).
         :rtype: int
@@ -274,7 +274,7 @@ If this parameter is set to 5, make sure that an [oral-to-written resource packa
 
     @property
     def Data(self):
-        """Audio file Base64 code.
+        r"""Audio file Base64 code.
 ** This parameter is required if SourceType is set to 1. Otherwise, it can be left blank. **
 
 Note: The audio data size cannot exceed 5 MB.
@@ -288,7 +288,7 @@ Note: The audio data size cannot exceed 5 MB.
 
     @property
     def DataLen(self):
-        """Data length (before Base64 encoding).
+        r"""Data length (before Base64 encoding).
         :rtype: int
         """
         return self._DataLen
@@ -299,7 +299,7 @@ Note: The audio data size cannot exceed 5 MB.
 
     @property
     def Url(self):
-        """Audio URL. (The audio should be downloadable via a public network browser.)
+        r"""Audio URL. (The audio should be downloadable via a public network browser.)
 ** This parameter is required if SourceType is set to 0. Otherwise, it can be left blank. **
 
 Notes:
@@ -315,7 +315,7 @@ Notes:
 
     @property
     def CallbackUrl(self):
-        """Callback URL
+        r"""Callback URL
 
 User-defined service URL for receiving recognition results.
 For the callback format and content, see [Callback Description] (https://intl.cloud.tencent.com/document/product/1093/52632?from_cn_redirect=1).
@@ -334,7 +334,7 @@ Notes:
 
     @property
     def SpeakerDiarization(self):
-        """Whether to enable speaker separation.
+        r"""Whether to enable speaker separation.
 0: Disable.
 1: Enable. (This value is supported only for the following engines: 8k_zh, 16k_zh, 16k_ms, 16k_en, 16k_id, 16k_zh_large, and 16k_zh_dialect. ChannelNum should be set to 1.)
 The default value is 0.
@@ -351,7 +351,7 @@ If an 8k engine is used and ChannelNum is set to 2 (stereo), use the default val
 
     @property
     def SpeakerNumber(self):
-        """Number of speakers to be separated.
+        r"""Number of speakers to be separated.
 ** Speaker separation must be enabled. Otherwise, this parameter does not take effect. ** Value range: 0-10.
 0: Automatic separation. (Up to 20 speakers can be separated.)
 1-10: Specify the number of speakers.
@@ -366,7 +366,7 @@ The default value is 0.
 
     @property
     def HotwordId(self):
-        """This service is not available.
+        r"""This service is not available.
         :rtype: str
         """
         return self._HotwordId
@@ -379,7 +379,7 @@ The default value is 0.
     def ReinforceHotword(self):
         warnings.warn("parameter `ReinforceHotword` is deprecated", DeprecationWarning) 
 
-        """This service is not available.
+        r"""This service is not available.
         :rtype: int
         """
         return self._ReinforceHotword
@@ -392,7 +392,7 @@ The default value is 0.
 
     @property
     def CustomizationId(self):
-        """This service is not available.
+        r"""This service is not available.
         :rtype: str
         """
         return self._CustomizationId
@@ -403,7 +403,7 @@ The default value is 0.
 
     @property
     def EmotionRecognition(self):
-        """This service is not available.
+        r"""This service is not available.
         :rtype: int
         """
         return self._EmotionRecognition
@@ -414,7 +414,7 @@ The default value is 0.
 
     @property
     def EmotionalEnergy(self):
-        """Emotional energy value.
+        r"""Emotional energy value.
 The value is the result of dividing the sound volume in dB by 10. Value range: [1,10]. The higher the value, the stronger the emotion.
 0: Disable.
 1: Enable.
@@ -429,7 +429,7 @@ The default value is 0.
 
     @property
     def ConvertNumMode(self):
-        """Intelligent conversion into Arabic numerals (supported only for engines for recognizing audio in Mandarin).
+        r"""Intelligent conversion into Arabic numerals (supported only for engines for recognizing audio in Mandarin).
 0: Do not convert, but directly output Chinese numerals.
 1: Intelligently convert into Arabic numerals based on the scenario.
 3: Enable conversion for math-related letters.
@@ -444,7 +444,7 @@ The default value is 1.
 
     @property
     def FilterDirty(self):
-        """Dirty word filtering (supported only for engines for recognizing audio in Mandarin).
+        r"""Dirty word filtering (supported only for engines for recognizing audio in Mandarin).
 0: Do not filter out dirty words.
 1: Filter out dirty words.
 2: Replace dirty words with *.
@@ -459,7 +459,7 @@ The default value is 0.
 
     @property
     def FilterPunc(self):
-        """Punctuation filtering (supported only for engines for recognizing audio in Mandarin).
+        r"""Punctuation filtering (supported only for engines for recognizing audio in Mandarin).
 0: Do not filter out punctuation.
 1: Filter out sentence-ending punctuation.
 2: Filter out all punctuation.
@@ -474,7 +474,7 @@ The default value is 0.
 
     @property
     def FilterModal(self):
-        """Modal particle filtering (supported only for engines for recognizing audio in Mandarin).
+        r"""Modal particle filtering (supported only for engines for recognizing audio in Mandarin).
 0: Do not filter out modal particles.
 1: Filter out specified modal particles.
 2: Filter out all modal particles.
@@ -489,7 +489,7 @@ The default value is 0.
 
     @property
     def SentenceMaxLength(self):
-        """The maximum number of characters per line (supported only for engines for recognizing audio in Mandarin). A punctuation mark is added if this limit is reached.
+        r"""The maximum number of characters per line (supported only for engines for recognizing audio in Mandarin). A punctuation mark is added if this limit is reached.
 ** This parameter can control the maximum number of characters per line, which applies to subtitle generation scenarios. ** Value range: [6,40].
 0: Disable this feature.
 The default value is 0.
@@ -505,7 +505,7 @@ Note: To enable this feature, ResTextFormat should be set to 3. The recognition 
 
     @property
     def Extra(self):
-        """Additional parameter. ** (This parameter is meaningless. Ignore it.) **
+        r"""Additional parameter. ** (This parameter is meaningless. Ignore it.) **
         :rtype: str
         """
         return self._Extra
@@ -516,7 +516,7 @@ Note: To enable this feature, ResTextFormat should be set to 3. The recognition 
 
     @property
     def HotwordList(self):
-        """Temporary term list. This parameter is used to improve the recognition accuracy.
+        r"""Temporary term list. This parameter is used to improve the recognition accuracy.
 
 - Restrictions for individual terms: The format is "term|weight". Each term can contain no more than 30 characters (or 10 Chinese characters. The weight can be in the range of [1-11] or 100. For example, "Tencent Cloud|5" or "ASR|11".
 
@@ -545,7 +545,7 @@ Notes:
 
     @property
     def KeyWordLibIdList(self):
-        """List of keyword IDs for recognition. This parameter is left blank by default, indicating that no keyword is recognized. You can enter up to 10 IDs.
+        r"""List of keyword IDs for recognition. This parameter is left blank by default, indicating that no keyword is recognized. You can enter up to 10 IDs.
 
         :rtype: list of str
         """
@@ -591,7 +591,7 @@ Notes:
 
 
 class CreateRecTaskResponse(AbstractModel):
-    """CreateRecTask response structure.
+    r"""CreateRecTask response structure.
 
     """
 
@@ -609,7 +609,7 @@ class CreateRecTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Returned result of the recording recognition request, containing the task ID required for querying the result.
+        r"""Returned result of the recording recognition request, containing the task ID required for querying the result.
 ** Note: The task ID is valid for 24 hours, and duplicate task IDs of different dates may exist. Do not use task ID as the unique ID in your business system. **
 
         :rtype: :class:`tencentcloud.asr.v20190614.models.Task`
@@ -622,7 +622,7 @@ class CreateRecTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -640,7 +640,7 @@ class CreateRecTaskResponse(AbstractModel):
 
 
 class DescribeTaskStatusRequest(AbstractModel):
-    """DescribeTaskStatus request structure.
+    r"""DescribeTaskStatus request structure.
 
     """
 
@@ -654,7 +654,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID obtained from the CreateRecTask API, which is used to obtain the task status and results.
+        r"""Task ID obtained from the CreateRecTask API, which is used to obtain the task status and results.
 ** Note: A task is valid for 24 hours. Do not query the results with the tasks that have existed for more than 24 hours. **
         :rtype: int
         """
@@ -678,7 +678,7 @@ class DescribeTaskStatusRequest(AbstractModel):
 
 
 class DescribeTaskStatusResponse(AbstractModel):
-    """DescribeTaskStatus response structure.
+    r"""DescribeTaskStatus response structure.
 
     """
 
@@ -694,7 +694,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Returned result of the recording recognition request.
+        r"""Returned result of the recording recognition request.
         :rtype: :class:`tencentcloud.asr.v20190614.models.TaskStatus`
         """
         return self._Data
@@ -705,7 +705,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -723,7 +723,7 @@ class DescribeTaskStatusResponse(AbstractModel):
 
 
 class KeyWordResult(AbstractModel):
-    """Keyword recognition result.
+    r"""Keyword recognition result.
 
     """
 
@@ -745,7 +745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyWordLibID(self):
-        """Keyword library ID.
+        r"""Keyword library ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -757,7 +757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyWordLibName(self):
-        """Keyword library name.
+        r"""Keyword library name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -769,7 +769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyWords(self):
-        """Matching keywords.
+        r"""Matching keywords.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -795,7 +795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SentenceDetail(AbstractModel):
-    """Detailed recognition result of a sentence, including the time offset of individual words. This parameter generally applies to subtitle generation scenarios.
+    r"""Detailed recognition result of a sentence, including the time offset of individual words. This parameter generally applies to subtitle generation scenarios.
 
     """
 
@@ -858,7 +858,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinalSentence(self):
-        """Final recognition result of a sentence.
+        r"""Final recognition result of a sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -870,7 +870,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SliceSentence(self):
-        """Intermediate recognition result of a sentence. The sentence is split into multiple phrases by spaces.
+        r"""Intermediate recognition result of a sentence. The sentence is split into multiple phrases by spaces.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -882,7 +882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WrittenText(self):
-        """Oral-to-written transcription result. This parameter has a value only if the corresponding feature is enabled.
+        r"""Oral-to-written transcription result. This parameter has a value only if the corresponding feature is enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -894,7 +894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartMs(self):
-        """Start time of a sentence (ms).
+        r"""Start time of a sentence (ms).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -906,7 +906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndMs(self):
-        """End time of a sentence (ms).
+        r"""End time of a sentence (ms).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -918,7 +918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WordsNum(self):
-        """Number of words in a sentence.
+        r"""Number of words in a sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -930,7 +930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Words(self):
-        """Word details of a sentence.
+        r"""Word details of a sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SentenceWords
         """
@@ -942,7 +942,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpeechSpeed(self):
-        """Speech speed of a sentence. Unit: Number of words per second.
+        r"""Speech speed of a sentence. Unit: Number of words per second.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -954,7 +954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpeakerId(self):
-        """Channel or speaker ID. (If speaker_diarization is specified or ChannelNum is set to 2 (stereo) in the request, speakers or channels can be distinguished.)
+        r"""Channel or speaker ID. (If speaker_diarization is specified or ChannelNum is set to 2 (stereo) in the request, speakers or channels can be distinguished.)
 Different values represent different speakers in mono mode. For the speakerId values, 0 represents the left channel, and 1 represents the right channel in stereo mode if an 8k engine is used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -967,7 +967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmotionalEnergy(self):
-        """Emotional energy value. This value is the result of dividing the sound volume in dB by 10. Value range: [1,10]. The higher the value, the stronger the emotion.
+        r"""Emotional energy value. This value is the result of dividing the sound volume in dB by 10. Value range: [1,10]. The higher the value, the stronger the emotion.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -979,7 +979,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SilenceTime(self):
-        """Silent duration between the current sentence and the last sentence.
+        r"""Silent duration between the current sentence and the last sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -991,7 +991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmotionType(self):
-        """Emotion type. (This parameter may be left blank in two scenarios: 1. No corresponding resource package exists; 2. The emotion is not recognized because it is not strong enough, which is related to the emotional energy.)
+        r"""Emotion type. (This parameter may be left blank in two scenarios: 1. No corresponding resource package exists; 2. The emotion is not recognized because it is not strong enough, which is related to the emotional energy.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1003,7 +1003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyWordResults(self):
-        """List of recognized keywords.
+        r"""List of recognized keywords.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of KeyWordResult
         """
@@ -1049,7 +1049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SentenceWords(AbstractModel):
-    """Word text in the recognition result and the corresponding time offset.
+    r"""Word text in the recognition result and the corresponding time offset.
 
     """
 
@@ -1071,7 +1071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Word(self):
-        """Word text.
+        r"""Word text.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1083,7 +1083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OffsetStartMs(self):
-        """Start time offset in the sentence.
+        r"""Start time offset in the sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1095,7 +1095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OffsetEndMs(self):
-        """End time offset in the sentence.
+        r"""End time offset in the sentence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1121,7 +1121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Task(AbstractModel):
-    """Returned data of the [recording recognition] (https://intl.cloud.tencent.com/document/product/1093/37823?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) or [asynchronous real-time audio recognition] (https://intl.cloud.tencent.com/document/product/1093/52061?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) request.
+    r"""Returned data of the [recording recognition] (https://intl.cloud.tencent.com/document/product/1093/37823?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) or [asynchronous real-time audio recognition] (https://intl.cloud.tencent.com/document/product/1093/52061?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) request.
 
     """
 
@@ -1135,7 +1135,7 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID. This ID can be used to obtain the recognition status and results through polling. The data type of TaskId is ** uint64 **.
+        r"""Task ID. This ID can be used to obtain the recognition status and results through polling. The data type of TaskId is ** uint64 **.
 ** Note: The task ID is valid for 24 hours, and duplicate task IDs of different dates may exist. Do not use task ID as the unique ID in your business system. **
         :rtype: int
         """
@@ -1159,7 +1159,7 @@ class Task(AbstractModel):
 
 
 class TaskStatus(AbstractModel):
-    """[Response parameters for obtaining recording recognition results] (https://intl.cloud.tencent.com/document/product/1093/37822?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
+    r"""[Response parameters for obtaining recording recognition results] (https://intl.cloud.tencent.com/document/product/1093/37822?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 
     """
 
@@ -1192,7 +1192,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID. Note: The data type of TaskId is uint64.
+        r"""Task ID. Note: The data type of TaskId is uint64.
         :rtype: int
         """
         return self._TaskId
@@ -1203,7 +1203,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task status code. 0: waiting; 1: in process; 2: success; 3: failed.
+        r"""Task status code. 0: waiting; 1: in process; 2: success; 3: failed.
         :rtype: int
         """
         return self._Status
@@ -1214,7 +1214,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusStr(self):
-        """Task status. Valid values: waiting, in process, success, and failed.
+        r"""Task status. Valid values: waiting, in process, success, and failed.
         :rtype: str
         """
         return self._StatusStr
@@ -1225,7 +1225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        """Recognition result.
+        r"""Recognition result.
         :rtype: str
         """
         return self._Result
@@ -1236,7 +1236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
-        """Failure cause.
+        r"""Failure cause.
         :rtype: str
         """
         return self._ErrorMsg
@@ -1247,7 +1247,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResultDetail(self):
-        """Recognition result details, including word time offsets for each sentence, which is generally used in subtitle generation scenarios. (This field is not left blank when ResTextFormat in the recording recognition request is set to 1.)
+        r"""Recognition result details, including word time offsets for each sentence, which is generally used in subtitle generation scenarios. (This field is not left blank when ResTextFormat in the recording recognition request is set to 1.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of SentenceDetail
         """
@@ -1259,7 +1259,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioDuration(self):
-        """Audio duration (seconds).
+        r"""Audio duration (seconds).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """

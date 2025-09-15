@@ -27,7 +27,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchCreateAcl(self, request):
-        """This API is used to create ACL policies in batches.
+        r"""This API is used to create ACL policies in batches.
 
         :param request: Request instance for BatchCreateAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchCreateAclRequest`
@@ -50,7 +50,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchModifyGroupOffsets(self, request):
-        """This API is used to batch modify consumer group offsets.
+        r"""This API is used to batch modify consumer group offsets.
 
         :param request: Request instance for BatchModifyGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyGroupOffsetsRequest`
@@ -73,7 +73,7 @@ class CkafkaClient(AbstractClient):
 
 
     def BatchModifyTopicAttributes(self, request):
-        """This API is used to batch set topic attributes.
+        r"""This API is used to batch set topic attributes.
 
         :param request: Request instance for BatchModifyTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyTopicAttributesRequest`
@@ -96,7 +96,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateAcl(self, request):
-        """This API is used to add an ACL policy.
+        r"""This API is used to add an ACL policy.
 
         :param request: Request instance for CreateAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRequest`
@@ -119,7 +119,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateAclRule(self, request):
-        """This API shows you how to create an ACL rule.
+        r"""This API shows you how to create an ACL rule.
 
         :param request: Request instance for CreateAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRuleRequest`
@@ -142,7 +142,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """This API is used to create a consumer group.
+        r"""This API is used to create a consumer group.
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerRequest`
@@ -165,7 +165,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTopic(self, request):
-        """This API is used to create a DataHub topic.
+        r"""This API is used to create a DataHub topic.
 
         :param request: Request instance for CreateDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTopicRequest`
@@ -188,7 +188,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateInstancePost(self, request):
-        """This API is used to create a pay-as-you-go instance.  It will be deprecated in future versions. We recommend that you use the `CreatePostPaidInstance` API instead.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
+        r"""This API is used to create a pay-as-you-go instance.  It will be deprecated in future versions. We recommend that you use the `CreatePostPaidInstance` API instead.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
 
         :param request: Request instance for CreateInstancePost.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostRequest`
@@ -211,7 +211,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePartition(self, request):
-        """This API is used to add a partition in a topic.
+        r"""This API is used to add a partition in a topic.
 
         :param request: Request instance for CreatePartition.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePartitionRequest`
@@ -234,7 +234,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreatePostPaidInstance(self, request):
-        """This API is used to replace `CreateInstancePost`  to create a pay-as-you-go instance.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
+        r"""This API is used to replace `CreateInstancePost`  to create a pay-as-you-go instance.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
 
         :param request: Request instance for CreatePostPaidInstance.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceRequest`
@@ -257,7 +257,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """This API is used to create a CKafka topic.
+        r"""This API is used to create a CKafka topic.
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicRequest`
@@ -280,7 +280,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateTopicIpWhiteList(self, request):
-        """This API is used to create a topic IP allowlist.
+        r"""This API is used to create a topic IP allowlist.
 
         :param request: Request instance for CreateTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicIpWhiteListRequest`
@@ -303,7 +303,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to add a user.
+        r"""This API is used to add a user.
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateUserRequest`
@@ -326,7 +326,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteAcl(self, request):
-        """This API is used to delete an ACL.
+        r"""This API is used to delete an ACL.
 
         :param request: Request instance for DeleteAcl.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteAclRequest`
@@ -349,7 +349,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteInstancePre(self, request):
-        """This API is used to delete a monthly subscribed (prepaid) instance.
+        r"""This API is used to delete a monthly subscribed (prepaid) instance.
 
         :param request: Request instance for DeleteInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`
@@ -372,7 +372,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteRoute(self, request):
-        """This API is used to delete a route.
+        r"""This API is used to delete a route.
 
         :param request: Request instance for DeleteRoute.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteRouteRequest`
@@ -395,7 +395,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteRouteTriggerTime(self, request):
-        """This API is used to modify the delayed trigger time of route deletion.
+        r"""This API is used to modify the delayed trigger time of route deletion.
 
         :param request: Request instance for DeleteRouteTriggerTime.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteRouteTriggerTimeRequest`
@@ -418,7 +418,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopic(self, request):
-        """This API is used to delete a CKafka topic.
+        r"""This API is used to delete a CKafka topic.
 
         :param request: Request instance for DeleteTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicRequest`
@@ -441,7 +441,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteTopicIpWhiteList(self, request):
-        """This API is used to delete a topic IP allowlist.
+        r"""This API is used to delete a topic IP allowlist.
 
         :param request: Request instance for DeleteTopicIpWhiteList.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicIpWhiteListRequest`
@@ -464,7 +464,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete a user.
+        r"""This API is used to delete a user.
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteUserRequest`
@@ -487,7 +487,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeACL(self, request):
-        """This API is used to enumerate ACLs.
+        r"""This API is used to enumerate ACLs.
 
         :param request: Request instance for DescribeACL.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeACLRequest`
@@ -510,7 +510,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeAclRule(self, request):
-        """This API is used to query the ACL rule list.
+        r"""This API is used to query the ACL rule list.
 
         :param request: Request instance for DescribeAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAclRuleRequest`
@@ -533,7 +533,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeAppInfo(self, request):
-        """This API is used to query the user list.
+        r"""This API is used to query the user list.
 
         :param request: Request instance for DescribeAppInfo.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAppInfoRequest`
@@ -556,7 +556,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeCkafkaZone(self, request):
-        """This API is used to view the AZ list of Ckafka.
+        r"""This API is used to view the AZ list of Ckafka.
 
         :param request: Request instance for DescribeCkafkaZone.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeCkafkaZoneRequest`
@@ -579,7 +579,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConsumerGroup(self, request):
-        """This API is used to query consumer group information.
+        r"""This API is used to query consumer group information.
 
         :param request: Request instance for DescribeConsumerGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConsumerGroupRequest`
@@ -602,7 +602,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTopic(self, request):
-        """This API is used to get the DataHub topic attributes.
+        r"""This API is used to get the DataHub topic attributes.
 
         :param request: Request instance for DescribeDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicRequest`
@@ -625,7 +625,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTopics(self, request):
-        """This API is used to query the DataHub topic list.
+        r"""This API is used to query the DataHub topic list.
 
         :param request: Request instance for DescribeDatahubTopics.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsRequest`
@@ -648,7 +648,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroup(self, request):
-        """This API is used to enumerate consumer groups (simplified).
+        r"""This API is used to enumerate consumer groups (simplified).
 
         :param request: Request instance for DescribeGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupRequest`
@@ -671,7 +671,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroupInfo(self, request):
-        """This API is used to get consumer group information.
+        r"""This API is used to get consumer group information.
 
         :param request: Request instance for DescribeGroupInfo.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupInfoRequest`
@@ -694,7 +694,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeGroupOffsets(self, request):
-        """This API is used to get the consumer group offset.
+        r"""This API is used to get the consumer group offset.
 
         :param request: Request instance for DescribeGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeGroupOffsetsRequest`
@@ -717,7 +717,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstanceAttributes(self, request):
-        """This API is used to get instance attributes.
+        r"""This API is used to get instance attributes.
 
         :param request: Request instance for DescribeInstanceAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstanceAttributesRequest`
@@ -740,7 +740,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to get the list of CKafka instances under a user account.
+        r"""This API is used to get the list of CKafka instances under a user account.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstancesRequest`
@@ -763,7 +763,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeInstancesDetail(self, request):
-        """This API is used to get instance list details under a user account.
+        r"""This API is used to get instance list details under a user account.
 
         :param request: Request instance for DescribeInstancesDetail.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeInstancesDetailRequest`
@@ -786,7 +786,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRegion(self, request):
-        """This API is used to enumerate regions, and can be called only in Guangzhou.
+        r"""This API is used to enumerate regions, and can be called only in Guangzhou.
 
         :param request: Request instance for DescribeRegion.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRegionRequest`
@@ -809,7 +809,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRoute(self, request):
-        """This API is used to view route information.
+        r"""This API is used to view route information.
 
         :param request: Request instance for DescribeRoute.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRouteRequest`
@@ -832,7 +832,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTaskStatus(self, request):
-        """This API is used to query the task status.
+        r"""This API is used to query the task status.
 
         :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusRequest`
@@ -855,7 +855,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopic(self, request):
-        """API domain name: https://ckafka.tencentcloudapi.com
+        r"""API domain name: https://ckafka.tencentcloudapi.com
         This API is used to get the list of topics in a CKafka instance of a user.
 
         :param request: Request instance for DescribeTopic.
@@ -879,7 +879,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicAttributes(self, request):
-        """This API is used to get topic attributes.
+        r"""This API is used to get topic attributes.
 
         :param request: Request instance for DescribeTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicAttributesRequest`
@@ -902,7 +902,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicDetail(self, request):
-        """This API is used to get topic list details (only for call in the console).
+        r"""This API is used to get topic list details (only for call in the console).
 
         :param request: Request instance for DescribeTopicDetail.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicDetailRequest`
@@ -925,7 +925,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicProduceConnection(self, request):
-        """This API is used to query the connection information of the topic producer.
+        r"""This API is used to query the connection information of the topic producer.
 
         :param request: Request instance for DescribeTopicProduceConnection.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicProduceConnectionRequest`
@@ -948,7 +948,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicSubscribeGroup(self, request):
-        """This API is used to search and subscribe the message group information of a topic.
+        r"""This API is used to search and subscribe the message group information of a topic.
 
         :param request: Request instance for DescribeTopicSubscribeGroup.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicSubscribeGroupRequest`
@@ -971,7 +971,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeTopicSyncReplica(self, request):
-        """This API is used to get the details of a synced topic replica.
+        r"""This API is used to get the details of a synced topic replica.
 
         :param request: Request instance for DescribeTopicSyncReplica.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicSyncReplicaRequest`
@@ -994,7 +994,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeUser(self, request):
-        """This API is used to query user information.
+        r"""This API is used to query user information.
 
         :param request: Request instance for DescribeUser.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeUserRequest`
@@ -1017,7 +1017,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchMessageByOffset(self, request):
-        """This API is used to query messages based on a specified offset position.
+        r"""This API is used to query messages based on a specified offset position.
 
         :param request: Request instance for FetchMessageByOffset.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageByOffsetRequest`
@@ -1040,7 +1040,7 @@ class CkafkaClient(AbstractClient):
 
 
     def FetchMessageListByOffset(self, request):
-        """This API is used to query the message list based on an offset.
+        r"""This API is used to query the message list based on an offset.
 
         :param request: Request instance for FetchMessageListByOffset.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByOffsetRequest`
@@ -1063,7 +1063,7 @@ class CkafkaClient(AbstractClient):
 
 
     def InquireCkafkaPrice(self, request):
-        """This API is used to purchase a CKafka instance or query the instance renewal price.
+        r"""This API is used to purchase a CKafka instance or query the instance renewal price.
 
         :param request: Request instance for InquireCkafkaPrice.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceRequest`
@@ -1086,7 +1086,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyAclRule(self, request):
-        """This API is used to modify an ACL policy, and currently only supports specifying whether to apply the preset rule to new topics.
+        r"""This API is used to modify an ACL policy, and currently only supports specifying whether to apply the preset rule to new topics.
 
         :param request: Request instance for ModifyAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAclRuleRequest`
@@ -1109,7 +1109,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyDatahubTopic(self, request):
-        """This API is used to modify the DataHub topic attributes.
+        r"""This API is used to modify the DataHub topic attributes.
 
         :param request: Request instance for ModifyDatahubTopic.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicRequest`
@@ -1132,7 +1132,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyGroupOffsets(self, request):
-        """This API is used to set the consumer group (Groups) offset.
+        r"""This API is used to set the consumer group (Groups) offset.
 
         :param request: Request instance for ModifyGroupOffsets.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyGroupOffsetsRequest`
@@ -1155,7 +1155,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyInstanceAttributes(self, request):
-        """This API is used to set instance attributes.
+        r"""This API is used to set instance attributes.
 
         :param request: Request instance for ModifyInstanceAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesRequest`
@@ -1178,7 +1178,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyInstancePre(self, request):
-        """This API is used to change the configurations of a prepaid instance, such as disk capacity and bandwidth.
+        r"""This API is used to change the configurations of a prepaid instance, such as disk capacity and bandwidth.
 
         :param request: Request instance for ModifyInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstancePreRequest`
@@ -1201,7 +1201,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyPassword(self, request):
-        """This API is used to change the password.
+        r"""This API is used to change the password.
 
         :param request: Request instance for ModifyPassword.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyPasswordRequest`
@@ -1224,7 +1224,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyTopicAttributes(self, request):
-        """This API is used to modify topic attributes.
+        r"""This API is used to modify topic attributes.
 
         :param request: Request instance for ModifyTopicAttributes.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyTopicAttributesRequest`
@@ -1247,7 +1247,7 @@ class CkafkaClient(AbstractClient):
 
 
     def SendMessage(self, request):
-        """This API is used to send messages through the HTTP access layer.
+        r"""This API is used to send messages through the HTTP access layer.
 
         :param request: Request instance for SendMessage.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.SendMessageRequest`

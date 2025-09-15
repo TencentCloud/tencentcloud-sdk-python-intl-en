@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class SendEmailRequest(AbstractModel):
-    """SendEmail request structure.
+    r"""SendEmail request structure.
 
     """
 
@@ -50,7 +50,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def FromAddress(self):
-        """Sender
+        r"""Sender
         :rtype: str
         """
         return self._FromAddress
@@ -61,7 +61,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def ToAddress(self):
-        """Recipient
+        r"""Recipient
         :rtype: str
         """
         return self._ToAddress
@@ -72,7 +72,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        """Email summary
+        r"""Email summary
         :rtype: str
         """
         return self._Subject
@@ -83,7 +83,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def FromName(self):
-        """Sender name
+        r"""Sender name
         :rtype: str
         """
         return self._FromName
@@ -94,7 +94,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def ReplyAddress(self):
-        """Reply-to address
+        r"""Reply-to address
         :rtype: str
         """
         return self._ReplyAddress
@@ -105,7 +105,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def HtmlContent(self):
-        """The body of an HTML email
+        r"""The body of an HTML email
         :rtype: str
         """
         return self._HtmlContent
@@ -116,7 +116,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def TextContent(self):
-        """The body of a plain-text email
+        r"""The body of a plain-text email
         :rtype: str
         """
         return self._TextContent
@@ -145,7 +145,7 @@ class SendEmailRequest(AbstractModel):
 
 
 class SendEmailResponse(AbstractModel):
-    """SendEmail response structure.
+    r"""SendEmail response structure.
 
     """
 
@@ -161,7 +161,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def Result(self):
-        """The result of creating an email task
+        r"""The result of creating an email task
         :rtype: bool
         """
         return self._Result
@@ -172,7 +172,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -188,7 +188,7 @@ class SendEmailResponse(AbstractModel):
 
 
 class SendTemplatedEmailRequest(AbstractModel):
-    """SendTemplatedEmail request structure.
+    r"""SendTemplatedEmail request structure.
 
     """
 
@@ -216,7 +216,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def FromAddress(self):
-        """Sender address.
+        r"""Sender address.
         :rtype: str
         """
         return self._FromAddress
@@ -227,7 +227,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def ToAddress(self):
-        """Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
+        r"""Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
         :rtype: str
         """
         return self._ToAddress
@@ -238,7 +238,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        """The name of the template created in advance.
+        r"""The name of the template created in advance.
         :rtype: str
         """
         return self._TemplateName
@@ -249,7 +249,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def TemplateValue(self):
-        """Template variable value, which is a JSON string.
+        r"""Template variable value, which is a JSON string.
         :rtype: str
         """
         return self._TemplateValue
@@ -260,7 +260,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def FromName(self):
-        """Sender name.
+        r"""Sender name.
         :rtype: str
         """
         return self._FromName
@@ -271,7 +271,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def ReplyAddress(self):
-        """Reply-to address.
+        r"""Reply-to address.
         :rtype: str
         """
         return self._ReplyAddress
@@ -299,7 +299,7 @@ class SendTemplatedEmailRequest(AbstractModel):
 
 
 class SendTemplatedEmailResponse(AbstractModel):
-    """SendTemplatedEmail response structure.
+    r"""SendTemplatedEmail response structure.
 
     """
 
@@ -315,7 +315,7 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     @property
     def Result(self):
-        """The result of creating a template email task
+        r"""The result of creating a template email task
         :rtype: bool
         """
         return self._Result
@@ -326,7 +326,7 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

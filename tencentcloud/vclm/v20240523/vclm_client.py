@@ -27,7 +27,7 @@ class VclmClient(AbstractClient):
 
 
     def DescribeImageAnimateJob(self, request):
-        """This API is used to query image animation tasks. The image animation feature supports generating videos based on dance movements and images to meet the needs of scenarios such as social entertainment and interactive marketing.
+        r"""This API is used to query image animation tasks. The image animation feature supports generating videos based on dance movements and images to meet the needs of scenarios such as social entertainment and interactive marketing.
 
         :param request: Request instance for DescribeImageAnimateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeImageAnimateJobRequest`
@@ -50,7 +50,7 @@ class VclmClient(AbstractClient):
 
 
     def SubmitImageAnimateJob(self, request):
-        """This API is used to submit image animation tasks. The image animation feature supports generating videos based on dance movements and images to meet the needs of scenarios such as social entertainment and interactive marketing.
+        r"""This API is used to submit image animation tasks. The image animation feature supports generating videos based on dance movements and images to meet the needs of scenarios such as social entertainment and interactive marketing.
 
         :param request: Request instance for SubmitImageAnimateJob.
         :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageAnimateJobRequest`

@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICallConfig(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -44,7 +44,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceInteract(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._EnableVoiceInteract
@@ -55,7 +55,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableVoiceCall(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._EnableVoiceCall
@@ -66,7 +66,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def EnableDigitalHuman(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._EnableDigitalHuman
@@ -77,7 +77,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def Voice(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.lke.v20231130.models.VoiceConfig`
         """
         return self._Voice
@@ -88,7 +88,7 @@ class AICallConfig(AbstractModel):
 
     @property
     def DigitalHuman(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.lke.v20231130.models.DigitalHumanConfig`
         """
         return self._DigitalHuman
@@ -119,7 +119,7 @@ class AICallConfig(AbstractModel):
 
 
 class AgentDebugInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -135,7 +135,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Input(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Input
@@ -146,7 +146,7 @@ class AgentDebugInfo(AbstractModel):
 
     @property
     def Output(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Output
@@ -170,7 +170,7 @@ class AgentDebugInfo(AbstractModel):
 
 
 class AgentProcedure(AbstractModel):
-    """Process information of the thought event.
+    r"""Process information of the thought event.
 
     """
 
@@ -222,7 +222,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Index(self):
-        """Index.
+        r"""Index.
         :rtype: int
         """
         return self._Index
@@ -233,7 +233,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Name(self):
-        """English name of the execution process.
+        r"""English name of the execution process.
         :rtype: str
         """
         return self._Name
@@ -244,7 +244,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Title(self):
-        """Chinese name for display.
+        r"""Chinese name for display.
         :rtype: str
         """
         return self._Title
@@ -255,7 +255,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Status(self):
-        """Status constant: processing; success; failed.
+        r"""Status constant: processing; success; failed.
         :rtype: str
         """
         return self._Status
@@ -266,7 +266,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Icon(self):
-        """Icon.
+        r"""Icon.
         :rtype: str
         """
         return self._Icon
@@ -277,7 +277,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Debugging(self):
-        """Agent debugging information.
+        r"""Agent debugging information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentProcedureDebugging`
         """
         return self._Debugging
@@ -288,7 +288,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Switch(self):
-        """Whether to switch to Agent. The value can be "main" or "workflow". Leave it blank for no switch.
+        r"""Whether to switch to Agent. The value can be "main" or "workflow". Leave it blank for no switch.
         :rtype: str
         """
         return self._Switch
@@ -299,7 +299,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def WorkflowName(self):
-        """Workflow name.
+        r"""Workflow name.
         :rtype: str
         """
         return self._WorkflowName
@@ -310,7 +310,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def Elapsed(self):
-        """Current request execution time, in milliseconds.
+        r"""Current request execution time, in milliseconds.
         :rtype: int
         """
         return self._Elapsed
@@ -321,7 +321,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def NodeName(self):
-        """Workflow node name.
+        r"""Workflow node name.
         :rtype: str
         """
         return self._NodeName
@@ -332,7 +332,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def ReplyIndex(self):
-        """Used to display in which reply bubble the thoughts are placed.
+        r"""Used to display in which reply bubble the thoughts are placed.
         :rtype: int
         """
         return self._ReplyIndex
@@ -343,7 +343,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def SourceAgentName(self):
-        """Main agent.
+        r"""Main agent.
         :rtype: str
         """
         return self._SourceAgentName
@@ -354,7 +354,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def TargetAgentName(self):
-        """Registration agent.
+        r"""Registration agent.
         :rtype: str
         """
         return self._TargetAgentName
@@ -365,7 +365,7 @@ class AgentProcedure(AbstractModel):
 
     @property
     def AgentIcon(self):
-        """Icon of Agent.
+        r"""Icon of Agent.
         :rtype: str
         """
         return self._AgentIcon
@@ -403,7 +403,7 @@ class AgentProcedure(AbstractModel):
 
 
 class AgentProcedureDebugging(AbstractModel):
-    """Debugging information of the agent thinking process.
+    r"""Debugging information of the agent thinking process.
 
     """
 
@@ -437,7 +437,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def Content(self):
-        """Model thinking content.
+        r"""Model thinking content.
         :rtype: str
         """
         return self._Content
@@ -448,7 +448,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def DisplayContent(self):
-        """The specific text content to be displayed.
+        r"""The specific text content to be displayed.
         :rtype: str
         """
         return self._DisplayContent
@@ -459,7 +459,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def DisplayType(self):
-        """Display type.
+        r"""Display type.
         :rtype: int
         """
         return self._DisplayType
@@ -470,7 +470,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def QuoteInfos(self):
-        """Index displayed by the search engine.
+        r"""Index displayed by the search engine.
         :rtype: list of QuoteInfo
         """
         return self._QuoteInfos
@@ -481,7 +481,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def References(self):
-        """Specific reference source.
+        r"""Specific reference source.
         :rtype: list of AgentReference
         """
         return self._References
@@ -492,7 +492,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def DisplayStatus(self):
-        """Display the ongoing status.
+        r"""Display the ongoing status.
         :rtype: str
         """
         return self._DisplayStatus
@@ -503,7 +503,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def SandboxUrl(self):
-        """URL of cloud desktop.
+        r"""URL of cloud desktop.
         :rtype: str
         """
         return self._SandboxUrl
@@ -514,7 +514,7 @@ class AgentProcedureDebugging(AbstractModel):
 
     @property
     def DisplayUrl(self):
-        """URL opened through the browser in cloud desktop.
+        r"""URL opened through the browser in cloud desktop.
         :rtype: str
         """
         return self._DisplayUrl
@@ -554,7 +554,7 @@ class AgentProcedureDebugging(AbstractModel):
 
 
 class AgentReference(AbstractModel):
-    """Reference source in agent.
+    r"""Reference source in agent.
 
     """
 
@@ -594,7 +594,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocId(self):
-        """Source document ID.
+        r"""Source document ID.
         :rtype: str
         """
         return self._DocId
@@ -605,7 +605,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Id(self):
-        """ID.
+        r"""ID.
         :rtype: str
         """
         return self._Id
@@ -616,7 +616,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -627,7 +627,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Type(self):
-        """Type.
+        r"""Type.
         :rtype: int
         """
         return self._Type
@@ -638,7 +638,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Url(self):
-        """URL.
+        r"""URL.
         :rtype: str
         """
         return self._Url
@@ -649,7 +649,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document business ID.
+        r"""Document business ID.
         :rtype: str
         """
         return self._DocBizId
@@ -660,7 +660,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocName(self):
-        """Document name.
+        r"""Document name.
         :rtype: str
         """
         return self._DocName
@@ -671,7 +671,7 @@ class AgentReference(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A business ID.
+        r"""Q&A business ID.
         :rtype: str
         """
         return self._QaBizId
@@ -682,7 +682,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Index(self):
-        """Index of search engine.
+        r"""Index of search engine.
         :rtype: int
         """
         return self._Index
@@ -693,7 +693,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Title(self):
-        """Title.
+        r"""Title.
         :rtype: str
         """
         return self._Title
@@ -725,7 +725,7 @@ class AgentReference(AbstractModel):
 
 
 class AgentThought(AbstractModel):
-    """The thinking process of Agent.
+    r"""The thinking process of Agent.
 
     """
 
@@ -762,7 +762,7 @@ class AgentThought(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -773,7 +773,7 @@ class AgentThought(AbstractModel):
 
     @property
     def RequestId(self):
-        """Request ID
+        r"""Request ID
         :rtype: str
         """
         return self._RequestId
@@ -784,7 +784,7 @@ class AgentThought(AbstractModel):
 
     @property
     def RecordId(self):
-        """It corresponds to a session, session ID, used for message storage in answering. It can be generated in advance and used when saving messages.
+        r"""It corresponds to a session, session ID, used for message storage in answering. It can be generated in advance and used when saving messages.
         :rtype: str
         """
         return self._RecordId
@@ -795,7 +795,7 @@ class AgentThought(AbstractModel):
 
     @property
     def Elapsed(self):
-        """Current request execution time, in milliseconds.
+        r"""Current request execution time, in milliseconds.
         :rtype: int
         """
         return self._Elapsed
@@ -806,7 +806,7 @@ class AgentThought(AbstractModel):
 
     @property
     def IsWorkflow(self):
-        """Whether it is a workflow currently.
+        r"""Whether it is a workflow currently.
         :rtype: bool
         """
         return self._IsWorkflow
@@ -817,7 +817,7 @@ class AgentThought(AbstractModel):
 
     @property
     def WorkflowName(self):
-        """If it is a workflow, workflow name.
+        r"""If it is a workflow, workflow name.
         :rtype: str
         """
         return self._WorkflowName
@@ -828,7 +828,7 @@ class AgentThought(AbstractModel):
 
     @property
     def Procedures(self):
-        """Detailed thinking process.
+        r"""Detailed thinking process.
         :rtype: list of AgentProcedure
         """
         return self._Procedures
@@ -839,7 +839,7 @@ class AgentThought(AbstractModel):
 
     @property
     def TraceId(self):
-        """TraceId.
+        r"""TraceId.
         :rtype: str
         """
         return self._TraceId
@@ -850,7 +850,7 @@ class AgentThought(AbstractModel):
 
     @property
     def Files(self):
-        """File information
+        r"""File information
         :rtype: list of FileInfo
         """
         return self._Files
@@ -891,7 +891,7 @@ class AgentThought(AbstractModel):
 
 
 class ApiVarAttrInfo(AbstractModel):
-    """Data of custom variable and label relationship.
+    r"""Data of custom variable and label relationship.
 
     """
 
@@ -907,7 +907,7 @@ class ApiVarAttrInfo(AbstractModel):
 
     @property
     def ApiVarId(self):
-        """Custom variable ID.
+        r"""Custom variable ID.
         :rtype: str
         """
         return self._ApiVarId
@@ -918,7 +918,7 @@ class ApiVarAttrInfo(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttrBizId
@@ -942,7 +942,7 @@ class ApiVarAttrInfo(AbstractModel):
 
 
 class AppConfig(AbstractModel):
-    """Application configuration.
+    r"""Application configuration.
 
     """
 
@@ -961,7 +961,7 @@ class AppConfig(AbstractModel):
 
     @property
     def KnowledgeQa(self):
-        """Knowledge Q&A management application configuration
+        r"""Knowledge Q&A management application configuration
         :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaConfig`
         """
         return self._KnowledgeQa
@@ -972,7 +972,7 @@ class AppConfig(AbstractModel):
 
     @property
     def Summary(self):
-        """Knowledge summary application configuration.
+        r"""Knowledge summary application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.SummaryConfig`
         """
         return self._Summary
@@ -983,7 +983,7 @@ class AppConfig(AbstractModel):
 
     @property
     def Classify(self):
-        """Label extraction application configuration.
+        r"""Label extraction application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ClassifyConfig`
         """
         return self._Classify
@@ -1014,7 +1014,7 @@ class AppConfig(AbstractModel):
 
 
 class AppInfo(AbstractModel):
-    """Application details
+    r"""Application details
 
     """
 
@@ -1066,7 +1066,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -1077,7 +1077,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppTypeDesc(self):
-        """Application type description.
+        r"""Application type description.
         :rtype: str
         """
         return self._AppTypeDesc
@@ -1088,7 +1088,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -1099,7 +1099,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._Name
@@ -1110,7 +1110,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Avatar(self):
-        """Application avatar.
+        r"""Application avatar.
         :rtype: str
         """
         return self._Avatar
@@ -1121,7 +1121,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Desc(self):
-        """Application description.
+        r"""Application description.
         :rtype: str
         """
         return self._Desc
@@ -1132,7 +1132,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppStatus(self):
-        """Application status. 1: offline; 2: running; 3: disabled.
+        r"""Application status. 1: offline; 2: running; 3: disabled.
         :rtype: int
         """
         return self._AppStatus
@@ -1143,7 +1143,7 @@ class AppInfo(AbstractModel):
 
     @property
     def AppStatusDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._AppStatusDesc
@@ -1154,7 +1154,7 @@ class AppInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -1165,7 +1165,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Operator(self):
-        """Last modifier.
+        r"""Last modifier.
         :rtype: str
         """
         return self._Operator
@@ -1176,7 +1176,7 @@ class AppInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._ModelName
@@ -1187,7 +1187,7 @@ class AppInfo(AbstractModel):
 
     @property
     def ModelAliasName(self):
-        """Alias of the generative model.
+        r"""Alias of the generative model.
         :rtype: str
         """
         return self._ModelAliasName
@@ -1198,7 +1198,7 @@ class AppInfo(AbstractModel):
 
     @property
     def Pattern(self):
-        """Application mode: standard; agent; single_workflow.
+        r"""Application mode: standard; agent; single_workflow.
         :rtype: str
         """
         return self._Pattern
@@ -1209,7 +1209,7 @@ class AppInfo(AbstractModel):
 
     @property
     def ThoughtModelAliasName(self):
-        """Alias of the thought model.
+        r"""Alias of the thought model.
         :rtype: str
         """
         return self._ThoughtModelAliasName
@@ -1245,7 +1245,7 @@ class AppInfo(AbstractModel):
 
 
 class AppModel(AbstractModel):
-    """Application model configuration.
+    r"""Application model configuration.
 
     """
 
@@ -1288,7 +1288,7 @@ class AppModel(AbstractModel):
 
     @property
     def Name(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._Name
@@ -1299,7 +1299,7 @@ class AppModel(AbstractModel):
 
     @property
     def Desc(self):
-        """Model description.
+        r"""Model description.
         :rtype: str
         """
         return self._Desc
@@ -1310,7 +1310,7 @@ class AppModel(AbstractModel):
 
     @property
     def ContextLimit(self):
-        """The round referenced by the context.
+        r"""The round referenced by the context.
         :rtype: int
         """
         return self._ContextLimit
@@ -1321,7 +1321,7 @@ class AppModel(AbstractModel):
 
     @property
     def AliasName(self):
-        """Model alias.
+        r"""Model alias.
         :rtype: str
         """
         return self._AliasName
@@ -1332,7 +1332,7 @@ class AppModel(AbstractModel):
 
     @property
     def TokenBalance(self):
-        """Remaining token quota.
+        r"""Remaining token quota.
         :rtype: float
         """
         return self._TokenBalance
@@ -1343,7 +1343,7 @@ class AppModel(AbstractModel):
 
     @property
     def IsUseContext(self):
-        """Whether to use the round referenced by the context.
+        r"""Whether to use the round referenced by the context.
         :rtype: bool
         """
         return self._IsUseContext
@@ -1354,7 +1354,7 @@ class AppModel(AbstractModel):
 
     @property
     def HistoryLimit(self):
-        """The number of context memory rounds.
+        r"""The number of context memory rounds.
         :rtype: int
         """
         return self._HistoryLimit
@@ -1365,7 +1365,7 @@ class AppModel(AbstractModel):
 
     @property
     def UsageType(self):
-        """Usage type.
+        r"""Usage type.
         :rtype: str
         """
         return self._UsageType
@@ -1376,7 +1376,7 @@ class AppModel(AbstractModel):
 
     @property
     def Temperature(self):
-        """Model temperature.
+        r"""Model temperature.
         :rtype: str
         """
         return self._Temperature
@@ -1387,7 +1387,7 @@ class AppModel(AbstractModel):
 
     @property
     def TopP(self):
-        """Model TopP.
+        r"""Model TopP.
         :rtype: str
         """
         return self._TopP
@@ -1398,7 +1398,7 @@ class AppModel(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """Model resource status: 1: available; 2: exhausted.
+        r"""Model resource status: 1: available; 2: exhausted.
         :rtype: int
         """
         return self._ResourceStatus
@@ -1431,7 +1431,7 @@ class AppModel(AbstractModel):
 
 
 class AttrLabel(AbstractModel):
-    """Label details.
+    r"""Label details.
 
     """
 
@@ -1456,7 +1456,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def Source(self):
-        """Label source.
+        r"""Label source.
         :rtype: int
         """
         return self._Source
@@ -1467,7 +1467,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttrBizId
@@ -1478,7 +1478,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrKey(self):
-        """Label identification.
+        r"""Label identification.
         :rtype: str
         """
         return self._AttrKey
@@ -1489,7 +1489,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def AttrName(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._AttrName
@@ -1500,7 +1500,7 @@ class AttrLabel(AbstractModel):
 
     @property
     def Labels(self):
-        """Label value.
+        r"""Label value.
         :rtype: list of Label
         """
         return self._Labels
@@ -1532,7 +1532,7 @@ class AttrLabel(AbstractModel):
 
 
 class AttrLabelDetail(AbstractModel):
-    """Label details.
+    r"""Label details.
 
     """
 
@@ -1566,7 +1566,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttrBizId
@@ -1577,7 +1577,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrKey(self):
-        """Label identification.
+        r"""Label identification.
         :rtype: str
         """
         return self._AttrKey
@@ -1588,7 +1588,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def AttrName(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._AttrName
@@ -1599,7 +1599,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def LabelNames(self):
-        """Label value name.
+        r"""Label value name.
         :rtype: list of str
         """
         return self._LabelNames
@@ -1610,7 +1610,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def IsUpdating(self):
-        """Whether the label is being updated.
+        r"""Whether the label is being updated.
         :rtype: bool
         """
         return self._IsUpdating
@@ -1621,7 +1621,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Status
@@ -1632,7 +1632,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -1643,7 +1643,7 @@ class AttrLabelDetail(AbstractModel):
 
     @property
     def LabelTotalCount(self):
-        """Total number of label values.
+        r"""Total number of label values.
         :rtype: str
         """
         return self._LabelTotalCount
@@ -1673,7 +1673,7 @@ class AttrLabelDetail(AbstractModel):
 
 
 class AttrLabelRefer(AbstractModel):
-    """Label reference information.
+    r"""Label reference information.
 
     """
 
@@ -1692,7 +1692,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def Source(self):
-        """Label source, 1: label.
+        r"""Label source, 1: label.
         :rtype: int
         """
         return self._Source
@@ -1703,7 +1703,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttributeBizId
@@ -1714,7 +1714,7 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def LabelBizIds(self):
-        """Label value ID.
+        r"""Label value ID.
         :rtype: list of str
         """
         return self._LabelBizIds
@@ -1739,7 +1739,7 @@ class AttrLabelRefer(AbstractModel):
 
 
 class AttributeFilters(AbstractModel):
-    """Export knowledge label filter.
+    r"""Export knowledge label filter.
 
     """
 
@@ -1752,7 +1752,7 @@ class AttributeFilters(AbstractModel):
 
     @property
     def Query(self):
-        """Retrieve, attribute or label name.
+        r"""Retrieve, attribute or label name.
         :rtype: str
         """
         return self._Query
@@ -1775,7 +1775,7 @@ class AttributeFilters(AbstractModel):
 
 
 class AttributeLabel(AbstractModel):
-    """Label value.
+    r"""Label value.
 
     """
 
@@ -1794,7 +1794,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def LabelBizId(self):
-        """Standard word ID.
+        r"""Standard word ID.
         :rtype: str
         """
         return self._LabelBizId
@@ -1805,7 +1805,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def LabelName(self):
-        """Standard word name.
+        r"""Standard word name.
         :rtype: str
         """
         return self._LabelName
@@ -1816,7 +1816,7 @@ class AttributeLabel(AbstractModel):
 
     @property
     def SimilarLabels(self):
-        """Synonym name.
+        r"""Synonym name.
         :rtype: list of str
         """
         return self._SimilarLabels
@@ -1841,7 +1841,7 @@ class AttributeLabel(AbstractModel):
 
 
 class BaseConfig(AbstractModel):
-    """Application basic configuration.
+    r"""Application basic configuration.
 
     """
 
@@ -1860,7 +1860,7 @@ class BaseConfig(AbstractModel):
 
     @property
     def Name(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._Name
@@ -1871,7 +1871,7 @@ class BaseConfig(AbstractModel):
 
     @property
     def Avatar(self):
-        """Application avatar url, required as an input parameter in "CreateApp" and "ModifyApp". Description of input parameter: 1. The image of input URL must be jpeg or png, with a size no more than 500kb, and the URL must allow head requests. 2. If the user does not have object storage, use the "Obtain temporary file upload key" (DescribeStorageCredential) API to obtain the COS temporary key and upload path. Upload the avatar to COS by yourself and get the access link.
+        r"""Application avatar url, required as an input parameter in "CreateApp" and "ModifyApp". Description of input parameter: 1. The image of input URL must be jpeg or png, with a size no more than 500kb, and the URL must allow head requests. 2. If the user does not have object storage, use the "Obtain temporary file upload key" (DescribeStorageCredential) API to obtain the COS temporary key and upload path. Upload the avatar to COS by yourself and get the access link.
         :rtype: str
         """
         return self._Avatar
@@ -1882,7 +1882,7 @@ class BaseConfig(AbstractModel):
 
     @property
     def Desc(self):
-        """Application description.
+        r"""Application description.
         :rtype: str
         """
         return self._Desc
@@ -1907,7 +1907,7 @@ class BaseConfig(AbstractModel):
 
 
 class CallDetail(AbstractModel):
-    """Call type.
+    r"""Call type.
 
     """
 
@@ -1953,7 +1953,7 @@ class CallDetail(AbstractModel):
 
     @property
     def Id(self):
-        """Associated ID.
+        r"""Associated ID.
         :rtype: str
         """
         return self._Id
@@ -1964,7 +1964,7 @@ class CallDetail(AbstractModel):
 
     @property
     def CallTime(self):
-        """Call time.
+        r"""Call time.
         :rtype: str
         """
         return self._CallTime
@@ -1975,7 +1975,7 @@ class CallDetail(AbstractModel):
 
     @property
     def TotalTokenUsage(self):
-        """Total token consumption.
+        r"""Total token consumption.
         :rtype: float
         """
         return self._TotalTokenUsage
@@ -1986,7 +1986,7 @@ class CallDetail(AbstractModel):
 
     @property
     def InputTokenUsage(self):
-        """Token consumption for input.
+        r"""Token consumption for input.
         :rtype: float
         """
         return self._InputTokenUsage
@@ -1997,7 +1997,7 @@ class CallDetail(AbstractModel):
 
     @property
     def OutputTokenUsage(self):
-        """Token consumption for output.
+        r"""Token consumption for output.
         :rtype: float
         """
         return self._OutputTokenUsage
@@ -2008,7 +2008,7 @@ class CallDetail(AbstractModel):
 
     @property
     def SearchUsage(self):
-        """Number of search service calls.
+        r"""Number of search service calls.
         :rtype: int
         """
         return self._SearchUsage
@@ -2019,7 +2019,7 @@ class CallDetail(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._ModelName
@@ -2030,7 +2030,7 @@ class CallDetail(AbstractModel):
 
     @property
     def CallType(self):
-        """Call type.
+        r"""Call type.
         :rtype: str
         """
         return self._CallType
@@ -2041,7 +2041,7 @@ class CallDetail(AbstractModel):
 
     @property
     def UinAccount(self):
-        """Account.
+        r"""Account.
         :rtype: str
         """
         return self._UinAccount
@@ -2052,7 +2052,7 @@ class CallDetail(AbstractModel):
 
     @property
     def AppName(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._AppName
@@ -2063,7 +2063,7 @@ class CallDetail(AbstractModel):
 
     @property
     def PageUsage(self):
-        """Total number of consumed pages.
+        r"""Total number of consumed pages.
         :rtype: int
         """
         return self._PageUsage
@@ -2074,7 +2074,7 @@ class CallDetail(AbstractModel):
 
     @property
     def SubScene(self):
-        """Filter sub-scenario.
+        r"""Filter sub-scenario.
         :rtype: str
         """
         return self._SubScene
@@ -2108,7 +2108,7 @@ class CallDetail(AbstractModel):
 
 
 class CateInfo(AbstractModel):
-    """Category information.
+    r"""Category information.
 
     """
 
@@ -2139,7 +2139,7 @@ class CateInfo(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -2150,7 +2150,7 @@ class CateInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
         :rtype: str
         """
         return self._Name
@@ -2161,7 +2161,7 @@ class CateInfo(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity of records (such as documents, synonyms, etc.) under the category.
+        r"""Quantity of records (such as documents, synonyms, etc.) under the category.
         :rtype: int
         """
         return self._Total
@@ -2172,7 +2172,7 @@ class CateInfo(AbstractModel):
 
     @property
     def CanAdd(self):
-        """Whether it is possible to add.
+        r"""Whether it is possible to add.
         :rtype: bool
         """
         return self._CanAdd
@@ -2183,7 +2183,7 @@ class CateInfo(AbstractModel):
 
     @property
     def CanEdit(self):
-        """Whether it can be edited.
+        r"""Whether it can be edited.
         :rtype: bool
         """
         return self._CanEdit
@@ -2194,7 +2194,7 @@ class CateInfo(AbstractModel):
 
     @property
     def CanDelete(self):
-        """Whether it can be deleted.
+        r"""Whether it can be deleted.
         :rtype: bool
         """
         return self._CanDelete
@@ -2205,7 +2205,7 @@ class CateInfo(AbstractModel):
 
     @property
     def Children(self):
-        """Subcategory.
+        r"""Subcategory.
         :rtype: list of CateInfo
         """
         return self._Children
@@ -2239,7 +2239,7 @@ class CateInfo(AbstractModel):
 
 
 class CheckAttributeLabelExistRequest(AbstractModel):
-    """CheckAttributeLabelExist request structure.
+    r"""CheckAttributeLabelExist request structure.
 
     """
 
@@ -2267,7 +2267,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -2278,7 +2278,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LabelName(self):
-        """Attribute name.
+        r"""Attribute name.
         :rtype: str
         """
         return self._LabelName
@@ -2289,7 +2289,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """Attribute ID.
+        r"""Attribute ID.
         :rtype: str
         """
         return self._AttributeBizId
@@ -2300,7 +2300,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to the user's root account (required in integrator mode).
+        r"""Log in to the user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -2311,7 +2311,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to the user's sub-account (required in integrator mode).
+        r"""Log in to the user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -2322,7 +2322,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
     @property
     def LastLabelBizId(self):
-        """Scroll loading, the last attribute label ID.
+        r"""Scroll loading, the last attribute label ID.
         :rtype: str
         """
         return self._LastLabelBizId
@@ -2350,7 +2350,7 @@ class CheckAttributeLabelExistRequest(AbstractModel):
 
 
 class CheckAttributeLabelExistResponse(AbstractModel):
-    """CheckAttributeLabelExist response structure.
+    r"""CheckAttributeLabelExist response structure.
 
     """
 
@@ -2366,7 +2366,7 @@ class CheckAttributeLabelExistResponse(AbstractModel):
 
     @property
     def IsExist(self):
-        """Whether it exists.
+        r"""Whether it exists.
         :rtype: bool
         """
         return self._IsExist
@@ -2377,7 +2377,7 @@ class CheckAttributeLabelExistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2393,7 +2393,7 @@ class CheckAttributeLabelExistResponse(AbstractModel):
 
 
 class CheckAttributeLabelReferRequest(AbstractModel):
-    """CheckAttributeLabelRefer request structure.
+    r"""CheckAttributeLabelRefer request structure.
 
     """
 
@@ -2418,7 +2418,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -2429,7 +2429,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in integrator mode).
+        r"""Log in to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -2440,7 +2440,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to user's sub-account (required in integrator mode).
+        r"""Log in to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -2451,7 +2451,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def LabelBizId(self):
-        """Attribute label.
+        r"""Attribute label.
         :rtype: str
         """
         return self._LabelBizId
@@ -2462,7 +2462,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """Attribute ID.
+        r"""Attribute ID.
         :rtype: list of str
         """
         return self._AttributeBizId
@@ -2489,7 +2489,7 @@ class CheckAttributeLabelReferRequest(AbstractModel):
 
 
 class CheckAttributeLabelReferResponse(AbstractModel):
-    """CheckAttributeLabelRefer response structure.
+    r"""CheckAttributeLabelRefer response structure.
 
     """
 
@@ -2505,7 +2505,7 @@ class CheckAttributeLabelReferResponse(AbstractModel):
 
     @property
     def IsRefer(self):
-        """Whether to reference.
+        r"""Whether to reference.
         :rtype: bool
         """
         return self._IsRefer
@@ -2516,7 +2516,7 @@ class CheckAttributeLabelReferResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2532,7 +2532,7 @@ class CheckAttributeLabelReferResponse(AbstractModel):
 
 
 class ClassifyConfig(AbstractModel):
-    """Label extraction configuration.
+    r"""Label extraction configuration.
 
     """
 
@@ -2551,7 +2551,7 @@ class ClassifyConfig(AbstractModel):
 
     @property
     def Model(self):
-        """Model configuration.
+        r"""Model configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
         return self._Model
@@ -2562,7 +2562,7 @@ class ClassifyConfig(AbstractModel):
 
     @property
     def Labels(self):
-        """Label list.
+        r"""Label list.
         :rtype: list of ClassifyLabel
         """
         return self._Labels
@@ -2573,7 +2573,7 @@ class ClassifyConfig(AbstractModel):
 
     @property
     def Greeting(self):
-        """Welcome words, within 200 characters.
+        r"""Welcome words, within 200 characters.
         :rtype: str
         """
         return self._Greeting
@@ -2605,7 +2605,7 @@ class ClassifyConfig(AbstractModel):
 
 
 class ClassifyLabel(AbstractModel):
-    """Label information.
+    r"""Label information.
 
     """
 
@@ -2624,7 +2624,7 @@ class ClassifyLabel(AbstractModel):
 
     @property
     def Name(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._Name
@@ -2635,7 +2635,7 @@ class ClassifyLabel(AbstractModel):
 
     @property
     def Description(self):
-        """Label description.
+        r"""Label description.
         :rtype: str
         """
         return self._Description
@@ -2646,7 +2646,7 @@ class ClassifyLabel(AbstractModel):
 
     @property
     def Values(self):
-        """Label value range.
+        r"""Label value range.
         :rtype: list of str
         """
         return self._Values
@@ -2671,7 +2671,7 @@ class ClassifyLabel(AbstractModel):
 
 
 class Context(AbstractModel):
-    """Obtain response of unsatisfied reply context.
+    r"""Obtain response of unsatisfied reply context.
 
     """
 
@@ -2702,7 +2702,7 @@ class Context(AbstractModel):
 
     @property
     def RecordBizId(self):
-        """Message record ID.
+        r"""Message record ID.
         :rtype: str
         """
         return self._RecordBizId
@@ -2713,7 +2713,7 @@ class Context(AbstractModel):
 
     @property
     def IsVisitor(self):
-        """Whether it is a user.
+        r"""Whether it is a user.
         :rtype: bool
         """
         return self._IsVisitor
@@ -2724,7 +2724,7 @@ class Context(AbstractModel):
 
     @property
     def NickName(self):
-        """Nickname.
+        r"""Nickname.
         :rtype: str
         """
         return self._NickName
@@ -2735,7 +2735,7 @@ class Context(AbstractModel):
 
     @property
     def Avatar(self):
-        """Avatar.
+        r"""Avatar.
         :rtype: str
         """
         return self._Avatar
@@ -2746,7 +2746,7 @@ class Context(AbstractModel):
 
     @property
     def Content(self):
-        """Message content.
+        r"""Message content.
         :rtype: str
         """
         return self._Content
@@ -2757,7 +2757,7 @@ class Context(AbstractModel):
 
     @property
     def FileInfos(self):
-        """Document information.
+        r"""Document information.
         :rtype: list of MsgFileInfo
         """
         return self._FileInfos
@@ -2768,7 +2768,7 @@ class Context(AbstractModel):
 
     @property
     def ReplyMethod(self):
-        """Response method, 15: clarification confirmation response.
+        r"""Response method, 15: clarification confirmation response.
         :rtype: int
         """
         return self._ReplyMethod
@@ -2802,7 +2802,7 @@ class Context(AbstractModel):
 
 
 class CreateAppRequest(AbstractModel):
-    """CreateApp request structure.
+    r"""CreateApp request structure.
 
     """
 
@@ -2818,7 +2818,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge qa management.
+        r"""Application type; knowledge_qa - knowledge qa management.
         :rtype: str
         """
         return self._AppType
@@ -2829,7 +2829,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def BaseConfig(self):
-        """Basic application configuration.
+        r"""Basic application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
         """
         return self._BaseConfig
@@ -2855,7 +2855,7 @@ class CreateAppRequest(AbstractModel):
 
 
 class CreateAppResponse(AbstractModel):
-    """CreateApp response structure.
+    r"""CreateApp response structure.
 
     """
 
@@ -2874,7 +2874,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -2885,7 +2885,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def IsCustomList(self):
-        """Whether the account application list permissions are customized. A user interaction prompt.
+        r"""Whether the account application list permissions are customized. A user interaction prompt.
         :rtype: bool
         """
         return self._IsCustomList
@@ -2896,7 +2896,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2913,7 +2913,7 @@ class CreateAppResponse(AbstractModel):
 
 
 class CreateAttributeLabelRequest(AbstractModel):
-    """CreateAttributeLabel request structure.
+    r"""CreateAttributeLabel request structure.
 
     """
 
@@ -2941,7 +2941,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -2952,7 +2952,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def AttrName(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._AttrName
@@ -2963,7 +2963,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """Label value.
+        r"""Label value.
         :rtype: list of AttributeLabel
         """
         return self._Labels
@@ -2974,7 +2974,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def AttrKey(self):
-        """Label identification (not effective, no need to fill in) . Abolished.
+        r"""Label identification (not effective, no need to fill in) . Abolished.
         :rtype: str
         """
         return self._AttrKey
@@ -2985,7 +2985,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in integrator mode).
+        r"""Log in to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -2996,7 +2996,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to user's sub-account (required in integrator mode).
+        r"""Log in to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -3029,7 +3029,7 @@ class CreateAttributeLabelRequest(AbstractModel):
 
 
 class CreateAttributeLabelResponse(AbstractModel):
-    """CreateAttributeLabel response structure.
+    r"""CreateAttributeLabel response structure.
 
     """
 
@@ -3045,7 +3045,7 @@ class CreateAttributeLabelResponse(AbstractModel):
 
     @property
     def AttrBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttrBizId
@@ -3056,7 +3056,7 @@ class CreateAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3072,7 +3072,7 @@ class CreateAttributeLabelResponse(AbstractModel):
 
 
 class CreateCorpRequest(AbstractModel):
-    """CreateCorp request structure.
+    r"""CreateCorp request structure.
 
     """
 
@@ -3094,7 +3094,7 @@ class CreateCorpRequest(AbstractModel):
 
     @property
     def FullName(self):
-        """Full name of the corporate.
+        r"""Full name of the corporate.
         :rtype: str
         """
         return self._FullName
@@ -3105,7 +3105,7 @@ class CreateCorpRequest(AbstractModel):
 
     @property
     def ContactName(self):
-        """Contact person's name.
+        r"""Contact person's name.
         :rtype: str
         """
         return self._ContactName
@@ -3116,7 +3116,7 @@ class CreateCorpRequest(AbstractModel):
 
     @property
     def Email(self):
-        """Contact person's mailbox.
+        r"""Contact person's mailbox.
         :rtype: str
         """
         return self._Email
@@ -3127,7 +3127,7 @@ class CreateCorpRequest(AbstractModel):
 
     @property
     def Telephone(self):
-        """Contact person's mobile phone number.
+        r"""Contact person's mobile phone number.
         :rtype: str
         """
         return self._Telephone
@@ -3153,7 +3153,7 @@ class CreateCorpRequest(AbstractModel):
 
 
 class CreateCorpResponse(AbstractModel):
-    """CreateCorp response structure.
+    r"""CreateCorp response structure.
 
     """
 
@@ -3169,7 +3169,7 @@ class CreateCorpResponse(AbstractModel):
 
     @property
     def CorpBizId(self):
-        """Corporate ID.
+        r"""Corporate ID.
         :rtype: str
         """
         return self._CorpBizId
@@ -3180,7 +3180,7 @@ class CreateCorpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3196,7 +3196,7 @@ class CreateCorpResponse(AbstractModel):
 
 
 class CreateDocCateRequest(AbstractModel):
-    """CreateDocCate request structure.
+    r"""CreateDocCate request structure.
 
     """
 
@@ -3216,7 +3216,7 @@ class CreateDocCateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -3227,7 +3227,7 @@ class CreateDocCateRequest(AbstractModel):
 
     @property
     def ParentBizId(self):
-        """Parent business ID.
+        r"""Parent business ID.
         :rtype: str
         """
         return self._ParentBizId
@@ -3238,7 +3238,7 @@ class CreateDocCateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
 
         :rtype: str
         """
@@ -3264,7 +3264,7 @@ class CreateDocCateRequest(AbstractModel):
 
 
 class CreateDocCateResponse(AbstractModel):
-    """CreateDocCate response structure.
+    r"""CreateDocCate response structure.
 
     """
 
@@ -3291,7 +3291,7 @@ class CreateDocCateResponse(AbstractModel):
 
     @property
     def CanAdd(self):
-        """Whether it is possible to add.
+        r"""Whether it is possible to add.
 
         :rtype: bool
         """
@@ -3303,7 +3303,7 @@ class CreateDocCateResponse(AbstractModel):
 
     @property
     def CanEdit(self):
-        """Whether it is editable.
+        r"""Whether it is editable.
         :rtype: bool
         """
         return self._CanEdit
@@ -3314,7 +3314,7 @@ class CreateDocCateResponse(AbstractModel):
 
     @property
     def CanDelete(self):
-        """Whether it can be deleted.
+        r"""Whether it can be deleted.
 
         :rtype: bool
         """
@@ -3326,7 +3326,7 @@ class CreateDocCateResponse(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -3337,7 +3337,7 @@ class CreateDocCateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3356,7 +3356,7 @@ class CreateDocCateResponse(AbstractModel):
 
 
 class CreateQACateRequest(AbstractModel):
-    """CreateQACate request structure.
+    r"""CreateQACate request structure.
 
     """
 
@@ -3376,7 +3376,7 @@ class CreateQACateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -3387,7 +3387,7 @@ class CreateQACateRequest(AbstractModel):
 
     @property
     def ParentBizId(self):
-        """Parent business id. pass the string "0" when creating a top-level category.
+        r"""Parent business id. pass the string "0" when creating a top-level category.
         :rtype: str
         """
         return self._ParentBizId
@@ -3398,7 +3398,7 @@ class CreateQACateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
 
         :rtype: str
         """
@@ -3424,7 +3424,7 @@ class CreateQACateRequest(AbstractModel):
 
 
 class CreateQACateResponse(AbstractModel):
-    """CreateQACate response structure.
+    r"""CreateQACate response structure.
 
     """
 
@@ -3451,7 +3451,7 @@ class CreateQACateResponse(AbstractModel):
 
     @property
     def CanAdd(self):
-        """Whether it is possible to add.
+        r"""Whether it is possible to add.
 
         :rtype: bool
         """
@@ -3463,7 +3463,7 @@ class CreateQACateResponse(AbstractModel):
 
     @property
     def CanEdit(self):
-        """Whether it is editable.
+        r"""Whether it is editable.
         :rtype: bool
         """
         return self._CanEdit
@@ -3474,7 +3474,7 @@ class CreateQACateResponse(AbstractModel):
 
     @property
     def CanDelete(self):
-        """Whether it can be deleted.
+        r"""Whether it can be deleted.
 
         :rtype: bool
         """
@@ -3486,7 +3486,7 @@ class CreateQACateResponse(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -3497,7 +3497,7 @@ class CreateQACateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3516,7 +3516,7 @@ class CreateQACateResponse(AbstractModel):
 
 
 class CreateQARequest(AbstractModel):
-    """CreateQA request structure.
+    r"""CreateQA request structure.
 
     """
 
@@ -3562,7 +3562,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -3573,7 +3573,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -3584,7 +3584,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
         :rtype: str
         """
         return self._Answer
@@ -3595,7 +3595,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable scope of labels: 1. all; 2. by conditions.
+        r"""Applicable scope of labels: 1. all; 2. by conditions.
         :rtype: int
         """
         return self._AttrRange
@@ -3606,7 +3606,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def CustomParam(self):
-        """Custom parameter.
+        r"""Custom parameter.
         :rtype: str
         """
         return self._CustomParam
@@ -3617,7 +3617,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Label reference.
+        r"""Label reference.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -3628,7 +3628,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -3639,7 +3639,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -3650,7 +3650,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -3661,7 +3661,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -3672,7 +3672,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def SimilarQuestions(self):
-        """Similar question content.
+        r"""Similar question content.
         :rtype: list of str
         """
         return self._SimilarQuestions
@@ -3683,7 +3683,7 @@ class CreateQARequest(AbstractModel):
 
     @property
     def QuestionDesc(self):
-        """Question description.
+        r"""Question description.
         :rtype: str
         """
         return self._QuestionDesc
@@ -3722,7 +3722,7 @@ class CreateQARequest(AbstractModel):
 
 
 class CreateQAResponse(AbstractModel):
-    """CreateQA response structure.
+    r"""CreateQA response structure.
 
     """
 
@@ -3738,7 +3738,7 @@ class CreateQAResponse(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -3749,7 +3749,7 @@ class CreateQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3765,7 +3765,7 @@ class CreateQAResponse(AbstractModel):
 
 
 class CreateReconstructDocumentFlowConfig(AbstractModel):
-    """Configuration information for creating a smart document parsing task.
+    r"""Configuration information for creating a smart document parsing task.
 
     """
 
@@ -3791,7 +3791,7 @@ The default value is 3 (return full-text MD + OCR original JSON of each page).
 
     @property
     def TableResultType(self):
-        """The returned form of a table in a markdown file: 
+        r"""The returned form of a table in a markdown file: 
 0: the table is returned in MD format;
 1: the table is returned in HTML form.
 The default is 1.
@@ -3805,7 +3805,7 @@ The default is 1.
 
     @property
     def ResultType(self):
-        """The format of smart document parsing results:
+        r"""The format of smart document parsing results:
 0: only return full-text MD;
 1: only return OCR original JSON of each page;.
 2: only return MD of each page;
@@ -3836,7 +3836,7 @@ The default value is 3 (return full-text MD + OCR original JSON of each page).
 
 
 class CreateReconstructDocumentFlowRequest(AbstractModel):
-    """CreateReconstructDocumentFlow request structure.
+    r"""CreateReconstructDocumentFlow request structure.
 
     """
 
@@ -3864,7 +3864,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """File type. Supported file types: pdf, doc, docx, ppt, pptx, md, txt, xls, xlsx, csv, png, jpg, jpeg, bmp, gif, webp, heic, eps, icns, im, pcx, ppm, tiff, xbm, heif, jp2.
+        r"""File type. Supported file types: pdf, doc, docx, ppt, pptx, md, txt, xls, xlsx, csv, png, jpg, jpeg, bmp, gif, webp, heic, eps, icns, im, pcx, ppm, tiff, xbm, heif, jp2.
         :rtype: str
         """
         return self._FileType
@@ -3875,7 +3875,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileBase64(self):
-        """The base64 value of the file. File size limit: the downloaded file does not exceed 8m after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
+        r"""The base64 value of the file. File size limit: the downloaded file does not exceed 8m after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.
         :rtype: str
         """
         return self._FileBase64
@@ -3886,7 +3886,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileUrl(self):
-        """<p>File URL. The file download time does not exceed 15 seconds. Supported image pixels: the length of a single side is between 20-10000px. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. The downloaded file shall not exceed the supported file size after Base64 encoding: </p><table> <tbody> <tr> <td>File Type</td> <td>Supported File Size</td> </tr> <tr> <td>PDF</td> <td>200M</td> </tr> <tr> <td>DOC</td> <td>200M</td> </tr> <tr> <td>DOCX</td> <td>200M</td> </tr> <tr> <td>PPT</td> <td>200M</td> </tr> <tr> <td>PPTX</td> <td>200M</td> </tr> <tr> <td>MD</td> <td>10M</td> </tr> <tr> <td>TXT</td> <td>10M</td> </tr> <tr> <td>XLS</td> <td>20M</td> </tr> <tr> <td>XLSX</td> <td>20M</td> </tr> <tr> <td>CSV</td> <td>20M</td> </tr> <tr> <td>PNG</td> <td>20M</td> </tr> <tr> <td>JPG</td> <td>20M</td> </tr> <tr> <td>JPEG</td> <td>20M</td> </tr> <tr> <td>BMP</td> <td>20M</td> </tr> <tr> <td>GIF</td> <td>20M</td> </tr> <tr> <td>WEBP</td> <td>20M</td> </tr> <tr> <td>HEIC</td> <td>20M</td> </tr> <tr> <td>EPS</td> <td>20M</td> </tr> <tr> <td>ICNS</td> <td>20M</td> </tr> <tr> <td>IM</td> <td>20M</td> </tr> <tr> <td>PCX</td> <td>20M</td> </tr> <tr> <td>PPM</td> <td>20M</td> </tr> <tr> <td>TIFF</td> <td>20M</td> </tr> <tr> <td>XBM</td> <td>20M</td> </tr> <tr> <td>HEIF</td> <td>20M</td> </tr> <tr> <td>JP2</td> <td>20M</td> </tr> </tbody> <colgroup> <col> <col> </colgroup></table>
+        r"""<p>File URL. The file download time does not exceed 15 seconds. Supported image pixels: the length of a single side is between 20-10000px. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. The downloaded file shall not exceed the supported file size after Base64 encoding: </p><table> <tbody> <tr> <td>File Type</td> <td>Supported File Size</td> </tr> <tr> <td>PDF</td> <td>200M</td> </tr> <tr> <td>DOC</td> <td>200M</td> </tr> <tr> <td>DOCX</td> <td>200M</td> </tr> <tr> <td>PPT</td> <td>200M</td> </tr> <tr> <td>PPTX</td> <td>200M</td> </tr> <tr> <td>MD</td> <td>10M</td> </tr> <tr> <td>TXT</td> <td>10M</td> </tr> <tr> <td>XLS</td> <td>20M</td> </tr> <tr> <td>XLSX</td> <td>20M</td> </tr> <tr> <td>CSV</td> <td>20M</td> </tr> <tr> <td>PNG</td> <td>20M</td> </tr> <tr> <td>JPG</td> <td>20M</td> </tr> <tr> <td>JPEG</td> <td>20M</td> </tr> <tr> <td>BMP</td> <td>20M</td> </tr> <tr> <td>GIF</td> <td>20M</td> </tr> <tr> <td>WEBP</td> <td>20M</td> </tr> <tr> <td>HEIC</td> <td>20M</td> </tr> <tr> <td>EPS</td> <td>20M</td> </tr> <tr> <td>ICNS</td> <td>20M</td> </tr> <tr> <td>IM</td> <td>20M</td> </tr> <tr> <td>PCX</td> <td>20M</td> </tr> <tr> <td>PPM</td> <td>20M</td> </tr> <tr> <td>TIFF</td> <td>20M</td> </tr> <tr> <td>XBM</td> <td>20M</td> </tr> <tr> <td>HEIF</td> <td>20M</td> </tr> <tr> <td>JP2</td> <td>20M</td> </tr> </tbody> <colgroup> <col> <col> </colgroup></table>
         :rtype: str
         """
         return self._FileUrl
@@ -3897,7 +3897,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        """When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for file recognition, including the current value. The default is 1, indicating recognition starts from the first page of the file.
+        r"""When type of the uploaded file is pdf, doc, docx, ppt, or pptx, it specifies the starting page number for file recognition, including the current value. The default is 1, indicating recognition starts from the first page of the file.
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -3908,7 +3908,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        """When type of the uploaded file is pdf, doc, docx, orppt, pptx, it specifies the end page number for file recognition, including the current value. The default is 100, indicating recognition up to page 100 of the file. a single call supports recognition of up to 1000 pages, i.e., FileEndPageNumber-FileStartPageNumber should be no more than 1000.
+        r"""When type of the uploaded file is pdf, doc, docx, orppt, pptx, it specifies the end page number for file recognition, including the current value. The default is 100, indicating recognition up to page 100 of the file. a single call supports recognition of up to 1000 pages, i.e., FileEndPageNumber-FileStartPageNumber should be no more than 1000.
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -3919,7 +3919,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
     @property
     def Config(self):
-        """Configuration information for creating a document parsing task.
+        r"""Configuration information for creating a document parsing task.
         :rtype: :class:`tencentcloud.lke.v20231130.models.CreateReconstructDocumentFlowConfig`
         """
         return self._Config
@@ -3949,7 +3949,7 @@ class CreateReconstructDocumentFlowRequest(AbstractModel):
 
 
 class CreateReconstructDocumentFlowResponse(AbstractModel):
-    """CreateReconstructDocumentFlow response structure.
+    r"""CreateReconstructDocumentFlow response structure.
 
     """
 
@@ -3965,7 +3965,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult](https://cloud.tencent.com/document/product/1759/107505) within 30 days.
+        r"""Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult](https://cloud.tencent.com/document/product/1759/107505) within 30 days.
         :rtype: str
         """
         return self._TaskId
@@ -3976,7 +3976,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3992,7 +3992,7 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
 
 
 class CreateRejectedQuestionRequest(AbstractModel):
-    """CreateRejectedQuestion request structure.
+    r"""CreateRejectedQuestion request structure.
 
     """
 
@@ -4016,7 +4016,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -4027,7 +4027,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def Question(self):
-        """Rejected question
+        r"""Rejected question
         :rtype: str
         """
         return self._Question
@@ -4038,7 +4038,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessSource(self):
-        """Unique ID of the data source for the rejected question - "2" will be returned when the rejected question is not satisfied - The rejected question comes from manual addition.
+        r"""Unique ID of the data source for the rejected question - "2" will be returned when the rejected question is not satisfied - The rejected question comes from manual addition.
         :rtype: int
         """
         return self._BusinessSource
@@ -4049,7 +4049,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """Unique ID of the data source for the rejected question.
+        r"""Unique ID of the data source for the rejected question.
 
 
         :rtype: str
@@ -4077,7 +4077,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
 
 class CreateRejectedQuestionResponse(AbstractModel):
-    """CreateRejectedQuestion response structure.
+    r"""CreateRejectedQuestion response structure.
 
     """
 
@@ -4090,7 +4090,7 @@ class CreateRejectedQuestionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4105,7 +4105,7 @@ class CreateRejectedQuestionResponse(AbstractModel):
 
 
 class CreateReleaseRequest(AbstractModel):
-    """CreateRelease request structure.
+    r"""CreateRelease request structure.
 
     """
 
@@ -4121,7 +4121,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Robot ID.
+        r"""Robot ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4132,7 +4132,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def Desc(self):
-        """Release description.
+        r"""Release description.
         :rtype: str
         """
         return self._Desc
@@ -4156,7 +4156,7 @@ class CreateReleaseRequest(AbstractModel):
 
 
 class CreateReleaseResponse(AbstractModel):
-    """CreateRelease response structure.
+    r"""CreateRelease response structure.
 
     """
 
@@ -4172,7 +4172,7 @@ class CreateReleaseResponse(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release ID.
+        r"""Release ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -4183,7 +4183,7 @@ class CreateReleaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4199,7 +4199,7 @@ class CreateReleaseResponse(AbstractModel):
 
 
 class Credentials(AbstractModel):
-    """Temporary key structure.
+    r"""Temporary key structure.
 
     """
 
@@ -4221,7 +4221,7 @@ class Credentials(AbstractModel):
 
     @property
     def Token(self):
-        """Token.
+        r"""Token.
         :rtype: str
         """
         return self._Token
@@ -4232,7 +4232,7 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        """Temporary license key ID.
+        r"""Temporary license key ID.
         :rtype: str
         """
         return self._TmpSecretId
@@ -4243,7 +4243,7 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        """Temporary license key.
+        r"""Temporary license key.
         :rtype: str
         """
         return self._TmpSecretKey
@@ -4254,7 +4254,7 @@ class Credentials(AbstractModel):
 
     @property
     def AppId(self):
-        """Temporary license appid.
+        r"""Temporary license appid.
         :rtype: int
         """
         return self._AppId
@@ -4280,7 +4280,7 @@ class Credentials(AbstractModel):
 
 
 class DeleteAppRequest(AbstractModel):
-    """DeleteApp request structure.
+    r"""DeleteApp request structure.
 
     """
 
@@ -4296,7 +4296,7 @@ class DeleteAppRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -4307,7 +4307,7 @@ class DeleteAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -4331,7 +4331,7 @@ class DeleteAppRequest(AbstractModel):
 
 
 class DeleteAppResponse(AbstractModel):
-    """DeleteApp response structure.
+    r"""DeleteApp response structure.
 
     """
 
@@ -4344,7 +4344,7 @@ class DeleteAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4359,7 +4359,7 @@ class DeleteAppResponse(AbstractModel):
 
 
 class DeleteAttributeLabelRequest(AbstractModel):
-    """DeleteAttributeLabel request structure.
+    r"""DeleteAttributeLabel request structure.
 
     """
 
@@ -4381,7 +4381,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4392,7 +4392,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeBizIds(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: list of str
         """
         return self._AttributeBizIds
@@ -4403,7 +4403,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in integrator mode).
+        r"""Log in to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -4414,7 +4414,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to user's sub-account (required in integrator mode).
+        r"""Log in to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -4440,7 +4440,7 @@ class DeleteAttributeLabelRequest(AbstractModel):
 
 
 class DeleteAttributeLabelResponse(AbstractModel):
-    """DeleteAttributeLabel response structure.
+    r"""DeleteAttributeLabel response structure.
 
     """
 
@@ -4453,7 +4453,7 @@ class DeleteAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4468,7 +4468,7 @@ class DeleteAttributeLabelResponse(AbstractModel):
 
 
 class DeleteDocCateRequest(AbstractModel):
-    """DeleteDocCate request structure.
+    r"""DeleteDocCate request structure.
 
     """
 
@@ -4484,7 +4484,7 @@ class DeleteDocCateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4495,7 +4495,7 @@ class DeleteDocCateRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -4519,7 +4519,7 @@ class DeleteDocCateRequest(AbstractModel):
 
 
 class DeleteDocCateResponse(AbstractModel):
-    """DeleteDocCate response structure.
+    r"""DeleteDocCate response structure.
 
     """
 
@@ -4532,7 +4532,7 @@ class DeleteDocCateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4547,7 +4547,7 @@ class DeleteDocCateResponse(AbstractModel):
 
 
 class DeleteDocRequest(AbstractModel):
-    """DeleteDoc request structure.
+    r"""DeleteDoc request structure.
 
     """
 
@@ -4563,7 +4563,7 @@ class DeleteDocRequest(AbstractModel):
 
     @property
     def DocBizIds(self):
-        """List of document business IDs.
+        r"""List of document business IDs.
         :rtype: list of str
         """
         return self._DocBizIds
@@ -4574,7 +4574,7 @@ class DeleteDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4598,7 +4598,7 @@ class DeleteDocRequest(AbstractModel):
 
 
 class DeleteDocResponse(AbstractModel):
-    """DeleteDoc response structure.
+    r"""DeleteDoc response structure.
 
     """
 
@@ -4611,7 +4611,7 @@ class DeleteDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4626,7 +4626,7 @@ class DeleteDocResponse(AbstractModel):
 
 
 class DeleteQACateRequest(AbstractModel):
-    """DeleteQACate request structure.
+    r"""DeleteQACate request structure.
 
     """
 
@@ -4642,7 +4642,7 @@ class DeleteQACateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4653,7 +4653,7 @@ class DeleteQACateRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -4677,7 +4677,7 @@ class DeleteQACateRequest(AbstractModel):
 
 
 class DeleteQACateResponse(AbstractModel):
-    """DeleteQACate response structure.
+    r"""DeleteQACate response structure.
 
     """
 
@@ -4690,7 +4690,7 @@ class DeleteQACateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4705,7 +4705,7 @@ class DeleteQACateResponse(AbstractModel):
 
 
 class DeleteQARequest(AbstractModel):
-    """DeleteQA request structure.
+    r"""DeleteQA request structure.
 
     """
 
@@ -4721,7 +4721,7 @@ class DeleteQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4732,7 +4732,7 @@ class DeleteQARequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: list of str
         """
         return self._QaBizIds
@@ -4756,7 +4756,7 @@ class DeleteQARequest(AbstractModel):
 
 
 class DeleteQAResponse(AbstractModel):
-    """DeleteQA response structure.
+    r"""DeleteQA response structure.
 
     """
 
@@ -4769,7 +4769,7 @@ class DeleteQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4784,7 +4784,7 @@ class DeleteQAResponse(AbstractModel):
 
 
 class DeleteRejectedQuestionRequest(AbstractModel):
-    """DeleteRejectedQuestion request structure.
+    r"""DeleteRejectedQuestion request structure.
 
     """
 
@@ -4803,7 +4803,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -4814,7 +4814,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
     @property
     def RejectedBizIds(self):
-        """The unique ID of the data source for the rejected question.
+        r"""The unique ID of the data source for the rejected question.
 
 
 
@@ -4841,7 +4841,7 @@ class DeleteRejectedQuestionRequest(AbstractModel):
 
 
 class DeleteRejectedQuestionResponse(AbstractModel):
-    """DeleteRejectedQuestion response structure.
+    r"""DeleteRejectedQuestion response structure.
 
     """
 
@@ -4854,7 +4854,7 @@ class DeleteRejectedQuestionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4869,7 +4869,7 @@ class DeleteRejectedQuestionResponse(AbstractModel):
 
 
 class DescribeAppRequest(AbstractModel):
-    """DescribeApp request structure.
+    r"""DescribeApp request structure.
 
     """
 
@@ -4888,7 +4888,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -4899,7 +4899,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -4910,7 +4910,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def IsRelease(self):
-        """Whether it is the configuration after release.
+        r"""Whether it is the configuration after release.
         :rtype: bool
         """
         return self._IsRelease
@@ -4935,7 +4935,7 @@ class DescribeAppRequest(AbstractModel):
 
 
 class DescribeAppResponse(AbstractModel):
-    """DescribeApp response structure.
+    r"""DescribeApp response structure.
 
     """
 
@@ -4987,7 +4987,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -4998,7 +4998,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -5009,7 +5009,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppTypeDesc(self):
-        """Application type description.
+        r"""Application type description.
         :rtype: str
         """
         return self._AppTypeDesc
@@ -5020,7 +5020,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def BaseConfig(self):
-        """Application type description.
+        r"""Application type description.
         :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
         """
         return self._BaseConfig
@@ -5031,7 +5031,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppConfig(self):
-        """Application configuration.
+        r"""Application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppConfig`
         """
         return self._AppConfig
@@ -5042,7 +5042,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AvatarInAppeal(self):
-        """Whether the avatar is under appeal.
+        r"""Whether the avatar is under appeal.
         :rtype: bool
         """
         return self._AvatarInAppeal
@@ -5053,7 +5053,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def RoleInAppeal(self):
-        """Whether the role description is under appeal.
+        r"""Whether the role description is under appeal.
         :rtype: bool
         """
         return self._RoleInAppeal
@@ -5064,7 +5064,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def NameInAppeal(self):
-        """Whether the name is under appeal.
+        r"""Whether the name is under appeal.
         :rtype: bool
         """
         return self._NameInAppeal
@@ -5075,7 +5075,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def GreetingInAppeal(self):
-        """Whether the welcome words are under appeal.
+        r"""Whether the welcome words are under appeal.
         :rtype: bool
         """
         return self._GreetingInAppeal
@@ -5086,7 +5086,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def BareAnswerInAppeal(self):
-        """Whether the response message for unknown questions is under appeal.
+        r"""Whether the response message for unknown questions is under appeal.
         :rtype: bool
         """
         return self._BareAnswerInAppeal
@@ -5097,7 +5097,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppKey(self):
-        """App key of the application.
+        r"""App key of the application.
         :rtype: str
         """
         return self._AppKey
@@ -5108,7 +5108,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppStatus(self):
-        """Application status. 1: offline; 2: running; 3: disabled.
+        r"""Application status. 1: offline; 2: running; 3: disabled.
         :rtype: int
         """
         return self._AppStatus
@@ -5119,7 +5119,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def AppStatusDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._AppStatusDesc
@@ -5130,7 +5130,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5162,7 +5162,7 @@ class DescribeAppResponse(AbstractModel):
 
 
 class DescribeAttributeLabelRequest(AbstractModel):
-    """DescribeAttributeLabel request structure.
+    r"""DescribeAttributeLabel request structure.
 
     """
 
@@ -5199,7 +5199,7 @@ similar: similar words
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -5210,7 +5210,7 @@ similar: similar words
 
     @property
     def AttributeBizId(self):
-        """Attribute ID.
+        r"""Attribute ID.
         :rtype: str
         """
         return self._AttributeBizId
@@ -5221,7 +5221,7 @@ similar: similar words
 
     @property
     def Limit(self):
-        """Quantity loaded each time. 
+        r"""Quantity loaded each time. 
         :rtype: int
         """
         return self._Limit
@@ -5232,7 +5232,7 @@ similar: similar words
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in integrator mode).
+        r"""Log in to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -5243,7 +5243,7 @@ similar: similar words
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to user's sub-account (required in integrator mode).
+        r"""Log in to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -5254,7 +5254,7 @@ similar: similar words
 
     @property
     def Query(self):
-        """Query a label or similar labels.
+        r"""Query a label or similar labels.
         :rtype: str
         """
         return self._Query
@@ -5265,7 +5265,7 @@ similar: similar words
 
     @property
     def LastLabelBizId(self):
-        """The label ID of the scroll loading cursor.
+        r"""The label ID of the scroll loading cursor.
         :rtype: str
         """
         return self._LastLabelBizId
@@ -5276,7 +5276,7 @@ similar: similar words
 
     @property
     def QueryScope(self):
-        """Query scope: 
+        r"""Query scope: 
 all (or leave it blank): standard words and similar words 
 standard: standard words 
 similar: similar words
@@ -5309,7 +5309,7 @@ similar: similar words
 
 
 class DescribeAttributeLabelResponse(AbstractModel):
-    """DescribeAttributeLabel response structure.
+    r"""DescribeAttributeLabel response structure.
 
     """
 
@@ -5337,7 +5337,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """Attribute ID.
+        r"""Attribute ID.
         :rtype: str
         """
         return self._AttributeBizId
@@ -5348,7 +5348,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def AttrKey(self):
-        """Attribute identifier.
+        r"""Attribute identifier.
         :rtype: str
         """
         return self._AttrKey
@@ -5359,7 +5359,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def AttrName(self):
-        """Attribute name.
+        r"""Attribute name.
         :rtype: str
         """
         return self._AttrName
@@ -5370,7 +5370,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def LabelNumber(self):
-        """Quantity of labels.
+        r"""Quantity of labels.
         :rtype: str
         """
         return self._LabelNumber
@@ -5381,7 +5381,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def Labels(self):
-        """Label name.
+        r"""Label name.
         :rtype: list of AttributeLabel
         """
         return self._Labels
@@ -5392,7 +5392,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5417,7 +5417,7 @@ class DescribeAttributeLabelResponse(AbstractModel):
 
 
 class DescribeCallStatsGraphRequest(AbstractModel):
-    """DescribeCallStatsGraph request structure.
+    r"""DescribeCallStatsGraph request structure.
 
     """
 
@@ -5454,7 +5454,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """uin
+        r"""uin
         :rtype: list of str
         """
         return self._UinAccount
@@ -5465,7 +5465,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in integrator mode).
+        r"""Log in to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -5476,7 +5476,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Log in to user's root sub-account (required in integrator mode).
+        r"""Log in to user's root sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -5487,7 +5487,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business type.
+        r"""Sub-business type.
         :rtype: str
         """
         return self._SubBizType
@@ -5498,7 +5498,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -5509,7 +5509,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds.
+        r"""Start timestamp, in seconds.
         :rtype: str
         """
         return self._StartTime
@@ -5520,7 +5520,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds.
+        r"""End timestamp, in seconds.
         :rtype: str
         """
         return self._EndTime
@@ -5531,7 +5531,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -5542,7 +5542,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        """Filter sub-scenarios (used in document parsing scenarios).
+        r"""Filter sub-scenarios (used in document parsing scenarios).
         :rtype: list of str
         """
         return self._SubScenes
@@ -5573,7 +5573,7 @@ class DescribeCallStatsGraphRequest(AbstractModel):
 
 
 class DescribeCallStatsGraphResponse(AbstractModel):
-    """DescribeCallStatsGraph response structure.
+    r"""DescribeCallStatsGraph response structure.
 
     """
 
@@ -5589,7 +5589,7 @@ class DescribeCallStatsGraphResponse(AbstractModel):
 
     @property
     def List(self):
-        """Statistical information of API calls.
+        r"""Statistical information of API calls.
         :rtype: list of Stat
         """
         return self._List
@@ -5600,7 +5600,7 @@ class DescribeCallStatsGraphResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5621,7 +5621,7 @@ class DescribeCallStatsGraphResponse(AbstractModel):
 
 
 class DescribeConcurrencyUsageGraphRequest(AbstractModel):
-    """DescribeConcurrencyUsageGraph request structure.
+    r"""DescribeConcurrencyUsageGraph request structure.
 
     """
 
@@ -5655,7 +5655,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -5666,7 +5666,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds.
+        r"""Start timestamp, in seconds.
         :rtype: str
         """
         return self._StartTime
@@ -5677,7 +5677,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds.
+        r"""End timestamp, in seconds.
         :rtype: str
         """
         return self._EndTime
@@ -5688,7 +5688,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """uin
+        r"""uin
         :rtype: list of str
         """
         return self._UinAccount
@@ -5699,7 +5699,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -5710,7 +5710,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -5721,7 +5721,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business type.
+        r"""Sub-business type.
         :rtype: str
         """
         return self._SubBizType
@@ -5732,7 +5732,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -5762,7 +5762,7 @@ class DescribeConcurrencyUsageGraphRequest(AbstractModel):
 
 
 class DescribeConcurrencyUsageGraphResponse(AbstractModel):
-    """DescribeConcurrencyUsageGraph response structure.
+    r"""DescribeConcurrencyUsageGraph response structure.
 
     """
 
@@ -5784,7 +5784,7 @@ class DescribeConcurrencyUsageGraphResponse(AbstractModel):
 
     @property
     def X(self):
-        """X-axis: time zone; returns two interval ranges of "minute/hour/day" according to the granularity of query conditions.
+        r"""X-axis: time zone; returns two interval ranges of "minute/hour/day" according to the granularity of query conditions.
         :rtype: list of str
         """
         return self._X
@@ -5795,7 +5795,7 @@ class DescribeConcurrencyUsageGraphResponse(AbstractModel):
 
     @property
     def AvailableY(self):
-        """Available concurrent Y-axis coordinate.
+        r"""Available concurrent Y-axis coordinate.
         :rtype: list of int
         """
         return self._AvailableY
@@ -5806,7 +5806,7 @@ class DescribeConcurrencyUsageGraphResponse(AbstractModel):
 
     @property
     def SuccessCallY(self):
-        """Succeeded to call the concurrent Y-axis coordinate.
+        r"""Succeeded to call the concurrent Y-axis coordinate.
         :rtype: list of int
         """
         return self._SuccessCallY
@@ -5817,7 +5817,7 @@ class DescribeConcurrencyUsageGraphResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5835,7 +5835,7 @@ class DescribeConcurrencyUsageGraphResponse(AbstractModel):
 
 
 class DescribeConcurrencyUsageRequest(AbstractModel):
-    """DescribeConcurrencyUsage request structure.
+    r"""DescribeConcurrencyUsage request structure.
 
     """
 
@@ -5857,7 +5857,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identification.
+        r"""Model identification.
         :rtype: str
         """
         return self._ModelName
@@ -5868,7 +5868,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds.
+        r"""Start timestamp, in seconds.
         :rtype: str
         """
         return self._StartTime
@@ -5879,7 +5879,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds.
+        r"""End timestamp, in seconds.
         :rtype: str
         """
         return self._EndTime
@@ -5890,7 +5890,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -5916,7 +5916,7 @@ class DescribeConcurrencyUsageRequest(AbstractModel):
 
 
 class DescribeConcurrencyUsageResponse(AbstractModel):
-    """DescribeConcurrencyUsage response structure.
+    r"""DescribeConcurrencyUsage response structure.
 
     """
 
@@ -5938,7 +5938,7 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
 
     @property
     def AvailableConcurrency(self):
-        """The upper limit of available concurrency.
+        r"""The upper limit of available concurrency.
         :rtype: int
         """
         return self._AvailableConcurrency
@@ -5949,7 +5949,7 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
 
     @property
     def ConcurrencyPeak(self):
-        """Peak concurrent value.
+        r"""Peak concurrent value.
         :rtype: int
         """
         return self._ConcurrencyPeak
@@ -5960,7 +5960,7 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
 
     @property
     def ExceedUsageTime(self):
-        """The number of times exceeding the capacity limit of available concurrency.
+        r"""The number of times exceeding the capacity limit of available concurrency.
         :rtype: int
         """
         return self._ExceedUsageTime
@@ -5971,7 +5971,7 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5989,13 +5989,13 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
 
 
 class DescribeCorpRequest(AbstractModel):
-    """DescribeCorp request structure.
+    r"""DescribeCorp request structure.
 
     """
 
 
 class DescribeCorpResponse(AbstractModel):
-    """DescribeCorp response structure.
+    r"""DescribeCorp response structure.
 
     """
 
@@ -6031,7 +6031,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def CorpBizId(self):
-        """Corporate ID.
+        r"""Corporate ID.
 
         :rtype: str
         """
@@ -6043,7 +6043,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def RobotQuota(self):
-        """Application quota.
+        r"""Application quota.
         :rtype: int
         """
         return self._RobotQuota
@@ -6054,7 +6054,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def FullName(self):
-        """Full name of the corporate.
+        r"""Full name of the corporate.
 
         :rtype: str
         """
@@ -6066,7 +6066,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def IsTrial(self):
-        """Whether to try out.
+        r"""Whether to try out.
         :rtype: bool
         """
         return self._IsTrial
@@ -6077,7 +6077,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def IsTrialExpired(self):
-        """Whether the trial has expired.
+        r"""Whether the trial has expired.
         :rtype: bool
         """
         return self._IsTrialExpired
@@ -6088,7 +6088,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def AvailableAppQuota(self):
-        """Quantity of available applications.
+        r"""Quantity of available applications.
         :rtype: int
         """
         return self._AvailableAppQuota
@@ -6099,7 +6099,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def IsSupportCustomModel(self):
-        """Whether custom model configuration is supported.
+        r"""Whether custom model configuration is supported.
         :rtype: bool
         """
         return self._IsSupportCustomModel
@@ -6110,7 +6110,7 @@ class DescribeCorpResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6132,7 +6132,7 @@ class DescribeCorpResponse(AbstractModel):
 
 
 class DescribeDocRequest(AbstractModel):
-    """DescribeDoc request structure.
+    r"""DescribeDoc request structure.
 
     """
 
@@ -6148,7 +6148,7 @@ class DescribeDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -6159,7 +6159,7 @@ class DescribeDocRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -6183,7 +6183,7 @@ class DescribeDocRequest(AbstractModel):
 
 
 class DescribeDocResponse(AbstractModel):
-    """DescribeDoc response structure.
+    r"""DescribeDoc response structure.
 
     """
 
@@ -6268,7 +6268,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -6279,7 +6279,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def FileName(self):
-        """File name.
+        r"""File name.
         :rtype: str
         """
         return self._FileName
@@ -6290,7 +6290,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -6301,7 +6301,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def CosUrl(self):
-        """COS path.
+        r"""COS path.
         :rtype: str
         """
         return self._CosUrl
@@ -6312,7 +6312,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -6323,7 +6323,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
+        r"""Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
         :rtype: int
         """
         return self._Status
@@ -6334,7 +6334,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Document status description.
+        r"""Document status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -6345,7 +6345,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def Reason(self):
-        """Reason for generation failure.
+        r"""Reason for generation failure.
         :rtype: str
         """
         return self._Reason
@@ -6356,7 +6356,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsRefer(self):
-        """Whether to refer in the answer.
+        r"""Whether to refer in the answer.
         :rtype: bool
         """
         return self._IsRefer
@@ -6367,7 +6367,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def QaNum(self):
-        """Number of Q&A pairs.
+        r"""Number of Q&A pairs.
         :rtype: int
         """
         return self._QaNum
@@ -6378,7 +6378,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsDeleted(self):
-        """Whether to delete.
+        r"""Whether to delete.
         :rtype: bool
         """
         return self._IsDeleted
@@ -6389,7 +6389,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def Source(self):
-        """Document source.
+        r"""Document source.
         :rtype: int
         """
         return self._Source
@@ -6400,7 +6400,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def SourceDesc(self):
-        """Document source description.
+        r"""Document source description.
         :rtype: str
         """
         return self._SourceDesc
@@ -6411,7 +6411,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsAllowRestart(self):
-        """Whether regeneration is allowed.
+        r"""Whether regeneration is allowed.
         :rtype: bool
         """
         return self._IsAllowRestart
@@ -6422,7 +6422,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsDeletedQa(self):
-        """Whether Q&A has been deleted.
+        r"""Whether Q&A has been deleted.
         :rtype: bool
         """
         return self._IsDeletedQa
@@ -6433,7 +6433,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsCreatingQa(self):
-        """Whether Q&A is being generated.
+        r"""Whether Q&A is being generated.
         :rtype: bool
         """
         return self._IsCreatingQa
@@ -6444,7 +6444,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsAllowDelete(self):
-        """Whether deletion is allowed.
+        r"""Whether deletion is allowed.
         :rtype: bool
         """
         return self._IsAllowDelete
@@ -6455,7 +6455,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsAllowRefer(self):
-        """Whether to allow operation reference switch.
+        r"""Whether to allow operation reference switch.
         :rtype: bool
         """
         return self._IsAllowRefer
@@ -6466,7 +6466,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsCreatedQa(self):
-        """Whether Q&A has been generated.
+        r"""Whether Q&A has been generated.
         :rtype: bool
         """
         return self._IsCreatedQa
@@ -6477,7 +6477,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def DocCharSize(self):
-        """Document character count.
+        r"""Document character count.
         :rtype: str
         """
         return self._DocCharSize
@@ -6488,7 +6488,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def IsAllowEdit(self):
-        """Whether editing is allowed.
+        r"""Whether editing is allowed.
         :rtype: bool
         """
         return self._IsAllowEdit
@@ -6499,7 +6499,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable scope of labels 1: all, 2: by condition range.
+        r"""Applicable scope of labels 1: all, 2: by condition range.
         :rtype: int
         """
         return self._AttrRange
@@ -6510,7 +6510,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Label.
+        r"""Label.
         :rtype: list of AttrLabel
         """
         return self._AttrLabels
@@ -6521,7 +6521,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -6532,7 +6532,7 @@ class DescribeDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6576,7 +6576,7 @@ class DescribeDocResponse(AbstractModel):
 
 
 class DescribeKnowledgeUsagePieGraphRequest(AbstractModel):
-    """DescribeKnowledgeUsagePieGraph request structure.
+    r"""DescribeKnowledgeUsagePieGraph request structure.
 
     """
 
@@ -6589,7 +6589,7 @@ class DescribeKnowledgeUsagePieGraphRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application id array.
+        r"""Application id array.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -6612,7 +6612,7 @@ class DescribeKnowledgeUsagePieGraphRequest(AbstractModel):
 
 
 class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
-    """DescribeKnowledgeUsagePieGraph response structure.
+    r"""DescribeKnowledgeUsagePieGraph response structure.
 
     """
 
@@ -6631,7 +6631,7 @@ class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
 
     @property
     def AvailableCharSize(self):
-        """Total number of characters used by all applications.
+        r"""Total number of characters used by all applications.
         :rtype: str
         """
         return self._AvailableCharSize
@@ -6642,7 +6642,7 @@ class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of application pie chart details.
+        r"""List of application pie chart details.
         :rtype: list of KnowledgeCapacityPieGraphDetail
         """
         return self._List
@@ -6653,7 +6653,7 @@ class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6675,13 +6675,13 @@ class DescribeKnowledgeUsagePieGraphResponse(AbstractModel):
 
 
 class DescribeKnowledgeUsageRequest(AbstractModel):
-    """DescribeKnowledgeUsage request structure.
+    r"""DescribeKnowledgeUsage request structure.
 
     """
 
 
 class DescribeKnowledgeUsageResponse(AbstractModel):
-    """DescribeKnowledgeUsage response structure.
+    r"""DescribeKnowledgeUsage response structure.
 
     """
 
@@ -6703,7 +6703,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
 
     @property
     def AvailableCharSize(self):
-        """The upper limit of available characters.
+        r"""The upper limit of available characters.
         :rtype: str
         """
         return self._AvailableCharSize
@@ -6714,7 +6714,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
 
     @property
     def ExceedCharSize(self):
-        """Number of characters exceeding the capacity limit of available characters.
+        r"""Number of characters exceeding the capacity limit of available characters.
         :rtype: str
         """
         return self._ExceedCharSize
@@ -6725,7 +6725,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
 
     @property
     def UsedCharSize(self):
-        """Total number of characters used in the knowledge library.
+        r"""Total number of characters used in the knowledge library.
         :rtype: str
         """
         return self._UsedCharSize
@@ -6736,7 +6736,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6754,7 +6754,7 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
 
 
 class DescribeQARequest(AbstractModel):
-    """DescribeQA request structure.
+    r"""DescribeQA request structure.
 
     """
 
@@ -6771,7 +6771,7 @@ class DescribeQARequest(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A business ID.
+        r"""Q&A business ID.
 
         :rtype: str
         """
@@ -6783,7 +6783,7 @@ class DescribeQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -6807,7 +6807,7 @@ class DescribeQARequest(AbstractModel):
 
 
 class DescribeQAResponse(AbstractModel):
-    """DescribeQA response structure.
+    r"""DescribeQA response structure.
 
     """
 
@@ -6931,7 +6931,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A business ID.
+        r"""Q&A business ID.
 
         :rtype: str
         """
@@ -6943,7 +6943,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
 
         :rtype: str
         """
@@ -6955,7 +6955,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
 
         :rtype: str
         """
@@ -6967,7 +6967,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def CustomParam(self):
-        """Custom parameter.
+        r"""Custom parameter.
         :rtype: str
         """
         return self._CustomParam
@@ -6978,7 +6978,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Source(self):
-        """Source:
+        r"""Source:
 1 - Q&A pairs generated from documents.
 2 - Q&A pairs imported in batches.
 3 - Q&A pairs input manually one by one.
@@ -6994,7 +6994,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def SourceDesc(self):
-        """Source description.
+        r"""Source description.
 
         :rtype: str
         """
@@ -7006,7 +7006,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
 
 
         :rtype: str
@@ -7019,7 +7019,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Status<br>1 - pending verification; 2 - not released; 3 - releasing; 4 - released; 5 - release failed; 6 - not approved; 7 - under review; 8 - review failed, 9 - review failed, pending manual review after appeal; 11 - review failed, manual review not passed after appeal; 12 - expired; 13 - excessive invalid; 14 - excessive invalid recovered; 19 - learning; 20 - learning failed.
+        r"""Status<br>1 - pending verification; 2 - not released; 3 - releasing; 4 - released; 5 - release failed; 6 - not approved; 7 - under review; 8 - review failed, 9 - review failed, pending manual review after appeal; 11 - review failed, manual review not passed after appeal; 12 - expired; 13 - excessive invalid; 14 - excessive invalid recovered; 19 - learning; 20 - learning failed.
 
 
         :rtype: int
@@ -7032,7 +7032,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Status description.
+        r"""Status description.
 
 
         :rtype: str
@@ -7045,7 +7045,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
 
         :rtype: str
         """
@@ -7057,7 +7057,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def IsAllowAccept(self):
-        """Whether verification is allowed.
+        r"""Whether verification is allowed.
 
         :rtype: bool
         """
@@ -7069,7 +7069,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def IsAllowDelete(self):
-        """Whether deletion is allowed.
+        r"""Whether deletion is allowed.
 
         :rtype: bool
         """
@@ -7081,7 +7081,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def IsAllowEdit(self):
-        """Whether editing is allowed.
+        r"""Whether editing is allowed.
 
         :rtype: bool
         """
@@ -7093,7 +7093,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
 
         :rtype: str
         """
@@ -7105,7 +7105,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def FileName(self):
-        """Document name.
+        r"""Document name.
 
         :rtype: str
         """
@@ -7117,7 +7117,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def FileType(self):
-        """Document type.
+        r"""Document type.
 
         :rtype: str
         """
@@ -7129,7 +7129,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def SegmentBizId(self):
-        """Segment ID.
+        r"""Segment ID.
 
         :rtype: str
         """
@@ -7141,7 +7141,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def PageContent(self):
-        """Segment content.
+        r"""Segment content.
         :rtype: str
         """
         return self._PageContent
@@ -7152,7 +7152,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def Highlights(self):
-        """Segment highlight content.
+        r"""Segment highlight content.
         :rtype: list of Highlight
         """
         return self._Highlights
@@ -7163,7 +7163,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def OrgData(self):
-        """Segment content.
+        r"""Segment content.
 
         :rtype: str
         """
@@ -7175,7 +7175,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable scope of label.
+        r"""Applicable scope of label.
         :rtype: int
         """
         return self._AttrRange
@@ -7186,7 +7186,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Label.
+        r"""Label.
         :rtype: list of AttrLabel
         """
         return self._AttrLabels
@@ -7197,7 +7197,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -7208,7 +7208,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -7219,7 +7219,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def SimilarQuestions(self):
-        """Similar question list information.
+        r"""Similar question list information.
         :rtype: list of SimilarQuestion
         """
         return self._SimilarQuestions
@@ -7230,7 +7230,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def QaAuditStatus(self):
-        """Review status of Q&A text: 1 - review failed.
+        r"""Review status of Q&A text: 1 - review failed.
         :rtype: int
         """
         return self._QaAuditStatus
@@ -7241,7 +7241,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def PicAuditStatus(self):
-        """Review status of image in Q&A: 1-review failed.
+        r"""Review status of image in Q&A: 1-review failed.
         :rtype: int
         """
         return self._PicAuditStatus
@@ -7252,7 +7252,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def VideoAuditStatus(self):
-        """Review status of video in Q&A: 1 - review failed.
+        r"""Review status of video in Q&A: 1 - review failed.
         :rtype: int
         """
         return self._VideoAuditStatus
@@ -7263,7 +7263,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def QuestionDesc(self):
-        """Question description.
+        r"""Question description.
         :rtype: str
         """
         return self._QuestionDesc
@@ -7274,7 +7274,7 @@ class DescribeQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7333,7 +7333,7 @@ class DescribeQAResponse(AbstractModel):
 
 
 class DescribeReferRequest(AbstractModel):
-    """DescribeRefer request structure.
+    r"""DescribeRefer request structure.
 
     """
 
@@ -7355,7 +7355,7 @@ class DescribeReferRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -7366,7 +7366,7 @@ class DescribeReferRequest(AbstractModel):
 
     @property
     def ReferBizIds(self):
-        """Quota ID
+        r"""Quota ID
         :rtype: list of str
         """
         return self._ReferBizIds
@@ -7377,7 +7377,7 @@ class DescribeReferRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to the user's root account (required in the integrator mode).
+        r"""Log in to the user's root account (required in the integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -7388,7 +7388,7 @@ class DescribeReferRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login user sub-account (required in integrator mode).
+        r"""Login user sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -7414,7 +7414,7 @@ class DescribeReferRequest(AbstractModel):
 
 
 class DescribeReferResponse(AbstractModel):
-    """DescribeRefer response structure.
+    r"""DescribeRefer response structure.
 
     """
 
@@ -7430,7 +7430,7 @@ class DescribeReferResponse(AbstractModel):
 
     @property
     def List(self):
-        """Reference list.
+        r"""Reference list.
         :rtype: list of ReferDetail
         """
         return self._List
@@ -7441,7 +7441,7 @@ class DescribeReferResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7462,7 +7462,7 @@ class DescribeReferResponse(AbstractModel):
 
 
 class DescribeReleaseInfoRequest(AbstractModel):
-    """DescribeReleaseInfo request structure.
+    r"""DescribeReleaseInfo request structure.
 
     """
 
@@ -7475,7 +7475,7 @@ class DescribeReleaseInfoRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -7498,7 +7498,7 @@ class DescribeReleaseInfoRequest(AbstractModel):
 
 
 class DescribeReleaseInfoResponse(AbstractModel):
-    """DescribeReleaseInfo response structure.
+    r"""DescribeReleaseInfo response structure.
 
     """
 
@@ -7524,7 +7524,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def LastTime(self):
-        """The last release time.
+        r"""The last release time.
         :rtype: str
         """
         return self._LastTime
@@ -7535,7 +7535,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Release status: 1: pending release; 2: releasing; 3: release successful; 4: release failed; 5: under review; 6: review successful; 7: review failed; 8: release successful, callback processing; 9: release paused; 10: appeal under review; 11: appeal approved; 12: appeal rejected.
+        r"""Release status: 1: pending release; 2: releasing; 3: release successful; 4: release failed; 5: under review; 6: review successful; 7: review failed; 8: release successful, callback processing; 9: release paused; 10: appeal under review; 11: appeal approved; 12: appeal rejected.
         :rtype: int
         """
         return self._Status
@@ -7546,7 +7546,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def IsUpdated(self):
-        """Whether it has been edited. When it is true, it means it can be released.
+        r"""Whether it has been edited. When it is true, it means it can be released.
         :rtype: bool
         """
         return self._IsUpdated
@@ -7557,7 +7557,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
-        """Reason for failure.
+        r"""Reason for failure.
 
         :rtype: str
         """
@@ -7569,7 +7569,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7588,7 +7588,7 @@ class DescribeReleaseInfoResponse(AbstractModel):
 
 
 class DescribeReleaseRequest(AbstractModel):
-    """DescribeRelease request structure.
+    r"""DescribeRelease request structure.
 
     """
 
@@ -7604,7 +7604,7 @@ class DescribeReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -7615,7 +7615,7 @@ class DescribeReleaseRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release details.
+        r"""Release details.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -7639,7 +7639,7 @@ class DescribeReleaseRequest(AbstractModel):
 
 
 class DescribeReleaseResponse(AbstractModel):
-    """DescribeRelease response structure.
+    r"""DescribeRelease response structure.
 
     """
 
@@ -7664,7 +7664,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -7675,7 +7675,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def Description(self):
-        """Publish description.
+        r"""Publish description.
         :rtype: str
         """
         return self._Description
@@ -7686,7 +7686,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Release status (1. pending release; 2. releasing; 3. release successful; 4. release failed; 5. releasing (under review); 6. releasing (review completed); 7. release failed; 9. release paused).
+        r"""Release status (1. pending release; 2. releasing; 3. release successful; 4. release failed; 5. releasing (under review); 6. releasing (review completed); 7. release failed; 9. release paused).
         :rtype: int
         """
         return self._Status
@@ -7697,7 +7697,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Release status description.
+        r"""Release status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -7708,7 +7708,7 @@ class DescribeReleaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7727,7 +7727,7 @@ class DescribeReleaseResponse(AbstractModel):
 
 
 class DescribeRobotBizIDByAppKeyRequest(AbstractModel):
-    """DescribeRobotBizIDByAppKey request structure.
+    r"""DescribeRobotBizIDByAppKey request structure.
 
     """
 
@@ -7740,7 +7740,7 @@ class DescribeRobotBizIDByAppKeyRequest(AbstractModel):
 
     @property
     def AppKey(self):
-        """Application appkey.
+        r"""Application appkey.
         :rtype: str
         """
         return self._AppKey
@@ -7763,7 +7763,7 @@ class DescribeRobotBizIDByAppKeyRequest(AbstractModel):
 
 
 class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
-    """DescribeRobotBizIDByAppKey response structure.
+    r"""DescribeRobotBizIDByAppKey response structure.
 
     """
 
@@ -7779,7 +7779,7 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application business ID.
+        r"""Application business ID.
         :rtype: str
         """
         return self._BotBizId
@@ -7790,7 +7790,7 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7806,7 +7806,7 @@ class DescribeRobotBizIDByAppKeyResponse(AbstractModel):
 
 
 class DescribeSearchStatsGraphRequest(AbstractModel):
-    """DescribeSearchStatsGraph request structure.
+    r"""DescribeSearchStatsGraph request structure.
 
     """
 
@@ -7840,7 +7840,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -7851,7 +7851,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -7862,7 +7862,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """Uin list.
+        r"""Uin list.
         :rtype: list of str
         """
         return self._UinAccount
@@ -7873,7 +7873,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business type.
+        r"""Sub-business type.
         :rtype: str
         """
         return self._SubBizType
@@ -7884,7 +7884,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -7895,7 +7895,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds.
+        r"""Start timestamp, in seconds.
         :rtype: str
         """
         return self._StartTime
@@ -7906,7 +7906,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds.
+        r"""End timestamp, in seconds.
         :rtype: str
         """
         return self._EndTime
@@ -7917,7 +7917,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application id list.
+        r"""Application id list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -7947,7 +7947,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
 
 class DescribeSearchStatsGraphResponse(AbstractModel):
-    """DescribeSearchStatsGraph response structure.
+    r"""DescribeSearchStatsGraph response structure.
 
     """
 
@@ -7963,7 +7963,7 @@ class DescribeSearchStatsGraphResponse(AbstractModel):
 
     @property
     def List(self):
-        """The statistical result.
+        r"""The statistical result.
         :rtype: list of Stat
         """
         return self._List
@@ -7974,7 +7974,7 @@ class DescribeSearchStatsGraphResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7995,7 +7995,7 @@ class DescribeSearchStatsGraphResponse(AbstractModel):
 
 
 class DescribeSegmentsRequest(AbstractModel):
-    """DescribeSegments request structure.
+    r"""DescribeSegments request structure.
 
     """
 
@@ -8011,7 +8011,7 @@ class DescribeSegmentsRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -8022,7 +8022,7 @@ class DescribeSegmentsRequest(AbstractModel):
 
     @property
     def SegBizId(self):
-        """Document fragment ID.
+        r"""Document fragment ID.
         :rtype: list of str
         """
         return self._SegBizId
@@ -8046,7 +8046,7 @@ class DescribeSegmentsRequest(AbstractModel):
 
 
 class DescribeSegmentsResponse(AbstractModel):
-    """DescribeSegments response structure.
+    r"""DescribeSegments response structure.
 
     """
 
@@ -8062,7 +8062,7 @@ class DescribeSegmentsResponse(AbstractModel):
 
     @property
     def List(self):
-        """Fragment list.
+        r"""Fragment list.
         :rtype: list of DocSegment
         """
         return self._List
@@ -8073,7 +8073,7 @@ class DescribeSegmentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8094,7 +8094,7 @@ class DescribeSegmentsResponse(AbstractModel):
 
 
 class DescribeStorageCredentialRequest(AbstractModel):
-    """DescribeStorageCredential request structure.
+    r"""DescribeStorageCredential request structure.
 
     """
 
@@ -8117,7 +8117,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID. The parameter still needs to be filled in. Different combinations of parameters will result in different permissions. For details, see https://cloud.tencent.com/document/product/1759/116238.
+        r"""Application ID. The parameter still needs to be filled in. Different combinations of parameters will result in different permissions. For details, see https://cloud.tencent.com/document/product/1759/116238.
         :rtype: str
         """
         return self._BotBizId
@@ -8128,7 +8128,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def FileType(self):
-        """File type, normal file name type suffixes, such as xlsx, pdf, docx, png, etc.
+        r"""File type, normal file name type suffixes, such as xlsx, pdf, docx, png, etc.
         :rtype: str
         """
         return self._FileType
@@ -8139,7 +8139,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def IsPublic(self):
-        """This parameter is used to select a scenario when uploading a file or an image. When uploading an image in a chat, "Ispublic" is "true." When uploading a file (including files in the document library, images, etc. and files in a chat), "Ispublic" is "false."
+        r"""This parameter is used to select a scenario when uploading a file or an image. When uploading an image in a chat, "Ispublic" is "true." When uploading a file (including files in the document library, images, etc. and files in a chat), "Ispublic" is "false."
 
         :rtype: bool
         """
@@ -8151,7 +8151,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def TypeKey(self):
-        """Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        r"""Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
         :rtype: str
         """
         return self._TypeKey
@@ -8177,7 +8177,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
 
 class DescribeStorageCredentialResponse(AbstractModel):
-    """DescribeStorageCredential response structure.
+    r"""DescribeStorageCredential response structure.
 
     """
 
@@ -8220,7 +8220,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        """Key information.
+        r"""Key information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.Credentials`
         """
         return self._Credentials
@@ -8231,7 +8231,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Expiration time.
+        r"""Expiration time.
         :rtype: int
         """
         return self._ExpiredTime
@@ -8242,7 +8242,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: int
         """
         return self._StartTime
@@ -8253,7 +8253,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        """Cloud object storage bucket.
+        r"""Cloud object storage bucket.
         :rtype: str
         """
         return self._Bucket
@@ -8264,7 +8264,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Region(self):
-        """COS availability zone.
+        r"""COS availability zone.
         :rtype: str
         """
         return self._Region
@@ -8275,7 +8275,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        """Cloud file storage directory.
+        r"""Cloud file storage directory.
         :rtype: str
         """
         return self._FilePath
@@ -8286,7 +8286,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Type(self):
-        """Storage type.
+        r"""Storage type.
         :rtype: str
         """
         return self._Type
@@ -8297,7 +8297,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def CorpUin(self):
-        """Primary account.
+        r"""Primary account.
         :rtype: str
         """
         return self._CorpUin
@@ -8308,7 +8308,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def ImagePath(self):
-        """Image storage directory.
+        r"""Image storage directory.
         :rtype: str
         """
         return self._ImagePath
@@ -8319,7 +8319,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def UploadPath(self):
-        """Upload storage path to a specific file.
+        r"""Upload storage path to a specific file.
         :rtype: str
         """
         return self._UploadPath
@@ -8330,7 +8330,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8357,7 +8357,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
 
 class DescribeTokenUsageGraphRequest(AbstractModel):
-    """DescribeTokenUsageGraph request structure.
+    r"""DescribeTokenUsageGraph request structure.
 
     """
 
@@ -8391,7 +8391,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """Root account of Tencent Cloud.
+        r"""Root account of Tencent Cloud.
         :rtype: list of str
         """
         return self._UinAccount
@@ -8402,7 +8402,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business types of Tencent Cloud Agent Development Platform/ADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        r"""Sub-business types of Tencent Cloud Agent Development Platform/ADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :rtype: str
         """
         return self._SubBizType
@@ -8413,7 +8413,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -8424,7 +8424,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds.
+        r"""Start timestamp, in seconds.
         :rtype: str
         """
         return self._StartTime
@@ -8435,7 +8435,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds.
+        r"""End timestamp, in seconds.
         :rtype: str
         """
         return self._EndTime
@@ -8446,7 +8446,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -8457,7 +8457,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._AppType
@@ -8468,7 +8468,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._SubScenes
@@ -8498,7 +8498,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
 
 class DescribeTokenUsageGraphResponse(AbstractModel):
-    """DescribeTokenUsageGraph response structure.
+    r"""DescribeTokenUsageGraph response structure.
 
     """
 
@@ -8520,7 +8520,7 @@ class DescribeTokenUsageGraphResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total amount of token consumption.
+        r"""Total amount of token consumption.
         :rtype: list of Stat
         """
         return self._Total
@@ -8531,7 +8531,7 @@ class DescribeTokenUsageGraphResponse(AbstractModel):
 
     @property
     def Input(self):
-        """Input token consumption.
+        r"""Input token consumption.
         :rtype: list of Stat
         """
         return self._Input
@@ -8542,7 +8542,7 @@ class DescribeTokenUsageGraphResponse(AbstractModel):
 
     @property
     def Output(self):
-        """Output token consumption.
+        r"""Output token consumption.
         :rtype: list of Stat
         """
         return self._Output
@@ -8553,7 +8553,7 @@ class DescribeTokenUsageGraphResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8586,7 +8586,7 @@ class DescribeTokenUsageGraphResponse(AbstractModel):
 
 
 class DescribeTokenUsageRequest(AbstractModel):
-    """DescribeTokenUsage request structure.
+    r"""DescribeTokenUsage request structure.
 
     """
 
@@ -8629,7 +8629,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """Root account of Tencent Cloud.
+        r"""Root account of Tencent Cloud.
         :rtype: list of str
         """
         return self._UinAccount
@@ -8640,7 +8640,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in the integrator mode).
+        r"""Log in to user's root account (required in the integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -8651,7 +8651,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -8662,7 +8662,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business types of Tencent Cloud Agent Development Platform/ADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        r"""Sub-business types of Tencent Cloud Agent Development Platform/ADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :rtype: str
         """
         return self._SubBizType
@@ -8673,7 +8673,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -8684,7 +8684,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start timestamp, in seconds (default value: 0).
+        r"""Start timestamp, in seconds (default value: 0).
         :rtype: str
         """
         return self._StartTime
@@ -8695,7 +8695,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp, in seconds (default value: 0, must be greater than the start timestamp).
+        r"""End timestamp, in seconds (default value: 0, must be greater than the start timestamp).
         :rtype: str
         """
         return self._EndTime
@@ -8706,7 +8706,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -8717,7 +8717,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        """Filter sub-scenario (used in document parsing scenario).
+        r"""Filter sub-scenario (used in document parsing scenario).
         :rtype: list of str
         """
         return self._SubScenes
@@ -8728,7 +8728,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._AppType
@@ -8739,7 +8739,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SpaceId
@@ -8772,7 +8772,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
 
 class DescribeTokenUsageResponse(AbstractModel):
-    """DescribeTokenUsage response structure.
+    r"""DescribeTokenUsage response structure.
 
     """
 
@@ -8818,7 +8818,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def TotalTokenUsage(self):
-        """Total token consumption.
+        r"""Total token consumption.
         :rtype: float
         """
         return self._TotalTokenUsage
@@ -8829,7 +8829,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def InputTokenUsage(self):
-        """Input token consumption.
+        r"""Input token consumption.
         :rtype: float
         """
         return self._InputTokenUsage
@@ -8840,7 +8840,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def OutputTokenUsage(self):
-        """Output token consumption.
+        r"""Output token consumption.
         :rtype: float
         """
         return self._OutputTokenUsage
@@ -8851,7 +8851,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def ApiCallStats(self):
-        """Number of API calls.
+        r"""Number of API calls.
         :rtype: int
         """
         return self._ApiCallStats
@@ -8862,7 +8862,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def SearchUsage(self):
-        """Number of search service calls.
+        r"""Number of search service calls.
         :rtype: float
         """
         return self._SearchUsage
@@ -8873,7 +8873,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def PageUsage(self):
-        """Number of pages consumed by document parsing.
+        r"""Number of pages consumed by document parsing.
         :rtype: int
         """
         return self._PageUsage
@@ -8884,7 +8884,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def SplitTokenUsage(self):
-        """Token consumption by splitting.
+        r"""Token consumption by splitting.
         :rtype: float
         """
         return self._SplitTokenUsage
@@ -8895,7 +8895,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def RagSearchUsage(self):
-        """Number of Rag retrievals.
+        r"""Number of Rag retrievals.
         :rtype: float
         """
         return self._RagSearchUsage
@@ -8906,7 +8906,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def InternetSearchUsage(self):
-        """Number of online searches.
+        r"""Number of online searches.
         :rtype: float
         """
         return self._InternetSearchUsage
@@ -8917,7 +8917,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def DosageTypeLimit(self):
-        """
+        r"""
         :rtype: float
         """
         return self._DosageTypeLimit
@@ -8928,7 +8928,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def DosageTypeCurr(self):
-        """
+        r"""
         :rtype: float
         """
         return self._DosageTypeCurr
@@ -8939,7 +8939,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8965,7 +8965,7 @@ class DescribeTokenUsageResponse(AbstractModel):
 
 
 class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
-    """DescribeUnsatisfiedReplyContext request structure.
+    r"""DescribeUnsatisfiedReplyContext request structure.
 
     """
 
@@ -8987,7 +8987,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -8998,7 +8998,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def ReplyBizId(self):
-        """Response ID.
+        r"""Response ID.
         :rtype: str
         """
         return self._ReplyBizId
@@ -9009,7 +9009,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Log in to user's root account (required in the integrator mode).
+        r"""Log in to user's root account (required in the integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -9020,7 +9020,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -9046,7 +9046,7 @@ class DescribeUnsatisfiedReplyContextRequest(AbstractModel):
 
 
 class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
-    """DescribeUnsatisfiedReplyContext response structure.
+    r"""DescribeUnsatisfiedReplyContext response structure.
 
     """
 
@@ -9062,7 +9062,7 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
     @property
     def List(self):
-        """Context of dissatisfied responses.
+        r"""Context of dissatisfied responses.
         :rtype: list of Context
         """
         return self._List
@@ -9073,7 +9073,7 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9094,7 +9094,7 @@ class DescribeUnsatisfiedReplyContextResponse(AbstractModel):
 
 
 class DigitalHumanConfig(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -9113,7 +9113,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def AssetKey(self):
-        """
+        r"""
         :rtype: str
         """
         return self._AssetKey
@@ -9124,7 +9124,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -9135,7 +9135,7 @@ class DigitalHumanConfig(AbstractModel):
 
     @property
     def Avatar(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Avatar
@@ -9160,7 +9160,7 @@ class DigitalHumanConfig(AbstractModel):
 
 
 class DocFilterFlag(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -9176,7 +9176,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Flag(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Flag
@@ -9187,7 +9187,7 @@ class DocFilterFlag(AbstractModel):
 
     @property
     def Value(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._Value
@@ -9211,7 +9211,7 @@ class DocFilterFlag(AbstractModel):
 
 
 class DocSegment(AbstractModel):
-    """Document fragment.
+    r"""Document fragment.
 
     """
 
@@ -9251,7 +9251,7 @@ class DocSegment(AbstractModel):
 
     @property
     def Id(self):
-        """Fragment ID.
+        r"""Fragment ID.
         :rtype: str
         """
         return self._Id
@@ -9262,7 +9262,7 @@ class DocSegment(AbstractModel):
 
     @property
     def BusinessId(self):
-        """Business ID.
+        r"""Business ID.
         :rtype: str
         """
         return self._BusinessId
@@ -9273,7 +9273,7 @@ class DocSegment(AbstractModel):
 
     @property
     def FileType(self):
-        """File type (markdown, word, txt).
+        r"""File type (markdown, word, txt).
         :rtype: str
         """
         return self._FileType
@@ -9284,7 +9284,7 @@ class DocSegment(AbstractModel):
 
     @property
     def SegmentType(self):
-        """Document segment type (segment, table).
+        r"""Document segment type (segment, table).
         :rtype: str
         """
         return self._SegmentType
@@ -9295,7 +9295,7 @@ class DocSegment(AbstractModel):
 
     @property
     def Title(self):
-        """Title.
+        r"""Title.
         :rtype: str
         """
         return self._Title
@@ -9306,7 +9306,7 @@ class DocSegment(AbstractModel):
 
     @property
     def PageContent(self):
-        """Paragraph content.
+        r"""Paragraph content.
         :rtype: str
         """
         return self._PageContent
@@ -9317,7 +9317,7 @@ class DocSegment(AbstractModel):
 
     @property
     def OrgData(self):
-        """Original paragraph.
+        r"""Original paragraph.
         :rtype: str
         """
         return self._OrgData
@@ -9328,7 +9328,7 @@ class DocSegment(AbstractModel):
 
     @property
     def DocId(self):
-        """Article ID.
+        r"""Article ID.
         :rtype: str
         """
         return self._DocId
@@ -9339,7 +9339,7 @@ class DocSegment(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document business ID.
+        r"""Document business ID.
         :rtype: str
         """
         return self._DocBizId
@@ -9350,7 +9350,7 @@ class DocSegment(AbstractModel):
 
     @property
     def DocUrl(self):
-        """Document URL.
+        r"""Document URL.
         :rtype: str
         """
         return self._DocUrl
@@ -9382,7 +9382,7 @@ class DocSegment(AbstractModel):
 
 
 class DuplicateFileHandle(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -9398,7 +9398,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def CheckType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._CheckType
@@ -9409,7 +9409,7 @@ class DuplicateFileHandle(AbstractModel):
 
     @property
     def HandleType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._HandleType
@@ -9433,7 +9433,7 @@ class DuplicateFileHandle(AbstractModel):
 
 
 class ExportAttributeLabelRequest(AbstractModel):
-    """ExportAttributeLabel request structure.
+    r"""ExportAttributeLabel request structure.
 
     """
 
@@ -9458,7 +9458,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -9469,7 +9469,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -9480,7 +9480,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -9491,7 +9491,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeBizIds(self):
-        """Attribute ID.
+        r"""Attribute ID.
         :rtype: list of str
         """
         return self._AttributeBizIds
@@ -9502,7 +9502,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Export according to the filtered data.
+        r"""Export according to the filtered data.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AttributeFilters`
         """
         return self._Filters
@@ -9531,7 +9531,7 @@ class ExportAttributeLabelRequest(AbstractModel):
 
 
 class ExportAttributeLabelResponse(AbstractModel):
-    """ExportAttributeLabel response structure.
+    r"""ExportAttributeLabel response structure.
 
     """
 
@@ -9547,7 +9547,7 @@ class ExportAttributeLabelResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Export task ID.
+        r"""Export task ID.
         :rtype: str
         """
         return self._TaskId
@@ -9558,7 +9558,7 @@ class ExportAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9574,7 +9574,7 @@ class ExportAttributeLabelResponse(AbstractModel):
 
 
 class ExportQAListRequest(AbstractModel):
-    """ExportQAList request structure.
+    r"""ExportQAList request structure.
 
     """
 
@@ -9593,7 +9593,7 @@ class ExportQAListRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -9604,7 +9604,7 @@ class ExportQAListRequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """Q&A business ID.
+        r"""Q&A business ID.
         :rtype: list of str
         """
         return self._QaBizIds
@@ -9615,7 +9615,7 @@ class ExportQAListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query parameter.
+        r"""Query parameter.
         :rtype: :class:`tencentcloud.lke.v20231130.models.QAQuery`
         """
         return self._Filters
@@ -9642,7 +9642,7 @@ class ExportQAListRequest(AbstractModel):
 
 
 class ExportQAListResponse(AbstractModel):
-    """ExportQAList response structure.
+    r"""ExportQAList response structure.
 
     """
 
@@ -9655,7 +9655,7 @@ class ExportQAListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9670,7 +9670,7 @@ class ExportQAListResponse(AbstractModel):
 
 
 class ExportUnsatisfiedReplyRequest(AbstractModel):
-    """ExportUnsatisfiedReply request structure.
+    r"""ExportUnsatisfiedReply request structure.
 
     """
 
@@ -9695,7 +9695,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -9706,7 +9706,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def ReplyBizIds(self):
-        """Check to export ID list.
+        r"""Check to export ID list.
         :rtype: list of str
         """
         return self._ReplyBizIds
@@ -9717,7 +9717,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -9728,7 +9728,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -9739,7 +9739,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Retrieve filter.
+        r"""Retrieve filter.
         :rtype: :class:`tencentcloud.lke.v20231130.models.Filters`
         """
         return self._Filters
@@ -9768,7 +9768,7 @@ class ExportUnsatisfiedReplyRequest(AbstractModel):
 
 
 class ExportUnsatisfiedReplyResponse(AbstractModel):
-    """ExportUnsatisfiedReply response structure.
+    r"""ExportUnsatisfiedReply response structure.
 
     """
 
@@ -9781,7 +9781,7 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9796,7 +9796,7 @@ class ExportUnsatisfiedReplyResponse(AbstractModel):
 
 
 class ExtraInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -9809,7 +9809,7 @@ class ExtraInfo(AbstractModel):
 
     @property
     def EChartsInfo(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._EChartsInfo
@@ -9832,7 +9832,7 @@ class ExtraInfo(AbstractModel):
 
 
 class FileInfo(AbstractModel):
-    """Real-Time uploaded file information.
+    r"""Real-Time uploaded file information.
 
     """
 
@@ -9860,7 +9860,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """File name.
+        r"""File name.
         :rtype: str
         """
         return self._FileName
@@ -9871,7 +9871,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """File size.
+        r"""File size.
         :rtype: str
         """
         return self._FileSize
@@ -9882,7 +9882,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileUrl(self):
-        """URL of the file, address of COS.
+        r"""URL of the file, address of COS.
         :rtype: str
         """
         return self._FileUrl
@@ -9893,7 +9893,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -9904,7 +9904,7 @@ class FileInfo(AbstractModel):
 
     @property
     def DocId(self):
-        """DocID returned after parsing.
+        r"""DocID returned after parsing.
         :rtype: str
         """
         return self._DocId
@@ -9915,7 +9915,7 @@ class FileInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreatedAt
@@ -9943,7 +9943,7 @@ class FileInfo(AbstractModel):
 
 
 class Filters(AbstractModel):
-    """Retrieve and filter dissatisfied responses.
+    r"""Retrieve and filter dissatisfied responses.
 
     """
 
@@ -9960,7 +9960,7 @@ class Filters(AbstractModel):
 
     @property
     def Query(self):
-        """Retrieve user question or answer.
+        r"""Retrieve user question or answer.
         :rtype: str
         """
         return self._Query
@@ -9971,7 +9971,7 @@ class Filters(AbstractModel):
 
     @property
     def Reasons(self):
-        """Incorrect retrieval type.
+        r"""Incorrect retrieval type.
 
         :rtype: list of str
         """
@@ -9996,7 +9996,7 @@ class Filters(AbstractModel):
 
 
 class GenerateQARequest(AbstractModel):
-    """GenerateQA request structure.
+    r"""GenerateQA request structure.
 
     """
 
@@ -10012,7 +10012,7 @@ class GenerateQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -10023,7 +10023,7 @@ class GenerateQARequest(AbstractModel):
 
     @property
     def DocBizIds(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: list of str
         """
         return self._DocBizIds
@@ -10047,7 +10047,7 @@ class GenerateQARequest(AbstractModel):
 
 
 class GenerateQAResponse(AbstractModel):
-    """GenerateQA response structure.
+    r"""GenerateQA response structure.
 
     """
 
@@ -10060,7 +10060,7 @@ class GenerateQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10075,7 +10075,7 @@ class GenerateQAResponse(AbstractModel):
 
 
 class GetAnswerTypeDataCountRequest(AbstractModel):
-    """GetAnswerTypeDataCount request structure.
+    r"""GetAnswerTypeDataCount request structure.
 
     """
 
@@ -10103,7 +10103,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start date.
+        r"""Start date.
         :rtype: int
         """
         return self._StartTime
@@ -10114,7 +10114,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End date.
+        r"""End date.
         :rtype: int
         """
         return self._EndTime
@@ -10125,7 +10125,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: list of str
         """
         return self._AppBizId
@@ -10136,7 +10136,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Message source (1. shared from user end; 2. chat API; 3. chat test, 4. application evaluation).
+        r"""Message source (1. shared from user end; 2. chat API; 3. chat test, 4. application evaluation).
         :rtype: int
         """
         return self._Type
@@ -10147,7 +10147,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -10158,7 +10158,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -10186,7 +10186,7 @@ class GetAnswerTypeDataCountRequest(AbstractModel):
 
 
 class GetAnswerTypeDataCountResponse(AbstractModel):
-    """GetAnswerTypeDataCount response structure.
+    r"""GetAnswerTypeDataCount response structure.
 
     """
 
@@ -10229,7 +10229,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of messages.
+        r"""Total number of messages.
         :rtype: int
         """
         return self._Total
@@ -10240,7 +10240,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def ModelReplyCount(self):
-        """Total number of direct responses by the large model.
+        r"""Total number of direct responses by the large model.
         :rtype: int
         """
         return self._ModelReplyCount
@@ -10251,7 +10251,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def KnowledgeCount(self):
-        """Total number of knowledge-based responses.
+        r"""Total number of knowledge-based responses.
         :rtype: int
         """
         return self._KnowledgeCount
@@ -10262,7 +10262,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def TaskFlowCount(self):
-        """Total number of task flow responses.
+        r"""Total number of task flow responses.
         :rtype: int
         """
         return self._TaskFlowCount
@@ -10273,7 +10273,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def SearchEngineCount(self):
-        """Total number of search engine responses.
+        r"""Total number of search engine responses.
         :rtype: int
         """
         return self._SearchEngineCount
@@ -10284,7 +10284,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def ImageUnderstandingCount(self):
-        """Total number of image understanding responses.
+        r"""Total number of image understanding responses.
         :rtype: int
         """
         return self._ImageUnderstandingCount
@@ -10295,7 +10295,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def RejectCount(self):
-        """Total number of responses to rejected questions.
+        r"""Total number of responses to rejected questions.
         :rtype: int
         """
         return self._RejectCount
@@ -10306,7 +10306,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def SensitiveCount(self):
-        """Total number of sensitive responses.
+        r"""Total number of sensitive responses.
         :rtype: int
         """
         return self._SensitiveCount
@@ -10317,7 +10317,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def ConcurrentLimitCount(self):
-        """Total number of responses for concurrency exceeded.
+        r"""Total number of responses for concurrency exceeded.
         :rtype: int
         """
         return self._ConcurrentLimitCount
@@ -10328,7 +10328,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def UnknownIssuesCount(self):
-        """Total number of unknown question responses.
+        r"""Total number of unknown question responses.
         :rtype: int
         """
         return self._UnknownIssuesCount
@@ -10339,7 +10339,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10364,7 +10364,7 @@ class GetAnswerTypeDataCountResponse(AbstractModel):
 
 
 class GetAppKnowledgeCountRequest(AbstractModel):
-    """GetAppKnowledgeCount request structure.
+    r"""GetAppKnowledgeCount request structure.
 
     """
 
@@ -10386,7 +10386,7 @@ class GetAppKnowledgeCountRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type: doc - document; qa - Q&A pair.
+        r"""Type: doc - document; qa - Q&A pair.
         :rtype: str
         """
         return self._Type
@@ -10397,7 +10397,7 @@ class GetAppKnowledgeCountRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -10408,7 +10408,7 @@ class GetAppKnowledgeCountRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).	
+        r"""Login to user's root account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginUin
@@ -10419,7 +10419,7 @@ class GetAppKnowledgeCountRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -10445,7 +10445,7 @@ class GetAppKnowledgeCountRequest(AbstractModel):
 
 
 class GetAppKnowledgeCountResponse(AbstractModel):
-    """GetAppKnowledgeCount response structure.
+    r"""GetAppKnowledgeCount response structure.
 
     """
 
@@ -10461,7 +10461,7 @@ class GetAppKnowledgeCountResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
         :rtype: str
         """
         return self._Total
@@ -10472,7 +10472,7 @@ class GetAppKnowledgeCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10488,7 +10488,7 @@ class GetAppKnowledgeCountResponse(AbstractModel):
 
 
 class GetAppSecretRequest(AbstractModel):
-    """GetAppSecret request structure.
+    r"""GetAppSecret request structure.
 
     """
 
@@ -10501,7 +10501,7 @@ class GetAppSecretRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -10524,7 +10524,7 @@ class GetAppSecretRequest(AbstractModel):
 
 
 class GetAppSecretResponse(AbstractModel):
-    """GetAppSecret response structure.
+    r"""GetAppSecret response structure.
 
     """
 
@@ -10549,7 +10549,7 @@ class GetAppSecretResponse(AbstractModel):
 
     @property
     def AppKey(self):
-        """Application key.
+        r"""Application key.
         :rtype: str
         """
         return self._AppKey
@@ -10560,7 +10560,7 @@ class GetAppSecretResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -10571,7 +10571,7 @@ class GetAppSecretResponse(AbstractModel):
 
     @property
     def IsRelease(self):
-        """Whether to release.
+        r"""Whether to release.
         :rtype: bool
         """
         return self._IsRelease
@@ -10582,7 +10582,7 @@ class GetAppSecretResponse(AbstractModel):
 
     @property
     def HasPermission(self):
-        """Whether there is permission to view.
+        r"""Whether there is permission to view.
         :rtype: bool
         """
         return self._HasPermission
@@ -10593,7 +10593,7 @@ class GetAppSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10612,7 +10612,7 @@ class GetAppSecretResponse(AbstractModel):
 
 
 class GetDocPreviewRequest(AbstractModel):
-    """GetDocPreview request structure.
+    r"""GetDocPreview request structure.
 
     """
 
@@ -10631,7 +10631,7 @@ class GetDocPreviewRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document BizID.
+        r"""Document BizID.
         :rtype: str
         """
         return self._DocBizId
@@ -10642,7 +10642,7 @@ class GetDocPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -10653,7 +10653,7 @@ class GetDocPreviewRequest(AbstractModel):
 
     @property
     def TypeKey(self):
-        """Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        r"""Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
         :rtype: str
         """
         return self._TypeKey
@@ -10678,7 +10678,7 @@ class GetDocPreviewRequest(AbstractModel):
 
 
 class GetDocPreviewResponse(AbstractModel):
-    """GetDocPreview response structure.
+    r"""GetDocPreview response structure.
 
     """
 
@@ -10712,7 +10712,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def FileName(self):
-        """Filename. The release end always uses this name.
+        r"""Filename. The release end always uses this name.
         :rtype: str
         """
         return self._FileName
@@ -10723,7 +10723,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -10734,7 +10734,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def CosUrl(self):
-        """COS path.
+        r"""COS path.
 
         :rtype: str
         """
@@ -10746,7 +10746,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def Url(self):
-        """COS temporary url.
+        r"""COS temporary url.
 
         :rtype: str
         """
@@ -10758,7 +10758,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        """COS bucket.
+        r"""COS bucket.
 
         :rtype: str
         """
@@ -10770,7 +10770,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def NewName(self):
-        """It is the new name in the case of document renaming. It shall be used preferentially on the evaluation end.
+        r"""It is the new name in the case of document renaming. It shall be used preferentially on the evaluation end.
         :rtype: str
         """
         return self._NewName
@@ -10781,7 +10781,7 @@ class GetDocPreviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10802,7 +10802,7 @@ class GetDocPreviewResponse(AbstractModel):
 
 
 class GetLikeDataCountRequest(AbstractModel):
-    """GetLikeDataCount request structure.
+    r"""GetLikeDataCount request structure.
 
     """
 
@@ -10830,7 +10830,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start date.
+        r"""Start date.
         :rtype: int
         """
         return self._StartTime
@@ -10841,7 +10841,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End date.
+        r"""End date.
         :rtype: int
         """
         return self._EndTime
@@ -10852,7 +10852,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: list of str
         """
         return self._AppBizId
@@ -10863,7 +10863,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Message source (1. shared from user end, 2. chat api).
+        r"""Message source (1. shared from user end, 2. chat api).
         :rtype: int
         """
         return self._Type
@@ -10874,7 +10874,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -10885,7 +10885,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -10913,7 +10913,7 @@ class GetLikeDataCountRequest(AbstractModel):
 
 
 class GetLikeDataCountResponse(AbstractModel):
-    """GetLikeDataCount response structure.
+    r"""GetLikeDataCount response structure.
 
     """
 
@@ -10947,7 +10947,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Number of messages that can be evaluated.
+        r"""Number of messages that can be evaluated.
         :rtype: int
         """
         return self._Total
@@ -10958,7 +10958,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def AppraisalTotal(self):
-        """Number of comments.
+        r"""Number of comments.
         :rtype: int
         """
         return self._AppraisalTotal
@@ -10969,7 +10969,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def ParticipationRate(self):
-        """Participation rate.
+        r"""Participation rate.
         :rtype: float
         """
         return self._ParticipationRate
@@ -10980,7 +10980,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def LikeTotal(self):
-        """Number of likes.
+        r"""Number of likes.
         :rtype: int
         """
         return self._LikeTotal
@@ -10991,7 +10991,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def LikeRate(self):
-        """Like rate.
+        r"""Like rate.
         :rtype: float
         """
         return self._LikeRate
@@ -11002,7 +11002,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def DislikeTotal(self):
-        """Number of dislikes.
+        r"""Number of dislikes.
         :rtype: int
         """
         return self._DislikeTotal
@@ -11013,7 +11013,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def DislikeRate(self):
-        """Dislike rate.
+        r"""Dislike rate.
         :rtype: float
         """
         return self._DislikeRate
@@ -11024,7 +11024,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11046,7 +11046,7 @@ class GetLikeDataCountResponse(AbstractModel):
 
 
 class GetMsgRecordRequest(AbstractModel):
-    """GetMsgRecord request structure.
+    r"""GetMsgRecord request structure.
 
     """
 
@@ -11077,7 +11077,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Type.
+        r"""Type.
         :rtype: int
         """
         return self._Type
@@ -11088,7 +11088,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def Count(self):
-        """Quantity.
+        r"""Quantity.
         :rtype: int
         """
         return self._Count
@@ -11099,7 +11099,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -11110,7 +11110,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def BotAppKey(self):
-        """Application AppKey. When Type=5 [API Visitor], this field is required. </br> How to obtain it: </br> 1. After the application is released, obtain it at [Application Page]-[Release Management]-[Call Information]-[API Management]. </br> 2. Refer to item 2 in https://cloud.tencent.com/document/product/1759/109469.
+        r"""Application AppKey. When Type=5 [API Visitor], this field is required. </br> How to obtain it: </br> 1. After the application is released, obtain it at [Application Page]-[Release Management]-[Call Information]-[API Management]. </br> 2. Refer to item 2 in https://cloud.tencent.com/document/product/1759/109469.
         :rtype: str
         """
         return self._BotAppKey
@@ -11121,7 +11121,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def Scene(self):
-        """Scenario, experience: 1; formal: 2.
+        r"""Scenario, experience: 1; formal: 2.
         :rtype: int
         """
         return self._Scene
@@ -11132,7 +11132,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def LastRecordId(self):
-        """Last record ID. Retrieve messages in reverse order. You can only select either MidRecordId or LastRecordId.
+        r"""Last record ID. Retrieve messages in reverse order. You can only select either MidRecordId or LastRecordId.
         :rtype: str
         """
         return self._LastRecordId
@@ -11143,7 +11143,7 @@ class GetMsgRecordRequest(AbstractModel):
 
     @property
     def MidRecordId(self):
-        """If this value is input, it means pulling a total of count message records before and after the record ID. You can only select either MidRecordId or LastRecordId.
+        r"""If this value is input, it means pulling a total of count message records before and after the record ID. You can only select either MidRecordId or LastRecordId.
         :rtype: str
         """
         return self._MidRecordId
@@ -11172,7 +11172,7 @@ class GetMsgRecordRequest(AbstractModel):
 
 
 class GetMsgRecordResponse(AbstractModel):
-    """GetMsgRecord response structure.
+    r"""GetMsgRecord response structure.
 
     """
 
@@ -11191,7 +11191,7 @@ class GetMsgRecordResponse(AbstractModel):
 
     @property
     def Records(self):
-        """Session record.
+        r"""Session record.
         :rtype: list of MsgRecord
         """
         return self._Records
@@ -11202,7 +11202,7 @@ class GetMsgRecordResponse(AbstractModel):
 
     @property
     def SessionDisassociatedTimestamp(self):
-        """The time when session cleared associated context, in milliseconds.
+        r"""The time when session cleared associated context, in milliseconds.
         :rtype: str
         """
         return self._SessionDisassociatedTimestamp
@@ -11213,7 +11213,7 @@ class GetMsgRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11235,7 +11235,7 @@ class GetMsgRecordResponse(AbstractModel):
 
 
 class GetReconstructDocumentResultRequest(AbstractModel):
-    """GetReconstructDocumentResult request structure.
+    r"""GetReconstructDocumentResult request structure.
 
     """
 
@@ -11248,7 +11248,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
+        r"""Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
         :rtype: str
         """
         return self._TaskId
@@ -11271,7 +11271,7 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
 
 class GetReconstructDocumentResultResponse(AbstractModel):
-    """GetReconstructDocumentResult response structure.
+    r"""GetReconstructDocumentResult response structure.
 
     """
 
@@ -11293,7 +11293,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
+        r"""Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
         :rtype: str
         """
         return self._Status
@@ -11304,7 +11304,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        """The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
+        r"""The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl
@@ -11315,7 +11315,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        """Page number information where document parsing failed this time.
+        r"""Page number information where document parsing failed this time.
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -11326,7 +11326,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11349,7 +11349,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
 
 class GetTaskStatusRequest(AbstractModel):
-    """GetTaskStatus request structure.
+    r"""GetTaskStatus request structure.
 
     """
 
@@ -11368,7 +11368,7 @@ class GetTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
         :rtype: str
         """
         return self._TaskId
@@ -11379,7 +11379,7 @@ class GetTaskStatusRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """Task type.
+        r"""Task type.
         :rtype: str
         """
         return self._TaskType
@@ -11390,7 +11390,7 @@ class GetTaskStatusRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -11415,7 +11415,7 @@ class GetTaskStatusRequest(AbstractModel):
 
 
 class GetTaskStatusResponse(AbstractModel):
-    """GetTaskStatus response structure.
+    r"""GetTaskStatus response structure.
 
     """
 
@@ -11443,7 +11443,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
         :rtype: str
         """
         return self._TaskId
@@ -11454,7 +11454,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        """Task type.
+        r"""Task type.
         :rtype: str
         """
         return self._TaskType
@@ -11465,7 +11465,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        """Task status.
+        r"""Task status.
         :rtype: str
         """
         return self._Status
@@ -11476,7 +11476,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def Message(self):
-        """Task messages.
+        r"""Task messages.
         :rtype: str
         """
         return self._Message
@@ -11487,7 +11487,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def Params(self):
-        """Task parameters.
+        r"""Task parameters.
         :rtype: :class:`tencentcloud.lke.v20231130.models.TaskParams`
         """
         return self._Params
@@ -11498,7 +11498,7 @@ class GetTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11520,7 +11520,7 @@ class GetTaskStatusResponse(AbstractModel):
 
 
 class GetWsTokenReq_Label(AbstractModel):
-    """Obtain ws token label.
+    r"""Obtain ws token label.
 
     """
 
@@ -11536,7 +11536,7 @@ class GetWsTokenReq_Label(AbstractModel):
 
     @property
     def Name(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._Name
@@ -11547,7 +11547,7 @@ class GetWsTokenReq_Label(AbstractModel):
 
     @property
     def Values(self):
-        """Label value.
+        r"""Label value.
         :rtype: list of str
         """
         return self._Values
@@ -11571,7 +11571,7 @@ class GetWsTokenReq_Label(AbstractModel):
 
 
 class GetWsTokenRequest(AbstractModel):
-    """GetWsToken request structure.
+    r"""GetWsToken request structure.
 
     """
 
@@ -11596,7 +11596,7 @@ How to Obtain It:</br>
 
     @property
     def Type(self):
-        """Access type, 5 - API visitor .
+        r"""Access type, 5 - API visitor .
         :rtype: int
         """
         return self._Type
@@ -11607,7 +11607,7 @@ How to Obtain It:</br>
 
     @property
     def BotAppKey(self):
-        """Application AppKey</br>
+        r"""Application AppKey</br>
 How to Obtain It:</br>
 1. After the application is released, obtain it at [Release Management] - [Call Information] - [API Management] on the application page.</br>
 2. See the second item in https://cloud.tencent.com/document/product/1759/109469.
@@ -11621,7 +11621,7 @@ How to Obtain It:</br>
 
     @property
     def VisitorBizId(self):
-        """Visitor ID (external input, recommended to be unique, identifies the user currently accessing the session). Length Limit: string(64).
+        r"""Visitor ID (external input, recommended to be unique, identifies the user currently accessing the session). Length Limit: string(64).
         :rtype: str
         """
         return self._VisitorBizId
@@ -11632,7 +11632,7 @@ How to Obtain It:</br>
 
     @property
     def VisitorLabels(self):
-        """Knowledge label, used for search filter in the knowledge base. This field is about to be deactivated. Please use the custom_variables field in the dialogue endpoint API to replace this field.
+        r"""Knowledge label, used for search filter in the knowledge base. This field is about to be deactivated. Please use the custom_variables field in the dialogue endpoint API to replace this field.
         :rtype: list of GetWsTokenReq_Label
         """
         return self._VisitorLabels
@@ -11663,7 +11663,7 @@ How to Obtain It:</br>
 
 
 class GetWsTokenResponse(AbstractModel):
-    """GetWsToken response structure.
+    r"""GetWsToken response structure.
 
     """
 
@@ -11691,7 +11691,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """Token value (valid for 60 seconds, valid only once, multiple validations will report an error).
+        r"""Token value (valid for 60 seconds, valid only once, multiple validations will report an error).
         :rtype: str
         """
         return self._Token
@@ -11702,7 +11702,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def Balance(self):
-        """Balance. The balance is valid if it is greater than 0.
+        r"""Balance. The balance is valid if it is greater than 0.
         :rtype: float
         """
         return self._Balance
@@ -11713,7 +11713,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def InputLenLimit(self):
-        """The character limit for input in the chat window.
+        r"""The character limit for input in the chat window.
         :rtype: int
         """
         return self._InputLenLimit
@@ -11724,7 +11724,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def Pattern(self):
-        """Application mode: standard; agent; single_workflow.
+        r"""Application mode: standard; agent; single_workflow.
         :rtype: str
         """
         return self._Pattern
@@ -11735,7 +11735,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def SingleWorkflow(self):
-        """SingleWorkflow.
+        r"""SingleWorkflow.
         :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
         """
         return self._SingleWorkflow
@@ -11746,7 +11746,7 @@ class GetWsTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11768,7 +11768,7 @@ class GetWsTokenResponse(AbstractModel):
 
 
 class GroupDocRequest(AbstractModel):
-    """GroupDoc request structure.
+    r"""GroupDoc request structure.
 
     """
 
@@ -11787,7 +11787,7 @@ class GroupDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -11798,7 +11798,7 @@ class GroupDocRequest(AbstractModel):
 
     @property
     def BizIds(self):
-        """List of business IDs of operation objects.
+        r"""List of business IDs of operation objects.
         :rtype: list of str
         """
         return self._BizIds
@@ -11809,7 +11809,7 @@ class GroupDocRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Group ID.
+        r"""Group ID.
         :rtype: str
         """
         return self._CateBizId
@@ -11834,7 +11834,7 @@ class GroupDocRequest(AbstractModel):
 
 
 class GroupDocResponse(AbstractModel):
-    """GroupDoc response structure.
+    r"""GroupDoc response structure.
 
     """
 
@@ -11847,7 +11847,7 @@ class GroupDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11862,7 +11862,7 @@ class GroupDocResponse(AbstractModel):
 
 
 class GroupQARequest(AbstractModel):
-    """GroupQA request structure.
+    r"""GroupQA request structure.
 
     """
 
@@ -11881,7 +11881,7 @@ class GroupQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -11892,7 +11892,7 @@ class GroupQARequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """List of QaBizIDs.
+        r"""List of QaBizIDs.
         :rtype: list of str
         """
         return self._QaBizIds
@@ -11903,7 +11903,7 @@ class GroupQARequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Group ID.
+        r"""Group ID.
         :rtype: str
         """
         return self._CateBizId
@@ -11928,7 +11928,7 @@ class GroupQARequest(AbstractModel):
 
 
 class GroupQAResponse(AbstractModel):
-    """GroupQA response structure.
+    r"""GroupQA response structure.
 
     """
 
@@ -11941,7 +11941,7 @@ class GroupQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11956,7 +11956,7 @@ class GroupQAResponse(AbstractModel):
 
 
 class Highlight(AbstractModel):
-    """Fragment highlight content.
+    r"""Fragment highlight content.
 
     """
 
@@ -11975,7 +11975,7 @@ class Highlight(AbstractModel):
 
     @property
     def StartPos(self):
-        """Highlight starting position.
+        r"""Highlight starting position.
         :rtype: str
         """
         return self._StartPos
@@ -11986,7 +11986,7 @@ class Highlight(AbstractModel):
 
     @property
     def EndPos(self):
-        """Highlight end position.
+        r"""Highlight end position.
         :rtype: str
         """
         return self._EndPos
@@ -11997,7 +11997,7 @@ class Highlight(AbstractModel):
 
     @property
     def Text(self):
-        """Highlight subtext.
+        r"""Highlight subtext.
         :rtype: str
         """
         return self._Text
@@ -12022,7 +12022,7 @@ class Highlight(AbstractModel):
 
 
 class HistorySummary(AbstractModel):
-    """Multiple rounds of historical information.
+    r"""Multiple rounds of historical information.
 
     """
 
@@ -12038,7 +12038,7 @@ class HistorySummary(AbstractModel):
 
     @property
     def Assistant(self):
-        """Assistant.
+        r"""Assistant.
         :rtype: str
         """
         return self._Assistant
@@ -12049,7 +12049,7 @@ class HistorySummary(AbstractModel):
 
     @property
     def User(self):
-        """User.
+        r"""User.
         :rtype: str
         """
         return self._User
@@ -12073,7 +12073,7 @@ class HistorySummary(AbstractModel):
 
 
 class IgnoreUnsatisfiedReplyRequest(AbstractModel):
-    """IgnoreUnsatisfiedReply request structure.
+    r"""IgnoreUnsatisfiedReply request structure.
 
     """
 
@@ -12095,7 +12095,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -12106,7 +12106,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def ReplyBizIds(self):
-        """Dissatisfied response ID.
+        r"""Dissatisfied response ID.
         :rtype: list of str
         """
         return self._ReplyBizIds
@@ -12117,7 +12117,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -12128,7 +12128,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -12154,7 +12154,7 @@ class IgnoreUnsatisfiedReplyRequest(AbstractModel):
 
 
 class IgnoreUnsatisfiedReplyResponse(AbstractModel):
-    """IgnoreUnsatisfiedReply response structure.
+    r"""IgnoreUnsatisfiedReply response structure.
 
     """
 
@@ -12167,7 +12167,7 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -12182,7 +12182,7 @@ class IgnoreUnsatisfiedReplyResponse(AbstractModel):
 
 
 class IntentAchievement(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -12198,7 +12198,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Name(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Name
@@ -12209,7 +12209,7 @@ class IntentAchievement(AbstractModel):
 
     @property
     def Desc(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Desc
@@ -12233,7 +12233,7 @@ class IntentAchievement(AbstractModel):
 
 
 class InvokeAPI(AbstractModel):
-    """Information of the requested API.
+    r"""Information of the requested API.
 
     """
 
@@ -12267,7 +12267,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def Method(self):
-        """Request method, such as get/post.
+        r"""Request method, such as get/post.
         :rtype: str
         """
         return self._Method
@@ -12278,7 +12278,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def Url(self):
-        """Request address.
+        r"""Request address.
         :rtype: str
         """
         return self._Url
@@ -12289,7 +12289,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def HeaderValues(self):
-        """Header parameter.
+        r"""Header parameter.
         :rtype: list of StrValue
         """
         return self._HeaderValues
@@ -12300,7 +12300,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def QueryValues(self):
-        """Input parameter Query.
+        r"""Input parameter Query.
         :rtype: list of StrValue
         """
         return self._QueryValues
@@ -12311,7 +12311,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def RequestPostBody(self):
-        """Original data of a Post request.
+        r"""Original data of a Post request.
         :rtype: str
         """
         return self._RequestPostBody
@@ -12322,7 +12322,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def ResponseBody(self):
-        """Returned original data.
+        r"""Returned original data.
         :rtype: str
         """
         return self._ResponseBody
@@ -12333,7 +12333,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def ResponseValues(self):
-        """Output parameter.
+        r"""Output parameter.
         :rtype: list of ValueInfo
         """
         return self._ResponseValues
@@ -12344,7 +12344,7 @@ class InvokeAPI(AbstractModel):
 
     @property
     def FailMessage(self):
-        """Exception information.
+        r"""Exception information.
         :rtype: str
         """
         return self._FailMessage
@@ -12389,7 +12389,7 @@ class InvokeAPI(AbstractModel):
 
 
 class KnowledgeCapacityPieGraphDetail(AbstractModel):
-    """Detailed information of a knowledge library capacity pie chart.
+    r"""Detailed information of a knowledge library capacity pie chart.
 
     """
 
@@ -12408,7 +12408,7 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
 
     @property
     def AppName(self):
-        """Current application name.
+        r"""Current application name.
         :rtype: str
         """
         return self._AppName
@@ -12419,7 +12419,7 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
 
     @property
     def UsedCharSize(self):
-        """Number of characters used by the current application.
+        r"""Number of characters used by the current application.
         :rtype: str
         """
         return self._UsedCharSize
@@ -12430,7 +12430,7 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
 
     @property
     def Proportion(self):
-        """Proportion of the current application in total usage.
+        r"""Proportion of the current application in total usage.
         :rtype: float
         """
         return self._Proportion
@@ -12455,7 +12455,7 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
 
 
 class KnowledgeDetail(AbstractModel):
-    """Application usage details of knowledge library capacity.
+    r"""Application usage details of knowledge library capacity.
 
     """
 
@@ -12477,7 +12477,7 @@ class KnowledgeDetail(AbstractModel):
 
     @property
     def AppName(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._AppName
@@ -12488,7 +12488,7 @@ class KnowledgeDetail(AbstractModel):
 
     @property
     def UsedCharSize(self):
-        """Number of used characters.
+        r"""Number of used characters.
         :rtype: str
         """
         return self._UsedCharSize
@@ -12499,7 +12499,7 @@ class KnowledgeDetail(AbstractModel):
 
     @property
     def Proportion(self):
-        """Usage proportion.
+        r"""Usage proportion.
         :rtype: float
         """
         return self._Proportion
@@ -12510,7 +12510,7 @@ class KnowledgeDetail(AbstractModel):
 
     @property
     def ExceedCharSize(self):
-        """Exceeding character count.
+        r"""Exceeding character count.
         :rtype: str
         """
         return self._ExceedCharSize
@@ -12536,7 +12536,7 @@ class KnowledgeDetail(AbstractModel):
 
 
 class KnowledgeQaConfig(AbstractModel):
-    """Knowledge Q&A configuration.
+    r"""Knowledge Q&A configuration.
 
     """
 
@@ -12603,7 +12603,7 @@ The following user intents can be reached.
 
     @property
     def Greeting(self):
-        """Welcome words, within 200 characters.
+        r"""Welcome words, within 200 characters.
         :rtype: str
         """
         return self._Greeting
@@ -12614,7 +12614,7 @@ The following user intents can be reached.
 
     @property
     def RoleDescription(self):
-        """Character description, within 4,000 characters. By filling out the description, set the #Character Name, #Style Characteristics, and reachable #Intent of the application. It is recommended to fill in according to the following template, with custom intents no more than 5. 
+        r"""Character description, within 4,000 characters. By filling out the description, set the #Character Name, #Style Characteristics, and reachable #Intent of the application. It is recommended to fill in according to the following template, with custom intents no more than 5. 
 #Character Name:
 #Style Characteristics:
 #Output Requirements:
@@ -12634,7 +12634,7 @@ The following user intents can be reached.
 
     @property
     def Model(self):
-        """Generative model configuration.
+        r"""Generative model configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
         return self._Model
@@ -12645,7 +12645,7 @@ The following user intents can be reached.
 
     @property
     def Search(self):
-        """Knowledge search configuration.
+        r"""Knowledge search configuration.
         :rtype: list of KnowledgeQaSearch
         """
         return self._Search
@@ -12656,7 +12656,7 @@ The following user intents can be reached.
 
     @property
     def Output(self):
-        """Knowledge management output configuration.
+        r"""Knowledge management output configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaOutput`
         """
         return self._Output
@@ -12667,7 +12667,7 @@ The following user intents can be reached.
 
     @property
     def Workflow(self):
-        """Workflow configuration.
+        r"""Workflow configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeWorkflow`
         """
         return self._Workflow
@@ -12678,7 +12678,7 @@ The following user intents can be reached.
 
     @property
     def SearchRange(self):
-        """Retrieval range.
+        r"""Retrieval range.
         :rtype: :class:`tencentcloud.lke.v20231130.models.SearchRange`
         """
         return self._SearchRange
@@ -12689,7 +12689,7 @@ The following user intents can be reached.
 
     @property
     def Pattern(self):
-        """Application modes: standard, agent, single_workflow.
+        r"""Application modes: standard, agent, single_workflow.
         :rtype: str
         """
         return self._Pattern
@@ -12700,7 +12700,7 @@ The following user intents can be reached.
 
     @property
     def SearchStrategy(self):
-        """Retrieve a policy.
+        r"""Retrieve a policy.
         :rtype: :class:`tencentcloud.lke.v20231130.models.SearchStrategy`
         """
         return self._SearchStrategy
@@ -12711,7 +12711,7 @@ The following user intents can be reached.
 
     @property
     def SingleWorkflow(self):
-        """Single workflow ID, which is entered when Pattern is single_workflow.
+        r"""Single workflow ID, which is entered when Pattern is single_workflow.
         :rtype: :class:`tencentcloud.lke.v20231130.models.KnowledgeQaSingleWorkflow`
         """
         return self._SingleWorkflow
@@ -12722,7 +12722,7 @@ The following user intents can be reached.
 
     @property
     def Plugins(self):
-        """Application associated plug-in.
+        r"""Application associated plug-in.
         :rtype: list of KnowledgeQaPlugin
         """
         return self._Plugins
@@ -12733,7 +12733,7 @@ The following user intents can be reached.
 
     @property
     def ThoughtModel(self):
-        """Thinking model configuration.
+        r"""Thinking model configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
         return self._ThoughtModel
@@ -12744,7 +12744,7 @@ The following user intents can be reached.
 
     @property
     def IntentAchievements(self):
-        """Priority of intent achievement methods.
+        r"""Priority of intent achievement methods.
         :rtype: list of IntentAchievement
         """
         return self._IntentAchievements
@@ -12755,7 +12755,7 @@ The following user intents can be reached.
 
     @property
     def ImageTextRetrieval(self):
-        """Whether to enable Image-Text Search.
+        r"""Whether to enable Image-Text Search.
         :rtype: bool
         """
         return self._ImageTextRetrieval
@@ -12766,7 +12766,7 @@ The following user intents can be reached.
 
     @property
     def AiCall(self):
-        """Configure voice call parameters.
+        r"""Configure voice call parameters.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AICallConfig`
         """
         return self._AiCall
@@ -12777,7 +12777,7 @@ The following user intents can be reached.
 
     @property
     def EnableAudit(self):
-        """Session content moderation switch. Note: 1. This feature is enabled by default if no value is input. 2. Tencent Cloud provides a content pre-filtering feature to help filter high-risk or illegal content. If you do not use our filtering feature, you can disable it here. We hereby remind you that you are responsible for ensuring that your content complies with platform policies and laws and regulations, and that you should fulfill your content moderation obligations.
+        r"""Session content moderation switch. Note: 1. This feature is enabled by default if no value is input. 2. Tencent Cloud provides a content pre-filtering feature to help filter high-risk or illegal content. If you do not use our filtering feature, you can disable it here. We hereby remind you that you are responsible for ensuring that your content complies with platform policies and laws and regulations, and that you should fulfill your content moderation obligations.
         :rtype: bool
         """
         return self._EnableAudit
@@ -12846,7 +12846,7 @@ The following user intents can be reached.
 
 
 class KnowledgeQaOutput(AbstractModel):
-    """Application management output configuration.
+    r"""Application management output configuration.
 
     """
 
@@ -12877,7 +12877,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def Method(self):
-        """Output method, 1: streaming 2: non-streaming.
+        r"""Output method, 1: streaming 2: non-streaming.
         :rtype: int
         """
         return self._Method
@@ -12888,7 +12888,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def UseGeneralKnowledge(self):
-        """General model response.
+        r"""General model response.
         :rtype: bool
         """
         return self._UseGeneralKnowledge
@@ -12899,7 +12899,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def BareAnswer(self):
-        """Unknown response, within 300 characters.
+        r"""Unknown response, within 300 characters.
         :rtype: str
         """
         return self._BareAnswer
@@ -12910,7 +12910,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def ShowQuestionClarify(self):
-        """Whether to display the question clarification switch.
+        r"""Whether to display the question clarification switch.
         :rtype: bool
         """
         return self._ShowQuestionClarify
@@ -12921,7 +12921,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def UseQuestionClarify(self):
-        """Whether to enable question clarification.
+        r"""Whether to enable question clarification.
         :rtype: bool
         """
         return self._UseQuestionClarify
@@ -12932,7 +12932,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def QuestionClarifyKeywords(self):
-        """List of keywords for question clarification.
+        r"""List of keywords for question clarification.
         :rtype: list of str
         """
         return self._QuestionClarifyKeywords
@@ -12943,7 +12943,7 @@ class KnowledgeQaOutput(AbstractModel):
 
     @property
     def UseRecommended(self):
-        """Whether to enable recommended questions.
+        r"""Whether to enable recommended questions.
         :rtype: bool
         """
         return self._UseRecommended
@@ -12972,7 +12972,7 @@ class KnowledgeQaOutput(AbstractModel):
 
 
 class KnowledgeQaPlugin(AbstractModel):
-    """Information of application-associated plug-in.
+    r"""Information of application-associated plug-in.
 
     """
 
@@ -13006,7 +13006,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def PluginId(self):
-        """Plugin ID.
+        r"""Plugin ID.
         :rtype: str
         """
         return self._PluginId
@@ -13017,7 +13017,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def PluginName(self):
-        """Plugin name.
+        r"""Plugin name.
         :rtype: str
         """
         return self._PluginName
@@ -13028,7 +13028,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def PluginIcon(self):
-        """Plugin icon.
+        r"""Plugin icon.
         :rtype: str
         """
         return self._PluginIcon
@@ -13039,7 +13039,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def ToolId(self):
-        """Tool ID.
+        r"""Tool ID.
         :rtype: str
         """
         return self._ToolId
@@ -13050,7 +13050,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def ToolName(self):
-        """Tool name.
+        r"""Tool name.
         :rtype: str
         """
         return self._ToolName
@@ -13061,7 +13061,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def ToolDesc(self):
-        """Tool description.
+        r"""Tool description.
         :rtype: str
         """
         return self._ToolDesc
@@ -13072,7 +13072,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def Inputs(self):
-        """Tool input parameter.
+        r"""Tool input parameter.
         :rtype: list of PluginToolReqParam
         """
         return self._Inputs
@@ -13083,7 +13083,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
     @property
     def IsBindingKnowledge(self):
-        """Whether the plugin is bound to the knowledge library.
+        r"""Whether the plugin is bound to the knowledge library.
         :rtype: bool
         """
         return self._IsBindingKnowledge
@@ -13118,7 +13118,7 @@ class KnowledgeQaPlugin(AbstractModel):
 
 
 class KnowledgeQaSearch(AbstractModel):
-    """Retrieval configuration.
+    r"""Retrieval configuration.
 
     """
 
@@ -13155,7 +13155,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def Type(self):
-        """Knowledge source: doc (document), qa (question & answering), taskflow (business process), search (search enhancement).
+        r"""Knowledge source: doc (document), qa (question & answering), taskflow (business process), search (search enhancement).
         :rtype: str
         """
         return self._Type
@@ -13166,7 +13166,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def ReplyFlexibility(self):
-        """Q&A - reply flexibility, 1: directly reply if the answer has been accepted. 2: reply after the accepted answer has been polished.
+        r"""Q&A - reply flexibility, 1: directly reply if the answer has been accepted. 2: reply after the accepted answer has been polished.
         :rtype: int
         """
         return self._ReplyFlexibility
@@ -13177,7 +13177,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def UseSearchEngine(self):
-        """Search enhancement - search engine status.
+        r"""Search enhancement - search engine status.
         :rtype: bool
         """
         return self._UseSearchEngine
@@ -13188,7 +13188,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def ShowSearchEngine(self):
-        """Whether to display the search engine retrieval status.
+        r"""Whether to display the search engine retrieval status.
         :rtype: bool
         """
         return self._ShowSearchEngine
@@ -13199,7 +13199,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def IsEnabled(self):
-        """Knowledge source, whether to select.
+        r"""Knowledge source, whether to select.
         :rtype: bool
         """
         return self._IsEnabled
@@ -13210,7 +13210,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def QaTopN(self):
-        """Maximum number of Q&A recalls, defaults to 2, limited to 5.
+        r"""Maximum number of Q&A recalls, defaults to 2, limited to 5.
         :rtype: int
         """
         return self._QaTopN
@@ -13221,7 +13221,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def DocTopN(self):
-        """Maximum number of documents recalls, defaults to 3, limited to 5.
+        r"""Maximum number of documents recalls, defaults to 3, limited to 5.
         :rtype: int
         """
         return self._DocTopN
@@ -13232,7 +13232,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def Confidence(self):
-        """Retrieval confidence degree, valid for documents and Q&A. Value range: 0.01 - 0.99.
+        r"""Retrieval confidence degree, valid for documents and Q&A. Value range: 0.01 - 0.99.
         :rtype: float
         """
         return self._Confidence
@@ -13243,7 +13243,7 @@ class KnowledgeQaSearch(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """Resource status, 1: the resource is available; 2: the resource is exhausted.
+        r"""Resource status, 1: the resource is available; 2: the resource is exhausted.
         :rtype: int
         """
         return self._ResourceStatus
@@ -13274,7 +13274,7 @@ class KnowledgeQaSearch(AbstractModel):
 
 
 class KnowledgeQaSingleWorkflow(AbstractModel):
-    """Specifies the single workflow configuration in Q&A knowledge library single workflow mode.
+    r"""Specifies the single workflow configuration in Q&A knowledge library single workflow mode.
 
     """
 
@@ -13302,7 +13302,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """Workflow ID.
+        r"""Workflow ID.
         :rtype: str
         """
         return self._WorkflowId
@@ -13313,7 +13313,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def WorkflowName(self):
-        """Workflow name.
+        r"""Workflow name.
         :rtype: str
         """
         return self._WorkflowName
@@ -13324,7 +13324,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        """Workflow description.
+        r"""Workflow description.
         :rtype: str
         """
         return self._WorkflowDesc
@@ -13335,7 +13335,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def Status(self):
-        """Workflow status, publishing status (UNPUBLISHED; PUBLISHING; PUBLISHED; FAIL).
+        r"""Workflow status, publishing status (UNPUBLISHED; PUBLISHING; PUBLISHED; FAIL).
         :rtype: str
         """
         return self._Status
@@ -13346,7 +13346,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def IsEnable(self):
-        """Whether to enable workflow.
+        r"""Whether to enable workflow.
         :rtype: bool
         """
         return self._IsEnable
@@ -13357,7 +13357,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
     @property
     def AsyncWorkflow(self):
-        """Whether to enable asynchronous call of the workflow.
+        r"""Whether to enable asynchronous call of the workflow.
         :rtype: bool
         """
         return self._AsyncWorkflow
@@ -13385,7 +13385,7 @@ class KnowledgeQaSingleWorkflow(AbstractModel):
 
 
 class KnowledgeSummary(AbstractModel):
-    """Retrieve knowledge.
+    r"""Retrieve knowledge.
 
     """
 
@@ -13401,7 +13401,7 @@ class KnowledgeSummary(AbstractModel):
 
     @property
     def Type(self):
-        """1: Q&A; 2: document fragment.
+        r"""1: Q&A; 2: document fragment.
         :rtype: int
         """
         return self._Type
@@ -13412,7 +13412,7 @@ class KnowledgeSummary(AbstractModel):
 
     @property
     def Content(self):
-        """Knowledge content.
+        r"""Knowledge content.
         :rtype: str
         """
         return self._Content
@@ -13436,7 +13436,7 @@ class KnowledgeSummary(AbstractModel):
 
 
 class KnowledgeWorkflow(AbstractModel):
-    """Q&A knowledge library workflow configuration.
+    r"""Q&A knowledge library workflow configuration.
 
     """
 
@@ -13452,7 +13452,7 @@ class KnowledgeWorkflow(AbstractModel):
 
     @property
     def IsEnabled(self):
-        """Whether to enable the workflow.
+        r"""Whether to enable the workflow.
         :rtype: bool
         """
         return self._IsEnabled
@@ -13463,7 +13463,7 @@ class KnowledgeWorkflow(AbstractModel):
 
     @property
     def UsePdl(self):
-        """Whether to enable PDL.
+        r"""Whether to enable PDL.
         :rtype: bool
         """
         return self._UsePdl
@@ -13487,7 +13487,7 @@ class KnowledgeWorkflow(AbstractModel):
 
 
 class Label(AbstractModel):
-    """Label ID.
+    r"""Label ID.
 
     """
 
@@ -13503,7 +13503,7 @@ class Label(AbstractModel):
 
     @property
     def LabelBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._LabelBizId
@@ -13514,7 +13514,7 @@ class Label(AbstractModel):
 
     @property
     def LabelName(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._LabelName
@@ -13538,13 +13538,13 @@ class Label(AbstractModel):
 
 
 class ListAppCategoryRequest(AbstractModel):
-    """ListAppCategory request structure.
+    r"""ListAppCategory request structure.
 
     """
 
 
 class ListAppCategoryResponse(AbstractModel):
-    """ListAppCategory response structure.
+    r"""ListAppCategory response structure.
 
     """
 
@@ -13560,7 +13560,7 @@ class ListAppCategoryResponse(AbstractModel):
 
     @property
     def List(self):
-        """Application type list.
+        r"""Application type list.
         :rtype: list of ListAppCategoryRspOption
         """
         return self._List
@@ -13571,7 +13571,7 @@ class ListAppCategoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13592,7 +13592,7 @@ class ListAppCategoryResponse(AbstractModel):
 
 
 class ListAppCategoryRspOption(AbstractModel):
-    """Application type details.
+    r"""Application type details.
 
     """
 
@@ -13611,7 +13611,7 @@ class ListAppCategoryRspOption(AbstractModel):
 
     @property
     def Text(self):
-        """Type name.
+        r"""Type name.
         :rtype: str
         """
         return self._Text
@@ -13622,7 +13622,7 @@ class ListAppCategoryRspOption(AbstractModel):
 
     @property
     def Value(self):
-        """Type value.
+        r"""Type value.
         :rtype: str
         """
         return self._Value
@@ -13633,7 +13633,7 @@ class ListAppCategoryRspOption(AbstractModel):
 
     @property
     def Logo(self):
-        """Type log.
+        r"""Type log.
         :rtype: str
         """
         return self._Logo
@@ -13658,7 +13658,7 @@ class ListAppCategoryRspOption(AbstractModel):
 
 
 class ListAppKnowledgeDetailRequest(AbstractModel):
-    """ListAppKnowledgeDetail request structure.
+    r"""ListAppKnowledgeDetail request structure.
 
     """
 
@@ -13677,7 +13677,7 @@ class ListAppKnowledgeDetailRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -13688,7 +13688,7 @@ class ListAppKnowledgeDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size.
+        r"""Page size.
         :rtype: int
         """
         return self._PageSize
@@ -13699,7 +13699,7 @@ class ListAppKnowledgeDetailRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -13724,7 +13724,7 @@ class ListAppKnowledgeDetailRequest(AbstractModel):
 
 
 class ListAppKnowledgeDetailResponse(AbstractModel):
-    """ListAppKnowledgeDetail response structure.
+    r"""ListAppKnowledgeDetail response structure.
 
     """
 
@@ -13743,7 +13743,7 @@ class ListAppKnowledgeDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number of lists.
+        r"""Total number of lists.
         :rtype: int
         """
         return self._Total
@@ -13754,7 +13754,7 @@ class ListAppKnowledgeDetailResponse(AbstractModel):
 
     @property
     def List(self):
-        """Details of knowledge base capacity usage by application.
+        r"""Details of knowledge base capacity usage by application.
         :rtype: list of KnowledgeDetail
         """
         return self._List
@@ -13765,7 +13765,7 @@ class ListAppKnowledgeDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13787,7 +13787,7 @@ class ListAppKnowledgeDetailResponse(AbstractModel):
 
 
 class ListAppRequest(AbstractModel):
-    """ListApp request structure.
+    r"""ListApp request structure.
 
     """
 
@@ -13812,7 +13812,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -13823,7 +13823,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page, integer.
+        r"""Number of items per page, integer.
         :rtype: int
         """
         return self._PageSize
@@ -13834,7 +13834,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number, integer.
+        r"""Page number, integer.
         :rtype: int
         """
         return self._PageNumber
@@ -13845,7 +13845,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keywords: application / modifier.
+        r"""Keywords: application / modifier.
         :rtype: str
         """
         return self._Keyword
@@ -13856,7 +13856,7 @@ class ListAppRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -13883,7 +13883,7 @@ class ListAppRequest(AbstractModel):
 
 
 class ListAppResponse(AbstractModel):
-    """ListApp response structure.
+    r"""ListApp response structure.
 
     """
 
@@ -13902,7 +13902,7 @@ class ListAppResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity.
+        r"""Quantity.
         :rtype: str
         """
         return self._Total
@@ -13913,7 +13913,7 @@ class ListAppResponse(AbstractModel):
 
     @property
     def List(self):
-        """Label list.
+        r"""Label list.
         :rtype: list of AppInfo
         """
         return self._List
@@ -13924,7 +13924,7 @@ class ListAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -13946,7 +13946,7 @@ class ListAppResponse(AbstractModel):
 
 
 class ListAttributeLabelRequest(AbstractModel):
-    """ListAttributeLabel request structure.
+    r"""ListAttributeLabel request structure.
 
     """
 
@@ -13974,7 +13974,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -13985,7 +13985,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -13996,7 +13996,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Quantity per page.
+        r"""Quantity per page.
         :rtype: int
         """
         return self._PageSize
@@ -14007,7 +14007,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -14018,7 +14018,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -14029,7 +14029,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -14057,7 +14057,7 @@ class ListAttributeLabelRequest(AbstractModel):
 
 
 class ListAttributeLabelResponse(AbstractModel):
-    """ListAttributeLabel response structure.
+    r"""ListAttributeLabel response structure.
 
     """
 
@@ -14076,7 +14076,7 @@ class ListAttributeLabelResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
         :rtype: str
         """
         return self._Total
@@ -14087,7 +14087,7 @@ class ListAttributeLabelResponse(AbstractModel):
 
     @property
     def List(self):
-        """List.
+        r"""List.
         :rtype: list of AttrLabelDetail
         """
         return self._List
@@ -14098,7 +14098,7 @@ class ListAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14120,7 +14120,7 @@ class ListAttributeLabelResponse(AbstractModel):
 
 
 class ListDocCateRequest(AbstractModel):
-    """ListDocCate request structure.
+    r"""ListDocCate request structure.
 
     """
 
@@ -14133,7 +14133,7 @@ class ListDocCateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -14156,7 +14156,7 @@ class ListDocCateRequest(AbstractModel):
 
 
 class ListDocCateResponse(AbstractModel):
-    """ListDocCate response structure.
+    r"""ListDocCate response structure.
 
     """
 
@@ -14172,7 +14172,7 @@ class ListDocCateResponse(AbstractModel):
 
     @property
     def List(self):
-        """List.
+        r"""List.
         :rtype: list of CateInfo
         """
         return self._List
@@ -14183,7 +14183,7 @@ class ListDocCateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14204,7 +14204,7 @@ class ListDocCateResponse(AbstractModel):
 
 
 class ListDocItem(AbstractModel):
-    """Description of document list details.
+    r"""Description of document list details.
 
     """
 
@@ -14317,7 +14317,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -14328,7 +14328,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def FileName(self):
-        """File name.
+        r"""File name.
         :rtype: str
         """
         return self._FileName
@@ -14339,7 +14339,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def NewName(self):
-        """The new document name after renaming. This name remains until the document is published after the renaming submission.
+        r"""The new document name after renaming. This name remains until the document is published after the renaming submission.
         :rtype: str
         """
         return self._NewName
@@ -14350,7 +14350,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -14361,7 +14361,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def CosUrl(self):
-        """COS path.
+        r"""COS path.
         :rtype: str
         """
         return self._CosUrl
@@ -14372,7 +14372,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -14383,7 +14383,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def Status(self):
-        """Document status.
+        r"""Document status.
         :rtype: int
         """
         return self._Status
@@ -14394,7 +14394,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def StatusDesc(self):
-        """Document status description.
+        r"""Document status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -14405,7 +14405,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def Reason(self):
-        """Reason.
+        r"""Reason.
         :rtype: str
         """
         return self._Reason
@@ -14416,7 +14416,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsRefer(self):
-        """Whether to refer to an answer.
+        r"""Whether to refer to an answer.
         :rtype: bool
         """
         return self._IsRefer
@@ -14427,7 +14427,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def QaNum(self):
-        """Quantity of Q&A pairs.
+        r"""Quantity of Q&A pairs.
         :rtype: int
         """
         return self._QaNum
@@ -14438,7 +14438,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsDeleted(self):
-        """Whether it has been deleted.
+        r"""Whether it has been deleted.
         :rtype: bool
         """
         return self._IsDeleted
@@ -14449,7 +14449,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def Source(self):
-        """Document source.
+        r"""Document source.
         :rtype: int
         """
         return self._Source
@@ -14460,7 +14460,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def SourceDesc(self):
-        """Document source description.
+        r"""Document source description.
         :rtype: str
         """
         return self._SourceDesc
@@ -14471,7 +14471,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsAllowRestart(self):
-        """Whether regeneration is allowed.
+        r"""Whether regeneration is allowed.
         :rtype: bool
         """
         return self._IsAllowRestart
@@ -14482,7 +14482,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsDeletedQa(self):
-        """Whether the Q&A has been deleted.
+        r"""Whether the Q&A has been deleted.
         :rtype: bool
         """
         return self._IsDeletedQa
@@ -14493,7 +14493,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsCreatingQa(self):
-        """Whether the Q&A is being generated.
+        r"""Whether the Q&A is being generated.
         :rtype: bool
         """
         return self._IsCreatingQa
@@ -14504,7 +14504,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsAllowDelete(self):
-        """Whether deletion is allowed.
+        r"""Whether deletion is allowed.
         :rtype: bool
         """
         return self._IsAllowDelete
@@ -14515,7 +14515,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsAllowRefer(self):
-        """Whether to allow operation reference switch.
+        r"""Whether to allow operation reference switch.
         :rtype: bool
         """
         return self._IsAllowRefer
@@ -14526,7 +14526,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsCreatedQa(self):
-        """Whether Q&A has been generated.
+        r"""Whether Q&A has been generated.
         :rtype: bool
         """
         return self._IsCreatedQa
@@ -14537,7 +14537,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def DocCharSize(self):
-        """Document character count.
+        r"""Document character count.
         :rtype: str
         """
         return self._DocCharSize
@@ -14548,7 +14548,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrRange(self):
-        """Applicable range of attribute label.
+        r"""Applicable range of attribute label.
         :rtype: int
         """
         return self._AttrRange
@@ -14559,7 +14559,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrLabels(self):
-        """Attribute label.
+        r"""Attribute label.
         :rtype: list of AttrLabel
         """
         return self._AttrLabels
@@ -14570,7 +14570,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsAllowEdit(self):
-        """Whether editing is allowed.
+        r"""Whether editing is allowed.
         :rtype: bool
         """
         return self._IsAllowEdit
@@ -14581,7 +14581,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def ReferUrlType(self):
-        """External reference URL type, 0: system URL; 1: custom URL.
+        r"""External reference URL type, 0: system URL; 1: custom URL.
 When the value is 1, the WebUrl field cannot be empty; otherwise, it will not take effect.
         :rtype: int
         """
@@ -14593,7 +14593,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def WebUrl(self):
-        """Web page URL (or custom URL) .
+        r"""Web page URL (or custom URL) .
         :rtype: str
         """
         return self._WebUrl
@@ -14604,7 +14604,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -14615,7 +14615,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -14626,7 +14626,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsAllowRetry(self):
-        """Whether retries are allowed, 0: no, 1: yes.
+        r"""Whether retries are allowed, 0: no, 1: yes.
         :rtype: bool
         """
         return self._IsAllowRetry
@@ -14637,7 +14637,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def Processing(self):
-        """0: document comparison processing; 1: Q&A generation from document.
+        r"""0: document comparison processing; 1: Q&A generation from document.
         :rtype: list of int
         """
         return self._Processing
@@ -14648,7 +14648,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def CreateTime(self):
-        """Time when the document was created and stored into the database.
+        r"""Time when the document was created and stored into the database.
         :rtype: str
         """
         return self._CreateTime
@@ -14659,7 +14659,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def CateBizId(self):
-        """ID of the document's category.
+        r"""ID of the document's category.
         :rtype: str
         """
         return self._CateBizId
@@ -14670,7 +14670,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def CustomerKnowledgeId(self):
-        """User-defined ID of the document.
+        r"""User-defined ID of the document.
         :rtype: str
         """
         return self._CustomerKnowledgeId
@@ -14681,7 +14681,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttributeFlags(self):
-        """Attribute label of the document. 0: Do not perform external user permission verification.
+        r"""Attribute label of the document. 0: Do not perform external user permission verification.
         :rtype: list of int non-negative
         """
         return self._AttributeFlags
@@ -14742,7 +14742,7 @@ When the value is 1, the WebUrl field cannot be empty; otherwise, it will not ta
 
 
 class ListDocRequest(AbstractModel):
-    """ListDoc request structure.
+    r"""ListDoc request structure.
 
     """
 
@@ -14779,7 +14779,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -14790,7 +14790,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -14801,7 +14801,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Quantity per page.
+        r"""Quantity per page.
         :rtype: int
         """
         return self._PageSize
@@ -14812,7 +14812,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -14823,7 +14823,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
+        r"""Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
         :rtype: list of int
         """
         return self._Status
@@ -14834,7 +14834,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """Query type: filename - document; attribute - label.
+        r"""Query type: filename - document; attribute - label.
         :rtype: str
         """
         return self._QueryType
@@ -14845,7 +14845,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -14856,7 +14856,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def FileTypes(self):
-        """File type classification and filtering.
+        r"""File type classification and filtering.
         :rtype: list of str
         """
         return self._FileTypes
@@ -14867,7 +14867,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def FilterFlag(self):
-        """Document list filter flag
+        r"""Document list filter flag
         :rtype: list of DocFilterFlag
         """
         return self._FilterFlag
@@ -14903,7 +14903,7 @@ class ListDocRequest(AbstractModel):
 
 
 class ListDocResponse(AbstractModel):
-    """ListDoc response structure.
+    r"""ListDoc response structure.
 
     """
 
@@ -14922,7 +14922,7 @@ class ListDocResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity of documents.
+        r"""Quantity of documents.
         :rtype: str
         """
         return self._Total
@@ -14933,7 +14933,7 @@ class ListDocResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of documents.
+        r"""List of documents.
         :rtype: list of ListDocItem
         """
         return self._List
@@ -14944,7 +14944,7 @@ class ListDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -14966,7 +14966,7 @@ class ListDocResponse(AbstractModel):
 
 
 class ListModelRequest(AbstractModel):
-    """ListModel request structure.
+    r"""ListModel request structure.
 
     """
 
@@ -14993,7 +14993,7 @@ Thought: Thinking model
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -15004,7 +15004,7 @@ Thought: Thinking model
 
     @property
     def Pattern(self):
-        """Application mode standard: standard; agent; single_workflow.
+        r"""Application mode standard: standard; agent; single_workflow.
         :rtype: str
         """
         return self._Pattern
@@ -15015,7 +15015,7 @@ Thought: Thinking model
 
     @property
     def ModelCategory(self):
-        """Model category: 
+        r"""Model category: 
 Generate: Generative model
 Thought: Thinking model
         :rtype: str
@@ -15028,7 +15028,7 @@ Thought: Thinking model
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).	
+        r"""Login to user's root account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginUin
@@ -15039,7 +15039,7 @@ Thought: Thinking model
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -15066,7 +15066,7 @@ Thought: Thinking model
 
 
 class ListModelResponse(AbstractModel):
-    """ListModel response structure.
+    r"""ListModel response structure.
 
     """
 
@@ -15082,7 +15082,7 @@ class ListModelResponse(AbstractModel):
 
     @property
     def List(self):
-        """Model list.
+        r"""Model list.
         :rtype: list of ModelInfo
         """
         return self._List
@@ -15093,7 +15093,7 @@ class ListModelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15114,7 +15114,7 @@ class ListModelResponse(AbstractModel):
 
 
 class ListQACateRequest(AbstractModel):
-    """ListQACate request structure.
+    r"""ListQACate request structure.
 
     """
 
@@ -15127,7 +15127,7 @@ class ListQACateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -15150,7 +15150,7 @@ class ListQACateRequest(AbstractModel):
 
 
 class ListQACateResponse(AbstractModel):
-    """ListQACate response structure.
+    r"""ListQACate response structure.
 
     """
 
@@ -15166,7 +15166,7 @@ class ListQACateResponse(AbstractModel):
 
     @property
     def List(self):
-        """List.
+        r"""List.
         :rtype: list of QACate
         """
         return self._List
@@ -15177,7 +15177,7 @@ class ListQACateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15198,7 +15198,7 @@ class ListQACateResponse(AbstractModel):
 
 
 class ListQARequest(AbstractModel):
-    """ListQA request structure.
+    r"""ListQA request structure.
 
     """
 
@@ -15244,7 +15244,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -15255,7 +15255,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -15266,7 +15266,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size.
+        r"""Page size.
         :rtype: int
         """
         return self._PageSize
@@ -15277,7 +15277,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query a question.
+        r"""Query a question.
         :rtype: str
         """
         return self._Query
@@ -15288,7 +15288,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def AcceptStatus(self):
-        """Verification status (1: not verified 2: adopted 3: not adopted).
+        r"""Verification status (1: not verified 2: adopted 3: not adopted).
         :rtype: list of int
         """
         return self._AcceptStatus
@@ -15299,7 +15299,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        """Release status (2: pending release; 3: releasing; 4: released; 7: under review; 8: review failed; 9: under manual appeal; 11: manual appeal failed; 12: expired; 13: excessive invalid; 14: excessive invalid recovered).
+        r"""Release status (2: pending release; 3: releasing; 4: released; 7: under review; 8: review failed; 9: under manual appeal; 11: manual appeal failed; 12: expired; 13: excessive invalid; 14: excessive invalid recovered).
         :rtype: list of int
         """
         return self._ReleaseStatus
@@ -15310,7 +15310,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -15321,7 +15321,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def Source(self):
-        """Source (1: generated from document; 2: import in batches; 3: manually added).
+        r"""Source (1: generated from document; 2: import in batches; 3: manually added).
         :rtype: int
         """
         return self._Source
@@ -15332,7 +15332,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QueryAnswer(self):
-        """Query an answer.
+        r"""Query an answer.
         :rtype: str
         """
         return self._QueryAnswer
@@ -15343,7 +15343,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -15354,7 +15354,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """Q&A business ID list.
+        r"""Q&A business ID list.
         :rtype: list of str
         """
         return self._QaBizIds
@@ -15365,7 +15365,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QueryType(self):
-        """Query type: filename; attribute label.
+        r"""Query type: filename; attribute label.
         :rtype: str
         """
         return self._QueryType
@@ -15399,7 +15399,7 @@ class ListQARequest(AbstractModel):
 
 
 class ListQAResponse(AbstractModel):
-    """ListQA response structure.
+    r"""ListQA response structure.
 
     """
 
@@ -15430,7 +15430,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Q&A quantity.
+        r"""Q&A quantity.
         :rtype: str
         """
         return self._Total
@@ -15441,7 +15441,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def WaitVerifyTotal(self):
-        """Quantity of pending verification Q&As.
+        r"""Quantity of pending verification Q&As.
         :rtype: str
         """
         return self._WaitVerifyTotal
@@ -15452,7 +15452,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def NotAcceptedTotal(self):
-        """Quantity of not adopted Q&As.
+        r"""Quantity of not adopted Q&As.
         :rtype: str
         """
         return self._NotAcceptedTotal
@@ -15463,7 +15463,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def AcceptedTotal(self):
-        """Quantity of adopted Q&As.
+        r"""Quantity of adopted Q&As.
         :rtype: str
         """
         return self._AcceptedTotal
@@ -15474,7 +15474,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -15485,7 +15485,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def List(self):
-        """Q&As details.
+        r"""Q&As details.
         :rtype: list of ListQaItem
         """
         return self._List
@@ -15496,7 +15496,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -15522,7 +15522,7 @@ class ListQAResponse(AbstractModel):
 
 
 class ListQaItem(AbstractModel):
-    """Q&A details data.
+    r"""Q&A details data.
 
     """
 
@@ -15598,7 +15598,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -15609,7 +15609,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -15620,7 +15620,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
         :rtype: str
         """
         return self._Answer
@@ -15631,7 +15631,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def Source(self):
-        """Source.
+        r"""Source.
         :rtype: int
         """
         return self._Source
@@ -15642,7 +15642,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def SourceDesc(self):
-        """Source description.
+        r"""Source description.
         :rtype: str
         """
         return self._SourceDesc
@@ -15653,7 +15653,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -15664,7 +15664,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Status
@@ -15675,7 +15675,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -15686,7 +15686,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -15697,7 +15697,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -15708,7 +15708,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def IsAllowEdit(self):
-        """Whether editing is allowed.
+        r"""Whether editing is allowed.
         :rtype: bool
         """
         return self._IsAllowEdit
@@ -15719,7 +15719,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def IsAllowDelete(self):
-        """Whether deletion is allowed.
+        r"""Whether deletion is allowed.
         :rtype: bool
         """
         return self._IsAllowDelete
@@ -15730,7 +15730,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def IsAllowAccept(self):
-        """Whether verification is allowed.
+        r"""Whether verification is allowed.
         :rtype: bool
         """
         return self._IsAllowAccept
@@ -15741,7 +15741,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def FileName(self):
-        """Document name.
+        r"""Document name.
         :rtype: str
         """
         return self._FileName
@@ -15752,7 +15752,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def FileType(self):
-        """Document type.
+        r"""Document type.
         :rtype: str
         """
         return self._FileType
@@ -15763,7 +15763,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def QaCharSize(self):
-        """Number of Q&A characters.
+        r"""Number of Q&A characters.
         :rtype: str
         """
         return self._QaCharSize
@@ -15774,7 +15774,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -15785,7 +15785,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -15796,7 +15796,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable range of attribute label, 1: all, 2: by conditions.
+        r"""Applicable range of attribute label, 1: all, 2: by conditions.
         :rtype: int
         """
         return self._AttrRange
@@ -15807,7 +15807,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Attribute label.
+        r"""Attribute label.
         :rtype: list of AttrLabel
         """
         return self._AttrLabels
@@ -15818,7 +15818,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def SimilarQuestionNum(self):
-        """Count of similar questions.
+        r"""Count of similar questions.
         :rtype: int
         """
         return self._SimilarQuestionNum
@@ -15829,7 +15829,7 @@ class ListQaItem(AbstractModel):
 
     @property
     def SimilarQuestionTips(self):
-        """Return similar questions associated with the Q&A and perform linked search. Only one similar question will be displayed.
+        r"""Return similar questions associated with the Q&A and perform linked search. Only one similar question will be displayed.
         :rtype: str
         """
         return self._SimilarQuestionTips
@@ -15878,7 +15878,7 @@ class ListQaItem(AbstractModel):
 
 
 class ListRejectedQuestionPreviewRequest(AbstractModel):
-    """ListRejectedQuestionPreview request structure.
+    r"""ListRejectedQuestionPreview request structure.
 
     """
 
@@ -15912,7 +15912,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -15923,7 +15923,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -15934,7 +15934,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -15945,7 +15945,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -15956,7 +15956,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release ticket ID.
+        r"""Release ticket ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -15967,7 +15967,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        """Status (1: newly-added; 2: updated; 3:  deleted).
+        r"""Status (1: newly-added; 2: updated; 3:  deleted).
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -15978,7 +15978,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -15989,7 +15989,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -16019,7 +16019,7 @@ class ListRejectedQuestionPreviewRequest(AbstractModel):
 
 
 class ListRejectedQuestionPreviewResponse(AbstractModel):
-    """ListRejectedQuestionPreview response structure.
+    r"""ListRejectedQuestionPreview response structure.
 
     """
 
@@ -16038,7 +16038,7 @@ class ListRejectedQuestionPreviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity of documents.
+        r"""Quantity of documents.
         :rtype: str
         """
         return self._Total
@@ -16049,7 +16049,7 @@ class ListRejectedQuestionPreviewResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of documents.
+        r"""List of documents.
         :rtype: list of ReleaseRejectedQuestion
         """
         return self._List
@@ -16060,7 +16060,7 @@ class ListRejectedQuestionPreviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16082,7 +16082,7 @@ class ListRejectedQuestionPreviewResponse(AbstractModel):
 
 
 class ListRejectedQuestionRequest(AbstractModel):
-    """ListRejectedQuestion request structure.
+    r"""ListRejectedQuestion request structure.
 
     """
 
@@ -16108,7 +16108,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -16119,7 +16119,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
 
 
         :rtype: int
@@ -16132,7 +16132,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
 
         :rtype: int
         """
@@ -16144,7 +16144,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
 
         :rtype: str
         """
@@ -16171,7 +16171,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
 
 class ListRejectedQuestionResponse(AbstractModel):
-    """ListRejectedQuestion response structure.
+    r"""ListRejectedQuestion response structure.
 
     """
 
@@ -16190,7 +16190,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
         :rtype: str
         """
         return self._Total
@@ -16201,7 +16201,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of rejected questions.
+        r"""List of rejected questions.
         :rtype: list of RejectedQuestion
         """
         return self._List
@@ -16212,7 +16212,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16234,7 +16234,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
 
 class ListReleaseConfigPreviewRequest(AbstractModel):
-    """ListReleaseConfigPreview request structure.
+    r"""ListReleaseConfigPreview request structure.
 
     """
 
@@ -16271,7 +16271,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Robot ID.
+        r"""Robot ID.
         :rtype: str
         """
         return self._BotBizId
@@ -16282,7 +16282,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -16293,7 +16293,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -16304,7 +16304,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -16315,7 +16315,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release ticket ID.
+        r"""Release ticket ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -16326,7 +16326,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        """Status (1: newly-added; 2: updated; 3: deleted).
+        r"""Status (1: newly-added; 2: updated; 3: deleted).
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -16337,7 +16337,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -16348,7 +16348,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -16359,7 +16359,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        """Release status.
+        r"""Release status.
         :rtype: list of int non-negative
         """
         return self._ReleaseStatus
@@ -16390,7 +16390,7 @@ class ListReleaseConfigPreviewRequest(AbstractModel):
 
 
 class ListReleaseConfigPreviewResponse(AbstractModel):
-    """ListReleaseConfigPreview response structure.
+    r"""ListReleaseConfigPreview response structure.
 
     """
 
@@ -16409,7 +16409,7 @@ class ListReleaseConfigPreviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity.
+        r"""Quantity.
         :rtype: str
         """
         return self._Total
@@ -16420,7 +16420,7 @@ class ListReleaseConfigPreviewResponse(AbstractModel):
 
     @property
     def List(self):
-        """Configuration item list.
+        r"""Configuration item list.
         :rtype: list of ReleaseConfigs
         """
         return self._List
@@ -16431,7 +16431,7 @@ class ListReleaseConfigPreviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16453,7 +16453,7 @@ class ListReleaseConfigPreviewResponse(AbstractModel):
 
 
 class ListReleaseDocPreviewRequest(AbstractModel):
-    """ListReleaseDocPreview request structure.
+    r"""ListReleaseDocPreview request structure.
 
     """
 
@@ -16487,7 +16487,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -16498,7 +16498,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -16509,7 +16509,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -16520,7 +16520,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -16531,7 +16531,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release ticket ID.
+        r"""Release ticket ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -16542,7 +16542,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -16553,7 +16553,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -16564,7 +16564,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        """Status (1: newly-added; 2: modified; 3: deleted).
+        r"""Status (1: newly-added; 2: modified; 3: deleted).
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -16594,7 +16594,7 @@ class ListReleaseDocPreviewRequest(AbstractModel):
 
 
 class ListReleaseDocPreviewResponse(AbstractModel):
-    """ListReleaseDocPreview response structure.
+    r"""ListReleaseDocPreview response structure.
 
     """
 
@@ -16613,7 +16613,7 @@ class ListReleaseDocPreviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Document quantity.
+        r"""Document quantity.
         :rtype: str
         """
         return self._Total
@@ -16624,7 +16624,7 @@ class ListReleaseDocPreviewResponse(AbstractModel):
 
     @property
     def List(self):
-        """Document list.
+        r"""Document list.
         :rtype: list of ReleaseDoc
         """
         return self._List
@@ -16635,7 +16635,7 @@ class ListReleaseDocPreviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -16657,7 +16657,7 @@ class ListReleaseDocPreviewResponse(AbstractModel):
 
 
 class ListReleaseItem(AbstractModel):
-    """Details of release list.
+    r"""Details of release list.
 
     """
 
@@ -16694,7 +16694,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Version ID.
+        r"""Version ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -16705,7 +16705,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def Operator(self):
-        """Releaser.
+        r"""Releaser.
         :rtype: str
         """
         return self._Operator
@@ -16716,7 +16716,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def Desc(self):
-        """Release description.
+        r"""Release description.
         :rtype: str
         """
         return self._Desc
@@ -16727,7 +16727,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -16738,7 +16738,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def Status(self):
-        """Release status.
+        r"""Release status.
         :rtype: int
         """
         return self._Status
@@ -16749,7 +16749,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Release status description.
+        r"""Release status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -16760,7 +16760,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def Reason(self):
-        """Reason for failure.
+        r"""Reason for failure.
         :rtype: str
         """
         return self._Reason
@@ -16771,7 +16771,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def SuccessCount(self):
-        """Number of successful releases.
+        r"""Number of successful releases.
         :rtype: int
         """
         return self._SuccessCount
@@ -16782,7 +16782,7 @@ class ListReleaseItem(AbstractModel):
 
     @property
     def FailCount(self):
-        """Number of failed releases.
+        r"""Number of failed releases.
         :rtype: int
         """
         return self._FailCount
@@ -16813,7 +16813,7 @@ class ListReleaseItem(AbstractModel):
 
 
 class ListReleaseQAPreviewRequest(AbstractModel):
-    """ListReleaseQAPreview request structure.
+    r"""ListReleaseQAPreview request structure.
 
     """
 
@@ -16850,7 +16850,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -16861,7 +16861,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -16872,7 +16872,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -16883,7 +16883,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
         :rtype: str
         """
         return self._Query
@@ -16894,7 +16894,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release ticket ID.
+        r"""Release ticket ID.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -16905,7 +16905,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -16916,7 +16916,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -16927,7 +16927,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def Actions(self):
-        """Status (1: newly-added; 2: modified; 3: deleted).
+        r"""Status (1: newly-added; 2: modified; 3: deleted).
         :rtype: list of int non-negative
         """
         return self._Actions
@@ -16938,7 +16938,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        """Release status (4: release successful; 5: release failed).
+        r"""Release status (4: release successful; 5: release failed).
         :rtype: list of int non-negative
         """
         return self._ReleaseStatus
@@ -16969,7 +16969,7 @@ class ListReleaseQAPreviewRequest(AbstractModel):
 
 
 class ListReleaseQAPreviewResponse(AbstractModel):
-    """ListReleaseQAPreview response structure.
+    r"""ListReleaseQAPreview response structure.
 
     """
 
@@ -16988,7 +16988,7 @@ class ListReleaseQAPreviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Document quantity.
+        r"""Document quantity.
         :rtype: str
         """
         return self._Total
@@ -16999,7 +16999,7 @@ class ListReleaseQAPreviewResponse(AbstractModel):
 
     @property
     def List(self):
-        """The list of documents.
+        r"""The list of documents.
         :rtype: list of ReleaseQA
         """
         return self._List
@@ -17010,7 +17010,7 @@ class ListReleaseQAPreviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17032,7 +17032,7 @@ class ListReleaseQAPreviewResponse(AbstractModel):
 
 
 class ListReleaseRequest(AbstractModel):
-    """ListRelease request structure.
+    r"""ListRelease request structure.
 
     """
 
@@ -17051,7 +17051,7 @@ class ListReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Robot ID.
+        r"""Robot ID.
         :rtype: str
         """
         return self._BotBizId
@@ -17062,7 +17062,7 @@ class ListReleaseRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -17073,7 +17073,7 @@ class ListReleaseRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -17098,7 +17098,7 @@ class ListReleaseRequest(AbstractModel):
 
 
 class ListReleaseResponse(AbstractModel):
-    """ListRelease response structure.
+    r"""ListRelease response structure.
 
     """
 
@@ -17117,7 +17117,7 @@ class ListReleaseResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Number of release lists.
+        r"""Number of release lists.
         :rtype: str
         """
         return self._Total
@@ -17128,7 +17128,7 @@ class ListReleaseResponse(AbstractModel):
 
     @property
     def List(self):
-        """Release list.
+        r"""Release list.
         :rtype: list of ListReleaseItem
         """
         return self._List
@@ -17139,7 +17139,7 @@ class ListReleaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17161,7 +17161,7 @@ class ListReleaseResponse(AbstractModel):
 
 
 class ListSelectDocRequest(AbstractModel):
-    """ListSelectDoc request structure.
+    r"""ListSelectDoc request structure.
 
     """
 
@@ -17181,7 +17181,7 @@ class ListSelectDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -17192,7 +17192,7 @@ class ListSelectDocRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """Document name.
+        r"""Document name.
 
         :rtype: str
         """
@@ -17204,7 +17204,7 @@ class ListSelectDocRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Document status: 7: under review; 8: review failed; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 20: expired.
+        r"""Document status: 7: under review; 8: review failed; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 20: expired.
         :rtype: list of int
         """
         return self._Status
@@ -17229,7 +17229,7 @@ class ListSelectDocRequest(AbstractModel):
 
 
 class ListSelectDocResponse(AbstractModel):
-    """ListSelectDoc response structure.
+    r"""ListSelectDoc response structure.
 
     """
 
@@ -17245,7 +17245,7 @@ class ListSelectDocResponse(AbstractModel):
 
     @property
     def List(self):
-        """Dropdown content.
+        r"""Dropdown content.
         :rtype: list of Option
         """
         return self._List
@@ -17256,7 +17256,7 @@ class ListSelectDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17277,7 +17277,7 @@ class ListSelectDocResponse(AbstractModel):
 
 
 class ListUnsatisfiedReplyRequest(AbstractModel):
-    """ListUnsatisfiedReply request structure.
+    r"""ListUnsatisfiedReply request structure.
 
     """
 
@@ -17308,7 +17308,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -17319,7 +17319,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -17330,7 +17330,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -17341,7 +17341,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -17352,7 +17352,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -17363,7 +17363,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Query(self):
-        """User request (question or answer).
+        r"""User request (question or answer).
         :rtype: str
         """
         return self._Query
@@ -17374,7 +17374,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
     @property
     def Reasons(self):
-        """Error type retrieval.
+        r"""Error type retrieval.
         :rtype: list of str
         """
         return self._Reasons
@@ -17403,7 +17403,7 @@ class ListUnsatisfiedReplyRequest(AbstractModel):
 
 
 class ListUnsatisfiedReplyResponse(AbstractModel):
-    """ListUnsatisfiedReply response structure.
+    r"""ListUnsatisfiedReply response structure.
 
     """
 
@@ -17422,7 +17422,7 @@ class ListUnsatisfiedReplyResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total number.
+        r"""Total number.
         :rtype: str
         """
         return self._Total
@@ -17433,7 +17433,7 @@ class ListUnsatisfiedReplyResponse(AbstractModel):
 
     @property
     def List(self):
-        """List of dissatisfied responses.
+        r"""List of dissatisfied responses.
         :rtype: list of UnsatisfiedReply
         """
         return self._List
@@ -17444,7 +17444,7 @@ class ListUnsatisfiedReplyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17466,7 +17466,7 @@ class ListUnsatisfiedReplyResponse(AbstractModel):
 
 
 class ListUsageCallDetailRequest(AbstractModel):
-    """ListUsageCallDetail request structure.
+    r"""ListUsageCallDetail request structure.
 
     """
 
@@ -17503,7 +17503,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model identifier.
+        r"""Model identifier.
         :rtype: str
         """
         return self._ModelName
@@ -17514,7 +17514,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time.
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -17525,7 +17525,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time.
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -17536,7 +17536,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -17547,7 +17547,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
         :rtype: int
         """
         return self._PageSize
@@ -17558,7 +17558,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        """Uin list.
+        r"""Uin list.
         :rtype: list of str
         """
         return self._UinAccount
@@ -17569,7 +17569,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def AppBizIds(self):
-        """Application ID list.
+        r"""Application ID list.
         :rtype: list of str
         """
         return self._AppBizIds
@@ -17580,7 +17580,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def CallType(self):
-        """Call type list.
+        r"""Call type list.
         :rtype: str
         """
         return self._CallType
@@ -17591,7 +17591,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
     @property
     def SubScenes(self):
-        """Filter sub-scenario.
+        r"""Filter sub-scenario.
         :rtype: list of str
         """
         return self._SubScenes
@@ -17622,7 +17622,7 @@ class ListUsageCallDetailRequest(AbstractModel):
 
 
 class ListUsageCallDetailResponse(AbstractModel):
-    """ListUsageCallDetail response structure.
+    r"""ListUsageCallDetail response structure.
 
     """
 
@@ -17641,7 +17641,7 @@ class ListUsageCallDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """Total count of lists.
+        r"""Total count of lists.
         :rtype: int
         """
         return self._Total
@@ -17652,7 +17652,7 @@ class ListUsageCallDetailResponse(AbstractModel):
 
     @property
     def List(self):
-        """List.
+        r"""List.
         :rtype: list of CallDetail
         """
         return self._List
@@ -17663,7 +17663,7 @@ class ListUsageCallDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -17685,7 +17685,7 @@ class ListUsageCallDetailResponse(AbstractModel):
 
 
 class ModelInfo(AbstractModel):
-    """Model information.
+    r"""Model information.
 
     """
 
@@ -17754,7 +17754,7 @@ Thought: Thinking model
 
     @property
     def ModelName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._ModelName
@@ -17765,7 +17765,7 @@ Thought: Thinking model
 
     @property
     def ModelDesc(self):
-        """Model description.
+        r"""Model description.
         :rtype: str
         """
         return self._ModelDesc
@@ -17776,7 +17776,7 @@ Thought: Thinking model
 
     @property
     def AliasName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._AliasName
@@ -17787,7 +17787,7 @@ Thought: Thinking model
 
     @property
     def ResourceStatus(self):
-        """Resource status, 1: available; 2: exhausted.
+        r"""Resource status, 1: available; 2: exhausted.
         :rtype: int
         """
         return self._ResourceStatus
@@ -17798,7 +17798,7 @@ Thought: Thinking model
 
     @property
     def PromptWordsLimit(self):
-        """Character limit of prompt content.
+        r"""Character limit of prompt content.
         :rtype: str
         """
         return self._PromptWordsLimit
@@ -17809,7 +17809,7 @@ Thought: Thinking model
 
     @property
     def TopP(self):
-        """By controlling the diversity of content generation through core sampling, a higher Top P value will lead to more diverse content generation.
+        r"""By controlling the diversity of content generation through core sampling, a higher Top P value will lead to more diverse content generation.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
         return self._TopP
@@ -17820,7 +17820,7 @@ Thought: Thinking model
 
     @property
     def Temperature(self):
-        """Temperature control randomness.
+        r"""Temperature control randomness.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
         return self._Temperature
@@ -17831,7 +17831,7 @@ Thought: Thinking model
 
     @property
     def MaxTokens(self):
-        """Maximum quantity of tokens that can be generated.
+        r"""Maximum quantity of tokens that can be generated.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
         return self._MaxTokens
@@ -17842,7 +17842,7 @@ Thought: Thinking model
 
     @property
     def Source(self):
-        """Model source, Hunyuan: Tencent Hunyuan; Industry: Tencent Cloud industry large model; Experience: new model experience.
+        r"""Model source, Hunyuan: Tencent Hunyuan; Industry: Tencent Cloud industry large model; Experience: new model experience.
         :rtype: str
         """
         return self._Source
@@ -17853,7 +17853,7 @@ Thought: Thinking model
 
     @property
     def Icon(self):
-        """Model icon.
+        r"""Model icon.
         :rtype: str
         """
         return self._Icon
@@ -17864,7 +17864,7 @@ Thought: Thinking model
 
     @property
     def IsFree(self):
-        """Whether it is free.
+        r"""Whether it is free.
         :rtype: bool
         """
         return self._IsFree
@@ -17875,7 +17875,7 @@ Thought: Thinking model
 
     @property
     def InputLenLimit(self):
-        """Maximum characters input in the model dialog box.
+        r"""Maximum characters input in the model dialog box.
         :rtype: int
         """
         return self._InputLenLimit
@@ -17886,7 +17886,7 @@ Thought: Thinking model
 
     @property
     def SupportWorkflowStatus(self):
-        """Workflow support levels:
+        r"""Workflow support levels:
 0 - Not supported by the model;
 1 - Supported by the model;
 2 - Poorly supported by the model.
@@ -17900,7 +17900,7 @@ Thought: Thinking model
 
     @property
     def ModelCategory(self):
-        """Model categories:
+        r"""Model categories:
 Generate: Generative model
 Thought: Thinking model
         :rtype: str
@@ -17913,7 +17913,7 @@ Thought: Thinking model
 
     @property
     def IsDefault(self):
-        """Whether it is the default model.
+        r"""Whether it is the default model.
         :rtype: bool
         """
         return self._IsDefault
@@ -17924,7 +17924,7 @@ Thought: Thinking model
 
     @property
     def RoleLenLimit(self):
-        """Maximum characters of role prompt words.
+        r"""Maximum characters of role prompt words.
         :rtype: int
         """
         return self._RoleLenLimit
@@ -17935,7 +17935,7 @@ Thought: Thinking model
 
     @property
     def IsExclusive(self):
-        """Whether it is an exclusive concurrency model.
+        r"""Whether it is an exclusive concurrency model.
         :rtype: bool
         """
         return self._IsExclusive
@@ -17946,7 +17946,7 @@ Thought: Thinking model
 
     @property
     def SupportAiCallStatus(self):
-        """The model supports intelligent call effects.
+        r"""The model supports intelligent call effects.
         :rtype: int
         """
         return self._SupportAiCallStatus
@@ -17992,7 +17992,7 @@ Thought: Thinking model
 
 
 class ModelParameter(AbstractModel):
-    """Model parameter value range.
+    r"""Model parameter value range.
 
     """
 
@@ -18011,7 +18011,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Default(self):
-        """Default value.
+        r"""Default value.
         :rtype: float
         """
         return self._Default
@@ -18022,7 +18022,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Min(self):
-        """Minimum value.
+        r"""Minimum value.
         :rtype: float
         """
         return self._Min
@@ -18033,7 +18033,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Max(self):
-        """Maximum value.
+        r"""Maximum value.
         :rtype: float
         """
         return self._Max
@@ -18058,7 +18058,7 @@ class ModelParameter(AbstractModel):
 
 
 class ModifyAppRequest(AbstractModel):
-    """ModifyApp request structure.
+    r"""ModifyApp request structure.
 
     """
 
@@ -18083,7 +18083,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._AppBizId
@@ -18094,7 +18094,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        r"""Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
         :rtype: str
         """
         return self._AppType
@@ -18105,7 +18105,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def BaseConfig(self):
-        """Basic application configuration.
+        r"""Basic application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
         """
         return self._BaseConfig
@@ -18116,7 +18116,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def AppConfig(self):
-        """Application configuration.
+        r"""Application configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppConfig`
         """
         return self._AppConfig
@@ -18127,7 +18127,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -18158,7 +18158,7 @@ class ModifyAppRequest(AbstractModel):
 
 
 class ModifyAppResponse(AbstractModel):
-    """ModifyApp response structure.
+    r"""ModifyApp response structure.
 
     """
 
@@ -18177,7 +18177,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def AppBizId(self):
-        """Application.
+        r"""Application.
         :rtype: str
         """
         return self._AppBizId
@@ -18188,7 +18188,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -18199,7 +18199,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18216,7 +18216,7 @@ class ModifyAppResponse(AbstractModel):
 
 
 class ModifyAttributeLabelRequest(AbstractModel):
-    """ModifyAttributeLabel request structure.
+    r"""ModifyAttributeLabel request structure.
 
     """
 
@@ -18250,7 +18250,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18261,7 +18261,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttributeBizId(self):
-        """Label ID.
+        r"""Label ID.
         :rtype: str
         """
         return self._AttributeBizId
@@ -18272,7 +18272,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttrName(self):
-        """Label name.
+        r"""Label name.
         :rtype: str
         """
         return self._AttrName
@@ -18283,7 +18283,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def AttrKey(self):
-        """Label identifier (abolished).
+        r"""Label identifier (abolished).
         :rtype: str
         """
         return self._AttrKey
@@ -18294,7 +18294,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -18305,7 +18305,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -18316,7 +18316,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def DeleteLabelBizIds(self):
-        """Deleted label value.
+        r"""Deleted label value.
         :rtype: list of str
         """
         return self._DeleteLabelBizIds
@@ -18327,7 +18327,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
     @property
     def Labels(self):
-        """Newly-added or edited label.
+        r"""Newly-added or edited label.
         :rtype: list of AttributeLabel
         """
         return self._Labels
@@ -18362,7 +18362,7 @@ class ModifyAttributeLabelRequest(AbstractModel):
 
 
 class ModifyAttributeLabelResponse(AbstractModel):
-    """ModifyAttributeLabel response structure.
+    r"""ModifyAttributeLabel response structure.
 
     """
 
@@ -18378,7 +18378,7 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
         :rtype: str
         """
         return self._TaskId
@@ -18389,7 +18389,7 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18405,7 +18405,7 @@ class ModifyAttributeLabelResponse(AbstractModel):
 
 
 class ModifyDocAttrRangeRequest(AbstractModel):
-    """ModifyDocAttrRange request structure.
+    r"""ModifyDocAttrRange request structure.
 
     """
 
@@ -18427,7 +18427,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18438,7 +18438,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def DocBizIds(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: list of str
         """
         return self._DocBizIds
@@ -18449,7 +18449,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Attribute label applicable scope: 1: all, 2: by conditions.
+        r"""Attribute label applicable scope: 1: all, 2: by conditions.
         :rtype: int
         """
         return self._AttrRange
@@ -18460,7 +18460,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Attribute label reference.
+        r"""Attribute label reference.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -18491,7 +18491,7 @@ class ModifyDocAttrRangeRequest(AbstractModel):
 
 
 class ModifyDocAttrRangeResponse(AbstractModel):
-    """ModifyDocAttrRange response structure.
+    r"""ModifyDocAttrRange response structure.
 
     """
 
@@ -18504,7 +18504,7 @@ class ModifyDocAttrRangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18519,7 +18519,7 @@ class ModifyDocAttrRangeResponse(AbstractModel):
 
 
 class ModifyDocCateRequest(AbstractModel):
-    """ModifyDocCate request structure.
+    r"""ModifyDocCate request structure.
 
     """
 
@@ -18539,7 +18539,7 @@ class ModifyDocCateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18550,7 +18550,7 @@ class ModifyDocCateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
 
         :rtype: str
         """
@@ -18562,7 +18562,7 @@ class ModifyDocCateRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -18587,7 +18587,7 @@ class ModifyDocCateRequest(AbstractModel):
 
 
 class ModifyDocCateResponse(AbstractModel):
-    """ModifyDocCate response structure.
+    r"""ModifyDocCate response structure.
 
     """
 
@@ -18600,7 +18600,7 @@ class ModifyDocCateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18615,7 +18615,7 @@ class ModifyDocCateResponse(AbstractModel):
 
 
 class ModifyDocRequest(AbstractModel):
-    """ModifyDoc request structure.
+    r"""ModifyDoc request structure.
 
     """
 
@@ -18662,7 +18662,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18673,7 +18673,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -18684,7 +18684,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsRefer(self):
-        """Whether to reference a link.
+        r"""Whether to reference a link.
         :rtype: bool
         """
         return self._IsRefer
@@ -18695,7 +18695,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrRange(self):
-        """Applicable scope of labels: 1: all; 2: by condition.
+        r"""Applicable scope of labels: 1: all; 2: by condition.
         :rtype: int
         """
         return self._AttrRange
@@ -18706,7 +18706,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -18717,7 +18717,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -18728,7 +18728,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrLabels(self):
-        """Associated labels.
+        r"""Associated labels.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -18739,7 +18739,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def WebUrl(self):
-        """Web page (or custom link) address.
+        r"""Web page (or custom link) address.
         :rtype: str
         """
         return self._WebUrl
@@ -18750,7 +18750,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ReferUrlType(self):
-        """External reference link type: 0: system link 1: custom link.
+        r"""External reference link type: 0: system link 1: custom link.
 When the value is 1, the weburl field cannot be empty; otherwise, it will not take effect.
         :rtype: int
         """
@@ -18762,7 +18762,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -18773,7 +18773,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -18784,7 +18784,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -18823,7 +18823,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
 
 class ModifyDocResponse(AbstractModel):
-    """ModifyDoc response structure.
+    r"""ModifyDoc response structure.
 
     """
 
@@ -18836,7 +18836,7 @@ class ModifyDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18851,7 +18851,7 @@ class ModifyDocResponse(AbstractModel):
 
 
 class ModifyQAAttrRangeRequest(AbstractModel):
-    """ModifyQAAttrRange request structure.
+    r"""ModifyQAAttrRange request structure.
 
     """
 
@@ -18873,7 +18873,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18884,7 +18884,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: list of str
         """
         return self._QaBizIds
@@ -18895,7 +18895,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable scope of attribute label: 1: all, 2: by conditions.
+        r"""Applicable scope of attribute label: 1: all, 2: by conditions.
         :rtype: int
         """
         return self._AttrRange
@@ -18906,7 +18906,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Attribute label reference.
+        r"""Attribute label reference.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -18937,7 +18937,7 @@ class ModifyQAAttrRangeRequest(AbstractModel):
 
 
 class ModifyQAAttrRangeResponse(AbstractModel):
-    """ModifyQAAttrRange response structure.
+    r"""ModifyQAAttrRange response structure.
 
     """
 
@@ -18950,7 +18950,7 @@ class ModifyQAAttrRangeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -18965,7 +18965,7 @@ class ModifyQAAttrRangeResponse(AbstractModel):
 
 
 class ModifyQACateRequest(AbstractModel):
-    """ModifyQACate request structure.
+    r"""ModifyQACate request structure.
 
     """
 
@@ -18985,7 +18985,7 @@ class ModifyQACateRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -18996,7 +18996,7 @@ class ModifyQACateRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
 
         :rtype: str
         """
@@ -19008,7 +19008,7 @@ class ModifyQACateRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category business ID.
+        r"""Category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -19033,7 +19033,7 @@ class ModifyQACateRequest(AbstractModel):
 
 
 class ModifyQACateResponse(AbstractModel):
-    """ModifyQACate response structure.
+    r"""ModifyQACate response structure.
 
     """
 
@@ -19046,7 +19046,7 @@ class ModifyQACateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19061,7 +19061,7 @@ class ModifyQACateResponse(AbstractModel):
 
 
 class ModifyQARequest(AbstractModel):
-    """ModifyQA request structure.
+    r"""ModifyQA request structure.
 
     """
 
@@ -19110,7 +19110,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -19121,7 +19121,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -19132,7 +19132,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -19143,7 +19143,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
         :rtype: str
         """
         return self._Answer
@@ -19154,7 +19154,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def CustomParam(self):
-        """Custom parameter.
+        r"""Custom parameter.
         :rtype: str
         """
         return self._CustomParam
@@ -19165,7 +19165,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def AttrRange(self):
-        """Applicable scope of labels: 1. all; 2. by conditions.
+        r"""Applicable scope of labels: 1. all; 2. by conditions.
         :rtype: int
         """
         return self._AttrRange
@@ -19176,7 +19176,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def AttrLabels(self):
-        """Label reference.
+        r"""Label reference.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -19187,7 +19187,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -19198,7 +19198,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -19209,7 +19209,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -19220,7 +19220,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp, 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp, 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -19231,7 +19231,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def SimilarQuestionModify(self):
-        """Similar question modification information (not passed if there is no modification to the similar question).
+        r"""Similar question modification information (not passed if there is no modification to the similar question).
         :rtype: :class:`tencentcloud.lke.v20231130.models.SimilarQuestionModify`
         """
         return self._SimilarQuestionModify
@@ -19242,7 +19242,7 @@ class ModifyQARequest(AbstractModel):
 
     @property
     def QuestionDesc(self):
-        """Problem description.
+        r"""Problem description.
         :rtype: str
         """
         return self._QuestionDesc
@@ -19284,7 +19284,7 @@ class ModifyQARequest(AbstractModel):
 
 
 class ModifyQAResponse(AbstractModel):
-    """ModifyQA response structure.
+    r"""ModifyQA response structure.
 
     """
 
@@ -19297,7 +19297,7 @@ class ModifyQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19312,7 +19312,7 @@ class ModifyQAResponse(AbstractModel):
 
 
 class ModifyRejectedQuestionRequest(AbstractModel):
-    """ModifyRejectedQuestion request structure.
+    r"""ModifyRejectedQuestion request structure.
 
     """
 
@@ -19336,7 +19336,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -19347,7 +19347,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     @property
     def Question(self):
-        """Rejected question.
+        r"""Rejected question.
 
 
         :rtype: str
@@ -19360,7 +19360,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
     @property
     def RejectedBizId(self):
-        """Unique id of the data source for the rejected question source.
+        r"""Unique id of the data source for the rejected question source.
 
 
 
@@ -19388,7 +19388,7 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
 
 class ModifyRejectedQuestionResponse(AbstractModel):
-    """ModifyRejectedQuestion response structure.
+    r"""ModifyRejectedQuestion response structure.
 
     """
 
@@ -19401,7 +19401,7 @@ class ModifyRejectedQuestionResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -19416,7 +19416,7 @@ class ModifyRejectedQuestionResponse(AbstractModel):
 
 
 class MsgFileInfo(AbstractModel):
-    """Document information.
+    r"""Document information.
 
     """
 
@@ -19441,7 +19441,7 @@ class MsgFileInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """Document name.
+        r"""Document name.
         :rtype: str
         """
         return self._FileName
@@ -19452,7 +19452,7 @@ class MsgFileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        """Document size.
+        r"""Document size.
         :rtype: str
         """
         return self._FileSize
@@ -19463,7 +19463,7 @@ class MsgFileInfo(AbstractModel):
 
     @property
     def FileUrl(self):
-        """Document URL.
+        r"""Document URL.
         :rtype: str
         """
         return self._FileUrl
@@ -19474,7 +19474,7 @@ class MsgFileInfo(AbstractModel):
 
     @property
     def FileType(self):
-        """Document type.
+        r"""Document type.
         :rtype: str
         """
         return self._FileType
@@ -19485,7 +19485,7 @@ class MsgFileInfo(AbstractModel):
 
     @property
     def DocId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocId
@@ -19512,7 +19512,7 @@ class MsgFileInfo(AbstractModel):
 
 
 class MsgRecord(AbstractModel):
-    """Message details.
+    r"""Message details.
 
     """
 
@@ -19614,7 +19614,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Content(self):
-        """Content.
+        r"""Content.
         :rtype: str
         """
         return self._Content
@@ -19625,7 +19625,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def SessionId(self):
-        """The Session ID corresponding to the current record.
+        r"""The Session ID corresponding to the current record.
         :rtype: str
         """
         return self._SessionId
@@ -19636,7 +19636,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID.
+        r"""Record ID.
         :rtype: str
         """
         return self._RecordId
@@ -19647,7 +19647,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def RelatedRecordId(self):
-        """Associated record ID.
+        r"""Associated record ID.
         :rtype: str
         """
         return self._RelatedRecordId
@@ -19658,7 +19658,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def IsFromSelf(self):
-        """Whether it is from oneself.
+        r"""Whether it is from oneself.
         :rtype: bool
         """
         return self._IsFromSelf
@@ -19669,7 +19669,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FromName(self):
-        """Sender name.
+        r"""Sender name.
         :rtype: str
         """
         return self._FromName
@@ -19680,7 +19680,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FromAvatar(self):
-        """Avatar of the sender.
+        r"""Avatar of the sender.
         :rtype: str
         """
         return self._FromAvatar
@@ -19691,7 +19691,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Timestamp.
+        r"""Timestamp.
         :rtype: str
         """
         return self._Timestamp
@@ -19702,7 +19702,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def HasRead(self):
-        """Whether it is read.
+        r"""Whether it is read.
         :rtype: bool
         """
         return self._HasRead
@@ -19713,7 +19713,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Score(self):
-        """Evaluation.
+        r"""Evaluation.
         :rtype: int
         """
         return self._Score
@@ -19724,7 +19724,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def CanRating(self):
-        """Whether to rate.
+        r"""Whether to rate.
         :rtype: bool
         """
         return self._CanRating
@@ -19735,7 +19735,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def CanFeedback(self):
-        """Whether to display the feedback button.
+        r"""Whether to display the feedback button.
         :rtype: bool
         """
         return self._CanFeedback
@@ -19746,7 +19746,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Type(self):
-        """Record type.
+        r"""Record type.
         :rtype: int
         """
         return self._Type
@@ -19757,7 +19757,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def References(self):
-        """Reference source.
+        r"""Reference source.
         :rtype: list of MsgRecordReference
         """
         return self._References
@@ -19768,7 +19768,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Reasons(self):
-        """Reason for evaluation.
+        r"""Reason for evaluation.
         :rtype: list of str
         """
         return self._Reasons
@@ -19779,7 +19779,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def IsLlmGenerated(self):
-        """Whether it is a large model.
+        r"""Whether it is a large model.
         :rtype: bool
         """
         return self._IsLlmGenerated
@@ -19790,7 +19790,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ImageUrls(self):
-        """Image URL, which can be public read.
+        r"""Image URL, which can be public read.
         :rtype: list of str
         """
         return self._ImageUrls
@@ -19801,7 +19801,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def TokenStat(self):
-        """Statistical information of the current token.
+        r"""Statistical information of the current token.
         :rtype: :class:`tencentcloud.lke.v20231130.models.TokenStat`
         """
         return self._TokenStat
@@ -19812,7 +19812,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ReplyMethod(self):
-        """Response method.
+        r"""Response method.
 1: Large model directly replies.
 2: Conservative reply, reply to unknown questions.
 3: Reply to rejected question.
@@ -19837,7 +19837,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def OptionCards(self):
-        """Option tab, used for multi-round dialogue.
+        r"""Option tab, used for multi-round dialogue.
         :rtype: list of str
         """
         return self._OptionCards
@@ -19848,7 +19848,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def TaskFlow(self):
-        """Task information.
+        r"""Task information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.TaskFlowInfo`
         """
         return self._TaskFlow
@@ -19859,7 +19859,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FileInfos(self):
-        """File information passed in by the user.
+        r"""File information passed in by the user.
         :rtype: list of FileInfo
         """
         return self._FileInfos
@@ -19870,7 +19870,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def QuoteInfos(self):
-        """Location information of reference source .
+        r"""Location information of reference source .
         :rtype: list of QuoteInfo
         """
         return self._QuoteInfos
@@ -19881,7 +19881,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def AgentThought(self):
-        """Information on the thinking process of the agent.
+        r"""Information on the thinking process of the agent.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentThought`
         """
         return self._AgentThought
@@ -19892,7 +19892,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        """Expanded information.
+        r"""Expanded information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ExtraInfo`
         """
         return self._ExtraInfo
@@ -19903,7 +19903,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def WorkFlow(self):
-        """Workflow information.
+        r"""Workflow information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.WorkflowInfo`
         """
         return self._WorkFlow
@@ -19976,7 +19976,7 @@ class MsgRecord(AbstractModel):
 
 
 class MsgRecordReference(AbstractModel):
-    """Chat details Refer.
+    r"""Chat details Refer.
 
     """
 
@@ -20001,7 +20001,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Id(self):
-        """ID
+        r"""ID
         :rtype: str
         """
         return self._Id
@@ -20012,7 +20012,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Url(self):
-        """URL.
+        r"""URL.
         :rtype: str
         """
         return self._Url
@@ -20023,7 +20023,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Type(self):
-        """Type.
+        r"""Type.
         :rtype: int
         """
         return self._Type
@@ -20034,7 +20034,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -20045,7 +20045,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def DocId(self):
-        """Source document ID.
+        r"""Source document ID.
         :rtype: str
         """
         return self._DocId
@@ -20072,7 +20072,7 @@ class MsgRecordReference(AbstractModel):
 
 
 class Option(AbstractModel):
-    """Dropdown options.
+    r"""Dropdown options.
 
     """
 
@@ -20094,7 +20094,7 @@ class Option(AbstractModel):
 
     @property
     def Text(self):
-        """Text.
+        r"""Text.
         :rtype: str
         """
         return self._Text
@@ -20105,7 +20105,7 @@ class Option(AbstractModel):
 
     @property
     def Value(self):
-        """Value.
+        r"""Value.
         :rtype: str
         """
         return self._Value
@@ -20116,7 +20116,7 @@ class Option(AbstractModel):
 
     @property
     def CharSize(self):
-        """Number of characters in a file.
+        r"""Number of characters in a file.
         :rtype: str
         """
         return self._CharSize
@@ -20127,7 +20127,7 @@ class Option(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -20153,7 +20153,7 @@ class Option(AbstractModel):
 
 
 class PluginToolReqParam(AbstractModel):
-    """Plugin parameter request structure.
+    r"""Plugin parameter request structure.
 
     """
 
@@ -20190,7 +20190,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def Name(self):
-        """Parameter name.
+        r"""Parameter name.
         :rtype: str
         """
         return self._Name
@@ -20201,7 +20201,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def Desc(self):
-        """Parameter description.
+        r"""Parameter description.
         :rtype: str
         """
         return self._Desc
@@ -20212,7 +20212,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def Type(self):
-        """Parameter type, 0: string; 1: int; 2: float; 3: bool; 4: object; 5: array_string; 6: array_int; 7: array_float; 8: array_bool; 9: array_object, 99: null, 100: upspecified.
+        r"""Parameter type, 0: string; 1: int; 2: float; 3: bool; 4: object; 5: array_string; 6: array_int; 7: array_float; 8: array_bool; 9: array_object, 99: null, 100: upspecified.
         :rtype: int
         """
         return self._Type
@@ -20223,7 +20223,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def IsRequired(self):
-        """Whether the parameter is required.
+        r"""Whether the parameter is required.
         :rtype: bool
         """
         return self._IsRequired
@@ -20234,7 +20234,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        """Parameter default value.
+        r"""Parameter default value.
         :rtype: str
         """
         return self._DefaultValue
@@ -20245,7 +20245,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def SubParams(self):
-        """Sub-parameter. "ParamType" is useful when it is "OBJECT " or "ARRAY<>" type.
+        r"""Sub-parameter. "ParamType" is useful when it is "OBJECT " or "ARRAY<>" type.
         :rtype: list of PluginToolReqParam
         """
         return self._SubParams
@@ -20256,7 +20256,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def GlobalHidden(self):
-        """Whether the plugin parameter configuration is hidden and invisible. true - Hidden and invisible; false - Visible.
+        r"""Whether the plugin parameter configuration is hidden and invisible. true - Hidden and invisible; false - Visible.
         :rtype: bool
         """
         return self._GlobalHidden
@@ -20267,7 +20267,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def OneOf(self):
-        """OneOf type parameter.
+        r"""OneOf type parameter.
         :rtype: list of PluginToolReqParam
         """
         return self._OneOf
@@ -20278,7 +20278,7 @@ class PluginToolReqParam(AbstractModel):
 
     @property
     def AnyOf(self):
-        """AnyOf type parameter.
+        r"""AnyOf type parameter.
         :rtype: list of PluginToolReqParam
         """
         return self._AnyOf
@@ -20324,7 +20324,7 @@ class PluginToolReqParam(AbstractModel):
 
 
 class Procedure(AbstractModel):
-    """Execution process information log.
+    r"""Execution process information log.
 
     """
 
@@ -20352,7 +20352,7 @@ class Procedure(AbstractModel):
 
     @property
     def Name(self):
-        """English name of execution process.
+        r"""English name of execution process.
         :rtype: str
         """
         return self._Name
@@ -20363,7 +20363,7 @@ class Procedure(AbstractModel):
 
     @property
     def Title(self):
-        """Chinese name for display.
+        r"""Chinese name for display.
         :rtype: str
         """
         return self._Title
@@ -20374,7 +20374,7 @@ class Procedure(AbstractModel):
 
     @property
     def Status(self):
-        """Status: processing, success, failed.
+        r"""Status: processing, success, failed.
         :rtype: str
         """
         return self._Status
@@ -20385,7 +20385,7 @@ class Procedure(AbstractModel):
 
     @property
     def Count(self):
-        """Number of consumed tokens.
+        r"""Number of consumed tokens.
         :rtype: int
         """
         return self._Count
@@ -20396,7 +20396,7 @@ class Procedure(AbstractModel):
 
     @property
     def Debugging(self):
-        """Debugging information.
+        r"""Debugging information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.ProcedureDebugging`
         """
         return self._Debugging
@@ -20407,7 +20407,7 @@ class Procedure(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        """Billing resource status, 1: available; 2: unavailable.
+        r"""Billing resource status, 1: available; 2: unavailable.
         :rtype: int
         """
         return self._ResourceStatus
@@ -20437,7 +20437,7 @@ class Procedure(AbstractModel):
 
 
 class ProcedureDebugging(AbstractModel):
-    """Debug information.
+    r"""Debug information.
 
     """
 
@@ -20471,7 +20471,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def Content(self):
-        """Retrieve query.
+        r"""Retrieve query.
         :rtype: str
         """
         return self._Content
@@ -20482,7 +20482,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def System(self):
-        """System prompt.
+        r"""System prompt.
         :rtype: str
         """
         return self._System
@@ -20493,7 +20493,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def Histories(self):
-        """Multiple rounds of historical information.
+        r"""Multiple rounds of historical information.
         :rtype: list of HistorySummary
         """
         return self._Histories
@@ -20504,7 +20504,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def Knowledge(self):
-        """Retrieve knowledge.
+        r"""Retrieve knowledge.
         :rtype: list of KnowledgeSummary
         """
         return self._Knowledge
@@ -20515,7 +20515,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def TaskFlow(self):
-        """Task process.
+        r"""Task process.
         :rtype: :class:`tencentcloud.lke.v20231130.models.TaskFlowSummary`
         """
         return self._TaskFlow
@@ -20526,7 +20526,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def WorkFlow(self):
-        """Workflow debugging information.
+        r"""Workflow debugging information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.WorkFlowSummary`
         """
         return self._WorkFlow
@@ -20537,7 +20537,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def Agent(self):
-        """Agent debugging information.
+        r"""Agent debugging information.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentDebugInfo`
         """
         return self._Agent
@@ -20548,7 +20548,7 @@ class ProcedureDebugging(AbstractModel):
 
     @property
     def CustomVariables(self):
-        """Custom parameter.
+        r"""Custom parameter.
         :rtype: list of str
         """
         return self._CustomVariables
@@ -20594,7 +20594,7 @@ class ProcedureDebugging(AbstractModel):
 
 
 class QACate(AbstractModel):
-    """Obtain Q&A category group.
+    r"""Obtain Q&A category group.
 
     """
 
@@ -20625,7 +20625,7 @@ class QACate(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Q&A category business ID.
+        r"""Q&A category business ID.
         :rtype: str
         """
         return self._CateBizId
@@ -20636,7 +20636,7 @@ class QACate(AbstractModel):
 
     @property
     def Name(self):
-        """Category name.
+        r"""Category name.
         :rtype: str
         """
         return self._Name
@@ -20647,7 +20647,7 @@ class QACate(AbstractModel):
 
     @property
     def Total(self):
-        """Quantity of Q&As under the category.
+        r"""Quantity of Q&As under the category.
         :rtype: int
         """
         return self._Total
@@ -20658,7 +20658,7 @@ class QACate(AbstractModel):
 
     @property
     def CanAdd(self):
-        """Whether it is possible to add.
+        r"""Whether it is possible to add.
         :rtype: bool
         """
         return self._CanAdd
@@ -20669,7 +20669,7 @@ class QACate(AbstractModel):
 
     @property
     def CanEdit(self):
-        """Whether it can be edited.
+        r"""Whether it can be edited.
         :rtype: bool
         """
         return self._CanEdit
@@ -20680,7 +20680,7 @@ class QACate(AbstractModel):
 
     @property
     def CanDelete(self):
-        """Whether it can be deleted.
+        r"""Whether it can be deleted.
         :rtype: bool
         """
         return self._CanDelete
@@ -20691,7 +20691,7 @@ class QACate(AbstractModel):
 
     @property
     def Children(self):
-        """Subcategory.
+        r"""Subcategory.
         :rtype: list of QACate
         """
         return self._Children
@@ -20725,7 +20725,7 @@ class QACate(AbstractModel):
 
 
 class QAList(AbstractModel):
-    """Q&A list.
+    r"""Q&A list.
 
     """
 
@@ -20750,7 +20750,7 @@ class QAList(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -20761,7 +20761,7 @@ class QAList(AbstractModel):
 
     @property
     def IsAccepted(self):
-        """Whether to accept.
+        r"""Whether to accept.
         :rtype: bool
         """
         return self._IsAccepted
@@ -20772,7 +20772,7 @@ class QAList(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -20783,7 +20783,7 @@ class QAList(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -20794,7 +20794,7 @@ class QAList(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
         :rtype: str
         """
         return self._Answer
@@ -20821,7 +20821,7 @@ class QAList(AbstractModel):
 
 
 class QAQuery(AbstractModel):
-    """Q&A query parameter.
+    r"""Q&A query parameter.
 
     """
 
@@ -20880,7 +20880,7 @@ class QAQuery(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number.
+        r"""Page number.
 
 
 
@@ -20895,7 +20895,7 @@ class QAQuery(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of items per page.
+        r"""Number of items per page.
 
         :rtype: int
         """
@@ -20907,7 +20907,7 @@ class QAQuery(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -20918,7 +20918,7 @@ class QAQuery(AbstractModel):
 
     @property
     def Query(self):
-        """Query content.
+        r"""Query content.
 
         :rtype: str
         """
@@ -20930,7 +20930,7 @@ class QAQuery(AbstractModel):
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
 
         :rtype: str
         """
@@ -20942,7 +20942,7 @@ class QAQuery(AbstractModel):
 
     @property
     def AcceptStatus(self):
-        """Verification status.
+        r"""Verification status.
 
         :rtype: list of int non-negative
         """
@@ -20954,7 +20954,7 @@ class QAQuery(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        """Release status.
+        r"""Release status.
 
         :rtype: list of int non-negative
         """
@@ -20966,7 +20966,7 @@ class QAQuery(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
 
         :rtype: str
         """
@@ -20978,7 +20978,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -20989,7 +20989,7 @@ class QAQuery(AbstractModel):
 
     @property
     def Source(self):
-        """Source.
+        r"""Source.
 
 
         :rtype: int
@@ -21002,7 +21002,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QueryAnswer(self):
-        """Query an answer.
+        r"""Query an answer.
 
         :rtype: str
         """
@@ -21014,7 +21014,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QueryType(self):
-        """Query type: filename, attribute label.
+        r"""Query type: filename, attribute label.
         :rtype: str
         """
         return self._QueryType
@@ -21048,7 +21048,7 @@ class QAQuery(AbstractModel):
 
 
 class QuoteInfo(AbstractModel):
-    """Search engine reference source index.
+    r"""Search engine reference source index.
 
     """
 
@@ -21064,7 +21064,7 @@ class QuoteInfo(AbstractModel):
 
     @property
     def Position(self):
-        """Reference source location.
+        r"""Reference source location.
         :rtype: int
         """
         return self._Position
@@ -21075,7 +21075,7 @@ class QuoteInfo(AbstractModel):
 
     @property
     def Index(self):
-        """Reference source index sequence.
+        r"""Reference source index sequence.
         :rtype: str
         """
         return self._Index
@@ -21099,7 +21099,7 @@ class QuoteInfo(AbstractModel):
 
 
 class RateMsgRecordRequest(AbstractModel):
-    """RateMsgRecord request structure.
+    r"""RateMsgRecord request structure.
 
     """
 
@@ -21121,7 +21121,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def BotAppKey(self):
-        """Application appkey.
+        r"""Application appkey.
         :rtype: str
         """
         return self._BotAppKey
@@ -21132,7 +21132,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """Message ID.
+        r"""Message ID.
         :rtype: str
         """
         return self._RecordId
@@ -21143,7 +21143,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def Score(self):
-        """1: like; 2: dislike.
+        r"""1: like; 2: dislike.
         :rtype: int
         """
         return self._Score
@@ -21154,7 +21154,7 @@ class RateMsgRecordRequest(AbstractModel):
 
     @property
     def Reasons(self):
-        """Reason.
+        r"""Reason.
         :rtype: list of str
         """
         return self._Reasons
@@ -21180,7 +21180,7 @@ class RateMsgRecordRequest(AbstractModel):
 
 
 class RateMsgRecordResponse(AbstractModel):
-    """RateMsgRecord response structure.
+    r"""RateMsgRecord response structure.
 
     """
 
@@ -21193,7 +21193,7 @@ class RateMsgRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -21208,7 +21208,7 @@ class RateMsgRecordResponse(AbstractModel):
 
 
 class ReconstructDocumentFailedPage(AbstractModel):
-    """Document parsing failure record.
+    r"""Document parsing failure record.
 
     """
 
@@ -21221,7 +21221,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Failure page number.
+        r"""Failure page number.
         :rtype: int
         """
         return self._PageNumber
@@ -21244,7 +21244,7 @@ class ReconstructDocumentFailedPage(AbstractModel):
 
 
 class ReferDetail(AbstractModel):
-    """Reference source details.
+    r"""Reference source details.
 
     """
 
@@ -21293,7 +21293,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def ReferBizId(self):
-        """Reference ID.
+        r"""Reference ID.
         :rtype: str
         """
         return self._ReferBizId
@@ -21304,7 +21304,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def DocType(self):
-        """Document type (1: Q&A; 2: document paragraph).
+        r"""Document type (1: Q&A; 2: document paragraph).
         :rtype: int
         """
         return self._DocType
@@ -21315,7 +21315,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def DocName(self):
-        """Document name.
+        r"""Document name.
         :rtype: str
         """
         return self._DocName
@@ -21326,7 +21326,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def PageContent(self):
-        """Fragment content.
+        r"""Fragment content.
         :rtype: str
         """
         return self._PageContent
@@ -21337,7 +21337,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -21348,7 +21348,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def Answer(self):
-        """Answer.
+        r"""Answer.
         :rtype: str
         """
         return self._Answer
@@ -21359,7 +21359,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def Confidence(self):
-        """Confidence.
+        r"""Confidence.
         :rtype: float
         """
         return self._Confidence
@@ -21370,7 +21370,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def Mark(self):
-        """Mark.
+        r"""Mark.
         :rtype: int
         """
         return self._Mark
@@ -21381,7 +21381,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def Highlights(self):
-        """Fragment highlight content.
+        r"""Fragment highlight content.
         :rtype: list of Highlight
         """
         return self._Highlights
@@ -21392,7 +21392,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def OrgData(self):
-        """Original content.
+        r"""Original content.
         :rtype: str
         """
         return self._OrgData
@@ -21403,7 +21403,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def PageInfos(self):
-        """Page number information.
+        r"""Page number information.
         :rtype: list of int non-negative
         """
         return self._PageInfos
@@ -21414,7 +21414,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def SheetInfos(self):
-        """Sheet information.
+        r"""Sheet information.
         :rtype: list of str
         """
         return self._SheetInfos
@@ -21425,7 +21425,7 @@ class ReferDetail(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -21465,7 +21465,7 @@ class ReferDetail(AbstractModel):
 
 
 class RejectedQuestion(AbstractModel):
-    """Release rejected questions.
+    r"""Release rejected questions.
 
     """
 
@@ -21496,7 +21496,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def RejectedBizId(self):
-        """Reject question ID.
+        r"""Reject question ID.
         :rtype: str
         """
         return self._RejectedBizId
@@ -21507,7 +21507,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def Question(self):
-        """The question that has been rejected.
+        r"""The question that has been rejected.
         :rtype: str
         """
         return self._Question
@@ -21518,7 +21518,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Status
@@ -21529,7 +21529,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def StatusDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._StatusDesc
@@ -21540,7 +21540,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -21551,7 +21551,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def IsAllowEdit(self):
-        """Whether editing is allowed.
+        r"""Whether editing is allowed.
         :rtype: bool
         """
         return self._IsAllowEdit
@@ -21562,7 +21562,7 @@ class RejectedQuestion(AbstractModel):
 
     @property
     def IsAllowDelete(self):
-        """Whether deletion is allowed.
+        r"""Whether deletion is allowed.
         :rtype: bool
         """
         return self._IsAllowDelete
@@ -21591,7 +21591,7 @@ class RejectedQuestion(AbstractModel):
 
 
 class ReleaseConfigs(AbstractModel):
-    """Release configuration items.
+    r"""Release configuration items.
 
     """
 
@@ -21622,7 +21622,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def ConfigItem(self):
-        """Configuration item description.
+        r"""Configuration item description.
         :rtype: str
         """
         return self._ConfigItem
@@ -21633,7 +21633,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -21644,7 +21644,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def Action(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Action
@@ -21655,7 +21655,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def Value(self):
-        """Content after modification.
+        r"""Content after modification.
         :rtype: str
         """
         return self._Value
@@ -21666,7 +21666,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def LastValue(self):
-        """Content before modification.
+        r"""Content before modification.
         :rtype: str
         """
         return self._LastValue
@@ -21677,7 +21677,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def Content(self):
-        """Modified content (display "content" with priority. If "content" is empty, take "value").
+        r"""Modified content (display "content" with priority. If "content" is empty, take "value").
         :rtype: str
         """
         return self._Content
@@ -21688,7 +21688,7 @@ class ReleaseConfigs(AbstractModel):
 
     @property
     def Message(self):
-        """Reason for failure.
+        r"""Reason for failure.
         :rtype: str
         """
         return self._Message
@@ -21717,7 +21717,7 @@ class ReleaseConfigs(AbstractModel):
 
 
 class ReleaseDoc(AbstractModel):
-    """Release document details.
+    r"""Release document details.
 
     """
 
@@ -21748,7 +21748,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def FileName(self):
-        """File name.
+        r"""File name.
         :rtype: str
         """
         return self._FileName
@@ -21759,7 +21759,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def FileType(self):
-        """File type.
+        r"""File type.
         :rtype: str
         """
         return self._FileType
@@ -21770,7 +21770,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -21781,7 +21781,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def Action(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Action
@@ -21792,7 +21792,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def ActionDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._ActionDesc
@@ -21803,7 +21803,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def Message(self):
-        """Reason for failure.
+        r"""Reason for failure.
         :rtype: str
         """
         return self._Message
@@ -21814,7 +21814,7 @@ class ReleaseDoc(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document business ID.
+        r"""Document business ID.
         :rtype: str
         """
         return self._DocBizId
@@ -21843,7 +21843,7 @@ class ReleaseDoc(AbstractModel):
 
 
 class ReleaseQA(AbstractModel):
-    """Release Q&A.
+    r"""Release Q&A.
 
     """
 
@@ -21889,7 +21889,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -21900,7 +21900,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -21911,7 +21911,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def Action(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Action
@@ -21922,7 +21922,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def ActionDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._ActionDesc
@@ -21933,7 +21933,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def Source(self):
-        """Source, 1: documentation generation; 2: batch import; 3: manual addition.
+        r"""Source, 1: documentation generation; 2: batch import; 3: manual addition.
         :rtype: int
         """
         return self._Source
@@ -21944,7 +21944,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def SourceDesc(self):
-        """Source description.
+        r"""Source description.
         :rtype: str
         """
         return self._SourceDesc
@@ -21955,7 +21955,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def FileName(self):
-        """Filename.
+        r"""Filename.
         :rtype: str
         """
         return self._FileName
@@ -21966,7 +21966,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def FileType(self):
-        """Document type.
+        r"""Document type.
         :rtype: str
         """
         return self._FileType
@@ -21977,7 +21977,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def Message(self):
-        """Reason for failure
+        r"""Reason for failure
         :rtype: str
         """
         return self._Message
@@ -21988,7 +21988,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        """Release status.
+        r"""Release status.
         :rtype: int
         """
         return self._ReleaseStatus
@@ -21999,7 +21999,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def QaBizId(self):
-        """Q&A ID.
+        r"""Q&A ID.
         :rtype: str
         """
         return self._QaBizId
@@ -22010,7 +22010,7 @@ class ReleaseQA(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document business ID.
+        r"""Document business ID.
         :rtype: str
         """
         return self._DocBizId
@@ -22044,7 +22044,7 @@ class ReleaseQA(AbstractModel):
 
 
 class ReleaseRejectedQuestion(AbstractModel):
-    """Release rejected questions.
+    r"""Release rejected questions.
 
     """
 
@@ -22069,7 +22069,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
     @property
     def Question(self):
-        """Question.
+        r"""Question.
         :rtype: str
         """
         return self._Question
@@ -22080,7 +22080,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Update time.
+        r"""Update time.
         :rtype: str
         """
         return self._UpdateTime
@@ -22091,7 +22091,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
     @property
     def Action(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Action
@@ -22102,7 +22102,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
     @property
     def ActionDesc(self):
-        """Status description.
+        r"""Status description.
         :rtype: str
         """
         return self._ActionDesc
@@ -22113,7 +22113,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
     @property
     def Message(self):
-        """Reason for failure.
+        r"""Reason for failure.
         :rtype: str
         """
         return self._Message
@@ -22140,7 +22140,7 @@ class ReleaseRejectedQuestion(AbstractModel):
 
 
 class RenameDocRequest(AbstractModel):
-    """RenameDoc request structure.
+    r"""RenameDoc request structure.
 
     """
 
@@ -22165,7 +22165,7 @@ class RenameDocRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).	
+        r"""Login to user's root account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginUin
@@ -22176,7 +22176,7 @@ class RenameDocRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).	
+        r"""Login to user's sub-account (required in integrator mode).	
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -22187,7 +22187,7 @@ class RenameDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -22198,7 +22198,7 @@ class RenameDocRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -22209,7 +22209,7 @@ class RenameDocRequest(AbstractModel):
 
     @property
     def NewName(self):
-        """New document name, which needs to include the suffix.
+        r"""New document name, which needs to include the suffix.
         :rtype: str
         """
         return self._NewName
@@ -22236,7 +22236,7 @@ class RenameDocRequest(AbstractModel):
 
 
 class RenameDocResponse(AbstractModel):
-    """RenameDoc response structure.
+    r"""RenameDoc response structure.
 
     """
 
@@ -22249,7 +22249,7 @@ class RenameDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22264,7 +22264,7 @@ class RenameDocResponse(AbstractModel):
 
 
 class RetryDocAuditRequest(AbstractModel):
-    """RetryDocAudit request structure.
+    r"""RetryDocAudit request structure.
 
     """
 
@@ -22280,7 +22280,7 @@ class RetryDocAuditRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -22291,7 +22291,7 @@ class RetryDocAuditRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -22315,7 +22315,7 @@ class RetryDocAuditRequest(AbstractModel):
 
 
 class RetryDocAuditResponse(AbstractModel):
-    """RetryDocAudit response structure.
+    r"""RetryDocAudit response structure.
 
     """
 
@@ -22328,7 +22328,7 @@ class RetryDocAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22343,7 +22343,7 @@ class RetryDocAuditResponse(AbstractModel):
 
 
 class RetryDocParseRequest(AbstractModel):
-    """RetryDocParse request structure.
+    r"""RetryDocParse request structure.
 
     """
 
@@ -22359,7 +22359,7 @@ class RetryDocParseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._BotBizId
@@ -22370,7 +22370,7 @@ class RetryDocParseRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -22394,7 +22394,7 @@ class RetryDocParseRequest(AbstractModel):
 
 
 class RetryDocParseResponse(AbstractModel):
-    """RetryDocParse response structure.
+    r"""RetryDocParse response structure.
 
     """
 
@@ -22407,7 +22407,7 @@ class RetryDocParseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22422,7 +22422,7 @@ class RetryDocParseResponse(AbstractModel):
 
 
 class RetryReleaseRequest(AbstractModel):
-    """RetryRelease request structure.
+    r"""RetryRelease request structure.
 
     """
 
@@ -22438,7 +22438,7 @@ class RetryReleaseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Robot ID.
+        r"""Robot ID.
         :rtype: str
         """
         return self._BotBizId
@@ -22449,7 +22449,7 @@ class RetryReleaseRequest(AbstractModel):
 
     @property
     def ReleaseBizId(self):
-        """Release business id.
+        r"""Release business id.
         :rtype: str
         """
         return self._ReleaseBizId
@@ -22473,7 +22473,7 @@ class RetryReleaseRequest(AbstractModel):
 
 
 class RetryReleaseResponse(AbstractModel):
-    """RetryRelease response structure.
+    r"""RetryRelease response structure.
 
     """
 
@@ -22486,7 +22486,7 @@ class RetryReleaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -22501,7 +22501,7 @@ class RetryReleaseResponse(AbstractModel):
 
 
 class RunNodeInfo(AbstractModel):
-    """Node information
+    r"""Node information
 
     """
 
@@ -22526,7 +22526,7 @@ class RunNodeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        """Node type, 0: unspecified; 1: start node; 2: api node; 3: inquiry node; 4: answer node.
+        r"""Node type, 0: unspecified; 1: start node; 2: api node; 3: inquiry node; 4: answer node.
         :rtype: int
         """
         return self._NodeType
@@ -22537,7 +22537,7 @@ class RunNodeInfo(AbstractModel):
 
     @property
     def NodeId(self):
-        """Node ID.
+        r"""Node ID.
         :rtype: str
         """
         return self._NodeId
@@ -22548,7 +22548,7 @@ class RunNodeInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        """Node name.
+        r"""Node name.
         :rtype: str
         """
         return self._NodeName
@@ -22559,7 +22559,7 @@ class RunNodeInfo(AbstractModel):
 
     @property
     def InvokeApi(self):
-        """Requested API.
+        r"""Requested API.
         :rtype: :class:`tencentcloud.lke.v20231130.models.InvokeAPI`
         """
         return self._InvokeApi
@@ -22570,7 +22570,7 @@ class RunNodeInfo(AbstractModel):
 
     @property
     def SlotValues(self):
-        """Values of all slots of the current node, key: SlotID. Return an Null even if there is no value.
+        r"""Values of all slots of the current node, key: SlotID. Return an Null even if there is no value.
         :rtype: list of ValueInfo
         """
         return self._SlotValues
@@ -22604,7 +22604,7 @@ class RunNodeInfo(AbstractModel):
 
 
 class SaveDocRequest(AbstractModel):
-    """SaveDoc request structure.
+    r"""SaveDoc request structure.
 
     """
 
@@ -22678,7 +22678,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -22689,7 +22689,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def FileName(self):
-        """File name.
+        r"""File name.
         :rtype: str
         """
         return self._FileName
@@ -22700,7 +22700,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def FileType(self):
-        """File type (md|txt|docx|pdf|xlsx).
+        r"""File type (md|txt|docx|pdf|xlsx).
         :rtype: str
         """
         return self._FileType
@@ -22711,7 +22711,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def CosUrl(self):
-        """The cos path of the platform, consistent with the UploadPath parameter queried by the DescribeStorageCredential api.
+        r"""The cos path of the platform, consistent with the UploadPath parameter queried by the DescribeStorageCredential api.
         :rtype: str
         """
         return self._CosUrl
@@ -22722,7 +22722,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ETag(self):
-        """ETag, short for entity tag, is an information tag that identifies the content of an object when it is created and can be used to check whether the content of the object has changed.
+        r"""ETag, short for entity tag, is an information tag that identifies the content of an object when it is created and can be used to check whether the content of the object has changed.
         :rtype: str
         """
         return self._ETag
@@ -22733,7 +22733,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def CosHash(self):
-        """Verify the consistency of the uploaded file on the cloud and the local file by validating the crc64 encoding in the cos_hash x-cos-hash-crc64ecma header.<br> After the COS is successfully uploaded, obtain it from the response header.
+        r"""Verify the consistency of the uploaded file on the cloud and the local file by validating the crc64 encoding in the cos_hash x-cos-hash-crc64ecma header.<br> After the COS is successfully uploaded, obtain it from the response header.
         :rtype: str
         """
         return self._CosHash
@@ -22744,7 +22744,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def Size(self):
-        """File size.
+        r"""File size.
         :rtype: str
         """
         return self._Size
@@ -22755,7 +22755,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrRange(self):
-        """Applicable scope of labels: 1: all; 2: by conditional range.
+        r"""Applicable scope of labels: 1: all; 2: by conditional range.
         :rtype: int
         """
         return self._AttrRange
@@ -22766,7 +22766,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def Source(self):
-        """Source (0: source file import; 1: web page import).
+        r"""Source (0: source file import; 1: web page import).
         :rtype: int
         """
         return self._Source
@@ -22777,7 +22777,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def WebUrl(self):
-        """Web page (or custom link) address.
+        r"""Web page (or custom link) address.
         :rtype: str
         """
         return self._WebUrl
@@ -22788,7 +22788,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def AttrLabels(self):
-        """Label reference.
+        r"""Label reference.
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -22799,7 +22799,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ReferUrlType(self):
-        """External reference link type: 0: system link; 1: custom link.
+        r"""External reference link type: 0: system link; 1: custom link.
 When the value is 1, the weburl field cannot be empty; otherwise, it will not take effect.
         :rtype: int
         """
@@ -22811,7 +22811,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireStart(self):
-        """Effective start time, unix timestamp.
+        r"""Effective start time, unix timestamp.
         :rtype: str
         """
         return self._ExpireStart
@@ -22822,7 +22822,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def ExpireEnd(self):
-        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        r"""Effective end time, unix timestamp. 0 indicates permanent validity.
         :rtype: str
         """
         return self._ExpireEnd
@@ -22833,7 +22833,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsRefer(self):
-        """Whether to reference a link.
+        r"""Whether to reference a link.
         :rtype: bool
         """
         return self._IsRefer
@@ -22844,7 +22844,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def Opt(self):
-        """Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/ADP page.
+        r"""Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/ADP page.
         :rtype: int
         """
         return self._Opt
@@ -22855,7 +22855,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def CateBizId(self):
-        """Category ID.
+        r"""Category ID.
         :rtype: str
         """
         return self._CateBizId
@@ -22866,7 +22866,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def IsDownload(self):
-        """
+        r"""
         :rtype: bool
         """
         return self._IsDownload
@@ -22877,7 +22877,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def DuplicateFileHandles(self):
-        """
+        r"""
         :rtype: list of DuplicateFileHandle
         """
         return self._DuplicateFileHandles
@@ -22888,7 +22888,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def SplitRule(self):
-        """
+        r"""
         :rtype: str
         """
         return self._SplitRule
@@ -22899,7 +22899,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def UpdatePeriodInfo(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         return self._UpdatePeriodInfo
@@ -22954,7 +22954,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
 
 class SaveDocResponse(AbstractModel):
-    """SaveDoc response structure.
+    r"""SaveDoc response structure.
 
     """
 
@@ -22982,7 +22982,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -22993,7 +22993,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """Import error message.
+        r"""Import error message.
         :rtype: str
         """
         return self._ErrorMsg
@@ -23004,7 +23004,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorLink(self):
-        """Error link.
+        r"""Error link.
         :rtype: str
         """
         return self._ErrorLink
@@ -23015,7 +23015,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorLinkText(self):
-        """Error link text.
+        r"""Error link text.
         :rtype: str
         """
         return self._ErrorLinkText
@@ -23026,7 +23026,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def DuplicateFileCheckType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._DuplicateFileCheckType
@@ -23037,7 +23037,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23057,7 +23057,7 @@ class SaveDocResponse(AbstractModel):
 
 
 class SearchRange(AbstractModel):
-    """Retrieval range configuration.
+    r"""Retrieval range configuration.
 
     """
 
@@ -23073,7 +23073,7 @@ class SearchRange(AbstractModel):
 
     @property
     def Condition(self):
-        """Search criteria and/or.
+        r"""Search criteria and/or.
         :rtype: str
         """
         return self._Condition
@@ -23084,7 +23084,7 @@ class SearchRange(AbstractModel):
 
     @property
     def ApiVarAttrInfos(self):
-        """Custom variable and label relational data.
+        r"""Custom variable and label relational data.
         :rtype: list of ApiVarAttrInfo
         """
         return self._ApiVarAttrInfos
@@ -23113,7 +23113,7 @@ class SearchRange(AbstractModel):
 
 
 class SearchStrategy(AbstractModel):
-    """Knowledge library retrieval strategy.
+    r"""Knowledge library retrieval strategy.
 
     """
 
@@ -23129,7 +23129,7 @@ class SearchStrategy(AbstractModel):
 
     @property
     def StrategyType(self):
-        """Retrieval strategy type, 0: hybrid retrieval; 1: semantic retrieval.
+        r"""Retrieval strategy type, 0: hybrid retrieval; 1: semantic retrieval.
         :rtype: int
         """
         return self._StrategyType
@@ -23140,7 +23140,7 @@ class SearchStrategy(AbstractModel):
 
     @property
     def TableEnhancement(self):
-        """Excel retrieval enhancement switch.
+        r"""Excel retrieval enhancement switch.
         :rtype: bool
         """
         return self._TableEnhancement
@@ -23164,7 +23164,7 @@ class SearchStrategy(AbstractModel):
 
 
 class SimilarQuestion(AbstractModel):
-    """Similar question information.
+    r"""Similar question information.
 
     """
 
@@ -23183,7 +23183,7 @@ class SimilarQuestion(AbstractModel):
 
     @property
     def SimBizId(self):
-        """Similar question ID.
+        r"""Similar question ID.
         :rtype: str
         """
         return self._SimBizId
@@ -23194,7 +23194,7 @@ class SimilarQuestion(AbstractModel):
 
     @property
     def Question(self):
-        """Similar question content.
+        r"""Similar question content.
         :rtype: str
         """
         return self._Question
@@ -23205,7 +23205,7 @@ class SimilarQuestion(AbstractModel):
 
     @property
     def AuditStatus(self):
-        """Similar question review status, 1: audit failure.
+        r"""Similar question review status, 1: audit failure.
         :rtype: int
         """
         return self._AuditStatus
@@ -23230,7 +23230,7 @@ class SimilarQuestion(AbstractModel):
 
 
 class SimilarQuestionModify(AbstractModel):
-    """Similar question modification (update) information.
+    r"""Similar question modification (update) information.
 
     """
 
@@ -23249,7 +23249,7 @@ class SimilarQuestionModify(AbstractModel):
 
     @property
     def AddQuestions(self):
-        """List of similar questions (content) to be added.
+        r"""List of similar questions (content) to be added.
         :rtype: list of str
         """
         return self._AddQuestions
@@ -23260,7 +23260,7 @@ class SimilarQuestionModify(AbstractModel):
 
     @property
     def UpdateQuestions(self):
-        """List of similar questions to be updated.
+        r"""List of similar questions to be updated.
         :rtype: list of SimilarQuestion
         """
         return self._UpdateQuestions
@@ -23271,7 +23271,7 @@ class SimilarQuestionModify(AbstractModel):
 
     @property
     def DeleteQuestions(self):
-        """List of similar questions to be deleted.
+        r"""List of similar questions to be deleted.
         :rtype: list of SimilarQuestion
         """
         return self._DeleteQuestions
@@ -23306,7 +23306,7 @@ class SimilarQuestionModify(AbstractModel):
 
 
 class Stat(AbstractModel):
-    """Billing statistical information.
+    r"""Billing statistical information.
 
     """
 
@@ -23322,7 +23322,7 @@ class Stat(AbstractModel):
 
     @property
     def X(self):
-        """X-axis: time zone; return three interval ranges of "minute/hour/day" according to the granularity of the query condition.
+        r"""X-axis: time zone; return three interval ranges of "minute/hour/day" according to the granularity of the query condition.
         :rtype: str
         """
         return self._X
@@ -23333,7 +23333,7 @@ class Stat(AbstractModel):
 
     @property
     def Y(self):
-        """Y-axis: statistical values in this time period, such as token consumption, call count, or usage information.
+        r"""Y-axis: statistical values in this time period, such as token consumption, call count, or usage information.
         :rtype: float
         """
         return self._Y
@@ -23357,7 +23357,7 @@ class Stat(AbstractModel):
 
 
 class StatisticInfo(AbstractModel):
-    """Statistical information of large model tokens.
+    r"""Statistical information of large model tokens.
 
     """
 
@@ -23385,7 +23385,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        """Model name.
+        r"""Model name.
         :rtype: str
         """
         return self._ModelName
@@ -23396,7 +23396,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def FirstTokenCost(self):
-        """Time consumption of the first token.
+        r"""Time consumption of the first token.
         :rtype: int
         """
         return self._FirstTokenCost
@@ -23407,7 +23407,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def TotalCost(self):
-        """Total time consumption.
+        r"""Total time consumption.
         :rtype: int
         """
         return self._TotalCost
@@ -23418,7 +23418,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def InputTokens(self):
-        """Number of input tokens.
+        r"""Number of input tokens.
         :rtype: int
         """
         return self._InputTokens
@@ -23429,7 +23429,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def OutputTokens(self):
-        """Number of output tokens.
+        r"""Number of output tokens.
         :rtype: int
         """
         return self._OutputTokens
@@ -23440,7 +23440,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def TotalTokens(self):
-        """Total number of tokens.
+        r"""Total number of tokens.
         :rtype: int
         """
         return self._TotalTokens
@@ -23468,7 +23468,7 @@ class StatisticInfo(AbstractModel):
 
 
 class StopDocParseRequest(AbstractModel):
-    """StopDocParse request structure.
+    r"""StopDocParse request structure.
 
     """
 
@@ -23484,7 +23484,7 @@ class StopDocParseRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -23495,7 +23495,7 @@ class StopDocParseRequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        """Document ID.
+        r"""Document ID.
         :rtype: str
         """
         return self._DocBizId
@@ -23519,7 +23519,7 @@ class StopDocParseRequest(AbstractModel):
 
 
 class StopDocParseResponse(AbstractModel):
-    """StopDocParse response structure.
+    r"""StopDocParse response structure.
 
     """
 
@@ -23532,7 +23532,7 @@ class StopDocParseResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -23547,7 +23547,7 @@ class StopDocParseResponse(AbstractModel):
 
 
 class StrValue(AbstractModel):
-    """String KV information.
+    r"""String KV information.
 
     """
 
@@ -23563,7 +23563,7 @@ class StrValue(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -23574,7 +23574,7 @@ class StrValue(AbstractModel):
 
     @property
     def Value(self):
-        """Value.
+        r"""Value.
         :rtype: str
         """
         return self._Value
@@ -23598,7 +23598,7 @@ class StrValue(AbstractModel):
 
 
 class SummaryConfig(AbstractModel):
-    """Knowledge summary application configuration.
+    r"""Knowledge summary application configuration.
 
     """
 
@@ -23617,7 +23617,7 @@ class SummaryConfig(AbstractModel):
 
     @property
     def Model(self):
-        """Model configuration.
+        r"""Model configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.AppModel`
         """
         return self._Model
@@ -23628,7 +23628,7 @@ class SummaryConfig(AbstractModel):
 
     @property
     def Output(self):
-        """Knowledge summary output configuration.
+        r"""Knowledge summary output configuration.
         :rtype: :class:`tencentcloud.lke.v20231130.models.SummaryOutput`
         """
         return self._Output
@@ -23639,7 +23639,7 @@ class SummaryConfig(AbstractModel):
 
     @property
     def Greeting(self):
-        """Welcome words, within 200 characters.
+        r"""Welcome words, within 200 characters.
         :rtype: str
         """
         return self._Greeting
@@ -23668,7 +23668,7 @@ class SummaryConfig(AbstractModel):
 
 
 class SummaryOutput(AbstractModel):
-    """Knowledge summary output configuration.
+    r"""Knowledge summary output configuration.
 
     """
 
@@ -23687,7 +23687,7 @@ class SummaryOutput(AbstractModel):
 
     @property
     def Method(self):
-        """Output method: 1. streaming; 2. non-streaming.
+        r"""Output method: 1. streaming; 2. non-streaming.
         :rtype: int
         """
         return self._Method
@@ -23698,7 +23698,7 @@ class SummaryOutput(AbstractModel):
 
     @property
     def Requirement(self):
-        """Output requirement 1: text summary. 2: customized requirement.
+        r"""Output requirement 1: text summary. 2: customized requirement.
         :rtype: int
         """
         return self._Requirement
@@ -23709,7 +23709,7 @@ class SummaryOutput(AbstractModel):
 
     @property
     def RequireCommand(self):
-        """Custom requirement command.
+        r"""Custom requirement command.
         :rtype: str
         """
         return self._RequireCommand
@@ -23734,7 +23734,7 @@ class SummaryOutput(AbstractModel):
 
 
 class TaskFlowInfo(AbstractModel):
-    """Task process information.
+    r"""Task process information.
 
     """
 
@@ -23763,7 +23763,7 @@ class TaskFlowInfo(AbstractModel):
 
     @property
     def TaskFlowId(self):
-        """Task flow ID.
+        r"""Task flow ID.
         :rtype: str
         """
         return self._TaskFlowId
@@ -23774,7 +23774,7 @@ class TaskFlowInfo(AbstractModel):
 
     @property
     def TaskFlowName(self):
-        """Task flow name.
+        r"""Task flow name.
         :rtype: str
         """
         return self._TaskFlowName
@@ -23785,7 +23785,7 @@ class TaskFlowInfo(AbstractModel):
 
     @property
     def QueryRewrite(self):
-        """Rewrite results of query.
+        r"""Rewrite results of query.
         :rtype: str
         """
         return self._QueryRewrite
@@ -23796,7 +23796,7 @@ class TaskFlowInfo(AbstractModel):
 
     @property
     def HitIntent(self):
-        """Hit intent.
+        r"""Hit intent.
         :rtype: str
         """
         return self._HitIntent
@@ -23807,7 +23807,7 @@ class TaskFlowInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Task flow response type.
+        r"""Task flow response type.
 0: Task flow response.
 1: Silent task flow.
 2: Pull back script of workflow.
@@ -23838,7 +23838,7 @@ class TaskFlowInfo(AbstractModel):
 
 
 class TaskFlowSummary(AbstractModel):
-    """Task process debugging information.
+    r"""Task process debugging information.
 
     """
 
@@ -23860,7 +23860,7 @@ class TaskFlowSummary(AbstractModel):
 
     @property
     def IntentName(self):
-        """Task flow name.
+        r"""Task flow name.
         :rtype: str
         """
         return self._IntentName
@@ -23871,7 +23871,7 @@ class TaskFlowSummary(AbstractModel):
 
     @property
     def UpdatedSlotValues(self):
-        """Entity list.
+        r"""Entity list.
         :rtype: list of ValueInfo
         """
         return self._UpdatedSlotValues
@@ -23882,7 +23882,7 @@ class TaskFlowSummary(AbstractModel):
 
     @property
     def RunNodes(self):
-        """Node list.
+        r"""Node list.
         :rtype: list of RunNodeInfo
         """
         return self._RunNodes
@@ -23893,7 +23893,7 @@ class TaskFlowSummary(AbstractModel):
 
     @property
     def Purposes(self):
-        """Intent determination.
+        r"""Intent determination.
         :rtype: list of str
         """
         return self._Purposes
@@ -23929,7 +23929,7 @@ class TaskFlowSummary(AbstractModel):
 
 
 class TaskParams(AbstractModel):
-    """Task parameter.
+    r"""Task parameter.
 
     """
 
@@ -23942,7 +23942,7 @@ class TaskParams(AbstractModel):
 
     @property
     def CosPath(self):
-        """Download address. Download through the COS bucket temporary key.
+        r"""Download address. Download through the COS bucket temporary key.
         :rtype: str
         """
         return self._CosPath
@@ -23965,7 +23965,7 @@ class TaskParams(AbstractModel):
 
 
 class TokenStat(AbstractModel):
-    """Current executed token statistical information.
+    r"""Current executed token statistical information.
 
     """
 
@@ -24011,7 +24011,7 @@ class TokenStat(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        r"""Session ID.
         :rtype: str
         """
         return self._SessionId
@@ -24022,7 +24022,7 @@ class TokenStat(AbstractModel):
 
     @property
     def RequestId(self):
-        """Request ID.
+        r"""Request ID.
         :rtype: str
         """
         return self._RequestId
@@ -24033,7 +24033,7 @@ class TokenStat(AbstractModel):
 
     @property
     def RecordId(self):
-        """It corresponds to a session, session id, used for storing messages for answering. It can be generated in advance, used when saving messages.
+        r"""It corresponds to a session, session id, used for storing messages for answering. It can be generated in advance, used when saving messages.
         :rtype: str
         """
         return self._RecordId
@@ -24044,7 +24044,7 @@ class TokenStat(AbstractModel):
 
     @property
     def UsedCount(self):
-        """Number of consumed tokens.
+        r"""Number of consumed tokens.
         :rtype: int
         """
         return self._UsedCount
@@ -24055,7 +24055,7 @@ class TokenStat(AbstractModel):
 
     @property
     def FreeCount(self):
-        """Number of free tokens.
+        r"""Number of free tokens.
         :rtype: int
         """
         return self._FreeCount
@@ -24066,7 +24066,7 @@ class TokenStat(AbstractModel):
 
     @property
     def OrderCount(self):
-        """Total number of tokens for orders.
+        r"""Total number of tokens for orders.
         :rtype: int
         """
         return self._OrderCount
@@ -24077,7 +24077,7 @@ class TokenStat(AbstractModel):
 
     @property
     def StatusSummary(self):
-        """Current execution status summary. Constant: processing, success., failed.
+        r"""Current execution status summary. Constant: processing, success., failed.
         :rtype: str
         """
         return self._StatusSummary
@@ -24088,7 +24088,7 @@ class TokenStat(AbstractModel):
 
     @property
     def StatusSummaryTitle(self):
-        """Chinese display after summarizing the current execution status.
+        r"""Chinese display after summarizing the current execution status.
         :rtype: str
         """
         return self._StatusSummaryTitle
@@ -24099,7 +24099,7 @@ class TokenStat(AbstractModel):
 
     @property
     def Elapsed(self):
-        """Current request execution time, in milliseconds.
+        r"""Current request execution time, in milliseconds.
         :rtype: int
         """
         return self._Elapsed
@@ -24110,7 +24110,7 @@ class TokenStat(AbstractModel):
 
     @property
     def TokenCount(self):
-        """Number of tokens consumed by the current request.
+        r"""Number of tokens consumed by the current request.
         :rtype: int
         """
         return self._TokenCount
@@ -24121,7 +24121,7 @@ class TokenStat(AbstractModel):
 
     @property
     def Procedures(self):
-        """Execution information.
+        r"""Execution information.
         :rtype: list of Procedure
         """
         return self._Procedures
@@ -24132,7 +24132,7 @@ class TokenStat(AbstractModel):
 
     @property
     def TraceId(self):
-        """Execution process information TraceId.
+        r"""Execution process information TraceId.
         :rtype: str
         """
         return self._TraceId
@@ -24171,7 +24171,7 @@ class TokenStat(AbstractModel):
 
 
 class UnsatisfiedReply(AbstractModel):
-    """Unsatisfied response.
+    r"""Unsatisfied response.
 
     """
 
@@ -24196,7 +24196,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def ReplyBizId(self):
-        """Unsatisfied response ID.
+        r"""Unsatisfied response ID.
         :rtype: str
         """
         return self._ReplyBizId
@@ -24207,7 +24207,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def RecordBizId(self):
-        """Message record ID.
+        r"""Message record ID.
         :rtype: str
         """
         return self._RecordBizId
@@ -24218,7 +24218,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Question(self):
-        """User question.
+        r"""User question.
         :rtype: str
         """
         return self._Question
@@ -24229,7 +24229,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Answer(self):
-        """Application response.
+        r"""Application response.
         :rtype: str
         """
         return self._Answer
@@ -24240,7 +24240,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Reasons(self):
-        """Error type.
+        r"""Error type.
         :rtype: list of str
         """
         return self._Reasons
@@ -24267,7 +24267,7 @@ class UnsatisfiedReply(AbstractModel):
 
 
 class UpdatePeriodInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -24280,7 +24280,7 @@ class UpdatePeriodInfo(AbstractModel):
 
     @property
     def UpdatePeriodH(self):
-        """
+        r"""
         :rtype: int
         """
         return self._UpdatePeriodH
@@ -24303,7 +24303,7 @@ class UpdatePeriodInfo(AbstractModel):
 
 
 class UploadAttributeLabelRequest(AbstractModel):
-    """UploadAttributeLabel request structure.
+    r"""UploadAttributeLabel request structure.
 
     """
 
@@ -24334,7 +24334,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -24345,7 +24345,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def FileName(self):
-        """Filename.
+        r"""Filename.
         :rtype: str
         """
         return self._FileName
@@ -24356,7 +24356,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def CosUrl(self):
-        """Cos path.
+        r"""Cos path.
         :rtype: str
         """
         return self._CosUrl
@@ -24367,7 +24367,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def CosHash(self):
-        """Verify the consistency of files uploaded to the cloud and local files by validating the crc64 encoding in the x-cos-hash-crc64ecma header.
+        r"""Verify the consistency of files uploaded to the cloud and local files by validating the crc64 encoding in the x-cos-hash-crc64ecma header.
         :rtype: str
         """
         return self._CosHash
@@ -24378,7 +24378,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def Size(self):
-        """File size.
+        r"""File size.
         :rtype: str
         """
         return self._Size
@@ -24389,7 +24389,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -24400,7 +24400,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -24429,7 +24429,7 @@ class UploadAttributeLabelRequest(AbstractModel):
 
 
 class UploadAttributeLabelResponse(AbstractModel):
-    """UploadAttributeLabel response structure.
+    r"""UploadAttributeLabel response structure.
 
     """
 
@@ -24451,7 +24451,7 @@ class UploadAttributeLabelResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """Import error.
+        r"""Import error.
         :rtype: str
         """
         return self._ErrorMsg
@@ -24462,7 +24462,7 @@ class UploadAttributeLabelResponse(AbstractModel):
 
     @property
     def ErrorLink(self):
-        """Error link.
+        r"""Error link.
         :rtype: str
         """
         return self._ErrorLink
@@ -24473,7 +24473,7 @@ class UploadAttributeLabelResponse(AbstractModel):
 
     @property
     def ErrorLinkText(self):
-        """Error link text.
+        r"""Error link text.
         :rtype: str
         """
         return self._ErrorLinkText
@@ -24484,7 +24484,7 @@ class UploadAttributeLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24502,7 +24502,7 @@ class UploadAttributeLabelResponse(AbstractModel):
 
 
 class ValueInfo(AbstractModel):
-    """Task flow parameter information.
+    r"""Task flow parameter information.
 
     """
 
@@ -24536,7 +24536,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Value ID.
+        r"""Value ID.
         :rtype: str
         """
         return self._Id
@@ -24547,7 +24547,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Name.
+        r"""Name.
         :rtype: str
         """
         return self._Name
@@ -24558,7 +24558,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueType(self):
-        """Value type, 0: unknown or empty; 1: string; 2: integer; 3: float; 4: boolean; 5: array (string array); 6: object_array (structure array); 7: object (structure).
+        r"""Value type, 0: unknown or empty; 1: string; 2: integer; 3: float; 4: boolean; 5: array (string array); 6: object_array (structure array); 7: object (structure).
         :rtype: int
         """
         return self._ValueType
@@ -24569,7 +24569,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueStr(self):
-        """String.
+        r"""String.
         :rtype: str
         """
         return self._ValueStr
@@ -24580,7 +24580,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueInt(self):
-        """Int (return as a string to avoid precision loss).
+        r"""Int (return as a string to avoid precision loss).
         :rtype: str
         """
         return self._ValueInt
@@ -24591,7 +24591,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueFloat(self):
-        """Float.
+        r"""Float.
         :rtype: float
         """
         return self._ValueFloat
@@ -24602,7 +24602,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueBool(self):
-        """Bool.
+        r"""Bool.
         :rtype: bool
         """
         return self._ValueBool
@@ -24613,7 +24613,7 @@ class ValueInfo(AbstractModel):
 
     @property
     def ValueStrArray(self):
-        """Array.
+        r"""Array.
         :rtype: list of str
         """
         return self._ValueStrArray
@@ -24643,7 +24643,7 @@ class ValueInfo(AbstractModel):
 
 
 class VerifyQARequest(AbstractModel):
-    """VerifyQA request structure.
+    r"""VerifyQA request structure.
 
     """
 
@@ -24665,7 +24665,7 @@ class VerifyQARequest(AbstractModel):
 
     @property
     def List(self):
-        """Q&A list.
+        r"""Q&A list.
         :rtype: list of QAList
         """
         return self._List
@@ -24676,7 +24676,7 @@ class VerifyQARequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: str
         """
         return self._BotBizId
@@ -24687,7 +24687,7 @@ class VerifyQARequest(AbstractModel):
 
     @property
     def LoginUin(self):
-        """Login to user's root account (required in integrator mode).
+        r"""Login to user's root account (required in integrator mode).
         :rtype: str
         """
         return self._LoginUin
@@ -24698,7 +24698,7 @@ class VerifyQARequest(AbstractModel):
 
     @property
     def LoginSubAccountUin(self):
-        """Login to user's sub-account (required in integrator mode).
+        r"""Login to user's sub-account (required in integrator mode).
         :rtype: str
         """
         return self._LoginSubAccountUin
@@ -24729,7 +24729,7 @@ class VerifyQARequest(AbstractModel):
 
 
 class VerifyQAResponse(AbstractModel):
-    """VerifyQA response structure.
+    r"""VerifyQA response structure.
 
     """
 
@@ -24742,7 +24742,7 @@ class VerifyQAResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -24757,7 +24757,7 @@ class VerifyQAResponse(AbstractModel):
 
 
 class VoiceConfig(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -24776,7 +24776,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceType(self):
-        """
+        r"""
         :rtype: int
         """
         return self._VoiceType
@@ -24787,7 +24787,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def TimbreKey(self):
-        """
+        r"""
         :rtype: str
         """
         return self._TimbreKey
@@ -24798,7 +24798,7 @@ class VoiceConfig(AbstractModel):
 
     @property
     def VoiceName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._VoiceName
@@ -24823,7 +24823,7 @@ class VoiceConfig(AbstractModel):
 
 
 class WorkFlowSummary(AbstractModel):
-    """Workflow debugging information.
+    r"""Workflow debugging information.
 
     """
 
@@ -24854,7 +24854,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """Workflow ID.
+        r"""Workflow ID.
         :rtype: str
         """
         return self._WorkflowId
@@ -24865,7 +24865,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowName(self):
-        """Workflow name.
+        r"""Workflow name.
         :rtype: str
         """
         return self._WorkflowName
@@ -24876,7 +24876,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        """Workflow running ID.
+        r"""Workflow running ID.
         :rtype: str
         """
         return self._WorkflowRunId
@@ -24887,7 +24887,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def RunNodes(self):
-        """Node information.
+        r"""Node information.
         :rtype: list of WorkflowRunNodeInfo
         """
         return self._RunNodes
@@ -24898,7 +24898,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def OptionCards(self):
-        """Tab.
+        r"""Tab.
         :rtype: list of str
         """
         return self._OptionCards
@@ -24909,7 +24909,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def Outputs(self):
-        """Output results of multiple bubbles.
+        r"""Output results of multiple bubbles.
         :rtype: list of str
         """
         return self._Outputs
@@ -24920,7 +24920,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        """Workflow release time, Unix timestamp.
+        r"""Workflow release time, Unix timestamp.
         :rtype: str
         """
         return self._WorkflowReleaseTime
@@ -24954,7 +24954,7 @@ class WorkFlowSummary(AbstractModel):
 
 
 class WorkflowInfo(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -24982,7 +24982,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._WorkflowId
@@ -24993,7 +24993,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        """
+        r"""
         :rtype: str
         """
         return self._WorkflowName
@@ -25004,7 +25004,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        """
+        r"""
         :rtype: str
         """
         return self._WorkflowRunId
@@ -25015,7 +25015,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionCards(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._OptionCards
@@ -25026,7 +25026,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        """
+        r"""
         :rtype: list of str
         """
         return self._Outputs
@@ -25037,7 +25037,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        """
+        r"""
         :rtype: str
         """
         return self._WorkflowReleaseTime
@@ -25065,7 +25065,7 @@ class WorkflowInfo(AbstractModel):
 
 
 class WorkflowRunNodeInfo(AbstractModel):
-    """Workflow running node information.
+    r"""Workflow running node information.
 
     """
 
@@ -25105,7 +25105,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeId(self):
-        """Node ID.
+        r"""Node ID.
         :rtype: str
         """
         return self._NodeId
@@ -25116,7 +25116,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        """Node type.
+        r"""Node type.
         :rtype: int
         """
         return self._NodeType
@@ -25127,7 +25127,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        """Node name.
+        r"""Node name.
         :rtype: str
         """
         return self._NodeName
@@ -25138,7 +25138,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Status.
+        r"""Status.
         :rtype: int
         """
         return self._Status
@@ -25149,7 +25149,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Input(self):
-        """Input..
+        r"""Input..
         :rtype: str
         """
         return self._Input
@@ -25160,7 +25160,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Output(self):
-        """Output.
+        r"""Output.
         :rtype: str
         """
         return self._Output
@@ -25171,7 +25171,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def TaskOutput(self):
-        """Task output.
+        r"""Task output.
         :rtype: str
         """
         return self._TaskOutput
@@ -25182,7 +25182,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def FailMessage(self):
-        """Error message.
+        r"""Error message.
         :rtype: str
         """
         return self._FailMessage
@@ -25193,7 +25193,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def CostMilliSeconds(self):
-        """Time consumption.
+        r"""Time consumption.
         :rtype: int
         """
         return self._CostMilliSeconds
@@ -25204,7 +25204,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def StatisticInfos(self):
-        """Large model output information.
+        r"""Large model output information.
         :rtype: list of StatisticInfo
         """
         return self._StatisticInfos

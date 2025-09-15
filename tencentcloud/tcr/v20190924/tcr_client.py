@@ -27,7 +27,7 @@ class TcrClient(AbstractClient):
 
 
     def CheckInstance(self, request):
-        """This API is used to verify the information of the Enterprise Edition instance.
+        r"""This API is used to verify the information of the Enterprise Edition instance.
 
         :param request: Request instance for CheckInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceRequest`
@@ -50,7 +50,7 @@ class TcrClient(AbstractClient):
 
 
     def CheckInstanceName(self, request):
-        """This API is used to check whether the name of the instance to be created meets the specifications.
+        r"""This API is used to check whether the name of the instance to be created meets the specifications.
 
         :param request: Request instance for CheckInstanceName.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceNameRequest`
@@ -73,7 +73,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateImageAccelerationService(self, request):
-        """This API is used to create an image acceleration service.
+        r"""This API is used to create an image acceleration service.
 
         :param request: Request instance for CreateImageAccelerationService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImageAccelerationServiceRequest`
@@ -96,7 +96,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateImmutableTagRules(self, request):
-        """This API is used to create the tag immutability rule.
+        r"""This API is used to create the tag immutability rule.
 
         :param request: Request instance for CreateImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesRequest`
@@ -119,7 +119,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """This API is used to create an instance.
+        r"""This API is used to create an instance.
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceRequest`
@@ -142,7 +142,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceCustomizedDomain(self, request):
-        """This API is used to create a custom domain name.
+        r"""This API is used to create a custom domain name.
 
         :param request: Request instance for CreateInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceCustomizedDomainRequest`
@@ -165,7 +165,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceToken(self, request):
-        """This API is used to create a temporary or long-term instance access credential.
+        r"""This API is used to create a temporary or long-term instance access credential.
 
         :param request: Request instance for CreateInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenRequest`
@@ -188,7 +188,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateMultipleSecurityPolicy(self, request):
-        """This API is used to create multiple public network access allowlist policies of the TCR instance.
+        r"""This API is used to create multiple public network access allowlist policies of the TCR instance.
 
         :param request: Request instance for CreateMultipleSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateMultipleSecurityPolicyRequest`
@@ -211,7 +211,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateNamespace(self, request):
-        """This API is used to create a namespace in an Enterprise Edition instance.
+        r"""This API is used to create a namespace in an Enterprise Edition instance.
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateNamespaceRequest`
@@ -234,7 +234,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateReplicationInstance(self, request):
-        """This API is used to create a replication instance.
+        r"""This API is used to create a replication instance.
 
         :param request: Request instance for CreateReplicationInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceRequest`
@@ -257,7 +257,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateRepository(self, request):
-        """This API is used to create an image repository in an Enterprise Edition instance.
+        r"""This API is used to create an image repository in an Enterprise Edition instance.
 
         :param request: Request instance for CreateRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateRepositoryRequest`
@@ -280,7 +280,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSecurityPolicy(self, request):
-        """This API is used to create a public network access allowlist policy for an instance.
+        r"""This API is used to create a public network access allowlist policy for an instance.
 
         :param request: Request instance for CreateSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPolicyRequest`
@@ -303,7 +303,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateServiceAccount(self, request):
-        """This API is used to create a service level account.
+        r"""This API is used to create a service level account.
 
         :param request: Request instance for CreateServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`
@@ -326,7 +326,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSignature(self, request):
-        """This API is used to create a signature for an image tag.
+        r"""This API is used to create a signature for an image tag.
 
         :param request: Request instance for CreateSignature.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignatureRequest`
@@ -349,7 +349,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateSignaturePolicy(self, request):
-        """This API is used to create an image signature policy.
+        r"""This API is used to create an image signature policy.
 
         :param request: Request instance for CreateSignaturePolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignaturePolicyRequest`
@@ -372,7 +372,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateTagRetentionExecution(self, request):
-        """This API is used to execute tag retention manually.
+        r"""This API is used to execute tag retention manually.
 
         :param request: Request instance for CreateTagRetentionExecution.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionExecutionRequest`
@@ -395,7 +395,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateTagRetentionRule(self, request):
-        """This API is used to create a tag retention rule.
+        r"""This API is used to create a tag retention rule.
 
         :param request: Request instance for CreateTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionRuleRequest`
@@ -418,7 +418,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateWebhookTrigger(self, request):
-        """This API is used to create a trigger.
+        r"""This API is used to create a trigger.
 
         :param request: Request instance for CreateWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateWebhookTriggerRequest`
@@ -441,7 +441,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImage(self, request):
-        """This API is used to delete the specified image.
+        r"""This API is used to delete the specified image.
 
         :param request: Request instance for DeleteImage.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageRequest`
@@ -464,7 +464,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImageAccelerateService(self, request):
-        """This API is used to delete an image acceleration service.
+        r"""This API is used to delete an image acceleration service.
 
         :param request: Request instance for DeleteImageAccelerateService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageAccelerateServiceRequest`
@@ -487,7 +487,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteImmutableTagRules(self, request):
-        """This API is used to delete the tag immutability rule.
+        r"""This API is used to delete the tag immutability rule.
 
         :param request: Request instance for DeleteImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesRequest`
@@ -510,7 +510,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstance(self, request):
-        """This API is used to delete a TCR Enterprise Edition instance.
+        r"""This API is used to delete a TCR Enterprise Edition instance.
 
         :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceRequest`
@@ -533,7 +533,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstanceCustomizedDomain(self, request):
-        """This API is used to delete a custom domain name.
+        r"""This API is used to delete a custom domain name.
 
         :param request: Request instance for DeleteInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceCustomizedDomainRequest`
@@ -556,7 +556,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteInstanceToken(self, request):
-        """This API is used to delete a long-term access credential.
+        r"""This API is used to delete a long-term access credential.
 
         :param request: Request instance for DeleteInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceTokenRequest`
@@ -579,7 +579,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteMultipleSecurityPolicy(self, request):
-        """This API is used to delete multiple public network access allowlist policies of the instance.
+        r"""This API is used to delete multiple public network access allowlist policies of the instance.
 
         :param request: Request instance for DeleteMultipleSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteMultipleSecurityPolicyRequest`
@@ -602,7 +602,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteNamespace(self, request):
-        """This API is used to delete a namespace.
+        r"""This API is used to delete a namespace.
 
         :param request: Request instance for DeleteNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteNamespaceRequest`
@@ -625,7 +625,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        """This API is used to delete a replica instance.
+        r"""This API is used to delete a replica instance.
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationInstanceRequest`
@@ -648,7 +648,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteRepository(self, request):
-        """This API is used to delete an image repository.
+        r"""This API is used to delete an image repository.
 
         :param request: Request instance for DeleteRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryRequest`
@@ -671,7 +671,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteRepositoryTags(self, request):
-        """This API is used to batch delete repository tags in an Enterprise Edition instance.
+        r"""This API is used to batch delete repository tags in an Enterprise Edition instance.
 
         :param request: Request instance for DeleteRepositoryTags.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryTagsRequest`
@@ -694,7 +694,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteSecurityPolicy(self, request):
-        """This API is used to delete a public network access allow policy.
+        r"""This API is used to delete a public network access allow policy.
 
         Note: When both `PolicyIndex` and `CidrBlock` are specified, `CidrBlock` takes the higher priority
 
@@ -719,7 +719,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteServiceAccount(self, request):
-        """This API is used to delete a service account.
+        r"""This API is used to delete a service account.
 
         :param request: Request instance for DeleteServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountRequest`
@@ -742,7 +742,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteSignaturePolicy(self, request):
-        """This API is used to delete a namespace signing policy.
+        r"""This API is used to delete a namespace signing policy.
 
         :param request: Request instance for DeleteSignaturePolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSignaturePolicyRequest`
@@ -765,7 +765,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteTagRetentionRule(self, request):
-        """This API is used to delete a tag retention rule.
+        r"""This API is used to delete a tag retention rule.
 
         :param request: Request instance for DeleteTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteTagRetentionRuleRequest`
@@ -788,7 +788,7 @@ class TcrClient(AbstractClient):
 
 
     def DeleteWebhookTrigger(self, request):
-        """This API is used to delete a trigger.
+        r"""This API is used to delete a trigger.
 
         :param request: Request instance for DeleteWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteWebhookTriggerRequest`
@@ -811,7 +811,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeChartDownloadInfo(self, request):
-        """This API is used to return the chart download information in an Enterprise Edition instance.
+        r"""This API is used to return the chart download information in an Enterprise Edition instance.
 
         :param request: Request instance for DescribeChartDownloadInfo.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeChartDownloadInfoRequest`
@@ -834,7 +834,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeExternalEndpointStatus(self, request):
-        """This API is used to query the public network access entry status of an instance.
+        r"""This API is used to query the public network access entry status of an instance.
 
         :param request: Request instance for DescribeExternalEndpointStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeExternalEndpointStatusRequest`
@@ -857,7 +857,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeGCJobs(self, request):
-        """This API is used to query the last ten garbage collection (GC) records.
+        r"""This API is used to query the last ten garbage collection (GC) records.
 
         :param request: Request instance for DescribeGCJobs.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeGCJobsRequest`
@@ -880,7 +880,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageAccelerateService(self, request):
-        """This API is used to query the status of an image acceleration service.
+        r"""This API is used to query the status of an image acceleration service.
 
         :param request: Request instance for DescribeImageAccelerateService.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageAccelerateServiceRequest`
@@ -903,7 +903,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImageManifests(self, request):
-        """This API is used to query the manifest information of a container image.
+        r"""This API is used to query the manifest information of a container image.
 
         :param request: Request instance for DescribeImageManifests.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageManifestsRequest`
@@ -926,7 +926,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """This API is used to query the list of image tags or the information of the specified container image.
+        r"""This API is used to query the list of image tags or the information of the specified container image.
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImagesRequest`
@@ -949,7 +949,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImmutableTagRules(self, request):
-        """This API is used to list the tag immutability rule.
+        r"""This API is used to list the tag immutability rule.
 
         :param request: Request instance for DescribeImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesRequest`
@@ -972,7 +972,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceAllNamespaces(self, request):
-        """This API is used to query the list of all namespaces in an instance.
+        r"""This API is used to query the list of all namespaces in an instance.
 
         :param request: Request instance for DescribeInstanceAllNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesRequest`
@@ -995,7 +995,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceCustomizedDomain(self, request):
-        """This API is used to query the list of custom domain names of an instance.
+        r"""This API is used to query the list of custom domain names of an instance.
 
         :param request: Request instance for DescribeInstanceCustomizedDomain.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceCustomizedDomainRequest`
@@ -1018,7 +1018,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceStatus(self, request):
-        """This API is used to query the current status and process information of an instance.
+        r"""This API is used to query the current status and process information of an instance.
 
         :param request: Request instance for DescribeInstanceStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceStatusRequest`
@@ -1041,7 +1041,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceToken(self, request):
-        """This API is used to query the information of long-term access credentials.
+        r"""This API is used to query the information of long-term access credentials.
 
         :param request: Request instance for DescribeInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceTokenRequest`
@@ -1064,7 +1064,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to query the instance information.
+        r"""This API is used to query the instance information.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstancesRequest`
@@ -1087,7 +1087,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInternalEndpoints(self, request):
-        """This API is used to query the VPC URLs for private network access to an instance.
+        r"""This API is used to query the VPC URLs for private network access to an instance.
 
         :param request: Request instance for DescribeInternalEndpoints.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInternalEndpointsRequest`
@@ -1110,7 +1110,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeNamespaces(self, request):
-        """This API is used to query the namespace list or the information of the specified namespace.
+        r"""This API is used to query the namespace list or the information of the specified namespace.
 
         :param request: Request instance for DescribeNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeNamespacesRequest`
@@ -1133,7 +1133,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to get the available regions in TCR.
+        r"""This API is used to get the available regions in TCR.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRegionsRequest`
@@ -1156,7 +1156,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstanceCreateTasks(self, request):
-        """This API is used to query the task status of creating a replication instance.
+        r"""This API is used to query the task status of creating a replication instance.
 
         :param request: Request instance for DescribeReplicationInstanceCreateTasks.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksRequest`
@@ -1179,7 +1179,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstanceSyncStatus(self, request):
-        """This API is used to query the synchronization status of a replication instance.
+        r"""This API is used to query the synchronization status of a replication instance.
 
         :param request: Request instance for DescribeReplicationInstanceSyncStatus.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceSyncStatusRequest`
@@ -1202,7 +1202,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeReplicationInstances(self, request):
-        """This API is used to query the list of replication instances.
+        r"""This API is used to query the list of replication instances.
 
         :param request: Request instance for DescribeReplicationInstances.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesRequest`
@@ -1225,7 +1225,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositories(self, request):
-        """This API is used to query the image repository list or the information of the specified image repository.
+        r"""This API is used to query the image repository list or the information of the specified image repository.
 
         :param request: Request instance for DescribeRepositories.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoriesRequest`
@@ -1248,7 +1248,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeSecurityPolicies(self, request):
-        """This API is used to query the public network access allowlist policies of an instance.
+        r"""This API is used to query the public network access allowlist policies of an instance.
 
         :param request: Request instance for DescribeSecurityPolicies.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeSecurityPoliciesRequest`
@@ -1271,7 +1271,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeServiceAccounts(self, request):
-        """This API is used to query service accounts.
+        r"""This API is used to query service accounts.
 
         :param request: Request instance for DescribeServiceAccounts.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsRequest`
@@ -1294,7 +1294,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionExecution(self, request):
-        """This API is used to query tag retention execution records.
+        r"""This API is used to query tag retention execution records.
 
         :param request: Request instance for DescribeTagRetentionExecution.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionRequest`
@@ -1317,7 +1317,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionExecutionTask(self, request):
-        """This API is used to query tag retention execution tasks.
+        r"""This API is used to query tag retention execution tasks.
 
         :param request: Request instance for DescribeTagRetentionExecutionTask.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionTaskRequest`
@@ -1340,7 +1340,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeTagRetentionRules(self, request):
-        """This API is used to query tag retention rules.
+        r"""This API is used to query tag retention rules.
 
         :param request: Request instance for DescribeTagRetentionRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionRulesRequest`
@@ -1363,7 +1363,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeWebhookTrigger(self, request):
-        """This API is used to query triggers.
+        r"""This API is used to query triggers.
 
         :param request: Request instance for DescribeWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerRequest`
@@ -1386,7 +1386,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeWebhookTriggerLog(self, request):
-        """This API is used to get trigger logs.
+        r"""This API is used to get trigger logs.
 
         :param request: Request instance for DescribeWebhookTriggerLog.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerLogRequest`
@@ -1409,7 +1409,7 @@ class TcrClient(AbstractClient):
 
 
     def DownloadHelmChart(self, request):
-        """This API is used to download a Helm chart in TCR.
+        r"""This API is used to download a Helm chart in TCR.
 
         :param request: Request instance for DownloadHelmChart.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DownloadHelmChartRequest`
@@ -1432,7 +1432,7 @@ class TcrClient(AbstractClient):
 
 
     def DuplicateImage(self, request):
-        """This API is used to duplicate the Enterprise Edition repository image version.
+        r"""This API is used to duplicate the Enterprise Edition repository image version.
 
         :param request: Request instance for DuplicateImage.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageRequest`
@@ -1455,7 +1455,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageExternalEndpoint(self, request):
-        """This API is used to manage the public network access of an instance.
+        r"""This API is used to manage the public network access of an instance.
 
         :param request: Request instance for ManageExternalEndpoint.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageExternalEndpointRequest`
@@ -1478,7 +1478,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageInternalEndpoint(self, request):
-        """This API is used to manage VPC URLs for private network access to an instance.
+        r"""This API is used to manage VPC URLs for private network access to an instance.
 
         :param request: Request instance for ManageInternalEndpoint.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageInternalEndpointRequest`
@@ -1501,7 +1501,7 @@ class TcrClient(AbstractClient):
 
 
     def ManageReplication(self, request):
-        """This API is used to manage the instance synchronization rule.
+        r"""This API is used to manage the instance synchronization rule.
 
         :param request: Request instance for ManageReplication.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationRequest`
@@ -1524,7 +1524,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyImmutableTagRules(self, request):
-        """This API is used to update the tag immutability rule.
+        r"""This API is used to update the tag immutability rule.
 
         :param request: Request instance for ModifyImmutableTagRules.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesRequest`
@@ -1547,7 +1547,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to update instance information.
+        r"""This API is used to update instance information.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceRequest`
@@ -1570,7 +1570,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyInstanceToken(self, request):
-        """This API is used to update the status of the specified long-term access credential in an instance.
+        r"""This API is used to update the status of the specified long-term access credential in an instance.
 
         :param request: Request instance for ModifyInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceTokenRequest`
@@ -1593,7 +1593,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """This API is used to update the information of a namespace. Currently, only the namespace access level can be modified.
+        r"""This API is used to update the information of a namespace. Currently, only the namespace access level can be modified.
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyNamespaceRequest`
@@ -1616,7 +1616,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyRepository(self, request):
-        """This API is used to update the information of an image repository. The repository description can be modified.
+        r"""This API is used to update the information of an image repository. The repository description can be modified.
 
         :param request: Request instance for ModifyRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyRepositoryRequest`
@@ -1639,7 +1639,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        """This API is used to update the public network access allowlist of an instance.
+        r"""This API is used to update the public network access allowlist of an instance.
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifySecurityPolicyRequest`
@@ -1662,7 +1662,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyServiceAccount(self, request):
-        """This API is used to update a service account.
+        r"""This API is used to update a service account.
 
         :param request: Request instance for ModifyServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountRequest`
@@ -1685,7 +1685,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyServiceAccountPassword(self, request):
-        """This API is used to update the password for a service level account.
+        r"""This API is used to update the password for a service level account.
 
         :param request: Request instance for ModifyServiceAccountPassword.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordRequest`
@@ -1708,7 +1708,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyTagRetentionRule(self, request):
-        """This API is used to update a tag retention rule.
+        r"""This API is used to update a tag retention rule.
 
         :param request: Request instance for ModifyTagRetentionRule.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyTagRetentionRuleRequest`
@@ -1731,7 +1731,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyWebhookTrigger(self, request):
-        """This API is used to update a trigger.
+        r"""This API is used to update a trigger.
 
         :param request: Request instance for ModifyWebhookTrigger.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyWebhookTriggerRequest`
@@ -1754,7 +1754,7 @@ class TcrClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """This API is used to renew a prepaid instance or change the billing mode from pay-as-you-go billing to monthly subscription billing.
+        r"""This API is used to renew a prepaid instance or change the billing mode from pay-as-you-go billing to monthly subscription billing.
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.tcr.v20190924.models.RenewInstanceRequest`

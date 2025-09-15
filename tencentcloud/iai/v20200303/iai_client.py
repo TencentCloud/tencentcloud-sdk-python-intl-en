@@ -27,7 +27,7 @@ class IaiClient(AbstractClient):
 
 
     def AnalyzeFace(self, request):
-        """This API is used to perform facial feature localization (aka facial keypoint localization) on a given image and calculate 90 facial keypoints that make up the contour of the face, including eyebrows (8 points on the left and 8 on the right), eyes (8 points on the left and 8 on the right), nose (13 points), mouth (22 points), face contour (21 points), and eyeballs or pupils (2 points).
+        r"""This API is used to perform facial feature localization (aka facial keypoint localization) on a given image and calculate 90 facial keypoints that make up the contour of the face, including eyebrows (8 points on the left and 8 on the right), eyes (8 points on the left and 8 on the right), nose (13 points), mouth (22 points), face contour (21 points), and eyeballs or pupils (2 points).
 
         >- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
 
@@ -52,7 +52,7 @@ class IaiClient(AbstractClient):
 
 
     def CompareFace(self, request):
-        """This API is used to calculate the similarity of faces in two images and return the face similarity score.
+        r"""This API is used to calculate the similarity of faces in two images and return the face similarity score.
 
         If you need to judge "whether the person in the image is someone specified" in scenarios such as face login, i.e., checking whether the person in a given image is someone with a known identity, we recommend using the [VerifyFace](https://intl.cloud.tencent.com/document/product/867/44983?from_cn_redirect=1) or [VerifyPerson](https://intl.cloud.tencent.com/document/product/867/44982?from_cn_redirect=1) API.
 
@@ -80,7 +80,7 @@ class IaiClient(AbstractClient):
 
 
     def CopyPerson(self, request):
-        """This API is used to copy a person in a group to another group (without copying the description). One person can exist in up to 100 groups at the same time.
+        r"""This API is used to copy a person in a group to another group (without copying the description). One person can exist in up to 100 groups at the same time.
         >- Note: in the case that the version of the algorithm model was 2.0 when the person was created, the copy operation will fail if the target group is not of algorithm model 2.0.
 
         :param request: Request instance for CopyPerson.
@@ -104,7 +104,7 @@ class IaiClient(AbstractClient):
 
 
     def CreateFace(self, request):
-        """This API is used to add a set of face images to a person. One person can have up to 5 images. If a person exists in multiple groups, the images will be added to all those groups for the person.
+        r"""This API is used to add a set of face images to a person. One person can have up to 5 images. If a person exists in multiple groups, the images will be added to all those groups for the person.
 
         >
         - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
@@ -130,7 +130,7 @@ class IaiClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """This API is used to create an empty group. If the group already exists, an error will be returned.
+        r"""This API is used to create an empty group. If the group already exists, an error will be returned.
         Custom description fields can be created as needed to describe persons in the group.
 
         A maximum of 100,000 groups or 50 million faces can be created under one `APPID`.
@@ -158,7 +158,7 @@ class IaiClient(AbstractClient):
 
 
     def CreatePerson(self, request):
-        """This API is used to create a person and add face, name, gender, and other related information.
+        r"""This API is used to create a person and add face, name, gender, and other related information.
 
         >
         - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
@@ -184,7 +184,7 @@ class IaiClient(AbstractClient):
 
 
     def DeleteFace(self, request):
-        """This API is used to delete the face images of a person. If the person has only one face image, an error will be returned.
+        r"""This API is used to delete the face images of a person. If the person has only one face image, an error will be returned.
 
         :param request: Request instance for DeleteFace.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeleteFaceRequest`
@@ -207,7 +207,7 @@ class IaiClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """This API is used to delete a group and all persons in it. Meanwhile, all face information corresponding to the persons will be deleted. If a person exists in multiple groups at the same time, deleting a group will not delete the person, but the custom description field information in the group will be deleted. Custom description field information in other groups will not be affected.
+        r"""This API is used to delete a group and all persons in it. Meanwhile, all face information corresponding to the persons will be deleted. If a person exists in multiple groups at the same time, deleting a group will not delete the person, but the custom description field information in the group will be deleted. Custom description field information in other groups will not be affected.
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeleteGroupRequest`
@@ -230,7 +230,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePerson(self, request):
-        """This API is used to delete a person from all groups. Meanwhile, all face information of the person will be deleted.
+        r"""This API is used to delete a person from all groups. Meanwhile, all face information of the person will be deleted.
 
         :param request: Request instance for DeletePerson.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeletePersonRequest`
@@ -253,7 +253,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePersonFromGroup(self, request):
-        """This API is used to remove a person from a specified group. This operation only affects the group. If the person exists only in the group, the person will be deleted, and all face information of the person will also be deleted.
+        r"""This API is used to remove a person from a specified group. This operation only affects the group. If the person exists only in the group, the person will be deleted, and all face information of the person will also be deleted.
 
         :param request: Request instance for DeletePersonFromGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.DeletePersonFromGroupRequest`
@@ -276,7 +276,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFace(self, request):
-        """This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.
+        r"""This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.
 
 
         The face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommend evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:
@@ -312,7 +312,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFaceAttributes(self, request):
-        """This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.
+        r"""This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.
 
 
         The face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommend evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:
@@ -355,7 +355,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectFaceSimilarity(self, request):
-        """Compare the faces in the two pictures for similarity and return the face similarity score. If you need to determine "whether this person is someone", that is, to verify whether the person in a picture is someone with a known identity, such as a common face login scenario, it is recommended to use [VerifyFace] (https://www.tencentcloud.com/document/product/1059/36972) or [VerifyPerson] (https://www.tencentcloud.com/document/product/1059/36971) inferface.
+        r"""Compare the faces in the two pictures for similarity and return the face similarity score. If you need to determine "whether this person is someone", that is, to verify whether the person in a picture is someone with a known identity, such as a common face login scenario, it is recommended to use [VerifyFace] (https://www.tencentcloud.com/document/product/1059/36972) or [VerifyPerson] (https://www.tencentcloud.com/document/product/1059/36971) inferface.
         Please use the V3 version for the signature method in the public parameters, that is, configure the SignatureMethod parameter to TC3-HMAC-SHA256
 
         :param request: Request instance for DetectFaceSimilarity.
@@ -379,7 +379,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectLiveFace(self, request):
-        """This API is used to detect the liveness of a face in a static image uploaded by a user. Compared with dynamic liveness detection, static liveness detection does not require moving lips, shaking head, or blinking for recognition.
+        r"""This API is used to detect the liveness of a face in a static image uploaded by a user. Compared with dynamic liveness detection, static liveness detection does not require moving lips, shaking head, or blinking for recognition.
 
         Image-based liveness detection is suitable for scenarios where the image is a selfie or the requirement for attack defense is not high. If you have a higher security requirement for liveness detection, please use [FaceID](https://intl.cloud.tencent.com/product/faceid?from_cn_redirect=1).
 
@@ -413,7 +413,7 @@ class IaiClient(AbstractClient):
 
 
     def DetectLiveFaceAccurate(self, request):
-        """This API is used to detect the liveness of faces in images uploaded by users and determine whether these images are photographed.
+        r"""This API is used to detect the liveness of faces in images uploaded by users and determine whether these images are photographed.
 
         Compared with normal Image-based Liveness Detection services, this API enhances the defense capability against attacks from HD screens, printed photos, and 3D masks, as well as improves attack blocking four to five times the competing products, while maintaining high accuracy. It also supports face verification in different use cases, and satisfies the image-based liveness detection needs on mobile or PCs, making it ideal for liveness detection applications in various industries.
 
@@ -440,7 +440,7 @@ class IaiClient(AbstractClient):
 
 
     def GetGroupInfo(self, request):
-        """This API is used to get the group information.
+        r"""This API is used to get the group information.
 
         :param request: Request instance for GetGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetGroupInfoRequest`
@@ -463,7 +463,7 @@ class IaiClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """This API is used to get the list of groups.
+        r"""This API is used to get the list of groups.
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetGroupListRequest`
@@ -486,7 +486,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonBaseInfo(self, request):
-        """This API is used to get the information of a specified person, including name, gender, face, etc.
+        r"""This API is used to get the information of a specified person, including name, gender, face, etc.
 
         :param request: Request instance for GetPersonBaseInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonBaseInfoRequest`
@@ -509,7 +509,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonGroupInfo(self, request):
-        """This API is used to get the information of a specified person, including group, description, etc.
+        r"""This API is used to get the information of a specified person, including group, description, etc.
 
         :param request: Request instance for GetPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonGroupInfoRequest`
@@ -532,7 +532,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonList(self, request):
-        """This API is used to get the list of persons in a specified group.
+        r"""This API is used to get the list of persons in a specified group.
 
         :param request: Request instance for GetPersonList.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonListRequest`
@@ -555,7 +555,7 @@ class IaiClient(AbstractClient):
 
 
     def GetPersonListNum(self, request):
-        """This API is used to get the number of persons in a specified group.
+        r"""This API is used to get the number of persons in a specified group.
 
         :param request: Request instance for GetPersonListNum.
         :type request: :class:`tencentcloud.iai.v20200303.models.GetPersonListNumRequest`
@@ -578,7 +578,7 @@ class IaiClient(AbstractClient):
 
 
     def ModifyGroup(self, request):
-        """This API is used to modify the name, tag, and custom description field of a group.
+        r"""This API is used to modify the name, tag, and custom description field of a group.
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.ModifyGroupRequest`
@@ -601,7 +601,7 @@ class IaiClient(AbstractClient):
 
 
     def ModifyPersonGroupInfo(self, request):
-        """This API is used to modify the description of a specified person in a group.
+        r"""This API is used to modify the description of a specified person in a group.
 
         :param request: Request instance for ModifyPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20200303.models.ModifyPersonGroupInfoRequest`
@@ -624,7 +624,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchFaces(self, request):
-        """This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in descending order.
+        r"""This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in descending order.
 
         Up to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.
 
@@ -662,7 +662,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchFacesReturnsByGroup(self, request):
-        """This API is used to recognize top K persons in one or more groups who are similar to the person in a given image, display the results **by group**, and rank the similarity within each group in descending order.
+        r"""This API is used to recognize top K persons in one or more groups who are similar to the person in a given image, display the results **by group**, and rank the similarity within each group in descending order.
 
         Up to 10 faces in the image can be recognized at a time, and cross-group search is supported.
 
@@ -699,7 +699,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchPersons(self, request):
-        """This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in a descending order.
+        r"""This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in a descending order.
 
         Up to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.
 
@@ -732,7 +732,7 @@ class IaiClient(AbstractClient):
 
 
     def SearchPersonsReturnsByGroup(self, request):
-        """This API is used to recognize top K persons in one or more groups who are similar to the person in a given image, display the results **by group**, and rank the similarity within each group in a descending order.
+        r"""This API is used to recognize top K persons in one or more groups who are similar to the person in a given image, display the results **by group**, and rank the similarity within each group in a descending order.
 
         Up to 10 faces in the image can be recognized at a time, and cross-group search is supported.
 
@@ -764,7 +764,7 @@ class IaiClient(AbstractClient):
 
 
     def VerifyFace(self, request):
-        """This API is used to judge whether a person in an image corresponds to a given `PersonId`. For more information on `PersonId`, please see [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).
+        r"""This API is used to judge whether a person in an image corresponds to a given `PersonId`. For more information on `PersonId`, please see [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).
 
         The `VerifyFace` API judges whether a person is someone specified whose information is stored in a group, and there may be multiple face images of "someone". By contrast, the [CompareFace](https://intl.cloud.tencent.com/document/product/867/44987?from_cn_redirect=1) API judges the similarity between two faces.
 
@@ -794,7 +794,7 @@ class IaiClient(AbstractClient):
 
 
     def VerifyPerson(self, request):
-        """This API is used to judge whether a person in an image corresponds to a given `PersonId`. For more information on `PersonId`, please see [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).
+        r"""This API is used to judge whether a person in an image corresponds to a given `PersonId`. For more information on `PersonId`, please see [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).
         This API fuses the features of all face images of a person; for example, if a person has 4 face images, it will fuse the features of the 4 face images and generate the summarized facial features of the person to make the person verification (i.e., judging whether the face image to be recognized is of a specified person) more accurate.
 
          The face verification APIs judge whether a person is someone specified whose information is stored in a group, and the "someone" may have multiple face images. By contrast, the face comparison APIs judge the similarity between two faces.

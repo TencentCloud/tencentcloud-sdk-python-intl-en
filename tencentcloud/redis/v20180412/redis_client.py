@@ -27,7 +27,7 @@ class RedisClient(AbstractClient):
 
 
     def AddReplicationInstance(self, request):
-        """This API is used to add an instance member to the global replication group.
+        r"""This API is used to add an instance member to the global replication group.
 
         :param request: Request instance for AddReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.AddReplicationInstanceRequest`
@@ -50,7 +50,7 @@ class RedisClient(AbstractClient):
 
 
     def AllocateWanAddress(self, request):
-        """This API is used to enable public network access for instances.
+        r"""This API is used to enable public network access for instances.
 
         :param request: Request instance for AllocateWanAddress.
         :type request: :class:`tencentcloud.redis.v20180412.models.AllocateWanAddressRequest`
@@ -73,7 +73,7 @@ class RedisClient(AbstractClient):
 
 
     def ApplyParamsTemplate(self, request):
-        """This API is used to apply parameter templates to instances.
+        r"""This API is used to apply parameter templates to instances.
 
         :param request: Request instance for ApplyParamsTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.ApplyParamsTemplateRequest`
@@ -96,7 +96,7 @@ class RedisClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API is used to bind a security group to one or more database instances. When you create an instance without configuring a security group, it is recommended to bind a security group through this API.
+        r"""This API is used to bind a security group to one or more database instances. When you create an instance without configuring a security group, it is recommended to bind a security group through this API.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.AssociateSecurityGroupsRequest`
@@ -119,7 +119,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeInstanceRole(self, request):
-        """This API is used to change the role of an instance in a replication group.
+        r"""This API is used to change the role of an instance in a replication group.
 
         :param request: Request instance for ChangeInstanceRole.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeInstanceRoleRequest`
@@ -142,7 +142,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeMasterInstance(self, request):
-        """This API is used to set a read-only instance in a replication group as a master instance.
+        r"""This API is used to set a read-only instance in a replication group as a master instance.
 
         :param request: Request instance for ChangeMasterInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceRequest`
@@ -165,7 +165,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeReplicaToMaster(self, request):
-        """This API is used to promote a replica node group to a master node group or a replica node to a master node for an instance.
+        r"""This API is used to promote a replica node group to a master node group or a replica node to a master node for an instance.
 
         :param request: Request instance for ChangeReplicaToMaster.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`
@@ -188,7 +188,7 @@ class RedisClient(AbstractClient):
 
 
     def CleanUpInstance(self, request):
-        """This API is used to immediately terminate instances in the recycle bin.
+        r"""This API is used to immediately terminate instances in the recycle bin.
 
         :param request: Request instance for CleanUpInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.CleanUpInstanceRequest`
@@ -211,7 +211,7 @@ class RedisClient(AbstractClient):
 
 
     def ClearInstance(self, request):
-        """This API is used to clear instance data.
+        r"""This API is used to clear instance data.
 
         :param request: Request instance for ClearInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ClearInstanceRequest`
@@ -234,7 +234,7 @@ class RedisClient(AbstractClient):
 
 
     def CloneInstances(self, request):
-        """This API is used to clone a complete new instance based on the current instance backup file.
+        r"""This API is used to clone a complete new instance based on the current instance backup file.
 
         :param request: Request instance for CloneInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CloneInstancesRequest`
@@ -257,7 +257,7 @@ class RedisClient(AbstractClient):
 
 
     def CloseSSL(self, request):
-        """This API is used to disable SSL encryption and authentication.
+        r"""This API is used to disable SSL encryption and authentication.
 
         :param request: Request instance for CloseSSL.
         :type request: :class:`tencentcloud.redis.v20180412.models.CloseSSLRequest`
@@ -280,7 +280,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstanceAccount(self, request):
-        """This API is used to customize the account for accessing instances.
+        r"""This API is used to customize the account for accessing instances.
 
         :param request: Request instance for CreateInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstanceAccountRequest`
@@ -303,7 +303,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create an TencentDB or Redis instance.
+        r"""This API is used to create an TencentDB or Redis instance.
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`
@@ -326,7 +326,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """This API is used to create a parameter template.
+        r"""This API is used to create a parameter template.
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
@@ -349,7 +349,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateReplicationGroup(self, request):
-        """This API is used to create a replication group.
+        r"""This API is used to create a replication group.
 
         :param request: Request instance for CreateReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateReplicationGroupRequest`
@@ -372,7 +372,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteInstanceAccount(self, request):
-        """This API is used to delete instance sub-accounts.
+        r"""This API is used to delete instance sub-accounts.
 
         :param request: Request instance for DeleteInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteInstanceAccountRequest`
@@ -395,7 +395,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """This API is used to delete a parameter template.
+        r"""This API is used to delete a parameter template.
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateRequest`
@@ -418,7 +418,7 @@ class RedisClient(AbstractClient):
 
 
     def DeleteReplicationInstance(self, request):
-        """This API is used to remove a replication group member. Note: This API is being deprecated. Use [RemoveReplicationInstance](https://intl.cloud.tencent.com/document/product/239/90099?from_cn_redirect=1) instead.
+        r"""This API is used to remove a replication group member. Note: This API is being deprecated. Use [RemoveReplicationInstance](https://intl.cloud.tencent.com/document/product/239/90099?from_cn_redirect=1) instead.
 
         :param request: Request instance for DeleteReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`
@@ -441,7 +441,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeAutoBackupConfig(self, request):
-        """This API is used to get the configuration rules for an automatic backup.
+        r"""This API is used to get the configuration rules for an automatic backup.
 
         :param request: Request instance for DescribeAutoBackupConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeAutoBackupConfigRequest`
@@ -464,7 +464,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupDetail(self, request):
-        """This API is used to query the backup details of an instance.
+        r"""This API is used to query the backup details of an instance.
 
         :param request: Request instance for DescribeBackupDetail.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDetailRequest`
@@ -487,7 +487,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupDownloadRestriction(self, request):
-        """This API is used to query the download address for a database backup file in the current region.
+        r"""This API is used to query the download address for a database backup file in the current region.
 
         :param request: Request instance for DescribeBackupDownloadRestriction.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDownloadRestrictionRequest`
@@ -510,7 +510,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupUrl(self, request):
-        """This API is used to query the download address of a backup RDB file.
+        r"""This API is used to query the download address of a backup RDB file.
 
         :param request: Request instance for DescribeBackupUrl.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupUrlRequest`
@@ -533,7 +533,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBandwidthRange(self, request):
-        """This API is used to query the information of instance bandwidth.
+        r"""This API is used to query the information of instance bandwidth.
 
         :param request: Request instance for DescribeBandwidthRange.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBandwidthRangeRequest`
@@ -556,7 +556,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeCommonDBInstances(self, request):
-        """This API is used to query the list of Redis instances. It is now deprecated.
+        r"""This API is used to query the list of Redis instances. It is now deprecated.
 
         :param request: Request instance for DescribeCommonDBInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeCommonDBInstancesRequest`
@@ -579,7 +579,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """This API is used to query the security group details of an instance.
+        r"""This API is used to query the security group details of an instance.
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeDBSecurityGroupsRequest`
@@ -602,7 +602,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeGlobalReplicationArea(self, request):
-        """This API is used to query the information on regions supported for global replication.
+        r"""This API is used to query the information on regions supported for global replication.
 
         :param request: Request instance for DescribeGlobalReplicationArea.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeGlobalReplicationAreaRequest`
@@ -625,7 +625,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceAccount(self, request):
-        """This API is used to query the information of an instance sub-account.
+        r"""This API is used to query the information of an instance sub-account.
 
         :param request: Request instance for DescribeInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountRequest`
@@ -648,7 +648,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceBackups(self, request):
-        """This API is used to query the backup list of an instance.
+        r"""This API is used to query the backup list of an instance.
 
         :param request: Request instance for DescribeInstanceBackups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceBackupsRequest`
@@ -671,7 +671,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceDTSInfo(self, request):
-        """This API is used to query instance DTS information.
+        r"""This API is used to query instance DTS information.
 
         :param request: Request instance for DescribeInstanceDTSInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInfoRequest`
@@ -694,7 +694,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceDealDetail(self, request):
-        """This API is used to query the order information.
+        r"""This API is used to query the order information.
 
         :param request: Request instance for DescribeInstanceDealDetail.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDealDetailRequest`
@@ -717,7 +717,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceEvents(self, request):
-        """This API is used to query the event information on a TecentDB for Redis instance.
+        r"""This API is used to query the event information on a TecentDB for Redis instance.
 
         :param request: Request instance for DescribeInstanceEvents.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceEventsRequest`
@@ -740,7 +740,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceLogDelivery(self, request):
-        """This API is used to query the instance log shipping configuration.
+        r"""This API is used to query the instance log shipping configuration.
 
         :param request: Request instance for DescribeInstanceLogDelivery.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceLogDeliveryRequest`
@@ -763,7 +763,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKey(self, request):
-        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyRequest`
@@ -786,7 +786,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeySizeDist(self, request):
-        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKeySizeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistRequest`
@@ -809,7 +809,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeyTypeDist(self, request):
-        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
+        r"""The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKeyTypeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistRequest`
@@ -832,7 +832,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorHotKey(self, request):
-        """This API is used to query instance hot keys.
+        r"""This API is used to query instance hot keys.
 
         :param request: Request instance for DescribeInstanceMonitorHotKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorHotKeyRequest`
@@ -855,7 +855,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorSIP(self, request):
-        """This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
+        r"""This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
 
         :param request: Request instance for DescribeInstanceMonitorSIP.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPRequest`
@@ -878,7 +878,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTookDist(self, request):
-        """This API is used to query the time distribution of instance access.
+        r"""This API is used to query the time distribution of instance access.
 
         :param request: Request instance for DescribeInstanceMonitorTookDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTookDistRequest`
@@ -901,7 +901,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTopNCmd(self, request):
-        """This API is used to query instance access commands.
+        r"""This API is used to query instance access commands.
 
         :param request: Request instance for DescribeInstanceMonitorTopNCmd.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdRequest`
@@ -924,7 +924,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTopNCmdTook(self, request):
-        """This API is used to query the instance CPU time.
+        r"""This API is used to query the instance CPU time.
 
         :param request: Request instance for DescribeInstanceMonitorTopNCmdTook.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdTookRequest`
@@ -947,7 +947,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceNodeInfo(self, request):
-        """This API is used to query the information of an instance node.
+        r"""This API is used to query the information of an instance node.
 
         :param request: Request instance for DescribeInstanceNodeInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceNodeInfoRequest`
@@ -970,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """This API is used to query the parameter modification record list.
+        r"""This API is used to query the parameter modification record list.
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceParamRecordsRequest`
@@ -993,7 +993,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API is used to query the parameter list of an instance.
+        r"""This API is used to query the parameter list of an instance.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceParamsRequest`
@@ -1016,7 +1016,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceSecurityGroup(self, request):
-        """This API is used to query the security group information of an instance.
+        r"""This API is used to query the security group information of an instance.
 
         :param request: Request instance for DescribeInstanceSecurityGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSecurityGroupRequest`
@@ -1039,7 +1039,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceShards(self, request):
-        """This API is used to get the shard information of the instance on cluster architecture.
+        r"""This API is used to get the shard information of the instance on cluster architecture.
 
         :param request: Request instance for DescribeInstanceShards.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceShardsRequest`
@@ -1062,7 +1062,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceSpecBandwidth(self, request):
-        """This API is used to query or calculate bandwidth specifications.
+        r"""This API is used to query or calculate bandwidth specifications.
 
         :param request: Request instance for DescribeInstanceSpecBandwidth.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSpecBandwidthRequest`
@@ -1085,7 +1085,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceSupportFeature(self, request):
-        """This API (DescribeInstanceSupportFeature) is used to query the supported features of the instance.
+        r"""This API (DescribeInstanceSupportFeature) is used to query the supported features of the instance.
 
         :param request: Request instance for DescribeInstanceSupportFeature.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSupportFeatureRequest`
@@ -1108,7 +1108,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceZoneInfo(self, request):
-        """This API is used to query the details of a Redis node.
+        r"""This API is used to query the details of a Redis node.
 
         :param request: Request instance for DescribeInstanceZoneInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoRequest`
@@ -1131,7 +1131,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to query the list of Redis instances.
+        r"""This API is used to query the list of Redis instances.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstancesRequest`
@@ -1154,7 +1154,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeMaintenanceWindow(self, request):
-        """This API is used to query the instance maintenance window. Instances that require the version or architecture upgrade will undergo time switching during the maintenance window.
+        r"""This API is used to query the instance maintenance window. Instances that require the version or architecture upgrade will undergo time switching during the maintenance window.
 
         :param request: Request instance for DescribeMaintenanceWindow.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeMaintenanceWindowRequest`
@@ -1177,7 +1177,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """This API is used to query the details of a parameter template.
+        r"""This API is used to query the details of a parameter template.
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
@@ -1200,7 +1200,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """This API is used to query the parameter template list.
+        r"""This API is used to query the parameter template list.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesRequest`
@@ -1223,7 +1223,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeProductInfo(self, request):
-        """This API is used to query purchasable TencentDB for Redis specifications in all regions.
+        r"""This API is used to query purchasable TencentDB for Redis specifications in all regions.
 
         :param request: Request instance for DescribeProductInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoRequest`
@@ -1246,7 +1246,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroup(self, request):
-        """This API is used to query project security group information.
+        r"""This API is used to query project security group information.
 
         :param request: Request instance for DescribeProjectSecurityGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProjectSecurityGroupRequest`
@@ -1269,7 +1269,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """This API is used to query the security group details of a project.
+        r"""This API is used to query the security group details of a project.
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProjectSecurityGroupsRequest`
@@ -1292,7 +1292,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeProxySlowLog(self, request):
-        """This API is used to query the slow queries of the proxy.
+        r"""This API is used to query the slow queries of the proxy.
 
         :param request: Request instance for DescribeProxySlowLog.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProxySlowLogRequest`
@@ -1315,7 +1315,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeRedisClusterOverview(self, request):
-        """This API is used to query the overview information of a dedicated Redis cluster.
+        r"""This API is used to query the overview information of a dedicated Redis cluster.
 
         :param request: Request instance for DescribeRedisClusterOverview.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClusterOverviewRequest`
@@ -1338,7 +1338,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeRedisClusters(self, request):
-        """This API is used to query the list of dedicated Redis clusters.
+        r"""This API is used to query the list of dedicated Redis clusters.
 
         :param request: Request instance for DescribeRedisClusters.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeRedisClustersRequest`
@@ -1361,7 +1361,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeReplicationGroup(self, request):
-        """This API is used to query a replication group.
+        r"""This API is used to query a replication group.
 
         :param request: Request instance for DescribeReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupRequest`
@@ -1384,7 +1384,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeReplicationGroupInstance(self, request):
-        """This API is used to query replication group information.
+        r"""This API is used to query replication group information.
 
         :param request: Request instance for DescribeReplicationGroupInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupInstanceRequest`
@@ -1407,7 +1407,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSSLStatus(self, request):
-        """This API is used to query the SSL authentication information of an instance, such as enablement status, configuration status, and certificate address.
+        r"""This API is used to query the SSL authentication information of an instance, such as enablement status, configuration status, and certificate address.
 
         :param request: Request instance for DescribeSSLStatus.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusRequest`
@@ -1430,7 +1430,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSecondLevelBackupInfo(self, request):
-        """This API is used to query the second-level backup information on an instance.
+        r"""This API is used to query the second-level backup information on an instance.
 
         :param request: Request instance for DescribeSecondLevelBackupInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoRequest`
@@ -1453,7 +1453,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSlowLog(self, request):
-        """This API is used to query the records of slow query.
+        r"""This API is used to query the records of slow query.
 
         :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSlowLogRequest`
@@ -1476,7 +1476,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeTaskInfo(self, request):
-        """This API is used to get the execution of a specified task.
+        r"""This API is used to get the execution of a specified task.
 
         :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskInfoRequest`
@@ -1499,7 +1499,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeTaskList(self, request):
-        """This API is used to query the task list data for the last 30 days.
+        r"""This API is used to query the task list data for the last 30 days.
 
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListRequest`
@@ -1522,7 +1522,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeTendisSlowLog(self, request):
-        """This API is used to query the slow query logs of a Tendis instance.
+        r"""This API is used to query the slow query logs of a Tendis instance.
 
         :param request: Request instance for DescribeTendisSlowLog.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTendisSlowLogRequest`
@@ -1545,7 +1545,7 @@ class RedisClient(AbstractClient):
 
 
     def DestroyPostpaidInstance(self, request):
-        """This API is used to terminate pay-as-you-go instances.
+        r"""This API is used to terminate pay-as-you-go instances.
 
         :param request: Request instance for DestroyPostpaidInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DestroyPostpaidInstanceRequest`
@@ -1568,7 +1568,7 @@ class RedisClient(AbstractClient):
 
 
     def DestroyPrepaidInstance(self, request):
-        """This API is used to return Redis instances with monthly subscription.
+        r"""This API is used to return Redis instances with monthly subscription.
 
         :param request: Request instance for DestroyPrepaidInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.DestroyPrepaidInstanceRequest`
@@ -1591,7 +1591,7 @@ class RedisClient(AbstractClient):
 
 
     def DisableReplicaReadonly(self, request):
-        """This API is used to disable read/write separation.
+        r"""This API is used to disable read/write separation.
 
         :param request: Request instance for DisableReplicaReadonly.
         :type request: :class:`tencentcloud.redis.v20180412.models.DisableReplicaReadonlyRequest`
@@ -1614,7 +1614,7 @@ class RedisClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """This API is used to unbind security groups from instances in batches.
+        r"""This API is used to unbind security groups from instances in batches.
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DisassociateSecurityGroupsRequest`
@@ -1637,7 +1637,7 @@ class RedisClient(AbstractClient):
 
 
     def EnableReplicaReadonly(self, request):
-        """This API is used to enable read/write separation.
+        r"""This API is used to enable read/write separation.
 
         :param request: Request instance for EnableReplicaReadonly.
         :type request: :class:`tencentcloud.redis.v20180412.models.EnableReplicaReadonlyRequest`
@@ -1660,7 +1660,7 @@ class RedisClient(AbstractClient):
 
 
     def InquiryPriceCreateInstance(self, request):
-        """This API is used to query the price of new instances.
+        r"""This API is used to query the price of new instances.
 
         :param request: Request instance for InquiryPriceCreateInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.InquiryPriceCreateInstanceRequest`
@@ -1683,7 +1683,7 @@ class RedisClient(AbstractClient):
 
 
     def InquiryPriceUpgradeInstance(self, request):
-        """This API is used to query the price for instance scale-out.
+        r"""This API is used to query the price for instance scale-out.
 
         :param request: Request instance for InquiryPriceUpgradeInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.InquiryPriceUpgradeInstanceRequest`
@@ -1706,7 +1706,7 @@ class RedisClient(AbstractClient):
 
 
     def KillMasterGroup(self, request):
-        """This API is used to simulate a fault.
+        r"""This API is used to simulate a fault.
 
         :param request: Request instance for KillMasterGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.KillMasterGroupRequest`
@@ -1729,7 +1729,7 @@ class RedisClient(AbstractClient):
 
 
     def ManualBackupInstance(self, request):
-        """This API is used to manually back up a Redis instance.
+        r"""This API is used to manually back up a Redis instance.
 
         :param request: Request instance for ManualBackupInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ManualBackupInstanceRequest`
@@ -1752,7 +1752,7 @@ class RedisClient(AbstractClient):
 
 
     def ModfiyInstancePassword(self, request):
-        """This API is used to change the instance access password. Due to a spelling error in the original API name, it has been corrected to [ModifyInstancePassword](https://intl.cloud.tencent.com/document/product/239/111555?from_cn_redirect=1). It is recommended to use the corrected API.
+        r"""This API is used to change the instance access password. Due to a spelling error in the original API name, it has been corrected to [ModifyInstancePassword](https://intl.cloud.tencent.com/document/product/239/111555?from_cn_redirect=1). It is recommended to use the corrected API.
 
         :param request: Request instance for ModfiyInstancePassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordRequest`
@@ -1775,7 +1775,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyAutoBackupConfig(self, request):
-        """This API is used to set the configuration for an automatic backup.
+        r"""This API is used to set the configuration for an automatic backup.
 
         :param request: Request instance for ModifyAutoBackupConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyAutoBackupConfigRequest`
@@ -1798,7 +1798,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyBackupDownloadRestriction(self, request):
-        """This API is used to modify the network information and address for downloading a backup file.
+        r"""This API is used to modify the network information and address for downloading a backup file.
 
         :param request: Request instance for ModifyBackupDownloadRestriction.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyBackupDownloadRestrictionRequest`
@@ -1821,7 +1821,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyConnectionConfig(self, request):
-        """This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.
+        r"""This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.
 
         :param request: Request instance for ModifyConnectionConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigRequest`
@@ -1844,7 +1844,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify the original security group list of an instance.
+        r"""This API is used to modify the original security group list of an instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1867,7 +1867,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify instance information.
+        r"""This API is used to modify instance information.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceRequest`
@@ -1890,7 +1890,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceAccount(self, request):
-        """This API is used to modify the instance sub-account.
+        r"""This API is used to modify the instance sub-account.
 
         :param request: Request instance for ModifyInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAccountRequest`
@@ -1913,7 +1913,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceAvailabilityZones(self, request):
-        """This API is used to change the availability zone of the instance.
+        r"""This API is used to change the availability zone of the instance.
 
         :param request: Request instance for ModifyInstanceAvailabilityZones.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAvailabilityZonesRequest`
@@ -1936,7 +1936,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceBackupMode(self, request):
-        """This API is used to modify the instance backup mode.
+        r"""This API is used to modify the instance backup mode.
 
         :param request: Request instance for ModifyInstanceBackupMode.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeRequest`
@@ -1959,7 +1959,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceEvent(self, request):
-        """This API is used to modify the operations event execution schedule of an instance.
+        r"""This API is used to modify the operations event execution schedule of an instance.
 
         :param request: Request instance for ModifyInstanceEvent.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceEventRequest`
@@ -1982,7 +1982,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceLogDelivery(self, request):
-        """This API is used to enable or disable the shipping of instance logs to CLS.
+        r"""This API is used to enable or disable the shipping of instance logs to CLS.
 
         :param request: Request instance for ModifyInstanceLogDelivery.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceLogDeliveryRequest`
@@ -2005,7 +2005,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceParams(self, request):
-        """This API is used to modify the parameter configuration of a Redis instance.
+        r"""This API is used to modify the parameter configuration of a Redis instance.
 
         :param request: Request instance for ModifyInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceParamsRequest`
@@ -2028,7 +2028,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstancePassword(self, request):
-        """This API is used to change the instance access password.
+        r"""This API is used to change the instance access password.
 
         :param request: Request instance for ModifyInstancePassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordRequest`
@@ -2051,7 +2051,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceReadOnly(self, request):
-        """This API is used to set the instance input mode.
+        r"""This API is used to set the instance input mode.
 
         :param request: Request instance for ModifyInstanceReadOnly.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceReadOnlyRequest`
@@ -2074,7 +2074,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyMaintenanceWindow(self, request):
-        """This API is used to modify the time of instance maintenance window. Instances that require the version or architecture upgrade will undergo time switching during the maintenance window. Note: If the version or architecture upgrade has been initiated for an instance, its maintenance window cannot be modified.
+        r"""This API is used to modify the time of instance maintenance window. Instances that require the version or architecture upgrade will undergo time switching during the maintenance window. Note: If the version or architecture upgrade has been initiated for an instance, its maintenance window cannot be modified.
 
         :param request: Request instance for ModifyMaintenanceWindow.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyMaintenanceWindowRequest`
@@ -2097,7 +2097,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyNetworkConfig(self, request):
-        """This API is used to modify the network configuration of an instance.
+        r"""This API is used to modify the network configuration of an instance.
 
         :param request: Request instance for ModifyNetworkConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyNetworkConfigRequest`
@@ -2120,7 +2120,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyParamTemplate(self, request):
-        """This API is used to modify the parameter template.
+        r"""This API is used to modify the parameter template.
 
         :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyParamTemplateRequest`
@@ -2143,7 +2143,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyReplicationGroup(self, request):
-        """This API is used to modify replication group information.
+        r"""This API is used to modify replication group information.
 
         :param request: Request instance for ModifyReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyReplicationGroupRequest`
@@ -2166,7 +2166,7 @@ class RedisClient(AbstractClient):
 
 
     def OpenSSL(self, request):
-        """This API is used to enable SSL encryption and authentication.
+        r"""This API is used to enable SSL encryption and authentication.
 
         :param request: Request instance for OpenSSL.
         :type request: :class:`tencentcloud.redis.v20180412.models.OpenSSLRequest`
@@ -2189,7 +2189,7 @@ class RedisClient(AbstractClient):
 
 
     def ReleaseWanAddress(self, request):
-        """This API is used to disable public network access.
+        r"""This API is used to disable public network access.
 
         :param request: Request instance for ReleaseWanAddress.
         :type request: :class:`tencentcloud.redis.v20180412.models.ReleaseWanAddressRequest`
@@ -2212,7 +2212,7 @@ class RedisClient(AbstractClient):
 
 
     def RemoveReplicationGroup(self, request):
-        """This API is used to delete a replication group.
+        r"""This API is used to delete a replication group.
 
         :param request: Request instance for RemoveReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationGroupRequest`
@@ -2235,7 +2235,7 @@ class RedisClient(AbstractClient):
 
 
     def RemoveReplicationInstance(self, request):
-        """This API is used to remove instances from a replication group.
+        r"""This API is used to remove instances from a replication group.
 
         :param request: Request instance for RemoveReplicationInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationInstanceRequest`
@@ -2258,7 +2258,7 @@ class RedisClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """This API is used to renew an instance.
+        r"""This API is used to renew an instance.
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RenewInstanceRequest`
@@ -2281,7 +2281,7 @@ class RedisClient(AbstractClient):
 
 
     def ResetPassword(self, request):
-        """This API is used to reset the instance access password.
+        r"""This API is used to reset the instance access password.
 
         :param request: Request instance for ResetPassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ResetPasswordRequest`
@@ -2304,7 +2304,7 @@ class RedisClient(AbstractClient):
 
 
     def RestoreInstance(self, request):
-        """This API is used to restore an instance.
+        r"""This API is used to restore an instance.
 
         :param request: Request instance for RestoreInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RestoreInstanceRequest`
@@ -2327,7 +2327,7 @@ class RedisClient(AbstractClient):
 
 
     def StartupInstance(self, request):
-        """This API is used to deisolate instances.
+        r"""This API is used to deisolate instances.
 
         :param request: Request instance for StartupInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.StartupInstanceRequest`
@@ -2350,7 +2350,7 @@ class RedisClient(AbstractClient):
 
 
     def SwitchAccessNewInstance(self, request):
-        """This API is used to immediately switch instances that are in the time window pending switch operation. Users can manually initiate this operation.
+        r"""This API is used to immediately switch instances that are in the time window pending switch operation. Users can manually initiate this operation.
 
         :param request: Request instance for SwitchAccessNewInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.SwitchAccessNewInstanceRequest`
@@ -2373,7 +2373,7 @@ class RedisClient(AbstractClient):
 
 
     def SwitchInstanceVip(self, request):
-        """This API is used to swap the VIPs of instances for disaster recovery in DTS-based cross-AZ disaster recovery scenarios. After the swapping, the target instance becomes writable, the VIPs of the source and target instances are swapped, and the DTS synchronization task between the source and target instances is disconnected.
+        r"""This API is used to swap the VIPs of instances for disaster recovery in DTS-based cross-AZ disaster recovery scenarios. After the swapping, the target instance becomes writable, the VIPs of the source and target instances are swapped, and the DTS synchronization task between the source and target instances is disconnected.
 
         :param request: Request instance for SwitchInstanceVip.
         :type request: :class:`tencentcloud.redis.v20180412.models.SwitchInstanceVipRequest`
@@ -2396,7 +2396,7 @@ class RedisClient(AbstractClient):
 
 
     def SwitchProxy(self, request):
-        """This API is used to simulate the fault of a Proxy node.
+        r"""This API is used to simulate the fault of a Proxy node.
 
         :param request: Request instance for SwitchProxy.
         :type request: :class:`tencentcloud.redis.v20180412.models.SwitchProxyRequest`
@@ -2419,7 +2419,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """This API is used to change the configuration specifications of an instance.
+        r"""This API is used to change the configuration specifications of an instance.
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceRequest`
@@ -2442,7 +2442,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeInstanceVersion(self, request):
-        """This API is used to upgrade the current instance to a later version or upgrade the current standard architecture to a cluster architecture.
+        r"""This API is used to upgrade the current instance to a later version or upgrade the current standard architecture to a cluster architecture.
 
         :param request: Request instance for UpgradeInstanceVersion.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionRequest`
@@ -2465,7 +2465,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeProxyVersion(self, request):
-        """This API is used to upgrade the instance Proxy version.
+        r"""This API is used to upgrade the instance Proxy version.
 
         :param request: Request instance for UpgradeProxyVersion.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeProxyVersionRequest`
@@ -2488,7 +2488,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeSmallVersion(self, request):
-        """This API is used to upgrade the minor version of an instance.
+        r"""This API is used to upgrade the minor version of an instance.
 
         :param request: Request instance for UpgradeSmallVersion.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeSmallVersionRequest`
@@ -2511,7 +2511,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeVersionToMultiAvailabilityZones(self, request):
-        """This API is used to upgrade an instance to support multiple AZs.
+        r"""This API is used to upgrade an instance to support multiple AZs.
 
         :param request: Request instance for UpgradeVersionToMultiAvailabilityZones.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeVersionToMultiAvailabilityZonesRequest`

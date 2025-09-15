@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AddRecordBatch(AbstractModel):
-    """Records to be bulk added
+    r"""Records to be bulk added
 
     """
 
@@ -59,7 +59,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type. For more information, see the `DescribeRecordType` API.
+        r"""Record type. For more information, see the `DescribeRecordType` API.
         :rtype: str
         """
         return self._RecordType
@@ -70,7 +70,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def Value(self):
-        """Record value.
+        r"""Record value.
         :rtype: str
         """
         return self._Value
@@ -81,7 +81,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Subdomain (host record), which is `@` by default.
+        r"""Subdomain (host record), which is `@` by default.
         :rtype: str
         """
         return self._SubDomain
@@ -92,7 +92,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def RecordLine(self):
-        """Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API. If neither `RecordLine` nor `RecordLineId` is specified, the default split zone will be used.
+        r"""Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API. If neither `RecordLine` nor `RecordLineId` is specified, the default split zone will be used.
         :rtype: str
         """
         return self._RecordLine
@@ -103,7 +103,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """Split zone ID of the DNS record. If both `RecordLine` and `RecordLineId` are specified, `RecordLineId` will be used.
+        r"""Split zone ID of the DNS record. If both `RecordLine` and `RecordLineId` are specified, `RecordLineId` will be used.
         :rtype: str
         """
         return self._RecordLineId
@@ -114,7 +114,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def Weight(self):
-        """The record weight (not supported).
+        r"""The record weight (not supported).
         :rtype: int
         """
         return self._Weight
@@ -125,7 +125,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def MX(self):
-        """MX record value. It is `0` by default for non-MX records and required for MX records.
+        r"""MX record value. It is `0` by default for non-MX records and required for MX records.
         :rtype: int
         """
         return self._MX
@@ -136,7 +136,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def TTL(self):
-        """TTL value of the record, which is `600` by default.
+        r"""TTL value of the record, which is `600` by default.
         :rtype: int
         """
         return self._TTL
@@ -147,7 +147,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def Enabled(self):
-        """Record status (not supported). Valid values: `0` (disabled); `1` (enabled). Default value: `1`.
+        r"""Record status (not supported). Valid values: `0` (disabled); `1` (enabled). Default value: `1`.
         :rtype: int
         """
         return self._Enabled
@@ -158,7 +158,7 @@ class AddRecordBatch(AbstractModel):
 
     @property
     def Remark(self):
-        """Record remarks (not supported).
+        r"""Record remarks (not supported).
         :rtype: str
         """
         return self._Remark
@@ -190,7 +190,7 @@ class AddRecordBatch(AbstractModel):
 
 
 class BatchRecordInfo(AbstractModel):
-    """Record information in the bulk task
+    r"""Record information in the bulk task
 
     """
 
@@ -251,7 +251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -263,7 +263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubDomain(self):
-        """Subdomain (host record).
+        r"""Subdomain (host record).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -275,7 +275,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordType(self):
-        """Record type. For more information, see the `DescribeRecordType` API.
+        r"""Record type. For more information, see the `DescribeRecordType` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -287,7 +287,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordLine(self):
-        """Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
+        r"""Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -299,7 +299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Record value
+        r"""Record value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -311,7 +311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """TTL value of the record
+        r"""TTL value of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -323,7 +323,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Record adding status
+        r"""Record adding status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -335,7 +335,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -347,7 +347,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -359,7 +359,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """ID of the record in the list
+        r"""ID of the record in the list
         :rtype: int
         """
         return self._Id
@@ -370,7 +370,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
-        """Record status
+        r"""Record status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -382,7 +382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MX(self):
-        """MX weight of the record
+        r"""MX weight of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -394,7 +394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """The record weight.
+        r"""The record weight.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -430,7 +430,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateDomainAliasRequest(AbstractModel):
-    """CreateDomainAlias request structure.
+    r"""CreateDomainAlias request structure.
 
     """
 
@@ -449,7 +449,7 @@ class CreateDomainAliasRequest(AbstractModel):
 
     @property
     def DomainAlias(self):
-        """Domain alias
+        r"""Domain alias
         :rtype: str
         """
         return self._DomainAlias
@@ -460,7 +460,7 @@ class CreateDomainAliasRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -471,7 +471,7 @@ class CreateDomainAliasRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -496,7 +496,7 @@ class CreateDomainAliasRequest(AbstractModel):
 
 
 class CreateDomainAliasResponse(AbstractModel):
-    """CreateDomainAlias response structure.
+    r"""CreateDomainAlias response structure.
 
     """
 
@@ -512,7 +512,7 @@ class CreateDomainAliasResponse(AbstractModel):
 
     @property
     def DomainAliasId(self):
-        """Domain alias ID
+        r"""Domain alias ID
         :rtype: int
         """
         return self._DomainAliasId
@@ -523,7 +523,7 @@ class CreateDomainAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -539,7 +539,7 @@ class CreateDomainAliasResponse(AbstractModel):
 
 
 class CreateDomainBatchDetail(AbstractModel):
-    """Response structure for bulk adding domains
+    r"""Response structure for bulk adding domains
 
     """
 
@@ -576,7 +576,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordList(self):
-        """See `RecordInfoBatch`.
+        r"""See `RecordInfoBatch`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CreateDomainBatchRecord
         """
@@ -588,7 +588,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._Id
@@ -599,7 +599,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -611,7 +611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainGrade(self):
-        """Domain level
+        r"""Domain level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -623,7 +623,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -635,7 +635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task running status
+        r"""Task running status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -647,7 +647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -682,7 +682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateDomainBatchRecord(AbstractModel):
-    """Record information in the task of bulk adding domains
+    r"""Record information in the task of bulk adding domains
 
     """
 
@@ -727,7 +727,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubDomain(self):
-        """Subdomain (host record).
+        r"""Subdomain (host record).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -739,7 +739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordType(self):
-        """Record type. For more information, see the `DescribeRecordType` API.
+        r"""Record type. For more information, see the `DescribeRecordType` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -751,7 +751,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordLine(self):
-        """Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
+        r"""Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -763,7 +763,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Record value
+        r"""Record value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -775,7 +775,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """TTL value of the record
+        r"""TTL value of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -787,7 +787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Record adding status
+        r"""Record adding status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -799,7 +799,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -811,7 +811,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -823,7 +823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """ID of the record in the list
+        r"""ID of the record in the list
         :rtype: int
         """
         return self._Id
@@ -854,7 +854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateDomainBatchRequest(AbstractModel):
-    """CreateDomainBatch request structure.
+    r"""CreateDomainBatch request structure.
 
     """
 
@@ -870,7 +870,7 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """Domain array
+        r"""Domain array
         :rtype: list of str
         """
         return self._DomainList
@@ -881,7 +881,7 @@ class CreateDomainBatchRequest(AbstractModel):
 
     @property
     def RecordValue(self):
-        """Add A records of @ and www for each domain with the record value of the IP. If this parameter is not passed in or is set to an empty string or null, only the domain but not the records will be added.
+        r"""Add A records of @ and www for each domain with the record value of the IP. If this parameter is not passed in or is set to an empty string or null, only the domain but not the records will be added.
         :rtype: str
         """
         return self._RecordValue
@@ -905,7 +905,7 @@ class CreateDomainBatchRequest(AbstractModel):
 
 
 class CreateDomainBatchResponse(AbstractModel):
-    """CreateDomainBatch response structure.
+    r"""CreateDomainBatch response structure.
 
     """
 
@@ -924,7 +924,7 @@ class CreateDomainBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        """Information of the bulk added domains
+        r"""Information of the bulk added domains
         :rtype: list of CreateDomainBatchDetail
         """
         return self._DetailList
@@ -935,7 +935,7 @@ class CreateDomainBatchResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """Bulk task ID
+        r"""Bulk task ID
         :rtype: int
         """
         return self._JobId
@@ -946,7 +946,7 @@ class CreateDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -968,7 +968,7 @@ class CreateDomainBatchResponse(AbstractModel):
 
 
 class CreateDomainGroupRequest(AbstractModel):
-    """CreateDomainGroup request structure.
+    r"""CreateDomainGroup request structure.
 
     """
 
@@ -981,7 +981,7 @@ class CreateDomainGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Domain group
+        r"""Domain group
         :rtype: str
         """
         return self._GroupName
@@ -1004,7 +1004,7 @@ class CreateDomainGroupRequest(AbstractModel):
 
 
 class CreateDomainGroupResponse(AbstractModel):
-    """CreateDomainGroup response structure.
+    r"""CreateDomainGroup response structure.
 
     """
 
@@ -1020,7 +1020,7 @@ class CreateDomainGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """Domain group ID
+        r"""Domain group ID
         :rtype: int
         """
         return self._GroupId
@@ -1031,7 +1031,7 @@ class CreateDomainGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1047,7 +1047,7 @@ class CreateDomainGroupResponse(AbstractModel):
 
 
 class CreateDomainRequest(AbstractModel):
-    """CreateDomain request structure.
+    r"""CreateDomain request structure.
 
     """
 
@@ -1066,7 +1066,7 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -1077,7 +1077,7 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID of the domain. You can view the group information of this domain via the `DescribeDomainGroupList` API.
+        r"""The group ID of the domain. You can view the group information of this domain via the `DescribeDomainGroupList` API.
         :rtype: int
         """
         return self._GroupId
@@ -1088,7 +1088,7 @@ class CreateDomainRequest(AbstractModel):
 
     @property
     def IsMark(self):
-        """Whether the domain is starred. Valid values: yes, no.
+        r"""Whether the domain is starred. Valid values: yes, no.
         :rtype: str
         """
         return self._IsMark
@@ -1113,7 +1113,7 @@ class CreateDomainRequest(AbstractModel):
 
 
 class CreateDomainResponse(AbstractModel):
-    """CreateDomain response structure.
+    r"""CreateDomain response structure.
 
     """
 
@@ -1129,7 +1129,7 @@ class CreateDomainResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
-        """Domain information
+        r"""Domain information
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.DomainCreateInfo`
         """
         return self._DomainInfo
@@ -1140,7 +1140,7 @@ class CreateDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1158,7 +1158,7 @@ class CreateDomainResponse(AbstractModel):
 
 
 class CreatePackageOrderRequest(AbstractModel):
-    """CreatePackageOrder request structure.
+    r"""CreatePackageOrder request structure.
 
     """
 
@@ -1177,7 +1177,7 @@ DPG_ULTIMATE
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -1188,7 +1188,7 @@ DPG_ULTIMATE
 
     @property
     def Grade(self):
-        """Valid options for the package version are as follows:
+        r"""Valid options for the package version are as follows:
 DPG_PROFESSIONAL
 DPG_ENTERPRISE
 DPG_ULTIMATE
@@ -1215,7 +1215,7 @@ DPG_ULTIMATE
 
 
 class CreatePackageOrderResponse(AbstractModel):
-    """CreatePackageOrder response structure.
+    r"""CreatePackageOrder response structure.
 
     """
 
@@ -1228,7 +1228,7 @@ class CreatePackageOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1243,7 +1243,7 @@ class CreatePackageOrderResponse(AbstractModel):
 
 
 class CreateRecordBatchDetail(AbstractModel):
-    """Response structure for bulk adding records
+    r"""Response structure for bulk adding records
 
     """
 
@@ -1284,7 +1284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordList(self):
-        """See `RecordInfoBatch`.
+        r"""See `RecordInfoBatch`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CreateRecordBatchRecord
         """
@@ -1296,7 +1296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._Id
@@ -1307,7 +1307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1319,7 +1319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainGrade(self):
-        """Domain level
+        r"""Domain level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1331,7 +1331,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1343,7 +1343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task running status
+        r"""Task running status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1355,7 +1355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1367,7 +1367,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainId(self):
-        """Domain ID
+        r"""Domain ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1403,7 +1403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateRecordBatchRecord(AbstractModel):
-    """Record information in the task of bulk adding records
+    r"""Record information in the task of bulk adding records
 
     """
 
@@ -1456,7 +1456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubDomain(self):
-        """Subdomain (host record).
+        r"""Subdomain (host record).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1468,7 +1468,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordType(self):
-        """Record type. For more information, see the `DescribeRecordType` API.
+        r"""Record type. For more information, see the `DescribeRecordType` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1480,7 +1480,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordLine(self):
-        """Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
+        r"""Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1492,7 +1492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Record value
+        r"""Record value
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1504,7 +1504,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """TTL value of the record
+        r"""TTL value of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1516,7 +1516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Record adding status
+        r"""Record adding status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1528,7 +1528,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1540,7 +1540,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1552,7 +1552,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """ID of the record in the list
+        r"""ID of the record in the list
         :rtype: int
         """
         return self._Id
@@ -1563,7 +1563,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MX(self):
-        """MX weight of the record
+        r"""MX weight of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1575,7 +1575,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """The record weight.
+        r"""The record weight.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1609,7 +1609,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CreateRecordBatchRequest(AbstractModel):
-    """CreateRecordBatch request structure.
+    r"""CreateRecordBatch request structure.
 
     """
 
@@ -1625,7 +1625,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
     @property
     def DomainIdList(self):
-        """Domain ID. Separate multiple ones by comma.
+        r"""Domain ID. Separate multiple ones by comma.
         :rtype: list of str
         """
         return self._DomainIdList
@@ -1636,7 +1636,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
     @property
     def RecordList(self):
-        """Record array
+        r"""Record array
         :rtype: list of AddRecordBatch
         """
         return self._RecordList
@@ -1665,7 +1665,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
 
 class CreateRecordBatchResponse(AbstractModel):
-    """CreateRecordBatch response structure.
+    r"""CreateRecordBatch response structure.
 
     """
 
@@ -1684,7 +1684,7 @@ class CreateRecordBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        """Information of the bulk added domains
+        r"""Information of the bulk added domains
         :rtype: list of CreateRecordBatchDetail
         """
         return self._DetailList
@@ -1695,7 +1695,7 @@ class CreateRecordBatchResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """Bulk task ID
+        r"""Bulk task ID
         :rtype: int
         """
         return self._JobId
@@ -1706,7 +1706,7 @@ class CreateRecordBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1728,7 +1728,7 @@ class CreateRecordBatchResponse(AbstractModel):
 
 
 class CreateRecordGroupRequest(AbstractModel):
-    """CreateRecordGroup request structure.
+    r"""CreateRecordGroup request structure.
 
     """
 
@@ -1747,7 +1747,7 @@ class CreateRecordGroupRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -1758,7 +1758,7 @@ class CreateRecordGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -1769,7 +1769,7 @@ class CreateRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
         :rtype: int
         """
         return self._DomainId
@@ -1794,7 +1794,7 @@ class CreateRecordGroupRequest(AbstractModel):
 
 
 class CreateRecordGroupResponse(AbstractModel):
-    """CreateRecordGroup response structure.
+    r"""CreateRecordGroup response structure.
 
     """
 
@@ -1810,7 +1810,7 @@ class CreateRecordGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """New group ID
+        r"""New group ID
         :rtype: int
         """
         return self._GroupId
@@ -1821,7 +1821,7 @@ class CreateRecordGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1837,7 +1837,7 @@ class CreateRecordGroupResponse(AbstractModel):
 
 
 class CreateRecordRequest(AbstractModel):
-    """CreateRecord request structure.
+    r"""CreateRecord request structure.
 
     """
 
@@ -1880,7 +1880,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -1891,7 +1891,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.
+        r"""Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.
         :rtype: str
         """
         return self._RecordType
@@ -1902,7 +1902,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """Record split zone, which is obtained through the record split zone API.
+        r"""Record split zone, which is obtained through the record split zone API.
         :rtype: str
         """
         return self._RecordLine
@@ -1913,7 +1913,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Value(self):
-        """Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.
+        r"""Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.
         :rtype: str
         """
         return self._Value
@@ -1924,7 +1924,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        r"""Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
         :rtype: int
         """
         return self._DomainId
@@ -1935,7 +1935,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Host record such as `www`. If it is not passed in, it will be `@` by default.
+        r"""Host record such as `www`. If it is not passed in, it will be `@` by default.
         :rtype: str
         """
         return self._SubDomain
@@ -1946,7 +1946,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.
+        r"""Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.
         :rtype: str
         """
         return self._RecordLineId
@@ -1957,7 +1957,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.
+        r"""MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.
         :rtype: int
         """
         return self._MX
@@ -1968,7 +1968,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """TTL. Value range: 1–604800. The minimum value varies by domain level.
+        r"""TTL. Value range: 1–604800. The minimum value varies by domain level.
         :rtype: int
         """
         return self._TTL
@@ -1979,7 +1979,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.
+        r"""Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.
         :rtype: int
         """
         return self._Weight
@@ -1990,7 +1990,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
+        r"""Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
         :rtype: str
         """
         return self._Status
@@ -2023,7 +2023,7 @@ class CreateRecordRequest(AbstractModel):
 
 
 class CreateRecordResponse(AbstractModel):
-    """CreateRecord response structure.
+    r"""CreateRecord response structure.
 
     """
 
@@ -2039,7 +2039,7 @@ class CreateRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: int
         """
         return self._RecordId
@@ -2050,7 +2050,7 @@ class CreateRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2066,7 +2066,7 @@ class CreateRecordResponse(AbstractModel):
 
 
 class DeleteDomainAliasRequest(AbstractModel):
-    """DeleteDomainAlias request structure.
+    r"""DeleteDomainAlias request structure.
 
     """
 
@@ -2085,7 +2085,7 @@ class DeleteDomainAliasRequest(AbstractModel):
 
     @property
     def DomainAliasId(self):
-        """Domain alias ID. You can view all domain aliases and their IDs via the `DescribeDomainAliasList` API.
+        r"""Domain alias ID. You can view all domain aliases and their IDs via the `DescribeDomainAliasList` API.
         :rtype: int
         """
         return self._DomainAliasId
@@ -2096,7 +2096,7 @@ class DeleteDomainAliasRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2107,7 +2107,7 @@ class DeleteDomainAliasRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -2132,7 +2132,7 @@ class DeleteDomainAliasRequest(AbstractModel):
 
 
 class DeleteDomainAliasResponse(AbstractModel):
-    """DeleteDomainAlias response structure.
+    r"""DeleteDomainAlias response structure.
 
     """
 
@@ -2145,7 +2145,7 @@ class DeleteDomainAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2160,7 +2160,7 @@ class DeleteDomainAliasResponse(AbstractModel):
 
 
 class DeleteDomainBatchDetail(AbstractModel):
-    """Details of batch deleting domains
+    r"""Details of batch deleting domains
 
     """
 
@@ -2186,7 +2186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainId(self):
-        """The domain ID.
+        r"""The domain ID.
         :rtype: int
         """
         return self._DomainId
@@ -2197,7 +2197,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """The domain name.
+        r"""The domain name.
         :rtype: str
         """
         return self._Domain
@@ -2208,7 +2208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """The error message.
+        r"""The error message.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2220,7 +2220,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The domain deletion status.
+        r"""The domain deletion status.
         :rtype: str
         """
         return self._Status
@@ -2231,7 +2231,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """The operation.
+        r"""The operation.
         :rtype: str
         """
         return self._Operation
@@ -2258,7 +2258,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteDomainBatchRequest(AbstractModel):
-    """DeleteDomainBatch request structure.
+    r"""DeleteDomainBatch request structure.
 
     """
 
@@ -2271,7 +2271,7 @@ class DeleteDomainBatchRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """The domain array.
+        r"""The domain array.
         :rtype: list of str
         """
         return self._DomainList
@@ -2294,7 +2294,7 @@ class DeleteDomainBatchRequest(AbstractModel):
 
 
 class DeleteDomainBatchResponse(AbstractModel):
-    """DeleteDomainBatch response structure.
+    r"""DeleteDomainBatch response structure.
 
     """
 
@@ -2313,7 +2313,7 @@ class DeleteDomainBatchResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """The task ID.
+        r"""The task ID.
         :rtype: int
         """
         return self._JobId
@@ -2324,7 +2324,7 @@ class DeleteDomainBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        """The array of task details.
+        r"""The array of task details.
         :rtype: list of DeleteDomainBatchDetail
         """
         return self._DetailList
@@ -2335,7 +2335,7 @@ class DeleteDomainBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2357,7 +2357,7 @@ class DeleteDomainBatchResponse(AbstractModel):
 
 
 class DeleteDomainRequest(AbstractModel):
-    """DeleteDomain request structure.
+    r"""DeleteDomain request structure.
 
     """
 
@@ -2373,7 +2373,7 @@ class DeleteDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2384,7 +2384,7 @@ class DeleteDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -2408,7 +2408,7 @@ class DeleteDomainRequest(AbstractModel):
 
 
 class DeleteDomainResponse(AbstractModel):
-    """DeleteDomain response structure.
+    r"""DeleteDomain response structure.
 
     """
 
@@ -2421,7 +2421,7 @@ class DeleteDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2436,7 +2436,7 @@ class DeleteDomainResponse(AbstractModel):
 
 
 class DeleteRecordGroupRequest(AbstractModel):
-    """DeleteRecordGroup request structure.
+    r"""DeleteRecordGroup request structure.
 
     """
 
@@ -2455,7 +2455,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2466,7 +2466,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: int
         """
         return self._GroupId
@@ -2477,7 +2477,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
         :rtype: int
         """
         return self._DomainId
@@ -2502,7 +2502,7 @@ class DeleteRecordGroupRequest(AbstractModel):
 
 
 class DeleteRecordGroupResponse(AbstractModel):
-    """DeleteRecordGroup response structure.
+    r"""DeleteRecordGroup response structure.
 
     """
 
@@ -2515,7 +2515,7 @@ class DeleteRecordGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2530,7 +2530,7 @@ class DeleteRecordGroupResponse(AbstractModel):
 
 
 class DeleteRecordRequest(AbstractModel):
-    """DeleteRecord request structure.
+    r"""DeleteRecord request structure.
 
     """
 
@@ -2549,7 +2549,7 @@ class DeleteRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2560,7 +2560,7 @@ class DeleteRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: int
         """
         return self._RecordId
@@ -2571,7 +2571,7 @@ class DeleteRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -2596,7 +2596,7 @@ class DeleteRecordRequest(AbstractModel):
 
 
 class DeleteRecordResponse(AbstractModel):
-    """DeleteRecord response structure.
+    r"""DeleteRecord response structure.
 
     """
 
@@ -2609,7 +2609,7 @@ class DeleteRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2624,7 +2624,7 @@ class DeleteRecordResponse(AbstractModel):
 
 
 class DeleteShareDomainRequest(AbstractModel):
-    """DeleteShareDomain request structure.
+    r"""DeleteShareDomain request structure.
 
     """
 
@@ -2643,7 +2643,7 @@ class DeleteShareDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2654,7 +2654,7 @@ class DeleteShareDomainRequest(AbstractModel):
 
     @property
     def Account(self):
-        """Account of the domain to be shared
+        r"""Account of the domain to be shared
         :rtype: str
         """
         return self._Account
@@ -2665,7 +2665,7 @@ class DeleteShareDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -2690,7 +2690,7 @@ class DeleteShareDomainRequest(AbstractModel):
 
 
 class DeleteShareDomainResponse(AbstractModel):
-    """DeleteShareDomain response structure.
+    r"""DeleteShareDomain response structure.
 
     """
 
@@ -2703,7 +2703,7 @@ class DeleteShareDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2718,7 +2718,7 @@ class DeleteShareDomainResponse(AbstractModel):
 
 
 class DescribeDomainAliasListRequest(AbstractModel):
-    """DescribeDomainAliasList request structure.
+    r"""DescribeDomainAliasList request structure.
 
     """
 
@@ -2734,7 +2734,7 @@ class DescribeDomainAliasListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -2745,7 +2745,7 @@ class DescribeDomainAliasListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -2769,7 +2769,7 @@ class DescribeDomainAliasListRequest(AbstractModel):
 
 
 class DescribeDomainAliasListResponse(AbstractModel):
-    """DescribeDomainAliasList response structure.
+    r"""DescribeDomainAliasList response structure.
 
     """
 
@@ -2785,7 +2785,7 @@ class DescribeDomainAliasListResponse(AbstractModel):
 
     @property
     def DomainAliasList(self):
-        """List of domain aliases
+        r"""List of domain aliases
         :rtype: list of DomainAliasInfo
         """
         return self._DomainAliasList
@@ -2796,7 +2796,7 @@ class DescribeDomainAliasListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2817,13 +2817,13 @@ class DescribeDomainAliasListResponse(AbstractModel):
 
 
 class DescribeDomainGroupListRequest(AbstractModel):
-    """DescribeDomainGroupList request structure.
+    r"""DescribeDomainGroupList request structure.
 
     """
 
 
 class DescribeDomainGroupListResponse(AbstractModel):
-    """DescribeDomainGroupList response structure.
+    r"""DescribeDomainGroupList response structure.
 
     """
 
@@ -2839,7 +2839,7 @@ class DescribeDomainGroupListResponse(AbstractModel):
 
     @property
     def GroupList(self):
-        """Group list
+        r"""Group list
         :rtype: list of GroupInfo
         """
         return self._GroupList
@@ -2850,7 +2850,7 @@ class DescribeDomainGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2871,7 +2871,7 @@ class DescribeDomainGroupListResponse(AbstractModel):
 
 
 class DescribeDomainListRequest(AbstractModel):
-    """DescribeDomainList request structure.
+    r"""DescribeDomainList request structure.
 
     """
 
@@ -2896,7 +2896,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Type(self):
-        """The domain group type. Valid values: `ALL` (default), `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`, and `FREE`.
+        r"""The domain group type. Valid values: `ALL` (default), `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`, and `FREE`.
         :rtype: str
         """
         return self._Type
@@ -2907,7 +2907,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Record offset starting from `0`. Default value: `0`.
+        r"""Record offset starting from `0`. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -2918,7 +2918,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of domains to be obtained. For example, `20` indicates to obtain 20 domains. Default value: `3000`.
+        r"""Number of domains to be obtained. For example, `20` indicates to obtain 20 domains. Default value: `3000`.
         :rtype: int
         """
         return self._Limit
@@ -2929,7 +2929,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID, which can be passed in to get all domains in the specified group
+        r"""Group ID, which can be passed in to get all domains in the specified group
         :rtype: int
         """
         return self._GroupId
@@ -2940,7 +2940,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword for searching for a domain
+        r"""Keyword for searching for a domain
         :rtype: str
         """
         return self._Keyword
@@ -2967,7 +2967,7 @@ class DescribeDomainListRequest(AbstractModel):
 
 
 class DescribeDomainListResponse(AbstractModel):
-    """DescribeDomainList response structure.
+    r"""DescribeDomainList response structure.
 
     """
 
@@ -2986,7 +2986,7 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def DomainCountInfo(self):
-        """Statistics on the list page
+        r"""Statistics on the list page
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
         """
         return self._DomainCountInfo
@@ -2997,7 +2997,7 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def DomainList(self):
-        """Domain list
+        r"""Domain list
         :rtype: list of DomainListItem
         """
         return self._DomainList
@@ -3008,7 +3008,7 @@ class DescribeDomainListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3032,7 +3032,7 @@ class DescribeDomainListResponse(AbstractModel):
 
 
 class DescribeDomainLogListRequest(AbstractModel):
-    """DescribeDomainLogList request structure.
+    r"""DescribeDomainLogList request structure.
 
     """
 
@@ -3054,7 +3054,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -3065,7 +3065,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3076,7 +3076,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Record offset starting from `0`. Default value: `0`.
+        r"""Record offset starting from `0`. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -3087,7 +3087,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Total number of logs to be obtained. For example, `20` indicates to obtain 20 logs. Default value: `500`. Maximum value: `500`.
+        r"""Total number of logs to be obtained. For example, `20` indicates to obtain 20 logs. Default value: `500`. Maximum value: `500`.
         :rtype: int
         """
         return self._Limit
@@ -3113,7 +3113,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
 
 class DescribeDomainLogListResponse(AbstractModel):
-    """DescribeDomainLogList response structure.
+    r"""DescribeDomainLogList response structure.
 
     """
 
@@ -3136,7 +3136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogList(self):
-        """Domain information
+        r"""Domain information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3148,7 +3148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageSize(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._PageSize
@@ -3159,7 +3159,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Total number of logs
+        r"""Total number of logs
         :rtype: int
         """
         return self._TotalCount
@@ -3170,7 +3170,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3188,7 +3188,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeDomainPurviewRequest(AbstractModel):
-    """DescribeDomainPurview request structure.
+    r"""DescribeDomainPurview request structure.
 
     """
 
@@ -3204,7 +3204,7 @@ class DescribeDomainPurviewRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -3215,7 +3215,7 @@ class DescribeDomainPurviewRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3239,7 +3239,7 @@ class DescribeDomainPurviewRequest(AbstractModel):
 
 
 class DescribeDomainPurviewResponse(AbstractModel):
-    """DescribeDomainPurview response structure.
+    r"""DescribeDomainPurview response structure.
 
     """
 
@@ -3255,7 +3255,7 @@ class DescribeDomainPurviewResponse(AbstractModel):
 
     @property
     def PurviewList(self):
-        """Permission list of the domain
+        r"""Permission list of the domain
         :rtype: list of PurviewInfo
         """
         return self._PurviewList
@@ -3266,7 +3266,7 @@ class DescribeDomainPurviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3287,7 +3287,7 @@ class DescribeDomainPurviewResponse(AbstractModel):
 
 
 class DescribeDomainRequest(AbstractModel):
-    """DescribeDomain request structure.
+    r"""DescribeDomain request structure.
 
     """
 
@@ -3303,7 +3303,7 @@ class DescribeDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -3314,7 +3314,7 @@ class DescribeDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3338,7 +3338,7 @@ class DescribeDomainRequest(AbstractModel):
 
 
 class DescribeDomainResponse(AbstractModel):
-    """DescribeDomain response structure.
+    r"""DescribeDomain response structure.
 
     """
 
@@ -3354,7 +3354,7 @@ class DescribeDomainResponse(AbstractModel):
 
     @property
     def DomainInfo(self):
-        """Domain information
+        r"""Domain information
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.DomainInfo`
         """
         return self._DomainInfo
@@ -3365,7 +3365,7 @@ class DescribeDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3383,7 +3383,7 @@ class DescribeDomainResponse(AbstractModel):
 
 
 class DescribeDomainShareInfoRequest(AbstractModel):
-    """DescribeDomainShareInfo request structure.
+    r"""DescribeDomainShareInfo request structure.
 
     """
 
@@ -3399,7 +3399,7 @@ class DescribeDomainShareInfoRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -3410,7 +3410,7 @@ class DescribeDomainShareInfoRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3434,7 +3434,7 @@ class DescribeDomainShareInfoRequest(AbstractModel):
 
 
 class DescribeDomainShareInfoResponse(AbstractModel):
-    """DescribeDomainShareInfo response structure.
+    r"""DescribeDomainShareInfo response structure.
 
     """
 
@@ -3453,7 +3453,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
 
     @property
     def ShareList(self):
-        """Domain sharing information
+        r"""Domain sharing information
         :rtype: list of DomainShareInfo
         """
         return self._ShareList
@@ -3464,7 +3464,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
 
     @property
     def Owner(self):
-        """Owner account of the domain
+        r"""Owner account of the domain
         :rtype: str
         """
         return self._Owner
@@ -3475,7 +3475,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3497,7 +3497,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
 
 
 class DescribeRecordGroupListRequest(AbstractModel):
-    """DescribeRecordGroupList request structure.
+    r"""DescribeRecordGroupList request structure.
 
     """
 
@@ -3519,7 +3519,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -3530,7 +3530,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
         :rtype: int
         """
         return self._DomainId
@@ -3541,7 +3541,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Pagination offset
+        r"""Pagination offset
         :rtype: int
         """
         return self._Offset
@@ -3552,7 +3552,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of items per page for pagination
+        r"""Number of items per page for pagination
         :rtype: int
         """
         return self._Limit
@@ -3578,7 +3578,7 @@ class DescribeRecordGroupListRequest(AbstractModel):
 
 
 class DescribeRecordGroupListResponse(AbstractModel):
-    """DescribeRecordGroupList response structure.
+    r"""DescribeRecordGroupList response structure.
 
     """
 
@@ -3594,7 +3594,7 @@ class DescribeRecordGroupListResponse(AbstractModel):
 
     @property
     def GroupList(self):
-        """Group list
+        r"""Group list
         :rtype: list of RecordGroupInfo
         """
         return self._GroupList
@@ -3605,7 +3605,7 @@ class DescribeRecordGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3626,7 +3626,7 @@ class DescribeRecordGroupListResponse(AbstractModel):
 
 
 class DescribeRecordLineListRequest(AbstractModel):
-    """DescribeRecordLineList request structure.
+    r"""DescribeRecordLineList request structure.
 
     """
 
@@ -3647,7 +3647,7 @@ class DescribeRecordLineListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain.
+        r"""Domain.
         :rtype: str
         """
         return self._Domain
@@ -3658,7 +3658,7 @@ class DescribeRecordLineListRequest(AbstractModel):
 
     @property
     def DomainGrade(self):
-        """Domain level.
+        r"""Domain level.
 + Original plan. Valid values: `D_FREE` (Free Plan); `D_PLUS` (Individual Plus Plan); `D_EXTRA` (Enterprise 1 Plan); `D_EXPERT` (Enterprise 2 Plan); `D_ULTRA` (Enterprise 3 Plan).
 + New plan. Valid values: `DP_FREE` (Free Version); `DP_PLUS` (Professional); `DP_EXTRA` (Enterprise Basic); `DP_EXPERT` (Enterprise); `DP_ULTRA` (Ultimate).
         :rtype: str
@@ -3671,7 +3671,7 @@ class DescribeRecordLineListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3696,7 +3696,7 @@ class DescribeRecordLineListRequest(AbstractModel):
 
 
 class DescribeRecordLineListResponse(AbstractModel):
-    """DescribeRecordLineList response structure.
+    r"""DescribeRecordLineList response structure.
 
     """
 
@@ -3715,7 +3715,7 @@ class DescribeRecordLineListResponse(AbstractModel):
 
     @property
     def LineList(self):
-        """List of split zones.
+        r"""List of split zones.
         :rtype: list of LineInfo
         """
         return self._LineList
@@ -3726,7 +3726,7 @@ class DescribeRecordLineListResponse(AbstractModel):
 
     @property
     def LineGroupList(self):
-        """List of split zone groups.
+        r"""List of split zone groups.
         :rtype: list of LineGroupInfo
         """
         return self._LineGroupList
@@ -3737,7 +3737,7 @@ class DescribeRecordLineListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3764,7 +3764,7 @@ class DescribeRecordLineListResponse(AbstractModel):
 
 
 class DescribeRecordListRequest(AbstractModel):
-    """DescribeRecordList request structure.
+    r"""DescribeRecordList request structure.
 
     """
 
@@ -3810,7 +3810,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """The domain for which DNS records are to be obtained.
+        r"""The domain for which DNS records are to be obtained.
         :rtype: str
         """
         return self._Domain
@@ -3821,7 +3821,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The ID of the domain whose DNS records are requested. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The ID of the domain whose DNS records are requested. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -3832,7 +3832,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Subdomain(self):
-        """The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.
+        r"""The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.
         :rtype: str
         """
         return self._Subdomain
@@ -3843,7 +3843,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.
+        r"""The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.
         :rtype: str
         """
         return self._RecordType
@@ -3854,7 +3854,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """The name of the split zone for which DNS records are requested. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
+        r"""The name of the split zone for which DNS records are requested. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
         :rtype: str
         """
         return self._RecordLine
@@ -3865,7 +3865,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """The ID of the split zone for which DNS records are requested. If `RecordLineId` is passed in, `RecordLine` is ignored. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
+        r"""The ID of the split zone for which DNS records are requested. If `RecordLineId` is passed in, `RecordLine` is ignored. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
         :rtype: str
         """
         return self._RecordLineId
@@ -3876,7 +3876,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """The group ID passed in to get DNS records in the group.
+        r"""The group ID passed in to get DNS records in the group.
         :rtype: int
         """
         return self._GroupId
@@ -3887,7 +3887,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """The keyword for searching for DNS records. Host headers and record values are supported.
+        r"""The keyword for searching for DNS records. Host headers and record values are supported.
         :rtype: str
         """
         return self._Keyword
@@ -3898,7 +3898,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def SortField(self):
-        """The sorting field. Available values: `name`, `line`, `type`, `value`, `weight`, `mx`, and `ttl,updated_on`.
+        r"""The sorting field. Available values: `name`, `line`, `type`, `value`, `weight`, `mx`, and `ttl,updated_on`.
         :rtype: str
         """
         return self._SortField
@@ -3909,7 +3909,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def SortType(self):
-        """The sorting type. Valid values: `ASC` (ascending, default), `DESC` (descending).
+        r"""The sorting type. Valid values: `ASC` (ascending, default), `DESC` (descending).
         :rtype: str
         """
         return self._SortType
@@ -3920,7 +3920,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The offset. Default value: `0`.
+        r"""The offset. Default value: `0`.
         :rtype: int
         """
         return self._Offset
@@ -3931,7 +3931,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The limit. It defaults to 100 and can be up to 3,000.
+        r"""The limit. It defaults to 100 and can be up to 3,000.
         :rtype: int
         """
         return self._Limit
@@ -3965,7 +3965,7 @@ class DescribeRecordListRequest(AbstractModel):
 
 
 class DescribeRecordListResponse(AbstractModel):
-    """DescribeRecordList response structure.
+    r"""DescribeRecordList response structure.
 
     """
 
@@ -3984,7 +3984,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     @property
     def RecordCountInfo(self):
-        """The record count info.
+        r"""The record count info.
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
         """
         return self._RecordCountInfo
@@ -3995,7 +3995,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     @property
     def RecordList(self):
-        """The record list result.
+        r"""The record list result.
         :rtype: list of RecordListItem
         """
         return self._RecordList
@@ -4006,7 +4006,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4030,7 +4030,7 @@ class DescribeRecordListResponse(AbstractModel):
 
 
 class DescribeRecordRequest(AbstractModel):
-    """DescribeRecord request structure.
+    r"""DescribeRecord request structure.
 
     """
 
@@ -4049,7 +4049,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -4060,7 +4060,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: int
         """
         return self._RecordId
@@ -4071,7 +4071,7 @@ class DescribeRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -4096,7 +4096,7 @@ class DescribeRecordRequest(AbstractModel):
 
 
 class DescribeRecordResponse(AbstractModel):
-    """DescribeRecord response structure.
+    r"""DescribeRecord response structure.
 
     """
 
@@ -4112,7 +4112,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RecordInfo(self):
-        """Record information
+        r"""Record information
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.RecordInfo`
         """
         return self._RecordInfo
@@ -4123,7 +4123,7 @@ class DescribeRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4141,7 +4141,7 @@ class DescribeRecordResponse(AbstractModel):
 
 
 class DescribeRecordTypeRequest(AbstractModel):
-    """DescribeRecordType request structure.
+    r"""DescribeRecordType request structure.
 
     """
 
@@ -4156,7 +4156,7 @@ class DescribeRecordTypeRequest(AbstractModel):
 
     @property
     def DomainGrade(self):
-        """Domain level.
+        r"""Domain level.
 + Original plan. Valid values: `D_FREE` (Free Plan); `D_PLUS` (Individual Plus Plan); `D_EXTRA` (Enterprise 1 Plan); `D_EXPERT` (Enterprise 2 Plan); `D_ULTRA` (Enterprise 3 Plan).
 + New plan. Valid values: `DP_FREE` (Free Version); `DP_PLUS` (Professional); `DP_EXTRA` (Enterprise Basic); `DP_EXPERT` (Enterprise); `DP_ULTRA` (Ultimate).
         :rtype: str
@@ -4181,7 +4181,7 @@ class DescribeRecordTypeRequest(AbstractModel):
 
 
 class DescribeRecordTypeResponse(AbstractModel):
-    """DescribeRecordType response structure.
+    r"""DescribeRecordType response structure.
 
     """
 
@@ -4197,7 +4197,7 @@ class DescribeRecordTypeResponse(AbstractModel):
 
     @property
     def TypeList(self):
-        """List of record types
+        r"""List of record types
         :rtype: list of str
         """
         return self._TypeList
@@ -4208,7 +4208,7 @@ class DescribeRecordTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4224,7 +4224,7 @@ class DescribeRecordTypeResponse(AbstractModel):
 
 
 class DescribeSubdomainAnalyticsRequest(AbstractModel):
-    """DescribeSubdomainAnalytics request structure.
+    r"""DescribeSubdomainAnalytics request structure.
 
     """
 
@@ -4252,7 +4252,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """The domain of the DNS query volume to be queried
+        r"""The domain of the DNS query volume to be queried
         :rtype: str
         """
         return self._Domain
@@ -4263,7 +4263,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """Query start date in the format of `YYYY-MM-DD`
+        r"""Query start date in the format of `YYYY-MM-DD`
         :rtype: str
         """
         return self._StartDate
@@ -4274,7 +4274,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """Query end date in the format of `YYYY-MM-DD`
+        r"""Query end date in the format of `YYYY-MM-DD`
         :rtype: str
         """
         return self._EndDate
@@ -4285,7 +4285,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def Subdomain(self):
-        """The subdomain of the DNS query volume to be queried
+        r"""The subdomain of the DNS query volume to be queried
         :rtype: str
         """
         return self._Subdomain
@@ -4296,7 +4296,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def DnsFormat(self):
-        """`DATE`: Daily. `HOUR`: Hourly
+        r"""`DATE`: Daily. `HOUR`: Hourly
         :rtype: str
         """
         return self._DnsFormat
@@ -4307,7 +4307,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -4335,7 +4335,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
 
 class DescribeSubdomainAnalyticsResponse(AbstractModel):
-    """DescribeSubdomainAnalytics response structure.
+    r"""DescribeSubdomainAnalytics response structure.
 
     """
 
@@ -4357,7 +4357,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """DNS query volume in the current statistical dimension
+        r"""DNS query volume in the current statistical dimension
         :rtype: list of DomainAnalyticsDetail
         """
         return self._Data
@@ -4368,7 +4368,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def Info(self):
-        """Statistics on the DNS query volume of a subdomain
+        r"""Statistics on the DNS query volume of a subdomain
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
         """
         return self._Info
@@ -4379,7 +4379,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def AliasData(self):
-        """DNS query volume of the subdomain alias
+        r"""DNS query volume of the subdomain alias
         :rtype: list of SubdomainAliasAnalyticsItem
         """
         return self._AliasData
@@ -4390,7 +4390,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4420,7 +4420,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
 
 class DomainAliasInfo(AbstractModel):
-    """Information of a domain alias
+    r"""Information of a domain alias
 
     """
 
@@ -4436,7 +4436,7 @@ class DomainAliasInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Domain alias ID
+        r"""Domain alias ID
         :rtype: int
         """
         return self._Id
@@ -4447,7 +4447,7 @@ class DomainAliasInfo(AbstractModel):
 
     @property
     def DomainAlias(self):
-        """Domain alias
+        r"""Domain alias
         :rtype: str
         """
         return self._DomainAlias
@@ -4471,7 +4471,7 @@ class DomainAliasInfo(AbstractModel):
 
 
 class DomainAnalyticsDetail(AbstractModel):
-    """DNS query volume in the current statistical dimension
+    r"""DNS query volume in the current statistical dimension
 
     """
 
@@ -4491,7 +4491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Num(self):
-        """DNS query volume in the current statistical dimension
+        r"""DNS query volume in the current statistical dimension
         :rtype: int
         """
         return self._Num
@@ -4502,7 +4502,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateKey(self):
-        """Collection date for daily collection
+        r"""Collection date for daily collection
         :rtype: str
         """
         return self._DateKey
@@ -4513,7 +4513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HourKey(self):
-        """The last hour (0–23) for hourly collection. For example, if `HourKey` is `23`, the DNS query volume in the statistical period of 22:00–23:00 will be collected.
+        r"""The last hour (0–23) for hourly collection. For example, if `HourKey` is `23`, the DNS query volume in the statistical period of 22:00–23:00 will be collected.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4539,7 +4539,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DomainCountInfo(AbstractModel):
-    """List statistics by page
+    r"""List statistics by page
 
     """
 
@@ -4585,7 +4585,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def DomainTotal(self):
-        """Number of eligible domains
+        r"""Number of eligible domains
         :rtype: int
         """
         return self._DomainTotal
@@ -4596,7 +4596,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def AllTotal(self):
-        """Number of all domains that can be viewed by the user
+        r"""Number of all domains that can be viewed by the user
         :rtype: int
         """
         return self._AllTotal
@@ -4607,7 +4607,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def MineTotal(self):
-        """Number of domains added under the user account
+        r"""Number of domains added under the user account
         :rtype: int
         """
         return self._MineTotal
@@ -4618,7 +4618,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def ShareTotal(self):
-        """Number of domains shared with the user
+        r"""Number of domains shared with the user
         :rtype: int
         """
         return self._ShareTotal
@@ -4629,7 +4629,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def VipTotal(self):
-        """Number of paid domains
+        r"""Number of paid domains
         :rtype: int
         """
         return self._VipTotal
@@ -4640,7 +4640,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def PauseTotal(self):
-        """Number of suspended domains
+        r"""Number of suspended domains
         :rtype: int
         """
         return self._PauseTotal
@@ -4651,7 +4651,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def ErrorTotal(self):
-        """Number of domains with a DNS configuration error
+        r"""Number of domains with a DNS configuration error
         :rtype: int
         """
         return self._ErrorTotal
@@ -4662,7 +4662,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def LockTotal(self):
-        """Number of locked domains
+        r"""Number of locked domains
         :rtype: int
         """
         return self._LockTotal
@@ -4673,7 +4673,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def SpamTotal(self):
-        """Number of blocked domains
+        r"""Number of blocked domains
         :rtype: int
         """
         return self._SpamTotal
@@ -4684,7 +4684,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def VipExpire(self):
-        """Number of domains that will expire within 30 days
+        r"""Number of domains that will expire within 30 days
         :rtype: int
         """
         return self._VipExpire
@@ -4695,7 +4695,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def ShareOutTotal(self):
-        """Number of domains shared with others
+        r"""Number of domains shared with others
         :rtype: int
         """
         return self._ShareOutTotal
@@ -4706,7 +4706,7 @@ class DomainCountInfo(AbstractModel):
 
     @property
     def GroupTotal(self):
-        """Number of domains in the specified group
+        r"""Number of domains in the specified group
         :rtype: int
         """
         return self._GroupTotal
@@ -4740,7 +4740,7 @@ class DomainCountInfo(AbstractModel):
 
 
 class DomainCreateInfo(AbstractModel):
-    """Domain information returned during domain creation
+    r"""Domain information returned during domain creation
 
     """
 
@@ -4762,7 +4762,7 @@ class DomainCreateInfo(AbstractModel):
 
     @property
     def Id(self):
-        """Domain ID
+        r"""Domain ID
         :rtype: int
         """
         return self._Id
@@ -4773,7 +4773,7 @@ class DomainCreateInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -4784,7 +4784,7 @@ class DomainCreateInfo(AbstractModel):
 
     @property
     def Punycode(self):
-        """Domain Punycode
+        r"""Domain Punycode
         :rtype: str
         """
         return self._Punycode
@@ -4795,7 +4795,7 @@ class DomainCreateInfo(AbstractModel):
 
     @property
     def GradeNsList(self):
-        """NS list of the domain
+        r"""NS list of the domain
         :rtype: list of str
         """
         return self._GradeNsList
@@ -4821,7 +4821,7 @@ class DomainCreateInfo(AbstractModel):
 
 
 class DomainInfo(AbstractModel):
-    """Domain details
+    r"""Domain details
 
     """
 
@@ -4903,7 +4903,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainId(self):
-        """Domain ID
+        r"""Domain ID
         :rtype: int
         """
         return self._DomainId
@@ -4914,7 +4914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Domain status
+        r"""Domain status
         :rtype: str
         """
         return self._Status
@@ -4925,7 +4925,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Grade(self):
-        """DNS plan level
+        r"""DNS plan level
         :rtype: str
         """
         return self._Grade
@@ -4936,7 +4936,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupId(self):
-        """Domain group ID
+        r"""Domain group ID
         :rtype: int
         """
         return self._GroupId
@@ -4947,7 +4947,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMark(self):
-        """Whether the domain is starred
+        r"""Whether the domain is starred
         :rtype: str
         """
         return self._IsMark
@@ -4958,7 +4958,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """TTL (DNS record cache time)
+        r"""TTL (DNS record cache time)
         :rtype: int
         """
         return self._TTL
@@ -4969,7 +4969,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnameSpeedup(self):
-        """Whether CNAME flattening is enabled
+        r"""Whether CNAME flattening is enabled
         :rtype: str
         """
         return self._CnameSpeedup
@@ -4980,7 +4980,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Domain remarks
+        r"""Domain remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4992,7 +4992,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Punycode(self):
-        """Domain Punycode
+        r"""Domain Punycode
         :rtype: str
         """
         return self._Punycode
@@ -5003,7 +5003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsStatus(self):
-        """DNS status of the domain
+        r"""DNS status of the domain
         :rtype: str
         """
         return self._DnsStatus
@@ -5014,7 +5014,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnspodNsList(self):
-        """NS list of the domain
+        r"""NS list of the domain
         :rtype: list of str
         """
         return self._DnspodNsList
@@ -5025,7 +5025,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -5036,7 +5036,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GradeLevel(self):
-        """Domain level ID
+        r"""Domain level ID
         :rtype: int
         """
         return self._GradeLevel
@@ -5047,7 +5047,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
-        """Domain user ID
+        r"""Domain user ID
         :rtype: int
         """
         return self._UserId
@@ -5058,7 +5058,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVip(self):
-        """Whether the domain is a VIP domain
+        r"""Whether the domain is a VIP domain
         :rtype: str
         """
         return self._IsVip
@@ -5069,7 +5069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Owner(self):
-        """Domain owner account
+        r"""Domain owner account
         :rtype: str
         """
         return self._Owner
@@ -5080,7 +5080,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GradeTitle(self):
-        """Domain level description
+        r"""Domain level description
         :rtype: str
         """
         return self._GradeTitle
@@ -5091,7 +5091,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedOn(self):
-        """Domain creation time
+        r"""Domain creation time
         :rtype: str
         """
         return self._CreatedOn
@@ -5102,7 +5102,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """Last update time
+        r"""Last update time
         :rtype: str
         """
         return self._UpdatedOn
@@ -5113,7 +5113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
-        """Tencent Cloud account `Uin`
+        r"""Tencent Cloud account `Uin`
         :rtype: str
         """
         return self._Uin
@@ -5124,7 +5124,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActualNsList(self):
-        """NS list actually used by the domain
+        r"""NS list actually used by the domain
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -5136,7 +5136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordCount(self):
-        """Number of domain records
+        r"""Number of domain records
         :rtype: int
         """
         return self._RecordCount
@@ -5147,7 +5147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerNick(self):
-        """Alias of the domain account owner
+        r"""Alias of the domain account owner
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5193,7 +5193,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DomainListItem(AbstractModel):
-    """Element in the domain list
+    r"""Element in the domain list
 
     """
 
@@ -5269,7 +5269,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def DomainId(self):
-        """Unique ID assigned to the domain by the system
+        r"""Unique ID assigned to the domain by the system
         :rtype: int
         """
         return self._DomainId
@@ -5280,7 +5280,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Name(self):
-        """Original format of the domain
+        r"""Original format of the domain
         :rtype: str
         """
         return self._Name
@@ -5291,7 +5291,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Status(self):
-        """Domain status. Valid values: `ENABLE` (normal), `PAUSE` (suspended), `SPAM` (blocked).
+        r"""Domain status. Valid values: `ENABLE` (normal), `PAUSE` (suspended), `SPAM` (blocked).
         :rtype: str
         """
         return self._Status
@@ -5302,7 +5302,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def TTL(self):
-        """Default TTL of the default DNS record of the domain
+        r"""Default TTL of the default DNS record of the domain
         :rtype: int
         """
         return self._TTL
@@ -5313,7 +5313,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def CNAMESpeedup(self):
-        """Whether CNAME flattening is enabled. Valid values: `ENABLE` (enabled); `DISABLE` (disabled).
+        r"""Whether CNAME flattening is enabled. Valid values: `ENABLE` (enabled); `DISABLE` (disabled).
         :rtype: str
         """
         return self._CNAMESpeedup
@@ -5324,7 +5324,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def DNSStatus(self):
-        """DNS configuration status. Valid values: `DNSERROR` (error), an empty string (normal).
+        r"""DNS configuration status. Valid values: `DNSERROR` (error), an empty string (normal).
         :rtype: str
         """
         return self._DNSStatus
@@ -5335,7 +5335,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Grade(self):
-        """Plan level code of the domain
+        r"""Plan level code of the domain
         :rtype: str
         """
         return self._Grade
@@ -5346,7 +5346,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID of the domain
+        r"""Group ID of the domain
         :rtype: int
         """
         return self._GroupId
@@ -5357,7 +5357,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def SearchEnginePush(self):
-        """Whether search engine push optimization is enabled. Valid values: `YES` (yes), `NO` (no).
+        r"""Whether search engine push optimization is enabled. Valid values: `YES` (yes), `NO` (no).
         :rtype: str
         """
         return self._SearchEnginePush
@@ -5368,7 +5368,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Remark(self):
-        """Domain remarks
+        r"""Domain remarks
         :rtype: str
         """
         return self._Remark
@@ -5379,7 +5379,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Punycode(self):
-        """Punycode-encoded domain format
+        r"""Punycode-encoded domain format
         :rtype: str
         """
         return self._Punycode
@@ -5390,7 +5390,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def EffectiveDNS(self):
-        """Effective DNS assigned to the domain by the system
+        r"""Effective DNS assigned to the domain by the system
         :rtype: list of str
         """
         return self._EffectiveDNS
@@ -5401,7 +5401,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def GradeLevel(self):
-        """Number corresponding to the plan level of the domain
+        r"""Number corresponding to the plan level of the domain
         :rtype: int
         """
         return self._GradeLevel
@@ -5412,7 +5412,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def GradeTitle(self):
-        """Plan name
+        r"""Plan name
         :rtype: str
         """
         return self._GradeTitle
@@ -5423,7 +5423,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def IsVip(self):
-        """Whether it is a paid plan
+        r"""Whether it is a paid plan
         :rtype: str
         """
         return self._IsVip
@@ -5434,7 +5434,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def VipStartAt(self):
-        """Activation time of the paid plan
+        r"""Activation time of the paid plan
         :rtype: str
         """
         return self._VipStartAt
@@ -5445,7 +5445,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def VipEndAt(self):
-        """Expiry time of the paid plan
+        r"""Expiry time of the paid plan
         :rtype: str
         """
         return self._VipEndAt
@@ -5456,7 +5456,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def VipAutoRenew(self):
-        """Whether VIP automatic renewal is enabled for the domain. Valid values: `YES` (yes); `NO` (no). Default value: `DEFAULT`.
+        r"""Whether VIP automatic renewal is enabled for the domain. Valid values: `YES` (yes); `NO` (no). Default value: `DEFAULT`.
         :rtype: str
         """
         return self._VipAutoRenew
@@ -5467,7 +5467,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def RecordCount(self):
-        """Number of records under the domain
+        r"""Number of records under the domain
         :rtype: int
         """
         return self._RecordCount
@@ -5478,7 +5478,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def CreatedOn(self):
-        """Domain adding time
+        r"""Domain adding time
         :rtype: str
         """
         return self._CreatedOn
@@ -5489,7 +5489,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        """Domain update time
+        r"""Domain update time
         :rtype: str
         """
         return self._UpdatedOn
@@ -5500,7 +5500,7 @@ class DomainListItem(AbstractModel):
 
     @property
     def Owner(self):
-        """Account of the domain
+        r"""Account of the domain
         :rtype: str
         """
         return self._Owner
@@ -5544,7 +5544,7 @@ class DomainListItem(AbstractModel):
 
 
 class DomainShareInfo(AbstractModel):
-    """Domain sharing information
+    r"""Domain sharing information
 
     """
 
@@ -5563,7 +5563,7 @@ class DomainShareInfo(AbstractModel):
 
     @property
     def ShareTo(self):
-        """Account with which the domain is shared
+        r"""Account with which the domain is shared
         :rtype: str
         """
         return self._ShareTo
@@ -5574,7 +5574,7 @@ class DomainShareInfo(AbstractModel):
 
     @property
     def Mode(self):
-        """Sharing mode. Valid values: `rw` (read/write), `r` (read-only).
+        r"""Sharing mode. Valid values: `rw` (read/write), `r` (read-only).
         :rtype: str
         """
         return self._Mode
@@ -5585,7 +5585,7 @@ class DomainShareInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Sharing status. Valid values: `enabled` (shared successfully); `pending` (the account shared to does not exist and is pending registration).
+        r"""Sharing status. Valid values: `enabled` (shared successfully); `pending` (the account shared to does not exist and is pending registration).
         :rtype: str
         """
         return self._Status
@@ -5610,7 +5610,7 @@ class DomainShareInfo(AbstractModel):
 
 
 class GroupInfo(AbstractModel):
-    """List of domain groups
+    r"""List of domain groups
 
     """
 
@@ -5632,7 +5632,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: int
         """
         return self._GroupId
@@ -5643,7 +5643,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -5654,7 +5654,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        """Group type
+        r"""Group type
         :rtype: str
         """
         return self._GroupType
@@ -5665,7 +5665,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Size(self):
-        """Number of domains in the group
+        r"""Number of domains in the group
         :rtype: int
         """
         return self._Size
@@ -5691,7 +5691,7 @@ class GroupInfo(AbstractModel):
 
 
 class LineGroupInfo(AbstractModel):
-    """Information of a split zone group
+    r"""Information of a split zone group
 
     """
 
@@ -5713,7 +5713,7 @@ class LineGroupInfo(AbstractModel):
 
     @property
     def LineId(self):
-        """Split zone group ID
+        r"""Split zone group ID
         :rtype: str
         """
         return self._LineId
@@ -5724,7 +5724,7 @@ class LineGroupInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Split zone group name
+        r"""Split zone group name
         :rtype: str
         """
         return self._Name
@@ -5735,7 +5735,7 @@ class LineGroupInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Group type
+        r"""Group type
         :rtype: str
         """
         return self._Type
@@ -5746,7 +5746,7 @@ class LineGroupInfo(AbstractModel):
 
     @property
     def LineList(self):
-        """List of split zones in the split zone group
+        r"""List of split zones in the split zone group
         :rtype: list of str
         """
         return self._LineList
@@ -5772,7 +5772,7 @@ class LineGroupInfo(AbstractModel):
 
 
 class LineInfo(AbstractModel):
-    """Information of a split zone
+    r"""Information of a split zone
 
     """
 
@@ -5788,7 +5788,7 @@ class LineInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Split zone name
+        r"""Split zone name
         :rtype: str
         """
         return self._Name
@@ -5799,7 +5799,7 @@ class LineInfo(AbstractModel):
 
     @property
     def LineId(self):
-        """Split zone ID
+        r"""Split zone ID
         :rtype: str
         """
         return self._LineId
@@ -5823,7 +5823,7 @@ class LineInfo(AbstractModel):
 
 
 class LockInfo(AbstractModel):
-    """Domain lock information
+    r"""Domain lock information
 
     """
 
@@ -5842,7 +5842,7 @@ class LockInfo(AbstractModel):
 
     @property
     def DomainId(self):
-        """Domain ID
+        r"""Domain ID
         :rtype: int
         """
         return self._DomainId
@@ -5853,7 +5853,7 @@ class LockInfo(AbstractModel):
 
     @property
     def LockCode(self):
-        """Domain unlock code
+        r"""Domain unlock code
         :rtype: str
         """
         return self._LockCode
@@ -5864,7 +5864,7 @@ class LockInfo(AbstractModel):
 
     @property
     def LockEnd(self):
-        """Automatic unlock date of the domain
+        r"""Automatic unlock date of the domain
         :rtype: str
         """
         return self._LockEnd
@@ -5889,7 +5889,7 @@ class LockInfo(AbstractModel):
 
 
 class ModifyDomainLockRequest(AbstractModel):
-    """ModifyDomainLock request structure.
+    r"""ModifyDomainLock request structure.
 
     """
 
@@ -5908,7 +5908,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -5919,7 +5919,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
     @property
     def LockDays(self):
-        """Number of days to lock the domain. The maximum number of locked days can be obtained by calling the API for getting the permissions of a domain.
+        r"""Number of days to lock the domain. The maximum number of locked days can be obtained by calling the API for getting the permissions of a domain.
         :rtype: int
         """
         return self._LockDays
@@ -5930,7 +5930,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -5955,7 +5955,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
 
 class ModifyDomainLockResponse(AbstractModel):
-    """ModifyDomainLock response structure.
+    r"""ModifyDomainLock response structure.
 
     """
 
@@ -5971,7 +5971,7 @@ class ModifyDomainLockResponse(AbstractModel):
 
     @property
     def LockInfo(self):
-        """Domain lock information
+        r"""Domain lock information
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.LockInfo`
         """
         return self._LockInfo
@@ -5982,7 +5982,7 @@ class ModifyDomainLockResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6000,7 +6000,7 @@ class ModifyDomainLockResponse(AbstractModel):
 
 
 class ModifyDomainOwnerRequest(AbstractModel):
-    """ModifyDomainOwner request structure.
+    r"""ModifyDomainOwner request structure.
 
     """
 
@@ -6019,7 +6019,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6030,7 +6030,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
     @property
     def Account(self):
-        """The account to which to transfer the domain, which can be an UIN or email address
+        r"""The account to which to transfer the domain, which can be an UIN or email address
         :rtype: str
         """
         return self._Account
@@ -6041,7 +6041,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -6066,7 +6066,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
 
 class ModifyDomainOwnerResponse(AbstractModel):
-    """ModifyDomainOwner response structure.
+    r"""ModifyDomainOwner response structure.
 
     """
 
@@ -6079,7 +6079,7 @@ class ModifyDomainOwnerResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6094,7 +6094,7 @@ class ModifyDomainOwnerResponse(AbstractModel):
 
 
 class ModifyDomainRemarkRequest(AbstractModel):
-    """ModifyDomainRemark request structure.
+    r"""ModifyDomainRemark request structure.
 
     """
 
@@ -6113,7 +6113,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6124,7 +6124,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -6135,7 +6135,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Domain remarks. To delete the remarks, submit empty content.
+        r"""Domain remarks. To delete the remarks, submit empty content.
         :rtype: str
         """
         return self._Remark
@@ -6160,7 +6160,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
 
 
 class ModifyDomainRemarkResponse(AbstractModel):
-    """ModifyDomainRemark response structure.
+    r"""ModifyDomainRemark response structure.
 
     """
 
@@ -6173,7 +6173,7 @@ class ModifyDomainRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6188,7 +6188,7 @@ class ModifyDomainRemarkResponse(AbstractModel):
 
 
 class ModifyDomainStatusRequest(AbstractModel):
-    """ModifyDomainStatus request structure.
+    r"""ModifyDomainStatus request structure.
 
     """
 
@@ -6207,7 +6207,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6218,7 +6218,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Domain status. Valid values: enable; disable.
+        r"""Domain status. Valid values: enable; disable.
         :rtype: str
         """
         return self._Status
@@ -6229,7 +6229,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -6254,7 +6254,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
 
 class ModifyDomainStatusResponse(AbstractModel):
-    """ModifyDomainStatus response structure.
+    r"""ModifyDomainStatus response structure.
 
     """
 
@@ -6267,7 +6267,7 @@ class ModifyDomainStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6282,7 +6282,7 @@ class ModifyDomainStatusResponse(AbstractModel):
 
 
 class ModifyDomainUnlockRequest(AbstractModel):
-    """ModifyDomainUnlock request structure.
+    r"""ModifyDomainUnlock request structure.
 
     """
 
@@ -6301,7 +6301,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6312,7 +6312,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
 
     @property
     def LockCode(self):
-        """Domain unlock code, which will be returned when the domain is locked.
+        r"""Domain unlock code, which will be returned when the domain is locked.
         :rtype: str
         """
         return self._LockCode
@@ -6323,7 +6323,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -6348,7 +6348,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
 
 
 class ModifyDomainUnlockResponse(AbstractModel):
-    """ModifyDomainUnlock response structure.
+    r"""ModifyDomainUnlock response structure.
 
     """
 
@@ -6361,7 +6361,7 @@ class ModifyDomainUnlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6376,7 +6376,7 @@ class ModifyDomainUnlockResponse(AbstractModel):
 
 
 class ModifyRecordBatchDetail(AbstractModel):
-    """Response structure for bulk adding records
+    r"""Response structure for bulk adding records
 
     """
 
@@ -6417,7 +6417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordList(self):
-        """See `RecordInfoBatchModify`.
+        r"""See `RecordInfoBatchModify`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BatchRecordInfo
         """
@@ -6429,7 +6429,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Task ID
+        r"""Task ID
         :rtype: int
         """
         return self._Id
@@ -6440,7 +6440,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6452,7 +6452,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainGrade(self):
-        """Domain level
+        r"""Domain level
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6464,7 +6464,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrMsg(self):
-        """Error message
+        r"""Error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6476,7 +6476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Task running status
+        r"""Task running status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6488,7 +6488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
-        """Operation type
+        r"""Operation type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6500,7 +6500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainId(self):
-        """Domain ID
+        r"""Domain ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -6536,7 +6536,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyRecordBatchRequest(AbstractModel):
-    """ModifyRecordBatch request structure.
+    r"""ModifyRecordBatch request structure.
 
     """
 
@@ -6561,7 +6561,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def RecordIdList(self):
-        """Array of record IDs. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""Array of record IDs. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: list of int non-negative
         """
         return self._RecordIdList
@@ -6572,7 +6572,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def Change(self):
-        """The field to be modified. Valid values: `sub_domain`, `record_type`, `area`, `value`, `mx`, `ttl`, `status`.
+        r"""The field to be modified. Valid values: `sub_domain`, `record_type`, `area`, `value`, `mx`, `ttl`, `status`.
         :rtype: str
         """
         return self._Change
@@ -6583,7 +6583,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def ChangeTo(self):
-        """The value to be changed to, which is required and subject to the `change` field.
+        r"""The value to be changed to, which is required and subject to the `change` field.
         :rtype: str
         """
         return self._ChangeTo
@@ -6594,7 +6594,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def Value(self):
-        """The record value to be changed to, which is required only if the `change` field is `record_type`.
+        r"""The record value to be changed to, which is required only if the `change` field is `record_type`.
         :rtype: str
         """
         return self._Value
@@ -6605,7 +6605,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX record priority, which is required only if the `Change` field is `mx`.
+        r"""MX record priority, which is required only if the `Change` field is `mx`.
         :rtype: str
         """
         return self._MX
@@ -6632,7 +6632,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
 
 class ModifyRecordBatchResponse(AbstractModel):
-    """ModifyRecordBatch response structure.
+    r"""ModifyRecordBatch response structure.
 
     """
 
@@ -6651,7 +6651,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def JobId(self):
-        """Bulk task ID
+        r"""Bulk task ID
         :rtype: int
         """
         return self._JobId
@@ -6662,7 +6662,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        """See `modifyRecordBatchDetail`.
+        r"""See `modifyRecordBatchDetail`.
         :rtype: list of ModifyRecordBatchDetail
         """
         return self._DetailList
@@ -6673,7 +6673,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6695,7 +6695,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
 
 class ModifyRecordGroupRequest(AbstractModel):
-    """ModifyRecordGroup request structure.
+    r"""ModifyRecordGroup request structure.
 
     """
 
@@ -6717,7 +6717,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6728,7 +6728,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -6739,7 +6739,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the group to be modified
+        r"""ID of the group to be modified
         :rtype: int
         """
         return self._GroupId
@@ -6750,7 +6750,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
         :rtype: int
         """
         return self._DomainId
@@ -6776,7 +6776,7 @@ class ModifyRecordGroupRequest(AbstractModel):
 
 
 class ModifyRecordGroupResponse(AbstractModel):
-    """ModifyRecordGroup response structure.
+    r"""ModifyRecordGroup response structure.
 
     """
 
@@ -6792,7 +6792,7 @@ class ModifyRecordGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        """ID of the modified group
+        r"""ID of the modified group
         :rtype: int
         """
         return self._GroupId
@@ -6803,7 +6803,7 @@ class ModifyRecordGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6819,7 +6819,7 @@ class ModifyRecordGroupResponse(AbstractModel):
 
 
 class ModifyRecordRemarkRequest(AbstractModel):
-    """ModifyRecordRemark request structure.
+    r"""ModifyRecordRemark request structure.
 
     """
 
@@ -6841,7 +6841,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6852,7 +6852,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: int
         """
         return self._RecordId
@@ -6863,7 +6863,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -6874,7 +6874,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """DNS record remarks. To delete the remarks, submit empty content.
+        r"""DNS record remarks. To delete the remarks, submit empty content.
         :rtype: str
         """
         return self._Remark
@@ -6900,7 +6900,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
 
 class ModifyRecordRemarkResponse(AbstractModel):
-    """ModifyRecordRemark response structure.
+    r"""ModifyRecordRemark response structure.
 
     """
 
@@ -6913,7 +6913,7 @@ class ModifyRecordRemarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6928,7 +6928,7 @@ class ModifyRecordRemarkResponse(AbstractModel):
 
 
 class ModifyRecordRequest(AbstractModel):
-    """ModifyRecord request structure.
+    r"""ModifyRecord request structure.
 
     """
 
@@ -6974,7 +6974,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -6985,7 +6985,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        """Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.
+        r"""Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.
         :rtype: str
         """
         return self._RecordType
@@ -6996,7 +6996,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        """Record split zone, which is obtained through the record split zone API.
+        r"""Record split zone, which is obtained through the record split zone API.
         :rtype: str
         """
         return self._RecordLine
@@ -7007,7 +7007,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Value(self):
-        """Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.
+        r"""Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.
         :rtype: str
         """
         return self._Value
@@ -7018,7 +7018,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: int
         """
         return self._RecordId
@@ -7029,7 +7029,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -7040,7 +7040,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        """Host record such as `www`. If it is not passed in, it will be `@` by default.
+        r"""Host record such as `www`. If it is not passed in, it will be `@` by default.
         :rtype: str
         """
         return self._SubDomain
@@ -7051,7 +7051,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        """Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.
+        r"""Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.
         :rtype: str
         """
         return self._RecordLineId
@@ -7062,7 +7062,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        """MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.
+        r"""MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.
         :rtype: int
         """
         return self._MX
@@ -7073,7 +7073,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        """TTL. Value range: 1–604800. The minimum value varies by domain level.
+        r"""TTL. Value range: 1–604800. The minimum value varies by domain level.
         :rtype: int
         """
         return self._TTL
@@ -7084,7 +7084,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        """Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.
+        r"""Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.
         :rtype: int
         """
         return self._Weight
@@ -7095,7 +7095,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
+        r"""Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
         :rtype: str
         """
         return self._Status
@@ -7129,7 +7129,7 @@ class ModifyRecordRequest(AbstractModel):
 
 
 class ModifyRecordResponse(AbstractModel):
-    """ModifyRecord response structure.
+    r"""ModifyRecord response structure.
 
     """
 
@@ -7145,7 +7145,7 @@ class ModifyRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID
+        r"""Record ID
         :rtype: int
         """
         return self._RecordId
@@ -7156,7 +7156,7 @@ class ModifyRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7172,7 +7172,7 @@ class ModifyRecordResponse(AbstractModel):
 
 
 class ModifyRecordStatusRequest(AbstractModel):
-    """ModifyRecordStatus request structure.
+    r"""ModifyRecordStatus request structure.
 
     """
 
@@ -7194,7 +7194,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -7205,7 +7205,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
+        r"""The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :rtype: int
         """
         return self._RecordId
@@ -7216,7 +7216,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Record status. Valid values: `ENABLE`, `DISABLE`. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
+        r"""Record status. Valid values: `ENABLE`, `DISABLE`. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.
         :rtype: str
         """
         return self._Status
@@ -7227,7 +7227,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :rtype: int
         """
         return self._DomainId
@@ -7253,7 +7253,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
 
 class ModifyRecordStatusResponse(AbstractModel):
-    """ModifyRecordStatus response structure.
+    r"""ModifyRecordStatus response structure.
 
     """
 
@@ -7269,7 +7269,7 @@ class ModifyRecordStatusResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID.
+        r"""Record ID.
         :rtype: int
         """
         return self._RecordId
@@ -7280,7 +7280,7 @@ class ModifyRecordStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7296,7 +7296,7 @@ class ModifyRecordStatusResponse(AbstractModel):
 
 
 class ModifyRecordToGroupRequest(AbstractModel):
-    """ModifyRecordToGroup request structure.
+    r"""ModifyRecordToGroup request structure.
 
     """
 
@@ -7318,7 +7318,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def Domain(self):
-        """Domain
+        r"""Domain
         :rtype: str
         """
         return self._Domain
@@ -7329,7 +7329,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: int
         """
         return self._GroupId
@@ -7340,7 +7340,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        """Record ID. Separate multiple IDs by vertical bar ("|").
+        r"""Record ID. Separate multiple IDs by vertical bar ("|").
         :rtype: str
         """
         return self._RecordId
@@ -7351,7 +7351,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        """The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
+        r"""The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored.
         :rtype: int
         """
         return self._DomainId
@@ -7377,7 +7377,7 @@ class ModifyRecordToGroupRequest(AbstractModel):
 
 
 class ModifyRecordToGroupResponse(AbstractModel):
-    """ModifyRecordToGroup response structure.
+    r"""ModifyRecordToGroup response structure.
 
     """
 
@@ -7390,7 +7390,7 @@ class ModifyRecordToGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7405,7 +7405,7 @@ class ModifyRecordToGroupResponse(AbstractModel):
 
 
 class PurviewInfo(AbstractModel):
-    """Domain permission
+    r"""Domain permission
 
     """
 
@@ -7421,7 +7421,7 @@ class PurviewInfo(AbstractModel):
 
     @property
     def Name(self):
-        """Permission name
+        r"""Permission name
         :rtype: str
         """
         return self._Name
@@ -7432,7 +7432,7 @@ class PurviewInfo(AbstractModel):
 
     @property
     def Value(self):
-        """Permission value
+        r"""Permission value
         :rtype: str
         """
         return self._Value
@@ -7456,7 +7456,7 @@ class PurviewInfo(AbstractModel):
 
 
 class RecordCountInfo(AbstractModel):
-    """Count info of the queried record list
+    r"""Count info of the queried record list
 
     """
 
@@ -7475,7 +7475,7 @@ class RecordCountInfo(AbstractModel):
 
     @property
     def SubdomainCount(self):
-        """The subdomain count.
+        r"""The subdomain count.
         :rtype: int
         """
         return self._SubdomainCount
@@ -7486,7 +7486,7 @@ class RecordCountInfo(AbstractModel):
 
     @property
     def ListCount(self):
-        """The count of records returned in the list.
+        r"""The count of records returned in the list.
         :rtype: int
         """
         return self._ListCount
@@ -7497,7 +7497,7 @@ class RecordCountInfo(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total record count.
+        r"""The total record count.
         :rtype: int
         """
         return self._TotalCount
@@ -7522,7 +7522,7 @@ class RecordCountInfo(AbstractModel):
 
 
 class RecordGroupInfo(AbstractModel):
-    """Information of a DNS record group
+    r"""Information of a DNS record group
 
     """
 
@@ -7541,7 +7541,7 @@ class RecordGroupInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        """Group ID
+        r"""Group ID
         :rtype: int
         """
         return self._GroupId
@@ -7552,7 +7552,7 @@ class RecordGroupInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        """Group name
+        r"""Group name
         :rtype: str
         """
         return self._GroupName
@@ -7563,7 +7563,7 @@ class RecordGroupInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        """Group type. Valid values: `system`, `user`.
+        r"""Group type. Valid values: `system`, `user`.
         :rtype: str
         """
         return self._GroupType
@@ -7588,7 +7588,7 @@ class RecordGroupInfo(AbstractModel):
 
 
 class RecordInfo(AbstractModel):
-    """Record information
+    r"""Record information
 
     """
 
@@ -7646,7 +7646,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
-        """Record ID.
+        r"""Record ID.
         :rtype: int
         """
         return self._Id
@@ -7657,7 +7657,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubDomain(self):
-        """Subdomain (host record).
+        r"""Subdomain (host record).
         :rtype: str
         """
         return self._SubDomain
@@ -7668,7 +7668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordType(self):
-        """Record type. For more information, see the `DescribeRecordType` API.
+        r"""Record type. For more information, see the `DescribeRecordType` API.
         :rtype: str
         """
         return self._RecordType
@@ -7679,7 +7679,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordLine(self):
-        """Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
+        r"""Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.
         :rtype: str
         """
         return self._RecordLine
@@ -7690,7 +7690,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordLineId(self):
-        """Split zone ID of the DNS record. For more information, see the `DescribeRecordLineList` API.
+        r"""Split zone ID of the DNS record. For more information, see the `DescribeRecordLineList` API.
         :rtype: str
         """
         return self._RecordLineId
@@ -7701,7 +7701,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Record value.
+        r"""Record value.
         :rtype: str
         """
         return self._Value
@@ -7712,7 +7712,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """Record weight.
+        r"""Record weight.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7724,7 +7724,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MX(self):
-        """MX record value. It is 0 by default for non-MX records.
+        r"""MX record value. It is 0 by default for non-MX records.
         :rtype: int
         """
         return self._MX
@@ -7735,7 +7735,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """TTL value of the record.
+        r"""TTL value of the record.
         :rtype: int
         """
         return self._TTL
@@ -7746,7 +7746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
-        """Record status. Valid values: 0 (disabled); 1 (enabled).
+        r"""Record status. Valid values: 0 (disabled); 1 (enabled).
         :rtype: int
         """
         return self._Enabled
@@ -7757,7 +7757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MonitorStatus(self):
-        """D-Monitor status of the record.
+        r"""D-Monitor status of the record.
 "Ok" : The server is normal.
 "Warn" : There is an alarm on this record, and the server returns 4XX.
 "Down" : The server is down.
@@ -7772,7 +7772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Record remarks.
+        r"""Record remarks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7784,7 +7784,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """Last update time of the record.
+        r"""Last update time of the record.
         :rtype: str
         """
         return self._UpdatedOn
@@ -7795,7 +7795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainId(self):
-        """Domain ID.
+        r"""Domain ID.
         :rtype: int
         """
         return self._DomainId
@@ -7831,7 +7831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RecordListItem(AbstractModel):
-    """Record list elements
+    r"""Record list elements
 
     """
 
@@ -7885,7 +7885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordId(self):
-        """The record ID.
+        r"""The record ID.
         :rtype: int
         """
         return self._RecordId
@@ -7896,7 +7896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """The record value.
+        r"""The record value.
         :rtype: str
         """
         return self._Value
@@ -7907,7 +7907,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The record status. Valid values: `ENABLE` (enabled), `DISABLE` (disabled).
+        r"""The record status. Valid values: `ENABLE` (enabled), `DISABLE` (disabled).
         :rtype: str
         """
         return self._Status
@@ -7918,7 +7918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedOn(self):
-        """The update time.
+        r"""The update time.
         :rtype: str
         """
         return self._UpdatedOn
@@ -7929,7 +7929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """The host name.
+        r"""The host name.
         :rtype: str
         """
         return self._Name
@@ -7940,7 +7940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Line(self):
-        """The record split zone.
+        r"""The record split zone.
         :rtype: str
         """
         return self._Line
@@ -7951,7 +7951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineId(self):
-        """The split zone ID.
+        r"""The split zone ID.
         :rtype: str
         """
         return self._LineId
@@ -7962,7 +7962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """The record type.
+        r"""The record type.
         :rtype: str
         """
         return self._Type
@@ -7973,7 +7973,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        """The record weight, which is required for round-robin DNS records.
+        r"""The record weight, which is required for round-robin DNS records.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7985,7 +7985,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MonitorStatus(self):
-        """The monitoring status of the record. Valid values: `OK` (normal), `WARN` (warning), and `DOWN` (downtime). It is empty if no monitoring is set or the monitoring is suspended.
+        r"""The monitoring status of the record. Valid values: `OK` (normal), `WARN` (warning), and `DOWN` (downtime). It is empty if no monitoring is set or the monitoring is suspended.
         :rtype: str
         """
         return self._MonitorStatus
@@ -7996,7 +7996,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """The record remarks.
+        r"""The record remarks.
         :rtype: str
         """
         return self._Remark
@@ -8007,7 +8007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TTL(self):
-        """The record cache time.
+        r"""The record cache time.
         :rtype: int
         """
         return self._TTL
@@ -8018,7 +8018,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MX(self):
-        """The MX value, applicable to the MX record only.
+        r"""The MX value, applicable to the MX record only.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8030,7 +8030,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultNS(self):
-        """Whether it is a default NS record.
+        r"""Whether it is a default NS record.
         :rtype: bool
         """
         return self._DefaultNS
@@ -8066,7 +8066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SubdomainAliasAnalyticsItem(AbstractModel):
-    """DNS query volume of the subdomain alias
+    r"""DNS query volume of the subdomain alias
 
     """
 
@@ -8082,7 +8082,7 @@ class SubdomainAliasAnalyticsItem(AbstractModel):
 
     @property
     def Info(self):
-        """Statistics on the DNS query volume of a subdomain
+        r"""Statistics on the DNS query volume of a subdomain
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
         """
         return self._Info
@@ -8093,7 +8093,7 @@ class SubdomainAliasAnalyticsItem(AbstractModel):
 
     @property
     def Data(self):
-        """DNS query volume in the current statistical dimension
+        r"""DNS query volume in the current statistical dimension
         :rtype: list of DomainAnalyticsDetail
         """
         return self._Data
@@ -8124,7 +8124,7 @@ class SubdomainAliasAnalyticsItem(AbstractModel):
 
 
 class SubdomainAnalyticsInfo(AbstractModel):
-    """Statistics on the DNS query volume of a subdomain
+    r"""Statistics on the DNS query volume of a subdomain
 
     """
 
@@ -8152,7 +8152,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def DnsFormat(self):
-        """`DATE`: Daily; `HOUR`: Hourly
+        r"""`DATE`: Daily; `HOUR`: Hourly
         :rtype: str
         """
         return self._DnsFormat
@@ -8163,7 +8163,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def DnsTotal(self):
-        """Total DNS query volume for the current statistical period
+        r"""Total DNS query volume for the current statistical period
         :rtype: int
         """
         return self._DnsTotal
@@ -8174,7 +8174,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def Domain(self):
-        """The queried domain
+        r"""The queried domain
         :rtype: str
         """
         return self._Domain
@@ -8185,7 +8185,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def StartDate(self):
-        """Start date of the current statistical period
+        r"""Start date of the current statistical period
         :rtype: str
         """
         return self._StartDate
@@ -8196,7 +8196,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def EndDate(self):
-        """End date of the current statistical period
+        r"""End date of the current statistical period
         :rtype: str
         """
         return self._EndDate
@@ -8207,7 +8207,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def Subdomain(self):
-        """Subdomain
+        r"""Subdomain
         :rtype: str
         """
         return self._Subdomain

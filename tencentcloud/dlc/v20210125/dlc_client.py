@@ -27,7 +27,7 @@ class DlcClient(AbstractClient):
 
 
     def AddUsersToWorkGroup(self, request):
-        """This API is used to add users to working groups.
+        r"""This API is used to add users to working groups.
 
         :param request: Request instance for AddUsersToWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AddUsersToWorkGroupRequest`
@@ -50,7 +50,7 @@ class DlcClient(AbstractClient):
 
 
     def AlterDMSDatabase(self, request):
-        """This API is used to update databases in the DMS metadata module.
+        r"""This API is used to update databases in the DMS metadata module.
 
         :param request: Request instance for AlterDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AlterDMSDatabaseRequest`
@@ -73,7 +73,7 @@ class DlcClient(AbstractClient):
 
 
     def AttachUserPolicy(self, request):
-        """This API is used to bind the authentication policy to the user.
+        r"""This API is used to bind the authentication policy to the user.
 
         :param request: Request instance for AttachUserPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AttachUserPolicyRequest`
@@ -96,7 +96,7 @@ class DlcClient(AbstractClient):
 
 
     def AttachWorkGroupPolicy(self, request):
-        """This API is used to bind an authentication policy to a working group.
+        r"""This API is used to bind an authentication policy to a working group.
 
         :param request: Request instance for AttachWorkGroupPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.AttachWorkGroupPolicyRequest`
@@ -119,7 +119,7 @@ class DlcClient(AbstractClient):
 
 
     def BindWorkGroupsToUser(self, request):
-        """This API is used to bind working groups to users.
+        r"""This API is used to bind working groups to users.
 
         :param request: Request instance for BindWorkGroupsToUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.BindWorkGroupsToUserRequest`
@@ -142,7 +142,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelSparkSessionBatchSQL(self, request):
-        """This API is used to cancel a Spark SQL batch task.
+        r"""This API is used to cancel a Spark SQL batch task.
 
         :param request: Request instance for CancelSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLRequest`
@@ -165,7 +165,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """This API is used to cancel a task.
+        r"""This API is used to cancel a task.
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelTaskRequest`
@@ -188,7 +188,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineConfigPairsValidity(self, request):
-        """This API is used to check the validity of the engine's user-defined parameters.
+        r"""This API is used to check the validity of the engine's user-defined parameters.
 
         :param request: Request instance for CheckDataEngineConfigPairsValidity.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityRequest`
@@ -211,7 +211,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineImageCanBeRollback(self, request):
-        """This API is used to check whether the cluster can be rolled back.
+        r"""This API is used to check whether the cluster can be rolled back.
 
         :param request: Request instance for CheckDataEngineImageCanBeRollback.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackRequest`
@@ -234,7 +234,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckDataEngineImageCanBeUpgrade(self, request):
-        """This API is used to check whether the cluster image can be upgraded.
+        r"""This API is used to check whether the cluster image can be upgraded.
 
         :param request: Request instance for CheckDataEngineImageCanBeUpgrade.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeRequest`
@@ -257,7 +257,7 @@ class DlcClient(AbstractClient):
 
 
     def CheckGrantedPermission(self, request):
-        """This API is used to check the permission status.
+        r"""This API is used to check the permission status.
 
         :param request: Request instance for CheckGrantedPermission.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CheckGrantedPermissionRequest`
@@ -280,7 +280,7 @@ class DlcClient(AbstractClient):
 
 
     def CopyDLCTable(self, request):
-        """This API is used to copy a table.
+        r"""This API is used to copy a table.
 
         :param request: Request instance for CopyDLCTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CopyDLCTableRequest`
@@ -303,7 +303,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateCHDFSBindingProduct(self, request):
-        """This API is used to create metadata acceleration buckets and the binding relationship between products.
+        r"""This API is used to create metadata acceleration buckets and the binding relationship between products.
 
         :param request: Request instance for CreateCHDFSBindingProduct.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductRequest`
@@ -326,7 +326,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDLCTable(self, request):
-        """This API is used to create a table.
+        r"""This API is used to create a table.
 
         :param request: Request instance for CreateDLCTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDLCTableRequest`
@@ -349,7 +349,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDMSDatabase(self, request):
-        """This API is used to create databases in the DMS metadata module.
+        r"""This API is used to create databases in the DMS metadata module.
 
         :param request: Request instance for CreateDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDMSDatabaseRequest`
@@ -372,7 +372,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateDataEngine(self, request):
-        """This API is used to create a data engine.
+        r"""This API is used to create a data engine.
 
         :param request: Request instance for CreateDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataEngineRequest`
@@ -395,7 +395,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateInternalTable(self, request):
-        """This API is used to create a managed internal table. It has been disused.
+        r"""This API is used to create a managed internal table. It has been disused.
 
         :param request: Request instance for CreateInternalTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableRequest`
@@ -418,7 +418,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateResultDownload(self, request):
-        """This API is used to create a query result download task.
+        r"""This API is used to create a query result download task.
 
         :param request: Request instance for CreateResultDownload.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadRequest`
@@ -441,7 +441,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkApp(self, request):
-        """This API is used to create a Spark job.
+        r"""This API is used to create a Spark job.
 
         :param request: Request instance for CreateSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppRequest`
@@ -464,7 +464,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkAppTask(self, request):
-        """This API is used to start a Spark job.
+        r"""This API is used to start a Spark job.
 
         :param request: Request instance for CreateSparkAppTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskRequest`
@@ -487,7 +487,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkSessionBatchSQL(self, request):
-        """This API is used to submit a Spark SQL batch task to the job engine.
+        r"""This API is used to submit a Spark SQL batch task to the job engine.
 
         :param request: Request instance for CreateSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`
@@ -510,7 +510,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateStoreLocation(self, request):
-        """This API is used to add or overwrite the storage location of results.
+        r"""This API is used to add or overwrite the storage location of results.
 
         :param request: Request instance for CreateStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationRequest`
@@ -533,7 +533,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """This API is used to create and execute a SQL task. (`CreateTasks` is recommended.)
+        r"""This API is used to create and execute a SQL task. (`CreateTasks` is recommended.)
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTaskRequest`
@@ -556,7 +556,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTasks(self, request):
-        """This API is used to create and execute SQL tasks in batches.
+        r"""This API is used to create and execute SQL tasks in batches.
 
         :param request: Request instance for CreateTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksRequest`
@@ -579,7 +579,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to create users.
+        r"""This API is used to create users.
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateUserRequest`
@@ -602,7 +602,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateWorkGroup(self, request):
-        """This API is used to create working groups.
+        r"""This API is used to create working groups.
 
         :param request: Request instance for CreateWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateWorkGroupRequest`
@@ -625,7 +625,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteCHDFSBindingProduct(self, request):
-        """This API is used to delete the binding relationship between metadata acceleration buckets and products.
+        r"""This API is used to delete the binding relationship between metadata acceleration buckets and products.
 
         :param request: Request instance for DeleteCHDFSBindingProduct.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductRequest`
@@ -648,7 +648,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteDataEngine(self, request):
-        """This API is used to delete the data engine.
+        r"""This API is used to delete the data engine.
 
         :param request: Request instance for DeleteDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineRequest`
@@ -671,7 +671,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteSparkApp(self, request):
-        """This API is used to delete a Spark job.
+        r"""This API is used to delete a Spark job.
 
         :param request: Request instance for DeleteSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppRequest`
@@ -694,7 +694,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteThirdPartyAccessUser(self, request):
-        """This API is used to remove visits through the third-party platform.
+        r"""This API is used to remove visits through the third-party platform.
 
         :param request: Request instance for DeleteThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserRequest`
@@ -717,7 +717,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete users.
+        r"""This API is used to delete users.
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUserRequest`
@@ -740,7 +740,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteUsersFromWorkGroup(self, request):
-        """This API is used to delete users from working groups.
+        r"""This API is used to delete users from working groups.
 
         :param request: Request instance for DeleteUsersFromWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUsersFromWorkGroupRequest`
@@ -763,7 +763,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteWorkGroup(self, request):
-        """This API is used to delete working groups.
+        r"""This API is used to delete working groups.
 
         :param request: Request instance for DeleteWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteWorkGroupRequest`
@@ -786,7 +786,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeAdvancedStoreLocation(self, request):
-        """This API is used to query the advanced settings of the SQL query interface.
+        r"""This API is used to query the advanced settings of the SQL query interface.
 
         :param request: Request instance for DescribeAdvancedStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeAdvancedStoreLocationRequest`
@@ -809,7 +809,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDLCCatalogAccess(self, request):
-        """This API is used to query the DLC Catalog authorization list.
+        r"""This API is used to query the DLC Catalog authorization list.
 
         :param request: Request instance for DescribeDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessRequest`
@@ -832,7 +832,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDLCTable(self, request):
-        """This API is used to obtain the table.
+        r"""This API is used to obtain the table.
 
         :param request: Request instance for DescribeDLCTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableRequest`
@@ -855,7 +855,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDLCTableList(self, request):
-        """This API is used to obtain the list of tables.
+        r"""This API is used to obtain the list of tables.
 
         :param request: Request instance for DescribeDLCTableList.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableListRequest`
@@ -878,7 +878,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSDatabase(self, request):
-        """This API is used to obtain databases in the DMS metadata module.
+        r"""This API is used to obtain databases in the DMS metadata module.
 
         :param request: Request instance for DescribeDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseRequest`
@@ -901,7 +901,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDMSDatabaseList(self, request):
-        """This API is used to obtain the list of databases.
+        r"""This API is used to obtain the list of databases.
 
         :param request: Request instance for DescribeDMSDatabaseList.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseListRequest`
@@ -924,7 +924,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngine(self, request):
-        """This API is used to obtain detailed data engine information based on names.
+        r"""This API is used to obtain detailed data engine information based on names.
 
         :param request: Request instance for DescribeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineRequest`
@@ -947,7 +947,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngineImageVersions(self, request):
-        """This API is used to obtain the major version image list of exclusive clusters.
+        r"""This API is used to obtain the major version image list of exclusive clusters.
 
         :param request: Request instance for DescribeDataEngineImageVersions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsRequest`
@@ -970,7 +970,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEnginePythonSparkImages(self, request):
-        """This API is used to obtain the PYSPARK image list.
+        r"""This API is used to obtain the PYSPARK image list.
 
         :param request: Request instance for DescribeDataEnginePythonSparkImages.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesRequest`
@@ -993,7 +993,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEnginesScaleDetail(self, request):
-        """This API is used to query engine specification details.
+        r"""This API is used to query engine specification details.
 
         :param request: Request instance for DescribeDataEnginesScaleDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailRequest`
@@ -1016,7 +1016,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeEngineUsageInfo(self, request):
-        """This API is used to query the resource usage of a data engine based on its ID.
+        r"""This API is used to query the resource usage of a data engine based on its ID.
 
         :param request: Request instance for DescribeEngineUsageInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineUsageInfoRequest`
@@ -1039,7 +1039,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeForbiddenTablePro(self, request):
-        """This API is used to get the list of disabled table attributes (new).
+        r"""This API is used to get the list of disabled table attributes (new).
 
         :param request: Request instance for DescribeForbiddenTablePro.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProRequest`
@@ -1062,7 +1062,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeJob(self, request):
-        """This API is used to obtain the job information.
+        r"""This API is used to obtain the job information.
 
         :param request: Request instance for DescribeJob.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobRequest`
@@ -1085,7 +1085,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeJobs(self, request):
-        """This API is used to obtain the list of job information.
+        r"""This API is used to obtain the list of job information.
 
         :param request: Request instance for DescribeJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobsRequest`
@@ -1108,7 +1108,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeLakeFsDirSummary(self, request):
-        """This API is used to query the summary of a specified directory in a managed storage.
+        r"""This API is used to query the summary of a specified directory in a managed storage.
 
         :param request: Request instance for DescribeLakeFsDirSummary.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsDirSummaryRequest`
@@ -1131,7 +1131,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeLakeFsInfo(self, request):
-        """This API is used to query managed storage information.
+        r"""This API is used to query managed storage information.
 
         :param request: Request instance for DescribeLakeFsInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsInfoRequest`
@@ -1154,7 +1154,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeOtherCHDFSBindingList(self, request):
-        """This API is used to query the list of metadata acceleration buckets bound to other products.
+        r"""This API is used to query the list of metadata acceleration buckets bound to other products.
 
         :param request: Request instance for DescribeOtherCHDFSBindingList.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListRequest`
@@ -1177,7 +1177,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeQuery(self, request):
-        """This API is used to obtain the query results.
+        r"""This API is used to obtain the query results.
 
         :param request: Request instance for DescribeQuery.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeQueryRequest`
@@ -1200,7 +1200,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeResultDownload(self, request):
-        """This API is used to get a query result download task.
+        r"""This API is used to get a query result download task.
 
         :param request: Request instance for DescribeResultDownload.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadRequest`
@@ -1223,7 +1223,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJob(self, request):
-        """u200cThis API is used to query the information of a Spark job.
+        r"""u200cThis API is used to query the information of a Spark job.
 
         :param request: Request instance for DescribeSparkAppJob.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobRequest`
@@ -1246,7 +1246,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJobs(self, request):
-        """This API is used to query the list of Spark jobs.
+        r"""This API is used to query the list of Spark jobs.
 
         :param request: Request instance for DescribeSparkAppJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`
@@ -1269,7 +1269,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppTasks(self, request):
-        """This API is used to query the list of running task instances of a Spark job.
+        r"""This API is used to query the list of running task instances of a Spark job.
 
         :param request: Request instance for DescribeSparkAppTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksRequest`
@@ -1292,7 +1292,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkSessionBatchSqlLog(self, request):
-        """This API is used to query Spark SQL batch task logs.
+        r"""This API is used to query Spark SQL batch task logs.
 
         :param request: Request instance for DescribeSparkSessionBatchSqlLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogRequest`
@@ -1315,7 +1315,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeStoreLocation(self, request):
-        """This API is used to query the storage location of calculation results.
+        r"""This API is used to query the storage location of calculation results.
 
         :param request: Request instance for DescribeStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeStoreLocationRequest`
@@ -1338,7 +1338,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSubUserAccessPolicy(self, request):
-        """This API is used to query the sub-user's visiting policy for users accessing through the third-party platform.
+        r"""This API is used to query the sub-user's visiting policy for users accessing through the third-party platform.
 
         :param request: Request instance for DescribeSubUserAccessPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyRequest`
@@ -1361,7 +1361,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTablesName(self, request):
-        """This API is used to query the data table name list.
+        r"""This API is used to query the data table name list.
 
         :param request: Request instance for DescribeTablesName.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameRequest`
@@ -1384,7 +1384,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTaskResult(self, request):
-        """This API is used to query the result of a task.
+        r"""This API is used to query the result of a task.
 
         :param request: Request instance for DescribeTaskResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskResultRequest`
@@ -1407,7 +1407,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTaskStatistics(self, request):
-        """This API is used to describe the information on task statistics.
+        r"""This API is used to describe the information on task statistics.
 
         :param request: Request instance for DescribeTaskStatistics.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskStatisticsRequest`
@@ -1430,7 +1430,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API is used to query the list of tasks.
+        r"""This API is used to query the list of tasks.
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksRequest`
@@ -1453,7 +1453,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeThirdPartyAccessUser(self, request):
-        """This API is used to query the information of users visiting through the third-party platform.
+        r"""This API is used to query the information of users visiting through the third-party platform.
 
         :param request: Request instance for DescribeThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserRequest`
@@ -1476,7 +1476,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUpdatableDataEngines(self, request):
-        """This API is used to query the list of engines that are able to upgrade their configuration.
+        r"""This API is used to query the list of engines that are able to upgrade their configuration.
 
         :param request: Request instance for DescribeUpdatableDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesRequest`
@@ -1499,7 +1499,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserDataEngineConfig(self, request):
-        """This API is used to query user-defined engine parameters.
+        r"""This API is used to query user-defined engine parameters.
 
         :param request: Request instance for DescribeUserDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigRequest`
@@ -1522,7 +1522,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """This API is used to get detailed user information.
+        r"""This API is used to get detailed user information.
 
         :param request: Request instance for DescribeUserInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoRequest`
@@ -1545,7 +1545,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserRoles(self, request):
-        """This API is used to enumerate user roles.
+        r"""This API is used to enumerate user roles.
 
         :param request: Request instance for DescribeUserRoles.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesRequest`
@@ -1568,7 +1568,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUserType(self, request):
-        """This API is used to get the types of users.
+        r"""This API is used to get the types of users.
 
         :param request: Request instance for DescribeUserType.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeRequest`
@@ -1591,7 +1591,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeUsers(self, request):
-        """This API is used to obtain the user list.
+        r"""This API is used to obtain the user list.
 
         :param request: Request instance for DescribeUsers.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUsersRequest`
@@ -1614,7 +1614,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeWorkGroupInfo(self, request):
-        """This API is used to get detailed information about working groups.
+        r"""This API is used to get detailed information about working groups.
 
         :param request: Request instance for DescribeWorkGroupInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoRequest`
@@ -1637,7 +1637,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeWorkGroups(self, request):
-        """This API is used to get a list of working groups.
+        r"""This API is used to get a list of working groups.
 
         :param request: Request instance for DescribeWorkGroups.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupsRequest`
@@ -1660,7 +1660,7 @@ class DlcClient(AbstractClient):
 
 
     def DetachUserPolicy(self, request):
-        """This API is used to unbind the authentication policy from the user.
+        r"""This API is used to unbind the authentication policy from the user.
 
         :param request: Request instance for DetachUserPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DetachUserPolicyRequest`
@@ -1683,7 +1683,7 @@ class DlcClient(AbstractClient):
 
 
     def DetachWorkGroupPolicy(self, request):
-        """This API is used to unbind the authentication policy from the working group.
+        r"""This API is used to unbind the authentication policy from the working group.
 
         :param request: Request instance for DetachWorkGroupPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DetachWorkGroupPolicyRequest`
@@ -1706,7 +1706,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDLCTable(self, request):
-        """This API is used to delete the table.
+        r"""This API is used to delete the table.
 
         :param request: Request instance for DropDLCTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDLCTableRequest`
@@ -1729,7 +1729,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDMSDatabase(self, request):
-        """This API is used to delete databases in the DMS metadata module.
+        r"""This API is used to delete databases in the DMS metadata module.
 
         :param request: Request instance for DropDMSDatabase.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSDatabaseRequest`
@@ -1752,7 +1752,7 @@ class DlcClient(AbstractClient):
 
 
     def DropDMSTable(self, request):
-        """This API is used to delete tables in the DMS metadata module.
+        r"""This API is used to delete tables in the DMS metadata module.
 
         :param request: Request instance for DropDMSTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSTableRequest`
@@ -1775,7 +1775,7 @@ class DlcClient(AbstractClient):
 
 
     def GenerateCreateMangedTableSql(self, request):
-        """This API is used to generate SQL statements for creating a managed table.
+        r"""This API is used to generate SQL statements for creating a managed table.
 
         :param request: Request instance for GenerateCreateMangedTableSql.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlRequest`
@@ -1798,7 +1798,7 @@ class DlcClient(AbstractClient):
 
 
     def GetOptimizerPolicy(self, request):
-        """GetOptimizerPolicy
+        r"""GetOptimizerPolicy
 
         :param request: Request instance for GetOptimizerPolicy.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyRequest`
@@ -1821,7 +1821,7 @@ class DlcClient(AbstractClient):
 
 
     def GrantDLCCatalogAccess(self, request):
-        """This API is used to grant permissions for visiting DLC Catalog.
+        r"""This API is used to grant permissions for visiting DLC Catalog.
 
         :param request: Request instance for GrantDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessRequest`
@@ -1844,7 +1844,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyAdvancedStoreLocation(self, request):
-        """This API is used to modify the advanced settings of the SQL query interface.
+        r"""This API is used to modify the advanced settings of the SQL query interface.
 
         :param request: Request instance for ModifyAdvancedStoreLocation.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyAdvancedStoreLocationRequest`
@@ -1867,7 +1867,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyDataEngineDescription(self, request):
-        """This API is used to modify the engine's description.
+        r"""This API is used to modify the engine's description.
 
         :param request: Request instance for ModifyDataEngineDescription.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionRequest`
@@ -1890,7 +1890,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyGovernEventRule(self, request):
-        """This API is used to change data governance event thresholds.
+        r"""This API is used to change data governance event thresholds.
 
         :param request: Request instance for ModifyGovernEventRule.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleRequest`
@@ -1913,7 +1913,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkApp(self, request):
-        """This API is used to update a Spark job.
+        r"""This API is used to update a Spark job.
 
         :param request: Request instance for ModifySparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppRequest`
@@ -1936,7 +1936,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkAppBatch(self, request):
-        """This API is used to modify Spark job parameters in batches.
+        r"""This API is used to modify Spark job parameters in batches.
 
         :param request: Request instance for ModifySparkAppBatch.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchRequest`
@@ -1959,7 +1959,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """This API is used to modify user information.
+        r"""This API is used to modify user information.
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserRequest`
@@ -1982,7 +1982,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyUserType(self, request):
-        """This API is used to modify the types of users. Only users who are also administrators can call this API to conduct the operation.
+        r"""This API is used to modify the types of users. Only users who are also administrators can call this API to conduct the operation.
 
         :param request: Request instance for ModifyUserType.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeRequest`
@@ -2005,7 +2005,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyWorkGroup(self, request):
-        """This API is used to modify working group information.
+        r"""This API is used to modify working group information.
 
         :param request: Request instance for ModifyWorkGroup.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyWorkGroupRequest`
@@ -2028,7 +2028,7 @@ class DlcClient(AbstractClient):
 
 
     def QueryResult(self, request):
-        """This API is used to query the result of obtaining tasks.
+        r"""This API is used to query the result of obtaining tasks.
 
         :param request: Request instance for QueryResult.
         :type request: :class:`tencentcloud.dlc.v20210125.models.QueryResultRequest`
@@ -2051,7 +2051,7 @@ class DlcClient(AbstractClient):
 
 
     def QueryTaskCostDetail(self, request):
-        """This API is used to query task consumption details.
+        r"""This API is used to query task consumption details.
 
         :param request: Request instance for QueryTaskCostDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailRequest`
@@ -2074,7 +2074,7 @@ class DlcClient(AbstractClient):
 
 
     def RegisterThirdPartyAccessUser(self, request):
-        """This API is used to enable visits to the third-party platform.
+        r"""This API is used to enable visits to the third-party platform.
 
         :param request: Request instance for RegisterThirdPartyAccessUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserRequest`
@@ -2097,7 +2097,7 @@ class DlcClient(AbstractClient):
 
 
     def RenewDataEngine(self, request):
-        """This API is used to renew the data engine.
+        r"""This API is used to renew the data engine.
 
         :param request: Request instance for RenewDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineRequest`
@@ -2120,7 +2120,7 @@ class DlcClient(AbstractClient):
 
 
     def RestartDataEngine(self, request):
-        """This API is used to restart engines.
+        r"""This API is used to restart engines.
 
         :param request: Request instance for RestartDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineRequest`
@@ -2143,7 +2143,7 @@ class DlcClient(AbstractClient):
 
 
     def RevokeDLCCatalogAccess(self, request):
-        """This API is used to revoke permissions for visiting DLC Catalog.
+        r"""This API is used to revoke permissions for visiting DLC Catalog.
 
         :param request: Request instance for RevokeDLCCatalogAccess.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessRequest`
@@ -2166,7 +2166,7 @@ class DlcClient(AbstractClient):
 
 
     def RollbackDataEngineImage(self, request):
-        """This API is used to roll back the versions of the engine image.
+        r"""This API is used to roll back the versions of the engine image.
 
         :param request: Request instance for RollbackDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageRequest`
@@ -2189,7 +2189,7 @@ class DlcClient(AbstractClient):
 
 
     def SuspendResumeDataEngine(self, request):
-        """This API is used to suspend or start a data engine.
+        r"""This API is used to suspend or start a data engine.
 
         :param request: Request instance for SuspendResumeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`
@@ -2212,7 +2212,7 @@ class DlcClient(AbstractClient):
 
 
     def SwitchDataEngine(self, request):
-        """This API is used to switch between the primary and standby clusters.
+        r"""This API is used to switch between the primary and standby clusters.
 
         :param request: Request instance for SwitchDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineRequest`
@@ -2235,7 +2235,7 @@ class DlcClient(AbstractClient):
 
 
     def SwitchDataEngineImage(self, request):
-        """This API is used to switch the versions of the engine image.
+        r"""This API is used to switch the versions of the engine image.
 
         :param request: Request instance for SwitchDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageRequest`
@@ -2258,7 +2258,7 @@ class DlcClient(AbstractClient):
 
 
     def UnbindWorkGroupsFromUser(self, request):
-        """This API is used to unbind a user group from a user.
+        r"""This API is used to unbind a user group from a user.
 
         :param request: Request instance for UnbindWorkGroupsFromUser.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UnbindWorkGroupsFromUserRequest`
@@ -2281,7 +2281,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateDataEngine(self, request):
-        """This API is used to upgrade data engine configuration.
+        r"""This API is used to upgrade data engine configuration.
 
         :param request: Request instance for UpdateDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineRequest`
@@ -2304,7 +2304,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateDataEngineConfig(self, request):
-        """This API is used to trigger the modification of the engine configuration by the user through a certain operation.
+        r"""This API is used to trigger the modification of the engine configuration by the user through a certain operation.
 
         :param request: Request instance for UpdateDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigRequest`
@@ -2327,7 +2327,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateRowFilter(self, request):
-        """This API is used to update row filters. Please note that it updates filters only but not catalogs, databases, or tables.
+        r"""This API is used to update row filters. Please note that it updates filters only but not catalogs, databases, or tables.
 
         :param request: Request instance for UpdateRowFilter.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateRowFilterRequest`
@@ -2350,7 +2350,7 @@ class DlcClient(AbstractClient):
 
 
     def UpdateUserDataEngineConfig(self, request):
-        """This API is used to modify the custom configuration of the user's engine.
+        r"""This API is used to modify the custom configuration of the user's engine.
 
         :param request: Request instance for UpdateUserDataEngineConfig.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigRequest`
@@ -2373,7 +2373,7 @@ class DlcClient(AbstractClient):
 
 
     def UpgradeDataEngineImage(self, request):
-        """This API is used to upgrade the engine image.
+        r"""This API is used to upgrade the engine image.
 
         :param request: Request instance for UpgradeDataEngineImage.
         :type request: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageRequest`

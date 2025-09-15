@@ -27,7 +27,7 @@ class VmClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """This API is used to cancel a video moderation task.
+        r"""This API is used to cancel a video moderation task.
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.vm.v20210922.models.CancelTaskRequest`
@@ -50,7 +50,7 @@ class VmClient(AbstractClient):
 
 
     def CreateVideoModerationTask(self, request):
-        """This API is used to create a video moderation task via a URL or bucket.
+        r"""This API is used to create a video moderation task via a URL or bucket.
 
         :param request: Request instance for CreateVideoModerationTask.
         :type request: :class:`tencentcloud.vm.v20210922.models.CreateVideoModerationTaskRequest`
@@ -73,7 +73,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This API is used to get details of the video moderation task.
+        r"""This API is used to get details of the video moderation task.
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.vm.v20210922.models.DescribeTaskDetailRequest`
@@ -96,7 +96,7 @@ class VmClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>
+        r"""This API is used to query the task queue. You can filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status.<br>
 
         Default request rate limit: **20 requests/sec**.
 

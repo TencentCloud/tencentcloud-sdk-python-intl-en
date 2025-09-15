@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APMKV(AbstractModel):
-    """APM floating-point number type key-value pair.
+    r"""APM floating-point number type key-value pair.
 
     """
 
@@ -35,7 +35,7 @@ class APMKV(AbstractModel):
 
     @property
     def Key(self):
-        """Key value definition.
+        r"""Key value definition.
         :rtype: str
         """
         return self._Key
@@ -46,7 +46,7 @@ class APMKV(AbstractModel):
 
     @property
     def Value(self):
-        """Value definition.
+        r"""Value definition.
         :rtype: float
         """
         return self._Value
@@ -70,7 +70,7 @@ class APMKV(AbstractModel):
 
 
 class APMKVItem(AbstractModel):
-    """Common kv structure of apm.
+    r"""Common kv structure of apm.
 
     """
 
@@ -86,7 +86,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Key(self):
-        """Key value definition.
+        r"""Key value definition.
         :rtype: str
         """
         return self._Key
@@ -97,7 +97,7 @@ class APMKVItem(AbstractModel):
 
     @property
     def Value(self):
-        """Value definition.
+        r"""Value definition.
         :rtype: str
         """
         return self._Value
@@ -121,7 +121,7 @@ class APMKVItem(AbstractModel):
 
 
 class ApmAgentInfo(AbstractModel):
-    """APM agent information.
+    r"""APM agent information.
 
     """
 
@@ -149,7 +149,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def AgentDownloadURL(self):
-        """Agent download address.
+        r"""Agent download address.
         :rtype: str
         """
         return self._AgentDownloadURL
@@ -160,7 +160,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def CollectorURL(self):
-        """Collector reporting address.
+        r"""Collector reporting address.
         :rtype: str
         """
         return self._CollectorURL
@@ -171,7 +171,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def Token(self):
-        """Token information.
+        r"""Token information.
         :rtype: str
         """
         return self._Token
@@ -182,7 +182,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def PublicCollectorURL(self):
-        """Public network reporting address.
+        r"""Public network reporting address.
         :rtype: str
         """
         return self._PublicCollectorURL
@@ -193,7 +193,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def InnerCollectorURL(self):
-        """Self-Developed vpc report address.
+        r"""Self-Developed vpc report address.
         :rtype: str
         """
         return self._InnerCollectorURL
@@ -204,7 +204,7 @@ class ApmAgentInfo(AbstractModel):
 
     @property
     def PrivateLinkCollectorURL(self):
-        """Private link reporting address.
+        r"""Private link reporting address.
         :rtype: str
         """
         return self._PrivateLinkCollectorURL
@@ -232,7 +232,7 @@ class ApmAgentInfo(AbstractModel):
 
 
 class ApmApplicationConfigView(AbstractModel):
-    """Application-Related configuration list items.
+    r"""Application-Related configuration list items.
 
     """
 
@@ -299,7 +299,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstanceKey(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceKey
@@ -310,7 +310,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Application name	.	
+        r"""Application name	.	
         :rtype: str
         """
         return self._ServiceName
@@ -321,7 +321,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def OperationNameFilter(self):
-        """API filtering.
+        r"""API filtering.
         :rtype: str
         """
         return self._OperationNameFilter
@@ -332,7 +332,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        """Error type filtering.
+        r"""Error type filtering.
         :rtype: str
         """
         return self._ExceptionFilter
@@ -343,7 +343,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        """HTTP status code filtering.
+        r"""HTTP status code filtering.
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -354,7 +354,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EventEnable(self):
-        """Application diagnosis switch (deprecated).
+        r"""Application diagnosis switch (deprecated).
         :rtype: bool
         """
         return self._EventEnable
@@ -365,7 +365,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        """URL convergence switch. 0: off; 1: on.
+        r"""URL convergence switch. 0: off; 1: on.
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -376,7 +376,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        """URL convergence threshold.	
+        r"""URL convergence threshold.	
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -387,7 +387,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        """URL convergence rule in the form of a regular expression.	
+        r"""URL convergence rule in the form of a regular expression.	
         :rtype: str
         """
         return self._UrlConvergence
@@ -398,7 +398,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlExclude(self):
-        """URL exclusion rule in the form of a regular expression.
+        r"""URL exclusion rule in the form of a regular expression.
         :rtype: str
         """
         return self._UrlExclude
@@ -409,7 +409,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """Log feature switch. 0: off; 1: on.
+        r"""Log feature switch. 0: off; 1: on.
         :rtype: int
         """
         return self._IsRelatedLog
@@ -420,7 +420,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSource(self):
-        """Log source.	
+        r"""Log source.	
         :rtype: str
         """
         return self._LogSource
@@ -431,7 +431,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSet(self):
-        """Log set. 
+        r"""Log set. 
         :rtype: str
         """
         return self._LogSet
@@ -442,7 +442,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """Log topic.
+        r"""Log topic.
         :rtype: str
         """
         return self._LogTopicID
@@ -453,7 +453,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotEnable(self):
-        """Method stack snapshot switch: true to enable, false to disable.
+        r"""Method stack snapshot switch: true to enable, false to disable.
         :rtype: bool
         """
         return self._SnapshotEnable
@@ -464,7 +464,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        """Slow call listening trigger threshold.
+        r"""Slow call listening trigger threshold.
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -475,7 +475,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def AgentEnable(self):
-        """Probe master switch.
+        r"""Probe master switch.
         :rtype: bool
         """
         return self._AgentEnable
@@ -486,7 +486,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstrumentList(self):
-        """Component list switch (deprecated).
+        r"""Component list switch (deprecated).
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -497,7 +497,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def TraceSquash(self):
-        """Link compression switch (deprecated).
+        r"""Link compression switch (deprecated).
         :rtype: bool
         """
         return self._TraceSquash
@@ -543,7 +543,7 @@ class ApmApplicationConfigView(AbstractModel):
 
 
 class ApmField(AbstractModel):
-    """Metric dimension information.
+    r"""Metric dimension information.
 
     """
 
@@ -573,7 +573,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Metric name.
+        r"""Metric name.
         :rtype: str
         """
         return self._Key
@@ -584,7 +584,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Indicator numerical value.
+        r"""Indicator numerical value.
         :rtype: float
         """
         return self._Value
@@ -595,7 +595,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
-        """Units corresponding to the metric.
+        r"""Units corresponding to the metric.
         :rtype: str
         """
         return self._Unit
@@ -606,7 +606,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareVals(self):
-        """Year-Over-Year result array, recommended to use.
+        r"""Year-Over-Year result array, recommended to use.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of APMKVItem
         """
@@ -618,7 +618,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastPeriodValue(self):
-        """Indicator numerical value of the previous period in year-over-year comparison.
+        r"""Indicator numerical value of the previous period in year-over-year comparison.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of APMKV
         """
@@ -630,7 +630,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareVal(self):
-        """Year-On-Year metric value. deprecated, not recommended for use.
+        r"""Year-On-Year metric value. deprecated, not recommended for use.
         :rtype: str
         """
         return self._CompareVal
@@ -668,7 +668,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ApmInstanceDetail(AbstractModel):
-    """APM business system information.
+    r"""APM business system information.
 
     """
 
@@ -795,7 +795,7 @@ Account in arrears.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -806,7 +806,7 @@ Account in arrears.
 
     @property
     def Name(self):
-        """Business system name.
+        r"""Business system name.
         :rtype: str
         """
         return self._Name
@@ -817,7 +817,7 @@ Account in arrears.
 
     @property
     def Description(self):
-        """Business system description information.
+        r"""Business system description information.
         :rtype: str
         """
         return self._Description
@@ -828,7 +828,7 @@ Account in arrears.
 
     @property
     def Status(self):
-        """Status of the business system.
+        r"""Status of the business system.
 {Initializing; running; throttling}.
         :rtype: int
         """
@@ -840,7 +840,7 @@ Account in arrears.
 
     @property
     def Region(self):
-        """Region where the business system belongs.
+        r"""Region where the business system belongs.
         :rtype: str
         """
         return self._Region
@@ -851,7 +851,7 @@ Account in arrears.
 
     @property
     def Tags(self):
-        """Business system tag list.
+        r"""Business system tag list.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -862,7 +862,7 @@ Account in arrears.
 
     @property
     def AppId(self):
-        """AppID information.
+        r"""AppID information.
         :rtype: int
         """
         return self._AppId
@@ -873,7 +873,7 @@ Account in arrears.
 
     @property
     def CreateUin(self):
-        """Creator uin.
+        r"""Creator uin.
         :rtype: str
         """
         return self._CreateUin
@@ -884,7 +884,7 @@ Account in arrears.
 
     @property
     def AmountOfUsedStorage(self):
-        """Storage used (unit: mb).
+        r"""Storage used (unit: mb).
         :rtype: float
         """
         return self._AmountOfUsedStorage
@@ -895,7 +895,7 @@ Account in arrears.
 
     @property
     def ServiceCount(self):
-        """Quantity of server applications of the business system.
+        r"""Quantity of server applications of the business system.
         :rtype: int
         """
         return self._ServiceCount
@@ -906,7 +906,7 @@ Account in arrears.
 
     @property
     def CountOfReportSpanPerDay(self):
-        """Average daily reported span count.
+        r"""Average daily reported span count.
         :rtype: int
         """
         return self._CountOfReportSpanPerDay
@@ -917,7 +917,7 @@ Account in arrears.
 
     @property
     def TraceDuration(self):
-        """Retention period of trace data (unit: days).
+        r"""Retention period of trace data (unit: days).
         :rtype: int
         """
         return self._TraceDuration
@@ -928,7 +928,7 @@ Account in arrears.
 
     @property
     def SpanDailyCounters(self):
-        """Business system report limit.
+        r"""Business system report limit.
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -939,7 +939,7 @@ Account in arrears.
 
     @property
     def BillingInstance(self):
-        """Whether the business system billing is Activated (0 = not activated, 1 = activated).
+        r"""Whether the business system billing is Activated (0 = not activated, 1 = activated).
         :rtype: int
         """
         return self._BillingInstance
@@ -950,7 +950,7 @@ Account in arrears.
 
     @property
     def ErrRateThreshold(self):
-        """Error warning line (unit: %).
+        r"""Error warning line (unit: %).
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -961,7 +961,7 @@ Account in arrears.
 
     @property
     def SampleRate(self):
-        """Sampling rate (unit: %).
+        r"""Sampling rate (unit: %).
         :rtype: int
         """
         return self._SampleRate
@@ -972,7 +972,7 @@ Account in arrears.
 
     @property
     def ErrorSample(self):
-        """Error sampling switch (0: off, 1: on).
+        r"""Error sampling switch (0: off, 1: on).
         :rtype: int
         """
         return self._ErrorSample
@@ -983,7 +983,7 @@ Account in arrears.
 
     @property
     def SlowRequestSavedThreshold(self):
-        """Sampling slow call saving threshold (unit: ms).
+        r"""Sampling slow call saving threshold (unit: ms).
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -994,7 +994,7 @@ Account in arrears.
 
     @property
     def LogRegion(self):
-        """CLS log region.
+        r"""CLS log region.
         :rtype: str
         """
         return self._LogRegion
@@ -1005,7 +1005,7 @@ Account in arrears.
 
     @property
     def LogSource(self):
-        """Log source.
+        r"""Log source.
         :rtype: str
         """
         return self._LogSource
@@ -1016,7 +1016,7 @@ Account in arrears.
 
     @property
     def IsRelatedLog(self):
-        """Log feature switch (0: off; 1: on).
+        r"""Log feature switch (0: off; 1: on).
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1027,7 +1027,7 @@ Account in arrears.
 
     @property
     def LogTopicID(self):
-        """Log topic id.
+        r"""Log topic id.
         :rtype: str
         """
         return self._LogTopicID
@@ -1038,7 +1038,7 @@ Account in arrears.
 
     @property
     def ClientCount(self):
-        """Quantity of client applications of the business system.
+        r"""Quantity of client applications of the business system.
         :rtype: int
         """
         return self._ClientCount
@@ -1049,7 +1049,7 @@ Account in arrears.
 
     @property
     def TotalCount(self):
-        """The quantity of active applications in this business system in the last two days.
+        r"""The quantity of active applications in this business system in the last two days.
         :rtype: int
         """
         return self._TotalCount
@@ -1060,7 +1060,7 @@ Account in arrears.
 
     @property
     def LogSet(self):
-        """CLS log set.
+        r"""CLS log set.
         :rtype: str
         """
         return self._LogSet
@@ -1071,7 +1071,7 @@ Account in arrears.
 
     @property
     def MetricDuration(self):
-        """Retention period of metric data (unit: days).
+        r"""Retention period of metric data (unit: days).
         :rtype: int
         """
         return self._MetricDuration
@@ -1082,7 +1082,7 @@ Account in arrears.
 
     @property
     def CustomShowTags(self):
-        """List of custom display tags.
+        r"""List of custom display tags.
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -1093,7 +1093,7 @@ Account in arrears.
 
     @property
     def PayMode(self):
-        """Business system billing mode (1: prepaid, 0: pay-as-you-go).
+        r"""Business system billing mode (1: prepaid, 0: pay-as-you-go).
         :rtype: int
         """
         return self._PayMode
@@ -1104,7 +1104,7 @@ Account in arrears.
 
     @property
     def PayModeEffective(self):
-        """Indicates whether the billing mode of the business system takes effect.
+        r"""Indicates whether the billing mode of the business system takes effect.
         :rtype: bool
         """
         return self._PayModeEffective
@@ -1115,7 +1115,7 @@ Account in arrears.
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """Response time warning line (unit: ms).
+        r"""Response time warning line (unit: ms).
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -1126,7 +1126,7 @@ Account in arrears.
 
     @property
     def Free(self):
-        """Whether it is free (0 = no; 1 = limited free; 2 = completely free), default 0.
+        r"""Whether it is free (0 = no; 1 = limited free; 2 = completely free), default 0.
         :rtype: int
         """
         return self._Free
@@ -1137,7 +1137,7 @@ Account in arrears.
 
     @property
     def DefaultTSF(self):
-        """Indicates whether it is the default business system of tsf (0 = no, 1 = yes).
+        r"""Indicates whether it is the default business system of tsf (0 = no, 1 = yes).
         :rtype: int
         """
         return self._DefaultTSF
@@ -1148,7 +1148,7 @@ Account in arrears.
 
     @property
     def IsRelatedDashboard(self):
-        """Whether to associate the dashboard (0 = off, 1 = on).
+        r"""Whether to associate the dashboard (0 = off, 1 = on).
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -1159,7 +1159,7 @@ Account in arrears.
 
     @property
     def DashboardTopicID(self):
-        """Associated dashboard id.
+        r"""Associated dashboard id.
         :rtype: str
         """
         return self._DashboardTopicID
@@ -1170,7 +1170,7 @@ Account in arrears.
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """Whether to enable component vulnerability detection (0 = no, 1 = yes).
+        r"""Whether to enable component vulnerability detection (0 = no, 1 = yes).
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -1181,7 +1181,7 @@ Account in arrears.
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """Whether to enable sql injection analysis (0: off, 1: on).
+        r"""Whether to enable sql injection analysis (0: off, 1: on).
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -1192,7 +1192,7 @@ Account in arrears.
 
     @property
     def StopReason(self):
-        """Reasons for traffic throttling.
+        r"""Reasons for traffic throttling.
 Official version quota;.
 Trial version quota.
 Trial version expiration;.
@@ -1261,7 +1261,7 @@ Account in arrears.
 
 
 class ApmMetricRecord(AbstractModel):
-    """Metric list cell.
+    r"""Metric list cell.
 
     """
 
@@ -1277,7 +1277,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Fields(self):
-        """Field array, used for the query result of indicators.
+        r"""Field array, used for the query result of indicators.
         :rtype: list of ApmField
         """
         return self._Fields
@@ -1288,7 +1288,7 @@ class ApmMetricRecord(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag array, used to distinguish the objects of groupby.
+        r"""Tag array, used to distinguish the objects of groupby.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1322,7 +1322,7 @@ class ApmMetricRecord(AbstractModel):
 
 
 class ApmTag(AbstractModel):
-    """Dimension (tag) object.
+    r"""Dimension (tag) object.
 
     """
 
@@ -1338,7 +1338,7 @@ class ApmTag(AbstractModel):
 
     @property
     def Key(self):
-        """Dimension key (column name, Tag key).
+        r"""Dimension key (column name, Tag key).
         :rtype: str
         """
         return self._Key
@@ -1349,7 +1349,7 @@ class ApmTag(AbstractModel):
 
     @property
     def Value(self):
-        """Dimension value (tag value).
+        r"""Dimension value (tag value).
         :rtype: str
         """
         return self._Value
@@ -1373,7 +1373,7 @@ class ApmTag(AbstractModel):
 
 
 class CreateApmInstanceRequest(AbstractModel):
-    """CreateApmInstance request structure.
+    r"""CreateApmInstance request structure.
 
     """
 
@@ -1404,7 +1404,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Business system name.
+        r"""Business system name.
         :rtype: str
         """
         return self._Name
@@ -1415,7 +1415,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Business system description information.
+        r"""Business system description information.
         :rtype: str
         """
         return self._Description
@@ -1426,7 +1426,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Retention period of trace data (unit: days, the default storage duration is 3 days).
+        r"""Retention period of trace data (unit: days, the default storage duration is 3 days).
         :rtype: int
         """
         return self._TraceDuration
@@ -1437,7 +1437,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Business system tag list.
+        r"""Business system tag list.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1448,7 +1448,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """The report quota value of the business system. the default value is 0, indicating no limit on the report quota. (obsolete).
+        r"""The report quota value of the business system. the default value is 0, indicating no limit on the report quota. (obsolete).
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -1459,7 +1459,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Billing model of the business system (0: pay-as-you-go, 1: prepaid).
+        r"""Billing model of the business system (0: pay-as-you-go, 1: prepaid).
         :rtype: int
         """
         return self._PayMode
@@ -1470,7 +1470,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """Whether it is a free edition business system (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition).
+        r"""Whether it is a free edition business system (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition).
         :rtype: int
         """
         return self._Free
@@ -1504,7 +1504,7 @@ class CreateApmInstanceRequest(AbstractModel):
 
 
 class CreateApmInstanceResponse(AbstractModel):
-    """CreateApmInstance response structure.
+    r"""CreateApmInstance response structure.
 
     """
 
@@ -1520,7 +1520,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -1531,7 +1531,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1547,7 +1547,7 @@ class CreateApmInstanceResponse(AbstractModel):
 
 
 class DescribeApmAgentRequest(AbstractModel):
-    """DescribeApmAgent request structure.
+    r"""DescribeApmAgent request structure.
 
     """
 
@@ -1572,7 +1572,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -1583,7 +1583,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def AgentType(self):
-        """Access method: currently supports access and reporting via skywalking, ot, and ebpf methods. if not specified, ot is used by default.
+        r"""Access method: currently supports access and reporting via skywalking, ot, and ebpf methods. if not specified, ot is used by default.
         :rtype: str
         """
         return self._AgentType
@@ -1594,7 +1594,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def NetworkMode(self):
-        """Reporting environment: currently supports pl (private network reporting), public (public network), and inner (self-developed vpc) environment reporting. if not specified, the default is public.
+        r"""Reporting environment: currently supports pl (private network reporting), public (public network), and inner (self-developed vpc) environment reporting. if not specified, the default is public.
         :rtype: str
         """
         return self._NetworkMode
@@ -1605,7 +1605,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def LanguageEnvironment(self):
-        """Language reporting is now supported for java, golang, php, python, dotnet, nodejs. if not specified, golang is used by default.
+        r"""Language reporting is now supported for java, golang, php, python, dotnet, nodejs. if not specified, golang is used by default.
         :rtype: str
         """
         return self._LanguageEnvironment
@@ -1616,7 +1616,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def ReportMethod(self):
-        """Reporting method, deprecated.
+        r"""Reporting method, deprecated.
         :rtype: str
         """
         return self._ReportMethod
@@ -1643,7 +1643,7 @@ class DescribeApmAgentRequest(AbstractModel):
 
 
 class DescribeApmAgentResponse(AbstractModel):
-    """DescribeApmAgent response structure.
+    r"""DescribeApmAgent response structure.
 
     """
 
@@ -1659,7 +1659,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     @property
     def ApmAgent(self):
-        """Agent information.
+        r"""Agent information.
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmAgentInfo`
         """
         return self._ApmAgent
@@ -1670,7 +1670,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1688,7 +1688,7 @@ class DescribeApmAgentResponse(AbstractModel):
 
 
 class DescribeApmInstancesRequest(AbstractModel):
-    """DescribeApmInstances request structure.
+    r"""DescribeApmInstances request structure.
 
     """
 
@@ -1713,7 +1713,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag list.
+        r"""Tag list.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -1724,7 +1724,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        """Filter by business system name.
+        r"""Filter by business system name.
         :rtype: str
         """
         return self._InstanceName
@@ -1735,7 +1735,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Filter by business system id.
+        r"""Filter by business system id.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1746,7 +1746,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def DemoInstanceFlag(self):
-        """Whether to query the official demo business system (0 = non-demo business system, 1 = demo business system, default is 0).
+        r"""Whether to query the official demo business system (0 = non-demo business system, 1 = demo business system, default is 0).
         :rtype: int
         """
         return self._DemoInstanceFlag
@@ -1757,7 +1757,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def AllRegionsFlag(self):
-        """Whether to query all regional business systems (0 = do not query all regions, 1 = query all regions, default is 0).
+        r"""Whether to query all regional business systems (0 = do not query all regions, 1 = query all regions, default is 0).
         :rtype: int
         """
         return self._AllRegionsFlag
@@ -1789,7 +1789,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
 
 class DescribeApmInstancesResponse(AbstractModel):
-    """DescribeApmInstances response structure.
+    r"""DescribeApmInstances response structure.
 
     """
 
@@ -1805,7 +1805,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        """APM business system list.
+        r"""APM business system list.
         :rtype: list of ApmInstanceDetail
         """
         return self._Instances
@@ -1816,7 +1816,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1837,7 +1837,7 @@ class DescribeApmInstancesResponse(AbstractModel):
 
 
 class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
-    """DescribeGeneralApmApplicationConfig request structure.
+    r"""DescribeGeneralApmApplicationConfig request structure.
 
     """
 
@@ -1853,7 +1853,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Application name.
+        r"""Application name.
         :rtype: str
         """
         return self._ServiceName
@@ -1864,7 +1864,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -1888,7 +1888,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
 
 class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
-    """DescribeGeneralApmApplicationConfig response structure.
+    r"""DescribeGeneralApmApplicationConfig response structure.
 
     """
 
@@ -1904,7 +1904,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def ApmApplicationConfigView(self):
-        """Application configuration item.
+        r"""Application configuration item.
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmApplicationConfigView`
         """
         return self._ApmApplicationConfigView
@@ -1915,7 +1915,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1933,7 +1933,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
 
 class DescribeGeneralMetricDataRequest(AbstractModel):
-    """DescribeGeneralMetricData request structure.
+    r"""DescribeGeneralMetricData request structure.
 
     """
 
@@ -1982,7 +1982,7 @@ Value: specify the sorting method:.
 
     @property
     def Metrics(self):
-        """Metric name to be queried, which cannot be customized. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
+        r"""Metric name to be queried, which cannot be customized. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
         :rtype: list of str
         """
         return self._Metrics
@@ -1993,7 +1993,7 @@ Value: specify the sorting method:.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -2004,7 +2004,7 @@ Value: specify the sorting method:.
 
     @property
     def ViewName(self):
-        """View name. the input cannot be customized. [for details, see.](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1).
+        r"""View name. the input cannot be customized. [for details, see.](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1).
         :rtype: str
         """
         return self._ViewName
@@ -2015,7 +2015,7 @@ Value: specify the sorting method:.
 
     @property
     def Filters(self):
-        """The dimension information to be filtered; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
+        r"""The dimension information to be filtered; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
         :rtype: list of GeneralFilter
         """
         return self._Filters
@@ -2026,7 +2026,7 @@ Value: specify the sorting method:.
 
     @property
     def GroupBy(self):
-        """Aggregated dimension; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
+        r"""Aggregated dimension; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).
         :rtype: list of str
         """
         return self._GroupBy
@@ -2037,7 +2037,7 @@ Value: specify the sorting method:.
 
     @property
     def StartTime(self):
-        """The timestamp of the start time, supporting the query of metric data within 30 days. (unit: seconds).
+        r"""The timestamp of the start time, supporting the query of metric data within 30 days. (unit: seconds).
         :rtype: int
         """
         return self._StartTime
@@ -2048,7 +2048,7 @@ Value: specify the sorting method:.
 
     @property
     def EndTime(self):
-        """The timestamp of the end time, supporting the query of metric data within 30 days. (unit: seconds).
+        r"""The timestamp of the end time, supporting the query of metric data within 30 days. (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -2059,7 +2059,7 @@ Value: specify the sorting method:.
 
     @property
     def Period(self):
-        """Whether to aggregate by a fixed time span: enter 1 for values of 1 and greater, and 0 if not filled in.
+        r"""Whether to aggregate by a fixed time span: enter 1 for values of 1 and greater, and 0 if not filled in.
 -If 0 is filled in, it calculates the metric data from the start time to the cutoff time.
 - if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.
  -If the time span is (0,12) hours, it is aggregated by one-minute granularity.
@@ -2075,7 +2075,7 @@ Value: specify the sorting method:.
 
     @property
     def OrderBy(self):
-        """Sort query metrics.
+        r"""Sort query metrics.
 Key: enter the tencentcloud api metric name. [for details, see](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1) .
 Value: specify the sorting method:.     
 -Asc: sorts query metrics in ascending order.
@@ -2090,7 +2090,7 @@ Value: specify the sorting method:.
 
     @property
     def PageSize(self):
-        """Maximum number of queried metrics. currently, up to 50 data entries can be displayed. the value range for pagesize is 1-50. submit pagesize to show the limited number based on the value of pagesize.
+        r"""Maximum number of queried metrics. currently, up to 50 data entries can be displayed. the value range for pagesize is 1-50. submit pagesize to show the limited number based on the value of pagesize.
         :rtype: int
         """
         return self._PageSize
@@ -2129,7 +2129,7 @@ Value: specify the sorting method:.
 
 
 class DescribeGeneralMetricDataResponse(AbstractModel):
-    """DescribeGeneralMetricData response structure.
+    r"""DescribeGeneralMetricData response structure.
 
     """
 
@@ -2145,7 +2145,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
     @property
     def Records(self):
-        """Indicator result set.
+        r"""Indicator result set.
         :rtype: list of Line
         """
         return self._Records
@@ -2156,7 +2156,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2177,7 +2177,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
 
 
 class DescribeGeneralOTSpanListRequest(AbstractModel):
-    """DescribeGeneralOTSpanList request structure.
+    r"""DescribeGeneralOTSpanList request structure.
 
     """
 
@@ -2222,7 +2222,7 @@ The currently supported values are:.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -2233,7 +2233,7 @@ The currently supported values are:.
 
     @property
     def StartTime(self):
-        """Span query start timestamp (unit: seconds).
+        r"""Span query start timestamp (unit: seconds).
         :rtype: int
         """
         return self._StartTime
@@ -2244,7 +2244,7 @@ The currently supported values are:.
 
     @property
     def EndTime(self):
-        """Span query end timestamp (unit: seconds).
+        r"""Span query end timestamp (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -2255,7 +2255,7 @@ The currently supported values are:.
 
     @property
     def Filters(self):
-        """Universal filter parameters.
+        r"""Universal filter parameters.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2266,7 +2266,7 @@ The currently supported values are:.
 
     @property
     def OrderBy(self):
-        """Sort
+        r"""Sort
 .
 The currently supported keys are:.
 
@@ -2288,7 +2288,7 @@ The currently supported values are:.
 
     @property
     def BusinessName(self):
-        """The service name of the business itself. console users should fill in taw.
+        r"""The service name of the business itself. console users should fill in taw.
         :rtype: str
         """
         return self._BusinessName
@@ -2299,7 +2299,7 @@ The currently supported values are:.
 
     @property
     def Limit(self):
-        """Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.
+        r"""Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.
         :rtype: int
         """
         return self._Limit
@@ -2310,7 +2310,7 @@ The currently supported values are:.
 
     @property
     def Offset(self):
-        """Pagination.
+        r"""Pagination.
         :rtype: int
         """
         return self._Offset
@@ -2347,7 +2347,7 @@ The currently supported values are:.
 
 
 class DescribeGeneralOTSpanListResponse(AbstractModel):
-    """DescribeGeneralOTSpanList response structure.
+    r"""DescribeGeneralOTSpanList response structure.
 
     """
 
@@ -2366,7 +2366,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number.
+        r"""Total number.
         :rtype: int
         """
         return self._TotalCount
@@ -2377,7 +2377,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """The trace structure containing the query results spans. the string after the opentelemetry standard trace structure is hashed. first, the trace is converted into a json string using ptrace.jsonmarshaler, then compressed with gzip, and finally converted into a base64 standard string.
+        r"""The trace structure containing the query results spans. the string after the opentelemetry standard trace structure is hashed. first, the trace is converted into a json string using ptrace.jsonmarshaler, then compressed with gzip, and finally converted into a base64 standard string.
         :rtype: str
         """
         return self._Spans
@@ -2388,7 +2388,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2405,7 +2405,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
 
 class DescribeGeneralSpanListRequest(AbstractModel):
-    """DescribeGeneralSpanList request structure.
+    r"""DescribeGeneralSpanList request structure.
 
     """
 
@@ -2450,7 +2450,7 @@ The currently supported values are:.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -2461,7 +2461,7 @@ The currently supported values are:.
 
     @property
     def StartTime(self):
-        """Span query start timestamp (unit: seconds).
+        r"""Span query start timestamp (unit: seconds).
         :rtype: int
         """
         return self._StartTime
@@ -2472,7 +2472,7 @@ The currently supported values are:.
 
     @property
     def EndTime(self):
-        """Span query end timestamp (unit: seconds).
+        r"""Span query end timestamp (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -2483,7 +2483,7 @@ The currently supported values are:.
 
     @property
     def Filters(self):
-        """Universal filter parameters.
+        r"""Universal filter parameters.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2494,7 +2494,7 @@ The currently supported values are:.
 
     @property
     def OrderBy(self):
-        """Sort
+        r"""Sort
 .
 The currently supported keys are:.
 
@@ -2516,7 +2516,7 @@ The currently supported values are:.
 
     @property
     def BusinessName(self):
-        """The service name of the business itself. console users should fill in taw.
+        r"""The service name of the business itself. console users should fill in taw.
         :rtype: str
         """
         return self._BusinessName
@@ -2527,7 +2527,7 @@ The currently supported values are:.
 
     @property
     def Limit(self):
-        """Number of items per page, defaults to 10,000, valid values are 0 to 10,000.
+        r"""Number of items per page, defaults to 10,000, valid values are 0 to 10,000.
         :rtype: int
         """
         return self._Limit
@@ -2538,7 +2538,7 @@ The currently supported values are:.
 
     @property
     def Offset(self):
-        """Pagination.
+        r"""Pagination.
         :rtype: int
         """
         return self._Offset
@@ -2575,7 +2575,7 @@ The currently supported values are:.
 
 
 class DescribeGeneralSpanListResponse(AbstractModel):
-    """DescribeGeneralSpanList response structure.
+    r"""DescribeGeneralSpanList response structure.
 
     """
 
@@ -2594,7 +2594,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number.
+        r"""Total number.
         :rtype: int
         """
         return self._TotalCount
@@ -2605,7 +2605,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        """Span pagination list.
+        r"""Span pagination list.
         :rtype: list of Span
         """
         return self._Spans
@@ -2616,7 +2616,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2638,7 +2638,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
 
 class DescribeMetricRecordsRequest(AbstractModel):
-    """DescribeMetricRecords request structure.
+    r"""DescribeMetricRecords request structure.
 
     """
 
@@ -2701,7 +2701,7 @@ The currently supported values are:.
 
     @property
     def Metrics(self):
-        """Metric list.
+        r"""Metric list.
         :rtype: list of QueryMetricItem
         """
         return self._Metrics
@@ -2712,7 +2712,7 @@ The currently supported values are:.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -2723,7 +2723,7 @@ The currently supported values are:.
 
     @property
     def StartTime(self):
-        """Start time (unit: sec).
+        r"""Start time (unit: sec).
         :rtype: int
         """
         return self._StartTime
@@ -2734,7 +2734,7 @@ The currently supported values are:.
 
     @property
     def EndTime(self):
-        """End time (unit: seconds).
+        r"""End time (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -2745,7 +2745,7 @@ The currently supported values are:.
 
     @property
     def Filters(self):
-        """Filter criteria.
+        r"""Filter criteria.
         :rtype: list of Filter
         """
         return self._Filters
@@ -2756,7 +2756,7 @@ The currently supported values are:.
 
     @property
     def OrFilters(self):
-        """Or filter criteria.
+        r"""Or filter criteria.
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -2767,7 +2767,7 @@ The currently supported values are:.
 
     @property
     def GroupBy(self):
-        """Aggregation dimension.
+        r"""Aggregation dimension.
         :rtype: list of str
         """
         return self._GroupBy
@@ -2778,7 +2778,7 @@ The currently supported values are:.
 
     @property
     def OrderBy(self):
-        """Sort
+        r"""Sort
 .
 The currently supported keys are:.
 
@@ -2800,7 +2800,7 @@ The currently supported values are:.
 
     @property
     def BusinessName(self):
-        """The service name of the business itself. console users should fill in taw.
+        r"""The service name of the business itself. console users should fill in taw.
         :rtype: str
         """
         return self._BusinessName
@@ -2811,7 +2811,7 @@ The currently supported values are:.
 
     @property
     def Type(self):
-        """Special handling of query results.
+        r"""Special handling of query results.
         :rtype: str
         """
         return self._Type
@@ -2822,7 +2822,7 @@ The currently supported values are:.
 
     @property
     def Limit(self):
-        """Size per page, defaults to 1,000, valid value range is 0 – 1,000.
+        r"""Size per page, defaults to 1,000, valid value range is 0 – 1,000.
         :rtype: int
         """
         return self._Limit
@@ -2833,7 +2833,7 @@ The currently supported values are:.
 
     @property
     def Offset(self):
-        """Paging starting point.
+        r"""Paging starting point.
         :rtype: int
         """
         return self._Offset
@@ -2844,7 +2844,7 @@ The currently supported values are:.
 
     @property
     def PageIndex(self):
-        """Page number.
+        r"""Page number.
         :rtype: int
         """
         return self._PageIndex
@@ -2855,7 +2855,7 @@ The currently supported values are:.
 
     @property
     def PageSize(self):
-        """Page length.
+        r"""Page length.
         :rtype: int
         """
         return self._PageSize
@@ -2908,7 +2908,7 @@ The currently supported values are:.
 
 
 class DescribeMetricRecordsResponse(AbstractModel):
-    """DescribeMetricRecords response structure.
+    r"""DescribeMetricRecords response structure.
 
     """
 
@@ -2927,7 +2927,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def Records(self):
-        """Indicator result set.
+        r"""Indicator result set.
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -2938,7 +2938,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of metric query result sets.
+        r"""Number of metric query result sets.
         :rtype: int
         """
         return self._TotalCount
@@ -2949,7 +2949,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2971,7 +2971,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
 
 class DescribeServiceOverviewRequest(AbstractModel):
-    """DescribeServiceOverview request structure.
+    r"""DescribeServiceOverview request structure.
 
     """
 
@@ -3012,7 +3012,7 @@ Value: fill in.
 
     @property
     def Metrics(self):
-        """Metric list.
+        r"""Metric list.
         :rtype: list of QueryMetricItem
         """
         return self._Metrics
@@ -3023,7 +3023,7 @@ Value: fill in.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -3034,7 +3034,7 @@ Value: fill in.
 
     @property
     def Filters(self):
-        """Filter criteria.
+        r"""Filter criteria.
         :rtype: list of Filter
         """
         return self._Filters
@@ -3045,7 +3045,7 @@ Value: fill in.
 
     @property
     def GroupBy(self):
-        """Aggregation dimension.
+        r"""Aggregation dimension.
         :rtype: list of str
         """
         return self._GroupBy
@@ -3056,7 +3056,7 @@ Value: fill in.
 
     @property
     def StartTime(self):
-        """Start time (unit: sec).
+        r"""Start time (unit: sec).
         :rtype: int
         """
         return self._StartTime
@@ -3067,7 +3067,7 @@ Value: fill in.
 
     @property
     def EndTime(self):
-        """End time (unit: seconds).
+        r"""End time (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -3078,7 +3078,7 @@ Value: fill in.
 
     @property
     def OrderBy(self):
-        """Sorting method
+        r"""Sorting method
 .
 Value: fill in.
 -Asc: sorts query metrics in ascending order.
@@ -3093,7 +3093,7 @@ Value: fill in.
 
     @property
     def Limit(self):
-        """Page size.
+        r"""Page size.
         :rtype: int
         """
         return self._Limit
@@ -3104,7 +3104,7 @@ Value: fill in.
 
     @property
     def Offset(self):
-        """Paging starting point.
+        r"""Paging starting point.
         :rtype: int
         """
         return self._Offset
@@ -3147,7 +3147,7 @@ Value: fill in.
 
 
 class DescribeServiceOverviewResponse(AbstractModel):
-    """DescribeServiceOverview response structure.
+    r"""DescribeServiceOverview response structure.
 
     """
 
@@ -3163,7 +3163,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
     @property
     def Records(self):
-        """Indicator result set.
+        r"""Indicator result set.
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -3174,7 +3174,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3195,7 +3195,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
 
 
 class DescribeTagValuesRequest(AbstractModel):
-    """DescribeTagValues request structure.
+    r"""DescribeTagValues request structure.
 
     """
 
@@ -3226,7 +3226,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        """Dimension name.
+        r"""Dimension name.
         :rtype: str
         """
         return self._TagKey
@@ -3237,7 +3237,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -3248,7 +3248,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter criteria.
+        r"""Filter criteria.
         :rtype: list of Filter
         """
         return self._Filters
@@ -3259,7 +3259,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time (unit: sec).
+        r"""Start time (unit: sec).
         :rtype: int
         """
         return self._StartTime
@@ -3270,7 +3270,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time (unit: seconds).
+        r"""End time (unit: seconds).
         :rtype: int
         """
         return self._EndTime
@@ -3281,7 +3281,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def OrFilters(self):
-        """Or filter criteria.
+        r"""Or filter criteria.
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -3292,7 +3292,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Usage type.
+        r"""Usage type.
         :rtype: str
         """
         return self._Type
@@ -3331,7 +3331,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
 
 class DescribeTagValuesResponse(AbstractModel):
-    """DescribeTagValues response structure.
+    r"""DescribeTagValues response structure.
 
     """
 
@@ -3347,7 +3347,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Values(self):
-        """Dimension value list.
+        r"""Dimension value list.
         :rtype: list of str
         """
         return self._Values
@@ -3358,7 +3358,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3374,7 +3374,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Queries filter parameters.
+    r"""Queries filter parameters.
 
     """
 
@@ -3393,7 +3393,7 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
-        """Filtering method (=, !=, in).
+        r"""Filtering method (=, !=, in).
         :rtype: str
         """
         return self._Type
@@ -3404,7 +3404,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        """Filter dimension name.
+        r"""Filter dimension name.
         :rtype: str
         """
         return self._Key
@@ -3415,7 +3415,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        """Filter value. uses commas to separate multiple values in in filtering method.
+        r"""Filter value. uses commas to separate multiple values in in filtering method.
         :rtype: str
         """
         return self._Value
@@ -3440,7 +3440,7 @@ class Filter(AbstractModel):
 
 
 class GeneralFilter(AbstractModel):
-    """Queries filter parameters.
+    r"""Queries filter parameters.
 
     """
 
@@ -3456,7 +3456,7 @@ class GeneralFilter(AbstractModel):
 
     @property
     def Key(self):
-        """Filter dimension name.
+        r"""Filter dimension name.
         :rtype: str
         """
         return self._Key
@@ -3467,7 +3467,7 @@ class GeneralFilter(AbstractModel):
 
     @property
     def Value(self):
-        """Values after filtering.
+        r"""Values after filtering.
         :rtype: str
         """
         return self._Value
@@ -3491,7 +3491,7 @@ class GeneralFilter(AbstractModel):
 
 
 class Instrument(AbstractModel):
-    """Component.
+    r"""Component.
 
     """
 
@@ -3507,7 +3507,7 @@ class Instrument(AbstractModel):
 
     @property
     def Name(self):
-        """Component name.
+        r"""Component name.
         :rtype: str
         """
         return self._Name
@@ -3518,7 +3518,7 @@ class Instrument(AbstractModel):
 
     @property
     def Enable(self):
-        """Component switch.
+        r"""Component switch.
         :rtype: bool
         """
         return self._Enable
@@ -3542,7 +3542,7 @@ class Instrument(AbstractModel):
 
 
 class Line(AbstractModel):
-    """Metric curve data.
+    r"""Metric curve data.
 
     """
 
@@ -3567,7 +3567,7 @@ class Line(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name.
+        r"""Metric name.
         :rtype: str
         """
         return self._MetricName
@@ -3578,7 +3578,7 @@ class Line(AbstractModel):
 
     @property
     def MetricNameCN(self):
-        """Metric chinese name.
+        r"""Metric chinese name.
         :rtype: str
         """
         return self._MetricNameCN
@@ -3589,7 +3589,7 @@ class Line(AbstractModel):
 
     @property
     def TimeSerial(self):
-        """Time series.
+        r"""Time series.
         :rtype: list of int
         """
         return self._TimeSerial
@@ -3600,7 +3600,7 @@ class Line(AbstractModel):
 
     @property
     def DataSerial(self):
-        """Data sequence.
+        r"""Data sequence.
         :rtype: list of float
         """
         return self._DataSerial
@@ -3611,7 +3611,7 @@ class Line(AbstractModel):
 
     @property
     def Tags(self):
-        """Dimension list.
+        r"""Dimension list.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -3643,7 +3643,7 @@ class Line(AbstractModel):
 
 
 class ModifyApmInstanceRequest(AbstractModel):
-    """ModifyApmInstance request structure.
+    r"""ModifyApmInstance request structure.
 
     """
 
@@ -3725,7 +3725,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -3736,7 +3736,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Business system name.
+        r"""Business system name.
         :rtype: str
         """
         return self._Name
@@ -3747,7 +3747,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag list.
+        r"""Tag list.
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -3758,7 +3758,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Business system description.
+        r"""Business system description.
         :rtype: str
         """
         return self._Description
@@ -3769,7 +3769,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        """Retention period of trace data (unit: days).
+        r"""Retention period of trace data (unit: days).
         :rtype: int
         """
         return self._TraceDuration
@@ -3780,7 +3780,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def OpenBilling(self):
-        """Billing switch.
+        r"""Billing switch.
         :rtype: bool
         """
         return self._OpenBilling
@@ -3791,7 +3791,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        """Business system report limit.
+        r"""Business system report limit.
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -3802,7 +3802,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        """Error rate warning line. when the average error rate of the application exceeds this threshold, the system will give an abnormal note.
+        r"""Error rate warning line. when the average error rate of the application exceeds this threshold, the system will give an abnormal note.
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -3813,7 +3813,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        """Sampling rate (unit: %).
+        r"""Sampling rate (unit: %).
         :rtype: int
         """
         return self._SampleRate
@@ -3824,7 +3824,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrorSample(self):
-        """Error sampling switch (0: off, 1: on).
+        r"""Error sampling switch (0: off, 1: on).
         :rtype: int
         """
         return self._ErrorSample
@@ -3835,7 +3835,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        """Sampling slow call saving threshold (unit: ms).
+        r"""Sampling slow call saving threshold (unit: ms).
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -3846,7 +3846,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        """Log feature switch (0: off; 1: on).
+        r"""Log feature switch (0: off; 1: on).
         :rtype: int
         """
         return self._IsRelatedLog
@@ -3857,7 +3857,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        """Log region, which takes effect after the log feature is enabled.
+        r"""Log region, which takes effect after the log feature is enabled.
         :rtype: str
         """
         return self._LogRegion
@@ -3868,7 +3868,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        """CLS log topic id, which takes effect after the log feature is enabled.
+        r"""CLS log topic id, which takes effect after the log feature is enabled.
         :rtype: str
         """
         return self._LogTopicID
@@ -3879,7 +3879,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        """Logset, which takes effect only after the log feature is enabled.
+        r"""Logset, which takes effect only after the log feature is enabled.
         :rtype: str
         """
         return self._LogSet
@@ -3890,7 +3890,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        """Log source, which takes effect only after the log feature is enabled.
+        r"""Log source, which takes effect only after the log feature is enabled.
         :rtype: str
         """
         return self._LogSource
@@ -3901,7 +3901,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def CustomShowTags(self):
-        """List of custom display tags.
+        r"""List of custom display tags.
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -3912,7 +3912,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        """Modify billing mode (1: prepaid, 0: pay-as-you-go).
+        r"""Modify billing mode (1: prepaid, 0: pay-as-you-go).
         :rtype: int
         """
         return self._PayMode
@@ -3923,7 +3923,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        """Response time warning line.
+        r"""Response time warning line.
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -3934,7 +3934,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        """Whether it is free (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition), default 0.
+        r"""Whether it is free (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition), default 0.
         :rtype: int
         """
         return self._Free
@@ -3945,7 +3945,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        """Whether to associate the dashboard (0 = off, 1 = on).
+        r"""Whether to associate the dashboard (0 = off, 1 = on).
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -3956,7 +3956,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        """Associated dashboard id, which takes effect after the associated dashboard is enabled.
+        r"""Associated dashboard id, which takes effect after the associated dashboard is enabled.
         :rtype: str
         """
         return self._DashboardTopicID
@@ -3967,7 +3967,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        """SQL injection detection switch (0: off, 1: on).
+        r"""SQL injection detection switch (0: off, 1: on).
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -3978,7 +3978,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        """Whether to enable component vulnerability detection (0 = no, 1 = yes).
+        r"""Whether to enable component vulnerability detection (0 = no, 1 = yes).
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -4029,7 +4029,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
 
 class ModifyApmInstanceResponse(AbstractModel):
-    """ModifyApmInstance response structure.
+    r"""ModifyApmInstance response structure.
 
     """
 
@@ -4042,7 +4042,7 @@ class ModifyApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4057,7 +4057,7 @@ class ModifyApmInstanceResponse(AbstractModel):
 
 
 class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
-    """ModifyGeneralApmApplicationConfig request structure.
+    r"""ModifyGeneralApmApplicationConfig request structure.
 
     """
 
@@ -4078,7 +4078,7 @@ For specific fields, please refer to.
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -4089,7 +4089,7 @@ For specific fields, please refer to.
 
     @property
     def Tags(self):
-        """Fields to be modified. the key and value respectively specify the field name and field value.
+        r"""Fields to be modified. the key and value respectively specify the field name and field value.
 .
 For specific fields, please refer to.
         :rtype: list of ApmTag
@@ -4102,7 +4102,7 @@ For specific fields, please refer to.
 
     @property
     def ServiceNames(self):
-        """Name of the application list that requires configuration modification.	
+        r"""Name of the application list that requires configuration modification.	
         :rtype: list of str
         """
         return self._ServiceNames
@@ -4132,7 +4132,7 @@ For specific fields, please refer to.
 
 
 class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
-    """ModifyGeneralApmApplicationConfig response structure.
+    r"""ModifyGeneralApmApplicationConfig response structure.
 
     """
 
@@ -4148,7 +4148,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def Message(self):
-        """Description of the returned value.
+        r"""Description of the returned value.
         :rtype: str
         """
         return self._Message
@@ -4159,7 +4159,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4175,7 +4175,7 @@ class ModifyGeneralApmApplicationConfigResponse(AbstractModel):
 
 
 class OrderBy(AbstractModel):
-    """Sorting fields.
+    r"""Sorting fields.
 
     """
 
@@ -4191,7 +4191,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Key(self):
-        """Sort field (starttime, endtime, duration are supported).
+        r"""Sort field (starttime, endtime, duration are supported).
         :rtype: str
         """
         return self._Key
@@ -4202,7 +4202,7 @@ class OrderBy(AbstractModel):
 
     @property
     def Value(self):
-        """ASC: sequential sorting / desc: reverse sorting.
+        r"""ASC: sequential sorting / desc: reverse sorting.
         :rtype: str
         """
         return self._Value
@@ -4226,7 +4226,7 @@ class OrderBy(AbstractModel):
 
 
 class QueryMetricItem(AbstractModel):
-    """Querying.
+    r"""Querying.
 
     """
 
@@ -4245,7 +4245,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metric name.
+        r"""Metric name.
         :rtype: str
         """
         return self._MetricName
@@ -4256,7 +4256,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compares(self):
-        """Year-Over-Year comparison is now supported for comparebyyesterday (compared to yesterday) and comparebylastweek (compared to last week). 
+        r"""Year-Over-Year comparison is now supported for comparebyyesterday (compared to yesterday) and comparebylastweek (compared to last week). 
         :rtype: list of str
         """
         return self._Compares
@@ -4267,7 +4267,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compare(self):
-        """Year-On-Year, deprecated, not recommended for use.
+        r"""Year-On-Year, deprecated, not recommended for use.
         :rtype: str
         """
         return self._Compare
@@ -4292,7 +4292,7 @@ class QueryMetricItem(AbstractModel):
 
 
 class Span(AbstractModel):
-    """Span object.
+    r"""Span object.
 
     """
 
@@ -4338,7 +4338,7 @@ class Span(AbstractModel):
 
     @property
     def TraceID(self):
-        """Trace ID
+        r"""Trace ID
         :rtype: str
         """
         return self._TraceID
@@ -4349,7 +4349,7 @@ class Span(AbstractModel):
 
     @property
     def Logs(self):
-        """Log.
+        r"""Log.
         :rtype: list of SpanLog
         """
         return self._Logs
@@ -4360,7 +4360,7 @@ class Span(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag.
+        r"""Tag.
         :rtype: list of SpanTag
         """
         return self._Tags
@@ -4371,7 +4371,7 @@ class Span(AbstractModel):
 
     @property
     def Process(self):
-        """Submit application service information.
+        r"""Submit application service information.
         :rtype: :class:`tencentcloud.apm.v20210622.models.SpanProcess`
         """
         return self._Process
@@ -4382,7 +4382,7 @@ class Span(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Generated timestamp (ms).
+        r"""Generated timestamp (ms).
         :rtype: int
         """
         return self._Timestamp
@@ -4393,7 +4393,7 @@ class Span(AbstractModel):
 
     @property
     def OperationName(self):
-        """Span name.
+        r"""Span name.
         :rtype: str
         """
         return self._OperationName
@@ -4404,7 +4404,7 @@ class Span(AbstractModel):
 
     @property
     def References(self):
-        """Association relationship.
+        r"""Association relationship.
         :rtype: list of SpanReference
         """
         return self._References
@@ -4415,7 +4415,7 @@ class Span(AbstractModel):
 
     @property
     def StartTime(self):
-        """Generated timestamp (ms).
+        r"""Generated timestamp (ms).
         :rtype: int
         """
         return self._StartTime
@@ -4426,7 +4426,7 @@ class Span(AbstractModel):
 
     @property
     def Duration(self):
-        """Duration (ms).
+        r"""Duration (ms).
         :rtype: int
         """
         return self._Duration
@@ -4437,7 +4437,7 @@ class Span(AbstractModel):
 
     @property
     def SpanID(self):
-        """Span ID
+        r"""Span ID
         :rtype: str
         """
         return self._SpanID
@@ -4448,7 +4448,7 @@ class Span(AbstractModel):
 
     @property
     def StartTimeMillis(self):
-        """Generated timestamp (ms).
+        r"""Generated timestamp (ms).
         :rtype: int
         """
         return self._StartTimeMillis
@@ -4459,7 +4459,7 @@ class Span(AbstractModel):
 
     @property
     def ParentSpanID(self):
-        """Parent Span ID
+        r"""Parent Span ID
         :rtype: str
         """
         return self._ParentSpanID
@@ -4510,7 +4510,7 @@ class Span(AbstractModel):
 
 
 class SpanLog(AbstractModel):
-    """Span log section.
+    r"""Span log section.
 
 
     """
@@ -4527,7 +4527,7 @@ class SpanLog(AbstractModel):
 
     @property
     def Timestamp(self):
-        """Log timestamp.
+        r"""Log timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -4538,7 +4538,7 @@ class SpanLog(AbstractModel):
 
     @property
     def Fields(self):
-        """Tag.
+        r"""Tag.
         :rtype: list of SpanTag
         """
         return self._Fields
@@ -4567,7 +4567,7 @@ class SpanLog(AbstractModel):
 
 
 class SpanProcess(AbstractModel):
-    """Service information.
+    r"""Service information.
 
     """
 
@@ -4583,7 +4583,7 @@ class SpanProcess(AbstractModel):
 
     @property
     def ServiceName(self):
-        """Application service name.
+        r"""Application service name.
         :rtype: str
         """
         return self._ServiceName
@@ -4594,7 +4594,7 @@ class SpanProcess(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags Tag array.
+        r"""Tags Tag array.
         :rtype: list of SpanTag
         """
         return self._Tags
@@ -4623,7 +4623,7 @@ class SpanProcess(AbstractModel):
 
 
 class SpanReference(AbstractModel):
-    """Upstream and downstream relationships of span.
+    r"""Upstream and downstream relationships of span.
 
     """
 
@@ -4642,7 +4642,7 @@ class SpanReference(AbstractModel):
 
     @property
     def RefType(self):
-        """Type of association relationship.
+        r"""Type of association relationship.
         :rtype: str
         """
         return self._RefType
@@ -4653,7 +4653,7 @@ class SpanReference(AbstractModel):
 
     @property
     def SpanID(self):
-        """Span ID
+        r"""Span ID
         :rtype: str
         """
         return self._SpanID
@@ -4664,7 +4664,7 @@ class SpanReference(AbstractModel):
 
     @property
     def TraceID(self):
-        """Trace ID
+        r"""Trace ID
         :rtype: str
         """
         return self._TraceID
@@ -4689,7 +4689,7 @@ class SpanReference(AbstractModel):
 
 
 class SpanTag(AbstractModel):
-    """Tag.
+    r"""Tag.
 
     """
 
@@ -4711,7 +4711,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Tag type.
+        r"""Tag type.
         :rtype: str
         """
         return self._Type
@@ -4722,7 +4722,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
-        """Tag key.
+        r"""Tag key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4734,7 +4734,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Tag value
+        r"""Tag value
 .
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -4761,7 +4761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TerminateApmInstanceRequest(AbstractModel):
-    """TerminateApmInstance request structure.
+    r"""TerminateApmInstance request structure.
 
     """
 
@@ -4774,7 +4774,7 @@ class TerminateApmInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Business system id.
+        r"""Business system id.
         :rtype: str
         """
         return self._InstanceId
@@ -4797,7 +4797,7 @@ class TerminateApmInstanceRequest(AbstractModel):
 
 
 class TerminateApmInstanceResponse(AbstractModel):
-    """TerminateApmInstance response structure.
+    r"""TerminateApmInstance response structure.
 
     """
 
@@ -4810,7 +4810,7 @@ class TerminateApmInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

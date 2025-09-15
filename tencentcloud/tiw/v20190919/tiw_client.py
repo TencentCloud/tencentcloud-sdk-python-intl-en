@@ -27,7 +27,7 @@ class TiwClient(AbstractClient):
 
 
     def ApplyTiwTrial(self, request):
-        """This API is used to apply for a Tencent Interactive Whiteboard trial (15-day by default).
+        r"""This API is used to apply for a Tencent Interactive Whiteboard trial (15-day by default).
 
         :param request: Request instance for ApplyTiwTrial.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ApplyTiwTrialRequest`
@@ -50,7 +50,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        """This API is used to create a whiteboard application.
+        r"""This API is used to create a whiteboard application.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateApplicationRequest`
@@ -73,7 +73,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateSnapshotTask(self, request):
-        """This API is used to create a whiteboard snapshot task. If a callback URL is provided, the whiteboard snapshot result is sent to the callback URL after the task is complete.
+        r"""This API is used to create a whiteboard snapshot task. If a callback URL is provided, the whiteboard snapshot result is sent to the callback URL after the task is complete.
 
         :param request: Request instance for CreateSnapshotTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateSnapshotTaskRequest`
@@ -96,7 +96,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateTranscode(self, request):
-        """This API is used to create a document transcoding task.
+        r"""This API is used to create a document transcoding task.
 
         :param request: Request instance for CreateTranscode.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateTranscodeRequest`
@@ -119,7 +119,7 @@ class TiwClient(AbstractClient):
 
 
     def CreateVideoGenerationTask(self, request):
-        """This API is used to create a recording video generation task.
+        r"""This API is used to create a recording video generation task.
 
         :param request: Request instance for CreateVideoGenerationTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateVideoGenerationTaskRequest`
@@ -142,7 +142,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeAPIService(self, request):
-        """This API is used to query the information about other cloud products by using the service role.
+        r"""This API is used to query the information about other cloud products by using the service role.
 
         :param request: Request instance for DescribeAPIService.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeAPIServiceRequest`
@@ -165,7 +165,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeApplicationInfos(self, request):
-        """This API is used to query the details of a whiteboard application.
+        r"""This API is used to query the details of a whiteboard application.
 
         :param request: Request instance for DescribeApplicationInfos.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationInfosRequest`
@@ -188,7 +188,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeApplicationUsage(self, request):
-        """This API is used to query the subproduct usage of Tencent Interactive Whiteboard.
+        r"""This API is used to query the subproduct usage of Tencent Interactive Whiteboard.
 
         :param request: Request instance for DescribeApplicationUsage.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationUsageRequest`
@@ -211,7 +211,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeBoardSDKLog(self, request):
-        """This API is used to query the logs of a whiteboard application on a client.
+        r"""This API is used to query the logs of a whiteboard application on a client.
 
         :param request: Request instance for DescribeBoardSDKLog.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeBoardSDKLogRequest`
@@ -234,7 +234,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeIMApplications(self, request):
-        """This API is used to query the instant messaging (IM) applications that are available for creating a whiteboard application.
+        r"""This API is used to query the instant messaging (IM) applications that are available for creating a whiteboard application.
 
         :param request: Request instance for DescribeIMApplications.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeIMApplicationsRequest`
@@ -257,7 +257,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOnlineRecord(self, request):
-        """This API is used to query the status and result of a real-time recording task.
+        r"""This API is used to query the status and result of a real-time recording task.
 
         :param request: Request instance for DescribeOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordRequest`
@@ -280,7 +280,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOnlineRecordCallback(self, request):
-        """This API is used to query the real-time recording callback address.
+        r"""This API is used to query the real-time recording callback address.
 
         :param request: Request instance for DescribeOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordCallbackRequest`
@@ -303,7 +303,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribePostpaidUsage(self, request):
-        """This API is used to query the pay-as-you-go usage of a user.
+        r"""This API is used to query the pay-as-you-go usage of a user.
 
         :param request: Request instance for DescribePostpaidUsage.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePostpaidUsageRequest`
@@ -326,7 +326,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeQualityMetrics(self, request):
-        """This API is used to query the quality data of a whiteboard application.
+        r"""This API is used to query the quality data of a whiteboard application.
 
         :param request: Request instance for DescribeQualityMetrics.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeQualityMetricsRequest`
@@ -349,7 +349,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeRecordSearch(self, request):
-        """This API is used to query real-time recording tasks by room ID.
+        r"""This API is used to query real-time recording tasks by room ID.
 
         :param request: Request instance for DescribeRecordSearch.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRecordSearchRequest`
@@ -372,7 +372,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeRoomList(self, request):
-        """This API is used to query the rooms of a whiteboard application.
+        r"""This API is used to query the rooms of a whiteboard application.
 
         :param request: Request instance for DescribeRoomList.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRoomListRequest`
@@ -395,7 +395,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeSnapshotTask(self, request):
-        """This API is used to query the information about a whiteboard snapshot task.
+        r"""This API is used to query the information about a whiteboard snapshot task.
 
         :param request: Request instance for DescribeSnapshotTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeSnapshotTaskRequest`
@@ -418,7 +418,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTIWDailyUsage(self, request):
-        """This API is used to query the daily billable usage of a whiteboard application.
+        r"""This API is used to query the daily billable usage of a whiteboard application.
         1. The period queried per request cannot be longer than 31 days.
         2. Due to statistics delays and other reasons, you cannot query the usage data of the current day. You can query today's usage after 7:00 tomorrow.
 
@@ -443,7 +443,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTIWRoomDailyUsage(self, request):
-        """This API is used to query the daily billable usage by each room of a whiteboard application.
+        r"""This API is used to query the daily billable usage by each room of a whiteboard application.
         1. The period queried per request cannot be longer than 31 days.
         2. Due to statistics delays and other reasons, you cannot query the usage data of the current day. You can query today's usage after 7:00 tomorrow.
 
@@ -468,7 +468,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscode(self, request):
-        """This API is used to query the progress and result of a document transcoding task.
+        r"""This API is used to query the progress and result of a document transcoding task.
 
         :param request: Request instance for DescribeTranscode.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeRequest`
@@ -491,7 +491,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscodeCallback(self, request):
-        """This API is used to query the document transcoding callback address.
+        r"""This API is used to query the document transcoding callback address.
 
         :param request: Request instance for DescribeTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeCallbackRequest`
@@ -514,7 +514,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscodeSearch(self, request):
-        """This API is used to query transcoding tasks by document name.
+        r"""This API is used to query transcoding tasks by document name.
 
         :param request: Request instance for DescribeTranscodeSearch.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeSearchRequest`
@@ -537,7 +537,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeUsageSummary(self, request):
-        """This API is used to query the summary of subproduct usage within a specified period of time.
+        r"""This API is used to query the summary of subproduct usage within a specified period of time.
 
         :param request: Request instance for DescribeUsageSummary.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUsageSummaryRequest`
@@ -560,7 +560,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeUserList(self, request):
-        """This API is used to query the users of a whiteboard application.
+        r"""This API is used to query the users of a whiteboard application.
 
         :param request: Request instance for DescribeUserList.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserListRequest`
@@ -583,7 +583,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeUserResources(self, request):
-        """This API is used to query user resources.
+        r"""This API is used to query user resources.
 
         :param request: Request instance for DescribeUserResources.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserResourcesRequest`
@@ -606,7 +606,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeUserStatus(self, request):
-        """This API is used to query the Tencent Interactive Whiteboard service status of a user, including the activation status and validity period.
+        r"""This API is used to query the Tencent Interactive Whiteboard service status of a user, including the activation status and validity period.
 
         :param request: Request instance for DescribeUserStatus.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserStatusRequest`
@@ -629,7 +629,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeVideoGenerationTask(self, request):
-        """This API is used to query the status and result of a recording video generation task.
+        r"""This API is used to query the status and result of a recording video generation task.
 
         :param request: Request instance for DescribeVideoGenerationTask.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskRequest`
@@ -652,7 +652,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeVideoGenerationTaskCallback(self, request):
-        """This API is used to query the callback URL for recording video generation.
+        r"""This API is used to query the callback URL for recording video generation.
 
         :param request: Request instance for DescribeVideoGenerationTaskCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskCallbackRequest`
@@ -675,7 +675,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardApplicationConfig(self, request):
-        """This API is used to query the task-related configurations of a whiteboard application, including the bucket and callback URL.
+        r"""This API is used to query the task-related configurations of a whiteboard application, including the bucket and callback URL.
 
         :param request: Request instance for DescribeWhiteboardApplicationConfig.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardApplicationConfigRequest`
@@ -698,7 +698,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardBucketConfig(self, request):
-        """This API is used to query the bucket configurations for document transcoding and real-time recording.
+        r"""This API is used to query the bucket configurations for document transcoding and real-time recording.
 
         :param request: Request instance for DescribeWhiteboardBucketConfig.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardBucketConfigRequest`
@@ -721,7 +721,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardPush(self, request):
-        """This API is used to query the status and result of a whiteboard push task.
+        r"""This API is used to query the status and result of a whiteboard push task.
 
         :param request: Request instance for DescribeWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushRequest`
@@ -744,7 +744,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardPushCallback(self, request):
-        """This API is used to query the whiteboard push callback URL.
+        r"""This API is used to query the whiteboard push callback URL.
 
         :param request: Request instance for DescribeWhiteboardPushCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushCallbackRequest`
@@ -767,7 +767,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeWhiteboardPushSearch(self, request):
-        """This API is used to query whiteboard push tasks by room ID.
+        r"""This API is used to query whiteboard push tasks by room ID.
 
         :param request: Request instance for DescribeWhiteboardPushSearch.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushSearchRequest`
@@ -790,7 +790,7 @@ class TiwClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """This API is used to modify a whiteboard application.
+        r"""This API is used to modify a whiteboard application.
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyApplicationRequest`
@@ -813,7 +813,7 @@ class TiwClient(AbstractClient):
 
 
     def ModifyAutoRenewFlag(self, request):
-        """This API is used to set auto-renewal for a Tencent Interactive Whiteboard monthly feature package.
+        r"""This API is used to set auto-renewal for a Tencent Interactive Whiteboard monthly feature package.
 
         :param request: Request instance for ModifyAutoRenewFlag.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyAutoRenewFlagRequest`
@@ -836,7 +836,7 @@ class TiwClient(AbstractClient):
 
 
     def ModifyWhiteboardApplicationConfig(self, request):
-        """This API is used to modify the task-related configurations of a whiteboard application, including the bucket and callback URL.
+        r"""This API is used to modify the task-related configurations of a whiteboard application, including the bucket and callback URL.
 
         :param request: Request instance for ModifyWhiteboardApplicationConfig.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardApplicationConfigRequest`
@@ -859,7 +859,7 @@ class TiwClient(AbstractClient):
 
 
     def ModifyWhiteboardBucketConfig(self, request):
-        """This API is used to modify the bucket configurations for document transcoding and real-time recording.
+        r"""This API is used to modify the bucket configurations for document transcoding and real-time recording.
 
         :param request: Request instance for ModifyWhiteboardBucketConfig.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardBucketConfigRequest`
@@ -882,7 +882,7 @@ class TiwClient(AbstractClient):
 
 
     def PauseOnlineRecord(self, request):
-        """This API is used to pause real-time recording.
+        r"""This API is used to pause real-time recording.
 
         :param request: Request instance for PauseOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.PauseOnlineRecordRequest`
@@ -905,7 +905,7 @@ class TiwClient(AbstractClient):
 
 
     def ResumeOnlineRecord(self, request):
-        """This API is used to resume real-time recording.
+        r"""This API is used to resume real-time recording.
 
         :param request: Request instance for ResumeOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.ResumeOnlineRecordRequest`
@@ -928,7 +928,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallback(self, request):
-        """This API is used to set the real-time recording callback address. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the real-time recording callback address. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackRequest`
@@ -951,7 +951,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallbackKey(self, request):
-        """This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetOnlineRecordCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
@@ -974,7 +974,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallback(self, request):
-        """This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackRequest`
@@ -997,7 +997,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallbackKey(self, request):
-        """This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetTranscodeCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`
@@ -1020,7 +1020,7 @@ class TiwClient(AbstractClient):
 
 
     def SetVideoGenerationTaskCallback(self, request):
-        """This API is used to set the callback URL for recording video generation.
+        r"""This API is used to set the callback URL for recording video generation.
 
         :param request: Request instance for SetVideoGenerationTaskCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackRequest`
@@ -1043,7 +1043,7 @@ class TiwClient(AbstractClient):
 
 
     def SetVideoGenerationTaskCallbackKey(self, request):
-        """This API is used to set the callback authentication key for recording video generation.
+        r"""This API is used to set the callback authentication key for recording video generation.
 
         :param request: Request instance for SetVideoGenerationTaskCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackKeyRequest`
@@ -1066,7 +1066,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallback(self, request):
-        """This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetWhiteboardPushCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackRequest`
@@ -1089,7 +1089,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallbackKey(self, request):
-        """This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        r"""This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetWhiteboardPushCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackKeyRequest`
@@ -1112,7 +1112,7 @@ class TiwClient(AbstractClient):
 
 
     def StartOnlineRecord(self, request):
-        """This API is used to start a real-time recording task.
+        r"""This API is used to start a real-time recording task.
 
         :param request: Request instance for StartOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StartOnlineRecordRequest`
@@ -1135,7 +1135,7 @@ class TiwClient(AbstractClient):
 
 
     def StartWhiteboardPush(self, request):
-        """This API is used to start a whiteboard push task.
+        r"""This API is used to start a whiteboard push task.
 
         :param request: Request instance for StartWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StartWhiteboardPushRequest`
@@ -1158,7 +1158,7 @@ class TiwClient(AbstractClient):
 
 
     def StopOnlineRecord(self, request):
-        """This API is used to stop real-time recording.
+        r"""This API is used to stop real-time recording.
 
         :param request: Request instance for StopOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StopOnlineRecordRequest`
@@ -1181,7 +1181,7 @@ class TiwClient(AbstractClient):
 
 
     def StopWhiteboardPush(self, request):
-        """This API is used to stop a whiteboard push task.
+        r"""This API is used to stop a whiteboard push task.
 
         :param request: Request instance for StopWhiteboardPush.
         :type request: :class:`tencentcloud.tiw.v20190919.models.StopWhiteboardPushRequest`

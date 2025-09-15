@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ApplyResult(AbstractModel):
-    """Application update results
+    r"""Application update results
 
     """
 
@@ -47,7 +47,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -58,7 +58,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationType(self):
-        """Application type
+        r"""Application type
         :rtype: int
         """
         return self._ApplicationType
@@ -69,7 +69,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationStatus(self):
-        """Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
+        r"""Status. Valid values: `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -81,7 +81,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TaskId(self):
-        """ID of the submitted task
+        r"""ID of the submitted task
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -93,7 +93,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Error(self):
-        """Error information
+        r"""Error information
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -123,7 +123,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class ApplyStatus(AbstractModel):
-    """Application ID and status
+    r"""Application ID and status
 
     """
 
@@ -145,7 +145,7 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationId(self):
-        """Value format: cluster ID-application ID
+        r"""Value format: cluster ID-application ID
         :rtype: str
         """
         return self._ApplicationId
@@ -156,7 +156,7 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationStatus(self):
-        """Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.
+        r"""Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected). Only applications in the pending approval status can be updated.
         :rtype: int
         """
         return self._ApplicationStatus
@@ -167,7 +167,7 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ApplicationType(self):
-        """Application type
+        r"""Application type
         :rtype: int
         """
         return self._ApplicationType
@@ -178,7 +178,7 @@ class ApplyStatus(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -204,7 +204,7 @@ class ApplyStatus(AbstractModel):
 
 
 class BackupExpireRuleInfo(AbstractModel):
-    """The details of backup retention policy
+    r"""The details of backup retention policy
     Policy for cluster: `ClusterId` = cluster ID, TableGroupId·= `-1`, `TableName`= `-1`.
     Policy for cluster + table group: `ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = `-1`.
     Policy for cluster + table group + table: ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = table name.
@@ -236,7 +236,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -247,7 +247,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -258,7 +258,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def FileTag(self):
-        """file tag, which is described above.
+        r"""file tag, which is described above.
         :rtype: int
         """
         return self._FileTag
@@ -269,7 +269,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def ExpireDay(self):
-        """Retention days, which is described above.
+        r"""Retention days, which is described above.
         :rtype: int
         """
         return self._ExpireDay
@@ -280,7 +280,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
     @property
     def OperType(self):
-        """Operation type, which is described above.
+        r"""Operation type, which is described above.
         :rtype: int
         """
         return self._OperType
@@ -307,7 +307,7 @@ class BackupExpireRuleInfo(AbstractModel):
 
 
 class BackupRecords(AbstractModel):
-    """Backup records
+    r"""Backup records
     When it is used as an output parameter, each field will be filled.
     When it is used as an input parameter, each field will be filled back into the structure as it is. This API can only be called if `FIleTag` = `OSDATA`.
 
@@ -349,7 +349,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Table group ID
+        r"""Table group ID
         :rtype: int
         """
         return self._ZoneId
@@ -360,7 +360,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -371,7 +371,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupType(self):
-        """Backup source
+        r"""Backup source
         :rtype: str
         """
         return self._BackupType
@@ -382,7 +382,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def FileTag(self):
-        """File tag: TCAPLUS_FULL or OSDATA
+        r"""File tag: TCAPLUS_FULL or OSDATA
         :rtype: str
         """
         return self._FileTag
@@ -393,7 +393,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def ShardCount(self):
-        """Number of shards
+        r"""Number of shards
         :rtype: int
         """
         return self._ShardCount
@@ -404,7 +404,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupBatchTime(self):
-        """Backup batch date
+        r"""Backup batch date
         :rtype: str
         """
         return self._BackupBatchTime
@@ -415,7 +415,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupFileSize(self):
-        """Total size of backup files
+        r"""Total size of backup files
         :rtype: int
         """
         return self._BackupFileSize
@@ -426,7 +426,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupSuccRate(self):
-        """Backup success rate
+        r"""Backup success rate
         :rtype: str
         """
         return self._BackupSuccRate
@@ -437,7 +437,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def BackupExpireTime(self):
-        """Backup file expiration time
+        r"""Backup file expiration time
         :rtype: str
         """
         return self._BackupExpireTime
@@ -448,7 +448,7 @@ class BackupRecords(AbstractModel):
 
     @property
     def AppId(self):
-        """Business ID
+        r"""Business ID
         :rtype: int
         """
         return self._AppId
@@ -480,7 +480,7 @@ class BackupRecords(AbstractModel):
 
 
 class ClearTablesRequest(AbstractModel):
-    """ClearTables request structure.
+    r"""ClearTables request structure.
 
     """
 
@@ -496,7 +496,7 @@ class ClearTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster instance where a table resides
+        r"""ID of the cluster instance where a table resides
         :rtype: str
         """
         return self._ClusterId
@@ -507,7 +507,7 @@ class ClearTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """List of information of tables to be cleared
+        r"""List of information of tables to be cleared
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -536,7 +536,7 @@ class ClearTablesRequest(AbstractModel):
 
 
 class ClearTablesResponse(AbstractModel):
-    """ClearTables response structure.
+    r"""ClearTables response structure.
 
     """
 
@@ -555,7 +555,7 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of cleared tables
+        r"""Number of cleared tables
         :rtype: int
         """
         return self._TotalCount
@@ -566,7 +566,7 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of table clearing results
+        r"""List of table clearing results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -577,7 +577,7 @@ class ClearTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -599,7 +599,7 @@ class ClearTablesResponse(AbstractModel):
 
 
 class ClusterInfo(AbstractModel):
-    """Cluster details
+    r"""Cluster details
 
     """
 
@@ -715,7 +715,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        """Cluster name
+        r"""Cluster name
         :rtype: str
         """
         return self._ClusterName
@@ -726,7 +726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -737,7 +737,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        """Cluster region
+        r"""Cluster region
         :rtype: str
         """
         return self._Region
@@ -748,7 +748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IdlType(self):
-        """Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
+        r"""Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
         :rtype: str
         """
         return self._IdlType
@@ -759,7 +759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetworkType(self):
-        """Network type
+        r"""Network type
         :rtype: str
         """
         return self._NetworkType
@@ -770,7 +770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        """ID of the VPC instance with which a cluster is associated
+        r"""ID of the VPC instance with which a cluster is associated
         :rtype: str
         """
         return self._VpcId
@@ -781,7 +781,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
-        """ID of the subnet instance with which a cluster is associated
+        r"""ID of the subnet instance with which a cluster is associated
         :rtype: str
         """
         return self._SubnetId
@@ -792,7 +792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreatedTime
@@ -803,7 +803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        """Cluster password
+        r"""Cluster password
         :rtype: str
         """
         return self._Password
@@ -814,7 +814,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PasswordStatus(self):
-        """Password status
+        r"""Password status
         :rtype: str
         """
         return self._PasswordStatus
@@ -825,7 +825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessId(self):
-        """TcaplusDB SDK connection parameter: access ID
+        r"""TcaplusDB SDK connection parameter: access ID
         :rtype: str
         """
         return self._ApiAccessId
@@ -836,7 +836,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessIp(self):
-        """TcaplusDB SDK connection parameter: access address
+        r"""TcaplusDB SDK connection parameter: access address
         :rtype: str
         """
         return self._ApiAccessIp
@@ -847,7 +847,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessPort(self):
-        """TcaplusDB SDK connection parameter: access port
+        r"""TcaplusDB SDK connection parameter: access port
         :rtype: int
         """
         return self._ApiAccessPort
@@ -858,7 +858,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldPasswordExpireTime(self):
-        """If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
+        r"""If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -870,7 +870,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessIpv6(self):
-        """TcaplusDB SDK connection parameter for accessing IPv6 addresses
+        r"""TcaplusDB SDK connection parameter for accessing IPv6 addresses
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -882,7 +882,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
-        """Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).
+        r"""Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -894,7 +894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterStatus(self):
-        """Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).
+        r"""Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -906,7 +906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadCapacityUnit(self):
-        """Read CU
+        r"""Read CU
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -918,7 +918,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WriteCapacityUnit(self):
-        """Write CU
+        r"""Write CU
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -930,7 +930,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskVolume(self):
-        """Disk capacity
+        r"""Disk capacity
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -942,7 +942,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServerList(self):
-        """Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+        r"""Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of ServerDetailInfo
         """
@@ -954,7 +954,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProxyList(self):
-        """Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+        r"""Information of the machine at the access layer (tcaproxy) in a dedicated cluster
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of ProxyDetailInfo
         """
@@ -966,7 +966,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Censorship(self):
-        """Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)
+        r"""Whether the cluster operation approval feature is enabled. Valid values: `0` (disabled), `1` (enabled)
         :rtype: int
         """
         return self._Censorship
@@ -977,7 +977,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DbaUins(self):
-        """Approver UIN list
+        r"""Approver UIN list
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -989,7 +989,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DataFlowStatus(self):
-        """Whether data subscription is enabled
+        r"""Whether data subscription is enabled
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1001,7 +1001,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KafkaInfo(self):
-        """CKafka information when data subscription is enabled
+        r"""CKafka information when data subscription is enabled
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
@@ -1013,7 +1013,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TxhBackupExpireDay(self):
-        """The number of days after which the cluster Txh backup file will expire and be deleted.
+        r"""The number of days after which the cluster Txh backup file will expire and be deleted.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1025,7 +1025,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UlogBackupExpireDay(self):
-        """The number of days after which the cluster Ulog backup file will expire and be deleted.
+        r"""The number of days after which the cluster Ulog backup file will expire and be deleted.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1037,7 +1037,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsReadOnlyUlogBackupExpireDay(self):
-        """Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.
+        r"""Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1049,7 +1049,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RestProxyStatus(self):
-        """restproxy Status
+        r"""restproxy Status
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1114,7 +1114,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CompareIdlFilesRequest(AbstractModel):
-    """CompareIdlFiles request structure.
+    r"""CompareIdlFiles request structure.
 
     """
 
@@ -1136,7 +1136,7 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be modified resides
+        r"""ID of the cluster where the table to be modified resides
         :rtype: str
         """
         return self._ClusterId
@@ -1147,7 +1147,7 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """List of tables to be modified
+        r"""List of tables to be modified
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -1158,7 +1158,7 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def ExistingIdlFiles(self):
-        """Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected
+        r"""Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected
         :rtype: list of IdlFileInfo
         """
         return self._ExistingIdlFiles
@@ -1169,7 +1169,7 @@ class CompareIdlFilesRequest(AbstractModel):
 
     @property
     def NewIdlFiles(self):
-        """List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected
+        r"""List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected
         :rtype: list of IdlFileInfo
         """
         return self._NewIdlFiles
@@ -1210,7 +1210,7 @@ class CompareIdlFilesRequest(AbstractModel):
 
 
 class CompareIdlFilesResponse(AbstractModel):
-    """CompareIdlFiles response structure.
+    r"""CompareIdlFiles response structure.
 
     """
 
@@ -1232,7 +1232,7 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFiles(self):
-        """Information list of all IDL files uploaded and verified in this request
+        r"""Information list of all IDL files uploaded and verified in this request
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -1243,7 +1243,7 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tables verified to be valid in this request
+        r"""Number of tables verified to be valid in this request
         :rtype: int
         """
         return self._TotalCount
@@ -1254,7 +1254,7 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
-        """Verification result parsed from the selected table after the IDL description file is read
+        r"""Verification result parsed from the selected table after the IDL description file is read
         :rtype: list of ParsedTableInfoNew
         """
         return self._TableInfos
@@ -1265,7 +1265,7 @@ class CompareIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1293,7 +1293,7 @@ class CompareIdlFilesResponse(AbstractModel):
 
 
 class CompareTablesInfo(AbstractModel):
-    """Compare the meta information of two tables
+    r"""Compare the meta information of two tables
 
     """
 
@@ -1327,7 +1327,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableClusterId(self):
-        """Cluster ID of the source table
+        r"""Cluster ID of the source table
         :rtype: str
         """
         return self._SrcTableClusterId
@@ -1338,7 +1338,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableGroupId(self):
-        """Table group ID of the source table
+        r"""Table group ID of the source table
         :rtype: str
         """
         return self._SrcTableGroupId
@@ -1349,7 +1349,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableName(self):
-        """Source table name
+        r"""Source table name
         :rtype: str
         """
         return self._SrcTableName
@@ -1360,7 +1360,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableClusterId(self):
-        """Cluster ID of the target table
+        r"""Cluster ID of the target table
         :rtype: str
         """
         return self._DstTableClusterId
@@ -1371,7 +1371,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableGroupId(self):
-        """Table group ID of the target table
+        r"""Table group ID of the target table
         :rtype: str
         """
         return self._DstTableGroupId
@@ -1382,7 +1382,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableName(self):
-        """Target table name
+        r"""Target table name
         :rtype: str
         """
         return self._DstTableName
@@ -1393,7 +1393,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def SrcTableInstanceId(self):
-        """Source table ID
+        r"""Source table ID
         :rtype: str
         """
         return self._SrcTableInstanceId
@@ -1404,7 +1404,7 @@ class CompareTablesInfo(AbstractModel):
 
     @property
     def DstTableInstanceId(self):
-        """Target table ID
+        r"""Target table ID
         :rtype: str
         """
         return self._DstTableInstanceId
@@ -1434,7 +1434,7 @@ class CompareTablesInfo(AbstractModel):
 
 
 class CreateBackupRequest(AbstractModel):
-    """CreateBackup request structure.
+    r"""CreateBackup request structure.
 
     """
 
@@ -1453,7 +1453,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be backed up resides
+        r"""ID of the cluster where the table to be backed up resides
         :rtype: str
         """
         return self._ClusterId
@@ -1464,7 +1464,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Information list of tables to be backed up
+        r"""Information list of tables to be backed up
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -1475,7 +1475,7 @@ class CreateBackupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        """Remarks
+        r"""Remarks
         :rtype: str
         """
         return self._Remark
@@ -1505,7 +1505,7 @@ class CreateBackupRequest(AbstractModel):
 
 
 class CreateBackupResponse(AbstractModel):
-    """CreateBackup response structure.
+    r"""CreateBackup response structure.
 
     """
 
@@ -1526,7 +1526,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TaskIds(self):
-        """List of backup creation task IDs
+        r"""List of backup creation task IDs
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1538,7 +1538,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationIds(self):
-        """List of backup creation application IDs
+        r"""List of backup creation application IDs
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -1550,7 +1550,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1567,7 +1567,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class CreateClusterRequest(AbstractModel):
-    """CreateCluster request structure.
+    r"""CreateCluster request structure.
 
     """
 
@@ -1610,7 +1610,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def IdlType(self):
-        """Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
+        r"""Cluster data description language type, such as `PROTO`, `TDR`, or `MIX`
         :rtype: str
         """
         return self._IdlType
@@ -1621,7 +1621,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        """Cluster name, which can contain up to 32 letters and digits
+        r"""Cluster name, which can contain up to 32 letters and digits
         :rtype: str
         """
         return self._ClusterName
@@ -1632,7 +1632,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`
+        r"""ID of the VPC instance bound to a cluster in the format of `vpc-f49l6u0z`
         :rtype: str
         """
         return self._VpcId
@@ -1643,7 +1643,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`
+        r"""ID of the subnet instance bound to a cluster in the format of `subnet-pxir56ns`
         :rtype: str
         """
         return self._SubnetId
@@ -1654,7 +1654,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
+        r"""Cluster access password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
         :rtype: str
         """
         return self._Password
@@ -1665,7 +1665,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Cluster tag list
+        r"""Cluster tag list
         :rtype: list of TagInfoUnit
         """
         return self._ResourceTags
@@ -1676,7 +1676,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        """Whether to enable IPv6 address access for clusters
+        r"""Whether to enable IPv6 address access for clusters
         :rtype: int
         """
         return self._Ipv6Enable
@@ -1687,7 +1687,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ServerList(self):
-        """Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+        r"""Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
         :rtype: list of MachineInfo
         """
         return self._ServerList
@@ -1698,7 +1698,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ProxyList(self):
-        """Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+        r"""Information of the machine at the access layer (tcaproxy) in a dedicated cluster
         :rtype: list of MachineInfo
         """
         return self._ProxyList
@@ -1709,7 +1709,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        r"""Cluster type. Valid values: `1` (standard), `2` (dedicated)
         :rtype: int
         """
         return self._ClusterType
@@ -1720,7 +1720,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        """Authentication type. Valid values: `0` (static password), `1` (signature)
+        r"""Authentication type. Valid values: `0` (static password), `1` (signature)
         :rtype: int
         """
         return self._AuthType
@@ -1768,7 +1768,7 @@ class CreateClusterRequest(AbstractModel):
 
 
 class CreateClusterResponse(AbstractModel):
-    """CreateCluster response structure.
+    r"""CreateCluster response structure.
 
     """
 
@@ -1784,7 +1784,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -1795,7 +1795,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1811,7 +1811,7 @@ class CreateClusterResponse(AbstractModel):
 
 
 class CreateSnapshotsRequest(AbstractModel):
-    """CreateSnapshots request structure.
+    r"""CreateSnapshots request structure.
 
     """
 
@@ -1827,7 +1827,7 @@ class CreateSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the table resides
+        r"""The ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -1838,7 +1838,7 @@ class CreateSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Snapshot list
+        r"""Snapshot list
         :rtype: list of SnapshotInfo
         """
         return self._SelectedTables
@@ -1867,7 +1867,7 @@ class CreateSnapshotsRequest(AbstractModel):
 
 
 class CreateSnapshotsResponse(AbstractModel):
-    """CreateSnapshots response structure.
+    r"""CreateSnapshots response structure.
 
     """
 
@@ -1886,7 +1886,7 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of snapshots created in batches
+        r"""The number of snapshots created in batches
         :rtype: int
         """
         return self._TotalCount
@@ -1897,7 +1897,7 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of snapshots created in batches
+        r"""The result list of snapshots created in batches
         :rtype: list of SnapshotResult
         """
         return self._TableResults
@@ -1908,7 +1908,7 @@ class CreateSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1930,7 +1930,7 @@ class CreateSnapshotsResponse(AbstractModel):
 
 
 class CreateTableGroupRequest(AbstractModel):
-    """CreateTableGroup request structure.
+    r"""CreateTableGroup request structure.
 
     """
 
@@ -1952,7 +1952,7 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table group resides
+        r"""ID of the cluster where a table group resides
         :rtype: str
         """
         return self._ClusterId
@@ -1963,7 +1963,7 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupName(self):
-        """Table group name, which can contain up to 32 letters and digits
+        r"""Table group name, which can contain up to 32 letters and digits
         :rtype: str
         """
         return self._TableGroupName
@@ -1974,7 +1974,7 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.
+        r"""Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.
         :rtype: str
         """
         return self._TableGroupId
@@ -1985,7 +1985,7 @@ class CreateTableGroupRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Table group tag list
+        r"""Table group tag list
         :rtype: list of TagInfoUnit
         """
         return self._ResourceTags
@@ -2016,7 +2016,7 @@ class CreateTableGroupRequest(AbstractModel):
 
 
 class CreateTableGroupResponse(AbstractModel):
-    """CreateTableGroup response structure.
+    r"""CreateTableGroup response structure.
 
     """
 
@@ -2032,7 +2032,7 @@ class CreateTableGroupResponse(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """ID of table group successfully created
+        r"""ID of table group successfully created
         :rtype: str
         """
         return self._TableGroupId
@@ -2043,7 +2043,7 @@ class CreateTableGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2059,7 +2059,7 @@ class CreateTableGroupResponse(AbstractModel):
 
 
 class CreateTablesRequest(AbstractModel):
-    """CreateTables request structure.
+    r"""CreateTables request structure.
 
     """
 
@@ -2081,7 +2081,7 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where to create a table
+        r"""ID of the cluster where to create a table
         :rtype: str
         """
         return self._ClusterId
@@ -2092,7 +2092,7 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
-        """Table creation IDL file list selected by user
+        r"""Table creation IDL file list selected by user
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -2103,7 +2103,7 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Information list of tables to be created
+        r"""Information list of tables to be created
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -2114,7 +2114,7 @@ class CreateTablesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Table tag list
+        r"""Table tag list
         :rtype: list of TagInfoUnit
         """
         return self._ResourceTags
@@ -2155,7 +2155,7 @@ class CreateTablesRequest(AbstractModel):
 
 
 class CreateTablesResponse(AbstractModel):
-    """CreateTables response structure.
+    r"""CreateTables response structure.
 
     """
 
@@ -2174,7 +2174,7 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tables created in batches
+        r"""Number of tables created in batches
         :rtype: int
         """
         return self._TotalCount
@@ -2185,7 +2185,7 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of tables created in batches
+        r"""List of tables created in batches
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -2196,7 +2196,7 @@ class CreateTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2218,7 +2218,7 @@ class CreateTablesResponse(AbstractModel):
 
 
 class DeleteBackupRecordsRequest(AbstractModel):
-    """DeleteBackupRecords request structure.
+    r"""DeleteBackupRecords request structure.
 
     """
 
@@ -2234,7 +2234,7 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID of the backup records to be deleted
+        r"""Cluster ID of the backup records to be deleted
         :rtype: str
         """
         return self._ClusterId
@@ -2245,7 +2245,7 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
     @property
     def BackupRecords(self):
-        """Details of the backup records to be deleted
+        r"""Details of the backup records to be deleted
         :rtype: list of BackupRecords
         """
         return self._BackupRecords
@@ -2274,7 +2274,7 @@ class DeleteBackupRecordsRequest(AbstractModel):
 
 
 class DeleteBackupRecordsResponse(AbstractModel):
-    """DeleteBackupRecords response structure.
+    r"""DeleteBackupRecords response structure.
 
     """
 
@@ -2291,7 +2291,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
+        r"""`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2303,7 +2303,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2319,7 +2319,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DeleteClusterRequest(AbstractModel):
-    """DeleteCluster request structure.
+    r"""DeleteCluster request structure.
 
     """
 
@@ -2332,7 +2332,7 @@ class DeleteClusterRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of cluster to be deleted
+        r"""ID of cluster to be deleted
         :rtype: str
         """
         return self._ClusterId
@@ -2355,7 +2355,7 @@ class DeleteClusterRequest(AbstractModel):
 
 
 class DeleteClusterResponse(AbstractModel):
-    """DeleteCluster response structure.
+    r"""DeleteCluster response structure.
 
     """
 
@@ -2371,7 +2371,7 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID generated by cluster deletion
+        r"""Task ID generated by cluster deletion
         :rtype: str
         """
         return self._TaskId
@@ -2382,7 +2382,7 @@ class DeleteClusterResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2398,7 +2398,7 @@ class DeleteClusterResponse(AbstractModel):
 
 
 class DeleteIdlFilesRequest(AbstractModel):
-    """DeleteIdlFiles request structure.
+    r"""DeleteIdlFiles request structure.
 
     """
 
@@ -2414,7 +2414,7 @@ class DeleteIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where IDL resides
+        r"""ID of the cluster where IDL resides
         :rtype: str
         """
         return self._ClusterId
@@ -2425,7 +2425,7 @@ class DeleteIdlFilesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
-        """List of information of IDL files to be deleted
+        r"""List of information of IDL files to be deleted
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -2454,7 +2454,7 @@ class DeleteIdlFilesRequest(AbstractModel):
 
 
 class DeleteIdlFilesResponse(AbstractModel):
-    """DeleteIdlFiles response structure.
+    r"""DeleteIdlFiles response structure.
 
     """
 
@@ -2473,7 +2473,7 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of returned results
+        r"""Number of returned results
         :rtype: int
         """
         return self._TotalCount
@@ -2484,7 +2484,7 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFileInfos(self):
-        """Deletion result
+        r"""Deletion result
         :rtype: list of IdlFileInfoWithoutContent
         """
         return self._IdlFileInfos
@@ -2495,7 +2495,7 @@ class DeleteIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2517,7 +2517,7 @@ class DeleteIdlFilesResponse(AbstractModel):
 
 
 class DeleteSnapshotsRequest(AbstractModel):
-    """DeleteSnapshots request structure.
+    r"""DeleteSnapshots request structure.
 
     """
 
@@ -2533,7 +2533,7 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the table resides
+        r"""The ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -2544,7 +2544,7 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of snapshots to delete
+        r"""The list of snapshots to delete
         :rtype: list of SnapshotInfoNew
         """
         return self._SelectedTables
@@ -2573,7 +2573,7 @@ class DeleteSnapshotsRequest(AbstractModel):
 
 
 class DeleteSnapshotsResponse(AbstractModel):
-    """DeleteSnapshots response structure.
+    r"""DeleteSnapshots response structure.
 
     """
 
@@ -2592,7 +2592,7 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of snapshots deleted in batches
+        r"""The number of snapshots deleted in batches
         :rtype: int
         """
         return self._TotalCount
@@ -2603,7 +2603,7 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of snapshots deleted in batches
+        r"""The result list of snapshots deleted in batches
         :rtype: list of SnapshotResult
         """
         return self._TableResults
@@ -2614,7 +2614,7 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2636,7 +2636,7 @@ class DeleteSnapshotsResponse(AbstractModel):
 
 
 class DeleteTableDataFlowRequest(AbstractModel):
-    """DeleteTableDataFlow request structure.
+    r"""DeleteTableDataFlow request structure.
 
     """
 
@@ -2652,7 +2652,7 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the tables reside
+        r"""The ID of the cluster where the tables reside
         :rtype: str
         """
         return self._ClusterId
@@ -2663,7 +2663,7 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of tables for which data subscription will be disabled
+        r"""The list of tables for which data subscription will be disabled
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -2692,7 +2692,7 @@ class DeleteTableDataFlowRequest(AbstractModel):
 
 
 class DeleteTableDataFlowResponse(AbstractModel):
-    """DeleteTableDataFlow response structure.
+    r"""DeleteTableDataFlow response structure.
 
     """
 
@@ -2711,7 +2711,7 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of tables for which data subscription has been disabled
+        r"""The number of tables for which data subscription has been disabled
         :rtype: int
         """
         return self._TotalCount
@@ -2722,7 +2722,7 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of tables for which data subscription has been disabled
+        r"""The result list of tables for which data subscription has been disabled
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -2733,7 +2733,7 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2755,7 +2755,7 @@ class DeleteTableDataFlowResponse(AbstractModel):
 
 
 class DeleteTableGroupRequest(AbstractModel):
-    """DeleteTableGroup request structure.
+    r"""DeleteTableGroup request structure.
 
     """
 
@@ -2771,7 +2771,7 @@ class DeleteTableGroupRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table group resides
+        r"""ID of the cluster where a table group resides
         :rtype: str
         """
         return self._ClusterId
@@ -2782,7 +2782,7 @@ class DeleteTableGroupRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """Table group ID
+        r"""Table group ID
         :rtype: str
         """
         return self._TableGroupId
@@ -2806,7 +2806,7 @@ class DeleteTableGroupRequest(AbstractModel):
 
 
 class DeleteTableGroupResponse(AbstractModel):
-    """DeleteTableGroup response structure.
+    r"""DeleteTableGroup response structure.
 
     """
 
@@ -2822,7 +2822,7 @@ class DeleteTableGroupResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID generated by table group deletion
+        r"""Task ID generated by table group deletion
         :rtype: str
         """
         return self._TaskId
@@ -2833,7 +2833,7 @@ class DeleteTableGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2849,7 +2849,7 @@ class DeleteTableGroupResponse(AbstractModel):
 
 
 class DeleteTableIndexRequest(AbstractModel):
-    """DeleteTableIndex request structure.
+    r"""DeleteTableIndex request structure.
 
     """
 
@@ -2865,7 +2865,7 @@ class DeleteTableIndexRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table resides
+        r"""ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -2876,7 +2876,7 @@ class DeleteTableIndexRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of tables whose global indexes need to be deleted
+        r"""The list of tables whose global indexes need to be deleted
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -2905,7 +2905,7 @@ class DeleteTableIndexRequest(AbstractModel):
 
 
 class DeleteTableIndexResponse(AbstractModel):
-    """DeleteTableIndex response structure.
+    r"""DeleteTableIndex response structure.
 
     """
 
@@ -2924,7 +2924,7 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of tables whose global indexes are deleted
+        r"""The number of tables whose global indexes are deleted
         :rtype: int
         """
         return self._TotalCount
@@ -2935,7 +2935,7 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The list of global index deletion results
+        r"""The list of global index deletion results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -2946,7 +2946,7 @@ class DeleteTableIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2968,7 +2968,7 @@ class DeleteTableIndexResponse(AbstractModel):
 
 
 class DeleteTablesRequest(AbstractModel):
-    """DeleteTables request structure.
+    r"""DeleteTables request structure.
 
     """
 
@@ -2984,7 +2984,7 @@ class DeleteTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be dropped resides
+        r"""ID of the cluster where the table to be dropped resides
         :rtype: str
         """
         return self._ClusterId
@@ -2995,7 +2995,7 @@ class DeleteTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """List of information of tables to be dropped
+        r"""List of information of tables to be dropped
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -3024,7 +3024,7 @@ class DeleteTablesRequest(AbstractModel):
 
 
 class DeleteTablesResponse(AbstractModel):
-    """DeleteTables response structure.
+    r"""DeleteTables response structure.
 
     """
 
@@ -3043,7 +3043,7 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of dropped tables
+        r"""Number of dropped tables
         :rtype: int
         """
         return self._TotalCount
@@ -3054,7 +3054,7 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of details of dropped tables
+        r"""List of details of dropped tables
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -3065,7 +3065,7 @@ class DeleteTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3087,7 +3087,7 @@ class DeleteTablesResponse(AbstractModel):
 
 
 class DescribeBackupRecordsRequest(AbstractModel):
-    """DescribeBackupRecords request structure.
+    r"""DescribeBackupRecords request structure.
 
     """
 
@@ -3112,7 +3112,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID, which is used to query a specified cluster
+        r"""Cluster ID, which is used to query a specified cluster
         :rtype: str
         """
         return self._ClusterId
@@ -3123,7 +3123,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page
+        r"""Number of results per page
         :rtype: int
         """
         return self._Limit
@@ -3134,7 +3134,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Page offset
+        r"""Page offset
         :rtype: int
         """
         return self._Offset
@@ -3145,7 +3145,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """Table group ID used as a filter condition
+        r"""Table group ID used as a filter condition
         :rtype: str
         """
         return self._TableGroupId
@@ -3156,7 +3156,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name used as a filter condition
+        r"""Table name used as a filter condition
         :rtype: str
         """
         return self._TableName
@@ -3183,7 +3183,7 @@ class DescribeBackupRecordsRequest(AbstractModel):
 
 
 class DescribeBackupRecordsResponse(AbstractModel):
-    """DescribeBackupRecords response structure.
+    r"""DescribeBackupRecords response structure.
 
     """
 
@@ -3202,7 +3202,7 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def BackupRecords(self):
-        """Backup record details
+        r"""Backup record details
         :rtype: list of BackupRecords
         """
         return self._BackupRecords
@@ -3213,7 +3213,7 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of returned entries
+        r"""Number of returned entries
         :rtype: int
         """
         return self._TotalCount
@@ -3224,7 +3224,7 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3246,7 +3246,7 @@ class DescribeBackupRecordsResponse(AbstractModel):
 
 
 class DescribeClusterTagsRequest(AbstractModel):
-    """DescribeClusterTags request structure.
+    r"""DescribeClusterTags request structure.
 
     """
 
@@ -3259,7 +3259,7 @@ class DescribeClusterTagsRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        """The list of cluster IDs
+        r"""The list of cluster IDs
         :rtype: list of str
         """
         return self._ClusterIds
@@ -3282,7 +3282,7 @@ class DescribeClusterTagsRequest(AbstractModel):
 
 
 class DescribeClusterTagsResponse(AbstractModel):
-    """DescribeClusterTags response structure.
+    r"""DescribeClusterTags response structure.
 
     """
 
@@ -3301,7 +3301,7 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """The information list of cluster tags
+        r"""The information list of cluster tags
         :rtype: list of TagsInfoOfCluster
         """
         return self._Rows
@@ -3312,7 +3312,7 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of returned results
+        r"""The number of returned results
         :rtype: int
         """
         return self._TotalCount
@@ -3323,7 +3323,7 @@ class DescribeClusterTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3345,7 +3345,7 @@ class DescribeClusterTagsResponse(AbstractModel):
 
 
 class DescribeClustersRequest(AbstractModel):
-    """DescribeClusters request structure.
+    r"""DescribeClusters request structure.
 
     """
 
@@ -3370,7 +3370,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        """List of IDs of clusters to be queried
+        r"""List of IDs of clusters to be queried
         :rtype: list of str
         """
         return self._ClusterIds
@@ -3381,7 +3381,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Query filter
+        r"""Query filter
         :rtype: list of Filter
         """
         return self._Filters
@@ -3392,7 +3392,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query list offset
+        r"""Query list offset
         :rtype: int
         """
         return self._Offset
@@ -3403,7 +3403,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results in query list. Default value: 20
+        r"""Number of returned results in query list. Default value: 20
         :rtype: int
         """
         return self._Limit
@@ -3414,7 +3414,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        """Whether to enable IPv6 address access
+        r"""Whether to enable IPv6 address access
         :rtype: int
         """
         return self._Ipv6Enable
@@ -3446,7 +3446,7 @@ class DescribeClustersRequest(AbstractModel):
 
 
 class DescribeClustersResponse(AbstractModel):
-    """DescribeClusters response structure.
+    r"""DescribeClusters response structure.
 
     """
 
@@ -3465,7 +3465,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of cluster instances
+        r"""Number of cluster instances
         :rtype: int
         """
         return self._TotalCount
@@ -3476,7 +3476,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def Clusters(self):
-        """Cluster instance list
+        r"""Cluster instance list
         :rtype: list of ClusterInfo
         """
         return self._Clusters
@@ -3487,7 +3487,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3509,7 +3509,7 @@ class DescribeClustersResponse(AbstractModel):
 
 
 class DescribeIdlFileInfosRequest(AbstractModel):
-    """DescribeIdlFileInfos request structure.
+    r"""DescribeIdlFileInfos request structure.
 
     """
 
@@ -3534,7 +3534,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a file resides
+        r"""ID of the cluster where a file resides
         :rtype: str
         """
         return self._ClusterId
@@ -3545,7 +3545,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
-        """ID of the table group where a file resides
+        r"""ID of the table group where a file resides
         :rtype: list of str
         """
         return self._TableGroupIds
@@ -3556,7 +3556,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def IdlFileIds(self):
-        """File ID list
+        r"""File ID list
         :rtype: list of str
         """
         return self._IdlFileIds
@@ -3567,7 +3567,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query list offset
+        r"""Query list offset
         :rtype: int
         """
         return self._Offset
@@ -3578,7 +3578,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results in query list
+        r"""Number of returned results in query list
         :rtype: int
         """
         return self._Limit
@@ -3605,7 +3605,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
 
 
 class DescribeIdlFileInfosResponse(AbstractModel):
-    """DescribeIdlFileInfos response structure.
+    r"""DescribeIdlFileInfos response structure.
 
     """
 
@@ -3624,7 +3624,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of files
+        r"""Number of files
         :rtype: int
         """
         return self._TotalCount
@@ -3635,7 +3635,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def IdlFileInfos(self):
-        """List of file details
+        r"""List of file details
         :rtype: list of IdlFileInfo
         """
         return self._IdlFileInfos
@@ -3646,7 +3646,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3668,7 +3668,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
 
 
 class DescribeMachineRequest(AbstractModel):
-    """DescribeMachine request structure.
+    r"""DescribeMachine request structure.
 
     """
 
@@ -3681,7 +3681,7 @@ class DescribeMachineRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        """If this parameter is not `0`, machines supporting IPv6 will be queried.
+        r"""If this parameter is not `0`, machines supporting IPv6 will be queried.
         :rtype: int
         """
         return self._Ipv6Enable
@@ -3704,7 +3704,7 @@ class DescribeMachineRequest(AbstractModel):
 
 
 class DescribeMachineResponse(AbstractModel):
-    """DescribeMachine response structure.
+    r"""DescribeMachine response structure.
 
     """
 
@@ -3720,7 +3720,7 @@ class DescribeMachineResponse(AbstractModel):
 
     @property
     def PoolList(self):
-        """The list of dedicated machine resources
+        r"""The list of dedicated machine resources
         :rtype: list of PoolInfo
         """
         return self._PoolList
@@ -3731,7 +3731,7 @@ class DescribeMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3752,13 +3752,13 @@ class DescribeMachineResponse(AbstractModel):
 
 
 class DescribeRegionsRequest(AbstractModel):
-    """DescribeRegions request structure.
+    r"""DescribeRegions request structure.
 
     """
 
 
 class DescribeRegionsResponse(AbstractModel):
-    """DescribeRegions response structure.
+    r"""DescribeRegions response structure.
 
     """
 
@@ -3777,7 +3777,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of queried AZs
+        r"""Number of queried AZs
         :rtype: int
         """
         return self._TotalCount
@@ -3788,7 +3788,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionInfos(self):
-        """List of AZ query results
+        r"""List of AZ query results
         :rtype: list of RegionInfo
         """
         return self._RegionInfos
@@ -3799,7 +3799,7 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3821,7 +3821,7 @@ class DescribeRegionsResponse(AbstractModel):
 
 
 class DescribeSnapshotsRequest(AbstractModel):
-    """DescribeSnapshots request structure.
+    r"""DescribeSnapshots request structure.
 
     """
 
@@ -3846,7 +3846,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the table resides
+        r"""The ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -3857,7 +3857,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -3868,7 +3868,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -3879,7 +3879,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        """Snapshot name
+        r"""Snapshot name
         :rtype: str
         """
         return self._SnapshotName
@@ -3890,7 +3890,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of snapshots pulled in batches
+        r"""The list of snapshots pulled in batches
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -3922,7 +3922,7 @@ class DescribeSnapshotsRequest(AbstractModel):
 
 
 class DescribeSnapshotsResponse(AbstractModel):
-    """DescribeSnapshots response structure.
+    r"""DescribeSnapshots response structure.
 
     """
 
@@ -3941,7 +3941,7 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of snapshots
+        r"""The number of snapshots
         :rtype: int
         """
         return self._TotalCount
@@ -3952,7 +3952,7 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of snapshots
+        r"""The result list of snapshots
         :rtype: list of SnapshotResult
         """
         return self._TableResults
@@ -3963,7 +3963,7 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3985,7 +3985,7 @@ class DescribeSnapshotsResponse(AbstractModel):
 
 
 class DescribeTableGroupTagsRequest(AbstractModel):
-    """DescribeTableGroupTags request structure.
+    r"""DescribeTableGroupTags request structure.
 
     """
 
@@ -4001,7 +4001,7 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where table group tags need to be queried
+        r"""The ID of the cluster where table group tags need to be queried
         :rtype: str
         """
         return self._ClusterId
@@ -4012,7 +4012,7 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
-        """The list of IDs of the table groups whose tags need to be queried
+        r"""The list of IDs of the table groups whose tags need to be queried
         :rtype: list of str
         """
         return self._TableGroupIds
@@ -4036,7 +4036,7 @@ class DescribeTableGroupTagsRequest(AbstractModel):
 
 
 class DescribeTableGroupTagsResponse(AbstractModel):
-    """DescribeTableGroupTags response structure.
+    r"""DescribeTableGroupTags response structure.
 
     """
 
@@ -4055,7 +4055,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """The information list of table group tags
+        r"""The information list of table group tags
         :rtype: list of TagsInfoOfTableGroup
         """
         return self._Rows
@@ -4066,7 +4066,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of returned results
+        r"""The number of returned results
         :rtype: int
         """
         return self._TotalCount
@@ -4077,7 +4077,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4099,7 +4099,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
 
 
 class DescribeTableGroupsRequest(AbstractModel):
-    """DescribeTableGroups request structure.
+    r"""DescribeTableGroups request structure.
 
     """
 
@@ -4124,7 +4124,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table group resides
+        r"""ID of the cluster where a table group resides
         :rtype: str
         """
         return self._ClusterId
@@ -4135,7 +4135,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
-        """Table group ID list
+        r"""Table group ID list
         :rtype: list of str
         """
         return self._TableGroupIds
@@ -4146,7 +4146,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: TableGroupName, TableGroupId
+        r"""Filter. Valid values: TableGroupName, TableGroupId
         :rtype: list of Filter
         """
         return self._Filters
@@ -4157,7 +4157,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query list offset
+        r"""Query list offset
         :rtype: int
         """
         return self._Offset
@@ -4168,7 +4168,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results in query list
+        r"""Number of returned results in query list
         :rtype: int
         """
         return self._Limit
@@ -4200,7 +4200,7 @@ class DescribeTableGroupsRequest(AbstractModel):
 
 
 class DescribeTableGroupsResponse(AbstractModel):
-    """DescribeTableGroups response structure.
+    r"""DescribeTableGroups response structure.
 
     """
 
@@ -4219,7 +4219,7 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of table groups
+        r"""Number of table groups
         :rtype: int
         """
         return self._TotalCount
@@ -4230,7 +4230,7 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def TableGroups(self):
-        """Table group information list
+        r"""Table group information list
         :rtype: list of TableGroupInfo
         """
         return self._TableGroups
@@ -4241,7 +4241,7 @@ class DescribeTableGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4263,7 +4263,7 @@ class DescribeTableGroupsResponse(AbstractModel):
 
 
 class DescribeTableTagsRequest(AbstractModel):
-    """DescribeTableTags request structure.
+    r"""DescribeTableTags request structure.
 
     """
 
@@ -4279,7 +4279,7 @@ class DescribeTableTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where a table resides
+        r"""The ID of the cluster where a table resides
         :rtype: str
         """
         return self._ClusterId
@@ -4290,7 +4290,7 @@ class DescribeTableTagsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Table list
+        r"""Table list
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -4319,7 +4319,7 @@ class DescribeTableTagsRequest(AbstractModel):
 
 
 class DescribeTableTagsResponse(AbstractModel):
-    """DescribeTableTags response structure.
+    r"""DescribeTableTags response structure.
 
     """
 
@@ -4338,7 +4338,7 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total number of returned results
+        r"""The total number of returned results
         :rtype: int
         """
         return self._TotalCount
@@ -4349,7 +4349,7 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        """The information list of table tags
+        r"""The information list of table tags
         :rtype: list of TagsInfoOfTable
         """
         return self._Rows
@@ -4360,7 +4360,7 @@ class DescribeTableTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4382,7 +4382,7 @@ class DescribeTableTagsResponse(AbstractModel):
 
 
 class DescribeTablesInRecycleRequest(AbstractModel):
-    """DescribeTablesInRecycle request structure.
+    r"""DescribeTablesInRecycle request structure.
 
     """
 
@@ -4407,7 +4407,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be queried resides
+        r"""ID of the cluster where the table to be queried resides
         :rtype: str
         """
         return self._ClusterId
@@ -4418,7 +4418,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
-        """List of IDs of the table groups where the table to be queried resides
+        r"""List of IDs of the table groups where the table to be queried resides
         :rtype: list of str
         """
         return self._TableGroupIds
@@ -4429,7 +4429,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: TableName, TableInstanceId
+        r"""Filter. Valid values: TableName, TableInstanceId
         :rtype: list of Filter
         """
         return self._Filters
@@ -4440,7 +4440,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query result offset
+        r"""Query result offset
         :rtype: int
         """
         return self._Offset
@@ -4451,7 +4451,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned query results
+        r"""Number of returned query results
         :rtype: int
         """
         return self._Limit
@@ -4483,7 +4483,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
 
 
 class DescribeTablesInRecycleResponse(AbstractModel):
-    """DescribeTablesInRecycle response structure.
+    r"""DescribeTablesInRecycle response structure.
 
     """
 
@@ -4502,7 +4502,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tables
+        r"""Number of tables
         :rtype: int
         """
         return self._TotalCount
@@ -4513,7 +4513,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def TableInfos(self):
-        """Table details result list
+        r"""Table details result list
         :rtype: list of TableInfoNew
         """
         return self._TableInfos
@@ -4524,7 +4524,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4546,7 +4546,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
 
 
 class DescribeTablesRequest(AbstractModel):
-    """DescribeTables request structure.
+    r"""DescribeTables request structure.
 
     """
 
@@ -4574,7 +4574,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be queried resides
+        r"""ID of the cluster where the table to be queried resides
         :rtype: str
         """
         return self._ClusterId
@@ -4585,7 +4585,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def TableGroupIds(self):
-        """List of IDs of the table groups where the table to be queried resides
+        r"""List of IDs of the table groups where the table to be queried resides
         :rtype: list of str
         """
         return self._TableGroupIds
@@ -4596,7 +4596,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Information list of tables to be queried. If you need to filter the tables, use the`Filter` parameter.
+        r"""Information list of tables to be queried. If you need to filter the tables, use the`Filter` parameter.
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -4607,7 +4607,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: TableName, TableInstanceId
+        r"""Filter. Valid values: TableName, TableInstanceId
         :rtype: list of Filter
         """
         return self._Filters
@@ -4618,7 +4618,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query result offset
+        r"""Query result offset
         :rtype: int
         """
         return self._Offset
@@ -4629,7 +4629,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned query results
+        r"""Number of returned query results
         :rtype: int
         """
         return self._Limit
@@ -4667,7 +4667,7 @@ class DescribeTablesRequest(AbstractModel):
 
 
 class DescribeTablesResponse(AbstractModel):
-    """DescribeTables response structure.
+    r"""DescribeTables response structure.
 
     """
 
@@ -4686,7 +4686,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tables
+        r"""Number of tables
         :rtype: int
         """
         return self._TotalCount
@@ -4697,7 +4697,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
-        """Table details result list
+        r"""Table details result list
         :rtype: list of TableInfoNew
         """
         return self._TableInfos
@@ -4708,7 +4708,7 @@ class DescribeTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4730,7 +4730,7 @@ class DescribeTablesResponse(AbstractModel):
 
 
 class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks request structure.
+    r"""DescribeTasks request structure.
 
     """
 
@@ -4755,7 +4755,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        """List of IDs of clusters where the tasks to be queried reside
+        r"""List of IDs of clusters where the tasks to be queried reside
         :rtype: list of str
         """
         return self._ClusterIds
@@ -4766,7 +4766,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        """List of IDs of tasks to be queried
+        r"""List of IDs of tasks to be queried
         :rtype: list of str
         """
         return self._TaskIds
@@ -4777,7 +4777,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter. Valid values: Content, TaskType, Operator, Time
+        r"""Filter. Valid values: Content, TaskType, Operator, Time
         :rtype: list of Filter
         """
         return self._Filters
@@ -4788,7 +4788,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Query list offset
+        r"""Query list offset
         :rtype: int
         """
         return self._Offset
@@ -4799,7 +4799,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned results in query list
+        r"""Number of returned results in query list
         :rtype: int
         """
         return self._Limit
@@ -4831,7 +4831,7 @@ class DescribeTasksRequest(AbstractModel):
 
 
 class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks response structure.
+    r"""DescribeTasks response structure.
 
     """
 
@@ -4850,7 +4850,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tasks
+        r"""Number of tasks
         :rtype: int
         """
         return self._TotalCount
@@ -4861,7 +4861,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
-        """List of details of queried tasks
+        r"""List of details of queried tasks
         :rtype: list of TaskInfoNew
         """
         return self._TaskInfos
@@ -4872,7 +4872,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4894,13 +4894,13 @@ class DescribeTasksResponse(AbstractModel):
 
 
 class DescribeUinInWhitelistRequest(AbstractModel):
-    """DescribeUinInWhitelist request structure.
+    r"""DescribeUinInWhitelist request structure.
 
     """
 
 
 class DescribeUinInWhitelistResponse(AbstractModel):
-    """DescribeUinInWhitelist response structure.
+    r"""DescribeUinInWhitelist response structure.
 
     """
 
@@ -4916,7 +4916,7 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
     @property
     def Result(self):
-        """Query result. FALSE: yes, TRUE: no
+        r"""Query result. FALSE: yes, TRUE: no
         :rtype: str
         """
         return self._Result
@@ -4927,7 +4927,7 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4943,7 +4943,7 @@ class DescribeUinInWhitelistResponse(AbstractModel):
 
 
 class DisableRestProxyRequest(AbstractModel):
-    """DisableRestProxy request structure.
+    r"""DisableRestProxy request structure.
 
     """
 
@@ -4956,7 +4956,7 @@ class DisableRestProxyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The value is the same as `appid`.
+        r"""The value is the same as `appid`.
         :rtype: str
         """
         return self._ClusterId
@@ -4979,7 +4979,7 @@ class DisableRestProxyRequest(AbstractModel):
 
 
 class DisableRestProxyResponse(AbstractModel):
-    """DisableRestProxy response structure.
+    r"""DisableRestProxy response structure.
 
     """
 
@@ -4998,7 +4998,7 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def RestProxyStatus(self):
-        """RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        r"""RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
         :rtype: int
         """
         return self._RestProxyStatus
@@ -5009,7 +5009,7 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        r"""`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
         :rtype: str
         """
         return self._TaskId
@@ -5020,7 +5020,7 @@ class DisableRestProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5037,7 +5037,7 @@ class DisableRestProxyResponse(AbstractModel):
 
 
 class EnableRestProxyRequest(AbstractModel):
-    """EnableRestProxy request structure.
+    r"""EnableRestProxy request structure.
 
     """
 
@@ -5050,7 +5050,7 @@ class EnableRestProxyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The value is the same as `appid`.
+        r"""The value is the same as `appid`.
         :rtype: str
         """
         return self._ClusterId
@@ -5073,7 +5073,7 @@ class EnableRestProxyRequest(AbstractModel):
 
 
 class EnableRestProxyResponse(AbstractModel):
-    """EnableRestProxy response structure.
+    r"""EnableRestProxy response structure.
 
     """
 
@@ -5092,7 +5092,7 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def RestProxyStatus(self):
-        """RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
+        r"""RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).
         :rtype: int
         """
         return self._RestProxyStatus
@@ -5103,7 +5103,7 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        r"""`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
         :rtype: str
         """
         return self._TaskId
@@ -5114,7 +5114,7 @@ class EnableRestProxyResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5131,7 +5131,7 @@ class EnableRestProxyResponse(AbstractModel):
 
 
 class ErrorInfo(AbstractModel):
-    """Describes the details of errors that may occur during the processing of each instance (application, region, or table).
+    r"""Describes the details of errors that may occur during the processing of each instance (application, region, or table).
 
     """
 
@@ -5147,7 +5147,7 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Code(self):
-        """Error code
+        r"""Error code
         :rtype: str
         """
         return self._Code
@@ -5158,7 +5158,7 @@ class ErrorInfo(AbstractModel):
 
     @property
     def Message(self):
-        """Error message
+        r"""Error message
         :rtype: str
         """
         return self._Message
@@ -5182,7 +5182,7 @@ class ErrorInfo(AbstractModel):
 
 
 class FieldInfo(AbstractModel):
-    """The list of table field information
+    r"""The list of table field information
 
     """
 
@@ -5204,7 +5204,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldName(self):
-        """Table field name
+        r"""Table field name
         :rtype: str
         """
         return self._FieldName
@@ -5215,7 +5215,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def IsPrimaryKey(self):
-        """Whether it is a primary key field
+        r"""Whether it is a primary key field
         :rtype: str
         """
         return self._IsPrimaryKey
@@ -5226,7 +5226,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldType(self):
-        """Field type
+        r"""Field type
         :rtype: str
         """
         return self._FieldType
@@ -5237,7 +5237,7 @@ class FieldInfo(AbstractModel):
 
     @property
     def FieldSize(self):
-        """Field length
+        r"""Field length
         :rtype: int
         """
         return self._FieldSize
@@ -5263,7 +5263,7 @@ class FieldInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """Filter
+    r"""Filter
 
     """
 
@@ -5282,7 +5282,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        """Filter field name
+        r"""Filter field name
         :rtype: str
         """
         return self._Name
@@ -5293,7 +5293,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        """Filter field value
+        r"""Filter field value
         :rtype: str
         """
         return self._Value
@@ -5304,7 +5304,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        """Filter field value
+        r"""Filter field value
         :rtype: list of str
         """
         return self._Values
@@ -5329,7 +5329,7 @@ class Filter(AbstractModel):
 
 
 class IdlFileInfo(AbstractModel):
-    """Table definition file details, including file content
+    r"""Table definition file details, including file content
 
     """
 
@@ -5359,7 +5359,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
-        """Filename excluding extension
+        r"""Filename excluding extension
         :rtype: str
         """
         return self._FileName
@@ -5370,7 +5370,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileType(self):
-        """Data interface description language (IDL) type
+        r"""Data interface description language (IDL) type
         :rtype: str
         """
         return self._FileType
@@ -5381,7 +5381,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileExtType(self):
-        """File extension
+        r"""File extension
         :rtype: str
         """
         return self._FileExtType
@@ -5392,7 +5392,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSize(self):
-        """File size in bytes
+        r"""File size in bytes
         :rtype: int
         """
         return self._FileSize
@@ -5403,7 +5403,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        """File ID, which is meaningful for files already uploaded
+        r"""File ID, which is meaningful for files already uploaded
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5415,7 +5415,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileContent(self):
-        """File content, which is meaningful for files to be uploaded in this request
+        r"""File content, which is meaningful for files to be uploaded in this request
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5444,7 +5444,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class IdlFileInfoWithoutContent(AbstractModel):
-    """Table definition file details, excluding file content
+    r"""Table definition file details, excluding file content
 
     """
 
@@ -5478,7 +5478,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
-        """Filename excluding extension
+        r"""Filename excluding extension
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5490,7 +5490,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileType(self):
-        """Data interface description language (IDL) type
+        r"""Data interface description language (IDL) type
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5502,7 +5502,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileExtType(self):
-        """File extension
+        r"""File extension
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5514,7 +5514,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSize(self):
-        """File size in bytes
+        r"""File size in bytes
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5526,7 +5526,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        """File ID
+        r"""File ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5538,7 +5538,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -5569,7 +5569,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class ImportSnapshotsRequest(AbstractModel):
-    """ImportSnapshots request structure.
+    r"""ImportSnapshots request structure.
 
     """
 
@@ -5600,7 +5600,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the original table (from which the snapshot was created) resides
+        r"""The ID of the cluster where the original table (from which the snapshot was created) resides
         :rtype: str
         """
         return self._ClusterId
@@ -5611,7 +5611,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def Snapshots(self):
-        """The information of the snapshot to import
+        r"""The information of the snapshot to import
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
         """
         return self._Snapshots
@@ -5622,7 +5622,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ImportSpecialKey(self):
-        """Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).
+        r"""Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).
         :rtype: str
         """
         return self._ImportSpecialKey
@@ -5633,7 +5633,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def ImportOriginTable(self):
-        """Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).
+        r"""Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).
         :rtype: str
         """
         return self._ImportOriginTable
@@ -5644,7 +5644,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def KeyFile(self):
-        """The file of the keys of the partial data
+        r"""The file of the keys of the partial data
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
         """
         return self._KeyFile
@@ -5655,7 +5655,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def NewTableGroupId(self):
-        """The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`
+        r"""The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`
         :rtype: str
         """
         return self._NewTableGroupId
@@ -5666,7 +5666,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
     @property
     def NewTableName(self):
-        """The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.
+        r"""The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.
         :rtype: str
         """
         return self._NewTableName
@@ -5699,7 +5699,7 @@ class ImportSnapshotsRequest(AbstractModel):
 
 
 class ImportSnapshotsResponse(AbstractModel):
-    """ImportSnapshots response structure.
+    r"""ImportSnapshots response structure.
 
     """
 
@@ -5720,7 +5720,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
+        r"""`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5732,7 +5732,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationId(self):
-        """`ApplicationId` is in the format of `AppInstanceId-applicationId`, which is used to identify applications of different clusters.
+        r"""`ApplicationId` is in the format of `AppInstanceId-applicationId`, which is used to identify applications of different clusters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5744,7 +5744,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5761,7 +5761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class KafkaInfo(AbstractModel):
-    """CKafka address
+    r"""CKafka address
 
     """
 
@@ -5789,7 +5789,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Address(self):
-        """CKafka address
+        r"""CKafka address
         :rtype: str
         """
         return self._Address
@@ -5800,7 +5800,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Topic(self):
-        """CKafka topic
+        r"""CKafka topic
         :rtype: str
         """
         return self._Topic
@@ -5811,7 +5811,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def User(self):
-        """CKafka username
+        r"""CKafka username
         :rtype: str
         """
         return self._User
@@ -5822,7 +5822,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Password(self):
-        """CKafka password
+        r"""CKafka password
         :rtype: str
         """
         return self._Password
@@ -5833,7 +5833,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def Instance(self):
-        """CKafka instance
+        r"""CKafka instance
         :rtype: str
         """
         return self._Instance
@@ -5844,7 +5844,7 @@ class KafkaInfo(AbstractModel):
 
     @property
     def IsVpc(self):
-        """Whether VPC access is enabled
+        r"""Whether VPC access is enabled
         :rtype: int
         """
         return self._IsVpc
@@ -5872,7 +5872,7 @@ class KafkaInfo(AbstractModel):
 
 
 class KeyFile(AbstractModel):
-    """The file of keys used to import partial snapshot data
+    r"""The file of keys used to import partial snapshot data
 
     """
 
@@ -5894,7 +5894,7 @@ class KeyFile(AbstractModel):
 
     @property
     def FileName(self):
-        """Key file name
+        r"""Key file name
         :rtype: str
         """
         return self._FileName
@@ -5905,7 +5905,7 @@ class KeyFile(AbstractModel):
 
     @property
     def FileExtType(self):
-        """Key file extension
+        r"""Key file extension
         :rtype: str
         """
         return self._FileExtType
@@ -5916,7 +5916,7 @@ class KeyFile(AbstractModel):
 
     @property
     def FileContent(self):
-        """Key file content
+        r"""Key file content
         :rtype: str
         """
         return self._FileContent
@@ -5927,7 +5927,7 @@ class KeyFile(AbstractModel):
 
     @property
     def FileSize(self):
-        """Key file size
+        r"""Key file size
         :rtype: int
         """
         return self._FileSize
@@ -5953,7 +5953,7 @@ class KeyFile(AbstractModel):
 
 
 class MachineInfo(AbstractModel):
-    """Machine type and quantity
+    r"""Machine type and quantity
 
     """
 
@@ -5969,7 +5969,7 @@ class MachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        """Machine type
+        r"""Machine type
         :rtype: str
         """
         return self._MachineType
@@ -5980,7 +5980,7 @@ class MachineInfo(AbstractModel):
 
     @property
     def MachineNum(self):
-        """Machine quantity
+        r"""Machine quantity
         :rtype: int
         """
         return self._MachineNum
@@ -6004,7 +6004,7 @@ class MachineInfo(AbstractModel):
 
 
 class MergeTableResult(AbstractModel):
-    """Table merging results
+    r"""Table merging results
 
     """
 
@@ -6029,7 +6029,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6041,7 +6041,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Error(self):
-        """If table merging is successful, `null` will be returned
+        r"""If table merging is successful, `null` will be returned
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -6053,7 +6053,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Table(self):
-        """Comparison results of tables
+        r"""Comparison results of tables
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
         """
         return self._Table
@@ -6064,7 +6064,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplicationId(self):
-        """Application ID
+        r"""Application ID
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6095,7 +6095,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class MergeTablesDataRequest(AbstractModel):
-    """MergeTablesData request structure.
+    r"""MergeTablesData request structure.
 
     """
 
@@ -6111,7 +6111,7 @@ class MergeTablesDataRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Tables to be merged
+        r"""Tables to be merged
         :rtype: list of MergeTablesInfo
         """
         return self._SelectedTables
@@ -6122,7 +6122,7 @@ class MergeTablesDataRequest(AbstractModel):
 
     @property
     def IsOnlyCompare(self):
-        """Valid values: `true` (only compare), `false` (compare and merge)
+        r"""Valid values: `true` (only compare), `false` (compare and merge)
         :rtype: bool
         """
         return self._IsOnlyCompare
@@ -6151,7 +6151,7 @@ class MergeTablesDataRequest(AbstractModel):
 
 
 class MergeTablesDataResponse(AbstractModel):
-    """MergeTablesData response structure.
+    r"""MergeTablesData response structure.
 
     """
 
@@ -6167,7 +6167,7 @@ class MergeTablesDataResponse(AbstractModel):
 
     @property
     def Results(self):
-        """Table merging results
+        r"""Table merging results
         :rtype: list of MergeTableResult
         """
         return self._Results
@@ -6178,7 +6178,7 @@ class MergeTablesDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6199,7 +6199,7 @@ class MergeTablesDataResponse(AbstractModel):
 
 
 class MergeTablesInfo(AbstractModel):
-    """Request parameters used to merge tables
+    r"""Request parameters used to merge tables
 
     """
 
@@ -6215,7 +6215,7 @@ class MergeTablesInfo(AbstractModel):
 
     @property
     def MergeTables(self):
-        """Information of tables to be merged
+        r"""Information of tables to be merged
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
         """
         return self._MergeTables
@@ -6226,7 +6226,7 @@ class MergeTablesInfo(AbstractModel):
 
     @property
     def CheckIndex(self):
-        """Whether to check indexes
+        r"""Whether to check indexes
         :rtype: bool
         """
         return self._CheckIndex
@@ -6252,7 +6252,7 @@ class MergeTablesInfo(AbstractModel):
 
 
 class ModifyCensorshipRequest(AbstractModel):
-    """ModifyCensorship request structure.
+    r"""ModifyCensorship request structure.
 
     """
 
@@ -6271,7 +6271,7 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -6282,7 +6282,7 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def Censorship(self):
-        """Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)
+        r"""Whether to enable the operation approval feature for this cluster. Valid values: `0` (disable), `1` (enable)
         :rtype: int
         """
         return self._Censorship
@@ -6293,7 +6293,7 @@ class ModifyCensorshipRequest(AbstractModel):
 
     @property
     def Uins(self):
-        """Approver UIN list
+        r"""Approver UIN list
         :rtype: list of str
         """
         return self._Uins
@@ -6318,7 +6318,7 @@ class ModifyCensorshipRequest(AbstractModel):
 
 
 class ModifyCensorshipResponse(AbstractModel):
-    """ModifyCensorship response structure.
+    r"""ModifyCensorship response structure.
 
     """
 
@@ -6341,7 +6341,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -6352,7 +6352,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Uins(self):
-        """Approver UIN list
+        r"""Approver UIN list
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -6364,7 +6364,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Censorship(self):
-        """Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)
+        r"""Whether the operation approval feature is enabled for this cluster. Valid values: `0` (disabled), `1` (enabled)
         :rtype: int
         """
         return self._Censorship
@@ -6375,7 +6375,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6393,7 +6393,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class ModifyClusterMachineRequest(AbstractModel):
-    """ModifyClusterMachine request structure.
+    r"""ModifyClusterMachine request structure.
 
     """
 
@@ -6415,7 +6415,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -6426,7 +6426,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ServerList(self):
-        """Information of the machines at the storage layer (tcapsvr)
+        r"""Information of the machines at the storage layer (tcapsvr)
         :rtype: list of MachineInfo
         """
         return self._ServerList
@@ -6437,7 +6437,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ProxyList(self):
-        """Information of the machines at the access layer (tcaproxy)
+        r"""Information of the machines at the access layer (tcaproxy)
         :rtype: list of MachineInfo
         """
         return self._ProxyList
@@ -6448,7 +6448,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        """Cluster type. Valid values: `1` (standard), `2` (dedicated)
+        r"""Cluster type. Valid values: `1` (standard), `2` (dedicated)
         :rtype: int
         """
         return self._ClusterType
@@ -6484,7 +6484,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
 
 class ModifyClusterMachineResponse(AbstractModel):
-    """ModifyClusterMachine response structure.
+    r"""ModifyClusterMachine response structure.
 
     """
 
@@ -6500,7 +6500,7 @@ class ModifyClusterMachineResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -6511,7 +6511,7 @@ class ModifyClusterMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6527,7 +6527,7 @@ class ModifyClusterMachineResponse(AbstractModel):
 
 
 class ModifyClusterNameRequest(AbstractModel):
-    """ModifyClusterName request structure.
+    r"""ModifyClusterName request structure.
 
     """
 
@@ -6543,7 +6543,7 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster to be renamed
+        r"""ID of the cluster to be renamed
         :rtype: str
         """
         return self._ClusterId
@@ -6554,7 +6554,7 @@ class ModifyClusterNameRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        """Cluster name to be changed to, which can contain up to 32 letters and digits
+        r"""Cluster name to be changed to, which can contain up to 32 letters and digits
         :rtype: str
         """
         return self._ClusterName
@@ -6578,7 +6578,7 @@ class ModifyClusterNameRequest(AbstractModel):
 
 
 class ModifyClusterNameResponse(AbstractModel):
-    """ModifyClusterName response structure.
+    r"""ModifyClusterName response structure.
 
     """
 
@@ -6591,7 +6591,7 @@ class ModifyClusterNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6606,7 +6606,7 @@ class ModifyClusterNameResponse(AbstractModel):
 
 
 class ModifyClusterPasswordRequest(AbstractModel):
-    """ModifyClusterPassword request structure.
+    r"""ModifyClusterPassword request structure.
 
     """
 
@@ -6631,7 +6631,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster for which to modify the password
+        r"""ID of the cluster for which to modify the password
         :rtype: str
         """
         return self._ClusterId
@@ -6642,7 +6642,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def OldPassword(self):
-        """Old cluster password
+        r"""Old cluster password
         :rtype: str
         """
         return self._OldPassword
@@ -6653,7 +6653,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def OldPasswordExpireTime(self):
-        """Expected expiration time of old cluster password
+        r"""Expected expiration time of old cluster password
         :rtype: str
         """
         return self._OldPasswordExpireTime
@@ -6664,7 +6664,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def NewPassword(self):
-        """New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
+        r"""New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).
         :rtype: str
         """
         return self._NewPassword
@@ -6675,7 +6675,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1
+        r"""Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1
         :rtype: str
         """
         return self._Mode
@@ -6702,7 +6702,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
 
 
 class ModifyClusterPasswordResponse(AbstractModel):
-    """ModifyClusterPassword response structure.
+    r"""ModifyClusterPassword response structure.
 
     """
 
@@ -6715,7 +6715,7 @@ class ModifyClusterPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6730,7 +6730,7 @@ class ModifyClusterPasswordResponse(AbstractModel):
 
 
 class ModifyClusterTagsRequest(AbstractModel):
-    """ModifyClusterTags request structure.
+    r"""ModifyClusterTags request structure.
 
     """
 
@@ -6749,7 +6749,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster whose tags need to be modified
+        r"""The ID of the cluster whose tags need to be modified
         :rtype: str
         """
         return self._ClusterId
@@ -6760,7 +6760,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """The list of tags to add or modify
+        r"""The list of tags to add or modify
         :rtype: list of TagInfoUnit
         """
         return self._ReplaceTags
@@ -6771,7 +6771,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """Tags to delete
+        r"""Tags to delete
         :rtype: list of TagInfoUnit
         """
         return self._DeleteTags
@@ -6806,7 +6806,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
 
 class ModifyClusterTagsResponse(AbstractModel):
-    """ModifyClusterTags response structure.
+    r"""ModifyClusterTags response structure.
 
     """
 
@@ -6822,7 +6822,7 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._TaskId
@@ -6833,7 +6833,7 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6849,7 +6849,7 @@ class ModifyClusterTagsResponse(AbstractModel):
 
 
 class ModifySnapshotsRequest(AbstractModel):
-    """ModifySnapshots request structure.
+    r"""ModifySnapshots request structure.
 
     """
 
@@ -6865,7 +6865,7 @@ class ModifySnapshotsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the table resides
+        r"""The ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -6876,7 +6876,7 @@ class ModifySnapshotsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Snapshot list
+        r"""Snapshot list
         :rtype: list of SnapshotInfoNew
         """
         return self._SelectedTables
@@ -6905,7 +6905,7 @@ class ModifySnapshotsRequest(AbstractModel):
 
 
 class ModifySnapshotsResponse(AbstractModel):
-    """ModifySnapshots response structure.
+    r"""ModifySnapshots response structure.
 
     """
 
@@ -6924,7 +6924,7 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of snapshots modified in batches
+        r"""The number of snapshots modified in batches
         :rtype: int
         """
         return self._TotalCount
@@ -6935,7 +6935,7 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of snapshots modified in batches
+        r"""The result list of snapshots modified in batches
         :rtype: list of SnapshotResult
         """
         return self._TableResults
@@ -6946,7 +6946,7 @@ class ModifySnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6968,7 +6968,7 @@ class ModifySnapshotsResponse(AbstractModel):
 
 
 class ModifyTableGroupNameRequest(AbstractModel):
-    """ModifyTableGroupName request structure.
+    r"""ModifyTableGroupName request structure.
 
     """
 
@@ -6987,7 +6987,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table group resides
+        r"""ID of the cluster where a table group resides
         :rtype: str
         """
         return self._ClusterId
@@ -6998,7 +6998,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """ID of the table group to be renamed
+        r"""ID of the table group to be renamed
         :rtype: str
         """
         return self._TableGroupId
@@ -7009,7 +7009,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
     @property
     def TableGroupName(self):
-        """New table group name, which can contain letters and symbols
+        r"""New table group name, which can contain letters and symbols
         :rtype: str
         """
         return self._TableGroupName
@@ -7034,7 +7034,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
 
 
 class ModifyTableGroupNameResponse(AbstractModel):
-    """ModifyTableGroupName response structure.
+    r"""ModifyTableGroupName response structure.
 
     """
 
@@ -7047,7 +7047,7 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7062,7 +7062,7 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
 
 class ModifyTableGroupTagsRequest(AbstractModel):
-    """ModifyTableGroupTags request structure.
+    r"""ModifyTableGroupTags request structure.
 
     """
 
@@ -7084,7 +7084,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where table group tags need to be modified
+        r"""The ID of the cluster where table group tags need to be modified
         :rtype: str
         """
         return self._ClusterId
@@ -7095,7 +7095,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group whose tags need to be modified
+        r"""The ID of the table group whose tags need to be modified
         :rtype: str
         """
         return self._TableGroupId
@@ -7106,7 +7106,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """The list of tags to add or modify
+        r"""The list of tags to add or modify
         :rtype: list of TagInfoUnit
         """
         return self._ReplaceTags
@@ -7117,7 +7117,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """Tags to delete
+        r"""Tags to delete
         :rtype: list of TagInfoUnit
         """
         return self._DeleteTags
@@ -7153,7 +7153,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
 
 
 class ModifyTableGroupTagsResponse(AbstractModel):
-    """ModifyTableGroupTags response structure.
+    r"""ModifyTableGroupTags response structure.
 
     """
 
@@ -7169,7 +7169,7 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._TaskId
@@ -7180,7 +7180,7 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7196,7 +7196,7 @@ class ModifyTableGroupTagsResponse(AbstractModel):
 
 
 class ModifyTableMemosRequest(AbstractModel):
-    """ModifyTableMemos request structure.
+    r"""ModifyTableMemos request structure.
 
     """
 
@@ -7212,7 +7212,7 @@ class ModifyTableMemosRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster instance where a table resides
+        r"""ID of the cluster instance where a table resides
         :rtype: str
         """
         return self._ClusterId
@@ -7223,7 +7223,7 @@ class ModifyTableMemosRequest(AbstractModel):
 
     @property
     def TableMemos(self):
-        """List of details of selected tables
+        r"""List of details of selected tables
         :rtype: list of SelectedTableInfoNew
         """
         return self._TableMemos
@@ -7252,7 +7252,7 @@ class ModifyTableMemosRequest(AbstractModel):
 
 
 class ModifyTableMemosResponse(AbstractModel):
-    """ModifyTableMemos response structure.
+    r"""ModifyTableMemos response structure.
 
     """
 
@@ -7271,7 +7271,7 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of tables modified for remarks
+        r"""Number of tables modified for remarks
         :rtype: int
         """
         return self._TotalCount
@@ -7282,7 +7282,7 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of table remarks modification results
+        r"""List of table remarks modification results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -7293,7 +7293,7 @@ class ModifyTableMemosResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7315,7 +7315,7 @@ class ModifyTableMemosResponse(AbstractModel):
 
 
 class ModifyTableQuotasRequest(AbstractModel):
-    """ModifyTableQuotas request structure.
+    r"""ModifyTableQuotas request structure.
 
     """
 
@@ -7331,7 +7331,7 @@ class ModifyTableQuotasRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be scaled resides
+        r"""ID of the cluster where the table to be scaled resides
         :rtype: str
         """
         return self._ClusterId
@@ -7342,7 +7342,7 @@ class ModifyTableQuotasRequest(AbstractModel):
 
     @property
     def TableQuotas(self):
-        """List of quotas of tables selected for modification
+        r"""List of quotas of tables selected for modification
         :rtype: list of SelectedTableInfoNew
         """
         return self._TableQuotas
@@ -7371,7 +7371,7 @@ class ModifyTableQuotasRequest(AbstractModel):
 
 
 class ModifyTableQuotasResponse(AbstractModel):
-    """ModifyTableQuotas response structure.
+    r"""ModifyTableQuotas response structure.
 
     """
 
@@ -7390,7 +7390,7 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of scaled tables
+        r"""Number of scaled tables
         :rtype: int
         """
         return self._TotalCount
@@ -7401,7 +7401,7 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of table scaling results
+        r"""List of table scaling results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -7412,7 +7412,7 @@ class ModifyTableQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7434,7 +7434,7 @@ class ModifyTableQuotasResponse(AbstractModel):
 
 
 class ModifyTableTagsRequest(AbstractModel):
-    """ModifyTableTags request structure.
+    r"""ModifyTableTags request structure.
 
     """
 
@@ -7456,7 +7456,7 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where table tags need to be modified
+        r"""The ID of the cluster where table tags need to be modified
         :rtype: str
         """
         return self._ClusterId
@@ -7467,7 +7467,7 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of tables whose tags need to be modified
+        r"""The list of tables whose tags need to be modified
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -7478,7 +7478,7 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        """The list of tags to add or modify
+        r"""The list of tags to add or modify
         :rtype: list of TagInfoUnit
         """
         return self._ReplaceTags
@@ -7489,7 +7489,7 @@ class ModifyTableTagsRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        """The list of tags to delete
+        r"""The list of tags to delete
         :rtype: list of TagInfoUnit
         """
         return self._DeleteTags
@@ -7530,7 +7530,7 @@ class ModifyTableTagsRequest(AbstractModel):
 
 
 class ModifyTableTagsResponse(AbstractModel):
-    """ModifyTableTags response structure.
+    r"""ModifyTableTags response structure.
 
     """
 
@@ -7549,7 +7549,7 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The total number of returned results
+        r"""The total number of returned results
         :rtype: int
         """
         return self._TotalCount
@@ -7560,7 +7560,7 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """Returned results
+        r"""Returned results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -7571,7 +7571,7 @@ class ModifyTableTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7593,7 +7593,7 @@ class ModifyTableTagsResponse(AbstractModel):
 
 
 class ModifyTablesRequest(AbstractModel):
-    """ModifyTables request structure.
+    r"""ModifyTables request structure.
 
     """
 
@@ -7612,7 +7612,7 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be modified resides
+        r"""ID of the cluster where the table to be modified resides
         :rtype: str
         """
         return self._ClusterId
@@ -7623,7 +7623,7 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def IdlFiles(self):
-        """Selected table modification IDL files
+        r"""Selected table modification IDL files
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -7634,7 +7634,7 @@ class ModifyTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """List of tables to be modified
+        r"""List of tables to be modified
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -7669,7 +7669,7 @@ class ModifyTablesRequest(AbstractModel):
 
 
 class ModifyTablesResponse(AbstractModel):
-    """ModifyTables response structure.
+    r"""ModifyTables response structure.
 
     """
 
@@ -7688,7 +7688,7 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of modified tables
+        r"""Number of modified tables
         :rtype: int
         """
         return self._TotalCount
@@ -7699,7 +7699,7 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of table modification results
+        r"""List of table modification results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -7710,7 +7710,7 @@ class ModifyTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7732,7 +7732,7 @@ class ModifyTablesResponse(AbstractModel):
 
 
 class ParsedTableInfoNew(AbstractModel):
-    """Table information parsed from IDL table description file
+    r"""Table information parsed from IDL table description file
 
     """
 
@@ -7814,7 +7814,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableIdlType(self):
-        """Table description language type. Valid values: PROTO, TDR
+        r"""Table description language type. Valid values: PROTO, TDR
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7826,7 +7826,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableInstanceId(self):
-        """Table instance ID
+        r"""Table instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7838,7 +7838,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7850,7 +7850,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableType(self):
-        """Table data structure type. Valid values: GENERIC, LIST
+        r"""Table data structure type. Valid values: GENERIC, LIST
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7862,7 +7862,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyFields(self):
-        """Primary key field information
+        r"""Primary key field information
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7874,7 +7874,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldKeyFields(self):
-        """Old primary key field information, which is valid during verification of table modification
+        r"""Old primary key field information, which is valid during verification of table modification
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7886,7 +7886,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValueFields(self):
-        """Non-primary key field information
+        r"""Non-primary key field information
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7898,7 +7898,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldValueFields(self):
-        """Old non-primary key field information, which is valid during verification of table modification
+        r"""Old non-primary key field information, which is valid during verification of table modification
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7910,7 +7910,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupId(self):
-        """Table group ID
+        r"""Table group ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7922,7 +7922,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SumKeyFieldSize(self):
-        """Total size of primary key field
+        r"""Total size of primary key field
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7934,7 +7934,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SumValueFieldSize(self):
-        """Total size of non-primary key fields
+        r"""Total size of non-primary key fields
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7946,7 +7946,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexKeySet(self):
-        """Index key set
+        r"""Index key set
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7958,7 +7958,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShardingKeySet(self):
-        """Shardkey set
+        r"""Shardkey set
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7970,7 +7970,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TdrVersion(self):
-        """TDR version number
+        r"""TDR version number
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -7982,7 +7982,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -7994,7 +7994,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListElementNum(self):
-        """Number of LIST-type table elements
+        r"""Number of LIST-type table elements
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8006,7 +8006,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SortFieldNum(self):
-        """Number of SORTLIST-type table sort fields
+        r"""Number of SORTLIST-type table sort fields
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8018,7 +8018,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SortRule(self):
-        """Sort order of SORTLIST-type tables
+        r"""Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -8061,7 +8061,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class PoolInfo(AbstractModel):
-    """Information of the machines in the resource pool
+    r"""Information of the machines in the resource pool
 
     """
 
@@ -8086,7 +8086,7 @@ class PoolInfo(AbstractModel):
 
     @property
     def PoolUid(self):
-        """Unique ID
+        r"""Unique ID
         :rtype: int
         """
         return self._PoolUid
@@ -8097,7 +8097,7 @@ class PoolInfo(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        """Whether IPv6 is supported
+        r"""Whether IPv6 is supported
         :rtype: int
         """
         return self._Ipv6Enable
@@ -8108,7 +8108,7 @@ class PoolInfo(AbstractModel):
 
     @property
     def AvailableAppCount(self):
-        """Remaining available cluster resources
+        r"""Remaining available cluster resources
         :rtype: int
         """
         return self._AvailableAppCount
@@ -8119,7 +8119,7 @@ class PoolInfo(AbstractModel):
 
     @property
     def ServerList(self):
-        """The list of machines at the storage layer (tcapsvr)
+        r"""The list of machines at the storage layer (tcapsvr)
         :rtype: list of ServerMachineInfo
         """
         return self._ServerList
@@ -8130,7 +8130,7 @@ class PoolInfo(AbstractModel):
 
     @property
     def ProxyList(self):
-        """The list of machines at the access layer (tcaproxy)
+        r"""The list of machines at the access layer (tcaproxy)
         :rtype: list of ProxyMachineInfo
         """
         return self._ProxyList
@@ -8167,7 +8167,7 @@ class PoolInfo(AbstractModel):
 
 
 class ProxyDetailInfo(AbstractModel):
-    """Information of the machine at the access layer (tcaproxy) in a dedicated cluster
+    r"""Information of the machine at the access layer (tcaproxy) in a dedicated cluster
 
     """
 
@@ -8196,7 +8196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyUid(self):
-        """The unique ID of the access layer (tcaproxy)
+        r"""The unique ID of the access layer (tcaproxy)
         :rtype: str
         """
         return self._ProxyUid
@@ -8207,7 +8207,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MachineType(self):
-        """Machine type
+        r"""Machine type
         :rtype: str
         """
         return self._MachineType
@@ -8218,7 +8218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessSpeed(self):
-        """The speed of processing request packets
+        r"""The speed of processing request packets
         :rtype: int
         """
         return self._ProcessSpeed
@@ -8229,7 +8229,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AverageProcessDelay(self):
-        """Request packet delay
+        r"""Request packet delay
         :rtype: int
         """
         return self._AverageProcessDelay
@@ -8240,7 +8240,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlowProcessSpeed(self):
-        """The speed of processing delayed request packets
+        r"""The speed of processing delayed request packets
         :rtype: int
         """
         return self._SlowProcessSpeed
@@ -8251,7 +8251,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Version
+        r"""Version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -8280,7 +8280,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ProxyMachineInfo(AbstractModel):
-    """Information of the machine at the access layer (tcaproxy)
+    r"""Information of the machine at the access layer (tcaproxy)
 
     """
 
@@ -8299,7 +8299,7 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def ProxyUid(self):
-        """Unique ID
+        r"""Unique ID
         :rtype: str
         """
         return self._ProxyUid
@@ -8310,7 +8310,7 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        """Machine type
+        r"""Machine type
         :rtype: str
         """
         return self._MachineType
@@ -8321,7 +8321,7 @@ class ProxyMachineInfo(AbstractModel):
 
     @property
     def AvailableCount(self):
-        """The number of proxy resources to be assigned
+        r"""The number of proxy resources to be assigned
         :rtype: int
         """
         return self._AvailableCount
@@ -8346,7 +8346,7 @@ class ProxyMachineInfo(AbstractModel):
 
 
 class RecoverRecycleTablesRequest(AbstractModel):
-    """RecoverRecycleTables request structure.
+    r"""RecoverRecycleTables request structure.
 
     """
 
@@ -8362,7 +8362,7 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table resides
+        r"""ID of the cluster where a table resides
         :rtype: str
         """
         return self._ClusterId
@@ -8373,7 +8373,7 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """Information of tables to be recovered
+        r"""Information of tables to be recovered
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -8402,7 +8402,7 @@ class RecoverRecycleTablesRequest(AbstractModel):
 
 
 class RecoverRecycleTablesResponse(AbstractModel):
-    """RecoverRecycleTables response structure.
+    r"""RecoverRecycleTables response structure.
 
     """
 
@@ -8421,7 +8421,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of recovered tables
+        r"""Number of recovered tables
         :rtype: int
         """
         return self._TotalCount
@@ -8432,7 +8432,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """List of information of recovered tables
+        r"""List of information of recovered tables
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -8443,7 +8443,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8465,7 +8465,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    """TcaplusDB service region details
+    r"""TcaplusDB service region details
 
     """
 
@@ -8487,7 +8487,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        """Region `Ap-code`
+        r"""Region `Ap-code`
         :rtype: str
         """
         return self._RegionName
@@ -8498,7 +8498,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionAbbr(self):
-        """Region abbreviation
+        r"""Region abbreviation
         :rtype: str
         """
         return self._RegionAbbr
@@ -8509,7 +8509,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region ID
+        r"""Region ID
         :rtype: int
         """
         return self._RegionId
@@ -8520,7 +8520,7 @@ class RegionInfo(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        """Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)
+        r"""Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)
         :rtype: int
         """
         return self._Ipv6Enable
@@ -8546,7 +8546,7 @@ class RegionInfo(AbstractModel):
 
 
 class RollbackTablesRequest(AbstractModel):
-    """RollbackTables request structure.
+    r"""RollbackTables request structure.
 
     """
 
@@ -8568,7 +8568,7 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table to be rolled back resides
+        r"""ID of the cluster where the table to be rolled back resides
         :rtype: str
         """
         return self._ClusterId
@@ -8579,7 +8579,7 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """List of tables to be rolled back
+        r"""List of tables to be rolled back
         :rtype: list of SelectedTableInfoNew
         """
         return self._SelectedTables
@@ -8590,7 +8590,7 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def RollbackTime(self):
-        """Time to roll back to
+        r"""Time to roll back to
         :rtype: str
         """
         return self._RollbackTime
@@ -8601,7 +8601,7 @@ class RollbackTablesRequest(AbstractModel):
 
     @property
     def Mode(self):
-        """Rollback mode. `KEYS` is supported
+        r"""Rollback mode. `KEYS` is supported
         :rtype: str
         """
         return self._Mode
@@ -8632,7 +8632,7 @@ class RollbackTablesRequest(AbstractModel):
 
 
 class RollbackTablesResponse(AbstractModel):
-    """RollbackTables response structure.
+    r"""RollbackTables response structure.
 
     """
 
@@ -8651,7 +8651,7 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of table rollback task results
+        r"""Number of table rollback task results
         :rtype: int
         """
         return self._TotalCount
@@ -8662,7 +8662,7 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """Table rollback task result list
+        r"""Table rollback task result list
         :rtype: list of TableRollbackResultNew
         """
         return self._TableResults
@@ -8673,7 +8673,7 @@ class RollbackTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8695,7 +8695,7 @@ class RollbackTablesResponse(AbstractModel):
 
 
 class SelectedTableInfoNew(AbstractModel):
-    """Information of selected table
+    r"""Information of selected table
 
     """
 
@@ -8747,7 +8747,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """ID of the table group where a table resides
+        r"""ID of the table group where a table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -8758,7 +8758,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -8769,7 +8769,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableInstanceId(self):
-        """Table instance ID
+        r"""Table instance ID
         :rtype: str
         """
         return self._TableInstanceId
@@ -8780,7 +8780,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableIdlType(self):
-        """Table description language type. Valid values: PROTO, TDR
+        r"""Table description language type. Valid values: PROTO, TDR
         :rtype: str
         """
         return self._TableIdlType
@@ -8791,7 +8791,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def TableType(self):
-        """Table data structure type. Valid values: GENERIC, LIST
+        r"""Table data structure type. Valid values: GENERIC, LIST
         :rtype: str
         """
         return self._TableType
@@ -8802,7 +8802,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ListElementNum(self):
-        """Number of LIST-type table elements
+        r"""Number of LIST-type table elements
         :rtype: int
         """
         return self._ListElementNum
@@ -8813,7 +8813,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedVolume(self):
-        """Reserved table capacity in GB
+        r"""Reserved table capacity in GB
         :rtype: int
         """
         return self._ReservedVolume
@@ -8824,7 +8824,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedReadQps(self):
-        """Reserved table read QPS
+        r"""Reserved table read QPS
         :rtype: int
         """
         return self._ReservedReadQps
@@ -8835,7 +8835,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def ReservedWriteQps(self):
-        """Reserved table write QPS
+        r"""Reserved table write QPS
         :rtype: int
         """
         return self._ReservedWriteQps
@@ -8846,7 +8846,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def Memo(self):
-        """Table remarks
+        r"""Table remarks
         :rtype: str
         """
         return self._Memo
@@ -8857,7 +8857,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileName(self):
-        """Key rollback filename, which is only used for rollback
+        r"""Key rollback filename, which is only used for rollback
         :rtype: str
         """
         return self._FileName
@@ -8868,7 +8868,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileExtType(self):
-        """Key rollback file extension, which is only used for rollback
+        r"""Key rollback file extension, which is only used for rollback
         :rtype: str
         """
         return self._FileExtType
@@ -8879,7 +8879,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileSize(self):
-        """Key rollback file size, which is only used for rollback
+        r"""Key rollback file size, which is only used for rollback
         :rtype: int
         """
         return self._FileSize
@@ -8890,7 +8890,7 @@ class SelectedTableInfoNew(AbstractModel):
 
     @property
     def FileContent(self):
-        """Key rollback file content, which is only used for rollback
+        r"""Key rollback file content, which is only used for rollback
         :rtype: str
         """
         return self._FileContent
@@ -8926,7 +8926,7 @@ class SelectedTableInfoNew(AbstractModel):
 
 
 class SelectedTableWithField(AbstractModel):
-    """The list of tables to which the specified fields belong
+    r"""The list of tables to which the specified fields belong
 
     """
 
@@ -8960,7 +8960,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """ID of the table group where the table resides
+        r"""ID of the table group where the table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -8971,7 +8971,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -8982,7 +8982,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableInstanceId(self):
-        """Table ID
+        r"""Table ID
         :rtype: str
         """
         return self._TableInstanceId
@@ -8993,7 +8993,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableIdlType(self):
-        """Table description language. Valid values: `PROTO`, `TDR`
+        r"""Table description language. Valid values: `PROTO`, `TDR`
         :rtype: str
         """
         return self._TableIdlType
@@ -9004,7 +9004,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def TableType(self):
-        """Table data structure. Valid values: `GENERIC`, `LIST`
+        r"""Table data structure. Valid values: `GENERIC`, `LIST`
         :rtype: str
         """
         return self._TableType
@@ -9015,7 +9015,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def SelectedFields(self):
-        """The list of fields on which indexes will be created, table caching enabled, or data subscription enabled
+        r"""The list of fields on which indexes will be created, table caching enabled, or data subscription enabled
         :rtype: list of FieldInfo
         """
         return self._SelectedFields
@@ -9026,7 +9026,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def ShardNum(self):
-        """The number of index shards
+        r"""The number of index shards
         :rtype: int
         """
         return self._ShardNum
@@ -9037,7 +9037,7 @@ class SelectedTableWithField(AbstractModel):
 
     @property
     def KafkaInfo(self):
-        """CKafka instance information
+        r"""CKafka instance information
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         return self._KafkaInfo
@@ -9074,7 +9074,7 @@ class SelectedTableWithField(AbstractModel):
 
 
 class ServerDetailInfo(AbstractModel):
-    """Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
+    r"""Information of the machine at the storage layer (tcapsvr) in a dedicated cluster
 
     """
 
@@ -9106,7 +9106,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServerUid(self):
-        """The unique ID of the storage layer (tcapsvr)
+        r"""The unique ID of the storage layer (tcapsvr)
         :rtype: str
         """
         return self._ServerUid
@@ -9117,7 +9117,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MachineType(self):
-        """Machine type
+        r"""Machine type
         :rtype: str
         """
         return self._MachineType
@@ -9128,7 +9128,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemoryRate(self):
-        """Memory utilization
+        r"""Memory utilization
         :rtype: int
         """
         return self._MemoryRate
@@ -9139,7 +9139,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskRate(self):
-        """Disk utilization
+        r"""Disk utilization
         :rtype: int
         """
         return self._DiskRate
@@ -9150,7 +9150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadNum(self):
-        """The number of reads
+        r"""The number of reads
         :rtype: int
         """
         return self._ReadNum
@@ -9161,7 +9161,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WriteNum(self):
-        """The number of writes
+        r"""The number of writes
         :rtype: int
         """
         return self._WriteNum
@@ -9172,7 +9172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
-        """Version
+        r"""Version
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9202,7 +9202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ServerMachineInfo(AbstractModel):
-    """`ServerList`, the list of machines at the storage layer (tcapsvr)
+    r"""`ServerList`, the list of machines at the storage layer (tcapsvr)
 
     """
 
@@ -9218,7 +9218,7 @@ class ServerMachineInfo(AbstractModel):
 
     @property
     def ServerUid(self):
-        """The unique ID of the machine
+        r"""The unique ID of the machine
         :rtype: str
         """
         return self._ServerUid
@@ -9229,7 +9229,7 @@ class ServerMachineInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        """Machine type
+        r"""Machine type
         :rtype: str
         """
         return self._MachineType
@@ -9253,7 +9253,7 @@ class ServerMachineInfo(AbstractModel):
 
 
 class SetBackupExpireRuleRequest(AbstractModel):
-    """SetBackupExpireRule request structure.
+    r"""SetBackupExpireRule request structure.
 
     """
 
@@ -9269,7 +9269,7 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the tables reside
+        r"""The ID of the cluster where the tables reside
         :rtype: str
         """
         return self._ClusterId
@@ -9280,7 +9280,7 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
     @property
     def BackupExpireRules(self):
-        """Array of retention policies
+        r"""Array of retention policies
         :rtype: list of BackupExpireRuleInfo
         """
         return self._BackupExpireRules
@@ -9309,7 +9309,7 @@ class SetBackupExpireRuleRequest(AbstractModel):
 
 
 class SetBackupExpireRuleResponse(AbstractModel):
-    """SetBackupExpireRule response structure.
+    r"""SetBackupExpireRule response structure.
 
     """
 
@@ -9326,7 +9326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
+        r"""`TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9338,7 +9338,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9354,7 +9354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SetTableDataFlowRequest(AbstractModel):
-    """SetTableDataFlow request structure.
+    r"""SetTableDataFlow request structure.
 
     """
 
@@ -9370,7 +9370,7 @@ class SetTableDataFlowRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """The ID of the cluster where the tables reside
+        r"""The ID of the cluster where the tables reside
         :rtype: str
         """
         return self._ClusterId
@@ -9381,7 +9381,7 @@ class SetTableDataFlowRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of tables for which data subscription will be enabled
+        r"""The list of tables for which data subscription will be enabled
         :rtype: list of SelectedTableWithField
         """
         return self._SelectedTables
@@ -9410,7 +9410,7 @@ class SetTableDataFlowRequest(AbstractModel):
 
 
 class SetTableDataFlowResponse(AbstractModel):
-    """SetTableDataFlow response structure.
+    r"""SetTableDataFlow response structure.
 
     """
 
@@ -9429,7 +9429,7 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of tables for which data subscription has been enabled
+        r"""The number of tables for which data subscription has been enabled
         :rtype: int
         """
         return self._TotalCount
@@ -9440,7 +9440,7 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The result list of tables for which data subscription has been enabled
+        r"""The result list of tables for which data subscription has been enabled
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -9451,7 +9451,7 @@ class SetTableDataFlowResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9473,7 +9473,7 @@ class SetTableDataFlowResponse(AbstractModel):
 
 
 class SetTableIndexRequest(AbstractModel):
-    """SetTableIndex request structure.
+    r"""SetTableIndex request structure.
 
     """
 
@@ -9489,7 +9489,7 @@ class SetTableIndexRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where the table resides
+        r"""ID of the cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -9500,7 +9500,7 @@ class SetTableIndexRequest(AbstractModel):
 
     @property
     def SelectedTables(self):
-        """The list of tables that need to create global indexes
+        r"""The list of tables that need to create global indexes
         :rtype: list of SelectedTableWithField
         """
         return self._SelectedTables
@@ -9529,7 +9529,7 @@ class SetTableIndexRequest(AbstractModel):
 
 
 class SetTableIndexResponse(AbstractModel):
-    """SetTableIndex response structure.
+    r"""SetTableIndex response structure.
 
     """
 
@@ -9548,7 +9548,7 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """The number of tables whose global indexes are created
+        r"""The number of tables whose global indexes are created
         :rtype: int
         """
         return self._TotalCount
@@ -9559,7 +9559,7 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def TableResults(self):
-        """The list of global index creation results
+        r"""The list of global index creation results
         :rtype: list of TableResultNew
         """
         return self._TableResults
@@ -9570,7 +9570,7 @@ class SetTableIndexResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9592,7 +9592,7 @@ class SetTableIndexResponse(AbstractModel):
 
 
 class SnapshotInfo(AbstractModel):
-    """Snapshot list
+    r"""Snapshot list
 
     """
 
@@ -9617,7 +9617,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -9628,7 +9628,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -9639,7 +9639,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotName(self):
-        """Snapshot name
+        r"""Snapshot name
         :rtype: str
         """
         return self._SnapshotName
@@ -9650,7 +9650,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        """The time of the data from which the snapshot was created
+        r"""The time of the data from which the snapshot was created
         :rtype: str
         """
         return self._SnapshotTime
@@ -9661,7 +9661,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotDeadTime(self):
-        """Snapshot expiration time
+        r"""Snapshot expiration time
         :rtype: str
         """
         return self._SnapshotDeadTime
@@ -9688,7 +9688,7 @@ class SnapshotInfo(AbstractModel):
 
 
 class SnapshotInfoNew(AbstractModel):
-    """New expiration time of a snapshot
+    r"""New expiration time of a snapshot
 
     """
 
@@ -9710,7 +9710,7 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
         :rtype: str
         """
         return self._TableGroupId
@@ -9721,7 +9721,7 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -9732,7 +9732,7 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def SnapshotName(self):
-        """Snapshot name
+        r"""Snapshot name
         :rtype: str
         """
         return self._SnapshotName
@@ -9743,7 +9743,7 @@ class SnapshotInfoNew(AbstractModel):
 
     @property
     def SnapshotDeadTime(self):
-        """Snapshot expiration time
+        r"""Snapshot expiration time
         :rtype: str
         """
         return self._SnapshotDeadTime
@@ -9769,7 +9769,7 @@ class SnapshotInfoNew(AbstractModel):
 
 
 class SnapshotResult(AbstractModel):
-    """The result of snapshot creation
+    r"""The result of snapshot creation
 
     """
 
@@ -9819,7 +9819,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9831,7 +9831,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9843,7 +9843,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TaskId(self):
-        """Task ID, which is valid for the API that creates one task at a time
+        r"""Task ID, which is valid for the API that creates one task at a time
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9855,7 +9855,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Error(self):
-        """Error information
+        r"""Error information
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -9867,7 +9867,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotName(self):
-        """Snapshot name
+        r"""Snapshot name
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9879,7 +9879,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotTime(self):
-        """The time of the data from which the snapshot was created
+        r"""The time of the data from which the snapshot was created
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9891,7 +9891,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotDeadTime(self):
-        """When the snapshot expires
+        r"""When the snapshot expires
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9903,7 +9903,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotCreateTime(self):
-        """When the snapshot was created
+        r"""When the snapshot was created
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9915,7 +9915,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotSize(self):
-        """Snapshot size
+        r"""Snapshot size
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9927,7 +9927,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SnapshotStatus(self):
-        """Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).
+        r"""Snapshot status. Valid values: `0` (creating), `1` (normal), `2` (deleting), `3` (expired), `4` (rolling back).
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -9962,7 +9962,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class SyncTableField(AbstractModel):
-    """Mapping of cache table field name
+    r"""Mapping of cache table field name
 
     """
 
@@ -9978,7 +9978,7 @@ class SyncTableField(AbstractModel):
 
     @property
     def SourceName(self):
-        """Field name of TcaplusDB table
+        r"""Field name of TcaplusDB table
         :rtype: str
         """
         return self._SourceName
@@ -9989,7 +9989,7 @@ class SyncTableField(AbstractModel):
 
     @property
     def TargetName(self):
-        """Field name of the target cache table
+        r"""Field name of the target cache table
         :rtype: str
         """
         return self._TargetName
@@ -10013,7 +10013,7 @@ class SyncTableField(AbstractModel):
 
 
 class SyncTableInfo(AbstractModel):
-    """TcaplusDB cache table information
+    r"""TcaplusDB cache table information
 
     """
 
@@ -10056,7 +10056,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetTableSplitNum(self):
-        """Sharded table quantity of the target cache table
+        r"""Sharded table quantity of the target cache table
         :rtype: int
         """
         return self._TargetTableSplitNum
@@ -10067,7 +10067,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetTableNamePrefix(self):
-        """Prefix of the target cache table name
+        r"""Prefix of the target cache table name
         :rtype: list of str
         """
         return self._TargetTableNamePrefix
@@ -10078,7 +10078,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetSyncDBInstanceId(self):
-        """Instance ID of the cache database
+        r"""Instance ID of the cache database
         :rtype: str
         """
         return self._TargetSyncDBInstanceId
@@ -10089,7 +10089,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TargetDatabaseName(self):
-        """Name of the database where the cache table resides
+        r"""Name of the database where the cache table resides
         :rtype: str
         """
         return self._TargetDatabaseName
@@ -10100,7 +10100,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Caching status. Valid values: `0` (creating), `1` (caching), `2` (disabled), `-1` (deleted).
+        r"""Caching status. Valid values: `0` (creating), `1` (caching), `2` (disabled), `-1` (deleted).
         :rtype: int
         """
         return self._Status
@@ -10111,7 +10111,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of cluster where the table resides
+        r"""ID of cluster where the table resides
         :rtype: str
         """
         return self._ClusterId
@@ -10122,7 +10122,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """The ID of the table group where the table resides
+        r"""The ID of the table group where the table resides
         :rtype: int
         """
         return self._TableGroupId
@@ -10133,7 +10133,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -10144,7 +10144,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def TableId(self):
-        """Table ID
+        r"""Table ID
         :rtype: str
         """
         return self._TableId
@@ -10155,7 +10155,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def KeyFieldMapping(self):
-        """Mapping from the primary key field of the TcaplusDB table to the field of the target cache table
+        r"""Mapping from the primary key field of the TcaplusDB table to the field of the target cache table
         :rtype: list of SyncTableField
         """
         return self._KeyFieldMapping
@@ -10166,7 +10166,7 @@ class SyncTableInfo(AbstractModel):
 
     @property
     def ValueFieldMapping(self):
-        """Mapping of TcaplusDB table field to target cache table field
+        r"""Mapping of TcaplusDB table field to target cache table field
         :rtype: list of SyncTableField
         """
         return self._ValueFieldMapping
@@ -10209,7 +10209,7 @@ class SyncTableInfo(AbstractModel):
 
 
 class TableGroupInfo(AbstractModel):
-    """Table group details
+    r"""Table group details
 
     """
 
@@ -10249,7 +10249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupId(self):
-        """Table group ID
+        r"""Table group ID
         :rtype: str
         """
         return self._TableGroupId
@@ -10260,7 +10260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupName(self):
-        """Table group name
+        r"""Table group name
         :rtype: str
         """
         return self._TableGroupName
@@ -10271,7 +10271,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Table group creation time
+        r"""Table group creation time
         :rtype: str
         """
         return self._CreatedTime
@@ -10282,7 +10282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableCount(self):
-        """Number of tables in table group
+        r"""Number of tables in table group
         :rtype: int
         """
         return self._TableCount
@@ -10293,7 +10293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
-        """Total table storage capacity in MB in table group
+        r"""Total table storage capacity in MB in table group
         :rtype: int
         """
         return self._TotalSize
@@ -10304,7 +10304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TxhBackupExpireDay(self):
-        """The number of days before the backup files of the Txh tables expire and are deleted.
+        r"""The number of days before the backup files of the Txh tables expire and are deleted.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10316,7 +10316,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableMysql(self):
-        """Whether MySQL load rebalancing is enabled. Valid values: `0` (Disabled), `1` (Enabling), `2` (Enabled).
+        r"""Whether MySQL load rebalancing is enabled. Valid values: `0` (Disabled), `1` (Enabling), `2` (Enabled).
         :rtype: int
         """
         return self._EnableMysql
@@ -10327,7 +10327,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MysqlConnIp(self):
-        """MySQL load rebalancing vip
+        r"""MySQL load rebalancing vip
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10339,7 +10339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MysqlConnPort(self):
-        """MySQL load rebalancing vport
+        r"""MySQL load rebalancing vport
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10371,7 +10371,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableInfoNew(AbstractModel):
-    """Table details
+    r"""Table details
 
     """
 
@@ -10497,7 +10497,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10509,7 +10509,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableInstanceId(self):
-        """Table instance ID
+        r"""Table instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10521,7 +10521,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableType(self):
-        """Table data structure type, such as `GENERIC` or `LIST`
+        r"""Table data structure type, such as `GENERIC` or `LIST`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10533,7 +10533,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableIdlType(self):
-        """Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+        r"""Table data interface description language (IDL) type, such as `PROTO` or `TDR`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10545,7 +10545,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a table resides
+        r"""ID of the cluster where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10557,7 +10557,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        """Name of the cluster where a table resides
+        r"""Name of the cluster where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10569,7 +10569,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupId(self):
-        """ID of the table group where a table resides
+        r"""ID of the table group where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10581,7 +10581,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupName(self):
-        """Name of the table group where a table resides
+        r"""Name of the table group where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10593,7 +10593,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyStruct(self):
-        """JSON string of table's primary key field structure
+        r"""JSON string of table's primary key field structure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10605,7 +10605,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValueStruct(self):
-        """JSON string of table non-primary key field structure
+        r"""JSON string of table non-primary key field structure
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10617,7 +10617,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShardingKeySet(self):
-        """Table shardkey set, which is valid for PROTO-type tables
+        r"""Table shardkey set, which is valid for PROTO-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10629,7 +10629,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexStruct(self):
-        """Table index key field set, which is valid for PROTO-type tables
+        r"""Table index key field set, which is valid for PROTO-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10641,7 +10641,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListElementNum(self):
-        """Number of LIST-type table elements
+        r"""Number of LIST-type table elements
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10653,7 +10653,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IdlFiles(self):
-        """Information list of IDL files associated with table
+        r"""Information list of IDL files associated with table
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of IdlFileInfo
         """
@@ -10665,7 +10665,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedVolume(self):
-        """Reserved table capacity in GB
+        r"""Reserved table capacity in GB
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10677,7 +10677,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedReadQps(self):
-        """Reserved table read QPS
+        r"""Reserved table read QPS
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10689,7 +10689,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedWriteQps(self):
-        """Reserved table write QPS
+        r"""Reserved table write QPS
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10701,7 +10701,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableSize(self):
-        """Actual table data size in MB
+        r"""Actual table data size in MB
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10713,7 +10713,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Table status
+        r"""Table status
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10725,7 +10725,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Table creation time
+        r"""Table creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10737,7 +10737,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedTime(self):
-        """Table's last modified time
+        r"""Table's last modified time
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10749,7 +10749,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memo(self):
-        """Table remarks
+        r"""Table remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10761,7 +10761,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -10773,7 +10773,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiAccessId(self):
-        """TcaplusDB SDK data access ID
+        r"""TcaplusDB SDK data access ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10785,7 +10785,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SortFieldNum(self):
-        """Number of SORTLIST-type table sort fields
+        r"""Number of SORTLIST-type table sort fields
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10797,7 +10797,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SortRule(self):
-        """Sort order of SORTLIST-type tables
+        r"""Sort order of SORTLIST-type tables
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10809,7 +10809,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbClusterInfoStruct(self):
-        """Information about global indexes, table caching, or data subscription
+        r"""Information about global indexes, table caching, or data subscription
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10821,7 +10821,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TxhBackupExpireDay(self):
-        """The number of days after which the table Txh backup files will be expire and deleted.
+        r"""The number of days after which the table Txh backup files will be expire and deleted.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -10833,7 +10833,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SyncTableInfo(self):
-        """Cached information of the table
+        r"""Cached information of the table
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
@@ -10894,7 +10894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TableResultNew(AbstractModel):
-    """Table processing result information
+    r"""Table processing result information
 
     """
 
@@ -10940,7 +10940,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TableInstanceId(self):
-        """Table instance ID in the format of `tcaplus-3be64cbb`
+        r"""Table instance ID in the format of `tcaplus-3be64cbb`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10952,7 +10952,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID, which is valid for the API that creates one task
+        r"""Task ID, which is valid for the API that creates one task
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10964,7 +10964,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10976,7 +10976,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableType(self):
-        """Table data structure type, such as `GENERIC` or `LIST`
+        r"""Table data structure type, such as `GENERIC` or `LIST`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10988,7 +10988,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableIdlType(self):
-        """Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+        r"""Table data interface description language (IDL) type, such as `PROTO` or `TDR`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11000,7 +11000,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupId(self):
-        """ID of the table group where a table resides
+        r"""ID of the table group where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11012,7 +11012,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -11024,7 +11024,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskIds(self):
-        """Task ID list, which is valid for the API that creates multiple tasks
+        r"""Task ID list, which is valid for the API that creates multiple tasks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -11036,7 +11036,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
-        """Cluster operation application ID
+        r"""Cluster operation application ID
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11070,7 +11070,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class TableRollbackResultNew(AbstractModel):
-    """Table rollback result information
+    r"""Table rollback result information
 
     """
 
@@ -11124,7 +11124,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableInstanceId(self):
-        """Table instance ID in the format of `tcaplus-3be64cbb`
+        r"""Table instance ID in the format of `tcaplus-3be64cbb`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11136,7 +11136,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID, which is valid for the API that creates one task
+        r"""Task ID, which is valid for the API that creates one task
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11148,7 +11148,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11160,7 +11160,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableType(self):
-        """Table data structure type, such as `GENERIC` or `LIST`
+        r"""Table data structure type, such as `GENERIC` or `LIST`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11172,7 +11172,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableIdlType(self):
-        """Table data interface description language (IDL) type, such as `PROTO` or `TDR`
+        r"""Table data interface description language (IDL) type, such as `PROTO` or `TDR`
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11184,7 +11184,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableGroupId(self):
-        """ID of the table group where a table resides
+        r"""ID of the table group where a table resides
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11196,7 +11196,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
@@ -11208,7 +11208,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskIds(self):
-        """Task ID list, which is valid for the API that creates multiple tasks
+        r"""Task ID list, which is valid for the API that creates multiple tasks
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -11220,7 +11220,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        """ID of uploaded key file
+        r"""ID of uploaded key file
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11232,7 +11232,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuccKeyNum(self):
-        """Number of keys successfully verified
+        r"""Number of keys successfully verified
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11244,7 +11244,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalKeyNum(self):
-        """Total number of keys contained in key file
+        r"""Total number of keys contained in key file
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11280,7 +11280,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TagInfoUnit(AbstractModel):
-    """Tag information unit
+    r"""Tag information unit
 
     """
 
@@ -11296,7 +11296,7 @@ class TagInfoUnit(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -11307,7 +11307,7 @@ class TagInfoUnit(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
@@ -11331,7 +11331,7 @@ class TagInfoUnit(AbstractModel):
 
 
 class TagsInfoOfCluster(AbstractModel):
-    """Cluster tag information
+    r"""Cluster tag information
 
     """
 
@@ -11350,7 +11350,7 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -11361,7 +11361,7 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -11372,7 +11372,7 @@ class TagsInfoOfCluster(AbstractModel):
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11404,7 +11404,7 @@ class TagsInfoOfCluster(AbstractModel):
 
 
 class TagsInfoOfTable(AbstractModel):
-    """Table tag information
+    r"""Table tag information
 
     """
 
@@ -11429,7 +11429,7 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableInstanceId(self):
-        """Table instance ID
+        r"""Table instance ID
         :rtype: str
         """
         return self._TableInstanceId
@@ -11440,7 +11440,7 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableName(self):
-        """Table name
+        r"""Table name
         :rtype: str
         """
         return self._TableName
@@ -11451,7 +11451,7 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """Table group ID
+        r"""Table group ID
         :rtype: str
         """
         return self._TableGroupId
@@ -11462,7 +11462,7 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -11473,7 +11473,7 @@ class TagsInfoOfTable(AbstractModel):
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11507,7 +11507,7 @@ class TagsInfoOfTable(AbstractModel):
 
 
 class TagsInfoOfTableGroup(AbstractModel):
-    """Table group tag information
+    r"""Table group tag information
 
     """
 
@@ -11529,7 +11529,7 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def ClusterId(self):
-        """Cluster ID
+        r"""Cluster ID
         :rtype: str
         """
         return self._ClusterId
@@ -11540,7 +11540,7 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """Table group ID
+        r"""Table group ID
         :rtype: str
         """
         return self._TableGroupId
@@ -11551,7 +11551,7 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag information
+        r"""Tag information
         :rtype: list of TagInfoUnit
         """
         return self._Tags
@@ -11562,7 +11562,7 @@ class TagsInfoOfTableGroup(AbstractModel):
 
     @property
     def Error(self):
-        """Error message
+        r"""Error message
         :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
         """
         return self._Error
@@ -11595,7 +11595,7 @@ class TagsInfoOfTableGroup(AbstractModel):
 
 
 class TaskInfoNew(AbstractModel):
-    """Task details
+    r"""Task details
 
     """
 
@@ -11635,7 +11635,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        r"""Task ID
         :rtype: str
         """
         return self._TaskId
@@ -11646,7 +11646,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TaskType(self):
-        """Task type
+        r"""Task type
         :rtype: str
         """
         return self._TaskType
@@ -11657,7 +11657,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def TransId(self):
-        """ID of TcaplusDB internal transaction associated with task
+        r"""ID of TcaplusDB internal transaction associated with task
         :rtype: str
         """
         return self._TransId
@@ -11668,7 +11668,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where a task resides
+        r"""ID of the cluster where a task resides
         :rtype: str
         """
         return self._ClusterId
@@ -11679,7 +11679,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def ClusterName(self):
-        """Name of the cluster where a task resides
+        r"""Name of the cluster where a task resides
         :rtype: str
         """
         return self._ClusterName
@@ -11690,7 +11690,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Progress(self):
-        """Task progress
+        r"""Task progress
         :rtype: int
         """
         return self._Progress
@@ -11701,7 +11701,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task creation time
+        r"""Task creation time
         :rtype: str
         """
         return self._StartTime
@@ -11712,7 +11712,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def UpdateTime(self):
-        """Task last modified time
+        r"""Task last modified time
         :rtype: str
         """
         return self._UpdateTime
@@ -11723,7 +11723,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Operator(self):
-        """Operator
+        r"""Operator
         :rtype: str
         """
         return self._Operator
@@ -11734,7 +11734,7 @@ class TaskInfoNew(AbstractModel):
 
     @property
     def Content(self):
-        """Task details
+        r"""Task details
         :rtype: str
         """
         return self._Content
@@ -11766,7 +11766,7 @@ class TaskInfoNew(AbstractModel):
 
 
 class UpdateApplyRequest(AbstractModel):
-    """UpdateApply request structure.
+    r"""UpdateApply request structure.
 
     """
 
@@ -11779,7 +11779,7 @@ class UpdateApplyRequest(AbstractModel):
 
     @property
     def ApplyStatus(self):
-        """Application status
+        r"""Application status
         :rtype: list of ApplyStatus
         """
         return self._ApplyStatus
@@ -11807,7 +11807,7 @@ class UpdateApplyRequest(AbstractModel):
 
 
 class UpdateApplyResponse(AbstractModel):
-    """UpdateApply response structure.
+    r"""UpdateApply response structure.
 
     """
 
@@ -11827,7 +11827,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ApplyResults(self):
-        """List of updated applications
+        r"""List of updated applications
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :rtype: list of ApplyResult
         """
@@ -11839,7 +11839,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TotalCount(self):
-        """Total number of updated applications
+        r"""Total number of updated applications
         :rtype: int
         """
         return self._TotalCount
@@ -11850,7 +11850,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11872,7 +11872,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
 
 class VerifyIdlFilesRequest(AbstractModel):
-    """VerifyIdlFiles request structure.
+    r"""VerifyIdlFiles request structure.
 
     """
 
@@ -11894,7 +11894,7 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        """ID of the cluster where to create a table
+        r"""ID of the cluster where to create a table
         :rtype: str
         """
         return self._ClusterId
@@ -11905,7 +11905,7 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def TableGroupId(self):
-        """ID of the table group where to create a table
+        r"""ID of the table group where to create a table
         :rtype: str
         """
         return self._TableGroupId
@@ -11916,7 +11916,7 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def ExistingIdlFiles(self):
-        """List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present
+        r"""List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present
         :rtype: list of IdlFileInfo
         """
         return self._ExistingIdlFiles
@@ -11927,7 +11927,7 @@ class VerifyIdlFilesRequest(AbstractModel):
 
     @property
     def NewIdlFiles(self):
-        """List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present
+        r"""List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present
         :rtype: list of IdlFileInfo
         """
         return self._NewIdlFiles
@@ -11963,7 +11963,7 @@ class VerifyIdlFilesRequest(AbstractModel):
 
 
 class VerifyIdlFilesResponse(AbstractModel):
-    """VerifyIdlFiles response structure.
+    r"""VerifyIdlFiles response structure.
 
     """
 
@@ -11985,7 +11985,7 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def IdlFiles(self):
-        """Information list of all IDL files uploaded and verified in this request
+        r"""Information list of all IDL files uploaded and verified in this request
         :rtype: list of IdlFileInfo
         """
         return self._IdlFiles
@@ -11996,7 +11996,7 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of valid tables parsed by reading IDL description file, excluding tables already created
+        r"""Number of valid tables parsed by reading IDL description file, excluding tables already created
         :rtype: int
         """
         return self._TotalCount
@@ -12007,7 +12007,7 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def TableInfos(self):
-        """List of valid tables parsed by reading IDL description file, excluding tables already created
+        r"""List of valid tables parsed by reading IDL description file, excluding tables already created
         :rtype: list of ParsedTableInfoNew
         """
         return self._TableInfos
@@ -12018,7 +12018,7 @@ class VerifyIdlFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

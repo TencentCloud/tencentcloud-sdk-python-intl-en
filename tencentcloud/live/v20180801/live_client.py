@@ -27,7 +27,7 @@ class LiveClient(AbstractClient):
 
 
     def AddDelayLiveStream(self, request):
-        """This API is used to set a delay in playing the images of large live streaming events, in case of emergencies.
+        r"""This API is used to set a delay in playing the images of large live streaming events, in case of emergencies.
 
         Note: if you are to set the delay before stream push, set it at least 5 minutes before the push. This API supports configuration only by stream.
 
@@ -52,7 +52,7 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveDomain(self, request):
-        """This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing.
+        r"""This API is used to add a domain name. Only one domain name can be submitted at a time, and it must have an ICP filing.
 
         :param request: Request instance for AddLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.AddLiveDomainRequest`
@@ -75,7 +75,7 @@ class LiveClient(AbstractClient):
 
 
     def AddLiveWatermark(self, request):
-        """After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API to bind the watermark ID to a stream.
+        r"""After a watermark is added and a watermark ID is successfully returned, you need to call the [CreateLiveWatermarkRule](https://intl.cloud.tencent.com/document/product/267/32629?from_cn_redirect=1) API to bind the watermark ID to a stream.
         After the number of watermarks exceeds the upper limit of 100, to add a new watermark, you must delete an old one first.
 
         :param request: Request instance for AddLiveWatermark.
@@ -99,7 +99,7 @@ class LiveClient(AbstractClient):
 
 
     def AuthenticateDomainOwner(self, request):
-        """This API is used to verify the ownership of a domain.
+        r"""This API is used to verify the ownership of a domain.
 
         :param request: Request instance for AuthenticateDomainOwner.
         :type request: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerRequest`
@@ -122,7 +122,7 @@ class LiveClient(AbstractClient):
 
 
     def CancelCommonMixStream(self, request):
-        """This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.
+        r"""This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.
 
         :param request: Request instance for CancelCommonMixStream.
         :type request: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamRequest`
@@ -145,7 +145,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateCommonMixStream(self, request):
-        """This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.
+        r"""This API is used to create a general stream mix. It can be used basically in the same way as the legacy `mix_streamv2.start_mix_stream_advanced` API.
         Note: currently, up to 16 streams can be mixed.
         Best practice: https://intl.cloud.tencent.com/document/product/267/45566?from_cn_redirect=1
 
@@ -170,7 +170,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackRule(self, request):
-        """To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API to create a callback template and bind the returned template ID to the domain name/path.
+        r"""To create a callback rule, you need to first call the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API to create a callback template and bind the returned template ID to the domain name/path.
         <br>Callback protocol-related document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveCallbackRule.
@@ -194,7 +194,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """This API is used to create a callback template. Up to 50 templates can be created. After the template ID is returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API to bind the template ID to a domain name/path.
+        r"""This API is used to create a callback template. Up to 50 templates can be created. After the template ID is returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API to bind the template ID to a domain name/path.
         <br>For information about callback protocols, see [How to Receive Event Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         Note: You need to specify at least one callback URL.
 
@@ -219,7 +219,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePadRule(self, request):
-        """create a live pad rule.
+        r"""create a live pad rule.
 
         :param request: Request instance for CreateLivePadRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleRequest`
@@ -242,7 +242,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePadTemplate(self, request):
-        """create a live pad template
+        r"""create a live pad template
 
         :param request: Request instance for CreateLivePadTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateRequest`
@@ -265,7 +265,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLivePullStreamTask(self, request):
-        """This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.
+        r"""This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.
         Notes:
         1. By default, you can have at most 20 stream pulling tasks at a time. You can submit a ticket to raise the limit.
         2. Only H.264 and H.265 are supported for video. If the source video is in a different format, please transcode it first.
@@ -295,7 +295,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecord(self, request):
-        """- Prerequisites
+        r"""- Prerequisites
           1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.
           2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2838?from_cn_redirect=1).
 
@@ -333,7 +333,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordRule(self, request):
-        """To create a recording rule, you need to first call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/32614?from_cn_redirect=1) API to create a recording template and bind the returned template ID to the stream.
+        r"""To create a recording rule, you need to first call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/32614?from_cn_redirect=1) API to create a recording template and bind the returned template ID to the stream.
         <br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveRecordRule.
@@ -357,7 +357,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecordTemplate(self, request):
-        """This API is used to create a recording template. You can create up to 50 templates. To use a template, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API to bind the template ID returned by this API to a stream.
+        r"""This API is used to create a recording template. You can create up to 50 templates. To use a template, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API to bind the template ID returned by this API to a stream.
         <br>More on recording: [Live Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1)
 
         :param request: Request instance for CreateLiveRecordTemplate.
@@ -381,7 +381,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotRule(self, request):
-        """This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API to create a screencapturing template to bind the returned template ID to the stream.
+        r"""This API is used to create a screencapturing rule. You need to first call the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API to create a screencapturing template to bind the returned template ID to the stream.
         <br>Screencapturing document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
         Note: only one screencapturing template can be associated with one domain name.
 
@@ -406,7 +406,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotTemplate(self, request):
-        """This API is used to create a screencapture template. After a template ID is returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API to bind the template ID to a stream. You can create up to 50 screencapture templates.
+        r"""This API is used to create a screencapture template. After a template ID is returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API to bind the template ID to a stream. You can create up to 50 screencapture templates.
         <br>To learn more about the live screencapture feature, see [Live Screencapture](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveSnapshotTemplate.
@@ -430,7 +430,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftRule(self, request):
-        """This API is used to create a time shifting rule. You need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/86169?from_cn_redirect=1) API to create a time shifting template, and then call this API to bind the template ID returned to a stream.
+        r"""This API is used to create a time shifting rule. You need to first call the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/86169?from_cn_redirect=1) API to create a time shifting template, and then call this API to bind the template ID returned to a stream.
         <br>More about time shifting: [Time Shifting](https://intl.cloud.tencent.com/document/product/267/86134?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveTimeShiftRule.
@@ -454,7 +454,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftTemplate(self, request):
-        """This API is used to create a time shifting template.
+        r"""This API is used to create a time shifting template.
 
         :param request: Request instance for CreateLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTimeShiftTemplateRequest`
@@ -477,7 +477,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeRule(self, request):
-        """This API is used to create a transcoding rule that binds a template ID to a stream. Up to 50 transcoding rules can be created in total. Before you call this API, you need to first call [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) to get the template ID.
+        r"""This API is used to create a transcoding rule that binds a template ID to a stream. Up to 50 transcoding rules can be created in total. Before you call this API, you need to first call [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) to get the template ID.
         <br>Related document: [Live Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveTranscodeRule.
@@ -501,7 +501,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTranscodeTemplate(self, request):
-        """This API is used to create a transcoding template. Up to 50 transcoding templates can be created in total. To use a template, you need to call [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) to bind the template ID returned by this API to a stream.
+        r"""This API is used to create a transcoding template. Up to 50 transcoding templates can be created in total. To use a template, you need to call [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) to bind the template ID returned by this API to a stream.
         <br>For more information about transcoding, see [Live Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).
 
         :param request: Request instance for CreateLiveTranscodeTemplate.
@@ -525,7 +525,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveWatermarkRule(self, request):
-        """To create a watermarking rule, you need to first call the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API to add a watermark and bind the returned watermark ID to the stream.
+        r"""To create a watermarking rule, you need to first call the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API to add a watermark and bind the returned watermark ID to the stream.
 
         :param request: Request instance for CreateLiveWatermarkRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveWatermarkRuleRequest`
@@ -548,7 +548,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateRecordTask(self, request):
-        """This API is used to create a recording task that starts and ends at specific times and records videos according to a specific recording template.
+        r"""This API is used to create a recording task that starts and ends at specific times and records videos according to a specific recording template.
         - Prerequisites
         1. Because recording files are saved in VOD, you must first activate VOD.
         2. Storage and playback traffic fees are charged for storing and playing the videos recorded. For details, see [Purchase Guide](https://intl.cloud.tencent.com/document/product/266/2837).
@@ -580,7 +580,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateScreenshotTask(self, request):
-        """This API is used to create a screencapturing task that has a specific start and end time and takes screenshots according to the template configured.
+        r"""This API is used to create a screencapturing task that has a specific start and end time and takes screenshots according to the template configured.
         - Note
         1. If the stream is interrupted, screencapturing will stop. However, the task will still be valid before the specified end time, and screencapturing will be performed as required after the stream is resumed.
         2. Avoid creating screencapturing tasks with overlapping time periods. The system will execute at most three screencapturing tasks on the same stream at a time.
@@ -609,7 +609,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackRule(self, request):
-        """This API is used to delete a callback rule.
+        r"""This API is used to delete a callback rule.
 
         :param request: Request instance for DeleteLiveCallbackRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackRuleRequest`
@@ -632,7 +632,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackTemplate(self, request):
-        """This API deletes a callback template.
+        r"""This API deletes a callback template.
 
         :param request: Request instance for DeleteLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackTemplateRequest`
@@ -655,7 +655,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveDomain(self, request):
-        """This API is used to delete an added LVB domain name.
+        r"""This API is used to delete an added LVB domain name.
 
         :param request: Request instance for DeleteLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainRequest`
@@ -678,7 +678,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLivePullStreamTask(self, request):
-        """This API is used to delete a task created by `CreateLivePullStreamTask`.
+        r"""This API is used to delete a task created by `CreateLivePullStreamTask`.
         Notes:
         1. For the `TaskId` request parameter, pass in the task ID returned by the `CreateLivePullStreamTask` API.
         2. You can query the ID of a task using the `DescribeLivePullStreamTasks` API.
@@ -704,7 +704,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API.
+        r"""Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API.
 
         :param request: Request instance for DeleteLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -727,7 +727,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordRule(self, request):
-        """This API is used to delete a recording rule.
+        r"""This API is used to delete a recording rule.
 
         :param request: Request instance for DeleteLiveRecordRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRuleRequest`
@@ -750,7 +750,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordTemplate(self, request):
-        """This API is used to delete a recording template.
+        r"""This API is used to delete a recording template.
 
         :param request: Request instance for DeleteLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordTemplateRequest`
@@ -773,7 +773,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveSnapshotRule(self, request):
-        """This API is used to delete a screencapturing rule.
+        r"""This API is used to delete a screencapturing rule.
 
         :param request: Request instance for DeleteLiveSnapshotRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotRuleRequest`
@@ -796,7 +796,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveSnapshotTemplate(self, request):
-        """This API is used to delete a screencapturing template.
+        r"""This API is used to delete a screencapturing template.
 
         :param request: Request instance for DeleteLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotTemplateRequest`
@@ -819,7 +819,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTimeShiftRule(self, request):
-        """This API is used to delete a time shifting rule.
+        r"""This API is used to delete a time shifting rule.
 
         :param request: Request instance for DeleteLiveTimeShiftRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTimeShiftRuleRequest`
@@ -842,7 +842,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTimeShiftTemplate(self, request):
-        """This API is used to delete a time shifting template.
+        r"""This API is used to delete a time shifting template.
 
         :param request: Request instance for DeleteLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTimeShiftTemplateRequest`
@@ -865,7 +865,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeRule(self, request):
-        """This API is used to delete a transcoding rule.
+        r"""This API is used to delete a transcoding rule.
         `DomainName+AppName+StreamName+TemplateId` uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. `TemplateId` is required. Even if other parameters are empty, you still need to pass in an empty string to make a strong match.
 
         :param request: Request instance for DeleteLiveTranscodeRule.
@@ -889,7 +889,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeTemplate(self, request):
-        """This API is used to delete a transcoding template.
+        r"""This API is used to delete a transcoding template.
 
         :param request: Request instance for DeleteLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTranscodeTemplateRequest`
@@ -912,7 +912,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveWatermark(self, request):
-        """This API is used to delete a watermark.
+        r"""This API is used to delete a watermark.
 
         :param request: Request instance for DeleteLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRequest`
@@ -935,7 +935,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveWatermarkRule(self, request):
-        """This API is used to delete a watermarking rule.
+        r"""This API is used to delete a watermarking rule.
 
         :param request: Request instance for DeleteLiveWatermarkRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRuleRequest`
@@ -958,7 +958,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteRecordTask(self, request):
-        """This API is used to delete a recording task configuration. The deletion does not affect running tasks and takes effect only for new pushes.
+        r"""This API is used to delete a recording task configuration. The deletion does not affect running tasks and takes effect only for new pushes.
 
         :param request: Request instance for DeleteRecordTask.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteRecordTaskRequest`
@@ -981,7 +981,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeAllStreamPlayInfoList(self, request):
-        """This API is used to get the playback data of all streams at a specified time point (accurate to the minute).
+        r"""This API is used to get the playback data of all streams at a specified time point (accurate to the minute).
 
         :param request: Request instance for DescribeAllStreamPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListRequest`
@@ -1004,7 +1004,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeBillBandwidthAndFluxList(self, request):
-        """This API is used to query the data of billable bandwidth and traffic.
+        r"""This API is used to query the data of billable bandwidth and traffic.
 
         :param request: Request instance for DescribeBillBandwidthAndFluxList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
@@ -1027,7 +1027,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeConcurrentRecordStreamNum(self, request):
-        """This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.
+        r"""This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.
 
         :param request: Request instance for DescribeConcurrentRecordStreamNum.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeConcurrentRecordStreamNumRequest`
@@ -1050,7 +1050,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeDeliverBandwidthList(self, request):
-        """This API is used to query the billable bandwidth of live stream relaying in the last 3 months. The query period is up to 31 days.
+        r"""This API is used to query the billable bandwidth of live stream relaying in the last 3 months. The query period is up to 31 days.
 
         :param request: Request instance for DescribeDeliverBandwidthList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListRequest`
@@ -1073,7 +1073,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeGroupProIspPlayInfoList(self, request):
-        """This API is used to query the downstream playback data by district and ISP.
+        r"""This API is used to query the downstream playback data by district and ISP.
 
         :param request: Request instance for DescribeGroupProIspPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListRequest`
@@ -1096,7 +1096,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeHttpStatusInfoList(self, request):
-        """This API is used to query the number of each playback HTTP status code at a 5-minute granularity in a certain period of time.
+        r"""This API is used to query the number of each playback HTTP status code at a 5-minute granularity in a certain period of time.
         Note: data can be queried one hour after it is generated. For example, data between 10:00 and 10:59 cannot be queried until 12:00.
 
         :param request: Request instance for DescribeHttpStatusInfoList.
@@ -1120,7 +1120,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackRules(self, request):
-        """This API is used to get the callback rule list.
+        r"""This API is used to get the callback rule list.
 
         :param request: Request instance for DescribeLiveCallbackRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackRulesRequest`
@@ -1143,7 +1143,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackTemplate(self, request):
-        """This API is used to get a single callback template.
+        r"""This API is used to get a single callback template.
 
         :param request: Request instance for DescribeLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplateRequest`
@@ -1166,7 +1166,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackTemplates(self, request):
-        """This API is used to get the callback template list.
+        r"""This API is used to get the callback template list.
 
         :param request: Request instance for DescribeLiveCallbackTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplatesRequest`
@@ -1189,7 +1189,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCert(self, request):
-        """This API is used to get certificate information.
+        r"""This API is used to get certificate information.
 
         :param request: Request instance for DescribeLiveCert.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertRequest`
@@ -1212,7 +1212,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCerts(self, request):
-        """This API is used to get the certificate information list.
+        r"""This API is used to get the certificate information list.
 
         :param request: Request instance for DescribeLiveCerts.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCertsRequest`
@@ -1235,7 +1235,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDelayInfoList(self, request):
-        """This API is used to get the list of delayed playbacks.
+        r"""This API is used to get the list of delayed playbacks.
 
         :param request: Request instance for DescribeLiveDelayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDelayInfoListRequest`
@@ -1258,7 +1258,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomain(self, request):
-        """This API is used to query the LVB domain name information.
+        r"""This API is used to query the LVB domain name information.
 
         :param request: Request instance for DescribeLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRequest`
@@ -1281,7 +1281,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainCert(self, request):
-        """This API is used to get the domain name certificate information.
+        r"""This API is used to get the domain name certificate information.
 
         :param request: Request instance for DescribeLiveDomainCert.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertRequest`
@@ -1304,7 +1304,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainCertBindings(self, request):
-        """This API is used to query domains bound with certificates.
+        r"""This API is used to query domains bound with certificates.
 
         :param request: Request instance for DescribeLiveDomainCertBindings.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsRequest`
@@ -1327,7 +1327,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainReferer(self, request):
-        """This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.
+        r"""This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.
         Referer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.
 
         :param request: Request instance for DescribeLiveDomainReferer.
@@ -1351,7 +1351,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomains(self, request):
-        """This API is used to query domain names by domain name status and type.
+        r"""This API is used to query domain names by domain name status and type.
 
         :param request: Request instance for DescribeLiveDomains.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsRequest`
@@ -1374,7 +1374,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveForbidStreamList(self, request):
-        """This API is used to get the list of disabled streams.
+        r"""This API is used to get the list of disabled streams.
 
         Note: this API is used for query only and should not be relied too much upon in important business scenarios.
 
@@ -1399,7 +1399,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePlayAuthKey(self, request):
-        """This API is used to query the playback authentication key.
+        r"""This API is used to query the playback authentication key.
 
         :param request: Request instance for DescribeLivePlayAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePlayAuthKeyRequest`
@@ -1422,7 +1422,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePullStreamTasks(self, request):
-        """This API is used to query the stream pulling tasks created by `CreateLivePullStreamTask`.
+        r"""This API is used to query the stream pulling tasks created by `CreateLivePullStreamTask`.
         The tasks returned are sorted by last updated time in descending order.
 
         :param request: Request instance for DescribeLivePullStreamTasks.
@@ -1446,7 +1446,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePushAuthKey(self, request):
-        """This API is used to query the LVB push authentication key.
+        r"""This API is used to query the LVB push authentication key.
 
         :param request: Request instance for DescribeLivePushAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePushAuthKeyRequest`
@@ -1469,7 +1469,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordRules(self, request):
-        """This API is used to get the list of recording rules.
+        r"""This API is used to get the list of recording rules.
 
         :param request: Request instance for DescribeLiveRecordRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordRulesRequest`
@@ -1492,7 +1492,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplate(self, request):
-        """This API is used to get a single recording template.
+        r"""This API is used to get a single recording template.
 
         :param request: Request instance for DescribeLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplateRequest`
@@ -1515,7 +1515,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """This API is used to get the recording template list.
+        r"""This API is used to get the recording template list.
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplatesRequest`
@@ -1538,7 +1538,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotRules(self, request):
-        """This API is used to get the screencapturing rule list.
+        r"""This API is used to get the screencapturing rule list.
 
         :param request: Request instance for DescribeLiveSnapshotRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotRulesRequest`
@@ -1561,7 +1561,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplate(self, request):
-        """This API is used to get a single screencapturing template.
+        r"""This API is used to get a single screencapturing template.
 
         :param request: Request instance for DescribeLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplateRequest`
@@ -1584,7 +1584,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplates(self, request):
-        """This API is used to get the screencapturing template list.
+        r"""This API is used to get the screencapturing template list.
 
         :param request: Request instance for DescribeLiveSnapshotTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplatesRequest`
@@ -1607,7 +1607,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamEventList(self, request):
-        """This API is used to query stream push/interruption events.<br>
+        r"""This API is used to query stream push/interruption events.<br>
 
         Notes:
         1. This API is used to query stream push/interruption records, and should not be relied too much upon in important business scenarios.
@@ -1634,7 +1634,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """This API is used to get the list of ongoing live streams. It queries the information of live streams after they are pushed successfully.
+        r"""This API is used to get the list of ongoing live streams. It queries the information of live streams after they are pushed successfully.
 
         Notes:
         1. This API is used to query the list of active live streams only, and should not be relied too much upon in important business scenarios.
@@ -1661,7 +1661,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPublishedList(self, request):
-        """This API is used to return the list of pushed streams. <br>
+        r"""This API is used to return the list of pushed streams. <br>
         Note: Up to 10,000 entries can be queried per page. More data can be obtained by adjusting the query time range.
 
         :param request: Request instance for DescribeLiveStreamPublishedList.
@@ -1685,7 +1685,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPushInfoList(self, request):
-        """This API is used to query the push information of all real-time streams, including client IP, server IP, frame rate, bitrate, domain name, and push start time.
+        r"""This API is used to query the push information of all real-time streams, including client IP, server IP, frame rate, bitrate, domain name, and push start time.
 
         :param request: Request instance for DescribeLiveStreamPushInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListRequest`
@@ -1708,7 +1708,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamState(self, request):
-        """This API is used to get the stream status, which may be active, inactive, or disabled.
+        r"""This API is used to get the stream status, which may be active, inactive, or disabled.
 
         Notes:
         This API allows you to query the status of a stream in real time. Given external factors such as network jitter, note the following when you determine whether a host is online:
@@ -1740,7 +1740,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftBillInfoList(self, request):
-        """This API is used to query the time-shift video length, time-shift days, and total time-shift period of push domains. The data returned is on a five-minute basis. You can use it for reconciliation.
+        r"""This API is used to query the time-shift video length, time-shift days, and total time-shift period of push domains. The data returned is on a five-minute basis. You can use it for reconciliation.
 
         :param request: Request instance for DescribeLiveTimeShiftBillInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftBillInfoListRequest`
@@ -1763,7 +1763,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftRules(self, request):
-        """This API is used to query time shifting rules.
+        r"""This API is used to query time shifting rules.
 
         :param request: Request instance for DescribeLiveTimeShiftRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftRulesRequest`
@@ -1786,7 +1786,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTimeShiftTemplates(self, request):
-        """This API is used to query time shifting templates.
+        r"""This API is used to query time shifting templates.
 
         :param request: Request instance for DescribeLiveTimeShiftTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTimeShiftTemplatesRequest`
@@ -1809,7 +1809,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeDetailInfo(self, request):
-        """This API is used to query the transcoding details of a particular day or a specific time period. Querying may fail if the amount of data queried is too large. In such cases, try shortening the time period.
+        r"""This API is used to query the transcoding details of a particular day or a specific time period. Querying may fail if the amount of data queried is too large. In such cases, try shortening the time period.
 
         :param request: Request instance for DescribeLiveTranscodeDetailInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoRequest`
@@ -1832,7 +1832,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeRules(self, request):
-        """This API is used to get the list of transcoding rules.
+        r"""This API is used to get the list of transcoding rules.
 
         :param request: Request instance for DescribeLiveTranscodeRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeRulesRequest`
@@ -1855,7 +1855,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplate(self, request):
-        """This API is used to get a single transcoding template.
+        r"""This API is used to get a single transcoding template.
 
         :param request: Request instance for DescribeLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplateRequest`
@@ -1878,7 +1878,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplates(self, request):
-        """This API is used to get the transcoding template list.
+        r"""This API is used to get the transcoding template list.
 
         :param request: Request instance for DescribeLiveTranscodeTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplatesRequest`
@@ -1901,7 +1901,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTotalInfo(self, request):
-        """This API is used to query transcoding usage. You can use it to query data in the past three months.
+        r"""This API is used to query transcoding usage. You can use it to query data in the past three months.
         Notes:
         If the start time and end time are on the same day, the data returned will be on a 5-minute basis.
         If the start time and end time are not on the same day or if the data of specified domains is queried, the data returned will be on an hourly basis.
@@ -1927,7 +1927,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermark(self, request):
-        """This API is used to get the information of a single watermark.
+        r"""This API is used to get the information of a single watermark.
 
         :param request: Request instance for DescribeLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRequest`
@@ -1950,7 +1950,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarkRules(self, request):
-        """This API is used to get the watermarking rule list.
+        r"""This API is used to get the watermarking rule list.
 
         :param request: Request instance for DescribeLiveWatermarkRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRulesRequest`
@@ -1973,7 +1973,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarks(self, request):
-        """This API is used to query the watermark list.
+        r"""This API is used to query the watermark list.
 
         :param request: Request instance for DescribeLiveWatermarks.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksRequest`
@@ -1996,7 +1996,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeDetailInfoList(self, request):
-        """This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.
+        r"""This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.
 
         :param request: Request instance for DescribePlayErrorCodeDetailInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListRequest`
@@ -2019,7 +2019,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeSumInfoList(self, request):
-        """This API is used to query the information of downstream playback error codes.
+        r"""This API is used to query the information of downstream playback error codes.
 
         :param request: Request instance for DescribePlayErrorCodeSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListRequest`
@@ -2042,7 +2042,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProvinceIspPlayInfoList(self, request):
-        """This API is used to query the downstream playback data of a specified ISP in a specified district, including bandwidth, traffic, number of requests, and number of concurrent connections.
+        r"""This API is used to query the downstream playback data of a specified ISP in a specified district, including bandwidth, traffic, number of requests, and number of concurrent connections.
 
         :param request: Request instance for DescribeProvinceIspPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListRequest`
@@ -2065,7 +2065,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeRecordTask(self, request):
-        """This API is used to retrieve a list of recording tasks that were started and ended within a specified time range.
+        r"""This API is used to retrieve a list of recording tasks that were started and ended within a specified time range.
         - Prerequisites:
         1. This API is only used to query recording tasks created by the CreateRecordTask interface.
         2. It cannot retrieve recording tasks that have been deleted by the DeleteRecordTask interface or tasks that have expired (platform retains for 3 months).
@@ -2091,7 +2091,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeScreenShotSheetNumList(self, request):
-        """The API is used to query the number of screenshots as an LVB value-added service.
+        r"""The API is used to query the number of screenshots as an LVB value-added service.
 
         :param request: Request instance for DescribeScreenShotSheetNumList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListRequest`
@@ -2114,7 +2114,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamDayPlayInfoList(self, request):
-        """This API is used to query the playback data of each stream at the day level, including the total traffic.
+        r"""This API is used to query the playback data of each stream at the day level, including the total traffic.
 
         :param request: Request instance for DescribeStreamDayPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListRequest`
@@ -2137,7 +2137,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPlayInfoList(self, request):
-        """This API is used to query the playback data. It supports querying the playback details by stream name and aggregated data by playback domain name. Data in the last 4 minutes or so cannot be queried due to delay.
+        r"""This API is used to query the playback data. It supports querying the playback details by stream name and aggregated data by playback domain name. Data in the last 4 minutes or so cannot be queried due to delay.
         Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
 
         :param request: Request instance for DescribeStreamPlayInfoList.
@@ -2161,7 +2161,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPushInfoList(self, request):
-        """This API is used to get the push data of a stream, including the audio/video frame rate, bitrate, elapsed time, and codec.
+        r"""This API is used to get the push data of a stream, including the audio/video frame rate, bitrate, elapsed time, and codec.
 
         :param request: Request instance for DescribeStreamPushInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
@@ -2184,7 +2184,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTimeShiftRecordDetail(self, request):
-        """This API is used to query the time shifting details of a specific time period (up to 24 hours). You need to call `DescribeTimeShiftStreamList` first to get the request parameters of this API.
+        r"""This API is used to query the time shifting details of a specific time period (up to 24 hours). You need to call `DescribeTimeShiftStreamList` first to get the request parameters of this API.
 
         :param request: Request instance for DescribeTimeShiftRecordDetail.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftRecordDetailRequest`
@@ -2207,7 +2207,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTimeShiftStreamList(self, request):
-        """This API is used to query the time shifted streams in a specific time period (up to 24 hours).
+        r"""This API is used to query the time shifted streams in a specific time period (up to 24 hours).
 
         :param request: Request instance for DescribeTimeShiftStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftStreamListRequest`
@@ -2230,7 +2230,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTopClientIpSumInfoList(self, request):
-        """This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).
+        r"""This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).
 
         :param request: Request instance for DescribeTopClientIpSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListRequest`
@@ -2253,7 +2253,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTranscodeTaskNum(self, request):
-        """This API is used to query the number of transcoding tasks.
+        r"""This API is used to query the number of transcoding tasks.
 
         :param request: Request instance for DescribeTranscodeTaskNum.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTranscodeTaskNumRequest`
@@ -2276,7 +2276,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeUploadStreamNums(self, request):
-        """This API is used to query the number of LVB upstream channels.
+        r"""This API is used to query the number of LVB upstream channels.
 
         :param request: Request instance for DescribeUploadStreamNums.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsRequest`
@@ -2299,7 +2299,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeVisitTopSumInfoList(self, request):
-        """This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).
+        r"""This API is used to query the information of the top n domain names or stream IDs in a certain period of time (top 1,000 is supported currently).
 
         :param request: Request instance for DescribeVisitTopSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListRequest`
@@ -2322,7 +2322,7 @@ class LiveClient(AbstractClient):
 
 
     def DropLiveStream(self, request):
-        """This API is used to pause a live stream. The stream can be resumed if it is paused.
+        r"""This API is used to pause a live stream. The stream can be resumed if it is paused.
         Note: If you call this API to pause an inactive stream, the request will be considered successful.
 
         :param request: Request instance for DropLiveStream.
@@ -2346,7 +2346,7 @@ class LiveClient(AbstractClient):
 
 
     def EnableLiveDomain(self, request):
-        """This API is used to enable a disabled LVB domain name.
+        r"""This API is used to enable a disabled LVB domain name.
 
         :param request: Request instance for EnableLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainRequest`
@@ -2369,7 +2369,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveDomain(self, request):
-        """This API is used to disable an LVB domain name.
+        r"""This API is used to disable an LVB domain name.
 
         :param request: Request instance for ForbidLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`
@@ -2392,7 +2392,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveStream(self, request):
-        """This API is used to disable a stream. You can set a time to resume the stream.
+        r"""This API is used to disable a stream. You can set a time to resume the stream.
         Note:
         1. As long as the correct stream name is passed in, the stream will be disabled successfully.
         2. If you want a stream to be disabled only if the push domain, push path, and stream name match, please submit a ticket.
@@ -2419,7 +2419,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveCallbackTemplate(self, request):
-        """This API is used to modify a callback template.
+        r"""This API is used to modify a callback template.
 
         :param request: Request instance for ModifyLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCallbackTemplateRequest`
@@ -2442,7 +2442,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveDomainCertBindings(self, request):
-        """This API is used to bind a certificate to multiple playback domains and update the HTTPS configuration of the domains.
+        r"""This API is used to bind a certificate to multiple playback domains and update the HTTPS configuration of the domains.
         If a self-owned certificate is used, it will be automatically uploaded to Tencent Cloud’s SSL Certificate Service.
 
         :param request: Request instance for ModifyLiveDomainCertBindings.
@@ -2466,7 +2466,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveDomainReferer(self, request):
-        """This API is used to configure referer allowlist/blocklist of a live streaming domain name.
+        r"""This API is used to configure referer allowlist/blocklist of a live streaming domain name.
         Referer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.
 
         :param request: Request instance for ModifyLiveDomainReferer.
@@ -2490,7 +2490,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePlayAuthKey(self, request):
-        """This API is used to modify the playback authentication key.
+        r"""This API is used to modify the playback authentication key.
 
         :param request: Request instance for ModifyLivePlayAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayAuthKeyRequest`
@@ -2513,7 +2513,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePlayDomain(self, request):
-        """This API is used to modify a playback domain name.
+        r"""This API is used to modify a playback domain name.
 
         :param request: Request instance for ModifyLivePlayDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainRequest`
@@ -2536,7 +2536,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePullStreamTask(self, request):
-        """This API is used to modify a stream pulling task.
+        r"""This API is used to modify a stream pulling task.
         1. You cannot modify the destination URL. To publish to a new destination, please create a new task.
         2. You cannot modify the source type. To use a different source type, please create a new task.
 
@@ -2561,7 +2561,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePushAuthKey(self, request):
-        """This API is used to modify the LVB push authentication key.
+        r"""This API is used to modify the LVB push authentication key.
 
         :param request: Request instance for ModifyLivePushAuthKey.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePushAuthKeyRequest`
@@ -2584,7 +2584,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        """This API is used to modify the recording template configuration.
+        r"""This API is used to modify the recording template configuration.
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveRecordTemplateRequest`
@@ -2607,7 +2607,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveSnapshotTemplate(self, request):
-        """This API is used to modify the screencapturing template configuration.
+        r"""This API is used to modify the screencapturing template configuration.
 
         :param request: Request instance for ModifyLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveSnapshotTemplateRequest`
@@ -2630,7 +2630,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTimeShiftTemplate(self, request):
-        """This API is used to modify a time shifting template.
+        r"""This API is used to modify a time shifting template.
 
         :param request: Request instance for ModifyLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTimeShiftTemplateRequest`
@@ -2653,7 +2653,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTranscodeTemplate(self, request):
-        """This API is used to modify the transcoding template configuration.
+        r"""This API is used to modify the transcoding template configuration.
 
         :param request: Request instance for ModifyLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTranscodeTemplateRequest`
@@ -2676,7 +2676,7 @@ class LiveClient(AbstractClient):
 
 
     def RestartLivePullStreamTask(self, request):
-        """Restart the running live streaming pull task.
+        r"""Restart the running live streaming pull task.
 
         :param request: Request instance for RestartLivePullStreamTask.
         :type request: :class:`tencentcloud.live.v20180801.models.RestartLivePullStreamTaskRequest`
@@ -2699,7 +2699,7 @@ class LiveClient(AbstractClient):
 
 
     def ResumeDelayLiveStream(self, request):
-        """This API is used to cancel the delay setting and recover the real-time display of the live streaming image.
+        r"""This API is used to cancel the delay setting and recover the real-time display of the live streaming image.
 
         :param request: Request instance for ResumeDelayLiveStream.
         :type request: :class:`tencentcloud.live.v20180801.models.ResumeDelayLiveStreamRequest`
@@ -2722,7 +2722,7 @@ class LiveClient(AbstractClient):
 
 
     def ResumeLiveStream(self, request):
-        """This API is used to resume the push of a specific stream.
+        r"""This API is used to resume the push of a specific stream.
 
         :param request: Request instance for ResumeLiveStream.
         :type request: :class:`tencentcloud.live.v20180801.models.ResumeLiveStreamRequest`
@@ -2745,7 +2745,7 @@ class LiveClient(AbstractClient):
 
 
     def StartLivePadStream(self, request):
-        """Call this API to switch the live broadcast to standby footage.
+        r"""Call this API to switch the live broadcast to standby footage.
 
         :param request: Request instance for StartLivePadStream.
         :type request: :class:`tencentcloud.live.v20180801.models.StartLivePadStreamRequest`
@@ -2768,7 +2768,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLivePadStream(self, request):
-        """Call this API to end the transition to standby footage.
+        r"""Call this API to end the transition to standby footage.
 
         :param request: Request instance for StopLivePadStream.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamRequest`
@@ -2791,7 +2791,7 @@ class LiveClient(AbstractClient):
 
 
     def StopLiveRecord(self, request):
-        """Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document.
+        r"""Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document.
 
         :param request: Request instance for StopLiveRecord.
         :type request: :class:`tencentcloud.live.v20180801.models.StopLiveRecordRequest`
@@ -2814,7 +2814,7 @@ class LiveClient(AbstractClient):
 
 
     def StopRecordTask(self, request):
-        """This API is used to terminate an ongoing recording task and generate a recording file.
+        r"""This API is used to terminate an ongoing recording task and generate a recording file.
 
         :param request: Request instance for StopRecordTask.
         :type request: :class:`tencentcloud.live.v20180801.models.StopRecordTaskRequest`
@@ -2837,7 +2837,7 @@ class LiveClient(AbstractClient):
 
 
     def UnBindLiveDomainCert(self, request):
-        """This API is used to unbind a domain name certificate.
+        r"""This API is used to unbind a domain name certificate.
 
         :param request: Request instance for UnBindLiveDomainCert.
         :type request: :class:`tencentcloud.live.v20180801.models.UnBindLiveDomainCertRequest`
@@ -2860,7 +2860,7 @@ class LiveClient(AbstractClient):
 
 
     def UpdateLiveWatermark(self, request):
-        """This API is used to update a watermark.
+        r"""This API is used to update a watermark.
 
         :param request: Request instance for UpdateLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkRequest`

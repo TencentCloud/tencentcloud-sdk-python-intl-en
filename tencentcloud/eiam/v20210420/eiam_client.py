@@ -27,7 +27,7 @@ class EiamClient(AbstractClient):
 
 
     def AddAccountToAccountGroup(self, request):
-        """This API is used to add an account to an account group.
+        r"""This API is used to add an account to an account group.
 
         :param request: Request instance for AddAccountToAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.AddAccountToAccountGroupRequest`
@@ -50,7 +50,7 @@ class EiamClient(AbstractClient):
 
 
     def AddUserToUserGroup(self, request):
-        """This API is used to add a user to a user group.
+        r"""This API is used to add a user to a user group.
 
         :param request: Request instance for AddUserToUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.AddUserToUserGroupRequest`
@@ -73,7 +73,7 @@ class EiamClient(AbstractClient):
 
 
     def CreateAccountGroup(self, request):
-        """This API is used to create an account group.
+        r"""This API is used to create an account group.
 
         :param request: Request instance for CreateAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.CreateAccountGroupRequest`
@@ -96,7 +96,7 @@ class EiamClient(AbstractClient):
 
 
     def CreateAppAccount(self, request):
-        """This API is used to create an application account.
+        r"""This API is used to create an application account.
 
         :param request: Request instance for CreateAppAccount.
         :type request: :class:`tencentcloud.eiam.v20210420.models.CreateAppAccountRequest`
@@ -119,7 +119,7 @@ class EiamClient(AbstractClient):
 
 
     def CreateOrgNode(self, request):
-        """This API is used to create an organization node.
+        r"""This API is used to create an organization node.
 
         :param request: Request instance for CreateOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.CreateOrgNodeRequest`
@@ -142,7 +142,7 @@ class EiamClient(AbstractClient):
 
 
     def CreateUser(self, request):
-        """This API is used to create a user.
+        r"""This API is used to create a user.
 
         :param request: Request instance for CreateUser.
         :type request: :class:`tencentcloud.eiam.v20210420.models.CreateUserRequest`
@@ -165,7 +165,7 @@ class EiamClient(AbstractClient):
 
 
     def CreateUserGroup(self, request):
-        """This API is used to create a user group.
+        r"""This API is used to create a user group.
 
         :param request: Request instance for CreateUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.CreateUserGroupRequest`
@@ -188,7 +188,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteAccountGroup(self, request):
-        """This API is used to delete an account group.
+        r"""This API is used to delete an account group.
 
         :param request: Request instance for DeleteAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteAccountGroupRequest`
@@ -211,7 +211,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteAppAccount(self, request):
-        """This API is used to delete an application account.
+        r"""This API is used to delete an application account.
 
         :param request: Request instance for DeleteAppAccount.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteAppAccountRequest`
@@ -234,7 +234,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteOrgNode(self, request):
-        """This API is used to delete an organization node.
+        r"""This API is used to delete an organization node.
 
         :param request: Request instance for DeleteOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteOrgNodeRequest`
@@ -257,7 +257,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteUser(self, request):
-        """This API is used to delete a user by username or user ID.
+        r"""This API is used to delete a user by username or user ID.
 
         :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteUserRequest`
@@ -280,7 +280,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteUserGroup(self, request):
-        """This API is used to delete a user group.
+        r"""This API is used to delete a user group.
 
         :param request: Request instance for DeleteUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteUserGroupRequest`
@@ -303,7 +303,7 @@ class EiamClient(AbstractClient):
 
 
     def DeleteUsers(self, request):
-        """This API is used to batch delete the users under the current node. If an error occurs when a user is deleted, the deletion of other selected users will not be affected, and the username/ID of the user who fails to be deleted will be prompted.
+        r"""This API is used to batch delete the users under the current node. If an error occurs when a user is deleted, the deletion of other selected users will not be affected, and the username/ID of the user who fails to be deleted will be prompted.
 
         :param request: Request instance for DeleteUsers.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DeleteUsersRequest`
@@ -326,7 +326,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeAccountGroup(self, request):
-        """This API is used to query the list of account groups.
+        r"""This API is used to query the list of account groups.
 
         :param request: Request instance for DescribeAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeAccountGroupRequest`
@@ -349,7 +349,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeAppAccount(self, request):
-        """This API is used to query the list of application accounts.
+        r"""This API is used to query the list of application accounts.
 
         :param request: Request instance for DescribeAppAccount.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeAppAccountRequest`
@@ -372,7 +372,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeApplication(self, request):
-        """This API is used to get the information of an application.
+        r"""This API is used to get the information of an application.
 
         :param request: Request instance for DescribeApplication.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeApplicationRequest`
@@ -395,7 +395,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeOrgNode(self, request):
-        """This API is used to read the information of an organization node by organization node ID.
+        r"""This API is used to read the information of an organization node by organization node ID.
 
         :param request: Request instance for DescribeOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeOrgNodeRequest`
@@ -418,7 +418,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribePublicKey(self, request):
-        """This API is used to get the information of a JWT public key.
+        r"""This API is used to get the information of a JWT public key.
 
         :param request: Request instance for DescribePublicKey.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribePublicKeyRequest`
@@ -441,7 +441,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeUserGroup(self, request):
-        """This API is used to get the information of a user group.
+        r"""This API is used to get the information of a user group.
 
         :param request: Request instance for DescribeUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserGroupRequest`
@@ -464,7 +464,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """This API is used to search for a user by username or user ID.
+        r"""This API is used to search for a user by username or user ID.
 
         :param request: Request instance for DescribeUserInfo.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserInfoRequest`
@@ -487,7 +487,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeUserResourcesAuthorization(self, request):
-        """This API is used to query the list of resource authorizations under the specified user.
+        r"""This API is used to query the list of resource authorizations under the specified user.
 
         :param request: Request instance for DescribeUserResourcesAuthorization.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserResourcesAuthorizationRequest`
@@ -510,7 +510,7 @@ class EiamClient(AbstractClient):
 
 
     def DescribeUserThirdPartyAccountInfo(self, request):
-        """This API is used to get the third-party account binding information by username or user ID.
+        r"""This API is used to get the third-party account binding information by username or user ID.
 
         :param request: Request instance for DescribeUserThirdPartyAccountInfo.
         :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserThirdPartyAccountInfoRequest`
@@ -533,7 +533,7 @@ class EiamClient(AbstractClient):
 
 
     def ListAccountInAccountGroup(self, request):
-        """This API is used to get the list of accounts in an account group.
+        r"""This API is used to get the list of accounts in an account group.
 
         :param request: Request instance for ListAccountInAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListAccountInAccountGroupRequest`
@@ -556,7 +556,7 @@ class EiamClient(AbstractClient):
 
 
     def ListApplicationAuthorizations(self, request):
-        """This API is used to get the list of authorization relationships of an application (including search criteria-based match).
+        r"""This API is used to get the list of authorization relationships of an application (including search criteria-based match).
 
         :param request: Request instance for ListApplicationAuthorizations.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListApplicationAuthorizationsRequest`
@@ -579,7 +579,7 @@ class EiamClient(AbstractClient):
 
 
     def ListApplications(self, request):
-        """This API is used to get the list of applications.
+        r"""This API is used to get the list of applications.
 
         :param request: Request instance for ListApplications.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListApplicationsRequest`
@@ -602,7 +602,7 @@ class EiamClient(AbstractClient):
 
 
     def ListAuthorizedApplicationsToOrgNode(self, request):
-        """This API is used to get the list of accessible applications by organization node ID.
+        r"""This API is used to get the list of accessible applications by organization node ID.
 
         :param request: Request instance for ListAuthorizedApplicationsToOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListAuthorizedApplicationsToOrgNodeRequest`
@@ -625,7 +625,7 @@ class EiamClient(AbstractClient):
 
 
     def ListAuthorizedApplicationsToUser(self, request):
-        """This API is used to get the list of accessible applications by user ID.
+        r"""This API is used to get the list of accessible applications by user ID.
 
         :param request: Request instance for ListAuthorizedApplicationsToUser.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListAuthorizedApplicationsToUserRequest`
@@ -648,7 +648,7 @@ class EiamClient(AbstractClient):
 
 
     def ListAuthorizedApplicationsToUserGroup(self, request):
-        """This API is used to get the list of accessible applications by user group ID.
+        r"""This API is used to get the list of accessible applications by user group ID.
 
         :param request: Request instance for ListAuthorizedApplicationsToUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListAuthorizedApplicationsToUserGroupRequest`
@@ -671,7 +671,7 @@ class EiamClient(AbstractClient):
 
 
     def ListUserGroups(self, request):
-        """This API is used to get the information of the user group list (including query conditions).
+        r"""This API is used to get the information of the user group list (including query conditions).
 
         :param request: Request instance for ListUserGroups.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListUserGroupsRequest`
@@ -694,7 +694,7 @@ class EiamClient(AbstractClient):
 
 
     def ListUserGroupsOfUser(self, request):
-        """This API is used to get the list of a user's user groups.
+        r"""This API is used to get the list of a user's user groups.
 
         :param request: Request instance for ListUserGroupsOfUser.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListUserGroupsOfUserRequest`
@@ -717,7 +717,7 @@ class EiamClient(AbstractClient):
 
 
     def ListUsers(self, request):
-        """This API is used to get the information of the user list.
+        r"""This API is used to get the information of the user list.
 
         :param request: Request instance for ListUsers.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListUsersRequest`
@@ -740,7 +740,7 @@ class EiamClient(AbstractClient):
 
 
     def ListUsersInOrgNode(self, request):
-        """This API is used to read the users under an organization node by organization node ID.
+        r"""This API is used to read the users under an organization node by organization node ID.
 
         :param request: Request instance for ListUsersInOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListUsersInOrgNodeRequest`
@@ -763,7 +763,7 @@ class EiamClient(AbstractClient):
 
 
     def ListUsersInUserGroup(self, request):
-        """This API is used to get the list of the users in a user group.
+        r"""This API is used to get the list of the users in a user group.
 
         :param request: Request instance for ListUsersInUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ListUsersInUserGroupRequest`
@@ -786,7 +786,7 @@ class EiamClient(AbstractClient):
 
 
     def ModifyAccountGroup(self, request):
-        """This API is used to modify an account group.
+        r"""This API is used to modify an account group.
 
         :param request: Request instance for ModifyAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ModifyAccountGroupRequest`
@@ -809,7 +809,7 @@ class EiamClient(AbstractClient):
 
 
     def ModifyAppAccount(self, request):
-        """This API is used to modify an application account.
+        r"""This API is used to modify an application account.
 
         :param request: Request instance for ModifyAppAccount.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ModifyAppAccountRequest`
@@ -832,7 +832,7 @@ class EiamClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        """This API is used to update the information of an application.
+        r"""This API is used to update the information of an application.
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ModifyApplicationRequest`
@@ -855,7 +855,7 @@ class EiamClient(AbstractClient):
 
 
     def ModifyUserInfo(self, request):
-        """This API is used to modify the information of a user by username or user ID.
+        r"""This API is used to modify the information of a user by username or user ID.
 
         :param request: Request instance for ModifyUserInfo.
         :type request: :class:`tencentcloud.eiam.v20210420.models.ModifyUserInfoRequest`
@@ -878,7 +878,7 @@ class EiamClient(AbstractClient):
 
 
     def RemoveAccountFromAccountGroup(self, request):
-        """This API is used to remove an account from an account group.
+        r"""This API is used to remove an account from an account group.
 
         :param request: Request instance for RemoveAccountFromAccountGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.RemoveAccountFromAccountGroupRequest`
@@ -901,7 +901,7 @@ class EiamClient(AbstractClient):
 
 
     def RemoveUserFromUserGroup(self, request):
-        """This API is used to remove a user from a user group.
+        r"""This API is used to remove a user from a user group.
 
         :param request: Request instance for RemoveUserFromUserGroup.
         :type request: :class:`tencentcloud.eiam.v20210420.models.RemoveUserFromUserGroupRequest`
@@ -924,7 +924,7 @@ class EiamClient(AbstractClient):
 
 
     def UpdateOrgNode(self, request):
-        """This API is used to create an organization node.
+        r"""This API is used to create an organization node.
 
         :param request: Request instance for UpdateOrgNode.
         :type request: :class:`tencentcloud.eiam.v20210420.models.UpdateOrgNodeRequest`

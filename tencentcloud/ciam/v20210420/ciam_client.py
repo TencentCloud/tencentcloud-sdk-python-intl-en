@@ -27,7 +27,7 @@ class CiamClient(AbstractClient):
 
 
     def ListUserGroups(self, request):
-        """This API is used to list user groups.
+        r"""This API is used to list user groups.
 
         :param request: Request instance for ListUserGroups.
         :type request: :class:`tencentcloud.ciam.v20210420.models.ListUserGroupsRequest`

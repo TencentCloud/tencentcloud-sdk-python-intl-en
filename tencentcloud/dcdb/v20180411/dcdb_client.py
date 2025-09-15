@@ -27,7 +27,7 @@ class DcdbClient(AbstractClient):
 
 
     def ActiveHourDCDBInstance(self, request):
-        """This API is used to remove a pay-as-you-go TDSQL instance from isolation.
+        r"""This API is used to remove a pay-as-you-go TDSQL instance from isolation.
 
         :param request: Request instance for ActiveHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ActiveHourDCDBInstanceRequest`
@@ -50,7 +50,7 @@ class DcdbClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API is used to associate security groups with Tencent Cloud resources in batches.
+        r"""This API is used to associate security groups with Tencent Cloud resources in batches.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.AssociateSecurityGroupsRequest`
@@ -73,7 +73,7 @@ class DcdbClient(AbstractClient):
 
 
     def CancelDcnJob(self, request):
-        """This API is used to cancel DCN synchronization.
+        r"""This API is used to cancel DCN synchronization.
 
         :param request: Request instance for CancelDcnJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CancelDcnJobRequest`
@@ -96,7 +96,7 @@ class DcdbClient(AbstractClient):
 
 
     def CloneAccount(self, request):
-        """This API is used to clone an instance account.
+        r"""This API is used to clone an instance account.
 
         :param request: Request instance for CloneAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountRequest`
@@ -119,7 +119,7 @@ class DcdbClient(AbstractClient):
 
 
     def CloseDBExtranetAccess(self, request):
-        """This API is used to disable public network access for a TencentDB instance, which will make the public IP address inaccessible. The `DescribeDCDBInstances` API will not return the public domain name and port information of the corresponding instance.
+        r"""This API is used to disable public network access for a TencentDB instance, which will make the public IP address inaccessible. The `DescribeDCDBInstances` API will not return the public domain name and port information of the corresponding instance.
 
         :param request: Request instance for CloseDBExtranetAccess.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CloseDBExtranetAccessRequest`
@@ -142,7 +142,7 @@ class DcdbClient(AbstractClient):
 
 
     def CopyAccountPrivileges(self, request):
-        """This API is used to copy the permissions of a TencentDB account.
+        r"""This API is used to copy the permissions of a TencentDB account.
         Note: Accounts with the same username but different hosts are different accounts. Permissions can only be copied between accounts with the same `Readonly` attribute.
 
         :param request: Request instance for CopyAccountPrivileges.
@@ -166,7 +166,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts.
+        r"""This API is used to create a TencentDB account. Multiple accounts can be created for one instance. Accounts with the same username but different hosts are different accounts.
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateAccountRequest`
@@ -189,7 +189,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDCDBInstance(self, request):
-        """This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.
+        r"""This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.
 
         :param request: Request instance for CreateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDCDBInstanceRequest`
@@ -212,7 +212,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDedicatedClusterDCDBInstance(self, request):
-        """This API is used to create a dedicated TDSQL cluster instance.
+        r"""This API is used to create a dedicated TDSQL cluster instance.
 
         :param request: Request instance for CreateDedicatedClusterDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceRequest`
@@ -235,7 +235,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateHourDCDBInstance(self, request):
-        """This API is used to create a pay-as-you-go TDSQL instance.
+        r"""This API is used to create a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for CreateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateHourDCDBInstanceRequest`
@@ -258,7 +258,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateOnlineDDLJob(self, request):
-        """This API is used to create an online DDL job.
+        r"""This API is used to create an online DDL job.
 
         :param request: Request instance for CreateOnlineDDLJob.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobRequest`
@@ -281,7 +281,7 @@ class DcdbClient(AbstractClient):
 
 
     def DeleteAccount(self, request):
-        """This API is used to delete a TencentDB account, which is uniquely identified by username and host.
+        r"""This API is used to delete a TencentDB account, which is uniquely identified by username and host.
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DeleteAccountRequest`
@@ -304,7 +304,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        """This API is used to query the permissions of a TencentDB account.
+        r"""This API is used to query the permissions of a TencentDB account.
         Note: Accounts with the same username but different hosts are considered as different accounts.
 
         :param request: Request instance for DescribeAccountPrivileges.
@@ -328,7 +328,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to query the list of accounts of a specified TencentDB instance.
+        r"""This API is used to query the list of accounts of a specified TencentDB instance.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeAccountsRequest`
@@ -351,7 +351,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """This API is used to query the list of backup files.
+        r"""This API is used to query the list of backup files.
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesRequest`
@@ -374,7 +374,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBEncryptAttributes(self, request):
-        """This API is used to query the encryption status of the instance data.
+        r"""This API is used to query the encryption status of the instance data.
 
         :param request: Request instance for DescribeDBEncryptAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesRequest`
@@ -397,7 +397,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBLogFiles(self, request):
-        """This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.
+        r"""This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.
 
         :param request: Request instance for DescribeDBLogFiles.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBLogFilesRequest`
@@ -420,7 +420,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBParameters(self, request):
-        """This API is used to get the current parameter settings of a database.
+        r"""This API is used to get the current parameter settings of a database.
 
         :param request: Request instance for DescribeDBParameters.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBParametersRequest`
@@ -443,7 +443,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """This API is used to query the security group information of an instance.
+        r"""This API is used to query the security group information of an instance.
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSecurityGroupsRequest`
@@ -466,7 +466,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSlowLogs(self, request):
-        """This API is used to query the list of slow query logs.
+        r"""This API is used to query the list of slow query logs.
 
         :param request: Request instance for DescribeDBSlowLogs.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsRequest`
@@ -489,7 +489,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBSyncMode(self, request):
-        """This API is used to query the sync mode of a TencentDB instance.
+        r"""This API is used to query the sync mode of a TencentDB instance.
 
         :param request: Request instance for DescribeDBSyncMode.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSyncModeRequest`
@@ -512,7 +512,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBTmpInstances(self, request):
-        """This API is used to obtain a temp rollback instance.
+        r"""This API is used to obtain a temp rollback instance.
 
         :param request: Request instance for DescribeDBTmpInstances.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBTmpInstancesRequest`
@@ -535,7 +535,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstanceDetail(self, request):
-        """This API is used to get the details of a TDSQL instance.
+        r"""This API is used to get the details of a TDSQL instance.
 
         :param request: Request instance for DescribeDCDBInstanceDetail.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailRequest`
@@ -558,7 +558,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstanceNodeInfo(self, request):
-        """This API is used to query the information of instance nodes.
+        r"""This API is used to query the information of instance nodes.
 
         :param request: Request instance for DescribeDCDBInstanceNodeInfo.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoRequest`
@@ -581,7 +581,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBInstances(self, request):
-        """This API is used to query the list of TencentDB instances. It supports filtering instances by project ID, instance ID, private network address, and instance name.
+        r"""This API is used to query the list of TencentDB instances. It supports filtering instances by project ID, instance ID, private network address, and instance name.
         If no filter is specified, 10 instances will be returned by default. Up to 100 instances can be returned for a single request.
 
         :param request: Request instance for DescribeDCDBInstances.
@@ -605,7 +605,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBPrice(self, request):
-        """This API is used to query the price of an instance before you purchase it.
+        r"""This API is used to query the price of an instance before you purchase it.
 
         :param request: Request instance for DescribeDCDBPrice.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBPriceRequest`
@@ -628,7 +628,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDCDBShards(self, request):
-        """This API is used to query the information of shards of a TencentDB instance.
+        r"""This API is used to query the information of shards of a TencentDB instance.
 
         :param request: Request instance for DescribeDCDBShards.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBShardsRequest`
@@ -651,7 +651,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabaseObjects(self, request):
-        """This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
+        r"""This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
 
         :param request: Request instance for DescribeDatabaseObjects.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseObjectsRequest`
@@ -674,7 +674,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabaseTable(self, request):
-        """This API is used to query the table information of a TencentDB instance.
+        r"""This API is used to query the table information of a TencentDB instance.
 
         :param request: Request instance for DescribeDatabaseTable.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabaseTableRequest`
@@ -697,7 +697,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API is used to query the database list of a TencentDB instance.
+        r"""This API is used to query the database list of a TencentDB instance.
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDatabasesRequest`
@@ -720,7 +720,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDcnDetail(self, request):
-        """This API is used to query the disaster recovery details of an instance.
+        r"""This API is used to query the disaster recovery details of an instance.
 
         :param request: Request instance for DescribeDcnDetail.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDcnDetailRequest`
@@ -743,7 +743,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeFileDownloadUrl(self, request):
-        """This API is used to get the download URL of a specific backup or log file of a database.
+        r"""This API is used to get the download URL of a specific backup or log file of a database.
 
         :param request: Request instance for DescribeFileDownloadUrl.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFileDownloadUrlRequest`
@@ -766,7 +766,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeFlow(self, request):
-        """This API is used to query task status.
+        r"""This API is used to query task status.
 
         :param request: Request instance for DescribeFlow.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowRequest`
@@ -789,7 +789,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeLogFileRetentionPeriod(self, request):
-        """This API is used to view the backup log retention days.
+        r"""This API is used to view the backup log retention days.
 
         :param request: Request instance for DescribeLogFileRetentionPeriod.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeLogFileRetentionPeriodRequest`
@@ -812,7 +812,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """This API is used to query TDSQL order information. You can pass in an order ID to query the TDSQL instance associated with the order and the corresponding task process ID.
+        r"""This API is used to query TDSQL order information. You can pass in an order ID to query the TDSQL instance associated with the order and the corresponding task process ID.
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeOrdersRequest`
@@ -835,7 +835,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """This API is used to query the security group details of a project.
+        r"""This API is used to query the security group details of a project.
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectSecurityGroupsRequest`
@@ -858,7 +858,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyDCDBInstance(self, request):
-        """This API is used to terminate an isolated monthly subscribed TDSQL instance.
+        r"""This API is used to terminate an isolated monthly subscribed TDSQL instance.
 
         :param request: Request instance for DestroyDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
@@ -881,7 +881,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyHourDCDBInstance(self, request):
-        """This API is used to terminate a pay-as-you-go TDSQL instance.
+        r"""This API is used to terminate a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for DestroyHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceRequest`
@@ -904,7 +904,7 @@ class DcdbClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """This API is used to unassociate security groups from instances in batches.
+        r"""This API is used to unassociate security groups from instances in batches.
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DisassociateSecurityGroupsRequest`
@@ -927,7 +927,7 @@ class DcdbClient(AbstractClient):
 
 
     def GrantAccountPrivileges(self, request):
-        """This API is used to grant permissions to a TencentDB account.
+        r"""This API is used to grant permissions to a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
 
         :param request: Request instance for GrantAccountPrivileges.
@@ -951,7 +951,7 @@ class DcdbClient(AbstractClient):
 
 
     def InitDCDBInstances(self, request):
-        """This API is used to initialize instances, including setting the default character set and table name case sensitivity.
+        r"""This API is used to initialize instances, including setting the default character set and table name case sensitivity.
 
         :param request: Request instance for InitDCDBInstances.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.InitDCDBInstancesRequest`
@@ -974,7 +974,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateDCDBInstance(self, request):
-        """This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
+        r"""This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
 
         :param request: Request instance for IsolateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDCDBInstanceRequest`
@@ -997,7 +997,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateDedicatedDBInstance(self, request):
-        """This API is used to isolate a dedicated TencentDB instance.
+        r"""This API is used to isolate a dedicated TencentDB instance.
 
         :param request: Request instance for IsolateDedicatedDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDedicatedDBInstanceRequest`
@@ -1020,7 +1020,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateHourDCDBInstance(self, request):
-        """This API is used to isolate a pay-as-you-go TDSQL instance.
+        r"""This API is used to isolate a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for IsolateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateHourDCDBInstanceRequest`
@@ -1043,7 +1043,7 @@ class DcdbClient(AbstractClient):
 
 
     def KillSession(self, request):
-        """This API is used to kill the specified session.
+        r"""This API is used to kill the specified session.
 
         :param request: Request instance for KillSession.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.KillSessionRequest`
@@ -1066,7 +1066,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountConfig(self, request):
-        """This API is used to modify the configurations of an account, such as `max_user_connections`.
+        r"""This API is used to modify the configurations of an account, such as `max_user_connections`.
 
         :param request: Request instance for ModifyAccountConfig.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigRequest`
@@ -1089,7 +1089,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountDescription(self, request):
-        """This API is used to modify the remarks of a TencentDB account.
+        r"""This API is used to modify the remarks of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
 
         :param request: Request instance for ModifyAccountDescription.
@@ -1113,7 +1113,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """This API is used to modify the permissions of a TencentDB instance account. \n\n**Note**\n-Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted. An error will be reported if read-write permissions are granted to a read-only account. If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        r"""This API is used to modify the permissions of a TencentDB instance account. \n\n**Note**\n-Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted. An error will be reported if read-write permissions are granted to a read-only account. If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountPrivilegesRequest`
@@ -1136,7 +1136,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBEncryptAttributes(self, request):
-        """This API is used to modify the instance data encryption.
+        r"""This API is used to modify the instance data encryption.
 
         :param request: Request instance for ModifyDBEncryptAttributes.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBEncryptAttributesRequest`
@@ -1159,7 +1159,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """This API is used to modify instance name.
+        r"""This API is used to modify instance name.
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceNameRequest`
@@ -1182,7 +1182,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify the security groups associated with TencentDB.
+        r"""This API is used to modify the security groups associated with TencentDB.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1205,7 +1205,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBInstancesProject(self, request):
-        """This API is used to modify the project to which TencentDB instances belong.
+        r"""This API is used to modify the project to which TencentDB instances belong.
 
         :param request: Request instance for ModifyDBInstancesProject.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstancesProjectRequest`
@@ -1228,7 +1228,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBParameters(self, request):
-        """This API is used to modify database parameters.
+        r"""This API is used to modify database parameters.
 
         :param request: Request instance for ModifyDBParameters.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBParametersRequest`
@@ -1251,7 +1251,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyDBSyncMode(self, request):
-        """This API is used to modify the sync mode of a TencentDB instance.
+        r"""This API is used to modify the sync mode of a TencentDB instance.
 
         :param request: Request instance for ModifyDBSyncMode.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBSyncModeRequest`
@@ -1274,7 +1274,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceNetwork(self, request):
-        """This API is used to modify instance network.
+        r"""This API is used to modify instance network.
 
         :param request: Request instance for ModifyInstanceNetwork.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceNetworkRequest`
@@ -1297,7 +1297,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceVip(self, request):
-        """This API is used to modify instance VIP.
+        r"""This API is used to modify instance VIP.
 
         :param request: Request instance for ModifyInstanceVip.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVipRequest`
@@ -1320,7 +1320,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyInstanceVport(self, request):
-        """This API is used to modify instance Vport.
+        r"""This API is used to modify instance Vport.
 
         :param request: Request instance for ModifyInstanceVport.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVportRequest`
@@ -1343,7 +1343,7 @@ class DcdbClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """This API is used to reset the password of a TencentDB account.
+        r"""This API is used to reset the password of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
 
         :param request: Request instance for ResetAccountPassword.
@@ -1367,7 +1367,7 @@ class DcdbClient(AbstractClient):
 
 
     def SwitchDBInstanceHA(self, request):
-        """This API is used to start a source-replica switch of instances.
+        r"""This API is used to start a source-replica switch of instances.
 
         :param request: Request instance for SwitchDBInstanceHA.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.SwitchDBInstanceHARequest`
@@ -1390,7 +1390,7 @@ class DcdbClient(AbstractClient):
 
 
     def TerminateDedicatedDBInstance(self, request):
-        """This API is used to terminate the isolated dedicated TDSQL instance.
+        r"""This API is used to terminate the isolated dedicated TDSQL instance.
 
         :param request: Request instance for TerminateDedicatedDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceRequest`
@@ -1413,7 +1413,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeDedicatedDCDBInstance(self, request):
-        """This API is used to upgrade a dedicated TDSQL cluster instance.
+        r"""This API is used to upgrade a dedicated TDSQL cluster instance.
 
         :param request: Request instance for UpgradeDedicatedDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceRequest`
@@ -1436,7 +1436,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeHourDCDBInstance(self, request):
-        """This API is used to upgrade a pay-as-you-go TDSQL instance.
+        r"""This API is used to upgrade a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for UpgradeHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeHourDCDBInstanceRequest`

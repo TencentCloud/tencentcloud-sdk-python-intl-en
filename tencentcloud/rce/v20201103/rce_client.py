@@ -27,7 +27,7 @@ class RceClient(AbstractClient):
 
 
     def DescribeRiskAssessment(self, request):
-        """This API is used to query risk assessment results.
+        r"""This API is used to query risk assessment results.
 
         :param request: Request instance for DescribeRiskAssessment.
         :type request: :class:`tencentcloud.rce.v20201103.models.DescribeRiskAssessmentRequest`

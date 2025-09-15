@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DetailResults(AbstractModel):
-    """Details of results returned by text moderation
+    r"""Details of results returned by text moderation
 
     """
 
@@ -64,7 +64,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """Result of the moderation. <br>`Normal`: normal content; `Porn`: pornographic content; `Abuse`: abusive content; **Ad**: advertising content; `Custom`: custom violating content
+        r"""Result of the moderation. <br>`Normal`: normal content; `Porn`: pornographic content; `Abuse`: abusive content; **Ad**: advertising content; `Custom`: custom violating content
         :rtype: str
         """
         return self._Label
@@ -75,7 +75,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """Recommended follow-up action. <br>`Block`: block it automatically; `Review`: review the content again in human; **Pass**: pass
+        r"""Recommended follow-up action. <br>`Block`: block it automatically; `Review`: review the content again in human; **Pass**: pass
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -87,7 +87,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Keywords(self):
-        """Returns the information of keywords hit in the text. When no value is returned and `Score` is not empty, it means the `Label` is determined by the semantic-based detection model.
+        r"""Returns the information of keywords hit in the text. When no value is returned and `Score` is not empty, it means the `Label` is determined by the semantic-based detection model.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -99,7 +99,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """This field indicates the convincing level of the `Label`, ranging from `0` (lowest) to `100` (highest). 
+        r"""This field indicates the convincing level of the `Label`, ranging from `0` (lowest) to `100` (highest). 
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: int
         """
@@ -111,7 +111,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def LibType(self):
-        """It indicates the library type corresponding with the keyword. Valid values: `1` (blocklist/allowlist library) and `2` (custom keyword library). If no custom keyword library is configured, the default value is 1.
+        r"""It indicates the library type corresponding with the keyword. Valid values: `1` (blocklist/allowlist library) and `2` (custom keyword library). If no custom keyword library is configured, the default value is 1.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: int
         """
@@ -123,7 +123,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def LibId(self):
-        """This field is **only valid when `Label` is `Custom`. It returns the custom library ID to facilitate the library management and configuration.
+        r"""This field is **only valid when `Label` is `Custom`. It returns the custom library ID to facilitate the library management and configuration.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -135,7 +135,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def LibName(self):
-        """This field is **only valid when `Label` is `Custom` (custom keyword)`. It returns the custom library name to facilitate the library management and configuration.
+        r"""This field is **only valid when `Label` is `Custom` (custom keyword)`. It returns the custom library name to facilitate the library management and configuration.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -147,7 +147,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def SubLabel(self):
-        """The field returns the second-level labels under the current label.
+        r"""The field returns the second-level labels under the current label.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -159,7 +159,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Tags(self):
-        """Returns the keywords, label, sub-label and the score.
+        r"""Returns the keywords, label, sub-label and the score.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -196,7 +196,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Device(AbstractModel):
-    """This field indicates the device information of the service subscriber
+    r"""This field indicates the device information of the service subscriber
 
     """
 
@@ -229,7 +229,7 @@ Note: Since the iOS14 update in 2021, Apple Inc. has allowed users to manually a
 
     @property
     def IP(self):
-        """This field indicates the IP address of the device used by the service subscriber. <br>
+        r"""This field indicates the IP address of the device used by the service subscriber. <br>
 Note: Currently, only IPv4 addresses can be recorded.
         :rtype: str
         """
@@ -241,7 +241,7 @@ Note: Currently, only IPv4 addresses can be recorded.
 
     @property
     def Mac(self):
-        """This field indicates the MAC address used by the service subscriber to facilitate device identification and management. Its format and value are consistent with those of the standard MAC address.
+        r"""This field indicates the MAC address used by the service subscriber to facilitate device identification and management. Its format and value are consistent with those of the standard MAC address.
         :rtype: str
         """
         return self._Mac
@@ -252,7 +252,7 @@ Note: Currently, only IPv4 addresses can be recorded.
 
     @property
     def TokenId(self):
-        """* In beta test. Available soon.*
+        r"""* In beta test. Available soon.*
         :rtype: str
         """
         return self._TokenId
@@ -263,7 +263,7 @@ Note: Currently, only IPv4 addresses can be recorded.
 
     @property
     def DeviceId(self):
-        """* In beta test. Available soon.*
+        r"""* In beta test. Available soon.*
         :rtype: str
         """
         return self._DeviceId
@@ -274,7 +274,7 @@ Note: Currently, only IPv4 addresses can be recorded.
 
     @property
     def IMEI(self):
-        """This field represents the **IMEI** (International Mobile Equipment Identity) number of the device used by the service subscriber. IMEI can be used to identify each independent mobile communication device, such as a mobile phone, which is convenient for device identification and management. <br>Note: IMEI is formatted with **15 to 17 numbers only**.
+        r"""This field represents the **IMEI** (International Mobile Equipment Identity) number of the device used by the service subscriber. IMEI can be used to identify each independent mobile communication device, such as a mobile phone, which is convenient for device identification and management. <br>Note: IMEI is formatted with **15 to 17 numbers only**.
         :rtype: str
         """
         return self._IMEI
@@ -285,7 +285,7 @@ Note: Currently, only IPv4 addresses can be recorded.
 
     @property
     def IDFA(self):
-        """**Dedicated for iOS device**. This field indicates the **IDFA** (Identifier for Advertising) corresponding to the service subscriber. IDFA, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the user.<br>
+        r"""**Dedicated for iOS device**. This field indicates the **IDFA** (Identifier for Advertising) corresponding to the service subscriber. IDFA, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the user.<br>
 Note: Since the iOS14 update in 2021, Apple Inc. has allowed users to manually activate or deactivate IDFA, so the validity of the string identifier may be reduced.
         :rtype: str
         """
@@ -297,7 +297,7 @@ Note: Since the iOS14 update in 2021, Apple Inc. has allowed users to manually a
 
     @property
     def IDFV(self):
-        """**Dedicated for iOS device**. This field indicates the **IDFV** (Identifier for Vendor) corresponding to the service subscriber. IDFV, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the vendor. IDFV can also be used as a unique device identifier.
+        r"""**Dedicated for iOS device**. This field indicates the **IDFV** (Identifier for Vendor) corresponding to the service subscriber. IDFV, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the vendor. IDFV can also be used as a unique device identifier.
         :rtype: str
         """
         return self._IDFV
@@ -326,7 +326,7 @@ Note: Since the iOS14 update in 2021, Apple Inc. has allowed users to manually a
 
 
 class RiskDetails(AbstractModel):
-    """Account risk detection results
+    r"""Account risk detection results
 
     """
 
@@ -342,7 +342,7 @@ class RiskDetails(AbstractModel):
 
     @property
     def Label(self):
-        """This field returns the risk categories after account information detection. Valid values: **RiskAccount** (the account is at risk), **RiskIP** (the IP address is at risk), and **RiskIMEI** (the mobile device identifier is at risk).
+        r"""This field returns the risk categories after account information detection. Valid values: **RiskAccount** (the account is at risk), **RiskIP** (the IP address is at risk), and **RiskIMEI** (the mobile device identifier is at risk).
         :rtype: str
         """
         return self._Label
@@ -353,7 +353,7 @@ class RiskDetails(AbstractModel):
 
     @property
     def Level(self):
-        """This field returns the risk levels after account information detection. Valid values: **1** (suspected to be at risk) and **2** (malicious risk).
+        r"""This field returns the risk levels after account information detection. Valid values: **1** (suspected to be at risk) and **2** (malicious risk).
         :rtype: int
         """
         return self._Level
@@ -377,7 +377,7 @@ class RiskDetails(AbstractModel):
 
 
 class SentimentAnalysis(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -402,7 +402,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Label(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Label
@@ -413,7 +413,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Score(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Score
@@ -424,7 +424,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Detail(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
         """
         return self._Detail
@@ -435,7 +435,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Code(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Code
@@ -446,7 +446,7 @@ class SentimentAnalysis(AbstractModel):
 
     @property
     def Message(self):
-        """
+        r"""
         :rtype: str
         """
         return self._Message
@@ -475,7 +475,7 @@ class SentimentAnalysis(AbstractModel):
 
 
 class SentimentDetail(AbstractModel):
-    """
+    r"""
 
     """
 
@@ -491,7 +491,7 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Positive(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Positive
@@ -502,7 +502,7 @@ class SentimentDetail(AbstractModel):
 
     @property
     def Negative(self):
-        """
+        r"""
         :rtype: int
         """
         return self._Negative
@@ -526,7 +526,7 @@ class SentimentDetail(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Returns the keywords, label, sub-label and the score.
+    r"""Returns the keywords, label, sub-label and the score.
 
     """
 
@@ -548,7 +548,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Keyword(self):
-        """Returns the hit keywords.
+        r"""Returns the hit keywords.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -560,7 +560,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubLabel(self):
-        """Returns the sub-tags.
+        r"""Returns the sub-tags.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -572,7 +572,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """Returns the score for the sub-label
+        r"""Returns the score for the sub-label
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -598,7 +598,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TextModerationRequest(AbstractModel):
-    """TextModeration request structure.
+    r"""TextModeration request structure.
 
     """
 
@@ -626,7 +626,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Content(self):
-        """This field indicates the text content of the object to be moderated. The text needs to be encoded in utf-8 format and encrypted with Base64. It can contain up to 10,000 characters, calculated by unicode encoding.
+        r"""This field indicates the text content of the object to be moderated. The text needs to be encoded in utf-8 format and encrypted with Base64. It can contain up to 10,000 characters, calculated by unicode encoding.
         :rtype: str
         """
         return self._Content
@@ -637,7 +637,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def BizType(self):
-        """This field indicates the specific policy number, which is used for the API call and can be configured in the CMS console. If it's not entered (left empty), the default moderation policy is adopted. If it's entered, the moderation policies are specified for business scenarios. <br>Note: Biztype contains 3 to 32 characters, including numbers, letters and underscores only. Different Biztypes are associated with different business scenarios and moderation policies. Ensure that you use the Biztype corresponding to the policy you want to apply.
+        r"""This field indicates the specific policy number, which is used for the API call and can be configured in the CMS console. If it's not entered (left empty), the default moderation policy is adopted. If it's entered, the moderation policies are specified for business scenarios. <br>Note: Biztype contains 3 to 32 characters, including numbers, letters and underscores only. Different Biztypes are associated with different business scenarios and moderation policies. Ensure that you use the Biztype corresponding to the policy you want to apply.
         :rtype: str
         """
         return self._BizType
@@ -648,7 +648,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def DataId(self):
-        """This field indicates the data ID you assigned to the object to be moderated, which is convenient for you to identify and manage the file. <br>Value: this field can contain **up to 64 characters**, including uppercase and lowercase letters, numbers and four special symbols (_, -, @, #)
+        r"""This field indicates the data ID you assigned to the object to be moderated, which is convenient for you to identify and manage the file. <br>Value: this field can contain **up to 64 characters**, including uppercase and lowercase letters, numbers and four special symbols (_, -, @, #)
         :rtype: str
         """
         return self._DataId
@@ -659,7 +659,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def User(self):
-        """This field indicates the user information related with the object to be moderated, which can be used to identify violating users at risk.
+        r"""This field indicates the user information related with the object to be moderated, which can be used to identify violating users at risk.
         :rtype: :class:`tencentcloud.tms.v20201229.models.User`
         """
         return self._User
@@ -670,7 +670,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def Device(self):
-        """This field indicates the device information related with the object to be moderated, which can be used to identify violating devices at risk.
+        r"""This field indicates the device information related with the object to be moderated, which can be used to identify violating devices at risk.
         :rtype: :class:`tencentcloud.tms.v20201229.models.Device`
         """
         return self._Device
@@ -681,7 +681,7 @@ class TextModerationRequest(AbstractModel):
 
     @property
     def SourceLanguage(self):
-        """This field Indicates the original language of the content.The enumeration values are ("en", "zh", ""), where en means English, zh means Chinese, and an empty string means the default language is Chinese. It is recommended to enter "en" only when the language of the content is clearly "English".
+        r"""This field Indicates the original language of the content.The enumeration values are ("en", "zh", ""), where en means English, zh means Chinese, and an empty string means the default language is Chinese. It is recommended to enter "en" only when the language of the content is clearly "English".
         :rtype: str
         """
         return self._SourceLanguage
@@ -713,7 +713,7 @@ class TextModerationRequest(AbstractModel):
 
 
 class TextModerationResponse(AbstractModel):
-    """TextModeration response structure.
+    r"""TextModeration response structure.
 
     """
 
@@ -772,7 +772,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BizType(self):
-        """This field returns the BizType of the request parameters
+        r"""This field returns the BizType of the request parameters
         :rtype: str
         """
         return self._BizType
@@ -783,7 +783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """This field returns the **negative label with the highest priority** in the moderation results (DetailResults), which indicates the moderation result recommended by the model. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Normal**: normal content; **Porn**: pornographic content; **Abuse**: abusive content; **Ad**: advertising content; **Custom**: custom violating content, and others such as objectionable, insecure or inappropriate content.
+        r"""This field returns the **negative label with the highest priority** in the moderation results (DetailResults), which indicates the moderation result recommended by the model. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Normal**: normal content; **Porn**: pornographic content; **Abuse**: abusive content; **Ad**: advertising content; **Custom**: custom violating content, and others such as objectionable, insecure or inappropriate content.
         :rtype: str
         """
         return self._Label
@@ -794,7 +794,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestion(self):
-        """This field returns the follow-up moderation suggestions. The returned value indicates the recommended operation after obtaining the moderation result. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Block**: block; **Review**: human moderation; **Pass**: pass
+        r"""This field returns the follow-up moderation suggestions. The returned value indicates the recommended operation after obtaining the moderation result. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Block**: block; **Review**: human moderation; **Pass**: pass
         :rtype: str
         """
         return self._Suggestion
@@ -805,7 +805,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Keywords(self):
-        """This field returns the keywords matched with the libraries in the moderated text under the current label to mark the specific violations (for example, *Friend me*). This parameter may have multiple returned values, indicating multiple keywords are matched. If the returned value is empty and the `Score` is not empty, it means that the negative label corresponding to the moderation result is a value returned from the semantic model judgment
+        r"""This field returns the keywords matched with the libraries in the moderated text under the current label to mark the specific violations (for example, *Friend me*). This parameter may have multiple returned values, indicating multiple keywords are matched. If the returned value is empty and the `Score` is not empty, it means that the negative label corresponding to the moderation result is a value returned from the semantic model judgment
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: list of str
         """
@@ -817,7 +817,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Score(self):
-        """This field returns the confidence level under the current label. Value range: 0 (**the lowest confidence level**) - 100 (**the highest confidence level**). The higher the value, the more likely the text is to belong to the category indicated by the current label. For example, *pornographic 99* indicates that the text is very likely to be pornographic, and *pornographic 0* indicates that the text is not pornographic
+        r"""This field returns the confidence level under the current label. Value range: 0 (**the lowest confidence level**) - 100 (**the highest confidence level**). The higher the value, the more likely the text is to belong to the category indicated by the current label. For example, *pornographic 99* indicates that the text is very likely to be pornographic, and *pornographic 0* indicates that the text is not pornographic
         :rtype: int
         """
         return self._Score
@@ -828,7 +828,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def DetailResults(self):
-        """This field returns the moderation results based on the text libraries. For details, see `DetailResults` in the data structure
+        r"""This field returns the moderation results based on the text libraries. For details, see `DetailResults` in the data structure
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: list of DetailResults
         """
@@ -840,7 +840,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def RiskDetails(self):
-        """This field returns the detection results of violating accounts at risk, mainly including violation categories and risk levels. For details, see `RiskDetails` in the data structure
+        r"""This field returns the detection results of violating accounts at risk, mainly including violation categories and risk levels. For details, see `RiskDetails` in the data structure
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: list of RiskDetails
         """
@@ -852,7 +852,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Extra(self):
-        """This field returns the extra information configured according to your needs. If it's not configured, the returned value is empty by default. <br>Note: the returned information varies based on different customers or Biztypes. If you need to configure this field, please submit a ticket or contact after-sales manager
+        r"""This field returns the extra information configured according to your needs. If it's not configured, the returned value is empty by default. <br>Note: the returned information varies based on different customers or Biztypes. If you need to configure this field, please submit a ticket or contact after-sales manager
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -864,7 +864,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def DataId(self):
-        """This field returns the `DataId` in the request parameter corresponding to the moderated object
+        r"""This field returns the `DataId` in the request parameter corresponding to the moderated object
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -876,7 +876,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def SubLabel(self):
-        """The field returns the second-level labels under the current label.
+        r"""The field returns the second-level labels under the current label.
 Note: This field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
@@ -888,7 +888,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ContextText(self):
-        """Returns the context text.
+        r"""Returns the context text.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -900,7 +900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SentimentAnalysis(self):
-        """
+        r"""
         :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         """
         return self._SentimentAnalysis
@@ -911,7 +911,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HitType(self):
-        """
+        r"""
         :rtype: str
         """
         return self._HitType
@@ -922,7 +922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -962,7 +962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class User(AbstractModel):
-    """This field indicates the account-related information of the service subscriber
+    r"""This field indicates the account-related information of the service subscriber
 
     """
 
@@ -1014,7 +1014,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def UserId(self):
-        """This field indicates the service subscriber ID. This ID can be used to optimize the moderation result judgment based on the account's violation records, which is helpful for auxiliary judgment when there is a risk of suspected violations.
+        r"""This field indicates the service subscriber ID. This ID can be used to optimize the moderation result judgment based on the account's violation records, which is helpful for auxiliary judgment when there is a risk of suspected violations.
         :rtype: str
         """
         return self._UserId
@@ -1025,7 +1025,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def Nickname(self):
-        """This field indicates the account nickname information of the service subscriber.
+        r"""This field indicates the account nickname information of the service subscriber.
         :rtype: str
         """
         return self._Nickname
@@ -1036,7 +1036,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def AccountType(self):
-        """This field indicates the account type corresponding to the service subscriber ID.<br>
+        r"""This field indicates the account type corresponding to the service subscriber ID.<br>
 Use this field and the account ID (UserId) together to determine a unique account.
         :rtype: int
         """
@@ -1048,7 +1048,7 @@ Use this field and the account ID (UserId) together to determine a unique accoun
 
     @property
     def Gender(self):
-        """This field indicates the gender information of the service subscriber's account.<br>
+        r"""This field indicates the gender information of the service subscriber's account.<br>
 Values: **0** (default value, indicating the gender is unknown), **1** (male) and **2** (female).
         :rtype: int
         """
@@ -1060,7 +1060,7 @@ Values: **0** (default value, indicating the gender is unknown), **1** (male) an
 
     @property
     def Age(self):
-        """This field indicates the age information of the service subscriber's account.<br>
+        r"""This field indicates the age information of the service subscriber's account.<br>
 Values: Integers between **0** (default value, indicating that the age is unknown) and the number of (**custom maximum age**).
         :rtype: int
         """
@@ -1072,7 +1072,7 @@ Values: Integers between **0** (default value, indicating that the age is unknow
 
     @property
     def Level(self):
-        """This field indicates the level information of the service subscriber's account.<br>
+        r"""This field indicates the level information of the service subscriber's account.<br>
 Values: **0** (default value, indicating that the level is unknown), **1** (lower level), **2** (medium level) and **3** (higher level). Currently, **custom levels are not supported**.
         :rtype: int
         """
@@ -1084,7 +1084,7 @@ Values: **0** (default value, indicating that the level is unknown), **1** (lowe
 
     @property
     def Phone(self):
-        """This field indicates the mobile phone number information of the service subscriber's account. The mobile phone numbers in various regions of the world can be recorded.<br>
+        r"""This field indicates the mobile phone number information of the service subscriber's account. The mobile phone numbers in various regions of the world can be recorded.<br>
 Note: Please keep the format of mobile phone number uniform. For example, uniformly use the area code format (086/+86), etc.
         :rtype: str
         """
@@ -1096,7 +1096,7 @@ Note: Please keep the format of mobile phone number uniform. For example, unifor
 
     @property
     def HeadUrl(self):
-        """This field indicates the URL of the service subscriber's profile photos formatted with .png, .jpg, .jpeg, .bmp, .gif and .webp.
+        r"""This field indicates the URL of the service subscriber's profile photos formatted with .png, .jpg, .jpeg, .bmp, .gif and .webp.
 Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it takes more than 3 seconds to download, the "download timeout" is returned.
         :rtype: str
         """
@@ -1108,7 +1108,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def Desc(self):
-        """This field indicates the profile information of service subscribers. It can contain up to 5,000 characters, including Chinese characters, letters and special symbols.
+        r"""This field indicates the profile information of service subscribers. It can contain up to 5,000 characters, including Chinese characters, letters and special symbols.
         :rtype: str
         """
         return self._Desc
@@ -1119,7 +1119,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def RoomId(self):
-        """Room ID of the group chat.
+        r"""Room ID of the group chat.
         :rtype: str
         """
         return self._RoomId
@@ -1130,7 +1130,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def ReceiverId(self):
-        """Receiver ID.
+        r"""Receiver ID.
         :rtype: str
         """
         return self._ReceiverId
@@ -1141,7 +1141,7 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
 
     @property
     def SendTime(self):
-        """Generation time of the message, in ms.
+        r"""Generation time of the message, in ms.
         :rtype: int
         """
         return self._SendTime

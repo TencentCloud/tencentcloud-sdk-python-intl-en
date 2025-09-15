@@ -27,7 +27,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ActionAlterUser(self, request):
-        """This API is used to add and modify a user.
+        r"""This API is used to add and modify a user.
 
         :param request: Request instance for ActionAlterUser.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserRequest`
@@ -50,7 +50,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CancelBackupJob(self, request):
-        """This API is used to cancel the corresponding backup instance task.
+        r"""This API is used to cancel the corresponding backup instance task.
 
         :param request: Request instance for CancelBackupJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CancelBackupJobRequest`
@@ -73,7 +73,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CheckCoolDownWorkingVariableConfigCorrect(self, request):
-        """This API is used to check whether variables and configurations for hot/cold data layering are correct.
+        r"""This API is used to check whether variables and configurations for hot/cold data layering are correct.
 
         :param request: Request instance for CheckCoolDownWorkingVariableConfigCorrect.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectRequest`
@@ -96,7 +96,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CopyTableDatas(self, request):
-        """This API is used to copy the source table to the target table.
+        r"""This API is used to copy the source table to the target table.
 
         :param request: Request instance for CopyTableDatas.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CopyTableDatasRequest`
@@ -119,7 +119,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateBackUpSchedule(self, request):
-        """This API is used to create or modify backup policies.
+        r"""This API is used to create or modify backup policies.
 
         :param request: Request instance for CreateBackUpSchedule.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateBackUpScheduleRequest`
@@ -142,7 +142,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateCoolDownPolicy(self, request):
-        """This API is used to create a hot/cold data layering policy.
+        r"""This API is used to create a hot/cold data layering policy.
 
         :param request: Request instance for CreateCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyRequest`
@@ -165,7 +165,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateDatabase(self, request):
-        """This API is used to create a TCHouse-D database.
+        r"""This API is used to create a TCHouse-D database.
 
         :param request: Request instance for CreateDatabase.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateDatabaseRequest`
@@ -188,7 +188,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateInstanceNew(self, request):
-        """This API is used to create clusters.
+        r"""This API is used to create clusters.
 
         :param request: Request instance for CreateInstanceNew.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceNewRequest`
@@ -211,7 +211,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateTable(self, request):
-        """This API is used to create a TCHouse-D table under the specified database.
+        r"""This API is used to create a TCHouse-D table under the specified database.
 
         :param request: Request instance for CreateTable.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateTableRequest`
@@ -234,7 +234,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def CreateWorkloadGroup(self, request):
-        """This API is used to create resource groups.
+        r"""This API is used to create resource groups.
 
         :param request: Request instance for CreateWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateWorkloadGroupRequest`
@@ -257,7 +257,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DeleteBackUpData(self, request):
-        """This API is used to delete backup data.
+        r"""This API is used to delete backup data.
 
         :param request: Request instance for DeleteBackUpData.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DeleteBackUpDataRequest`
@@ -280,7 +280,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DeleteTable(self, request):
-        """This API is used to delete the specified table in the specified database.
+        r"""This API is used to delete the specified table in the specified database.
 
         :param request: Request instance for DeleteTable.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DeleteTableRequest`
@@ -303,7 +303,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DeleteWorkloadGroup(self, request):
-        """This API is used to delete resource groups.
+        r"""This API is used to delete resource groups.
 
         :param request: Request instance for DeleteWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DeleteWorkloadGroupRequest`
@@ -326,7 +326,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeAreaRegion(self, request):
-        """This API is used to display region information and the total number of clusters in each region on the cluster list page.
+        r"""This API is used to display region information and the total number of clusters in each region on the cluster list page.
 
         :param request: Request instance for DescribeAreaRegion.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeAreaRegionRequest`
@@ -349,7 +349,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpJob(self, request):
-        """This API is used to query the list of backup instances.
+        r"""This API is used to query the list of backup instances.
 
         :param request: Request instance for DescribeBackUpJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpJobRequest`
@@ -372,7 +372,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpJobDetail(self, request):
-        """This API is used to query backup task details.
+        r"""This API is used to query backup task details.
 
         :param request: Request instance for DescribeBackUpJobDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpJobDetailRequest`
@@ -395,7 +395,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpSchedules(self, request):
-        """This API is used to obtain the scheduled task information for the backup and migration.
+        r"""This API is used to obtain the scheduled task information for the backup and migration.
 
         :param request: Request instance for DescribeBackUpSchedules.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpSchedulesRequest`
@@ -418,7 +418,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpTables(self, request):
-        """This API is used to obtain the information of the table available for backup.
+        r"""This API is used to obtain the information of the table available for backup.
 
         :param request: Request instance for DescribeBackUpTables.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpTablesRequest`
@@ -441,7 +441,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeBackUpTaskDetail(self, request):
-        """This API is used to query the progress details of backup tasks.
+        r"""This API is used to query the progress details of backup tasks.
 
         :param request: Request instance for DescribeBackUpTaskDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeBackUpTaskDetailRequest`
@@ -464,7 +464,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeClusterConfigs(self, request):
-        """This API is used to get the contents of the latest configuration files (config.xml, metrika.xml, and user.xml) of the cluster and display them to the user.
+        r"""This API is used to get the contents of the latest configuration files (config.xml, metrika.xml, and user.xml) of the cluster and display them to the user.
 
         :param request: Request instance for DescribeClusterConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeClusterConfigsRequest`
@@ -487,7 +487,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeClusterConfigsHistory(self, request):
-        """This API is used to obtain the modification history of cluster configuration files.
+        r"""This API is used to obtain the modification history of cluster configuration files.
 
         :param request: Request instance for DescribeClusterConfigsHistory.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeClusterConfigsHistoryRequest`
@@ -510,7 +510,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownBackends(self, request):
-        """This API is used to query the list of backend nodes supporting hot/cold data layering.
+        r"""This API is used to query the list of backend nodes supporting hot/cold data layering.
 
         :param request: Request instance for DescribeCoolDownBackends.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsRequest`
@@ -533,7 +533,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownPolicies(self, request):
-        """This API is used to query the list of hot/cold data layering policies.
+        r"""This API is used to query the list of hot/cold data layering policies.
 
         :param request: Request instance for DescribeCoolDownPolicies.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesRequest`
@@ -556,7 +556,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCoolDownTableData(self, request):
-        """This API is used to query the layered hot and cold data in a table.
+        r"""This API is used to query the layered hot and cold data in a table.
 
         :param request: Request instance for DescribeCoolDownTableData.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataRequest`
@@ -579,7 +579,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeCreateTablesDDL(self, request):
-        """This API is used to batch obtain the table creation DDL.
+        r"""This API is used to batch obtain the table creation DDL.
 
         :param request: Request instance for DescribeCreateTablesDDL.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCreateTablesDDLRequest`
@@ -602,7 +602,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeDatabase(self, request):
-        """This API is used to obtain the database information under a specific data source.
+        r"""This API is used to obtain the database information under a specific data source.
 
         :param request: Request instance for DescribeDatabase.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseRequest`
@@ -625,7 +625,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeDatabaseAuditDownload(self, request):
-        """This API is used to download database audit logs.
+        r"""This API is used to download database audit logs.
 
         :param request: Request instance for DescribeDatabaseAuditDownload.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditDownloadRequest`
@@ -648,7 +648,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeDatabaseAuditRecords(self, request):
-        """This API is used to get database audit records.
+        r"""This API is used to get database audit records.
 
         :param request: Request instance for DescribeDatabaseAuditRecords.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeDatabaseAuditRecordsRequest`
@@ -671,7 +671,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """This API is used to query the specific information of a cluster based on the cluster ID.
+        r"""This API is used to query the specific information of a cluster based on the cluster ID.
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceRequest`
@@ -694,7 +694,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """This API is used to get the list of cluster node information.
+        r"""This API is used to get the list of cluster node information.
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesRequest`
@@ -717,7 +717,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodesInfo(self, request):
-        """This API is used to get the BE/FE node roles.
+        r"""This API is used to get the BE/FE node roles.
 
         :param request: Request instance for DescribeInstanceNodesInfo.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesInfoRequest`
@@ -740,7 +740,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodesRole(self, request):
-        """This API is used to obtain cluster node roles.
+        r"""This API is used to obtain cluster node roles.
 
         :param request: Request instance for DescribeInstanceNodesRole.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesRoleRequest`
@@ -763,7 +763,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceOperationHistory(self, request):
-        """This API is used to pull the operation list of the cluster. The API supports pagination query and filtering operation records by time range.
+        r"""This API is used to pull the operation list of the cluster. The API supports pagination query and filtering operation records by time range.
 
         :param request: Request instance for DescribeInstanceOperationHistory.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceOperationHistoryRequest`
@@ -786,7 +786,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        """This API is used to pull operations of the cluster on the cluster details page.
+        r"""This API is used to pull operations of the cluster on the cluster details page.
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceOperationsRequest`
@@ -809,7 +809,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceState(self, request):
-        """This API is used to display cluster status, process progress, etc. in the cluster details page.
+        r"""This API is used to display cluster status, process progress, etc. in the cluster details page.
 
         :param request: Request instance for DescribeInstanceState.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceStateRequest`
@@ -832,7 +832,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceUsedSubnets(self, request):
-        """This API is used to obtain the information of subnets used by the cluster.
+        r"""This API is used to obtain the information of subnets used by the cluster.
 
         :param request: Request instance for DescribeInstanceUsedSubnets.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceUsedSubnetsRequest`
@@ -855,7 +855,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to get the list of clusters.
+        r"""This API is used to get the list of clusters.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstancesRequest`
@@ -878,7 +878,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstancesHealthState(self, request):
-        """This API is used to check cluster health
+        r"""This API is used to check cluster health
 
         :param request: Request instance for DescribeInstancesHealthState.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstancesHealthStateRequest`
@@ -901,7 +901,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeQueryAnalyse(self, request):
-        """This API is used to obtain the SQL query details of the Doris user.
+        r"""This API is used to obtain the SQL query details of the Doris user.
 
         :param request: Request instance for DescribeQueryAnalyse.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeQueryAnalyseRequest`
@@ -924,7 +924,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeRestoreTaskDetail(self, request):
-        """This API is used to query the progress details of the recovery task.
+        r"""This API is used to query the progress details of the recovery task.
 
         :param request: Request instance for DescribeRestoreTaskDetail.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeRestoreTaskDetailRequest`
@@ -947,7 +947,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSlowQueryRecords(self, request):
-        """This API is used to get the slow log list.
+        r"""This API is used to get the slow log list.
 
         :param request: Request instance for DescribeSlowQueryRecords.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSlowQueryRecordsRequest`
@@ -970,7 +970,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSlowQueryRecordsDownload(self, request):
-        """This API is used to download slow log files.
+        r"""This API is used to download slow log files.
 
         :param request: Request instance for DescribeSlowQueryRecordsDownload.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSlowQueryRecordsDownloadRequest`
@@ -993,7 +993,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSpec(self, request):
-        """This API is used to pull the specification list of data nodes and zookeeper nodes for the cluster on the purchase page.
+        r"""This API is used to pull the specification list of data nodes and zookeeper nodes for the cluster on the purchase page.
 
         :param request: Request instance for DescribeSpec.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSpecRequest`
@@ -1016,7 +1016,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSqlApis(self, request):
-        """This API is used to query the cluster information by executing SQL commands.
+        r"""This API is used to query the cluster information by executing SQL commands.
 
         :param request: Request instance for DescribeSqlApis.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSqlApisRequest`
@@ -1039,7 +1039,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeTable(self, request):
-        """This API is used to obtain the table information. It only supports querying table information in the TCHouse-D internal catalog.
+        r"""This API is used to obtain the table information. It only supports querying table information in the TCHouse-D internal catalog.
 
         :param request: Request instance for DescribeTable.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeTableRequest`
@@ -1062,7 +1062,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeTableList(self, request):
-        """This API is used to obtain the list of tables under the specified data source and database.
+        r"""This API is used to obtain the list of tables under the specified data source and database.
 
         :param request: Request instance for DescribeTableList.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeTableListRequest`
@@ -1085,7 +1085,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeUserBindWorkloadGroup(self, request):
-        """This API is used to obtain the resource information bound to each user in the current cluster.
+        r"""This API is used to obtain the resource information bound to each user in the current cluster.
 
         :param request: Request instance for DescribeUserBindWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeUserBindWorkloadGroupRequest`
@@ -1108,7 +1108,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeUserPolicy(self, request):
-        """This API is used to obtain detailed information of Doris users, including account information, permission host, and permission configuration.
+        r"""This API is used to obtain detailed information of Doris users, including account information, permission host, and permission configuration.
 
         :param request: Request instance for DescribeUserPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeUserPolicyRequest`
@@ -1131,7 +1131,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeWorkloadGroup(self, request):
-        """This API is used to obtain resource group information.
+        r"""This API is used to obtain resource group information.
 
         :param request: Request instance for DescribeWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeWorkloadGroupRequest`
@@ -1154,7 +1154,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DestroyInstance(self, request):
-        """This API is used to terminate clusters.
+        r"""This API is used to terminate clusters.
 
         :param request: Request instance for DestroyInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DestroyInstanceRequest`
@@ -1177,7 +1177,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ExecuteParametrizedQuery(self, request):
-        """This API is used to execute an SQL query statement with parameters and return the query results.
+        r"""This API is used to execute an SQL query statement with parameters and return the query results.
 
         :param request: Request instance for ExecuteParametrizedQuery.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ExecuteParametrizedQueryRequest`
@@ -1200,7 +1200,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ExecuteSelectQuery(self, request):
-        """This API is used to query data according to the specified database and table name, and support field selection and pagination.
+        r"""This API is used to query data according to the specified database and table name, and support field selection and pagination.
 
         :param request: Request instance for ExecuteSelectQuery.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ExecuteSelectQueryRequest`
@@ -1223,7 +1223,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def InsertDatasToTable(self, request):
-        """This API is used to insert data into TCHouse-D.
+        r"""This API is used to insert data into TCHouse-D.
 
         :param request: Request instance for InsertDatasToTable.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.InsertDatasToTableRequest`
@@ -1246,7 +1246,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyClusterConfigs(self, request):
-        """This API is used to modify the XML cluster configuration file on the cluster configuration page.
+        r"""This API is used to modify the XML cluster configuration file on the cluster configuration page.
 
         :param request: Request instance for ModifyClusterConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsRequest`
@@ -1269,7 +1269,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyCoolDownPolicy(self, request):
-        """This API is used to modify the hot/cold data layering policy.
+        r"""This API is used to modify the hot/cold data layering policy.
 
         :param request: Request instance for ModifyCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyRequest`
@@ -1292,7 +1292,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyDatabaseTableAccess(self, request):
-        """This API is used to GRANT and REVOKE the database and table in the Doris database.
+        r"""This API is used to GRANT and REVOKE the database and table in the Doris database.
 
         :param request: Request instance for ModifyDatabaseTableAccess.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyDatabaseTableAccessRequest`
@@ -1315,7 +1315,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify the cluster's name.
+        r"""This API is used to modify the cluster's name.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyInstanceRequest`
@@ -1338,7 +1338,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyInstanceKeyValConfigs(self, request):
-        """This API is used to modify configurations in the KV mode.
+        r"""This API is used to modify configurations in the KV mode.
 
         :param request: Request instance for ModifyInstanceKeyValConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyInstanceKeyValConfigsRequest`
@@ -1361,7 +1361,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyNodeStatus(self, request):
-        """This API is used to change the node status.
+        r"""This API is used to change the node status.
 
         :param request: Request instance for ModifyNodeStatus.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyNodeStatusRequest`
@@ -1384,7 +1384,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifySecurityGroups(self, request):
-        """This API is used to edit security groups.
+        r"""This API is used to edit security groups.
 
         :param request: Request instance for ModifySecurityGroups.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifySecurityGroupsRequest`
@@ -1407,7 +1407,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyUserBindWorkloadGroup(self, request):
-        """This API is used to modify the resource group bound to the user.
+        r"""This API is used to modify the resource group bound to the user.
 
         :param request: Request instance for ModifyUserBindWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyUserBindWorkloadGroupRequest`
@@ -1430,7 +1430,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyUserPrivilegesV3(self, request):
-        """This API is used to modify user permissions and support three permission setting categories: catalog, all db, and some db tables.
+        r"""This API is used to modify user permissions and support three permission setting categories: catalog, all db, and some db tables.
 
         :param request: Request instance for ModifyUserPrivilegesV3.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyUserPrivilegesV3Request`
@@ -1453,7 +1453,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyWorkloadGroup(self, request):
-        """This API is used to modify the resource group information.
+        r"""This API is used to modify the resource group information.
 
         :param request: Request instance for ModifyWorkloadGroup.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyWorkloadGroupRequest`
@@ -1476,7 +1476,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ModifyWorkloadGroupStatus(self, request):
-        """This API is used to enable or disable resource groups.
+        r"""This API is used to enable or disable resource groups.
 
         :param request: Request instance for ModifyWorkloadGroupStatus.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyWorkloadGroupStatusRequest`
@@ -1499,7 +1499,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def OpenCoolDown(self, request):
-        """This API is used to enable hot/cold data layering.
+        r"""This API is used to enable hot/cold data layering.
 
         :param request: Request instance for OpenCoolDown.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownRequest`
@@ -1522,7 +1522,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def OpenCoolDownPolicy(self, request):
-        """This API is used to enable and describe the cold storage policy.
+        r"""This API is used to enable and describe the cold storage policy.
 
         :param request: Request instance for OpenCoolDownPolicy.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyRequest`
@@ -1545,7 +1545,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def QueryTableData(self, request):
-        """This API is used to query data according to the specified database and table names, and support field selection and pagination.
+        r"""This API is used to query data according to the specified database and table names, and support field selection and pagination.
 
         :param request: Request instance for QueryTableData.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.QueryTableDataRequest`
@@ -1568,7 +1568,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RecoverBackUpJob(self, request):
-        """This API is used to back up and recover.
+        r"""This API is used to back up and recover.
 
         :param request: Request instance for RecoverBackUpJob.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RecoverBackUpJobRequest`
@@ -1591,7 +1591,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ReduceInstance(self, request):
-        """This API is used to scale in clusters.
+        r"""This API is used to scale in clusters.
 
         :param request: Request instance for ReduceInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ReduceInstanceRequest`
@@ -1614,7 +1614,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ResizeDisk(self, request):
-        """This API is used to expand cloud disks.
+        r"""This API is used to expand cloud disks.
 
         :param request: Request instance for ResizeDisk.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ResizeDiskRequest`
@@ -1637,7 +1637,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RestartClusterForConfigs(self, request):
-        """This API is used to restart the cluster to make the configuration file take effect.
+        r"""This API is used to restart the cluster to make the configuration file take effect.
 
         :param request: Request instance for RestartClusterForConfigs.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RestartClusterForConfigsRequest`
@@ -1660,7 +1660,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def RestartClusterForNode(self, request):
-        """This API is used to indicate the rolling restart of the clusters.
+        r"""This API is used to indicate the rolling restart of the clusters.
 
         :param request: Request instance for RestartClusterForNode.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.RestartClusterForNodeRequest`
@@ -1683,7 +1683,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """This API is used to horizontally scale out nodes.
+        r"""This API is used to horizontally scale out nodes.
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ScaleOutInstanceRequest`
@@ -1706,7 +1706,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """This API is used to scale up/down computing resources.
+        r"""This API is used to scale up/down computing resources.
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ScaleUpInstanceRequest`
@@ -1729,7 +1729,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def UpdateCoolDown(self, request):
-        """This API is used to update the hot/cold data layering information on a cluster.
+        r"""This API is used to update the hot/cold data layering information on a cluster.
 
         :param request: Request instance for UpdateCoolDown.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownRequest`
@@ -1752,7 +1752,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def UpdateDatabase(self, request):
-        """This API is used to modify the attributes of a specified database, including setting the data volume quota, renaming the database, setting the replica quantity quota, and modifying other attributes of the database.
+        r"""This API is used to modify the attributes of a specified database, including setting the data volume quota, renaming the database, setting the replica quantity quota, and modifying other attributes of the database.
 
         :param request: Request instance for UpdateDatabase.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateDatabaseRequest`
@@ -1775,7 +1775,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def UpdateTableSchema(self, request):
-        """This API is used to modify the attributes of a specified table. The API parameters are consistent with those for creating a table.
+        r"""This API is used to modify the attributes of a specified table. The API parameters are consistent with those for creating a table.
 
         :param request: Request instance for UpdateTableSchema.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateTableSchemaRequest`

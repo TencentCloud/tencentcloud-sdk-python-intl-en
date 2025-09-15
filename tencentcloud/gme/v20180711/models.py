@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AppStatisticsItem(AbstractModel):
-    """Application usage statistics
+    r"""Application usage statistics
 
     """
 
@@ -60,7 +60,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealtimeSpeechStatisticsItem(self):
-        """Voice Chat statistics
+        r"""Voice Chat statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
         """
@@ -72,7 +72,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VoiceMessageStatisticsItem(self):
-        """Voice Message statistics
+        r"""Voice Message statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
         """
@@ -84,7 +84,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VoiceFilterStatisticsItem(self):
-        """Phrase Filtering statistics
+        r"""Phrase Filtering statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
         """
@@ -96,7 +96,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Date(self):
-        """Reference period
+        r"""Reference period
         :rtype: str
         """
         return self._Date
@@ -107,7 +107,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AudioTextStatisticsItem(self):
-        """Recording-to-Text usage statistics
+        r"""Recording-to-Text usage statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
         """
@@ -119,7 +119,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StreamTextStatisticsItem(self):
-        """Stream-to-Text usage statistics
+        r"""Stream-to-Text usage statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
         """
@@ -131,7 +131,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OverseaTextStatisticsItem(self):
-        """Usage statistics of Voice-to-Text of outside-MLC requests
+        r"""Usage statistics of Voice-to-Text of outside-MLC requests
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
         """
@@ -143,7 +143,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealtimeTextStatisticsItem(self):
-        """Real-time Voice-to-Text usage statistics
+        r"""Real-time Voice-to-Text usage statistics
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
         """
@@ -188,7 +188,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class ApplicationDataStatistics(AbstractModel):
-    """Application statistics
+    r"""Application statistics
 
     """
 
@@ -237,7 +237,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: int
         """
         return self._BizId
@@ -248,7 +248,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataNum(self):
-        """Number of DAU metrics
+        r"""Number of DAU metrics
         :rtype: int
         """
         return self._DauDataNum
@@ -259,7 +259,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataMainland(self):
-        """DAUs in the Chinese mainland
+        r"""DAUs in the Chinese mainland
         :rtype: list of StatisticsItem
         """
         return self._DauDataMainland
@@ -270,7 +270,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataOversea(self):
-        """DAUs outside the Chinese mainland
+        r"""DAUs outside the Chinese mainland
         :rtype: list of StatisticsItem
         """
         return self._DauDataOversea
@@ -281,7 +281,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataSum(self):
-        """Total DAUs
+        r"""Total DAUs
         :rtype: list of StatisticsItem
         """
         return self._DauDataSum
@@ -292,7 +292,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataNum(self):
-        """Number of Voice Chat metrics
+        r"""Number of Voice Chat metrics
         :rtype: int
         """
         return self._DurationDataNum
@@ -303,7 +303,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataMainland(self):
-        """Duration of Voice Chat in the Chinese mainland (in minutes)
+        r"""Duration of Voice Chat in the Chinese mainland (in minutes)
         :rtype: list of StatisticsItem
         """
         return self._DurationDataMainland
@@ -314,7 +314,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataOversea(self):
-        """Duration of Voice Chat outside the Chinese mainland (in minutes)
+        r"""Duration of Voice Chat outside the Chinese mainland (in minutes)
         :rtype: list of StatisticsItem
         """
         return self._DurationDataOversea
@@ -325,7 +325,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataSum(self):
-        """Total duration of Voice Chat (in minutes)
+        r"""Total duration of Voice Chat (in minutes)
         :rtype: list of StatisticsItem
         """
         return self._DurationDataSum
@@ -336,7 +336,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataNum(self):
-        """Number of PCU metrics
+        r"""Number of PCU metrics
         :rtype: int
         """
         return self._PcuDataNum
@@ -347,7 +347,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataMainland(self):
-        """PCUs in the Chinese mainland
+        r"""PCUs in the Chinese mainland
         :rtype: list of StatisticsItem
         """
         return self._PcuDataMainland
@@ -358,7 +358,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataOversea(self):
-        """PCUs outside the Chinese mainland
+        r"""PCUs outside the Chinese mainland
         :rtype: list of StatisticsItem
         """
         return self._PcuDataOversea
@@ -369,7 +369,7 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataSum(self):
-        """Total PCUs
+        r"""Total PCUs
         :rtype: list of StatisticsItem
         """
         return self._PcuDataSum
@@ -449,7 +449,7 @@ class ApplicationDataStatistics(AbstractModel):
 
 
 class AsrConf(AbstractModel):
-    """Configuration information of Speech-to-Text
+    r"""Configuration information of Speech-to-Text
 
     """
 
@@ -462,7 +462,7 @@ class AsrConf(AbstractModel):
 
     @property
     def Status(self):
-        """Speech-to-Text status. Valid values: `open`, `close`.
+        r"""Speech-to-Text status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -485,7 +485,7 @@ class AsrConf(AbstractModel):
 
 
 class AudioTextStatisticsItem(AbstractModel):
-    """Recording-to-Text usage statistics
+    r"""Recording-to-Text usage statistics
 
     """
 
@@ -499,7 +499,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        """Statistical value (in seconds)
+        r"""Statistical value (in seconds)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -523,7 +523,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class CreateAppRequest(AbstractModel):
-    """CreateApp request structure.
+    r"""CreateApp request structure.
 
     """
 
@@ -562,7 +562,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def AppName(self):
-        """Application name
+        r"""Application name
         :rtype: str
         """
         return self._AppName
@@ -573,7 +573,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def ProjectId(self):
-        """Tencent Cloud project ID. Default value: 0, which means that the default project is used.
+        r"""Tencent Cloud project ID. Default value: 0, which means that the default project is used.
         :rtype: int
         """
         return self._ProjectId
@@ -584,7 +584,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def EngineList(self):
-        """List of engines to be supported.
+        r"""List of engines to be supported.
 Valid values: `android`, `ios`, `unity`, `cocos`, `unreal`, `windows`. All values are selected by default.
         :rtype: list of str
         """
@@ -596,7 +596,7 @@ Valid values: `android`, `ios`, `unity`, `cocos`, `unreal`, `windows`. All value
 
     @property
     def RegionList(self):
-        """List of regions.
+        r"""List of regions.
 Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan (China)), `sea` (Southeast Asia), `na` (North America), `eu` (Europe), `jpkr` (Japan, Korea and Asia Pacific), `sa` (South America), `oc` (Oceania), `me` (Middle East). All values are selected by default.
         :rtype: list of str
         """
@@ -608,7 +608,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def RealtimeSpeechConf(self):
-        """Configuration information of Voice Chat
+        r"""Configuration information of Voice Chat
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
         """
         return self._RealtimeSpeechConf
@@ -619,7 +619,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def VoiceMessageConf(self):
-        """Configuration information of Voice Messaging
+        r"""Configuration information of Voice Messaging
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
         """
         return self._VoiceMessageConf
@@ -630,7 +630,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def VoiceFilterConf(self):
-        """Configuration information of Voice Analysis Service
+        r"""Configuration information of Voice Analysis Service
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         """
         return self._VoiceFilterConf
@@ -641,7 +641,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def AsrConf(self):
-        """Configuration information of Speech-to-Text
+        r"""Configuration information of Speech-to-Text
         :rtype: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         """
         return self._AsrConf
@@ -652,7 +652,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def Tags(self):
-        """List of tags to be added
+        r"""List of tags to be added
         :rtype: list of Tag
         """
         return self._Tags
@@ -696,7 +696,7 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
 
 class CreateAppResp(AbstractModel):
-    """Output parameters of `CreateApp`
+    r"""Output parameters of `CreateApp`
 
     """
 
@@ -733,7 +733,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID, automatically generated by the backend.
+        r"""Application ID, automatically generated by the backend.
         :rtype: int
         """
         return self._BizId
@@ -744,7 +744,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def AppName(self):
-        """Application name, the input of `AppName`.
+        r"""Application name, the input of `AppName`.
         :rtype: str
         """
         return self._AppName
@@ -755,7 +755,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID, the input of `ProjectId`.
+        r"""Project ID, the input of `ProjectId`.
         :rtype: int
         """
         return self._ProjectId
@@ -766,7 +766,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def SecretKey(self):
-        """Application key, used to initialize GME SDK.
+        r"""Application key, used to initialize GME SDK.
         :rtype: str
         """
         return self._SecretKey
@@ -777,7 +777,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Timestamp, indicating when the service is created.
+        r"""Timestamp, indicating when the service is created.
         :rtype: int
         """
         return self._CreateTime
@@ -788,7 +788,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def RealtimeSpeechConf(self):
-        """Configuration information of Voice Chat
+        r"""Configuration information of Voice Chat
         :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
         """
         return self._RealtimeSpeechConf
@@ -799,7 +799,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def VoiceMessageConf(self):
-        """Configuration information of Voice Messaging
+        r"""Configuration information of Voice Messaging
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
         """
         return self._VoiceMessageConf
@@ -810,7 +810,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def VoiceFilterConf(self):
-        """Configuration information of Voice Analysis Service
+        r"""Configuration information of Voice Analysis Service
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         """
         return self._VoiceFilterConf
@@ -821,7 +821,7 @@ class CreateAppResp(AbstractModel):
 
     @property
     def AsrConf(self):
-        """Configuration information of Speech-to-Text
+        r"""Configuration information of Speech-to-Text
         :rtype: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         """
         return self._AsrConf
@@ -860,7 +860,7 @@ class CreateAppResp(AbstractModel):
 
 
 class CreateAppResponse(AbstractModel):
-    """CreateApp response structure.
+    r"""CreateApp response structure.
 
     """
 
@@ -876,7 +876,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Returned data
+        r"""Returned data
         :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAppResp`
         """
         return self._Data
@@ -887,7 +887,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -905,7 +905,7 @@ class CreateAppResponse(AbstractModel):
 
 
 class DeleteResult(AbstractModel):
-    """Result of the operation to delete a room or remove members
+    r"""Result of the operation to delete a room or remove members
 
     """
 
@@ -921,7 +921,7 @@ class DeleteResult(AbstractModel):
 
     @property
     def Code(self):
-        """Status code. `0`: Succeeded. Others: Failed\
+        r"""Status code. `0`: Succeeded. Others: Failed\
         :rtype: int
         """
         return self._Code
@@ -932,7 +932,7 @@ class DeleteResult(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        """Description
+        r"""Description
         :rtype: str
         """
         return self._ErrorMsg
@@ -956,7 +956,7 @@ class DeleteResult(AbstractModel):
 
 
 class DeleteRoomMemberRequest(AbstractModel):
-    """DeleteRoomMember request structure.
+    r"""DeleteRoomMember request structure.
 
     """
 
@@ -978,7 +978,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """ID of the target room
+        r"""ID of the target room
         :rtype: str
         """
         return self._RoomId
@@ -989,7 +989,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def Uids(self):
-        """List of the members to remove
+        r"""List of the members to remove
         :rtype: list of str
         """
         return self._Uids
@@ -1000,7 +1000,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def DeleteType(self):
-        """Operation type. `1`: Delete a room; `2`: Remove members
+        r"""Operation type. `1`: Delete a room; `2`: Remove members
         :rtype: int
         """
         return self._DeleteType
@@ -1011,7 +1011,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: int
         """
         return self._BizId
@@ -1037,7 +1037,7 @@ class DeleteRoomMemberRequest(AbstractModel):
 
 
 class DeleteRoomMemberResponse(AbstractModel):
-    """DeleteRoomMember response structure.
+    r"""DeleteRoomMember response structure.
 
     """
 
@@ -1053,7 +1053,7 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
-        """Result of the operation to delete a room or remove a member
+        r"""Result of the operation to delete a room or remove a member
         :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
         """
         return self._DeleteResult
@@ -1064,7 +1064,7 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1082,7 +1082,7 @@ class DeleteRoomMemberResponse(AbstractModel):
 
 
 class DescribeAppStatisticsRequest(AbstractModel):
-    """DescribeAppStatistics request structure.
+    r"""DescribeAppStatistics request structure.
 
     """
 
@@ -1104,7 +1104,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """GME application ID
+        r"""GME application ID
         :rtype: int
         """
         return self._BizId
@@ -1115,7 +1115,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
+        r"""Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
         :rtype: str
         """
         return self._StartDate
@@ -1126,7 +1126,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
+        r"""Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
         :rtype: str
         """
         return self._EndDate
@@ -1137,7 +1137,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def Services(self):
-        """List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.
+        r"""List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.
         :rtype: list of str
         """
         return self._Services
@@ -1163,7 +1163,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
 
 class DescribeAppStatisticsResp(AbstractModel):
-    """Output parameters of application usage statistics
+    r"""Output parameters of application usage statistics
 
     """
 
@@ -1176,7 +1176,7 @@ class DescribeAppStatisticsResp(AbstractModel):
 
     @property
     def AppStatistics(self):
-        """Application usage statistics
+        r"""Application usage statistics
         :rtype: list of AppStatisticsItem
         """
         return self._AppStatistics
@@ -1204,7 +1204,7 @@ class DescribeAppStatisticsResp(AbstractModel):
 
 
 class DescribeAppStatisticsResponse(AbstractModel):
-    """DescribeAppStatistics response structure.
+    r"""DescribeAppStatistics response structure.
 
     """
 
@@ -1220,7 +1220,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Application usage statistics
+        r"""Application usage statistics
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
         """
         return self._Data
@@ -1231,7 +1231,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1249,7 +1249,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
 
 class DescribeApplicationDataRequest(AbstractModel):
-    """DescribeApplicationData request structure.
+    r"""DescribeApplicationData request structure.
 
     """
 
@@ -1268,7 +1268,7 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID
+        r"""Application ID
         :rtype: int
         """
         return self._BizId
@@ -1279,7 +1279,7 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        """Data start date in the format of yyyy-mm-dd, such as 2018-07-13.
+        r"""Data start date in the format of yyyy-mm-dd, such as 2018-07-13.
         :rtype: str
         """
         return self._StartDate
@@ -1290,7 +1290,7 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        """Data end date in the format of yyyy-mm-dd, such as 2018-07-13.
+        r"""Data end date in the format of yyyy-mm-dd, such as 2018-07-13.
         :rtype: str
         """
         return self._EndDate
@@ -1315,7 +1315,7 @@ class DescribeApplicationDataRequest(AbstractModel):
 
 
 class DescribeApplicationDataResponse(AbstractModel):
-    """DescribeApplicationData response structure.
+    r"""DescribeApplicationData response structure.
 
     """
 
@@ -1331,7 +1331,7 @@ class DescribeApplicationDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Application statistics
+        r"""Application statistics
         :rtype: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
         """
         return self._Data
@@ -1342,7 +1342,7 @@ class DescribeApplicationDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1360,7 +1360,7 @@ class DescribeApplicationDataResponse(AbstractModel):
 
 
 class DescribeRecordInfoRequest(AbstractModel):
-    """DescribeRecordInfo request structure.
+    r"""DescribeRecordInfo request structure.
 
     """
 
@@ -1376,7 +1376,7 @@ class DescribeRecordInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the ongoing task, which is returned from the `StartRecord` API.
+        r"""ID of the ongoing task, which is returned from the `StartRecord` API.
         :rtype: int
         """
         return self._TaskId
@@ -1387,7 +1387,7 @@ class DescribeRecordInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: int
         """
         return self._BizId
@@ -1411,7 +1411,7 @@ class DescribeRecordInfoRequest(AbstractModel):
 
 
 class DescribeRecordInfoResponse(AbstractModel):
-    """DescribeRecordInfo response structure.
+    r"""DescribeRecordInfo response structure.
 
     """
 
@@ -1434,7 +1434,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordInfo(self):
-        """Information about the recording task.
+        r"""Information about the recording task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RecordInfo
         """
@@ -1446,7 +1446,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordMode(self):
-        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        r"""Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
         :rtype: int
         """
         return self._RecordMode
@@ -1457,7 +1457,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoomId(self):
-        """Room ID.
+        r"""Room ID.
         :rtype: str
         """
         return self._RoomId
@@ -1468,7 +1468,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1491,7 +1491,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTaskInfoRequest(AbstractModel):
-    """DescribeTaskInfo request structure.
+    r"""DescribeTaskInfo request structure.
 
     """
 
@@ -1507,7 +1507,7 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: int
         """
         return self._BizId
@@ -1518,7 +1518,7 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """Room ID.
+        r"""Room ID.
         :rtype: str
         """
         return self._RoomId
@@ -1542,7 +1542,7 @@ class DescribeTaskInfoRequest(AbstractModel):
 
 
 class DescribeTaskInfoResponse(AbstractModel):
-    """DescribeTaskInfo response structure.
+    r"""DescribeTaskInfo response structure.
 
     """
 
@@ -1567,7 +1567,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """ID of the ongoing task, which is returned from the `StartRecord` API.
+        r"""ID of the ongoing task, which is returned from the `StartRecord` API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1579,7 +1579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordMode(self):
-        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        r"""Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -1591,7 +1591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeRecordUserIds(self):
-        """Allowlist or blocklist for stream subscription.
+        r"""Allowlist or blocklist for stream subscription.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
@@ -1603,7 +1603,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1623,7 +1623,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ModifyAppStatusRequest(AbstractModel):
-    """ModifyAppStatus request structure.
+    r"""ModifyAppStatus request structure.
 
     """
 
@@ -1639,7 +1639,7 @@ class ModifyAppStatusRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID, which is generated and returned by the backend after the application creation.
+        r"""Application ID, which is generated and returned by the backend after the application creation.
         :rtype: int
         """
         return self._BizId
@@ -1650,7 +1650,7 @@ class ModifyAppStatusRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Application status. Valid values: `open`, `close`.
+        r"""Application status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -1674,7 +1674,7 @@ class ModifyAppStatusRequest(AbstractModel):
 
 
 class ModifyAppStatusResp(AbstractModel):
-    """Output parameters of `ModifyAppStatus`
+    r"""Output parameters of `ModifyAppStatus`
 
     """
 
@@ -1690,7 +1690,7 @@ class ModifyAppStatusResp(AbstractModel):
 
     @property
     def BizId(self):
-        """GME application ID
+        r"""GME application ID
         :rtype: int
         """
         return self._BizId
@@ -1701,7 +1701,7 @@ class ModifyAppStatusResp(AbstractModel):
 
     @property
     def Status(self):
-        """Application status. Valid values: `open`, `close`.
+        r"""Application status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -1725,7 +1725,7 @@ class ModifyAppStatusResp(AbstractModel):
 
 
 class ModifyAppStatusResponse(AbstractModel):
-    """ModifyAppStatus response structure.
+    r"""ModifyAppStatus response structure.
 
     """
 
@@ -1741,7 +1741,7 @@ class ModifyAppStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Returned data
+        r"""Returned data
         :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResp`
         """
         return self._Data
@@ -1752,7 +1752,7 @@ class ModifyAppStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1770,7 +1770,7 @@ class ModifyAppStatusResponse(AbstractModel):
 
 
 class ModifyRecordInfoRequest(AbstractModel):
-    """ModifyRecordInfo request structure.
+    r"""ModifyRecordInfo request structure.
 
     """
 
@@ -1792,7 +1792,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """ID of the ongoing task, which is returned from the `StartRecord` API.
+        r"""ID of the ongoing task, which is returned from the `StartRecord` API.
         :rtype: int
         """
         return self._TaskId
@@ -1803,7 +1803,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def RecordMode(self):
-        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        r"""Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
         :rtype: int
         """
         return self._RecordMode
@@ -1814,7 +1814,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: int
         """
         return self._BizId
@@ -1825,7 +1825,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
-        """Allowlist or blocklist for stream subscription.
+        r"""Allowlist or blocklist for stream subscription.
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         return self._SubscribeRecordUserIds
@@ -1853,7 +1853,7 @@ class ModifyRecordInfoRequest(AbstractModel):
 
 
 class ModifyRecordInfoResponse(AbstractModel):
-    """ModifyRecordInfo response structure.
+    r"""ModifyRecordInfo response structure.
 
     """
 
@@ -1866,7 +1866,7 @@ class ModifyRecordInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1881,7 +1881,7 @@ class ModifyRecordInfoResponse(AbstractModel):
 
 
 class OverseaTextStatisticsItem(AbstractModel):
-    """Usage statistics of Voice-to-Text of outside-MLC requests
+    r"""Usage statistics of Voice-to-Text of outside-MLC requests
 
     """
 
@@ -1895,7 +1895,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        """Statistical value (in seconds)
+        r"""Statistical value (in seconds)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -1919,7 +1919,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class RealTimeSpeechStatisticsItem(AbstractModel):
-    """Voice Chat usage statistics
+    r"""Voice Chat usage statistics
 
     """
 
@@ -1947,7 +1947,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandDau(self):
-        """DAUs in the Chinese mainland
+        r"""DAUs in the Chinese mainland
         :rtype: int
         """
         return self._MainLandDau
@@ -1958,7 +1958,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandPcu(self):
-        """PCUs in the Chinese mainland
+        r"""PCUs in the Chinese mainland
         :rtype: int
         """
         return self._MainLandPcu
@@ -1969,7 +1969,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandDuration(self):
-        """Total duration of use in the Chinese mainland (in minutes)
+        r"""Total duration of use in the Chinese mainland (in minutes)
         :rtype: int
         """
         return self._MainLandDuration
@@ -1980,7 +1980,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaDau(self):
-        """DAUs outside the Chinese mainland
+        r"""DAUs outside the Chinese mainland
         :rtype: int
         """
         return self._OverseaDau
@@ -1991,7 +1991,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaPcu(self):
-        """PCUs outside the Chinese mainland
+        r"""PCUs outside the Chinese mainland
         :rtype: int
         """
         return self._OverseaPcu
@@ -2002,7 +2002,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaDuration(self):
-        """Total duration of use outside the Chinese mainland (in minutes)
+        r"""Total duration of use outside the Chinese mainland (in minutes)
         :rtype: int
         """
         return self._OverseaDuration
@@ -2030,7 +2030,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
 
 class RealtimeSpeechConf(AbstractModel):
-    """Configuration information of Voice Chat
+    r"""Configuration information of Voice Chat
 
     """
 
@@ -2046,7 +2046,7 @@ class RealtimeSpeechConf(AbstractModel):
 
     @property
     def Status(self):
-        """Voice Chat status. Valid values: `open`, `close`.
+        r"""Voice Chat status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -2057,7 +2057,7 @@ class RealtimeSpeechConf(AbstractModel):
 
     @property
     def Quality(self):
-        """Voice Chat sound quality type. Valid values: `high` (HD), `ordinary` (SD).
+        r"""Voice Chat sound quality type. Valid values: `high` (HD), `ordinary` (SD).
         :rtype: str
         """
         return self._Quality
@@ -2081,7 +2081,7 @@ class RealtimeSpeechConf(AbstractModel):
 
 
 class RealtimeTextStatisticsItem(AbstractModel):
-    """Real-time Voice-to-Text usage statistics
+    r"""Real-time Voice-to-Text usage statistics
 
     """
 
@@ -2095,7 +2095,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        """Statistical value (in seconds)
+        r"""Statistical value (in seconds)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -2119,7 +2119,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class RecordInfo(AbstractModel):
-    """Information about the recording task in a room.
+    r"""Information about the recording task in a room.
     Note: This field may return `null`, indicating that no valid values can be obtained.
 
     """
@@ -2142,7 +2142,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def UserId(self):
-        """User ID. The value is `0` in mixed streams recording mode.
+        r"""User ID. The value is `0` in mixed streams recording mode.
         :rtype: str
         """
         return self._UserId
@@ -2153,7 +2153,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def FileName(self):
-        """Recording filename.
+        r"""Recording filename.
         :rtype: str
         """
         return self._FileName
@@ -2164,7 +2164,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordBeginTime(self):
-        """Recording start time, which is a Unix timestamp. Example: 1234567868.
+        r"""Recording start time, which is a Unix timestamp. Example: 1234567868.
         :rtype: int
         """
         return self._RecordBeginTime
@@ -2175,7 +2175,7 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordStatus(self):
-        """Recording status. Valid values: `2`: recording; `10`: to be transcoded; `11`: transcoding; `12`: uploading; `13`: uploaded; `14`: user notified.
+        r"""Recording status. Valid values: `2`: recording; `10`: to be transcoded; `11`: transcoding; `12`: uploading; `13`: uploaded; `14`: user notified.
         :rtype: int
         """
         return self._RecordStatus
@@ -2201,7 +2201,7 @@ class RecordInfo(AbstractModel):
 
 
 class SceneInfo(AbstractModel):
-    """Scenario information. Valid values:
+    r"""Scenario information. Valid values:
     `RealTime`: Voice Chat analysis;
     `VoiceMessage`: Voice Messaging;
     `GMECloudApi`: GME cloud APIs
@@ -2210,7 +2210,7 @@ class SceneInfo(AbstractModel):
 
 
 class StartRecordRequest(AbstractModel):
-    """StartRecord request structure.
+    r"""StartRecord request structure.
 
     """
 
@@ -2232,7 +2232,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: int
         """
         return self._BizId
@@ -2243,7 +2243,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        """Room ID.
+        r"""Room ID.
         :rtype: str
         """
         return self._RoomId
@@ -2254,7 +2254,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RecordMode(self):
-        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        r"""Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
         :rtype: int
         """
         return self._RecordMode
@@ -2265,7 +2265,7 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
-        """Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.
+        r"""Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.
         :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
         """
         return self._SubscribeRecordUserIds
@@ -2293,7 +2293,7 @@ class StartRecordRequest(AbstractModel):
 
 
 class StartRecordResponse(AbstractModel):
-    """StartRecord response structure.
+    r"""StartRecord response structure.
 
     """
 
@@ -2309,7 +2309,7 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
         :rtype: int
         """
         return self._TaskId
@@ -2320,7 +2320,7 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2336,7 +2336,7 @@ class StartRecordResponse(AbstractModel):
 
 
 class StatisticsItem(AbstractModel):
-    """Usage data unit
+    r"""Usage data unit
 
     """
 
@@ -2352,7 +2352,7 @@ class StatisticsItem(AbstractModel):
 
     @property
     def StatDate(self):
-        """Date in the format of yyyy-mm-dd, such as 2018-07-13
+        r"""Date in the format of yyyy-mm-dd, such as 2018-07-13
         :rtype: str
         """
         return self._StatDate
@@ -2363,7 +2363,7 @@ class StatisticsItem(AbstractModel):
 
     @property
     def Data(self):
-        """Statistical value
+        r"""Statistical value
         :rtype: int
         """
         return self._Data
@@ -2387,7 +2387,7 @@ class StatisticsItem(AbstractModel):
 
 
 class StopRecordRequest(AbstractModel):
-    """StopRecord request structure.
+    r"""StopRecord request structure.
 
     """
 
@@ -2403,7 +2403,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        r"""Task ID.
         :rtype: int
         """
         return self._TaskId
@@ -2414,7 +2414,7 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def BizId(self):
-        """Application ID.
+        r"""Application ID.
         :rtype: int
         """
         return self._BizId
@@ -2438,7 +2438,7 @@ class StopRecordRequest(AbstractModel):
 
 
 class StopRecordResponse(AbstractModel):
-    """StopRecord response structure.
+    r"""StopRecord response structure.
 
     """
 
@@ -2451,7 +2451,7 @@ class StopRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2466,7 +2466,7 @@ class StopRecordResponse(AbstractModel):
 
 
 class StreamTextStatisticsItem(AbstractModel):
-    """Stream-to-Text usage statistics
+    r"""Stream-to-Text usage statistics
 
     """
 
@@ -2480,7 +2480,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
-        """Usage of the service (in seconds)
+        r"""Usage of the service (in seconds)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -2504,7 +2504,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class SubscribeRecordUserIds(AbstractModel):
-    """Allowlist or blocklist for stream subscription.
+    r"""Allowlist or blocklist for stream subscription.
 
     """
 
@@ -2522,7 +2522,7 @@ Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` a
 
     @property
     def UnSubscribeUserIds(self):
-        """Blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.
+        r"""Blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.
 Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
         :rtype: list of str
         """
@@ -2534,7 +2534,7 @@ Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` a
 
     @property
     def SubscribeUserIds(self):
-        """Allowlist for audio subscription. For example, `["1", "2", "3"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.
+        r"""Allowlist for audio subscription. For example, `["1", "2", "3"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.
 Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
         :rtype: list of str
         """
@@ -2559,7 +2559,7 @@ Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` a
 
 
 class Tag(AbstractModel):
-    """Tag list
+    r"""Tag list
 
     """
 
@@ -2577,7 +2577,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2589,7 +2589,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -2614,7 +2614,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class VoiceFilterConf(AbstractModel):
-    """Configuration information of Phrase Filtering
+    r"""Configuration information of Phrase Filtering
 
     """
 
@@ -2631,7 +2631,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
-        """Phrase Filtering status. Valid values: `open`, `close`.
+        r"""Phrase Filtering status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -2642,7 +2642,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SceneInfos(self):
-        """Scenario configuration information, such as status and callback URL.
+        r"""Scenario configuration information, such as status and callback URL.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: list of SceneInfo
         """
@@ -2672,7 +2672,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class VoiceFilterStatisticsItem(AbstractModel):
-    """Phrase Filtering usage statistics
+    r"""Phrase Filtering usage statistics
 
     """
 
@@ -2685,7 +2685,7 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
     @property
     def Duration(self):
-        """Total duration of phrase filtering (in minutes)
+        r"""Total duration of phrase filtering (in minutes)
         :rtype: int
         """
         return self._Duration
@@ -2708,7 +2708,7 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
 
 class VoiceMessageConf(AbstractModel):
-    """Configuration information of Voice Message Service
+    r"""Configuration information of Voice Message Service
 
     """
 
@@ -2724,7 +2724,7 @@ class VoiceMessageConf(AbstractModel):
 
     @property
     def Status(self):
-        """Voice Message Service status. Valid values: `open`, `close`.
+        r"""Voice Message Service status. Valid values: `open`, `close`.
         :rtype: str
         """
         return self._Status
@@ -2735,7 +2735,7 @@ class VoiceMessageConf(AbstractModel):
 
     @property
     def Language(self):
-        """Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.
+        r"""Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.
         :rtype: str
         """
         return self._Language
@@ -2759,7 +2759,7 @@ class VoiceMessageConf(AbstractModel):
 
 
 class VoiceMessageStatisticsItem(AbstractModel):
-    """Voice Message Service usage statistics
+    r"""Voice Message Service usage statistics
 
     """
 
@@ -2772,7 +2772,7 @@ class VoiceMessageStatisticsItem(AbstractModel):
 
     @property
     def Dau(self):
-        """DAUs of Voice Message Service
+        r"""DAUs of Voice Message Service
         :rtype: int
         """
         return self._Dau

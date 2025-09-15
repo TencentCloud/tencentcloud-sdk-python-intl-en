@@ -27,7 +27,7 @@ class CdwpgClient(AbstractClient):
 
 
     def CreateInstanceByApi(self, request):
-        """This API is used to create  instance
+        r"""This API is used to create  instance
 
         :param request: Request instance for CreateInstanceByApi.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.CreateInstanceByApiRequest`
@@ -50,7 +50,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to obtain the account list corresponding to the instance.
+        r"""This API is used to obtain the account list corresponding to the instance.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeAccountsRequest`
@@ -73,7 +73,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeDBConfigHistory(self, request):
-        """Describe DBConfig History
+        r"""Describe DBConfig History
 
         :param request: Request instance for DescribeDBConfigHistory.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBConfigHistoryRequest`
@@ -96,7 +96,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeDBParams(self, request):
-        """This API is used to describe instance configurations.
+        r"""This API is used to describe instance configurations.
 
         :param request: Request instance for DescribeDBParams.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeDBParamsRequest`
@@ -119,7 +119,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeErrorLog(self, request):
-        """This API is used to query error logs.
+        r"""This API is used to query error logs.
 
         :param request: Request instance for DescribeErrorLog.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeErrorLogRequest`
@@ -142,7 +142,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """This API is used to query the instance information by an instance ID.
+        r"""This API is used to query the instance information by an instance ID.
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceRequest`
@@ -165,7 +165,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceInfo(self, request):
-        """This API is used to get instance information.
+        r"""This API is used to get instance information.
 
         :param request: Request instance for DescribeInstanceInfo.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceInfoRequest`
@@ -188,7 +188,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """This API is used to list nodes.
+        r"""This API is used to list nodes.
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceNodesRequest`
@@ -211,7 +211,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceOperations(self, request):
-        """This API is used to get operations of the instance .
+        r"""This API is used to get operations of the instance .
 
         :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceOperationsRequest`
@@ -234,7 +234,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstanceState(self, request):
-        """This API is used to display instance status, process progress, etc., in the instance details page.
+        r"""This API is used to display instance status, process progress, etc., in the instance details page.
 
         :param request: Request instance for DescribeInstanceState.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceStateRequest`
@@ -257,7 +257,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to get a list of  instances.
+        r"""This API is used to get a list of  instances.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstancesRequest`
@@ -280,7 +280,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeSimpleInstances(self, request):
-        """This API is used to get a list of instance
+        r"""This API is used to get a list of instance
 
         :param request: Request instance for DescribeSimpleInstances.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSimpleInstancesRequest`
@@ -303,7 +303,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeSlowLog(self, request):
-        """This API is used to query slow SQL logs.
+        r"""This API is used to query slow SQL logs.
 
         :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSlowLogRequest`
@@ -326,7 +326,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeUpgradeList(self, request):
-        """This API is used to obtain instance upgrade records.
+        r"""This API is used to obtain instance upgrade records.
 
         :param request: Request instance for DescribeUpgradeList.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUpgradeListRequest`
@@ -349,7 +349,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DescribeUserHbaConfig(self, request):
-        """Describe User HbaConfig.
+        r"""Describe User HbaConfig.
 
         :param request: Request instance for DescribeUserHbaConfig.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeUserHbaConfigRequest`
@@ -372,7 +372,7 @@ class CdwpgClient(AbstractClient):
 
 
     def DestroyInstanceByApi(self, request):
-        """This API is used to destroy instance.
+        r"""This API is used to destroy instance.
 
         :param request: Request instance for DestroyInstanceByApi.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.DestroyInstanceByApiRequest`
@@ -395,7 +395,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyDBParameters(self, request):
-        """This API is used to modify instance configurations
+        r"""This API is used to modify instance configurations
 
         :param request: Request instance for ModifyDBParameters.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyDBParametersRequest`
@@ -418,7 +418,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify instance information. Only the name of an instance can be modified currently.
+        r"""This API is used to modify instance information. Only the name of an instance can be modified currently.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyInstanceRequest`
@@ -441,7 +441,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ModifyUserHba(self, request):
-        """This API is used to modify user Hba configurations.
+        r"""This API is used to modify user Hba configurations.
 
         :param request: Request instance for ModifyUserHba.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyUserHbaRequest`
@@ -464,7 +464,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """This API is used to change account password.
+        r"""This API is used to change account password.
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ResetAccountPasswordRequest`
@@ -487,7 +487,7 @@ class CdwpgClient(AbstractClient):
 
 
     def RestartInstance(self, request):
-        """This API is used by users to proactively restart instances in the console.
+        r"""This API is used by users to proactively restart instances in the console.
 
         :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.RestartInstanceRequest`
@@ -510,7 +510,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """This API is used to scale out instance.
+        r"""This API is used to scale out instance.
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleOutInstanceRequest`
@@ -533,7 +533,7 @@ class CdwpgClient(AbstractClient):
 
 
     def ScaleUpInstance(self, request):
-        """This API is used to scale up instance in the console.
+        r"""This API is used to scale up instance in the console.
 
         :param request: Request instance for ScaleUpInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.ScaleUpInstanceRequest`
@@ -556,7 +556,7 @@ class CdwpgClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """This API is used to upgrade Instance.
+        r"""This API is used to upgrade Instance.
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cdwpg.v20201230.models.UpgradeInstanceRequest`

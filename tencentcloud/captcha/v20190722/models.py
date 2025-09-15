@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class DescribeCaptchaResultRequest(AbstractModel):
-    """DescribeCaptchaResult request structure.
+    r"""DescribeCaptchaResult request structure.
 
     """
 
@@ -62,7 +62,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        """Fill with fixed value: 9.
+        r"""Fill with fixed value: 9.
         :rtype: int
         """
         return self._CaptchaType
@@ -73,7 +73,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        """The user verification ticket returned by the frontend callback function
+        r"""The user verification ticket returned by the frontend callback function
         :rtype: str
         """
         return self._Ticket
@@ -84,7 +84,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        """The user public IP obtained from the customer backend server
+        r"""The user public IP obtained from the customer backend server
         :rtype: str
         """
         return self._UserIp
@@ -95,7 +95,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
-        """A random string returned by the frontend callback function
+        r"""A random string returned by the frontend callback function
         :rtype: str
         """
         return self._Randstr
@@ -106,7 +106,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        """CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the "Key" column of the CAPTCHA list.
+        r"""CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the "Key" column of the CAPTCHA list.
         :rtype: int
         """
         return self._CaptchaAppId
@@ -117,7 +117,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        """CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the "Key" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.
+        r"""CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the "Key" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.
         :rtype: str
         """
         return self._AppSecretKey
@@ -128,7 +128,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        """Reserved field.
+        r"""Reserved field.
         :rtype: int
         """
         return self._BusinessId
@@ -139,7 +139,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        """Reserved field.
+        r"""Reserved field.
         :rtype: int
         """
         return self._SceneId
@@ -150,7 +150,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        """MAC address or unique identifier of a device
+        r"""MAC address or unique identifier of a device
         :rtype: str
         """
         return self._MacAddress
@@ -161,7 +161,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        """Mobile equipment identity number
+        r"""Mobile equipment identity number
         :rtype: str
         """
         return self._Imei
@@ -172,7 +172,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
-        """Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.
+        r"""Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.
         :rtype: int
         """
         return self._NeedGetCaptchaTime
@@ -205,7 +205,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
 
 class DescribeCaptchaResultResponse(AbstractModel):
-    """DescribeCaptchaResult response structure.
+    r"""DescribeCaptchaResult response structure.
 
     """
 
@@ -256,7 +256,7 @@ A lower score indicates a greater probability that the interaction was performed
 
     @property
     def CaptchaCode(self):
-        """OK indicates verification passed.
+        r"""OK indicates verification passed.
 7 captcha no match. the passed in Randstr is invalid. please check if the Randstr is consistent with the Randstr returned by the frontend.
 The passed-in ticket has expired (the valid period of the ticket is 5 minutes). generate the ticket and Randstr again for validation.
 The passed-in ticket is reused. generate the ticket and Randstr again for verification.
@@ -274,7 +274,7 @@ The passed-in ticket is reused. generate the ticket and Randstr again for verifi
 
     @property
     def CaptchaMsg(self):
-        """Status description and verification error message.
+        r"""Status description and verification error message.
         :rtype: str
         """
         return self._CaptchaMsg
@@ -285,7 +285,7 @@ The passed-in ticket is reused. generate the ticket and Randstr again for verifi
 
     @property
     def EvilLevel(self):
-        """In invisible verification mode, this parameter returns the verification result.
+        r"""In invisible verification mode, this parameter returns the verification result.
 EvilLevel=0 indicates that the request is not malicious.
 The parameter EvilLevel = 100 indicates that the request is malicious.
         :rtype: int
@@ -298,7 +298,7 @@ The parameter EvilLevel = 100 indicates that the request is malicious.
 
     @property
     def GetCaptchaTime(self):
-        """Frontend retrieval time of the captcha-intl, timestamp format.
+        r"""Frontend retrieval time of the captcha-intl, timestamp format.
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -309,7 +309,7 @@ The parameter EvilLevel = 100 indicates that the request is malicious.
 
     @property
     def EvilBitmap(self):
-        """Blocking type
+        r"""Blocking type
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -321,7 +321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmitCaptchaTime(self):
-        """The time when the CAPTCHA is submitted.
+        r"""The time when the CAPTCHA is submitted.
         :rtype: int
         """
         return self._SubmitCaptchaTime
@@ -332,7 +332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceRiskCategory(self):
-        """Device risk category.
+        r"""Device risk category.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -344,7 +344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        """CAPTCHA-Intl score.
+        r"""CAPTCHA-Intl score.
 Note:The score ranges from 0 to 100 (e.g., 20, 70, 90).
 A higher score indicates a greater probability that the interaction was initiated by a bot or represents a bot attack.
 A lower score indicates a greater probability that the interaction was performed by a real human user.
@@ -358,7 +358,7 @@ A lower score indicates a greater probability that the interaction was performed
 
     @property
     def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

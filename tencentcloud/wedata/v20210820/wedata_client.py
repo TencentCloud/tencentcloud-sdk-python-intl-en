@@ -27,7 +27,7 @@ class WedataClient(AbstractClient):
 
 
     def AddProjectUserRole(self, request):
-        """This API is used to add a user role to a project.
+        r"""This API is used to add a user role to a project.
 
         :param request: Request instance for AddProjectUserRole.
         :type request: :class:`tencentcloud.wedata.v20210820.models.AddProjectUserRoleRequest`
@@ -50,7 +50,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchCreateIntegrationTaskAlarms(self, request):
-        """Bulk Create Task Alert Rules
+        r"""Bulk Create Task Alert Rules
 
         :param request: Request instance for BatchCreateIntegrationTaskAlarms.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchCreateIntegrationTaskAlarmsRequest`
@@ -73,7 +73,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchCreateTaskVersionAsync(self, request):
-        """This API is used to asynchronously create task versions in batches.
+        r"""This API is used to asynchronously create task versions in batches.
 
         :param request: Request instance for BatchCreateTaskVersionAsync.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionAsyncRequest`
@@ -96,7 +96,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchDeleteIntegrationTasks(self, request):
-        """Batch Delete Integration Tasks.
+        r"""Batch Delete Integration Tasks.
 
         :param request: Request instance for BatchDeleteIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchDeleteIntegrationTasksRequest`
@@ -119,7 +119,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchDeleteOpsTasks(self, request):
-        """Task Operation and Maintenance - Batch Delete Tasks
+        r"""Task Operation and Maintenance - Batch Delete Tasks
 
         :param request: Request instance for BatchDeleteOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchDeleteOpsTasksRequest`
@@ -142,7 +142,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchForceSuccessIntegrationTaskInstances(self, request):
-        """Batch set successful integration task instances
+        r"""Batch set successful integration task instances
 
         :param request: Request instance for BatchForceSuccessIntegrationTaskInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchForceSuccessIntegrationTaskInstancesRequest`
@@ -165,7 +165,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchKillIntegrationTaskInstances(self, request):
-        """Batch Terminate Integration Task Instances
+        r"""Batch Terminate Integration Task Instances
 
         :param request: Request instance for BatchKillIntegrationTaskInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchKillIntegrationTaskInstancesRequest`
@@ -188,7 +188,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchMakeUpIntegrationTasks(self, request):
-        """Perform Batch Data Supplement Operation on Integrated Offline Tasks
+        r"""Perform Batch Data Supplement Operation on Integrated Offline Tasks
 
         :param request: Request instance for BatchMakeUpIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchMakeUpIntegrationTasksRequest`
@@ -211,7 +211,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchModifyOpsOwners(self, request):
-        """Batch Modify Task Assignee
+        r"""Batch Modify Task Assignee
 
         :param request: Request instance for BatchModifyOpsOwners.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchModifyOpsOwnersRequest`
@@ -234,7 +234,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchRerunIntegrationTaskInstances(self, request):
-        """Batch Rerun Integration Task Instances
+        r"""Batch Rerun Integration Task Instances
 
         :param request: Request instance for BatchRerunIntegrationTaskInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchRerunIntegrationTaskInstancesRequest`
@@ -257,7 +257,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchResumeIntegrationTasks(self, request):
-        """Batch Continue Execution of Integrated Real-time Tasks
+        r"""Batch Continue Execution of Integrated Real-time Tasks
 
         :param request: Request instance for BatchResumeIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchResumeIntegrationTasksRequest`
@@ -280,7 +280,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchRunOpsTask(self, request):
-        """Task Operation and Maintenance - Task List Batch Startup
+        r"""Task Operation and Maintenance - Task List Batch Startup
 
         :param request: Request instance for BatchRunOpsTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchRunOpsTaskRequest`
@@ -303,7 +303,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchStartIntegrationTasks(self, request):
-        """Batch Run Integration Tasks
+        r"""Batch Run Integration Tasks
 
         :param request: Request instance for BatchStartIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStartIntegrationTasksRequest`
@@ -326,7 +326,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchStopIntegrationTasks(self, request):
-        """Batch Stop Integration Tasks
+        r"""Batch Stop Integration Tasks
 
         :param request: Request instance for BatchStopIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopIntegrationTasksRequest`
@@ -349,7 +349,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchStopOpsTasks(self, request):
-        """Only valid for tasks in "Scheduling In Progress" and "Paused" statuses, terminate the task instances of the selected tasks, and stop scheduling
+        r"""Only valid for tasks in "Scheduling In Progress" and "Paused" statuses, terminate the task instances of the selected tasks, and stop scheduling
 
         :param request: Request instance for BatchStopOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopOpsTasksRequest`
@@ -372,7 +372,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchStopWorkflowsByIds(self, request):
-        """Batch Stop Workflow
+        r"""Batch Stop Workflow
 
         :param request: Request instance for BatchStopWorkflowsByIds.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopWorkflowsByIdsRequest`
@@ -395,7 +395,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchSuspendIntegrationTasks(self, request):
-        """Batch pause integration tasks
+        r"""Batch pause integration tasks
 
         :param request: Request instance for BatchSuspendIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchSuspendIntegrationTasksRequest`
@@ -418,7 +418,7 @@ class WedataClient(AbstractClient):
 
 
     def BatchUpdateIntegrationTasks(self, request):
-        """Bulk Update Integration Tasks (Currently only supports bulk updating of the person in charge)
+        r"""Bulk Update Integration Tasks (Currently only supports bulk updating of the person in charge)
 
         :param request: Request instance for BatchUpdateIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchUpdateIntegrationTasksRequest`
@@ -441,7 +441,7 @@ class WedataClient(AbstractClient):
 
 
     def CheckAlarmRegularNameExist(self, request):
-        """Check for Duplicate Alert Rule Names
+        r"""Check for Duplicate Alert Rule Names
 
         :param request: Request instance for CheckAlarmRegularNameExist.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CheckAlarmRegularNameExistRequest`
@@ -464,7 +464,7 @@ class WedataClient(AbstractClient):
 
 
     def CheckIntegrationNodeNameExists(self, request):
-        """Determining if the name of the integrated node exists
+        r"""Determining if the name of the integrated node exists
 
         :param request: Request instance for CheckIntegrationNodeNameExists.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CheckIntegrationNodeNameExistsRequest`
@@ -487,7 +487,7 @@ class WedataClient(AbstractClient):
 
 
     def CheckIntegrationTaskNameExists(self, request):
-        """Check if Integration Task Name Exists
+        r"""Check if Integration Task Name Exists
 
         :param request: Request instance for CheckIntegrationTaskNameExists.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CheckIntegrationTaskNameExistsRequest`
@@ -510,7 +510,7 @@ class WedataClient(AbstractClient):
 
 
     def CheckTaskNameExist(self, request):
-        """Offline Task Renaming Verification
+        r"""Offline Task Renaming Verification
 
         :param request: Request instance for CheckTaskNameExist.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CheckTaskNameExistRequest`
@@ -533,7 +533,7 @@ class WedataClient(AbstractClient):
 
 
     def CommitIntegrationTask(self, request):
-        """Submit integration task
+        r"""Submit integration task
 
         :param request: Request instance for CommitIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CommitIntegrationTaskRequest`
@@ -556,7 +556,7 @@ class WedataClient(AbstractClient):
 
 
     def CommitRuleGroupTask(self, request):
-        """Submit Rule Group to Run Task Interface
+        r"""Submit Rule Group to Run Task Interface
 
         :param request: Request instance for CommitRuleGroupTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CommitRuleGroupTaskRequest`
@@ -579,7 +579,7 @@ class WedataClient(AbstractClient):
 
 
     def CountOpsInstanceState(self, request):
-        """Statistics on task instance status
+        r"""Statistics on task instance status
 
         :param request: Request instance for CountOpsInstanceState.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CountOpsInstanceStateRequest`
@@ -602,7 +602,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateCustomFunction(self, request):
-        """Create User-Defined Function
+        r"""Create User-Defined Function
 
         :param request: Request instance for CreateCustomFunction.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateCustomFunctionRequest`
@@ -625,7 +625,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateDataSource(self, request):
-        """Create Data Source
+        r"""Create Data Source
 
         :param request: Request instance for CreateDataSource.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateDataSourceRequest`
@@ -648,7 +648,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateDsFolder(self, request):
-        """Orchestration Space - Create Folder
+        r"""Orchestration Space - Create Folder
 
         :param request: Request instance for CreateDsFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateDsFolderRequest`
@@ -671,7 +671,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateHiveTable(self, request):
-        """Create Hive Table
+        r"""Create Hive Table
 
         :param request: Request instance for CreateHiveTable.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateHiveTableRequest`
@@ -694,7 +694,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateHiveTableByDDL(self, request):
-        """Create Hive table and return table name
+        r"""Create Hive table and return table name
 
         :param request: Request instance for CreateHiveTableByDDL.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateHiveTableByDDLRequest`
@@ -717,7 +717,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateIntegrationNode(self, request):
-        """Create Integration Node
+        r"""Create Integration Node
 
         :param request: Request instance for CreateIntegrationNode.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateIntegrationNodeRequest`
@@ -740,7 +740,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateIntegrationTask(self, request):
-        """Create Integration Task
+        r"""Create Integration Task
 
         :param request: Request instance for CreateIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateIntegrationTaskRequest`
@@ -763,7 +763,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateOfflineTask(self, request):
-        """Create Offline Task
+        r"""Create Offline Task
 
         :param request: Request instance for CreateOfflineTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateOfflineTaskRequest`
@@ -786,7 +786,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateOpsMakePlan(self, request):
-        """Bulk Data Supplement (Create Supplementary Entry Task)
+        r"""Bulk Data Supplement (Create Supplementary Entry Task)
 
         :param request: Request instance for CreateOpsMakePlan.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateOpsMakePlanRequest`
@@ -809,7 +809,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """Create quality rule interface
+        r"""Create quality rule interface
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateRuleRequest`
@@ -832,7 +832,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateRuleTemplate(self, request):
-        """Create Rule Template
+        r"""Create Rule Template
 
         :param request: Request instance for CreateRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateRuleTemplateRequest`
@@ -855,7 +855,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """This API is used to create a task. This API is deprecated. Use the CreateTaskNew API.
+        r"""This API is used to create a task. This API is deprecated. Use the CreateTaskNew API.
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskRequest`
@@ -878,7 +878,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTaskAlarmRegular(self, request):
-        """Create task alert rules
+        r"""Create task alert rules
 
         :param request: Request instance for CreateTaskAlarmRegular.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskAlarmRegularRequest`
@@ -901,7 +901,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTaskFolder(self, request):
-        """Orchestration Space - Workflow - Create Task Folder
+        r"""Orchestration Space - Workflow - Create Task Folder
 
         :param request: Request instance for CreateTaskFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskFolderRequest`
@@ -924,7 +924,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTaskNew(self, request):
-        """This API is used to aggregate task creation.
+        r"""This API is used to aggregate task creation.
 
         :param request: Request instance for CreateTaskNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskNewRequest`
@@ -947,7 +947,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTaskVersionDs(self, request):
-        """Submit Task Version
+        r"""Submit Task Version
 
         :param request: Request instance for CreateTaskVersionDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskVersionDsRequest`
@@ -970,7 +970,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateWorkflowDs(self, request):
-        """Creating workflow
+        r"""Creating workflow
 
         :param request: Request instance for CreateWorkflowDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateWorkflowDsRequest`
@@ -993,7 +993,7 @@ class WedataClient(AbstractClient):
 
 
     def DagInstances(self, request):
-        """Pull DAG Instance
+        r"""Pull DAG Instance
 
         :param request: Request instance for DagInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DagInstancesRequest`
@@ -1016,7 +1016,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteCustomFunction(self, request):
-        """Delete user-defined Definition functions
+        r"""Delete user-defined Definition functions
 
         :param request: Request instance for DeleteCustomFunction.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteCustomFunctionRequest`
@@ -1039,7 +1039,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteDataSources(self, request):
-        """Delete Data Source
+        r"""Delete Data Source
 
         :param request: Request instance for DeleteDataSources.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteDataSourcesRequest`
@@ -1062,7 +1062,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteDsFolder(self, request):
-        """Orchestration space - delete folders
+        r"""Orchestration space - delete folders
 
         :param request: Request instance for DeleteDsFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteDsFolderRequest`
@@ -1085,7 +1085,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteFile(self, request):
-        """Delete File
+        r"""Delete File
 
         :param request: Request instance for DeleteFile.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteFileRequest`
@@ -1108,7 +1108,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteFilePath(self, request):
-        """Development Space - Batch Delete Directories and Files
+        r"""Development Space - Batch Delete Directories and Files
 
         :param request: Request instance for DeleteFilePath.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteFilePathRequest`
@@ -1131,7 +1131,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteIntegrationNode(self, request):
-        """Delete Integration Node
+        r"""Delete Integration Node
 
         :param request: Request instance for DeleteIntegrationNode.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteIntegrationNodeRequest`
@@ -1154,7 +1154,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteIntegrationTask(self, request):
-        """Delete integration tasks
+        r"""Delete integration tasks
 
         :param request: Request instance for DeleteIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteIntegrationTaskRequest`
@@ -1177,7 +1177,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteOfflineTask(self, request):
-        """Deleting task
+        r"""Deleting task
 
         :param request: Request instance for DeleteOfflineTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteOfflineTaskRequest`
@@ -1200,7 +1200,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteProjectParamDs(self, request):
-        """Delete Project Parameters
+        r"""Delete Project Parameters
 
         :param request: Request instance for DeleteProjectParamDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteProjectParamDsRequest`
@@ -1223,7 +1223,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteProjectUsers(self, request):
-        """Delete Project Users
+        r"""Delete Project Users
 
         :param request: Request instance for DeleteProjectUsers.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteProjectUsersRequest`
@@ -1246,7 +1246,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteResource(self, request):
-        """Remove resources in Resource Management
+        r"""Remove resources in Resource Management
 
         :param request: Request instance for DeleteResource.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceRequest`
@@ -1269,7 +1269,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteResourceFile(self, request):
-        """Resource Management - Delete Resource File
+        r"""Resource Management - Delete Resource File
 
         :param request: Request instance for DeleteResourceFile.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceFileRequest`
@@ -1292,7 +1292,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteResourceFiles(self, request):
-        """Resource Management-Batch Delete Resource Files
+        r"""Resource Management-Batch Delete Resource Files
 
         :param request: Request instance for DeleteResourceFiles.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteResourceFilesRequest`
@@ -1315,7 +1315,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """Delete Quality Rule Interface
+        r"""Delete Quality Rule Interface
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleRequest`
@@ -1338,7 +1338,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteRuleTemplate(self, request):
-        """Deleting Rule Template
+        r"""Deleting Rule Template
 
         :param request: Request instance for DeleteRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleTemplateRequest`
@@ -1361,7 +1361,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteTaskAlarmRegular(self, request):
-        """Delete Task Alert Rule
+        r"""Delete Task Alert Rule
 
         :param request: Request instance for DeleteTaskAlarmRegular.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteTaskAlarmRegularRequest`
@@ -1384,7 +1384,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteTaskDs(self, request):
-        """Delete Orchestration Space Task
+        r"""Delete Orchestration Space Task
 
         :param request: Request instance for DeleteTaskDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteTaskDsRequest`
@@ -1407,7 +1407,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteWorkflowById(self, request):
-        """Delete Workflow by Workflow Id
+        r"""Delete Workflow by Workflow Id
 
         :param request: Request instance for DeleteWorkflowById.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteWorkflowByIdRequest`
@@ -1430,7 +1430,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeAlarmEvents(self, request):
-        """Alert event list
+        r"""Alert event list
 
         :param request: Request instance for DescribeAlarmEvents.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAlarmEventsRequest`
@@ -1453,7 +1453,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeAlarmReceiver(self, request):
-        """Alert Recipient Details
+        r"""Alert Recipient Details
 
         :param request: Request instance for DescribeAlarmReceiver.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAlarmReceiverRequest`
@@ -1476,7 +1476,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeAllByFolderNew(self, request):
-        """Query all subfolders + workflows under the parent directory
+        r"""Query all subfolders + workflows under the parent directory
 
         :param request: Request instance for DescribeAllByFolderNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeAllByFolderNewRequest`
@@ -1499,7 +1499,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeApproveList(self, request):
-        """Getting pending approval list
+        r"""Getting pending approval list
 
         :param request: Request instance for DescribeApproveList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveListRequest`
@@ -1522,7 +1522,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeApproveTypeList(self, request):
-        """Get Approval Category List
+        r"""Get Approval Category List
 
         :param request: Request instance for DescribeApproveTypeList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveTypeListRequest`
@@ -1545,7 +1545,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeBatchOperateTask(self, request):
-        """Batch operation page to retrieve task list
+        r"""Batch operation page to retrieve task list
 
         :param request: Request instance for DescribeBatchOperateTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeBatchOperateTaskRequest`
@@ -1568,7 +1568,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeColumnLineage(self, request):
-        """List Field Lineage Information
+        r"""List Field Lineage Information
 
         :param request: Request instance for DescribeColumnLineage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnLineageRequest`
@@ -1591,7 +1591,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeColumnsMeta(self, request):
-        """Query all column metadata of the table
+        r"""Query all column metadata of the table
 
         :param request: Request instance for DescribeColumnsMeta.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnsMetaRequest`
@@ -1614,7 +1614,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDataCheckStat(self, request):
-        """Data Quality Overview Page Data Monitoring Interface
+        r"""Data Quality Overview Page Data Monitoring Interface
 
         :param request: Request instance for DescribeDataCheckStat.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataCheckStatRequest`
@@ -1637,7 +1637,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDataSourceInfoList(self, request):
-        """Obtain Data Source Information - Data Source Pagination List
+        r"""Obtain Data Source Information - Data Source Pagination List
 
         :param request: Request instance for DescribeDataSourceInfoList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataSourceInfoListRequest`
@@ -1660,7 +1660,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDataSourceList(self, request):
-        """Data Source Details
+        r"""Data Source Details
 
         :param request: Request instance for DescribeDataSourceList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataSourceListRequest`
@@ -1683,7 +1683,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDatabaseInfoList(self, request):
-        """Obtain Database Information
+        r"""Obtain Database Information
 
         :param request: Request instance for DescribeDatabaseInfoList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseInfoListRequest`
@@ -1706,7 +1706,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDatabaseMetas(self, request):
-        """Querying database list
+        r"""Querying database list
 
         :param request: Request instance for DescribeDatabaseMetas.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseMetasRequest`
@@ -1729,7 +1729,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDatasource(self, request):
-        """Data Source Details
+        r"""Data Source Details
 
         :param request: Request instance for DescribeDatasource.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatasourceRequest`
@@ -1752,7 +1752,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDependOpsTasks(self, request):
-        """Search for upstream/downstream task nodes by hierarchy
+        r"""Search for upstream/downstream task nodes by hierarchy
 
         :param request: Request instance for DescribeDependOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependOpsTasksRequest`
@@ -1775,7 +1775,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDependTaskLists(self, request):
-        """Query Task Detail List by taskIds
+        r"""Query Task Detail List by taskIds
 
         :param request: Request instance for DescribeDependTaskLists.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependTaskListsRequest`
@@ -1798,7 +1798,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDimensionScore(self, request):
-        """Quality Report - Query Quality Score
+        r"""Quality Report - Query Quality Score
 
         :param request: Request instance for DescribeDimensionScore.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDimensionScoreRequest`
@@ -1821,7 +1821,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDrInstancePage(self, request):
-        """Paginated Query of Trial Run Instance List
+        r"""Paginated Query of Trial Run Instance List
 
         :param request: Request instance for DescribeDrInstancePage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDrInstancePageRequest`
@@ -1844,7 +1844,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDsFolderTree(self, request):
-        """Query Directory Tree
+        r"""Query Directory Tree
 
         :param request: Request instance for DescribeDsFolderTree.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsFolderTreeRequest`
@@ -1867,7 +1867,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDsParentFolderTree(self, request):
-        """Query Parent Directory Tree, for Workflow, Task Localization
+        r"""Query Parent Directory Tree, for Workflow, Task Localization
 
         :param request: Request instance for DescribeDsParentFolderTree.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsParentFolderTreeRequest`
@@ -1890,7 +1890,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeEvent(self, request):
-        """View Event Details by Project ID and Event Name
+        r"""View Event Details by Project ID and Event Name
 
         :param request: Request instance for DescribeEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventRequest`
@@ -1913,7 +1913,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeEventCases(self, request):
-        """Find Event Instances Based on Conditions
+        r"""Find Event Instances Based on Conditions
 
         :param request: Request instance for DescribeEventCases.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventCasesRequest`
@@ -1936,7 +1936,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeEventConsumeTasks(self, request):
-        """Viewing consumption tasks of event instances
+        r"""Viewing consumption tasks of event instances
 
         :param request: Request instance for DescribeEventConsumeTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeEventConsumeTasksRequest`
@@ -1959,7 +1959,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeExecStrategy(self, request):
-        """Query Rule Group Execution Policy
+        r"""Query Rule Group Execution Policy
 
         :param request: Request instance for DescribeExecStrategy.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeExecStrategyRequest`
@@ -1982,7 +1982,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFieldBasicInfo(self, request):
-        """Metadata Model - Field Basic Information Query Interface
+        r"""Metadata Model - Field Basic Information Query Interface
 
         :param request: Request instance for DescribeFieldBasicInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFieldBasicInfoRequest`
@@ -2005,7 +2005,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFolderWorkflowList(self, request):
-        """Get all workflow lists under the project by Project ID
+        r"""Get all workflow lists under the project by Project ID
 
         :param request: Request instance for DescribeFolderWorkflowList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFolderWorkflowListRequest`
@@ -2028,7 +2028,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFunctionKinds(self, request):
-        """Query Function Classification
+        r"""Query Function Classification
 
         :param request: Request instance for DescribeFunctionKinds.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFunctionKindsRequest`
@@ -2051,7 +2051,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFunctionTypes(self, request):
-        """Query Function Type
+        r"""Query Function Type
 
         :param request: Request instance for DescribeFunctionTypes.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFunctionTypesRequest`
@@ -2074,7 +2074,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceByCycle(self, request):
-        """Query all instances by cycle type
+        r"""Query all instances by cycle type
 
         :param request: Request instance for DescribeInstanceByCycle.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceByCycleRequest`
@@ -2097,7 +2097,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLastLog(self, request):
-        """Log Detail Acquisition Page
+        r"""Log Detail Acquisition Page
 
         :param request: Request instance for DescribeInstanceLastLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLastLogRequest`
@@ -2120,7 +2120,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceList(self, request):
-        """Get Instance List
+        r"""Get Instance List
 
         :param request: Request instance for DescribeInstanceList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceListRequest`
@@ -2143,7 +2143,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLog(self, request):
-        """Get Instance Running Logs
+        r"""Get Instance Running Logs
 
         :param request: Request instance for DescribeInstanceLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogRequest`
@@ -2166,7 +2166,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLogDetail(self, request):
-        """Obtain Specific Instance-related Log Information
+        r"""Obtain Specific Instance-related Log Information
 
         :param request: Request instance for DescribeInstanceLogDetail.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogDetailRequest`
@@ -2189,7 +2189,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLogFile(self, request):
-        """Download Log File, Return Log Download URL
+        r"""Download Log File, Return Log Download URL
 
         :param request: Request instance for DescribeInstanceLogFile.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogFileRequest`
@@ -2212,7 +2212,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLogList(self, request):
-        """Offline Task Instance Run Log List
+        r"""Offline Task Instance Run Log List
 
         :param request: Request instance for DescribeInstanceLogList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogListRequest`
@@ -2235,7 +2235,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationNode(self, request):
-        """Query integrated nodes
+        r"""Query integrated nodes
 
         :param request: Request instance for DescribeIntegrationNode.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationNodeRequest`
@@ -2258,7 +2258,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationStatistics(self, request):
-        """DataInLong Dashboard Overview
+        r"""DataInLong Dashboard Overview
 
         :param request: Request instance for DescribeIntegrationStatistics.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsRequest`
@@ -2281,7 +2281,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationStatisticsInstanceTrend(self, request):
-        """DataInLong dashboard instance status statistical trend
+        r"""DataInLong dashboard instance status statistical trend
 
         :param request: Request instance for DescribeIntegrationStatisticsInstanceTrend.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsInstanceTrendRequest`
@@ -2304,7 +2304,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationStatisticsRecordsTrend(self, request):
-        """DataInLong Dashboard synchronization count trend
+        r"""DataInLong Dashboard synchronization count trend
 
         :param request: Request instance for DescribeIntegrationStatisticsRecordsTrend.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsRecordsTrendRequest`
@@ -2327,7 +2327,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationStatisticsTaskStatus(self, request):
-        """DataInLong Dashboard Task Status Distribution Statistics
+        r"""DataInLong Dashboard Task Status Distribution Statistics
 
         :param request: Request instance for DescribeIntegrationStatisticsTaskStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsTaskStatusRequest`
@@ -2350,7 +2350,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationStatisticsTaskStatusTrend(self, request):
-        """DataInLong Dashboard Task Status Statistical Trend
+        r"""DataInLong Dashboard Task Status Statistical Trend
 
         :param request: Request instance for DescribeIntegrationStatisticsTaskStatusTrend.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationStatisticsTaskStatusTrendRequest`
@@ -2373,7 +2373,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationTask(self, request):
-        """Query integration tasks
+        r"""Query integration tasks
 
         :param request: Request instance for DescribeIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationTaskRequest`
@@ -2396,7 +2396,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationTasks(self, request):
-        """Query Integration Task List
+        r"""Query Integration Task List
 
         :param request: Request instance for DescribeIntegrationTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationTasksRequest`
@@ -2419,7 +2419,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeIntegrationVersionNodesInfo(self, request):
-        """Query Integration Task Version Node Information
+        r"""Query Integration Task Version Node Information
 
         :param request: Request instance for DescribeIntegrationVersionNodesInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeIntegrationVersionNodesInfoRequest`
@@ -2442,7 +2442,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOfflineTaskToken(self, request):
-        """Getting long connection Token for offline tasks
+        r"""Getting long connection Token for offline tasks
 
         :param request: Request instance for DescribeOfflineTaskToken.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOfflineTaskTokenRequest`
@@ -2465,7 +2465,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOperateOpsTasks(self, request):
-        """Task Operation and Maintenance List Combined Condition Query
+        r"""Task Operation and Maintenance List Combined Condition Query
 
         :param request: Request instance for DescribeOperateOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateOpsTasksRequest`
@@ -2488,7 +2488,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOpsInstanceLogList(self, request):
-        """Instance Operation and Maintenance - Get Instance Log List
+        r"""Instance Operation and Maintenance - Get Instance Log List
 
         :param request: Request instance for DescribeOpsInstanceLogList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsInstanceLogListRequest`
@@ -2511,7 +2511,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOpsMakePlanInstances(self, request):
-        """Obtain the Supplementary Instance List based on the Supplementary Plan and Task.
+        r"""Obtain the Supplementary Instance List based on the Supplementary Plan and Task.
 
         :param request: Request instance for DescribeOpsMakePlanInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanInstancesRequest`
@@ -2534,7 +2534,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOpsMakePlanTasks(self, request):
-        """View Supplemental Plan Tasks
+        r"""View Supplemental Plan Tasks
 
         :param request: Request instance for DescribeOpsMakePlanTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlanTasksRequest`
@@ -2557,7 +2557,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOpsMakePlans(self, request):
-        """Paginated Query of Supplement Plan Based on Conditions
+        r"""Paginated Query of Supplement Plan Based on Conditions
 
         :param request: Request instance for DescribeOpsMakePlans.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsMakePlansRequest`
@@ -2580,7 +2580,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOpsWorkflows(self, request):
-        """Querying User Production Workflow List
+        r"""Querying User Production Workflow List
 
         :param request: Request instance for DescribeOpsWorkflows.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOpsWorkflowsRequest`
@@ -2603,7 +2603,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeOrganizationalFunctions(self, request):
-        """Query Full Functionality
+        r"""Query Full Functionality
 
         :param request: Request instance for DescribeOrganizationalFunctions.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOrganizationalFunctionsRequest`
@@ -2626,7 +2626,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeProject(self, request):
-        """Retrieving Project Information
+        r"""Retrieving Project Information
 
         :param request: Request instance for DescribeProject.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeProjectRequest`
@@ -2649,7 +2649,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeQualityScore(self, request):
-        """Quality Report - Quality Score
+        r"""Quality Report - Quality Score
 
         :param request: Request instance for DescribeQualityScore.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreRequest`
@@ -2672,7 +2672,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeQualityScoreTrend(self, request):
-        """Quality Report - Quality Score Periodic Trend
+        r"""Quality Report - Quality Score Periodic Trend
 
         :param request: Request instance for DescribeQualityScoreTrend.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreTrendRequest`
@@ -2695,7 +2695,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRealTimeTaskInstanceNodeInfo(self, request):
-        """Query Real-time Task Instance Node Information
+        r"""Query Real-time Task Instance Node Information
 
         :param request: Request instance for DescribeRealTimeTaskInstanceNodeInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRealTimeTaskInstanceNodeInfoRequest`
@@ -2718,7 +2718,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRealTimeTaskMetricOverview(self, request):
-        """Real-time Task Running Metrics Overview
+        r"""Real-time Task Running Metrics Overview
 
         :param request: Request instance for DescribeRealTimeTaskMetricOverview.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRealTimeTaskMetricOverviewRequest`
@@ -2741,7 +2741,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRealTimeTaskSpeed(self, request):
-        """Real-time task synchronization speed trend
+        r"""Real-time task synchronization speed trend
 
         :param request: Request instance for DescribeRealTimeTaskSpeed.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRealTimeTaskSpeedRequest`
@@ -2764,7 +2764,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeReportTaskDetail(self, request):
-        """This API is used to query task details for reports.
+        r"""This API is used to query task details for reports.
 
         :param request: Request instance for DescribeReportTaskDetail.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailRequest`
@@ -2787,7 +2787,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeReportTaskList(self, request):
-        """This API is used to query the task submission list.
+        r"""This API is used to query the task submission list.
 
         :param request: Request instance for DescribeReportTaskList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskListRequest`
@@ -2810,7 +2810,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeResourceManagePathTrees(self, request):
-        """Retrieve resource management directory tree
+        r"""Retrieve resource management directory tree
 
         :param request: Request instance for DescribeResourceManagePathTrees.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeResourceManagePathTreesRequest`
@@ -2833,7 +2833,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRoleList(self, request):
-        """This API is used to retrieve role list information.
+        r"""This API is used to retrieve role list information.
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRoleListRequest`
@@ -2856,7 +2856,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRule(self, request):
-        """Queries rule details
+        r"""Queries rule details
 
         :param request: Request instance for DescribeRule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleRequest`
@@ -2879,7 +2879,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleDimStat(self, request):
-        """Data Quality Overview Page Triggers Dimension Distribution Statistics Interface
+        r"""Data Quality Overview Page Triggers Dimension Distribution Statistics Interface
 
         :param request: Request instance for DescribeRuleDimStat.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleDimStatRequest`
@@ -2902,7 +2902,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleExecDetail(self, request):
-        """Query Rule Execution Result Details
+        r"""Query Rule Execution Result Details
 
         :param request: Request instance for DescribeRuleExecDetail.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecDetailRequest`
@@ -2925,7 +2925,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleExecLog(self, request):
-        """Rule Execution Log Query
+        r"""Rule Execution Log Query
 
         :param request: Request instance for DescribeRuleExecLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecLogRequest`
@@ -2948,7 +2948,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleExecResults(self, request):
-        """Query Rule Execution Result List
+        r"""Query Rule Execution Result List
 
         :param request: Request instance for DescribeRuleExecResults.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecResultsRequest`
@@ -2971,7 +2971,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleExecStat(self, request):
-        """Data Quality Overview Page Rule Operation Interface
+        r"""Data Quality Overview Page Rule Operation Interface
 
         :param request: Request instance for DescribeRuleExecStat.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecStatRequest`
@@ -2994,7 +2994,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleGroup(self, request):
-        """Query Rule Group Details Interface
+        r"""Query Rule Group Details Interface
 
         :param request: Request instance for DescribeRuleGroup.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupRequest`
@@ -3017,7 +3017,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleGroupExecResultsByPage(self, request):
-        """Rule Group Execution Result Pagination Query Interface
+        r"""Rule Group Execution Result Pagination Query Interface
 
         :param request: Request instance for DescribeRuleGroupExecResultsByPage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupExecResultsByPageRequest`
@@ -3040,7 +3040,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleGroupSubscription(self, request):
-        """Query Rule Group Subscription Information
+        r"""Query Rule Group Subscription Information
 
         :param request: Request instance for DescribeRuleGroupSubscription.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupSubscriptionRequest`
@@ -3063,7 +3063,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleGroupTable(self, request):
-        """Query Table Binding Execution Rule Group Information
+        r"""Query Table Binding Execution Rule Group Information
 
         :param request: Request instance for DescribeRuleGroupTable.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupTableRequest`
@@ -3086,7 +3086,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleGroupsByPage(self, request):
-        """[Filter Criteria]
+        r"""[Filter Criteria]
         {Table Name (TableName), supports fuzzy matching}       {Table Owner (TableOwnerName), supports fuzzy matching}      {Monitoring Methods (MonitorTypes), 1. Not Configured 2. Linked to Production Scheduling 3. Offline Periodic Inspection, supports multiple selections}  {Subscriber (ReceiverUin)}
         [Required Fields]
         {Data Source (DatasourceId)}
@@ -3112,7 +3112,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleTemplate(self, request):
-        """Query Template Details
+        r"""Query Template Details
 
         :param request: Request instance for DescribeRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplateRequest`
@@ -3135,7 +3135,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleTemplates(self, request):
-        """Viewing Rule Template List
+        r"""Viewing Rule Template List
 
         :param request: Request instance for DescribeRuleTemplates.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesRequest`
@@ -3158,7 +3158,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleTemplatesByPage(self, request):
-        """[Filter Conditions] {Template Name (Name), supports fuzzy matching} {Template Type (type), 1.System Template 2.Custom Definition Template} {Quality Detection Dimensions (QualityDims), 1.Accuracy 2.Uniqueness 3.Integrity 4.Consistency 5.Timeliness 6.Validity} [Sorting Field] {Citation Sorting Type (CitationOrderType), sort by citation count ASC DESC}
+        r"""[Filter Conditions] {Template Name (Name), supports fuzzy matching} {Template Type (type), 1.System Template 2.Custom Definition Template} {Quality Detection Dimensions (QualityDims), 1.Accuracy 2.Uniqueness 3.Integrity 4.Consistency 5.Timeliness 6.Validity} [Sorting Field] {Citation Sorting Type (CitationOrderType), sort by citation count ASC DESC}
 
         :param request: Request instance for DescribeRuleTemplatesByPage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesByPageRequest`
@@ -3181,7 +3181,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """Query Quality Rule List
+        r"""Query Quality Rule List
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesRequest`
@@ -3204,7 +3204,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRulesByPage(self, request):
-        """Paginated Query of Quality Rules
+        r"""Paginated Query of Quality Rules
 
         :param request: Request instance for DescribeRulesByPage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesByPageRequest`
@@ -3227,7 +3227,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeScheduleInstances(self, request):
-        """Get Instance List
+        r"""Get Instance List
 
         :param request: Request instance for DescribeScheduleInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeScheduleInstancesRequest`
@@ -3250,7 +3250,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeSchedulerInstanceStatus(self, request):
-        """Operation and Maintenance Dashboard-Instance Status Distribution
+        r"""Operation and Maintenance Dashboard-Instance Status Distribution
 
         :param request: Request instance for DescribeSchedulerInstanceStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerInstanceStatusRequest`
@@ -3273,7 +3273,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeSchedulerRunTimeInstanceCntByStatus(self, request):
-        """Operation and Maintenance Dashboard - Instance Running Duration Ranking
+        r"""Operation and Maintenance Dashboard - Instance Running Duration Ranking
 
         :param request: Request instance for DescribeSchedulerRunTimeInstanceCntByStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerRunTimeInstanceCntByStatusRequest`
@@ -3296,7 +3296,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeSchedulerTaskCntByStatus(self, request):
-        """Task Status Statistics
+        r"""Task Status Statistics
 
         :param request: Request instance for DescribeSchedulerTaskCntByStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskCntByStatusRequest`
@@ -3319,7 +3319,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeSchedulerTaskTypeCnt(self, request):
-        """Operation and Maintenance Dashboard - Task Status Distribution
+        r"""Operation and Maintenance Dashboard - Task Status Distribution
 
         :param request: Request instance for DescribeSchedulerTaskTypeCnt.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSchedulerTaskTypeCntRequest`
@@ -3342,7 +3342,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeStatisticInstanceStatusTrendOps(self, request):
-        """Task Status Trend
+        r"""Task Status Trend
 
         :param request: Request instance for DescribeStatisticInstanceStatusTrendOps.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeStatisticInstanceStatusTrendOpsRequest`
@@ -3365,7 +3365,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeStreamTaskLogList(self, request):
-        """Query real-time task log list
+        r"""Query real-time task log list
 
         :param request: Request instance for DescribeStreamTaskLogList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeStreamTaskLogListRequest`
@@ -3388,7 +3388,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeSuccessorOpsTaskInfos(self, request):
-        """Get Downstream Task Information
+        r"""Get Downstream Task Information
 
         :param request: Request instance for DescribeSuccessorOpsTaskInfos.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeSuccessorOpsTaskInfosRequest`
@@ -3411,7 +3411,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableBasicInfo(self, request):
-        """Metadata Model-Table Basic Information Query Interface
+        r"""Metadata Model-Table Basic Information Query Interface
 
         :param request: Request instance for DescribeTableBasicInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableBasicInfoRequest`
@@ -3434,7 +3434,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableInfoList(self, request):
-        """Retrieve Data Table Information
+        r"""Retrieve Data Table Information
 
         :param request: Request instance for DescribeTableInfoList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableInfoListRequest`
@@ -3457,7 +3457,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableLineage(self, request):
-        """List Table Lineage Information
+        r"""List Table Lineage Information
 
         :param request: Request instance for DescribeTableLineage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageRequest`
@@ -3480,7 +3480,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableLineageInfo(self, request):
-        """List Table Lineage Information
+        r"""List Table Lineage Information
 
         :param request: Request instance for DescribeTableLineageInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageInfoRequest`
@@ -3503,7 +3503,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableMeta(self, request):
-        """Querying Table Metadata Details
+        r"""Querying Table Metadata Details
 
         :param request: Request instance for DescribeTableMeta.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableMetaRequest`
@@ -3526,7 +3526,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableMetas(self, request):
-        """Get Table Metadata List
+        r"""Get Table Metadata List
 
         :param request: Request instance for DescribeTableMetas.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableMetasRequest`
@@ -3549,7 +3549,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableQualityDetails(self, request):
-        """Quality Report - Query Table Quality Details
+        r"""Quality Report - Query Table Quality Details
 
         :param request: Request instance for DescribeTableQualityDetails.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableQualityDetailsRequest`
@@ -3572,7 +3572,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableSchemaInfo(self, request):
-        """Retrieve Table Schema Information
+        r"""Retrieve Table Schema Information
 
         :param request: Request instance for DescribeTableSchemaInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableSchemaInfoRequest`
@@ -3595,7 +3595,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTableScoreTrend(self, request):
-        """Query Table Score Trend
+        r"""Query Table Score Trend
 
         :param request: Request instance for DescribeTableScoreTrend.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableScoreTrendRequest`
@@ -3618,7 +3618,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskAlarmRegulations(self, request):
-        """Query Task Alert Rule List
+        r"""Query Task Alert Rule List
 
         :param request: Request instance for DescribeTaskAlarmRegulations.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskAlarmRegulationsRequest`
@@ -3641,7 +3641,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskByCycle(self, request):
-        """Query all tasks by cycle type
+        r"""Query all tasks by cycle type
 
         :param request: Request instance for DescribeTaskByCycle.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleRequest`
@@ -3664,7 +3664,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskByCycleReport(self, request):
-        """Task Status Cycle Growth Trend
+        r"""Task Status Cycle Growth Trend
 
         :param request: Request instance for DescribeTaskByCycleReport.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByCycleReportRequest`
@@ -3687,7 +3687,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskByStatusReport(self, request):
-        """Task Status Trend
+        r"""Task Status Trend
 
         :param request: Request instance for DescribeTaskByStatusReport.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskByStatusReportRequest`
@@ -3710,7 +3710,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskLockStatus(self, request):
-        """View Task Lock Status Information
+        r"""View Task Lock Status Information
 
         :param request: Request instance for DescribeTaskLockStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskLockStatusRequest`
@@ -3733,7 +3733,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskRunHistory(self, request):
-        """Paging Query Task Execution History
+        r"""Paging Query Task Execution History
 
         :param request: Request instance for DescribeTaskRunHistory.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskRunHistoryRequest`
@@ -3756,7 +3756,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskScript(self, request):
-        """Query Task Script
+        r"""Query Task Script
 
         :param request: Request instance for DescribeTaskScript.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskScriptRequest`
@@ -3779,7 +3779,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTemplateDimCount(self, request):
-        """Query rule template dimension distribution
+        r"""Query rule template dimension distribution
 
         :param request: Request instance for DescribeTemplateDimCount.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateDimCountRequest`
@@ -3802,7 +3802,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeThirdTaskRunLog(self, request):
-        """Get third-party operation logs
+        r"""Get third-party operation logs
 
         :param request: Request instance for DescribeThirdTaskRunLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeThirdTaskRunLogRequest`
@@ -3825,7 +3825,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTopTableStat(self, request):
-        """Data Quality Overview Page Table Ranking Interface
+        r"""Data Quality Overview Page Table Ranking Interface
 
         :param request: Request instance for DescribeTopTableStat.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTopTableStatRequest`
@@ -3848,7 +3848,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTrendStat(self, request):
-        """Data Quality Overview Page Trend Change Interface
+        r"""Data Quality Overview Page Trend Change Interface
 
         :param request: Request instance for DescribeTrendStat.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTrendStatRequest`
@@ -3871,7 +3871,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeWorkflowCanvasInfo(self, request):
-        """Query Workflow Canvas
+        r"""Query Workflow Canvas
 
         :param request: Request instance for DescribeWorkflowCanvasInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowCanvasInfoRequest`
@@ -3894,7 +3894,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeWorkflowExecuteById(self, request):
-        """Query Workflow Canvas Run Start and End Time
+        r"""Query Workflow Canvas Run Start and End Time
 
         :param request: Request instance for DescribeWorkflowExecuteById.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowExecuteByIdRequest`
@@ -3917,7 +3917,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeWorkflowInfoById(self, request):
-        """Query Workflow Details by Workflow ID
+        r"""Query Workflow Details by Workflow ID
 
         :param request: Request instance for DescribeWorkflowInfoById.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowInfoByIdRequest`
@@ -3940,7 +3940,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeWorkflowListByProjectId(self, request):
-        """Get all workflow lists under the project by Project ID
+        r"""Get all workflow lists under the project by Project ID
 
         :param request: Request instance for DescribeWorkflowListByProjectId.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowListByProjectIdRequest`
@@ -3963,7 +3963,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeWorkflowTaskCount(self, request):
-        """Query the number of workflow tasks
+        r"""Query the number of workflow tasks
 
         :param request: Request instance for DescribeWorkflowTaskCount.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeWorkflowTaskCountRequest`
@@ -3986,7 +3986,7 @@ class WedataClient(AbstractClient):
 
 
     def DiagnosePro(self, request):
-        """Instance diagnosis for diagnosing instances in INITIAL, DEPENDENCE, ALLOCATED, LAUNCHED, EVENT_LISTENING, BEFORE_ASPECT, EXPIRED, FAILED states
+        r"""Instance diagnosis for diagnosing instances in INITIAL, DEPENDENCE, ALLOCATED, LAUNCHED, EVENT_LISTENING, BEFORE_ASPECT, EXPIRED, FAILED states
 
         :param request: Request instance for DiagnosePro.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DiagnoseProRequest`
@@ -4009,7 +4009,7 @@ class WedataClient(AbstractClient):
 
 
     def DryRunDIOfflineTask(self, request):
-        """Debug and Run Integration Task
+        r"""Debug and Run Integration Task
 
         :param request: Request instance for DryRunDIOfflineTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DryRunDIOfflineTaskRequest`
@@ -4032,7 +4032,7 @@ class WedataClient(AbstractClient):
 
 
     def FindAllFolder(self, request):
-        """Orchestration Space Bulk Operation Page Find All Folders
+        r"""Orchestration Space Bulk Operation Page Find All Folders
 
         :param request: Request instance for FindAllFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FindAllFolderRequest`
@@ -4055,7 +4055,7 @@ class WedataClient(AbstractClient):
 
 
     def FreezeOpsTasks(self, request):
-        """Task Operation and Maintenance - Bulk Pause Tasks
+        r"""Task Operation and Maintenance - Bulk Pause Tasks
 
         :param request: Request instance for FreezeOpsTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeOpsTasksRequest`
@@ -4078,7 +4078,7 @@ class WedataClient(AbstractClient):
 
 
     def FreezeTasksByWorkflowIds(self, request):
-        """Pause All Tasks Under Workflow
+        r"""Pause All Tasks Under Workflow
 
         :param request: Request instance for FreezeTasksByWorkflowIds.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeTasksByWorkflowIdsRequest`
@@ -4101,7 +4101,7 @@ class WedataClient(AbstractClient):
 
 
     def GenHiveTableDDLSql(self, request):
-        """Generate SQL for Creating Hive Table
+        r"""Generate SQL for Creating Hive Table
 
         :param request: Request instance for GenHiveTableDDLSql.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GenHiveTableDDLSqlRequest`
@@ -4124,7 +4124,7 @@ class WedataClient(AbstractClient):
 
 
     def GetFileInfo(self, request):
-        """Development Space - Obtain data development script information
+        r"""Development Space - Obtain data development script information
 
         :param request: Request instance for GetFileInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetFileInfoRequest`
@@ -4147,7 +4147,7 @@ class WedataClient(AbstractClient):
 
 
     def GetInstanceLog(self, request):
-        """This API is used to obtain instance lists.
+        r"""This API is used to obtain instance lists.
 
         :param request: Request instance for GetInstanceLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetInstanceLogRequest`
@@ -4170,7 +4170,7 @@ class WedataClient(AbstractClient):
 
 
     def GetIntegrationNodeColumnSchema(self, request):
-        """Extracting DataInLong Node Field Schema
+        r"""Extracting DataInLong Node Field Schema
 
         :param request: Request instance for GetIntegrationNodeColumnSchema.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetIntegrationNodeColumnSchemaRequest`
@@ -4193,7 +4193,7 @@ class WedataClient(AbstractClient):
 
 
     def GetOfflineDIInstanceList(self, request):
-        """Get Offline Task Instance List (New)
+        r"""Get Offline Task Instance List (New)
 
         :param request: Request instance for GetOfflineDIInstanceList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetOfflineDIInstanceListRequest`
@@ -4216,7 +4216,7 @@ class WedataClient(AbstractClient):
 
 
     def GetOfflineInstanceList(self, request):
-        """Obtain Offline Task Instances
+        r"""Obtain Offline Task Instances
 
         :param request: Request instance for GetOfflineInstanceList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetOfflineInstanceListRequest`
@@ -4239,7 +4239,7 @@ class WedataClient(AbstractClient):
 
 
     def GetTaskInstance(self, request):
-        """This API is used to obtain instance lists.
+        r"""This API is used to obtain instance lists.
 
         :param request: Request instance for GetTaskInstance.
         :type request: :class:`tencentcloud.wedata.v20210820.models.GetTaskInstanceRequest`
@@ -4262,7 +4262,7 @@ class WedataClient(AbstractClient):
 
 
     def KillOpsMakePlanInstances(self, request):
-        """Batch Termination of Instances by Supplement Plan.
+        r"""Batch Termination of Instances by Supplement Plan.
 
         :param request: Request instance for KillOpsMakePlanInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.KillOpsMakePlanInstancesRequest`
@@ -4285,7 +4285,7 @@ class WedataClient(AbstractClient):
 
 
     def KillScheduleInstances(self, request):
-        """Batch Termination of Instances
+        r"""Batch Termination of Instances
 
         :param request: Request instance for KillScheduleInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.KillScheduleInstancesRequest`
@@ -4308,7 +4308,7 @@ class WedataClient(AbstractClient):
 
 
     def ListInstances(self, request):
-        """This API is used to obtain instance lists.
+        r"""This API is used to obtain instance lists.
 
         :param request: Request instance for ListInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ListInstancesRequest`
@@ -4331,7 +4331,7 @@ class WedataClient(AbstractClient):
 
 
     def LockIntegrationTask(self, request):
-        """Lock Integration Task
+        r"""Lock Integration Task
 
         :param request: Request instance for LockIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.LockIntegrationTaskRequest`
@@ -4354,7 +4354,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyApproveStatus(self, request):
-        """Modify Approval Form Status
+        r"""Modify Approval Form Status
 
         :param request: Request instance for ModifyApproveStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyApproveStatusRequest`
@@ -4377,7 +4377,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyDataSource(self, request):
-        """Modify Data Source
+        r"""Modify Data Source
 
         :param request: Request instance for ModifyDataSource.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDataSourceRequest`
@@ -4400,7 +4400,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyDimensionWeight(self, request):
-        """Quality Report - Modify Dimension Permissions
+        r"""Quality Report - Modify Dimension Permissions
 
         :param request: Request instance for ModifyDimensionWeight.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDimensionWeightRequest`
@@ -4423,7 +4423,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyDsFolder(self, request):
-        """Data Development Module - Folder Update
+        r"""Data Development Module - Folder Update
 
         :param request: Request instance for ModifyDsFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDsFolderRequest`
@@ -4446,7 +4446,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyExecStrategy(self, request):
-        """Update Rule Group Execution Strategy
+        r"""Update Rule Group Execution Strategy
 
         :param request: Request instance for ModifyExecStrategy.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyExecStrategyRequest`
@@ -4469,7 +4469,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyIntegrationNode(self, request):
-        """Updating Integrated Nodes
+        r"""Updating Integrated Nodes
 
         :param request: Request instance for ModifyIntegrationNode.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyIntegrationNodeRequest`
@@ -4492,7 +4492,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyIntegrationTask(self, request):
-        """Update Integration Task
+        r"""Update Integration Task
 
         :param request: Request instance for ModifyIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyIntegrationTaskRequest`
@@ -4515,7 +4515,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyMonitorStatus(self, request):
-        """Update Monitoring Status
+        r"""Update Monitoring Status
 
         :param request: Request instance for ModifyMonitorStatus.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyMonitorStatusRequest`
@@ -4538,7 +4538,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """Update Quality Rule Interface
+        r"""Update Quality Rule Interface
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleRequest`
@@ -4561,7 +4561,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyRuleGroupSubscription(self, request):
-        """Update Rule Group Subscription Information
+        r"""Update Rule Group Subscription Information
 
         :param request: Request instance for ModifyRuleGroupSubscription.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleGroupSubscriptionRequest`
@@ -4584,7 +4584,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyRuleTemplate(self, request):
-        """Edit Rule Template
+        r"""Edit Rule Template
 
         :param request: Request instance for ModifyRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleTemplateRequest`
@@ -4607,7 +4607,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskAlarmRegular(self, request):
-        """Modify task alert rules
+        r"""Modify task alert rules
 
         :param request: Request instance for ModifyTaskAlarmRegular.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskAlarmRegularRequest`
@@ -4630,7 +4630,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskInfo(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
+        r"""<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
         Update Task
 
         :param request: Request instance for ModifyTaskInfo.
@@ -4654,7 +4654,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskLinks(self, request):
-        """<p style="color:red;">[Note: This version is only available to some whitelist customers in the Guangzhou zone]</p>.
+        r"""<p style="color:red;">[Note: This version is only available to some whitelist customers in the Guangzhou zone]</p>.
         Add parent task dependency. This API is deprecated. Use API ModifyTaskLinksDs.
 
         :param request: Request instance for ModifyTaskLinks.
@@ -4678,7 +4678,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskLinksDs(self, request):
-        """This API is used to add parent task dependency.
+        r"""This API is used to add parent task dependency.
 
         :param request: Request instance for ModifyTaskLinksDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskLinksDsRequest`
@@ -4701,7 +4701,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskName(self, request):
-        """Rename Task (Task Editing)
+        r"""Rename Task (Task Editing)
 
         :param request: Request instance for ModifyTaskName.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskNameRequest`
@@ -4724,7 +4724,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskScript(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
+        r"""<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
         Modify Task Script
 
         :param request: Request instance for ModifyTaskScript.
@@ -4748,7 +4748,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowInfo(self, request):
-        """This API is used to update workflow information. (deprecated). Use API UpdateWorkflowInfo.
+        r"""This API is used to update workflow information. (deprecated). Use API UpdateWorkflowInfo.
 
         :param request: Request instance for ModifyWorkflowInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowInfoRequest`
@@ -4771,7 +4771,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowSchedule(self, request):
-        """This API is used to update workflow scheduling. This API is deprecated. Use the RenewWorkflowSchedulerInfoDs API instead.
+        r"""This API is used to update workflow scheduling. This API is deprecated. Use the RenewWorkflowSchedulerInfoDs API instead.
 
         :param request: Request instance for ModifyWorkflowSchedule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowScheduleRequest`
@@ -4794,7 +4794,7 @@ class WedataClient(AbstractClient):
 
 
     def MoveTasksToFolder(self, request):
-        """Orchestration Space - Workflow - Move Task to Workflow Folder
+        r"""Orchestration Space - Workflow - Move Task to Workflow Folder
 
         :param request: Request instance for MoveTasksToFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.MoveTasksToFolderRequest`
@@ -4817,7 +4817,7 @@ class WedataClient(AbstractClient):
 
 
     def RegisterDsEvent(self, request):
-        """This API is used to register an event.
+        r"""This API is used to register an event.
 
         :param request: Request instance for RegisterDsEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventRequest`
@@ -4840,7 +4840,7 @@ class WedataClient(AbstractClient):
 
 
     def RegisterEvent(self, request):
-        """<p style="color:red;">[Note: This version is only available for partial allowlisted customers in the Guangzhou region]</p>.
+        r"""<p style="color:red;">[Note: This version is only available for partial allowlisted customers in the Guangzhou region]</p>.
         This API is used to register events. This API is deprecated. Use API RegisterDsEvent.
 
         :param request: Request instance for RegisterEvent.
@@ -4864,7 +4864,7 @@ class WedataClient(AbstractClient):
 
 
     def RegisterEventListener(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
+        r"""<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
         Register Event Listener
 
         :param request: Request instance for RegisterEventListener.
@@ -4888,7 +4888,7 @@ class WedataClient(AbstractClient):
 
 
     def RemoveWorkflowDs(self, request):
-        """Delete orchestration space workflow
+        r"""Delete orchestration space workflow
 
         :param request: Request instance for RemoveWorkflowDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RemoveWorkflowDsRequest`
@@ -4911,7 +4911,7 @@ class WedataClient(AbstractClient):
 
 
     def RenewWorkflowOwnerDs(self, request):
-        """This API is used to batch update the task owner under a workflow.
+        r"""This API is used to batch update the task owner under a workflow.
 
         :param request: Request instance for RenewWorkflowOwnerDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowOwnerDsRequest`
@@ -4934,7 +4934,7 @@ class WedataClient(AbstractClient):
 
 
     def RenewWorkflowSchedulerInfoDs(self, request):
-        """This API is used to update task scheduling information under a workflow.
+        r"""This API is used to update task scheduling information under a workflow.
 
         :param request: Request instance for RenewWorkflowSchedulerInfoDs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowSchedulerInfoDsRequest`
@@ -4957,7 +4957,7 @@ class WedataClient(AbstractClient):
 
 
     def ResumeIntegrationTask(self, request):
-        """Continue Integration Task
+        r"""Continue Integration Task
 
         :param request: Request instance for ResumeIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ResumeIntegrationTaskRequest`
@@ -4980,7 +4980,7 @@ class WedataClient(AbstractClient):
 
 
     def RobAndLockIntegrationTask(self, request):
-        """Preemptive locking of integration tasks
+        r"""Preemptive locking of integration tasks
 
         :param request: Request instance for RobAndLockIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RobAndLockIntegrationTaskRequest`
@@ -5003,7 +5003,7 @@ class WedataClient(AbstractClient):
 
 
     def RunForceSucScheduleInstances(self, request):
-        """Instance Batch Successfully Configured
+        r"""Instance Batch Successfully Configured
 
         :param request: Request instance for RunForceSucScheduleInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RunForceSucScheduleInstancesRequest`
@@ -5026,7 +5026,7 @@ class WedataClient(AbstractClient):
 
 
     def RunRerunScheduleInstances(self, request):
-        """Instance Batch Rerun
+        r"""Instance Batch Rerun
 
         :param request: Request instance for RunRerunScheduleInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RunRerunScheduleInstancesRequest`
@@ -5049,7 +5049,7 @@ class WedataClient(AbstractClient):
 
 
     def RunTasksByMultiWorkflow(self, request):
-        """Batch startup of workflows
+        r"""Batch startup of workflows
 
         :param request: Request instance for RunTasksByMultiWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RunTasksByMultiWorkflowRequest`
@@ -5072,7 +5072,7 @@ class WedataClient(AbstractClient):
 
 
     def SaveCustomFunction(self, request):
-        """Save User-Defined Function
+        r"""Save User-Defined Function
 
         :param request: Request instance for SaveCustomFunction.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SaveCustomFunctionRequest`
@@ -5095,7 +5095,7 @@ class WedataClient(AbstractClient):
 
 
     def SetTaskAlarmNew(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
+        r"""<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
         Set Task Alerts, Create/Update Alert Information (Latest)
 
         :param request: Request instance for SetTaskAlarmNew.
@@ -5119,7 +5119,7 @@ class WedataClient(AbstractClient):
 
 
     def StartIntegrationTask(self, request):
-        """Initiate Integration Task
+        r"""Initiate Integration Task
 
         :param request: Request instance for StartIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.StartIntegrationTaskRequest`
@@ -5142,7 +5142,7 @@ class WedataClient(AbstractClient):
 
 
     def StopIntegrationTask(self, request):
-        """Stop Integration Task
+        r"""Stop Integration Task
 
         :param request: Request instance for StopIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.StopIntegrationTaskRequest`
@@ -5165,7 +5165,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitCustomFunction(self, request):
-        """Submit Custom Definition Function
+        r"""Submit Custom Definition Function
 
         :param request: Request instance for SubmitCustomFunction.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitCustomFunctionRequest`
@@ -5188,7 +5188,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitSqlTask(self, request):
-        """Ad Hoc Analysis - Submit SQL Task
+        r"""Ad Hoc Analysis - Submit SQL Task
 
         :param request: Request instance for SubmitSqlTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitSqlTaskRequest`
@@ -5211,7 +5211,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitTask(self, request):
-        """<p style="color:red;">[Note: This version is only available for partial whitelist customers in the Guangzhou zone]</p>.
+        r"""<p style="color:red;">[Note: This version is only available for partial whitelist customers in the Guangzhou zone]</p>.
         This API is used to submit tasks. This API is deprecated. Use the CreateTaskVersionDs API.
 
         :param request: Request instance for SubmitTask.
@@ -5235,7 +5235,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitTaskTestRun(self, request):
-        """No
+        r"""No
 
         :param request: Request instance for SubmitTaskTestRun.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitTaskTestRunRequest`
@@ -5258,7 +5258,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitWorkflow(self, request):
-        """Submit a workflow. This API is deprecated. Use the BatchCreateTaskVersionAsync API.
+        r"""Submit a workflow. This API is deprecated. Use the BatchCreateTaskVersionAsync API.
 
         :param request: Request instance for SubmitWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitWorkflowRequest`
@@ -5281,7 +5281,7 @@ class WedataClient(AbstractClient):
 
 
     def SuspendIntegrationTask(self, request):
-        """Pause Integration Task
+        r"""Pause Integration Task
 
         :param request: Request instance for SuspendIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SuspendIntegrationTaskRequest`
@@ -5304,7 +5304,7 @@ class WedataClient(AbstractClient):
 
 
     def TaskLog(self, request):
-        """Query Inlong Manager Logs
+        r"""Query Inlong Manager Logs
 
         :param request: Request instance for TaskLog.
         :type request: :class:`tencentcloud.wedata.v20210820.models.TaskLogRequest`
@@ -5327,7 +5327,7 @@ class WedataClient(AbstractClient):
 
 
     def TriggerDsEvent(self, request):
-        """Event Management - Triggered Events
+        r"""Event Management - Triggered Events
 
         :param request: Request instance for TriggerDsEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerDsEventRequest`
@@ -5350,7 +5350,7 @@ class WedataClient(AbstractClient):
 
 
     def TriggerEvent(self, request):
-        """<p style="color:red;">[Note: This version is only available to some allowlisted customers in the Guangzhou region]</p>.
+        r"""<p style="color:red;">[Note: This version is only available to some allowlisted customers in the Guangzhou region]</p>.
         This API is used to trigger event. This API is deprecated. Use API TriggerDsEvent.
 
         :param request: Request instance for TriggerEvent.
@@ -5374,7 +5374,7 @@ class WedataClient(AbstractClient):
 
 
     def UnlockIntegrationTask(self, request):
-        """Unlock Integration Task
+        r"""Unlock Integration Task
 
         :param request: Request instance for UnlockIntegrationTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.UnlockIntegrationTaskRequest`
@@ -5397,7 +5397,7 @@ class WedataClient(AbstractClient):
 
 
     def UpdateProjectUserRole(self, request):
-        """This API is used to modify user roles in a project.
+        r"""This API is used to modify user roles in a project.
 
         :param request: Request instance for UpdateProjectUserRole.
         :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateProjectUserRoleRequest`
@@ -5420,7 +5420,7 @@ class WedataClient(AbstractClient):
 
 
     def UpdateWorkflowInfo(self, request):
-        """This API is developed in ds.
+        r"""This API is developed in ds.
         This API is used to update a workflow, including its basic information and workflow parameters.
 
         :param request: Request instance for UpdateWorkflowInfo.
@@ -5444,7 +5444,7 @@ class WedataClient(AbstractClient):
 
 
     def UpdateWorkflowOwner(self, request):
-        """This API is used to modify the workflow owner. Deprecated. Use the RenewWorkflowOwnerDs API.
+        r"""This API is used to modify the workflow owner. Deprecated. Use the RenewWorkflowOwnerDs API.
 
         :param request: Request instance for UpdateWorkflowOwner.
         :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowOwnerRequest`
@@ -5467,7 +5467,7 @@ class WedataClient(AbstractClient):
 
 
     def UploadContent(self, request):
-        """Save Task Information
+        r"""Save Task Information
 
         :param request: Request instance for UploadContent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.UploadContentRequest`

@@ -27,7 +27,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateHealthCheckPolicy(self, request):
-        """This API is used to create a health check policy.
+        r"""This API is used to create a health check policy.
 
         :param request: Request instance for CreateHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.CreateHealthCheckPolicyRequest`
@@ -50,7 +50,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateNodePool(self, request):
-        """This API is used to create a TKE node pool
+        r"""This API is used to create a TKE node pool
 
         :param request: Request instance for CreateNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.CreateNodePoolRequest`
@@ -73,7 +73,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteHealthCheckPolicy(self, request):
-        """This API is used to delete a health check policy.
+        r"""This API is used to delete a health check policy.
 
         :param request: Request instance for DeleteHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.DeleteHealthCheckPolicyRequest`
@@ -96,7 +96,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteNodePool(self, request):
-        """This API is used to delete a TKE node pool.
+        r"""This API is used to delete a TKE node pool.
 
         :param request: Request instance for DeleteNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.DeleteNodePoolRequest`
@@ -119,7 +119,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """This API is used to query the information of node instances in a cluster.
+        r"""This API is used to query the information of node instances in a cluster.
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeClusterInstancesRequest`
@@ -142,7 +142,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckPolicies(self, request):
-        """This API is used to query a health check policy.
+        r"""This API is used to query a health check policy.
 
         :param request: Request instance for DescribeHealthCheckPolicies.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPoliciesRequest`
@@ -165,7 +165,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckPolicyBindings(self, request):
-        """This API is used to query a health check policy binding relationship.
+        r"""This API is used to query a health check policy binding relationship.
 
         :param request: Request instance for DescribeHealthCheckPolicyBindings.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckPolicyBindingsRequest`
@@ -188,7 +188,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeHealthCheckTemplate(self, request):
-        """This API is used to query a health check policy template.
+        r"""This API is used to query a health check policy template.
 
         :param request: Request instance for DescribeHealthCheckTemplate.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeHealthCheckTemplateRequest`
@@ -211,7 +211,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeNodePools(self, request):
-        """This API is used to query a TKE node pool list.
+        r"""This API is used to query a TKE node pool list.
 
         :param request: Request instance for DescribeNodePools.
         :type request: :class:`tencentcloud.tke.v20220501.models.DescribeNodePoolsRequest`
@@ -234,7 +234,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyHealthCheckPolicy(self, request):
-        """This API is used to modify a health check policy.
+        r"""This API is used to modify a health check policy.
 
         :param request: Request instance for ModifyHealthCheckPolicy.
         :type request: :class:`tencentcloud.tke.v20220501.models.ModifyHealthCheckPolicyRequest`
@@ -257,7 +257,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyNodePool(self, request):
-        """This API is used to update a TKE node pool.
+        r"""This API is used to update a TKE node pool.
 
         :param request: Request instance for ModifyNodePool.
         :type request: :class:`tencentcloud.tke.v20220501.models.ModifyNodePoolRequest`

@@ -27,7 +27,7 @@ class SqlserverClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """This API is used to bind security groups to instances in batches.
+        r"""This API is used to bind security groups to instances in batches.
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.AssociateSecurityGroupsRequest`
@@ -50,7 +50,7 @@ class SqlserverClient(AbstractClient):
 
 
     def BalanceReadOnlyGroup(self, request):
-        """This API is used to balance the routing weight of each read-only instance according to the predefined weights. The DescribeReadOnlyGroupAutoWeight API is used to query the predefined weights.
+        r"""This API is used to balance the routing weight of each read-only instance according to the predefined weights. The DescribeReadOnlyGroupAutoWeight API is used to query the predefined weights.
 
         :param request: Request instance for BalanceReadOnlyGroup.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.BalanceReadOnlyGroupRequest`
@@ -73,7 +73,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CloneDB(self, request):
-        """This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.
+        r"""This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.
 
         :param request: Request instance for CloneDB.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloneDBRequest`
@@ -96,7 +96,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CloseInterCommunication(self, request):
-        """This API is used to disable instance interconnection.
+        r"""This API is used to disable instance interconnection.
 
         :param request: Request instance for CloseInterCommunication.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloseInterCommunicationRequest`
@@ -119,7 +119,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CompleteExpansion(self, request):
-        """This API is used to complete the instance upgrade and switch immediately without waiting for the maintenance window when the instance status is "upgrade pending switch" after scale-out is initiated. This API needs to be called during off-peak hours of the instance. Some databases cannot be accessed before the switch is completed.
+        r"""This API is used to complete the instance upgrade and switch immediately without waiting for the maintenance window when the instance status is "upgrade pending switch" after scale-out is initiated. This API needs to be called during off-peak hours of the instance. Some databases cannot be accessed before the switch is completed.
 
         :param request: Request instance for CompleteExpansion.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CompleteExpansionRequest`
@@ -142,7 +142,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CompleteMigration(self, request):
-        """This API is used to complete a migration task.
+        r"""This API is used to complete a migration task.
 
         :param request: Request instance for CompleteMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CompleteMigrationRequest`
@@ -165,7 +165,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """This API is used to create an instance account.
+        r"""This API is used to create an instance account.
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateAccountRequest`
@@ -188,7 +188,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        """This API is used to create a backup.
+        r"""This API is used to create a backup.
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBackupRequest`
@@ -211,7 +211,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBackupMigration(self, request):
-        """This API is used to create a backup import task.
+        r"""This API is used to create a backup import task.
 
         :param request: Request instance for CreateBackupMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBackupMigrationRequest`
@@ -234,7 +234,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBasicDBInstances(self, request):
-        """This API is used to create basic edition instances (cloud disk).
+        r"""This API is used to create basic edition instances (cloud disk).
 
         :param request: Request instance for CreateBasicDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesRequest`
@@ -257,7 +257,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBusinessDBInstances(self, request):
-        """This API is used to create business intelligence service instances (cloud disk).
+        r"""This API is used to create business intelligence service instances (cloud disk).
 
         :param request: Request instance for CreateBusinessDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesRequest`
@@ -280,7 +280,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBusinessIntelligenceFile(self, request):
-        """This API is used to add a business intelligence service file.
+        r"""This API is used to add a business intelligence service file.
 
         :param request: Request instance for CreateBusinessIntelligenceFile.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessIntelligenceFileRequest`
@@ -303,7 +303,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudDBInstances(self, request):
-        """This API is used to create high-availability instances (cloud disk).
+        r"""This API is used to create high-availability instances (cloud disk).
 
         :param request: Request instance for CreateCloudDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesRequest`
@@ -326,7 +326,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudReadOnlyDBInstances(self, request):
-        """This API is used to create read-only instances (cloud disk).
+        r"""This API is used to create read-only instances (cloud disk).
 
         :param request: Request instance for CreateCloudReadOnlyDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesRequest`
@@ -349,7 +349,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateDB(self, request):
-        """This API is used to create a database.
+        r"""This API is used to create a database.
 
         :param request: Request instance for CreateDB.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateDBRequest`
@@ -372,7 +372,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """This API is used to create high-availability instances (local disk).
+        r"""This API is used to create high-availability instances (local disk).
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateDBInstancesRequest`
@@ -395,7 +395,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateIncrementalMigration(self, request):
-        """This API is used to create an incremental backup import task.
+        r"""This API is used to create an incremental backup import task.
 
         :param request: Request instance for CreateIncrementalMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateIncrementalMigrationRequest`
@@ -418,7 +418,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateMigration(self, request):
-        """This API is used to create a migration task.
+        r"""This API is used to create a migration task.
 
         :param request: Request instance for CreateMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateMigrationRequest`
@@ -441,7 +441,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreatePublishSubscribe(self, request):
-        """This API is used to create a publish/subscribe relationship between two databases. A subscriber cannot act as a publisher, and a publisher can have multiple subscriber instances.
+        r"""This API is used to create a publish/subscribe relationship between two databases. A subscriber cannot act as a publisher, and a publisher can have multiple subscriber instances.
 
         :param request: Request instance for CreatePublishSubscribe.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreatePublishSubscribeRequest`
@@ -464,7 +464,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateReadOnlyDBInstances(self, request):
-        """This API is used to create read-only instances (local disk).
+        r"""This API is used to create read-only instances (local disk).
 
         :param request: Request instance for CreateReadOnlyDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesRequest`
@@ -487,7 +487,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CutXEvents(self, request):
-        """This API is used to manually cut block logs and deadlock logs.
+        r"""This API is used to manually cut block logs and deadlock logs.
 
         :param request: Request instance for CutXEvents.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsRequest`
@@ -510,7 +510,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteAccount(self, request):
-        """This API is used to delete an instance account.
+        r"""This API is used to delete an instance account.
 
         :param request: Request instance for DeleteAccount.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteAccountRequest`
@@ -533,7 +533,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteBackupMigration(self, request):
-        """This API is used to delete a backup import task.
+        r"""This API is used to delete a backup import task.
 
         :param request: Request instance for DeleteBackupMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBackupMigrationRequest`
@@ -556,7 +556,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteBusinessIntelligenceFile(self, request):
-        """This API is used to delete a business intelligence service file.
+        r"""This API is used to delete a business intelligence service file.
 
         :param request: Request instance for DeleteBusinessIntelligenceFile.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBusinessIntelligenceFileRequest`
@@ -579,7 +579,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteDB(self, request):
-        """This API is used to drop a database.
+        r"""This API is used to drop a database.
 
         :param request: Request instance for DeleteDB.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBRequest`
@@ -602,7 +602,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteDBInstance(self, request):
-        """This API is used to release SQL server instances (eliminated immediately) in the recycle bin. The released instances will be physically terminated after being retained for a period of time. Their publish-subscribe relationships will be automatically disassociated, and their RO replicas will be automatically released.
+        r"""This API is used to release SQL server instances (eliminated immediately) in the recycle bin. The released instances will be physically terminated after being retained for a period of time. Their publish-subscribe relationships will be automatically disassociated, and their RO replicas will be automatically released.
 
         :param request: Request instance for DeleteDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBInstanceRequest`
@@ -625,7 +625,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteIncrementalMigration(self, request):
-        """This API is used to delete an incremental backup import task.
+        r"""This API is used to delete an incremental backup import task.
 
         :param request: Request instance for DeleteIncrementalMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteIncrementalMigrationRequest`
@@ -648,7 +648,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeleteMigration(self, request):
-        """This API is used to delete a migration task.
+        r"""This API is used to delete a migration task.
 
         :param request: Request instance for DeleteMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteMigrationRequest`
@@ -671,7 +671,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DeletePublishSubscribe(self, request):
-        """This API is used to delete the publish/subscribe relationship between two databases.
+        r"""This API is used to delete the publish/subscribe relationship between two databases.
 
         :param request: Request instance for DeletePublishSubscribe.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeletePublishSubscribeRequest`
@@ -694,7 +694,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeAccountPrivilegeByDB(self, request):
-        """This API is used to query information on the account and permissions associated with the database.
+        r"""This API is used to query information on the account and permissions associated with the database.
 
         :param request: Request instance for DescribeAccountPrivilegeByDB.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountPrivilegeByDBRequest`
@@ -717,7 +717,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to pull the list of instance accounts.
+        r"""This API is used to pull the list of instance accounts.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountsRequest`
@@ -740,7 +740,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupByFlowId(self, request):
-        """This API is used to query the created backup details through the backup creation process ID. The process ID can be obtained through the CreateBackup API.
+        r"""This API is used to query the created backup details through the backup creation process ID. The process ID can be obtained through the CreateBackup API.
 
         :param request: Request instance for DescribeBackupByFlowId.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupByFlowIdRequest`
@@ -763,7 +763,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupCommand(self, request):
-        """This API is used to query the commands of creating backups canonically.
+        r"""This API is used to query the commands of creating backups canonically.
 
         :param request: Request instance for DescribeBackupCommand.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupCommandRequest`
@@ -786,7 +786,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """This API is used to query the details of an unarchived backup.
+        r"""This API is used to query the details of an unarchived backup.
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`
@@ -809,7 +809,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupMigration(self, request):
-        """This API is used to create an incremental backup import task.
+        r"""This API is used to create an incremental backup import task.
 
         :param request: Request instance for DescribeBackupMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMigrationRequest`
@@ -832,7 +832,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupMonitor(self, request):
-        """This API is used to query backup space usage details.
+        r"""This API is used to query backup space usage details.
 
         :param request: Request instance for DescribeBackupMonitor.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMonitorRequest`
@@ -855,7 +855,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupStatistical(self, request):
-        """This API is used to query the real-time statistics list of backups.
+        r"""This API is used to query the real-time statistics list of backups.
 
         :param request: Request instance for DescribeBackupStatistical.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupStatisticalRequest`
@@ -878,7 +878,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupSummary(self, request):
-        """This API is used to query the backup overview information of databases.
+        r"""This API is used to query the backup overview information of databases.
 
         :param request: Request instance for DescribeBackupSummary.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupSummaryRequest`
@@ -901,7 +901,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupUploadSize(self, request):
-        """This API is used to query the size of uploaded backup files. It is valid if the backup file type is `COS_UPLOAD` (the file is stored in COS).
+        r"""This API is used to query the size of uploaded backup files. It is valid if the backup file type is `COS_UPLOAD` (the file is stored in COS).
 
         :param request: Request instance for DescribeBackupUploadSize.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupUploadSizeRequest`
@@ -924,7 +924,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackups(self, request):
-        """This API is used to query the list of backups.
+        r"""This API is used to query the list of backups.
 
         :param request: Request instance for DescribeBackups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupsRequest`
@@ -947,7 +947,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBusinessIntelligenceFile(self, request):
-        """This API is used to query the files required by business intelligence service.
+        r"""This API is used to query the files required by business intelligence service.
 
         :param request: Request instance for DescribeBusinessIntelligenceFile.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBusinessIntelligenceFileRequest`
@@ -970,7 +970,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeCollationTimeZone(self, request):
-        """This API is used to query the character set and time zone supported by the instance.
+        r"""This API is used to query the character set and time zone supported by the instance.
 
         :param request: Request instance for DescribeCollationTimeZone.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCollationTimeZoneRequest`
@@ -993,7 +993,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeCrossBackupStatistical(self, request):
-        """This API is used to query the real-time statistics list of cross-region backups.
+        r"""This API is used to query the real-time statistics list of cross-region backups.
 
         :param request: Request instance for DescribeCrossBackupStatistical.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossBackupStatisticalRequest`
@@ -1016,7 +1016,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeCrossRegionZone(self, request):
-        """This API is used to query the disaster recovery region and AZ of the secondary node based on the primary instance.
+        r"""This API is used to query the disaster recovery region and AZ of the secondary node based on the primary instance.
 
         :param request: Request instance for DescribeCrossRegionZone.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionZoneRequest`
@@ -1039,7 +1039,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeCrossRegions(self, request):
-        """This API is used to query the target region for cross-region backups.
+        r"""This API is used to query the target region for cross-region backups.
 
         :param request: Request instance for DescribeCrossRegions.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionsRequest`
@@ -1062,7 +1062,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBCharsets(self, request):
-        """This API is used to query the database character sets supported by an instance.
+        r"""This API is used to query the database character sets supported by an instance.
 
         :param request: Request instance for DescribeDBCharsets.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBCharsetsRequest`
@@ -1085,7 +1085,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBInstanceInter(self, request):
-        """This API is used to query the information of the interconnected instances.
+        r"""This API is used to query the information of the interconnected instances.
 
         :param request: Request instance for DescribeDBInstanceInter.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstanceInterRequest`
@@ -1108,7 +1108,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """This API is used to query the list of instances.
+        r"""This API is used to query the list of instances.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstancesRequest`
@@ -1131,7 +1131,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBInstancesAttribute(self, request):
-        """This API is used to query the attributes of an instance.
+        r"""This API is used to query the attributes of an instance.
 
         :param request: Request instance for DescribeDBInstancesAttribute.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstancesAttributeRequest`
@@ -1154,7 +1154,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBPrivilegeByAccount(self, request):
-        """This API is used to query information on the databases and permissions associated with the account.
+        r"""This API is used to query information on the databases and permissions associated with the account.
 
         :param request: Request instance for DescribeDBPrivilegeByAccount.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBPrivilegeByAccountRequest`
@@ -1177,7 +1177,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBRestoreTime(self, request):
-        """This API is used to query databases that can be rolled back.
+        r"""This API is used to query databases that can be rolled back.
 
         :param request: Request instance for DescribeDBRestoreTime.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBRestoreTimeRequest`
@@ -1200,7 +1200,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """This API is used to query the security group details of instances.
+        r"""This API is used to query the security group details of instances.
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBSecurityGroupsRequest`
@@ -1223,7 +1223,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBs(self, request):
-        """This API is used to query the list of databases
+        r"""This API is used to query the list of databases
 
         :param request: Request instance for DescribeDBs.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsRequest`
@@ -1246,7 +1246,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDBsNormal(self, request):
-        """This API is used to query database configurations. It does not return information of the accounts that have permissions to operate the database.
+        r"""This API is used to query database configurations. It does not return information of the accounts that have permissions to operate the database.
 
         :param request: Request instance for DescribeDBsNormal.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsNormalRequest`
@@ -1269,7 +1269,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDatabaseNames(self, request):
-        """This API is used to query the database name associated with the account.
+        r"""This API is used to query the database name associated with the account.
 
         :param request: Request instance for DescribeDatabaseNames.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabaseNamesRequest`
@@ -1292,7 +1292,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """This API is used to query the database list.
+        r"""This API is used to query the database list.
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesRequest`
@@ -1315,7 +1315,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeDatabasesNormal(self, request):
-        """This API is used to query database configuration information. This API does not contain accounts associated with databases.
+        r"""This API is used to query database configuration information. This API does not contain accounts associated with databases.
 
         :param request: Request instance for DescribeDatabasesNormal.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesNormalRequest`
@@ -1338,7 +1338,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeFlowStatus(self, request):
-        """This API is used to query flow status.
+        r"""This API is used to query flow status.
 
         :param request: Request instance for DescribeFlowStatus.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeFlowStatusRequest`
@@ -1361,7 +1361,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeHASwitchLog(self, request):
-        """This API is used to perform the manual primary-secondary switch.
+        r"""This API is used to perform the manual primary-secondary switch.
 
         :param request: Request instance for DescribeHASwitchLog.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeHASwitchLogRequest`
@@ -1384,7 +1384,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeIncrementalMigration(self, request):
-        """This API is used to query an incremental backup import task.
+        r"""This API is used to query an incremental backup import task.
 
         :param request: Request instance for DescribeIncrementalMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeIncrementalMigrationRequest`
@@ -1407,7 +1407,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceByOrders(self, request):
-        """This API is used to query the instance ID by the order number.
+        r"""This API is used to query the instance ID by the order number.
 
         :param request: Request instance for DescribeInstanceByOrders.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceByOrdersRequest`
@@ -1430,7 +1430,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """This API is used to query the parameter modification records of an instance.
+        r"""This API is used to query the parameter modification records of an instance.
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamRecordsRequest`
@@ -1453,7 +1453,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API is used to query the parameter list of an instance.
+        r"""This API is used to query the parameter list of an instance.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceParamsRequest`
@@ -1476,7 +1476,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceTasks(self, request):
-        """This API is used to query the list of asynchronous tasks related to an instance.
+        r"""This API is used to query the list of asynchronous tasks related to an instance.
 
         :param request: Request instance for DescribeInstanceTasks.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTasksRequest`
@@ -1499,7 +1499,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeInstanceTradeParameter(self, request):
-        """This API is used to query the instance billing parameters.
+        r"""This API is used to query the instance billing parameters.
 
         :param request: Request instance for DescribeInstanceTradeParameter.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterRequest`
@@ -1522,7 +1522,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeMaintenanceSpan(self, request):
-        """This API is used to query the maintenance time window of an instance based on its instance ID.
+        r"""This API is used to query the maintenance time window of an instance based on its instance ID.
 
         :param request: Request instance for DescribeMaintenanceSpan.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMaintenanceSpanRequest`
@@ -1545,7 +1545,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeMigrationDatabases(self, request):
-        """This API is used to query the list of databases to be migrated.
+        r"""This API is used to query the list of databases to be migrated.
 
         :param request: Request instance for DescribeMigrationDatabases.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDatabasesRequest`
@@ -1568,7 +1568,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeMigrationDetail(self, request):
-        """This API is used to query migration task details.
+        r"""This API is used to query migration task details.
 
         :param request: Request instance for DescribeMigrationDetail.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDetailRequest`
@@ -1591,7 +1591,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeMigrations(self, request):
-        """This API is used to query the list of eligible migration tasks based on the entered criteria.
+        r"""This API is used to query the list of eligible migration tasks based on the entered criteria.
 
         :param request: Request instance for DescribeMigrations.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationsRequest`
@@ -1614,7 +1614,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeOrders(self, request):
-        """This API is used to query order information.
+        r"""This API is used to query order information.
 
         :param request: Request instance for DescribeOrders.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeOrdersRequest`
@@ -1637,7 +1637,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeProductConfig(self, request):
-        """This API is used to query purchasable specification configuration.
+        r"""This API is used to query purchasable specification configuration.
 
         :param request: Request instance for DescribeProductConfig.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProductConfigRequest`
@@ -1660,7 +1660,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """This API is used to query security group details of a project.
+        r"""This API is used to query security group details of a project.
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProjectSecurityGroupsRequest`
@@ -1683,7 +1683,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribePublishSubscribe(self, request):
-        """This API is used to query the publish/subscribe relationship list.
+        r"""This API is used to query the publish/subscribe relationship list.
 
         :param request: Request instance for DescribePublishSubscribe.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribePublishSubscribeRequest`
@@ -1706,7 +1706,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeReadOnlyGroupAutoWeight(self, request):
-        """This API is used to query the automatic weight assignment result of the read-only group. The BalanceReadOnlyGroup API is used to perform routing weight assignment according to the automatic weight assignment result.
+        r"""This API is used to query the automatic weight assignment result of the read-only group. The BalanceReadOnlyGroup API is used to perform routing weight assignment according to the automatic weight assignment result.
 
         :param request: Request instance for DescribeReadOnlyGroupAutoWeight.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupAutoWeightRequest`
@@ -1729,7 +1729,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeReadOnlyGroupByReadOnlyInstance(self, request):
-        """This API is used to query the read-only group where the read-only instance is located by its ID.
+        r"""This API is used to query the read-only group where the read-only instance is located by its ID.
 
         :param request: Request instance for DescribeReadOnlyGroupByReadOnlyInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupByReadOnlyInstanceRequest`
@@ -1752,7 +1752,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeReadOnlyGroupDetails(self, request):
-        """This API is used to query read-only group details.
+        r"""This API is used to query read-only group details.
 
         :param request: Request instance for DescribeReadOnlyGroupDetails.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupDetailsRequest`
@@ -1775,7 +1775,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeReadOnlyGroupList(self, request):
-        """This API is used to query the read-only group list.
+        r"""This API is used to query the read-only group list.
 
         :param request: Request instance for DescribeReadOnlyGroupList.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupListRequest`
@@ -1798,7 +1798,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query purchasable regions.
+        r"""This API is used to query purchasable regions.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegionsRequest`
@@ -1821,7 +1821,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeRegularBackupPlan(self, request):
-        """This API is used to query the scheduled backup retention plans of instances.
+        r"""This API is used to query the scheduled backup retention plans of instances.
 
         :param request: Request instance for DescribeRegularBackupPlan.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegularBackupPlanRequest`
@@ -1844,7 +1844,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeRestoreTask(self, request):
-        """This API is used to query the list of rollback tasks.
+        r"""This API is used to query the list of rollback tasks.
 
         :param request: Request instance for DescribeRestoreTask.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTaskRequest`
@@ -1867,7 +1867,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeRestoreTimeRange(self, request):
-        """This API is used to query the time range available for rollback by time point.
+        r"""This API is used to query the time range available for rollback by time point.
 
         :param request: Request instance for DescribeRestoreTimeRange.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTimeRangeRequest`
@@ -1890,7 +1890,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeRollbackTime(self, request):
-        """This API is used to query the time range available for instance rollback.
+        r"""This API is used to query the time range available for instance rollback.
 
         :param request: Request instance for DescribeRollbackTime.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRollbackTimeRequest`
@@ -1913,7 +1913,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeSlowlogs(self, request):
-        """This API is used to get file information of slow query logs.
+        r"""This API is used to get file information of slow query logs.
 
         :param request: Request instance for DescribeSlowlogs.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSlowlogsRequest`
@@ -1936,7 +1936,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeSpecSellStatus(self, request):
-        """This API is used to query the status information on specifications, including the sales status and reference price. (The actual price is subject to the result returned by price querying APIs.)
+        r"""This API is used to query the status information on specifications, including the sales status and reference price. (The actual price is subject to the result returned by price querying APIs.)
 
         :param request: Request instance for DescribeSpecSellStatus.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSpecSellStatusRequest`
@@ -1959,7 +1959,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeUpgradeInstanceCheck(self, request):
-        """This API is used to pre-check the impact of the instance configuration adjustment before the adjustment.
+        r"""This API is used to pre-check the impact of the instance configuration adjustment before the adjustment.
 
         :param request: Request instance for DescribeUpgradeInstanceCheck.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUpgradeInstanceCheckRequest`
@@ -1982,7 +1982,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeUploadBackupInfo(self, request):
-        """This API is used to query a backup upload permission.
+        r"""This API is used to query a backup upload permission.
 
         :param request: Request instance for DescribeUploadBackupInfo.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadBackupInfoRequest`
@@ -2005,7 +2005,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeXEvents(self, request):
-        """This API is used to query the list of extended events.
+        r"""This API is used to query the list of extended events.
 
         :param request: Request instance for DescribeXEvents.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeXEventsRequest`
@@ -2028,7 +2028,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query currently purchasable AZs.
+        r"""This API is used to query currently purchasable AZs.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeZonesRequest`
@@ -2051,7 +2051,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DisassociateSecurityGroups(self, request):
-        """This API is used to unbind security groups from instances in batches.
+        r"""This API is used to unbind security groups from instances in batches.
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DisassociateSecurityGroupsRequest`
@@ -2074,7 +2074,7 @@ class SqlserverClient(AbstractClient):
 
 
     def InquiryPriceCreateDBInstances(self, request):
-        """This API is used to query the price of requested instances.
+        r"""This API is used to query the price of requested instances.
 
         :param request: Request instance for InquiryPriceCreateDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.InquiryPriceCreateDBInstancesRequest`
@@ -2097,7 +2097,7 @@ class SqlserverClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """This API is used to query the upgrade prices of a monthly subscribed instance.
+        r"""This API is used to query the upgrade prices of a monthly subscribed instance.
         .
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
@@ -2121,7 +2121,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyAccountPrivilege(self, request):
-        """This API is used to modify instance account permissions.
+        r"""This API is used to modify instance account permissions.
 
         :param request: Request instance for ModifyAccountPrivilege.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyAccountPrivilegeRequest`
@@ -2144,7 +2144,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyAccountRemark(self, request):
-        """This API is used to modify account remarks.
+        r"""This API is used to modify account remarks.
 
         :param request: Request instance for ModifyAccountRemark.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyAccountRemarkRequest`
@@ -2167,7 +2167,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyBackupMigration(self, request):
-        """This API is used to modify a backup import task.
+        r"""This API is used to modify a backup import task.
 
         :param request: Request instance for ModifyBackupMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupMigrationRequest`
@@ -2190,7 +2190,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyBackupName(self, request):
-        """This API is used to modify the name of a backup task.
+        r"""This API is used to modify the name of a backup task.
 
         :param request: Request instance for ModifyBackupName.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameRequest`
@@ -2213,7 +2213,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyBackupStrategy(self, request):
-        """This API is used to modify the backup policy.
+        r"""This API is used to modify the backup policy.
 
         :param request: Request instance for ModifyBackupStrategy.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupStrategyRequest`
@@ -2236,7 +2236,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyCloseWanIp(self, request):
-        """This API is used to disable the public network for the instance.
+        r"""This API is used to disable the public network for the instance.
 
         :param request: Request instance for ModifyCloseWanIp.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCloseWanIpRequest`
@@ -2259,7 +2259,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyCrossBackupStrategy(self, request):
-        """This API is used to enable or disable cross-region backup policies.
+        r"""This API is used to enable or disable cross-region backup policies.
 
         :param request: Request instance for ModifyCrossBackupStrategy.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCrossBackupStrategyRequest`
@@ -2282,7 +2282,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBEncryptAttributes(self, request):
-        """This API is used to enable or disable TDE of a database.
+        r"""This API is used to enable or disable TDE of a database.
 
         :param request: Request instance for ModifyDBEncryptAttributes.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesRequest`
@@ -2305,7 +2305,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceName(self, request):
-        """This API is used to rename an instance.
+        r"""This API is used to rename an instance.
 
         :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNameRequest`
@@ -2328,7 +2328,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceNetwork(self, request):
-        """This API is used to switch a running instance from a VPC to another.
+        r"""This API is used to switch a running instance from a VPC to another.
 
         :param request: Request instance for ModifyDBInstanceNetwork.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNetworkRequest`
@@ -2351,7 +2351,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceNote(self, request):
-        """This API is used to modify the instance remarks.
+        r"""This API is used to modify the instance remarks.
 
         :param request: Request instance for ModifyDBInstanceNote.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNoteRequest`
@@ -2374,7 +2374,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceProject(self, request):
-        """This API is used to modify the project to which a database instance belongs.
+        r"""This API is used to modify the project to which a database instance belongs.
 
         :param request: Request instance for ModifyDBInstanceProject.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceProjectRequest`
@@ -2397,7 +2397,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceSSL(self, request):
-        """This API is used to enable/disable/update SSL encryption.
+        r"""This API is used to enable/disable/update SSL encryption.
 
         :param request: Request instance for ModifyDBInstanceSSL.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSSLRequest`
@@ -2420,7 +2420,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify security groups bound to an instance.
+        r"""This API is used to modify security groups bound to an instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -2443,7 +2443,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBName(self, request):
-        """This API is used to rename a database.
+        r"""This API is used to rename a database.
 
         :param request: Request instance for ModifyDBName.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBNameRequest`
@@ -2466,7 +2466,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBRemark(self, request):
-        """This API is used to modify database remarks.
+        r"""This API is used to modify database remarks.
 
         :param request: Request instance for ModifyDBRemark.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBRemarkRequest`
@@ -2489,7 +2489,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDReadable(self, request):
-        """This API is used to enable or disable the read-only feature of the replica server.
+        r"""This API is used to enable or disable the read-only feature of the replica server.
 
         :param request: Request instance for ModifyDReadable.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDReadableRequest`
@@ -2512,7 +2512,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabaseCDC(self, request):
-        """This API is used to enable or disable the change data capture (CDC) feature.
+        r"""This API is used to enable or disable the change data capture (CDC) feature.
 
         :param request: Request instance for ModifyDatabaseCDC.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCDCRequest`
@@ -2535,7 +2535,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabaseCT(self, request):
-        """This API is used to enable or disable the change tracking (CT) feature.
+        r"""This API is used to enable or disable the change tracking (CT) feature.
 
         :param request: Request instance for ModifyDatabaseCT.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCTRequest`
@@ -2558,7 +2558,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabaseMdf(self, request):
-        """This API is used to shrink database MDF files.
+        r"""This API is used to shrink database MDF files.
 
         :param request: Request instance for ModifyDatabaseMdf.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseMdfRequest`
@@ -2581,7 +2581,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabasePrivilege(self, request):
-        """This API is used to modify instance database permissions.
+        r"""This API is used to modify instance database permissions.
 
         :param request: Request instance for ModifyDatabasePrivilege.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabasePrivilegeRequest`
@@ -2604,7 +2604,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDatabaseShrinkMDF(self, request):
-        """This API is used to shrink the database mdf (Shrink mdf).
+        r"""This API is used to shrink the database mdf (Shrink mdf).
 
         :param request: Request instance for ModifyDatabaseShrinkMDF.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFRequest`
@@ -2627,7 +2627,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyIncrementalMigration(self, request):
-        """This API is used to modify an incremental backup import task.
+        r"""This API is used to modify an incremental backup import task.
 
         :param request: Request instance for ModifyIncrementalMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyIncrementalMigrationRequest`
@@ -2650,7 +2650,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyInstanceEncryptAttributes(self, request):
-        """This API is used to enable TDE of an instance.
+        r"""This API is used to enable TDE of an instance.
 
         :param request: Request instance for ModifyInstanceEncryptAttributes.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceEncryptAttributesRequest`
@@ -2673,7 +2673,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyInstanceParam(self, request):
-        """This API is used to modify instance parameters.
+        r"""This API is used to modify instance parameters.
         <b>Note</b>: if <b>the instance needs to be restarted</b> for the modified parameter to take effect, <b>it will be restarted</b> immediately or during the maintenance time according to the `WaitSwitch` parameter.
         Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.
 
@@ -2698,7 +2698,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyMaintenanceSpan(self, request):
-        """This API is used to modify the maintenance window of the instance.
+        r"""This API is used to modify the maintenance window of the instance.
 
         :param request: Request instance for ModifyMaintenanceSpan.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyMaintenanceSpanRequest`
@@ -2721,7 +2721,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyMigration(self, request):
-        """This API is used to modify an existing migration task.
+        r"""This API is used to modify an existing migration task.
 
         :param request: Request instance for ModifyMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyMigrationRequest`
@@ -2744,7 +2744,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyOpenWanIp(self, request):
-        """This API is used to enable the public network for the instance.
+        r"""This API is used to enable the public network for the instance.
 
         :param request: Request instance for ModifyOpenWanIp.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyOpenWanIpRequest`
@@ -2767,7 +2767,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyPublishSubscribe(self, request):
-        """This API is used to modify the publish/subscribe relationship of the instance.
+        r"""This API is used to modify the publish/subscribe relationship of the instance.
 
         :param request: Request instance for ModifyPublishSubscribe.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeRequest`
@@ -2790,7 +2790,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyPublishSubscribeName(self, request):
-        """This API is used to modify the publish/subscribe names.
+        r"""This API is used to modify the publish/subscribe names.
 
         :param request: Request instance for ModifyPublishSubscribeName.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeNameRequest`
@@ -2813,7 +2813,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyReadOnlyGroupDetails(self, request):
-        """This API is used to modify read-only group details.
+        r"""This API is used to modify read-only group details.
 
         :param request: Request instance for ModifyReadOnlyGroupDetails.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyReadOnlyGroupDetailsRequest`
@@ -2836,7 +2836,7 @@ class SqlserverClient(AbstractClient):
 
 
     def OpenInterCommunication(self, request):
-        """This API is used to enable instance interconnection, which can interconnect business intelligence services.
+        r"""This API is used to enable instance interconnection, which can interconnect business intelligence services.
 
         :param request: Request instance for OpenInterCommunication.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.OpenInterCommunicationRequest`
@@ -2858,8 +2858,31 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryMigrationCheckProcess(self, request):
+        r"""This API is used to query the progress of the migration verification task, inquiry of migration check task progress, applicable to the migration method where the migration source type is TencentDB for SQL Server.
+
+        :param request: Request instance for QueryMigrationCheckProcess.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.QueryMigrationCheckProcessRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.QueryMigrationCheckProcessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMigrationCheckProcess", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMigrationCheckProcessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecycleDBInstance(self, request):
-        """This API is used to return a deactivated SQL Server instance.
+        r"""This API is used to return a deactivated SQL Server instance.
 
         :param request: Request instance for RecycleDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleDBInstanceRequest`
@@ -2882,7 +2905,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RecycleReadOnlyGroup(self, request):
-        """This API is used to reclaim resources of read-only groups immediately. The resources, such as VIP, occupied by the read-only group will be released immediately and cannot be recovered.
+        r"""This API is used to reclaim resources of read-only groups immediately. The resources, such as VIP, occupied by the read-only group will be released immediately and cannot be recovered.
 
         :param request: Request instance for RecycleReadOnlyGroup.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleReadOnlyGroupRequest`
@@ -2905,7 +2928,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RemoveBackups(self, request):
-        """This API is used to delete backup files created by users manually. The backup policy to be deleted can be instance backup or multi-database backup.
+        r"""This API is used to delete backup files created by users manually. The backup policy to be deleted can be instance backup or multi-database backup.
 
         :param request: Request instance for RemoveBackups.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RemoveBackupsRequest`
@@ -2928,7 +2951,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RenewPostpaidDBInstance(self, request):
-        """This API is used to recover the pay-as-you-go instance that is manually isolated through the API TerminateDBInstance from the recycle bin.
+        r"""This API is used to recover the pay-as-you-go instance that is manually isolated through the API TerminateDBInstance from the recycle bin.
 
         :param request: Request instance for RenewPostpaidDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RenewPostpaidDBInstanceRequest`
@@ -2951,7 +2974,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """This API is used to reset the account password of an instance.
+        r"""This API is used to reset the account password of an instance.
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ResetAccountPasswordRequest`
@@ -2974,7 +2997,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RestartDBInstance(self, request):
-        """This API is used to restart a database instance.
+        r"""This API is used to restart a database instance.
 
         :param request: Request instance for RestartDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RestartDBInstanceRequest`
@@ -2997,7 +3020,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RestoreInstance(self, request):
-        """This API is used to roll back the database by backup set.
+        r"""This API is used to roll back the database by backup set.
 
         :param request: Request instance for RestoreInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RestoreInstanceRequest`
@@ -3020,7 +3043,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RollbackInstance(self, request):
-        """This API is used to roll back the instance by time point.
+        r"""This API is used to roll back the instance by time point.
 
         :param request: Request instance for RollbackInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RollbackInstanceRequest`
@@ -3043,7 +3066,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RunMigration(self, request):
-        """This API is used to start running a migration task.
+        r"""This API is used to start running a migration task.
 
         :param request: Request instance for RunMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RunMigrationRequest`
@@ -3066,7 +3089,7 @@ class SqlserverClient(AbstractClient):
 
 
     def StartBackupMigration(self, request):
-        """This API is used to start a backup import task.
+        r"""This API is used to start a backup import task.
 
         :param request: Request instance for StartBackupMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartBackupMigrationRequest`
@@ -3089,7 +3112,7 @@ class SqlserverClient(AbstractClient):
 
 
     def StartIncrementalMigration(self, request):
-        """This API is used to start an incremental backup import task.
+        r"""This API is used to start an incremental backup import task.
 
         :param request: Request instance for StartIncrementalMigration.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartIncrementalMigrationRequest`
@@ -3112,7 +3135,7 @@ class SqlserverClient(AbstractClient):
 
 
     def StartInstanceXEvent(self, request):
-        """This API is used to start and stop an extended event.
+        r"""This API is used to start and stop an extended event.
 
         :param request: Request instance for StartInstanceXEvent.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartInstanceXEventRequest`
@@ -3135,7 +3158,7 @@ class SqlserverClient(AbstractClient):
 
 
     def SwitchCloudInstanceHA(self, request):
-        """This API is used to manually switch between primary and secondary.
+        r"""This API is used to manually switch between primary and secondary.
 
         :param request: Request instance for SwitchCloudInstanceHA.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.SwitchCloudInstanceHARequest`
@@ -3158,7 +3181,7 @@ class SqlserverClient(AbstractClient):
 
 
     def TerminateDBInstance(self, request):
-        """This API is used to isolate an instance to move it into a recycle bin.
+        r"""This API is used to isolate an instance to move it into a recycle bin.
 
         :param request: Request instance for TerminateDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.TerminateDBInstanceRequest`
@@ -3181,7 +3204,7 @@ class SqlserverClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """This API is used to upgrade an instance.
+        r"""This API is used to upgrade an instance.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.UpgradeDBInstanceRequest`

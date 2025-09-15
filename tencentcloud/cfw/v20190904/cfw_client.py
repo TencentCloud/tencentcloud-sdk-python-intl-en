@@ -27,7 +27,7 @@ class CfwClient(AbstractClient):
 
 
     def AddAcRule(self, request):
-        """This API is used to add edge firewall rules.
+        r"""This API is used to add edge firewall rules.
 
         :param request: Request instance for AddAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
@@ -50,7 +50,7 @@ class CfwClient(AbstractClient):
 
 
     def AddEnterpriseSecurityGroupRules(self, request):
-        """This API is used to create enterprise security group rules (new).
+        r"""This API is used to create enterprise security group rules (new).
 
         :param request: Request instance for AddEnterpriseSecurityGroupRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddEnterpriseSecurityGroupRulesRequest`
@@ -73,7 +73,7 @@ class CfwClient(AbstractClient):
 
 
     def AddNatAcRule(self, request):
-        """This API is used to add NAT access control rules.
+        r"""This API is used to add NAT access control rules.
 
         :param request: Request instance for AddNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleRequest`
@@ -96,7 +96,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAcRules(self, request):
-        """This API is used to create access control rules.
+        r"""This API is used to create access control rules.
 
         :param request: Request instance for CreateAcRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAcRulesRequest`
@@ -119,7 +119,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstance(self, request):
-        """This API is used to create a NAT firewall instance (The Region parameter is required).
+        r"""This API is used to create a NAT firewall instance (The Region parameter is required).
 
         :param request: Request instance for CreateNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceRequest`
@@ -142,7 +142,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstanceWithDomain(self, request):
-        """This API is used to create a firewall instance with domain name (The Region parameter is required).
+        r"""This API is used to create a firewall instance with domain name (The Region parameter is required).
 
         :param request: Request instance for CreateNatFwInstanceWithDomain.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceWithDomainRequest`
@@ -165,7 +165,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateSecurityGroupRules(self, request):
-        """This API is used to create enterprise security group rules.
+        r"""This API is used to create enterprise security group rules.
 
         :param request: Request instance for CreateSecurityGroupRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateSecurityGroupRulesRequest`
@@ -188,7 +188,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAcRule(self, request):
-        """This API is used to delete a rule.
+        r"""This API is used to delete a rule.
 
         :param request: Request instance for DeleteAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAcRuleRequest`
@@ -211,7 +211,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteAllAccessControlRule(self, request):
-        """This API is used to delete all rules.
+        r"""This API is used to delete all rules.
 
         :param request: Request instance for DeleteAllAccessControlRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`
@@ -234,7 +234,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteResourceGroup(self, request):
-        """This API is used to delete asset groups in Asset Management.
+        r"""This API is used to delete asset groups in Asset Management.
 
         :param request: Request instance for DeleteResourceGroup.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteResourceGroupRequest`
@@ -257,7 +257,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteSecurityGroupRule(self, request):
-        """This API is used to delete security group rules.
+        r"""This API is used to delete security group rules.
 
         :param request: Request instance for DeleteSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupRuleRequest`
@@ -280,7 +280,7 @@ class CfwClient(AbstractClient):
 
 
     def DeleteVpcInstance(self, request):
-        """This API is used to delete firewall instance.
+        r"""This API is used to delete firewall instance.
 
         :param request: Request instance for DeleteVpcInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteVpcInstanceRequest`
@@ -303,7 +303,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAcLists(self, request):
-        """This API is used to get the access control list.
+        r"""This API is used to get the access control list.
 
         :param request: Request instance for DescribeAcLists.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAcListsRequest`
@@ -326,7 +326,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAssociatedInstanceList(self, request):
-        """This API is used to get the list of instances associated with a security group.
+        r"""This API is used to get the list of instances associated with a security group.
 
         :param request: Request instance for DescribeAssociatedInstanceList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAssociatedInstanceListRequest`
@@ -349,7 +349,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockByIpTimesList(self, request):
-        """This API is used to get blocked IP data.
+        r"""This API is used to get blocked IP data.
 
         :param request: Request instance for DescribeBlockByIpTimesList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockByIpTimesListRequest`
@@ -372,7 +372,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockIgnoreList(self, request):
-        """This API is used to get allowlists or blocklists for intrusion prevention.
+        r"""This API is used to get allowlists or blocklists for intrusion prevention.
 
         :param request: Request instance for DescribeBlockIgnoreList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockIgnoreListRequest`
@@ -395,7 +395,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockStaticList(self, request):
-        """This API is used to get the most frequent attacker.
+        r"""This API is used to get the most frequent attacker.
 
         :param request: Request instance for DescribeBlockStaticList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockStaticListRequest`
@@ -418,7 +418,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeDefenseSwitch(self, request):
-        """This API is used to query the list of firewall toggles with Intrusion Defense enabled.
+        r"""This API is used to query the list of firewall toggles with Intrusion Defense enabled.
 
         :param request: Request instance for DescribeDefenseSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeDefenseSwitchRequest`
@@ -441,7 +441,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeEnterpriseSecurityGroupRule(self, request):
-        """This API is used to get enterprise security group rules (new).
+        r"""This API is used to get enterprise security group rules (new).
 
         :param request: Request instance for DescribeEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleRequest`
@@ -464,7 +464,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeGuideScanInfo(self, request):
-        """This API is used to get the scan interface information in Get Started.
+        r"""This API is used to get the scan interface information in Get Started.
 
         :param request: Request instance for DescribeGuideScanInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeGuideScanInfoRequest`
@@ -487,7 +487,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeIPStatusList(self, request):
-        """This API is used to get the IP protection status.
+        r"""This API is used to get the IP protection status.
 
         :param request: Request instance for DescribeIPStatusList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIPStatusListRequest`
@@ -510,7 +510,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatAcRule(self, request):
-        """This API is used to get the NAT access control list.
+        r"""This API is used to get the NAT access control list.
 
         :param request: Request instance for DescribeNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatAcRuleRequest`
@@ -533,7 +533,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInfoCount(self, request):
-        """This API is used to get the number of a user's subnets connected to NAT firewall and the number of NAT firewall instances.
+        r"""This API is used to get the number of a user's subnets connected to NAT firewall and the number of NAT firewall instances.
 
         :param request: Request instance for DescribeNatFwInfoCount.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInfoCountRequest`
@@ -556,7 +556,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstance(self, request):
-        """This API is used to get all NAT instances of a tenant.
+        r"""This API is used to get all NAT instances of a tenant.
 
         :param request: Request instance for DescribeNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstanceRequest`
@@ -579,7 +579,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstanceWithRegion(self, request):
-        """This API is used to get the NAT instance with the region that is newly maintained by the tenant.
+        r"""This API is used to get the NAT instance with the region that is newly maintained by the tenant.
 
         :param request: Request instance for DescribeNatFwInstanceWithRegion.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstanceWithRegionRequest`
@@ -602,7 +602,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwInstancesInfo(self, request):
-        """This API is used to get all NAT instances and instance card information of a tenant.
+        r"""This API is used to get all NAT instances and instance card information of a tenant.
 
         :param request: Request instance for DescribeNatFwInstancesInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwInstancesInfoRequest`
@@ -625,7 +625,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeNatFwVpcDnsLst(self, request):
-        """This API is used to get the VPC DNS status of NAT firewall instances.
+        r"""This API is used to get the VPC DNS status of NAT firewall instances.
 
         :param request: Request instance for DescribeNatFwVpcDnsLst.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwVpcDnsLstRequest`
@@ -648,7 +648,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeResourceGroupNew(self, request):
-        """This API is used to get the asset tree information in Asset Management.
+        r"""This API is used to get the asset tree information in Asset Management.
 
         :param request: Request instance for DescribeResourceGroupNew.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupNewRequest`
@@ -671,7 +671,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeRuleOverview(self, request):
-        """This API is used to get the rule list overview.
+        r"""This API is used to get the rule list overview.
 
         :param request: Request instance for DescribeRuleOverview.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeRuleOverviewRequest`
@@ -694,7 +694,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSecurityGroupList(self, request):
-        """This API is used to get the security group rule list.
+        r"""This API is used to get the security group rule list.
 
         :param request: Request instance for DescribeSecurityGroupList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupListRequest`
@@ -717,7 +717,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSourceAsset(self, request):
-        """This API is used to get all asset information of an asset group.
+        r"""This API is used to get all asset information of an asset group.
 
         :param request: Request instance for DescribeSourceAsset.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSourceAssetRequest`
@@ -740,7 +740,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeSwitchLists(self, request):
-        """This API is used to get the firewall status list.
+        r"""This API is used to get the firewall status list.
 
         :param request: Request instance for DescribeSwitchLists.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSwitchListsRequest`
@@ -763,7 +763,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogInfo(self, request):
-        """This API is used to get the current alert monitoring data.
+        r"""This API is used to get the current alert monitoring data.
 
         :param request: Request instance for DescribeTLogInfo.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogInfoRequest`
@@ -786,7 +786,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogIpList(self, request):
-        """This API is used to get the most frequent attacker IP.
+        r"""This API is used to get the most frequent attacker IP.
 
         :param request: Request instance for DescribeTLogIpList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogIpListRequest`
@@ -809,7 +809,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTableStatus(self, request):
-        """This API is used to get the rule list status.
+        r"""This API is used to get the rule list status.
 
         :param request: Request instance for DescribeTableStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTableStatusRequest`
@@ -832,7 +832,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeUnHandleEventTabList(self, request):
-        """This API is used to get unhandled security events.
+        r"""This API is used to get unhandled security events.
 
         :param request: Request instance for DescribeUnHandleEventTabList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeUnHandleEventTabListRequest`
@@ -855,7 +855,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeVpcAcRule(self, request):
-        """Query Inter-VPC rules
+        r"""Query Inter-VPC rules
 
         :param request: Request instance for DescribeVpcAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAcRuleRequest`
@@ -878,7 +878,7 @@ class CfwClient(AbstractClient):
 
 
     def ExpandCfwVertical(self, request):
-        """This API is used to increase the firewall bandwidth.
+        r"""This API is used to increase the firewall bandwidth.
 
         :param request: Request instance for ExpandCfwVertical.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ExpandCfwVerticalRequest`
@@ -901,7 +901,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAcRule(self, request):
-        """This API is used to modify rules.
+        r"""This API is used to modify rules.
 
         :param request: Request instance for ModifyAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAcRuleRequest`
@@ -924,7 +924,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllPublicIPSwitchStatus(self, request):
-        """This API is used to enable or disable one or multiple edge firewalls.
+        r"""This API is used to enable or disable one or multiple edge firewalls.
 
         :param request: Request instance for ModifyAllPublicIPSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllPublicIPSwitchStatusRequest`
@@ -947,7 +947,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllRuleStatus(self, request):
-        """This API is used to enable or disable all rules.
+        r"""This API is used to enable or disable all rules.
 
         :param request: Request instance for ModifyAllRuleStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllRuleStatusRequest`
@@ -970,7 +970,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAllVPCSwitchStatus(self, request):
-        """This API is used to enable or disable one or multiple VPC firewalls.
+        r"""This API is used to enable or disable one or multiple VPC firewalls.
 
         :param request: Request instance for ModifyAllVPCSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllVPCSwitchStatusRequest`
@@ -993,7 +993,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyAssetScan(self, request):
-        """This API is used to modify asset scan settings.
+        r"""This API is used to modify asset scan settings.
 
         :param request: Request instance for ModifyAssetScan.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAssetScanRequest`
@@ -1016,7 +1016,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockIgnoreList(self, request):
-        """This API is used to manage blocked/allowed IPs and domains.
+        r"""This API is used to manage blocked/allowed IPs and domains.
         Add IPs/domains to the blocked/allowed list
         Remove IPs/domains from the blocked/allowed list
         Modify events related with the IPs/domains in the blocked/allowed list
@@ -1042,7 +1042,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyBlockTop(self, request):
-        """This API is used to pin or unpin a blocking log.
+        r"""This API is used to pin or unpin a blocking log.
 
         :param request: Request instance for ModifyBlockTop.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockTopRequest`
@@ -1065,7 +1065,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEnterpriseSecurityDispatchStatus(self, request):
-        """This API is used to modify the publishing status of an enterprise security group.
+        r"""This API is used to modify the publishing status of an enterprise security group.
 
         :param request: Request instance for ModifyEnterpriseSecurityDispatchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEnterpriseSecurityDispatchStatusRequest`
@@ -1088,7 +1088,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyEnterpriseSecurityGroupRule(self, request):
-        """This API is used to modify a new enterprise security group rule.
+        r"""This API is used to modify a new enterprise security group rule.
 
         :param request: Request instance for ModifyEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEnterpriseSecurityGroupRuleRequest`
@@ -1111,7 +1111,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatAcRule(self, request):
-        """This API is used to modify NAT access control rules.
+        r"""This API is used to modify NAT access control rules.
 
         :param request: Request instance for ModifyNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatAcRuleRequest`
@@ -1134,7 +1134,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwReSelect(self, request):
-        """This API is used to get the VPC or NAT list for changing associated firewall instances.
+        r"""This API is used to get the VPC or NAT list for changing associated firewall instances.
 
         :param request: Request instance for ModifyNatFwReSelect.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwReSelectRequest`
@@ -1157,7 +1157,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwSwitch(self, request):
-        """This API is used to enable or disable a NAT firewall.
+        r"""This API is used to enable or disable a NAT firewall.
 
         :param request: Request instance for ModifyNatFwSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwSwitchRequest`
@@ -1180,7 +1180,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatFwVpcDnsSwitch(self, request):
-        """This API is used to modify the VPC DNS status of NAT firewall instances.
+        r"""This API is used to modify the VPC DNS status of NAT firewall instances.
 
         :param request: Request instance for ModifyNatFwVpcDnsSwitch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatFwVpcDnsSwitchRequest`
@@ -1203,7 +1203,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyNatSequenceRules(self, request):
-        """This API is used to change the sequence number of NAT firewall rules.
+        r"""This API is used to change the sequence number of NAT firewall rules.
 
         :param request: Request instance for ModifyNatSequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatSequenceRulesRequest`
@@ -1226,7 +1226,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyPublicIPSwitchStatus(self, request):
-        """This API is used to enable or disable an edge firewall.
+        r"""This API is used to enable or disable an edge firewall.
 
         :param request: Request instance for ModifyPublicIPSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusRequest`
@@ -1249,7 +1249,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyResourceGroup(self, request):
-        """This API is used to modify the asset group information in Asset Management.
+        r"""This API is used to modify the asset group information in Asset Management.
 
 
         :param request: Request instance for ModifyResourceGroup.
@@ -1273,7 +1273,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyRunSyncAsset(self, request):
-        """This API is used to sync assets - Internet & VPC (new).
+        r"""This API is used to sync assets - Internet & VPC (new).
 
         :param request: Request instance for ModifyRunSyncAsset.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyRunSyncAssetRequest`
@@ -1296,7 +1296,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySecurityGroupItemRuleStatus(self, request):
-        """This API is used to enable or disable an enterprise security group rule.
+        r"""This API is used to enable or disable an enterprise security group rule.
 
         :param request: Request instance for ModifySecurityGroupItemRuleStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupItemRuleStatusRequest`
@@ -1319,7 +1319,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySecurityGroupSequenceRules(self, request):
-        """This API is used to sort enterprise security group rules.
+        r"""This API is used to sort enterprise security group rules.
 
         :param request: Request instance for ModifySecurityGroupSequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupSequenceRulesRequest`
@@ -1342,7 +1342,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifySequenceRules(self, request):
-        """This API is used to modify rule priority.
+        r"""This API is used to modify rule priority.
 
         :param request: Request instance for ModifySequenceRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySequenceRulesRequest`
@@ -1365,7 +1365,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyStorageSetting(self, request):
-        """This API is used to modify the log retention period or to clear logs.
+        r"""This API is used to modify the log retention period or to clear logs.
 
         :param request: Request instance for ModifyStorageSetting.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyStorageSettingRequest`
@@ -1388,7 +1388,7 @@ class CfwClient(AbstractClient):
 
 
     def ModifyTableStatus(self, request):
-        """This API is used to modify rule list status.
+        r"""This API is used to modify rule list status.
 
         :param request: Request instance for ModifyTableStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyTableStatusRequest`
@@ -1411,7 +1411,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveAcRule(self, request):
-        """This API is used to delete edge firewall rules.
+        r"""This API is used to delete edge firewall rules.
 
         :param request: Request instance for RemoveAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveAcRuleRequest`
@@ -1434,7 +1434,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveEnterpriseSecurityGroupRule(self, request):
-        """This API is used to delete enterprise security group rules (new).
+        r"""This API is used to delete enterprise security group rules (new).
 
         :param request: Request instance for RemoveEnterpriseSecurityGroupRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveEnterpriseSecurityGroupRuleRequest`
@@ -1457,7 +1457,7 @@ class CfwClient(AbstractClient):
 
 
     def RemoveNatAcRule(self, request):
-        """This API is used to delete NAT access control rules.
+        r"""This API is used to delete NAT access control rules.
 
         :param request: Request instance for RemoveNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveNatAcRuleRequest`
@@ -1480,7 +1480,7 @@ class CfwClient(AbstractClient):
 
 
     def SetNatFwDnatRule(self, request):
-        """This API is used to configure firewall DNAT rules.
+        r"""This API is used to configure firewall DNAT rules.
 
         :param request: Request instance for SetNatFwDnatRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.SetNatFwDnatRuleRequest`
@@ -1503,7 +1503,7 @@ class CfwClient(AbstractClient):
 
 
     def SetNatFwEip(self, request):
-        """This API is used to set the firewall instance EIP. (Available for firewall instances in the "Create new" mode. only)
+        r"""This API is used to set the firewall instance EIP. (Available for firewall instances in the "Create new" mode. only)
 
         :param request: Request instance for SetNatFwEip.
         :type request: :class:`tencentcloud.cfw.v20190904.models.SetNatFwEipRequest`
@@ -1526,7 +1526,7 @@ class CfwClient(AbstractClient):
 
 
     def StopSecurityGroupRuleDispatch(self, request):
-        """This API is used to stop publishing security group rules.
+        r"""This API is used to stop publishing security group rules.
 
         :param request: Request instance for StopSecurityGroupRuleDispatch.
         :type request: :class:`tencentcloud.cfw.v20190904.models.StopSecurityGroupRuleDispatchRequest`

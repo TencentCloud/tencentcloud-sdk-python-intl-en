@@ -27,7 +27,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomain(self, request):
-        """This API is used to add a domain.
+        r"""This API is used to add a domain.
 
         :param request: Request instance for CreateDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainRequest`
@@ -50,7 +50,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainAlias(self, request):
-        """This API is used to create a domain alias.
+        r"""This API is used to create a domain alias.
 
         :param request: Request instance for CreateDomainAlias.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainAliasRequest`
@@ -73,7 +73,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainBatch(self, request):
-        """This API is used to bulk add domains.
+        r"""This API is used to bulk add domains.
 
         :param request: Request instance for CreateDomainBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainBatchRequest`
@@ -96,7 +96,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateDomainGroup(self, request):
-        """This API is used to create a domain group.
+        r"""This API is used to create a domain group.
 
         :param request: Request instance for CreateDomainGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateDomainGroupRequest`
@@ -119,7 +119,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreatePackageOrder(self, request):
-        """This API is used to enable a paid plan on the international website.
+        r"""This API is used to enable a paid plan on the international website.
 
         :param request: Request instance for CreatePackageOrder.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreatePackageOrderRequest`
@@ -142,7 +142,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecord(self, request):
-        """This API is used to add a record.
+        r"""This API is used to add a record.
 
         :param request: Request instance for CreateRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordRequest`
@@ -165,7 +165,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecordBatch(self, request):
-        """This API is used to bulk add records.
+        r"""This API is used to bulk add records.
 
         :param request: Request instance for CreateRecordBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordBatchRequest`
@@ -188,7 +188,7 @@ class DnspodClient(AbstractClient):
 
 
     def CreateRecordGroup(self, request):
-        """This API is used to add a record group.
+        r"""This API is used to add a record group.
 
         :param request: Request instance for CreateRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordGroupRequest`
@@ -211,7 +211,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomain(self, request):
-        """This API is used to delete a domain.
+        r"""This API is used to delete a domain.
 
         :param request: Request instance for DeleteDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainRequest`
@@ -234,7 +234,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomainAlias(self, request):
-        """This API is used to delete a domain alias.
+        r"""This API is used to delete a domain alias.
 
         :param request: Request instance for DeleteDomainAlias.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainAliasRequest`
@@ -257,7 +257,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteDomainBatch(self, request):
-        """This API is used to batch delete domains.
+        r"""This API is used to batch delete domains.
 
         :param request: Request instance for DeleteDomainBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainBatchRequest`
@@ -280,7 +280,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteRecord(self, request):
-        """This API is used to delete a record.
+        r"""This API is used to delete a record.
 
         :param request: Request instance for DeleteRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordRequest`
@@ -303,7 +303,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteRecordGroup(self, request):
-        """This API is used to delete a record group.
+        r"""This API is used to delete a record group.
 
         :param request: Request instance for DeleteRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordGroupRequest`
@@ -326,7 +326,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteShareDomain(self, request):
-        """This API is used to unshare a domain.
+        r"""This API is used to unshare a domain.
 
         :param request: Request instance for DeleteShareDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteShareDomainRequest`
@@ -349,7 +349,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomain(self, request):
-        """This API is used to get the information of a domain.
+        r"""This API is used to get the information of a domain.
 
         :param request: Request instance for DescribeDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainRequest`
@@ -372,7 +372,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainAliasList(self, request):
-        """This API is used to get the list of domain aliases.
+        r"""This API is used to get the list of domain aliases.
 
         :param request: Request instance for DescribeDomainAliasList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAliasListRequest`
@@ -395,7 +395,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainGroupList(self, request):
-        """This API is used to get the list of domain groups.
+        r"""This API is used to get the list of domain groups.
 
         :param request: Request instance for DescribeDomainGroupList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainGroupListRequest`
@@ -418,7 +418,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainList(self, request):
-        """This API is used to get the list of domains.
+        r"""This API is used to get the list of domains.
 
         :param request: Request instance for DescribeDomainList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainListRequest`
@@ -441,7 +441,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainLogList(self, request):
-        """This API is used to get the log of a domain.
+        r"""This API is used to get the log of a domain.
 
         :param request: Request instance for DescribeDomainLogList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainLogListRequest`
@@ -464,7 +464,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainPurview(self, request):
-        """This API is used to get the permissions of a domain.
+        r"""This API is used to get the permissions of a domain.
 
         :param request: Request instance for DescribeDomainPurview.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainPurviewRequest`
@@ -487,7 +487,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeDomainShareInfo(self, request):
-        """This API is used to get the domain sharing information.
+        r"""This API is used to get the domain sharing information.
 
         :param request: Request instance for DescribeDomainShareInfo.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainShareInfoRequest`
@@ -510,7 +510,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecord(self, request):
-        """This API is used to get the information of a record.
+        r"""This API is used to get the information of a record.
 
         :param request: Request instance for DescribeRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordRequest`
@@ -533,7 +533,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordGroupList(self, request):
-        """This API is used to query the list of DNS record groups.
+        r"""This API is used to query the list of DNS record groups.
 
         :param request: Request instance for DescribeRecordGroupList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordGroupListRequest`
@@ -556,7 +556,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordLineList(self, request):
-        """This API is used to get the split zones allowed by the domain level.
+        r"""This API is used to get the split zones allowed by the domain level.
 
         :param request: Request instance for DescribeRecordLineList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineListRequest`
@@ -579,7 +579,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordList(self, request):
-        """This API is used to get the DNS records of a domain.
+        r"""This API is used to get the DNS records of a domain.
 
         :param request: Request instance for DescribeRecordList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListRequest`
@@ -602,7 +602,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordType(self, request):
-        """This API is used to get the record type allowed by the domain level.
+        r"""This API is used to get the record type allowed by the domain level.
 
         :param request: Request instance for DescribeRecordType.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordTypeRequest`
@@ -625,7 +625,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeSubdomainAnalytics(self, request):
-        """This API is used to collect statistics on the DNS query volume of a subdomain. It helps you understand the traffic and time period distribution and allows you to view statistics in the last three months. It is available only for domains under a paid plan.
+        r"""This API is used to collect statistics on the DNS query volume of a subdomain. It helps you understand the traffic and time period distribution and allows you to view statistics in the last three months. It is available only for domains under a paid plan.
 
         :param request: Request instance for DescribeSubdomainAnalytics.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeSubdomainAnalyticsRequest`
@@ -648,7 +648,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainLock(self, request):
-        """This API is used to lock a domain.
+        r"""This API is used to lock a domain.
 
         :param request: Request instance for ModifyDomainLock.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainLockRequest`
@@ -671,7 +671,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainOwner(self, request):
-        """This API is used to transfer ownership of a domain.
+        r"""This API is used to transfer ownership of a domain.
 
         :param request: Request instance for ModifyDomainOwner.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainOwnerRequest`
@@ -694,7 +694,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainRemark(self, request):
-        """This API is used to set the remarks of a domain.
+        r"""This API is used to set the remarks of a domain.
 
         :param request: Request instance for ModifyDomainRemark.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainRemarkRequest`
@@ -717,7 +717,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainStatus(self, request):
-        """This API is used to modify the status of a domain.
+        r"""This API is used to modify the status of a domain.
 
         :param request: Request instance for ModifyDomainStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainStatusRequest`
@@ -740,7 +740,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyDomainUnlock(self, request):
-        """This API is used to unlock a domain.
+        r"""This API is used to unlock a domain.
 
         :param request: Request instance for ModifyDomainUnlock.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyDomainUnlockRequest`
@@ -763,7 +763,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecord(self, request):
-        """This API is used to modify a record.
+        r"""This API is used to modify a record.
 
         :param request: Request instance for ModifyRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordRequest`
@@ -786,7 +786,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordBatch(self, request):
-        """This API is used to bulk modify records.
+        r"""This API is used to bulk modify records.
 
         :param request: Request instance for ModifyRecordBatch.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordBatchRequest`
@@ -809,7 +809,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordGroup(self, request):
-        """This API is used to modify a record group.
+        r"""This API is used to modify a record group.
 
         :param request: Request instance for ModifyRecordGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordGroupRequest`
@@ -832,7 +832,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordRemark(self, request):
-        """This API is used to set the remarks of a record.
+        r"""This API is used to set the remarks of a record.
 
         :param request: Request instance for ModifyRecordRemark.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordRemarkRequest`
@@ -855,7 +855,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordStatus(self, request):
-        """This API is used to modify the DNS record status.
+        r"""This API is used to modify the DNS record status.
 
         :param request: Request instance for ModifyRecordStatus.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordStatusRequest`
@@ -878,7 +878,7 @@ class DnspodClient(AbstractClient):
 
 
     def ModifyRecordToGroup(self, request):
-        """This API is used to add a record to a group.
+        r"""This API is used to add a record to a group.
 
         :param request: Request instance for ModifyRecordToGroup.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordToGroupRequest`

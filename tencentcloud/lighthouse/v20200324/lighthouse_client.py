@@ -27,7 +27,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ApplyInstanceSnapshot(self, request):
-        """This API is used to roll back the system disk snapshot of the specified instance.
+        r"""This API is used to roll back the system disk snapshot of the specified instance.
         <li>Only rollback to the original system disk is supported. </li>
         <li>Only snapshots in `NORMAL` status can be used for rollback. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.</li>
         <li>When a snapshot is rolled back, the status of the instance must be `STOPPED` or `RUNNING`. You can call the `DescribeInstances` API to query the instance status. Instances in `RUNNING` status will be forcibly shut down before snapshot rollback. </li>
@@ -53,7 +53,7 @@ class LighthouseClient(AbstractClient):
 
 
     def AssociateInstancesKeyPairs(self, request):
-        """This API is used to bind a user-specified key pair to an instance.
+        r"""This API is used to bind a user-specified key pair to an instance.
         * Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before binding.
         * If the public key of a key pair is written to the SSH configuration of the instance, you will be able to log in to the instance with the private key of the key pair.
         * If the instance is already associated with a key, the old key will become invalid.
@@ -82,7 +82,7 @@ class LighthouseClient(AbstractClient):
 
 
     def AttachCcn(self, request):
-        """This API is used to associate a CCN instance.
+        r"""This API is used to associate a CCN instance.
 
         :param request: Request instance for AttachCcn.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachCcnRequest`
@@ -105,7 +105,7 @@ class LighthouseClient(AbstractClient):
 
 
     def AttachDisks(self, request):
-        """This API is used to attach one or more cloud disks.
+        r"""This API is used to attach one or more cloud disks.
 
         :param request: Request instance for AttachDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksRequest`
@@ -128,7 +128,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateBlueprint(self, request):
-        """This API is used to create an image.
+        r"""This API is used to create an image.
 
         :param request: Request instance for CreateBlueprint.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateBlueprintRequest`
@@ -151,7 +151,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateDisks(self, request):
-        """This API is used to create one or more cloud disks.
+        r"""This API is used to create one or more cloud disks.
 
         :param request: Request instance for CreateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateDisksRequest`
@@ -174,7 +174,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateFirewallRules(self, request):
-        """This API is used to add a firewall rule on an instance.
+        r"""This API is used to add a firewall rule on an instance.
 
 
         * `FirewallVersion` is the firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the updated rule from expiring. If it is left empty, conflicts will not be considered.
@@ -207,7 +207,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateInstanceSnapshot(self, request):
-        """This API is used to create a system disk snapshot of the specified instance.
+        r"""This API is used to create a system disk snapshot of the specified instance.
 
         :param request: Request instance for CreateInstanceSnapshot.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstanceSnapshotRequest`
@@ -230,7 +230,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create one or more Lighthouse instances.
+        r"""This API is used to create one or more Lighthouse instances.
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstancesRequest`
@@ -253,7 +253,7 @@ class LighthouseClient(AbstractClient):
 
 
     def CreateKeyPair(self, request):
-        """This API is used to create a key pair.
+        r"""This API is used to create a key pair.
 
         :param request: Request instance for CreateKeyPair.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateKeyPairRequest`
@@ -276,7 +276,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DeleteBlueprints(self, request):
-        """This API is used to delete an image.
+        r"""This API is used to delete an image.
 
         :param request: Request instance for DeleteBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteBlueprintsRequest`
@@ -299,7 +299,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DeleteFirewallRules(self, request):
-        """This API is used to delete a firewall rule of an instance.
+        r"""This API is used to delete a firewall rule of an instance.
 
         * `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the specified rule will be deleted directly.
 
@@ -331,7 +331,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DeleteKeyPairs(self, request):
-        """This API is used to delete a key pair.
+        r"""This API is used to delete a key pair.
 
         :param request: Request instance for DeleteKeyPairs.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteKeyPairsRequest`
@@ -354,7 +354,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DeleteSnapshots(self, request):
-        """This API is used to delete a snapshot.
+        r"""This API is used to delete a snapshot.
         The snapshot must be in `NORMAL` status. To query the status of a snapshot, you can call the `DescribeSnapshots` API and see the `SnapshotState` field in the response.
 
         :param request: Request instance for DeleteSnapshots.
@@ -378,7 +378,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeAllScenes(self, request):
-        """This API is used to query the list of scenes in all regions.
+        r"""This API is used to query the list of scenes in all regions.
 
         :param request: Request instance for DescribeAllScenes.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeAllScenesRequest`
@@ -401,7 +401,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeBlueprintInstances(self, request):
-        """This API is used to query the information of an image instance.
+        r"""This API is used to query the information of an image instance.
 
         :param request: Request instance for DescribeBlueprintInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintInstancesRequest`
@@ -424,7 +424,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeBlueprints(self, request):
-        """This API is used to query the information of an image.
+        r"""This API is used to query the information of an image.
 
         :param request: Request instance for DescribeBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsRequest`
@@ -447,7 +447,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeBundleDiscount(self, request):
-        """This API is used to query the discount information of a package.
+        r"""This API is used to query the discount information of a package.
 
         :param request: Request instance for DescribeBundleDiscount.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundleDiscountRequest`
@@ -470,7 +470,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeBundles(self, request):
-        """This API is used to query the information of a package.
+        r"""This API is used to query the information of a package.
 
         :param request: Request instance for DescribeBundles.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundlesRequest`
@@ -493,7 +493,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeCcnAttachedInstances(self, request):
-        """This API is used to query the information of instances associated with CCN.
+        r"""This API is used to query the information of instances associated with CCN.
 
         :param request: Request instance for DescribeCcnAttachedInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeCcnAttachedInstancesRequest`
@@ -516,7 +516,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDiskConfigs(self, request):
-        """This API is used to query the cloud disk configuration.
+        r"""This API is used to query the cloud disk configuration.
 
         :param request: Request instance for DescribeDiskConfigs.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsRequest`
@@ -539,7 +539,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDiskDiscount(self, request):
-        """This API is used to query the discount information of a cloud disk.
+        r"""This API is used to query the discount information of a cloud disk.
 
         :param request: Request instance for DescribeDiskDiscount.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountRequest`
@@ -562,7 +562,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisks(self, request):
-        """This API is used to query the information of one or more cloud disks.
+        r"""This API is used to query the information of one or more cloud disks.
 
         :param request: Request instance for DescribeDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksRequest`
@@ -585,7 +585,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisksDeniedActions(self, request):
-        """This API is used to query the list of operation limits of one or more cloud disks.
+        r"""This API is used to query the list of operation limits of one or more cloud disks.
 
         :param request: Request instance for DescribeDisksDeniedActions.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsRequest`
@@ -608,7 +608,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisksReturnable(self, request):
-        """This API is used to query whether the specified cloud disk can be returned.
+        r"""This API is used to query whether the specified cloud disk can be returned.
 
         :param request: Request instance for DescribeDisksReturnable.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableRequest`
@@ -631,7 +631,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeFirewallRules(self, request):
-        """This API is used to query the firewall rules of an instance.
+        r"""This API is used to query the firewall rules of an instance.
 
         :param request: Request instance for DescribeFirewallRules.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeFirewallRulesRequest`
@@ -654,7 +654,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeFirewallRulesTemplate(self, request):
-        """This API is used to query a firewall rule template.
+        r"""This API is used to query a firewall rule template.
 
         :param request: Request instance for DescribeFirewallRulesTemplate.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeFirewallRulesTemplateRequest`
@@ -677,7 +677,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeGeneralResourceQuotas(self, request):
-        """This API is used to query the quota information of general resources.
+        r"""This API is used to query the quota information of general resources.
 
         :param request: Request instance for DescribeGeneralResourceQuotas.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeGeneralResourceQuotasRequest`
@@ -700,7 +700,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstanceLoginKeyPairAttribute(self, request):
-        """This API is used to query the attributes of the default login key of an instance.
+        r"""This API is used to query the attributes of the default login key of an instance.
 
         :param request: Request instance for DescribeInstanceLoginKeyPairAttribute.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstanceLoginKeyPairAttributeRequest`
@@ -723,7 +723,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstanceVncUrl(self, request):
-        """This API is used to query the URL for VNC login.
+        r"""This API is used to query the URL for VNC login.
 
         * It does not support `STOPPED` CVMs.
         * A VNC URL is only valid for 15 seconds. If you do not access the URL within 15 seconds, you will need to query another one.
@@ -758,7 +758,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to query the details of one or multiple instances.
+        r"""This API is used to query the details of one or multiple instances.
 
         * You can query the details of an instance according to its ID, name, or private IP.
         * For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).
@@ -786,7 +786,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstancesDeniedActions(self, request):
-        """This API is used to query the list of operation limits of one or more instances.
+        r"""This API is used to query the list of operation limits of one or more instances.
 
         :param request: Request instance for DescribeInstancesDeniedActions.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDeniedActionsRequest`
@@ -809,7 +809,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstancesDiskNum(self, request):
-        """This API is used to query the number of cloud disks attached to instances.
+        r"""This API is used to query the number of cloud disks attached to instances.
 
         :param request: Request instance for DescribeInstancesDiskNum.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumRequest`
@@ -832,7 +832,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstancesReturnable(self, request):
-        """This API is used to query whether the specified instance can be returned.
+        r"""This API is used to query whether the specified instance can be returned.
 
         :param request: Request instance for DescribeInstancesReturnable.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesReturnableRequest`
@@ -855,7 +855,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstancesTrafficPackages(self, request):
-        """This API is used to query the traffic package details of one or more instances.
+        r"""This API is used to query the traffic package details of one or more instances.
 
         :param request: Request instance for DescribeInstancesTrafficPackages.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesTrafficPackagesRequest`
@@ -878,7 +878,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeKeyPairs(self, request):
-        """This API is used to query key pairs.
+        r"""This API is used to query key pairs.
 
         :param request: Request instance for DescribeKeyPairs.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeKeyPairsRequest`
@@ -901,7 +901,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeModifyInstanceBundles(self, request):
-        """This API is used to query the list of package options of an instance.
+        r"""This API is used to query the list of package options of an instance.
 
         :param request: Request instance for DescribeModifyInstanceBundles.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeModifyInstanceBundlesRequest`
@@ -924,7 +924,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is used to query the information of regions.
+        r"""This API is used to query the information of regions.
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeRegionsRequest`
@@ -947,7 +947,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeResetInstanceBlueprints(self, request):
-        """This API is used to query the image information of a reset instance.
+        r"""This API is used to query the image information of a reset instance.
 
         :param request: Request instance for DescribeResetInstanceBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeResetInstanceBlueprintsRequest`
@@ -970,7 +970,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeScenes(self, request):
-        """This API is used to query the list of scenes.
+        r"""This API is used to query the list of scenes.
 
         :param request: Request instance for DescribeScenes.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeScenesRequest`
@@ -993,7 +993,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeSnapshots(self, request):
-        """This API is used to query the list of snapshots.
+        r"""This API is used to query the list of snapshots.
 
         :param request: Request instance for DescribeSnapshots.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeSnapshotsRequest`
@@ -1016,7 +1016,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeSnapshotsDeniedActions(self, request):
-        """This API is used to query the list of operation limits of one or more snapshots.
+        r"""This API is used to query the list of operation limits of one or more snapshots.
 
         :param request: Request instance for DescribeSnapshotsDeniedActions.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeSnapshotsDeniedActionsRequest`
@@ -1039,7 +1039,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query the list of AZs in a region.
+        r"""This API is used to query the list of AZs in a region.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeZonesRequest`
@@ -1062,7 +1062,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DetachCcn(self, request):
-        """This API is used to disassociate with a CCN instance.
+        r"""This API is used to disassociate with a CCN instance.
 
         :param request: Request instance for DetachCcn.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachCcnRequest`
@@ -1085,7 +1085,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DetachDisks(self, request):
-        """This API is used to detach one or more cloud disks.
+        r"""This API is used to detach one or more cloud disks.
 
         :param request: Request instance for DetachDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksRequest`
@@ -1108,7 +1108,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DisassociateInstancesKeyPairs(self, request):
-        """This API is used to unbind an instance from the specified key pair.
+        r"""This API is used to unbind an instance from the specified key pair.
 
         * Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before unbinding.
         * After a key pair is unassociated from an instance, you can log in to the instance with password.
@@ -1137,7 +1137,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ImportKeyPair(self, request):
-        """This API is used to import the specified key pair.
+        r"""This API is used to import the specified key pair.
 
         :param request: Request instance for ImportKeyPair.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ImportKeyPairRequest`
@@ -1160,7 +1160,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceCreateBlueprint(self, request):
-        """This API is used to query the price of a created image.
+        r"""This API is used to query the price of a created image.
 
         :param request: Request instance for InquirePriceCreateBlueprint.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateBlueprintRequest`
@@ -1183,7 +1183,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceCreateDisks(self, request):
-        """This API is used to query the price of purchasing cloud disks.
+        r"""This API is used to query the price of purchasing cloud disks.
 
         :param request: Request instance for InquirePriceCreateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksRequest`
@@ -1206,7 +1206,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceCreateInstances(self, request):
-        """This API is used to query the price of a created instance.
+        r"""This API is used to query the price of a created instance.
 
         :param request: Request instance for InquirePriceCreateInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateInstancesRequest`
@@ -1229,7 +1229,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceRenewDisks(self, request):
-        """This API is used to query the price of renewing cloud disks.
+        r"""This API is used to query the price of renewing cloud disks.
 
         :param request: Request instance for InquirePriceRenewDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksRequest`
@@ -1252,7 +1252,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceRenewInstances(self, request):
-        """This API is used to query the price of renewing one or more instances.
+        r"""This API is used to query the price of renewing one or more instances.
 
         :param request: Request instance for InquirePriceRenewInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewInstancesRequest`
@@ -1275,7 +1275,7 @@ class LighthouseClient(AbstractClient):
 
 
     def IsolateDisks(self, request):
-        """This API is used to return one or more Lighthouse cloud disks.
+        r"""This API is used to return one or more Lighthouse cloud disks.
 
         You can only perform this operation on `UNATTACHED` disks.
         After the successful call of the API, the cloud disk goes to the SHUTDOWN state.
@@ -1303,7 +1303,7 @@ class LighthouseClient(AbstractClient):
 
 
     def IsolateInstances(self, request):
-        """This API is used to return one or more Lighthouse instances.
+        r"""This API is used to return one or more Lighthouse instances.
         * Only `RUNNING` and `STOPPED` instances can be returned.
         * The instance status goes to `SHUTDOWN` after the API is called successfully.
         * Batch operations are supported. Up to 20 resources (including instances and data disks) can be returned in each request.
@@ -1330,7 +1330,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyBlueprintAttribute(self, request):
-        """This API is used to modify an image attribute.
+        r"""This API is used to modify an image attribute.
 
         :param request: Request instance for ModifyBlueprintAttribute.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyBlueprintAttributeRequest`
@@ -1353,7 +1353,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyDisksAttribute(self, request):
-        """This API is used to modify cloud disk attributes.
+        r"""This API is used to modify cloud disk attributes.
 
         :param request: Request instance for ModifyDisksAttribute.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeRequest`
@@ -1376,7 +1376,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyDisksRenewFlag(self, request):
-        """This API is used to modify the configuration of auto-renewal of cloud disks.
+        r"""This API is used to modify the configuration of auto-renewal of cloud disks.
 
         :param request: Request instance for ModifyDisksRenewFlag.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagRequest`
@@ -1399,7 +1399,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyFirewallRuleDescription(self, request):
-        """This API is used to modify the description of a single firewall rule.
+        r"""This API is used to modify the description of a single firewall rule.
 
         * `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the description of the specified rule will be modified directly.
 
@@ -1431,7 +1431,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyFirewallRules(self, request):
-        """This API is used to reset the firewall rules of an instance.
+        r"""This API is used to reset the firewall rules of an instance.
 
         This API deletes all firewall rules of the current instance first and then adds new rules.
 
@@ -1465,7 +1465,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """This API is used to modify an instance attribute.
+        r"""This API is used to modify an instance attribute.
         * The instance name is used only for users’ convenience.
         * Batch operations are supported. The maximum number of instances in each request is 100.
 
@@ -1490,7 +1490,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesBundle(self, request):
-        """This API is used change one or more Lighthouse instance bundles.
+        r"""This API is used change one or more Lighthouse instance bundles.
         * Only `RUNNING` and `STOPPED` instances can be changed.
         * Batch operations are supported. The maximum number of instances in each request is 30.
         * This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
@@ -1516,7 +1516,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesLoginKeyPairAttribute(self, request):
-        """This API is used to set the attributes of the default login key pair of an instance.
+        r"""This API is used to set the attributes of the default login key pair of an instance.
 
 
         :param request: Request instance for ModifyInstancesLoginKeyPairAttribute.
@@ -1540,7 +1540,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesRenewFlag(self, request):
-        """This API is used to change the auto-renewal setting of monthly-subscribed instances.
+        r"""This API is used to change the auto-renewal setting of monthly-subscribed instances.
 
         * Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration.
         * Batch operations are supported. Up to 100 instances per request is allowed.
@@ -1566,7 +1566,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifySnapshotAttribute(self, request):
-        """This API is used to modify the attributes of a snapshot.
+        r"""This API is used to modify the attributes of a snapshot.
         <li>The snapshot name is used only for users’ convenience.</li>
 
         :param request: Request instance for ModifySnapshotAttribute.
@@ -1590,7 +1590,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RebootInstances(self, request):
-        """This API is used to restart instances.
+        r"""This API is used to restart instances.
 
         * You can only perform this operation on instances whose status is `RUNNING`.
         * The instance status will become `REBOOTING` when the API is called successfully and will become `RUNNING` when the instance is successfully restarted.
@@ -1618,7 +1618,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RenewDisks(self, request):
-        """This API is used to renew one or more Lighthouse cloud disks.
+        r"""This API is used to renew one or more Lighthouse cloud disks.
 
         This operation can only be performed on data disks with the status of `ATTACHED`, `UNATTACHED` or `SHUTDOWN`.
         Up to 50 cloud disks are supported at one time.
@@ -1645,7 +1645,7 @@ class LighthouseClient(AbstractClient):
 
 
     def RenewInstances(self, request):
-        """This API is used to renew one or more Lighthouse instances.
+        r"""This API is used to renew one or more Lighthouse instances.
         * You can only perform this operation on instances whose status is `RUNNING`, `STOPPED` and `SHUTDOWN`.
         * Batch operations are supported. Up to 100 instances are supported in each request.
         * This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
@@ -1671,7 +1671,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ResetAttachCcn(self, request):
-        """This API is used to apply for association again after a CCN instance association application expires.
+        r"""This API is used to apply for association again after a CCN instance association application expires.
 
         :param request: Request instance for ResetAttachCcn.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ResetAttachCcnRequest`
@@ -1694,7 +1694,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ResetInstance(self, request):
-        """This API is used to reinstall the image on the specified instance.
+        r"""This API is used to reinstall the image on the specified instance.
 
         * If you specify a `BlueprintId`, the specified image is used; otherwise, the image used by the current instance is used.
         * The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.
@@ -1722,7 +1722,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ResetInstancesPassword(self, request):
-        """This API is used to reset the password of the instance OS to a user-specified password.
+        r"""This API is used to reset the password of the instance OS to a user-specified password.
         * You can only use this API to modify the password of the admin account. The name of the admin account varies by OS (on Windows, it is `Administrator`; on Ubuntu, it is `ubuntu`; on other systems, it is `root`).
         * Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100.
         * It’s recommended to shut down the instance first and then reset the password. If the instance is running, this API will try to shut it down normally. If the attempt fails, it will force to instance to shut down.
@@ -1750,7 +1750,7 @@ class LighthouseClient(AbstractClient):
 
 
     def StartInstances(self, request):
-        """This API is used to start one or more instances.
+        r"""This API is used to start one or more instances.
 
         * You can only perform this operation on instances whose status is `STOPPED`.
         * The instance status will become `STARTING` when the API is called successfully and will become `RUNNING` when the instance is successfully started.
@@ -1778,7 +1778,7 @@ class LighthouseClient(AbstractClient):
 
 
     def StopInstances(self, request):
-        """This API is used to shut down one or more instances.
+        r"""This API is used to shut down one or more instances.
         * You can only perform this operation on instances whose status is `RUNNING`.
         * The instance status will become `STOPPING` when the API is called successfully and will become `STOPPED` when the instance is successfully shut down.
         * Batch operations are supported. The maximum number of instances in each request is 100.
@@ -1805,7 +1805,7 @@ class LighthouseClient(AbstractClient):
 
 
     def TerminateDisks(self, request):
-        """This API is used to terminate one or more cloud disk.
+        r"""This API is used to terminate one or more cloud disk.
 
         :param request: Request instance for TerminateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksRequest`
@@ -1828,7 +1828,7 @@ class LighthouseClient(AbstractClient):
 
 
     def TerminateInstances(self, request):
-        """This API is used to terminate one or more instances.
+        r"""This API is used to terminate one or more instances.
 
         * Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.
         * Batch operations are supported. The allowed maximum number of instances in each request is 100.

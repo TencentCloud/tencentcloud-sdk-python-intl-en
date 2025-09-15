@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AttributeMap(AbstractModel):
-    """The map key and map value of the player attribute
+    r"""The map key and map value of the player attribute
 
     """
 
@@ -35,7 +35,7 @@ class AttributeMap(AbstractModel):
 
     @property
     def Key(self):
-        """Map key, supporting [a-zA-Z0-9-\.]*
+        r"""Map key, supporting [a-zA-Z0-9-\.]*
         :rtype: str
         """
         return self._Key
@@ -46,7 +46,7 @@ class AttributeMap(AbstractModel):
 
     @property
     def Value(self):
-        """Map value
+        r"""Map value
         :rtype: int
         """
         return self._Value
@@ -70,7 +70,7 @@ class AttributeMap(AbstractModel):
 
 
 class CancelMatchingRequest(AbstractModel):
-    """CancelMatching request structure.
+    r"""CancelMatching request structure.
 
     """
 
@@ -86,7 +86,7 @@ class CancelMatchingRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -97,7 +97,7 @@ class CancelMatchingRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
-        """The MatchTicket ID of the matchmaking to cancel
+        r"""The MatchTicket ID of the matchmaking to cancel
         :rtype: str
         """
         return self._MatchTicketId
@@ -121,7 +121,7 @@ class CancelMatchingRequest(AbstractModel):
 
 
 class CancelMatchingResponse(AbstractModel):
-    """CancelMatching response structure.
+    r"""CancelMatching response structure.
 
     """
 
@@ -137,7 +137,7 @@ class CancelMatchingResponse(AbstractModel):
 
     @property
     def ErrCode(self):
-        """Error code
+        r"""Error code
         :rtype: int
         """
         return self._ErrCode
@@ -148,7 +148,7 @@ class CancelMatchingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -164,7 +164,7 @@ class CancelMatchingResponse(AbstractModel):
 
 
 class CreateMatchRequest(AbstractModel):
-    """CreateMatch request structure.
+    r"""CreateMatch request structure.
 
     """
 
@@ -213,7 +213,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def MatchName(self):
-        """Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        r"""Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._MatchName
@@ -224,7 +224,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -235,7 +235,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """Timeout period in seconds. Value range: 1 600
+        r"""Timeout period in seconds. Value range: 1 600
         :rtype: int
         """
         return self._Timeout
@@ -246,7 +246,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerType(self):
-        """Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
+        r"""Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
         :rtype: int
         """
         return self._ServerType
@@ -257,7 +257,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def MatchDesc(self):
-        """Matchmaking description. Up to 1024 bytes are allowed.
+        r"""Matchmaking description. Up to 1024 bytes are allowed.
         :rtype: str
         """
         return self._MatchDesc
@@ -268,7 +268,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        """Only HTTP and HTTPS protocols are supported.
+        r"""Only HTTP and HTTPS protocols are supported.
         :rtype: str
         """
         return self._NotifyUrl
@@ -279,7 +279,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerRegion(self):
-        """Region of the game server queue
+        r"""Region of the game server queue
         :rtype: str
         """
         return self._ServerRegion
@@ -290,7 +290,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerQueue(self):
-        """Game server queue
+        r"""Game server queue
         :rtype: str
         """
         return self._ServerQueue
@@ -301,7 +301,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def CustomPushData(self):
-        """Custom push data
+        r"""Custom push data
         :rtype: str
         """
         return self._CustomPushData
@@ -312,7 +312,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def ServerSessionData(self):
-        """Game server session data
+        r"""Game server session data
         :rtype: str
         """
         return self._ServerSessionData
@@ -323,7 +323,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def GameProperties(self):
-        """Game attribute. It is an array of key-value structure.
+        r"""Game attribute. It is an array of key-value structure.
         :rtype: list of StringKV
         """
         return self._GameProperties
@@ -334,7 +334,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def LogSwitch(self):
-        """Enable or disable the log. 0: disable, 1: enable
+        r"""Enable or disable the log. 0: disable, 1: enable
         :rtype: int
         """
         return self._LogSwitch
@@ -345,7 +345,7 @@ class CreateMatchRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag. It is an array of key-value structure.
+        r"""Tag. It is an array of key-value structure.
         :rtype: list of StringKV
         """
         return self._Tags
@@ -390,7 +390,7 @@ class CreateMatchRequest(AbstractModel):
 
 
 class CreateMatchResponse(AbstractModel):
-    """CreateMatch response structure.
+    r"""CreateMatch response structure.
 
     """
 
@@ -406,7 +406,7 @@ class CreateMatchResponse(AbstractModel):
 
     @property
     def MatchInfo(self):
-        """Matchmaking information
+        r"""Matchmaking information
         :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
         """
         return self._MatchInfo
@@ -417,7 +417,7 @@ class CreateMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -435,7 +435,7 @@ class CreateMatchResponse(AbstractModel):
 
 
 class CreateRuleRequest(AbstractModel):
-    """CreateRule request structure.
+    r"""CreateRule request structure.
 
     """
 
@@ -457,7 +457,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        r"""Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._RuleName
@@ -468,7 +468,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleScript(self):
-        """Rule script. Up to 65535 bytes are allowed.
+        r"""Rule script. Up to 65535 bytes are allowed.
         :rtype: str
         """
         return self._RuleScript
@@ -479,7 +479,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleDesc(self):
-        """Rule description. Up to 1024 bytes are allowed.
+        r"""Rule description. Up to 1024 bytes are allowed.
         :rtype: str
         """
         return self._RuleDesc
@@ -490,7 +490,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag. It is an array of key-value structure. Up to 50 tags can be associated.
+        r"""Tag. It is an array of key-value structure. Up to 50 tags can be associated.
         :rtype: list of StringKV
         """
         return self._Tags
@@ -521,7 +521,7 @@ class CreateRuleRequest(AbstractModel):
 
 
 class CreateRuleResponse(AbstractModel):
-    """CreateRule response structure.
+    r"""CreateRule response structure.
 
     """
 
@@ -537,7 +537,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleInfo(self):
-        """Rule information
+        r"""Rule information
         :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
         """
         return self._RuleInfo
@@ -548,7 +548,7 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -566,7 +566,7 @@ class CreateRuleResponse(AbstractModel):
 
 
 class DeleteMatchRequest(AbstractModel):
-    """DeleteMatch request structure.
+    r"""DeleteMatch request structure.
 
     """
 
@@ -579,7 +579,7 @@ class DeleteMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -602,7 +602,7 @@ class DeleteMatchRequest(AbstractModel):
 
 
 class DeleteMatchResponse(AbstractModel):
-    """DeleteMatch response structure.
+    r"""DeleteMatch response structure.
 
     """
 
@@ -615,7 +615,7 @@ class DeleteMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -630,7 +630,7 @@ class DeleteMatchResponse(AbstractModel):
 
 
 class DeleteRuleRequest(AbstractModel):
-    """DeleteRule request structure.
+    r"""DeleteRule request structure.
 
     """
 
@@ -643,7 +643,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -666,7 +666,7 @@ class DeleteRuleRequest(AbstractModel):
 
 
 class DeleteRuleResponse(AbstractModel):
-    """DeleteRule response structure.
+    r"""DeleteRule response structure.
 
     """
 
@@ -679,7 +679,7 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -694,7 +694,7 @@ class DeleteRuleResponse(AbstractModel):
 
 
 class DescribeDataRequest(AbstractModel):
-    """DescribeData request structure.
+    r"""DescribeData request structure.
 
     """
 
@@ -716,7 +716,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time in seconds
+        r"""Start time in seconds
         :rtype: int
         """
         return self._StartTime
@@ -727,7 +727,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time in seconds
+        r"""End time in seconds
         :rtype: int
         """
         return self._EndTime
@@ -738,7 +738,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def TimeType(self):
-        """Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes
+        r"""Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes
         :rtype: int
         """
         return self._TimeType
@@ -749,7 +749,7 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -775,7 +775,7 @@ class DescribeDataRequest(AbstractModel):
 
 
 class DescribeDataResponse(AbstractModel):
-    """DescribeData response structure.
+    r"""DescribeData response structure.
 
     """
 
@@ -796,7 +796,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def OverviewData(self):
-        """Matchmaking statistics overview
+        r"""Matchmaking statistics overview
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`
         """
@@ -808,7 +808,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TrendData(self):
-        """Trend data of the number of matchmaking requests
+        r"""Trend data of the number of matchmaking requests
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`
         """
@@ -820,7 +820,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -841,7 +841,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeMatchCodesRequest(AbstractModel):
-    """DescribeMatchCodes request structure.
+    r"""DescribeMatchCodes request structure.
 
     """
 
@@ -860,7 +860,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, number of pages.
+        r"""Offset, number of pages.
         :rtype: int
         """
         return self._Offset
@@ -871,7 +871,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of MatchCodes per page
+        r"""The number of MatchCodes per page
         :rtype: int
         """
         return self._Limit
@@ -882,7 +882,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """Query by the MatchCode value (a string).
+        r"""Query by the MatchCode value (a string).
         :rtype: str
         """
         return self._MatchCode
@@ -907,7 +907,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
 
 class DescribeMatchCodesResponse(AbstractModel):
-    """DescribeMatchCodes response structure.
+    r"""DescribeMatchCodes response structure.
 
     """
 
@@ -928,7 +928,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchCodes(self):
-        """MatchCode
+        r"""MatchCode
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of MatchCodeAttr
         """
@@ -940,7 +940,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
-        """The total number of queried MatchCodes
+        r"""The total number of queried MatchCodes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -952,7 +952,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -974,7 +974,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeMatchRequest(AbstractModel):
-    """DescribeMatch request structure.
+    r"""DescribeMatch request structure.
 
     """
 
@@ -987,7 +987,7 @@ class DescribeMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -1010,7 +1010,7 @@ class DescribeMatchRequest(AbstractModel):
 
 
 class DescribeMatchResponse(AbstractModel):
-    """DescribeMatch response structure.
+    r"""DescribeMatch response structure.
 
     """
 
@@ -1027,7 +1027,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchInfo(self):
-        """Matchmaking information
+        r"""Matchmaking information
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
         """
@@ -1039,7 +1039,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1057,7 +1057,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeMatchesRequest(AbstractModel):
-    """DescribeMatches request structure.
+    r"""DescribeMatches request structure.
 
     """
 
@@ -1082,7 +1082,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """The current page number. If this parameter is left empty, all queried matches will be obtained.
+        r"""The current page number. If this parameter is left empty, all queried matches will be obtained.
         :rtype: int
         """
         return self._PageNumber
@@ -1093,7 +1093,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.
+        r"""Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.
         :rtype: int
         """
         return self._PageSize
@@ -1104,7 +1104,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def SearchType(self):
-        """Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
+        r"""Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
         :rtype: str
         """
         return self._SearchType
@@ -1115,7 +1115,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword. Enter a keyword about SearchType to query.
+        r"""Keyword. Enter a keyword about SearchType to query.
         :rtype: str
         """
         return self._Keyword
@@ -1126,7 +1126,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags. Enter a tag for querying.
+        r"""Tags. Enter a tag for querying.
         :rtype: list of Tag
         """
         return self._Tags
@@ -1158,7 +1158,7 @@ class DescribeMatchesRequest(AbstractModel):
 
 
 class DescribeMatchesResponse(AbstractModel):
-    """DescribeMatches response structure.
+    r"""DescribeMatches response structure.
 
     """
 
@@ -1190,7 +1190,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchInfoList(self):
-        """Matchmaking information list
+        r"""Matchmaking information list
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of MatchInfo
         """
@@ -1202,7 +1202,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
         :rtype: int
         """
         return self._TotalCount
@@ -1213,7 +1213,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PageNumber(self):
-        """The current page number. The first page will be returned by default if this parameter is left empty.
+        r"""The current page number. The first page will be returned by default if this parameter is left empty.
         :rtype: int
         """
         return self._PageNumber
@@ -1224,7 +1224,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PageSize(self):
-        """The number of matches per page. If this parameter is left empty, 30 matches are displayed per page by default. Maximum value: 30
+        r"""The number of matches per page. If this parameter is left empty, 30 matches are displayed per page by default. Maximum value: 30
         :rtype: int
         """
         return self._PageSize
@@ -1235,7 +1235,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def SearchType(self):
-        """Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
+        r"""Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
         :rtype: str
         """
         return self._SearchType
@@ -1246,7 +1246,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Keyword(self):
-        """Keyword for querying (optional)
+        r"""Keyword for querying (optional)
         :rtype: str
         """
         return self._Keyword
@@ -1257,7 +1257,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1283,7 +1283,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeMatchingProgressRequest(AbstractModel):
-    """DescribeMatchingProgress request structure.
+    r"""DescribeMatchingProgress request structure.
 
     """
 
@@ -1296,7 +1296,7 @@ class DescribeMatchingProgressRequest(AbstractModel):
 
     @property
     def MatchTicketIds(self):
-        """List of MatchTicket IDs. It can contain up to 12 IDs.
+        r"""List of MatchTicket IDs. It can contain up to 12 IDs.
         :rtype: list of MTicket
         """
         return self._MatchTicketIds
@@ -1324,7 +1324,7 @@ class DescribeMatchingProgressRequest(AbstractModel):
 
 
 class DescribeMatchingProgressResponse(AbstractModel):
-    """DescribeMatchingProgress response structure.
+    r"""DescribeMatchingProgress response structure.
 
     """
 
@@ -1345,7 +1345,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchTickets(self):
-        """MatchTicket list
+        r"""MatchTicket list
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of MatchTicket
         """
@@ -1357,7 +1357,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ErrCode(self):
-        """Error code
+        r"""Error code
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1369,7 +1369,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1391,7 +1391,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeRuleRequest(AbstractModel):
-    """DescribeRule request structure.
+    r"""DescribeRule request structure.
 
     """
 
@@ -1404,7 +1404,7 @@ class DescribeRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -1427,7 +1427,7 @@ class DescribeRuleRequest(AbstractModel):
 
 
 class DescribeRuleResponse(AbstractModel):
-    """DescribeRule response structure.
+    r"""DescribeRule response structure.
 
     """
 
@@ -1444,7 +1444,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleInfo(self):
-        """Rule information
+        r"""Rule information
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
         """
@@ -1456,7 +1456,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1474,7 +1474,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeRulesRequest(AbstractModel):
-    """DescribeRules request structure.
+    r"""DescribeRules request structure.
 
     """
 
@@ -1499,7 +1499,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """The current page number. The first page will be returned if this parameter is left empty.
+        r"""The current page number. The first page will be returned if this parameter is left empty.
         :rtype: int
         """
         return self._PageNumber
@@ -1510,7 +1510,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30
+        r"""The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30
         :rtype: int
         """
         return self._PageSize
@@ -1521,7 +1521,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def SearchType(self):
-        """Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
+        r"""Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)
         :rtype: str
         """
         return self._SearchType
@@ -1532,7 +1532,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        """Keyword. Enter a keyword about SearchType to query.
+        r"""Keyword. Enter a keyword about SearchType to query.
         :rtype: str
         """
         return self._Keyword
@@ -1543,7 +1543,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tags. Enter a tag for querying.
+        r"""Tags. Enter a tag for querying.
         :rtype: list of Tag
         """
         return self._Tags
@@ -1575,7 +1575,7 @@ class DescribeRulesRequest(AbstractModel):
 
 
 class DescribeRulesResponse(AbstractModel):
-    """DescribeRules response structure.
+    r"""DescribeRules response structure.
 
     """
 
@@ -1607,7 +1607,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleInfoList(self):
-        """Rule information list
+        r"""Rule information list
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of RuleBriefInfo
         """
@@ -1619,7 +1619,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
-        """Total number of results
+        r"""Total number of results
         :rtype: int
         """
         return self._TotalCount
@@ -1630,7 +1630,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PageNumber(self):
-        """The current page number
+        r"""The current page number
         :rtype: int
         """
         return self._PageNumber
@@ -1641,7 +1641,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def PageSize(self):
-        """Number of rules per page
+        r"""Number of rules per page
         :rtype: int
         """
         return self._PageSize
@@ -1652,7 +1652,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def SearchType(self):
-        """Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
+        r"""Query type (optional). Valid values: matchName (query by match name), matchCode (query by matchCode), ruleName (query by rule name), and tag (query by tag key/value)
         :rtype: str
         """
         return self._SearchType
@@ -1663,7 +1663,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Keyword(self):
-        """Keyword for querying (optional)
+        r"""Keyword for querying (optional)
         :rtype: str
         """
         return self._Keyword
@@ -1674,7 +1674,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1700,7 +1700,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class DescribeTokenRequest(AbstractModel):
-    """DescribeToken request structure.
+    r"""DescribeToken request structure.
 
     """
 
@@ -1713,7 +1713,7 @@ class DescribeTokenRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -1736,7 +1736,7 @@ class DescribeTokenRequest(AbstractModel):
 
 
 class DescribeTokenResponse(AbstractModel):
-    """DescribeToken response structure.
+    r"""DescribeToken response structure.
 
     """
 
@@ -1757,7 +1757,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchToken(self):
-        """The token corresponding to the current MatchCode. If the current MatchCode does not have a token, this parameter may not obtain a valid value.
+        r"""The token corresponding to the current MatchCode. If the current MatchCode does not have a token, this parameter may not obtain a valid value.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -1769,7 +1769,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CompatibleSpan(self):
-        """The time period during which GPM will continuously push the original token in seconds when the token is replaced.
+        r"""The time period during which GPM will continuously push the original token in seconds when the token is replaced.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -1781,7 +1781,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1798,7 +1798,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class MTicket(AbstractModel):
-    """The combination of MatchCode and MatchTicket ID.
+    r"""The combination of MatchCode and MatchTicket ID.
 
     """
 
@@ -1814,7 +1814,7 @@ class MTicket(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -1825,7 +1825,7 @@ class MTicket(AbstractModel):
 
     @property
     def MatchTicketId(self):
-        """MatchTicket ID
+        r"""MatchTicket ID
         :rtype: str
         """
         return self._MatchTicketId
@@ -1849,7 +1849,7 @@ class MTicket(AbstractModel):
 
 
 class MatchAttribute(AbstractModel):
-    """Player attributes for matching
+    r"""Player attributes for matching
 
     """
 
@@ -1877,7 +1877,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def Name(self):
-        """Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
+        r"""Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._Name
@@ -1888,7 +1888,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def Type(self):
-        """Attribute type. 0: number, 1: string. Default value: 0
+        r"""Attribute type. 0: number, 1: string. Default value: 0
         :rtype: int
         """
         return self._Type
@@ -1899,7 +1899,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def NumberValue(self):
-        """Numeric attribute value. Default value: 0.0
+        r"""Numeric attribute value. Default value: 0.0
         :rtype: float
         """
         return self._NumberValue
@@ -1910,7 +1910,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def StringValue(self):
-        """String attribute value. Up to 128 characters are allowed. Default value: ""
+        r"""String attribute value. Up to 128 characters are allowed. Default value: ""
         :rtype: str
         """
         return self._StringValue
@@ -1921,7 +1921,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def ListValue(self):
-        """List attribute value
+        r"""List attribute value
         :rtype: list of str
         """
         return self._ListValue
@@ -1932,7 +1932,7 @@ class MatchAttribute(AbstractModel):
 
     @property
     def MapValue(self):
-        """Map attribute value
+        r"""Map attribute value
         :rtype: list of AttributeMap
         """
         return self._MapValue
@@ -1965,7 +1965,7 @@ class MatchAttribute(AbstractModel):
 
 
 class MatchCodeAttr(AbstractModel):
-    """MatchCode
+    r"""MatchCode
 
     """
 
@@ -1979,7 +1979,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2003,7 +2003,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class MatchInfo(AbstractModel):
-    """Matchmaking information
+    r"""Matchmaking information
 
     """
 
@@ -2105,7 +2105,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -2116,7 +2116,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchName(self):
-        """Match name
+        r"""Match name
         :rtype: str
         """
         return self._MatchName
@@ -2127,7 +2127,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchDesc(self):
-        """Matchmaking description
+        r"""Matchmaking description
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2139,7 +2139,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -2150,7 +2150,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -2161,7 +2161,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Timeout(self):
-        """Timeout period
+        r"""Timeout period
         :rtype: int
         """
         return self._Timeout
@@ -2172,7 +2172,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def NotifyUrl(self):
-        """Receiving notification address
+        r"""Receiving notification address
         :rtype: str
         """
         return self._NotifyUrl
@@ -2183,7 +2183,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ServerType(self):
-        """Whether to request server resources for the match results. 0: no, 1: request GSE resources
+        r"""Whether to request server resources for the match results. 0: no, 1: request GSE resources
         :rtype: int
         """
         return self._ServerType
@@ -2194,7 +2194,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ServerRegion(self):
-        """Region of the server queue
+        r"""Region of the server queue
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2206,7 +2206,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ServerQueue(self):
-        """Server queue
+        r"""Server queue
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2218,7 +2218,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CustomPushData(self):
-        """Custom push data
+        r"""Custom push data
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2230,7 +2230,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ServerSessionData(self):
-        """Game server session data
+        r"""Game server session data
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2242,7 +2242,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def GameProperties(self):
-        """Game attributes
+        r"""Game attributes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of StringKV
         """
@@ -2254,7 +2254,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogSwitch(self):
-        """Enable or disable the log. 0: disable, 1: enable
+        r"""Enable or disable the log. 0: disable, 1: enable
         :rtype: int
         """
         return self._LogSwitch
@@ -2265,7 +2265,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogsetId(self):
-        """Logset ID
+        r"""Logset ID
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2277,7 +2277,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogsetName(self):
-        """Logset name
+        r"""Logset name
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2289,7 +2289,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogTopicId(self):
-        """Log topic ID
+        r"""Log topic ID
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2301,7 +2301,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogTopicName(self):
-        """Log topic name
+        r"""Log topic name
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2313,7 +2313,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of StringKV
         """
@@ -2325,7 +2325,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Region(self):
-        """Region
+        r"""Region
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2337,7 +2337,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def AppId(self):
-        """User AppId
+        r"""User AppId
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2349,7 +2349,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Uin(self):
-        """User root account UIN
+        r"""User root account UIN
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2361,7 +2361,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreateUin(self):
-        """Create user account UIN
+        r"""Create user account UIN
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2373,7 +2373,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleName(self):
-        """Rule Name
+        r"""Rule Name
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2385,7 +2385,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogStatus(self):
-        """Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.
+        r"""Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -2443,7 +2443,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class MatchTicket(AbstractModel):
-    """MatchTicket information
+    r"""MatchTicket information
 
     """
 
@@ -2488,7 +2488,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Id(self):
-        """MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
+        r"""MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._Id
@@ -2499,7 +2499,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -2510,7 +2510,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchResult(self):
-        """Different structure serialized results will be returned according to the MatchType.
+        r"""Different structure serialized results will be returned according to the MatchType.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2522,7 +2522,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchType(self):
-        """Matchmaking type. Valid values: NORMAL, GSE
+        r"""Matchmaking type. Valid values: NORMAL, GSE
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2534,7 +2534,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Players(self):
-        """Player information list
+        r"""Player information list
         :rtype: list of Player
         """
         return self._Players
@@ -2545,7 +2545,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Status(self):
-        """Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)
+        r"""Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)
         :rtype: str
         """
         return self._Status
@@ -2556,7 +2556,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StatusMessage(self):
-        """Matching status descriptions
+        r"""Matching status descriptions
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2568,7 +2568,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StatusReason(self):
-        """Reason for the matching status
+        r"""Reason for the matching status
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2580,7 +2580,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StartTime(self):
-        """The time when the GPM received the matchmaking request, for example "2020-08-17T08:14:38.077Z".
+        r"""The time when the GPM received the matchmaking request, for example "2020-08-17T08:14:38.077Z".
         :rtype: str
         """
         return self._StartTime
@@ -2591,7 +2591,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def EndTime(self):
-        """The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example "2020-08-17T08:14:38.077Z".
+        r"""The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example "2020-08-17T08:14:38.077Z".
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -2629,7 +2629,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class ModifyMatchRequest(AbstractModel):
-    """ModifyMatch request structure.
+    r"""ModifyMatch request structure.
 
     """
 
@@ -2681,7 +2681,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchName(self):
-        """Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
+        r"""Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._MatchName
@@ -2692,7 +2692,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -2703,7 +2703,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        """Timeout period in seconds. Value range: 1 600
+        r"""Timeout period in seconds. Value range: 1 600
         :rtype: int
         """
         return self._Timeout
@@ -2714,7 +2714,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerType(self):
-        """Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
+        r"""Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources
         :rtype: int
         """
         return self._ServerType
@@ -2725,7 +2725,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -2736,7 +2736,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def MatchDesc(self):
-        """Matchmaking description. Up to 1024 bytes are allowed.
+        r"""Matchmaking description. Up to 1024 bytes are allowed.
         :rtype: str
         """
         return self._MatchDesc
@@ -2747,7 +2747,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def NotifyUrl(self):
-        """Only HTTP and HTTPS protocols are supported.
+        r"""Only HTTP and HTTPS protocols are supported.
         :rtype: str
         """
         return self._NotifyUrl
@@ -2758,7 +2758,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerRegion(self):
-        """Region of the game server queue
+        r"""Region of the game server queue
         :rtype: str
         """
         return self._ServerRegion
@@ -2769,7 +2769,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerQueue(self):
-        """Game server queue
+        r"""Game server queue
         :rtype: str
         """
         return self._ServerQueue
@@ -2780,7 +2780,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def CustomPushData(self):
-        """Custom push data
+        r"""Custom push data
         :rtype: str
         """
         return self._CustomPushData
@@ -2791,7 +2791,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def ServerSessionData(self):
-        """Game server session data
+        r"""Game server session data
         :rtype: str
         """
         return self._ServerSessionData
@@ -2802,7 +2802,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def GameProperties(self):
-        """Game attribute. It is an array of key-value structure.
+        r"""Game attribute. It is an array of key-value structure.
         :rtype: list of StringKV
         """
         return self._GameProperties
@@ -2813,7 +2813,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def LogSwitch(self):
-        """Enable or disable the log. 0: disable, 1: enable
+        r"""Enable or disable the log. 0: disable, 1: enable
         :rtype: int
         """
         return self._LogSwitch
@@ -2824,7 +2824,7 @@ class ModifyMatchRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag. It is an array of key-value structure.
+        r"""Tag. It is an array of key-value structure.
         :rtype: list of StringKV
         """
         return self._Tags
@@ -2870,7 +2870,7 @@ class ModifyMatchRequest(AbstractModel):
 
 
 class ModifyMatchResponse(AbstractModel):
-    """ModifyMatch response structure.
+    r"""ModifyMatch response structure.
 
     """
 
@@ -2886,7 +2886,7 @@ class ModifyMatchResponse(AbstractModel):
 
     @property
     def MatchInfo(self):
-        """Matchmaking information
+        r"""Matchmaking information
         :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
         """
         return self._MatchInfo
@@ -2897,7 +2897,7 @@ class ModifyMatchResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2915,7 +2915,7 @@ class ModifyMatchResponse(AbstractModel):
 
 
 class ModifyRuleRequest(AbstractModel):
-    """ModifyRule request structure.
+    r"""ModifyRule request structure.
 
     """
 
@@ -2937,7 +2937,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -2948,7 +2948,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        """Rule name. It can only contain numbers, letters, ".", and "-".
+        r"""Rule name. It can only contain numbers, letters, ".", and "-".
         :rtype: str
         """
         return self._RuleName
@@ -2959,7 +2959,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def RuleDesc(self):
-        """Rule description. Up to 1024 bytes are allowed.
+        r"""Rule description. Up to 1024 bytes are allowed.
         :rtype: str
         """
         return self._RuleDesc
@@ -2970,7 +2970,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag. It is an array of key-value structure. Up to 50 tags can be associated.
+        r"""Tag. It is an array of key-value structure. Up to 50 tags can be associated.
         :rtype: list of StringKV
         """
         return self._Tags
@@ -3001,7 +3001,7 @@ class ModifyRuleRequest(AbstractModel):
 
 
 class ModifyRuleResponse(AbstractModel):
-    """ModifyRule response structure.
+    r"""ModifyRule response structure.
 
     """
 
@@ -3017,7 +3017,7 @@ class ModifyRuleResponse(AbstractModel):
 
     @property
     def RuleInfo(self):
-        """Rule information
+        r"""Rule information
         :rtype: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
         """
         return self._RuleInfo
@@ -3028,7 +3028,7 @@ class ModifyRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3046,7 +3046,7 @@ class ModifyRuleResponse(AbstractModel):
 
 
 class ModifyTokenRequest(AbstractModel):
-    """ModifyToken request structure.
+    r"""ModifyToken request structure.
 
     """
 
@@ -3065,7 +3065,7 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -3076,7 +3076,7 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def CompatibleSpan(self):
-        """The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.
+        r"""The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.
         :rtype: int
         """
         return self._CompatibleSpan
@@ -3087,7 +3087,7 @@ class ModifyTokenRequest(AbstractModel):
 
     @property
     def MatchToken(self):
-        """Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.
+        r"""Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.
         :rtype: str
         """
         return self._MatchToken
@@ -3112,7 +3112,7 @@ class ModifyTokenRequest(AbstractModel):
 
 
 class ModifyTokenResponse(AbstractModel):
-    """ModifyToken response structure.
+    r"""ModifyToken response structure.
 
     """
 
@@ -3132,7 +3132,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchToken(self):
-        """Token that has been set successfully.
+        r"""Token that has been set successfully.
         :rtype: str
         """
         return self._MatchToken
@@ -3143,7 +3143,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CompatibleSpan(self):
-        """The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced.
+        r"""The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: int
         """
@@ -3155,7 +3155,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3172,7 +3172,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class Player(AbstractModel):
-    """Player information
+    r"""Player information
 
     """
 
@@ -3203,7 +3203,7 @@ class Player(AbstractModel):
 
     @property
     def Id(self):
-        """Player ID. It can contain up to 128 characters, supporting [a-zA-Z\d-\._]*.
+        r"""Player ID. It can contain up to 128 characters, supporting [a-zA-Z\d-\._]*.
         :rtype: str
         """
         return self._Id
@@ -3214,7 +3214,7 @@ class Player(AbstractModel):
 
     @property
     def Name(self):
-        """Player nickname. Up to 128 characters are allowed.
+        r"""Player nickname. Up to 128 characters are allowed.
         :rtype: str
         """
         return self._Name
@@ -3225,7 +3225,7 @@ class Player(AbstractModel):
 
     @property
     def MatchAttributes(self):
-        """Player attribute for matching. Up to 10 attributes are supported.
+        r"""Player attribute for matching. Up to 10 attributes are supported.
         :rtype: list of MatchAttribute
         """
         return self._MatchAttributes
@@ -3236,7 +3236,7 @@ class Player(AbstractModel):
 
     @property
     def Team(self):
-        """Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\.]*.
+        r"""Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._Team
@@ -3247,7 +3247,7 @@ class Player(AbstractModel):
 
     @property
     def CustomPlayerStatus(self):
-        """Custom player status. This parameter will be passed through. Value range: [0, 99999]
+        r"""Custom player status. This parameter will be passed through. Value range: [0, 99999]
         :rtype: int
         """
         return self._CustomPlayerStatus
@@ -3258,7 +3258,7 @@ class Player(AbstractModel):
 
     @property
     def CustomProfile(self):
-        """Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.
+        r"""Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.
         :rtype: str
         """
         return self._CustomProfile
@@ -3269,7 +3269,7 @@ class Player(AbstractModel):
 
     @property
     def RegionLatencies(self):
-        """Number of delays in each area. Up to 20 delays are supported.
+        r"""Number of delays in each area. Up to 20 delays are supported.
         :rtype: list of RegionLatency
         """
         return self._RegionLatencies
@@ -3308,7 +3308,7 @@ class Player(AbstractModel):
 
 
 class RegionLatency(AbstractModel):
-    """The network delay time for players to reach different regions.
+    r"""The network delay time for players to reach different regions.
 
     """
 
@@ -3339,7 +3339,7 @@ ap-tokyo           Asia Pacific (Tokyo)
 
     @property
     def Region(self):
-        """Region
+        r"""Region
 ap-beijing          North China (Beijing)
 ap-chengdu          Southwest China (Chengdu)
 ap-guangzhou           South China (Guangzhou)
@@ -3365,7 +3365,7 @@ ap-tokyo           Asia Pacific (Tokyo)
 
     @property
     def Latency(self):
-        """Delay time in ms. Value range: 0 - 999999
+        r"""Delay time in ms. Value range: 0 - 999999
         :rtype: int
         """
         return self._Latency
@@ -3389,7 +3389,7 @@ ap-tokyo           Asia Pacific (Tokyo)
 
 
 class ReportOverviewData(AbstractModel):
-    """Matchmaking statistics overview
+    r"""Matchmaking statistics overview
 
     """
 
@@ -3414,7 +3414,7 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def TotalTimes(self):
-        """Total count
+        r"""Total count
         :rtype: str
         """
         return self._TotalTimes
@@ -3425,7 +3425,7 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def SuccessPercent(self):
-        """Success rate
+        r"""Success rate
         :rtype: float
         """
         return self._SuccessPercent
@@ -3436,7 +3436,7 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def TimeoutPercent(self):
-        """Timeout rate
+        r"""Timeout rate
         :rtype: float
         """
         return self._TimeoutPercent
@@ -3447,7 +3447,7 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def FailPercent(self):
-        """Failure rate
+        r"""Failure rate
         :rtype: float
         """
         return self._FailPercent
@@ -3458,7 +3458,7 @@ class ReportOverviewData(AbstractModel):
 
     @property
     def AverageSec(self):
-        """Average matching time
+        r"""Average matching time
         :rtype: float
         """
         return self._AverageSec
@@ -3485,7 +3485,7 @@ class ReportOverviewData(AbstractModel):
 
 
 class ReportTrendData(AbstractModel):
-    """Trend data
+    r"""Trend data
 
     """
 
@@ -3513,7 +3513,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TotalList(self):
-        """Total count
+        r"""Total count
         :rtype: list of str
         """
         return self._TotalList
@@ -3524,7 +3524,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def CancelList(self):
-        """Number of requests cancelled
+        r"""Number of requests cancelled
         :rtype: list of str
         """
         return self._CancelList
@@ -3535,7 +3535,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def SuccessList(self):
-        """Number of successes
+        r"""Number of successes
         :rtype: list of str
         """
         return self._SuccessList
@@ -3546,7 +3546,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def FailList(self):
-        """Number of failures
+        r"""Number of failures
         :rtype: list of str
         """
         return self._FailList
@@ -3557,7 +3557,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TimeoutList(self):
-        """Number of request timeout
+        r"""Number of request timeout
         :rtype: list of str
         """
         return self._TimeoutList
@@ -3568,7 +3568,7 @@ class ReportTrendData(AbstractModel):
 
     @property
     def TimeList(self):
-        """Time array in seconds
+        r"""Time array in seconds
         :rtype: list of str
         """
         return self._TimeList
@@ -3596,7 +3596,7 @@ class ReportTrendData(AbstractModel):
 
 
 class RuleBriefInfo(AbstractModel):
-    """Brief rule information
+    r"""Brief rule information
 
     """
 
@@ -3618,7 +3618,7 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def RuleName(self):
-        """Rule name. It supports [a-zA-Z\d-\.]*.
+        r"""Rule name. It supports [a-zA-Z\d-\.]*.
         :rtype: str
         """
         return self._RuleName
@@ -3629,7 +3629,7 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def MatchCodeList(self):
-        """The associated match
+        r"""The associated match
         :rtype: list of StringKV
         """
         return self._MatchCodeList
@@ -3640,7 +3640,7 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -3651,7 +3651,7 @@ class RuleBriefInfo(AbstractModel):
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -3682,7 +3682,7 @@ class RuleBriefInfo(AbstractModel):
 
 
 class RuleInfo(AbstractModel):
-    """Rule information
+    r"""Rule information
 
     """
 
@@ -3732,7 +3732,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleName(self):
-        """Rule name. It supports [a-zA-Z0-9-\.]*.
+        r"""Rule name. It supports [a-zA-Z0-9-\.]*.
         :rtype: str
         """
         return self._RuleName
@@ -3743,7 +3743,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreateTime(self):
-        """Creation time
+        r"""Creation time
         :rtype: str
         """
         return self._CreateTime
@@ -3754,7 +3754,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleDesc(self):
-        """Rule description
+        r"""Rule description
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3766,7 +3766,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleScript(self):
-        """Rule script
+        r"""Rule script
         :rtype: str
         """
         return self._RuleScript
@@ -3777,7 +3777,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Tags(self):
-        """Tag
+        r"""Tag
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of StringKV
         """
@@ -3789,7 +3789,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def MatchCodeList(self):
-        """The associated match
+        r"""The associated match
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: list of StringKV
         """
@@ -3801,7 +3801,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RuleCode(self):
-        """RuleCode
+        r"""RuleCode
         :rtype: str
         """
         return self._RuleCode
@@ -3812,7 +3812,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Region(self):
-        """Region
+        r"""Region
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3824,7 +3824,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def AppId(self):
-        """User AppId
+        r"""User AppId
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3836,7 +3836,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Uin(self):
-        """User UIN
+        r"""User UIN
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3848,7 +3848,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreateUin(self):
-        """User OwnerUin
+        r"""User OwnerUin
 Note: this field may return `null`, indicating that no valid value is obtained.
         :rtype: str
         """
@@ -3892,7 +3892,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
 
 class StartMatchingBackfillRequest(AbstractModel):
-    """StartMatchingBackfill request structure.
+    r"""StartMatchingBackfill request structure.
 
     """
 
@@ -3914,7 +3914,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -3925,7 +3925,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def Players(self):
-        """Player information
+        r"""Player information
         :rtype: list of Player
         """
         return self._Players
@@ -3936,7 +3936,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def GameServerSessionId(self):
-        """Game server session ID. It should contain 1 to 256 ASCII characters.
+        r"""Game server session ID. It should contain 1 to 256 ASCII characters.
         :rtype: str
         """
         return self._GameServerSessionId
@@ -3947,7 +3947,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
-        """MatchTicket ID, which can contain 1 to 128 characters. This parameter is left empty by default, and in this case, MatchTicket ID will be automatically generated by GPM.
+        r"""MatchTicket ID, which can contain 1 to 128 characters. This parameter is left empty by default, and in this case, MatchTicket ID will be automatically generated by GPM.
         :rtype: str
         """
         return self._MatchTicketId
@@ -3978,7 +3978,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
 
 class StartMatchingBackfillResponse(AbstractModel):
-    """StartMatchingBackfill response structure.
+    r"""StartMatchingBackfill response structure.
 
     """
 
@@ -3995,7 +3995,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MatchTicket(self):
-        """MatchTicket
+        r"""MatchTicket
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
         """
@@ -4007,7 +4007,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4025,7 +4025,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
 
 class StartMatchingRequest(AbstractModel):
-    """StartMatching request structure.
+    r"""StartMatching request structure.
 
     """
 
@@ -4044,7 +4044,7 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def MatchCode(self):
-        """MatchCode
+        r"""MatchCode
         :rtype: str
         """
         return self._MatchCode
@@ -4055,7 +4055,7 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def Players(self):
-        """Player information. Up to 200 entries can be entered.
+        r"""Player information. Up to 200 entries can be entered.
         :rtype: list of Player
         """
         return self._Players
@@ -4066,7 +4066,7 @@ class StartMatchingRequest(AbstractModel):
 
     @property
     def MatchTicketId(self):
-        """MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.
+        r"""MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.
         :rtype: str
         """
         return self._MatchTicketId
@@ -4096,7 +4096,7 @@ class StartMatchingRequest(AbstractModel):
 
 
 class StartMatchingResponse(AbstractModel):
-    """StartMatching response structure.
+    r"""StartMatching response structure.
 
     """
 
@@ -4115,7 +4115,7 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def ErrCode(self):
-        """Error code
+        r"""Error code
         :rtype: int
         """
         return self._ErrCode
@@ -4126,7 +4126,7 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def MatchTicketId(self):
-        """MatchTicket ID. Up to 128 characters are allowed.
+        r"""MatchTicket ID. Up to 128 characters are allowed.
         :rtype: str
         """
         return self._MatchTicketId
@@ -4137,7 +4137,7 @@ class StartMatchingResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4154,7 +4154,7 @@ class StartMatchingResponse(AbstractModel):
 
 
 class StringKV(AbstractModel):
-    """Key-value structure. Both key and value are string types.
+    r"""Key-value structure. Both key and value are string types.
 
     """
 
@@ -4170,7 +4170,7 @@ class StringKV(AbstractModel):
 
     @property
     def Key(self):
-        """Key
+        r"""Key
         :rtype: str
         """
         return self._Key
@@ -4181,7 +4181,7 @@ class StringKV(AbstractModel):
 
     @property
     def Value(self):
-        """Value
+        r"""Value
         :rtype: str
         """
         return self._Value
@@ -4205,7 +4205,7 @@ class StringKV(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """Tag key-value pair
+    r"""Tag key-value pair
 
     """
 
@@ -4221,7 +4221,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        """Tag key
+        r"""Tag key
         :rtype: str
         """
         return self._TagKey
@@ -4232,7 +4232,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        """Tag value
+        r"""Tag value
         :rtype: str
         """
         return self._TagValue
